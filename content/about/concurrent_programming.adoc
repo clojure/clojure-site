@@ -1,0 +1,88 @@
+= Concurrent Programming
+Rich Hickey
+2015-01-01
+:jbake-type: page
+:toc: macro
+
+== Concurrent Programming 
+
+Today's systems have to deal with many simultaneous tasks and leverage the power of multi-core CPUs. Doing so with threads can be very difficult due to the complexities of synchronization. Clojure simplifies multi-threaded programming in several ways. Because the core data structures are immutable, they can be shared readily between threads. However, it is often necessary to have state change in a program. Clojure, being a practical language, allows state to change but provides mechanism to ensure that, when it does so, it remains consistent, while alleviating developers from having to avoid conflicts manually using locks etc. The <<xref/../../reference/refs#,software transactional memory system>> (STM), exposed through http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/dosync[dosync], http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ref[ref], http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/set[set], http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/alter[alter], et al, supports _sharing_ changing state between threads in a _synchronous_ and _coordinated_ manner. The <<xref/../../reference/agents#,agent>> system supports sharing changing state between threads in an _asynchronous_ and _independent_ manner. The <<xref/../../reference/atoms#,atoms>> system supports sharing changing state between threads in a _synchronous_ and _independent_ manner. The <<xref/../../reference/vars#,dynamic var system>>, exposed through <<xref/../../reference/special_forms#def#,def>>, http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/binding[binding], et al, supports isolating changing state within threads.
+
+In all cases, Clojure does not replace the Java thread system, rather it works with it. Clojure functions are java.util.concurrent.Callable, therefore they work with the Executor framework etc.
+
+Most of this is covered in more detail in the http://www.youtube.com/watch?v=dGVqrGmwOAw[concurrency screencast].
+
+<<xref/../../reference/refs#,Refs>> are mutable references to objects. They can be http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ref-set[ref-set] or http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/alter[alter]ed to refer to different objects during transactions, which are delimited by http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/dosync[dosync] blocks. All ref modifications within a transaction happen or none do. Also, reads of refs within a transaction reflect a snapshot of the reference world at a particular point in time, i.e. each transaction is isolated from other transactions. If a conflict occurs between 2 transactions trying to modify the same reference, one of them will be retried. All of this occurs without explicit locking.
+
+In this example a vector of Refs containing integers is created _(+refs+)_, then a set of threads are set up _(+pool+)_ to run a number of iterations of incrementing every Ref _(+tasks+)_. This creates extreme contention, but yields the correct result. No locks!
+[source,clojure]
+----
+(import '(java.util.concurrent Executors))
+
+(defn test-stm [nitems nthreads niters]
+  (let [refs  (map ref (repeat nitems 0))
+        pool  (Executors/newFixedThreadPool nthreads)
+        tasks (map (fn [t]
+                      (fn []
+                        (dotimes [n niters]
+                          (dosync
+                            (doseq [r refs]
+                              (alter r + 1 t))))))
+                   (range nthreads))]
+    (doseq [future (.invokeAll pool tasks)]
+      (.get future))
+    (.shutdown pool)
+    (map deref refs)))
+
+(test-stm 10 10 10000)
+-> (550000 550000 550000 550000 550000 550000 550000 550000 550000 550000)
+----
+In typical use refs can refer to Clojure collections, which, being persistent and immutable, efficiently support simultaneous speculative 'modifications' by multiple transactions. Mutable objects should not be put in refs.
+
+By default Vars are static, but per-thread bindings for Vars defined with <<xref/../../reference/metadata#,metadata>> mark them as dynamic. <<xref/../../reference/vars#,Dynamic vars>> are also mutable references to objects. They have a (thread-shared) root binding which can be established by <<xref/../../reference/special_forms#def#,def>>, and can be set using _*set!*_, but only if they have been bound to a new storage location thread-locally using http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/binding[binding]. Those bindings and any subsequent modifications to those bindings will only be seen _within_ the thread by code in the dynamic scope of the binding block. Nested bindings obey a stack protocol and unwind as control exits the binding block.
+[source,clojure]
+----
+(def ^:dynamic *v*)
+
+(defn incv [n] (set! *v* (+ *v* n)))
+
+(defn test-vars [nthreads niters]
+  (let [pool (Executors/newFixedThreadPool nthreads)
+        tasks (map (fn [t]
+                     #(binding [*v* 0]
+                        (dotimes [n niters]
+                          (incv t))
+                        *v*))
+                   (range nthreads))]
+      (let [ret (.invokeAll pool tasks)]
+        (.shutdown pool)
+        (map #(.get %) ret))))
+
+(test-vars 10 1000000)
+-> (0 1000000 2000000 3000000 4000000 5000000 6000000 7000000 8000000 9000000)
+(set! *v* 4)
+-> java.lang.IllegalStateException: Can't change/establish root binding of: *v* with set
+----
+Dynamic vars provide a way to communicate between different points on the call stack without polluting the argument lists and return values of the intervening calls. In addition, dynamic vars support a flavor of context-oriented programming. Because fns defined with http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defn[defn] are stored in vars, they too can be dynamically rebound:
+[source,clojure]
+----
+(defn ^:dynamic say [& args]
+  (apply str args))
+
+(defn loves [x y]
+  (say x " loves " y))
+
+(defn test-rebind []
+  (println (loves "ricky" "lucy"))
+  (let [say-orig say]
+    (binding [say (fn [& args]
+                      (println "Logging say")
+                      (apply say-orig args))]
+      (println (loves "fred" "ethel")))))
+
+(test-rebind)
+
+ricky loves lucy
+Logging say
+fred loves ethel
+----

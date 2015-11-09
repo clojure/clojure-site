@@ -1,0 +1,16 @@
+= Features
+Rich Hickey
+2015-01-01
+:jbake-type: page
+:toc: macro
+
+== Features
+
+Clojure has a set of useful features that together form a simple, coherent, and powerful tool. In Clojure you'll find ideas from Lisp, ML, Haskell, and others, but the end result is unique. This section is a brief, non-comprehensive tour of some of the features of Clojure. Consult the http://clojure.org/documentation[reference] for more details.
+
+* <<dynamic#,Dynamic Development>>
+* <<functional_programming#,Functional Programming>>
+* <<lisp#,Lisp>>
+* <<runtime_polymorphism#,Runtime Polymorphism>> 
+* <<concurrent_programming#,Concurrent Programming>>
+* <<jvm_hosted#,Hosted on the JVM>>

@@ -1,0 +1,261 @@
+= Editing
+Alex Miller
+2015-09-29
+:jbake-type: page
+:toc: macro
+
+This page covers helpful Asciidoc editing tips for writing content on this site. It does not cover every feature of Asciidoc, just the ones that have come up most commonly while writing content on this site.
+
+== File metadata
+
+Every file should start with a metadata block that looks like this:
+
+----
+= Mechanical Computing
+Ada Lovelace
+2015-12-31
+:jbake-type: page
+:toc: macro
+----
+
+The first lines indicate the title, author, and creation date. The last two lines are necessary boilerplate metadata attributes.
+
+== Headers
+
+== h2
+
+----
+== h2
+----
+
+=== h3
+
+----
+=== h3
+----
+
+==== h4
+
+----
+==== h4
+----
+
+== Text markup
+
+[cols="<*,", options="header"]
+|===
+| markup | effect
+| pass:[_italic_] | _italic_
+| pass:[*bold*] | *bold*
+| pass:[_**italic and bold**_] | _**italic and bold**_
+| pass:[`inline code`] | `inline code`
+| pass:[(C) (R) (TM)] | (C) (R) (TM)
+| pass:[-- ...] | -- ...
+| pass:[-> <- => <=] | -> <- => <=
+|===
+
+To get a line break without a paragraph change, append + to the end of the line:
+
+----
+force +
+line break
+----
+
+force +
+line break
+
+''''
+
+If you have many lines in a row that will need breaks you can prefix them with pass:[[%hardbreaks]]:
+
+----
+[%hardbreaks]
+first line
+second line
+----
+
+[%hardbreaks]
+first line
+second line
+
+''''
+
+There are a number of ways to handle escaping in Asciidoc but one of the most helpful is to omit all formatting by using:
+
+----
+pass:[*ns*]
+----
+
+pass:[*ns*]
+
+== Links
+
+Create an anchor in a page:
+
+----
+[[dot]]
+----
+
+''''
+
+Link to another internal page (note the trailing # after the page - this is required in our generator!):
+
+----
+<<resources#,Resources>>
+----
+
+<<resources#,Resources>>
+
+There is a bug in the parser used in the current version of JBake for links to a page in a parent directory. For example, to link to a page at ../reference/java_interop.adoc, you can use a link like this:
+
+----
+<<xref/../../reference/java_interop#,Java Interop>>
+----
+
+This goes to a (fictitious) subdirectory xref, then back a directory, and then finally the path you wish to follow. While the choice of "xref" here is arbitrary, please use only this string so that we can more easily find and update these upward cross references later when there is a version that fixes this issue.
+
+''''
+
+Link to an anchor in an internal page:
+
+----
+<<resources#books,Books>>
+----
+
+<<resources#books,Books>>
+
+''''
+
+Link to an external page:
+
+----
+http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defn[defn]
+----
+
+http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defn[defn]
+
+== Images
+
+Images should be placed in the assets/images/content directory in a subdirectory corresponding to the page location. 
+
+Reference the image in a page as follows:
+
+----
+image::/images/content/reference/transducers/xf.png[Nested transformations]
+----
+
+image::/images/content/reference/transducers/xf.png[Nested transformations]
+
+== Code blocks 
+
+You can insert a Clojure formatted code block as follows: 
+
+....
+[source,clojure]
+----
+(defn hey 
+  []
+  (println "hey"))
+----
+....
+
+[source,clojure]
+----
+(defn hey 
+  []
+  (println "hey"))
+----
+
+== Lists
+
+There are a lot of options for creating lists. Only the most common ones are shown here:
+
+Bulleted lists:
+
+----
+* first
+* second
+** nested
+*** more nested
+----
+
+* first
+* second
+** nested
+*** more nested
+
+Ordered lists:
+
+----
+. a
+. b
+.. b.1
+... b.1.a
+----
+
+. a
+. b
+.. b.1
+... b.1.a
+
+Mixed lists:
+
+----
+* a
+. a.1
+. a.2
+* b 
+. b.1
+. b.2
+----
+
+* a
+. a.1
+. a.2
+* b 
+. b.1
+. b.2
+
+Use the line break advice from the text formatting section to create lists with multi-line items.
+
+== Tables
+
+Tables are another large Asciidoc topic with extensive formatting options. This is a basic table example however:
+
+----
+[options="header"]
+|===
+| col1 | col2
+| a | b
+| b | c
+|===
+----
+
+[options="header"]
+|===
+| col1 | col2
+| a | b
+| b | c
+|===
+
+== Other
+
+Horizontal rule:
+
+----
+''''
+----
+
+Insert table of contents, which should generally be done at the top of your file (the page template will position this appropriately):
+
+----
+toc::[]
+----
+
+
+== More resources
+
+Asciidoc is an extensive language and there is likely some way to do anything you want to do. Below are some more Asciidoc resources to answer more advanced questions.
+
+* http://powerman.name/doc/asciidoc[Asciidoc cheat sheet]
+* http://asciidoctor.org/docs/user-manual[Asciidoctor user manual]

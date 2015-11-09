@@ -1,0 +1,78 @@
+= Evaluation
+Rich Hickey
+2015-01-01
+:jbake-type: page
+:toc: macro
+
+== Evaluation 
+
+Evaluation can occur in many contexts:
+
+* Interactively, in the REPL
+* On a sequence of forms read from a stream, via `load` / `load-file` / `load-reader` / `load-string`
+* Programmatically, via `eval`
+
+Clojure programs are composed of expressions. Every form not handled specially by a special form or macro is considered by the compiler to be an expression, which is evaluated to yield a value. There are no declarations or statements, although sometimes expressions may be evaluated for their side-effects and their values ignored.
+In all cases, evaluation is the same - a single object is considered by the compiler, evaluated, and its result returned. If an expression needs to be compiled, it will be. There is no separate compilation step, nor any need to worry that a function you have defined is being interpreted. _Clojure has no interpreter_.
+
+Strings, numbers, characters, `true`, `false`, `nil` and keywords evaluate to themselves.
+
+A Symbol is _resolved_:
+
+* If it is namespace-qualified, the value is the value of the binding of the global var named by the symbol. It is an error if there is no global var named by the symbol, or if the reference is to a non-public var in a different namespace.
+* If it is package-qualified, the value is the Java class named by the symbol. It is an error if there is no Class named by the symbol.
+* Else, it is not qualified and the first of the following applies:
+. If it names a special form it is considered a special form, and must be utilized accordingly.
+. A lookup is done in the current namespace to see if there is a mapping from the symbol to a class. If so, the symbol is considered to name a Java class object. Note that class names normally denote class objects, but are treated specially in certain special forms, e.g. `.` and `new`.
+. If in a local scope (i.e. in a function definition), a lookup is done to see if it names a local binding (e.g. a function argument or let-bound name). If so, the value is the value of the local binding.
+. A lookup is done in the current namespace to see if there is a mapping from the symbol to a var. If so, the value is the value of the binding of the var referred-to by the symbol.
+. It is an error.
+
+If a Symbol has metadata, it may be used by the compiler, but will not be part of the resulting value.
+
+Vectors, Sets and Maps yield vectors and (hash) sets and maps whose contents are the _evaluated values_ of the objects they contain. Vector elements are evaluated left to right, Sets and Maps are evaluated in an undefined order. The same is true of metadata maps. If the vector or map has metadata, the _evaluated_ metadata map will become the metadata of the resulting value.
+
+[source,clojure]
+----
+user=> (def x 1)
+user=> (def y 2)
+user=> ^{:x x} [x y 3]
+^{:x 1} [1 2 3]
+----
+
+An empty list `()` evaluates to an empty list.
+
+Non-empty Lists are considered _calls_ to either special forms, macros, or functions. A call has the form +(operator operands*)+.
+
+Special forms are primitives built-in to Clojure that perform core operations. If the operator of a call is a symbol that resolves to the name of a special form, the call is to that special form. Each form discussed individually under <<special_forms#,Special Forms>>.
+
+<<macros#,Macros>> are functions that manipulate forms, allowing for syntactic abstraction. If the operator of a call is a symbol that names a global var that is a macro function, that macro function is called and is passed the _unevaluated_ operand forms. The return value of the macro is then evaluated in its place.
+
+If the operator is not a special form or macro, the call is considered a function call. Both the operator and the operands (if any) are evaluated, from left to right. The result of the evaluation of the operator is then cast to IFn (the interface representing Clojure functions), and invoke() is called on it, passing the evaluated arguments. The return value of invoke() is the value of the call expression. If the function call form has metadata, it may be used by the compiler, but will not be part of the resulting value.
+Note that special forms and macros might have other-than-normal evaluation of their arguments, as described in their entries under <<special_forms#,Special Forms>>.
+
+Any object other than those discussed above will evaluate to itself.
+
+''''
+
+*(_load_ classpath-resource ...)* +
+*(_load-file_ filename)* +
+*(_load-reader_ reader)* +
+*(_load-string_ string)*
+
+The above describes the evaluation of a single form. The various load forms will sequentially read and evaluate the set of forms contained in the source. Such sets of forms usually have side effects, often on the global environment, defining functions etc. 
+
+The loading functions occur in a temporary context, in which +*ns*+ has a fresh binding. That means that, should any form have an effect on that var (e.g. +in-namespace+), the effect will unwind at the completion of the load. load et al return the value produced by the last expression.
+
+''''
+
+*(_eval_ form)*
+
+Evaluates the form _data structure_ (not text!) and returns the result.
+
+[source,clojure]
+----
+(eval (list + 1 2 3))
+-> 6
+----
+

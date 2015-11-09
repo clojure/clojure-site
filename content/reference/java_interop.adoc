@@ -1,0 +1,423 @@
+= Java Interop
+Rich Hickey
+2015-01-01
+:jbake-type: page
+:toc: macro
+
+toc::[]
+
+== Java Interop
+
+[[dot]]
+== Member access 
+
+[%hardbreaks]
+**(.instanceMember instance args*)**
+**(.instanceMember Classname args*)**
+**(.-instanceField instance)**
+**(Classname/staticMethod args*)**
+**Classname/staticField**
+
+[source,clojure]
+----
+(.toUpperCase "fred")
+-> "FRED"
+(.getName String)
+-> "java.lang.String"
+(.-x (java.awt.Point. 1 2))
+-> 1
+(System/getProperty "java.vm.version")
+-> "1.6.0_07-b06-57"
+Math/PI
+-> 3.141592653589793
+----
+
+The preferred idiomatic forms for accessing field or method members are given above. The instance member form works for both fields and methods. The instanceField form is preferred for fields and required if both a field and a 0-argument method of the same name exist. They all expand into calls to the dot operator (described below) at macroexpansion time. The expansions are as follows:
+
+[source,clojure]
+----
+(.instanceMember instance args*) ==> (. instance instanceMember args*)
+(.instanceMember Classname args*) ==>
+    (. (identity Classname) instanceMember args*)
+(.-instanceField instance) ==> (. instance -instanceField)
+(Classname/staticMethod args*) ==> (. Classname staticMethod args*)
+Classname/staticField ==> (. Classname staticField)
+----
+
+== The Dot special form 
+
+[%hardbreaks]
+*(_._ instance-expr member-symbol)*
+*(_._ Classname-symbol member-symbol)*
+*(_._ instance-expr -field-symbol)*
+*(_._ instance-expr (method-symbol args*))* or *(_._ instance-expr method-symbol args*)* 
+*(_._ Classname-symbol (method-symbol args*))* or *(_._ Classname-symbol method-symbol args*)* 
+
+Special form.
+
+The '.' special form is the basis for access to Java. It can be considered a member-access operator, and/or read as 'in the scope of'.
+
+If the first operand is a symbol that resolves to a class name, the access is considered to be to a static member of the named class. Note that nested classes are named EnclosingClass$NestedClass, per the JVM spec. Otherwise it is presumed to be an instance member and the first argument is evaluated to produce the target object.
+
+If the second operand is a symbol and no args are supplied it is taken to be a field access - the name of the field is the name of the symbol, and the value of the expression is the value of the field, _unless_ there is a no argument public method of the same name, in which case it resolves to a call to the method. If the second operand is a symbol starting with _-_, the member-symbol will resolve only as field access (never as a 0-arity method) and should be preferred when that is the intent.
+
+If the second operand is a list, or args are supplied, it is taken to be a method call. The first element of the list must be a simple symbol, and the name of the method is the name of the symbol. The args, if any, are evaluated from left to right, and passed to the matching method, which is called, and its value returned. If the method has a void return type, the value of the expression will be _**nil**_. Note that placing the method name in a list with any args is optional in the canonic form, but can be useful to gather args in macros built upon the form.
+
+Note that boolean return values will be turned into Booleans, chars will become Characters, and numeric primitives will become Numbers unless they are immediately consumed by a method taking a primitive.
+
+The member access forms given at the top of this section are preferred for use in all cases other than in macros.
+
+''''
+
+[%hardbreaks]
+*(_.._ instance-expr member+)*
+*(_.._ Classname-symbol member+)*
+
+member => fieldName-symbol or (instanceMethodName-symbol args*)
+
+Macro. Expands into a member access (.) of the first member on the first argument, followed by the next member on the result, etc. For instance:
+
+`(.. System (getProperties) (get "os.name"))`
+
+expands to:
+
+`(. (. System (getProperties)) (get "os.name"))`
+
+but is easier to write, read, and understand. See also the http://clojure.github.com/clojure/clojure.core-api.html#clojure.core/%2d%3e[pass:[->]] macro which can be used similarly:
+
+`(-> (System/getProperties) (.get "os.name"))`
+
+''''
+
+*(_doto_ instance-expr (instanceMethodName-symbol args*)*)*
+
+Macro. Evaluates instance-expr then calls all of the methods/functions with the supplied arguments in succession on the resulting object, returning it.
+
+[source,clojure]
+----
+(doto (new java.util.HashMap) (.put "a" 1) (.put "b" 2))
+-> {a=1, b=2}
+----
+
+[[new]]
+''''
+
+[%hardbreaks]
+*(Classname. args*)*
+*(_new_ Classname args*)*
+
+Special form.
+
+The args, if any, are evaluated from left to right, and passed to the constructor of the class named by Classname. The constructed object is returned.
+
+=== Alternative Macro Syntax 
+
+As shown, in addition to the canonic special form new, Clojure supports special macroexpansion of symbols containing '.':
+
+`(new Classname args*)`
+
+can be written
+
+`(Classname. args*) ;note trailing dot`
+
+the latter expanding into the former at macro expansion time.
+
+''''
+
+*(_instance?_ Class expr)*
+
+Evaluates expr and tests if it is an instance of the class. Returns true or false
+
+[[set]]
+''''
+
+[%hardbreaks]
+*(_set!_ (. instance-expr instanceFieldName-symbol) expr)*
+*(_set!_ (. Classname-symbol staticFieldName-symbol) expr)*
+
+Assignment special form.
+
+When the first operand is a field member access form, the assignment is to the corresponding field. If it is an instance field, the instance expr will be evaluated, then the expr.
+
+In all cases the value of expr is returned.
+
+Note - _you cannot assign to function params or local bindings. Only Java fields, Vars, Refs and Agents are mutable in Clojure_.
+
+''''
+
+*(_memfn_ method-name arg-names*)*
+
+Macro. Expands into code that creates a fn that expects to be passed an object and any args and calls the named instance method on the object passing the args. Use when you want to treat a Java method as a first-class fn.
+
+[source,clojure]
+----
+(map (memfn charAt i) ["fred" "ethel" "lucy"] [1 2 3])
+-> (\r \h \y)
+----
+
+Note it almost always preferable to do this directly now, with syntax like:
+
+[source,clojure]
+----
+(map #(.charAt %1 %2) ["fred" "ethel" "lucy"] [1 2 3])
+-> (\r \h \y)
+----
+
+''''
+*(_bean_ obj)*
+
+Takes a Java object and returns a read-only implementation of the map abstraction based upon its JavaBean properties.
+
+[source,clojure]
+----
+(bean java.awt.Color/black)
+-> {:RGB -16777216, :alpha 255, :blue 0, :class java.awt.Color, 
+    :colorSpace #object[java.awt.color.ICC_ColorSpace 0x5cb42b "java.awt.color.ICC_ColorSpace@5cb42b"],
+    :green 0, :red 0, :transparency 1}
+----
+
+== Support for Java in Clojure Library Functions 
+
+Many of the Clojure library functions have defined semantics for objects of Java types. contains? and get work on Java Maps, arrays, Strings, the latter two with integer keys. count works on Java Strings, Collections and arrays. nth works on Java Strings, Lists and arrays. seq works on Java reference arrays, Iterables and Strings. Since much of the rest of the library is built upon these functions, there is great support for using Java objects in Clojure algorithms.
+
+== Implementing Interfaces and Extending Classes 
+
+Clojure supports the dynamic creation of objects that implement one or more interfaces and/or extend a class with the http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/proxy[proxy] macro. The resulting objects are of an anonymous class. You can also generate statically-named classes and .class files with http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/gen-class[gen-class]. As of Clojure 1.2, http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/reify[reify] is also available for implementing interfaces.
+
+''''
+
+*( _proxy_ [class-and-interfaces] [args] fs+)*
+
+class-and-interfaces - a vector of class names +
+args - a (possibly empty) vector of arguments to the superclass constructor. +
+f => (name [params*] body) or (name ([params*] body) ([params+] body) ...)
+
+Macro
+
+Expands to code which creates a instance of a proxy class that implements the named class/interface(s) by calling the supplied fns. A single class, if provided, must be first. If not provided it defaults to Object. The interfaces names must be valid interface types. If a method fn is not provided for a class method, the superclass method will be called. If a method fn is not provided for an interface method, an UnsupportedOperationException will be thrown should it be called. Method fns are closures and can capture the environment in which proxy is called. Each method fn takes an additional implicit first arg, which is bound to this. Note that while method fns can be provided to override protected methods, they have no other access to protected members, nor to super, as these capabilities cannot be proxied.
+
+== Arrays 
+
+Clojure supports the creation, reading and modification of Java arrays. It is recommended that you limit use of arrays to interop with Java libraries that require them as arguments or use them as return values.
+
+Note that many other Clojure functions work with arrays such as via the <<sequences#,seq library>>. The functions listed here exist for initial creation of arrays, or to support mutation or higher performance operations on arrays.
+
+[%hardbreaks]
+Create array from existing collection: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/aclone[aclone] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/amap[amap] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/to-array[to-array] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/to-array-2d[to-array-2d] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/into-array[into-array]
+Multi-dimensional array support: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/aget[aget] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/aset[aset] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/to-array-2d[to-array-2d] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/make-array[make-array]
+Type-specific array constructors: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/boolean-array[boolean-array] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/byte-array[byte-array] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/char-array[char-array] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/double-array[double-array] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/float-array[float-array] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/int-array[int-array] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/long-array[long-array] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/object-array[object-array] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/short-array[short-array]
+Primitive array casts: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/booleans[booleans] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/bytes[bytes] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/chars[chars] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/doubles[doubles] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/floats[floats] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ints[ints] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/longs[longs] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/shorts[shorts]
+Mutate an array: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/aset[aset]
+Process an existing array: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/aget[aget] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/alength[alength] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/amap[amap] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/areduce[areduce]
+
+[[typehints]]
+== Type Hints 
+
+Clojure supports the use of type hints to assist the compiler in avoiding reflection in performance-critical areas of code. Normally, one should avoid the use of type hints until there is a known performance bottleneck. Type hints are metadata tags placed on symbols or expressions that are consumed by the compiler. They can be placed on function parameters, let-bound names, var names (when defined), and expressions:
+
+[source,clojure]
+----
+(defn len [x]
+  (.length x))
+
+(defn len2 [^String x]
+  (.length x))
+
+user=> (time (reduce + (map len (repeat 1000000 "asdf"))))
+"Elapsed time: 3007.198 msecs"
+4000000
+user=> (time (reduce + (map len2 (repeat 1000000 "asdf"))))
+"Elapsed time: 308.045 msecs"
+4000000
+----
+
+Once a type hint has been placed on an identifier or expression, the compiler will try to resolve any calls to methods thereupon at compile time. In addition, the compiler will track the use of any return values and infer types for their use and so on, so very few hints are needed to get a fully compile-time resolved series of calls. Note that type hints are not needed for static members (or their return values!) as the compiler always has the type for statics.
+
+There is a pass:[*warn-on-reflection*] flag (defaults to false) which will cause the compiler to warn you when it can't resolve to a direct call:
+
+[source,clojure]
+----
+(set! *warn-on-reflection* true)
+-> true
+
+(defn foo [s] (.charAt s 1))
+-> Reflection warning, line: 2 - call to charAt can't be resolved.
+-> #user/foo
+
+(defn foo [^String s] (.charAt s 1))
+-> #user/foo
+----
+
+For function return values, the type hint can be placed before the arguments vector:
+
+[source,clojure]
+----
+(defn hinted
+  (^String [])
+  (^Integer [a])
+  (^java.util.List [a & args]))
+
+-> #user/hinted
+----
+
+[[TypeAliases]] 
+== Aliases 
+
+Clojure provides aliases for primitive Java types and arrays which do not have typical representations as Java class names. For example, long arrays (long-array []) have a type of "[J".
+
+* int - A primitive int
+* ints - An int array
+* long - A primitive long
+* longs - A long array
+* float - A primitive float
+* floats - A float array
+* double - A primitive double
+* doubles - A double array
+* void - A void return
+* short - A primitive short 
+* shorts - A short array
+* boolean - A primitive boolean
+* booleans - A boolean array
+* byte - A primitive byte
+* bytes - A byte array
+* char - A primitive character
+* chars - A character array
+
+[[primitives]]
+== Support for Java Primitives 
+
+Clojure has support for high-performance manipulation of, and arithmetic involving, Java primitive types in local contexts. All Java primitive types are supported: int, float, long, double, boolean, char, short, and byte.
+
+* _**let**_/_**loop**_-bound locals can be of primitive types, having the inferred, possibly primitive type of their init-form.
+* _**recur**_ forms that rebind primitive locals do so without boxing, and do type-checking for same primitive type.
+* Arithmetic (+,-,*,/,inc,dec,<,<=,>,>= etc) is overloaded for primitive types where semantics are same.
+* http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/aget[aget] / http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/aset[aset] are overloaded for arrays of primitives
+* http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/aclone[aclone], http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/alength[alength] functions for arrays of primitives
+* constructor functions for primitive arrays: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/float-array[float-array], http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/int-array[int-array], etc.
+* Type hints for primitive arrays - +^ints, ^floats+, etc.
+* Coercion ops http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/int[int], http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/float[float], etc. produce primitives when consumer can take primitive
+* The http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/num[num] coercion function boxes primitives to force generic arithmetic
+* Array cast functions http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ints[ints] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/longs[longs], etc. which produce +int[]+, +long[]+, etc.
+* A set of "unchecked" operations for utmost performing, but potentially unsafe, integer (int/long) ops: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/unchecked-multiply[unchecked-multiply] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/unchecked-dec[unchecked-dec] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/unchecked-inc[unchecked-inc] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/unchecked-negate[unchecked-negate] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/unchecked-add[unchecked-add] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/unchecked-subtract[unchecked-subtract] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/unchecked-remainder[unchecked-remainder] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/unchecked-divide[unchecked-divide]
+* A dynamic var to automatically swap safe operations with unchecked operations: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/%2Aunchecked-math%2A[pass:[*unchecked-math*]]
+* http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/amap[amap] and http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/areduce[areduce] macros for functionally (i.e. non-destructively) processing one or more arrays in order to produce a new array or aggregate value respectively.
+
+Rather than write this Java:
+[source,clojure]
+----
+static public float asum(float[] xs){
+  float ret = 0;
+  for(int i = 0; i < xs.length; i++)
+    ret += xs[i];
+  return ret;
+}
+----
+
+you can write this Clojure:
+
+[source,clojure]
+----
+(defn asum [^floats xs]
+  (areduce xs i ret (float 0)
+    (+ ret (aget xs i))))
+----
+
+and the resulting code is exactly the same speed (when run with java -server).
+
+The best aspect of this is that you need not do anything special in your initial coding. Quite often these optimizations are unneeded. Should a bit of code be a bottleneck, you can speed it up with minor adornment:
+
+[source,clojure]
+----
+(defn foo [n]
+  (loop [i 0]
+    (if (< i n)
+      (recur (inc i))
+      i)))
+
+(time (foo 100000))
+"Elapsed time: 0.391 msecs"
+100000
+
+(defn foo2 [n]
+  (let [n (int n)]
+    (loop [i (int 0)]
+      (if (< i n)
+        (recur (inc i))
+        i))))
+
+(time (foo2 100000))
+"Elapsed time: 0.084 msecs"
+100000
+----
+
+== Coercions 
+
+At times it is necessary to have a value of a particular primitive type. These coercion functions yield a value of the indicated type as long as such a coercion is possible: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/bigdec[bigdec] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/bigint[bigint] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/boolean[boolean] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/byte[byte] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/char[char] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/double[double] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/float[float] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/int[int] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/long[long] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/num[num] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/short[short]
+
+[[optimization]]
+== Some optimization tips 
+
+* All arguments are passed to Clojure fns as objects, so there's no point to putting non-array primitive type hints on fn args. Instead, use the let technique shown to place args in primitive locals if they need to participate in primitive arithmetic in the body.
+* (let [foo (int bar)] ...) is the correct way to get a primitive local. Do not use ^Integer etc.
+* Don't rush to unchecked math unless you want truncating operations. HotSpot does a good job at optimizing the overflow check, which will yield an exception instead of silent truncation. On a typical example, that has about a 5% difference in speed - well worth it. Also, people reading your code don't know if you are using unchecked for truncation or performance - best to reserve it for the former and comment if the latter.
+* There's usually no point in trying to optimize an outer loop, in fact it can hurt you as you'll be representing things as primitives which just have to be re-boxed in order to become args to the inner call. The only exception is reflection warnings - you must get rid of them in any code that gets called frequently.
+* Almost every time someone presents something they are trying to optimize with hints, the faster version has far fewer hints than the original. If a hint doesn't improve things in the end - take it out.
+* Many people seem to presume only the unchecked- ops do primitive arithmetic - not so. When the args are primitive locals, regular + and * etc do primitive math with an overflow check - fast _and_ safe.
+* So, the simplest route to fast math is to leave the operators alone and just make sure the source literals and locals are primitive. Arithmetic on primitives yields primitives. If you've got a loop (which you probably do if you need to optimize) make sure the loop locals are primitives first - then if you accidentally are producing a boxed intermediate result you'll get an error on recur. Don't solve that error by coercing your intermediate result, instead, figure out what argument or local is not primitive.
+
+== Simple XML Support 
+Included with the distribution is simple XML support, found in the src/xml.clj file. All names from this file are in the xml namespace.
+
+''''
+*(_parse_ source)*
+
+Parses and loads the source, which can be a File, InputStream or String naming a URI. Returns a tree of the xml/element struct-map, which has the keys :tag, :attrs, and :content. and accessor fns tag, attrs, and content.
+
+[source,clojure]
+----
+(xml/parse "/Users/rich/dev/clojure/build.xml")
+-> {:tag :project, :attrs {:name "clojure", :default "jar"}, :content [{:tag :description, ...
+----
+
+== Calling Clojure From Java
+
+The http://clojure.github.io/clojure/javadoc[clojure.java.api] package provides a minimal interface to bootstrap Clojure access from other JVM languages. It does this by providing:
+
+1. The ability to use Clojure's namespaces to locate an arbitrary var, returning the var's clojure.lang.IFn interface.
+2. A convenience method read for reading data using Clojure's edn reader
+
+IFns provide complete access to Clojure's APIs. You can also access any other library written in Clojure, after adding either its source or compiled form to the classpath.
+
+The public Java API for Clojure consists of the following classes and interfaces:
+
+* http://clojure.github.io/clojure/javadoc/clojure/java/api/Clojure.html[clojure.java.api.Clojure]
+* http://clojure.github.io/clojure/javadoc/clojure/lang/IFn.html[clojure.lang.IFn]
+
+All other Java classes should be treated as implementation details, and applications should avoid relying on them.
+
+To lookup and call a Clojure function:
+[source,clojure]
+----
+IFn plus = Clojure.var("clojure.core", "+");
+plus.invoke(1, 2);
+----
+Functions in clojure.core are automatically loaded. Other namespaces can be loaded via require:
+[source,clojure]
+----
+IFn require = Clojure.var("clojure.core", "require");
+require.invoke(Clojure.read("clojure.set"));
+----
+IFns can be passed to higher order functions, e.g. the example below passes plus to read:
+[source,clojure]
+----
+IFn map = Clojure.var("clojure.core", "map");
+IFn inc = Clojure.var("clojure.core", "inc");
+map.invoke(inc, Clojure.read("[1 2 3]"));
+----
+Most IFns in Clojure refer to functions. A few, however, refer to non-function data values. To access these, use deref instead of fn:
+[source,clojure]
+----
+IFn printLength = Clojure.var("clojure.core", "*print-length*");
+IFn deref = Clojure.var("clojure.core", "deref");
+deref.invoke(printLength);
+----

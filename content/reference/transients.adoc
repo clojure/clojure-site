@@ -1,0 +1,84 @@
+= Transients
+Rich Hickey
+2015-01-01
+:jbake-type: page
+:toc: macro
+
+== Transient Data Structures
+
+== Rationale 
+
+_If a tree falls in the woods, does it make a sound?_ +
+_If a pure function mutates some local data in order to produce an immutable return value, is that ok?_
+
+It's an interesting question. Clojure data structures use mutation every time you call, e.g. *assoc*, creating one or more arrays and mutating them, before returning them for immutable use thereafter. The reason is performance - you simply can't get as fast using only pure functions and immutable data. Once constructed and shared however, being immutable and persistent is essential to robust programs. The things Clojure mutates internally are small, newly allocated arrays that constitute the internal nodes of its data structures. No one ever sees the arrays.
+
+You run into a similar scenario, at a higher level, when you want to initialize or transform a large persistent data structure using multiple steps, none of which will be seen by any code other than the constructing/transforming code. The challenge here is that the source of a transformation will be an existing persistent data structure, and the result of the function _will_ be shared. Copying into a traditional mutable data structure and back involves O(n) copying, and the internal code is an imperative mess quite unlike the rest of your Clojure code. Furthermore, there are no guards against accidentally sharing or aliasing the mutable data structure, especially if you need to call helper functions to do the work. In short, it would be a shame if you had to leave Clojure's model in order to speed up a piece of code like this. Transient data structures are a solution to this optimization problem that integrates with the Clojure model and provides the same thread safety guarantees you expect of Clojure.
+
+== How they work 
+
+Transient data structures are always created from an existing persistent Clojure data structure. As of Clojure 1.1.0, vectors, hash-maps, and hash-sets are supported. Note that not all Clojure data structures can support this feature, but most will. Lists will not, as there is no benefit to be had.
+
+You obtain a transient 'copy' of a data structure by calling *transient*. This creates a new transient data structure that is a copy of the source, and has the same performance characteristics. In fact, it mostly _is_ the source data structure, and highlights the first feature of transients - creating one is O(1). It shares structure with its source, just as persistent copies share structure.
+
+The second feature of transients is that creating one does not modify the source, and the source cannot be modified via use of the transient. Your source data is immutable and persistent as always.
+
+Transients support the read-only interface of the source, i.e. you can call *nth*, *get*, *count* and fn-call a transient vector, just like a persistent vector.
+
+Transients _**do not**_ support the persistent interface of the source data structure. *assoc*, *conj* etc will all throw exceptions, because transients are not persistent. Thus you cannot accidentally leak a transient into a context requiring a persistent.
+
+Transients support a parallel set of 'changing' operations, with similar names followed by *!* - *assoc!*, *conj!* etc. These do the same things as their persistent counterparts except the return values are themselves transient. Note in particular that transients are not designed to be bashed in-place. You must capture and use the return value in the next call. In this way, they support the same code structure as the functional persistent code they replace. As the example will show, this will allow you to easily enhance the performance of a piece of code without structural change.
+
+When you are finished building up your results, you can create a persistent data structure by calling *persistent!* on the transient. This operation is also O(1). Subsequent to calling *persistent!*, the transient should not be used, and all operations will throw exceptions. This will be true also for any aliases you might have created.
+
+== Example 
+
+Here's a very typical example, some code that builds up a vector for return, all 'changes' being local to the function. Note how the transient-using version has exactly the same structure, just:
+
+* Calling *transient* on the source vector
+* Using *conj!* instead of *conj*
+* Calling *persistent!* on return
+[source,clojure]
+----
+(defn vrange [n]
+  (loop [i 0 v []]
+    (if (< i n)
+      (recur (inc i) (conj v i))
+      v)))
+
+(defn vrange2 [n]
+  (loop [i 0 v (transient [])]
+    (if (< i n)
+      (recur (inc i) (conj! v i))
+      (persistent! v))))
+
+;; benchmarked (Java 1.8, Clojure 1.7)
+(def v (vrange 1000000))    ;; 73.7 ms
+(def v2 (vrange2 1000000))) ;; 19.7 ms
+----
+Oh, yeah, _**transients are fast!**_
+
+== Concurrent use 
+
+That's all there is to using transients, but they have another important constraint: *Transients require thread isolation.* Because each result of a transient operation shares (mutable) structure with the previous, it is an error if more than one thread manipulates a transient at once. Use of a particular transient instance should be controlled either by using it in an single-threaded scope, or in a framework that enforces this.
+
+In Clojure 1.6 and earlier, transients would detect any (read or write) use from a thread other than the one that created them and throw an exception. That check was removed in 1.7 to allow for more flexible use in frameworks like core.async go blocks that enforce the single-threaded constraint via other means.
+
+== Summary 
+
+Transients provide a high-performance optimization of functional data-structure-building code that works with Clojure's data structures and provides critical safety guarantees.
+
+
+* Single-path use
+* Thread isolation - enforced
+* O(1) creation from persistent data structures
+* Shares structure with persistent source
+* O(1) creation of persistent data structure when editing session finished
+* Same code structure as functional version
+** Capture return value, use for next call
+** Don't bash in place
+** Not persistent, so you can't hang onto interim values or alias
+* Can't use after returning a persistent version
+* Fast
+
+Transient persistent vectors, hash-maps, and hash-sets were added in Clojure 1.1.

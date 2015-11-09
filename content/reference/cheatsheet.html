@@ -1,0 +1,948 @@
+title=Cheatsheet
+date=2015-01-01
+type=page
+status=published
+~~~~~~
+
+<h2>Clojure 1.7 Cheat Sheet (v32)</h2>
+
+<p><a href="https://github.com/jafingerhut/clojure-cheatsheets/blob/master/pdf/cheatsheet-usletter-color.pdf?raw=true">Download PDF version</a>, <a href="http://jafingerhut.github.com/">Download other versions with tooltips</a></p>
+
+<p><em>Many thanks to Steve Tayon for creating it and Andy Fingerhut for ongoing maintenance.</em></p>
+
+
+
+<script language="JavaScript" type="text/javascript">
+//<![CDATA[
+document.write('<style type="text/css">code {\n	font-family: monospace;\n}\n\n.page {\n	page-break-after: always;\n	page-break-inside: avoid;\n}\n\n.column {\n	float: left;\n	padding: 0;\n	margin: 0;\n	width: 50%;\n}\n\n.column:first-child {\n	clear: both;\n}\n\n.header {\n	text-align: center;\n}\n\n.header h2 {\n	font-style: italic;\n}\n\nh1 {\n	font-size: 1.8em;\n}\n\nh2 {\n	font-size: 1.4em;\n}\n\nh3 {\n	font-size: 1.2em;\n}\n\n.section {\n	background-color: #ebebeb;\n	margin: 0.5em;\n	padding: 0 0.5em 0.5em;\n}\n\ntable {\n	width: 100%;\n	border-collapse: collapse;\n}\n\ntd, .single_row {\n	vertical-align: top;\n	padding: 0 0.5em;\n}\n\ntr.odd, .single_row {\n	background-color: #f5f5f5;\n}\n\ntr.even {\n	background-color: #fafafa;\n}\n\n.footer {\n	float: right;\n	text-align: right;\n	border-top: 1px solid gray;\n}\n\n#foot {\n	clear: both;\n}\n<\/style>')
+//]]>
+</script>
+    <div class="page">
+      <div class="column">
+        <div class="section">
+          <h2>Documentation</h2>
+          <table>
+            <tbody>
+              <tr class="odd">
+                <td>clojure.repl/</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.repl/doc">doc</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.repl/find_DASH_doc">find-doc</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.repl/apropos">apropos</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.repl/source">source</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.repl/pst">pst</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.java.javadoc/javadoc">javadoc</a> (foo.bar/ is namespace for later syms)</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div><!-- /section -->
+        <div class="section">
+          <h2>Primitives</h2>
+          <h3>Numbers</h3>
+          <table>
+            <tbody>
+              <tr class="odd">
+                <td>Literals</td>
+                <td><code><a href="http://docs.oracle.com/javase/6/docs/api/java/lang/Long.html">Long</a>: 7, hex 0xff, oct 017, base 2 2r1011, base 36 36rCRAZY BigInt: 7N Ratio: -22/7 <a href="http://docs.oracle.com/javase/6/docs/api/java/lang/Double.html">Double</a>: 2.78 -1.2e-5 <a href="http://docs.oracle.com/javase/6/docs/api/java/math/BigDecimal.html">BigDecimal</a>: 4.2M</code></td>
+              </tr>
+              <tr class="even">
+                <td>Arithmetic</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/PLUS">+</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/DASH">-</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/STAR">*</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/SLASH">/</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/quot">quot</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/rem">rem</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/mod">mod</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/inc">inc</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/dec">dec</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/max">max</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/min">min</a></code></td>
+              </tr>
+              <tr class="odd">
+                <td>Compare</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/EQ">=</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/EQ__EQ">==</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/not_EQ">not=</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/LT">&lt;</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/GT">&gt;</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/LT__EQ">&lt;=</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/GT__EQ">&gt;=</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/compare">compare</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>Bitwise</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/bit_DASH_and">bit-and</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/bit_DASH_or">bit-or</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/bit_DASH_xor">bit-xor</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/bit_DASH_not">bit-not</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/bit_DASH_flip">bit-flip</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/bit_DASH_set">bit-set</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/bit_DASH_shift_DASH_right">bit-shift-right</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/bit_DASH_shift_DASH_left">bit-shift-left</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/bit_DASH_and_DASH_not">bit-and-not</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/bit_DASH_clear">bit-clear</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/bit_DASH_test">bit-test</a> (1.6) <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/unsigned_DASH_bit_DASH_shift_DASH_right">unsigned-bit-shift-right</a></code></td>
+              </tr>
+              <tr class="odd">
+                <td>Cast</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/byte">byte</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/short">short</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/int">int</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/long">long</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/float">float</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/double">double</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/bigdec">bigdec</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/bigint">bigint</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/num">num</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/rationalize">rationalize</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/biginteger">biginteger</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>Test</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/zero_QMARK">zero?</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/pos_QMARK">pos?</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/neg_QMARK">neg?</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/even_QMARK">even?</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/odd_QMARK">odd?</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/number_QMARK">number?</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/rational_QMARK">rational?</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/integer_QMARK">integer?</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/ratio_QMARK">ratio?</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/decimal_QMARK">decimal?</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/float_QMARK">float?</a></code></td>
+              </tr>
+              <tr class="odd">
+                <td>Random</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/rand">rand</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/rand_DASH_int">rand-int</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>BigDecimal</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/with_DASH_precision">with-precision</a></code></td>
+              </tr>
+              <tr class="odd">
+                <td>Unchecked</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/STAR_unchecked_DASH_math_STAR">*unchecked-math*</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/unchecked_DASH_add">unchecked-add</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/unchecked_DASH_dec">unchecked-dec</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/unchecked_DASH_inc">unchecked-inc</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/unchecked_DASH_multiply">unchecked-multiply</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/unchecked_DASH_negate">unchecked-negate</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/unchecked_DASH_subtract">unchecked-subtract</a></code></td>
+              </tr>
+            </tbody>
+          </table>
+          <h3>Strings</h3>
+          <table>
+            <tbody>
+              <tr class="odd">
+                <td>Create</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/str">str</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/format">format</a> See also IO/to string</code></td>
+              </tr>
+              <tr class="even">
+                <td>Use</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/count">count</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/get">get</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/subs">subs</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/compare">compare</a> (clojure.string/) <a href="http://grimoire.arrdem.com/1.6.0/clojure.string/join">join</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.string/escape">escape</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.string/split">split</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.string/split_DASH_lines">split-lines</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.string/replace">replace</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.string/replace_DASH_first">replace-first</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.string/reverse">reverse</a> (1.5) <a href="http://grimoire.arrdem.com/1.6.0/clojure.string/re_DASH_quote_DASH_replacement">re-quote-replacement</a> (<a href="http://docs.oracle.com/javase/6/docs/api/java/lang/String.html">java.lang.String</a>) <a href="http://docs.oracle.com/javase/6/docs/api/java/lang/String.html#indexOf%28java.lang.String%29">.indexOf</a> <a href="http://docs.oracle.com/javase/6/docs/api/java/lang/String.html#lastIndexOf%28java.lang.String%29">.lastIndexOf</a></code></td>
+              </tr>
+              <tr class="odd">
+                <td><a href="http://www.regular-expressions.info">Regex</a></td>
+                <td><code><a href="http://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html">#"<var>pattern</var>"</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/re_DASH_find">re-find</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/re_DASH_seq">re-seq</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/re_DASH_matches">re-matches</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/re_DASH_pattern">re-pattern</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/re_DASH_matcher">re-matcher</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/re_DASH_groups">re-groups</a> (clojure.string/) <a href="http://grimoire.arrdem.com/1.6.0/clojure.string/replace">replace</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.string/replace_DASH_first">replace-first</a> (1.5) <a href="http://grimoire.arrdem.com/1.6.0/clojure.string/re_DASH_quote_DASH_replacement">re-quote-replacement</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>Letters</td>
+                <td><code>(clojure.string/) <a href="http://grimoire.arrdem.com/1.6.0/clojure.string/capitalize">capitalize</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.string/lower_DASH_case">lower-case</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.string/upper_DASH_case">upper-case</a></code></td>
+              </tr>
+              <tr class="odd">
+                <td>Trim</td>
+                <td><code>(clojure.string/) <a href="http://grimoire.arrdem.com/1.6.0/clojure.string/trim">trim</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.string/trim_DASH_newline">trim-newline</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.string/triml">triml</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.string/trimr">trimr</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>Test</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/char">char</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/char_QMARK">char?</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/string_QMARK">string?</a> (clojure.string/) <a href="http://grimoire.arrdem.com/1.6.0/clojure.string/blank_QMARK">blank?</a></code></td>
+              </tr>
+            </tbody>
+          </table>
+          <h3>Other</h3>
+          <table>
+            <tbody>
+              <tr class="odd">
+                <td>Characters</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/char">char</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/char_DASH_name_DASH_string">char-name-string</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/char_DASH_escape_DASH_string">char-escape-string</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>Keywords</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/keyword">keyword</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/keyword_QMARK">keyword?</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/find_DASH_keyword">find-keyword</a></code></td>
+              </tr>
+              <tr class="odd">
+                <td>Symbols</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/symbol">symbol</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/symbol_QMARK">symbol?</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/gensym">gensym</a></code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div><!-- /section -->
+        <div class="section">
+          <h2>Collections</h2>
+          <h3>Collections</h3>
+          <table>
+            <tbody>
+              <tr class="odd">
+                <td>Generic ops</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/count">count</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/empty">empty</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/not_DASH_empty">not-empty</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/into">into</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/conj">conj</a> (clojure.walk/) <a href="http://grimoire.arrdem.com/1.6.0/clojure.walk/walk">walk</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.walk/prewalk">prewalk</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.walk/prewalk_DASH_demo">prewalk-demo</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.walk/prewalk_DASH_replace">prewalk-replace</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.walk/postwalk">postwalk</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.walk/postwalk_DASH_demo">postwalk-demo</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.walk/postwalk_DASH_replace">postwalk-replace</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>Content tests</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/distinct_QMARK">distinct?</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/empty_QMARK">empty?</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/every_QMARK">every?</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/not_DASH_every_QMARK">not-every?</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/some">some</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/not_DASH_any_QMARK">not-any?</a></code></td>
+              </tr>
+              <tr class="odd">
+                <td>Capabilities</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/sequential_QMARK">sequential?</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/associative_QMARK">associative?</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/sorted_QMARK">sorted?</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/counted_QMARK">counted?</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/reversible_QMARK">reversible?</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>Type tests</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/coll_QMARK">coll?</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/list_QMARK">list?</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/vector_QMARK">vector?</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/set_QMARK">set?</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/map_QMARK">map?</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/seq_QMARK">seq?</a> (1.6) <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/record_QMARK">record?</a></code></td>
+              </tr>
+            </tbody>
+          </table>
+          <h3>Lists</h3>
+          <table>
+            <tbody>
+              <tr class="odd">
+                <td>Create</td>
+                <td><code>'() <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/list">list</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/list_STAR">list*</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>Examine</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/first">first</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/nth">nth</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/peek">peek</a> <a href="http://docs.oracle.com/javase/6/docs/api/java/util/Vector.html#indexOf%28java.lang.Object%29">.indexOf</a> <a href="http://docs.oracle.com/javase/6/docs/api/java/util/Vector.html#lastIndexOf%28java.lang.Object%29">.lastIndexOf</a></code></td>
+              </tr>
+              <tr class="odd">
+                <td>'Change'</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/cons">cons</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/conj">conj</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/rest">rest</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/pop">pop</a></code></td>
+              </tr>
+            </tbody>
+          </table>
+          <h3>Vectors</h3>
+          <table>
+            <tbody>
+              <tr class="odd">
+                <td>Create</td>
+                <td><code>[] <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/vector">vector</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/vec">vec</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/vector_DASH_of">vector-of</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>Examine</td>
+                <td><code><code>(my-vec idx)</code> &rarr; <code>( <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/nth">nth</a>  my-vec idx)</code> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/get">get</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/peek">peek</a> <a href="http://docs.oracle.com/javase/6/docs/api/java/util/Vector.html#indexOf%28java.lang.Object%29">.indexOf</a> <a href="http://docs.oracle.com/javase/6/docs/api/java/util/Vector.html#lastIndexOf%28java.lang.Object%29">.lastIndexOf</a></code></td>
+              </tr>
+              <tr class="odd">
+                <td>'Change'</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/assoc">assoc</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/pop">pop</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/subvec">subvec</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/replace">replace</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/conj">conj</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/rseq">rseq</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>Ops</td>
+                <td><code>(1.4) <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/mapv">mapv</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/filterv">filterv</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/reduce_DASH_kv">reduce-kv</a></code></td>
+              </tr>
+            </tbody>
+          </table>
+          <h3>Sets</h3>
+          <table>
+            <tbody>
+              <tr class="odd">
+                <td>Create</td>
+                <td><code>#{} <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/set">set</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/hash_DASH_set">hash-set</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/sorted_DASH_set">sorted-set</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/sorted_DASH_set_DASH_by">sorted-set-by</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>Examine</td>
+                <td><code><code>(my-set item)</code> &rarr; <code>( <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/get">get</a>  my-set item)</code> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/contains_QMARK">contains?</a></code></td>
+              </tr>
+              <tr class="odd">
+                <td>'Change'</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/conj">conj</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/disj">disj</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>Rel algebra</td>
+                <td><code>(clojure.set/) <a href="http://grimoire.arrdem.com/1.6.0/clojure.set/join">join</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.set/select">select</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.set/project">project</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.set/union">union</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.set/difference">difference</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.set/intersection">intersection</a></code></td>
+              </tr>
+              <tr class="odd">
+                <td>Get map</td>
+                <td><code>(clojure.set/) <a href="http://grimoire.arrdem.com/1.6.0/clojure.set/index">index</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.set/rename_DASH_keys">rename-keys</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.set/rename">rename</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.set/map_DASH_invert">map-invert</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>Test</td>
+                <td><code>(clojure.set/) <a href="http://grimoire.arrdem.com/1.6.0/clojure.set/subset_QMARK">subset?</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.set/superset_QMARK">superset?</a></code></td>
+              </tr>
+            </tbody>
+          </table>
+          <h3>Maps</h3>
+          <table>
+            <tbody>
+              <tr class="odd">
+                <td>Create</td>
+                <td><code>{} <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/hash_DASH_map">hash-map</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/array_DASH_map">array-map</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/zipmap">zipmap</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/sorted_DASH_map">sorted-map</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/sorted_DASH_map_DASH_by">sorted-map-by</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/bean">bean</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/frequencies">frequencies</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/group_DASH_by">group-by</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>Examine</td>
+                <td><code><code>(:key my-map)</code> &rarr; <code>( <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/get">get</a>  my-map :key)</code> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/get_DASH_in">get-in</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/contains_QMARK">contains?</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/find">find</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/keys">keys</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/vals">vals</a></code></td>
+              </tr>
+              <tr class="odd">
+                <td>'Change'</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/assoc">assoc</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/assoc_DASH_in">assoc-in</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/dissoc">dissoc</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/merge">merge</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/merge_DASH_with">merge-with</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/select_DASH_keys">select-keys</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/update_DASH_in">update-in</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>Entry</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/key">key</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/val">val</a></code></td>
+              </tr>
+              <tr class="odd">
+                <td>Sorted maps</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/rseq">rseq</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/subseq">subseq</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/rsubseq">rsubseq</a></code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div><!-- /section -->
+      </div><!-- /column -->
+      <div class="column">
+        <div class="section">
+          <h3>Transients (<a href="http://clojure.org/transients">clojure.org/transients</a>)</h3>
+          <table>
+            <tbody>
+              <tr class="odd">
+                <td>Create</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/transient">transient</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/persistent_BANG">persistent!</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>Change</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/conj_BANG">conj!</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/pop_BANG">pop!</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/assoc_BANG">assoc!</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/dissoc_BANG">dissoc!</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/disj_BANG">disj!</a> Note: always use return value for later changes, never original!</code></td>
+              </tr>
+            </tbody>
+          </table>
+          <h3>Misc</h3>
+          <table>
+            <tbody>
+              <tr class="odd">
+                <td>Compare</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/EQ">=</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/EQ__EQ">==</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/identical_QMARK">identical?</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/not_EQ">not=</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/not">not</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/compare">compare</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.data/diff">clojure.data/diff</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>Test</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/true_QMARK">true?</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/false_QMARK">false?</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/instance_QMARK">instance?</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/nil_QMARK">nil?</a> (1.6) <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/some_QMARK">some?</a></code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div><!-- /section -->
+        <div class="section">
+          <h2>Sequences</h2>
+          <h3>Creating a Lazy Seq</h3>
+          <table>
+            <tbody>
+              <tr class="odd">
+                <td>From collection</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/seq">seq</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/vals">vals</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/keys">keys</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/rseq">rseq</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/subseq">subseq</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/rsubseq">rsubseq</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>From producer fn</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/lazy_DASH_seq">lazy-seq</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/repeatedly">repeatedly</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/iterate">iterate</a></code></td>
+              </tr>
+              <tr class="odd">
+                <td>From constant</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/repeat">repeat</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/range">range</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>From other</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/file_DASH_seq">file-seq</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/line_DASH_seq">line-seq</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/resultset_DASH_seq">resultset-seq</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/re_DASH_seq">re-seq</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/tree_DASH_seq">tree-seq</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/xml_DASH_seq">xml-seq</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/iterator_DASH_seq">iterator-seq</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/enumeration_DASH_seq">enumeration-seq</a></code></td>
+              </tr>
+              <tr class="odd">
+                <td>From seq</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/keep">keep</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/keep_DASH_indexed">keep-indexed</a></code></td>
+              </tr>
+            </tbody>
+          </table>
+          <h3>Seq in, Seq out</h3>
+          <table>
+            <tbody>
+              <tr class="odd">
+                <td>Get shorter</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/distinct">distinct</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/filter">filter</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/remove">remove</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/take_DASH_nth">take-nth</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/for">for</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>Get longer</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/cons">cons</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/conj">conj</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/concat">concat</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/lazy_DASH_cat">lazy-cat</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/mapcat">mapcat</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/cycle">cycle</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/interleave">interleave</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/interpose">interpose</a></code></td>
+              </tr>
+              <tr class="odd">
+                <td>Tail-items</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/rest">rest</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/nthrest">nthrest</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/next">next</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/fnext">fnext</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/nnext">nnext</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/drop">drop</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/drop_DASH_while">drop-while</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/take_DASH_last">take-last</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/for">for</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>Head-items</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/take">take</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/take_DASH_while">take-while</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/butlast">butlast</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/drop_DASH_last">drop-last</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/for">for</a></code></td>
+              </tr>
+              <tr class="odd">
+                <td>'Change'</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/conj">conj</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/concat">concat</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/distinct">distinct</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/flatten">flatten</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/group_DASH_by">group-by</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/partition">partition</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/partition_DASH_all">partition-all</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/partition_DASH_by">partition-by</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/split_DASH_at">split-at</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/split_DASH_with">split-with</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/filter">filter</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/remove">remove</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/replace">replace</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/shuffle">shuffle</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>Rearrange</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/reverse">reverse</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/sort">sort</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/sort_DASH_by">sort-by</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/compare">compare</a></code></td>
+              </tr>
+              <tr class="odd">
+                <td>Process items</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/map">map</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/pmap">pmap</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/map_DASH_indexed">map-indexed</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/mapcat">mapcat</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/for">for</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/replace">replace</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/seque">seque</a></code></td>
+              </tr>
+            </tbody>
+          </table>
+          <h3>Using a Seq</h3>
+          <table>
+            <tbody>
+              <tr class="odd">
+                <td>Extract item</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/first">first</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/second">second</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/last">last</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/rest">rest</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/next">next</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/ffirst">ffirst</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/nfirst">nfirst</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/fnext">fnext</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/nnext">nnext</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/nth">nth</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/nthnext">nthnext</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/rand_DASH_nth">rand-nth</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/when_DASH_first">when-first</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/max_DASH_key">max-key</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/min_DASH_key">min-key</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>Construct coll</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/zipmap">zipmap</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/into">into</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/reduce">reduce</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/reductions">reductions</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/set">set</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/vec">vec</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/into_DASH_array">into-array</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/to_DASH_array_DASH_2d">to-array-2d</a></code></td>
+              </tr>
+              <tr class="odd">
+                <td>Pass to fn</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/apply">apply</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>Search</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/some">some</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/filter">filter</a></code></td>
+              </tr>
+              <tr class="odd">
+                <td>Force evaluation</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/doseq">doseq</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/dorun">dorun</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/doall">doall</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>Check for forced</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/realized_QMARK">realized?</a></code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div><!-- /section -->
+        <div class="section">
+          <h3>Zippers (clojure.zip/)</h3>
+          <table>
+            <tbody>
+              <tr class="odd">
+                <td>Create</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.zip/zipper">zipper</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.zip/seq_DASH_zip">seq-zip</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.zip/vector_DASH_zip">vector-zip</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.zip/xml_DASH_zip">xml-zip</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>Get loc</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.zip/up">up</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.zip/down">down</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.zip/left">left</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.zip/right">right</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.zip/leftmost">leftmost</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.zip/rightmost">rightmost</a></code></td>
+              </tr>
+              <tr class="odd">
+                <td>Get seq</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.zip/lefts">lefts</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.zip/rights">rights</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.zip/path">path</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.zip/children">children</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>'Change'</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.zip/make_DASH_node">make-node</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.zip/replace">replace</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.zip/edit">edit</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.zip/insert_DASH_child">insert-child</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.zip/insert_DASH_left">insert-left</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.zip/insert_DASH_right">insert-right</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.zip/append_DASH_child">append-child</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.zip/remove">remove</a></code></td>
+              </tr>
+              <tr class="odd">
+                <td>Move</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.zip/next">next</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.zip/prev">prev</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>Misc</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.zip/root">root</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.zip/node">node</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.zip/branch_QMARK">branch?</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.zip/end_QMARK">end?</a></code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div><!-- /section -->
+        <div class="section">
+          <h2>IO</h2>
+          <table>
+            <tbody>
+              <tr class="odd">
+                <td>to/from ...</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/spit">spit</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/slurp">slurp</a> (to writer/from reader, Socket, string with file name, URI, etc.)</code></td>
+              </tr>
+              <tr class="even">
+                <td>to *out*</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/pr">pr</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/prn">prn</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/print">print</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/printf">printf</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/println">println</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/newline">newline</a> (clojure.pprint/) <a href="http://grimoire.arrdem.com/1.6.0/clojure.pprint/print_DASH_table">print-table</a></code></td>
+              </tr>
+              <tr class="odd">
+                <td>to writer</td>
+                <td><code>(clojure.pprint/) <a href="http://grimoire.arrdem.com/1.6.0/clojure.pprint/pprint">pprint</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.pprint/cl_DASH_format">cl-format</a> also: (binding [*out* writer] ...)</code></td>
+              </tr>
+              <tr class="even">
+                <td>to string</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/format">format</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/with_DASH_out_DASH_str">with-out-str</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/pr_DASH_str">pr-str</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/prn_DASH_str">prn-str</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/print_DASH_str">print-str</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/println_DASH_str">println-str</a></code></td>
+              </tr>
+              <tr class="odd">
+                <td>from *in*</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/read_DASH_line">read-line</a> (clojure.tools.reader.edn/) <a href="http://github.com/clojure/tools.reader">read</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>from reader</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/line_DASH_seq">line-seq</a> (clojure.tools.reader.edn/) <a href="http://github.com/clojure/tools.reader">read</a> also: (binding [*in* reader] ...) <a href="http://docs.oracle.com/javase/6/docs/api/java/io/Reader.html">java.io.Reader</a></code></td>
+              </tr>
+              <tr class="odd">
+                <td>from string</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/with_DASH_in_DASH_str">with-in-str</a> (clojure.tools.reader.edn/) <a href="http://github.com/clojure/tools.reader">read-string</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>Open</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/with_DASH_open">with-open</a> (clojure.java.io/) text: <a href="http://grimoire.arrdem.com/1.6.0/clojure.java.io/reader">reader</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.java.io/writer">writer</a> binary: <a href="http://grimoire.arrdem.com/1.6.0/clojure.java.io/input_DASH_stream">input-stream</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.java.io/output_DASH_stream">output-stream</a></code></td>
+              </tr>
+              <tr class="odd">
+                <td>Binary</td>
+                <td><code>(.write ostream byte-arr) (.read istream byte-arr) <a href="http://docs.oracle.com/javase/6/docs/api/java/io/OutputStream.html">java.io.OutputStream</a> <a href="http://docs.oracle.com/javase/6/docs/api/java/io/InputStream.html">java.io.InputStream</a> GitHub: <a href="http://github.com/ztellman/gloss">gloss</a> <a href="http://github.com/rosejn/byte-spec">byte-spec</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>Misc</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/flush">flush</a> (.close s) <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/file_DASH_seq">file-seq</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/STAR_in_STAR">*in*</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/STAR_out_STAR">*out*</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/STAR_err_STAR">*err*</a> (clojure.java.io/) <a href="http://grimoire.arrdem.com/1.6.0/clojure.java.io/file">file</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.java.io/copy">copy</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.java.io/delete_DASH_file">delete-file</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.java.io/resource">resource</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.java.io/as_DASH_file">as-file</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.java.io/as_DASH_url">as-url</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.java.io/as_DASH_relative_DASH_path">as-relative-path</a> GitHub: <a href="http://github.com/Raynes/fs">fs</a></code></td>
+              </tr>
+              <tr class="odd">
+                <td>Data readers</td>
+                <td><code>(1.4) <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/STAR_data_DASH_readers_STAR">*data-readers*</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/default_DASH_data_DASH_readers">default-data-readers</a> (1.5) <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/STAR_default_DASH_data_DASH_reader_DASH_fn_STAR">*default-data-reader-fn*</a></code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div><!-- /section -->
+      </div><!-- /column -->
+    </div><!-- /page -->
+    <div class="page">
+      <div class="column">
+        <div class="section">
+          <h2>Functions</h2>
+          <table>
+            <tbody>
+              <tr class="odd">
+                <td>Create</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/fn">fn</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/defn">defn</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/defn_DASH">defn-</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/definline">definline</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/identity">identity</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/constantly">constantly</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/memfn">memfn</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/comp">comp</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/complement">complement</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/partial">partial</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/juxt">juxt</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/memoize">memoize</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/fnil">fnil</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/every_DASH_pred">every-pred</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/some_DASH_fn">some-fn</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>Call</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/apply">apply</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/DASH__GT">-&gt;</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/DASH__GT__GT">-&gt;&gt;</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/trampoline">trampoline</a> (1.5) <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/as_DASH__GT">as-&gt;</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/cond_DASH__GT">cond-&gt;</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/cond_DASH__GT__GT">cond-&gt;&gt;</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/some_DASH__GT">some-&gt;</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/some_DASH__GT__GT">some-&gt;&gt;</a></code></td>
+              </tr>
+              <tr class="odd">
+                <td>Test</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/fn_QMARK">fn?</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/ifn_QMARK">ifn?</a></code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div><!-- /section -->
+        <div class="section">
+          <h2>Abstractions (<a href="https://github.com/cemerick/clojure-type-selection-flowchart">Clojure type selection flowchart</a>)</h2>
+          <h3>Protocols (<a href="http://clojure.org/protocols">clojure.org/protocols</a>)</h3>
+          <table>
+            <tbody>
+              <tr class="odd">
+                <td>Define</td>
+                <td><code><code>(</code> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/defprotocol">defprotocol</a> <code>Slicey (slice [at]))</code></code></td>
+              </tr>
+              <tr class="even">
+                <td>Extend</td>
+                <td><code><code>(</code> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/extend_DASH_type">extend-type</a> <code>String Slicey (slice [at] ...))</code></code></td>
+              </tr>
+              <tr class="odd">
+                <td>Extend null</td>
+                <td><code><code>(</code> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/extend_DASH_type">extend-type</a> <code>nil Slicey (slice [_] nil))</code></code></td>
+              </tr>
+              <tr class="even">
+                <td>Reify</td>
+                <td><code><code>(</code> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/reify">reify</a> <code>Slicey (slice [at] ...))</code></code></td>
+              </tr>
+              <tr class="odd">
+                <td>Test</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/satisfies_QMARK">satisfies?</a></code></td>
+              </tr>
+            </tbody>
+          </table>
+          <h3>Records (<a href="http://clojure.org/datatypes">clojure.org/datatypes</a>)</h3>
+          <table>
+            <tbody>
+              <tr class="odd">
+                <td>Define</td>
+                <td><code><code>(</code> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/defrecord">defrecord</a> <code>Pair [h t])</code></code></td>
+              </tr>
+              <tr class="even">
+                <td>Access</td>
+                <td><code><code>(:h (Pair. 1 2))</code> &rarr; <code>1</code></code></td>
+              </tr>
+              <tr class="odd">
+                <td>Create</td>
+                <td><code>Pair. -&gt;Pair map-&gt;Pair</code></td>
+              </tr>
+              <tr class="even">
+                <td>Test</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/record_QMARK">record?</a></code></td>
+              </tr>
+            </tbody>
+          </table>
+          <h3>Types (<a href="http://clojure.org/datatypes">clojure.org/datatypes</a>)</h3>
+          <table>
+            <tbody>
+              <tr class="odd">
+                <td>Define</td>
+                <td><code><code>(</code> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/deftype">deftype</a> <code>Pair [h t])</code></code></td>
+              </tr>
+              <tr class="even">
+                <td>Access</td>
+                <td><code><code>(.h (Pair. 1 2))</code> &rarr; <code>1</code></code></td>
+              </tr>
+              <tr class="odd">
+                <td>Create</td>
+                <td><code>Pair. -&gt;Pair</code></td>
+              </tr>
+              <tr class="even">
+                <td>With methods</td>
+                <td><code><code>(</code> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/deftype">deftype</a> <code>Pair [h t]<br>&nbsp;&nbsp;Object<br>&nbsp;&nbsp;(toString [this] (str "<" h "," t ">")))</code></code></td>
+              </tr>
+            </tbody>
+          </table>
+          <h3>Multimethods (<a href="http://clojure.org/multimethods">clojure.org/multimethods</a>)</h3>
+          <table>
+            <tbody>
+              <tr class="odd">
+                <td>Define</td>
+                <td><code><code>(</code> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/defmulti">defmulti</a> <code>my-mm dispatch-fn)</code></code></td>
+              </tr>
+              <tr class="even">
+                <td>Method define</td>
+                <td><code><code>(</code> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/defmethod">defmethod</a> <code>my-mm :dispatch-value [args] ...)</code></code></td>
+              </tr>
+              <tr class="odd">
+                <td>Dispatch</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/get_DASH_method">get-method</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/methods">methods</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>Remove</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/remove_DASH_method">remove-method</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/remove_DASH_all_DASH_methods">remove-all-methods</a></code></td>
+              </tr>
+              <tr class="odd">
+                <td>Prefer</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/prefer_DASH_method">prefer-method</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/prefers">prefers</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>Relation</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/derive">derive</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/isa_QMARK">isa?</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/parents">parents</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/ancestors">ancestors</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/descendants">descendants</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/make_DASH_hierarchy">make-hierarchy</a></code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div><!-- /section -->
+        <div class="section">
+          <h2>Macros</h2>
+          <table>
+            <tbody>
+              <tr class="odd">
+                <td>Create</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/defmacro">defmacro</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/definline">definline</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>Debug</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/macroexpand_DASH_1">macroexpand-1</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/macroexpand">macroexpand</a> (clojure.walk/) <a href="http://grimoire.arrdem.com/1.6.0/clojure.walk/macroexpand_DASH_all">macroexpand-all</a></code></td>
+              </tr>
+              <tr class="odd">
+                <td>Branch</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/and">and</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/or">or</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/when">when</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/when_DASH_not">when-not</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/when_DASH_let">when-let</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/when_DASH_first">when-first</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/if_DASH_not">if-not</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/if_DASH_let">if-let</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/cond">cond</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/condp">condp</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/case">case</a> (1.6) <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/when_DASH_some">when-some</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/if_DASH_some">if-some</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>Loop</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/for">for</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/doseq">doseq</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/dotimes">dotimes</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/while">while</a></code></td>
+              </tr>
+              <tr class="odd">
+                <td>Arrange</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/DOT__DOT">..</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/doto">doto</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/DASH__GT">-&gt;</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/DASH__GT__GT">-&gt;&gt;</a> (1.5) <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/as_DASH__GT">as-&gt;</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/cond_DASH__GT">cond-&gt;</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/cond_DASH__GT__GT">cond-&gt;&gt;</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/some_DASH__GT">some-&gt;</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/some_DASH__GT__GT">some-&gt;&gt;</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>Scope</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/binding">binding</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/locking">locking</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/time">time</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/with_DASH_in_DASH_str">with-in-str</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/with_DASH_local_DASH_vars">with-local-vars</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/with_DASH_open">with-open</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/with_DASH_out_DASH_str">with-out-str</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/with_DASH_precision">with-precision</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/with_DASH_redefs">with-redefs</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/with_DASH_redefs_DASH_fn">with-redefs-fn</a></code></td>
+              </tr>
+              <tr class="odd">
+                <td>Lazy</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/lazy_DASH_cat">lazy-cat</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/lazy_DASH_seq">lazy-seq</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/delay">delay</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>Doc.</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/assert">assert</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/comment">comment</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.repl/doc">doc</a></code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div><!-- /section -->
+        <div class="section">
+          <h2>Reader Macros</h2>
+          <table>
+            <tbody>
+              <tr class="odd">
+                <td><code>'</code></td>
+                <td>Quote: <code>'<var>form</var></code> &rarr; <code>(quote <var>form</var>)</code></td>
+              </tr>
+              <tr class="even">
+                <td><code>\</code></td>
+                <td>Character literal</td>
+              </tr>
+              <tr class="odd">
+                <td><code>;</code></td>
+                <td>Single line comment</td>
+              </tr>
+              <tr class="even">
+                <td><code>^</code></td>
+                <td>Metadata (see Metadata section)</td>
+              </tr>
+              <tr class="odd">
+                <td><code>@</code></td>
+                <td>Deref: <code>@<var>form</var></code> &rarr; <code>(deref <var>form</var>)</code></td>
+              </tr>
+              <tr class="even">
+                <td><code>`</code></td>
+                <td>Syntax-quote</td>
+              </tr>
+              <tr class="odd">
+                <td><code>~</code></td>
+                <td>Unquote</td>
+              </tr>
+              <tr class="even">
+                <td><code>~@</code></td>
+                <td>Unquote-splicing</td>
+              </tr>
+              <tr class="odd">
+                <td><code>#"<var>p</var>"</code></td>
+                <td>Regex Pattern <var>p</var></td>
+              </tr>
+              <tr class="even">
+                <td><code>#'</code></td>
+                <td>Var quote: <code>#'<var>x</var></code> &rarr; <code>(var <var>x</var>)</code></td>
+              </tr>
+              <tr class="odd">
+                <td><code>#()</code></td>
+                <td><code>#(...)</code> &rarr; <code>(fn [args] (...))</code></td>
+              </tr>
+              <tr class="even">
+                <td><code>#_</code></td>
+                <td>Ignore next form</td>
+              </tr>
+            </tbody>
+          </table>
+        </div><!-- /section -->
+        <div class="section">
+          <h2>Metadata (<a href="http://clojure.org/special_forms">clojure.org/special_forms</a>)</h2>
+          <table>
+            <tbody>
+              <tr class="odd">
+                <td>General</td>
+                <td><code><code>^{:key1 val1 :key2 val2 ...}</code></code></td>
+              </tr>
+              <tr class="even">
+                <td>Abbrevs</td>
+                <td><code><code>^Type</code> &rarr; <code>^{:tag Type}</code><br>
+<code>^:key</code> &rarr; <code>^{:key true}</code></code></td>
+              </tr>
+              <tr class="odd">
+                <td>Common</td>
+                <td><code><code>^:dynamic ^:private ^:doc ^:const</code></code></td>
+              </tr>
+              <tr class="even">
+                <td>Examples</td>
+                <td><code><code>(defn ^:private ^String my-fn ...)</code>  <br> <code>(def ^:dynamic *dyn-var* val)</code></code></td>
+              </tr>
+              <tr class="odd">
+                <td>On Vars</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/meta">meta</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/with_DASH_meta">with-meta</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/vary_DASH_meta">vary-meta</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/alter_DASH_meta_BANG">alter-meta!</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/reset_DASH_meta_BANG">reset-meta!</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.repl/doc">doc</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.repl/find_DASH_doc">find-doc</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/test">test</a></code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div><!-- /section -->
+      </div><!-- /column -->
+      <div class="column">
+        <div class="section">
+          <h2>Special Forms (<a href="http://clojure.org/special_forms">clojure.org/special_forms</a>)</h2>
+          <div class="single_row">
+            <code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/def">def</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/if">if</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/do">do</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/let">let</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/letfn">letfn</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/quote">quote</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/var">var</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/fn">fn</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/loop">loop</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/recur">recur</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/throw">throw</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/try">try</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/monitor_DASH_enter">monitor-enter</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/monitor_DASH_exit">monitor-exit</a></code>
+          </div>
+          <table>
+            <tbody>
+              <tr class="odd">
+                <td>Binding Forms / Destructuring</td>
+                <td><code>(<a href="http://clojure.org/special_forms#binding-forms">examples</a>) <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/let">let</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/fn">fn</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/defn">defn</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/defmacro">defmacro</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/loop">loop</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/for">for</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/doseq">doseq</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/if_DASH_let">if-let</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/when_DASH_let">when-let</a> (1.6) <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/if_DASH_some">if-some</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/when_DASH_some">when-some</a></code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div><!-- /section -->
+        <div class="section">
+          <h2>Vars and global environment (<a href="http://clojure.org/vars">clojure.org/vars</a>)</h2>
+          <table>
+            <tbody>
+              <tr class="odd">
+                <td>Def variants</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/def">def</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/defn">defn</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/defn_DASH">defn-</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/definline">definline</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/defmacro">defmacro</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/defmethod">defmethod</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/defmulti">defmulti</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/defonce">defonce</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/defrecord">defrecord</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>Interned vars</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/declare">declare</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/intern">intern</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/binding">binding</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/find_DASH_var">find-var</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/var">var</a></code></td>
+              </tr>
+              <tr class="odd">
+                <td>Var objects</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/with_DASH_local_DASH_vars">with-local-vars</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/var_DASH_get">var-get</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/var_DASH_set">var-set</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/alter_DASH_var_DASH_root">alter-var-root</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/var_QMARK">var?</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/bound_QMARK">bound?</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/thread_DASH_bound_QMARK">thread-bound?</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>Var validators</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/set_DASH_validator_BANG">set-validator!</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/get_DASH_validator">get-validator</a></code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div><!-- /section -->
+        <div class="section">
+          <h2>Namespace</h2>
+          <table>
+            <tbody>
+              <tr class="odd">
+                <td>Current</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/STAR_ns_STAR">*ns*</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>Create/Switch</td>
+                <td><code>(<a href="http://blog.8thlight.com/colin-jones/2010/12/05/clojure-libs-and-namespaces-require-use-import-and-ns.html">tutorial</a>) <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/ns">ns</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/in_DASH_ns">in-ns</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/create_DASH_ns">create-ns</a></code></td>
+              </tr>
+              <tr class="odd">
+                <td>Add</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/alias">alias</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/def">def</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/import">import</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/intern">intern</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/refer">refer</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>Find</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/all_DASH_ns">all-ns</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/find_DASH_ns">find-ns</a></code></td>
+              </tr>
+              <tr class="odd">
+                <td>Examine</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/ns_DASH_name">ns-name</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/ns_DASH_aliases">ns-aliases</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/ns_DASH_map">ns-map</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/ns_DASH_interns">ns-interns</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/ns_DASH_publics">ns-publics</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/ns_DASH_refers">ns-refers</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/ns_DASH_imports">ns-imports</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>From symbol</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/resolve">resolve</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/ns_DASH_resolve">ns-resolve</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/namespace">namespace</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/the_DASH_ns">the-ns</a></code></td>
+              </tr>
+              <tr class="odd">
+                <td>Remove</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/ns_DASH_unalias">ns-unalias</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/ns_DASH_unmap">ns-unmap</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/remove_DASH_ns">remove-ns</a></code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div><!-- /section -->
+        <div class="section">
+          <h2>Loading</h2>
+          <table>
+            <tbody>
+              <tr class="odd">
+                <td>Load libs</td>
+                <td><code>(<a href="http://blog.8thlight.com/colin-jones/2010/12/05/clojure-libs-and-namespaces-require-use-import-and-ns.html">tutorial</a>) <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/require">require</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/use">use</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/import">import</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/refer">refer</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>List loaded</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/loaded_DASH_libs">loaded-libs</a></code></td>
+              </tr>
+              <tr class="odd">
+                <td>Load misc</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/load">load</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/load_DASH_file">load-file</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/load_DASH_reader">load-reader</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/load_DASH_string">load-string</a></code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div><!-- /section -->
+        <div class="section">
+          <h2>Concurrency</h2>
+          <table>
+            <tbody>
+              <tr class="odd">
+                <td>Atoms</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/atom">atom</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/swap_BANG">swap!</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/reset_BANG">reset!</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/compare_DASH_and_DASH_set_BANG">compare-and-set!</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>Futures</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/future">future</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/future_DASH_call">future-call</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/future_DASH_done_QMARK">future-done?</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/future_DASH_cancel">future-cancel</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/future_DASH_cancelled_QMARK">future-cancelled?</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/future_QMARK">future?</a></code></td>
+              </tr>
+              <tr class="odd">
+                <td>Threads</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/bound_DASH_fn">bound-fn</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/bound_DASH_fn_STAR">bound-fn*</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/get_DASH_thread_DASH_bindings">get-thread-bindings</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/push_DASH_thread_DASH_bindings">push-thread-bindings</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/pop_DASH_thread_DASH_bindings">pop-thread-bindings</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/thread_DASH_bound_QMARK">thread-bound?</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>Misc</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/locking">locking</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/pcalls">pcalls</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/pvalues">pvalues</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/pmap">pmap</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/seque">seque</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/promise">promise</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/deliver">deliver</a></code></td>
+              </tr>
+            </tbody>
+          </table>
+          <h3>Refs and Transactions (<a href="http://clojure.org/refs">clojure.org/refs</a>)</h3>
+          <table>
+            <tbody>
+              <tr class="odd">
+                <td>Create</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/ref">ref</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>Examine</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/deref">deref</a> @ (<code>@<var>form</var></code> &rarr; <code>(deref <var>form</var>)</code>)</code></td>
+              </tr>
+              <tr class="odd">
+                <td>Transaction</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/sync">sync</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/dosync">dosync</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/io_BANG">io!</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>In transaction</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/ensure">ensure</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/ref_DASH_set">ref-set</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/alter">alter</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/commute">commute</a></code></td>
+              </tr>
+              <tr class="odd">
+                <td>Validators</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/set_DASH_validator_BANG">set-validator!</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/get_DASH_validator">get-validator</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>History</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/ref_DASH_history_DASH_count">ref-history-count</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/ref_DASH_min_DASH_history">ref-min-history</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/ref_DASH_max_DASH_history">ref-max-history</a></code></td>
+              </tr>
+            </tbody>
+          </table>
+          <h3>Agents and Asynchronous Actions (<a href="http://clojure.org/agents">clojure.org/agents</a>)</h3>
+          <table>
+            <tbody>
+              <tr class="odd">
+                <td>Create</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/agent">agent</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>Examine</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/agent_DASH_error">agent-error</a></code></td>
+              </tr>
+              <tr class="odd">
+                <td>Change state</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/send">send</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/send_DASH_off">send-off</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/restart_DASH_agent">restart-agent</a> (1.5) <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/send_DASH_via">send-via</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/set_DASH_agent_DASH_send_DASH_executor_BANG">set-agent-send-executor!</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/set_DASH_agent_DASH_send_DASH_off_DASH_executor_BANG">set-agent-send-off-executor!</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>Block waiting</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/await">await</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/await_DASH_for">await-for</a></code></td>
+              </tr>
+              <tr class="odd">
+                <td>Ref validators</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/set_DASH_validator_BANG">set-validator!</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/get_DASH_validator">get-validator</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>Watchers</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/add_DASH_watch">add-watch</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/remove_DASH_watch">remove-watch</a></code></td>
+              </tr>
+              <tr class="odd">
+                <td>Thread handling</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/shutdown_DASH_agents">shutdown-agents</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>Error</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/error_DASH_handler">error-handler</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/set_DASH_error_DASH_handler_BANG">set-error-handler!</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/error_DASH_mode">error-mode</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/set_DASH_error_DASH_mode_BANG">set-error-mode!</a></code></td>
+              </tr>
+              <tr class="odd">
+                <td>Misc</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/STAR_agent_STAR">*agent*</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/release_DASH_pending_DASH_sends">release-pending-sends</a></code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div><!-- /section -->
+        <div class="section">
+          <h2>Java Interoperation (<a href="http://clojure.org/java_interop">clojure.org/java_interop</a>)</h2>
+          <table>
+            <tbody>
+              <tr class="odd">
+                <td>General</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/DOT__DOT">..</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/doto">doto</a> Classname/ Classname. <a href="http://clojure.org/java_interop#new">new</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/bean">bean</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/comparator">comparator</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/enumeration_DASH_seq">enumeration-seq</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/import">import</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/iterator_DASH_seq">iterator-seq</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/memfn">memfn</a> <a href="http://clojure.org/java_interop#Java%20Interop-The%20Dot%20special%20form-%28set!%20%28.%20Classname-symbol%20staticFieldName-symbol%29%20expr%29">set!</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/class">class</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>Cast</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/boolean">boolean</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/byte">byte</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/short">short</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/char">char</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/int">int</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/long">long</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/float">float</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/double">double</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/bigdec">bigdec</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/bigint">bigint</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/num">num</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/cast">cast</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/biginteger">biginteger</a></code></td>
+              </tr>
+              <tr class="odd">
+                <td>Exceptions</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/throw">throw</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/try">try</a> <a href="http://clojure.org/special_forms#try">catch</a> <a href="http://clojure.org/special_forms#try">finally</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.repl/pst">pst</a> (1.4) <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/ex_DASH_info">ex-info</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/ex_DASH_data">ex-data</a></code></td>
+              </tr>
+            </tbody>
+          </table>
+          <h3>Arrays</h3>
+          <table>
+            <tbody>
+              <tr class="odd">
+                <td>Create</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/make_DASH_array">make-array</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/object_DASH_array">object-array</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/boolean_DASH_array">boolean-array</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/byte_DASH_array">byte-array</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/short_DASH_array">short-array</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/char_DASH_array">char-array</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/int_DASH_array">int-array</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/long_DASH_array">long-array</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/float_DASH_array">float-array</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/double_DASH_array">double-array</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/aclone">aclone</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/to_DASH_array">to-array</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/to_DASH_array_DASH_2d">to-array-2d</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/into_DASH_array">into-array</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>Use</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/aget">aget</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/aset">aset</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/aset_DASH_boolean">aset-boolean</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/aset_DASH_byte">aset-byte</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/aset_DASH_short">aset-short</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/aset_DASH_char">aset-char</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/aset_DASH_int">aset-int</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/aset_DASH_long">aset-long</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/aset_DASH_float">aset-float</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/aset_DASH_double">aset-double</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/alength">alength</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/amap">amap</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/areduce">areduce</a></code></td>
+              </tr>
+              <tr class="odd">
+                <td>Cast</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/booleans">booleans</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/bytes">bytes</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/shorts">shorts</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/chars">chars</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/ints">ints</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/longs">longs</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/floats">floats</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/doubles">doubles</a></code></td>
+              </tr>
+            </tbody>
+          </table>
+          <h3>Proxy (<a href="https://github.com/cemerick/clojure-type-selection-flowchart">Clojure type selection flowchart</a>)</h3>
+          <table>
+            <tbody>
+              <tr class="odd">
+                <td>Create</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/proxy">proxy</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/get_DASH_proxy_DASH_class">get-proxy-class</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/construct_DASH_proxy">construct-proxy</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/init_DASH_proxy">init-proxy</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>Misc</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/proxy_DASH_mappings">proxy-mappings</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/proxy_DASH_super">proxy-super</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/update_DASH_proxy">update-proxy</a></code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div><!-- /section -->
+        <div class="section">
+          <h2>Other</h2>
+          <table>
+            <tbody>
+              <tr class="odd">
+                <td>XML</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.xml/parse">clojure.xml/parse</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/xml_DASH_seq">xml-seq</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>REPL</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/STAR_1">*1</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/STAR_2">*2</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/STAR_3">*3</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/STAR_e">*e</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/STAR_print_DASH_dup_STAR">*print-dup*</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/STAR_print_DASH_length_STAR">*print-length*</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/STAR_print_DASH_level_STAR">*print-level*</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/STAR_print_DASH_meta_STAR">*print-meta*</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/STAR_print_DASH_readably_STAR">*print-readably*</a></code></td>
+              </tr>
+              <tr class="odd">
+                <td>Code</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/STAR_compile_DASH_files_STAR">*compile-files*</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/STAR_compile_DASH_path_STAR">*compile-path*</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/STAR_file_STAR">*file*</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/STAR_warn_DASH_on_DASH_reflection_STAR">*warn-on-reflection*</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/compile">compile</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/gen_DASH_class">gen-class</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/gen_DASH_interface">gen-interface</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/loaded_DASH_libs">loaded-libs</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/test">test</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>Misc</td>
+                <td><code><a href="http://grimoire.arrdem.com/1.6.0/clojure.core/eval">eval</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/force">force</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/hash">hash</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/name">name</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/STAR_clojure_DASH_version_STAR">*clojure-version*</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/clojure_DASH_version">clojure-version</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.core/STAR_command_DASH_line_DASH_args_STAR">*command-line-args*</a></code></td>
+              </tr>
+              <tr class="odd">
+                <td>Browser / Shell</td>
+                <td><code>(clojure.java.browse/) <a href="http://grimoire.arrdem.com/1.6.0/clojure.java.browse/browse_DASH_url">browse-url</a> (clojure.java.shell/) <a href="http://grimoire.arrdem.com/1.6.0/clojure.java.shell/sh">sh</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.java.shell/with_DASH_sh_DASH_dir">with-sh-dir</a> <a href="http://grimoire.arrdem.com/1.6.0/clojure.java.shell/with_DASH_sh_DASH_env">with-sh-env</a></code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div><!-- /section -->
+      </div><!-- /column -->
+    </div><!-- /page -->

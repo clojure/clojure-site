@@ -1,0 +1,43 @@
+= Runtime Polymorphism
+Rich Hickey
+2015-01-01
+:jbake-type: page
+:toc: macro
+
+== Runtime Polymorphism 
+
+Systems that utilize runtime polymorphism are easier to change and extend. Clojure supports polymorphism in several ways:
+
+* Most core infrastructure data structures in the Clojure runtime are defined by Java interfaces. 
+* Clojure supports the generation of implementations of Java interfaces in Clojure using http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/proxy[proxy] (<<jvm_hosted#,see JVM Hosted>>). 
+* The Clojure language supports polymorphism along both class and custom hierarchies with <<xref/../../reference/multimethods#,multimethod>>s.
+* The Clojure language also supports a faster form of polymorphism with <<xref/../../reference/protocols#,protocols>> (but limited only to class polymorphism to take advantage of the JVMs existing capabilities for invocation).
+
+Clojure multimethods are a simple yet powerful mechanism for runtime polymorphism that is free of the trappings of OO, types and inheritance. The basic idea behind runtime polymorphism is that a single function designator dispatches to multiple independently-defined function definitions based upon some value of the call. For traditional single-dispatch OO languages that value is the type of the 'receiver' or 'this'. CLOS generic functions extend dispatch value to a composite of the type or value of multiple arguments, and are thus multimethods. Clojure multimethods go further still to allow the dispatch value to be the result of an arbitrary function of the arguments. Clojure does not support implementation inheritance.
+
+Multimethods are defined using http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defmulti[defmulti], which takes the name of the multimethod and the dispatch function. Methods are independently defined using http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defmethod[defmethod], passing the multimethod name, the dispatch _value_ and the function body.
+
+[source,clojure]
+----
+(defmulti encounter (fn [x y] [(:Species x) (:Species y)]))
+(defmethod encounter [:Bunny :Lion] [b l] :run-away)
+(defmethod encounter [:Lion :Bunny] [l b] :eat)
+(defmethod encounter [:Lion :Lion] [l1 l2] :fight)
+(defmethod encounter [:Bunny :Bunny] [b1 b2] :mate)
+(def b1 {:Species :Bunny :other :stuff})
+(def b2 {:Species :Bunny :other :stuff})
+(def l1 {:Species :Lion :other :stuff})
+(def l2 {:Species :Lion :other :stuff})
+(encounter b1 b2)
+-> :mate
+(encounter b1 l1)
+-> :run-away
+(encounter l1 b1)
+-> :eat
+(encounter l1 l2)
+-> :fight
+----
+
+Multimethods are in every respect fns, e.g. can be passed to http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/map[map] etc.
+
+Similar to interfaces, Clojure protocols define only function specifications (no implementation) and allow types to implement multiple protocols. Additionally, protocols are open to later dynamic extension for new types. Protocols are limited just to dispatch on class type to take advantage of the native Java performance of polymorphic method calls. For more details, see the <<xref/../../reference/protocols#,protocols>> page.

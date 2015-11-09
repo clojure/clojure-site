@@ -1,0 +1,193 @@
+= Lazy
+Rich Hickey
+2015-01-01
+:jbake-type: page
+:toc: macro
+
+== Making Clojure Lazier 
+toc::[]
+
+
+_(Note: this section describes work in prerelease, available in the SVN trunk since rev 1287)_
+
+In working on streams a few things became evident:
+
+* stream code is ugly and imperative
+** even when made safe, still ugly, stateful
+* streams support full laziness
+** this ends up being extremely nice
+* Integrating streams transparently (i.e. not having both map and map-stream) would require a change, to relax the contract of the core sequence functions (map, filter etc)
+** If I am going to do that, could I achieve the same full laziness while keeping the beautiful recursive style of Clojure?
+*** while being substantially compatible with existing code
+*** Yes!
+**** but - ideally some names should change
+
+=== The current seq model 
+
+* Originally modeled on Common Lisp's cons
+* Either you have a seq, with a valid first, or nothing (nil)
+* A seq is like a logical cursor
+* rest is fundamentally eager
+** returns another seq or nil
+** needs to determine if there is any more in order to determine if return value is nil
+** lazy-cons can delay the calculation of first/rest, but not the determination if there is a rest
+*** determining that often requires 'pulling' on an inner seq, reducing effective laziness
+* sequence functions currently return a seq or nil
+
+The eagerness of *rest* means the sequence functions are not fully lazy, they need to at least determine if there is a first.
+
+=== Enhancing the seq model - a third operation on seqs - 'next' 
+
+* _**Changed:**_ (*rest* aseq) - returns a possibly empty seq, _never nil_
+** calls seq on arg if not already a seq
+** the returned seq may be empty
+*** will print (), but not a single sentinel object
+** never returns nil
+*** currently not enforced on 3rd-party seqs
+** a (possibly) delayed path to the remaining items, if any
+* _**Changed**_: seqs can be empty
+** always an ISeq
+* _**Changed**_: the *seq* function - no longer an identity for ISeqs
+** still returns either a seq or nil
+** (seq aseq) -> ___**no longer an identity, if aseq empty returns nil**___
+** still works on nil
+* the *first* function doesn't change
+** calls seq on arg if not already a seq
+** returns first item
+** still works on nil
+* _**New**:_ the *next* function does what *rest* used to do
+** returns the next seq, if any, else nil
+** calls seq on arg if not already a seq
+** (next aseq) === (seq (rest aseq))
+** works on nil
+* _**Changed**_: seq?
+** (seq? ()) -> true
+* _**Changed:**_ Sequence fns (map, filter etc) return seqs, but not nil
+** You'll need to call seq on their return value in order to get a seq/nil
+*** seq also serves as test for end, already idiomatic
++
+[source,clojure]
+----
+(when (seq coll)
+  ...)
+----
+** allows full laziness
+** doesn't support nil punning
+*** since sequence fns no longer return seq/nil
+
+=== Recipe - How to write lazy sequence functions in new model 
+
+* Goodbye lazy-cons, hello lazy-seq
+** lazy-cons is gone
+** new laziness macro - _**lazy-seq**_
+*** takes a body that yields a seq, nil or anything seq-able
+*** returns a logical collection that implements seq by calling the body
+**** invokes the body only the first time seq is called on it, caches result
+**** will call seq on the body's return value if not already a seq or nil
+** The net effect is the creation of a virtual collection that does no work until seq is called upon it - fully delayed
+** Supports all collection ops
+** Can be empty - e.g. calling seq on it can return nil
+*** when empty will print as ()
+* lazy-seq goes at top level of lazy sequence function
+** instead of nested lazy-cons
+* inside, use a normal cons call
+** won't be created until needed
+* if consuming another seq, use rest instead of next
+
+The old way:
+
+[source,clojure]
+----
+(defn map
+  ([f coll]
+   (when (seq coll)
+     (lazy-cons (f (first coll)) (map f (rest coll)))))
+...
+----
+
+The new way:
+
+[source,clojure]
+----
+(defn map
+  ([f coll]
+   (lazy-seq
+    (when-let [s (seq coll)]
+      (cons (f (first s)) (map f (rest s))))))
+...
+----
+
+Note the use of when-let, which grabs the seq once, for subsequent use in first and rest, even though first/rest call seq on their argument. This has a performance benefit in this new model.
+
+=== The victim - nil punning 
+
+One of the nice things about CL's cons using nil for end-of-list is that, when coupled with nil's testability in conditionals, cons-returning functions could be used like predicates. Now only *seq* and *next* can be used in that manner - map, filter etc cannot. Note that much of the economy of the seq/nil dyad still applies, e.g. the use of when in map above.
+
+=== Extension ISeqs 
+
+If you are extending ISeq you'll need to support *ISeq.more()* (the underpinnings of rest). Fortunately, most ISeq extenders derive from ASeq, which defines *more()* in terms of *next*. If you derive your seq from ASeq, _don't define more()_, use the version supplied by ASeq. Just rename your rest() method to next().
+
+=== Recipe - Porting 
+
+To move to the new model you'll need to take the following steps, in this order:
+
+* Rename all your calls to *rest* to call *next*
+* If you were defining your own lazy sequence functions, using *lazy-cons*, switch them over to *lazy-seq* using the recipe above. Make sure to call *rest* and not *next* in your recursive call.
+* Audit your code for nil-punning. The lazy branch has supports compilation in a debug mode that asserts if you try to test the truth value of a lazy sequence in a conditional, and will throw an exception if you do. Just build clojure like so:
+** ant -Dclojure.assert-if-lazy-seq=true
+** Then, nil puns like the following will throw exceptions:
+*** (when (filter neg? [1 2]) :all-pos)
+*** (not (concat))
+*** (if (rest (seq [])) 1 2)
+** In all cases you can fix a nil pun by wrapping the sequence with a seq call:
++
+[source,clojure]
+----
+(when (seq (filter neg? [1 2])) :all-pos)
+-> nil
+----
+** After you are done, rebuild without the flag, as it will slow things down.
+
+=== Don't hang (onto) your head 
+
+Recursively defined lazy sequence functions are elegant and easy to understand. They can be very memory efficient, allowing you to work with data sources that might not fit in memory, because only the part of the data structure in current use need be in memory. It could be tricky at times to determine which parts were currently in use, as they might still be referenced by local variables. Clojure does local-variable clearing on tail calls to ensure that no lingering references remain on the stack, but there was one remaining case - closed-over locals, that was difficult to control, especially when using a macro like lazy-seq which creates a closure on your behalf.
+
+Consider the original, not fully lazy, definition of filter:
+
+[source,clojure]
+----
+(defn filter
+  "Returns a lazy seq of the items in coll for which
+  (pred item) returns true. pred must be free of side-effects."
+  [pred coll]
+    (when (seq coll)
+      (if (pred (first coll))
+        (lazy-cons (first coll) (filter pred (rest coll)))
+        (recur pred (rest coll)))))
+----
+
+By recurring to the fn itself, it is effectively erasing the coll argument each iteration, so it looks like it wouldn't retain coll while skipping elements not matching the predicate. The problem is that sometimes the call to filter is in the lazy-cons, which expands into a closure that closes over coll, thus retaining it while the looping occurs, and there is nothing the called function can do about it. This means that expressions like:
+
+[source,clojure]
+----
+(filter #(= % 20) (map inc (range 10000000)))
+----
+could cause out of memory exceptions. The only way to avoid it was to rewrite filter using mutation. Bleh.
+
+The new filter looks like this:
+
+[source,clojure]
+----
+(defn filter
+  "Returns a lazy sequence of the items in coll for which
+  (pred item) returns true. pred must be free of side-effects."
+  [pred coll]
+  (let [step (fn [p c]
+                 (when-let [s (seq c)]
+                   (if (p (first s))
+                     (cons (first s) (filter p (rest s)))
+                     (recur p (rest s)))))]
+    (lazy-seq (step pred coll))))
+----
+
+The body of the old filter has been put in a helper fn, and lazy-cons replaced with cons, then the whole call is wrapped in a lazy-seq, following the recipe above. However lazy-seq also creates a closure which closes over coll. Without some enhancement, this filter, while lazier, will have the same memory footprint as the old. The new lazy branch contains a compiler enhancement for this and similar scenarios. *lazy-seq* and *delay* both perform closed-over local clearing on the tail call of their body, ensuring no references remain in the closure itself when the tail-call executes. They can do this because they cache the results, and thus know the closure will be invoked only once. Thus the lazy branch has no problems with the filter expression above, and you can use similar techniques to control memory usage in your own lazy functions.

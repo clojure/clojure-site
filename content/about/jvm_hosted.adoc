@@ -1,0 +1,41 @@
+= JVM Hosted
+Rich Hickey
+2015-01-01
+:jbake-type: page
+:toc: macro
+
+== Hosted on the JVM 
+
+Clojure is designed to be a hosted language, sharing the JVM type system, GC, threads etc. It compiles all functions to JVM bytecode. Clojure is a great Java library consumer, offering the dot-target-member notation for calls to Java. Class names can be referenced in full, or as non-qualified names after being imported. Clojure supports the dynamic implementation of Java interfaces and classes using http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/reify[reify] and http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/proxy[proxy]:
+
+Here's a small Swing app:
+[source,clojure]
+----
+(import '(javax.swing JFrame JLabel JTextField JButton)
+        '(java.awt.event ActionListener)
+        '(java.awt GridLayout))
+(defn celsius []
+  (let [frame (JFrame. "Celsius Converter")
+        temp-text (JTextField.)
+        celsius-label (JLabel. "Celsius")
+        convert-button (JButton. "Convert")
+        fahrenheit-label (JLabel. "Fahrenheit")]
+    (.addActionListener
+     convert-button
+     (reify ActionListener
+            (actionPerformed
+             [_ evt]
+             (let [c (Double/parseDouble (.getText temp-text))]
+               (.setText fahrenheit-label
+                         (str (+ 32 (* 1.8 c)) " Fahrenheit"))))))
+    (doto frame
+      (.setLayout (GridLayout. 2 2 3 3))
+      (.add temp-text)
+      (.add celsius-label)
+      (.add convert-button)
+      (.add fahrenheit-label)
+      (.setSize 300 80)
+      (.setVisible true))))
+(celsius)
+----
+<<image:celsius.jpeg#,image:celsius.jpeg>>

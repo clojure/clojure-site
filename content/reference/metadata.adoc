@@ -1,0 +1,39 @@
+= Metadata
+Rich Hickey
+2015-01-01
+:jbake-type: page
+:toc: macro
+
+== Metadata 
+
+Symbols and collections support metadata, a map of data _about_ the symbol or collection. The metadata system allows for arbitrary annotation of data. It is used to convey information to the compiler about types, but can also be used by application developers for many purposes, annotating data sources, policy etc.
+
+An important thing to understand about metadata is that it is not considered to be part of the value of an object. As such, _metadata does not impact equality (or hash codes)_. Two objects that differ only in metadata are equal.
+
+That said, metadata and its relationship to an object is immutable - an object with different metadata is a different object. One consequence of this is that applying metadata to a lazy sequence will realize the head of the sequence so that both objects can share the same sequence.
+
+''''
+
+=== (_meta_ obj)
+
+Returns the metadata of obj, returns nil if there is no metadata.
+
+''''
+
+=== (_with-meta_ obj map) 
+Returns an object of the same type and value as obj, with map as its metadata.
+
+== Metadata Reader Macros 
+
+In addition to with-meta, there are a number of reader macros (<<reader#macrochars,The Reader: Macro Characters>>) for applying metadata to the expression following it:
+
+* `^{:doc "How obj works!"} obj` - Sets the metadata of obj to the provided map. 
+** Equivalent to `(with-meta obj {:doc "How obj works!"})`
+* `^:dynamic obj` - Sets the given keyword to true in the object's metadata. 
+** Equivalent to `^{:dynamic true} obj`
+* `^String obj` - Sets the value of :tag key in the object's metadata. 
+** Equivalent to `^{:tag java.lang.String} obj`
+** Used to hint an objects type to the Clojure compiler. See <<java_interop#typehints,Java Interop: Type Hints>> for more information and a complete list of special type hints.
+
+It is possible to add multiple pieces of metadata by chaining the metadata reader macros together.
+For example: `^:dynamic ^ints obj` would apply both the :dynamic flag and ints type-hint to obj.

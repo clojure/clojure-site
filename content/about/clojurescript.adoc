@@ -1,0 +1,11 @@
+= ClojureScript
+Rich Hickey
+2015-01-01
+:jbake-type: page
+:toc: macro
+
+== ClojureScript
+
+ClojureScript is a compiler for Clojure that targets JavaScript. It is designed to emit JavaScript code which is compatible with the advanced compilation mode of the http://code.google.com/closure/[Google Closure] optimizing compiler.
+
+=== https://github.com/clojure/clojurescript[ClojureScript Home]

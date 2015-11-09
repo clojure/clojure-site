@@ -1,0 +1,132 @@
+= functional_programming
+Rich Hickey
+2015-01-01
+:jbake-type: page
+:toc: macro
+
+toc::[]
+
+== Functional Programming 
+
+Clojure is a functional programming language. It provides the tools to avoid mutable state, provides functions as first-class objects, and emphasizes recursive iteration instead of side-effect based looping. Clojure is _impure_, in that it doesn't force your program to be referentially transparent, and doesn't strive for 'provable' programs. The philosophy behind Clojure is that most parts of most programs should be functional, and that programs that are more functional are more robust.
+ 
+=== First-class functions 
+<<xref/../../reference/special_forms#fn#,fn>> creates a function object. It yields a value like any other - you can store it in a var, pass it to functions etc.
+[source,clojure]
+----
+(def hello (fn [] "Hello world"))
+-> #'user/hello
+(hello)
+-> "Hello world"
+----
+http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defn[defn] is a macro that makes defining functions a little simpler.
+Clojure supports arity overloading in a _single_ function object, self-reference, and variable-arity functions using *&*:
+[source,clojure]
+----
+;trumped-up example
+(defn argcount
+  ([] 0)
+  ([x] 1)
+  ([x y] 2)
+  ([x y & more] (+ (argcount x y) (count more))))
+-> #'user/argcount
+(argcount)
+-> 0
+(argcount 1)
+-> 1
+(argcount 1 2)
+-> 2
+(argcount 1 2 3 4 5)
+-> 5
+----
+You can create local names for values inside a function using http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/let[let]. The scope of any local names is lexical, so a function created in the scope of local names will close over their values:
+[source,clojure]
+----
+(defn make-adder [x]
+  (let [y x]
+    (fn [z] (+ y z))))
+(def add2 (make-adder 2))
+(add2 4)
+-> 6
+----
+*Locals created with http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/let[let] are not variables. Once created their values never change!*
+
+
+=== Immutable Data Structures 
+The easiest way to avoid mutating state is to use immutable <<xref/../../reference/data_structures#,data structures>>. Clojure provides a set of immutable lists, vectors, sets and maps. Since they can't be changed, 'adding' or 'removing' something from an immutable collection means creating a new collection just like the old one but with the needed change. _Persistence_ is a term used to describe the property wherein the old version of the collection is still available after the 'change', and that the collection maintains its performance guarantees for most operations. Specifically, this means that the new version can't be created using a full copy, since that would require linear time. Inevitably, persistent collections are implemented using linked data structures, so that the new versions can share structure with the prior version. Singly-linked lists and trees are the basic functional data structures, to which Clojure adds a hash map, set and vector both based upon array mapped hash tries. The collections have readable representations and common interfaces:
+[source,clojure]
+----
+(let [my-vector [1 2 3 4]
+      my-map {:fred "ethel"}
+      my-list (list 4 3 2 1)]
+  (list
+    (conj my-vector 5)
+    (assoc my-map :ricky "lucy")
+    (conj my-list 5)
+    ;the originals are intact
+    my-vector
+    my-map
+    my-list))
+-> ([1 2 3 4 5] {:ricky "lucy", :fred "ethel"} (5 4 3 2 1) [1 2 3 4] {:fred "ethel"} (4 3 2 1))
+----
+Applications often need to associate attributes and other data about data that is orthogonal to the logical value of the data. Clojure provides direct support for this <<xref/../../reference/metadata#,metadata>>. Symbols, and all of the collections, support a metadata map. It can be accessed with the http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/meta[meta] function. Metadata does _not_ impact equality semantics, nor will metadata be seen in operations on the value of a collection. Metadata can be read, and can be printed.
+[source,clojure]
+----
+(def v [1 2 3])
+(def attributed-v (with-meta v {:source :trusted}))
+(:source (meta attributed-v))
+-> :trusted
+(= v attributed-v)
+-> true
+----
+ 
+=== Extensible Abstractions 
+Clojure uses Java interfaces to define its core data structures. This allows for extensions of Clojure to new concrete implementations of these interfaces, and the library functions will work with these extensions. This is a big improvement vs. hardwiring a language to the concrete implementations of its data types.
+
+A good example of this is the <<xref/../../reference/sequences#,seq>> interface. By making the core Lisp list construct into an abstraction, a wealth of library functions are extended to any data structure that can provide a sequential interface to its contents. All of the Clojure data structures can provide seqs. Seqs can be used like iterators or generators in other languages, with the significant advantage that seqs are immutable and persistent. Seqs are extremely simple, providing a *_first_* function, which return the first item in the sequence, and a *_rest_* function which returns the rest of the sequence, which is itself either a seq or nil.
+[source,clojure]
+----
+(let [my-vector [1 2 3 4]
+      my-map {:fred "ethel" :ricky "lucy"}
+      my-list (list 4 3 2 1)]
+  [(first my-vector)
+   (rest my-vector)
+   (keys my-map)
+   (vals my-map)
+   (first my-list)
+   (rest my-list)])
+-> [1 (2 3 4) (:ricky :fred) ("lucy" "ethel") 4 (3 2 1)]
+----
+Many of the Clojure library functions produce and consume seqs _lazily_:
+[source,clojure]
+----
+;cycle produces an 'infinite' seq!
+(take 15 (cycle [1 2 3 4]))
+-> (1 2 3 4 1 2 3 4 1 2 3 4 1 2 3)
+----
+You can define your own lazy seq-producing functions using the http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/lazy-seq[lazy-seq] macro, which takes a body of expressions that will be called on demand to produce a list of 0 or more items. Here's a simplified http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/take[take]:
+[source,clojure]
+----
+(defn take [n coll]
+  (lazy-seq
+    (when (pos? n)
+      (when-let [s (seq coll)]
+       (cons (first s) (take (dec n) (rest s)))))))
+----
+=== Recursive Looping 
+In the absence of mutable local variables, looping and iteration must take a different form than in languages with built-in _for_ or _while_ constructs that are controlled by changing state. In functional languages looping and iteration are replaced/implemented via recursive function calls. Many such languages guarantee that function calls made in tail position do not consume stack space, and thus recursive loops utilize constant space. Since Clojure uses the Java calling conventions, it cannot, and does not, make the same tail call optimization guarantees. Instead, it provides the <<xref/../../reference/special_forms#recur,recur special operator>>, which does constant-space recursive looping by rebinding and jumping to the nearest enclosing loop or function frame. While not as general as tail-call-optimization, it allows most of the same elegant constructs, and offers the advantage of checking that calls to recur can only happen in a tail position.
+[source,clojure]
+----
+(defn my-zipmap [keys vals]
+  (loop [my-map {}
+         my-keys (seq keys)
+         my-vals (seq vals)]
+    (if (and my-keys my-vals)
+      (recur (assoc my-map (first my-keys) (first my-vals))
+             (next my-keys)
+             (next my-vals))
+      my-map)))
+(my-zipmap [:a :b :c] [1 2 3])
+-> {:b 2, :c 3, :a 1}
+----
+For situations where mutual recursion is called for, recur can't be used. Instead, http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/trampoline[trampoline] may be a good option.

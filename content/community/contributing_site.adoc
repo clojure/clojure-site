@@ -1,0 +1,123 @@
+= Contributing to This Site
+Alex Miller
+2015-10-15
+:jbake-type: page
+:toc: macro
+
+== Contributing to This Site
+
+This web site is an open-source repository of content about the Clojure programming language and its greater ecosystem, hosted at http://clojure.org.
+
+If you wish to point out an issue in the site or propose a new page, you can do so by filing a GitHub issue at https://github.com/clojure/clojure-site/issues. 
+
+If you wish to make a contribution (typo, modification, or new content), you must become a contributor and use the processes described below:
+
+* <<contributing_site#contributor,How To Become a Contributor>>
+* <<contributing_site#minor,Submitting Small Changes>>
+* <<contributing_site#major,Submitting Large Changes>>
+* <<contributing_site#build,Building and Previewing Changes>>
+* <<contributing_site#style,Style and Navigation Changes>>
+* <<contributing_site#review,How Contributions are Reviewed and Deployed>>
+
+
+[[contributor]]
+=== How To Become a Contributor
+
+Contributors must sign the Clojure Contributor Agreement prior to submitting changes. The https://secure.echosign.com/public/hostedForm?formid=95YMDL576B336E[Contributor Agreement] (CA) gives Rich Hickey and the contributor joint copyright interests: the contributor retains copyrights while also granting those rights to Rich Hickey as the open source project sponsor.
+
+The CA is derived from the Oracle Contributor Agreement (OCA), used for OpenJDK, Netbeans and OpenSolaris projects and others. There is a good http://www.oracle.com/technetwork/oca-faq-405384.pdf[OCA FAQ] answering many questions.
+
+By executing the CA, contributors protect the Clojure site content and protect the flexibility to adapt the project to the changing demands of the community. In order for the CA to be effective, the Clojure project must obtain an assignment for all contributions. Please review the CA for a complete understanding of its terms and conditions. By contributing source code or other material to Clojure, you represent that you have a CA with Rich Hickey for such contributions. In order to track contributors, you understand that your full name and username may be posted on a web page listing authorized contributors that is accessible via a public URL.
+
+To complete the agreement, fill out and submit the  https://secure.echosign.com/public/hostedForm?formid=95YMDL576B336E[Contributor Agreement] (an online e-form).
+
+Note that if you have already signed the Clojure Contributor Agreement to supply patches to the Clojure source code, you do not need to sign it again as it is the same agreement.
+
+[[minor]]
+=== Submitting Small Changes
+
+Small changes can be proposed directly in the GitHub web interface:
+
+. Go to the content repository https://github.com/clojure/clojure-site
+. Navigate to the page you wish to update under content/ - the url should match the file base name. For example, this file's content is at https://github.com/clojure/clojure-site/blob/master/content/community/contributing_site.adoc.
+. Click the edit (pencil) icon.
+. Content is written using the asciidoc format, which is similar to Markdown. The <<editing#,Editing>> page lists examples of the most common things you will encounter when editing content on this site. Make your changes in the text box. You can preview your changes using the "Preview changes" tab. GitHub understands asciidoc format and will provide a formatted preview of your changes.
+. Write a concise description of the change in the bottom section of the page then click "Propose file change". This will fork the original repository into your own version of the repository with the change applied.
+. You will then be shown a "Comparing changes" page - all of the information should be filled out automatically and a summary of your changes will be at the bottom - this is a good time to look them over one more time. Assuming it all looks correct, you can propose the change back to the original repository by clicking "Create pull request". You'll then be able to add a comment to the pull request itself then click "Create pull request".
+
+[[major]]
+=== Submitting Large Changes
+
+[IMPORTANT]
+====
+For any major changes, *please* open an https://github.com/clojure/clojure-site/issues[issue] first and discuss the change before spending time on it.
+====
+
+If you are going to create an entirely new page or make significant changes requiring multiple commits, you will likely find it easier to work using command line tools.
+
+To create a local environment for working on a bigger change:
+
+. Fork the content repository https://github.com/clojure/clojure-site - this will create a version of the site content under your own user id. 
+. `git clone` the forked repository in your local terminal and `cd clojure-site`. 
+. `git co -b <branchname>` - create a new branch to work on your change. You'll use this branch to submit a pull request.
+. Make one or more commits on this branch, modifying or adding one or more files. See the section below on how to build and preview changes locally. The <<editing#,Editing>> page lists examples of the most common things you will encounter when editing content on this site.
+. Use `git push` to push your changes to the branch.
+. Go to pass:[https://github.com/username/clojure-site/tree/branchname].
+. Click the green button to "Compare, review, and create a pull request" and proceed through the prompts to submit the pull request.
+
+[[build]]
+=== Building and Previewing Changes
+
+When working on bigger changes it's useful to build the site locally. The site is built using http://jbake.org/[JBake].
+
+To http://jbake.org/docs/2.4.0/#installation[install] JBake 2.5.0-SNAPSHOT:
+
+. `curl -O http://cdn.cognitect.com/clojure.org/jbake-2.5.0-SNAPSHOT-bin.zip` (or download this file with your browser)
+. `unzip -o jbake-2.5.0-SNAPSHOT-bin.zip`
+. Add jbake-2.5.0-SNAPSHOT/bin to your system PATH
+
+To build the site:
+
+Retrieve the content:
+
+. `git clone https://github.com/clojure/clojure-site.git` (or your own fork)
+. `cd clojure-site`
+
+Retrieve and install the current theme assets (these don't change very often so you don't need to do this every time):
+
+. `curl -O http://cdn.cognitect.com/clojure.org/clojuretheme.zip` (or download this file with your browser to the clojure-site directory)
+. `unzip -o clojuretheme.zip`
+
+Generate the pages:
+
+. `jbake` - this will create the static site in the output directory
+. To view the static files, open `output/index` in your browser
+. To view a live preview, run `jbake -s` and go to http://localhost:8820/index
+
+[[style]]
+=== Style and Navigation Changes
+
+We are not currently looking for changes in the overall site styling, navigation, or infrastructure. There is ongoing work in that area that will be visible in the near future.
+
+If you have an issue in these areas, please open an https://github.com/clojure/clojure-site/issues[issue] rather than a pull request.
+
+[[review]]
+=== How Contributions are Reviewed and Deployed
+
+After submitting a pull request, a contribution will be waiting for review. 
+
+For each pull request, one more of the reviewers will take action:
+
+* Mark the comment with the Reviewed label. This indicates the reviewer approves of the changes and requests that an Editor merges those changes.
+* Comment on the pull request suggesting additional changes. You may address these changes with further commits on your local branch.
+* Close the pull request with a comment indicating why the change is not appropriate.
+
+=== Thanks!
+
+Thanks for your contributions!
+
+=== Terms of Use
+
+Copyright © 2015 Rich Hickey and contributors
+
+All documentation contained in this repository is licensed by Rich Hickey under the http://www.eclipse.org/legal/epl-v10.html[Eclipse Public License v1.0] unless otherwise noted. 

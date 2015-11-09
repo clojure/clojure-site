@@ -1,0 +1,103 @@
+= Libs
+Rich Hickey
+2015-01-01
+:jbake-type: page
+:toc: macro
+
+== Using Libs 
+Clojure provides for code loading and dependency tracking via its "lib" facility. A lib is a named unit of Clojure source code contained in a Java resource within classpath. A lib will typically provide the complete set of definitions that make up one Clojure namespace.
+
+=== Lib Conventions 
+Clojure defines conventions for naming and structuring libs:
+
+* A lib name is a symbol that will typically contain two or more parts separated by periods.
+* A lib's container is a Java resource whose classpath-relative path is derived from the lib name:
+** The path is a string
+** Periods in the lib name are replaced by slashes in the path
+** Hyphens in the lib name are replaced by underscores in the path
+** The path ends with ".clj"
+* A lib begins with an "ns" form that
+** creates the Clojure namespace that shares its name, and
+** declares its dependencies on Java classes, Clojure's core facilities, and/or other libs,
+
+Clojure ensures that if the call to "ns" completes without throwing an exception, the declared dependencies have been satisfied and the capabilities they provide are available.
+
+=== Example Lib
+
+A simple lib with embedded explanations:
+
+[source,clojure]
+----
+(ns com.my-company.clojure.examples.my-utils
+  (:import java.util.Date)
+  (:use [clojure.contrib.def :only (defvar-)])
+  (:require [clojure.contrib.shell-out :as shell]))
+----
+
+* The `ns` form names the lib's namespace and declares its dependencies. Based on its name, this lib must be contained in a Java resource at the classpath-relative path: com/my_company/clojure/examples/my_utils.clj (note the translations from period to slash and hyphen to underscore).
+* The `:import` clause declares this lib's use of `java.util.Date` and makes it available to code in this lib using its unqualified name.
+* The `:use` clause declares a dependency on the `clojure.contrib.def` lib for its `defvar-` function only. +defvar-+ may be used in this lib's code using its unqualified name.
+* The `:require` clause declares a dependency on the `clojure.contrib.shell-out` lib and enables using its members using the shorter namespace alias `shell+.
++
+[source,clojure]
+----
+(defvar- greetings
+  {:english "Hello"
+   :german "Guten Tag"
+   :french "Bonjour"}
+  "Map from language to greeting")
+----
+* `defvar-` used without namespace qualification
++
+[source,clojure]
+----
+(defn- user-prop
+  "Returns the system property for user.<key>"
+  [key]
+  (System/getProperty (str "user." key)))
+
+(defn greeting
+  "Returns a greeting for the current user. The greeting is in English by
+  default, or optionally in another language: :german or :french"
+  ([]
+     (greeting :english))
+  ([language]
+     (str (greetings language) " " (user-prop "name"))))
+
+(defn user-files
+  "Returns a seq of the file names in the current user's home directory"
+  []
+  (seq (.split (shell/sh "ls" (user-prop "home")) "\n")))
+----
+* `sh` from `clojure.contrib.shell-out` used via the `shell` namespace alias
++
+[source,clojure]
+----
+(defn print-report
+  "Prints a report containing some info about the current user"
+  []
+  (println (greeting))
+  (println "These are some of your files as of" (str (Date.)))
+  (doseq [file (take 10 (user-files))]
+    (println file)))
+----
+
+=== Prefix Lists
+
+It's common for a lib to depend on several other libs whose full names share a common prefix. In calls to `require` and `use` (and in `:require` and `:use` clauses within an +ns+ form), the common prefix can be extracted and provided once using a prefix list. For example, these two forms are equivalent:
+
+[source,clojure]
+----
+(require 'clojure.contrib.def 'clojure.contrib.except 'clojure.contrib.sql)
+(require '(clojure.contrib def except sql))
+----
+
+''''
+
+=== Related functions 
+
+Creating a namespace: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ns[ns]
+
+Ensuring a lib is loaded: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/require[require] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/use[use]
+
+Listing loaded libs: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/loaded-libs[loaded-libs]

@@ -1,0 +1,23 @@
+= Lisp
+Rich Hickey
+2015-01-01
+:jbake-type: page
+:toc: macro
+
+== Clojure as a dialect of Lisp 
+
+Clojure is a member of the Lisp family of languages. Many of the features of Lisp have made it into other languages, but Lisp's approach to code-as-data and its <<xref/../../reference/macros#,macro system>> still set it apart. Clojure extends the code-as-data system beyond parenthesized lists (s-expressions) to vectors and maps. Thus vectors and maps can be used in macro syntax, have literal reader representations etc.
+
+Lisp data, and thus Lisp code, is read by the <<xref/../../reference/reader#,reader>>. The result of reading is the data structure represented by the forms. Clojure can compile data structures that represent code, and as part of that process it looks for calls to macros. When it sees one, it calls the macro, passing the forms themselves as arguments, then uses the return value of the macro in place of the macro itself. Thus macros are functions that are called at compile time to perform transformations of code. Since code is data, all of the Clojure library is available to assist in the transformation. Thus macros allow Lisps, and Clojure, to support syntactic abstraction. You use macros for the same reasons you use functions - to eliminate repetition in your code. Macros should be reserved for situations for which functions are insufficient, e.g. when you need to control evaluation, generate identifiers etc. Many of the core constructs of Clojure are not built-in primitives but macros just like users can define. Here's _**and**_:
+
+[source,clojure]
+----
+(defmacro and
+  ([] true)
+  ([x] x)
+  ([x & rest]
+    `(let [and# ~x]
+       (if and# (and ~@rest) and#))))
+
+----
+Note the use of syntax-quote (`), which makes it easy to define macros whose forms mimic the forms they generate.

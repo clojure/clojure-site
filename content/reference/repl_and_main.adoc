@@ -1,0 +1,147 @@
+= REPL and main
+Rich Hickey
+2015-01-01
+:jbake-type: page
+:toc: macro
+
+== The REPL and main entry points 
+
+=== The clojure.main namespace 
+The `clojure.main` namespace provides functions that allow Clojure programs and interactive sessions to be launched via Java's application launcher tool `java`.
+
+=== clojure.main --help 
+
+The `clojure.main/main` entry point accepts a variety of arguments and flags as described in its usage message:
+
+[source,clojure]
+----
+Usage: java -cp clojure.jar clojure.main [init-opt*] [main-opt] [arg*]
+
+With no options or args, runs an interactive Read-Eval-Print Loop
+
+init options:
+-i, --init path Load a file or resource
+-e, --eval string Evaluate expressions in string; print non-nil values
+
+main options:
+-r, --repl Run a repl
+path Run a script from from a file or resource
+- Run a script from standard input
+-m, --main A namespace to find a -main function for execution
+-h, -?, --help Print this help message and exit
+
+operation:
+
+- Establishes thread-local bindings for commonly set!-able vars
+- Enters the user namespace
+- Binds *command-line-args* to a seq of strings containing command line
+args that appear after any main option
+- Runs all init options in order
+- Runs a repl or script if requested
+
+The init options may be repeated and mixed freely, but must appear before
+any main option. The appearance of any eval option before running a repl
+suppresses the usual repl greeting message: "Clojure ~(clojure-version)".
+
+Paths may be absolute or relative in the filesystem or relative to
+classpath. Classpath-relative paths have prefix of @ or @/
+----
+
+=== Launching a REPL 
+
+The simplest way to launch a Clojure _repl_ is to use the following command line from within Clojure's home directory:
+
+[source,clojure]
+----
+java -cp clojure.jar clojure.main
+----
+
+The REPL prompt shows the name of the current namespace (pass:[*ns*]), which defaults to _user_. 
+
+Several special vars are available when using the REPL:
+
+* *1, *2, *3 - hold the result of the last three expressions that were evaluated
+* *e - holds the result of the last exception.
+
+The http://clojure.github.io/clojure/clojure.repl-api.html[clojure.repl] namespace has a number of useful functions for inspecting the source and documentation of available functions:
+
+* http://clojure.github.io/clojure/clojure.repl-api.html#clojure.repl/doc[doc] - prints the docstring for a var given its name
+* http://clojure.github.io/clojure/clojure.repl-api.html#clojure.repl/find-doc[find-doc] - prints the docstring for any var whose doc or name matches the pattern
+* http://clojure.github.io/clojure/clojure.repl-api.html#clojure.repl/apropos[apropos] - returns a seq of definitions matching a regex
+* http://clojure.github.io/clojure/clojure.repl-api.html#clojure.repl/source[source] - prints the source for a symbol
+* http://clojure.github.io/clojure/clojure.repl-api.html#clojure.repl/pst[pst] - **p**rint **s**tack **t**race for a given exception or *e by default
+
+=== Launching a Script 
+
+To run a file full of Clojure code as a script, pass the path to the script to `clojure.main` as an argument:
+
+[source,clojure]
+----
+java -cp clojure.jar clojure.main /path/to/myscript.clj
+----
+
+=== Passing arguments to a Script 
+
+To pass in arguments to a script, pass them in as further arguments when launching `clojure.main`:
+
+[source,clojure]
+----
+java -cp clojure.jar clojure.main /path/to/myscript.clj arg1 arg2 arg3
+----
+
+The arguments will be provided to your program as a seq of strings bound to the var `pass:[*command-line-args*]`:
+
+[source,clojure]
+----
+*command-line-args* => ("arg1" "arg2" "arg3")
+----
+
+=== Launching a Socket Server
+
+_**This feature was added in 1.8.0-alpha5 as a work in progress and feedback is appreciated!**_
+
+The Clojure runtime now has the ability to start a socket server at initialization based on system properties. One expected use for this is serving a socket-based REPL, but it also has many other potential uses for dynamically adding server capability to existing programs without code changes.
+
+A socket server will be started for each JVM system property like "clojure.server.<server-name>". The value for this property is an edn map representing the configuration of the socket server with the following properties:
+
+* `server-daemon` - defaults to true, socket server thread doesn't block exit
+* `address` - host or address, defaults to loopback
+* `port` - positive integer, required
+* `accept` - namespaced symbol of function to invoke on socket accept, required
+* `args` - sequential collection of args to pass to accept
+* `bind-err` - defaults to true, binds `pass:[*err*]` to socket out stream
+* `client-daemon` - defaults to true, socket client thread doesn't block exit
+
+Additionally, there is a repl function provided that is slightly customized for use with the socket server in http://clojure.github.io/clojure/clojure.repl-api.html#clojure.core.server/repl[clojure.core.server/repl].
+
+Following is an example of starting a socket server with a repl listener. This can be added to any existing Clojure program to allow it to accept external REPL clients via a local connection to port 5555.
+
+[source,clojure]
+----
+-Dclojure.server.repl="{:port 5555 :accept clojure.core.server/repl}"
+----
+
+An example client you can use to connect to this socket repl is telnet:
+
+[source,clojure]
+----
+$ telnet 127.0.0.1 5555
+Trying 127.0.0.1...
+Connected to localhost.
+Escape character is '^]'.
+user=> (println "hello")
+hello
+----
+
+Also see:
+
+* http://dev.clojure.org/jira/browse/CLJ-1671[CLJ-1671]
+* http://dev.clojure.org/display/design/Socket+Server+REPL[Socket REPL design page]
+
+=== Related functions 
+
+Main Entry Point: `http://clojure.github.io/clojure/clojure.main-api.html#clojure.main/main[clojure.main/main]`
+
+Reusable REPL: `http://clojure.github.io/clojure/clojure.main-api.html#clojure.main/repl[clojure.main/repl]`
+
+Allowing set! for the customary REPL vars: `http://clojure.github.io/clojure/clojure.main-api.html#clojure.main/with-bindings[clojure.main/with-bindings]`

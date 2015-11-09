@@ -1,0 +1,169 @@
+= Multimethods
+Rich Hickey
+2015-01-01
+:jbake-type: page
+:toc: macro
+
+== Multimethods and Hierarchies 
+
+Clojure eschews the traditional object-oriented approach of creating a new data type for each new situation, instead preferring to build a large library of functions on a small set of types. However, Clojure fully recognizes the value of runtime polymorphism in enabling flexible and extensible system architecture. Clojure supports sophisticated runtime polymorphism through a multimethod system that supports dispatching on types, values, attributes and metadata of, and relationships between, one or more arguments.
+
+A Clojure multimethod is a combination of a _dispatching_ _function_, and one or more _methods_. When a multimethod is defined, using _**defmulti**_, a dispatching function must be supplied. This function will be applied to the arguments to the multimethod in order to produce a _dispatching value_. The multimethod will then try to find the method associated with the dispatching value or a value from which the dispatching value is derived. If one has been defined (via http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defmethod[defmethod]), it will then be called with the arguments and that will be the value of the multimethod call. If no method is associated with the dispatching value, the multimethod will look for a method associated with the default dispatching value (which defaults to _**:default**_), and will use that if present. Otherwise the call is an error.
+
+The multimethod system exposes this API: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defmulti[defmulti] creates new multimethods, http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defmethod[defmethod] creates and installs a new method of multimethod associated with a dispatch-value, http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/remove-method[remove-method] removes the method associated with a dispatch-value and http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/prefer-method[prefer-method] creates an ordering between methods when they would otherwise be ambiguous.
+
+Derivation is determined by a combination of either Java inheritance (for class values), or using Clojure's ad hoc hierarchy system. The hierarchy system supports derivation relationships between names (either symbols or keywords), and relationships between classes and names. The http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/derive[derive] function create these relationships, and the http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/isa?[isa?] function tests for their existence. Note that http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/isa?[isa?] is not http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/instance?[instance?].
+
+You can define hierarchical relationships with +(derive child parent)+. Child and parent can be either symbols or keywords, and must be namespace-qualified:
+
+_Note the pass:[::] reader syntax, ::keywords resolve namespaces._
+
+[source,clojure]
+----
+::rect
+-> :user/rect
+----
+http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/derive[derive] is the fundamental relationship-maker
+[source,clojure]
+----
+(derive ::rect ::shape)
+(derive ::square ::rect)
+----
+http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/parents[parents] / http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ancestors[ancestors] / http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/descendants[descendants] and http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/isa%3F[isa?] let you query the hierarchy
+
+[source,clojure]
+----
+(parents ::rect)
+-> #{:user/shape}
+
+(ancestors ::square)
+-> #{:user/rect :user/shape}
+
+(descendants ::shape)
+-> #{:user/rect :user/square}
+----
+
+`(= x y)` implies `(isa? x y)`
+
+[source,clojure]
+----
+(isa? 42 42)
+-> true
+----
+
+`isa?` uses the hierarchy system
+
+[source,clojure]
+----
+(isa? ::square ::shape)
+-> true
+----
+
+You can also use a class as the child (but not the parent, the only way to make something the child of a class is via Java inheritance).
+
+This allows you to superimpose new taxonomies on the existing Java class hierarchy:
+
+[source,clojure]
+----
+(derive java.util.Map ::collection)
+(derive java.util.Collection ::collection)
+
+(isa? java.util.HashMap ::collection)
+-> true
+----
+
+http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/isa%3F[isa?] also tests for class relationships:
+
+[source,clojure]
+----
+(isa? String Object)
+-> true
+----
+
+http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/isa%3F[isa?] works with vectors by calling http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/isa%3F[isa?] on their corresponding elements:
+
+[source,clojure]
+----
+(isa? [::square ::rect] [::shape ::shape])
+-> true
+----
+
+as do http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/parents[parents] / http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ancestors[ancestors] (but not http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/descendants[descendants], since class descendants are an open set)
+
+[source,clojure]
+----
+(ancestors java.util.ArrayList)
+-> #{java.lang.Cloneable java.lang.Object java.util.List
+    java.util.Collection java.io.Serializable
+    java.util.AbstractCollection
+    java.util.RandomAccess java.util.AbstractList}
+----
+
+== isa? based dispatch 
+
+Multimethods use http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/isa%3F[isa?] rather than = when testing for dispatch value matches. Note that the first test of http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/isa%3F[isa?] is =, so exact matches work.
+
+[source,clojure]
+----
+(defmulti foo class)
+(defmethod foo ::collection [c] :a-collection)
+(defmethod foo String [s] :a-string)
+
+(foo [])
+:a-collection
+
+(foo (java.util.HashMap.))
+:a-collection
+
+(foo "bar")
+:a-string
+----
+
+http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/prefer-method[prefer-method] is used for disambiguating in case of multiple matches where neither dominates the other. You can just declare, per multimethod, that one dispatch value is preferred over another:
+
+[source,clojure]
+----
+(derive ::rect ::shape)
+
+(defmulti bar (fn [x y] [x y]))
+(defmethod bar [::rect ::shape] [x y] :rect-shape)
+(defmethod bar [::shape ::rect] [x y] :shape-rect)
+
+(bar ::rect ::rect)
+-> java.lang.IllegalArgumentException:
+   Multiple methods match dispatch value:
+   [:user/rect :user/rect] -> [:user/rect :user/shape]
+   and [:user/shape :user/rect],
+   and neither is preferred
+
+(prefer-method bar [::rect ::shape] [::shape ::rect])
+(bar ::rect ::rect)
+-> :rect-shape
+----
+
+All of the examples above use the global hierarchy used by the multimethod system, but entire independent hierarchies can also be created with http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/make-hierarchy[make-hierarchy], and all of the above functions can take an optional hierarchy as a first argument.
+
+This simple system is extremely powerful. One way to understand the relationship between Clojure multimethods and traditional Java-style single dispatch is that single dispatch is like a Clojure multimethod whose dispatch function calls getClass on the first argument, and whose methods are associated with those classes. Clojure multimethods are not hard-wired to class/type, they can be based on any attribute of the arguments, on multiple arguments, can do validation of arguments and route to error-handling methods etc.
+
+
+_Note: In this example, the keyword :Shape is being used as the dispatch function, as keywords are functions of maps, as described in the <<data_structures#,Data Structures>> section._
+
+[source,clojure]
+----
+(defmulti area :Shape)
+(defn rect [wd ht] {:Shape :Rect :wd wd :ht ht})
+(defn circle [radius] {:Shape :Circle :radius radius})
+(defmethod area :Rect [r]
+    (* (:wd r) (:ht r)))
+(defmethod area :Circle [c]
+    (* (. Math PI) (* (:radius c) (:radius c))))
+(defmethod area :default [x] :oops)
+(def r (rect 4 13))
+(def c (circle 12))
+(area r)
+-> 52
+(area c)
+-> 452.3893421169302
+(area {})
+-> :oops
+----

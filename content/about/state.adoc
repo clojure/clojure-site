@@ -4,6 +4,8 @@ Rich Hickey
 :jbake-type: page
 :toc: macro
 
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
 == Values and Change - Clojure's approach to Identity and State. 
 
 Many people come to Clojure from an imperative language and find themselves out of their element when faced with Clojure's approach to doing things, while others are coming from a more functional background and assume that once they leave Clojure's functional subset, they will be faced with the same story re: state as is found in Java. This essay intends to illuminate Clojure's approach to the problems faced by imperative and functional programs in modeling the world.

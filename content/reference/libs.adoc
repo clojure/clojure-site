@@ -4,6 +4,8 @@ Rich Hickey
 :jbake-type: page
 :toc: macro
 
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
 == Using Libs 
 Clojure provides for code loading and dependency tracking via its "lib" facility. A lib is a named unit of Clojure source code contained in a Java resource within classpath. A lib will typically provide the complete set of definitions that make up one Clojure namespace.
 

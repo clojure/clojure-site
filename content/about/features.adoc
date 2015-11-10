@@ -4,6 +4,8 @@ Rich Hickey
 :jbake-type: page
 :toc: macro
 
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
 == Features
 
 Clojure has a set of useful features that together form a simple, coherent, and powerful tool. In Clojure you'll find ideas from Lisp, ML, Haskell, and others, but the end result is unique. This section is a brief, non-comprehensive tour of some of the features of Clojure. Consult the http://clojure.org/documentation[reference] for more details.

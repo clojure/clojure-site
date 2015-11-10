@@ -4,6 +4,8 @@ Rich Hickey
 :jbake-type: page
 :toc: macro
 
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
 == Differences with other Lisps 
 
 This information is provided for programmers familiar with Common Lisp or Scheme.

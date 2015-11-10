@@ -4,6 +4,8 @@ Rich Hickey
 :jbake-type: page
 :toc: macro
 
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
 == Ahead-of-time Compilation and Class Generation
 
 This documentation is preliminary - please send feedback on the Google Group - thanks!

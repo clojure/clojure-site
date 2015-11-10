@@ -4,6 +4,8 @@ Alex Miller
 :jbake-type: page
 :toc: macro
 
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
 == Contributing to This Site
 
 This web site is an open-source repository of content about the Clojure programming language and its greater ecosystem, hosted at http://clojure.org.

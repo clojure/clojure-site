@@ -4,6 +4,8 @@ Rich Hickey
 :jbake-type: page
 :toc: macro
 
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
 == Reducers 
 
 Reducers provide an alternative approach to using <<sequences#,sequences>> to manipulate standard Clojure collections. Sequence functions are typically applied lazily, in order, create intermediate results, and in a single thread. However, many sequence functions (like map and filter) could conceptually be applied in parallel, yielding code that will get faster automatically as machines get more cores. For more details on the rationale for reducers, see the original http://clojure.com/blog/2012/05/08/reducers-a-library-and-model-for-collection-processing.html[blog] http://clojure.com/blog/2012/05/15/anatomy-of-reducer.html[posts].

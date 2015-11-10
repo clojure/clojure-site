@@ -4,6 +4,8 @@ Rich Hickey
 :jbake-type: page
 :toc: macro
 
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
 == Clojure as a dialect of Lisp 
 
 Clojure is a member of the Lisp family of languages. Many of the features of Lisp have made it into other languages, but Lisp's approach to code-as-data and its <<xref/../../reference/macros#,macro system>> still set it apart. Clojure extends the code-as-data system beyond parenthesized lists (s-expressions) to vectors and maps. Thus vectors and maps can be used in macro syntax, have literal reader representations etc.

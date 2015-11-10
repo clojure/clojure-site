@@ -4,6 +4,8 @@ Rich Hickey
 :jbake-type: page
 :toc: macro
 
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
 == Privacy Policy 
 
 This website is administered by Cognitect, Inc. and our Privacy Policy explains how we collect and use the personal information you provide to us and to assist you in making informed decisions when using our site and services. By visiting the site, you expressly consent to the use and disclosure of your information as described below. We will neither sell personal or anonymous data to any third party, nor distribute personal data to a third party for any reason other than as may be required by law.

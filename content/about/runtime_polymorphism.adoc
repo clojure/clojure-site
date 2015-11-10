@@ -4,6 +4,8 @@ Rich Hickey
 :jbake-type: page
 :toc: macro
 
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
 == Runtime Polymorphism 
 
 Systems that utilize runtime polymorphism are easier to change and extend. Clojure supports polymorphism in several ways:

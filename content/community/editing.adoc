@@ -4,6 +4,8 @@ Alex Miller
 :jbake-type: page
 :toc: macro
 
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
 This page covers helpful Asciidoc editing tips for writing content on this site. It does not cover every feature of Asciidoc, just the ones that have come up most commonly while writing content on this site.
 
 == File metadata

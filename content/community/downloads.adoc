@@ -4,6 +4,8 @@ Rich Hickey
 :jbake-type: page
 :toc: macro
 
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
 == Clojure Downloads 
 
 == Stable Release: 1.7.0 (June 30, 2015) 

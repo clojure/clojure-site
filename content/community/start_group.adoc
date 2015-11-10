@@ -4,6 +4,8 @@ Alex Miller
 :jbake-type: page
 :toc: macro
 
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
 == Tips on Starting a Clojure User Group 
 
 

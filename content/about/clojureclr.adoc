@@ -4,6 +4,8 @@ Rich Hickey
 :jbake-type: page
 :toc: macro
 
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
 == ClojureCLR 
 
 This project is a native implementation of Clojure on the Common Language Runtime (CLR), the execution engine of Microsoft's .Net Framework.

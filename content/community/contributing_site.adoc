@@ -67,6 +67,14 @@ To create a local environment for working on a bigger change:
 . Go to pass:[https://github.com/username/clojure-site/tree/branchname].
 . Click the green button to "Compare, review, and create a pull request" and proceed through the prompts to submit the pull request.
 
+To actively contribute to the site, it's important to keep your own fork up-to-date with this repository. To do that:
+
+. Add this repository to your remote urls: 
+`git remote add upstream https://github.com/clojure/clojure-site.git`
+. Before every contribution, fetch the content of upstream: `git fetch upstream`; move to your master branch: `git checkout master` (in case you aren't already there); and merge it with upstream master branch: `git merge upstream/master`.
+
+After that, your local master branch is up-to-date and you can proceed with your contributions as explained above.
+
 [[build]]
 === Building and Previewing Changes
 

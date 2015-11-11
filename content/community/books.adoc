@@ -4,3 +4,10 @@ Rich Hickey
 :jbake-type: page
 :toc: macro
 
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+== Clojure Books
+
+. https://www.nostarch.com/clojure[Clojure for the Brave and True] - Learn the Ultimate Language and Become a Better Programmer, by Daniel Higginbotham.
+. http://shop.oreilly.com/product/0636920034292.do[Living Clojure] - An Introduction and Training Plan for Developers, by Carin Meier.
+. https://pragprog.com/book/vmclojeco/clojure-applied[Applied Clojure] - From Practice to Practitioner, By Alex Miller & Ben Vandgrift. 

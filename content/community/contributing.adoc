@@ -24,7 +24,10 @@ Before you invest time working on a change, discuss what you're trying to do wit
 
 Please see the http://dev.clojure.org/display/community/Contributing[Contributing] wiki for a collection of resources on tickets, builds, patches, source, and more. If you'd like to submit a patch, please follow these guidelines on the http://dev.clojure.org/display/community/JIRA+workflow[preferred process for submitting].
 
-include::contributors.adoc[]
+[[contributors]]
+== Contributors
+
+See the full <<contributors#,list of contributors>> that have signed the Clojure Contributor Agreement.
 
 [[patches]]
 == Contributed patches to Clojure:

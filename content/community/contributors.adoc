@@ -1,3 +1,13 @@
+= Contributors
+Rich Hickey
+2015-11-12
+:jbake-type: page
+:toc: macro
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Below is a list of all signers of the Clojure Contributor Agreement. For more info, see <<contributing#,how to contribute>>.
+
 == _Signed Contributor Agreement:_
 
 [format="csv", options="header"]

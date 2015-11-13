@@ -61,7 +61,7 @@ To create a local environment for working on a bigger change:
 
 . Fork the content repository https://github.com/clojure/clojure-site - this will create a version of the site content under your own user id. 
 . `git clone` the forked repository in your local terminal and `cd clojure-site`. 
-. `git co -b <branchname>` - create a new branch to work on your change. You'll use this branch to submit a pull request.
+. `git checkout -b <branchname>` - create a new branch to work on your change. You'll use this branch to submit a pull request.
 . Make one or more commits on this branch, modifying or adding one or more files. See the section below on how to build and preview changes locally. The <<editing#,Editing>> page lists examples of the most common things you will encounter when editing content on this site.
 . Use `git push` to push your changes to the branch.
 . Go to pass:[https://github.com/username/clojure-site/tree/branchname].
@@ -69,11 +69,12 @@ To create a local environment for working on a bigger change:
 
 To actively contribute to the site, it's important to keep your own fork up-to-date with this repository. To do that:
 
-. Add this repository to your remote urls: 
-`git remote add upstream https://github.com/clojure/clojure-site.git`
-. Before every contribution, fetch the content of upstream: `git fetch upstream`; move to your master branch: `git checkout master` (in case you aren't already there); and merge it with upstream master branch: `git merge upstream/master`.
-
-After that, your local master branch is up-to-date and you can proceed with your contributions as explained above.
+. Add this repository to your remote urls: `git remote add upstream https://github.com/clojure/clojure-site.git`.
+. Before every contribution:
+   - fetch the content of upstream: `git fetch upstream` ;
+   - move to your master branch: `git checkout master` (in case you aren't already there); 
+   - clean your master branch of any unplanned modifications by reseting the HEAD to the fetched branch: `git reset --hard upstream/master`; and
+   - create a new branch as explained above: `git checkout -b <branchname>`
 
 [[build]]
 === Building and Previewing Changes

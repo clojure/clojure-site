@@ -73,7 +73,7 @@ To actively contribute to the site, it's important to keep your own fork up-to-d
 . Before every contribution:
    - fetch the content of upstream: `git fetch upstream` ;
    - move to your master branch: `git checkout master` (in case you aren't already there); 
-   - clean your master branch of any umplanned modifications by reseting the HEAD to the fetched branch: `git reset --hard upstream/master`; and
+   - clean your master branch of any unplanned modifications by reseting the HEAD to the fetched branch: `git reset --hard upstream/master`; and
    - create a new branch as explained above: `git checkout -b <branchname>`
 
 [[build]]

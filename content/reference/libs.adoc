@@ -1,15 +1,18 @@
 = Libs
 Rich Hickey
 2015-01-01
-:jbake-type: page
+:type: reference
 :toc: macro
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-== Using Libs 
+toc::[]
+
+== Using Libs
+
 Clojure provides for code loading and dependency tracking via its "lib" facility. A lib is a named unit of Clojure source code contained in a Java resource within classpath. A lib will typically provide the complete set of definitions that make up one Clojure namespace.
 
-=== Lib Conventions 
+=== Lib Conventions
 Clojure defines conventions for naming and structuring libs:
 
 * A lib name is a symbol that will typically contain two or more parts separated by periods.
@@ -96,7 +99,7 @@ It's common for a lib to depend on several other libs whose full names share a c
 
 ''''
 
-=== Related functions 
+=== Related functions
 
 Creating a namespace: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ns[ns]
 

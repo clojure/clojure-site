@@ -1,14 +1,14 @@
 = Reader
 Rich Hickey
 2015-01-01
-:jbake-type: page
+:type: reference
 :toc: macro
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 toc::[]
 
-== The Reader 
+== The Reader
 
 Clojure is a http://en.wikipedia.org/wiki/Homoiconicity[homoiconic] language, which is a fancy term describing the fact that Clojure programs are represented by Clojure data structures. This is a very important difference between Clojure (and Common Lisp) and most other programming languages - Clojure is defined in terms of the evaluation of data structures and *not* in terms of the syntax of character streams/files. It is quite common, and easy, for Clojure programs to manipulate, transform and produce other Clojure programs.
 
@@ -18,12 +18,12 @@ One might say the reader has syntax defined in terms of characters, and the Cloj
 
 Since we have to start somewhere, this reference starts where evaluation starts, with the reader forms. This will inevitably entail talking about data structures whose descriptive details, and interpretation by the compiler, will follow.
 
-=== Reader forms 
+=== Reader forms
 
 * Symbols
-** Symbols begin with a non-numeric character and can contain alphanumeric characters and *, +, !, -, _, ', and ? (other characters may be allowed eventually). 
-** '/' has special meaning, it can be used once in the middle of a symbol to separate the <<namespaces#,namespace>> from the name, e.g. `my-namespace/foo`. '/' by itself names the division function. 
-** '.' has special meaning - it can be used one or more times in the middle of a symbol to designate a fully-qualified class name, e.g. `java.util.BitSet`, or in namespace names. Symbols beginning or ending with '.' are reserved by Clojure. Symbols containing / or . are said to be 'qualified'. 
+** Symbols begin with a non-numeric character and can contain alphanumeric characters and *, +, !, -, _, ', and ? (other characters may be allowed eventually).
+** '/' has special meaning, it can be used once in the middle of a symbol to separate the <<namespaces#,namespace>> from the name, e.g. `my-namespace/foo`. '/' by itself names the division function.
+** '.' has special meaning - it can be used one or more times in the middle of a symbol to designate a fully-qualified class name, e.g. `java.util.BitSet`, or in namespace names. Symbols beginning or ending with '.' are reserved by Clojure. Symbols containing / or . are said to be 'qualified'.
 ** Symbols beginning or ending with ':' are reserved by Clojure. A symbol can contain one or more non-repeating ':'s.
 * Literals
 ** Strings - Enclosed in "double quotes". May span multiple lines. Standard Java escape characters are supported.
@@ -129,10 +129,10 @@ For example: +
 +
 The read table is currently not accessible to user programs.
 
-=== extensible data notation (edn) 
+=== extensible data notation (edn)
 Clojure's reader supports a superset of https://github.com/edn-format/edn[extensible data notation (edn)]. The edn specification is under active development, and complements this document by defining a subset of Clojure data syntax in a language-neutral way.
 
-=== Tagged Literals 
+=== Tagged Literals
 Tagged literals are Clojure's implementation of edn https://github.com/edn-format/edn#tagged-elements[tagged elements].
 
 When Clojure starts, it searches for files named `data_readers.clj` at the root of the classpath. Each such file must contain a Clojure map of symbols, like this:
@@ -151,7 +151,7 @@ by invoking the Var `#'my.project.foo/bar` on the vector `[1 2 3]`. The data rea
 Reader tags without namespace qualifiers are reserved for Clojure. Default reader tags are defined in http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/default-data-readers[default-data-readers] but may be overridden in `data_readers.clj` or by rebinding http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/%2Adata-readers%2A[pass:[*data-readers*]]. If no data reader is found for a tag, the function bound in http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/%2Adefault-data-reader-fn%2A[pass:[*default-data-reader-fn*]] will be invoked with the tag and value to produce a value. If pass:[*default-data-reader-fn*] is nil (the default), a RuntimeException will be thrown.
 
 === Reader Conditionals
- 
+
 Clojure 1.7 introduced a new extension (.cljc) for portable files that can be loaded by multiple Clojure platforms. The primary mechanism for managing platform-specific code is to isolate that code into a minimal set of namespaces, and then provide platform-specific versions (.clj/.class or .cljs) of those namespaces.
 
 In cases where is not feasible to isolate the varying parts of the code, or where the code is mostly portable with only small platform-specific parts, 1.7 also introduced _reader conditionals_, which are supported only in cljc files and at the default REPL. Reader conditionals should be used sparingly and only when necessary.
@@ -190,9 +190,9 @@ An example of how to test ClojureScript reader conditionals from Clojure:
 
 [source,clojure]
 ----
-(read-string 
-  {:read-cond :allow 
-   :features #{:cljs}} 
+(read-string
+  {:read-cond :allow
+   :features #{:cljs}}
   "#?(:cljs :works! :default :boo)")
 ;; :works!
 ----
@@ -203,8 +203,8 @@ If the reader is invoked with `{:read-cond :preserve}`, the reader conditional a
 
 [source,clojure]
 ----
-(read-string 
-  {:read-cond :preserve} 
+(read-string
+  {:read-cond :preserve}
   "[1 2 #?@(:clj [3 4] :cljs [5 6])]")
 ;; [1 2 #?@(:clj [3 4] :cljs [5 6])]
 ----

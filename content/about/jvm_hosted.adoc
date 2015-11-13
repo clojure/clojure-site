@@ -1,12 +1,12 @@
 = JVM Hosted
 Rich Hickey
 2015-01-01
-:jbake-type: page
+:type: about
 :toc: macro
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-== Hosted on the JVM 
+== Hosted on the JVM
 
 Clojure is designed to be a hosted language, sharing the JVM type system, GC, threads etc. It compiles all functions to JVM bytecode. Clojure is a great Java library consumer, offering the dot-target-member notation for calls to Java. Class names can be referenced in full, or as non-qualified names after being imported. Clojure supports the dynamic implementation of Java interfaces and classes using http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/reify[reify] and http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/proxy[proxy]:
 

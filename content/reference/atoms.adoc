@@ -1,12 +1,12 @@
 = Atoms
 Rich Hickey
 2015-01-01
-:jbake-type: page
+:type: reference
 :toc: macro
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-== Atoms 
+== Atoms
 
 Atoms provide a way to manage shared, synchronous, independent state. They are a reference type like refs and vars. You create an atom with http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/atom[atom], and can access its state with http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/deref[deref/@]. Like refs and agents, atoms support validators. To change the value of an atom, you can use http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/swap![swap!]. A lower-level http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/compare-and-set![compare-and-set!] is also provided. Changes to atoms are always free of race conditions.
 

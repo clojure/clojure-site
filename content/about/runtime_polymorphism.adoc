@@ -1,17 +1,17 @@
 = Runtime Polymorphism
 Rich Hickey
 2015-01-01
-:jbake-type: page
+:type: about
 :toc: macro
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-== Runtime Polymorphism 
+== Runtime Polymorphism
 
 Systems that utilize runtime polymorphism are easier to change and extend. Clojure supports polymorphism in several ways:
 
-* Most core infrastructure data structures in the Clojure runtime are defined by Java interfaces. 
-* Clojure supports the generation of implementations of Java interfaces in Clojure using http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/proxy[proxy] (<<jvm_hosted#,see JVM Hosted>>). 
+* Most core infrastructure data structures in the Clojure runtime are defined by Java interfaces.
+* Clojure supports the generation of implementations of Java interfaces in Clojure using http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/proxy[proxy] (<<jvm_hosted#,see JVM Hosted>>).
 * The Clojure language supports polymorphism along both class and custom hierarchies with <<xref/../../reference/multimethods#,multimethod>>s.
 * The Clojure language also supports a faster form of polymorphism with <<xref/../../reference/protocols#,protocols>> (but limited only to class polymorphism to take advantage of the JVMs existing capabilities for invocation).
 

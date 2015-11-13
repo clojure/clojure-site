@@ -1,18 +1,18 @@
 = functional_programming
 Rich Hickey
 2015-01-01
-:jbake-type: page
+:type: about
 :toc: macro
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 toc::[]
 
-== Functional Programming 
+== Functional Programming
 
 Clojure is a functional programming language. It provides the tools to avoid mutable state, provides functions as first-class objects, and emphasizes recursive iteration instead of side-effect based looping. Clojure is _impure_, in that it doesn't force your program to be referentially transparent, and doesn't strive for 'provable' programs. The philosophy behind Clojure is that most parts of most programs should be functional, and that programs that are more functional are more robust.
- 
-=== First-class functions 
+
+=== First-class functions
 <<xref/../../reference/special_forms#fn#,fn>> creates a function object. It yields a value like any other - you can store it in a var, pass it to functions etc.
 [source,clojure]
 ----
@@ -54,7 +54,7 @@ You can create local names for values inside a function using http://clojure.git
 *Locals created with http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/let[let] are not variables. Once created their values never change!*
 
 
-=== Immutable Data Structures 
+=== Immutable Data Structures
 The easiest way to avoid mutating state is to use immutable <<xref/../../reference/data_structures#,data structures>>. Clojure provides a set of immutable lists, vectors, sets and maps. Since they can't be changed, 'adding' or 'removing' something from an immutable collection means creating a new collection just like the old one but with the needed change. _Persistence_ is a term used to describe the property wherein the old version of the collection is still available after the 'change', and that the collection maintains its performance guarantees for most operations. Specifically, this means that the new version can't be created using a full copy, since that would require linear time. Inevitably, persistent collections are implemented using linked data structures, so that the new versions can share structure with the prior version. Singly-linked lists and trees are the basic functional data structures, to which Clojure adds a hash map, set and vector both based upon array mapped hash tries. The collections have readable representations and common interfaces:
 [source,clojure]
 ----
@@ -81,8 +81,8 @@ Applications often need to associate attributes and other data about data that i
 (= v attributed-v)
 -> true
 ----
- 
-=== Extensible Abstractions 
+
+=== Extensible Abstractions
 Clojure uses Java interfaces to define its core data structures. This allows for extensions of Clojure to new concrete implementations of these interfaces, and the library functions will work with these extensions. This is a big improvement vs. hardwiring a language to the concrete implementations of its data types.
 
 A good example of this is the <<xref/../../reference/sequences#,seq>> interface. By making the core Lisp list construct into an abstraction, a wealth of library functions are extended to any data structure that can provide a sequential interface to its contents. All of the Clojure data structures can provide seqs. Seqs can be used like iterators or generators in other languages, with the significant advantage that seqs are immutable and persistent. Seqs are extremely simple, providing a *_first_* function, which return the first item in the sequence, and a *_rest_* function which returns the rest of the sequence, which is itself either a seq or nil.
@@ -115,7 +115,7 @@ You can define your own lazy seq-producing functions using the http://clojure.gi
       (when-let [s (seq coll)]
        (cons (first s) (take (dec n) (rest s)))))))
 ----
-=== Recursive Looping 
+=== Recursive Looping
 In the absence of mutable local variables, looping and iteration must take a different form than in languages with built-in _for_ or _while_ constructs that are controlled by changing state. In functional languages looping and iteration are replaced/implemented via recursive function calls. Many such languages guarantee that function calls made in tail position do not consume stack space, and thus recursive loops utilize constant space. Since Clojure uses the Java calling conventions, it cannot, and does not, make the same tail call optimization guarantees. Instead, it provides the <<xref/../../reference/special_forms#recur,recur special operator>>, which does constant-space recursive looping by rebinding and jumping to the nearest enclosing loop or function frame. While not as general as tail-call-optimization, it allows most of the same elegant constructs, and offers the advantage of checking that calls to recur can only happen in a tail position.
 [source,clojure]
 ----

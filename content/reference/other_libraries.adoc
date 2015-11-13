@@ -1,17 +1,16 @@
 = Other Libraries
 Rich Hickey
 2015-01-01
-:jbake-type: page
+:type: reference
 :toc: macro
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-== Other included Libraries
-
 toc::[]
 
+== Other included Libraries
 
-== Java Utilities (clojure.java.*) 
+== Java Utilities (clojure.java.*)
 
 **http://clojure.github.io/clojure/clojure.java.io-api.html[clojure.java.io]**
 Contains polymorphic I/O utility functions for Clojure backed by Java classes.
@@ -24,7 +23,7 @@ Provides the function http://clojure.github.io/clojure/clojure.java.javadoc-api.
 
 Provides a http://clojure.github.io/clojure/clojure.java.shell-api.html#clojure.java.shell/sh[sh] function that facilitates launching and managing subprocesses. See the function documentation for details on its expected arguments.
 
-== Parallel Processing (DEPRECATED) 
+== Parallel Processing (DEPRECATED)
 
 The parallel library (namespace _**parallel**_, in parallel.clj) wraps the http://gee.cs.oswego.edu/dl/concurrency-interest/index.html[ForkJoin library]. This lib is now deprecated.
 
@@ -50,35 +49,35 @@ f
 -> [[1 5] [4 6] [7 11] [0 12] [9 13] [6 15] [11 17] [14 18] [7 19]]
 ----
 
-== Reflection Utilities (http://clojure.github.io/clojure/clojure.reflect-api.html[clojure.reflect]) 
+== Reflection Utilities (http://clojure.github.io/clojure/clojure.reflect-api.html[clojure.reflect])
 
 Provides functions and protocols useful for gathering and building host type reflection information as Clojure data.
 
-== REPL Utilities (http://clojure.github.io/clojure/clojure.repl-api.html[clojure.repl]) 
+== REPL Utilities (http://clojure.github.io/clojure/clojure.repl-api.html[clojure.repl])
 
 Utilities meant to be used interactively at the REPL.
 
-== Sets and Relational Algebra (http://clojure.github.io/clojure/clojure.set-api.html[clojure.set]) 
+== Sets and Relational Algebra (http://clojure.github.io/clojure/clojure.set-api.html[clojure.set])
 
 Functions useful for manipulating, building, and querying mathematical sets using relational algebra.
 
-== String Handling (http://clojure.github.io/clojure/clojure.string-api.html[clojure.string]) 
+== String Handling (http://clojure.github.io/clojure/clojure.string-api.html[clojure.string])
 
 Functions for manipulating strings.
 
-== Unit Testing (http://clojure.github.io/clojure/clojure.test-api.html[clojure.test]) 
+== Unit Testing (http://clojure.github.io/clojure/clojure.test-api.html[clojure.test])
 
 A Clojure unit testing framework.
 
-== Walking Data Structures (http://clojure.github.io/clojure/clojure.walk-api.html[clojure.walk]) 
+== Walking Data Structures (http://clojure.github.io/clojure/clojure.walk-api.html[clojure.walk])
 
 Utilities for traversing and manipulating nested data structures.
 
-== XML (http://clojure.github.io/clojure/clojure.xml-api.html[clojure.xml]) 
+== XML (http://clojure.github.io/clojure/clojure.xml-api.html[clojure.xml])
 
 Utilities for reading and writing XML data.
 
-== Zippers - Functional Tree Editing (http://clojure.github.io/clojure/clojure.zip-api.html[clojure.zip]) 
+== Zippers - Functional Tree Editing (http://clojure.github.io/clojure/clojure.zip-api.html[clojure.zip])
 
 Clojure includes purely functional, generic tree walking and editing, using a technique called a zipper (in namespace _**zip**_) . For background, see the http://www.google.com/search?q=huet%20functional%20zipper[paper by Huet]. A zipper is a data structure representing a location in a hierarchical data structure, and the path it took to get there. It provides down/up/left/right navigation, and localized functional 'editing', insertion and removal of nodes. With zippers you can write code that looks like an imperative, destructive walk through a tree, call http://clojure.github.io/clojure/clojure.zip-api.html#clojure.zip/root[root] when you are done and get a new tree reflecting all the changes, when in fact nothing at all is mutated - it's all thread safe and shareable. The http://clojure.github.io/clojure/clojure.zip-api.html#clojure.zip/next[next] function does a depth-first walk, making for easy to understand loops:
 

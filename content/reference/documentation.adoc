@@ -1,18 +1,20 @@
 = Documentation
 Rich Hickey
 2015-01-01
-:jbake-type: page
+:type: reference
 :toc: macro
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-== API 
+toc::[]
+
+== API
 * http://clojure.github.io/clojure[Clojure API Documentation]
 * <<cheatsheet#,Clojure Cheat Sheet>>
 * http://clojure.github.io/clojure/javadoc[Clojure Javadoc API Documentation]
 * http://clojure.github.io[Contrib Library API Documentation]
 
-== Reference Documentation 
+== Reference Documentation
 
 
 * <<reader#,The Reader>>
@@ -41,7 +43,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 * <<other_libraries#,Other Libraries>>
 * <<lisps#,Differences with Lisps>>
 
-== Community-Maintained Documentation 
+== Community-Maintained Documentation
 
 
 * http://dev.clojure.org/display/doc/FAQ[FAQ] - frequently-asked questions wiki
@@ -50,7 +52,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 * http://grimoire.arrdem.com/[Grimoire] - API documentation and community-provided examples
 * http://clojure-doc.org[clojure-doc.org] - community-written articles and documentation
 
-== Learning 
+== Learning
 
 * <<xref/../../getting_started#,Getting Started>>
 * http://www.youtube.com/user/ClojureTV[Videos]

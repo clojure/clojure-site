@@ -1,17 +1,19 @@
 = REPL and main
 Rich Hickey
 2015-01-01
-:jbake-type: page
+:type: reference
 :toc: macro
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-== The REPL and main entry points 
+toc::[]
 
-=== The clojure.main namespace 
+== The REPL and main entry points
+
+=== The clojure.main namespace
 The `clojure.main` namespace provides functions that allow Clojure programs and interactive sessions to be launched via Java's application launcher tool `java`.
 
-=== clojure.main --help 
+=== clojure.main --help
 
 The `clojure.main/main` entry point accepts a variety of arguments and flags as described in its usage message:
 
@@ -49,7 +51,7 @@ Paths may be absolute or relative in the filesystem or relative to
 classpath. Classpath-relative paths have prefix of @ or @/
 ----
 
-=== Launching a REPL 
+=== Launching a REPL
 
 The simplest way to launch a Clojure _repl_ is to use the following command line from within Clojure's home directory:
 
@@ -58,7 +60,7 @@ The simplest way to launch a Clojure _repl_ is to use the following command line
 java -cp clojure.jar clojure.main
 ----
 
-The REPL prompt shows the name of the current namespace (pass:[*ns*]), which defaults to _user_. 
+The REPL prompt shows the name of the current namespace (pass:[*ns*]), which defaults to _user_.
 
 Several special vars are available when using the REPL:
 
@@ -73,7 +75,7 @@ The http://clojure.github.io/clojure/clojure.repl-api.html[clojure.repl] namespa
 * http://clojure.github.io/clojure/clojure.repl-api.html#clojure.repl/source[source] - prints the source for a symbol
 * http://clojure.github.io/clojure/clojure.repl-api.html#clojure.repl/pst[pst] - **p**rint **s**tack **t**race for a given exception or *e by default
 
-=== Launching a Script 
+=== Launching a Script
 
 To run a file full of Clojure code as a script, pass the path to the script to `clojure.main` as an argument:
 
@@ -82,7 +84,7 @@ To run a file full of Clojure code as a script, pass the path to the script to `
 java -cp clojure.jar clojure.main /path/to/myscript.clj
 ----
 
-=== Passing arguments to a Script 
+=== Passing arguments to a Script
 
 To pass in arguments to a script, pass them in as further arguments when launching `clojure.main`:
 
@@ -140,7 +142,7 @@ Also see:
 * http://dev.clojure.org/jira/browse/CLJ-1671[CLJ-1671]
 * http://dev.clojure.org/display/design/Socket+Server+REPL[Socket REPL design page]
 
-=== Related functions 
+=== Related functions
 
 Main Entry Point: `http://clojure.github.io/clojure/clojure.main-api.html#clojure.main/main[clojure.main/main]`
 

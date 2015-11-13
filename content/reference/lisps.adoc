@@ -1,12 +1,14 @@
 = Lisps
 Rich Hickey
 2015-01-01
-:jbake-type: page
+:type: reference
 :toc: macro
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-== Differences with other Lisps 
+toc::[]
+
+== Differences with other Lisps
 
 This information is provided for programmers familiar with Common Lisp or Scheme.
 
@@ -41,7 +43,7 @@ This information is provided for programmers familiar with Common Lisp or Scheme
 * Some of the sequence functions correspond to functions from Scheme and CL that there manipulated only pairs/conses ('lists') and returned sentinel values ('() and nil) that represented 'empty' lists. The Clojure return values differ in not returning specific empty collections, but rather another logical sequence. Some of the sequence functions have no counterpart in Scheme/CL, and map to Haskell/ML-like functions. Some of those functions return infinite or calculated sequences, where the analogy to concrete data-structures like Scheme/CL lists is tenuous at best.
 * It helps to distinguish collections/data-structures and seqs/iteration. In both CL and Scheme they are conflated, in Clojure they are separate.
 
-[cols="<*,", options="header"]
+[cols="<*,", options="header", role="table"]
 |===
 |   | Clojure | Common Lisp | Scheme | Java |
 | Has nil? | nil - means 'nothing' | nil - means false or empty list | - | null |

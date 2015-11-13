@@ -1,14 +1,14 @@
 = Namespaces
 Rich Hickey
 2015-01-01
-:jbake-type: page
+:type: reference
 :toc: macro
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 toc::[]
 
-== Namespaces 
+== Namespaces
 
 Namespaces are mappings from simple (unqualified) symbols to Vars and/or Classes. Vars can be interned in a namespace, using _**def**_ or any of its variants, in which case they have a simple symbol for a name and a reference to their containing namespace, and the namespace maps that symbol to the same var. A namespace can also contain mappings from symbols to vars interned in other namespaces by using http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/refer[refer] or http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/use[use], or from symbols to Class objects by using http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/import[import]. Note that namespaces are first-class, they can be enumerated etc. Namespaces are also dynamic, they can be created, removed and modified at runtime, at the Repl etc.
 
@@ -18,7 +18,7 @@ At the Repl it's best to use http://clojure.github.io/clojure/clojure.core-api.h
 
 The current namespace, _pass:[*ns*]_ can and should be set only with a call to http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/in-ns[in-ns] or the http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ns[ns macro], both of which create the namespace if it doesn't exist.
 
-=== Related functions 
+=== Related functions
 
 [%hardbreaks]
 Creating and switching to a namespace: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/in-ns[in-ns] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ns[ns] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/create-ns[create-ns]

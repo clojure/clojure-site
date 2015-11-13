@@ -1,7 +1,7 @@
 = ClojureScript
 Rich Hickey
 2015-01-01
-:jbake-type: page
+:type: about
 :toc: macro
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]

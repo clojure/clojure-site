@@ -1,14 +1,14 @@
 = Agents
 Rich Hickey
 2015-01-01
-:jbake-type: page
+:type: reference
 :toc: macro
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 toc::[]
 
-== Agents and Asynchronous Actions 
+== Agents and Asynchronous Actions
 
 Like Refs, Agents provide shared access to mutable state. Where <<refs#,Refs>> support _coordinated_, _synchronous_ change of _multiple_ locations, Agents provide _independent_, _asynchronous_ change of _individual_ locations. Agents are bound to a single storage location for their lifetime, and only allow mutation of that location (to a new state) to occur as a result of an action. Actions are functions (with, optionally, additional arguments) that are asynchronously applied to an Agent's state and whose return value becomes the Agent's new state. Because actions are functions they can also be multimethods and therefore actions are potentially polymorphic. Also, because the set of functions is open, the set of actions supported by an Agent is also open, a sharp contrast to pattern matching message handling loops provided by some other languages.
 
@@ -32,7 +32,7 @@ As with all of Clojure's concurrency support, no user-code locking is involved.
 
 Note that use of Agents starts a pool of non-daemon background threads that will prevent shutdown of the JVM. Use http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/shutdown-agents[shutdown-agents] to terminate these threads and allow shutdown.
 
-=== Example 
+=== Example
 This example is an implementation of the send-a-message-around-a-ring test. A chain of n agents is created, then a sequence of m actions are dispatched to the head of the chain and relayed through it.
 [source,clojure]
 ----
@@ -55,7 +55,7 @@ This example is an implementation of the send-a-message-around-a-ring test. A ch
 (time (run 1000 1000))
 ->"Elapsed time: 2959.254 msecs"
 ----
-=== Related functions 
+=== Related functions
 
 Create an Agent: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/agent[agent]
 

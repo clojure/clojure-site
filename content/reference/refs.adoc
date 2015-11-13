@@ -1,14 +1,14 @@
 = Refs
 Rich Hickey
 2015-01-01
-:jbake-type: page
+:type: reference
 :toc: macro
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 toc::[]
 
-== Refs and Transactions 
+== Refs and Transactions
 
 While <<vars#,Vars>> ensure safe use of mutable storage locations via thread _isolation_, transactional references (Refs) ensure safe _shared_ use of mutable storage locations via a http://en.wikipedia.org/wiki/Software_transactional_memory[software transactional memory] (STM) system. Refs are bound to a single storage location for their lifetime, and only allow mutation of that location to occur within a transaction.
 
@@ -29,7 +29,7 @@ In practice, this means:
 . The Clojure MVCC STM is designed to work with the persistent collections, and it is strongly recommended that you use the Clojure collections as the values of your Refs. Since all work done in an STM transaction is speculative, it is imperative that there be a low cost to making copies and modifications. Persistent collections have free copies (just use the original, it can't be changed), and 'modifications' share structure efficiently. In any case:
 . The values placed in Refs _must be, or be considered, immutable_!! Otherwise, Clojure can't help you.
 
-=== Example 
+=== Example
 In this example a vector of references to vectors is created, each containing (initially sequential) unique numbers. Then a set of threads are started that repeatedly select two random positions in two random vectors and swap them, in a transaction. No special effort is made to prevent the inevitable conflicts other than the use of transactions.
 [source,clojure]
 ----
@@ -67,7 +67,7 @@ Distinct: 1000
 Distinct: 1000
 ----
 
-=== Related functions 
+=== Related functions
 
 Create a Ref: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ref[ref]
 

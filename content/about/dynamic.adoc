@@ -1,16 +1,18 @@
 = Dynamic
 Rich Hickey
 2015-01-01
-:jbake-type: page
+:type: about
 :toc: macro
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-== Dynamic Development 
+toc::[]
+
+== Dynamic Development
 
 First and foremost, Clojure is dynamic. That means that a Clojure program is not just something you compile and run, but something with which you can interact. Clojure is not a language abstraction, but an environment, where almost all of the language constructs are reified, and thus can be examined and changed. This leads to a substantially different experience from running a program, examining its results (or failures) and trying again. In particular, you can grow your program, with data loaded, adding features, fixing bugs, testing, in an unbroken stream.
 
-=== The REPL 
+=== The REPL
 While Clojure can be embedded in a Java application, or used as a scripting language, the primary programming interface is the Read-Eval-Print-Loop (REPL). This is a simple console interface that allows you to enter and execute commands, and examine their results. You can start the Clojure REPL like this, and then follow along trying the samples in this feature tour:
 [source,clojure]
 ----
@@ -31,8 +33,8 @@ Most Clojure commands take the form (command arguments*). Try it:
 (+ x y)
 -> 42
 ----
- 
-=== Basics 
+
+=== Basics
 Clojure has arbitrary precision integers, strings, ratios, doubles, characters, symbols, keywords.
 [source,clojure]
 ----
@@ -52,6 +54,6 @@ Clojure has arbitrary precision integers, strings, ratios, doubles, characters, 
 -> :keyword
 ;a comment
 ----
- 
-=== Dynamic Compilation 
+
+=== Dynamic Compilation
 Clojure is a compiled language, so one might wonder when you have to run the compiler. You don't. Anything you enter into the REPL or load using load-file is automatically compiled to JVM bytecode on the fly. Compiling ahead-of-time is also possible, but not required.

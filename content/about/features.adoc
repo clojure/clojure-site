@@ -1,7 +1,7 @@
 = Features
 Rich Hickey
 2015-01-01
-:jbake-type: page
+:type: about
 :toc: macro
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
@@ -13,6 +13,6 @@ Clojure has a set of useful features that together form a simple, coherent, and 
 * <<dynamic#,Dynamic Development>>
 * <<functional_programming#,Functional Programming>>
 * <<lisp#,Lisp>>
-* <<runtime_polymorphism#,Runtime Polymorphism>> 
+* <<runtime_polymorphism#,Runtime Polymorphism>>
 * <<concurrent_programming#,Concurrent Programming>>
 * <<jvm_hosted#,Hosted on the JVM>>

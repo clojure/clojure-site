@@ -1,7 +1,7 @@
 = Vars
 Rich Hickey
 2015-01-01
-:jbake-type: page
+:type: reference
 :toc: macro
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
@@ -66,7 +66,7 @@ Note - _you cannot assign to function params or local bindings. Only Java fields
 Using <<java_interop#set,set>> for Java fields is documented in <<java_interop#set,Java Interop>>.
 
 [[Interning]]
-=== Interning 
+=== Interning
 The Namespace system maintains global maps of symbols to Var objects _(see <<namespaces#,Namespaces>>)_. If a _**def**_ expression does not find an interned entry in the current namespace for the symbol being def-ed, it creates one, otherwise it uses the existing Var. This find-or-create process is called interning. This means that, unless they have been unmap-ed, Var objects are stable references and need not be looked up every time. It also means that namespaces constitute a global environment in which, as described in <<evaluation#,Evaluation>>, the compiler attempts to resolve all free symbols as Vars.
 
 The <<special_forms#var,var>> special form or the `pass:[#']` reader macro _(see <<reader#,Reader>>)_ can be used to get an interned Var object instead of its current value.
@@ -77,7 +77,7 @@ The <<special_forms#var,var>> special form or the `pass:[#']` reader macro _(see
 It is possible to create vars that are not interned by using http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/with-local-vars[with-local-vars]. These vars will not be found during free symbol resolution, and their values have to be accessed manually. But they can serve as useful thread-local mutable cells.
 
 [[related]]
-=== Related functions 
+=== Related functions
 
 [%hardbreaks]
 Variants of _**def**_: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defn[defn] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defn-[defn-] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/definline[definline] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defmacro[defmacro] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defmethod[defmethod] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defmulti[defmulti] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defonce[defonce] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defstruct[defstruct]

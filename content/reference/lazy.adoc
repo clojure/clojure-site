@@ -1,14 +1,13 @@
-= Lazy
+= Making Clojure Lazier
 Rich Hickey
 2015-01-01
 :type: reference
 :toc: macro
+:navlinktext: Lazy
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 toc::[]
-
-== Making Clojure Lazier
 
 _(Note: this section describes work in prerelease, available in the SVN trunk since rev 1287)_
 

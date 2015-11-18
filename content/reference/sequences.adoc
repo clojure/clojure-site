@@ -3,12 +3,14 @@ Rich Hickey
 2015-01-01
 :type: reference
 :toc: macro
+:prevpagehref: datatypes
+:prevpagetitle: Datatypes
+:nextpagehref: transients
+:nextpagetitle: Transients
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 toc::[]
-
-== Sequences
 
 Clojure defines many algorithms in terms of sequences (seqs). A seq is a logical list, and unlike most Lisps where the list is represented by a concrete, 2-slot structure, Clojure uses the ISeq interface to allow many data structures to provide access to their elements as sequences. The http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/seq[seq] function yields an implementation of ISeq appropriate to the collection. Seqs differ from iterators in that they are persistent and immutable, not stateful cursors into a collection. As such, they are useful for much more than foreach - functions can consume and produce seqs, they are thread safe, they can share structure etc.
 

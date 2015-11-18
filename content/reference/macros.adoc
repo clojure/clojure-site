@@ -3,12 +3,14 @@ Rich Hickey
 2015-01-01
 :type: reference
 :toc: macro
+:prevpagehref: special_forms
+:prevpagetitle: Special Forms
+:nextpagehref: other_functions
+:nextpagetitle: Other Functions
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 toc::[]
-
-== Macros
 
 Clojure has a programmatic macro system which allows the compiler to be extended by user code. Macros can be used to define syntactic constructs which would require primitives or built-in support in other languages. Many core constructs of Clojure are not, in fact, primitives, but are normal macros.
 
@@ -30,7 +32,7 @@ user=> (macroexpand '(-> {} (assoc :a 1) (assoc :b 2)))
 (assoc (clojure.core/-> {} (assoc :a 1)) :b 2)
 ----
 
-=== Special variables
+== Special variables
 
 Two special variables are available inside defmacro for more advanced usages:
 

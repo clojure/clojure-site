@@ -3,12 +3,14 @@ Rich Hickey
 2015-01-01
 :type: reference
 :toc: macro
+:prevpagehref: protocols
+:prevpagetitle: Protocols
+:nextpagehref: namespaces
+:nextpagetitle: Namespaces
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 toc::[]
-
-== Metadata
 
 Symbols and collections support metadata, a map of data _about_ the symbol or collection. The metadata system allows for arbitrary annotation of data. It is used to convey information to the compiler about types, but can also be used by application developers for many purposes, annotating data sources, policy etc.
 
@@ -18,13 +20,13 @@ That said, metadata and its relationship to an object is immutable - an object w
 
 ''''
 
-=== (_meta_ obj)
+== (_meta_ obj)
 
 Returns the metadata of obj, returns nil if there is no metadata.
 
 ''''
 
-=== (_with-meta_ obj map)
+== (_with-meta_ obj map)
 Returns an object of the same type and value as obj, with map as its metadata.
 
 == Metadata Reader Macros

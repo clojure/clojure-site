@@ -5,12 +5,14 @@ Rich Hickey
 :toc: macro
 :toclevels: 1
 :icons: font
+:prevpagehref: other_functions
+:prevpagetitle: Other Functions
+:nextpagehref: datatypes
+:nextpagetitle: Datatypes
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 toc::[]
-
-= Data Structures
 
 Clojure has a rich set of data structures. They share a set of properties:
 

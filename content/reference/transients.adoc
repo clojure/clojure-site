@@ -1,14 +1,17 @@
-= Transients
+= Transient Data Structures
 Rich Hickey
 2015-01-01
 :type: reference
 :toc: macro
+:navlinktext: Transients
+:prevpagehref: sequences
+:prevpagetitle: Sequences
+:nextpagehref: transducers
+:nextpagetitle: Transducers
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 toc::[]
-
-== Transient Data Structures
 
 == Rationale
 

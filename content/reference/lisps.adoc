@@ -1,14 +1,15 @@
-= Lisps
+= Differences with other Lisps
 Rich Hickey
 2015-01-01
 :type: reference
 :toc: macro
+:navlinktext: Differences with Lisps
+:prevpagehref: other_libraries
+:prevpagetitle: Other Libraries
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 toc::[]
-
-== Differences with other Lisps
 
 This information is provided for programmers familiar with Common Lisp or Scheme.
 

@@ -3,14 +3,15 @@ Rich Hickey
 2015-01-01
 :type: about
 :toc: macro
+:prevpagehref: clojurescript
+:prevpagetitle: ClojureScript
+
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-
-== ClojureCLR
 
 This project is a native implementation of Clojure on the Common Language Runtime (CLR), the execution engine of Microsoft's .Net Framework.
 
 ClojureCLR is programmed in C# (and Clojure itself) and makes use of Microsoft's Dynamic Language Runtime (DLR).
 
-=== https://github.com/clojure/clojure-clr[ClojureCLR Home]
-=== https://github.com/clojure/clojure-clr/wiki/Getting-binaries[Downloading Binaries]
+== https://github.com/clojure/clojure-clr[ClojureCLR Home]
+== https://github.com/clojure/clojure-clr/wiki/Getting-binaries[Downloading Binaries]

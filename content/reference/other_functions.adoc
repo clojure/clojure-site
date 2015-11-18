@@ -1,14 +1,17 @@
-= Other Functions
+= Other Useful Functions and Macros
 Rich Hickey
 2015-01-01
 :type: reference
 :toc: macro
+:navlinktext: Other Functions
+:prevpagehref: macros
+:prevpagetitle: Macros
+:nextpagehref: data_structures
+:nextpagetitle: Data Structures
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 toc::[]
-
-== Other Useful Functions and Macros
 
 [%hardbreaks]
 Boolean and comparison functions: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/=[=] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/==[==] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/identical?[identical?] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/not=[not=] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/not[not] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/true?[true?] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/false?[false?] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/nil?[nil?]

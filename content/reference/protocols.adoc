@@ -3,16 +3,16 @@ Rich Hickey
 2015-01-01
 :type: reference
 :toc: macro
+:prevpagehref: multimethods
+:prevpagetitle: Multimethods and Hierarchies
+:nextpagehref: metadata
+:nextpagetitle: Metadata
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 toc::[]
 
-== Protocols
-
-Protocols were introduced in Clojure 1.2.
-
-=== Motivation
+== Motivation
 
 Clojure is written in terms of abstractions. There are abstractions for sequences, collections, callability, etc. In addition, Clojure supplies many implementations of these abstractions. The abstractions are specified by host interfaces, and the implementations by host classes. While this was sufficient for bootstrapping the language, it left Clojure without similar abstraction and low-level implementation facilities. The <<protocols#,protocols>> and <<datatypes#,datatypes>> features add powerful and flexible mechanisms for abstraction and data structure definition with no compromises vs the facilities of the host platform.
 
@@ -29,7 +29,10 @@ There are several motivations for protocols:
 ** do so without wrappers/adapters
 * Support the 90% case of multimethods (single dispatch on type) while providing higher-level abstraction/organization
 
-=== Basics
+[NOTE]
+Protocols were introduced in Clojure 1.2.
+
+== Basics
 
 A protocol is a named set of named methods and their signatures, defined using http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defprotocol[defprotocol]:
 

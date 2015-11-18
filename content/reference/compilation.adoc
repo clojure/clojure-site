@@ -1,14 +1,17 @@
-= Compilation
+= Ahead-of-time Compilation and Class Generation
 Rich Hickey
 2015-01-01
 :type: reference
 :toc: macro
+:navlinktext: Compilation and Class Generation
+:prevpagehref: java_interop
+:prevpagetitle: Java Interop
+:nextpagehref: other_libraries
+:nextpagetitle: Other Libraries
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 toc::[]
-
-== Ahead-of-time Compilation and Class Generation
 
 This documentation is preliminary - please send feedback on the Google Group - thanks!
 

@@ -1,14 +1,14 @@
-= Reader
+= The Reader
 Rich Hickey
 2015-01-01
 :type: reference
 :toc: macro
+:nextpagehref: repl_and_main
+:nextpagetitle: REPL and main
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 toc::[]
-
-== The Reader
 
 Clojure is a http://en.wikipedia.org/wiki/Homoiconicity[homoiconic] language, which is a fancy term describing the fact that Clojure programs are represented by Clojure data structures. This is a very important difference between Clojure (and Common Lisp) and most other programming languages - Clojure is defined in terms of the evaluation of data structures and *not* in terms of the syntax of character streams/files. It is quite common, and easy, for Clojure programs to manipulate, transform and produce other Clojure programs.
 
@@ -18,7 +18,7 @@ One might say the reader has syntax defined in terms of characters, and the Cloj
 
 Since we have to start somewhere, this reference starts where evaluation starts, with the reader forms. This will inevitably entail talking about data structures whose descriptive details, and interpretation by the compiler, will follow.
 
-=== Reader forms
+== Reader forms
 
 * Symbols
 ** Symbols begin with a non-numeric character and can contain alphanumeric characters and *, +, !, -, _, ', and ? (other characters may be allowed eventually).
@@ -61,7 +61,7 @@ The elements in the vector part are passed *unevaluated* to the relevant constru
 The keyed values in the map are assigned *unevaluated* to the relevant fields in the defrecord. Any defrecord fields without corresponding entries in the literal map are assigned nil as their value. Any extra keyed values in the map literal are added to the resulting defrecord instance.
 
 [[macrochars]]
-=== Macro characters
+== Macro characters
 
 The behavior of the reader is driven by a combination of built-in constructs and an extension system called the read table. Entries in the read table provide mappings from certain characters, called macro characters, to specific reading behavior, called reader macros. Unless indicated otherwise, macro characters cannot be used in user symbols.
 

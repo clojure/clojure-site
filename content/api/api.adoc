@@ -9,6 +9,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 == Clojure API
 
 * http://clojure.github.io/clojure/[Clojure API]
+* http://clojure.github.io/clojure/javadoc/[Clojure Java API] - for calling from Java into Clojure
 * <<cheatsheet#,Clojure Cheatsheet>>
 
 == ClojureScript API

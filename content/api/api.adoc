@@ -1,0 +1,70 @@
+= api
+Rich Hickey
+2015-01-01
+:jbake-type: page
+:toc: macro
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+== Clojure API
+
+* http://clojure.github.io/clojure/[Clojure API]
+* <<cheatsheet#,Clojure Cheatsheet>>
+
+== ClojureScript API
+
+* http://cljs.info/[ClojureScript API]
+
+== Clojure Contrib Libraries
+
+* http://clojure.github.io/algo.generic/[algo.generic]
+* http://clojure.github.io/algo.graph/[algo.graph]
+* http://clojure.github.io/algo.monads/[algo.monads]
+* http://clojure.github.io/core.async/[core.async]
+* http://clojure.github.io/core.cache/[core.cache]
+* http://clojure.github.io/core.contracts/[core.contracts]
+* http://clojure.github.io/core.incubator/[core.incubator]
+* http://clojure.github.io/core.logic/[core.logic]
+* http://clojure.github.io/core.match/[core.match]
+* http://clojure.github.io/core.memoize/[core.memoize]
+* http://clojure.github.io/core.rrb-vector/[core.rrb-vector]
+* http://clojure.github.io/core.typed/[core.typed]
+* http://clojure.github.io/core.unify/[core.unify]
+* http://clojure.github.io/data.avl/[data.avl]
+* http://clojure.github.io/data.codec/[data.codec]
+* http://clojure.github.io/data.csv/[data.csv]
+* http://clojure.github.io/data.finger-tree/[data.finger-tree]
+* http://clojure.github.io/data.fressian/[data.fressian]
+* http://clojure.github.io/data.generators/[data.generators]
+* http://clojure.github.io/data.json/[data.json]
+* http://clojure.github.io/data.priority-map/[data.priority-map]
+* http://clojure.github.io/data.xml/[data.xml]
+* http://clojure.github.io/data.zip/[data.zip]
+* http://clojure.github.io/java.classpath/[java.classpath]
+* http://clojure.github.io/java.data/[java.data]
+* http://clojure.github.io/java.jdbc/[java.jdbc]
+* http://clojure.github.io/java.jmx/[java.jmx]
+* http://clojure.github.io/math.combinatorics/[math.combinatorics]
+* http://clojure.github.io/math.numeric-tower/[math.numeric-tower]
+* http://clojure.github.io/test.generative/[test.generative]
+* http://clojure.github.io/tools.analyzer/[tools.analyzer]
+* http://clojure.github.io/tools.analyzer.js/[tools.analyzer.js]
+* http://clojure.github.io/tools.analyzer.jvm/[tools.analyzer.jvm]
+* http://clojure.github.io/tools.cli/[tools.cli]
+* http://clojure.github.io/tools.emitter.jvm/[tools.emitter.jvm]
+* http://clojure.github.io/tools.logging/[tools.logging]
+* http://clojure.github.io/tools.macro/[tools.macro]
+* http://clojure.github.io/tools.namespace/[tools.namespace]
+* http://clojure.github.io/tools.nrepl/[tools.nrepl]
+* http://clojure.github.io/tools.reader/[tools.reader]
+* http://clojure.github.io/tools.trace/[tools.trace]
+
+== Other resources
+
+* http://grimoire.arrdem.com/[Grimoire] - community combined cheatsheet + examples
+* http://clojuredocs.org[ClojureDocs] - community provided example repository
+* http://crossclj.info/[CrossClj] - library cross-reference
+
+== Deprecated (pre Clojure 1.3)
+
+* http://clojure.github.io/clojure-contrib/[Clojure Contrib API] 

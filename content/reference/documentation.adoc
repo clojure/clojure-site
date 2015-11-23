@@ -6,12 +6,6 @@ Rich Hickey
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-== API 
-* http://clojure.github.io/clojure[Clojure API Documentation]
-* <<cheatsheet#,Clojure Cheat Sheet>>
-* http://clojure.github.io/clojure/javadoc[Clojure Javadoc API Documentation]
-* http://clojure.github.io[Contrib Library API Documentation]
-
 == Reference Documentation 
 
 
@@ -41,16 +35,6 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 * <<other_libraries#,Other Libraries>>
 * <<lisps#,Differences with Lisps>>
 
-== Community-Maintained Documentation 
+== API Documentation
 
-
-* http://dev.clojure.org/display/doc/FAQ[FAQ] - frequently-asked questions wiki
-* http://dev.clojure.org/display/doc/Home[Documentation Wiki] - documentation wiki
-* http://clojuredocs.org/[ClojureDocs] - API documentation and community-provided examples
-* http://grimoire.arrdem.com/[Grimoire] - API documentation and community-provided examples
-* http://clojure-doc.org[clojure-doc.org] - community-written articles and documentation
-
-== Learning 
-
-* <<xref/../../getting_started#,Getting Started>>
-* http://www.youtube.com/user/ClojureTV[Videos]
+* <<xref/../../api/api#,Clojure API documentation>>

@@ -21,137 +21,150 @@ Since we have to start somewhere, this reference starts where evaluation starts,
 
 == Reader forms
 
-* Symbols
-** Symbols begin with a non-numeric character and can contain alphanumeric characters and *, +, !, -, _, ', and ? (other characters may be allowed eventually).
-** '/' has special meaning, it can be used once in the middle of a symbol to separate the <<namespaces#,namespace>> from the name, e.g. `my-namespace/foo`. '/' by itself names the division function.
-** '.' has special meaning - it can be used one or more times in the middle of a symbol to designate a fully-qualified class name, e.g. `java.util.BitSet`, or in namespace names. Symbols beginning or ending with '.' are reserved by Clojure. Symbols containing / or . are said to be 'qualified'.
-** Symbols beginning or ending with ':' are reserved by Clojure. A symbol can contain one or more non-repeating ':'s.
-* Literals
-** Strings - Enclosed in "double quotes". May span multiple lines. Standard Java escape characters are supported.
-** Numbers - generally represented as per Java
-*** Integers can be indefinitely long and will be read as Longs when in range and clojure.lang.BigInts otherwise. Integers with an N suffix are always read as BigInts. When possible, they can be specified in any base with radix from 2 to 36 (see http://docs.oracle.com/javase/7/docs/api/java/lang/Long.html#parseLong(java.lang.String,%20int)[Long.parseLong()]); for example 2r101010, 8r52, 36r16, and 42 are all the same Long.
-*** Floating point numbers are read as Doubles; with M suffix they are read as BigDecimals.
-*** Ratios are supported, e.g. 22/7.
-** Characters - preceded by a backslash: \c. \newline, \space, \tab, \formfeed, \backspace, and \return yield the corresponding characters. Unicode characters are represented with \uNNNN as in Java. Octals are represented with \oNNN.
-** nil Means 'nothing/no-value'- represents Java null and tests logical false
-** Booleans - true and false
-** Keywords - Keywords are like symbols, except:
-*** They can and must begin with a colon, e.g. :fred.
-*** They cannot contain '.' or name classes.
-*** A keyword that begins with two colons is resolved in the current namespace:
-**** In the user namespace, `::rect` is read as `:user/rect`
-* Lists
-+
+=== Symbols
+
+* Symbols begin with a non-numeric character and can contain alphanumeric characters and *, +, !, -, _, ', and ? (other characters may be allowed eventually).
+* '/' has special meaning, it can be used once in the middle of a symbol to separate the <<namespaces#,namespace>> from the name, e.g. `my-namespace/foo`. '/' by itself names the division function.
+* '.' has special meaning - it can be used one or more times in the middle of a symbol to designate a fully-qualified class name, e.g. `java.util.BitSet`, or in namespace names. Symbols beginning or ending with '.' are reserved by Clojure. Symbols containing / or . are said to be 'qualified'.
+* Symbols beginning or ending with ':' are reserved by Clojure. A symbol can contain one or more non-repeating ':'s.
+
+=== Literals
+
+* Strings - Enclosed in "double quotes". May span multiple lines. Standard Java escape characters are supported.
+* Numbers - generally represented as per Java
+** Integers can be indefinitely long and will be read as Longs when in range and clojure.lang.BigInts otherwise. Integers with an N suffix are always read as BigInts. When possible, they can be specified in any base with radix from 2 to 36 (see http://docs.oracle.com/javase/7/docs/api/java/lang/Long.html#parseLong(java.lang.String,%20int)[Long.parseLong()]); for example 2r101010, 8r52, 36r16, and 42 are all the same Long.
+** Floating point numbers are read as Doubles; with M suffix they are read as BigDecimals.
+** Ratios are supported, e.g. 22/7.
+* Characters - preceded by a backslash: \c. \newline, \space, \tab, \formfeed, \backspace, and \return yield the corresponding characters. Unicode characters are represented with \uNNNN as in Java. Octals are represented with \oNNN.
+* nil Means 'nothing/no-value'- represents Java null and tests logical false
+* Booleans - true and false
+* Keywords - Keywords are like symbols, except:
+** They can and must begin with a colon, e.g. :fred.
+** They cannot contain '.' or name classes.
+** A keyword that begins with two colons is resolved in the current namespace:
+*** In the user namespace, `::rect` is read as `:user/rect`
+
+=== Lists
+
 Lists are zero or more forms enclosed in parentheses: `(a b c)`
 
-* Vectors
-+
+=== Vectors
+
 Vectors are zero or more forms enclosed in square brackets: `[1 2 3]`
-* Maps
-+
-Maps are zero or more key/value pairs enclosed in braces: `{:a 1 :b 2}` +
-Commas are considered whitespace, and can be used to organize the pairs: `{:a 1, :b 2}` +
-Keys and values can be any forms.
-* Sets
-+
+
+=== Maps
+
+* Maps are zero or more key/value pairs enclosed in braces: `{:a 1 :b 2}` +
+* Commas are considered whitespace, and can be used to organize the pairs: `{:a 1, :b 2}` +
+* Keys and values can be any forms.
+
+=== Sets
+
 Sets are zero or more forms enclosed in braces preceded by `pass:[#]`: `#{:a :b :c}`
-* deftype, defrecord, and constructor calls (version 1.3 and later):
-+
-Calls to Java class, deftype, and defrecord constructors can be called using their fully qualified class name preceded by # and followed by a vector: `#my.klass_or_type_or_record[:a :b :c]` +
-The elements in the vector part are passed *unevaluated* to the relevant constructor. defrecord instances can also be created with a similar form that takes a map instead: `#my.record{:a 1, :b 2}` +
-The keyed values in the map are assigned *unevaluated* to the relevant fields in the defrecord. Any defrecord fields without corresponding entries in the literal map are assigned nil as their value. Any extra keyed values in the map literal are added to the resulting defrecord instance.
+
+=== deftype, defrecord, and constructor calls (version 1.3 and later):
+
+* Calls to Java class, deftype, and defrecord constructors can be called using their fully qualified class name preceded by # and followed by a vector: `#my.klass_or_type_or_record[:a :b :c]` +
+* The elements in the vector part are passed *unevaluated* to the relevant constructor. defrecord instances can also be created with a similar form that takes a map instead: `#my.record{:a 1, :b 2}` +
+* The keyed values in the map are assigned *unevaluated* to the relevant fields in the defrecord. Any defrecord fields without corresponding entries in the literal map are assigned nil as their value. Any extra keyed values in the map literal are added to the resulting defrecord instance.
 
 [[macrochars]]
 == Macro characters
 
 The behavior of the reader is driven by a combination of built-in constructs and an extension system called the read table. Entries in the read table provide mappings from certain characters, called macro characters, to specific reading behavior, called reader macros. Unless indicated otherwise, macro characters cannot be used in user symbols.
 
-* Quote (')
-+
+=== Quote (')
+
 `'form` => `(quote form)`
-* Character (\)
-+
+
+=== Character (\)
+
 As per above, yields a character literal.
-* Comment (;)
-+
+
+=== Comment (;)
+
 Single-line comment, causes the reader to ignore everything from the semicolon to the end-of-line.
-* Deref (@)
-+
+
+=== Deref (@)
+
 `@form => (deref form)`
-* Metadata (^)
-+
+
+=== Metadata (^)
+
 Metadata is a map associated with some kinds of objects: Symbols, Lists, Vector, Sets, Maps, tagged literals returning an IMeta, and record, type, and constructor calls. The metadata reader macro first reads the metadata and attaches it to the next form read (see http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/with-meta[with-meta] to attach meta to an object): +
 `^{:a 1 :b 2} [1 2 3]` yields the vector `[1 2 3]` with a metadata map of `{:a 1 :b 2}`. +
-+
+
 A shorthand version allows the metadata to be a simple symbol or string, in which case it is treated as a single entry map with a key of :tag and a value of the (resolved) symbol or string, e.g.: +
 `^String x` is the same as `^{:tag java.lang.String} x` +
+
 Such tags can be used to convey type information to the compiler. +
-+
+
 Another shorthand version allows the metadata to be a keyword, in which case it is treated as a single entry map with a key of the keyword and a value of true, e.g.: +
 `^:dynamic x` is the same as `^{:dynamic true} x` +
-+
+
 Metadata can be chained in which case they are merged from right to left.
-* Dispatch (pass:[#])
-+
+
+=== Dispatch (pass:[#])
+
 The dispatch macro causes the reader to use a reader macro from another table, indexed by the character following
 
-** pass:[#{}] - see Sets above
-** Regex patterns (pass:[#"pattern"])
+* pass:[#{}] - see Sets above
+* Regex patterns (pass:[#"pattern"])
 +
 A regex pattern is read and _compiled at read time_. The resulting object is of type java.util.regex.Pattern. Regex strings do not follow the same escape character rules as strings. Specifically, backslashes in the pattern are treated as themselves (and do not need to be escaped with an additional backslash). For example, `(re-pattern "\\s*\\d+")` can be written more concisely as `#"\s*\d+"`.
-** Var-quote (pass:[#'])
+* Var-quote (pass:[#'])
 +
 `#'x` => `(var x)`
-** Anonymous function literal (#())
+* Anonymous function literal (#())
 +
 `#(...)` => `(fn [args] (...))` +
 where args are determined by the presence of argument literals taking the form %, %n or %&. % is a synonym for %1, %n designates the nth arg (1-based), and %& designates a rest arg. This is not a replacement for http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/fn[fn] - idiomatic use would be for very short one-off mapping/filter fns and the like. #() forms cannot be nested.
-** Ignore next form (pass:[#_])
+* Ignore next form (pass:[#_])
 +
 The form following pass:[#_] is completely skipped by the reader. (This is a more complete removal than the http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/comment[comment] macro which yields nil).
 
-* [[syntax-quote]] Syntax-quote (`, note, the "backquote" character), Unquote (~) and Unquote-splicing (~@)
-+
+=== [[syntax-quote]] Syntax-quote (`, note, the "backquote" character), Unquote (~) and Unquote-splicing (~@)
+
 For all forms other than Symbols, Lists, Vectors, Sets and Maps, `x is the same as 'x. +
-+
+
 For Symbols, syntax-quote _resolves_ the symbol in the current context, yielding a fully-qualified symbol (i.e. namespace/name or fully.qualified.Classname). If a symbol is non-namespace-qualified and ends with pass:['#'], it is resolved to a generated symbol with the same name to which '_' and a unique id have been appended. e.g. x# will resolve to x_123. All references to that symbol within a syntax-quoted expression resolve to the same generated symbol. +
-+
+
 For Lists/Vectors/Sets/Maps, syntax-quote establishes a template of the corresponding data structure. Within the template, unqualified forms behave as if recursively syntax-quoted, but forms can be exempted from such recursive quoting by qualifying them with unquote or unquote-splicing, in which case they will be treated as expressions and be replaced in the template by their value, or sequence of values, respectively. +
-+
-For example: +
-+
+
+For example:
+
 [source,clojure]
 ----
-    user=> (def x 5)
-    user=> (def lst '(a b c))
-    user=> `(fred x ~x lst ~@lst 7 8 :nine)
-    (user/fred user/x 5 user/lst a b c 7 8 :nine)
+user=> (def x 5)
+user=> (def lst '(a b c))
+user=> `(fred x ~x lst ~@lst 7 8 :nine)
+(user/fred user/x 5 user/lst a b c 7 8 :nine)
 ----
-+
+
 The read table is currently not accessible to user programs.
 
-=== extensible data notation (edn)
+== extensible data notation (edn)
 Clojure's reader supports a superset of https://github.com/edn-format/edn[extensible data notation (edn)]. The edn specification is under active development, and complements this document by defining a subset of Clojure data syntax in a language-neutral way.
 
-=== Tagged Literals
+== Tagged Literals
 Tagged literals are Clojure's implementation of edn https://github.com/edn-format/edn#tagged-elements[tagged elements].
 
 When Clojure starts, it searches for files named `data_readers.clj` at the root of the classpath. Each such file must contain a Clojure map of symbols, like this:
 [source,clojure]
 ----
-    {foo/bar my.project.foo/bar
-     foo/baz my.project/baz}
+{foo/bar my.project.foo/bar
+ foo/baz my.project/baz}
 ----
 The key in each pair is a tag that will be recognized by the Clojure reader. The value in the pair is the fully-qualified name of a <<vars#,Var>> which will be invoked by the reader to parse the form following the tag. For example, given the data_readers.clj file above, the Clojure reader would parse this form:
 [source,clojure]
 ----
-    #foo/bar [1 2 3]
+#foo/bar [1 2 3]
 ----
 by invoking the Var `#'my.project.foo/bar` on the vector `[1 2 3]`. The data reader function is invoked on the form AFTER it has been read as a normal Clojure data structure by the reader.
 
 Reader tags without namespace qualifiers are reserved for Clojure. Default reader tags are defined in http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/default-data-readers[default-data-readers] but may be overridden in `data_readers.clj` or by rebinding http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/%2Adata-readers%2A[pass:[*data-readers*]]. If no data reader is found for a tag, the function bound in http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/%2Adefault-data-reader-fn%2A[pass:[*default-data-reader-fn*]] will be invoked with the tag and value to produce a value. If pass:[*default-data-reader-fn*] is nil (the default), a RuntimeException will be thrown.
 
-=== Reader Conditionals
+== Reader Conditionals
 
 Clojure 1.7 introduced a new extension (.cljc) for portable files that can be loaded by multiple Clojure platforms. The primary mechanism for managing platform-specific code is to isolate that code into a minimal set of namespaces, and then provide platform-specific versions (.clj/.class or .cljs) of those namespaces.
 

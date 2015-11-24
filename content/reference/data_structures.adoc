@@ -40,20 +40,20 @@ Clojure provides full support for JVM primitive values by default, allowing high
 
 Clojure also supports the Java boxed number types derived from java.lang.Number, including BigInteger and BigDecimal, plus its own Ratio type. There is some special handling:
 
-* Longs
-+
+=== Longs
+
 By default Clojure operates with natural numbers as instances of Java's long primitive type. When a primitive integer operation results in a value that too large to be contained in a primitive value, a java.lang.ArithmeticException is thrown. Clojure provides a set of alternative math operators suffixed with an apostrophe: +', -', *', inc', and dec'. These operators auto-promote to BigInt upon overflow, but are less efficient than the regular math operators.
 
-* Ratio
-+
+=== Ratio
+
 Represents a ratio between integers. Division of integers that can't be reduced to an integer yields a ratio, i.e. 22/7 = 22/7, rather than a floating point or truncated value.
 
-* Contagion
-+
+=== Contagion
+
 BigInts and floating point types are "contagious" across operations. That is, any integer operation involving a BigInt will result in a BigInt, and any operation involving a double or float will result in a double.
 
-* BigInt and BigDecimal literals
-+
+=== BigInt and BigDecimal literals
+
 Numeric literals for BigInt and BigDecimal are specified using a postfix N and M respectively.
 
 [cols="<*,", options="header", role="table"]
@@ -81,7 +81,7 @@ Coercions: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/i
 == Strings
 
 Clojure strings are Java Strings. See also <<other_functions#printing#,Printing>>.
-[source,clojure]
+[source,clojure-repl]
 ----
 user=> (map (fn [x] (.toUpperCase x)) (.split "Dasher Dancer Prancer" " "))
 ("DASHER" "DANCER" "PRANCER")
@@ -153,8 +153,9 @@ Unordered collections (maps, sets) must use the following algorithm for calculat
       (mix-collection-hash (count collection))))
 ----
 The http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/mix-collection-hash[mix-collection-hash] algorithm is an implementation detail subject to change.
+
 [[Lists]]
-== _Lists (IPersistentList)_
+== Lists (IPersistentList)
 
 Lists are collections. They implement the ISeq interface directly (except for the empty list, which is not a valid seq). http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/count[count] is O(1). http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/conj[conj] puts the item at the front of the list.
 

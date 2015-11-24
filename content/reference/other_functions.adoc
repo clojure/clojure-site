@@ -3,6 +3,7 @@ Rich Hickey
 2015-01-01
 :type: reference
 :toc: macro
+:toclevels: 1
 :icons: font
 :navlinktext: Other Functions
 :prevpagehref: macros
@@ -48,7 +49,7 @@ Print to string: http://clojure.github.io/clojure/clojure.core-api.html#clojure.
 
 Regex patterns can be compiled at read-time via the `#"pattern"` reader macro, or at run time with http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/re-pattern[re-pattern]. Both forms produce http://java.sun.com/j2se/1.5.0/docs/api/java/util/regex/Pattern.html[java.util.regex.Pattern] objects.
 
-[source,clojure]
+[source,clojure-repl]
 ----
 user=> (re-seq #"[0-9]+" "abs123def345ghi567")
 ("123" "345" "567")

@@ -106,7 +106,7 @@ See <<special_forms#binding-forms#,Binding Forms>> for more information about bi
 
 Yields the unevaluated form.
 
-[source,clojure]
+[source,clojure-repl]
 ----
 user=> '(a b c)
 (a b c)

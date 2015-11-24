@@ -115,13 +115,13 @@ user=> '(a b c)
 Note there is no attempt made to call the function a. The return value is a list of 3 symbols.
 
 [[var]]
-=== (_var_ symbol)
+== (_var_ symbol)
 
 The symbol must resolve to a var, and the Var object itself _(not its value)_ is returned. The reader macro #'x expands to (var x).
 
 [[fn]]
-=== (_fn_ name? [params* ] exprs*)
-=== (_fn_ name? ([params* ] exprs*)+)
+== (_fn_ name? [params* ] exprs*)
+== (_fn_ name? ([params* ] exprs*)+)
 
 params => positional-params* , or positional-params* & rest-param +
 positional-param => binding-form +
@@ -184,7 +184,7 @@ Example:
 See <<special_forms#binding-forms#,Binding Forms>> for more information about binding forms.
 
 [[loop]]
-=== (_loop_ [bindings* ] exprs*)
+== (_loop_ [bindings* ] exprs*)
 
 loop is exactly like let, except that it establishes a recursion point at the top of the loop, with arity equal to the number of bindings. See recur.
 

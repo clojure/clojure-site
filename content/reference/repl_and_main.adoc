@@ -107,7 +107,8 @@ The arguments will be provided to your program as a seq of strings bound to the 
 
 == Launching a Socket Server
 
-_**This feature was added in 1.8.0.**_
+[NOTE]
+This feature was added in 1.8.0.
 
 The Clojure runtime now has the ability to start a socket server at initialization based on system properties. One expected use for this is serving a socket-based REPL, but it also has many other potential uses for dynamically adding server capability to existing programs without code changes.
 

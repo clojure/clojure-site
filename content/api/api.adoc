@@ -3,6 +3,7 @@ Rich Hickey
 2015-01-01
 :jbake-type: page
 :toc: macro
+:icons: font
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
@@ -68,4 +69,4 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 == Deprecated (pre Clojure 1.3)
 
-* http://clojure.github.io/clojure-contrib/[Clojure Contrib API] 
+* http://clojure.github.io/clojure-contrib/[Clojure Contrib API]

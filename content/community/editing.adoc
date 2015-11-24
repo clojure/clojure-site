@@ -3,6 +3,7 @@ Alex Miller
 2015-09-29
 :jbake-type: page
 :toc: macro
+:icons: font
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
@@ -138,7 +139,7 @@ http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defn[defn]
 
 == Images
 
-Images should be placed in the assets/images/content directory in a subdirectory corresponding to the page location. 
+Images should be placed in the assets/images/content directory in a subdirectory corresponding to the page location.
 
 Reference the image in a page as follows:
 
@@ -148,14 +149,14 @@ image::/images/content/reference/transducers/xf.png[Nested transformations]
 
 image::/images/content/reference/transducers/xf.png[Nested transformations]
 
-== Code blocks 
+== Code blocks
 
-You can insert a Clojure formatted code block as follows: 
+You can insert a Clojure formatted code block as follows:
 
 ....
 [source,clojure]
 ----
-(defn hey 
+(defn hey
   []
   (println "hey"))
 ----
@@ -163,7 +164,7 @@ You can insert a Clojure formatted code block as follows:
 
 [source,clojure]
 ----
-(defn hey 
+(defn hey
   []
   (println "hey"))
 ----
@@ -206,7 +207,7 @@ Mixed lists:
 * a
 . a.1
 . a.2
-* b 
+* b
 . b.1
 . b.2
 ----
@@ -214,7 +215,7 @@ Mixed lists:
 * a
 . a.1
 . a.2
-* b 
+* b
 . b.1
 . b.2
 

@@ -49,10 +49,7 @@ Small changes can be proposed directly in the GitHub web interface:
 [[major]]
 == Submitting Large Changes
 
-[IMPORTANT]
-===
-For any major changes, *please* open an https://github.com/clojure/clojure-site/issues[issue] first and discuss the change before spending time on it.
-===
+IMPORTANT: For any major changes, *please* open an https://github.com/clojure/clojure-site/issues[issue] first and discuss the change before spending time on it.
 
 If you are going to create an entirely new page or make significant changes requiring multiple commits, you will likely find it easier to work using command line tools.
 

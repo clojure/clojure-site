@@ -1,0 +1,16 @@
+= Events
+Alex Miller
+2015-11-30
+:jbake-type: page
+:toc: macro
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Upcoming Clojure events:
+
+[format="csv", options="header"]
+|===
+include::events.csv[]
+|===
+
+_To add more, submit a pull request modifying https://github.com/clojure/clojure-site/blob/master/content/community/events.csv_

@@ -25,7 +25,7 @@ Additionally, some collections (persistent vectors and maps) are _foldable_. The
 
 If a collection does not support folding, it will fall back to non-parallel reduce instead.
 
-== `reduce` and `fold`
+== reduce and fold
 
 The *clojure.core.reducers* namespace (aliased here as *r*) provides an alternate http://clojure.github.io/clojure/clojure.core-api.html#clojure.core.reducers/reduce[r/reduce] function.
 

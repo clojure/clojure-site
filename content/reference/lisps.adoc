@@ -10,8 +10,6 @@ Rich Hickey
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-toc::[]
-
 This information is provided for programmers familiar with Common Lisp or Scheme.
 
 * Clojure is case sensitive

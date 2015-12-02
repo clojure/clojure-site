@@ -1,0 +1,66 @@
+= Clojure 1.7 is now available 
+Alex Miller
+2015-06-30
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+We are pleased to announce the release of Clojure 1.7. The two headline features for 1.7 are transducers and reader conditionals. Also see the https://github.com/clojure/clojure/blob/master/changes.md[complete list] of all changes since Clojure 1.6 for more details.
+
+== Transducers
+
+http://clojure.org/transducers[Transducers] are composable algorithmic transformations. They are independent from the context of their input and output sources and specify only the essence of the transformation in terms of an individual element. Because transducers are decoupled from input or output sources, they can be used in many different processes - collections, streams, channels, observables, etc. Transducers compose directly, without awareness of input or creation of intermediate aggregates.
+
+Many existing sequence functions now have a new arity (one fewer argument than before). This arity will return a transducer that represents the same logic but is independent of lazy sequence processing. Functions included are: map, mapcat, filter, remove, take, take-while, drop, drop-while, take-nth, replace, partition-by, partition-all, keep, keep-indexed, map-indexed, distinct, and interpose. Additionally some new transducer functions have been added: cat, dedupe, and random-sample.
+
+Transducers can be used in several new or existing contexts:
+
+* into - to collect the results of applying a transducer
+* sequence - to incrementally compute the result of a transducer
+* transduce - to immediately compute the result of a transducer
+* eduction - to delay computation and recompute each time
+* core.async - to apply a transducer while values traverse a channel
+
+== Portable Clojure and Reader Conditionals
+
+It is now common to see a library or application targeting multiple Clojure platforms with a single codebase. Clojure 1.7 introduces a new extension (.cljc) for files that can be loaded by Clojure and ClojureScript (and other Clojure platforms).
+
+There will often be some parts of the code that vary between platforms. The primary mechanism for dealing with platform-specific code is to isolate that code into a minimal set of namespaces and then provide platform-specific versions (.clj/.class or .cljs) of those namespaces.
+
+To support cases where is not feasible to isolate the varying parts of the code, or where the code is mostly portable with only small platform-specific parts, 1.7 provides http://clojure.org/reader#The%20Reader--Reader%20Conditionals[Reader Conditionals].
+
+Reader conditionals are a new reader form that is only allowed in portable cljc files. A reader conditional expression is similar to a cond in that it specifies alternating platform identifiers and expressions. Each platform is checked in turn until a match is found and the expression is read. All expressions not selected are read but skipped. A final :default fallthrough can be provided. If no expressions are matched, the reader conditional will read nothing. The reader conditional splicing form takes a sequential expression and splices the result into the surrounding code.
+
+== Contributors
+
+Thanks to all of those who contributed patches to Clojure 1.7:
+
+* Timothy Baldridge
+* Bozhidar Batsov
+* Brandon Bloom
+* Michael Blume
+* Ambrose Bonnaire-Sergeant
+* Aaron Cohen
+* Pepijn de Vos
+* Andy Fingerhut
+* Gary Fredricks
+* Daniel Solano Gómez
+* Stuart Halloway
+* Rich Hickey
+* Immo Heikkinen
+* Andrei Kleschinsky
+* Howard Lewis Ship
+* Alex Miller
+* Steve Miner
+* Nicola Mometto
+* Tomasz Nurkiewicz
+* Ghadi Shayban
+* Paul Stadig
+* Zach Tellman
+* Luke VanderHart
+* Jozef Wagner
+* Devin Walters
+* Jason Wolfe
+* Steven Yi
+
+Also, continued thanks to the total list of contributors from all releases.

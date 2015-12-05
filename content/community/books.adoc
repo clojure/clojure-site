@@ -4,3 +4,62 @@ Rich Hickey
 :jbake-type: page
 :toc: macro
 
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+== Clojure Books
+
+There are now many excellent books about Clojure and ClojureScript. This is an *incomplete* list of titles (as more keep arriving!):
+
+* https://www.nostarch.com/clojure[Clojure for the Brave and True] - Daniel Higginbotham.  (No Starch)
+* https://pragprog.com/book/vmclojeco/clojure-applied[Clojure Applied] - Ben Vandgrift, Alex Miller (Pragmatic Bookshelf)
+* http://amzn.com/1934356867[Programming Clojure] - Stuart Halloway, Aaron Bedra (Pragmatic Bookshelf)
+* http://amzn.com/B007Q4T040[Clojure Programming] - Chas Emerick, Brian Carper, Christophe Grand (O'Reilly)
+* http://amzn.com/1935182641[The Joy of Clojure: Thinking the Clojure Way] - Michael Fogus, Chris Houser (Manning)
+* http://amzn.com/1935182641[Clojure in Action] - Amit Rathore (Manning)
+* http://amzn.com/1430272317[Practical Clojure] - Luke VanderHart, Stuart Sierra (Apress)
+* http://amzn.com/B009WXWXPG[ClojureScript Up and Running] - Stuart Sierra, Luke VanderHart (O'Reilly)
+* http://amzn.com/B00IT6XZ0O[Clojure Cookbook: Recipes for Functional Programming] - Luke VanderHart, Ryan Neufeld (O'Reilly)
+* http://amzn.com/B00I800FCM[Web Development with Clojure] - Dmitri Sotnikov (Pragmatic Bookshelf)
+* http://shop.oreilly.com/product/0636920034292.do[Living Clojure] - Carin Meier (O'Reilly)
+
+=== Online Books, Tutorials, and Resources 
+
+Official:
+
+* http://clojure.github.io/clojure/[Clojure API Docs]
+* http://clojure.github.io/[Clojure Contrib Library API Docs]
+* <<xref/../../reference/documentation#,Clojure Reference Docs>> - official reference information
+* <<xref/../../reference/cheatsheet#,Clojure Cheatsheet>> - helpful categorization of most core functions
+* Source - https://github.com/clojure/clojure[Clojure], https://github.com/clojure/clojurescript[ClojureScript], https://github.com/clojure/clojure-clr[ClojureCLR]
+* Issues - http://dev.clojure.org/jira/browse/CLJ[Clojure], http://dev.clojure.org/jira/browse/CLJS[ClojureScript], http://dev.clojure.org/jira/browse/CLJCLR[ClojureCLR]
+
+Community:
+
+* http://www.braveclojure.com/[Clojure for the Brave and True] - a beginner book by Daniel Higginbotham
+* http://aphyr.com/posts/301-clojure-from-the-ground-up-welcome[Clojure from the ground up] - a series of intro articles by Kyle Kingsbury
+* https://github.com/ClojureBridge/curriculum[ClojureBridge Curriculum]
+* http://grimoire.arrdem.com/[Grimoire] - community combined cheatsheet + examples
+* http://clojuredocs.org[ClojureDocs] - community provided example repository
+* http://crossclj.info/[CrossClj] - library cross-reference
+* http://clojure-doc.org/[Clojure Documentation] - community-driven documentation site
+* http://clojurekoans.com/[Clojure Koans] (http://clojurescriptkoans.com/[online])
+* http://www.4clojure.com/[4clojure] - Clojure practice problems
+* http://exercism.io/[exercism.io] - crowd-source code reviews (supports Clojure)
+* http://planet.clojure.in/[Planet Clojure] - Clojure blog aggregator
+* Newsletters - http://defnewsletter.com/[(def newsletter)] http://www.clojuregazette.com/[Clojure Gazette] http://reborg.tumblr.com/[Clojure Weekly]
+* http://www.clojureatlas.com/[Clojure Atlas] - visualization of Clojure and the core library
+* http://www.clojurebridge.org/[ClojureBridge] - beginner workshops for women
+
+Videos and presentations:
+
+* https://www.youtube.com/user/ClojureTV/videos[ClojureTV] - talks by Rich Hickey and presentations from Clojure/conj and Clojure/west
+* http://www.infoq.com/Clojure/presentations/[InfoQ Clojure Presentations] - from a variety of conferences
+
+Video training (commercial):
+
+* http://www.purelyfunctional.tv/intro-to-clojure[Introduction to Clojure] - Eric Normand (LispCast)
+* http://www.purelyfunctional.tv/web-dev-in-clojure[Web Development in Clojure] - Eric Normand (LispCast)
+* http://shop.oreilly.com/product/0636920030409.do[Clojure Inside Out] - Stuart Halloway, Neal Ford (O'Reilly)
+* http://pluralsight.com/training/courses/TableOfContents?courseName=clojure-fundamentals-part-one[Clojure Fundamentals] - Alan Dipert (PluralSight)
+* http://pluralsight.com/training/courses/TableOfContents?courseName=clojure-concurrency-tutorial&highlight=craig-andera_clojure-concurrency-tutorial-intro*3,8!craig-andera_clojure-concurrency-tutorial-vars!craig-andera_clojure-concurrency-tutorial-atoms!craig-andera_clojure-concurrency-tutorial-agents!craig-andera_clojure-concurrency-tutorial-refs!craig-andera_clojure-concurrency-tutorial-misc#clojure-concurrency-tutorial-intro[Clojure Concurrency] - Craig Andera (PluralSight)
+

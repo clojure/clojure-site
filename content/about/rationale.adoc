@@ -1,12 +1,15 @@
 = Rationale
 Rich Hickey
 2015-01-01
-:jbake-type: page
+:type: about
 :toc: macro
+:icons: font
+:nextpagehref: state
+:nextpagetitle: State
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-== Rationale 
+toc::[]
 
 Customers and stakeholders have substantial investments in, and are comfortable with the performance, security and stability of, industry-standard platforms like the JVM. While Java developers may envy the succinctness, flexibility and productivity of dynamic languages, they have concerns about running on customer-approved infrastructure, access to their existing code base and libraries, and performance. In addition, they face ongoing problems dealing with concurrency using native threads and locking. Clojure is an effort in pragmatic dynamic language design in this context. It endeavors to be a general-purpose language suitable in those areas where Java is suitable. It reflects the reality that, for the concurrent programming future, pervasive, unmoderated mutation simply has to go.
 
@@ -14,7 +17,7 @@ Clojure meets its goals by: embracing an industry-standard, open platform - the 
 
 Clojure has a distinctive approach to <<state#,state and identity>>.
 
-== Why Clojure? 
+== Why Clojure?
 
 Why did I write yet another programming language? Basically because I wanted:
 
@@ -25,7 +28,7 @@ Why did I write yet another programming language? Basically because I wanted:
 
 and couldn't find one. Here's an outline of some of the motivating ideas behind Clojure.
 
-== Lisp is a good thing 
+== Lisp is a good thing
 
 * Often emulated/pillaged, still not duplicated
 * Lambda calculus yields an extremely small core
@@ -43,7 +46,7 @@ and couldn't find one. Here's an outline of some of the motivating ideas behind 
 ** Core data structures are extensible abstractions
 ** Embraces a platform (JVM)
 
-== Functional programming is a good thing 
+== Functional programming is a good thing
 
 * Immutable data + first-class functions
 * Could always be done in Lisp, by discipline/convention
@@ -56,7 +59,7 @@ and couldn't find one. Here's an outline of some of the motivating ideas behind 
 ** Heterogeneous collections, return types
 ** Dynamic polymorphism
 
-== Languages and Platforms 
+== Languages and Platforms
 
 * VMs, not OSes, are the platforms of the future, providing:
 ** Type system
@@ -93,7 +96,7 @@ and couldn't find one. Here's an outline of some of the motivating ideas behind 
 ** Ability to call/consume Java is critical
 * Clojure is the language, JVM the platform
 
-== Object Orientation is overrated 
+== Object Orientation is overrated
 
 * Born of simulation, now used for everything, even when inappropriate
 ** Encouraged by Java/C# in all situations, due to their lack of (idiomatic) support for anything else
@@ -106,7 +109,7 @@ and couldn't find one. Here's an outline of some of the motivating ideas behind 
 * Many functions defined on few primary data structures (seq, map, vector, set).
 * Write Java in Java, consume and extend Java from Clojure.
 
-== Polymorphism is a good thing 
+== Polymorphism is a good thing
 
 * Switch statements, structural matching etc yield brittle systems
 * Polymorphism yields extensible, flexible systems
@@ -114,7 +117,7 @@ and couldn't find one. Here's an outline of some of the motivating ideas behind 
 ** Supports multiple taxonomies
 ** Dispatches via static, dynamic or external properties, metadata, etc
 
-== Concurrency and the multi-core future 
+== Concurrency and the multi-core future
 
 * Immutability makes much of the problem go away
 ** Share freely between threads

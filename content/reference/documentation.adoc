@@ -1,13 +1,13 @@
 = Documentation
 Rich Hickey
 2015-01-01
-:jbake-type: page
+:type: reference
 :toc: macro
+:icons: font
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-== Reference Documentation 
-
+== Reference Documentation
 
 * <<reader#,The Reader>>
 * <<repl_and_main#,The REPL and main>>

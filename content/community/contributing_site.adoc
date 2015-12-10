@@ -1,16 +1,15 @@
 = Contributing to This Site
 Alex Miller
 2015-10-15
-:jbake-type: page
+:type: community
 :toc: macro
+:icons: font
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-== Contributing to This Site
-
 This web site is an open-source repository of content about the Clojure programming language and its greater ecosystem, hosted at http://clojure.org.
 
-If you wish to point out an issue in the site or propose a new page, you can do so by filing a GitHub issue at https://github.com/clojure/clojure-site/issues. 
+If you wish to point out an issue in the site or propose a new page, you can do so by filing a GitHub issue at https://github.com/clojure/clojure-site/issues.
 
 If you wish to make a contribution (typo, modification, or new content), you must become a contributor and use the processes described below:
 
@@ -23,7 +22,7 @@ If you wish to make a contribution (typo, modification, or new content), you mus
 
 
 [[contributor]]
-=== How To Become a Contributor
+== How To Become a Contributor
 
 Contributors must sign the Clojure Contributor Agreement prior to submitting changes. The https://secure.echosign.com/public/hostedForm?formid=95YMDL576B336E[Contributor Agreement] (CA) gives Rich Hickey and the contributor joint copyright interests: the contributor retains copyrights while also granting those rights to Rich Hickey as the open source project sponsor.
 
@@ -36,7 +35,7 @@ To complete the agreement, fill out and submit the  https://secure.echosign.com/
 Note that if you have already signed the Clojure Contributor Agreement to supply patches to the Clojure source code, you do not need to sign it again as it is the same agreement.
 
 [[minor]]
-=== Submitting Small Changes
+== Submitting Small Changes
 
 Small changes can be proposed directly in the GitHub web interface:
 
@@ -48,7 +47,7 @@ Small changes can be proposed directly in the GitHub web interface:
 . You will then be shown a "Comparing changes" page - all of the information should be filled out automatically and a summary of your changes will be at the bottom - this is a good time to look them over one more time. Assuming it all looks correct, you can propose the change back to the original repository by clicking "Create pull request". You'll then be able to add a comment to the pull request itself then click "Create pull request".
 
 [[major]]
-=== Submitting Large Changes
+== Submitting Large Changes
 
 IMPORTANT: For any major changes, *please* open an https://github.com/clojure/clojure-site/issues[issue] first and discuss the change before spending time on it.
 
@@ -56,8 +55,8 @@ If you are going to create an entirely new page or make significant changes requ
 
 To create a local environment for working on a bigger change:
 
-. Fork the content repository https://github.com/clojure/clojure-site - this will create a version of the site content under your own user id. 
-. `git clone` the forked repository in your local terminal and `cd clojure-site`. 
+. Fork the content repository https://github.com/clojure/clojure-site - this will create a version of the site content under your own user id.
+. `git clone` the forked repository in your local terminal and `cd clojure-site`.
 . `git checkout -b <branchname>` - create a new branch to work on your change. You'll use this branch to submit a pull request.
 . Make one or more commits on this branch, modifying or adding one or more files. See the section below on how to build and preview changes locally. The <<editing#,Editing>> page lists examples of the most common things you will encounter when editing content on this site.
 . Use `git push` to push your changes to the branch.
@@ -69,12 +68,12 @@ To actively contribute to the site, it's important to keep your own fork up-to-d
 . Add this repository to your remote urls: `git remote add upstream https://github.com/clojure/clojure-site.git`.
 . Before every contribution:
    - fetch the content of upstream: `git fetch upstream` ;
-   - move to your master branch: `git checkout master` (in case you aren't already there); 
+   - move to your master branch: `git checkout master` (in case you aren't already there);
    - clean your master branch of any unplanned modifications by reseting the HEAD to the fetched branch: `git reset --hard upstream/master`; and
    - create a new branch as explained above: `git checkout -b <branchname>`
 
 [[build]]
-=== Building and Previewing Changes
+== Building and Previewing Changes
 
 When working on bigger changes it's useful to build the site locally. The site is built using http://jbake.org/[JBake].
 
@@ -103,16 +102,16 @@ Generate the pages:
 . To view a live preview, run `jbake -s` and go to http://localhost:8820/index
 
 [[style]]
-=== Style and Navigation Changes
+== Style and Navigation Changes
 
 We are not currently looking for changes in the overall site styling, navigation, or infrastructure. There is ongoing work in that area that will be visible in the near future.
 
 If you have an issue in these areas, please open an https://github.com/clojure/clojure-site/issues[issue] rather than a pull request.
 
 [[review]]
-=== How Contributions are Reviewed and Deployed
+== How Contributions are Reviewed and Deployed
 
-After submitting a pull request, a contribution will be waiting for review. 
+After submitting a pull request, a contribution will be waiting for review.
 
 For each pull request, one more of the reviewers will take action:
 
@@ -120,12 +119,12 @@ For each pull request, one more of the reviewers will take action:
 * Comment on the pull request suggesting additional changes. You may address these changes with further commits on your local branch.
 * Close the pull request with a comment indicating why the change is not appropriate.
 
-=== Thanks!
+== Thanks!
 
 Thanks for your contributions!
 
-=== Terms of Use
+== Terms of Use
 
 Copyright © 2015 Rich Hickey and contributors
 
-All documentation contained in this repository is licensed by Rich Hickey under the http://www.eclipse.org/legal/epl-v10.html[Eclipse Public License v1.0] unless otherwise noted. 
+All documentation contained in this repository is licensed by Rich Hickey under the http://www.eclipse.org/legal/epl-v10.html[Eclipse Public License v1.0] unless otherwise noted.

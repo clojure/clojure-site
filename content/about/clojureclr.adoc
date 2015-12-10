@@ -1,12 +1,14 @@
 = Clojure CLR
 Rich Hickey
 2015-01-01
-:jbake-type: page
+:type: about
 :toc: macro
+:icons: font
+:prevpagehref: clojurescript
+:prevpagetitle: ClojureScript
+
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-
-== ClojureCLR 
 
 This project is a native implementation of Clojure on the Common Language Runtime (CLR), the execution engine of Microsoft's .Net Framework.
 

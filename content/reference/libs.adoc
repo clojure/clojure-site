@@ -1,15 +1,23 @@
-= Libs
+= Using Libs
 Rich Hickey
 2015-01-01
-:jbake-type: page
+:type: reference
 :toc: macro
+:icons: font
+:navlinktext: Libs
+:prevpagehref: namespaces
+:prevpagetitle: Namespaces
+:nextpagehref: vars
+:nextpagetitle: Vars and Environments
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-== Using Libs 
+toc::[]
+
 Clojure provides for code loading and dependency tracking via its "lib" facility. A lib is a named unit of Clojure source code contained in a Java resource within classpath. A lib will typically provide the complete set of definitions that make up one Clojure namespace.
 
-=== Lib Conventions 
+== Lib Conventions
+
 Clojure defines conventions for naming and structuring libs:
 
 * A lib name is a symbol that will typically contain two or more parts separated by periods.
@@ -24,7 +32,7 @@ Clojure defines conventions for naming and structuring libs:
 
 Clojure ensures that if the call to "ns" completes without throwing an exception, the declared dependencies have been satisfied and the capabilities they provide are available.
 
-=== Example Lib
+== Example Lib
 
 A simple lib with embedded explanations:
 
@@ -84,7 +92,7 @@ A simple lib with embedded explanations:
     (println file)))
 ----
 
-=== Prefix Lists
+== Prefix Lists
 
 It's common for a lib to depend on several other libs whose full names share a common prefix. In calls to `require` and `use` (and in `:require` and `:use` clauses within an +ns+ form), the common prefix can be extracted and provided once using a prefix list. For example, these two forms are equivalent:
 
@@ -96,7 +104,7 @@ It's common for a lib to depend on several other libs whose full names share a c
 
 ''''
 
-=== Related functions 
+== Related functions
 
 Creating a namespace: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ns[ns]
 

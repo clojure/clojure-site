@@ -1,12 +1,17 @@
 = Metadata
 Rich Hickey
 2015-01-01
-:jbake-type: page
+:type: reference
 :toc: macro
+:icons: font
+:prevpagehref: protocols
+:prevpagetitle: Protocols
+:nextpagehref: namespaces
+:nextpagetitle: Namespaces
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-== Metadata 
+toc::[]
 
 Symbols and collections support metadata, a map of data _about_ the symbol or collection. The metadata system allows for arbitrary annotation of data. It is used to convey information to the compiler about types, but can also be used by application developers for many purposes, annotating data sources, policy etc.
 
@@ -16,24 +21,24 @@ That said, metadata and its relationship to an object is immutable - an object w
 
 ''''
 
-=== (_meta_ obj)
+== (_meta_ obj)
 
 Returns the metadata of obj, returns nil if there is no metadata.
 
 ''''
 
-=== (_with-meta_ obj map) 
+== (_with-meta_ obj map)
 Returns an object of the same type and value as obj, with map as its metadata.
 
-== Metadata Reader Macros 
+== Metadata Reader Macros
 
 In addition to with-meta, there are a number of reader macros (<<reader#macrochars,The Reader: Macro Characters>>) for applying metadata to the expression following it:
 
-* `^{:doc "How obj works!"} obj` - Sets the metadata of obj to the provided map. 
+* `^{:doc "How obj works!"} obj` - Sets the metadata of obj to the provided map.
 ** Equivalent to `(with-meta obj {:doc "How obj works!"})`
-* `^:dynamic obj` - Sets the given keyword to true in the object's metadata. 
+* `^:dynamic obj` - Sets the given keyword to true in the object's metadata.
 ** Equivalent to `^{:dynamic true} obj`
-* `^String obj` - Sets the value of :tag key in the object's metadata. 
+* `^String obj` - Sets the value of :tag key in the object's metadata.
 ** Equivalent to `^{:tag java.lang.String} obj`
 ** Used to hint an objects type to the Clojure compiler. See <<java_interop#typehints,Java Interop: Type Hints>> for more information and a complete list of special type hints.
 

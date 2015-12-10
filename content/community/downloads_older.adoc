@@ -3,12 +3,13 @@ Rich Hickey
 2015-01-01
 :jbake-type: page
 :toc: macro
+:icons: font
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-== Older Clojure Releases 
+== Older Clojure Releases
 
-== Older Production Releases 
+== Older Production Releases
 
 
 * http://central.maven.org/maven2/org/clojure/clojure/1.6.0/[Clojure 1.6.0] (March, 2014)
@@ -21,7 +22,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 * Clojure 1.1.0 (January, 2010)
 * http://github.com/downloads/clojure/clojure/clojure-1.0.0.zip[Clojure 1.0.0] (July, 2009)
 
-== Older Developer Releases 
+== Older Developer Releases
 
 
 * http://repo1.maven.org/maven2/org/clojure/clojure/1.4.0-beta7/clojure-1.4.0-beta7.zip[Clojure 1.4 Beta 7]

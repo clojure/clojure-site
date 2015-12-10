@@ -1,12 +1,15 @@
 = ClojureScript
 Rich Hickey
 2015-01-01
-:jbake-type: page
+:type: about
 :toc: macro
+:icons: font
+:prevpagehref: jvm_hosted
+:prevpagetitle: JVM Hosted
+:nextpagehref: clojureclr
+:nextpagetitle: ClojureCLR
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-
-== ClojureScript
 
 ClojureScript is a compiler for Clojure that targets JavaScript. It is designed to emit JavaScript code which is compatible with the advanced compilation mode of the http://code.google.com/closure/[Google Closure] optimizing compiler.
 

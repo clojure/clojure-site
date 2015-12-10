@@ -1,12 +1,10 @@
-= Guides 
+= Guides
 Alex Miller
 2015-11-25
-:jbake-type: page
+:type: guides
 :toc: macro
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-
-== Guides
 
 * <<getting_started#,Getting Started>>
 

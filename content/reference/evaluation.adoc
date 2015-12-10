@@ -1,12 +1,15 @@
 = Evaluation
 Rich Hickey
 2015-01-01
-:jbake-type: page
+:type: reference
 :toc: macro
+:icons: font
+:prevpagehref: repl_and_main
+:prevpagetitle: REPL and main
+:nextpagehref: special_forms
+:nextpagetitle: Special Forms
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-
-== Evaluation 
 
 Evaluation can occur in many contexts:
 
@@ -34,7 +37,7 @@ If a Symbol has metadata, it may be used by the compiler, but will not be part o
 
 Vectors, Sets and Maps yield vectors and (hash) sets and maps whose contents are the _evaluated values_ of the objects they contain. Vector elements are evaluated left to right, Sets and Maps are evaluated in an undefined order. The same is true of metadata maps. If the vector or map has metadata, the _evaluated_ metadata map will become the metadata of the resulting value.
 
-[source,clojure]
+[source,clojure-repl]
 ----
 user=> (def x 1)
 user=> (def y 2)
@@ -62,7 +65,7 @@ Any object other than those discussed above will evaluate to itself.
 *(_load-reader_ reader)* +
 *(_load-string_ string)*
 
-The above describes the evaluation of a single form. The various load forms will sequentially read and evaluate the set of forms contained in the source. Such sets of forms usually have side effects, often on the global environment, defining functions etc. 
+The above describes the evaluation of a single form. The various load forms will sequentially read and evaluate the set of forms contained in the source. Such sets of forms usually have side effects, often on the global environment, defining functions etc.
 
 The loading functions occur in a temporary context, in which +*ns*+ has a fresh binding. That means that, should any form have an effect on that var (e.g. +in-namespace+), the effect will unwind at the completion of the load. load et al return the value produced by the last expression.
 

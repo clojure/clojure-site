@@ -1,12 +1,17 @@
-= Multimethods
+= Multimethods and Hierarchies
 Rich Hickey
 2015-01-01
-:jbake-type: page
+:type: reference
 :toc: macro
+:icons: font
+:prevpagehref: transducers
+:prevpagetitle: Transducers
+:nextpagehref: protocols
+:nextpagetitle: Protocols
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-== Multimethods and Hierarchies 
+toc::[]
 
 Clojure eschews the traditional object-oriented approach of creating a new data type for each new situation, instead preferring to build a large library of functions on a small set of types. However, Clojure fully recognizes the value of runtime polymorphism in enabling flexible and extensible system architecture. Clojure supports sophisticated runtime polymorphism through a multimethod system that supports dispatching on types, values, attributes and metadata of, and relationships between, one or more arguments.
 
@@ -101,7 +106,7 @@ as do http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/parent
     java.util.RandomAccess java.util.AbstractList}
 ----
 
-== isa? based dispatch 
+== isa? based dispatch
 
 Multimethods use http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/isa%3F[isa?] rather than = when testing for dispatch value matches. Note that the first test of http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/isa%3F[isa?] is =, so exact matches work.
 

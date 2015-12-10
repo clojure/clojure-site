@@ -1,14 +1,17 @@
 = Sequences
 Rich Hickey
 2015-01-01
-:jbake-type: page
+:type: reference
 :toc: macro
+:icons: font
+:prevpagehref: datatypes
+:prevpagetitle: Datatypes
+:nextpagehref: transients
+:nextpagetitle: Transients
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 toc::[]
-
-== Sequences 
 
 Clojure defines many algorithms in terms of sequences (seqs). A seq is a logical list, and unlike most Lisps where the list is represented by a concrete, 2-slot structure, Clojure uses the ISeq interface to allow many data structures to provide access to their elements as sequences. The http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/seq[seq] function yields an implementation of ISeq appropriate to the collection. Seqs differ from iterators in that they are persistent and immutable, not stateful cursors into a collection. As such, they are useful for much more than foreach - functions can consume and produce seqs, they are thread safe, they can share structure etc.
 
@@ -18,20 +21,20 @@ When http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/seq[seq
 
 Many of the functions in the seq library take one or more collections, call http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/seq[seq] on them, and then operate on the resulting seq. In other words, many of these functions take collections but operate on their seqs.
 
-== The Seq interface 
+== The Seq interface
 
-=== (_first_ coll) 
+=== (_first_ coll)
 Returns the first item in the collection. Calls seq on its argument. If coll is nil, returns nil.
 
-=== (_rest_ coll) 
+=== (_rest_ coll)
 Returns a sequence of the items after the first. Calls seq on its argument. If there are no more items, returns a logical sequence for which *seq* returns nil.
 
-=== (_cons_ item seq) 
+=== (_cons_ item seq)
 Returns a new seq where item is the first element and seq is the rest.
 
 For a discussion of *rest* vs. *next* and *lazy-seq* see <<lazy#,lazy>>.
 
-== The Seq library 
+== The Seq library
 
 This is a sampling of the primary sequence functions, grouped broadly by their capabilities. Some functions can be used in different ways and so appear in more than one group. There are many more listed in the http://clojure.github.io/clojure/[API] section.
 
@@ -48,7 +51,7 @@ Rearrangment of a seq: http://clojure.github.io/clojure/clojure.core-api.html#cl
 Create nested seqs: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/split-at[split-at] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/split-with[split-with] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/partition[partition] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/partition-all[partition-all] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/partition-by[partition-by]
 Process each item of a seq to create a new seq: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/map[map] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/pmap[pmap] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/mapcat[mapcat] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/for[for] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/replace[replace] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/reductions[reductions] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/map-indexed[map-indexed] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/seque[seque]
 
-=== Using a seq 
+=== Using a seq
 
 [%hardbreaks]
 Extract a specific-numbered item from a seq: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/first[first] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ffirst[ffirst] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/nfirst[nfirst] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/second[second] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/nth[nth] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/when-first[when-first] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/last[last] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/rand-nth[rand-nth]
@@ -59,7 +62,7 @@ Search a seq using a predicate: http://clojure.github.io/clojure/clojure.core-ap
 Force evaluation of lazy seqs: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/doseq[doseq] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/dorun[dorun] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/doall[doall]
 Check if lazy seqs have been forcibly evaluated: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/realized?[realized?]
 
-=== Creating a seq 
+=== Creating a seq
 
 [%hardbreaks]
 Lazy seq from collection: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/seq[seq] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/vals[vals] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/keys[keys] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/rseq[rseq] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/subseq[subseq] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/rsubseq[rsubseq]

@@ -1,14 +1,20 @@
-= Transients
+= Transient Data Structures
 Rich Hickey
 2015-01-01
-:jbake-type: page
+:type: reference
 :toc: macro
+:icons: font
+:navlinktext: Transients
+:prevpagehref: sequences
+:prevpagetitle: Sequences
+:nextpagehref: transducers
+:nextpagetitle: Transducers
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-== Transient Data Structures
+toc::[]
 
-== Rationale 
+== Rationale
 
 _If a tree falls in the woods, does it make a sound?_ +
 _If a pure function mutates some local data in order to produce an immutable return value, is that ok?_
@@ -17,7 +23,7 @@ It's an interesting question. Clojure data structures use mutation every time yo
 
 You run into a similar scenario, at a higher level, when you want to initialize or transform a large persistent data structure using multiple steps, none of which will be seen by any code other than the constructing/transforming code. The challenge here is that the source of a transformation will be an existing persistent data structure, and the result of the function _will_ be shared. Copying into a traditional mutable data structure and back involves O(n) copying, and the internal code is an imperative mess quite unlike the rest of your Clojure code. Furthermore, there are no guards against accidentally sharing or aliasing the mutable data structure, especially if you need to call helper functions to do the work. In short, it would be a shame if you had to leave Clojure's model in order to speed up a piece of code like this. Transient data structures are a solution to this optimization problem that integrates with the Clojure model and provides the same thread safety guarantees you expect of Clojure.
 
-== How they work 
+== How they work
 
 Transient data structures are always created from an existing persistent Clojure data structure. As of Clojure 1.1.0, vectors, hash-maps, and hash-sets are supported. Note that not all Clojure data structures can support this feature, but most will. Lists will not, as there is no benefit to be had.
 
@@ -33,7 +39,7 @@ Transients support a parallel set of 'changing' operations, with similar names f
 
 When you are finished building up your results, you can create a persistent data structure by calling *persistent!* on the transient. This operation is also O(1). Subsequent to calling *persistent!*, the transient should not be used, and all operations will throw exceptions. This will be true also for any aliases you might have created.
 
-== Example 
+== Example
 
 Here's a very typical example, some code that builds up a vector for return, all 'changes' being local to the function. Note how the transient-using version has exactly the same structure, just:
 
@@ -60,13 +66,13 @@ Here's a very typical example, some code that builds up a vector for return, all
 ----
 Oh, yeah, _**transients are fast!**_
 
-== Concurrent use 
+== Concurrent use
 
 That's all there is to using transients, but they have another important constraint: *Transients require thread isolation.* Because each result of a transient operation shares (mutable) structure with the previous, it is an error if more than one thread manipulates a transient at once. Use of a particular transient instance should be controlled either by using it in an single-threaded scope, or in a framework that enforces this.
 
 In Clojure 1.6 and earlier, transients would detect any (read or write) use from a thread other than the one that created them and throw an exception. That check was removed in 1.7 to allow for more flexible use in frameworks like core.async go blocks that enforce the single-threaded constraint via other means.
 
-== Summary 
+== Summary
 
 Transients provide a high-performance optimization of functional data-structure-building code that works with Clojure's data structures and provides critical safety guarantees.
 

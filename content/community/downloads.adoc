@@ -14,10 +14,10 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 * http://repo1.maven.org/maven2/org/clojure/clojure/1.7.0/clojure-1.7.0.zip[Clojure 1.7.0]
 * https://github.com/clojure/clojure/blob/master/changes.md[Changelog]
 
-== Development Release: 1.8.0-RC3 
+== Development Release: 1.8.0-RC4 
 
 
-* http://repo1.maven.org/maven2/org/clojure/clojure/1.8.0-RC3/clojure-1.8.0-RC3.zip[Clojure 1.8.0-RC3]
+* http://repo1.maven.org/maven2/org/clojure/clojure/1.8.0-RC4/clojure-1.8.0-RC4.zip[Clojure 1.8.0-RC4]
 * http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.clojure%22%20AND%20a%3A%22clojure%22%20AND%20v%3A1.8.0*[Clojure 1.8 pre-release builds]
 
 == Clojure Source 

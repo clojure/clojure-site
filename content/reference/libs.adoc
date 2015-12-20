@@ -6,10 +6,12 @@ Rich Hickey
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-== Using Libs 
+== Using Libs
+
 Clojure provides for code loading and dependency tracking via its "lib" facility. A lib is a named unit of Clojure source code contained in a Java resource within classpath. A lib will typically provide the complete set of definitions that make up one Clojure namespace.
 
-=== Lib Conventions 
+=== Lib Conventions
+
 Clojure defines conventions for naming and structuring libs:
 
 * A lib name is a symbol that will typically contain two or more parts separated by periods.
@@ -17,7 +19,7 @@ Clojure defines conventions for naming and structuring libs:
 ** The path is a string
 ** Periods in the lib name are replaced by slashes in the path
 ** Hyphens in the lib name are replaced by underscores in the path
-** The path ends with ".clj"
+** The path may end with ".class", ".clj", or ".cljc" (see <<libs#order,Lib load order>> below)
 * A lib begins with an "ns" form that
 ** creates the Clojure namespace that shares its name, and
 ** declares its dependencies on Java classes, Clojure's core facilities, and/or other libs,
@@ -26,63 +28,20 @@ Clojure ensures that if the call to "ns" completes without throwing an exception
 
 === Example Lib
 
-A simple lib with embedded explanations:
+A simple lib:
 
 [source,clojure]
 ----
 (ns com.my-company.clojure.examples.my-utils
   (:import java.util.Date)
-  (:use [clojure.contrib.def :only (defvar-)])
-  (:require [clojure.contrib.shell-out :as shell]))
+  (:use [clojure.string :only (join)])
+  (:require [clojure.java.io :as jio]))
 ----
 
-* The `ns` form names the lib's namespace and declares its dependencies. Based on its name, this lib must be contained in a Java resource at the classpath-relative path: com/my_company/clojure/examples/my_utils.clj (note the translations from period to slash and hyphen to underscore).
+* The `ns` form names the lib's namespace and declares its dependencies. Based on its name, this lib is typically defined in a source file at the classpath-relative path: com/my_company/clojure/examples/my_utils.clj (note the translations from period to slash and hyphen to underscore).
 * The `:import` clause declares this lib's use of `java.util.Date` and makes it available to code in this lib using its unqualified name.
-* The `:use` clause declares a dependency on the `clojure.contrib.def` lib for its `defvar-` function only. +defvar-+ may be used in this lib's code using its unqualified name.
-* The `:require` clause declares a dependency on the `clojure.contrib.shell-out` lib and enables using its members using the shorter namespace alias `shell+.
-+
-[source,clojure]
-----
-(defvar- greetings
-  {:english "Hello"
-   :german "Guten Tag"
-   :french "Bonjour"}
-  "Map from language to greeting")
-----
-* `defvar-` used without namespace qualification
-+
-[source,clojure]
-----
-(defn- user-prop
-  "Returns the system property for user.<key>"
-  [key]
-  (System/getProperty (str "user." key)))
-
-(defn greeting
-  "Returns a greeting for the current user. The greeting is in English by
-  default, or optionally in another language: :german or :french"
-  ([]
-     (greeting :english))
-  ([language]
-     (str (greetings language) " " (user-prop "name"))))
-
-(defn user-files
-  "Returns a seq of the file names in the current user's home directory"
-  []
-  (seq (.split (shell/sh "ls" (user-prop "home")) "\n")))
-----
-* `sh` from `clojure.contrib.shell-out` used via the `shell` namespace alias
-+
-[source,clojure]
-----
-(defn print-report
-  "Prints a report containing some info about the current user"
-  []
-  (println (greeting))
-  (println "These are some of your files as of" (str (Date.)))
-  (doseq [file (take 10 (user-files))]
-    (println file)))
-----
+* The `:use` clause declares a dependency on the `clojure.string` lib for its `join` function only. +join+ may be used in this lib's code using its unqualified name.
+* The `:require` clause declares a dependency on the `clojure.java.io` lib and enables using its members using the shorter namespace alias `jio`.
 
 === Prefix Lists
 
@@ -96,10 +55,20 @@ It's common for a lib to depend on several other libs whose full names share a c
 
 ''''
 
-=== Related functions 
+=== Related functions
 
 Creating a namespace: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ns[ns]
 
 Ensuring a lib is loaded: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/require[require] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/use[use]
 
 Listing loaded libs: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/loaded-libs[loaded-libs]
+
+[[order]]
+=== Lib load order
+
+Libs may exist in either compiled (`.class`) or source (`.clj` or `.cljc`) form. In some cases, one or even all of these might exist on the classpath. The lib is loaded from one of them based on the following rules:
+
+* A `.class` file is always preferred over a source file, unless the source file's timestamp is newer than the `.class` file, in which case the source file is preferred.
+* A `.clj` (platform-specific file) is always preferred over a `.cljc` (common across platforms).
+
+The second rule allows a library author to ship both a portable common definition of a lib while also shipping platform-specific libs that override the portable version to do something that leverages the host platform.

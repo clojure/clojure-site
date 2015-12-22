@@ -6,10 +6,7 @@ Andy Fingerhut
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-== Versions
-
-This document was written while checking the details against Clojure 1.7  and Java 6,
-but most or all of it should apply to other versions, too.
+_Note: This document describes Clojure 1.7 and Java 6, but applies to most other versions as well._
 
 == Summary
 
@@ -31,32 +28,34 @@ in http://en.wikipedia.org/wiki/Lexicographical_order[lexicographic] (i.e dictio
 and a few other cases. See http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/compare[compare]
 for examples and more details.
 
-If _compare_ does not do what you want, you must provide your own comparator that does. Each of the
+If `compare` does not do what you want, you must provide your own comparator that does. Each of the
 recommendations below is explained in more detail later in this document.
 
 DOs:
-- Ensure that your comparators are based on a http://en.wikipedia.org/wiki/Total_order[total order] over
+
+* Ensure that your comparators are based on a http://en.wikipedia.org/wiki/Total_order[total order] over
 the values you want to compare. It should be able to compare any pair of values that can appear in your
 data set, and determine which value should come first (or that they are equal).
-- Write either a 3-way comparator or a boolean comparator:
-    * A 3-way comparator takes 2 values, _x_ and _y_, and returns a Java 32-bit _int_ that is negative if
+* Write either a 3-way comparator or a boolean comparator:
+** A 3-way comparator takes 2 values, _x_ and _y_, and returns a Java 32-bit _int_ that is negative if
     _x_ comes before _y_, positive if _x_ comes after _y_, or 0 if they are equal. Use values -1, 0, and 1
     if you have no reason to prefer other return values.
-    * A boolean comparator takes 2 values, _x_ and _y_, and returns true if _x_ comes before _y_, or
-    false otherwise (including if _x_ and _y_ are equal). _<_ and _>_ are good examples. _<=_
-    and _>=_ are not. Performance note: your boolean comparator may be called twice to distinguish
+** A boolean comparator takes 2 values, _x_ and _y_, and returns true if _x_ comes before _y_, or
+    false otherwise (including if _x_ and _y_ are equal). `<` and `>` are good examples. `\<=`
+    and `>=` are not. Performance note: your boolean comparator may be called twice to distinguish
     between the "comes after" or "equals" cases.
-- Reverse the sort by reversing the order that you give the arguments to an existing comparator.
-- Compare equal-length Clojure vectors containing "sort keys" in order to do a multi-field comparison
+* Reverse the sort by reversing the order that you give the arguments to an existing comparator.
+* Compare equal-length Clojure vectors containing "sort keys" in order to do a multi-field comparison
 between values.
 
 DO NOTs:
-- Do not write a boolean comparator that returns true if the values are equal. Such a comparator is
+
+* Do not write a boolean comparator that returns true if the values are equal. Such a comparator is
 inconsistent. It will cause sorted collections to behave incorrectly, and sorting to give unpredicable
 orders.
-- Do not use comparators for sorted sets and maps that treat two values as equal, unless you want
+* Do not use comparators for sorted sets and maps that treat two values as equal, unless you want
 at most one of those two values to appear in the sorted collection.
-- Do not use substraction when writing a 3-way comparator, unless you really know what you are doing.
+* Do not use substraction when writing a 3-way comparator, unless you really know what you are doing.
 
 See also: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/compare[compare],
 http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/sort[sort],
@@ -70,18 +69,18 @@ http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/rsubseq[rsub
 
 == Introduction
 
-Here we briefly describe the default sorting order provided by the function _compare_.
+Here we briefly describe the default sorting order provided by the function `compare`.
 After that we give examples of other comparators, with some guidelines to follow and
 mistakes to avoid when writing your own.
 
-If you do not specify your own comparator, sorting is done by a built-in function _compare_.
-_compare_ works for many types of values, ordering them in one particular way: increasing
+If you do not specify your own comparator, sorting is done by a built-in function `compare`.
+`compare` works for many types of values, ordering them in one particular way: increasing
 numeric order for numbers; http://en.wikipedia.org/wiki/Lexicographical_order[lexicographic order]
 (aka dictionary order) for strings, symbols, and keywords; shortest-to-longest order by Clojure
 vectors, with lexicographic ordering among equal length vectors. All Java types implement
 the http://docs.oracle.com/javase/6/docs/api/java/lang/Comparable.html[Comparable]
 interface such as characters, booleans, File, URI, and UUID are compared via their
-_compareTo_ methods. Finally, _nil_ can be compared to all values described earlier, and
+`compareTo` methods. Finally, `nil` can be compared to all values described earlier, and
 is considered less than everything else.
 See http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/compare[compare]
 for examples and more details.
@@ -103,7 +102,7 @@ libraries for this.
 
 === Reverse order
 
-To sort numbers in decreasing order, simply write a comparator that calls _compare_ with the arguments
+To sort numbers in decreasing order, simply write a comparator that calls `compare` with the arguments
 in the opposite order:
 
 [source,clojure]
@@ -127,15 +126,15 @@ are %1 and %2, in that order.
 user> (sort #(compare %2 %1) [4 3 2 1])
 ----
 
-_reverse-cmp_ will also work for all other types _compare_ works for.
+`reverse-cmp` will also work for all other types `compare` works for.
 
 === Multi-field comparators
 
 Because equal-length Clojure vectors are compared lexicographically, they can be used to do multi-field
-sorting on values like maps or records. This only works if the fields are already sorted by _compare_
+sorting on values like maps or records. This only works if the fields are already sorted by `compare`
 in the order you wish (or the reverse of that).
 
-Firs we will show a way to do it that does not compare vectors.
+First we will show a way to do it that does not compare vectors.
 
 [source,clojure]
 ----
@@ -146,17 +145,17 @@ Firs we will show a way to do it that does not compare vectors.
 (def people [john1 mary john2 john3])
 
 (defn by-salary-name-co [x y]
-    ;; :salary values sorted in descreasing order because x and y
-    ;; swapped in this compare.
-    (let [c (compare (:salary y) (:salary x))]
+  ;; :salary values sorted in descreasing order because x and y
+  ;; swapped in this compare.
+  (let [c (compare (:salary y) (:salary x))]
+    (if (not= c 0)
+      c
+      ;; :name and :compare are sorted in increasing order
+      (let [c (compare (:name x) (:name y))]
         (if (not= c 0)
-            c
-            ;; :name and :compare are sorted in increasing order
-            (let [c (compare (:name x) (:name y))]
-                (if (not= c 0)
-                    c
-                    (let [c (compare (:company x) (:company y))]
-                        c))))))
+          c
+          (let [c (compare (:company x) (:company y))]
+            c))))))
 
 user> (pprint (sort by-salary-name-co people))
 ({:name "John", :salary 40000.0, :company "Venus Co"}
@@ -191,11 +190,11 @@ https://github.com/jafingerhut/thalia/blob/master/doc/project-docs/clojure.core-
 Java comparators are all 3-way, meaning they return a negative, 0, or positive integer depending upon whether
 the first argument should be considered less than, equal to, or greater than the second argument.
 
-In Clojure, you may also use boolean comparators that return _true_ if the first argument should come before
-the second argument, or _false_ otherwise (i.e. should come after, or it is equal).
-The function _<_ is a perfect example, as long as you only need to compare numbers. _>_ works for sorting
+In Clojure, you may also use boolean comparators that return `true` if the first argument should come before
+the second argument, or `false` otherwise (i.e. should come after, or it is equal).
+The function `<` is a perfect example, as long as you only need to compare numbers. `>` works for sorting
 numbers in decreasing order.
-Behind the scenes, when such a Clojure function _bool-cmp-fn_ is "called as a comparator",
+Behind the scenes, when such a Clojure function `bool-cmp-fn` is "called as a comparator",
 Clojure runs code that works like this to return an _int_ instead:
 
 [source,clojure]
@@ -208,7 +207,7 @@ Clojure runs code that works like this to return an _int_ instead:
 ----
 
 You can see this by calling the compare method of any Clojure function.
-Below is an example with a custom version _my-<_ of _<_ that prints its arguments when it is called,
+Below is an example with a custom version `my-<` of `<` that prints its arguments when it is called,
 so you can see the cases where it is called more than once:
 
 [source, clojure]
@@ -243,7 +242,7 @@ false
 
 See Clojure source file
 https://github.com/clojure/clojure/blob/clojure-1.7.0/src/jvm/clojure/lang/AFunction.java#L46[src/jvm/clojure/lang/AFunction.java]
-method _compare_ if you want all the details.
+method `compare` if you want all the details.
 
 === General rules for comparators
 
@@ -260,12 +259,12 @@ to largest, in the usual way this is done in mathematics. Many of the fractions 
 other, e.g. _1/2 = 2/4 = 3/6_. A comparator implementing that total order should behave as if
 they are all the same.
 
-A 3-way comparator _(cmp a b)_ should return a negative, positive, or 0 _int_ if _a_ is before, after,
+A 3-way comparator `(cmp a b)` should return a negative, positive, or 0 _int_ if _a_ is before, after,
 or is considered equal to b in the total order, respectively.
 
-A boolean comparator _(cmp a b)_ should return true if _a_ is before _b_ in the total order, or false
-if _a_ is after or considered equal to _b_. That is, it should work like _<_ does for numbers.
-As explained later, it should not behave like _<=_ for numbers
+A boolean comparator `(cmp a b)` should return true if _a_ is before _b_ in the total order, or false
+if _a_ is after or considered equal to _b_. That is, it should work like `<` does for numbers.
+As explained later, it should not behave like `\<=` for numbers
 (see section "Comparators for sorted sets and maps are easy to get wrong").
 
 == Mistakes to avoid
@@ -273,13 +272,13 @@ As explained later, it should not behave like _<=_ for numbers
 === Comparators for sorted sets and maps are easy to get wrong
 This is just as accurately stated as "comparators are easy to get wrong", but it is often more noticeable
 when you use a bad comparator for sorted sets and maps. If you write the kinds of bad comparators in this
-section and use them to call _sort_, usually little or nothing will go wrong (although inconsistent comparators
+section and use them to call `sort`, usually little or nothing will go wrong (although inconsistent comparators
 are not good for sorting, either). With sorted sets and maps, these bad comparators can cause values not to be
 added to your sorted collections, or to be added but not be found when you search for them.
 
 Suppose you want a sorted set containing vectors of two elements, where each is a string followed by a
-number, e.g. _["a" 5]_. You want the set sorted by the number, and to allow multiple vectors with the same
-number but different strings. Your first try might be to write something like _by-2nd_:
+number, e.g. `["a" 5]`. You want the set sorted by the number, and to allow multiple vectors with the same
+number but different strings. Your first try might be to write something like `by-2nd`:
 
 [source, clojure]
 ----
@@ -295,10 +294,10 @@ user> (sorted-set-by by-2nd ["a" 1] ["b" 1] ["c" 1])
 #{["a" 1]}
 ----
 
-Only one element is in the set, because _by-2nd_ treats all three of the vectors as equal. Sets should not contain duplicate elements,
+Only one element is in the set, because `by-2nd` treats all three of the vectors as equal. Sets should not contain duplicate elements,
 so the other elements are not added.
 
-A common thought in such a case is to use a boolean comparator function based on _<=_ instead of _<_:
+A common thought in such a case is to use a boolean comparator function based on `\<=` instead of `<`:
 
 [source, clojure]
 ----
@@ -306,7 +305,7 @@ A common thought in such a case is to use a boolean comparator function based on
   (<= (second a) (second b)))
 ----
 
-The boolean comparator _by-2nd-<=_ seems to work correctly on the first step of creating the set,
+The boolean comparator `by-2nd-\<=` seems to work correctly on the first step of creating the set,
 but fails when testing whether elements are in the set.
 
 [source, clojure]
@@ -323,9 +322,9 @@ user> (sset ["a" 1])
 nil
 ----
 
-The problem here is that _by-2nd-<=_ gives inconsistent answers. If you ask it whether _["c" 1]_ comes before _["b" 1]_,
+The problem here is that `by-2nd-\<=` gives inconsistent answers. If you ask it whether `["c" 1]` comes before `["b" 1]`,
 it returns true (which Clojure's boolean-to-int comparator conversion turns into -1).
-f you ask it whether _["b" 1]_ comes before _["c" 1]_, again it returns true (again converted into -1 by Clojure).
+f you ask it whether `["b" 1]` comes before `["c" 1]`, again it returns true (again converted into -1 by Clojure).
 One cannot reasonably expect an implementation of a sorted data structure to provide any kind of guarantees on
 its behavior if you give it an inconsistent comparator.
 
@@ -333,8 +332,8 @@ The techniques described in "Multi-field comparators" above provide correct comp
 In general, be wary of comparing only parts of values to each other. Consider having some kind of tie-breaking
 condition after all of the fields of interest to you have been compared.
 
-Aside: If you do not want multiple vectors in your set with the same number, _by-2nd_ is the comparator you should use.
-It gives exactly the behavior you want. (TBD: Are there any caveats here? Will _sorted-set_ ever use _=_ to compare elements
+Aside: If you do not want multiple vectors in your set with the same number, `by-2nd` is the comparator you should use.
+It gives exactly the behavior you want. (TBD: Are there any caveats here? Will `sorted-set` ever use `=` to compare elements
 for any reason, or only the supplied comparator function?)
 
 === Beware using subtraction in a comparator
@@ -368,7 +367,7 @@ and it returns any type of number, that number is converted to an _int_ behind t
 http://docs.oracle.com/javase/6/docs/api/java/lang/Number.html#intValue%28%29[intValue].
 See Clojure source file
 https://github.com/clojure/clojure/blob/clojure-1.7.0/src/jvm/clojure/lang/AFunction.java#L46[src/jvm/clojure/lang/AFunction.java]
-method _compare_ if you want the details.
+method `compare` if you want the details.
 
 For comparing floating point numbers and ratios, this causes numbers differing by less than 1 to be treated as equal,
 because a return value between -1 and 1 is truncated to the _int_ 0:
@@ -439,8 +438,8 @@ This case is easily implemented using a multi-field comparator as described in a
            [b-num b-str]))
 ----
 
-If the entire vector values can be compared with _compare_, because all vectors are equal length,
-and the type of each corresponding elements can be compared to each other with _compare_,
+If the entire vector values can be compared with `compare`, because all vectors are equal length,
+and the type of each corresponding elements can be compared to each other with `compare`,
 then you can also do this, using the entire vector values as the final tie-breaker:
 
 [source,clojure]
@@ -451,7 +450,7 @@ then you can also do this, using the entire vector values as the final tie-break
 ----
 
 However, that will throw an exception if some element position in the vectors contain types too different
-for _compare_ to work on, and those vectors have the same second element:
+for `compare` to work on, and those vectors have the same second element:
 
 [source,clojure]
 ----
@@ -461,9 +460,9 @@ user> (sort by-number-then-whatever [["a" 2] ["c" 3] [:b 2]])
 ClassCastException java.lang.String cannot be cast to clojure.lang.Keyword  clojure.lang.Keyword.compareTo (Keyword.java:109)
 ----
 
-_cc-cmp_ ("cross class compare") below may be useful in such cases.
+`cc-cmp` ("cross class compare") below may be useful in such cases.
 It can compare values of different types, which it orders based on a string that represents the type of the value.
-It is not simply _(class x)_, because then numbers like _Integer_ and _Long_ would not be sorted in numeric order.
+It is not simply `(class x)`, because then numbers like `Integer` and `Long` would not be sorted in numeric order.
 
 [source,clojure]
 ----
@@ -587,7 +586,7 @@ It is not simply _(class x)_, because then numbers like _Integer_ and _Long_ wou
           :else (compare x y))))
 ----
 
-Here is a quick example demonstrating _cc-cmp_'s ability to compare values of different types.
+Here is a quick example demonstrating `cc-cmp`'s ability to compare values of different types.
 
 [source,clojure]
 ----

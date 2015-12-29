@@ -9,4 +9,5 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 == Guides
 
 * <<getting_started#,Getting Started>>
+* <<threading_macros#,Threading Macros Guide>>
 

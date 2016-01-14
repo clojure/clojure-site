@@ -27,7 +27,7 @@ user=> (javax.swing.JOptionPane/showMessageDialog nil "Hello World")
 ----
 Try Clojure online:
 
-* http://tryclj.com/[TryClojure] provides a brower-based Clojure REPL
+* http://tryclj.com/[TryClojure] provides a browser-based Clojure REPL
 * http://himera.herokuapp.com/index.html[Himera] provides a browser-based ClojureScript REPL
 
 === Clojure Tools

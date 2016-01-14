@@ -44,22 +44,7 @@ Community volunteers maintain http://dev.clojure.org/display/doc/getting+started
 * http://www.lighttable.com/[Light Table]
 * http://www.sublimetext.com/[Sublime Text] with https://github.com/wuub/SublimeREPL[SublimeREPL]
 
-=== Books
-
-There are now many excellent books about Clojure and ClojureScript. This is an *incomplete* list of titles (as more keep arriving!):
-
-* http://amzn.com/1934356867[Programming Clojure] - Stuart Halloway, Aaron Bedra (Pragmatic Bookshelf)
-* http://amzn.com/B007Q4T040[Clojure Programming] - Chas Emerick, Brian Carper, Christophe Grand (O'Reilly)
-* http://amzn.com/1935182641[The Joy of Clojure: Thinking the Clojure Way] - Michael Fogus, Chris Houser (Manning)
-* http://amzn.com/1935182641[Clojure in Action] - Amit Rathore (Manning)
-* http://amzn.com/1430272317[Practical Clojure] - Luke VanderHart, Stuart Sierra (Apress)
-* http://amzn.com/B009WXWXPG[ClojureScript Up and Running] - Stuart Sierra, Luke VanderHart (O'Reilly)
-* http://amzn.com/B00IT6XZ0O[Clojure Cookbook: Recipes for Functional Programming] - Luke VanderHart, Ryan Neufeld (O'Reilly)
-* http://amzn.com/B00I800FCM[Web Development with Clojure] - Dmitri Sotnikov (Pragmatic Bookshelf)
-* http://shop.oreilly.com/product/0636920034292.do[Living Clojure] - Carin Meier (O'Reilly)
-* https://pragprog.com/book/vmclojeco/clojure-applied[Clojure Applied] - Ben Vandgrift, Alex Miller (Pragmatic Bookshelf)
-
-=== Online Books, Tutorials, and Resources
+=== Tutorials and Resources
 
 Official:
 
@@ -72,6 +57,7 @@ Official:
 
 Community:
 
+* <<xref/../../community/books#,Books>>
 * http://www.braveclojure.com/[Clojure for the Brave and True] - a beginner book by Daniel Higginbotham
 * http://aphyr.com/posts/301-clojure-from-the-ground-up-welcome[Clojure from the ground up] - a series of intro articles by Kyle Kingsbury
 * https://github.com/ClojureBridge/curriculum[ClojureBridge Curriculum]

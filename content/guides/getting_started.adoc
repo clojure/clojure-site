@@ -27,7 +27,7 @@ user=> (javax.swing.JOptionPane/showMessageDialog nil "Hello World")
 ----
 Try Clojure online:
 
-* http://tryclj.com/[TryClojure] provides a brower-based Clojure REPL
+* http://tryclj.com/[TryClojure] provides a browser-based Clojure REPL
 * http://himera.herokuapp.com/index.html[Himera] provides a browser-based ClojureScript REPL
 
 === Clojure Tools
@@ -35,6 +35,7 @@ Try Clojure online:
 Community volunteers maintain http://dev.clojure.org/display/doc/getting+started[Getting Started] documentation for a number of different tools and approaches. Some of the most commonly used tools include:
 
 * http://leiningen.org/[Leiningen] - an extensible build tool that provides dependency management, REPL support, testing, packaging, deployment, and many other capabilities.
+* http://boot-clj.com/[Boot] - build tooling for Clojure: instead of a special-purpose DSL, Boot supplies abstractions and libraries you can use to automate nearly any build scenario with the full power of the Clojure language
 * http://www.gnu.org/software/emacs/[Emacs] with https://github.com/clojure-emacs/cider[CIDER]
 * http://www.vim.org/[Vim] with https://github.com/tpope/vim-fireplace[Fireplace]
 * https://code.google.com/p/counterclockwise/[Eclipse Counterclockwise]
@@ -86,6 +87,7 @@ Community:
 * Newsletters - http://defnewsletter.com/[(def newsletter)] http://www.clojuregazette.com/[Clojure Gazette] http://reborg.tumblr.com/[Clojure Weekly]
 * http://www.clojureatlas.com/[Clojure Atlas] - visualization of Clojure and the core library
 * http://www.clojurebridge.org/[ClojureBridge] - beginner workshops for women
+* http://www.parens-of-the-dead.com/[Parens of the Dead] - a screencast series writing a game from scratch with Clojure and ClojureScript
 
 Videos and presentations:
 

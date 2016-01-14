@@ -72,7 +72,7 @@ Which one you choose would probably depend on aesthetics, and what your plans fo
 
 == Host interop
 
-Host interop is one of the biggest pain points that cljx and reader conditionals both solve. You may have a Clojure file that is almost pure Clojure, but needs to call out to the host environment for one function. https://github.com/lymingtonprecision/route-ccrs/blob/c579aea05504736f2cfbd31c3c755f7e25fdad77/src/route_ccrs/manufacturing_methods.cljc#L8-L10[This] is a classic example:
+Host interop is one of the biggest pain points reader conditionals solve. You may have a Clojure file that is almost pure Clojure, but needs to call out to the host environment for one function. https://github.com/lymingtonprecision/route-ccrs/blob/c579aea05504736f2cfbd31c3c755f7e25fdad77/src/route_ccrs/manufacturing_methods.cljc#L8-L10[This] is a classic example:
 
 [source,clojure]
 ----
@@ -83,21 +83,9 @@ Host interop is one of the biggest pain points that cljx and reader conditionals
 
 == Namespaces
 
-Namespaces are the other big pain point for sharing code between Clojure and ClojureScript. ClojureScript has different syntax for https://github.com/clojure/clojurescript/wiki/Differences-from-Clojure#lisp[requiring macros] than Clojure. To use these macros in a `.cljc` file, you'll need Reader Conditionals in the namespace declaration.
+Namespaces are the other big pain point for sharing code between Clojure and ClojureScript. ClojureScript has different syntax for https://github.com/clojure/clojurescript/wiki/Differences-from-Clojure#lisp[requiring macros] than Clojure. To use macros that work in both Clojure and ClojureScript in a `.cljc` file, you'll need Reader Conditionals in the namespace declaration.
 
-https://github.com/VesaKarvonen[Vesa Karvonen] has a https://github.com/VesaKarvonen/poc.cml/blob/6c80c55aa16ab1253ad3e85705b5360fbed73f7e/src/poc/cml/sem.cljc[neat trick] for this, taking advantage of the fact you can have multiple `:require`'s in one Clojure ns form. **N.B.: ClojureScript ns forms can only have one `:require` in them.**
-
-[source,clojure]
-----
-(ns poc.cml.sem
-  (#?(:clj :require :cljs :require-macros)
-    [poc.cml.macros :refer [go sync!]])
-  (:require
-    [poc.cml :refer [choose wrap]]
-    [poc.cml.util :refer [chan on put!]]))
-----
-
-Here is a larger example showing more conventional usage from a https://github.com/lymingtonprecision/route-ccrs/blob/c579aea05504736f2cfbd31c3c755f7e25fdad77/test/route_ccrs/schema/ids/part_no_test.cljc[test] in https://github.com/lymingtonprecision/route-ccrs[route-ccrs]
+Here is an example from a https://github.com/lymingtonprecision/route-ccrs/blob/c579aea05504736f2cfbd31c3c755f7e25fdad77/test/route_ccrs/schema/ids/part_no_test.cljc[test] in https://github.com/lymingtonprecision/route-ccrs[route-ccrs]
 
 [source,clojure]
 ----
@@ -105,24 +93,18 @@ Here is a larger example showing more conventional usage from a https://github.c
   (:require #?(:clj  [clojure.test :refer :all]
                :cljs [cljs.test :refer-macros [is]])
             #?(:cljs [cljs.test.check :refer [quick-check]])
-            #?(:clj  [clojure.test.check.clojure-test :refer [defspec]]
-               :cljs [cljs.test.check.cljs-test :refer-macros [defspec]])
             #?(:clj  [clojure.test.check.properties :as prop]
                :cljs [cljs.test.check.properties :as prop
                        :include-macros true])
-            [schema.core :as schema :refer [check]]
-            [route-ccrs.schema.ids :refer [PartNo]]
-            [route-ccrs.generators.part-no
-             :refer [gen-part-no gen-invalid-part-no]]))
+            [schema.core :as schema :refer [check]]))
 ----
 
-In this example, we want to be able to use the `rethinkdb.query` namespace in Clojure and ClojureScript. However we can't load the required `rethinkdb.net` in ClojureScript as it uses Java sockets to communicate with the database. Instead we use a reader conditional so it's only required when read by Clojure programs.
+Here is another example, we want to be able to use the `rethinkdb.query` namespace in Clojure and ClojureScript. However we can't load the required `rethinkdb.net` in ClojureScript as it uses Java sockets to communicate with the database. Instead we use a reader conditional so the namespace is only required when read by Clojure programs.
 
 [source,clojure]
 ----
 (ns rethinkdb.query
   (:require [clojure.walk :refer [postwalk postwalk-replace]]
-            [rethinkdb.query-builder :as qb :refer [term parse-term]]
             #?(:clj [rethinkdb.net :as net])))
 
 ;; snip...
@@ -134,7 +116,7 @@ In this example, we want to be able to use the `rethinkdb.query` namespace in Cl
 
 == Exception handling
 
-Exception handling is another area that benefits from reader conditionals. ClojureScript supports `(catch :default)` to catch everything and this may come Clojure too, however you will often still want to handle host specific exceptions. Here's an https://github.com/runexec/lemon-disc/blob/c24c6638f1d476a0f5470387e52a2b702117c4a9/src/lemon_disc/core.cljc#L65-L72[example] from https://github.com/runexec/lemon-disc[lemon-disc].
+Exception handling is another area that benefits from reader conditionals. ClojureScript supports `(catch :default)` to catch everything, however you will often still want to handle host specific exceptions. Here's an https://github.com/runexec/lemon-disc/blob/c24c6638f1d476a0f5470387e52a2b702117c4a9/src/lemon_disc/core.cljc#L65-L72[example] from https://github.com/runexec/lemon-disc[lemon-disc].
 
 [source,clojure]
 ----
@@ -150,7 +132,7 @@ Exception handling is another area that benefits from reader conditionals. Cloju
 
 == Splicing
 
-The splicing reader conditional is not as widely used as the standard one. For an example on its usage, let's get really meta and look at the https://github.com/clojure/clojure-clr/blob/544e9354e121e10a656702222d47c8398468fb02/Clojure/Clojure.Tests/clojure/test_clojure/reader.cljc#L672-L677[tests] for reader conditionals in the ClojureCLR reader. What might not be obvious at first glance is that the vectors inside the splicing reader conditional are being wrapped by a surrounding vector.
+The splicing reader conditional is not as widely used as the standard one. For an example on its usage, let's look at the https://github.com/clojure/clojure-clr/blob/544e9354e121e10a656702222d47c8398468fb02/Clojure/Clojure.Tests/clojure/test_clojure/reader.cljc#L672-L677[tests] for reader conditionals in the ClojureCLR reader. What might not be obvious at first glance is that the vectors inside the splicing reader conditional are being wrapped by a surrounding vector.
 
 [source,clojure]
 ----
@@ -166,13 +148,13 @@ The splicing reader conditional is not as widely used as the standard one. For a
 
 == File organisation
 
-There isn't a clear community consensus yet around where to put `.cljc` files. Two options are to have a `src` directory where `.clj`, `.cljs`, and `.cljc` files, or to have separate `src/clj`, `src/cljc`, and `src/cljs` directories.
+There isn't a clear community consensus yet around where to put `.cljc` files. Two options are to have a `src` directory with `.clj`, `.cljs`, and `.cljc` files, or to have separate `src/clj`, `src/cljc`, and `src/cljs` directories.
 
-== CLJX
+== cljx
 
-Before Reader Conditionals, the same goal of sharing code between platforms was solved by https://github.com/lynaghk/cljx[cljx]. cljx processes Clojure files with a .cljx extension and output multiple platform specific files to a generated sources directory. These were then read as normal Clojure or ClojureScript files by the Clojure <<xref/../../reference/reader#,reader>>. This worked well, but required another piece of tooling to run, and it wasn't able to be used in Clojure contrib projects. cljx was deprecated on June 13 2015 in favour of reader conditionals.
+Before reader conditionals were introduced, the same goal of sharing code between platforms was solved by a Leiningen plugin called https://github.com/lynaghk/cljx[cljx]. cljx processes files with the `.cljx` extension and outputs multiple platform specific files to a generated sources directory. These were then read as normal Clojure or ClojureScript files by the Clojure <<xref/../../reference/reader#,reader>>. This worked well, but required another piece of tooling to run. cljx was deprecated on June 13 2015 in favour of reader conditionals.
 
-Sente uses CLJX for sharing code between Clojure and ClojureScript. I've rewritten the https://github.com/ptaoussanis/sente/blob/v1.4.1/src/taoensso/sente.cljx[main] namespace to use reader conditionals. Notice that we've used the splicing reader conditional to splice the vector into the parent `:require`. Notice also that some of the requires are duplicated between `:clj` and `:cljs`.
+Sente uses cljs for sharing code between Clojure and ClojureScript. I've rewritten the https://github.com/ptaoussanis/sente/blob/v1.4.1/src/taoensso/sente.cljx[main] namespace to use reader conditionals. Notice that we've used the splicing reader conditional to splice the vector into the parent `:require`. Notice also that some of the requires are duplicated between `:clj` and `:cljs`.
 
 [source,clojure]
 ----
@@ -192,7 +174,30 @@ Sente uses CLJX for sharing code between Clojure and ClojureScript. I've rewritt
              [taoensso.encore :as enc :refer (have? have have-in)])))
 ----
 
+[source,clojure]
+----
+(ns taoensso.sente
+  #+clj
+  (:require
+   [clojure.string     :as str]
+   [clojure.core.async :as async)]
+   [taoensso.encore    :as enc]
+   [taoensso.timbre    :as timbre]
+   [taoensso.sente.interfaces :as interfaces])
+
+  #+cljs
+  (:require
+   [clojure.string  :as str]
+   [cljs.core.async :as async]
+   [taoensso.encore :as enc]
+   [taoensso.sente.interfaces :as interfaces])
+
+  #+cljs
+  (:require-macros
+   [cljs.core.async.macros :as asyncm :refer (go go-loop)]
+   [taoensso.encore        :as enc    :refer (have? have have-in)]))
+----
 
 == Backwards compatibility
 
-At the time of writing, there is no way to use `.cljc` files in versions of Clojure less than 1.7, nor is there any porting mechanism to preprocess `.cljc` files like CLJX does. For that reason library maintainers may need to wait for a while until they can safely drop support for older versions of Clojure and adopt reader conditionals.
+At the time of writing, there is no way to use `.cljc` files in versions of Clojure less than 1.7, nor is there any porting mechanism to preprocess `.cljc` files to output `.clj` and `.cljs` files like cljx does. For that reason library maintainers may need to wait for a while until they can safely drop support for older versions of Clojure and adopt reader conditionals.

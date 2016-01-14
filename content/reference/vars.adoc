@@ -16,7 +16,7 @@ toc::[]
 
 Clojure is a practical language that recognizes the occasional need to maintain a persistent reference to a changing value and provides 4 distinct mechanisms for doing so in a controlled manner - Vars, <<refs#,Refs>>, <<agents#,Agents>> and <<atoms#,Atoms>>. Vars provide a mechanism to refer to a mutable storage location that can be dynamically rebound (to a new storage location) on a per-thread basis. Every Var can (but needn't) have a root binding, which is a binding that is shared by all threads that do not have a per-thread binding. Thus, the value of a Var is the value of its per-thread binding, or, if it is not bound in the thread requesting the value, the value of the root binding, if any.
 
-The special form _**def**_ creates (and <<vars#interning,interns>>) a Var. If the Var did not already exist and no initial value is supplied, the var is unbound:
+The special form _**def**_ creates (and <<vars#Interning,interns>>) a Var. If the Var did not already exist and no initial value is supplied, the var is unbound:
 
 [source,clojure]
 ----

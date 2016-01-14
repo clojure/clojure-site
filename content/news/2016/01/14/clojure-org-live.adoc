@@ -1,0 +1,16 @@
+= Welcome to the new clojure.org!
+Alex Miller
+2016-01-14
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+You are reading this on the newly updated Clojure web site! The first thing you will notice is that everything got a fresh coat of paint and the design is a big step forward. Essentially all of the old page content has been moved over to the new site, however some things are in new locations - in virtually all of those cases, you should find redirects taking you to the new location.
+
+There are also several new things on the site:
+
+* <<xref/../../../../news#,News>> - periodically we will post topical news here about new features, releases, or other things of note - these also appear as links on the home page
+* <<xref/../../../../../community/events#,Events>> - there is now a page for each upcoming Clojure event, also with links on the home page
+* <<xref/../../../../../guides#,Guides>> - a new section for building out community guides and tutorials
+
+Most importantly, all of the site content is stored in a https://github.com/clojure/clojure-site[repository] and open for pull requests from contributors with a signed contributor agreement. If you are interested in adding or changing content, please check out the page on <<xref/../../../../../community/contributing_site#,site contributions>> and the current https://github.com/clojure/clojure-site/issues[issues] list.

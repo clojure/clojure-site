@@ -7,9 +7,7 @@ Rich Hickey
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-== Quick Start
-
-=== Minimal Install
+== Minimal Install
 
 Clojure requires only http://java.sun.com/javase/downloads/index.jsp[Java] 1.6 or greater, plus the Clojure JAR file itself.
 
@@ -18,79 +16,28 @@ Clojure requires only http://java.sun.com/javase/downloads/index.jsp[Java] 1.6 o
 ----
 java -cp clojure-1.7.0.jar clojure.main
 ----
-This will bring up a simple read-eval-print loop (REPL). From the REPL, try:
+This will bring up a read-eval-print loop (REPL). From the REPL, try:
 [source,clojure]
 ----
 user=> (+ 1 2 3)
 6
 user=> (javax.swing.JOptionPane/showMessageDialog nil "Hello World")
 ----
-Try Clojure online:
+
+== Try Clojure Online
 
 * http://tryclj.com/[TryClojure] provides a browser-based Clojure REPL
 * http://himera.herokuapp.com/index.html[Himera] provides a browser-based ClojureScript REPL
 
-=== Clojure Tools
+== Clojure with Leiningen
 
-Community volunteers maintain http://dev.clojure.org/display/doc/getting+started[Getting Started] documentation for a number of different tools and approaches. Some of the most commonly used tools include:
+http://leiningen.org/[Leiningen] is a build and project management tool written in Clojure and used pervasively throughout the Clojure community. Follow the instructions there to install Leiningen.
 
-* http://leiningen.org/[Leiningen] - an extensible build tool that provides dependency management, REPL support, testing, packaging, deployment, and many other capabilities.
-* http://boot-clj.com/[Boot] - build tooling for Clojure: instead of a special-purpose DSL, Boot supplies abstractions and libraries you can use to automate nearly any build scenario with the full power of the Clojure language
-* http://www.gnu.org/software/emacs/[Emacs] with https://github.com/clojure-emacs/cider[CIDER]
-* http://www.vim.org/[Vim] with https://github.com/tpope/vim-fireplace[Fireplace]
-* https://code.google.com/p/counterclockwise/[Eclipse Counterclockwise]
-* IntelliJ https://cursiveclojure.com/[Cursive]
-* https://sekao.net/nightcode/[Nightcode]
-* http://www.lighttable.com/[Light Table]
-* http://www.sublimetext.com/[Sublime Text] with https://github.com/wuub/SublimeREPL[SublimeREPL]
+Once it's installed you can start a REPL with:
 
-=== Tutorials and Resources
+[source]
+----
+lein repl
+----
 
-Official:
-
-* http://clojure.github.io/clojure/[Clojure API Docs]
-* http://clojure.github.io/[Clojure Contrib Library API Docs]
-* <<xref/../../reference/documentation#,Clojure Reference Docs>> - official reference information
-* <<xref/../../api/cheatsheet#,Clojure Cheatsheet>> - helpful categorization of most core functions
-* Source - https://github.com/clojure/clojure[Clojure], https://github.com/clojure/clojurescript[ClojureScript], https://github.com/clojure/clojure-clr[ClojureCLR]
-* Issues - http://dev.clojure.org/jira/browse/CLJ[Clojure], http://dev.clojure.org/jira/browse/CLJS[ClojureScript], http://dev.clojure.org/jira/browse/CLJCLR[ClojureCLR]
-
-Community:
-
-* <<xref/../../community/books#,Books>>
-* http://www.braveclojure.com/[Clojure for the Brave and True] - a beginner book by Daniel Higginbotham
-* http://aphyr.com/posts/301-clojure-from-the-ground-up-welcome[Clojure from the ground up] - a series of intro articles by Kyle Kingsbury
-* https://github.com/ClojureBridge/curriculum[ClojureBridge Curriculum]
-* http://grimoire.arrdem.com/[Grimoire] - community combined cheatsheet + examples
-* http://clojuredocs.org[ClojureDocs] - community provided example repository
-* http://crossclj.info/[CrossClj] - library cross-reference
-* http://clojure-doc.org/[Clojure Documentation] - community-driven documentation site
-* http://clojurekoans.com/[Clojure Koans] (http://clojurescriptkoans.com/[online])
-* http://www.4clojure.com/[4clojure] - Clojure practice problems
-* http://exercism.io/[exercism.io] - crowd-source code reviews (supports Clojure)
-* https://github.com/bbatsov/clojure-style-guide[Clojure Style Guide]
-* http://planet.clojure.in/[Planet Clojure] - Clojure blog aggregator
-* Newsletters - http://defnewsletter.com/[(def newsletter)] http://www.clojuregazette.com/[Clojure Gazette] http://reborg.tumblr.com/[Clojure Weekly]
-* http://www.clojureatlas.com/[Clojure Atlas] - visualization of Clojure and the core library
-* http://www.clojurebridge.org/[ClojureBridge] - beginner workshops for women
-* http://www.parens-of-the-dead.com/[Parens of the Dead] - a screencast series writing a game from scratch with Clojure and ClojureScript
-
-Videos and presentations:
-
-* https://www.youtube.com/user/ClojureTV/videos[ClojureTV] - talks by Rich Hickey and presentations from Clojure/conj and Clojure/west
-* http://www.infoq.com/Clojure/presentations/[InfoQ Clojure Presentations] - from a variety of conferences
-
-Video training (commercial):
-
-* http://www.purelyfunctional.tv/intro-to-clojure[Introduction to Clojure] - Eric Normand (LispCast)
-* http://www.purelyfunctional.tv/web-dev-in-clojure[Web Development in Clojure] - Eric Normand (LispCast)
-* http://shop.oreilly.com/product/0636920030409.do[Clojure Inside Out] - Stuart Halloway, Neal Ford (O'Reilly)
-* http://pluralsight.com/training/courses/TableOfContents?courseName=clojure-fundamentals-part-one[Clojure Fundamentals] - Alan Dipert (PluralSight)
-* http://pluralsight.com/training/courses/TableOfContents?courseName=clojure-concurrency-tutorial&highlight=craig-andera_clojure-concurrency-tutorial-intro*3,8!craig-andera_clojure-concurrency-tutorial-vars!craig-andera_clojure-concurrency-tutorial-atoms!craig-andera_clojure-concurrency-tutorial-agents!craig-andera_clojure-concurrency-tutorial-refs!craig-andera_clojure-concurrency-tutorial-misc#clojure-concurrency-tutorial-intro[Clojure Concurrency] - Craig Andera (PluralSight)
-
-=== Conferences
-
-* http://clojure-conj.org/[Clojure/conj] (usually in November)
-* http://www.clojurewest.org/[Clojure/west] (usually in March)
-* http://euroclojure.com[EuroClojure] (usually mid-year)
-* http://lanyrd.com/search/?context=future&q=clojure&type=conference[Clojure events]
+Check out the <<xref/../../community/resources#,Resources>> page for tutorials and other great resources!

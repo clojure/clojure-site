@@ -1,14 +1,14 @@
-= Lazy
+= Making Clojure Lazier
 Rich Hickey
 2015-01-01
-:jbake-type: page
+:type: reference
 :toc: macro
+:icons: font
+:navlinktext: Lazy
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-== Making Clojure Lazier 
 toc::[]
-
 
 _(Note: this section describes work in prerelease, available in the SVN trunk since rev 1287)_
 
@@ -24,7 +24,7 @@ In working on streams a few things became evident:
 *** Yes!
 **** but - ideally some names should change
 
-=== The current seq model 
+=== The current seq model
 
 * Originally modeled on Common Lisp's cons
 * Either you have a seq, with a valid first, or nothing (nil)
@@ -38,7 +38,7 @@ In working on streams a few things became evident:
 
 The eagerness of *rest* means the sequence functions are not fully lazy, they need to at least determine if there is a first.
 
-=== Enhancing the seq model - a third operation on seqs - 'next' 
+=== Enhancing the seq model - a third operation on seqs - 'next'
 
 * _**Changed:**_ (*rest* aseq) - returns a possibly empty seq, _never nil_
 ** calls seq on arg if not already a seq
@@ -77,7 +77,7 @@ The eagerness of *rest* means the sequence functions are not fully lazy, they ne
 ** doesn't support nil punning
 *** since sequence fns no longer return seq/nil
 
-=== Recipe - How to write lazy sequence functions in new model 
+=== Recipe - How to write lazy sequence functions in new model
 
 * Goodbye lazy-cons, hello lazy-seq
 ** lazy-cons is gone
@@ -121,15 +121,15 @@ The new way:
 
 Note the use of when-let, which grabs the seq once, for subsequent use in first and rest, even though first/rest call seq on their argument. This has a performance benefit in this new model.
 
-=== The victim - nil punning 
+=== The victim - nil punning
 
 One of the nice things about CL's cons using nil for end-of-list is that, when coupled with nil's testability in conditionals, cons-returning functions could be used like predicates. Now only *seq* and *next* can be used in that manner - map, filter etc cannot. Note that much of the economy of the seq/nil dyad still applies, e.g. the use of when in map above.
 
-=== Extension ISeqs 
+=== Extension ISeqs
 
 If you are extending ISeq you'll need to support *ISeq.more()* (the underpinnings of rest). Fortunately, most ISeq extenders derive from ASeq, which defines *more()* in terms of *next*. If you derive your seq from ASeq, _don't define more()_, use the version supplied by ASeq. Just rename your rest() method to next().
 
-=== Recipe - Porting 
+=== Recipe - Porting
 
 To move to the new model you'll need to take the following steps, in this order:
 
@@ -150,7 +150,7 @@ To move to the new model you'll need to take the following steps, in this order:
 ----
 ** After you are done, rebuild without the flag, as it will slow things down.
 
-=== Don't hang (onto) your head 
+=== Don't hang (onto) your head
 
 Recursively defined lazy sequence functions are elegant and easy to understand. They can be very memory efficient, allowing you to work with data sources that might not fit in memory, because only the part of the data structure in current use need be in memory. It could be tricky at times to determine which parts were currently in use, as they might still be referenced by local variables. Clojure does local-variable clearing on tail calls to ensure that no lingering references remain on the stack, but there was one remaining case - closed-over locals, that was difficult to control, especially when using a macro like lazy-seq which creates a closure on your behalf.
 

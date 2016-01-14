@@ -1,12 +1,11 @@
-= Contributing
+= Contributing to Clojure
 Rich Hickey
 2015-01-01
-:jbake-type: page
+:type: community
 :toc: macro
+:icons: font
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-
-== Contributing to Clojure
 
 Following the lead of other open source projects, the Clojure project requires contributors to jointly assign their copyright on contributed code. The https://secure.echosign.com/public/hostedForm?formid=95YMDL576B336E[Contributor Agreement] (CA) gives Rich Hickey and the contributor joint copyright interests in the code: the contributor retains copyrights while also granting those rights to Rich Hickey as the open source project sponsor.
 

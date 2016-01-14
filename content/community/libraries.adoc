@@ -1,14 +1,13 @@
-= Libraries
+= Clojure Libraries
 Rich Hickey
 2015-01-01
-:jbake-type: page
+:type: community
 :toc: macro
+:icons: font
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-== Clojure Libraries 
-
-=== Clojure Contrib 
+== Clojure Contrib
 
 Clojure Contrib is a collection of libraries managed with the same Contributor Agreement, license, and development workflow as Clojure itself. Code in Clojure Contrib can be considered for inclusion in newer versions of Clojure.
 
@@ -16,15 +15,15 @@ Clojure Contrib library code is hosted on https://github.com/clojure[Github]. De
 
 Prior to Clojure 1.3, Contrib was packaged as a single monolithic JAR. If you are migrating from a pre-1.3 version of Clojure, please see http://dev.clojure.org/display/community/Where+Did+Clojure.Contrib+Go[this page] for migration help regarding old contrib libraries.
 
-=== Leiningen 
+== Leiningen
 
 The vast majority of Clojure developers use https://github.com/technomancy/leiningen[Leiningen] to create and manage Clojure projects.
 
-=== IDEs and Developer Tools 
+== IDEs and Developer Tools
 
 Community volunteers maintain http://dev.clojure.org/display/doc/getting+started[Getting Started] documentation for a number of different developer tools.
 
-=== Finding Libraries 
+== Finding Libraries
 
 http://search.maven.org/[Maven Central] is a searchable repository of open source JVM libraries.
 

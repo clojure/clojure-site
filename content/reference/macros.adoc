@@ -1,20 +1,23 @@
 = Macros
 Rich Hickey
 2015-01-01
-:jbake-type: page
+:type: reference
 :toc: macro
+:icons: font
+:prevpagehref: special_forms
+:prevpagetitle: Special Forms
+:nextpagehref: other_functions
+:nextpagetitle: Other Functions
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 toc::[]
 
-== Macros 
-
 Clojure has a programmatic macro system which allows the compiler to be extended by user code. Macros can be used to define syntactic constructs which would require primitives or built-in support in other languages. Many core constructs of Clojure are not, in fact, primitives, but are normal macros.
 
 Some macros produce simple combinations of primitive forms. For example, http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/when[`when`] combines <<special_forms#if#,`if`>> and <<special_forms#do#,`do`>>:
 
-[source,clojure]
+[source,clojure-repl]
 ----
 user=> (macroexpand '(when (pos? a) (println "positive") (/ b a)))
 (if (pos? a) (do (println "positive") (/ b a)))
@@ -22,7 +25,7 @@ user=> (macroexpand '(when (pos? a) (println "positive") (/ b a)))
 
 Other macros re-arrange forms in useful ways, like the `pass:[->]` macro, which recursively inserts each expression as the first argument of the next expression:
 
-[source,clojure]
+[source,clojure-repl]
 ----
 user=> (-> {} (assoc :a 1) (assoc :b 2))
 {:b 2, :a 1}
@@ -30,12 +33,12 @@ user=> (macroexpand '(-> {} (assoc :a 1) (assoc :b 2)))
 (assoc (clojure.core/-> {} (assoc :a 1)) :b 2)
 ----
 
-=== Special variables 
+== Special variables
 
 Two special variables are available inside defmacro for more advanced usages:
 
-* &form - the actual form (as data) that is being invoked
-* &env - a map of local bindings at the point of macro expansion. The env map is from symbols to objects holding compiler information about that binding.
+* `&form` - the actual form (as data) that is being invoked
+* `&env` - a map of local bindings at the point of macro expansion. The env map is from symbols to objects holding compiler information about that binding.
 
 All of the following macros are documented on the http://clojure.github.io/clojure/[API] page. Many are also discussed on topic pages as noted:
 

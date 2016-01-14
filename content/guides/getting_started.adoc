@@ -1,14 +1,15 @@
 = Getting Started
 Rich Hickey
 2015-01-01
-:jbake-type: page
+:type: guides
 :toc: macro
+:icons: font
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-== Quick Start 
+== Quick Start
 
-=== Minimal Install 
+=== Minimal Install
 
 Clojure requires only http://java.sun.com/javase/downloads/index.jsp[Java] 1.6 or greater, plus the Clojure JAR file itself.
 
@@ -29,7 +30,7 @@ Try Clojure online:
 * http://tryclj.com/[TryClojure] provides a brower-based Clojure REPL
 * http://himera.herokuapp.com/index.html[Himera] provides a browser-based ClojureScript REPL
 
-=== Clojure Tools 
+=== Clojure Tools
 
 Community volunteers maintain http://dev.clojure.org/display/doc/getting+started[Getting Started] documentation for a number of different tools and approaches. Some of the most commonly used tools include:
 
@@ -42,7 +43,7 @@ Community volunteers maintain http://dev.clojure.org/display/doc/getting+started
 * http://www.lighttable.com/[Light Table]
 * http://www.sublimetext.com/[Sublime Text] with https://github.com/wuub/SublimeREPL[SublimeREPL]
 
-=== Books 
+=== Books
 
 There are now many excellent books about Clojure and ClojureScript. This is an *incomplete* list of titles (as more keep arriving!):
 
@@ -57,7 +58,7 @@ There are now many excellent books about Clojure and ClojureScript. This is an *
 * http://shop.oreilly.com/product/0636920034292.do[Living Clojure] - Carin Meier (O'Reilly)
 * https://pragprog.com/book/vmclojeco/clojure-applied[Clojure Applied] - Ben Vandgrift, Alex Miller (Pragmatic Bookshelf)
 
-=== Online Books, Tutorials, and Resources 
+=== Online Books, Tutorials, and Resources
 
 Official:
 
@@ -99,7 +100,7 @@ Video training (commercial):
 * http://pluralsight.com/training/courses/TableOfContents?courseName=clojure-fundamentals-part-one[Clojure Fundamentals] - Alan Dipert (PluralSight)
 * http://pluralsight.com/training/courses/TableOfContents?courseName=clojure-concurrency-tutorial&highlight=craig-andera_clojure-concurrency-tutorial-intro*3,8!craig-andera_clojure-concurrency-tutorial-vars!craig-andera_clojure-concurrency-tutorial-atoms!craig-andera_clojure-concurrency-tutorial-agents!craig-andera_clojure-concurrency-tutorial-refs!craig-andera_clojure-concurrency-tutorial-misc#clojure-concurrency-tutorial-intro[Clojure Concurrency] - Craig Andera (PluralSight)
 
-=== Conferences 
+=== Conferences
 
 * http://clojure-conj.org/[Clojure/conj] (usually in November)
 * http://www.clojurewest.org/[Clojure/west] (usually in March)

@@ -1,12 +1,12 @@
 = Community Resources
 Rich Hickey
 2015-01-01
-:jbake-type: page
+:type: community
 :toc: macro
+:icons: font
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-== Community Resources 
 
 * http://groups.google.com/group/clojure[Clojure Google Group]
 

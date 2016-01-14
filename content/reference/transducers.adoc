@@ -1,18 +1,23 @@
 = Transducers
 Rich Hickey
 2015-01-01
-:jbake-type: page
+:type: reference
 :toc: macro
+:icons: font
+:prevpagehref: transients
+:prevpagetitle: Transients
+:nextpagehref: multimethods
+:nextpagetitle: Multimethods and Hierarchies
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-== Transducers
+toc::[]
 
 Transducers are composable algorithmic transformations. They are independent from the context of their input and output sources and specify only the essence of the transformation in terms of an individual element. Because transducers are decoupled from input or output sources, they can be used in many different processes - collections, streams, channels, observables, etc. Transducers compose directly, without awareness of input or creation of intermediate aggregates.
 
 Also see the introductory http://blog.cognitect.com/blog/2014/8/6/transducers-are-coming[blog post] and this https://www.youtube.com/watch?v=6mTbuzafcII[video].
 
-== Terminology 
+== Terminology
 
 A _reducing function_ is the kind of function you'd pass to *reduce* - it is a function that takes an accumulated result and a new input and returns a new accumulated result:
 [source,clojure]
@@ -26,7 +31,7 @@ A _transducer_ (sometimes referred to as xform or xf) is a transformation from o
 ;; transducer signature
 (whatever, input -> whatever) -> (whatever, input -> whatever)
 ----
-== Defining Transformations With Transducers 
+== Defining Transformations With Transducers
 
 Most sequence functions included in Clojure have an arity that produces a transducer. This arity omits the input collection; the inputs will be supplied by the process applying the transducer. _Note: this reduced arity is not currying or partial application._
 
@@ -64,7 +69,7 @@ As a mnemonic, remember that the ordering of transducer functions in *comp* is t
 The following functions produce a transducer when the input collection is omitted:
 http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/map[map] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/cat[cat] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/mapcat[mapcat] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/filter[filter] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/remove[remove] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/take[take] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/take-while[take-while] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/take-nth[take-nth] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/drop[drop] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/drop-while[drop-while] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/replace[replace] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/partition-by[partition-by] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/partition-all[partition-all] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/keep[keep] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/keep-indexed[keep-indexed] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/map-indexed[map-indexed] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/distinct[distinct] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/interpose[interpose] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/dedupe[dedupe] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/random-sample[random-sample]
 
-=== Using Transducers 
+=== Using Transducers
 
 Transducers can be used in many contexts (see below for how to create new ones).
 
@@ -93,7 +98,7 @@ The composed xf transducer will be invoked left-to-right with a final call to th
 
 image::/images/content/reference/transducers/xf.png[Nested transformations]
 
-=== eduction 
+=== eduction
 
 To capture the process of applying a transducer to a coll, use the http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/eduction[eduction] function. It takes any number of xforms and a final coll and returns a reducible/iterable application of the transducer to the items in coll. These applications will be performed each time reduce/iterator is called.
 [source,clojure]
@@ -102,13 +107,13 @@ To capture the process of applying a transducer to a coll, use the http://clojur
 (reduce + 0 iter)
 ;; => 6
 ----
-=== into 
+=== into
 To apply a transducer to an input collection and construct a new output collection, use http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/into[into] (which efficiently uses reduce and transients if possible):
 [source,clojure]
 ----
 (into [] xf (range 1000))
 ----
-=== sequence 
+=== sequence
 To create a sequence from the application of a transducer to an input collection, use http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/sequence[sequence]:
 [source,clojure]
 ----
@@ -116,7 +121,7 @@ To create a sequence from the application of a transducer to an input collection
 ----
 The resulting sequence elements are incrementally computed. These sequences will consume input incrementally as needed and fully realize intermediate operations. This behavior differs from the equivalent operations on lazy sequences.
 
-== Creating Transducers 
+== Creating Transducers
 
 Most functions that produce transducers have the following shape (custom code in "..."):
 [source,clojure]
@@ -136,7 +141,7 @@ The inner function is defined with 3 arities used for different purposes:
 
 An example use of *completion* is *partition-all*, which must flush any remaining elements at the end of the input. The http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/completing[completing] function can be used to convert a reducing function to a transducing function by adding a default completion arity.
 
-=== Early termination 
+=== Early termination
 
 Clojure has a mechanism for specifying early termination of a reduce:
 
@@ -146,7 +151,7 @@ Clojure has a mechanism for specifying early termination of a reduce:
 
 A process that uses transducers must check for and stop when the step function returns a reduced value (more on that in Creating Transducible Processes). Additionally, a transducer step function that uses a nested reduce must check for and convey reduced values when they are encountered. (See the implementation of cat for an example.)
 
-=== Transducers with reduction state 
+=== Transducers with reduction state
 
 Some transducers (such as *take*, *partition*, etc) require state during the reduction process. This state is created each time the transducible process applies the transducer. For example, consider the dedupe transducer that collapses a series of duplicate values into a single value. This transducer must remember the previous value to determine whether the current value should be passed on:
 [source,clojure]
@@ -168,7 +173,7 @@ In dedupe, *prev* is a stateful container that stores the previous value during 
 
 In the completion step, a transducer with reduction state should flush state prior to calling the nested transformer's completion function, unless it has previously seen a reduced value from the nested step in which case pending state should be discarded.
 
-== Creating Transducible Processes 
+== Creating Transducible Processes
 
 Transducers are designed to be used in many kinds of processes. A transducible process is defined as a succession of steps where each step ingests an input. The source of the inputs is specific to each process (from a collection, an iterator, a stream, etc). Similarly, the process must choose what to do with the outputs produced by each step.
 

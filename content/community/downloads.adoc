@@ -1,14 +1,13 @@
-= Downloads
+= Clojure Downloads
 Rich Hickey
 2015-01-01
 :jbake-type: page
 :toc: macro
+:icons: font
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-== Clojure Downloads 
-
-== Stable Release: 1.7.0 (June 30, 2015) 
+== Stable Release: 1.7.0 (June 30, 2015)
 
 
 * http://repo1.maven.org/maven2/org/clojure/clojure/1.7.0/clojure-1.7.0.zip[Clojure 1.7.0]
@@ -16,15 +15,14 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 == Development Release: 1.8.0-RC5 
 
-
 * http://repo1.maven.org/maven2/org/clojure/clojure/1.8.0-RC5/clojure-1.8.0-RC5.zip[Clojure 1.8.0-RC5]
 * http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.clojure%22%20AND%20a%3A%22clojure%22%20AND%20v%3A1.8.0*[Clojure 1.8 pre-release builds]
 
-== Clojure Source 
+== Clojure Source
 
 Clojure source code is hosted at http://github.com/clojure/clojure[github.com/clojure/clojure]. Builds of the very latest version of Clojure's master branch are available at https://oss.sonatype.org/content/repositories/snapshots/org/clojure/clojure/1.8.0-master-SNAPSHOT/[build.clojure.org].
 
-== Get Clojure via Leiningen 
+== Get Clojure via Leiningen
 
 Modify the dependencies and repositories sections of your http://leiningen.org/[Leiningen] project.clj file, specifying the version of Clojure that you want:
 [source,clojure]
@@ -33,8 +31,8 @@ Modify the dependencies and repositories sections of your http://leiningen.org/[
 :dependencies [[org.clojure/clojure "1.7.0"]]
 
 ----
-== Where did Clojure Contrib go? 
+== Where did Clojure Contrib go?
 
 If you are migrating from a pre-1.3 version of Clojure, please see http://dev.clojure.org/display/community/Where+Did+Clojure.Contrib+Go[this page] for migration help regarding old contrib libraries.
 
-== <<downloads_older#,Older Releases>> 
+== <<downloads_older#,Older Releases>>

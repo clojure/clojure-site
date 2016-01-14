@@ -1,16 +1,22 @@
-= Libs
+= Using Libs
 Rich Hickey
 2015-01-01
-:jbake-type: page
+:type: reference
 :toc: macro
+:icons: font
+:navlinktext: Libs
+:prevpagehref: namespaces
+:prevpagetitle: Namespaces
+:nextpagehref: vars
+:nextpagetitle: Vars and Environments
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-== Using Libs
+toc::[]
 
 Clojure provides for code loading and dependency tracking via its "lib" facility. A lib is a named unit of Clojure source code contained in a Java resource within classpath. A lib will typically provide the complete set of definitions that make up one Clojure namespace.
 
-=== Lib Conventions
+== Lib Conventions
 
 Clojure defines conventions for naming and structuring libs:
 
@@ -26,7 +32,7 @@ Clojure defines conventions for naming and structuring libs:
 
 Clojure ensures that if the call to "ns" completes without throwing an exception, the declared dependencies have been satisfied and the capabilities they provide are available.
 
-=== Example Lib
+== Example Lib
 
 A simple lib:
 
@@ -43,7 +49,7 @@ A simple lib:
 * The `:use` clause declares a dependency on the `clojure.string` lib for its `join` function only. +join+ may be used in this lib's code using its unqualified name.
 * The `:require` clause declares a dependency on the `clojure.java.io` lib and enables using its members using the shorter namespace alias `jio`.
 
-=== Prefix Lists
+== Prefix Lists
 
 It's common for a lib to depend on several other libs whose full names share a common prefix. In calls to `require` and `use` (and in `:require` and `:use` clauses within an +ns+ form), the common prefix can be extracted and provided once using a prefix list. For example, these two forms are equivalent:
 
@@ -55,7 +61,7 @@ It's common for a lib to depend on several other libs whose full names share a c
 
 ''''
 
-=== Related functions
+== Related functions
 
 Creating a namespace: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ns[ns]
 
@@ -64,7 +70,7 @@ Ensuring a lib is loaded: http://clojure.github.io/clojure/clojure.core-api.html
 Listing loaded libs: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/loaded-libs[loaded-libs]
 
 [[order]]
-=== Lib load order
+== Lib load order
 
 Libs may exist in either compiled (`.class`) or source (`.clj` or `.cljc`) form. In some cases, one or even all of these might exist on the classpath. The lib is loaded from one of them based on the following rules:
 

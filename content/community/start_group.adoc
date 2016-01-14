@@ -1,12 +1,13 @@
 = Start Group
 Alex Miller
 2015-01-01
-:jbake-type: page
+:type: community
 :toc: macro
+:icons: font
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-== Tips on Starting a Clojure User Group 
+== Tips on Starting a Clojure User Group
 
 
 Starting a user group is a great way to improve your Clojure skills and find others interested in Clojure in your area. If you've never run a user group before, that's ok! Anyone can do it.
@@ -19,7 +20,7 @@ A user group needs the following elements:
 . *A home on the web.* It's important to have an address on the web that can be found by a search engine. There are lots of ways to put together a web page for free or cheap - see below for some tools you can use.
 . *People!* You can't have a meeting without people. Ask around at other mailing lists or user groups in your area for people that might be interested.
 
-== Tools 
+== Tools
 
 * Google Calendar - http://www.google.com/calendar[http://www.google.com/calendar]
 * Wordpress - http://wordpress.com[http://wordpress.com] - free blog and web site
@@ -29,7 +30,7 @@ A user group needs the following elements:
 * Wikispaces - http://wikispaces.com/[http://wikispaces.com] - free wiki
 * YouTube - http://youtube.com[http://youtube.com] - video hosting
 
-== Common problems 
+== Common problems
 
 _"We have a group but it's hard to find enough speakers."_ or _"The same people always give talks."_
 

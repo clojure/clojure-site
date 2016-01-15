@@ -7,4 +7,6 @@ Alex Miller
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 * <<getting_started#,Getting Started>>
+* <<comparators#,Comparators>>
+* <<reader_conditionals#,Reader Conditionals>>
 

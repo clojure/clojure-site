@@ -19,8 +19,8 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 == Clojure Contrib Libraries
 
-* http://clojure.github.io/algo.generic/[algo.generic]
-* http://clojure.github.io/algo.graph/[algo.graph]
+* http://clojure.github.io/algo.generic/[algo.generic] Generic versions of common functions
+* http://clojure.github.io/algo.graph/[algo.graph] Basic graph theory algorithms
 * http://clojure.github.io/algo.monads/[algo.monads]
 * http://clojure.github.io/core.async/[core.async]
 * http://clojure.github.io/core.cache/[core.cache]

@@ -14,8 +14,6 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 toc::[]
 
-This documentation is preliminary - please send feedback on the Google Group - thanks!
-
 Clojure compiles all code you load on-the-fly into JVM bytecode, but sometimes it is advantageous to compile ahead-of-time (AOT). Some reasons to use AOT compilation are:
 
 * To deliver your application without source

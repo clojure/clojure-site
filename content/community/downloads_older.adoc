@@ -11,7 +11,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 == Older Production Releases
 
-
+* http://central.maven.org/maven2/org/clojure/clojure/1.7.0/[Clojure 1.7.0] (June, 2015)
 * http://central.maven.org/maven2/org/clojure/clojure/1.6.0/[Clojure 1.6.0] (March, 2014)
 * http://central.maven.org/maven2/org/clojure/clojure/1.5.1/[Clojure 1.5.1] (March, 2013)
 * http://central.maven.org/maven2/org/clojure/clojure/1.4.0/[Clojure 1.4.0] (April, 2012)
@@ -23,7 +23,6 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 * http://github.com/downloads/clojure/clojure/clojure-1.0.0.zip[Clojure 1.0.0] (July, 2009)
 
 == Older Developer Releases
-
 
 * http://repo1.maven.org/maven2/org/clojure/clojure/1.4.0-beta7/clojure-1.4.0-beta7.zip[Clojure 1.4 Beta 7]
 * http://repo1.maven.org/maven2/org/clojure/clojure/1.4.0-beta6/clojure-1.4.0-beta6.zip[Clojure 1.4 Beta 6]

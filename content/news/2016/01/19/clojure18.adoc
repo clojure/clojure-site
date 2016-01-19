@@ -1,0 +1,58 @@
+= Clojure 1.8 is now available
+Alex Miller
+2016-01-19
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Some of the new features for 1.8 are:
+
+* More string functions in http://clojure.github.io/clojure/branch-master/clojure.string-api.html[clojure.string] (portable to ClojureScript): index-of, last-index-of, starts-with?, ends-with?, includes?
+* Compiler <<xref/../../../../../reference/compilation#directlinking,direct linking>> - improves performance and startup time
+* <<xref/../../../../../reference/repl_and_main#_launching_a_socket_server,Socket server>> and socket server REPL - adds the ability to allow remote Clojure REPL connections
+
+For more information, see the https://github.com/clojure/clojure/blob/master/changes.md[complete list] of all changes since Clojure 1.7 for more details.
+
+## Contributors
+
+Thanks to all of those who contributed to Clojure 1.8 (first time contributors in bold):
+
+* *Alexander Yakushev*
+* Alex Miller
+* Alex Redington
+* Alf Kristian Stoyle
+* Ambrose Bonnaire-Sergeant
+* *Andrew Rosa*
+* Andy Fingerhut
+* *Andy Sheldon*
+* *Aspasia Beneti*
+* *Blake West*
+* Bozhidar Batsov
+* *Daniel Compton*
+* *Erik Assum*
+* Gary Fredericks
+* Ghadi Shayban
+* *Gordon Syme*
+* Howard Lewis Ship
+* *Jean Niklas L'orange*
+* *Jeremy Heiler*
+* *Jonas Enlund*
+* Jozef Wagner
+* Karsten Schmidt
+* Kevin Downey
+* *Mark Simpson*
+* Michael Blume
+* *Nahuel Greco*
+* Nicola Mometto
+* *Nikita Prokopov*
+* *Nola Stowe*
+* *Ragnar Dahlén*
+* *Ralf Schmitt*
+* Rich Hickey
+* *Russ Olsen*
+* *Shogo Ohto*
+* Steve Miner
+* Stuart Halloway
+* Timothy Baldridge
+* *Tsutomu Yano*
+* *Yanxiang Lou*

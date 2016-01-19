@@ -14,7 +14,7 @@ Clojure requires only http://java.sun.com/javase/downloads/index.jsp[Java] 1.6 o
 <<xref/../../community/downloads#,Download>> and unzip Clojure. In the directory in which you expanded clojure.zip, run:
 [source,clojure]
 ----
-java -cp clojure-1.7.0.jar clojure.main
+java -cp clojure-1.8.0.jar clojure.main
 ----
 This will bring up a read-eval-print loop (REPL). From the REPL, try:
 [source,clojure]

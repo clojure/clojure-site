@@ -131,6 +131,8 @@ Following is an example of starting a socket server with a repl listener. This c
 -Dclojure.server.repl="{:port 5555 :accept clojure.core.server/repl}"
 ----
 
+To start a socket REPL in other tools, see the docs for setting JVM options in https://github.com/technomancy/leiningen/blob/master/doc/TUTORIAL.md#setting-jvm-options[Leiningen] and https://github.com/boot-clj/boot/wiki/JVM-Options[Boot].
+
 An example client you can use to connect to this socket repl is telnet:
 
 [source,clojure]

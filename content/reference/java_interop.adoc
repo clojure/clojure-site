@@ -308,7 +308,7 @@ Clojure has support for high-performance manipulation of, and arithmetic involvi
 * http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/amap[amap] and http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/areduce[areduce] macros for functionally (i.e. non-destructively) processing one or more arrays in order to produce a new array or aggregate value respectively.
 
 Rather than write this Java:
-[source,clojure]
+[source,java]
 ----
 static public float asum(float[] xs){
   float ret = 0;

@@ -122,7 +122,7 @@ A socket server will be started for each JVM system property like "clojure.serve
 * `bind-err` - defaults to true, binds `pass:[*err*]` to socket out stream
 * `client-daemon` - defaults to true, socket client thread doesn't block exit
 
-Additionally, there is a repl function provided that is slightly customized for use with the socket server in http://clojure.github.io/clojure/clojure.core.server-api.html#clojure.core.server/repl[clojure.core.server/repl].
+Additionally, there is a repl function provided that is slightly customized for use with the socket server in http://clojure.github.io/clojure/clojure.core-api.html#clojure.core.server/repl[clojure.core.server/repl].
 
 Following is an example of starting a socket server with a repl listener. This can be added to any existing Clojure program to allow it to accept external REPL clients via a local connection to port 5555.
 
@@ -150,8 +150,12 @@ Also see:
 
 == Related functions
 
-Main Entry Point: `http://clojure.github.io/clojure/clojure.main-api.html#clojure.main/main[clojure.main/main]`
+Main entry point: `http://clojure.github.io/clojure/clojure.main-api.html#clojure.main/main[clojure.main/main]`
 
 Reusable REPL: `http://clojure.github.io/clojure/clojure.main-api.html#clojure.main/repl[clojure.main/repl]`
 
 Allowing set! for the customary REPL vars: `http://clojure.github.io/clojure/clojure.main-api.html#clojure.main/with-bindings[clojure.main/with-bindings]`
+
+Socket server control: `http://clojure.github.io/clojure/clojure.core-api.html#clojure.core.server/start-server[clojure.core.server/start-server]` `http://clojure.github.io/clojure/clojure.core-api.html#clojure.core.server/stop-server[clojure.core.server/stop-server]` `http://clojure.github.io/clojure/clojure.core-api.html#clojure.core.server/stop-servers[clojure.core.server/stop-servers]` 
+
+Socket repl: `http://clojure.github.io/clojure/clojure.core-api.html#clojure.core.server/repl[clojure.core.server/repl]`

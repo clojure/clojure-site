@@ -1,10 +1,10 @@
 title=Cheatsheet
-date=2015-01-01
+date=2016-01-19
 type=page
 status=published
 ~~~~~~
 
-<h2>Clojure 1.7 Cheat Sheet (v32)</h2>
+<h2>Clojure 1.8 Cheat Sheet (v35)</h2>
 
 <p><a href="https://github.com/jafingerhut/clojure-cheatsheets/blob/master/pdf/cheatsheet-usletter-color.pdf?raw=true">Download PDF version</a> / <a href="http://jafingerhut.github.com/">Source repo</a></p>
 
@@ -98,14 +98,14 @@ supplied, uses the root cause of the
 ([x] [x y] [x y & more])
   Returns the least of the nums.">min</a> <a href="http://clojuredocs.org/clojure_core/clojure.core/+'" title="clojure.core/+'
 ([] [x] [x y] [x y & more])
-  Returns the sum of nums. (+) returns 0. Supports arbitrary precision.
+  Returns the sum of nums. (+') returns 0. Supports arbitrary precision.
   See also: +">+'</a> <a href="http://clojuredocs.org/clojure_core/clojure.core/-'" title="clojure.core/-'
 ([x] [x y] [x y & more])
   If no ys are supplied, returns the negation of x, else subtracts
   the ys from x and returns the result. Supports arbitrary precision.
   See also: -">-'</a> <a href="http://clojuredocs.org/clojure_core/clojure.core/*'" title="clojure.core/*'
 ([] [x] [x y] [x y & more])
-  Returns the product of nums. (*) returns 1. Supports arbitrary precision.
+  Returns the product of nums. (*') returns 1. Supports arbitrary precision.
   See also: *">*'</a> <a href="http://clojuredocs.org/clojure_core/clojure.core/inc'" title="clojure.core/inc'
 ([x])
   Returns a number one greater than num. Supports arbitrary precision.
@@ -282,7 +282,7 @@ Macro
 ([fmt & args])
   Formats a string using java.lang.String.format, see java.util.Formatter for
 format
-  string syntax">format</a> <a href="http://clojure.org/reader#The%20Reader--Reader%20forms">"a string"</a> "escapes \b\f\n\t\r\" octal \377 hex \ucafe" See also section IO/to string</code></td>
+  string syntax">format</a> <a href="http://clojure.org/reference/reader#_literals">"a string"</a> "escapes \b\f\n\t\r\" octal \377 hex \ucafe" See also section IO/to string</code></td>
               </tr>
               <tr class="even">
                 <td>Use</td>
@@ -366,11 +366,13 @@ format
 
 [ documentation truncated.  Click link for the rest. ]">replace-first</a> <a href="http://clojuredocs.org/clojure_core/clojure.string/reverse" title="clojure.string/reverse
 ([s])
-  Returns s with its characters reversed.">reverse</a> (1.5) <a href="http://clojuredocs.org/clojure_core/clojure.string/re-quote-replacement" title="clojure.string/re-quote-replacement
-([replacement])
-  Given a replacement string that you wish to be a literal
-   replacement for a pattern match in replace or replace-first, do the
-   necessary escaping of special characters in the replacement.">re-quote-replacement</a> (<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">java.lang.String</a>) <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html#indexOf%28java.lang.String%29">.indexOf</a> <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html#lastIndexOf%28java.lang.String%29">.lastIndexOf</a></code></td>
+  Returns s with its characters reversed.">reverse</a> (1.8) <a href="http://clojuredocs.org/clojure_core/clojure.string/index-of" title="clojure.string/index-of
+([s value] [s value from-index])
+  Return index of value (string or char) in s, optionally searching
+  forward from from-index or nil if not found.">index-of</a> <a href="http://clojuredocs.org/clojure_core/clojure.string/last-index-of" title="clojure.string/last-index-of
+([s value] [s value from-index])
+  Return last index of value (string or char) in s, optionally
+  searching backward from from-index or nil if not found.">last-index-of</a></code></td>
               </tr>
               <tr class="odd">
                 <td><a href="http://www.regular-expressions.info">Regex</a></td>
@@ -447,7 +449,7 @@ format
    (clojure.string/replace-first &quot;swap first two words&quot;
                                  #&quot;(\w+)(\s+)(\w+)&quot; &quot;$3$2$1&quot;)
 
-[ documentation truncated.  Click link for the rest. ]">replace-first</a> (1.5) <a href="http://clojuredocs.org/clojure_core/clojure.string/re-quote-replacement" title="clojure.string/re-quote-replacement
+[ documentation truncated.  Click link for the rest. ]">replace-first</a> <a href="http://clojuredocs.org/clojure_core/clojure.string/re-quote-replacement" title="clojure.string/re-quote-replacement
 ([replacement])
   Given a replacement string that you wish to be a literal
    replacement for a pattern match in replace or replace-first, do the
@@ -479,15 +481,17 @@ format
               </tr>
               <tr class="even">
                 <td>Test</td>
-                <td><code><a href="http://clojuredocs.org/clojure_core/clojure.core/char" title="clojure.core/char
-([x])
-  Coerce to char">char</a> <a href="http://clojuredocs.org/clojure_core/clojure.core/char_q" title="clojure.core/char?
-([x])
-  Return true if x is a Character">char?</a> <a href="http://clojuredocs.org/clojure_core/clojure.core/string_q" title="clojure.core/string?
+                <td><code><a href="http://clojuredocs.org/clojure_core/clojure.core/string_q" title="clojure.core/string?
 ([x])
   Return true if x is a String">string?</a> (clojure.string/) <a href="http://clojuredocs.org/clojure_core/clojure.string/blank_q" title="clojure.string/blank?
 ([s])
-  True if s is nil, empty, or contains only whitespace.">blank?</a> (<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">java.lang.String</a>) <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html#startsWith%28java.lang.String%29">.startsWith</a> <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html#endsWith%28java.lang.String%29">.endsWith</a> <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html#contains%28java.lang.CharSequence%29">.contains</a></code></td>
+  True if s is nil, empty, or contains only whitespace.">blank?</a> (1.8) <a href="http://clojuredocs.org/clojure_core/clojure.string/starts-with_q" title="clojure.string/starts-with?
+([s substr])
+  True if s starts with substr.">starts-with?</a> <a href="http://clojuredocs.org/clojure_core/clojure.string/ends-with_q" title="clojure.string/ends-with?
+([s substr])
+  True if s ends with substr.">ends-with?</a> <a href="http://clojuredocs.org/clojure_core/clojure.string/includes_q" title="clojure.string/includes?
+([s substr])
+  True if s includes substr.">includes?</a></code></td>
               </tr>
             </tbody>
           </table>
@@ -498,9 +502,11 @@ format
                 <td>Characters</td>
                 <td><code><a href="http://clojuredocs.org/clojure_core/clojure.core/char" title="clojure.core/char
 ([x])
-  Coerce to char">char</a> <a href="http://clojuredocs.org/clojure_core/clojure.core/char-name-string" title="clojure.core/char-name-string
+  Coerce to char">char</a> <a href="http://clojuredocs.org/clojure_core/clojure.core/char_q" title="clojure.core/char?
+([x])
+  Return true if x is a Character">char?</a> <a href="http://clojuredocs.org/clojure_core/clojure.core/char-name-string" title="clojure.core/char-name-string
   Returns name string for char or nil if none">char-name-string</a> <a href="http://clojuredocs.org/clojure_core/clojure.core/char-escape-string" title="clojure.core/char-escape-string
-  Returns escape string for char or nil if none">char-escape-string</a> <a href="http://clojure.org/reader#The%20Reader--Reader%20forms">literals</a>: \a \newline (more at link)</code></td>
+  Returns escape string for char or nil if none">char-escape-string</a> <a href="http://clojure.org/reference/reader#_literals">literals</a>: \a \newline (more at link)</code></td>
               </tr>
               <tr class="even">
                 <td>Keywords</td>
@@ -514,7 +520,7 @@ format
   Returns a Keyword with the given namespace and name if one already
   exists.  This function will not intern a new keyword. If the keyword
   has not already been interned, it will return nil.  Do not use :
-  in the keyword strings, it will be added automatically.">find-keyword</a> <a href="http://clojure.org/reader#The%20Reader--Reader%20forms">literals</a>: :kw :my.ns/kw ::in-cur-ns</code></td>
+  in the keyword strings, it will be added automatically.">find-keyword</a> <a href="http://clojure.org/reference/reader#_literals">literals</a>: :kw :my.ns/kw ::in-cur-ns</code></td>
               </tr>
               <tr class="odd">
                 <td>Symbols</td>
@@ -526,11 +532,11 @@ format
 ([] [prefix-string])
   Returns a new symbol with a unique name. If a prefix string is
   supplied, the name is prefix# where # is some unique number. If
-  prefix is not supplied, the prefix is 'G__'.">gensym</a> <a href="http://clojure.org/reader#The%20Reader--Reader%20forms">literals</a>: my-sym my.ns/foo</code></td>
+  prefix is not supplied, the prefix is 'G__'.">gensym</a> <a href="http://clojure.org/reference/reader#_literals">literals</a>: my-sym my.ns/foo</code></td>
               </tr>
               <tr class="even">
                 <td>Misc</td>
-                <td><code><a href="http://clojure.org/reader#The%20Reader--Reader%20forms">literals</a>: true false nil</code></td>
+                <td><code><a href="http://clojure.org/reference/reader#_literals">literals</a>: true false nil</code></td>
               </tr>
             </tbody>
           </table>
@@ -636,7 +642,9 @@ format
 ([x])
   Return true if x implements ISeq">seq?</a> (1.6) <a href="http://clojuredocs.org/clojure_core/clojure.core/record_q" title="clojure.core/record?
 ([x])
-  Returns true if x is a record">record?</a></code></td>
+  Returns true if x is a record">record?</a> (1.8) <a href="http://clojuredocs.org/clojure_core/clojure.core/map-entry_q" title="clojure.core/map-entry?
+([x])
+  Return true if x is a map entry">map-entry?</a></code></td>
               </tr>
             </tbody>
           </table>
@@ -649,7 +657,7 @@ format
 ([& items])
   Creates a new list containing the items.">list</a> <a href="http://clojuredocs.org/clojure_core/clojure.core/list*" title="clojure.core/list*
 ([args] [a args] [a b args] [a b c args] [a b c d & more])
-  Creates a new list containing the items prepended to the rest, the
+  Creates a new seq containing the items prepended to the rest, the
   last of which will be treated as a sequence.">list*</a></code></td>
               </tr>
               <tr class="even">
@@ -694,7 +702,7 @@ format
               <tr class="odd">
                 <td>Create</td>
                 <td><code>[] <a href="http://clojuredocs.org/clojure_core/clojure.core/vector" title="clojure.core/vector
-([] [a] [a b] [a b c] [a b c d] [a b c d & args])
+([] [a] [a b] [a b c] [a b c d] [a b c d e] [a b c d e f] [a b c d e f & args])
   Creates a new vector containing the args.">vector</a> <a href="http://clojuredocs.org/clojure_core/clojure.core/vec" title="clojure.core/vec
 ([coll])
   Creates a new vector containing the contents of coll. Java arrays
@@ -1126,7 +1134,7 @@ kmap">rename</a></code></td>
               </tr>
             </tbody>
           </table>
-          <h3>Transients (<a href="http://clojure.org/transients">clojure.org/transients</a>)</h3>
+          <h3>Transients (<a href="http://clojure.org/reference/transients">clojure.org/reference/transients</a>)</h3>
           <table>
             <tbody>
               <tr class="odd">
@@ -1522,14 +1530,16 @@ supplied colls.">concat</a> <a href="http://clojuredocs.org/clojure_core/clojure
 ([coll] [comp coll])
   Returns a sorted sequence of the items in coll. If no comparator is
   supplied, uses compare.  comparator must implement
-  java.util.Comparator.  If coll is a Java array, it will be modified.
-  To avoid this, sort a copy of the array.">sort</a> <a href="http://clojuredocs.org/clojure_core/clojure.core/sort-by" title="clojure.core/sort-by
+  java.util.Comparator.  Guaranteed to be stable: equal elements will
+  not be reordered.  If coll is a Java array, it will be modified.  To
+  avoid this, sort a copy of the array.">sort</a> <a href="http://clojuredocs.org/clojure_core/clojure.core/sort-by" title="clojure.core/sort-by
 ([keyfn coll] [keyfn comp coll])
   Returns a sorted sequence of the items in coll, where the sort
   order is determined by comparing (keyfn item).  If no comparator is
   supplied, uses compare.  comparator must implement
-  java.util.Comparator.  If coll is a Java array, it will be modified.
-  To avoid this, sort a copy of the array.">sort-by</a> <a href="http://clojuredocs.org/clojure_core/clojure.core/compare" title="clojure.core/compare
+  java.util.Comparator.  Guaranteed to be stable: equal elements will
+  not be reordered.  If coll is a Java array, it will be modified.  To
+  avoid this, sort a copy of the array.">sort-by</a> <a href="http://clojuredocs.org/clojure_core/clojure.core/compare" title="clojure.core/compare
 ([x y])
   Comparator. Returns a negative number, zero, or a positive number
   when x is logically 'less than', 'equal to', or 'greater than'
@@ -1740,7 +1750,7 @@ sequence.">realized?</a></code></td>
           </table>
         </div><!-- /section -->
         <div class="section">
-          <h2>Transducers (<a href="http://clojure.org/transducers">clojure.org/transducers</a>)</h2>
+          <h2>Transducers (<a href="http://clojure.org/reference/transducers">clojure.org/reference/transducers</a>)</h2>
           <table>
             <tbody>
               <tr class="odd">
@@ -2313,7 +2323,7 @@ Macro
 
 [ documentation truncated.  Click link for the rest. ]">*data-readers*</a> <a href="http://clojuredocs.org/clojure_core/clojure.core/default-data-readers" title="clojure.core/default-data-readers
   Default map of data reader functions provided by Clojure. May be
-  overridden by binding *data-readers*.">default-data-readers</a> (1.5) <a href="http://clojuredocs.org/clojure_core/clojure.core/*default-data-reader-fn*" title="clojure.core/*default-data-reader-fn*
+  overridden by binding *data-readers*.">default-data-readers</a> <a href="http://clojuredocs.org/clojure_core/clojure.core/*default-data-reader-fn*" title="clojure.core/*default-data-reader-fn*
   When no data reader is found for a tag and *default-data-reader-fn*
   is non-nil, it will be called with two arguments,
   the tag and the value.  If *default-data-reader-fn* is nil (the
@@ -2441,7 +2451,7 @@ Macro
   continues to repeat, until the return value is not a fn, then
   returns that non-fn value. Note that if you want to return a fn as a
   final value, you must wrap it in some data structure and unpack it
-  after trampoline returns.">trampoline</a> (1.5) <a href="http://clojuredocs.org/clojure_core/clojure.core/as->" title="clojure.core/as->
+  after trampoline returns.">trampoline</a> <a href="http://clojuredocs.org/clojure_core/clojure.core/as->" title="clojure.core/as->
 ([expr name & forms])
 Macro
   Binds name to expr, evaluates the first form in the lexical context
@@ -2483,7 +2493,7 @@ Macro
         </div><!-- /section -->
         <div class="section">
           <h2>Abstractions (<a href="https://github.com/cemerick/clojure-type-selection-flowchart">Clojure type selection flowchart</a>)</h2>
-          <h3>Protocols (<a href="http://clojure.org/protocols">clojure.org/protocols</a>)</h3>
+          <h3>Protocols (<a href="http://clojure.org/reference/protocols">clojure.org/reference/protocols</a>)</h3>
           <table>
             <tbody>
               <tr class="odd">
@@ -2666,7 +2676,7 @@ Macro
               </tr>
             </tbody>
           </table>
-          <h3>Records (<a href="http://clojure.org/datatypes">clojure.org/datatypes</a>)</h3>
+          <h3>Records (<a href="http://clojure.org/reference/datatypes">clojure.org/reference/datatypes</a>)</h3>
           <table>
             <tbody>
               <tr class="odd">
@@ -2676,7 +2686,12 @@ Macro
 Macro
   (defrecord name [fields*]  options* specs*)
 
-  Currently there are no options.
+  Options are expressed as sequential keywords and arguments (in any order).
+
+  Supported options:
+  :load-ns - if true, importing the record class will cause the
+             namespace in which the record was defined to be loaded.
+             Defaults to false.
 
   Each spec consists of a protocol or interface name followed by zero
   or more method bodies:
@@ -2691,10 +2706,6 @@ Macro
 
   The class will have the (immutable) fields named by
   fields, which can have type hints. Protocols/interfaces and methods
-  are optional. The only methods that can be supplied are those
-  declared in the protocols/interfaces.  Note that method bodies are
-  not closures, the local environment includes only the named fields,
-  and those fields can be accessed directly.
 
 [ documentation truncated.  Click link for the rest. ]">defrecord</a> <code>Pair [h t])</code></code></td>
               </tr>
@@ -2714,7 +2725,7 @@ Macro
               </tr>
             </tbody>
           </table>
-          <h3>Types (<a href="http://clojure.org/datatypes">clojure.org/datatypes</a>)</h3>
+          <h3>Types (<a href="http://clojure.org/reference/datatypes">clojure.org/reference/datatypes</a>)</h3>
           <table>
             <tbody>
               <tr class="odd">
@@ -2724,7 +2735,12 @@ Macro
 Macro
   (deftype name [fields*]  options* specs*)
 
-  Currently there are no options.
+  Options are expressed as sequential keywords and arguments (in any order).
+
+  Supported options:
+  :load-ns - if true, importing the record class will cause the
+             namespace in which the record was defined to be loaded.
+             Defaults to false.
 
   Each spec consists of a protocol or interface name followed by zero
   or more method bodies:
@@ -2739,11 +2755,6 @@ Macro
 
   The class will have the (by default, immutable) fields named by
   fields, which can have type hints. Protocols/interfaces and methods
-  are optional. The only methods that can be supplied are those
-  declared in the protocols/interfaces.  Note that method bodies are
-  not closures, the local environment includes only the named fields,
-  and those fields can be accessed directly. Fields can be qualified
-  with the metadata :volatile-mutable true or :unsynchronized-mutable
 
 [ documentation truncated.  Click link for the rest. ]">deftype</a> <code>Pair [h t])</code></code></td>
               </tr>
@@ -2762,7 +2773,12 @@ Macro
 Macro
   (deftype name [fields*]  options* specs*)
 
-  Currently there are no options.
+  Options are expressed as sequential keywords and arguments (in any order).
+
+  Supported options:
+  :load-ns - if true, importing the record class will cause the
+             namespace in which the record was defined to be loaded.
+             Defaults to false.
 
   Each spec consists of a protocol or interface name followed by zero
   or more method bodies:
@@ -2777,17 +2793,12 @@ Macro
 
   The class will have the (by default, immutable) fields named by
   fields, which can have type hints. Protocols/interfaces and methods
-  are optional. The only methods that can be supplied are those
-  declared in the protocols/interfaces.  Note that method bodies are
-  not closures, the local environment includes only the named fields,
-  and those fields can be accessed directly. Fields can be qualified
-  with the metadata :volatile-mutable true or :unsynchronized-mutable
 
 [ documentation truncated.  Click link for the rest. ]">deftype</a> <code>Pair [h t]<br>&nbsp;&nbsp;Object<br>&nbsp;&nbsp;(toString [this] (str "<" h "," t ">")))</code></code></td>
               </tr>
             </tbody>
           </table>
-          <h3>Multimethods (<a href="http://clojure.org/multimethods">clojure.org/multimethods</a>)</h3>
+          <h3>Multimethods (<a href="http://clojure.org/reference/multimethods">clojure.org/reference/multimethods</a>)</h3>
           <table>
             <tbody>
               <tr class="odd">
@@ -3097,7 +3108,7 @@ Macro
   Threads the expr through the forms. Inserts x as the
   last item in the first form, making a list of it if it is not a
   list already. If there are more forms, inserts the first form as the
-  last item in second form, etc.">-&gt;&gt;</a> (1.5) <a href="http://clojuredocs.org/clojure_core/clojure.core/as->" title="clojure.core/as->
+  last item in second form, etc.">-&gt;&gt;</a> <a href="http://clojuredocs.org/clojure_core/clojure.core/as->" title="clojure.core/as->
 ([expr name & forms])
 Macro
   Binds name to expr, evaluates the first form in the lexical context
@@ -3237,7 +3248,7 @@ Macro
           </table>
         </div><!-- /section -->
         <div class="section">
-          <h2>Special Characters (<a href="http://clojure.org/reader#The%20Reader--Macro%20characters">clojure.org/reader</a>, <a href="https://yobriefca.se/blog/2014/05/19/the-weird-and-wonderful-characters-of-clojure/">tutorial</a>)</h2>
+          <h2>Special Characters (<a href="http://clojure.org/reference/reader#macrochars">clojure.org/reference/reader</a>, <a href="https://yobriefca.se/blog/2014/05/19/the-weird-and-wonderful-characters-of-clojure/">tutorial</a>)</h2>
           <table>
             <tbody>
               <tr class="odd">
@@ -3246,7 +3257,7 @@ Macro
               </tr>
               <tr class="even">
                 <td><code>'</code></td>
-                <td><code><a href="http://clojure.org/special_forms#quote">quote</a>: <code>'<var>form</var></code> &rarr; <code>(</code> <a href="http://clojuredocs.org/clojure_core/clojure.core/quote" title="quote
+                <td><code><a href="http://clojure.org/reference/reader#_quote">quote</a>: <code>'<var>form</var></code> &rarr; <code>(</code> <a href="http://clojuredocs.org/clojure_core/clojure.core/quote" title="quote
   (quote form)
 Special Form
   Yields the unevaluated form.
@@ -3275,7 +3286,7 @@ Special Form
               </tr>
               <tr class="even">
                 <td><code>*foo*</code></td>
-                <td><code>'earmuffs' - convention to indicate <a href="http://clojure.org/vars">dynamic vars</a>, compiler warns if not dynamic</code></td>
+                <td><code>'earmuffs' - convention to indicate <a href="http://clojure.org/reference/vars">dynamic vars</a>, compiler warns if not dynamic</code></td>
               </tr>
               <tr class="odd">
                 <td><code>@</code></td>
@@ -3295,19 +3306,19 @@ transaction,
               </tr>
               <tr class="even">
                 <td><code>`</code></td>
-                <td><code><a href="http://clojure.org/reader#syntax-quote">Syntax-quote</a></code></td>
+                <td><code><a href="http://clojure.org/reference/reader#__a_id_syntax_quote_a_syntax_quote_note_the_backquote_character_unquote_and_unquote_splicing">Syntax-quote</a></code></td>
               </tr>
               <tr class="odd">
                 <td><code>foo#</code></td>
-                <td><code><a href="http://clojure.org/reader#syntax-quote">'auto-gensym'</a>, consistently replaced with same auto-generated symbol everywhere inside same <code>`( ... )</code></code></td>
+                <td><code><a href="http://clojure.org/reference/reader#__a_id_syntax_quote_a_syntax_quote_note_the_backquote_character_unquote_and_unquote_splicing">'auto-gensym'</a>, consistently replaced with same auto-generated symbol everywhere inside same <code>`( ... )</code></code></td>
               </tr>
               <tr class="even">
                 <td><code>~</code></td>
-                <td><code><a href="http://clojure.org/reader#syntax-quote">Unquote</a></code></td>
+                <td><code><a href="http://clojure.org/reference/reader#__a_id_syntax_quote_a_syntax_quote_note_the_backquote_character_unquote_and_unquote_splicing">Unquote</a></code></td>
               </tr>
               <tr class="odd">
                 <td><code>~@</code></td>
-                <td><code><a href="http://clojure.org/reader#syntax-quote">Unquote-splicing</a></code></td>
+                <td><code><a href="http://clojure.org/reference/reader#__a_id_syntax_quote_a_syntax_quote_note_the_backquote_character_unquote_and_unquote_splicing">Unquote-splicing</a></code></td>
               </tr>
               <tr class="even">
                 <td><code>-></code></td>
@@ -3361,23 +3372,23 @@ itself (not its value) is returned. The reader macro #'x expands to (var x).
               </tr>
               <tr class="even">
                 <td><code>#(</code></td>
-                <td><code><a href="http://clojure.org/reader#The%20Reader--Macro%20characters">Anonymous function literal</a>: <code>#(...)</code> &rarr; <code>(fn [args] (...))</code></code></td>
+                <td><code><a href="http://clojure.org/reference/reader#_dispatch">Anonymous function literal</a>: <code>#(...)</code> &rarr; <code>(fn [args] (...))</code></code></td>
               </tr>
               <tr class="odd">
                 <td><code>%</code></td>
-                <td><code><a href="http://clojure.org/reader#The%20Reader--Macro%20characters">Anonymous function argument</a>: <code>%N</code> is value of anonymous function arg <code>N</code>.  <code>%</code> short for <code>%1</code>.  <code>%&</code> for rest args.</code></td>
+                <td><code><a href="http://clojure.org/reference/reader#_dispatch">Anonymous function argument</a>: <code>%N</code> is value of anonymous function arg <code>N</code>.  <code>%</code> short for <code>%1</code>.  <code>%&</code> for rest args.</code></td>
               </tr>
               <tr class="even">
                 <td><code>#?</code></td>
-                <td><code>(1.7) <a href="http://clojure.org/reader#The%20Reader--Reader%20Conditionals">Reader conditional</a>: <code>#?(:clj x :cljs y)</code> reads as <code>x</code> on JVM, <code>y</code> in ClojureScript, nothing elsewhere.  Other keys: <code>:cljr :default</code></code></td>
+                <td><code>(1.7) <a href="http://clojure.org/reference/reader#_reader_conditionals">Reader conditional</a>: <code>#?(:clj x :cljs y)</code> reads as <code>x</code> on JVM, <code>y</code> in ClojureScript, nothing elsewhere.  Other keys: <code>:cljr :default</code></code></td>
               </tr>
               <tr class="odd">
                 <td><code>#?@</code></td>
-                <td><code>(1.7) <a href="http://clojure.org/reader#The%20Reader--Reader%20Conditionals">Splicing reader conditional</a>: <code>[1 #?(:clj [x y] :cljs [w z]) 3]</code> reads as <code>[1 x y 3]</code> on JVM, <code>[1 w z 3]</code> in ClojureScript, <code>[1 3]</code> elsewhere.</code></td>
+                <td><code>(1.7) <a href="http://clojure.org/reference/reader#_reader_conditionals">Splicing reader conditional</a>: <code>[1 #?(:clj [x y] :cljs [w z]) 3]</code> reads as <code>[1 x y 3]</code> on JVM, <code>[1 w z 3]</code> in ClojureScript, <code>[1 3]</code> elsewhere.</code></td>
               </tr>
               <tr class="even">
                 <td><code>#foo</code></td>
-                <td><code><a href="http://clojure.org/reader#The%20Reader--Tagged%20Literals">tagged literal</a> e.g. <code>#inst</code> <code>#uuid</code></code></td>
+                <td><code><a href="http://clojure.org/reference/reader#_tagged_literals">tagged literal</a> e.g. <code>#inst</code> <code>#uuid</code></code></td>
               </tr>
               <tr class="odd">
                 <td><code>$</code></td>
@@ -3429,7 +3440,7 @@ fields, and Java class static fields.
           </table>
         </div><!-- /section -->
         <div class="section">
-          <h2>Metadata (<a href="http://clojure.org/reader#The%20Reader--Macro%20characters">clojure.org/reader</a>, <a href="http://clojure.org/special_forms">special_forms</a>)</h2>
+          <h2>Metadata (<a href="http://clojure.org/reference/reader#_metadata">clojure.org/reference/reader</a>, <a href="http://clojure.org/reference/special_forms">special_forms</a>)</h2>
           <table>
             <tbody>
               <tr class="odd">
@@ -3484,7 +3495,7 @@ Macro
       </div><!-- /column -->
       <div class="column">
         <div class="section">
-          <h2>Special Forms (<a href="http://clojure.org/special_forms">clojure.org/special_forms</a>)</h2>
+          <h2>Special Forms (<a href="http://clojure.org/reference/special_forms">clojure.org/reference/special_forms</a>)</h2>
           <div class="single_row">
             <code><a href="http://clojuredocs.org/clojure_core/clojure.core/def" title="def
   (def symbol doc-string? init?)
@@ -3600,7 +3611,7 @@ Special Form
             <tbody>
               <tr class="odd">
                 <td>Binding Forms / Destructuring</td>
-                <td><code>(<a href="http://clojure.org/special_forms#binding-forms">examples</a>) <a href="http://clojuredocs.org/clojure_core/clojure.core/let" title="clojure.core/let
+                <td><code>(<a href="http://clojure.org/reference/special_forms#binding-forms">examples</a>) <a href="http://clojuredocs.org/clojure_core/clojure.core/let" title="clojure.core/let
   (let [bindings*] exprs*)
 Special Form
   binding => binding-form init-expr
@@ -3685,7 +3696,7 @@ Macro
           </table>
         </div><!-- /section -->
         <div class="section">
-          <h2>Vars and global environment (<a href="http://clojure.org/vars">clojure.org/vars</a>)</h2>
+          <h2>Vars and global environment (<a href="http://clojure.org/reference/vars">clojure.org/reference/vars</a>)</h2>
           <table>
             <tbody>
               <tr class="odd">
@@ -3758,7 +3769,12 @@ value,
 Macro
   (defrecord name [fields*]  options* specs*)
 
-  Currently there are no options.
+  Options are expressed as sequential keywords and arguments (in any order).
+
+  Supported options:
+  :load-ns - if true, importing the record class will cause the
+             namespace in which the record was defined to be loaded.
+             Defaults to false.
 
   Each spec consists of a protocol or interface name followed by zero
   or more method bodies:
@@ -3773,10 +3789,6 @@ Macro
 
   The class will have the (immutable) fields named by
   fields, which can have type hints. Protocols/interfaces and methods
-  are optional. The only methods that can be supplied are those
-  declared in the protocols/interfaces.  Note that method bodies are
-  not closures, the local environment includes only the named fields,
-  and those fields can be accessed directly.
 
 [ documentation truncated.  Click link for the rest. ]">defrecord</a></code></td>
               </tr>
@@ -4244,7 +4256,7 @@ Macro
               </tr>
             </tbody>
           </table>
-          <h3>Refs and Transactions (<a href="http://clojure.org/refs">clojure.org/refs</a>)</h3>
+          <h3>Refs and Transactions (<a href="http://clojure.org/reference/refs">clojure.org/reference/refs</a>)</h3>
           <table>
             <tbody>
               <tr class="odd">
@@ -4375,7 +4387,7 @@ Macro
               </tr>
             </tbody>
           </table>
-          <h3>Agents and Asynchronous Actions (<a href="http://clojure.org/agents">clojure.org/agents</a>)</h3>
+          <h3>Agents and Asynchronous Actions (<a href="http://clojure.org/reference/agents">clojure.org/reference/agents</a>)</h3>
           <table>
             <tbody>
               <tr class="odd">
@@ -4436,7 +4448,7 @@ Macro
   the validator if any, or restart will throw an exception and the
   agent will remain failed with its old state and error.  Watchers, if
   any, will NOT be notified of the new state.  Throws an exception if
-  the agent is not failed.">restart-agent</a> (1.5) <a href="http://clojuredocs.org/clojure_core/clojure.core/send-via" title="clojure.core/send-via
+  the agent is not failed.">restart-agent</a> <a href="http://clojuredocs.org/clojure_core/clojure.core/send-via" title="clojure.core/send-via
 ([executor a f & args])
   Dispatch an action to an agent. Returns the agent immediately.
   Subsequently, in a thread supplied by executor, the state of the agent
@@ -4546,7 +4558,7 @@ Macro
           </table>
         </div><!-- /section -->
         <div class="section">
-          <h2>Java Interoperation (<a href="http://clojure.org/java_interop">clojure.org/java_interop</a>)</h2>
+          <h2>Java Interoperation (<a href="http://clojure.org/reference/java_interop">clojure.org/reference/java_interop</a>)</h2>
           <table>
             <tbody>
               <tr class="odd">

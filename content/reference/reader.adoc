@@ -79,7 +79,7 @@ The behavior of the reader is driven by a combination of built-in constructs and
 
 === Character (\)
 
-As per above, yields a character literal.
+As per above, yields a character literal. Example character literals are: `\a \b \c`. There are some special character literals that correspond to special characters, for example: `\newline \tab \return`
 
 === Comment (;)
 

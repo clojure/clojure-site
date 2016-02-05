@@ -32,12 +32,12 @@ Since we have to start somewhere, this reference starts where evaluation starts,
 
 * Strings - Enclosed in "double quotes". May span multiple lines. Standard Java escape characters are supported.
 * Numbers - generally represented as per Java
-** Integers can be indefinitely long and will be read as Longs when in range and clojure.lang.BigInts otherwise. Integers with an N suffix are always read as BigInts. When possible, they can be specified in any base with radix from 2 to 36 (see http://docs.oracle.com/javase/7/docs/api/java/lang/Long.html#parseLong(java.lang.String,%20int)[Long.parseLong()]); for example 2r101010, 8r52, 36r16, and 42 are all the same Long.
+** Integers can be indefinitely long and will be read as Longs when in range and clojure.lang.BigInts otherwise. Integers with an N suffix are always read as BigInts. When possible, they can be specified in any base with radix from 2 to 36 (see http://docs.oracle.com/javase/7/docs/api/java/lang/Long.html#parseLong(java.lang.String,%20int)[Long.parseLong()]); for example `2r101010`, `8r52`, `36r16`, and `42` are all the same Long.
 ** Floating point numbers are read as Doubles; with M suffix they are read as BigDecimals.
-** Ratios are supported, e.g. 22/7.
-* Characters - preceded by a backslash: \c. \newline, \space, \tab, \formfeed, \backspace, and \return yield the corresponding characters. Unicode characters are represented with \uNNNN as in Java. Octals are represented with \oNNN.
+** Ratios are supported, e.g. `22/7`.
+* Characters - preceded by a backslash: `\c`. `\newline`, `\space`, `\tab`, `\formfeed`, `\backspace`, and `\return` yield the corresponding characters. Unicode characters are represented with `\uNNNN` as in Java. Octals are represented with `\oNNN`.
 * nil Means 'nothing/no-value'- represents Java null and tests logical false
-* Booleans - true and false
+* Booleans - `true` and `false`
 * Keywords - Keywords are like symbols, except:
 ** They can and must begin with a colon, e.g. :fred.
 ** They cannot contain '.' or name classes.
@@ -79,7 +79,11 @@ The behavior of the reader is driven by a combination of built-in constructs and
 
 === Character (\)
 
-As per above, yields a character literal. Example character literals are: `\a \b \c`. There are some special character literals that correspond to special characters, for example: `\newline \tab \return`
+As per above, yields a character literal. Example character literals are: `\a \b \c`. 
+
+The following special character literals can be used for common characters: `\newline`, `\space`, `\tab`, `\formfeed`, `\backspace`, and `\return`.
+
+Unicode support follows Java conventions with support corresponding to the underlying Java version. A Unicode literal is of the form `\uNNNN`, for example `\u03A9` is the literal for Ω.
 
 === Comment (;)
 

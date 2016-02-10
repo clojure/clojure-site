@@ -158,7 +158,7 @@ The syntax for function definitions becomes the following:
 == (_fn_ name? [params* ] condition-map? exprs*)
 == (_fn_ name? ([params* ] condition-map? exprs*)+)
 
-The syntax extension also applies to to defn and other macros which expand to fn forms.
+The syntax extension also applies to defn and other macros which expand to fn forms.
 
 Note: If the sole form following the parameter vector is a map, it is treated as the function body, and not the condition map.
 

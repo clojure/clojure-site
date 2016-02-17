@@ -1,0 +1,84 @@
+= Introducing ClojureScript 
+Stuart Sierra
+2011-07-22
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+The Clojure team is proud to introduce an important addition to the Clojure language ecosystem. https://github.com/clojure/clojurescript[ClojureScript] is a new compiler for Clojure that targets JavaScript. 
+
+A https://www.youtube.com/watch?v=tVooR-dF_Ag[video recording of the ClojureScript announcement] is available, along with http://cloud.github.com/downloads/clojure/clojurescript/clojurescript%20slides.pdf[slides (PDF) from the presentation].
+
+== Why JavaScript
+
+The Clojure language was first <<xref/../../../../../about/rationale#Rationale-Languages%20and%20Platforms,built on the Java Virtual Machine>> because of its reach and power on server platforms. For non-server platforms, nothing has greater reach than JavaScript. It's been called the http://www.hanselman.com/blog/JavaScriptisAssemblyLanguagefortheWebPart2MadnessorjustInsanity.aspx[assembly language of the Web]. But beyond Web browsers, JavaScript can be found in http://arstechnica.com/apple/news/2011/06/ios-5-brings-nitro-speed-to-home-screen-web-apps.ars[mobile devices], http://developer.boxee.tv/JavaScript_API#Preface[set-top boxes], and http://wiki.services.openoffice.org/wiki/Documentation/DevGuide/Scripting/Scripting_Framework[desktop applications]. JavaScript has even made inroads on the server in http://couchdb.apache.org/[databases] and http://nodejs.org/[Web servers]. As a result of this reach, a lot of work has gone into making JavaScript engines performant, including JIT-compilation into native code.
+
+But JavaScript's weakness remains the language itself. Although it has some powerful features such as first-class functions, JavaScript is noted more for its flaws than for its strengths. It was never designed to be a language for large applications.
+
+What if we had a modern, robust, powerful language that could reach to all the places that JavaScript does? This is the goal of ClojureScript.
+
+== Where We Are
+
+Try it out!  Follow the Quick Start instructions on the https://github.com/clojure/clojurescript/wiki[ClojureScript wiki].
+
+Here's a partial list of what has been implemented so far:
+
+* Protocols and `deftype`
+* Namespaces
+* Functions: `fn`, `defn`, multiple-arities, variadics
+* Destructuring
+* Higher-order functions: `map`, `reduce`, `filter`, ...
+* Data structures: lists, maps, vectors, sets
+* Data manipulation functions: `conj`, `assoc`, `update-in`,...
+* Sequences and sequence functions: `first`, `rest`, ...
+* Macros: `assert`, `cond`, `doto`, `loop`, `+->+` and `+->>+`, ...
+* Metadata
+* Reader in ClojureScript (think JSON but better)
+* Regular expressions
+* Atoms
+* Core libraries: `clojure.string`, `clojure.set`, `clojure.zip`, ...
+* REPL using JDK-embedded JavaScript (Rhino)
+
+ClojureScript is currently in Alpha status. The compiler and core libraries are usable for developing applications, but expect to find bugs and missing pieces of functionality. ClojureScript aims to be a complete implementation of the Clojure language, but some parts aren't finished yet.
+
+Some parts of the Clojure language have no direct analog in ClojureScript, in particular the concurrency primitives, since JavaScript is single-threaded. There may also be edge cases where the requirements of the JavaScript environment force ClojureScript to have slightly different semantics from Clojure. We will document these differences as we find them.
+
+Obviously, any code making interop calls to Java, as most existing Clojure libraries do, will not work in ClojureScript. Code written in pure Clojure will **probably** work in ClojureScript with minor adjustments. For example, https://github.com/clojure/clojure/blob/master/src/clj/clojure/zip.clj[clojure.zip in Clojure] and https://github.com/clojure/clojurescript/blob/master/src/cljs/clojure/zip.cljs[clojure.zip in ClojureScript] are nearly identical. With a little effort, purely algorithmic code can be made portable between implementations. However, trying to abstract over all the differences among host platforms has never been a goal of Clojure, nor will it be a goal of ClojureScript.
+
+We have a http://dev.clojure.org/jira/browse/CLJS[ClojureScript JIRA instance] set up to track bugs. As with Clojure itself, submitting patches requires signing the <<xref/../../../../../community/contributing#,Clojure Contributor Agreement>>. We can only accept patches through JIRA, not GitHub pull requests.
+
+== The Relationship to Google Closure
+
+Google has led the way in developing rich client-side applications in JavaScript. Because Google needs the Web to succeed as an application-delivery platform, they have released some of their JavaScript tools as open source under the name **Closure**. The homophonic name clash is unfortunate, but not something we can do anything about.
+
+http://code.google.com/closure/[Google Closure] is a suite of tools for delivering complex JavaScript applications to memory-constrained devices over slow connections. It consists of three parts: a large library of JavaScript classes and functions, a client-side templating system, and an optimizing JavaScript compiler. These parts are designed to work in symbiosis.
+
+The Google Closure compiler is a sophisticated JavaScript-to-JavaScript compiler that performs whole-program analysis to inline and rearrange code for optimal performance on modern JavaScript runtimes. Most importantly, it eliminates unused or unreachable code. The Google Closure compiler makes it possible to have a large library of JavaScript functions written in a straightforward manner without concern for code size, and to deliver minified versions of only the code your application needs. However, taking full advantage of the Google Closure compiler requires adherence to strict conventions for JavaScript source code.
+
+The ClojureScript compiler emits JavaScript which follows Google Closure's code conventions, and then invokes the Google Closure compiler to generate compact, optimized JavaScript for delivery to clients. ClojureScript also makes use of the Google Closure library for capabilities such as event handling, DOM manipulation, and user interface widgets.
+
+It is possible to use ClojureScript with JavaScript libraries other than Google Closure, but those libraries typically do not follow the conventions of the Google Closure compiler and therefore will not be able to take full advantage of its optimizations.
+
+== What ClojureScript is Not
+
+**ClojureScript is not Clojure implemented in JavaScript.**
+
+The Clojure community has tried various ways of generating JavaScript from Clojure in the past. One https://github.com/clojure/clojure-contrib/tree/master/clojurescript[early attempt by Chris Houser], also called ClojureScript, used JavaScript as a implementation language for the core data structures and compiler, the way the current version of Clojure uses Java. 
+
+The new ClojureScript does not take this approach. Instead, ClojureScript is written entirely in **Clojure**, as a compiler which emits JavaScript and a large library of functions. Therefore, ClojureScript does not aim to provide a complete development environment in JavaScript. There is no `eval` and no runtime access to the ClojureScript compiler from within ClojureScript. 
+
+**ClojureScript is not JavaScript with Clojure syntax.**
+
+Another approach sometimes used to overcome JavaScript's syntactic shortcomings is to layer another syntax on top of it while keeping all of the JavaScript language semantics. http://common-lisp.net/project/parenscript/[Parenscript] and http://jashkenas.github.com/coffee-script/[CoffeeScript] are examples of this approach.
+
+ClojureScript has the same language semantics as Clojure, not JavaScript. The ClojureScript compiler emits JavaScript, similar to the way the Clojure compiler emits Java bytecode.
+
+== How We Got Here
+
+ClojureScript was initially developed by Rich Hickey, creator of Clojure. Members of the Clojure/core team, along with others invited from the Clojure community, have participated in the development of the compiler.
+
+== Where to Learn More
+
+* https://github.com/clojure/clojurescript/wiki[ClojureScript Wiki]
+* http://groups.google.com/group/clojure[Clojure Mailing List]
+* \#clojure IRC on http://freenode.net/[Freenode]

@@ -18,6 +18,7 @@ jbake.properties
 /assets/fonts
 /assets/js
 /assets/favicon.ico
-/assets/images
+/assets/images/*.png
+/assets/images/*.svg
 /assets/images/theme
 /templates

@@ -52,11 +52,11 @@ between values.
 DO NOTs:
 
 * Do not write a boolean comparator that returns true if the values are equal. Such a comparator is
-inconsistent. It will cause sorted collections to behave incorrectly, and sorting to give unpredicable
+inconsistent. It will cause sorted collections to behave incorrectly, and sorting to give unpredictable
 orders.
 * Do not use comparators for sorted sets and maps that treat two values as equal, unless you want
 at most one of those two values to appear in the sorted collection.
-* Do not use substraction when writing a 3-way comparator, unless you really know what you are doing.
+* Do not use subtraction when writing a 3-way comparator, unless you really know what you are doing.
 
 See also: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/compare[compare],
 http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/sort[sort],
@@ -146,12 +146,12 @@ First we will show a way to do it that does not compare vectors.
 (def people [john1 mary john2 john3])
 
 (defn by-salary-name-co [x y]
-  ;; :salary values sorted in descreasing order because x and y
+  ;; :salary values sorted in decreasing order because x and y
   ;; swapped in this compare.
   (let [c (compare (:salary y) (:salary x))]
     (if (not= c 0)
       c
-      ;; :name and :compare are sorted in increasing order
+      ;; :name and :company are sorted in increasing order
       (let [c (compare (:name x) (:name y))]
         (if (not= c 0)
           c
@@ -171,8 +171,8 @@ as above, the field :salary is sorted in descending order because _x_ and _y_ ar
 [source,clojure]
 ----
 (defn by-salary-name-co2 [x y]
-    (compare [(:salary y) (:name x) (:company y)]
-             [(:salary y) (:name y) (:company y)]))
+    (compare [(:salary y) (:name x) (:company x)]
+             [(:salary x) (:name y) (:company y)]))
 
 user> (pprint (sort by-salary-name-co2 people))
 ({:name "John", :salary 35000.0, :company "Acme"}

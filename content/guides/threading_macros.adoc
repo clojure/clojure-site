@@ -1,0 +1,238 @@
+= Threading Macros Guide
+Paulus Esterhazy
+2016-01-05
+:jbake-type: page
+:toc: macro
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Threading macros, also known as arrow macros, that convert nested function calls into a linear flow of function calls, improving readability.
+
+[[thread-first]]
+=== The thread-first macro (+++->+++)
+
+
+In idiomatic Clojure, pure functions transform immutable data structures into a
+desired output format. Consider a function that applies two transformations to a
+map:
+
+[source,clojure]
+----
+(defn transform [person]
+   (update (assoc person :hair-color :gray) :age inc))
+
+(transform {:name "Socrates", :age 39})
+;; => {:name "Socrates", :age 40, :hair-color :gray}
+----
+
+`transform` is an example of a common pattern: it takes a value and applies multiple
+transformations with each step in the pipeline taking the result of the
+previous step as its input. It is often possible to improve code of this type
+by rewriting it to use the thread-first macro `+++->+++`:
+
+[source,clojure]
+----
+(defn transform* [person]
+   (-> person
+      (assoc :hair-color :gray)
+      (update :age inc)))
+----
+
+Taking an initial value as its first argument, http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/+++->+++[`+++->+++`]
+threads it through one
+or more expressions. 
+
+_Note: The word "thread" in this context (meaning passing a value through a pipeline of functions) is unrelated to the concept of concurrent threads of execution._
+
+Starting with the second form, the macro inserts the first value as its first
+argument. This is repeated at each subsequent step with the result of the
+previous computation inserted as the first argument of the next form. 
+What looks like a function call with two arguments is in fact a call with three
+arguments, as the threaded value is inserted just after the function name. It may
+be helpful to mark the insertion point with three commas for illustration:
+
+[source,clojure]
+----
+(defn transform* [person]
+   (-> person
+      (assoc ,,, :hair-color :gray)
+      (update ,,, :age inc)))
+----
+
+Though not often seen in practice, this visual aid is valid Clojure syntax,
+as commas are whitespace in Clojure.
+
+Semantically, `transform*` is equivalent to `transform`: the arrow macro expands
+at compile time into the original code. In each case, the return value of the
+function is the result of the last computation, the call to `update`. The re-written 
+function reads like a description of the transformation: "Take a person, increase their age,
+give them gray hair, and return the result". Of course in the context of immutable
+values, no actual mutation takes place. Instead, the function simply
+returns a new value with updated attributes.
+
+Syntactically, the threading macro also allows the reader to read the functions in
+left to right order of application, rather than reading from the innermost expression out.
+
+[[thread-last]]
+=== thread-last (+++->>+++) and thread-as (+++as->+++) macros
+
+The `+++->+++` macro follows a purely syntactic transformation rule: for each
+expression, insert the threaded value between the function name and the
+first argument. Note that the threading expressions are function calls
+of the form `(f arg1 arg2 ...)`. A bare symbol or keyword
+without parentheses is interpreted as a simple function
+invocation with a single argument. This allows for a succinct chain of
+unary functions:
+
+[source,clojure]
+----
+(-> person :hair-color name clojure.string/upper-case)
+
+;; equivalent to
+
+(-> person (:hair-color) (name) (clojure.string/upper-case))
+----
+
+However, `+++->+++` is not universally applicable, as we do not always
+want to insert the threaded argument in the initial position.
+Consider a function that computes the sum of the squares of all odd
+positive integers below ten:
+
+[source,clojure]
+----
+(defn calculate []
+   (reduce + (map #(* % %) (filter odd? (range 10)))))
+----
+
+Like `transform`, `calculate` is a pipeline of transformations, but
+unlike the former, the threaded value appears in each function call in
+the final position in the argument list. Instead of the thread-first macro we need to use the thread-last macro http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/+++->>+++[`+++->>+++`] instead:
+
+[source,clojure]
+----
+(defn calculate* []
+   (->> (range 10)
+        (filter odd? ,,,)
+        (map #(* % %) ,,,)
+        (reduce + ,,,)))
+----
+
+Again, though usually omitted, three commas mark the place where the argument
+will be inserted. As you can see, in forms threaded using `+++->>+++` the
+threaded value is inserted at the end rather than the beginning of the argument
+list.
+
+Thread-first and thread-last are used in different circumstances. Which one is
+appropriate depends on the signature of the transformation functions. Ultimately
+you'll need to consult the documentation of the functions used, but there are a
+few rules of thumb:
+
+* By convention, core functions that operate on sequences expect
+the sequence as their last argument. Accordingly, pipelines containing `map`,
+`filter`, `remove`, `reduce`, `into`, etc usually call for the `+++->>+++` macro.
+
+* Core functions that operate on data structures, on the other hand,
+expect the value they work on as their first argument. These include
+http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/assoc[`assoc`],
+http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/update[`update`],
+http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/dissoc[`dissoc`],
+http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/get[`get`] and their
+http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/assoc-in[`-in`] variants.
+Pipelines that transform maps using these functions often require the `+++->+++` macro.
+
+* When calling methods through <<xref/../../reference/java_interop#,Java interop>>, the Java object is passed in as the
+first argument. In such cases, `+++->+++` is useful, for example, to check a
+string for a prefix:
++
+[source,clojure]
+----
+(-> a-string clojure.string/lower-case (.startsWith "prefix"))
+----
++
+Note also the more specialized interop macros
+http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/+++..+++[`..`]
+and
+http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/doto[`doto`].
+
+Finally, there are cases where neither `+++->+++` nor `+++->>+++` are
+applicable. A pipeline may consist of function calls with varying insertion
+points. In these cases, you'll need to use http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/+++as->+++[`+++as->+++`], the more flexible
+alternative. `+++as->+++` expects two fixed arguments and a variable number of
+expressions. As with `+++->+++`, the first argument is a value to be threaded
+through the following forms. The second argument is the name of a binding. In
+each of the subsequent forms, the bound name can be used for the prior expression's result.
+This allows a value to thread into any argument position, not just first or last.
+
+[source,clojure]
+----
+(as-> [:foo :bar] v
+  (map name v)
+  (first v)
+  (.substring v 1))
+
+;; => "oo"
+----
+
+=== +++some->+++, +++some->>+++ and +++cond->+++
+
+[[some]]
+Two of Clojure's more specialized threading macros, http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/+++some->+++[`+++some->+++`] and http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/+++some->>+++[`+++some->>+++`], are used most commonly when interfacing with Java
+methods. `+++some->+++` resembles `+++->+++` in that it threads a value through
+a number of expressions. However, it also short-circuits execution when an
+expression evaluates as `nil` at any point in the chain. One common problem with
+arrow macros in the context of <<xref/../../reference/java_interop#,Java interop>> is that Java methods do not expect
+to be passed `nil` (`null`). One way to avoid a `NullPointerException` in these
+cases is to add an explict guard:
+
+[source,clojure]
+----
+(when-let [counter (:counter a-map)]
+  (inc (Long/parseLong counter)))
+----
+
+`+++some->+++` achieves the same effect more succinctly:
+
+[source,clojure]
+----
+(some-> a-map :counter Long/parseLong inc)
+----
+
+If `a-map` lacks the key `:foo`, the entire expression will evaluate to `nil`
+rather than raising an exception. In fact, this behavior is so useful that it is
+common to see `+++some->+++` used when threading is not required:
+
+[source,clojure]
+----
+(some-> (compute) Long/parseLong)
+
+;; equivalent to
+
+(when-let [a-str (compute)]
+  (Long/parseLong a-str))
+----
+
+[[cond]]
+Like `+++->+++`, the macro http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/+++cond->+++[`+++cond->+++`] takes an initial value, but unlike the
+former, it interprets its argument list as a series of `test, expr` pairs. `+++cond->+++`
+threads a value through the expressions but skips those with failing tests. For
+each pair, `test` is evaluated. If the result is truthy, the expression is
+evaluated with the threaded value inserted as its first argument; otherwise
+evaluation proceeds with the next `test, expr` pair. Note that unlike its
+relatives, http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/+++some->+++[`+++some->+++`] or http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/cond[`cond`], `+++cond->+++` never short-circuits
+evaluation, even if a test evaluates to `false` or `nil`:
+
+[source,clojure]
+----
+(defn describe-number [n]
+  (cond-> []
+    (odd? n) (conj "odd")
+    (even? n) (conj "even")
+    (zero? n) (conj "zero")
+    (pos? n) (conj "positive")))
+
+(describe-number 3) ;; => ["odd" "positive"]
+(describe-number 4) ;; => ["even" "positive"]
+----
+
+`+++cond->>+++` inserts the threaded value as the last argument of each form but
+works analogously otherwise.

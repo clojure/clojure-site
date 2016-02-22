@@ -6,7 +6,17 @@ Alex Miller
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
+=== Learning
+
 * <<getting_started#,Getting Started>>
+
+=== Language
+
+* <<threading_macros#,Threading Macros>>
 * <<comparators#,Comparators>>
 * <<reader_conditionals#,Reader Conditionals>>
+
+=== Tools
+
+=== Libraries
 

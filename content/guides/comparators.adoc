@@ -96,7 +96,7 @@ First consider using well-tested comparators developed by others, especially if 
 
 A perfect example of this would be sorting Unicode strings in different languages in orders
 specific to different locales. The Java http://docs.oracle.com/javase/6/docs/api/java/text/Collator.html[Collator]
-class and http://site.icu-project.org/home#TOC-What-is-ICU-[ICU] (International for Unicode) provide
+class and http://site.icu-project.org/home#TOC-What-is-ICU-[ICU] (International Components for Unicode) provide
 libraries for this.
 
 == Writing your own comparators

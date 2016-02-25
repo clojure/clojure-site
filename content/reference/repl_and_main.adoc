@@ -34,7 +34,7 @@ init options:
 
 main options:
 -r, --repl Run a repl
-path Run a script from from a file or resource
+path Run a script from a file or resource
 - Run a script from standard input
 -m, --main A namespace to find a -main function for execution
 -h, -?, --help Print this help message and exit

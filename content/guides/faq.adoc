@@ -11,22 +11,29 @@ toc::[]
 
 These questions and answers are adapted from mailing lists and other Clojure community forums.
 
-=== Reader and Syntax
+== Reader and Syntax
 
 [[why_keywords]]
 **What's the advantage of representing text tokens as keywords (instead of as strings)?**
 
 Keywords are cached and interned. This means that a keyword is reused (reducing memory) everywhere in your program and that checks for equality really become checks for identity (which are fast).
 
-=== Collections, Sequences, and Transducers
+[[reader_macros]]
+**Why does Clojure not have user-extensible reader macros?**
+
+The reader takes text (Clojure source) and returns Clojure data, which is subsequently compiled and evaluated. Reader macros tell the Clojure reader how to read something that is not a typical s-expression (examples are things like quoting `'` and anonymous functions `#()`. Clojure does not allow the user to extend this set of reader macros (as is possible in Lisp). Reader macros can be used to define entirely new syntaxes read by the reader (for example: JSON, XML, or other formats) - this is a more powerful syntactic capability than regular macros (which come into play later at compile time).
+
+Clojure intentionally limits the user's power by not making reader macros user-extensible. This avoids the possibility of creating code that another user cannot read. Clojure gives back some of the power of reader macros with tagged literals, allowing you to create generically readable _data_, that is still extensible.
+
+== Collections, Sequences, and Transducers
 
 [[seqs_vs_colls]]
 **I keep forgetting that after calling sequence functions on vectors/sets, the return value no longer is no longer has vector or set semantics.**
 
 Generally you should divide the Clojure core functions into these two categories:
 
-- Data structure functions - take a data structure and return a modified versions of that data structure (conj, disj, assoc, dissoc, etc). These functions always take the data structure *first*.
-- Sequence functions - take a "seqable" and return a seqable. [Generally we try to avoid committing to the return values actually being an instance of ISeq - this allows for performance optimizations in some cases.] Examples are map, filter, remove, etc. All of these functions take the seqable *last*.
+- Data structure functions - take a data structure and return a modified versions of that data structure (conj, disj, assoc, dissoc, etc). These functions always take the data structure _first_.
+- Sequence functions - take a "seqable" and return a seqable. [Generally we try to avoid committing to the return values actually being an instance of ISeq - this allows for performance optimizations in some cases.] Examples are map, filter, remove, etc. All of these functions take the seqable _last_.
 
 It sounds like you are using the latter but expecting the semantics of the former (which is a common issue for new Clojurists!). If you want to apply sequence functions but have more control over the output data structure, there are a number of ways to do that.
 
@@ -36,7 +43,33 @@ It sounds like you are using the latter but expecting the semantics of the forme
 
 Note that all of these are eager transformations - they produce the output vector when you invoke them. The original sequence version `(map inc (filter odd? [1 2 3]))` is lazy and will only produce values as needed (with chunking under the hood for greater performance). Neither of these is right or wrong, but they are both useful in different circumstances.
 
-=== State and Concurrency
+[[transducers_vs_seqs]]
+**What are good use cases for transducers?**
+
+When performing a series of transformations, sequences will create an intermediate (cached) sequence between each transformation. Transducers create a single compound transformation that is executed in one eager pass over the input. These are different models, which are both useful.
+
+Performance benefits of transducers:
+
+- Source collection iteration - when used on reducible inputs (collections and other things), avoid creating an unnecessary input collection sequence - helps memory and time.
+- Intermediate sequences and cached values - as the transformation happens in a single pass, you remove all intermediate sequence and cached value creation - again, helps memory and time. The combination of the the prior item and this one will start to win big as the size of the input collection or number of transformations goes up (but for small numbers of either, chunked sequences can be surprisingly fast and will compete).
+
+Design / usage benefits of transducers:
+
+- Transformation composition - some use cases will have a cleaner design if they separate transformation composition from transformation application. Transducers support this.
+- Eagerness - transducers are great for cases where eagerly processing a transformation (and potentially encountering any errors) is more important than laziness
+- Resource control - because you have more control over when the input collection is traversed, you also know when processing is complete. It's thus easier to release or clean up input resources because you know when that happens.
+
+Performance benefits of sequences:
+
+- Laziness - if you will only need some of the outputs (for example a user is deciding how many to use), then lazy sequences can often be more efficient in deferring processing. In particular, sequences can be lazy with intermediate results, but transducers use a pull model that will eagerly produce all intermediate values.
+- Infinite streams - because transducers are typically eagerly consumed, they don't match well with infinite streams of values
+
+Design benefits of sequences:
+
+- Consumer control - returning a seq from an API lets you combine input + transformation into something that gives the consumer control. Transducers don't work as well for this (but will work better for cases where input and transformation are separated).
+
+
+== State and Concurrency
 
 [[concurrency_features]]
 **What are the trade-offs between reducers, core.async, and futures?**
@@ -53,7 +86,7 @@ Each of these really addresses a different use case.
 
 If reads were included by default, then STM would be slower (as more transactions would require serializability). However, in many cases, reads do not need to be included. Thus, users can choose to accept the performance penalty when it is necessary and get faster performance when it is not.
 
-=== Namespaces
+== Namespaces
 
 [[ns_as_fn]]
 **Do namespaces work like regular functions?**
@@ -72,7 +105,7 @@ ns does not return a function or anything invokable as you suggest.
 
 While ns is typically placed at the top of a clj file, it is actually just a normal macro and can be invoked at the repl just the same. It could also be used more than once in a single file (although this would be surprising to most clj programmers and would likely not work as desired in AOT).
 
-=== Compiler
+== Compiler
 
 [[direct_linking_repl]]
 **How does direct linking affect the REPL experience?**
@@ -80,3 +113,13 @@ While ns is typically placed at the top of a clj file, it is actually just a nor
 Anything that has been direct linked will not see redefinitions to vars. For example, if you redefine something in clojure.core, other parts of core that use that var will not see the redefinition (however anything that you newly compile at the REPL will). In practice, this is not typically a problem.
 
 For parts of your own app, you may wish to only enable direct linking when you build and deploy for production, rather than using it when you developing at the REPL. Or you may need to mark parts of your app with ^:redef if you want to always allow redefinition or ^:dynamic for dynamic vars.
+
+== Design and Use
+
+[[encapsulation]]
+**How do you achieve encapsulation with Clojure?**
+
+Because of its focus on immutable data, there is generally not a high value placed on data encapsulation. Because data is immutable, there is no worry about someone else modifying a value. Likewise, because Clojure data is designed to be manipulated directly, there is significant value in providing direct access to data, rather than wrapping it in APIs.
+
+All Clojure vars are globally available so again there is not much in the way of encapsulation of functions within namespaces. However, the ability to mark vars private (either using `defn-` for functions or `def` with `^:private` for values) is a convenience for a developer to indicate which parts of an API should be considered public for use vs part of the implementation.
+

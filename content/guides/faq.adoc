@@ -21,9 +21,9 @@ Keywords are cached and interned. This means that a keyword is reused (reducing 
 [[reader_macros]]
 **Why does Clojure not have user-extensible reader macros?**
 
-The reader takes text (Clojure source) and returns Clojure data, which is subsequently compiled and evaluated. Reader macros tell the Clojure reader how to read something that is not a typical s-expression (examples are things like quoting `'` and anonymous functions `#()`. Clojure does not allow the user to extend this set of reader macros (as is possible in Lisp). Reader macros can be used to define entirely new syntaxes read by the reader (for example: JSON, XML, or other formats) - this is a more powerful syntactic capability than regular macros (which come into play later at compile time).
+The reader takes text (Clojure source) and returns Clojure data, which is subsequently compiled and evaluated. Reader macros tell the Clojure reader how to read something that is not a typical s-expression (examples are things like quoting `'` and anonymous functions `#()`). Reader macros can be used to define entirely new syntaxes read by the reader (for example: JSON, XML, or other formats) - this is a more powerful syntactic capability than regular macros (which come into play later at compile time). 
 
-Clojure intentionally limits the user's power by not making reader macros user-extensible. This avoids the possibility of creating code that another user cannot read. Clojure gives back some of the power of reader macros with tagged literals, allowing you to create generically readable _data_, that is still extensible.
+However, unlike Lisp, Clojure does not allow the user to extend this set of reader macros. This avoids the possibility of creating code that another user cannot read (because they do not have the proper reader macros). Clojure gives back some of the power of reader macros with tagged literals, allowing you to create generically readable _data_, that is still extensible.
 
 == Collections, Sequences, and Transducers
 

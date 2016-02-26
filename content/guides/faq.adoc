@@ -25,6 +25,18 @@ The reader takes text (Clojure source) and returns Clojure data, which is subseq
 
 However, unlike Lisp, Clojure does not allow the user to extend this set of reader macros. This avoids the possibility of creating code that another user cannot read (because they do not have the proper reader macros). Clojure gives back some of the power of reader macros with tagged literals, allowing you to create generically readable _data_, that is still extensible.
 
+[[underscore]]
+**What does an _ mean in a let binding or parameter?**
+
+_ has no special meaning in Clojure as a symbol. However, it is a convention to use _ (or a leading _) to denote a binding that will not be used in the expression.
+
+[source,clojure]
+----
+(defn get-x [point]
+  (let [[x _] point]   ;; y-value of point is unused, so mark it with _
+    x))
+----
+
 == Collections, Sequences, and Transducers
 
 [[conj]]
@@ -93,10 +105,13 @@ If reads were included by default, then STM would be slower (as more transaction
 
 == Namespaces
 
-[[ns_as_fn]]
-**Do namespaces work like regular functions?**
+[[ns_file]]
+**Do namespaces map 1-to-1 with files?**
 
-**Looking at the syntax, it seems ns could be returning a function that makes a namespace, and then if you just stick parens around the contents of the file, that would be a regular S expression too. Does that imply you can put more than one in a file?**
+No (although that is typical). One namespace can be split across multiple files by using `load` to load secondary files and `in-ns` in those files to retain the namespace (clojure.core is defined in this way). Also, it is possible to declare multiple namespaces in a single file (although this is very unusual).
+
+[[ns_as_fn]]
+**Do namespaces work like regular functions? Looking at the syntax, it seems ns could be returning a function that makes a namespace, and then if you just stick parens around the contents of the file, that would be a regular S expression too. Does that imply you can put more than one in a file?**
 
 ns is a macro that does a number of things:
 

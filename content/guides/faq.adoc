@@ -1,0 +1,82 @@
+= Frequently Asked Questions
+Alex Miller
+2015-01-01
+:type: guides
+:toc: macro
+:icons: font
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+toc::[]
+
+These questions and answers are adapted from mailing lists and other Clojure community forums.
+
+=== Reader and Syntax
+
+[[why_keywords]]
+**What's the advantage of representing text tokens as keywords (instead of as strings)?**
+
+Keywords are cached and interned. This means that a keyword is reused (reducing memory) everywhere in your program and that checks for equality really become checks for identity (which are fast).
+
+=== Collections, Sequences, and Transducers
+
+[[seqs_vs_colls]]
+**I keep forgetting that after calling sequence functions on vectors/sets, the return value no longer is no longer has vector or set semantics.**
+
+Generally you should divide the Clojure core functions into these two categories:
+
+- Data structure functions - take a data structure and return a modified versions of that data structure (conj, disj, assoc, dissoc, etc). These functions always take the data structure *first*.
+- Sequence functions - take a "seqable" and return a seqable. [Generally we try to avoid committing to the return values actually being an instance of ISeq - this allows for performance optimizations in some cases.] Examples are map, filter, remove, etc. All of these functions take the seqable *last*.
+
+It sounds like you are using the latter but expecting the semantics of the former (which is a common issue for new Clojurists!). If you want to apply sequence functions but have more control over the output data structure, there are a number of ways to do that.
+
+. Use data-structure equivalents like mapv or filterv, etc - this is a very limited set that lets you perform these ops but return a data structure rather than a seqable. `(mapv inc (filterv odd? [1 2 3]))`
+. Pour the results of your sequence transformations back into a data structure with into: `(into [] (map inc (filter odd? [1 2 3])))`
+. Use transducers (likely with `into`) - this has much the same effect as #2, but combinations of transformations can be applied more efficiently without creating any sequences - only the final result is built: `(into [] (comp (filter odd?) (map inc)) [1 2 3])`. As you work with larger sequences or more transformations, this makes a significant difference in performance.
+
+Note that all of these are eager transformations - they produce the output vector when you invoke them. The original sequence version `(map inc (filter odd? [1 2 3]))` is lazy and will only produce values as needed (with chunking under the hood for greater performance). Neither of these is right or wrong, but they are both useful in different circumstances.
+
+=== State and Concurrency
+
+[[concurrency_features]]
+**What are the trade-offs between reducers, core.async, and futures?**
+
+Each of these really addresses a different use case.
+
+- Reducers are best for fine-grained data parallelism when computing a transformation over existing in-memory data (in a map or vector). Generally it's best when you have thousands of small data items to compute over and many cores to do the work. Anything described as "embarrassingly parallel".
+- futures are best for pushing work onto a background thread and picking it up later (or for doing I/O waits in parallel). It's better for big chunky tasks (go fetch a bunch of data in the background).
+- core.async is primarily used to organize the subsystems or internal structure of your application. It has channels (queues) to convey values from one "subprocess" (go block) to another. So you're really getting concurrency and architectural benefits in how you break up your program. The killer feature you can really only get in core.async is the ability to wait on I/O events from multiple channels for the first response on any of them (via alt/alts). Promises can also be used to convey single values between independent threads/subprocesses but they are single delivery only.
+- you didn't mention pmap, but tools like pmap, java.util queues and executors, and libraries like claypoole are doing coarse-level "task" concurrency. There is some overlap with core.async here which has a very useful transducer-friendly pipeline functionality.
+
+[[write_skew]]
+**Why does the Clojure STM does not guarantee serializability but only snapshot isolation?**
+
+If reads were included by default, then STM would be slower (as more transactions would require serializability). However, in many cases, reads do not need to be included. Thus, users can choose to accept the performance penalty when it is necessary and get faster performance when it is not.
+
+=== Namespaces
+
+[[ns_as_fn]]
+**Do namespaces work like regular functions?**
+
+**Looking at the syntax, it seems ns could be returning a function that makes a namespace, and then if you just stick parens around the contents of the file, that would be a regular S expression too. Does that imply you can put more than one in a file?**
+
+ns is a macro that does a number of things:
+
+- creates a new internal Namespace object (if it does not yet exist)
+- makes that namespace the new current namespace (*ns*)
+- auto-refers all vars from clojure.core and imports all classes from java.lang
+- requires/refers other namespaces and vars as specified
+- (and other optional things)
+
+ns does not return a function or anything invokable as you suggest.
+
+While ns is typically placed at the top of a clj file, it is actually just a normal macro and can be invoked at the repl just the same. It could also be used more than once in a single file (although this would be surprising to most clj programmers and would likely not work as desired in AOT).
+
+=== Compiler
+
+[[direct_linking_repl]]
+**How does direct linking affect the REPL experience?**
+
+Anything that has been direct linked will not see redefinitions to vars. For example, if you redefine something in clojure.core, other parts of core that use that var will not see the redefinition (however anything that you newly compile at the REPL will). In practice, this is not typically a problem.
+
+For parts of your own app, you may wish to only enable direct linking when you build and deploy for production, rather than using it when you developing at the REPL. Or you may need to mark parts of your app with ^:redef if you want to always allow redefinition or ^:dynamic for dynamic vars.

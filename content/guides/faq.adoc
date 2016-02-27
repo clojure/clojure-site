@@ -16,7 +16,7 @@ These questions and answers are adapted from mailing lists and other Clojure com
 [[why_keywords]]
 **What's the advantage of representing text tokens as keywords (instead of as strings)?**
 
-Keywords are cached and interned. This means that a keyword is reused (reducing memory) everywhere in your program and that checks for equality really become checks for identity (which are fast).
+Keywords are cached and interned. This means that a keyword is reused (reducing memory) everywhere in your program and that checks for equality really become checks for identity (which are fast). Additionally, keywords are invokable to look themselves up in a map and thus this enables the common pattern of extracting a particular field from a collection of maps possible.
 
 [[reader_macros]]
 **Why does Clojure not have user-extensible reader macros?**

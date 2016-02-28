@@ -37,6 +37,12 @@ _ has no special meaning in Clojure as a symbol. However, it is a convention to 
     x))
 ----
 
+[[anon_vector]]
+----
+**Why doesn't the anonymous function `#([%1])` work to construct a vector?**
+
+`#()` always expands to include parens around the expression you give it, thus in this case it yields `(fn [x] ([x]))` which fails when the vector is invoked. Instead, use the vector function `#(vector %)` or just `vector`, which is the function being described.
+
 == Collections, Sequences, and Transducers
 
 [[conj]]

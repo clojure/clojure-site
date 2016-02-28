@@ -85,7 +85,6 @@ Design benefits of sequences:
 
 - Consumer control - returning a seq from an API lets you combine input + transformation into something that gives the consumer control. Transducers don't work as well for this (but will work better for cases where input and transformation are separated).
 
-
 == State and Concurrency
 
 [[concurrency_features]]
@@ -133,6 +132,36 @@ While ns is typically placed at the top of a clj file, it is actually just a nor
 Anything that has been direct linked will not see redefinitions to vars. For example, if you redefine something in clojure.core, other parts of core that use that var will not see the redefinition (however anything that you newly compile at the REPL will). In practice, this is not typically a problem.
 
 For parts of your own app, you may wish to only enable direct linking when you build and deploy for production, rather than using it when you developing at the REPL. Or you may need to mark parts of your app with ^:redef if you want to always allow redefinition or ^:dynamic for dynamic vars.
+
+== Java and Interop
+
+[[inner]]
+**How do you refer to a nested or inner class?**
+
+Use a $ to separate outer from inner class name. For example: `java.util.Map$Entry` is the Entry inner class inside Map.
+
+[[primitive_type]]
+**How do you refer to the class representing a primitive?**
+
+Primitive types can be found as the static TYPE field on the boxed class, for example: `Integer/TYPE`. 
+
+[[varargs]]
+**How do you invoke a Java method with vararg signature?**
+
+Java treats a trailing varargs parameter as an array and it can be invoked from Clojure. Example:
+
+`(.method object fixed-args... (into-array type variable-args...))`
+
+Example:
+
+[source,clojure]
+----
+;; asList takes an Object vararg parameter
+(java.util.Arrays/asList (object-array [0 1 2]))
+
+;; format takes one fixed parameter and a varargs
+(String/format "%s %s, %s" (object-array ["March" 1 2016]))
+----
 
 == Design and Use
 

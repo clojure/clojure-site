@@ -62,7 +62,7 @@ Here's a very typical example, some code that builds up a vector for return, all
 
 ;; benchmarked (Java 1.8, Clojure 1.7)
 (def v (vrange 1000000))    ;; 73.7 ms
-(def v2 (vrange2 1000000))) ;; 19.7 ms
+(def v2 (vrange2 1000000))  ;; 19.7 ms
 ----
 Oh, yeah, _**transients are fast!**_
 

@@ -84,9 +84,3 @@ Specify a reduce function and a combine function with fold:
 (defn word-frequency [text]
   (r/fold merge-counts count-words (clojure.string/split text #"\s+")))
 ----
-== When to use
-Use the reducer form of these operations when:
-
-* Source data can be generated and held in memory
-* Work to be performed is computation (not I/O or blocking)
-* Number of data items or work to be done is "large"

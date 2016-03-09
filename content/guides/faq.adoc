@@ -102,6 +102,13 @@ Each of these really addresses a different use case.
 - core.async is primarily used to organize the subsystems or internal structure of your application. It has channels (queues) to convey values from one "subprocess" (go block) to another. So you're really getting concurrency and architectural benefits in how you break up your program. The killer feature you can really only get in core.async is the ability to wait on I/O events from multiple channels for the first response on any of them (via alt/alts). Promises can also be used to convey single values between independent threads/subprocesses but they are single delivery only.
 - tools like pmap, java.util queues and executors, and libraries like claypoole are doing coarse-level "task" concurrency. There is some overlap with core.async here which has a very useful transducer-friendly pipeline functionality.
 
+[[agent_shutdown]]
+**<<faq#agent_shutdown,Why does Clojure "hang" for 1 minute when my program ends?>>**
+
+This is most commonly asked in the context of programs that use `future`, `pmap`, `agent-send`, or other functions that invoke those functions. When a program like this finishes, there will be a 60 second pause before exit. To fix this problem, call http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/shutdown-agents[shutdown-agents] as the program exits.
+
+Clojure uses two internal thread pools to service futures and agent function executions. Both pools use non-daemon threads and the JVM will not exit while any non-daemon thread is alive. In particular, the pool that services futures and agent send-off calls uses an Executor cached thread pool with a 60 second timeout. In the scenario above, the program will wait until the background threads have completed their work and the threads expire before it can exit.
+
 [[write_skew]]
 **<<faq#write_skew,Why does the Clojure STM does not guarantee serializability but only snapshot isolation?>>**
 

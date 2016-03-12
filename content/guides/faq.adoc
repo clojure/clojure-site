@@ -1,6 +1,6 @@
 = Frequently Asked Questions
 Alex Miller
-2016-02-29
+2016-03-08
 :type: guides
 :toc: macro
 :icons: font
@@ -14,19 +14,19 @@ These questions and answers are adapted from mailing lists and other Clojure com
 == Reader and Syntax
 
 [[why_keywords]]
-**What's the advantage of representing text tokens as keywords (instead of as strings)?**
+**<<faq#why_keywords,What's the advantage of representing text tokens as keywords (instead of as strings)?>>**
 
 Keywords are cached and interned. This means that a keyword is reused (reducing memory) everywhere in your program and that checks for equality really become checks for identity (which are fast). Additionally, keywords are invokable to look themselves up in a map and thus this enables the common pattern of extracting a particular field from a collection of maps possible.
 
 [[reader_macros]]
-**Why does Clojure not have user-extensible reader macros?**
+**<<faq#reader_macros,Why does Clojure not have user-extensible reader macros?>>**
 
 The reader takes text (Clojure source) and returns Clojure data, which is subsequently compiled and evaluated. Reader macros tell the Clojure reader how to read something that is not a typical s-expression (examples are things like quoting `'` and anonymous functions `#()`). Reader macros can be used to define entirely new syntaxes read by the reader (for example: JSON, XML, or other formats) - this is a more powerful syntactic capability than regular macros (which come into play later at compile time). 
 
 However, unlike Lisp, Clojure does not allow the user to extend this set of reader macros. This avoids the possibility of creating code that another user cannot read (because they do not have the proper reader macros). Clojure gives back some of the power of reader macros with tagged literals, allowing you to create generically readable _data_, that is still extensible.
 
 [[underscore]]
-**What does an _ mean in a let binding or parameter?**
+**<<faq#underscore,What does an _ mean in a let binding or parameter?>>**
 
 _ has no special meaning in Clojure as a symbol. However, it is a convention to use _ (or a leading _) to denote a binding that will not be used in the expression.
 
@@ -38,19 +38,19 @@ _ has no special meaning in Clojure as a symbol. However, it is a convention to 
 ----
 
 [[anon_vector]]
-**Why doesn't the anonymous function `#([%1])` work to construct a vector?**
+**<<faq#anon_vector,Why doesn't the anonymous function `#([%1])` work to construct a vector?>>**
 
 `++#()++` always expands to include parens around the expression you give it, thus in this case it yields `(fn [x] ([x]))` which fails when the vector is invoked. Instead, use the vector function `++#(vector %)++` or just `vector`, which is the function being described.
 
 == Collections, Sequences, and Transducers
 
 [[conj]]
-**Why does `conj` add to the front of a list and the back of a vector?**
+**<<faq#conj,Why does `conj` add to the front of a list and the back of a vector?>>**
 
 Most Clojure data structure operations, including `conj` (conjoin), are designed to give the user a performance expectation. With `conj`, the expectation is that insertion should happen at the place where this operation is efficient. Lists (as linked lists) can make a constant time insertion only at the front. Vectors (indexed) are designed to expand at the back. As the user, you should consider this when you choose which data structure to use. In Clojure, vectors are used with much greater frequency.
 
 [[seqs_vs_colls]]
-**I keep forgetting that after calling sequence functions on vectors/sets, the return value is no longer a vector or a set.**
+**<<faq#seqs_vs_colls,I keep forgetting that after calling sequence functions on vectors/sets, the return value is no longer a vector or a set.>>**
 
 Generally you should divide the Clojure core functions into these two categories:
 
@@ -66,7 +66,7 @@ It sounds like you are using the latter but expecting the semantics of the forme
 Note that all of these are eager transformations - they produce the output vector when you invoke them. The original sequence version `(map inc (filter odd? [1 2 3]))` is lazy and will only produce values as needed (with chunking under the hood for greater performance). Neither of these is right or wrong, but they are both useful in different circumstances.
 
 [[transducers_vs_seqs]]
-**What are good use cases for transducers?**
+**<<faq#transducers_vs_seqs,What are good use cases for transducers?>>**
 
 When performing a series of transformations, sequences will create an intermediate (cached) sequence between each transformation. Transducers create a single compound transformation that is executed in one eager pass over the input. These are different models, which are both useful.
 
@@ -93,29 +93,36 @@ Design benefits of sequences:
 == State and Concurrency
 
 [[concurrency_features]]
-**What are the trade-offs between reducers, core.async, and futures?**
+**<<faq#concurrency_features,What are the trade-offs between reducers, core.async, futures, and pmap?>>**
 
 Each of these really addresses a different use case.
 
 - Reducers are best for fine-grained data parallelism when computing a transformation over existing in-memory data (in a map or vector). Generally it's best when you have thousands of small data items to compute over and many cores to do the work. Anything described as "embarrassingly parallel".
 - futures are best for pushing work onto a background thread and picking it up later (or for doing I/O waits in parallel). It's better for big chunky tasks (go fetch a bunch of data in the background).
 - core.async is primarily used to organize the subsystems or internal structure of your application. It has channels (queues) to convey values from one "subprocess" (go block) to another. So you're really getting concurrency and architectural benefits in how you break up your program. The killer feature you can really only get in core.async is the ability to wait on I/O events from multiple channels for the first response on any of them (via alt/alts). Promises can also be used to convey single values between independent threads/subprocesses but they are single delivery only.
-- you didn't mention pmap, but tools like pmap, java.util queues and executors, and libraries like claypoole are doing coarse-level "task" concurrency. There is some overlap with core.async here which has a very useful transducer-friendly pipeline functionality.
+- tools like pmap, java.util queues and executors, and libraries like claypoole are doing coarse-level "task" concurrency. There is some overlap with core.async here which has a very useful transducer-friendly pipeline functionality.
+
+[[agent_shutdown]]
+**<<faq#agent_shutdown,Why does Clojure "hang" for 1 minute when my program ends?>>**
+
+This is most commonly asked in the context of programs that use `future`, `pmap`, `agent-send`, or other functions that invoke those functions. When a program like this finishes, there will be a 60 second pause before exit. To fix this problem, call http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/shutdown-agents[shutdown-agents] as the program exits.
+
+Clojure uses two internal thread pools to service futures and agent function executions. Both pools use non-daemon threads and the JVM will not exit while any non-daemon thread is alive. In particular, the pool that services futures and agent send-off calls uses an Executor cached thread pool with a 60 second timeout. In the scenario above, the program will wait until the background threads have completed their work and the threads expire before it can exit.
 
 [[write_skew]]
-**Why does the Clojure STM does not guarantee serializability but only snapshot isolation?**
+**<<faq#write_skew,Why does the Clojure STM does not guarantee serializability but only snapshot isolation?>>**
 
 If reads were included by default, then STM would be slower (as more transactions would require serializability). However, in many cases, reads do not need to be included. Thus, users can choose to accept the performance penalty when it is necessary and get faster performance when it is not.
 
 == Namespaces
 
 [[ns_file]]
-**Do namespaces map 1-to-1 with files?**
+**<<faq#ns_file,Do namespaces map 1-to-1 with files?>>**
 
 No (although that is typical). One namespace can be split across multiple files by using `load` to load secondary files and `in-ns` in those files to retain the namespace (clojure.core is defined in this way). Also, it is possible to declare multiple namespaces in a single file (although this is very unusual).
 
 [[ns_as_fn]]
-**Do namespaces work like regular functions? Looking at the syntax, it seems ns could be returning a function that makes a namespace, and then if you just stick parens around the contents of the file, that would be a regular S expression too. Does that imply you can put more than one in a file?**
+**<<faq#ns_as_fn,Do namespaces work like regular functions? Looking at the syntax, it seems ns could be returning a function that makes a namespace, and then if you just stick parens around the contents of the file, that would be a regular S expression too. Does that imply you can put more than one in a file?>>**
 
 ns is a macro that does a number of things:
 
@@ -132,7 +139,7 @@ While ns is typically placed at the top of a clj file, it is actually just a nor
 == Compiler
 
 [[direct_linking_repl]]
-**How does direct linking affect the REPL experience?**
+**<<faq#direct_linking_repl,How does direct linking affect the REPL experience?>>**
 
 Anything that has been direct linked will not see redefinitions to vars. For example, if you redefine something in clojure.core, other parts of core that use that var will not see the redefinition (however anything that you newly compile at the REPL will). In practice, this is not typically a problem.
 
@@ -141,17 +148,17 @@ For parts of your own app, you may wish to only enable direct linking when you b
 == Java and Interop
 
 [[inner]]
-**How do you refer to a nested or inner class?**
+**<<faq#inner,How do you refer to a nested or inner class?>>**
 
 Use a $ to separate outer from inner class name. For example: `java.util.Map$Entry` is the Entry inner class inside Map.
 
 [[primitive_type]]
-**How do you refer to the class representing a primitive?**
+**<<faq#primitive_type,How do you refer to the class representing a primitive?>>**
 
 Primitive types can be found as the static TYPE field on the boxed class, for example: `Integer/TYPE`. 
 
 [[varargs]]
-**How do you invoke a Java method with vararg signature?**
+**<<faq#varargs,How do you invoke a Java method with vararg signature?>>**
 
 Java treats a trailing varargs parameter as an array and it can be invoked from Clojure. Example:
 
@@ -171,7 +178,7 @@ Example:
 == Design and Use
 
 [[encapsulation]]
-**How do you achieve encapsulation with Clojure?**
+**<<faq#encapsulation,How do you achieve encapsulation with Clojure?>>**
 
 Because of its focus on immutable data, there is generally not a high value placed on data encapsulation. Because data is immutable, there is no worry about someone else modifying a value. Likewise, because Clojure data is designed to be manipulated directly, there is significant value in providing direct access to data, rather than wrapping it in APIs.
 

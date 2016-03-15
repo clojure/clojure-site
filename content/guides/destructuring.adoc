@@ -8,43 +8,45 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 === What is Destructuring?
 
-For someone new to Clojure, the idea of destructuring might be difficult to grasp. Simply put, destructuring is a way to concisely bind names to the values in a data structure. It allows us to remove some of the bulk when working with large data structures. Destructuring allows us to write more concise and readable code.
+Destructuring is a way to concisely bind names to the values in a data structure. It allows us to remove some of the bulk when working with large data structures. Destructuring allows us to write more concise and readable code.
+
+Consider the following example of extracting and naming values in a vector.
 
 [source,clojure]
 ----
-(def my-vector [10 5 8 30])
+(def my-line [[5 10] [10 20]])
+
+(let [p1 (first my-line)
+       p2 (second my-line)
+       x1 (first p1)
+       y1 (second p1)
+       x2 (first p2)
+       y2 (second p2)]
+  (println "Line from (" x1 "," y1 ") to (" x2 ", " y2 ")"))
+ ;= "Line from ( 5 , 10 ) to ( 10 , 20 )"
 ----
+
+This is perfectly valid, but the code extracting and naming the values in the vector obsucring our intent. Destructuring allows us to concisely extract and name important parts of complex data structures to make our code cleaner.
 
 [source,clojure]
 ----
-(let [x (first my-vector)
-      y (second my-vector)
-      z (nth my-vector 4)
-      a (last my-vector)]
-  ; And now we can use x, y, and z
-  (println "x:" x ", y:" y ", z:" z ", a:" a))
-;;= "x: 10, y: 5, z: 8, a: 30"
+;= Using the same vector as above
+(let [[p1 p2] my-line
+      [x1 y1] p1
+      [x2 y2] p2]
+ (println "Line from (" x1 "," y1 ") to (" x2 ", " y2 ")"))
+;= "Line from ( 5 , 10 ) to ( 10 , 20 )"
 ----
 
-This isn't bad code, in fact it's perfectly valid, it's just a bit bulky. Once you start to work with larger data structures, this technique will become very cumbersome. With destructuring you can pull apart data structures much more concisely.
+Rather than explictly binding each variable, we describe the bindings based on their sequential order. That's a pretty weird statement, "describe the bindings," so let's look at it again.
 
-[source,clojure]
-----
-;; Using the same vector as above
-(let [[x y z a] my-vector]
-  (println "x: " x ", y: " y ", z: " z ", a:" a))
-;;= "x: 10, y: 5, z: 8, a: 30"
-----
-
-Rather than explictly binding each variable, we describe the shape of the data to create the bindings. That's a pretty weird statement, "describe the shape," so let's look at it again.
-
-We have a data structure `my-vector` that looks like this, `[10 5 8]`. The shape of `my-vector` can be described as a `vector` containing `3` `elements` of type `java.lang.Long`. In our destructuring form we will create a `vector` of `3` elements to mimick the shape of `my-vector` like so, `[x y z]`. So in this let statement, we are binding `[x y z]` to `[10 5 8]`, one element at a time, or as we call it, sequentially.
+We have a data structure `my-line` that looks like this, `[[5 10] [10 20]]`. In our destructuring form we will create a vector containing two elements, `p1` and `p2`, each of which are vectors themselves. This will bind the vector `[5 10]` to the symbol `p1` and the vector `[10 20]` to the symbol `p2`. Since we want to work with the elements of `p1` and `p2` rather than the structures themselves, we destructure `p1` and `p2` within the same let statement. The vector `p1` looks like this, `[5 10]`, so to destructure it, we create a vector containing two elements, `x1` and `y1`. This binds `5` to the symbol `x1` and `10` to the symbol `y1`. The same is repeated for `p2` binding `10` to `x2` and `20` to `y2`. At this point, we now have everything we need to work with our data.
 
 === Sequential Destructuring
 
-Clojure destructuring is broken up into two categories, sequential destructuring and associative destructuring. Seuqential destructuring represents a sequenctial data structure as a Clojure vector within a let binding.
+Clojure destructuring is broken up into two categories, sequential destructuring and associative destructuring. Sequential destructuring represents a sequential data structure as a Clojure vector within a let binding.
 
-This type of destructuring can be used on anything from Clojure lists, strings, and vectors to Java Lists and ArrayLists. Anything that the `nth` function can operate on, sequential destructuring can be applied to.
+This type of destructuring can be used on any kind of data structure that can be traversed in linear time. That includes anything from Clojure
 
 [source,clojure]
 ----
@@ -52,23 +54,23 @@ This type of destructuring can be used on anything from Clojure lists, strings, 
 (def my-list '(1 2 3))
 (def my-string "abc")
 
-;; It should come as no surprise that this will print out 1 2 3
+;= It should come as no surprise that this will print out 1 2 3
 (let [[x y z] my-vector]
   (println x y z))
-;;= 1 2 3
+;= 1 2 3
 
-;; We can also use a similar technique to destructure a list
+;= We can also use a similar technique to destructure a list
 (let [[x y z] my-list]
   (println x y z))
-;;= 1 2 3
+;= 1 2 3
 
-;; For strings, the elements are destructured by character.
+;= For strings, the elements are destructured by character.
 (let [[x y z] my-string]
   (do
     (println x y z)
     (map type [x y z])))
-;;= a b c
-;;= (java.lang.Character java.lang.Character java.lang.Character)
+;= a b c
+;= (java.lang.Character java.lang.Character java.lang.Character)
 ----
 
 The key to seuqential destructuring is that you bind the values one-by-one to the symbols of a vector. For instance the vector `[x y z]` will match each element one-by-one with the list `'(1 2 3)`.
@@ -80,7 +82,7 @@ In some cases, the collection you are destructuring isn't the exact same size as
 (def small-list '(1 2 3))
 (let [[a b c d e f g] small-list]
   (println a b c d e f g))
-;;= 1 2 3 nil nil nil nil
+;= 1 2 3 nil nil nil nil
 ----
 
 On the other hand, if the collection is too large, the extra values are simply ignored.
@@ -90,7 +92,7 @@ On the other hand, if the collection is too large, the extra values are simply i
 (def large-list '(1 2 3 4 5 6 7 8 9 10))
 (let [[a b c] large-list]
   (println a b c)
-;;= 1 2 3
+;= 1 2 3
 ----
 
 Destructuring gives you total control over the elements that you choose to bind (or not) and how you bind them.
@@ -110,8 +112,8 @@ Say you want to print the first element on one line and the remainder on another
   (do
     (println first)
     (println second third fourth fifth sixth)))
-;;= Michael
-;;= Amber Aaron Nick Earl Joe
+;= Michael
+;= Amber Aaron Nick Earl Joe
 ----
 
 This binding works but even using destructuring it's pretty clunky. Here we can use `&` to clump the tail elements into a sequence.
@@ -122,18 +124,20 @@ This binding works but even using destructuring it's pretty clunky. Here we can 
   (do
     (println first)
     (println remaining)))
-;;= Michael
-;;= Amber Aaron Nick Earl Joe
+;= Michael
+;= Amber Aaron Nick Earl Joe
 ----
 
-Using the `_` you can ignore bindings that you don't intend on using.
+You can ignore bindings that you don't intend on using by binding them to any symbol of your choosing.
 
 [source,clojure]
 ----
 (let [[first _ third _ fifth _] names]
   (println "Odd names:" first third fifth))
-;;= Odd names: Michael Aaron Earl
+;= Odd names: Michael Aaron Earl
 ----
+
+The convention for this is to use an underscore like above.
 
 You can use `:as all` to bind the entire vector to the symbol `all`.
 
@@ -141,7 +145,7 @@ You can use `:as all` to bind the entire vector to the symbol `all`.
 ----
 (let [[first :as all] names]
   (println "The first name from" all "is" first))
-;;= The first name from [Michael Amber Aaron Nick Earl Joe] is Michael
+;= The first name from [Michael Amber Aaron Nick Earl Joe] is Michael
 ----
 
 Let's stop for a bit and look a little further into the types of `:as` and `&`.
@@ -150,9 +154,8 @@ Let's stop for a bit and look a little further into the types of `:as` and `&`.
 ----
 (def numbers [1 2 3 4 5])
 (let [[x & rest :as all] numbers]
-  (apply println [rest all]))
-;;= (2 3 4 5)
-;;= [1 2 3 4 5]
+  (apply prn [rest all]))
+;= (2 3 4 5) [1 2 3 4 5]
 ----
 
 So rest is bound to a `sequence` containing the remaining elements of the `numbers` vector while `all` has been bound to the original `vector`. What happens when we destructure a string instead?
@@ -160,13 +163,14 @@ So rest is bound to a `sequence` containing the remaining elements of the `numbe
 [source,clojure]
 ----
 (def word "Clojure")
-(let [[x & rest :as all]]
-  (apply println [rest all]))
-;;= (l o j u r e)
-;;= Clojure
+(let [[x & rest :as all] word]
+  (apply prn [x rest all]))
+;= \C (\l \o \j \u \r \e) "Clojure"
 ----
 
-How it works is, all is bound to the original structure, whether it be a string, vector, Java ArrayList, etc... While bound to `rest` is a sequence, in this case, of characters, in the example above it is of integers.
+How this works is, bound to `all` is the original structure (String, vector, list, whatever it may be). Bound to `x` is the character `\C`. And bound to `rest` is the list of characters remaining.
+
+
 
 You can combine any or all of these techniques at the same time at your discretion.
 
@@ -178,32 +182,39 @@ You can combine any or all of these techniques at the same time at your discreti
     (println "The first and thir fruits are," first "and" third)
     (println "These we're taken from" all-fruits)
     (println "The fruits after them are" rest))
-;;= The first and third fruits are, apple and strawberry
-;;= These we're taken from [apple orange strawberry peach pear lemon]
-;;= The fruits after them are (peache pear lemon)
+;= The first and third fruits are, apple and strawberry
+;= These we're taken from [apple orange strawberry peach pear lemon]
+;= The fruits after them are (peache pear lemon)
 ----
 
-Destructuring grants you access to vectors nested within vectors as well. While you can penitrate through as many layers as you need, once you get to the fourth or fifth layer this becomes difficult to read.
+Destructuring grants you access to vectors nested within vectors as well. Let's go back to our vector from the very beginning, `my-line`.
 
 [source,clojure]
 ----
-(def nested-vector [1 [2 [3 [4 [5]]]]])
-
-(let [a [b [c [d [e]]]]]
-  (println a b c d e))
-;;= 1 2 3 4 5
+(def my-line [[5 10] [10 20]])
 ----
+
+This vector is comprised of nested vectors that we can access directly.
+
+[source,clojure]
+----
+(let [[[x1 y1][x2 y2]] my-line]
+  (println "Line from (" x1 "," y1 ") to (" x2 ", " y2 ")"))
+;= "Line from ( 5 , 10 ) to ( 10 , 20 )"
+----
+
+While you can penetrate through as many layers as you need, once you get to the fourth or fifth layer this becomes difficult to read.
 
 When you have nested vectors, you can use `:as` to bind the whole nested vector to a single symbol.
 
 [source,clojure]
 ----
-(let [[[a b :as first] [c d :as second]] nested-vector]
+(let [[[a b :as first] [c d :as second]] my-line]
   (do
     (println a b first)
     (println c d second)))
-;;= 1 2 [1 2]
-;;= 3 4 [3 4]
+;= 1 2 [1 2]
+;= 3 4 [3 4]
 ----
 
 === Associative Destructuring
@@ -223,7 +234,7 @@ Associative destructuring works on:
 
 (let [{a :a b :b c :c d :d} my-map]
   (println a b c d))
-;;= A B 3 4
+;= A B 3 4
 ----
 
 The first thing that should stand out to you here is that the destructuring form is no longer a vector, rather it is a map, hence the name associative destructuring.
@@ -235,7 +246,7 @@ Both types of destructuring act very similarly. If you try to bind a symbol to a
 ----
 (let [{a :a x :x} my-map]
   (println a x))
-;;= A nil
+;= A nil
 ----
 
 Associative destructuring allows you to replace all of the nil values with a default value.
@@ -244,7 +255,7 @@ Associative destructuring allows you to replace all of the nil values with a def
 ----
 (let [{a :a, x :x, :or {x "X not found!" y "Y not found!" z "Z not found!"}} my-map]
   (println x y z))
-;;= X not found! Y not found! Z not found!
+;= X not found! Y not found! Z not found!
 ----
 
 You aren't required to bind any keys that you don't want to bind, just like sequential destructuring.
@@ -253,7 +264,7 @@ You aren't required to bind any keys that you don't want to bind, just like sequ
 ----
 (let [{a :a _ :b c :c _ :d} my-map]
   (println a c))
-;;= A 3
+;= A 3
 ----
 
 Since associative destructuring isn't sequential, it is more common practice to simply leave out the keys that you aren't planning on using. This prevents the destructuring form from becoming too crowded.
@@ -262,7 +273,7 @@ Since associative destructuring isn't sequential, it is more common practice to 
 ----
 (let [{a :a c :c} my-map]
   (println a c))
-;;= A 3
+;= A 3
 ----
 
 If you need access to the entire map, you can use the `:as all` shortcut like in sequential destructuring.
@@ -271,7 +282,7 @@ If you need access to the entire map, you can use the `:as all` shortcut like in
 ----
 (let [{a :a :as all} my-map]
   (println "I got" A "from" all))
-;;= I got A from {:a "A" :b "B" :c 3 :d 4}
+;= I got A from {:a "A" :b "B" :c 3 :d 4}
 ----
 
 The `:as` and `:or` keywords can be combined in a single destructuring.
@@ -282,8 +293,8 @@ The `:as` and `:or` keywords can be combined in a single destructuring.
   (do
     (println "I got" A "from" all)
     (println "Where is x?" x))
-;;= I got A from {:a "A" :b "B" :c 3 :d 4}
-;;= Where is x? Not found!
+;= I got A from {:a "A" :b "B" :c 3 :d 4}
+;= Where is x? Not found!
 ----
 
 You might have noticed the amount of redundant information in these associative destructuring forms. For each key we've been using, we're just renaming them to their corresponding symbol, making the form a little muddled. This is no good, redundant data is never a good thing. To resolve this, you can use the `:keys` shortcut.
@@ -292,7 +303,7 @@ You might have noticed the amount of redundant information in these associative 
 ----
 (let [{:keys [a c]} my-map]
   (println a c))
-;;= A 3
+;= A 3
 ----
 
 You can also use `:strs` and `syms` if the keys in the map aren't actually keywords.
@@ -303,13 +314,13 @@ You can also use `:strs` and `syms` if the keys in the map aren't actually keywo
 
 (let [{:strs [a b]} string-keys]
   (println a b))
-;;= A B
+;= A B
 
 (def symbol-keys {'a "A" 'b "B"})
 
 (let [{:syms [a b]} symbol-keys]
   (println ab))
-;;= A B
+;= A B
 ----
 
 You get the same output with a much more concise and readable input.
@@ -320,7 +331,7 @@ We've been consistently binding keys to their corresponding symbol, `:a` to `a` 
 ----
 (let [{first :a third :c} my-map]
   (println first third))
-;;= A 3
+;= A 3
 ----
 
 Associative destructuring also supports nested maps, similarly to sequential destructuring.
@@ -330,13 +341,13 @@ Associative destructuring also supports nested maps, similarly to sequential des
 (def nested-map {:a {:d 1} :b 2 :c 3})
 (let [{{a :d} :a, b :b, c :c} nested-map]
   (println a b c))
-;;= 1 2 3
+;= 1 2 3
 
 (def deeply-nested-maps {:a {:c [1 2]} :b {:d {:e 3}}})
 
 (let [{{[a b] :c} :a, {{c :e} :d} :b} deeply-nested-maps]
   (println a b c))
-;;= 1 2 3
+;= 1 2 3
 ----
 
 Associative destrucuturing also works with lists since they support key value pairs.
@@ -346,7 +357,7 @@ Associative destrucuturing also works with lists since they support key value pa
 (def key-list '("A", "B", :c "C", :d "D"))
 (let [a b & {:keys [c d]} key-list]
   (pintln a b c d))
-;;= A B C D
+;= A B C D
 ----
 
 === Where to destructure
@@ -390,13 +401,13 @@ That cut the definition down to be less than half of what it was to get the same
 [source,clojure]
 ----
 (print-coordinates-1 [10 50 30])
-;;= "x: 10, y: 50, z: 30"
+;= "x: 10, y: 50, z: 30"
 
 (print-coordinates-2 [10 50 30])
-;;= "x: 10, y: 50, z: 30"
+;= "x: 10, y: 50, z: 30"
 
 (print-coordinates-3 [10 50 30])
-;;= "x: 10, y: 50, z: 30"
+;= "x: 10, y: 50, z: 30"
 ----
 
 For a more realistic example, let's create a map containing some basic contact information for the infamous John Smith.
@@ -420,8 +431,8 @@ So here we have John's personal information and now we need to access the values
     (println "You can reach him at" phone)))
 
 (print-contact-info john-smith)
-;;= John Smith is the Sith Lord of Git at Functional Industries
-;;= You can reach him at 2150041776
+;= John Smith is the Sith Lord of Git at Functional Industries
+;= You can reach him at 2150041776
 ----
 
 This function will associatevly destructure the the input using the `:keys` shortcut and then print out the contact information that we provided.
@@ -453,7 +464,7 @@ We have an address in there now, but we needed to nest a map into our original s
     (println "He lives at" street city state zip)))
 
 (print-contact-info john-smith)
-;;= John Smith is the Sith Lord of Git at Functional Industries
-;;= You can reach him at 2150041776
-;;= He lives at 452 Lisp Ln. Macroville Kentucky 81321
+;= John Smith is the Sith Lord of Git at Functional Industries
+;= You can reach him at 2150041776
+;= He lives at 452 Lisp Ln. Macroville Kentucky 81321
 ----

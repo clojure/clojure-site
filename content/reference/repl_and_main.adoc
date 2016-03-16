@@ -143,6 +143,15 @@ user=> (println "hello")
 hello
 ----
 
+To exit the telnet session, you need to type `Ctrl-]` to enter telnet console then enter `quit` command:
+
+[source,clojure]
+----
+user=> ^]
+telnet> quit
+Connection closed.
+----
+
 Also see:
 
 * http://dev.clojure.org/jira/browse/CLJ-1671[CLJ-1671]

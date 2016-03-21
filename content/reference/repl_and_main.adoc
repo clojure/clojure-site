@@ -143,6 +143,14 @@ user=> (println "hello")
 hello
 ----
 
+You can instruct the server to close the client socket repl session by using the special command `:repl/quit`:
+
+[source,clojure]
+----
+user=> :repl/quit
+Connection closed by foreign host.
+----
+
 Also see:
 
 * http://dev.clojure.org/jira/browse/CLJ-1671[CLJ-1671]

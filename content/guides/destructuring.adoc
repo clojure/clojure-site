@@ -69,9 +69,8 @@ This type of destructuring can be used on any kind of data structure that can be
 
 ;= For strings, the elements are destructured by character.
 (let [[x y z] my-string]
-  (do
-    (println x y z)
-    (map type [x y z])))
+  (println x y z)
+  (map type [x y z]))
 ;= a b c
 ;= (java.lang.Character java.lang.Character java.lang.Character)
 ----
@@ -112,9 +111,8 @@ Say you want to print the first element on one line and the remainder on another
 [source,clojure]
 ----
 (let [[first second third fourth fifth sixth] names]
-  (do
-    (println first)
-    (println second third fourth fifth sixth)))
+  (println first)
+  (println second third fourth fifth sixth))
 ;= Michael
 ;= Amber Aaron Nick Earl Joe
 ----
@@ -124,9 +122,8 @@ This binding works but even using destructuring it's pretty clunky. Instead we c
 [source,clojure]
 ----
 (let [[first & remaining] names]
-  (do
-    (println first)
-    (apply println remaining)))
+  (println first)
+  (apply println remaining))
 ;= Michael
 ;= Amber Aaron Nick Earl Joe
 ----
@@ -179,10 +176,9 @@ You can combine any or all of these techniques at the same time at your discreti
 ----
 (def fruits ["apple" "orange" "strawberry" "peach" "pear" "lemon"])
 (let [[first _ third & rest :as all-fruits] fruits]
-  (do
-    (println "The first and third fruits are" first "and" third)
-    (println "These were taken from" all-fruits)
-    (println "The fruits after them are" rest)))
+  (println "The first and third fruits are" first "and" third)
+  (println "These were taken from" all-fruits)
+  (println "The fruits after them are" rest))
 ;= The first and third fruits are apple and strawberry
 ;= These were taken from [apple orange strawberry peach pear lemon]
 ;= The fruits after them are (peach pear lemon)
@@ -209,9 +205,8 @@ When you have nested vectors, you can use `:as` or `&` at any level as well.
 [source,clojure]
 ----
 (let [[[a b :as first] [c d :as second]] my-line]
-  (do
-    (println a b first)
-    (println c d second)))
+  (println a b first)
+  (println c d second))
 ;= 5 10 [5 10]
 ;= 10 20 [10 20]
 ----

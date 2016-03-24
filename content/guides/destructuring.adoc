@@ -11,7 +11,7 @@ toc::[]
 
 == What is Destructuring?
 
-Destructuring is a way to concisely bind names to the values in a data structure. Destructuring allows us to write more concise and readable code.
+Destructuring is a way to concisely bind names to the values inside a data structure. Destructuring allows us to write more concise and readable code.
 
 Consider the following example of extracting and naming values in a vector.
 
@@ -218,63 +218,61 @@ When you have nested vectors, you can use `:as` or `&` at any level as well.
 
 == Associative Destructuring
 
-Syntax: `[{symbol-1 :key-a, symbol-2 :key-b} {:key-a "value a" :key-b "value b"}]`
+Associative destructuring is similar to sequential destructuring, but applied instead to associative (key-value) structures. The associative bindings are concerned with concisely extracting values of the map by key.
 
-Associative destructuring is the same idea as sequential destructuring but instead of binding symbols element-by-element, you bind them using keys.
-
-Associative destructuring is usually used on structures made up of key-value pairs such as hash-maps or records. You can also use this on indexed structures such as strings and vectors as well.
+Let's first consider an example that extracts values from a map without destructuring:
 
 [source,clojure]
 ----
 (def client {:name "Super Co."
              :location "Philadelphia"
-             :description "The world wide leader in plastic table-ware."})
+             :description "The worldwide leader in plastic tableware."})
 
+(let [name (:name client)
+      location (:location client)
+      description (:description client)]
+  (println name location "-" description))
+;= Super Co. Philadelphia - The worldwide leader in plastic tableware.
+----
+
+Note that each line of the let binding is essentially the same - it extracts a value from the map by the name of the key, then binds it to a local with the same name.
+
+Below is a first example of doing the same thing with associative destructuring:
+
+[source,clojure]
+----
 (let [{name :name
        location :location
        description :description} client]
   (println name location "-" description))
-;= Super Co. Philadelphia - The world wide leader in plastic table-ware.
+;= Super Co. Philadelphia - The worldwide leader in plastic tableware.
 ----
 
->>>>>>>>>>>>>>>>>>>>>>>>
-The first thing that should stand out to you here is that the destructuring form is no longer a vector, rather it is a map, hence the name associative destructuring.
-The second thing that should stand out is that there are symbols _and_ keywords within the destructuring form. Associative destructuring binds the elements of a map to symbols using the map's keys.
-When performing associative destructuring, you are binding a value from the original structure to a name in the let statement. Within the destructuring form, the keys (the names we are binding to) are _not_ values and should always be symbols therefor.
-<<<<<<<<<<<<<<<<<<<<<<<<
+The destructuring form is now a map rather than a vector, and instead of a symbol on the left side of the let, we have a map. The keys of the map are the symbols we want to bind in the let and the right side are the keys we will look up in the associative value.
 
-Both types of destructuring act very similarly. If you try to bind a symbol to a key that doesn't exist, you get nil.
+Similar to sequential destructuring, if you try to bind a key that is not present in the map, the binding value will be nil. 
 
 [source,clojure]
 ----
 (let [{category :category} client]
-  (println name category))
+  (println category))
 ;= nil
 ----
 
-Associative destructuring, however, allows you to replace all of the nil values with a default value.
+Associative destructuring, however, also allows you to supply a default value if the key is not present in the associative value with the `:or` key. 
 
 [source,clojure]
 ----
 (let [{category :category, :or {category "Category not found"}} client]
-  (println name category))
+  (println category))
 ;= Category not found
 ----
 
-In the `:or` map, the `category` key is __not__ a value, rather, it is a name. A symbol should always be used here because of that.
+The value for `:or` is a map where the bound symbol (here `category`) is bound to the expression `"Category not found"`. When category is not found in `client`, it is instead found in the `:or` map and bound to that value instead.
 
+In sequential destructuring, you generally bind unneeded values with an `_`. Since associative destructuring doesn't require traversing the entire structure, you can simply omit any keys you don't plan on using from the destructuring form.
 
-In sequential destructuring, you generally bind values that you don't plan on using to an `_`. Since associative destructuring doesn't require traversing the entire structure one element at a time, you can simply omit any values you don't plan on using from the destructuring form.
-
-[source,clojure]
-----
-(let [{name :name
-       description :description} my-map]
-  (println name description))
-;= Super Co. The world wide leader in plastic table-ware production.
-----
-
-If you need access to the entire map, you can use the `:as` shortcut like in sequential destructuring.
+If you need access to the entire map, you can use the `:as` key to bind the entire incoming value, just as in sequential destructuring.
 
 [source,clojure]
 ----
@@ -287,26 +285,26 @@ The `:as` and `:or` keywords can be combined in a single destructuring.
 
 [source,clojure]
 ----
-(let [{a :a x :x, :or {x "Not found!"}, :as all} my-map]
-  (do
-    (println "I got" A "from" all)
-    (println "Where is x?" x))
+(def my-map {:a "A" :b "B" :c 3 :d 4})
+(let [{a :a, x :x, :or {x "Not found!"}, :as all} my-map]
+  (println "I got" a "from" all)
+  (println "Where is x?" x))
 ;= I got A from {:a "A" :b "B" :c 3 :d 4}
 ;= Where is x? Not found!
 ----
 
-It should be reiterated that the `:as` and `:or` bindings are not creating new values, simply attaching names to existing references and so you should always use `symbols` when using them.
-
-You might have noticed the amount of redundant information in these associative destructuring forms. For each key we've been using, we're just renaming them to their corresponding symbol, making the form a little muddled. This is no good, redundant data is never a good thing. To resolve this, you can use the `:keys` shortcut.
+You might have noticed that our original example still contains redundant information (the local binding name and the key name) in the associative destructuring form. The `:keys` key can be used to further remove the duplication:
 
 [source,clojure]
 ----
-(let [{:keys [a c]} my-map]
-  (println a c))
-;= A 3
+(let [{:keys [name location description]} client]
+  (println name location "-" description))
+;= Super Co. Philadelphia - The worldwide leader in plastic tableware.
 ----
 
-You can also use `:strs` and `:syms` if the keys in the map aren't actually keywords. I cannot reiterate enough to remember to bind these values to `symbols`, always!
+This example is exactly the same as the prior version - it binds `name` to `(:name client)`, `location` to `(:location client)`, and `description` to `(:description client)`. 
+
+The `:keys` key is for associative values with keyword keys, but there are also `:strs` and `:syms` for string and symbol keys respectively. In all of these cases the vector contains symbols which are the local binding names.
 
 [source,clojure]
 ----
@@ -323,111 +321,68 @@ You can also use `:strs` and `:syms` if the keys in the map aren't actually keyw
 ;= Jane Doe
 ----
 
-You get the same output with a much more concise and readable input.
-
-We've been consistently binding keys to their corresponding symbol, `:frist-name` to `first-name`,  `:last-name` to `last-name`, etc... You aren't limited to this practice though, you are free to bind the values to whatever symbols you choose.
+Associative destructuring can be nested and combined with sequential destructuring as needed.
 
 [source,clojure]
 ----
-(def game-state {:player "Ryan"
-          :class "Wizard"
-          :score 150
-          :current-weapon "Mystic's Staff"})
-(let [{p :player
-       c :class
-       s :score
-       w :weapon} game-state]
-  (println "The player" p "is a" c "wielding a" w "with a score of" s))
-;= The player Ryan is a Wizard wielding a Mystic's staff with a score of 150
-----
+(def multiplayer-game-state 
+  {:joe {:class "Ranger"
+         :weapon "Longbow"
+         :score 100}
+   :jane {:class "Knight"
+          :weapon "Greatsword"
+          :score 140}
+   :ryan {:class "Wizard"
+          :weapon "Mystic Staff"
+          :score 150}})
 
-Associative destructuring also supports nested maps, similarly to sequential destructuring.
-
-[source,clojure]
-----
-(def multiplayer-game-state {:joe {:class "Ranger"
-                                   :weapon "Long Bow"
-                                   :score 100}
-                             :jane {:class "Knight"
-                                    :weapon "Great sword"
-                                    :score 140}
-                             :ryan {:class "Wizard"
-                                    :weapon "Mystic's Staff"
-                                    :score 150}})
 (let [{{:keys [class weapon]} :joe} multiplayer-game-state]
-  (prn "Joe is a" class "wielding a" weapon))
-;= Joe is a Ranger wielding a Long bow
+  (println "Joe is a" class "wielding a" weapon))
+;= Joe is a Ranger wielding a Longbow
 ----
 
-Associative destrucuturing also works with lists since they support key value pairs.
+Associative destructuring also works with lists of key-value pairs for keyword-arg parsing.
 
 [source,clojure]
 ----
-(def key-list '("A", "B", :c "C", :d "D"))
-(let [a b & {:keys [c d]} key-list]
-  (pintln a b c d))
-;= A B C D
+(def options '(:debug true))
+(let [{:keys [debug verbose] :or {verbose false}} options]
+  (println debug verbose))
+;= true false
 ----
 
-You can also use destructuring to create local bindings with namespaced keys.
+If you have a map with namespaced keys, you can also use destructuring with it, even though local binding symbols are not allowed to have namespaces. Destructuring a namespaced key will symbol bind a value to the local name part (without the namespace) of the key.
 
-Say you have two vars, each in separate namespaces. In the `people` namespace, you have `person`, a map describing someone.
-
-[source,Clojure]
+[source,clojure]
 ----
-(ns destructuring.people)
-(def human {:name "Franklin"
-             :age 25
-             :hobbies "running"})
-----
-
-In a separate namespace you have a map describing a dog called `pet`.
-
-[source,Clojure]
-----
-(ns destructuring.pets)
-(def dog {:species "dog"
-          :name "Rover"
-          :age 4
-          :hobbies "running"})
+(def human {:person/name "Franklin"
+            :person/age 25
+            :hobby/hobbies "running"})
+(let [{:keys [:person/name :person/age :hobby/hobbies]} human]
+  (println name "is" age "and likes" hobbies))
+;= Franklin is 25 and likes running
 ----
 
-Rover is a foster puppy looking for his forever home and Franklin is looking to adopt a puppy to keep him company. In a third namespace, you would like to compare their hobbies to see if they would be a good match.
+You can even destructure using auto-resolved keywords, which will again be bound to the name-only part of the namespace:
 
-[source,Clojure]
+[source,clojure]
 ----
-(ns destructuring.match-making
-  (require [destructuring.people :as ppl])
-  (require [destructuring.pets :as pets]))
+(require '[person :as p])
 
-(let [human-hobbies {:keys [hobbies]} ppl/human
-      pet-hobbies   {:keys [hobbies]} pets/dog]
-  (if (= human-hobbies pet-hobbies)
-    (println "It's a perfect match! They both love " human-hobbies "!")
-    (println "Aw... It looks like our human likes" human-hobbies "but our pet likes" pet-hobbies)))
+(let [person {::p/name "Franklin", ::p/age 25}
+      {:keys [::p/name ::p/age]} person]
+  (println name "is" age))
+
+;= Franklin is 25
 ----
 
-In our `let` here, we bind to the symbol `human-hobbies`, Franklin's hobbies and to `pet-hobbies`, Rover's hobbies. This creates a local binding for both, rather than having to refer to their respective namespaces in order to use them. In our case, Franklin and Rover are a perfect match because they both love running, so this will print out the first line.
-
-You can also destructure auto-resolved keywords:
-
-[source,Clojure]
-----
-(let [pet-store {::best-pet "dog"}
-      {:keys [pets-available]} pet-store]
-  (println "We think the best pet for you is a" best-pet "!")
-
-;= We think the best pet for you is a dog !
-----
-
+Creating and destructuring maps with auto-resolved keywords allow us to write code using a namespace alias (here `p`) that is defined by a `require` in the current namespace, giving us a means of namespace indirection that can be changed at a single place in the code.
 
 == Where to destructure
 
 You can utilize destructuring anywhere that there is an explicit or implicit let binding.
 
-=== Function Declarations
-
-Passing a collection of information into a function is common practice in Clojure, so the ability to separate those parameters' information is important. When you define a function in Clojure you can utilize destructuring to make the function definition very concise.
+One of the most common places to see destructuring is in pulling apart the arguments passed to a function.
 
 Here we have the standard let x equal this, let y equal that, etc... Again, this is perfectly valid code, it's just verbose.
 
@@ -440,7 +395,7 @@ Here we have the standard let x equal this, let y equal that, etc... Again, this
     (println "x:" x ", y:" y ", z:" z)))
 ----
 
-So we can implement destructuring by using a let within the function. This is much nicer than the first try, but we can still do better.
+Any time we see code that is using `first`, `second`, `nth`, or `get` to pull apart a data structure, it's likely that destructuring can clean that up - we can start by rewriting the `let`:
 
 [source,clojure]
 ----
@@ -449,7 +404,7 @@ So we can implement destructuring by using a let within the function. This is mu
     (println "x:" x ", y:" y ", z:" z)))
 ----
 
-When defining a function in clojure, there is an implicit `let` binding used on the parameters in order to create the local scope of the function. We can leverage this to whittle our function definition down even more.
+When defining a function in clojure, destructuring can be applied on the incoming parameters, just like in a let:
 
 [source,clojure]
 ----
@@ -457,19 +412,7 @@ When defining a function in clojure, there is an implicit `let` binding used on 
   (println "x:" x ", y:" y ", z:" z))
 ----
 
-That cut the definition down to be less than half of what it was to get the same output.
-
-[source,clojure]
-----
-(print-coordinates-1 [10 50 30])
-;= "x: 10, y: 50, z: 30"
-
-(print-coordinates-2 [10 50 30])
-;= "x: 10, y: 50, z: 30"
-
-(print-coordinates-3 [10 50 30])
-;= "x: 10, y: 50, z: 30"
-----
+We have replaced several lines of code that pulled apart the incoming point data with a concise statement about the structure of that data that also binds the data to local values. 
 
 For a more realistic example, let's create a map containing some basic contact information for the infamous John Smith.
 
@@ -477,12 +420,12 @@ For a more realistic example, let's create a map containing some basic contact i
 ----
 (def john-smith {:f-name "John"
                  :l-name "Smith"
-                 :phone "2150041776"
+                 :phone "215-004-1776"
                  :company "Functional Industries"
                  :title "Sith Lord of Git"})
 ----
 
-So here we have John's personal information and now we need to access the values within this more-than-trivial map.
+Now that we have John's personal information we need to access the values within this map.
 
 [source,clojure]
 ----
@@ -492,7 +435,7 @@ So here we have John's personal information and now we need to access the values
 
 (print-contact-info john-smith)
 ;= John Smith is the Sith Lord of Git at Functional Industries
-;= You can reach him at 2150041776
+;= You can reach him at 215-004-1776
 ----
 
 This function will associatively destructure the the input using the `:keys` shortcut and then print out the contact information that we provided.
@@ -503,7 +446,7 @@ But what about when we want to send John a nice letter?
 ----
 (def john-smith {:f-name "John"
                  :l-name "Smith"
-                 :phone "2150041776"
+                 :phone "215-004-1776"
                  :address {:street "452 Lisp Ln."
                            :city "Macroville"
                            :state "Kentucky"
@@ -517,9 +460,10 @@ We have an address in there now, but we needed to nest a map into our original s
 
 [source,clojure]
 ----
-(defn print-contact-info [{:keys [f-name l-name phone company title]
-                          {:keys [street city state zip hobbies]} :address}
-                          [fav-hobby second-hobby] hobbies]
+(defn print-contact-info 
+  [{:keys [f-name l-name phone company title]
+    {:keys [street city state zip]} :address
+    [fav-hobby second-hobby] :hobbies}]
   (println f-name l-name "is the" title "at" company)
   (println "You can reach him at" phone)
   (println "He lives at" street city state zip)
@@ -527,7 +471,7 @@ We have an address in there now, but we needed to nest a map into our original s
 
 (print-contact-info john-smith)
 ;= John Smith is the Sith Lord of Git at Functional Industries
-;= You can reach him at 2150041776
+;= You can reach him at 215-004-1776
 ;= He lives at 452 Lisp Ln. Macroville Kentucky 81321
 ;= Maybe you can write to him about running or hiking
 ----

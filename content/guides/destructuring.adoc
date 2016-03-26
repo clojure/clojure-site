@@ -110,9 +110,9 @@ Say you want to print the first element on one line and the remainder on another
 
 [source,clojure]
 ----
-(let [[first second third fourth fifth sixth] names]
-  (println first)
-  (println second third fourth fifth sixth))
+(let [[item1 item2 item3 item4 item5 item6] names]
+  (println item1)
+  (println item2 item3 item4 item5 item6))
 ;= Michael
 ;= Amber Aaron Nick Earl Joe
 ----
@@ -121,8 +121,8 @@ This binding works but even using destructuring it's pretty clunky. Instead we c
 
 [source,clojure]
 ----
-(let [[first & remaining] names]
-  (println first)
+(let [[item1 & remaining] names]
+  (println item1)
   (apply println remaining))
 ;= Michael
 ;= Amber Aaron Nick Earl Joe
@@ -132,8 +132,8 @@ You can ignore bindings that you don't intend on using by binding them to any sy
 
 [source,clojure]
 ----
-(let [[first _ third _ fifth _] names]
-  (println "Odd names:" first third fifth))
+(let [[item1 _ item3 _ item5 _] names]
+  (println "Odd names:" item1 item3 item5))
 ;= Odd names: Michael Aaron Earl
 ----
 
@@ -143,8 +143,8 @@ You can use `:as all` to bind the entire vector to the symbol `all`.
 
 [source,clojure]
 ----
-(let [[first :as all] names]
-  (println "The first name from" all "is" first))
+(let [[item1 :as all] names]
+  (println "The first name from" all "is" item1))
 ;= The first name from [Michael Amber Aaron Nick Earl Joe] is Michael
 ----
 
@@ -153,32 +153,32 @@ Let's stop for a bit and look a little further into the types of `:as` and `&`.
 [source,clojure]
 ----
 (def numbers [1 2 3 4 5])
-(let [[x & rest :as all] numbers]
-  (apply prn [rest all]))
+(let [[x & remaining :as all] numbers]
+  (apply prn [remaining all]))
 ;= (2 3 4 5) [1 2 3 4 5]
 ----
 
-So rest is bound to a `sequence` containing the remaining elements of the `numbers` vector while `all` has been bound to the original `vector`. What happens when we destructure a string instead?
+Here `remaining` is bound to a sequence containing the remaining elements of the `numbers` vector while `all` has been bound to the original `vector`. What happens when we destructure a string instead?
 
 [source,clojure]
 ----
 (def word "Clojure")
-(let [[x & rest :as all] word]
-  (apply prn [x rest all]))
+(let [[x & remaining :as all] word]
+  (apply prn [x remaining all]))
 ;= \C (\l \o \j \u \r \e) "Clojure"
 ----
 
-So `all` is bound to the original structure (String, vector, list, whatever it may be) and `x` is bound to the character `\C`, and `rest` is the remaining list of characters.
+Here `all` is bound to the original structure (String, vector, list, whatever it may be) and `x` is bound to the character `\C`, and `remaining` is the remaining list of characters.
 
 You can combine any or all of these techniques at the same time at your discretion.
 
 [source,clojure]
 ----
 (def fruits ["apple" "orange" "strawberry" "peach" "pear" "lemon"])
-(let [[first _ third & rest :as all-fruits] fruits]
-  (println "The first and third fruits are" first "and" third)
+(let [[item1 _ item3 & remaining :as all-fruits] fruits]
+  (println "The first and third fruits are" item1 "and" item3)
   (println "These were taken from" all-fruits)
-  (println "The fruits after them are" rest))
+  (println "The fruits after them are" remaining))
 ;= The first and third fruits are apple and strawberry
 ;= These were taken from [apple orange strawberry peach pear lemon]
 ;= The fruits after them are (peach pear lemon)
@@ -204,16 +204,16 @@ When you have nested vectors, you can use `:as` or `&` at any level as well.
 
 [source,clojure]
 ----
-(let [[[a b :as first] [c d :as second]] my-line]
-  (println a b first)
-  (println c d second))
+(let [[[a b :as group1] [c d :as group2]] my-line]
+  (println a b group1)
+  (println c d group2))
 ;= 5 10 [5 10]
 ;= 10 20 [10 20]
 ----
 
 == Associative Destructuring
 
-Associative destructuring is similar to sequential destructuring, but applied instead to associative (key-value) structures. The associative bindings are concerned with concisely extracting values of the map by key.
+Associative destructuring is similar to sequential destructuring, but applied instead to associative (key-value) structures (including maps, records, vectors, etc). The associative bindings are concerned with concisely extracting values of the map by key.
 
 Let's first consider an example that extracts values from a map without destructuring:
 
@@ -243,7 +243,7 @@ Below is a first example of doing the same thing with associative destructuring:
 ;= Super Co. Philadelphia - The worldwide leader in plastic tableware.
 ----
 
-The destructuring form is now a map rather than a vector, and instead of a symbol on the left side of the let, we have a map. The keys of the map are the symbols we want to bind in the let and the right side are the keys we will look up in the associative value.
+The destructuring form is now a map rather than a vector, and instead of a symbol on the left side of the let, we have a map. The keys of the map are the symbols we want to bind in the let. The values of the destructuring map are the keys we will look up in the associative value. Here they are keywords (the most common case), but they could be any key value - numbers, strings, symbols, etc.
 
 Similar to sequential destructuring, if you try to bind a key that is not present in the map, the binding value will be nil. 
 
@@ -346,7 +346,7 @@ Associative destructuring also works with lists of key-value pairs for keyword-a
 ;= true false
 ----
 
-If you have a map with namespaced keys, you can also use destructuring with it, even though local binding symbols are not allowed to have namespaces. Destructuring a namespaced key will symbol bind a value to the local name part (without the namespace) of the key.
+If the keys in your map are namespaced keywords, you can also use destructuring with it, even though local binding symbols are not allowed to have namespaces. Destructuring a namespaced key will bind a value to the local name part of the key and drop the namespace.
 
 [source,clojure]
 ----
@@ -358,7 +358,7 @@ If you have a map with namespaced keys, you can also use destructuring with it, 
 ;= Franklin is 25 and likes running
 ----
 
-You can even destructure using auto-resolved keywords, which will again be bound to the name-only part of the namespace:
+You can even destructure using auto-resolved keywords, which will again be bound to only the name part of the key:
 
 [source,clojure]
 ----
@@ -372,6 +372,20 @@ You can even destructure using auto-resolved keywords, which will again be bound
 ----
 
 Creating and destructuring maps with auto-resolved keywords allow us to write code using a namespace alias (here `p`) that is defined by a `require` in the current namespace, giving us a means of namespace indirection that can be changed at a single place in the code.
+
+All symbols bound in the context of destructuring can be further destructured - this allows destructuring to be used in a nested fashion for both sequential and associative destructuring. It is less obvious, but this also extends to the symbol defined after `&`.
+
+This example destructures the `&` seq in place to decode the rest of the arguments as options (note that we are thus destructuring the two arguments sequentially and the rest associatively):
+
+[source,clojure]
+----
+(defn f-with-options
+  [a b & {:keys [opt1]}]
+  (println "Got" a b opt1))
+
+(f-with-options 1 2 :opt1 true)
+;= Got 1 2 true
+----
 
 == Where to destructure
 
@@ -415,7 +429,7 @@ For a more realistic example, let's create a map containing some basic contact i
 ----
 (def john-smith {:f-name "John"
                  :l-name "Smith"
-                 :phone "215-004-1776"
+                 :phone "555-555-5555"
                  :company "Functional Industries"
                  :title "Sith Lord of Git"})
 ----
@@ -430,7 +444,7 @@ Now that we have John's personal information we need to access the values within
 
 (print-contact-info john-smith)
 ;= John Smith is the Sith Lord of Git at Functional Industries
-;= You can reach him at 215-004-1776
+;= You can reach him at 555-555-5555
 ----
 
 This function will associatively destructure the the input using the `:keys` shortcut and then print out the contact information that we provided.
@@ -441,7 +455,7 @@ But what about when we want to send John a nice letter?
 ----
 (def john-smith {:f-name "John"
                  :l-name "Smith"
-                 :phone "215-004-1776"
+                 :phone "555-555-5555"
                  :address {:street "452 Lisp Ln."
                            :city "Macroville"
                            :state "Kentucky"
@@ -466,7 +480,24 @@ We have an address in there now, but we needed to nest a map into our original s
 
 (print-contact-info john-smith)
 ;= John Smith is the Sith Lord of Git at Functional Industries
-;= You can reach him at 215-004-1776
+;= You can reach him at 555-555-5555
 ;= He lives at 452 Lisp Ln. Macroville Kentucky 81321
 ;= Maybe you can write to him about running or hiking
 ----
+
+== Macros
+
+Macro writers may find the need to write a macro that incorporates destructuring. The most common way to do so is to produce a call to something that already does destructuring (like `let`, `loop`, `fn`, etc). Some examples of this in `clojure.core` include `if-let`, `when-let`, `when-some`, etc. 
+
+However, in rare cases you might want to instead resolve the destructuring yourself in a macro. In this case, use the (undocumented) `clojure.core/destructure` function, which implements the destructuring logic and is what `let` and `loop` actually invoke. The `destructure` function is designed to be invoked in a macro and expects to take a form and return a form:
+
+[source,clojure]
+----
+(destructure '[[x & remaining :as all] numbers])
+;= [vec__1 numbers
+;=  x (clojure.core/nth vec__1 0 nil)
+;=  remaining (clojure.core/nthnext vec__1 1)
+;=  all vec__1]
+----
+
+The result was formatted here to give it a little more clarity. This example should also give you some insight into how destructuring works under the hood.

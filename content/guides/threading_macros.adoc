@@ -6,7 +6,7 @@ Paulus Esterhazy
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-Threading macros, also known as arrow macros, that convert nested function calls into a linear flow of function calls, improving readability.
+Threading macros, also known as arrow macros, convert nested function calls into a linear flow of function calls, improving readability.
 
 [[thread-first]]
 === The thread-first macro (+++->+++)

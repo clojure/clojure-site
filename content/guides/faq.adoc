@@ -182,7 +182,7 @@ Example:
 [[encapsulation]]
 **<<faq#encapsulation,How do you achieve encapsulation with Clojure?>>**
 
-Because of its focus on immutable data, there is generally not a high value placed on data encapsulation. Because data is immutable, there is no worry about someone else modifying a value. Likewise, because Clojure data is designed to be manipulated directly, there is significant value in providing direct access to data, rather than wrapping it in APIs.
+Because of its focus on immutable data, there is generally not a high value placed on data encapsulation. Because data is immutable, there is no need to worry about someone else modifying a value. Likewise, because Clojure data is designed to be manipulated directly, there is significant value in providing direct access to data, rather than wrapping it in APIs.
 
 All Clojure vars are globally available so again there is not much in the way of encapsulation of functions within namespaces. However, the ability to mark vars private (either using `defn-` for functions or `def` with `^:private` for values) is a convenience for a developer to indicate which parts of an API should be considered public for use vs part of the implementation.
 

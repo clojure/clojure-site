@@ -160,7 +160,7 @@ Use a $ to separate outer from inner class name. For example: `java.util.Map$Ent
 Primitive types can be found as the static TYPE field on the boxed class, for example: `Integer/TYPE`. 
 
 [[varargs]]
-**<<faq#varargs,How do you invoke a Java method with vararg signature?>>**
+**<<faq#varargs,How do you invoke a Java method with a vararg signature?>>**
 
 Java treats a trailing varargs parameter as an array and it can be invoked from Clojure. Example:
 

@@ -45,7 +45,7 @@ _ has no special meaning in Clojure as a symbol. However, it is a convention to 
 == Collections, Sequences, and Transducers
 
 [[conj]]
-**<<faq#conj,Why does `conj` add to the front of a list and the back of a vector?>>**
+**<<faq#conj,Why does `conj` add to the front of a list, but the back of a vector?>>**
 
 Most Clojure data structure operations, including `conj` (conjoin), are designed to give the user a performance expectation. With `conj`, the expectation is that insertion should happen at the place where this operation is efficient. Lists (as linked lists) can make a constant time insertion only at the front. Vectors (indexed) are designed to expand at the back. As the user, you should consider this when you choose which data structure to use. In Clojure, vectors are used with much greater frequency.
 

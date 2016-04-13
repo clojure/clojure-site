@@ -100,9 +100,9 @@ Design benefits of sequences:
 Each of these really addresses a different use case.
 
 - Reducers are best for fine-grained data parallelism when computing a transformation over existing in-memory data (in a map or vector). Generally it's best when you have thousands of small data items to compute over and many cores to do the work. Anything described as "embarrassingly parallel".
-- futures are best for pushing work onto a background thread and picking it up later (or for doing I/O waits in parallel). It's better for big chunky tasks (go fetch a bunch of data in the background).
+- Futures are best for pushing work onto a background thread and picking it up later (or for doing I/O waits in parallel). It's better for big chunky tasks (go fetch a bunch of data in the background).
 - core.async is primarily used to organize the subsystems or internal structure of your application. It has channels (queues) to convey values from one "subprocess" (go block) to another. So you're really getting concurrency and architectural benefits in how you break up your program. The killer feature you can really only get in core.async is the ability to wait on I/O events from multiple channels for the first response on any of them (via alt/alts). Promises can also be used to convey single values between independent threads/subprocesses but they are single delivery only.
-- tools like pmap, java.util queues and executors, and libraries like claypoole are doing coarse-level "task" concurrency. There is some overlap with core.async here which has a very useful transducer-friendly pipeline functionality.
+- Tools like pmap, java.util queues and executors, and libraries like claypoole are doing coarse-level "task" concurrency. There is some overlap with core.async here which has a very useful transducer-friendly pipeline functionality.
 
 [[agent_shutdown]]
 **<<faq#agent_shutdown,Why does Clojure "hang" for 1 minute when my program ends?>>**

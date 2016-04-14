@@ -45,7 +45,7 @@ _ has no special meaning in Clojure as a symbol. However, it is a convention to 
 == Collections, Sequences, and Transducers
 
 [[conj]]
-**<<faq#conj,Why does `conj` add to the front of a list and the back of a vector?>>**
+**<<faq#conj,Why does `conj` add to the front of a list, but the back of a vector?>>**
 
 Most Clojure data structure operations, including `conj` (conjoin), are designed to give the user a performance expectation. With `conj`, the expectation is that insertion should happen at the place where this operation is efficient. Lists (as linked lists) can make a constant time insertion only at the front. Vectors (indexed) are designed to expand at the back. As the user, you should consider this when you choose which data structure to use. In Clojure, vectors are used with much greater frequency.
 
@@ -100,9 +100,9 @@ Design benefits of sequences:
 Each of these really addresses a different use case.
 
 - Reducers are best for fine-grained data parallelism when computing a transformation over existing in-memory data (in a map or vector). Generally it's best when you have thousands of small data items to compute over and many cores to do the work. Anything described as "embarrassingly parallel".
-- futures are best for pushing work onto a background thread and picking it up later (or for doing I/O waits in parallel). It's better for big chunky tasks (go fetch a bunch of data in the background).
+- Futures are best for pushing work onto a background thread and picking it up later (or for doing I/O waits in parallel). It's better for big chunky tasks (go fetch a bunch of data in the background).
 - core.async is primarily used to organize the subsystems or internal structure of your application. It has channels (queues) to convey values from one "subprocess" (go block) to another. So you're really getting concurrency and architectural benefits in how you break up your program. The killer feature you can really only get in core.async is the ability to wait on I/O events from multiple channels for the first response on any of them (via alt/alts). Promises can also be used to convey single values between independent threads/subprocesses but they are single delivery only.
-- tools like pmap, java.util queues and executors, and libraries like claypoole are doing coarse-level "task" concurrency. There is some overlap with core.async here which has a very useful transducer-friendly pipeline functionality.
+- Tools like pmap, java.util queues and executors, and libraries like claypoole are doing coarse-level "task" concurrency. There is some overlap with core.async here which has a very useful transducer-friendly pipeline functionality.
 
 [[agent_shutdown]]
 **<<faq#agent_shutdown,Why does Clojure "hang" for 1 minute when my program ends?>>**
@@ -160,7 +160,7 @@ Use a $ to separate outer from inner class name. For example: `java.util.Map$Ent
 Primitive types can be found as the static TYPE field on the boxed class, for example: `Integer/TYPE`. 
 
 [[varargs]]
-**<<faq#varargs,How do you invoke a Java method with vararg signature?>>**
+**<<faq#varargs,How do you invoke a Java method with a vararg signature?>>**
 
 Java treats a trailing varargs parameter as an array and it can be invoked from Clojure. Example:
 
@@ -182,7 +182,7 @@ Example:
 [[encapsulation]]
 **<<faq#encapsulation,How do you achieve encapsulation with Clojure?>>**
 
-Because of its focus on immutable data, there is generally not a high value placed on data encapsulation. Because data is immutable, there is no worry about someone else modifying a value. Likewise, because Clojure data is designed to be manipulated directly, there is significant value in providing direct access to data, rather than wrapping it in APIs.
+Because of its focus on immutable data, there is generally not a high value placed on data encapsulation. Because data is immutable, there is no need to worry about someone else modifying a value. Likewise, because Clojure data is designed to be manipulated directly, there is significant value in providing direct access to data, rather than wrapping it in APIs.
 
 All Clojure vars are globally available so again there is not much in the way of encapsulation of functions within namespaces. However, the ability to mark vars private (either using `defn-` for functions or `def` with `^:private` for values) is a convenience for a developer to indicate which parts of an API should be considered public for use vs part of the implementation.
 

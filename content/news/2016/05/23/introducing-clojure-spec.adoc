@@ -1,0 +1,30 @@
+= Introducing clojure.spec
+Rich Hickey
+2016-05-23
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+I'm happy to introduce today **clojure.spec**, a new core library and support for data and function specifications in Clojure.
+
+=== Better Communication 
+
+Clojure is a dynamic language, and thus far we have relied on documentation or external libraries to explain the use and behavior of functions and libraries. But documentation is difficult to produce, is frequently not maintained, cannot be automatically checked and varies greatly in quality. Specs are expressive and precise. Including **spec** in Clojure creates a lingua franca with which we can state how our programs work and how to use them.
+
+=== More Leverage and Power
+
+A key advantage of specifications over documentation is the leverage they provide. In particular, specs can be utilized by programs in ways that docs cannot. Defining specs takes effort, and **spec** aims to maximize the return you get from making that effort. **spec** gives you tools for leveraging specs in documentation, validation, error reporting, destructuring, instrumentation, test-data generation and generative testing.
+
+=== Improved Developer Experience
+
+Error messages from macros are a perennial challenge for new (and experienced) users of Clojure. Specs can be used to conform data in macros instead of using a custom parser. And Clojure's macro expansion will automatically use specs, when present, to explain errors to users. This should result in a greatly improved experience for users when errors occur.
+
+=== More Robust Software
+
+Clojure has always been about simplifying the development of robust software. In all languages, dynamic or not, tests are essential to quality - too many critical properties are not captured by common type systems. **spec** has been designed from the ground up to directly support generative testing via https://github.com/clojure/test.check[test.check]. When you use **spec** you get generative tests for free.
+
+Taken together, I think the features of **spec** demonstrate the ongoing advantages of a powerful dynamic language like Clojure for building robust software - superior expressivity, instrumentation-enhanced REPL-driven development, sophisticated testing and more flexible systems. I encourage you to read the **spec** http://clojure.org/about/spec[rationale and overview]. Look for spec's inclusion in the next alpha release of Clojure, within a day or so.
+
+I hope you find **spec** useful and powerful.
+
+Rich

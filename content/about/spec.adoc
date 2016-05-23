@@ -291,7 +291,7 @@ keywords and attribute values should be registered under their attribute name ke
 be used anywhere a spec/predicate is called for in any of the **spec** operations.
 
 ==== Function spec registration
-A function can be fully specified via three specs - one for the args, one for the return, and one or the operation of
+A function can be fully specified via three specs - one for the args, one for the return, and one for the operation of
 the function relating the args to the return.
 
 The args spec for a fn is always going to be a regex that specs the arguments as if they were a list, i.e. the

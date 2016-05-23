@@ -1,0 +1,379 @@
+= clojure.spec - Rationale and Overview
+Rich Hickey
+2015-01-01
+:type: about
+:toc: macro
+:icons: font
+:navlinktext: spec
+:prevpagehref: state
+:prevpagetitle: State
+:nextpagehref: dynamic
+:nextpagetitle: Dynamic Development
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+toc::[]
+
+== Problems
+=== Docs are not enough
+Clojure is a dynamic language. Among other things this means that type annotations are not required for code to run.
+While Clojure has some support for type hints, they are not an enforcement mechanism, nor comprehensive, and are
+limited to communicating information to the compiler to aid in efficient code generation.
+Clojure gets runtime checking of a richer set of types by the JVM itself.
+
+However it has always been a guiding principle of Clojure, widely valued and practiced by the community,
+to simply represent information as data.
+Thus important properties of Clojure systems are represented and
+conveyed by the shape and other predicative properties of the data, not captured or checked anywhere
+since the runtime types are indistinguishable heterogeneous maps and vectors.
+
+Documentation strings can be used to communicate with human consumers,
+but they can't be leveraged by programs or tests, i.e. they have minimal power.
+Users have turned to various libraries such as https://github.com/plumatic/schema[Schema]
+and https://github.com/miner/herbert[Herbert] to get more powerful specifications.
+
+=== Map specs should be of keysets only
+Most systems for specifying structures conflate the specification of the key set
+(e.g. of keys in a map, fields in an object) with the specification of the values designated by those keys.
+I.e. in such approaches the schema for a map might say :a-key's type is x-type and :b-key's type is y-type.
+This is a major source of rigidity and redundancy.
+
+In Clojure we gain power by dynamically composing,
+merging and building up maps. We routinely deal with optional and partial data, data produced by unreliable
+external sources, dynamic queries etc. These maps represent various sets, subsets, intersections and unions
+of the same keys, and in general ought to have the same semantic for the same key wherever it is used. Defining
+specifications of every subset/union/intersection, and then redundantly stating the semantic of each key is both an
+antipattern and unworkable in the most dynamic cases.
+
+=== Manual parsing and error reporting is not good enough
+Many users, especially beginners, are frustrated and challenged by the error messages produced by
+hand-written parsing and destructuring code, especially in macros where there are two contexts of execution
+(the macro runs at compile time and its expansion at runtime, either of which could fail due to user error).
+This has led to a call for 'macro grammars', but in fact macros are just functions of data->data and any solution for
+data validation and destructuring should work as well for them as for any other functions.
+I.e. macros are an instance of the problems above.
+
+=== Generative testing and robustness
+Finally, in all languages, dynamic or not, tests are essential to quality.
+Too many critical properties are not captured by common type systems.
+But manual testing has a very low effectiveness/effort ratio. Property-based, generative testing, as
+implemented for Clojure in https://github.com/clojure/test.check[test.check],
+has proved to be far more powerful than manually written tests.
+
+Yet property based testing requires the
+definition of properties, which require extra effort and expertise to produce, and which,
+at the function-level, have substantial overlap with function specifications.
+Many interesting properties at the function level would already be captured by structural+predicative specs.
+Ideally, specs should integrate with generative testing and provide certain categories of generative tests 'for free'.
+
+=== A standard approach is needed
+In short, Clojure has no standard, expressive, powerful and integrated system for specification and testing.
+
+**clojure.spec** aims to provide it.
+
+== Objectives
+=== Communication
+
+[NOTE]
+====
+Species - appearance, form, sort, kind, equivalent to spec (ere) to look, regard +
+{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}{nbsp}+ -iēs abstract noun suffix
+
+Specify - species + -ficus -fic (make)
+====
+
+A specification is about how something 'looks', but is, most importantly, something that is looked at.
+Specs should be readable, composed of 'words' (predicate functions) programmers are already using,
+and integrated in documentation.
+
+=== Unify specification in its various contexts
+Specs for data structures, attribute values and functions should all be the same and live in a
+globally-namespaced directory.
+
+=== Maximize leverage from specification effort
+Writing a spec should enable __automatic__:
+
+* Validation
+* Error reporting
+* Destructuring
+* Instrumentation
+* Test-data generation
+* Generative test generation
+
+=== Minimize intrusion
+Don't require that people e.g. define their functions differently. Minor modifications to `doc` and `macroexpand`
+will allow independently written specs to adorn fn/macro behavior without redefinition.
+
+=== Decomplect maps/keys/values
+Keep map (keyset) specs separate from attribute (key->value) specs. Encourage and support attribute-granularity specs
+of namespaced keyword to value-spec. Combining keys into sets (to specify maps) becomes orthogonal,
+and checking becomes possible in the fully-dynamic case, i.e. even when no map spec is present,
+attributes (key-values) can be checked.
+
+=== Enable and start a dialog about semantic change and compatibility
+Programmers suffer greatly when they redefine things while keeping the names the same. Yet some changes are
+compatible and some are breaking, and most tools can't distinguish. Use constructs like set membership and
+regular expressions for which compatibility can be determined, and provide tools for compatibility checking
+(while leaving general predicate equality out of scope).
+
+== Guidelines
+=== Mistakes will be made
+We don't (and couldn't) live in a world where we can't make mistakes. Instead, we periodically check that we haven't.
+Amazon doesn't send you your TV via a `UPS<Trucks<Boxes<TV>>>`. So occasionally you might get a microwave,
+but the supply chain isn't burdened with correctness proof. Instead we check at the edges and run tests.
+
+=== expressivity > proof
+There is no reason to limit our specifications to what we can prove, yet that is primarily what type systems do.
+There is so much more we want to communicate and verify about our systems. This goes beyond
+structural/representational types and tagging to predicates that e.g. narrow domains or detail relationships
+between inputs or between inputs and output.
+Additionally, the properties we care most about are often those of the runtime values, not some static notion.
+Thus **spec** is not a type system.
+
+=== Names are important
+All programs use names, even when the type systems don't, and they capture important semantics. `Int x Int x Int`
+just isn't good enough (is it length/width/height or height/width/depth?). So **spec** will not have unlabeled sequence
+components or untagged union bindings. The utility of this becomes evident when **spec** needs to talk to users about specs,
+e.g. in error reporting, and vice versa, e.g. when users want to override generators in specs. When all branches are named,
+you can talk about parts of specs using __paths__.
+
+=== Global (namespaced) names are more important
+Clojure supports namespaced keywords and symbols. Note here we are just talking about namespace-qualified names,
+not Clojure namespace objects. These are tragically underutilized and convey important benefits because
+they can always co-reside in dictionaries/dbs/maps/sets without conflict. **spec** will allow (only) namespace-qualified
+keywords and symbols to name specs. People using namespaced keys for their informational maps
+(a practice we'd like to see grow) can register the specs for those attributes directly under those names. This
+categorically changes the self-description of maps, particularly in dynamic contexts, and encourages composition and consistency.
+
+=== Don't further add to/overload the (reified) namespaces of Clojure
+Nothing will be attached to vars, metadata etc. All functions have namespaced names which can serve as keys to their
+related data (e.g. spec) that is stored elsewhere.
+
+=== Code is data (not vice versa)
+In Lisps (and thus Clojure), code is data. But data is not code until you define a language around it. Many DSLs in
+this space drive at a data representation for schemas. But predicative specs have an open and large vocabulary,
+and most of the useful predicates already exist and are well known as functions in the core and other namespaces,
+or can be written as simple expressions. Having to 'datafy', possibly renaming, all of these predicates adds
+little value, and has a definite cost in understanding precise semantics. **spec** instead leverages the fact that
+the original predicates and expressions are data in the first place and captures that data for use in communicating
+with the users in documentation and error reporting. Yes, this means that more of the
+surface area of ``clojure.spec`` will be macros, but specs are overwhelmingly written by people and,
+when composed, manually so.
+
+=== Sets (maps) are about membership, that's it
+As per above, maps defining the details of the values at their keys is a fundamental complecting of concerns that will
+not be supported. Map specs detail required/optional keys (i.e. set membership things) and keyword/attr/value
+semantics are independent. Map checking is two-phase, required key presence then key/value conformance.
+The latter can be done even when the (namespace-qualified) keys present at runtime are not in the map spec.
+This is vital for composition and dynamicity.
+
+=== Informational vs implementational
+Invariably, people will try to use a specification system to detail implementation decisions, but they do so
+to their detriment. The best and most useful specs (and interfaces) are related to purely information aspects.
+Only information specs work over wires and across systems. We will always prioritize, and
+where there is a conflict, prefer, the information approach.
+
+=== K.I.S.S.
+There are very few bottom notions in this space and we will endeavor to stick to them.
+There are few distinct structural notions - a handful of atomic types, sequential things, sets and maps.
+Unsurprisingly, these are the Clojure data types and fundamental ops will be provided only for these. Similarly there
+are mathematical tools for talking about these - set logic for maps and regular expressions for sequences -
+that have valuable properties. We will prefer these over ad hoc solutions.
+
+=== Build on test.check but don't require knowledge of it
+The generative testing underpinning of **spec** will leverage ``test.check`` and not reinvent it.
+But spec users should not need to know anything about ``test.check`` until and unless they want to write their own
+generators or supplement **spec**'s generated tests with further property-based tests of their own. There should be no
+production runtime dependency on ``test.check``.
+
+== Features
+=== Overview
+==== Predicative specs
+The basic idea is that specs are nothing more than a logical composition of predicates. At the bottom we are talking
+about the simple boolean predicates you are used to like ``integer?`` or `symbol?`, or expressions you build yourself
+like `#(< 42 % 66)`
+**spec** adds logical ops like ``spec/and`` and ``spec/or`` which combine specs in a logical way and offer deep reporting,
+generation and conform support and, in the case of ``spec/or``, tagged returns.
+
+==== Maps
+Specs for map keysets provide for the specification of required and optional key sets. A spec for a map is
+produced by calling ``keys`` with ``:req`` and ``:opt`` keyword arguments mapping to vectors of key names.
+
+``:req`` keys support the logical operators ``and`` and ``or``.
+
+[source,clojure]
+----
+(spec/keys :req [::x ::y (or ::secret (and ::user ::pwd))] :opt [::z])
+----
+One of the most visible differences between **spec** and other systems is that there is no place in that map spec for
+specifying the __values__ e.g. ``::x`` can take. It is the (enforced) opinion of **spec** that the specification of values
+associated with a namespaced keyword, like ``:my.ns/k``, should be registered under that keyword itself,
+and applied in any map in which that keyword appears. There are a number of advantages to this:
+
+* It ensures consistency for all uses of that keyword in an application where all uses should share a semantic
+* It similarly ensures consistency between a library and its consumers
+* It reduces redundancy, since otherwise many map specs would need to make matching declarations about k
+* Namespaced keyword specs can be checked even when no map spec declares those keys
+
+This last point is vital when dynamically building up, composing, or generating maps. Creating a spec for every map
+subset/union/intersection is unworkable. It also facilitates fail-fast detection of bad data - when it is introduced
+vs when it is consumed.
+
+Of course, many existing map-based interfaces take non-namespaced keys. To support connecting them to properly
+namespaced and reusable specs, ``keys`` supports ``-un`` variants of ``:req`` and ``:opt``
+
+[source,clojure]
+----
+(spec/keys :req-un [:my.ns/a :my.ns/b])
+----
+
+This specs a map that requires the unqualified keys ``:a`` and ``:b`` but validates and generates them using specs
+(when defined) named ``:my.ns/a`` and ``:my.ns/b`` respectively. Note that this cannot convey the same power
+to unqualified keywords as have namespaced keywords - the resulting maps are not self-describing.
+
+==== Sequences
+Specs for sequences/vectors use a set of standard regular expression operators, with the standard semantics of
+regular expressions:
+
+* ``cat`` - a concatenation of predicates/patterns
+* ``alt`` - a choice of one among a set of predicates/patterns
+* ``*`` - zero or more occurrences of a predicate/pattern
+* ``+`` - one or more
+* ``?`` - one or none
+* ``&`` - takes a regex op and further constrains it with one or more predicates
+
+These nest arbitrarily to form complex expressions.
+
+Note that ``cat`` and ``alt`` require all of their components be labeled, and the return value of each is a map with
+the keys corresponding to the matched components. In this way **spec** regexes act as destructuring and parsing tools.
+
+[source,clojure]
+----
+user=> (require '[clojure.spec :as s])
+(s/def ::even? (s/and integer? even?))
+(s/def ::odd? (s/and integer? odd?))
+(s/def ::a integer?)
+(s/def ::b integer?)
+(s/def ::c integer?)
+(def s (s/cat :forty-two #{42}
+              :odds (s/+ ::odd?)
+              :m (s/keys :req-un [::a ::b ::c])
+              :oes (s/* (s/cat :o ::odd? :e ::even?))
+              :ex (s/alt :odd ::odd? :even ::even?)))
+user=> (s/conform s [42 11 13 15 {:a 1 :b 2 :c 3} 1 2 3 42 43 44 11])
+{:forty-two 42,
+ :odds [11 13 15],
+ :m {:a 1, :b 2, :c 3},
+ :oes [{:o 1, :e 2} {:o 3, :e 42} {:o 43, :e 44}],
+ :ex {:odd 11}}
+----
+
+==== conform/explain
+As you can see above, the basic operation for using specs is ``conform``, which takes a spec and a value and
+returns the conformed value or ``:clojure.spec/invalid`` if the value did not conform. When the value does not conform
+you can call ``explain`` or ``explain-data`` to find out why it didn't.
+
+=== Defining specs
+The primary operations for defining specs are s/def, s/and, s/or, s/keys and the regex ops. There is a ``spec`` function
+that can take
+a predicate function or expression, a set, or a regex op, and can also take an optional generator which would override
+the generator implied by the predicate(s).
+
+Note however, that ``def, and, or, keys`` spec fns and the regex ops can all take and use predicate functions and sets directly -
+and do not need them to be wrapped by ``spec``. ``spec`` should only be needed when you want to override a generator or to
+specify that a nested regex starts anew, vs being included in the same pattern.
+
+==== Data spec registration
+In order for a spec to be reusable by name, it has to be registered via ``def``.
+``def`` takes a namespace-qualified keyword/symbol and a spec/predicate expression. By convention, specs for data should
+registered under
+keywords and attribute values should be registered under the their attribute name keyword. Once registered, the name can
+be used anywhere a spec/predicate is called for in any of the **spec** operations.
+
+==== Function spec registration
+A function can be fully specified via three specs - one for the args, one for the return, and one or the operation of
+the function relating the args to the return.
+
+The args spec for a fn is always going to be a regex that specs the arguments as if they were a list, i.e. the
+list one would pass to ``apply`` the function. In this way, a single spec can handle functions with multiple arities.
+
+The return spec is an arbitrary spec of a single value.
+
+The (optional) fn spec is a further specification of the relationship between the arguments and the return, i.e. the
+function of the function. It will be passed (e.g. during testing) a map containing
+``{:args conformed-args :ret conformed-ret}`` and will generally contain predicates that relate those values - e.g. it
+could ensure that all keys of an input map are present in the returned map.
+
+You can fully specify all three specs of a function in a single call to ``fdef``, and recall the specs via ``fn-specs``.
+
+=== Using specs
+==== Documentation
+Functions specs defined via ``fdef`` will appear when you call ``doc`` on the fn name. You can call ``describe``
+on specs to get descriptions as forms.
+
+==== Parsing/destructuring
+You can use ``conform`` directly in your implementations to get its destructuring/parsing/error-checking.
+``conform`` can be used e.g. in macro implementations and at I/O boundaries.
+
+==== During development
+You can selectively instrument functions and namespaces with ``instrument`` and ``instrument-ns``. ``instrument`` swaps out
+the fn var with a wrapped version of the fn that tests all three of the fn specs. ``unstrument`` returns a fn to its
+original version. You can generate data for interactive testing with ``gen/sample``.
+
+==== For testing
+You can run a suite of spec-generative tests on an entire ns with ``run-tests``. You can get a test.check compatible generator
+for a spec by calling ``gen``. There are built-in associations between many of the ``clojure.core`` data predicates and corresponding
+generators, and the composite ops of **spec** know how to build generators atop those. If you call ``gen`` on a spec and it is
+unable to construct a generator for some subtree, it will throw an exception that describes where. You can pass generator-returning fns to
+``spec`` in order to supply generators for things spec does not know about, and you can pass an override map to ``gen`` in order to supply
+alternative generators for one or more subpaths of a spec.
+
+==== At runtime
+In addition to the destructuring use cases above, you can make calls to ``conform`` or ``valid?`` anywhere you want
+runtime checking, and can make lighter-weight internal-only specs for tests you intend to run in production.
+
+== Glossary
+=== predicates
+Many parts of the spec API call for 'predicates' or 'preds'. These arguments can be satisfied by:
+
+* predicate (boolean) fns
+* sets
+* registered names of specs
+* specs (the return values of ``spec``, ``and``, ``or``, ``keys``)
+* regex ops (the return values of ``cat``, ``alt``, ``*``, ``+``, ``?``, ``&``)
+
+Note that if you want to nest an independent regex predicate within a regex you will have to wrap it in a call to ``spec``,
+else  it will be considered a nested pattern.
+
+=== specs
+The return values of ``spec``, ``and``, ``or`` and ``keys``.
+
+=== regex ops
+The return values of ``cat``, ``alt``, ``*``, ``+``, ``?``, ``&``. When nested these form a single expression.
+
+=== conform
+``conform`` is the basic operation for consuming specs, and does both validation and conforming/destructuring.
+Note that conforming is 'deep' and flows through all of the spec and regex operations, map specs etc.
+Since ``nil`` and ``false`` are legitimate conformed values, conform returns the distinguished ``:clojure.spec/invalid``
+when a value cannot be made to conform. ``valid``? can be used instead as a fully-boolean predicate.
+
+=== explain
+When a value fails to conform to a spec you can call ``explain`` or ``explain-data`` with the same spec+value to
+find out why. These explanations are not produced during ``conform`` because they might perform additional work and there
+is no reason to incur that cost for non-failing inputs or when no report is desired. An important component of
+explanations is the __path__. ``explain`` extends the path as it navigates through e.g. nested maps or regex patterns,
+so you get better information than just the entire or leaf value. ``explain-data`` will return a map of paths to problems.
+
+=== paths
+Due to the fact that all __branching__ points in specs are labeled, i.e. map ``keys``, choices in ``or`` and ``alt``, and
+(possibly elided) elements of ``cat``, every subexpression in a spec can be referred to via a __path__ (vector of keys) naming the parts.
+These paths are used in ``explain``, ``gen`` overrides and various error reporting.
+
+== Prior Art
+Almost nothing about spec is novel. See all the libraries mentioned above, https://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/[RDF],
+as well as all the work done on various
+contract systems, such as http://docs.racket-lang.org/guide/contracts.html[Racket's contracts].
+
+*I hope you find spec useful and powerful.*
+
+Rich Hickey

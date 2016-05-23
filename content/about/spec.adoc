@@ -287,7 +287,7 @@ specify that a nested regex starts anew, vs being included in the same pattern.
 In order for a spec to be reusable by name, it has to be registered via ``def``.
 ``def`` takes a namespace-qualified keyword/symbol and a spec/predicate expression. By convention, specs for data should
 registered under
-keywords and attribute values should be registered under the their attribute name keyword. Once registered, the name can
+keywords and attribute values should be registered under their attribute name keyword. Once registered, the name can
 be used anywhere a spec/predicate is called for in any of the **spec** operations.
 
 ==== Function spec registration

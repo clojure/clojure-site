@@ -332,6 +332,8 @@ alternative generators for one or more subpaths of a spec.
 In addition to the destructuring use cases above, you can make calls to ``conform`` or ``valid?`` anywhere you want
 runtime checking, and can make lighter-weight internal-only specs for tests you intend to run in production.
 
+Please see the <<xref/../../../guides/spec#,spec Guide>> for more examples and usage information.
+
 == Glossary
 === predicates
 Many parts of the spec API call for 'predicates' or 'preds'. These arguments can be satisfied by:

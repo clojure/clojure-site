@@ -11,7 +11,7 @@ toc::[]
 
 == Getting started
 
-The http://clojure.org/about/spec[spec] library specifies the structure of data, validates or destructures it, and can generate data based on the spec. The http://clojure.github.io/clojure/branch-master/clojure.spec-api.html[clojure.spec] namespace is included in the Clojure core distribution, so no extra library is required to use it. You will need to declare a dependency on the latest alpha version of Clojure (or higher) however:
+The <<xref/../../../about/spec#,spec> library specifies the structure of data, validates or destructures it, and can generate data based on the spec. The http://clojure.github.io/clojure/branch-master/clojure.spec-api.html[clojure.spec] namespace is included in the Clojure core distribution, so no extra library is required to use it. You will need to declare a dependency on the latest alpha version of Clojure (or higher) however:
 
 [source, clojure]
 ----
@@ -328,6 +328,7 @@ When conformance is checked on a map, it combines two things - checking that the
   {::first-name "Elon"
    ::last-name "Musk"
    ::email "elon@example.com"})
+;;=> true
 
 ;; Fails required key check
 (s/explain ::person

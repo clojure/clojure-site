@@ -686,7 +686,7 @@ This is an area that may change further before final release.
 
 == Conformers
 
-Sometimes it will be necessary to automatically modify the conformed value and this can be accomplished with `conformer`. For example, consider the `name-or-id` spec from the beginning of the guide:
+Sometimes it will be necessary to automatically modify the conformed value and this can be accomplished with `conformer`. For example, consider the `::name-or-id` spec from the beginning of the guide:
 
 [source,clojure]
 ----
@@ -701,13 +701,13 @@ The `or` conforms to a vector with tagged value. If you instead wished to receiv
 [source,clojure]
 ----
 (s/def ::name-or-id'
-  (s/and name-or-id
+  (s/and ::name-or-id
          (s/conformer second)))
 (s/conform ::name-or-id' "abc")
 ;;=> "abc"
 ----
 
-Conformer takes a function that will accept the conformed result of its input and should return a valid as if it were a predicate spec (either a conformed value or `::s/invalid`). In the example above, the input flows from `name-or-id` into the conformer. Another common place to use conformers is as the predicate for `&`.
+Conformer takes a function that will accept the conformed result of its input and should return a valid as if it were a predicate spec (either a conformed value or `::s/invalid`). In the example above, the input flows from `::name-or-id` into the conformer. Another common place to use conformers is as the predicate for `&`.
 
 Conformers are a powerful tool for shaping conformed outputs, however note that they should be used cautiously. By baking the conforming decision into a spec (particularly a registered spec), you are making a decision for all consumers of the conformed value (in many cases removing context). Consider instead registering a spec without the conformer and using conformers more sparingly as local specs where needed.
 

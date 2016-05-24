@@ -285,7 +285,7 @@ If the `spec`s were removed this spec would instead match a sequence like `[:nam
 
 [source,clojure]
 ----
-(def ::unnested
+(s/def ::unnested
   (s/cat :names-kw #{:names}
          :names (s/* string?)
          :nums-kw #{:nums}

@@ -254,7 +254,7 @@ If you need a description of a specification, use `describe` to retrieve one. Le
 ;;=> (* (cat :opt keyword? :val boolean?))
 ----
 
-Spec also defines one additional regex operator, http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/&[`&`], which takes a regex operator and constrains it with one or more additional predicates. This can be used to create regular expressions with additional custom constraints that would otherwise require custom predicates. For example, consider wanting to match only sequences with an even number of strings:
+Spec also defines one additional regex operator, http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/&[`&`], which takes a regex operator and constrains it with one or more additional predicates. This can be used to create regular expressions with additional constraints that would otherwise require custom predicates. For example, consider wanting to match only sequences with an even number of strings:
 
 [source,clojure]
 ----
@@ -281,7 +281,7 @@ you need nested regular expressions to describe the inner sequential data:
 ;;=> {:names-kw :names, :names ["a" "b"], :nums-kw :nums, :nums [1 2 3]}
 ----
 
-If the `spec`s were removed this spec would instead match a sequence like `[:names "a" "b" :nums 1 2 3]`.
+If the specs were removed this spec would instead match a sequence like `[:names "a" "b" :nums 1 2 3]`.
 
 [source,clojure]
 ----
@@ -296,8 +296,7 @@ If the `spec`s were removed this spec would instead match a sequence like `[:nam
 
 == Entity Maps
 
-Clojure programs rely heavily on passing around maps of data and this is one of the areas where spec takes a novel approach
-compared to other libs. Rather than defining attribute (key+value) specifications at the map level, specs assign meaning to individual attributes,
+Clojure programs rely heavily on passing around maps of data. A common approach in other libraries is to describe each entity type, combining both the keys it contains and the structure of their values. Rather than define attribute (key+value) specifications in the scope of the entity (the map), specs assign meaning to individual attributes,
 then collect them into maps using set semantics (on the keys). This approach allows us to start assigning (and sharing)
 semantics at the attribute level across our libraries and applications.
 
@@ -631,22 +630,30 @@ We can clearly see that we asked for a random number in the range 5 to 8 but got
 
 Instrumentation of spec'ed functions can also be turned on more widely using `instrument-ns` or `instrument-all` functions. Instrumentation can be turned off using the complementary functions `unstrument`, `unstrument-ns`, and `unstrument-all`. It's up to you when to use instrumentation and how much. You may want a lot of instrumentation when working at the REPL and little at runtime. It's even possible to create more than one version of a function spec - an intensive one that runs during development and a lighter check that happens at runtime.
 
-It is also possible to use `fspec` to create an independent function spec that can also be used outside `fdef`:
+== Higher order functions
+
+Higher order functions are common in Clojure and spec provides http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/fspec[`fspec`] to support spec'ing them.
+
+For example, consider the `adder` function:
 
 [source,clojure]
 ----
-(def compare-spec
-  (s/fspec
-    :args (s/cat :ns (s/+ number?))
-    :ret number?))
-
-(s/valid? compare-spec max)
-;;=> true
-(s/valid? compare-spec min)
-;;=> true
+(defn adder [x] #(+ x %))
 ----
 
-Here `compare-spec` is a generic spec that specifies a function that takes one or more numbers and returns a number. Both the clojure.core `max` and `min` functions satisfy this function spec. Function specs can also be used to spec higher-order functions.
+`adder` returns a function that adds x. We can declare a function spec for `adder` using `fspec` for the return value:
+
+[source,clojure]
+----
+(s/fdef adder
+  :args (s/cat :x number?)
+  :ret (s/fspec :args (s/cat :y number?)
+                :ret number?)
+  :fn #(= (-> % :args :x)
+          ((:ret %) 0)))
+----
+
+The `:ret` spec uses `fspec` to declare that the returning function takes and returns a number. Even more interesting, the `:fn` spec can state a general property that relates the `:args` (where we know x) and the result we get from invoking the function returned from `adder`, namely that adding 0 to it should return x.
 
 == Macros
 

@@ -332,7 +332,7 @@ alternative generators for one or more subpaths of a spec.
 In addition to the destructuring use cases above, you can make calls to ``conform`` or ``valid?`` anywhere you want
 runtime checking, and can make lighter-weight internal-only specs for tests you intend to run in production.
 
-Please see the <<xref/../../../guides/spec#,spec Guide>> for more examples and usage information.
+Please see the <<xref/../../../guides/spec#,spec Guide>> and http://clojure.github.io/clojure/branch-master/clojure.spec-api.html[API docs] for more examples and usage information.
 
 == Glossary
 === predicates

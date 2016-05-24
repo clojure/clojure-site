@@ -472,7 +472,7 @@ For the special case of a homogenous collection of arbitrary size, you can use `
 ----
 (s/conform (s/coll-of keyword? []) [:a :b :c])
 ;;=> [:a :b :c]
-(s/conform (s/coll-of number? #{} #{5 10 2}))
+(s/conform (s/coll-of number? #{}) #{5 10 2})
 ;;=> #{2 5 10}
 ----
 

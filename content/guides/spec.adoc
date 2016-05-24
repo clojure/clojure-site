@@ -142,7 +142,7 @@ Many predicates that check an instance's type do not allow `nil` as a valid valu
 
 == Explain
 
-http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/explain[`explain`] is another high-level operation in spec that can be used to report (to `*out*`) why a value does not conform to a spec. Let's see what explain says about some non-conforming examples we've seen so far.
+http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/explain[`explain`] is another high-level operation in spec that can be used to report (to `pass:[*out*]`) why a value does not conform to a spec. Let's see what explain says about some non-conforming examples we've seen so far.
 
 [source,clojure]
 ----

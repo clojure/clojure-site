@@ -157,7 +157,7 @@ http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spe
 
 The explain output identifies the problematic value and the predicate it was evaluating. In the last example we see that when there are alternatives, errors across all of the alternatives will be printed.
 
-In addition to `explain`, you can use http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/explain[`explain-data`] to receive the errors as data, which can be attached to an exception or acted upon for further analysis.
+In addition to `explain`, you can use http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/explain-data[`explain-data`] to receive the errors as data, which can be attached to an exception or acted upon for further analysis.
 
 [source,clojure]
 ----

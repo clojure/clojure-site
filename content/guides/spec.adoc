@@ -238,8 +238,8 @@ Finally, we can use `alt` to specify alternatives within the sequential data. Li
                        :val  (s/alt :s string? :b boolean?))))
 (s/conform ::config ["-server" "foo" "-verbose" true "-user" "joe"])
 ;;=> [{:prop "-server", :val [:s "foo"]}
-      {:prop "-verbose", :val [:b true]}
-      {:prop "-user", :val [:s "joe"]}]
+;;    {:prop "-verbose", :val [:b true]}
+;;    {:prop "-user", :val [:s "joe"]}]
 ----
 
 If you need a description of a specification, use `describe` to retrieve one. Let's try it on some of the specifications we've already defined:

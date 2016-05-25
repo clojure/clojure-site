@@ -15,7 +15,7 @@ The <<xref/../../../about/spec#,spec>> library specifies the structure of data, 
 
 [source, clojure]
 ----
-[org.clojure/clojure "1.9.0-alpha1"]
+[org.clojure/clojure "1.9.0-alpha2"]
 ----
 
 To start working with spec, require the `clojure.spec` namespace or include in your namespace definition:

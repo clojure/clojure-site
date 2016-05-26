@@ -587,7 +587,7 @@ We can then provide a specification for that function:
              #(< (:ret %) (-> % :args :end))))
 ----
 
-This function spec demonstrates a number of features. First the `:args` is a compound spec that verifies the types of the arguments. The second predicate takes as input the conformed result of the first predicate and verifies that start < end. The return value is also an integer. Finally, the `:fn` spec checks that the return value is >= start and < end.
+This function spec demonstrates a number of features. First the `:args` is a compound spec that verifies the types of the arguments. This spec is invoked with the args in a list, as if they were passed to `(apply fn (arg-list))`. Because the args are sequential and the args are positional fields, they are almost always described using a regex op, like `cat`, `alt`, or `*`. The second predicate takes as input the conformed result of the first predicate and verifies that start < end. The `:ret` value spec is also an integer. Finally, the `:fn` spec checks that the return value is >= start and < end.
 
 We can turn on instrumentation (spec checking) with:
 

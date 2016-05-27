@@ -234,8 +234,8 @@ Finally, we can use `alt` to specify alternatives within the sequential data. Li
 [source,clojure]
 ----
 (s/def ::config (s/* 
-                (s/cat :prop string?
-                       :val  (s/alt :s string? :b boolean?))))
+                  (s/cat :prop string?
+                         :val  (s/alt :s string? :b boolean?))))
 (s/conform ::config ["-server" "foo" "-verbose" true "-user" "joe"])
 ;;=> [{:prop "-server", :val [:s "foo"]}
 ;;    {:prop "-verbose", :val [:b true]}

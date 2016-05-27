@@ -491,7 +491,7 @@ Note that in this case of a "point" structure with x/y/z values we actually had 
 * Regular expression - `(s/cat :x float? :y float? :z float?)`
 ** Allows for matching nested structure (not needed here)
 ** Conforms to map with named keys based on the `cat` tags
-* Collection - `(s/coll-of float?)`
+* Collection - `(s/coll-of float? [])`
 ** Designed for arbitrary size homogenous collections
 ** Conforms to a vector of the values
 * Tuple - `(s/tuple double? double? double?)`

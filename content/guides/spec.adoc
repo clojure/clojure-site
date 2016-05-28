@@ -538,6 +538,8 @@ Here we conform using the config specification defined above:
 
 [source,clojure]
 ----
+(defn set-config [k v] ...)
+
 (defn configure [input]
   (let [parsed (s/conform ::config input)]
     (if (= parsed ::s/invalid)

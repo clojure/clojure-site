@@ -593,7 +593,7 @@ We can turn on instrumentation (spec checking) with:
 
 [source,clojure]
 ----
-(instrument #'ranged-rand)
+(s/instrument #'ranged-rand)
 ----
 
 If the args are invalid you'll see an error like this:

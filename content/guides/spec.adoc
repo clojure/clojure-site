@@ -481,7 +481,7 @@ While `coll-of` is good for homogenous collections of any size, another case is 
 
 [source,clojure]
 ----
-(s/def ::point (s/tuple double? double? double?))
+(s/def ::point (s/tuple float? float? float?))
 (s/conform ::point [1.5 2.5 -0.5])
 => [1.5 2.5 -0.5]
 ----
@@ -494,7 +494,7 @@ Note that in this case of a "point" structure with x/y/z values we actually had 
 * Collection - `(s/coll-of float? [])`
 ** Designed for arbitrary size homogenous collections
 ** Conforms to a vector of the values
-* Tuple - `(s/tuple double? double? double?)`
+* Tuple - `(s/tuple float? float? float?)`
 ** Designed for fixed size with known positional "fields"
 ** Conforms to a vector of the values
 

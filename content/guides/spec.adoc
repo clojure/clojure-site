@@ -1073,7 +1073,7 @@ But keep in mind that you had to create the fixed set and keep it around - for 0
 (gen/sample (s/gen ::roll))
 ----
 
-You'll find a lot more insight by learning more about test.check from it's http://clojure.github.io/test.check/intro.html[tutorial] or http://clojure.github.io/test.check/generator-examples.html[examples]. Do keep in mind that while clojure.spec.gen is a large subset of clojure.test.check.generators, not everything is included.
+You'll find a lot more insight by learning more about test.check from its http://clojure.github.io/test.check/intro.html[tutorial] or http://clojure.github.io/test.check/generator-examples.html[examples]. Do keep in mind that while clojure.spec.gen is a large subset of clojure.test.check.generators, not everything is included.
 
 == Wrapping Up
 

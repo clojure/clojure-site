@@ -538,12 +538,18 @@ Here we conform using the config specification defined above:
 
 [source,clojure]
 ----
-(defn configure [input]
-  (let [parsed (s/conform ::config input)]
+(defn configure
+  [input]
+  (let [parsed (s/conform ::config input)
+        config (atom {})
+        set-config (fn [key val]
+                     (swap! config assoc key val))]
     (if (= parsed ::s/invalid)
       (throw (ex-info "Invalid input" (s/explain-data ::config input)))
-      (for [{prop :prop [_ val] :val} parsed]
-        (set-config (subs prop 1) val)))))
+      (do
+        (doall (for [{prop :prop [_ val] :val} parsed]
+                 (set-config (subs prop 1) val)))
+        @config))))
 
 (configure ["-server" "foo" "-verbose" true "-user" "joe"])
 ----

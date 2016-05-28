@@ -538,6 +538,10 @@ Here we conform using the config specification defined above:
 
 [source,clojure]
 ----
+(defn- set-config [prop val]
+  ;; dummy fn
+  (println "set" prop val))
+
 (defn configure [input]
   (let [parsed (s/conform ::config input)]
     (if (= parsed ::s/invalid)

@@ -1040,10 +1040,10 @@ There are some common cases that currently don't have standard predicates, but g
 [source,clojure]
 ----
 (defn boolean? [x] (instance? Boolean x))
-(s/def ::boolean (s/with-gen boolean? #(gen/boolean)))
+(s/def ::boolean (s/with-gen boolean? (constantly gen/boolean)))
 
 (defn uuid? [x] (instance? java.util.UUID x))
-(s/def ::uuid (s/with-gen uuid? #(gen/uuid)))
+(s/def ::uuid (s/with-gen uuid? (constantly gen/uuid)))
 ----
 
 Another common case is creating a generator that pulls from a range of numbers. For example, if you're creating a spec for a bowling roll, you will need numbers in the range [0,10]. The default generator will generate any integer, then filter down to just numbers in the 0-10 range:

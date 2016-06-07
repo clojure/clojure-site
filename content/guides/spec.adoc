@@ -15,7 +15,7 @@ The <<xref/../../../about/spec#,spec>> library specifies the structure of data, 
 
 [source, clojure]
 ----
-[org.clojure/clojure "1.9.0-alpha3"]
+[org.clojure/clojure "1.9.0-alpha5"]
 ----
 
 To start working with spec, require the `clojure.spec` namespace or include in your namespace definition:
@@ -58,7 +58,7 @@ Note that again `valid?` implicitly converts the predicate function into a spec.
 (s/valid? #(> % 5) 0) ;; false
 
 (import java.util.Date)
-(s/valid? #(instance? Date %) (Date.))  ;; true
+(s/valid? inst? (Date.))  ;; true
 ----
 
 Sets can also be used as predicates that match one or more literal values:
@@ -79,7 +79,7 @@ Specs are registered using http://clojure.github.io/clojure/branch-master/clojur
 
 [source,clojure]
 ----
-(s/def ::date #(instance? Date %))
+(s/def ::date inst?)
 (s/def ::suit #{:club :diamond :heart :spade})
 ----
 
@@ -118,7 +118,7 @@ We can also use `s/or` to specify two alternatives:
 (s/valid? ::name-or-id :foo) ;; false
 ----
 
-This `or` spec is the first case we've seen that involves a choice during validity checking. Each choice is annotated with a tag (here, `:name` and `:id`) and those tags give the branches names that can be used to understand or enrich the data returned from `conform` and other spec functions.
+This `or` spec is the first case we've seen that involves a choice during validity checking. Each choice is annotated with a tag (here, between `:name` and `:id`) and those tags give the branches names that can be used to understand or enrich the data returned from `conform` and other spec functions.
 
 When an `or` is conformed, it returns a vector with the tag name and conformed value:
 
@@ -147,12 +147,12 @@ http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spe
 [source,clojure]
 ----
 (s/explain ::suit 42)
-;; val: 42 fails predicate: #{:spade :heart :diamond :club}
+;; val: 42 fails spec: ::name-or-id predicate: #{:spade :heart :diamond :club}
 (s/explain ::big-even 5)
-;; val: 5 fails predicate: even?
+;; val: 5 fails spec: ::name-or-id predicate: even?
 (s/explain ::name-or-id :foo)
-;; val: :foo fails at: [:name] predicate: string?
-;; val: :foo fails at: [:id] predicate: integer?
+;; val: :foo fails spec: ::name-or-id at: [:name] predicate: string?
+;; val: :foo fails spec: ::name-or-id at: [:id] predicate: integer?
 ----
 
 The explain output identifies the problematic value and the predicate it was evaluating. In the last example we see that when there are alternatives, errors across all of the alternatives will be printed.
@@ -196,11 +196,11 @@ The data is conformed as a map with the tags as keys. We can use `explain` to ex
 ----
 ;; pass string for unit instead of keyword
 (s/explain ::ingredient [11 "peaches"])
-;; In: [1] val: \"peaches\" fails at: [:unit] predicate: keyword?
+;; In: [1] val: \"peaches\" fails spec: ::ingredient at: [:unit] predicate: keyword?
 
 ;; leave out the unit
 (s/explain ::ingredient [2])
-;; val: () fails at: [:unit] predicate: keyword?,  Insufficient input
+;; val: () fails spec: ::ingredient at: [:unit] predicate: keyword?,  Insufficient input
 ----
 
 Let's now see the various occurence operators `*`, `+`, and `?`:
@@ -265,7 +265,7 @@ Spec also defines one additional regex operator, http://clojure.github.io/clojur
 (s/valid? ::even-strings ["a" "b" "c" "d"])  ;; true
 ----
 
-When regex ops are combined, they describe a single sequence. If you need to include a nested sequential collection,
+When regex ops are combined, they describe a single sequence. If you need to spec a nested sequential collection,
 you must use an explicit call to http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/spec[`spec`]
 to start a new nested regex context. For example to describe a sequence like `[:names ["a" "b"] :nums [1 2 3]]`,
 you need nested regular expressions to describe the inner sequential data:
@@ -333,8 +333,8 @@ When conformance is checked on a map, it combines two things - checking that the
 ;; Fails required key check
 (s/explain ::person
   {::first-name "Elon"})
-;; val: {:my.domain/first-name "Elon"} fails predicate: 
-;;  [(contains? % :my.domain/last-name) (contains? % :my.domain/email)]
+;; val: {:my.domain/first-name "Elon"} fails spec: :my.domain/person 
+;;  predicate: [(contains? % :my.domain/last-name) (contains? % :my.domain/email)]
 
 ;; Fails attribute conformance
 (s/explain ::person
@@ -365,13 +365,13 @@ Let's consider a person map that uses unqualified keys but checks conformance ag
   {:first-name "Elon"
    :last-name "Musk"
    :email "n/a"})
-;; In: [:email] val: "n/a" fails spec: :my.domain/email at: 
-;;   [:email] predicate: (re-matches email-regex %)
+;; In: [:email] val: "n/a" fails spec: :my.domain/email at: [:email] 
+;;   predicate: (re-matches email-regex %)
 
 (s/explain :unq/person
   {:first-name "Elon"})
-;; val: {:first-name "Elon"} fails predicate: 
-;;   [(contains? % :last-name) (contains? % :email)]
+;; val: {:first-name "Elon"} fails spec: :unq/person
+;;   predicate: [(contains? % :last-name) (contains? % :email)]
 ----
 
 Unqualified keys can also be used to validate record attributes:
@@ -467,7 +467,7 @@ The `multi-spec` approach allows us to create an *open* system for spec validati
 
 A few helpers are provided for other special collection cases - http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/coll-of[`coll-of`], http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/tuple[`tuple`], and  http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/map-of[`map-of`].
 
-For the special case of a homogenous collection of arbitrary size, you can use `coll-of` to specify a collection of elements satisfying a predicate. `coll-of` must be provided a seed collection to use when conforming elements - something like `[]`, `()`, or `(sorted-set)`.
+For the special case of a homogenous collection of arbitrary size, you can use `coll-of` to specify a collection of elements satisfying a predicate. `coll-of` must be provided a seed collection to use when generating elements - something like `[]`, `()`, or `(sorted-set)`.
 
 [source,clojure]
 ----
@@ -477,24 +477,29 @@ For the special case of a homogenous collection of arbitrary size, you can use `
 ;;=> #{2 5 10}
 ----
 
+[NOTE]
+====
+One important aspect of `coll-of` and `map-of` is that they both sample their inputs, checking only a subset of the values for performance reasons. Due to this, `conform` of these specs does not flow conformed values (because they are not all conformed).
+====
+
 While `coll-of` is good for homogenous collections of any size, another case is a fixed-size positional collection with fields of known type at different positions. For that we have `tuple`.
 
 [source,clojure]
 ----
-(s/def ::point (s/tuple float? float? float?))
+(s/def ::point (s/tuple double? double? double?))
 (s/conform ::point [1.5 2.5 -0.5])
 => [1.5 2.5 -0.5]
 ----
 
 Note that in this case of a "point" structure with x/y/z values we actually had a choice of three possible specs:
 
-* Regular expression - `(s/cat :x float? :y float? :z float?)`
+* Regular expression - `(s/cat :x double? :y double? :z double?)`
 ** Allows for matching nested structure (not needed here)
 ** Conforms to map with named keys based on the `cat` tags
-* Collection - `(s/coll-of float? [])`
+* Collection - `(s/coll-of double? [])`
 ** Designed for arbitrary size homogenous collections
 ** Conforms to a vector of the values
-* Tuple - `(s/tuple float? float? float?)`
+* Tuple - `(s/tuple double? double? double?)`
 ** Designed for fixed size with known positional "fields"
 ** Conforms to a vector of the values
 
@@ -631,7 +636,7 @@ val: {:args {:start 5, :end 8}, :ret 3} fails at: [:fn] predicate: (>= (:ret %) 
 :clojure.spec/args  (5 8)
 ----
 
-We can clearly see that we asked for a random number in the range 5 to 8 but got back 3! Good thing we had a spec to catch that bug.
+We can see that we asked for a random number in the range 5 to 8 but got back 3! Good thing we had a spec to catch that bug.
 
 Instrumentation of spec'ed functions can also be turned on more widely using `instrument-ns` or `instrument-all` functions. Instrumentation can be turned off using the complementary functions `unstrument`, `unstrument-ns`, and `unstrument-all`. It's up to you when to use instrumentation and how much. You may want a lot of instrumentation when working at the REPL and little at runtime. It's even possible to create more than one version of a function spec - an intensive one that runs during development and a lighter check that happens at runtime.
 
@@ -805,7 +810,7 @@ Once you have obtained a generator with `gen`, there are several ways to use it.
 
 [source,clojure]
 ----
-(gen/generate (s/gen integer?))
+(gen/generate (s/gen long?))
 ;;=> -959
 (gen/generate (s/gen nil?))
 ;;=> nil
@@ -1006,47 +1011,48 @@ Returning to our "hello" example, we now have the tools to make that generator:
 
 Here we generate a random string, then insert "hello" at a random index in the string. This utilizes a common trick - generate something random and insert or override the things that will make it conformant.
 
-=== Common Generators
+=== Range Specs and Generators
 
-There are some common cases that currently don't have standard predicates, but good generators exist. It's likely there will be changes in this area in the future but for now you might find these useful:
+There are several cases where it's useful to spec (and generate) values in a range and spec provides helpers for these cases.
 
-[source,clojure]
-----
-(defn boolean? [x] (instance? Boolean x))
-(s/def ::boolean (s/with-gen boolean? #(gen/boolean)))
-
-(defn uuid? [x] (instance? java.util.UUID x))
-(s/def ::uuid (s/with-gen uuid? #(gen/uuid)))
-----
-
-Another common case is creating a generator that pulls from a range of numbers. For example, if you're creating a spec for a bowling roll, you will need numbers in the range [0,10]. The default generator will generate any integer, then filter down to just numbers in the 0-10 range:
+For example, in the case of a range of long values (for example, a bowling roll), use http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec.gen/long-in[`long-in`] to spec a range (end is exclusive):
 
 [source,clojure]
 ----
-(s/def ::roll (s/and integer? #(>= 0 % 10)))
+(s/def ::roll (s/long-in 0 11)
 (gen/sample (s/gen ::roll))
-;; ExceptionInfo Couldn't satisfy such-that predicate after 100 tries.
+;;=> (1 0 0 3 1 7 10 1 5 0)
 ----
 
-One way to handle this is to define the spec as a fixed set of numbers and let spec create the generator:
-
-[source,clojure]
-----
-(s/def ::roll (s/with-gen (s/and integer? #(<= 0 % 10))
-                #(s/gen (set (range 11)))))
-(gen/sample (s/gen ::roll))
-----
-
-But keep in mind that you had to create the fixed set and keep it around - for 0-10 that's not too bad, but for a bigger set that's not desired. Instead we can use http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec.gen/choose[`choose`]:
+spec also includes http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec.gen/inst-in[`inst-in`] for a range of instants:
 
 [source,clojure]
 ----
-(s/def ::roll (s/with-gen (s/and integer? #(<= 0 % 10))
-                #(gen/choose 0 10)))
-(gen/sample (s/gen ::roll))
+(s/def ::the-aughts (s/inst-in #inst "2000" #inst "2010"))
+(drop 50 (gen/sample (s/gen ::the-aughts) 55))
+;;=> (#inst"2005-03-03T08:40:05.393-00:00"
+;;    #inst"2008-06-13T01:56:02.424-00:00"
+;;    #inst"2000-01-01T00:00:00.610-00:00"
+;;    #inst"2006-09-13T09:44:40.245-00:00"
+;;    #inst"2000-01-02T10:18:42.219-00:00")
 ----
 
-You'll find a lot more insight by learning more about test.check from its http://clojure.github.io/test.check/intro.html[tutorial] or http://clojure.github.io/test.check/generator-examples.html[examples]. Do keep in mind that while clojure.spec.gen is a large subset of clojure.test.check.generators, not everything is included.
+Due to the generator implementation, it takes a few samples to get "interesting" so I skipped ahead a bit.
+
+Finally, http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec.gen/double-in[`double-in`] has support for double ranges and special options for checking special double values like `NaN` (not a number), `Infinity`, and `-Infinity`. 
+
+[source,clojure]
+----
+(s/def ::dubs (s/double-in :min -100.0 :max 100.0 :NaN? false :infinity? false))
+(s/valid? ::dubs 2.9)
+;;=> true
+(s/valid? ::dubs Double/POSITIVE_INFINITY)
+;;=> false
+(gen/sample (s/gen ::dubs))
+;;=> (-1.0 -1.0 -1.5 1.25 -0.5 -1.0 -3.125 -1.5625 1.25 -0.390625)
+----
+
+To learn more about generators, read the test.check http://clojure.github.io/test.check/intro.html[tutorial] or http://clojure.github.io/test.check/generator-examples.html[examples]. Do keep in mind that while clojure.spec.gen is a large subset of clojure.test.check.generators, not everything is included.
 
 == Wrapping Up
 

@@ -147,9 +147,9 @@ http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spe
 [source,clojure]
 ----
 (s/explain ::suit 42)
-;; val: 42 fails spec: ::name-or-id predicate: #{:spade :heart :diamond :club}
+;; val: 42 fails spec: ::suit predicate: #{:spade :heart :diamond :club}
 (s/explain ::big-even 5)
-;; val: 5 fails spec: ::name-or-id predicate: even?
+;; val: 5 fails spec: ::big-even predicate: even?
 (s/explain ::name-or-id :foo)
 ;; val: :foo fails spec: ::name-or-id at: [:name] predicate: string?
 ;; val: :foo fails spec: ::name-or-id at: [:id] predicate: integer?

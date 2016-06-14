@@ -300,7 +300,7 @@ Clojure programs rely heavily on passing around maps of data. A common approach 
 then collect them into maps using set semantics (on the keys). This approach allows us to start assigning (and sharing)
 semantics at the attribute level across our libraries and applications.
 
-For example, most Ring middlware modify the request or response map with unqualified keys. However, each middleware could instead use namespaced keys with registered semantics for those keys. The keys could then be checked for conformance, creating a system with greater opportunities for collaboration and consistency.
+For example, most Ring middleware functions modify the request or response map with unqualified keys. However, each middleware could instead use namespaced keys with registered semantics for those keys. The keys could then be checked for conformance, creating a system with greater opportunities for collaboration and consistency.
 
 Entity maps in spec are defined with http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/keys[`keys`]:
 

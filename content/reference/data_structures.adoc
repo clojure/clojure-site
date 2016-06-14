@@ -64,7 +64,7 @@ Numeric literals for BigInt and BigDecimal are specified using a postfix N and M
 | `(/ 2.0 3)` | `0.6666666666666666`
 | `(map #(Math/abs %) (range -3 3))` | `(3 2 1 0 1 2)`
 | `(class 36786883868216818816N)` | `clojure.lang.BigInt`
-| `(class 3.14159265358M)` | `clojure.lang.BigDecimal`
+| `(class 3.14159265358M)` | `java.math.BigDecimal`
 |===
 
 === Related functions

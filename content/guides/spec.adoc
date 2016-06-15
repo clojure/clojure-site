@@ -15,7 +15,7 @@ The <<xref/../../../about/spec#,spec>> library specifies the structure of data, 
 
 [source, clojure]
 ----
-[org.clojure/clojure "1.9.0-alpha5"]
+[org.clojure/clojure "1.9.0-alpha7"]
 ----
 
 To start working with spec, require the `clojure.spec` namespace or include in your namespace definition:
@@ -101,7 +101,7 @@ The simplest way to compose specs is with http://clojure.github.io/clojure/branc
 
 [source,clojure]
 ----
-(s/def ::big-even (s/and integer? even? #(> % 1000)))
+(s/def ::big-even (s/and int? even? #(> % 1000)))
 (s/valid? ::big-even :foo) ;; false
 (s/valid? ::big-even 10) ;; false
 (s/valid? ::big-even 100000) ;; true
@@ -112,7 +112,7 @@ We can also use `s/or` to specify two alternatives:
 [source,clojure]
 ----
 (s/def ::name-or-id (s/or :name string? 
-                          :id   integer?))
+                          :id   int?))
 (s/valid? ::name-or-id "abc") ;; true
 (s/valid? ::name-or-id 100) ;; true
 (s/valid? ::name-or-id :foo) ;; false
@@ -152,7 +152,7 @@ http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spe
 ;; val: 5 fails spec: ::big-even predicate: even?
 (s/explain ::name-or-id :foo)
 ;; val: :foo fails spec: ::name-or-id at: [:name] predicate: string?
-;; val: :foo fails spec: ::name-or-id at: [:id] predicate: integer?
+;; val: :foo fails spec: ::name-or-id at: [:id] predicate: int?
 ----
 
 The explain output identifies the problematic value and the predicate it was evaluating. In the last example we see that when there are alternatives, errors across all of the alternatives will be printed.
@@ -164,7 +164,7 @@ In addition to `explain`, you can use http://clojure.github.io/clojure/branch-ma
 (s/explain-data ::name-or-id :foo)
 ;;=> {:clojure.spec/problems
 ;;    {[:name] {:pred string?, :val :foo, :via []},
-;;     [:id] {:pred integer?, :val :foo, :via []}}}
+;;     [:id] {:pred int?, :val :foo, :via []}}}
 ----
 
 We'll see some more examples later on.
@@ -308,7 +308,7 @@ Entity maps in spec are defined with http://clojure.github.io/clojure/branch-mas
 (def email-regex #"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,63}$")
 (s/def ::email-type (s/and string? #(re-matches email-regex %)))
 
-(s/def ::acctid integer?)
+(s/def ::acctid int?)
 (s/def ::first-name string?)
 (s/def ::last-name string?)
 (s/def ::email ::email-type)
@@ -413,10 +413,10 @@ For example, imagine an API that received event objects which shared some common
 [source,clojure]
 ----
 (s/def :event/type keyword?)
-(s/def :event/timestamp integer?)
+(s/def :event/timestamp int?)
 (s/def :search/url string?)
 (s/def :error/message string?)
-(s/def :error/code integer?)
+(s/def :error/code int?)
 ----
 
 We then need a multimethod that defines a dispatch function for choosing the selector (here our `:event/type` field) and returns the appropriate spec based on the value:
@@ -508,7 +508,7 @@ In addition to the support for information maps via `keys`, spec also provides `
 
 [source,clojure]
 ----
-(s/def ::scores (s/map-of string? integer?))
+(s/def ::scores (s/map-of string? int?))
 (s/conform ::scores {"Sally" 1000, "Joe" 500})
 ;=> {"Sally" 1000, "Joe" 500}
 ----
@@ -571,16 +571,16 @@ In the success case, the parsed input is transformed into the desired shape for 
 
 The pre- and post-condition example in the previous section hinted at an interesting question - how do we define the input and output specifications for a function or macro?
 
-Spec has explicit support for this using http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/fdef[`fdef`], which defines a trio of specifications for a function - the arguments, the return value, and optionally a function that relates the arguments and the return value.
+Spec has explicit support for this using http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/fdef[`fdef`], which defines specifications for a function - the arguments and/or the return value spec, and optionally a function that can specify a relationship between args and return.
 
 Let's consider a `ranged-rand` function that produces a random number in a range:
 
 [source,clojure]
 ----
 (defn ranged-rand
-  "Returns random integer in range start <= rand < end"
+  "Returns random int in range start <= rand < end"
   [start end]
-  (+ start (rand-int (- end start))))
+  (+ start (long (rand (- end start)))))
 ----
 
 We can then provide a specification for that function:
@@ -588,9 +588,9 @@ We can then provide a specification for that function:
 [source,clojure]
 ----
 (s/fdef ranged-rand
-  :args (s/and (s/cat :start integer? :end integer?)
+  :args (s/and (s/cat :start int? :end int?)
                #(< (:start %) (:end %)))
-  :ret integer?
+  :ret int?
   :fn (s/and #(>= (:ret %) (-> % :args :start))
              #(< (:ret %) (-> % :args :end))))
 ----
@@ -616,28 +616,11 @@ If the args are invalid you'll see an error like this:
 
 The error fails the second args predicate that checks `(< start end)`. 
 
-Imagine instead that we made an error in the ranged-rand code and swapped start and end:
+Instrumentation of spec'ed functions can also be turned on more widely using `instrument-ns` or `instrument-all` functions. Instrumentation can be turned off using the complementary functions `unstrument`, `unstrument-ns`, and `unstrument-all`. It's up to you when to use instrumentation and how much. You may want a lot of instrumentation when working at the REPL and little at runtime. 
 
-[source,clojure]
-----
-(defn ranged-rand   ;; BROKEN!
-  "Returns random integer in range start <= rand < end"
-  [start end]
-  (+ start (rand-int (- start end))))
-----
+Instrumentation only checks the `:args` spec on a function, catching invalid calls external to the function. To validate that the function actually works as intended, you should test your function using the additional tools in `clojure.spec.test`. More on that after we talk about generators!
 
-This error will still create random integers, just not in the expected range. Our `:fn` spec will detect the problem on use though:
-
-[source,clojure]
-----
-Call to  #'spec.examples.guide/ranged-rand did not conform to spec:
-val: {:args {:start 5, :end 8}, :ret 3} fails at: [:fn] predicate: (>= (:ret %) (-> % :args :start))
-:clojure.spec/args  (5 8)
-----
-
-We can see that we asked for a random number in the range 5 to 8 but got back 3! Good thing we had a spec to catch that bug.
-
-Instrumentation of spec'ed functions can also be turned on more widely using `instrument-ns` or `instrument-all` functions. Instrumentation can be turned off using the complementary functions `unstrument`, `unstrument-ns`, and `unstrument-all`. It's up to you when to use instrumentation and how much. You may want a lot of instrumentation when working at the REPL and little at runtime. It's even possible to create more than one version of a function spec - an intensive one that runs during development and a lighter check that happens at runtime.
+the `:ret` and `:fn` specs is valid to catch invalid calls to a function.
 
 == Higher order functions
 
@@ -672,7 +655,7 @@ For example, we could spec the `clojure.core/declare` macro like this:
 [source,clojure]
 ----
 (s/fdef clojure.core/declare
-    :args (s/cat :names (s/* symbol?))
+    :args (s/cat :names (s/* simple-symbol?))
     :ret ::s/any)
 ----
 
@@ -682,9 +665,8 @@ The Clojure macroexpander will look for and conform :args specs registered for m
 ----
 (declare 100)
 ;; CompilerException java.lang.IllegalArgumentException: Call to clojure.core/declare did not conform to spec:
-;; In: [0] val: (100) fails at: [:args] predicate: (cat :names (* symbol?)),  Extra input
+;; In: [0] val: (100) fails at: [:args] predicate: (cat :names (* simple-symbol?)),  Extra input
 ;; :clojure.spec/args  (100)
-;; , compiling:(user:320:3)
 ----
 
 == A game of cards
@@ -701,7 +683,7 @@ Here's a bigger set of specs to model a game of cards:
 (s/def ::hand (s/* ::card))
 
 (s/def ::name string?)
-(s/def ::score integer?)
+(s/def ::score int?)
 (s/def ::player (s/keys :req [::name ::score ::hand]))
 
 (s/def ::players (s/* ::player))
@@ -809,7 +791,7 @@ Once you have obtained a generator with `gen`, there are several ways to use it.
 
 [source,clojure]
 ----
-(gen/generate (s/gen long?))
+(gen/generate (s/gen int?))
 ;;=> -959
 (gen/generate (s/gen nil?))
 ;;=> nil
@@ -873,7 +855,7 @@ For this we have http://clojure.github.io/clojure/branch-master/clojure.spec-api
 ;;    [-3.0 [:n -3.0]])
 ----
 
-=== Using `and` Generators
+=== Using `s/and` Generators
 
 All of the generators we've seen worked fine but there are a number of cases where they will need some additional help. One common case is when the predicate implicitly presumes values of a particular type but the spec does not specify them:
 
@@ -891,7 +873,7 @@ If we modify our predicate to use an `and` and a predicate with a mapped generat
 
 [source,clojure]
 ----
-(gen/generate (s/gen (s/and integer? even?)))
+(gen/generate (s/gen (s/and int? even?)))
 ;;=> -15161796
 ----
 
@@ -901,7 +883,7 @@ We can use many predicates to further refine the generated values. For example, 
 ----
 (defn divisible-by [n] #(zero? (mod % n)))
 
-(gen/sample (s/gen (s/and integer?
+(gen/sample (s/gen (s/and int?
                      #(> % 0)
                      (divisible-by 3))))
 ;;=> (3 9 1524 3 1836 6 3 3 927 15027)
@@ -1014,11 +996,11 @@ Here we generate a random string, then insert "hello" at a random index in the s
 
 There are several cases where it's useful to spec (and generate) values in a range and spec provides helpers for these cases.
 
-For example, in the case of a range of long values (for example, a bowling roll), use http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec.gen/long-in[`long-in`] to spec a range (end is exclusive):
+For example, in the case of a range of integer values (for example, a bowling roll), use http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec.gen/int-in[`int-in`] to spec a range (end is exclusive):
 
 [source,clojure]
 ----
-(s/def ::roll (s/long-in 0 11)
+(s/def ::roll (s/int-in 0 11)
 (gen/sample (s/gen ::roll))
 ;;=> (1 0 0 3 1 7 10 1 5 0)
 ----
@@ -1052,6 +1034,58 @@ Finally, http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#cl
 ----
 
 To learn more about generators, read the test.check http://clojure.github.io/test.check/intro.html[tutorial] or http://clojure.github.io/test.check/generator-examples.html[examples]. Do keep in mind that while clojure.spec.gen is a large subset of clojure.test.check.generators, not everything is included.
+
+== Testing
+
+We mentioned earlier that `clojure.spec.test` provides tools for automatically testing functions. When functions have specs with generators, we can use http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec.test/check-var[`check-var`], to automatically check the specs are correct. 
+
+`check-var` will generate arguments based on the `:args` spec for a function, invoke the function, and validate the `:ret` and `:fn` specs were satisfied.
+
+[source,clojure]
+----
+(require '[clojure.spec.test :as stest])
+
+(stest/check-var #'ranged-rand)
+;;=> {:result true, :num-tests 100, :seed 1466020849335}
+----
+
+`check-var` also takes a number of options to specify how many tests to run, the "size" of the inputs (a notion that test.check uses to measure the complexity of inputs), the seed (if you wish to reproduce a failure, and an optional reporting function).
+
+Imagine instead that we made an error in the ranged-rand code and swapped start and end:
+
+[source,clojure]
+----
+(defn ranged-rand  ;; BROKEN!
+  "Returns random int in range start <= rand < end"
+  [start end]
+  (+ start (long (rand (- start end)))))
+----
+
+This broken function will still create random integers, just not in the expected range. Our `:fn` spec will detect the problem when checking the var:
+
+[source,clojure]
+----
+(stest/check-var #'ranged-rand)
+;;{:result {:clojure.spec/problems {[] {:pred (>= (:ret %) (-> % :args :start)),
+;;                                      :val {:args {:start -1, :end 3}, :ret -3},
+;;                                      :via [],
+;;                                      :in []}},
+;;          :failed-on :fn},
+;; :seed 1466023411366,
+;; :failing-size 0,
+;; :num-tests 1,
+;; :fail [(-1 3)],
+;; :shrunk {:total-nodes-visited 2,
+;;          :depth 1,
+;;          :result {:clojure.spec/problems {[] {:pred (>= (:ret %) (-> % :args :start)),
+;;                                               :val {:args {:start 0, :end 3}, :ret -2},
+;;                                               :via [],
+;;                                               :in []}},
+;;                   :failed-on :fn},
+;;          :smallest [(0 3)]}}
+----
+
+`check-var` has reported an error in the `:fn` spec. We can see the arguments passed were -1 and 3 and the return value was -3, which is out of the expected range. At the bottom, test.check takes one step further though and "shrinks" the invalid inputs to find simpler/smaller inputs that yield the same error. Here the "simpler" inputs were 0 and 3, which is not much different, but on complicated data, shrinking is a killer feature for finding failing examples.
 
 == Wrapping Up
 

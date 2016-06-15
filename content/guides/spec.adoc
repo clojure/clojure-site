@@ -223,7 +223,6 @@ Let's now see the various occurence operators `*`, `+`, and `?`:
 ;; In: [0] val: 100 fails spec: :spec.examples.guide/odds-then-maybe-even at: [:odds] predicate: odd?
 
 ;; opts are alternating keywords and booleans
-(defn boolean? [b] (instance? Boolean b))
 (s/def ::opts (s/* (s/cat :opt keyword? :val boolean?)))
 (s/conform ::opts [:silent? false :verbose true])
 ;;=> [{:opt :silent?, :val false} {:opt :verbose, :val true}]

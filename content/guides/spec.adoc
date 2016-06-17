@@ -620,8 +620,6 @@ Instrumentation of spec'ed functions can also be turned on more widely using `in
 
 Instrumentation only checks the `:args` spec on a function, catching invalid calls external to the function. To validate that the function actually works as intended, you should test your function using the additional tools in `clojure.spec.test`. More on that after we talk about generators!
 
-the `:ret` and `:fn` specs is valid to catch invalid calls to a function.
-
 == Higher order functions
 
 Higher order functions are common in Clojure and spec provides http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/fspec[`fspec`] to support spec'ing them.

@@ -128,7 +128,8 @@ where args are determined by the presence of argument literals taking the form %
 +
 The form following pass:[#_] is completely skipped by the reader. (This is a more complete removal than the http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/comment[comment] macro which yields nil).
 
-=== [[syntax-quote]] Syntax-quote (`, note, the "backquote" character), Unquote (~) and Unquote-splicing (~@)
+[[syntax-quote]]
+=== Syntax-quote (`, note, the "backquote" character), Unquote (~) and Unquote-splicing (~@)
 
 For all forms other than Symbols, Lists, Vectors, Sets and Maps, `x is the same as 'x. +
 

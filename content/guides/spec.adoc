@@ -15,7 +15,7 @@ The <<xref/../../../about/spec#,spec>> library specifies the structure of data, 
 
 [source, clojure]
 ----
-[org.clojure/clojure "1.9.0-alpha7"]
+[org.clojure/clojure "1.9.0-alpha8"]
 ----
 
 To start working with spec, require the `clojure.spec` namespace or include in your namespace definition:
@@ -478,7 +478,7 @@ For the special case of a homogenous collection of arbitrary size, you can use `
 
 [NOTE]
 ====
-One important aspect of `coll-of` and `map-of` is that they both sample their inputs, checking only a subset of the values for performance reasons. Due to this, `conform` of these specs does not flow conformed values (because they are not all conformed).
+Both `coll-of` and `map-of` will conform all of their elements, which may make them unsuitable for large collections. In that case, consisder http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/every[`every`] and http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/every-kv[`every-kv`], which will only sample their inputs and have additional controls for checking collection size and whether the elements are distinct.
 ====
 
 While `coll-of` is good for homogenous collections of any size, another case is a fixed-size positional collection with fields of known type at different positions. For that we have `tuple`.
@@ -601,10 +601,10 @@ We can turn on instrumentation (spec checking) with:
 
 [source,clojure]
 ----
-(s/instrument #'ranged-rand)
+(s/instrument `ranged-rand)
 ----
 
-If the args are invalid you'll see an error like this:
+Instrument takes a fully-qualified symbol so we use `pass:[`]` to resolve it in the context of the current namespace. If the args are invalid you'll see an error like this:
 
 [source,clojure]
 ----
@@ -616,7 +616,7 @@ If the args are invalid you'll see an error like this:
 
 The error fails the second args predicate that checks `(< start end)`. 
 
-Instrumentation of spec'ed functions can also be turned on more widely using `instrument-ns` or `instrument-all` functions. Instrumentation can be turned off using the complementary functions `unstrument`, `unstrument-ns`, and `unstrument-all`. It's up to you when to use instrumentation and how much. You may want a lot of instrumentation when working at the REPL and little at runtime. 
+Instrumentation of spec'ed functions can also be turned on more widely using the `instrument-all` function. Instrumentation can be turned off using the complementary functions `unstrument` or `unstrument-all`. It's up to you when to use instrumentation and how much. You may want a lot of instrumentation when working at the REPL and different instrumentation at test time. 
 
 Instrumentation only checks the `:args` spec on a function, catching invalid calls external to the function. To validate that the function actually works as intended, you should test your function using the additional tools in `clojure.spec.test`. More on that after we talk about generators!
 
@@ -657,7 +657,7 @@ For example, we could spec the `clojure.core/declare` macro like this:
     :ret ::s/any)
 ----
 
-The Clojure macroexpander will look for and conform :args specs registered for macros at expansion time (not runtime!). If an error is detected, `explain` will be invoked to explain the error:
+The Clojure macroexpander will look for and conform :args specs registered for macros at macro expansion time (not runtime!). If an error is detected, `explain` will be invoked to explain the error:
 
 [source,clojure]
 ----
@@ -666,6 +666,8 @@ The Clojure macroexpander will look for and conform :args specs registered for m
 ;; In: [0] val: (100) fails at: [:args] predicate: (cat :names (* simple-symbol?)),  Extra input
 ;; :clojure.spec/args  (100)
 ----
+
+Because macros are always checked during macro expansion, you do not need to call instrument for macro specs.
 
 == A game of cards
 
@@ -853,6 +855,24 @@ For this we have http://clojure.github.io/clojure/branch-master/clojure.spec-api
 ;;    [-3.0 [:n -3.0]])
 ----
 
+For spec'ed functions we also have http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec.gen/exercise-fn[`exercise-fn`], which generates sample args, invokes the spec'ed function and returns the args and the return value.
+
+[source,clojure]
+----
+(s/exercise-fn `ranged-rand)
+=>
+([(-2 -1)   -2]
+ [(-3 3)     0]
+ [(0 1)      0]
+ [(-8 -7)   -8]
+ [(3 13)     7]
+ [(-1 0)    -1]
+ [(-69 99) -41]
+ [(-19 -1)  -5]
+ [(-1 1)    -1]
+ [(0 65)     7])
+----
+
 === Using `s/and` Generators
 
 All of the generators we've seen worked fine but there are a number of cases where they will need some additional help. One common case is when the predicate implicitly presumes values of a particular type but the spec does not specify them:
@@ -1035,19 +1055,23 @@ To learn more about generators, read the test.check http://clojure.github.io/tes
 
 == Testing
 
-We mentioned earlier that `clojure.spec.test` provides tools for automatically testing functions. When functions have specs with generators, we can use http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec.test/check-var[`check-var`], to automatically check the specs are correct. 
+We mentioned earlier that `clojure.spec.test` provides tools for automatically testing functions. When functions have specs with generators, we can use http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec.test/test[`test`], to automatically generate tests that check the function using the specs. 
 
-`check-var` will generate arguments based on the `:args` spec for a function, invoke the function, and validate the `:ret` and `:fn` specs were satisfied.
+`test` will generate arguments based on the `:args` spec for a function, invoke the function, and validate the `:ret` and `:fn` specs were satisfied.
 
 [source,clojure]
 ----
 (require '[clojure.spec.test :as stest])
 
-(stest/check-var #'ranged-rand)
-;;=> {:result true, :num-tests 100, :seed 1466020849335}
+(stest/test `ranged-rand)
+;;=> ({:spec #object[clojure.spec$fspec_impl$reify__13728 0x4a47e374 "clojure.spec$fspec_impl$reify__13728@4a47e374"],
+;;     :clojure.spec.test.check/ret {:result true, :num-tests 100, :seed 1466805740290},
+;;     :sym spec.examples.guide/ranged-rand,
+;;     :result true,
+;;     :type :pass})
 ----
 
-`check-var` also takes a number of options to specify how many tests to run, the "size" of the inputs (a notion that test.check uses to measure the complexity of inputs), the seed (if you wish to reproduce a failure, and an optional reporting function).
+`test` also takes a number of options that can be passed to test.check to influence the test run, as well as the option to override generators for parts of the spec, by either name or path.
 
 Imagine instead that we made an error in the ranged-rand code and swapped start and end:
 
@@ -1083,7 +1107,7 @@ This broken function will still create random integers, just not in the expected
 ;;          :smallest [(0 3)]}}
 ----
 
-`check-var` has reported an error in the `:fn` spec. We can see the arguments passed were -1 and 3 and the return value was -3, which is out of the expected range. At the bottom, test.check takes one step further though and "shrinks" the invalid inputs to find simpler/smaller inputs that yield the same error. Here the "simpler" inputs were 0 and 3, which is not much different, but on complicated data, shrinking is a killer feature for finding failing examples.
+`test` has reported an error in the `:fn` spec. We can see the arguments passed were -1 and 3 and the return value was -3, which is out of the expected range. At the bottom, test.check takes one step further though and "shrinks" the invalid inputs to find simpler/smaller inputs that yield the same error. Here the "simpler" inputs were 0 and 3, which is not much different, but on complicated data, shrinking is a killer feature for finding failing examples.
 
 == Wrapping Up
 

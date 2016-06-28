@@ -162,136 +162,23 @@ In addition to `explain`, you can use http://clojure.github.io/clojure/branch-ma
 [source,clojure]
 ----
 (s/explain-data ::name-or-id :foo)
-;;=> {:clojure.spec/problems
-;;    {[:name] {:pred string?, :val :foo, :via []},
-;;     [:id] {:pred int?, :val :foo, :via []}}}
+;;=> #:clojure.spec{
+;;     :problems ({:path [:name], 
+;;                 :pred string?,
+;;                 :val :foo,
+;;                 :via [:spec.examples.guide/name-or-id],
+;;                 :in []}
+;;                {:path [:id],
+;;                 :pred int?,
+;;                 :val :foo,
+;;                 :via [:spec.examples.guide/name-or-id],
+;;                 :in []})}
 ----
 
-We'll see some more examples later on.
-
-== Sequences
-
-Spec provides the standard https://en.wikipedia.org/wiki/Regular_expression[regular expression] operators to describe the structure of a sequential data value:
-
-* http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/cat[`cat`] - concatentation of predicates/patterns
-* http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/alt[`alt`] - choice among alternative predicates/patterns
-* http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/*[`pass:[*]`] - 0 or more of a predicate/pattern
-* http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/%2B[`+`] - 1 or more of a predicate/pattern
-* http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/%3F[`?`] - 0 or 1 of a predicate/pattern
-
-Like `or`, both `cat` and `alt` tag their "parts" - these tags are then used in the conformed value to identify what was matched, to report errors, and more.
-
-Consider an ingredient represented by a vector containing a quantity (number) and a unit (keyword). The spec for this data uses `cat` to specify the right components in the right order. Like predicates, regex operators are implicitly converted to specs when passed to functions like `conform`, `valid?`, etc.
-
-[source,clojure]
-----
-(s/def ::ingredient (s/cat :quantity number? :unit keyword?))
-(s/conform ::ingredient [2 :teaspoon])
-;;=> {:quantity 2, :unit :teaspoon}
-----
-
-The data is conformed as a map with the tags as keys. We can use `explain` to examine non-conforming data.
-
-[source,clojure]
-----
-;; pass string for unit instead of keyword
-(s/explain ::ingredient [11 "peaches"])
-;; In: [1] val: \"peaches\" fails spec: ::ingredient at: [:unit] predicate: keyword?
-
-;; leave out the unit
-(s/explain ::ingredient [2])
-;; val: () fails spec: ::ingredient at: [:unit] predicate: keyword?,  Insufficient input
-----
-
-Let's now see the various occurence operators `*`, `+`, and `?`:
-
-[source,clojure]
-----
-(s/def ::seq-of-keywords (s/* keyword?))
-(s/conform ::seq-of-keywords [:a :b :c])
-;;=> [:a :b :c]
-(s/explain ::seq-of-keywords [10 20])
-;; In: [0] val: 10 fails spec: :spec.examples.guide/seq-of-keywords predicate: keyword?
-
-(s/def ::odds-then-maybe-even (s/cat :odds (s/+ odd?)
-                                     :even (s/? even?)))
-(s/conform ::odds-then-maybe-even [1 3 5 100])
-;;=> {:odds [1 3 5], :even 100}
-(s/conform ::odds-then-maybe-even [1])
-;;=> {:odds [1]}
-(s/explain ::odds-then-maybe-even [100])
-;; In: [0] val: 100 fails spec: :spec.examples.guide/odds-then-maybe-even at: [:odds] predicate: odd?
-
-;; opts are alternating keywords and booleans
-(s/def ::opts (s/* (s/cat :opt keyword? :val boolean?)))
-(s/conform ::opts [:silent? false :verbose true])
-;;=> [{:opt :silent?, :val false} {:opt :verbose, :val true}]
-----
-
-Finally, we can use `alt` to specify alternatives within the sequential data. Like `cat`, `alt` requires you to tag each alternative but the conformed data is a vector of tag and value.
-
-[source,clojure]
-----
-(s/def ::config (s/* 
-                  (s/cat :prop string?
-                         :val  (s/alt :s string? :b boolean?))))
-(s/conform ::config ["-server" "foo" "-verbose" true "-user" "joe"])
-;;=> [{:prop "-server", :val [:s "foo"]}
-;;    {:prop "-verbose", :val [:b true]}
-;;    {:prop "-user", :val [:s "joe"]}]
-----
-
-If you need a description of a specification, use `describe` to retrieve one. Let's try it on some of the specifications we've already defined:
-
-[source,clojure]
-----
-(s/describe ::seq-of-keywords)
-;;=> (* keyword?)
-(s/describe ::odds-then-maybe-even)
-;;=> (cat :odds (+ odd?) :even (? even?))
-(s/describe ::opts)
-;;=> (* (cat :opt keyword? :val boolean?))
-----
-
-Spec also defines one additional regex operator, http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/&[`&`], which takes a regex operator and constrains it with one or more additional predicates. This can be used to create regular expressions with additional constraints that would otherwise require custom predicates. For example, consider wanting to match only sequences with an even number of strings:
-
-[source,clojure]
-----
-(s/def ::even-strings (s/& (s/* string?) #(even? (count %))))
-(s/valid? ::even-strings ["a"])  ;; false
-(s/valid? ::even-strings ["a" "b"])  ;; true
-(s/valid? ::even-strings ["a" "b" "c"])  ;; false
-(s/valid? ::even-strings ["a" "b" "c" "d"])  ;; true
-----
-
-When regex ops are combined, they describe a single sequence. If you need to spec a nested sequential collection,
-you must use an explicit call to http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/spec[`spec`]
-to start a new nested regex context. For example to describe a sequence like `[:names ["a" "b"] :nums [1 2 3]]`,
-you need nested regular expressions to describe the inner sequential data:
-
-[source,clojure]
-----
-(s/def ::nested
-  (s/cat :names-kw #{:names}
-         :names (s/spec (s/* string?))
-         :nums-kw #{:nums}
-         :nums (s/spec (s/* number?))))
-(s/conform ::nested [:names ["a" "b"] :nums [1 2 3]])
-;;=> {:names-kw :names, :names ["a" "b"], :nums-kw :nums, :nums [1 2 3]}
-----
-
-If the specs were removed this spec would instead match a sequence like `[:names "a" "b" :nums 1 2 3]`.
-
-[source,clojure]
-----
-(s/def ::unnested
-  (s/cat :names-kw #{:names}
-         :names (s/* string?)
-         :nums-kw #{:nums}
-         :nums (s/* number?)))
-(s/conform ::unnested [:names "a" "b" :nums 1 2 3])
-;;=> {:names-kw :names, :names ["a" "b"], :nums-kw :nums, :nums [1 2 3]}
-----
+[NOTE]
+====
+This result also demonstrates the new namespaced map syntax added in 1.9.0-alpha8. Maps may be prefixed with #: or #:: (for autoresolve) to specify a default namespace for all keys in the map. In this example, this is equivalent to `{:clojure.spec/problems ...}`
+====
 
 == Entity Maps
 
@@ -332,7 +219,7 @@ When conformance is checked on a map, it combines two things - checking that the
 ;; Fails required key check
 (s/explain ::person
   {::first-name "Elon"})
-;; val: {:my.domain/first-name "Elon"} fails spec: :my.domain/person 
+;; val: #:my.domain{:first-name "Elon"} fails spec: :my.domain/person
 ;;  predicate: [(contains? % :my.domain/last-name) (contains? % :my.domain/email)]
 
 ;; Fails attribute conformance
@@ -451,13 +338,15 @@ And then finally we are ready to declare our `multi-spec` and try it out.
 ;=> true
 (s/explain :event/event
   {:event/type :event/restart})
-;; val: {:event/type :event/restart} fails at: [:event/restart] predicate: my.domain/event-type,  no method
+;; val: #:event{:type :event/restart} fails spec: :event/event 
+;;   at: [:event/restart] predicate: my.domain/event-type,  no method
 (s/explain :event/event
   {:event/type :event/search
    :search/url 200})
-;; val: {:event/type :event/search, :search/url 200} fails at: [:event/search] predicate: [(contains? % :event/timestamp)]
-;; In: [:search/url] val: 200 fails spec: :search/url at: [:event/search :search/url] predicate: string?
-
+;; val: {:event/type :event/search, :search/url 200} fails spec: :event/event 
+;;   at: [:event/search] predicate: [(contains? % :event/timestamp)]
+;; In: [:search/url] val: 200 fails spec: :search/url 
+;;   at: [:event/search :search/url] predicate: string?
 ----
 
 The `multi-spec` approach allows us to create an *open* system for spec validation, just like multimethods and protocols. New event types can be added later by just extending the `event-type` multimethod.
@@ -466,19 +355,42 @@ The `multi-spec` approach allows us to create an *open* system for spec validati
 
 A few helpers are provided for other special collection cases - http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/coll-of[`coll-of`], http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/tuple[`tuple`], and  http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/map-of[`map-of`].
 
-For the special case of a homogenous collection of arbitrary size, you can use `coll-of` to specify a collection of elements satisfying a predicate. `coll-of` must be provided a seed collection to use when generating elements - something like `[]`, `()`, or `(sorted-set)`.
+For the special case of a homogenous collection of arbitrary size, you can use `coll-of` to specify a collection of elements satisfying a predicate.
 
 [source,clojure]
 ----
-(s/conform (s/coll-of keyword? []) [:a :b :c])
+(s/conform (s/coll-of keyword?) [:a :b :c])
 ;;=> [:a :b :c]
-(s/conform (s/coll-of number? #{}) #{5 10 2})
+(s/conform (s/coll-of number?) #{5 10 2})
 ;;=> #{2 5 10}
+----
+
+Additionally, `coll-of` can be passed a number of keyword arg options:
+
+* `:kind` - one of [], (), {}, or #{} to check that the incoming collection is of this type
+* `:count` - specifies exact expected count
+* `:min-count`, `:max-count` - checks that collection has `(<= min-count count max-count)`
+* `:distinct` - checks that all elements are distinct
+* `:into` - one of [], (), {}, or #{} for output conformed value. If `:into` is not specified, the input collection type will be used.
+
+Following is an example utilizing some of these options to spec a vector containing three distinct numbers conformed as a set and some of the errors for different kinds of invalid values:
+
+[source,clojure]
+----
+(s/def ::vnum3 (s/coll-of number? :kind [] :count 3 :distinct true :into #{}))
+(s/conform ::vnum3 [1 2 3])
+;;=> #{1 2 3}
+(s/explain ::vnum3 #{1 2 3})   ;; not a vector
+;; val: #{1 3 2} fails spec: ::vnum3 predicate: clojure.core/vector?
+(s/explain ::vnum3 [1 1 1])    ;; not distinct
+;; val: [1 1 1] fails spec: ::vnum3 predicate: distinct?
+(s/explain ::vnum3 [1 2 :a])   ;; not a number
+;; In: [2] val: :a fails spec: ::vnum3 predicate: number?
 ----
 
 [NOTE]
 ====
-Both `coll-of` and `map-of` will conform all of their elements, which may make them unsuitable for large collections. In that case, consisder http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/every[`every`] and http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/every-kv[`every-kv`], which will only sample their inputs and have additional controls for checking collection size and whether the elements are distinct.
+Both `coll-of` and `map-of` will conform all of their elements, which may make them unsuitable for large collections. In that case, consisder http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/every[`every`] or for maps  http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/every-kv[`every-kv`].
 ====
 
 While `coll-of` is good for homogenous collections of any size, another case is a fixed-size positional collection with fields of known type at different positions. For that we have `tuple`.
@@ -495,7 +407,7 @@ Note that in this case of a "point" structure with x/y/z values we actually had 
 * Regular expression - `(s/cat :x double? :y double? :z double?)`
 ** Allows for matching nested structure (not needed here)
 ** Conforms to map with named keys based on the `cat` tags
-* Collection - `(s/coll-of double? [])`
+* Collection - `(s/coll-of double?)`
 ** Designed for arbitrary size homogenous collections
 ** Conforms to a vector of the values
 * Tuple - `(s/tuple double? double? double?)`
@@ -511,6 +423,134 @@ In addition to the support for information maps via `keys`, spec also provides `
 (s/def ::scores (s/map-of string? int?))
 (s/conform ::scores {"Sally" 1000, "Joe" 500})
 ;=> {"Sally" 1000, "Joe" 500}
+----
+
+By default `map-of` will validate but not conform keys because conformed keys might create key duplicates that would cause entries in the map to be overridden. If conformed keys are desired, pass the option `:conform-keys true'.
+
+You can also use the various count-related options on `map-of` that you have with `coll-of`.
+
+== Sequences
+
+Sometimes sequential data is used to encode additional structure (typically new syntax, often used in macros). spec provides the standard https://en.wikipedia.org/wiki/Regular_expression[regular expression] operators to describe the structure of a sequential data value:
+
+* http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/cat[`cat`] - concatentation of predicates/patterns
+* http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/alt[`alt`] - choice among alternative predicates/patterns
+* http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/*[`pass:[*]`] - 0 or more of a predicate/pattern
+* http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/%2B[`+`] - 1 or more of a predicate/pattern
+* http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/%3F[`?`] - 0 or 1 of a predicate/pattern
+
+Like `or`, both `cat` and `alt` tag their "parts" - these tags are then used in the conformed value to identify what was matched, to report errors, and more.
+
+Consider an ingredient represented by a vector containing a quantity (number) and a unit (keyword). The spec for this data uses `cat` to specify the right components in the right order. Like predicates, regex operators are implicitly converted to specs when passed to functions like `conform`, `valid?`, etc.
+
+[source,clojure]
+----
+(s/def ::ingredient (s/cat :quantity number? :unit keyword?))
+(s/conform ::ingredient [2 :teaspoon])
+;;=> {:quantity 2, :unit :teaspoon}
+----
+
+The data is conformed as a map with the tags as keys. We can use `explain` to examine non-conforming data.
+
+[source,clojure]
+----
+;; pass string for unit instead of keyword
+(s/explain ::ingredient [11 "peaches"])
+;; In: [1] val: \"peaches\" fails spec: ::ingredient at: [:unit] predicate: keyword?
+
+;; leave out the unit
+(s/explain ::ingredient [2])
+;; val: () fails spec: ::ingredient at: [:unit] predicate: keyword?,  Insufficient input
+----
+
+Let's now see the various occurence operators `*`, `+`, and `?`:
+
+[source,clojure]
+----
+(s/def ::seq-of-keywords (s/* keyword?))
+(s/conform ::seq-of-keywords [:a :b :c])
+;;=> [:a :b :c]
+(s/explain ::seq-of-keywords [10 20])
+;; In: [0] val: 10 fails spec: :spec.examples.guide/seq-of-keywords predicate: keyword?
+
+(s/def ::odds-then-maybe-even (s/cat :odds (s/+ odd?)
+                                     :even (s/? even?)))
+(s/conform ::odds-then-maybe-even [1 3 5 100])
+;;=> {:odds [1 3 5], :even 100}
+(s/conform ::odds-then-maybe-even [1])
+;;=> {:odds [1]}
+(s/explain ::odds-then-maybe-even [100])
+;; In: [0] val: 100 fails spec: ::odds-then-maybe-even at: [:odds] predicate: odd?
+
+;; opts are alternating keywords and booleans
+(s/def ::opts (s/* (s/cat :opt keyword? :val boolean?)))
+(s/conform ::opts [:silent? false :verbose true])
+;;=> [{:opt :silent?, :val false} {:opt :verbose, :val true}]
+----
+
+Finally, we can use `alt` to specify alternatives within the sequential data. Like `cat`, `alt` requires you to tag each alternative but the conformed data is a vector of tag and value.
+
+[source,clojure]
+----
+(s/def ::config (s/* 
+                  (s/cat :prop string?
+                         :val  (s/alt :s string? :b boolean?))))
+(s/conform ::config ["-server" "foo" "-verbose" true "-user" "joe"])
+;;=> [{:prop "-server", :val [:s "foo"]}
+;;    {:prop "-verbose", :val [:b true]}
+;;    {:prop "-user", :val [:s "joe"]}]
+----
+
+If you need a description of a specification, use `describe` to retrieve one. Let's try it on some of the specifications we've already defined:
+
+[source,clojure]
+----
+(s/describe ::seq-of-keywords)
+;;=> (* keyword?)
+(s/describe ::odds-then-maybe-even)
+;;=> (cat :odds (+ odd?) :even (? even?))
+(s/describe ::opts)
+;;=> (* (cat :opt keyword? :val boolean?))
+----
+
+Spec also defines one additional regex operator, http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/&[`&`], which takes a regex operator and constrains it with one or more additional predicates. This can be used to create regular expressions with additional constraints that would otherwise require custom predicates. For example, consider wanting to match only sequences with an even number of strings:
+
+[source,clojure]
+----
+(s/def ::even-strings (s/& (s/* string?) #(even? (count %))))
+(s/valid? ::even-strings ["a"])  ;; false
+(s/valid? ::even-strings ["a" "b"])  ;; true
+(s/valid? ::even-strings ["a" "b" "c"])  ;; false
+(s/valid? ::even-strings ["a" "b" "c" "d"])  ;; true
+----
+
+When regex ops are combined, they describe a single sequence. If you need to spec a nested sequential collection,
+you must use an explicit call to http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/spec[`spec`]
+to start a new nested regex context. For example to describe a sequence like `[:names ["a" "b"] :nums [1 2 3]]`,
+you need nested regular expressions to describe the inner sequential data:
+
+[source,clojure]
+----
+(s/def ::nested
+  (s/cat :names-kw #{:names}
+         :names (s/spec (s/* string?))
+         :nums-kw #{:nums}
+         :nums (s/spec (s/* number?))))
+(s/conform ::nested [:names ["a" "b"] :nums [1 2 3]])
+;;=> {:names-kw :names, :names ["a" "b"], :nums-kw :nums, :nums [1 2 3]}
+----
+
+If the specs were removed this spec would instead match a sequence like `[:names "a" "b" :nums 1 2 3]`.
+
+[source,clojure]
+----
+(s/def ::unnested
+  (s/cat :names-kw #{:names}
+         :names (s/* string?)
+         :nums-kw #{:nums}
+         :nums (s/* number?)))
+(s/conform ::unnested [:names "a" "b" :nums 1 2 3])
+;;=> {:names-kw :names, :names ["a" "b"], :nums-kw :nums, :nums [1 2 3]}
 ----
 
 == Using spec for validation
@@ -595,30 +635,11 @@ We can then provide a specification for that function:
              #(< (:ret %) (-> % :args :end))))
 ----
 
-This function spec demonstrates a number of features. First the `:args` is a compound spec that verifies the types of the arguments. This spec is invoked with the args in a list, as if they were passed to `(apply fn (arg-list))`. Because the args are sequential and the args are positional fields, they are almost always described using a regex op, like `cat`, `alt`, or `*`. The second predicate takes as input the conformed result of the first predicate and verifies that start < end. The `:ret` value spec is also an integer. Finally, the `:fn` spec checks that the return value is >= start and < end.
+This function spec demonstrates a number of features. First the `:args` is a compound spec that describes the function arguments. This spec is invoked with the args in a list, as if they were passed to `(apply fn (arg-list))`. Because the args are sequential and the args are positional fields, they are almost always described using a regex op, like `cat`, `alt`, or `*`. 
 
-We can turn on instrumentation (spec checking) with:
+The second `:ret` predicate takes as input the conformed result of the first predicate and verifies that start < end. The `:ret` value spec is also an integer. Finally, the `:fn` spec checks that the return value is >= start and < end.
 
-[source,clojure]
-----
-(s/instrument `ranged-rand)
-----
-
-Instrument takes a fully-qualified symbol so we use `pass:[`]` to resolve it in the context of the current namespace. If the args are invalid you'll see an error like this:
-
-[source,clojure]
-----
-(ranged-rand 8 5)
-;; CompilerException clojure.lang.ExceptionInfo: Call to #'ranged-rand did not conform to spec:
-;; val: {:start 8, :end 5} fails at: [:args] predicate: (< (:start %) (:end %))
-;; :clojure.spec/args  (8 5)
-----
-
-The error fails the second args predicate that checks `(< start end)`. 
-
-Instrumentation of spec'ed functions can also be turned on more widely using the `instrument-all` function. Instrumentation can be turned off using the complementary functions `unstrument` or `unstrument-all`. It's up to you when to use instrumentation and how much. You may want a lot of instrumentation when working at the REPL and different instrumentation at test time. 
-
-Instrumentation only checks the `:args` spec on a function, catching invalid calls external to the function. To validate that the function actually works as intended, you should test your function using the additional tools in `clojure.spec.test`. More on that after we talk about generators!
+We'll see later how we can use a function spec for development and testing.
 
 == Higher order functions
 
@@ -1053,7 +1074,43 @@ Finally, http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#cl
 
 To learn more about generators, read the test.check http://clojure.github.io/test.check/intro.html[tutorial] or http://clojure.github.io/test.check/generator-examples.html[examples]. Do keep in mind that while clojure.spec.gen is a large subset of clojure.test.check.generators, not everything is included.
 
-== Testing
+== Instrumentation and Testing
+
+spec provides a set of development and testing functionality in the `clojure.spec.test` namespace, which we can include with:
+
+[source,clojure]
+----
+(require '[clojure.spec.test :as stest])
+----
+
+=== Instrumentation
+
+Instrumentation allows us to validate the `:args` on invocation and produce an error if the call is invalid. This can be used to validate that external calls to a function conform to the spec defined via `fdef`.
+
+Instrumentation for our previously spec'ed `ranged-rand` function is turned on with:
+
+[source,clojure]
+----
+(stest/instrument `ranged-rand)
+----
+
+Instrument takes a fully-qualified symbol so we use `pass:[`]` here to resolve it in the context of the current namespace. If the function is invoked with args that do not conform the `:args` spec you will see an error like this:
+
+[source,clojure]
+----
+(ranged-rand 8 5)
+CompilerException clojure.lang.ExceptionInfo: Call to #'spec.examples.guide/ranged-rand did not conform to spec:
+val: {:start 8, :end 5} fails at: [:args] predicate: (< (:start %) (:end %))
+:clojure.spec/args  (8 5)
+:clojure.spec/failure  :instrument-check-failed
+ #:clojure.spec{:problems [{:path [:args], :pred (< (:start %) (:end %)), :val {:start 8, :end 5}, :via [], :in []}], :args (8 5), :failure :instrument-check-failed}
+----
+
+The error fails the second args predicate that checks `(< start end)`. Note that the `:ret` and `:fn` specs are not checked with instrumentation. It is expected that these specs will be checked during testing instead.
+
+Instrumentation can be turned off using the complementary function `unstrument`. Instrumentation is likely to be useful at development time or testing time to discover errors in other code that are invoking a function incorrectly. It is not recommended to use instrumentation in production as there is some overhead involved with checking args specs.
+
+=== Testing
 
 We mentioned earlier that `clojure.spec.test` provides tools for automatically testing functions. When functions have specs with generators, we can use http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec.test/test[`test`], to automatically generate tests that check the function using the specs. 
 
@@ -1087,27 +1144,25 @@ This broken function will still create random integers, just not in the expected
 
 [source,clojure]
 ----
-(stest/check-var #'ranged-rand)
-;;{:result {:clojure.spec/problems {[] {:pred (>= (:ret %) (-> % :args :start)),
-;;                                      :val {:args {:start -1, :end 3}, :ret -3},
-;;                                      :via [],
-;;                                      :in []}},
-;;          :failed-on :fn},
-;; :seed 1466023411366,
-;; :failing-size 0,
-;; :num-tests 1,
-;; :fail [(-1 3)],
-;; :shrunk {:total-nodes-visited 2,
-;;          :depth 1,
-;;          :result {:clojure.spec/problems {[] {:pred (>= (:ret %) (-> % :args :start)),
-;;                                               :val {:args {:start 0, :end 3}, :ret -2},
-;;                                               :via [],
-;;                                               :in []}},
-;;                   :failed-on :fn},
-;;          :smallest [(0 3)]}}
+(stest/abbrev-result (first (stest/test `ranged-rand)))
+;;=> ({:spec (fspec
+;;            :args (and (cat :start int? :end int?) (fn* [p1__3468#] (< (:start p1__3468#) (:end p1__3468#))))
+;;            :ret int?
+;;            :fn (and
+;;                  (fn* [p1__3469#] (>= (:ret p1__3469#) (-> p1__3469# :args :start)))
+;;                  (fn* [p1__3470#] (< (:ret p1__3470#) (-> p1__3470# :args :end))))),
+;;     :sym spec.examples.guide/ranged-rand,
+;;     :result {:clojure.spec/problems [{:path [:fn],
+;;                                       :pred (>= (:ret %) (-> % :args :start)),
+;;                                       :val {:args {:start -3, :end 0}, :ret -5},
+;;                                       :via [],
+;;                                      :in []}],
+;;              :clojure.spec.test/args (-3 0),
+;;              :clojure.spec.test/val {:args {:start -3, :end 0}, :ret -5},
+;;              :clojure.spec/failure :test-failed}}
 ----
 
-`test` has reported an error in the `:fn` spec. We can see the arguments passed were -1 and 3 and the return value was -3, which is out of the expected range. At the bottom, test.check takes one step further though and "shrinks" the invalid inputs to find simpler/smaller inputs that yield the same error. Here the "simpler" inputs were 0 and 3, which is not much different, but on complicated data, shrinking is a killer feature for finding failing examples.
+`test` has reported an error in the `:fn` spec. We can see the arguments passed were -3 and 0 and the return value was -5, which is out of the expected range.
 
 == Wrapping Up
 

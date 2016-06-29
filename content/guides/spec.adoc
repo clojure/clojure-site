@@ -390,7 +390,7 @@ Following is an example utilizing some of these options to spec a vector contain
 
 [NOTE]
 ====
-Both `coll-of` and `map-of` will conform all of their elements, which may make them unsuitable for large collections. In that case, consisder http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/every[`every`] or for maps  http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/every-kv[`every-kv`].
+Both `coll-of` and `map-of` will conform all of their elements, which may make them unsuitable for large collections. In that case, consider http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/every[`every`] or for maps  http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/every-kv[`every-kv`].
 ====
 
 While `coll-of` is good for homogenous collections of any size, another case is a fixed-size positional collection with fields of known type at different positions. For that we have `tuple`.

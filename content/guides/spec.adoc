@@ -367,7 +367,7 @@ For the special case of a homogenous collection of arbitrary size, you can use `
 
 Additionally, `coll-of` can be passed a number of keyword arg options:
 
-* `:kind` - one of [], (), {}, or #{} to check that the incoming collection is of this type
+* `:kind` - a predicate or spec that the incoming collection must satisfy, such as `vector?`
 * `:count` - specifies exact expected count
 * `:min-count`, `:max-count` - checks that collection has `(<= min-count count max-count)`
 * `:distinct` - checks that all elements are distinct
@@ -377,7 +377,7 @@ Following is an example utilizing some of these options to spec a vector contain
 
 [source,clojure]
 ----
-(s/def ::vnum3 (s/coll-of number? :kind [] :count 3 :distinct true :into #{}))
+(s/def ::vnum3 (s/coll-of number? :kind vector? :count 3 :distinct true :into #{}))
 (s/conform ::vnum3 [1 2 3])
 ;;=> #{1 2 3}
 (s/explain ::vnum3 #{1 2 3})   ;; not a vector

@@ -288,6 +288,24 @@ One common occurrence in Clojure is the use of "keyword args" where keyword keys
 (s/conform ::server [::id :s1 ::host "example.com" ::port 5555])
 ;;=> {:my.domain/id :s1, :my.domain/host "example.com", :my.domain/port 5555}
 ----
+Sometimes it will be convenient to declare entity maps in parts, either because there are different sources for requirements on an entity map or because there is a common set of keys and variant-specific parts. The `s/merge` spec can be used to combine multiple `s/keys` specs into a single spec that combines their requirements. For example consider two `keys` specs that define common animal attributes and some dog-specific ones. The dog entity itself can be described as a `merge` of those two attribute sets:
+
+[source,clojure]
+----
+(s/def :animal/kind string?)
+(s/def :animal/says string?)
+(s/def :animal/common (s/keys :req [:animal/kind :animal/says]))
+(s/def :dog/tail? boolean?)
+(s/def :dog/breed string?)
+(s/def :animal/dog (s/merge :animal/common
+                            (s/keys :req [:dog/tail? :dog/breed])))
+(s/valid? :animal/dog
+  {:animal/kind "dog"
+   :animal/says "woof"
+   :dog/tail? true
+   :dog/breed "retriever"})
+;;=> true
+----
 
 == multi-spec
 

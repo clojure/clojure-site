@@ -55,9 +55,43 @@ Vectors are zero or more forms enclosed in square brackets: `[1 2 3]`
 
 === Maps
 
-* Maps are zero or more key/value pairs enclosed in braces: `{:a 1 :b 2}` +
-* Commas are considered whitespace, and can be used to organize the pairs: `{:a 1, :b 2}` +
+* Maps are zero or more key/value pairs enclosed in braces: `{:a 1 :b 2}`
+* Commas are considered whitespace, and can be used to organize the pairs: `{:a 1, :b 2}`
 * Keys and values can be any forms.
+
+==== Map namespace syntax
+
+Map literals can optionally specify a default namespace context for keys in the map using a `#:ns` prefix, where _ns_ is the name of a namespace and the prefix precedes the opening brace `{` of the map. Additionally, `pass:[#::]` can be used to auto-resolve namespaces with the same semantics as auto-resolved keywords.
+
+A map literal with namespace syntax is read with the following differences from a map without:
+
+* Keys
+** Keys that are keywords or symbols without a namespace are read with the default namespace.
+** Keys that are keywords or symbols with a namespace are not affected *except* for the special namespace `_`, which is removed during read. This allows for the specification of keywords or symbols without namespaces as keys in a map literal with namespace syntax.
+** Keys that are not symbols or keywords are not affected.
+* Values
+** Values are not affected.
+** Nested map literal keys are not affected.
+
+For example, the following map literal with namespace syntax:
+
+[source,clojure]
+----
+#:person{:first "Han"
+         :last "Solo"
+         :ship #:ship{:name "Millenium Falcon"
+                      :model "YT-1300f light freighter"}}
+----
+
+is read as:
+
+[source,clojure]
+----
+{:person/first "Han"
+ :person/last "Solo"
+ :person/ship {:ship/name "Millenium Falcon" 
+               :ship/model "YT-1300f light freighter"}}
+----
 
 === Sets
 

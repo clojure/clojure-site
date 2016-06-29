@@ -311,7 +311,7 @@ As of Clojure 1.6, you can also use prefixed map keys in the map destructuring f
 -> 3
 ----
 
-As shown above, in the case of using prefixed keys, the bound symbol name will be the same as the right-hand side of the prefixed key. You can also use auto-resolved keyword forms in the _**:keys**_ directive:
+In the case of using prefixed keys, the bound symbol name will be the same as the right-hand side of the prefixed key. You can also use auto-resolved keyword forms in the _**:keys**_ directive:
 
 [source,clojure]
 ----
@@ -323,6 +323,25 @@ As shown above, in the case of using prefixed keys, the bound symbol name will b
 ----
 
 There are similar _**:strs**_ and _**:syms**_ directives for matching string and symbol keys, the latter also allowing prefixed symbol keys since Clojure 1.6.
+
+Clojure 1.8 adds support for directly destructuring many keys (or symbols) that share the same namespace using the following destructuring key forms: 
+
+* `:__ns__/keys` - _ns_ specifies the default namespace for the key to look up in the input
+** keys elements should not specify a namespace
+** keys elements also define new local symbols, as with :keys
+* `:__ns__/syms` - _ns_ specifies the default namespace for the symbol to look up in the input
+** syms elements should not specify a namespace
+** syms elements also define new local symbols, as with :syms
+
+[source,clojure]
+----
+(let [m #:domain{:a 1, :b 2}
+      {:domain/keys [a b]} m]
+  [a b])
+
+-> [1 2]
+----
+
 
 === Nested destructuring
 

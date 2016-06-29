@@ -324,7 +324,7 @@ In the case of using prefixed keys, the bound symbol name will be the same as th
 
 There are similar _**:strs**_ and _**:syms**_ directives for matching string and symbol keys, the latter also allowing prefixed symbol keys since Clojure 1.6.
 
-Clojure 1.8 adds support for directly destructuring many keys (or symbols) that share the same namespace using the following destructuring key forms: 
+Clojure 1.9 adds support for directly destructuring many keys (or symbols) that share the same namespace using the following destructuring key forms: 
 
 * `:__ns__/keys` - _ns_ specifies the default namespace for the key to look up in the input
 ** keys elements should not specify a namespace

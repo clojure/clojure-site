@@ -1103,16 +1103,14 @@ spec provides a set of development and testing functionality in the `clojure.spe
 
 === Instrumentation
 
-Instrumentation allows us to validate the `:args` on invocation and produce an error if the call is invalid. This can be used to validate that external calls to a function conform to the spec defined via `fdef`.
-
-Instrumentation for our previously spec'ed `ranged-rand` function is turned on with:
+Instrumentation validates that the `:args` spec is being invoked on instrumented functions and thus provides validation for external uses of a function. Let's turn on instrumentation for our previously spec'ed `ranged-rand` function:
 
 [source,clojure]
 ----
 (stest/instrument `ranged-rand)
 ----
 
-Instrument takes a fully-qualified symbol so we use `pass:[`]` here to resolve it in the context of the current namespace. If the function is invoked with args that do not conform the `:args` spec you will see an error like this:
+Instrument takes a fully-qualified symbol so we use `pass:[`]` here to resolve it in the context of the current namespace. If the function is invoked with args that do not conform with the `:args` spec you will see an error like this:
 
 [source,clojure]
 ----
@@ -1124,15 +1122,15 @@ val: {:start 8, :end 5} fails at: [:args] predicate: (< (:start %) (:end %))
  #:clojure.spec{:problems [{:path [:args], :pred (< (:start %) (:end %)), :val {:start 8, :end 5}, :via [], :in []}], :args (8 5), :failure :instrument-check-failed}
 ----
 
-The error fails the second args predicate that checks `(< start end)`. Note that the `:ret` and `:fn` specs are not checked with instrumentation. It is expected that these specs will be checked during testing instead.
+The error fails in the second args predicate that checks `(< start end)`. Note that the `:ret` and `:fn` specs are not checked with instrumentation as validating the implementation should occur at testing time.
 
-Instrumentation can be turned off using the complementary function `unstrument`. Instrumentation is likely to be useful at development time or testing time to discover errors in other code that are invoking a function incorrectly. It is not recommended to use instrumentation in production as there is some overhead involved with checking args specs.
+Instrumentation can be turned off using the complementary function `unstrument`. Instrumentation is likely to be useful at both development time and during testing to discover errors in calling code. It is not recommended to use instrumentation in production due to the overhead involved with checking args specs.
 
 === Testing
 
-We mentioned earlier that `clojure.spec.test` provides tools for automatically testing functions. When functions have specs with generators, we can use http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec.test/test[`test`], to automatically generate tests that check the function using the specs. 
+We mentioned earlier that `clojure.spec.test` provides tools for automatically testing functions. When functions have specs, we can use http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec.test/test[`test`], to automatically generate tests that check the function using the specs. 
 
-`test` will generate arguments based on the `:args` spec for a function, invoke the function, and validate the `:ret` and `:fn` specs were satisfied.
+`test` will generate arguments based on the `:args` spec for a function, invoke the function, and check that the `:ret` and `:fn` specs were satisfied.
 
 [source,clojure]
 ----
@@ -1181,6 +1179,15 @@ This broken function will still create random integers, just not in the expected
 ----
 
 `test` has reported an error in the `:fn` spec. We can see the arguments passed were -3 and 0 and the return value was -5, which is out of the expected range.
+
+To test all of the spec'ed functions in a namespace (or multiple namespaces), use http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec.test/enumerate-namespace[`enumerate-namespace`] to generate the set of symbols naming vars in the namespace:
+
+[source,clojure]
+----
+(-> (stest/enumerate-namespace 'user) stest/test)
+----
+
+And you can test all of spec'ed functions by calling `stest/test` without any arguments.
 
 == Wrapping Up
 

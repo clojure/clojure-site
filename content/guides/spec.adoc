@@ -15,7 +15,7 @@ The <<xref/../../../about/spec#,spec>> library specifies the structure of data, 
 
 [source, clojure]
 ----
-[org.clojure/clojure "1.9.0-alpha8"]
+[org.clojure/clojure "1.9.0-alpha9"]
 ----
 
 To start working with spec, require the `clojure.spec` namespace or include in your namespace definition:
@@ -1128,15 +1128,15 @@ Instrumentation can be turned off using the complementary function `unstrument`.
 
 === Testing
 
-We mentioned earlier that `clojure.spec.test` provides tools for automatically testing functions. When functions have specs, we can use http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec.test/test[`test`], to automatically generate tests that check the function using the specs. 
+We mentioned earlier that `clojure.spec.test` provides tools for automatically testing functions. When functions have specs, we can use http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec.test/check[`check`], to automatically generate tests that check the function using the specs.
 
-`test` will generate arguments based on the `:args` spec for a function, invoke the function, and check that the `:ret` and `:fn` specs were satisfied.
+`check` will generate arguments based on the `:args` spec for a function, invoke the function, and check that the `:ret` and `:fn` specs were satisfied.
 
 [source,clojure]
 ----
 (require '[clojure.spec.test :as stest])
 
-(stest/test `ranged-rand)
+(stest/check `ranged-rand)
 ;;=> ({:spec #object[clojure.spec$fspec_impl$reify__13728 0x4a47e374 "clojure.spec$fspec_impl$reify__13728@4a47e374"],
 ;;     :clojure.spec.test.check/ret {:result true, :num-tests 100, :seed 1466805740290},
 ;;     :sym spec.examples.guide/ranged-rand,
@@ -1144,7 +1144,7 @@ We mentioned earlier that `clojure.spec.test` provides tools for automatically t
 ;;     :type :pass})
 ----
 
-`test` also takes a number of options that can be passed to test.check to influence the test run, as well as the option to override generators for parts of the spec, by either name or path.
+`check` also takes a number of options that can be passed to test.check to influence the test run, as well as the option to override generators for parts of the spec, by either name or path.
 
 Imagine instead that we made an error in the ranged-rand code and swapped start and end:
 
@@ -1160,7 +1160,7 @@ This broken function will still create random integers, just not in the expected
 
 [source,clojure]
 ----
-(stest/abbrev-result (first (stest/test `ranged-rand)))
+(stest/abbrev-result (first (stest/check `ranged-rand)))
 ;;=> ({:spec (fspec
 ;;            :args (and (cat :start int? :end int?) (fn* [p1__3468#] (< (:start p1__3468#) (:end p1__3468#))))
 ;;            :ret int?
@@ -1178,16 +1178,16 @@ This broken function will still create random integers, just not in the expected
 ;;              :clojure.spec/failure :test-failed}}
 ----
 
-`test` has reported an error in the `:fn` spec. We can see the arguments passed were -3 and 0 and the return value was -5, which is out of the expected range.
+`check` has reported an error in the `:fn` spec. We can see the arguments passed were -3 and 0 and the return value was -5, which is out of the expected range.
 
 To test all of the spec'ed functions in a namespace (or multiple namespaces), use http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec.test/enumerate-namespace[`enumerate-namespace`] to generate the set of symbols naming vars in the namespace:
 
 [source,clojure]
 ----
-(-> (stest/enumerate-namespace 'user) stest/test)
+(-> (stest/enumerate-namespace 'user) stest/check)
 ----
 
-And you can test all of spec'ed functions by calling `stest/test` without any arguments.
+And you can check all of the spec'ed functions by calling `stest/check` without any arguments.
 
 == Wrapping Up
 

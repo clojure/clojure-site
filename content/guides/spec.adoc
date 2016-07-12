@@ -177,7 +177,7 @@ In addition to `explain`, you can use http://clojure.github.io/clojure/branch-ma
 
 [NOTE]
 ====
-This result also demonstrates the new namespaced map syntax added in 1.9.0-alpha8. Maps may be prefixed with #: or #:: (for autoresolve) to specify a default namespace for all keys in the map. In this example, this is equivalent to `{:clojure.spec/problems ...}`
+This result also demonstrates the new namespace map literal syntax added in 1.9.0-alpha8. Maps may be prefixed with #: or #:: (for autoresolve) to specify a default namespace for all keys in the map. In this example, this is equivalent to `{:clojure.spec/problems ...}`
 ====
 
 == Entity Maps
@@ -593,6 +593,24 @@ One way to use spec is to explicitly call `valid?` to verify input data passed t
 ----
 
 When the function is invoked with something that isn't valid `::person` data, the pre-condition fails. Similarly, if there was a bug in our code and the output was not a string, the post-condition would fail.
+
+Another option is to use `s/assert` within your code to assert that a value satisfies a spec. On success the value is returned and on failure an assertion error is thrown. By default assertion checking is off - this can be changed at the REPL with `s/check-asserts` or on startup by setting the system property `clojure.spec.check-asserts=true`.
+
+[source,clojure]
+----
+(defn person-name
+  [person]
+  (let [p (s/assert ::person person)]
+    (str (::first-name p) " " (::last-name p))))
+
+(s/check-asserts true)
+(person-name 100)
+;; CompilerException clojure.lang.ExceptionInfo: Spec assertion failed
+;; val: 100 fails predicate: map?
+;; :clojure.spec/failure  :assertion-failed
+;; #:clojure.spec{:problems [{:path [], :pred map?, :val 100, :via [], :in []}], 
+;;                :failure :assertion-failed}
+----
 
 A deeper level of integration is to call conform and use the return value to destructure the input. This will be particularly useful for complex inputs with alternate options.
 

@@ -1207,6 +1207,63 @@ To test all of the spec'ed functions in a namespace (or multiple namespaces), us
 
 And you can check all of the spec'ed functions by calling `stest/check` without any arguments.
 
+=== Combining `check` and `instrument`
+
+While both `instrument` (for enabling `:args` checking) and `check` (for generating tests of a function) are useful tools, they can be combined to provide even deeper levels of test coverage.
+
+`instrument` takes a number of options for changing the behavior of instrumented functions, including support for swapping in alternate (narrower) specs, stubbing functions (by using the `:ret` spec to generate results), or replacing functions with an alternate implementation.
+
+Consider the case where we have a low-level function that invokes a remote service and a higher-level function that calls it.
+
+[source,clojure]
+----
+;; code under test
+
+(defn invoke-service [service request]
+  ;; invokes remote service
+  )
+
+(defn run-query [service query]
+  (let [{::keys [result error]} (invoke-service service {::query query})]
+    (or result error)))
+----
+
+We can spec these functions using the following specs:
+
+[source,clojure]
+----
+(s/def ::query string?)
+(s/def ::request (s/keys :req [::query]))
+(s/def ::result (s/coll-of string? :gen-max 3))
+(s/def ::error int?)
+(s/def ::response (s/or :ok (s/keys :req [::result])
+                    :err (s/keys :req [::error])))
+
+(s/fdef invoke-service
+  :args (s/cat :service any? :request ::request)
+  :ret ::response)
+
+(s/fdef run-query
+  :args (s/cat :service any? :query string?)
+  :ret (s/or :ok ::result :err ::error))
+----
+
+And then we want to test the behavior of `run-query` while stubbing out `invoke-service` with `instrument` so that the remote service is not invoked:
+
+[source,clojure]
+----
+(stest/instrument `invoke-service {:stub #{`invoke-service}})
+;;=> [spec.examples.guide/invoke-service]
+(invoke-service nil {::query "test"})
+;;=> #:spec.examples.guide{:error -11}
+(invoke-service nil {::query "test"})
+;;=> #:spec.examples.guide{:result ["kq0H4yv08pLl4QkVH8" "in6gH64gI0ARefv3k9Z5Fi23720gc"]}
+(stest/summarize-results (stest/check `run-query))
+;;=> {:total 1, :check-passed 1}
+----
+
+The first call here instruments and stubs `invoke-service`. The second and third calls demonstrate that calls to `invoke-service` now return generated results (rather than hitting a service). Finally, we can use `check` on the higher level function to test that it behaves properly based on the generated stub results returned from `invoke-service`.
+
 == Wrapping Up
 
 In this guide we have covered most of the features for designing and using specs and generators. We expect to add some more advanced generator techniques and help on testing in a future update.

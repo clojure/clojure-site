@@ -797,7 +797,7 @@ A key design constraint of spec is that all specs are also designed to act as ge
 
 === Project Setup
 
-spec generators rely on the Clojure property testing library https://github.com/clojure/test.check[test.check]. However, this dependency is dynamically loaded and you can use the parts of spec other than `gen`, `exercise`, and testing without declaring test.check as a runtime dependency. When you to wish to use these parts of spec (typically during testing), you will need to declare a dev dependency on test.check. 
+spec generators rely on the Clojure property testing library https://github.com/clojure/test.check[test.check]. However, this dependency is dynamically loaded and you can use the parts of spec other than `gen`, `exercise`, and testing without declaring test.check as a runtime dependency. When you wish to use these parts of spec (typically during testing), you will need to declare a dev dependency on test.check. 
 
 In Leiningen add this to project.clj:
 
@@ -1075,7 +1075,7 @@ For example, in the case of a range of integer values (for example, a bowling ro
 
 [source,clojure]
 ----
-(s/def ::roll (s/int-in 0 11)
+(s/def ::roll (s/int-in 0 11))
 (gen/sample (s/gen ::roll))
 ;;=> (1 0 0 3 1 7 10 1 5 0)
 ----

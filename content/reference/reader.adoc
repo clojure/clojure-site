@@ -61,6 +61,8 @@ Vectors are zero or more forms enclosed in square brackets: `[1 2 3]`
 
 ==== Map namespace syntax
 
+_Added in Clojure 1.9_
+
 Map literals can optionally specify a default namespace context for keys in the map using a `#:ns` prefix, where _ns_ is the name of a namespace and the prefix precedes the opening brace `{` of the map. Additionally, `pass:[#::]` can be used to auto-resolve namespaces with the same semantics as auto-resolved keywords.
 
 A map literal with namespace syntax is read with the following differences from a map without:

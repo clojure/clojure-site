@@ -1058,14 +1058,13 @@ Returning to our "hello" example, we now have the tools to make that generator:
 ----
 (s/def ::hello
   (s/with-gen #(clojure.string/includes? % "hello")
-    (fn [] (gen/fmap (fn [s] (let [i (rand-int (count s))]
-                               (str (subs s 0 i) "hello" (subs s i)))) 
-             (gen/string-alphanumeric)))))
+    #(gen/fmap (fn [[s1 s2]] (str s1 "hello" s2))
+      (gen/tuple (gen/string-alphanumeric) (gen/string-alphanumeric)))))
 (gen/sample (s/gen ::hello))
-;;=> ("hello" "hello" "helloN3" "helloe15" "helloFZx" "hello" "helloA" "CMd9jWhello5" "s5helloL2s4y" "yI2hellokMq")
+;;=> ("hello" "ehello3" "eShelloO1" "vhello31p" "hello" "1Xhellow" "S5bhello" "aRejhellorAJ7Yj" "3hellowPMDOgv7" "UhelloIx9E")
 ----
 
-Here we generate a random string, then insert "hello" at a random index in the string. This utilizes a common trick - generate something random and insert or override the things that will make it conformant.
+Here we generate a tuple of a random prefix and random suffix strings, then insert "hello" bewteen them.
 
 === Range Specs and Generators
 

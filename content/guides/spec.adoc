@@ -673,7 +673,7 @@ We can then provide a specification for that function:
 
 This function spec demonstrates a number of features. First the `:args` is a compound spec that describes the function arguments. This spec is invoked with the args in a list, as if they were passed to `(apply fn (arg-list))`. Because the args are sequential and the args are positional fields, they are almost always described using a regex op, like `cat`, `alt`, or `*`. 
 
-The second `:ret` predicate takes as input the conformed result of the first predicate and verifies that start < end. The `:ret` value spec is also an integer. Finally, the `:fn` spec checks that the return value is >= start and < end.
+The second `:args` predicate takes as input the conformed result of the first predicate and verifies that start < end. The `:ret` spec indicates the return is also an integer. Finally, the `:fn` spec checks that the return value is >= start and < end.
 
 We'll see later how we can use a function spec for development and testing.
 

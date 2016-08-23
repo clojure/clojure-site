@@ -18,6 +18,13 @@ These questions and answers are adapted from mailing lists and other Clojure com
 
 Keywords are cached and interned. This means that a keyword is reused (reducing memory) everywhere in your program and that checks for equality really become checks for identity (which are fast). Additionally, keywords are invokable to look themselves up in a map and thus this enables the common pattern of extracting a particular field from a collection of maps possible.
 
+[[unreadable_keywords]]
+**<<faq#unreadable_keywords,Why is it possible to create keywords that can't be read by the reader?>>**
+
+The http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/keyword[`keyword`] function can be used to programmatically create keywords based on user data or other sources of input. Similarly, the http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/namespace[`namespace`] and http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/name[`name`] functions can be used to pull a keyword back apart into components. It is common for programs to use this functionality to create keywords to be used as identifiers or map keys without ever printing and reading that data back.
+
+Because of this use case (and also for general performance), no validation check is performed on the inputs to `keyword` (or `symbol`), which makes it possible to create keywords that, when printed, cannot be read back into a keyword (due to spaces or other non-allowed characters). If this is important to you, you should validate the keyword inputs first, before creating the keyword.
+
 [[reader_macros]]
 **<<faq#reader_macros,Why does Clojure not have user-extensible reader macros?>>**
 

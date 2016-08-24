@@ -185,7 +185,7 @@ In addition to `explain`, you can use http://clojure.github.io/clojure/branch-ma
 
 [NOTE]
 ====
-This result also demonstrates the new namespace map literal syntax added in 1.9.0-alpha8. Maps may be prefixed with #: or #:: (for 0autoresolve) to specify a default namespace for all keys in the map. In this example, this is equivalent to `{:clojure.spec/problems ...}`
+This result also demonstrates the new namespace map literal syntax added in 1.9.0-alpha8. Maps may be prefixed with #: or #:: (for autoresolve) to specify a default namespace for all keys in the map. In this example, this is equivalent to `{:clojure.spec/problems ...}`
 ====
 
 == Entity Maps

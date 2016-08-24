@@ -155,9 +155,17 @@ http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spe
 ;; val: :foo fails spec: ::name-or-id at: [:id] predicate: int?
 ----
 
-The explain output identifies the problematic value and the predicate it was evaluating. In the last example we see that when there are alternatives, errors across all of the alternatives will be printed.
+Let's examine the output of the final example more closely. First note that there are two errors being reported - spec will evaluate all possible alternatives and report errors on every path. The parts of each error are:
 
-In addition to `explain`, you can use http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/explain-str[`explain-str`] to receive the error messages as a string or  http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/explain-data[`explain-data`] to receive the errors in a more extensive data format.
+* val - the value in the user's input that does not match
+* spec - the spec that was being evaluated
+* at - a path (a vector of keywords) indicating the location within the spec where the error occurred - the tags in the path correspond to any tagged part in a spec (the alternatives in an `or` or `alt`, the parts of a `cat`, the keys in a map, etc)
+* predicate - the actual predicate that was not satsified by val
+* in - the key path through a nested data val to the failing value. In this example, the top-level value is the one that is failing so this is essentially an empty path and is omitted.
+
+For the first reported error we can see that the value `:foo` did not satisfy the predicate `string?` at the path `:name` in the spec `::name-or-id`. The second reported error is similar but fails on the `:id` path instead. The actual value is a keyword so neither is a match.
+
+In addition to `explain`, you can use http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/explain-str[`explain-str`] to receive the error messages as a string or  http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/explain-data[`explain-data`] to receive the errors as data.
 
 [source,clojure]
 ----
@@ -177,7 +185,7 @@ In addition to `explain`, you can use http://clojure.github.io/clojure/branch-ma
 
 [NOTE]
 ====
-This result also demonstrates the new namespace map literal syntax added in 1.9.0-alpha8. Maps may be prefixed with #: or #:: (for autoresolve) to specify a default namespace for all keys in the map. In this example, this is equivalent to `{:clojure.spec/problems ...}`
+This result also demonstrates the new namespace map literal syntax added in 1.9.0-alpha8. Maps may be prefixed with #: or #:: (for 0autoresolve) to specify a default namespace for all keys in the map. In this example, this is equivalent to `{:clojure.spec/problems ...}`
 ====
 
 == Entity Maps
@@ -227,9 +235,17 @@ When conformance is checked on a map, it combines two things - checking that the
   {::first-name "Elon"
    ::last-name "Musk"
    ::email "n/a"})
-;; In: [:my.domain/email] val: "n/a" fails spec: :my.domain/email at:
-;;   [:my.domain/email] predicate: (re-matches email-regex %)
+;; In: [:my.domain/email] val: "n/a" fails spec: :my.domain/email 
+;;   at: [:my.domain/email] predicate: (re-matches email-regex %)
 ----
+
+Let's take a moment to examine the explain error output on that final example:
+
+* in - the path within the data to the failing value (here, a key in the person instance)
+* val - the failing value, here `"n/a"`
+* spec - the spec that failed, here `:my.domain/email`
+* at - the path in the spec where the failing value is located
+* predicate - the predicate that failed, here `(re-matches email-regex %)`
 
 Much existing Clojure code does not use maps with namespaced keys and so `keys` can also specify `:req-un` and `:opt-un` for required and optional unqualified keys. These variants specify namespaced keys used to find their specification, but the map only checks for the unqualified version of the keys.
 
@@ -366,6 +382,14 @@ And then finally we are ready to declare our `multi-spec` and try it out.
 ;; In: [:search/url] val: 200 fails spec: :search/url 
 ;;   at: [:event/search :search/url] predicate: string?
 ----
+
+Let's take a moment to examine the explain error output on that final example. There were two different kinds of failures detected. The first failure is due to the missing required `:event/timestamp` key in the event. The second is from the invalid `:search/url` value (a number instead of a string). We see the same parts as prior explain errors:
+
+* in - the path within the data to the failing value. This is omitted on the first error as it's at the root value but is the key in the map on the second error.
+* val - the failing value, either the full map or the individual key in the map
+* spec - the actual spec that failed
+* at - the path in the spec where the failing value occurred
+* predicate - the actual predicate that failed
 
 The `multi-spec` approach allows us to create an *open* system for spec validation, just like multimethods and protocols. New event types can be added later by just extending the `event-type` multimethod.
 
@@ -772,7 +796,7 @@ Or look at the errors we'll get from some bad data:
 In: [::players 0 ::hand 0 1] val: :banana fails spec: ::card at: [::players ::hand 1] predicate: suit?
 ----
 
-The error explains the path in the data structure down to the invalid value, the spec part it's trying to match, the path in the specs, and the predicate that failed.
+The error indicates the key path in the data structure down to the invalid value, the non-matching value, the spec part it's trying to match, the path in that spec, and the predicate that failed.
 
 If we have a function `deal` that doles out some cards to the players we can spec that function to verify the arg and return value are both suitable data values. We can also specify a `:fn` spec to verify that the count of cards in the game before the deal equals the count of cards after the deal.
 

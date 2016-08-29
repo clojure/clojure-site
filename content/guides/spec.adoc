@@ -475,7 +475,7 @@ You can also use the various count-related options on `map-of` that you have wit
 
 Sometimes sequential data is used to encode additional structure (typically new syntax, often used in macros). spec provides the standard https://en.wikipedia.org/wiki/Regular_expression[regular expression] operators to describe the structure of a sequential data value:
 
-* http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/cat[`cat`] - concatentation of predicates/patterns
+* http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/cat[`cat`] - concatenation of predicates/patterns
 * http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/alt[`alt`] - choice among alternative predicates/patterns
 * http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/*[`pass:[*]`] - 0 or more of a predicate/pattern
 * http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/%2B[`+`] - 1 or more of a predicate/pattern
@@ -1122,7 +1122,7 @@ Finally, http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#cl
 
 [source,clojure]
 ----
-(s/def ::dubs (s/double-in :min -100.0 :max 100.0 :NaN? false :infinity? false))
+(s/def ::dubs (s/double-in :min -100.0 :max 100.0 :NaN? false :infinite? false))
 (s/valid? ::dubs 2.9)
 ;;=> true
 (s/valid? ::dubs Double/POSITIVE_INFINITY)

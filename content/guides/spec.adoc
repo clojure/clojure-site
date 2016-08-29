@@ -1247,7 +1247,7 @@ Consider the case where we have a low-level function that invokes a remote servi
   )
 
 (defn run-query [service query]
-  (let [{:keys [result error]} (invoke-service service {::query query})]
+  (let [{::keys [result error]} (invoke-service service {::query query})]
     (or result error)))
 ----
 

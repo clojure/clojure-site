@@ -268,7 +268,10 @@ For function return values, the type hint can be placed before the arguments vec
 [[TypeAliases]]
 == Aliases
 
-Clojure provides aliases for primitive Java types and arrays which do not have typical representations as Java class names. For example, long arrays (long-array []) have a type of "[J".
+Clojure provides aliases for primitive Java types and arrays which do not have typical representations as Java class names.
+The types are represented according to the specification of
+http://docs.oracle.com/javase/specs/jvms/se7/html/jvms-4.html#jvms-4.3.2-200[Java Field Descriptors].
+For example, byte arrays (byte-array []) have a type of "[B".
 
 * int - A primitive int
 * ints - An int array

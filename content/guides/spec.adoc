@@ -15,7 +15,7 @@ The <<xref/../../../about/spec#,spec>> library specifies the structure of data, 
 
 [source, clojure]
 ----
-[org.clojure/clojure "1.9.0-alpha10"]
+[org.clojure/clojure "1.9.0-alpha12"]
 ----
 
 To start working with spec, require the `clojure.spec` namespace or include in your namespace definition:
@@ -214,7 +214,7 @@ Entity maps in spec are defined with http://clojure.github.io/clojure/branch-mas
 
 This registers a `::person` spec with the required keys `::first-name`, `::last-name`, and `::email`, with optional key `::phone`. The map spec never specifies the value spec for the attributes, only what attributes are required or optional.
 
-When conformance is checked on a map, it combines two things - checking that the required attributes are included, and checking that every registered key has a conforming value. We'll see later where optional attributes can be useful. Also note that ALL attributes are checked via `keys`, not just those listed in the `:req` and `:opt` keys. Thus a bare `(s/keys)` is valid and will check all attributes of a map without checking which keys are required or optional.
+When conformance is checked on a map, it does two things - checking that the required attributes are included, and checking that every registered key has a conforming value. We'll see later where optional attributes can be useful. Also note that ALL attributes are checked via `keys`, not just those listed in the `:req` and `:opt` keys. Thus a bare `(s/keys)` is valid and will check all attributes of a map without checking which keys are required or optional.
 
 [source,clojure]
 ----
@@ -743,8 +743,8 @@ The Clojure macroexpander will look for and conform :args specs registered for m
 [source,clojure]
 ----
 (declare 100)
-;; CompilerException java.lang.IllegalArgumentException: Call to clojure.core/declare did not conform to spec:
-;; In: [0] val: (100) fails at: [:args] predicate: (cat :names (* simple-symbol?)),  Extra input
+;; ExceptionInfo: Call to clojure.core/declare did not conform to spec:
+;; In: [0] val: 100 fails at: [:args :names] predicate: simple-symbol?
 ;; :clojure.spec/args  (100)
 ----
 

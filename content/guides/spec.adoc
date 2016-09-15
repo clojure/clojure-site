@@ -411,7 +411,7 @@ Additionally, `coll-of` can be passed a number of keyword arg options:
 
 * `:kind` - a predicate or spec that the incoming collection must satisfy, such as `vector?`
 * `:count` - specifies exact expected count
-* `:min-count`, `:max-count` - checks that collection has `(<= min-count count max-count)`
+* `:min-count`, `:max-count` - checks that collection has `(\<= min-count count max-count)`
 * `:distinct` - checks that all elements are distinct
 * `:into` - one of [], (), {}, or #{} for output conformed value. If `:into` is not specified, the input collection type will be used.
 

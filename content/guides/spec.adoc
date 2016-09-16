@@ -727,7 +727,7 @@ The `:ret` spec uses `fspec` to declare that the returning function takes and re
 
 == Macros
 
-As macros are functions that take code and produce code, they can also be spec'ed like functions. One special consideration however is that you must keep in mind that you are receiving code as data, not evaluated arguments, and that you are most commonly producing new code as data, so often it's not helpful to spec the :ret value of a function (as it's just code).
+As macros are functions that take code and produce code, they can also be spec'ed like functions. One special consideration however is that you must keep in mind that you are receiving code as data, not evaluated arguments, and that you are most commonly producing new code as data, so often it's not helpful to spec the :ret value of a macro (as it's just code).
 
 For example, we could spec the `clojure.core/declare` macro like this:
 

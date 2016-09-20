@@ -20,7 +20,7 @@ There are two types of reader conditionals, standard and splicing. The standard 
 ----
 #?(:clj  (Clojure expression)
    :cljs (ClojureScript expression)
-   :clr  (Clojure CLR expression))
+   :cljr (Clojure CLR expression))
 ----
 
 The syntax for a splicing reader conditional is `#?@`. It is used to splice lists into the containing form. So the Clojure reader would read this:

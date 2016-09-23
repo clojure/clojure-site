@@ -52,7 +52,7 @@ A protocol is a named set of named methods and their signatures, defined using h
 * The resulting functions dispatch on the type of their first argument, and thus must have at least one argument
 * defprotocol is dynamic, and does not require AOT compilation
 
-http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defprotocol[defprotocol] will automatically generate a corresponding interface, with the same name as the protocol, i.e. given a protocol my.ns/Protocol, an interface my.ns.Protocol. The interface will have methods corresponding to the protocol functions, and the protocol will automatically work with instances of the interface.
+http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defprotocol[defprotocol] will automatically generate a corresponding interface, with the same name as the protocol, e.g. given a protocol my.ns/Protocol, an interface my.ns.Protocol. The interface will have methods corresponding to the protocol functions, and the protocol will automatically work with instances of the interface.
 
 Note that you do not need to use this interface with http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/deftype[deftype] , http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defrecord[defrecord] , or http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/reify[reify], as they support protocols directly:
 

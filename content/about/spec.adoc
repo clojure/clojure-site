@@ -191,7 +191,7 @@ production runtime dependency on ``test.check``.
 ==== Predicative specs
 The basic idea is that specs are nothing more than a logical composition of predicates. At the bottom we are talking
 about the simple boolean predicates you are used to like ``int?`` or `symbol?`, or expressions you build yourself
-like `#(< 42 % 66)`
+like `#(< 42 % 66)`.
 **spec** adds logical ops like ``spec/and`` and ``spec/or`` which combine specs in a logical way and offer deep reporting,
 generation and conform support and, in the case of ``spec/or``, tagged returns.
 

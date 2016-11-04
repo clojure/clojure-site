@@ -801,7 +801,7 @@ Or look at the errors we'll get from some bad data:
    ::players [{::name "Kenny Rogers"
                ::score 100
                ::hand [[2 :banana]]}]})
-In: [::players 0 ::hand 0 1] val: :banana fails spec: ::card at: [::players ::hand 1] predicate: suit?
+;; In: [::players 0 ::hand 0 1] val: :banana fails spec: ::card at: [::players ::hand 1] predicate: suit?
 ----
 
 The error indicates the key path in the data structure down to the invalid value, the non-matching value, the spec part it's trying to match, the path in that spec, and the predicate that failed.

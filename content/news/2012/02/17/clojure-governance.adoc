@@ -7,7 +7,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 == Enter Rich, with Parentheses 
 
-In the beginning, there was a guy with an idea. That guy was Rich Hickey, and his idea was to combine the power of Lisp with the reach of a modern managed runtime. He started with http://jfli.sourceforge.net/[Jfli], embedding a JVM in Lispworks' Common Lisp implementation. When that proved inadequate, he took a two-year sabbatical to write the compiler that would eventually become http://clojure.org/[Clojure]: a completely new Lisp for the JVM with language-level concurrency support.
+In the beginning, there was a guy with an idea. That guy was Rich Hickey, and his idea was to combine the power of Lisp with the reach of a modern managed runtime. He started with http://jfli.sourceforge.net/[Jfli], embedding a JVM in Lispworks' Common Lisp implementation. When that proved inadequate, he took a two-year sabbatical to write the compiler that would eventually become https://clojure.org/[Clojure]: a completely new Lisp for the JVM with language-level concurrency support.
 
 In late 2007, Rich Hickey presented Clojure at a meeting of the New York Lisp users' group, http://lispnyc.org/[LispNYC]. I was there, and I was so excited by what I saw that I wrote one of the http://stuartsierra.com/2007/11/15/clojure-a-lisp-worth-talking-about[first blog articles about Clojure]. Three days later, I was asking questions about Java interop on the http://groups.google.com/group/clojure[Clojure mailing list].
 

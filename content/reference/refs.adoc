@@ -17,18 +17,18 @@ While <<vars#,Vars>> ensure safe use of mutable storage locations via thread _is
 
 Clojure transactions should be easy to understand if you've ever used database transactions - they ensure that all actions on Refs are atomic, consistent, and isolated. Atomic means that every change to Refs made within a transaction occurs or none do. Consistent means that each new value can be checked with a validator function before allowing the transaction to commit. Isolated means that no transaction sees the effects of any other transaction while it is running. Another feature common to STMs is that, should a transaction have a conflict while running, it is automatically retried.
 
-There are many ways to do STMs (locking/pessimistic, lock-free/optimistic and hybrids) and it is still a research problem. The Clojure STM uses http://en.wikipedia.org/wiki/Multiversion_concurrency_control[multiversion concurrency control] with adaptive history queues for http://en.wikipedia.org/wiki/Snapshot_isolation[snapshot isolation], and provides a distinct http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/commute[commute] operation.
+There are many ways to do STMs (locking/pessimistic, lock-free/optimistic and hybrids) and it is still a research problem. The Clojure STM uses http://en.wikipedia.org/wiki/Multiversion_concurrency_control[multiversion concurrency control] with adaptive history queues for http://en.wikipedia.org/wiki/Snapshot_isolation[snapshot isolation], and provides a distinct https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/commute[commute] operation.
 
 In practice, this means:
 
 . All reads of Refs will see a consistent snapshot of the 'Ref world' as of the starting point of the transaction (its 'read point'). The transaction _will_ see any changes it has made. This is called the _in-transaction-value_.
-. All changes made to Refs during a transaction (via http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ref-set[ref-set], http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/alter[alter] or http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/commute[commute]) will appear to occur at a single point in the 'Ref world' timeline (its 'write point').
+. All changes made to Refs during a transaction (via https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ref-set[ref-set], https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/alter[alter] or https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/commute[commute]) will appear to occur at a single point in the 'Ref world' timeline (its 'write point').
 . No changes will have been made by any other transactions to any Refs that have been *ref-set**_ / _**altered**_ / _**ensured**_ by this transaction.
 . Changes _may have_ been made by other transactions to any Refs that have been commuted by this transaction. That should be okay since the function applied by _**commute**_ should be commutative.
 . Readers and commuters will never block writers, commuters, or other readers.
 . Writers will never block commuters, or readers.
-. I/O and other activities with side-effects should be avoided in transactions, since transactions _will_ be retried. The http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/io![io!] macro can be used to prevent the use of an impure function in a transaction.
-. If a constraint on the validity of a value of a Ref that is being changed depends upon the simultaneous value of a Ref that is _not being changed_, that second Ref can be protected from modification by calling http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ensure[ensure]. Refs 'ensured' this way will be protected (item #3), but don't change the world (item #2).
+. I/O and other activities with side-effects should be avoided in transactions, since transactions _will_ be retried. The https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/io![io!] macro can be used to prevent the use of an impure function in a transaction.
+. If a constraint on the validity of a value of a Ref that is being changed depends upon the simultaneous value of a Ref that is _not being changed_, that second Ref can be protected from modification by calling https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ensure[ensure]. Refs 'ensured' this way will be protected (item #3), but don't change the world (item #2).
 . The Clojure MVCC STM is designed to work with the persistent collections, and it is strongly recommended that you use the Clojure collections as the values of your Refs. Since all work done in an STM transaction is speculative, it is imperative that there be a low cost to making copies and modifications. Persistent collections have free copies (just use the original, it can't be changed), and 'modifications' share structure efficiently. In any case:
 . The values placed in Refs _must be, or be considered, immutable_!! Otherwise, Clojure can't help you.
 
@@ -72,12 +72,12 @@ Distinct: 1000
 
 == Related functions
 
-Create a Ref: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ref[ref]
+Create a Ref: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ref[ref]
 
-Examine a Ref: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/deref[deref] _(see also the +@+ <<reader#,reader>> macro)_
+Examine a Ref: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/deref[deref] _(see also the +@+ <<reader#,reader>> macro)_
 
-Transaction macros: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/dosync[dosync] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/io![io!]
+Transaction macros: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/dosync[dosync] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/io![io!]
 
-Allowed only in a transaction: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ensure[ensure] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ref-set[ref-set] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/alter[alter] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/commute[commute]
+Allowed only in a transaction: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ensure[ensure] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ref-set[ref-set] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/alter[alter] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/commute[commute]
 
-Ref validators: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/set-validator![set-validator!] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/get-validator[get-validator]
+Ref validators: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/set-validator![set-validator!] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/get-validator[get-validator]

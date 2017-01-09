@@ -70,12 +70,12 @@ Numeric literals for BigInt and BigDecimal are specified using a postfix N and M
 === Related functions
 
 [%hardbreaks]
-Computation: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/%2B[\+] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/%2D[-] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/%2A[\*]  http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/%2F[/]  http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/inc[inc] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/dec[dec]  http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/quot[quot] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/rem[rem] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/min[min] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/max[max]
-Auto-promoting computation: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/%2B%27[+'] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/%2D%27[-'] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/%2A%27[*'] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/inc%27[inc'] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/dec%27[dec']
-Comparison: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/%3D%3D[==] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/%3C[<] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/%3C%3D[<=] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/%3E[>] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/%3E%3D[>=] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/zero%3F[zero?] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/pos%3F[pos?] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/neg%3F[neg?]
-Bitwise operations: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/bit-and[bit-and] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/bit-or[bit-or] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/bit-xor[bit-xor] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/bit-not[bit-not] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/bit-shift-right[bit-shift-right] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/bit-shift-left[bit-shift-left]
-Ratios: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/numerator[numerator] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/denominator[denominator]
-Coercions: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/int[int] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/bigdec[bigdec] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/bigint[bigint] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/double[double] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/float[float] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/long[long] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/num[num] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/short[short]
+Computation: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/%2B[\+] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/%2D[-] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/%2A[\*]  https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/%2F[/]  https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/inc[inc] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/dec[dec]  https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/quot[quot] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/rem[rem] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/min[min] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/max[max]
+Auto-promoting computation: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/%2B%27[+'] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/%2D%27[-'] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/%2A%27[*'] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/inc%27[inc'] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/dec%27[dec']
+Comparison: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/%3D%3D[==] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/%3C[<] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/%3C%3D[<=] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/%3E[>] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/%3E%3D[>=] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/zero%3F[zero?] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/pos%3F[pos?] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/neg%3F[neg?]
+Bitwise operations: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/bit-and[bit-and] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/bit-or[bit-or] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/bit-xor[bit-xor] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/bit-not[bit-not] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/bit-shift-right[bit-shift-right] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/bit-shift-left[bit-shift-left]
+Ratios: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/numerator[numerator] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/denominator[denominator]
+Coercions: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/int[int] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/bigdec[bigdec] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/bigint[bigint] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/double[double] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/float[float] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/long[long] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/num[num] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/short[short]
 
 [[Strings]]
 == Strings
@@ -89,41 +89,41 @@ user=> (map (fn [x] (.toUpperCase x)) (.split "Dasher Dancer Prancer" " "))
 
 === Related functions
 
-http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/str[str] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/string?[string?] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/pr-str[pr-str] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/prn-str[prn-str] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/print-str[print-str] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/println-str[println-str] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/with-out-str[with-out-str]
+https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/str[str] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/string?[string?] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/pr-str[pr-str] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/prn-str[prn-str] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/print-str[print-str] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/println-str[println-str] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/with-out-str[with-out-str]
 
 [[Characters]]
 == Characters
 Clojure characters are Java Characters.
 
 === Related functions
-http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/char[char] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/char-name-string[char-name-string] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/char-escape-string[char-escape-string]
+https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/char[char] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/char-name-string[char-name-string] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/char-escape-string[char-escape-string]
 
 [[Keywords]]
 == Keywords
 Keywords are symbolic identifiers that evaluate to themselves. They provide very fast equality tests. Like Symbols, they have names and optional <<namespaces#,namespaces>>, both of which are strings. The leading ':' is not part of the namespace or name.
 
-Keywords implement IFn for invoke() of one argument (a map) with an optional second argument (a default value). For example `(:mykey my-hash-map :none)` means the same as `(get my-hash-map :mykey :none)`. See http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/get[get].
+Keywords implement IFn for invoke() of one argument (a map) with an optional second argument (a default value). For example `(:mykey my-hash-map :none)` means the same as `(get my-hash-map :mykey :none)`. See https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/get[get].
 
 === Related functions
-http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/keyword[keyword] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/keyword?[keyword?]
+https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/keyword[keyword] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/keyword?[keyword?]
 [[Symbols]]
 
 == Symbols
-Symbols are identifiers that are normally used to refer to something else. They can be used in program forms to refer to function parameters, let bindings, class names and global vars. They have names and optional <<namespaces#,namespaces>>, both of which are strings. Symbols can have metadata (see http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/with-meta[with-meta]).
+Symbols are identifiers that are normally used to refer to something else. They can be used in program forms to refer to function parameters, let bindings, class names and global vars. They have names and optional <<namespaces#,namespaces>>, both of which are strings. Symbols can have metadata (see https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/with-meta[with-meta]).
 
-Symbols, just like Keywords, implement IFn for invoke() of one argument (a map) with an optional second argument (a default value). For example `('mysym my-hash-map :none)` means the same as `(get my-hash-map 'mysym :none)`. See http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/get[get].
+Symbols, just like Keywords, implement IFn for invoke() of one argument (a map) with an optional second argument (a default value). For example `('mysym my-hash-map :none)` means the same as `(get my-hash-map 'mysym :none)`. See https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/get[get].
 
 === Related functions
-http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/symbol[symbol] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/symbol?[symbol?] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/genysm[gensym] (see also the \#-suffix <<reader#,reader>> macro)
+https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/symbol[symbol] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/symbol?[symbol?] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/genysm[gensym] (see also the \#-suffix <<reader#,reader>> macro)
 
 [[Collections]]
 == Collections
 
 All of the Clojure collections are immutable and http://en.wikipedia.org/wiki/Persistent_data_structure[persistent]. In particular, the Clojure collections support efficient creation of 'modified' versions, by utilizing structural sharing, and make all of their performance bound guarantees for persistent use. The collections are efficient and inherently thread-safe. Collections are represented by abstractions, and there may be one or more concrete realizations. In particular, since 'modification' operations yield new collections, the new collection might not have the same concrete type as the source collection, but will have the same logical (interface) type.
 
-All the collections support http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/count[count] for getting the size of the collection, http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/conj[conj] for 'adding' to the collection, and http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/seq[seq] to get a sequence that can walk the entire collection, though their specific behavior is slightly different for different types of collections.
+All the collections support https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/count[count] for getting the size of the collection, https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/conj[conj] for 'adding' to the collection, and https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/seq[seq] to get a sequence that can walk the entire collection, though their specific behavior is slightly different for different types of collections.
 
-Because collections support the http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/seq[seq] function, all of the <<sequences#,sequence functions>> can be used with any collection.
+Because collections support the https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/seq[seq] function, all of the <<sequences#,sequence functions>> can be used with any collection.
 
 [[hash]]
 === Java collection hashes
@@ -132,7 +132,7 @@ The Java collection interfaces specify algorithms for http://docs.oracle.com/jav
 === Clojure collection hashes
 Clojure provides its own hash computations that provide better hash properties for collections (and other types), known as the _hasheq_ value.
 
-The `IHashEq` interface marks collections that provide the `hasheq()` function to obtain the hasheq value. In Clojure, the http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/hash[hash] function can be used to compute the hasheq value.
+The `IHashEq` interface marks collections that provide the `hasheq()` function to obtain the hasheq value. In Clojure, the https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/hash[hash] function can be used to compute the hasheq value.
 
 Ordered collections (vector, list, seq, etc) must use the following algorithm for calculating hasheq (where hash computes hasheq). Note that unchecked-add-int and unchecked-multiply-int are used to get integer overflow calculations.
 [source,clojure]
@@ -152,46 +152,46 @@ Unordered collections (maps, sets) must use the following algorithm for calculat
   (-> (reduce unchecked-add-int 0 (map hash collection))
       (mix-collection-hash (count collection))))
 ----
-The http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/mix-collection-hash[mix-collection-hash] algorithm is an implementation detail subject to change.
+The https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/mix-collection-hash[mix-collection-hash] algorithm is an implementation detail subject to change.
 
 [[Lists]]
 == Lists (IPersistentList)
 
-Lists are collections. They implement the ISeq interface directly (except for the empty list, which is not a valid seq). http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/count[count] is O(1). http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/conj[conj] puts the item at the front of the list.
+Lists are collections. They implement the ISeq interface directly (except for the empty list, which is not a valid seq). https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/count[count] is O(1). https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/conj[conj] puts the item at the front of the list.
 
 === Related functions
 
 [%hardbreaks]
-Create a list: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/list[list] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/list*[list*]
-Treat a list like a stack: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/peek[peek] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/pop[pop]
-Examine a list: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/list?[list?]
+Create a list: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/list[list] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/list*[list*]
+Treat a list like a stack: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/peek[peek] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/pop[pop]
+Examine a list: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/list?[list?]
 
 [[Vectors]]
 == Vectors (IPersistentVector)
 
-A Vector is a collection of values indexed by contiguous integers. Vectors support access to items by index in log32N hops. http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/count[count] is O(1). http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/conj[conj] puts the item at the end of the vector. Vectors also support http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/rseq[rseq], which returns the items in reverse order. Vectors implement IFn, for invoke() of one argument, which they presume is an index and look up in themselves as if by nth, i.e. vectors are functions of their indices. Vectors are compared first by length, then each element is compared in order.
+A Vector is a collection of values indexed by contiguous integers. Vectors support access to items by index in log32N hops. https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/count[count] is O(1). https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/conj[conj] puts the item at the end of the vector. Vectors also support https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/rseq[rseq], which returns the items in reverse order. Vectors implement IFn, for invoke() of one argument, which they presume is an index and look up in themselves as if by nth, i.e. vectors are functions of their indices. Vectors are compared first by length, then each element is compared in order.
 
 === Related functions
 
 [%hardbreaks]
-Create a vector: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/vector[vector] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/vec[vec] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/vector-of[vector-of]
-Examine a vector: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/get[get] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/nth[nth] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/peek[peek] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/rseq[rseq] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/vector?[vector?]
-'change' a vector: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/assoc[assoc] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/pop[pop] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/subvec[subvec] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/replace[replace]
+Create a vector: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/vector[vector] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/vec[vec] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/vector-of[vector-of]
+Examine a vector: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/get[get] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/nth[nth] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/peek[peek] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/rseq[rseq] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/vector?[vector?]
+'change' a vector: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/assoc[assoc] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/pop[pop] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/subvec[subvec] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/replace[replace]
 
 See also <<other_libraries#,zippers>>
 
 [[Maps]]
 == Maps (IPersistentMap)
 
-A Map is a collection that maps keys to values. Two different map types are provided - hashed and sorted. Hash maps require keys that correctly support hashCode and equals. Sorted maps require keys that implement Comparable, or an instance of Comparator. Hash maps provide faster access (log32N hops) vs (logN hops), but sorted maps are, well, sorted. http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/count[count] is O(1). http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/conj[conj] expects another (possibly single entry) map as the item, and returns a new map which is the old map plus the entries from the new, which may overwrite entries of the old. http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/conj[conj] also accepts a MapEntry or a vector of two items (key and value). http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/seq[seq] returns a sequence of map entries, which are key/value pairs. Sorted map also supports http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/rseq[rseq], which returns the entries in reverse order. Maps implement IFn, for invoke() of one argument (a key) with an optional second argument (a default value), i.e. maps are functions of their keys. nil keys and values are ok.
+A Map is a collection that maps keys to values. Two different map types are provided - hashed and sorted. Hash maps require keys that correctly support hashCode and equals. Sorted maps require keys that implement Comparable, or an instance of Comparator. Hash maps provide faster access (log32N hops) vs (logN hops), but sorted maps are, well, sorted. https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/count[count] is O(1). https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/conj[conj] expects another (possibly single entry) map as the item, and returns a new map which is the old map plus the entries from the new, which may overwrite entries of the old. https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/conj[conj] also accepts a MapEntry or a vector of two items (key and value). https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/seq[seq] returns a sequence of map entries, which are key/value pairs. Sorted map also supports https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/rseq[rseq], which returns the entries in reverse order. Maps implement IFn, for invoke() of one argument (a key) with an optional second argument (a default value), i.e. maps are functions of their keys. nil keys and values are ok.
 
 === Related functions
 
 [%hardbreaks]
-Create a new map: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/hash-map[hash-map] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/sorted-map[sorted-map] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/sorted-map-by[sorted-map-by]
-'change' a map: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/assoc[assoc] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/dissoc[dissoc] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/select-keys[select-keys] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/merge[merge] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/merge-with[merge-with] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/zipmap[zipmap]
-Examine a map: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/get[get] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/contains?[contains?] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/find[find] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/keys[keys] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/vals[vals] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/map?[map?]
-Examine a map entry: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/key[key] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/val[val]
+Create a new map: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/hash-map[hash-map] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/sorted-map[sorted-map] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/sorted-map-by[sorted-map-by]
+'change' a map: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/assoc[assoc] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/dissoc[dissoc] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/select-keys[select-keys] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/merge[merge] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/merge-with[merge-with] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/zipmap[zipmap]
+Examine a map: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/get[get] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/contains?[contains?] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/find[find] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/keys[keys] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/vals[vals] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/map?[map?]
+Examine a map entry: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/key[key] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/val[val]
 
 [[StructMaps]]
 == StructMaps
@@ -201,7 +201,7 @@ Most uses of StructMaps would now be better served by <<datatypes#,records>>.
 
 Often many map instances have the same base set of keys, for instance when maps are used as structs or objects would be in other languages. StructMaps support this use case by efficiently sharing the key information, while also providing optional enhanced-performance accessors to those keys. StructMaps are in all ways maps, supporting the same set of functions, are interoperable with all other maps, and are persistently extensible (i.e. struct maps are not limited to their base keys). The only restriction is that you cannot dissociate a struct map from one of its base keys. A struct map will retain its base keys in order.
 
-StructMaps are created by first creating a structure basis object using http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/create-struct[create-struct] or http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defstruct[defstruct], then creating instances with http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/struct-map[struct-map] or http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/struct[struct].
+StructMaps are created by first creating a structure basis object using https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/create-struct[create-struct] or https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defstruct[defstruct], then creating instances with https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/struct-map[struct-map] or https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/struct[struct].
 
 [source,clojure]
 ----
@@ -223,13 +223,13 @@ StructMaps are created by first creating a structure basis object using http://c
 === Related functions
 
 [%hardbreaks]
-StructMap setup: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/create-struct[create-struct] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defstruct[defstruct] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/accessor[accessor]
-Create individual struct: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/struct-map[struct-map] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/struct[struct]
+StructMap setup: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/create-struct[create-struct] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defstruct[defstruct] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/accessor[accessor]
+Create individual struct: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/struct-map[struct-map] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/struct[struct]
 
 [[ArrayMaps]]
 == ArrayMaps
 
-When doing code form manipulation it is often desirable to have a map which maintains key order. An array map is such a map - it is simply implemented as an array of key val key val... As such, it has linear lookup performance, and is only suitable for _very small_ maps. It implements the full map interface. New ArrayMaps can be created with the http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/array-map[array-map] function. Note that an array map will only maintain sort order when un-'modified'. Subsequent assoc-ing will eventually cause it to 'become' a hash-map.
+When doing code form manipulation it is often desirable to have a map which maintains key order. An array map is such a map - it is simply implemented as an array of key val key val... As such, it has linear lookup performance, and is only suitable for _very small_ maps. It implements the full map interface. New ArrayMaps can be created with the https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/array-map[array-map] function. Note that an array map will only maintain sort order when un-'modified'. Subsequent assoc-ing will eventually cause it to 'become' a hash-map.
 
 [[Sets]]
 == Sets
@@ -243,7 +243,7 @@ There is literal support for hash-sets:
 -> #{:d :a :b :c}
 ----
 
-You can create sets with the http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/hash-set[hash-set] and http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/sorted-set[sorted-set] functions:
+You can create sets with the https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/hash-set[hash-set] and https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/sorted-set[sorted-set] functions:
 
 [source,clojure]
 ----
@@ -254,7 +254,7 @@ You can create sets with the http://clojure.github.io/clojure/clojure.core-api.h
 -> #{:a :b :c :d}
 ----
 
-You can also get a set of the values in a collection using the http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/set[set] function:
+You can also get a set of the values in a collection using the https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/set[set] function:
 
 [source,clojure]
 ----
@@ -279,7 +279,7 @@ Sets are collections:
 -> true
 ----
 
-Sets support 'removal' with http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/disj[disj], as well as _**contains?**_ and _**get**_, the latter returning the object that is held in the set which compares equal to the key, if found:
+Sets support 'removal' with https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/disj[disj], as well as _**contains?**_ and _**get**_, the latter returning the object that is held in the set which compares equal to the key, if found:
 
 [source,clojure]
 ----
@@ -303,4 +303,4 @@ Sets are functions of their members, using _**get**_:
 -> nil
 ----
 
-Clojure provides basic set operations like http://clojure.github.io/clojure/clojure.set-api.html#clojure.set/union[union] / http://clojure.github.io/clojure/clojure.set-api.html#clojure.set/difference[difference] / http://clojure.github.io/clojure/clojure.set-api.html#clojure.set/intersection[intersection], as well as some pseudo-relational algebra support for 'relations', which are simply sets of maps - http://clojure.github.io/clojure/clojure.set-api.html#clojure.set/select[select] / http://clojure.github.io/clojure/clojure.set-api.html#clojure.set/index[index] / http://clojure.github.io/clojure/clojure.set-api.html#clojure.set/rename[rename] / http://clojure.github.io/clojure/clojure.set-api.html#clojure.set/join[join].
+Clojure provides basic set operations like https://clojure.github.io/clojure/clojure.set-api.html#clojure.set/union[union] / https://clojure.github.io/clojure/clojure.set-api.html#clojure.set/difference[difference] / https://clojure.github.io/clojure/clojure.set-api.html#clojure.set/intersection[intersection], as well as some pseudo-relational algebra support for 'relations', which are simply sets of maps - https://clojure.github.io/clojure/clojure.set-api.html#clojure.set/select[select] / https://clojure.github.io/clojure/clojure.set-api.html#clojure.set/index[index] / https://clojure.github.io/clojure/clojure.set-api.html#clojure.set/rename[rename] / https://clojure.github.io/clojure/clojure.set-api.html#clojure.set/join[join].

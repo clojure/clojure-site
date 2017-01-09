@@ -72,13 +72,13 @@ Several special vars are available when using the REPL:
 * *1, *2, *3 - hold the result of the last three expressions that were evaluated
 * *e - holds the result of the last exception.
 
-The http://clojure.github.io/clojure/clojure.repl-api.html[clojure.repl] namespace has a number of useful functions for inspecting the source and documentation of available functions:
+The https://clojure.github.io/clojure/clojure.repl-api.html[clojure.repl] namespace has a number of useful functions for inspecting the source and documentation of available functions:
 
-* http://clojure.github.io/clojure/clojure.repl-api.html#clojure.repl/doc[doc] - prints the docstring for a var given its name
-* http://clojure.github.io/clojure/clojure.repl-api.html#clojure.repl/find-doc[find-doc] - prints the docstring for any var whose doc or name matches the pattern
-* http://clojure.github.io/clojure/clojure.repl-api.html#clojure.repl/apropos[apropos] - returns a seq of definitions matching a regex
-* http://clojure.github.io/clojure/clojure.repl-api.html#clojure.repl/source[source] - prints the source for a symbol
-* http://clojure.github.io/clojure/clojure.repl-api.html#clojure.repl/pst[pst] - **p**rint **s**tack **t**race for a given exception or *e by default
+* https://clojure.github.io/clojure/clojure.repl-api.html#clojure.repl/doc[doc] - prints the docstring for a var given its name
+* https://clojure.github.io/clojure/clojure.repl-api.html#clojure.repl/find-doc[find-doc] - prints the docstring for any var whose doc or name matches the pattern
+* https://clojure.github.io/clojure/clojure.repl-api.html#clojure.repl/apropos[apropos] - returns a seq of definitions matching a regex
+* https://clojure.github.io/clojure/clojure.repl-api.html#clojure.repl/source[source] - prints the source for a symbol
+* https://clojure.github.io/clojure/clojure.repl-api.html#clojure.repl/pst[pst] - **p**rint **s**tack **t**race for a given exception or *e by default
 
 == Launching a Script
 
@@ -122,7 +122,7 @@ A socket server will be started for each JVM system property like "clojure.serve
 * `bind-err` - defaults to true, binds `pass:[*err*]` to socket out stream
 * `client-daemon` - defaults to true, socket client thread doesn't block exit
 
-Additionally, there is a repl function provided that is slightly customized for use with the socket server in http://clojure.github.io/clojure/clojure.core-api.html#clojure.core.server/repl[clojure.core.server/repl].
+Additionally, there is a repl function provided that is slightly customized for use with the socket server in https://clojure.github.io/clojure/clojure.core-api.html#clojure.core.server/repl[clojure.core.server/repl].
 
 Following is an example of starting a socket server with a repl listener. This can be added to any existing Clojure program to allow it to accept external REPL clients via a local connection to port 5555.
 
@@ -158,12 +158,12 @@ Also see:
 
 == Related functions
 
-Main entry point: `http://clojure.github.io/clojure/clojure.main-api.html#clojure.main/main[clojure.main/main]`
+Main entry point: `https://clojure.github.io/clojure/clojure.main-api.html#clojure.main/main[clojure.main/main]`
 
-Reusable REPL: `http://clojure.github.io/clojure/clojure.main-api.html#clojure.main/repl[clojure.main/repl]`
+Reusable REPL: `https://clojure.github.io/clojure/clojure.main-api.html#clojure.main/repl[clojure.main/repl]`
 
-Allowing set! for the customary REPL vars: `http://clojure.github.io/clojure/clojure.main-api.html#clojure.main/with-bindings[clojure.main/with-bindings]`
+Allowing set! for the customary REPL vars: `https://clojure.github.io/clojure/clojure.main-api.html#clojure.main/with-bindings[clojure.main/with-bindings]`
 
-Socket server control: `http://clojure.github.io/clojure/clojure.core-api.html#clojure.core.server/start-server[clojure.core.server/start-server]` `http://clojure.github.io/clojure/clojure.core-api.html#clojure.core.server/stop-server[clojure.core.server/stop-server]` `http://clojure.github.io/clojure/clojure.core-api.html#clojure.core.server/stop-servers[clojure.core.server/stop-servers]` 
+Socket server control: `https://clojure.github.io/clojure/clojure.core-api.html#clojure.core.server/start-server[clojure.core.server/start-server]` `https://clojure.github.io/clojure/clojure.core-api.html#clojure.core.server/stop-server[clojure.core.server/stop-server]` `https://clojure.github.io/clojure/clojure.core-api.html#clojure.core.server/stop-servers[clojure.core.server/stop-servers]` 
 
-Socket repl: `http://clojure.github.io/clojure/clojure.core-api.html#clojure.core.server/repl[clojure.core.server/repl]`
+Socket repl: `https://clojure.github.io/clojure/clojure.core-api.html#clojure.core.server/repl[clojure.core.server/repl]`

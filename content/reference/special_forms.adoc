@@ -242,7 +242,7 @@ Clojure supports abstract structural binding, often called destructuring, in let
 
 === Vector binding destructuring
 
-Vector binding-exprs allow you to bind names to parts of _sequential_ things (not just vectors), like vectors, lists, seqs, strings, arrays, and anything that supports nth. The basic sequential form is a vector of binding-forms, which will be bound to successive elements from the init-expr, looked up via nth. In addition, and optionally, & followed by a binding-forms will cause that binding-form to be bound to the remainder of the sequence, i.e. that part not yet bound, looked up via http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/nthnext[nthnext] .
+Vector binding-exprs allow you to bind names to parts of _sequential_ things (not just vectors), like vectors, lists, seqs, strings, arrays, and anything that supports nth. The basic sequential form is a vector of binding-forms, which will be bound to successive elements from the init-expr, looked up via nth. In addition, and optionally, & followed by a binding-forms will cause that binding-form to be bound to the remainder of the sequence, i.e. that part not yet bound, looked up via https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/nthnext[nthnext] .
 
 Finally, also optional, :as followed by a symbol will cause that symbol to be bound to the entire init-expr:
 

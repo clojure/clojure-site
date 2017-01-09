@@ -83,7 +83,7 @@ Host interop is one of the biggest pain points solved by reader conditionals. Yo
 
 == Namespaces
 
-Namespaces are the other big pain point for sharing code between Clojure and ClojureScript. ClojureScript has different syntax for http://clojurescript.org/about/differences#_macros[requiring macros] than Clojure. To use macros that work in both Clojure and ClojureScript in a `.cljc` file, you'll need reader conditionals in the namespace declaration.
+Namespaces are the other big pain point for sharing code between Clojure and ClojureScript. ClojureScript has different syntax for https://clojurescript.org/about/differences#_macros[requiring macros] than Clojure. To use macros that work in both Clojure and ClojureScript in a `.cljc` file, you'll need reader conditionals in the namespace declaration.
 
 Here is an example from a https://github.com/lymingtonprecision/route-ccrs/blob/c579aea05504736f2cfbd31c3c755f7e25fdad77/test/route_ccrs/schema/ids/part_no_test.cljc[test] in https://github.com/lymingtonprecision/route-ccrs[route-ccrs]
 

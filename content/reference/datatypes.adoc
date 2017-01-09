@@ -20,11 +20,11 @@ Clojure is written in terms of abstractions. There are abstractions for sequence
 
 == Basics
 
-The datatype features - http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/deftype[deftype] , http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defrecord[defrecord] and http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/reify[reify] , provide the mechanism for defining implementations of abstractions, and in the case of reify, instances of those implementations. The abstractions themselves are defined by either <<protocols#,protocols>> or interfaces. A datatype provides a host type, (named in the case of deftype and defrecord, anonymous in the case of reify), with some structure (explicit fields in the case of deftype and defrecord, implicit closure in the case of reify), and optional in-type implementations of abstraction methods. They support, in a relatively clean manner, access to the highest-performance primitive representation and polymorphism mechanisms of the host. N.B. that they are not merely host-in-parens constructs. They support only a circumscribed subset of the host facilities, often with more dynamism than the host itself. The intent is that, unless interop forces one to go beyond their circumscribed scope, one need not leave Clojure to get the highest-performing data structures possible on the platform.
+The datatype features - https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/deftype[deftype] , https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defrecord[defrecord] and https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/reify[reify] , provide the mechanism for defining implementations of abstractions, and in the case of reify, instances of those implementations. The abstractions themselves are defined by either <<protocols#,protocols>> or interfaces. A datatype provides a host type, (named in the case of deftype and defrecord, anonymous in the case of reify), with some structure (explicit fields in the case of deftype and defrecord, implicit closure in the case of reify), and optional in-type implementations of abstraction methods. They support, in a relatively clean manner, access to the highest-performance primitive representation and polymorphism mechanisms of the host. N.B. that they are not merely host-in-parens constructs. They support only a circumscribed subset of the host facilities, often with more dynamism than the host itself. The intent is that, unless interop forces one to go beyond their circumscribed scope, one need not leave Clojure to get the highest-performing data structures possible on the platform.
 
 == deftype and defrecord
 
-http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/deftype[deftype] and http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defrecord[defrecord] dynamically generate compiled bytecode for a named class with a set of given fields, and, optionally, methods for one or more protocols and/or interfaces. They are suitable for dynamic and interactive development, need not be AOT compiled, and can be re-evaluated in the course of a single session. They are similar to defstruct in generating data structures with named fields, but differ from defstruct in that:
+https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/deftype[deftype] and https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defrecord[defrecord] dynamically generate compiled bytecode for a named class with a set of given fields, and, optionally, methods for one or more protocols and/or interfaces. They are suitable for dynamic and interactive development, need not be AOT compiled, and can be re-evaluated in the course of a single session. They are similar to defstruct in generating data structures with named fields, but differ from defstruct in that:
 
 
 * They generate a unique class, with fields corresponding to the given names.
@@ -40,7 +40,7 @@ http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/deftype[deft
 ** only available in Clojure versions later than 1.3
 * when a deftype/defrecord Foo is defined a corresponding function `pass:[->Foo]` is defined that passes its arguments to the constructor (versions 1.3 and later only)
 
-http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/deftype[deftype] and http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defrecord[defrecord] differ in the following ways:
+https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/deftype[deftype] and https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defrecord[defrecord] differ in the following ways:
 
 
 * deftype provides no functionality not specified by the user, other than a constructor
@@ -90,7 +90,7 @@ If you use datatypes and protocols you will have a clean, interface-based API to
 
 == reify
 
-While deftype and defrecord define named types, http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/reify[reify] defines both an anonymous type and creates an instance of that type. The use case is where you need a one-off implementation of one or more protocols or interfaces and would like to take advantage of the local context. In this respect it is use case similar to proxy, or anonymous inner classes in Java.
+While deftype and defrecord define named types, https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/reify[reify] defines both an anonymous type and creates an instance of that type. The use case is where you need a one-off implementation of one or more protocols or interfaces and would like to take advantage of the local context. In this respect it is use case similar to proxy, or anonymous inner classes in Java.
 
 The method bodies of reify are lexical closures, and can refer to the surrounding local scope. *reify* differs from *proxy* in that:
 

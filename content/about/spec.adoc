@@ -332,7 +332,7 @@ alternative generators for one or more subpaths of a spec.
 In addition to the destructuring use cases above, you can make calls to ``conform`` or ``valid?`` anywhere you want
 runtime checking, and can make lighter-weight internal-only specs for tests you intend to run in production.
 
-Please see the <<xref/../../../guides/spec#,spec Guide>> and http://clojure.github.io/clojure/branch-master/clojure.spec-api.html[API docs] for more examples and usage information.
+Please see the <<xref/../../../guides/spec#,spec Guide>> and https://clojure.github.io/clojure/branch-master/clojure.spec-api.html[API docs] for more examples and usage information.
 
 == Glossary
 === predicates
@@ -374,7 +374,7 @@ These paths are used in ``explain``, ``gen`` overrides and various error reporti
 == Prior Art
 Almost nothing about spec is novel. See all the libraries mentioned above, https://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/[RDF],
 as well as all the work done on various
-contract systems, such as http://docs.racket-lang.org/guide/contracts.html[Racket's contracts].
+contract systems, such as https://docs.racket-lang.org/guide/contracts.html[Racket's contracts].
 
 *I hope you find spec useful and powerful.*
 

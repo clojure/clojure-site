@@ -15,7 +15,7 @@ Clojure is a http://en.wikipedia.org/wiki/Homoiconicity[homoiconic] language, wh
 
 That said, most Clojure programs begin life as text files, and it is the task of the _reader_ to parse the text and produce the data structure the compiler will see. This is not merely a phase of the compiler. The reader, and the Clojure data representations, have utility on their own in many of the same contexts one might use XML or JSON etc.
 
-One might say the reader has syntax defined in terms of characters, and the Clojure language has syntax defined in terms of symbols, lists, vectors, maps etc. The reader is represented by the function http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/read[read], which reads the next form (not character) from a stream, and returns the object represented by that form.
+One might say the reader has syntax defined in terms of characters, and the Clojure language has syntax defined in terms of symbols, lists, vectors, maps etc. The reader is represented by the function https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/read[read], which reads the next form (not character) from a stream, and returns the object represented by that form.
 
 Since we have to start somewhere, this reference starts where evaluation starts, with the reader forms. This will inevitably entail talking about data structures whose descriptive details, and interpretation by the compiler, will follow.
 
@@ -132,7 +132,7 @@ Single-line comment, causes the reader to ignore everything from the semicolon t
 
 === Metadata (^)
 
-Metadata is a map associated with some kinds of objects: Symbols, Lists, Vector, Sets, Maps, tagged literals returning an IMeta, and record, type, and constructor calls. The metadata reader macro first reads the metadata and attaches it to the next form read (see http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/with-meta[with-meta] to attach meta to an object): +
+Metadata is a map associated with some kinds of objects: Symbols, Lists, Vector, Sets, Maps, tagged literals returning an IMeta, and record, type, and constructor calls. The metadata reader macro first reads the metadata and attaches it to the next form read (see https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/with-meta[with-meta] to attach meta to an object): +
 `^{:a 1 :b 2} [1 2 3]` yields the vector `[1 2 3]` with a metadata map of `{:a 1 :b 2}`. +
 
 A shorthand version allows the metadata to be a simple symbol or string, in which case it is treated as a single entry map with a key of :tag and a value of the (resolved) symbol or string, e.g.: +
@@ -159,10 +159,10 @@ A regex pattern is read and _compiled at read time_. The resulting object is of 
 * Anonymous function literal (#())
 +
 `#(...)` => `(fn [args] (...))` +
-where args are determined by the presence of argument literals taking the form %, %n or %&. % is a synonym for %1, %n designates the nth arg (1-based), and %& designates a rest arg. This is not a replacement for http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/fn[fn] - idiomatic use would be for very short one-off mapping/filter fns and the like. #() forms cannot be nested.
+where args are determined by the presence of argument literals taking the form %, %n or %&. % is a synonym for %1, %n designates the nth arg (1-based), and %& designates a rest arg. This is not a replacement for https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/fn[fn] - idiomatic use would be for very short one-off mapping/filter fns and the like. #() forms cannot be nested.
 * Ignore next form (pass:[#_])
 +
-The form following pass:[#_] is completely skipped by the reader. (This is a more complete removal than the http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/comment[comment] macro which yields nil).
+The form following pass:[#_] is completely skipped by the reader. (This is a more complete removal than the https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/comment[comment] macro which yields nil).
 
 [[syntax-quote]]
 === Syntax-quote (`, note, the "backquote" character), Unquote (~) and Unquote-splicing (~@)
@@ -204,7 +204,7 @@ The key in each pair is a tag that will be recognized by the Clojure reader. The
 ----
 by invoking the Var `#'my.project.foo/bar` on the vector `[1 2 3]`. The data reader function is invoked on the form AFTER it has been read as a normal Clojure data structure by the reader.
 
-Reader tags without namespace qualifiers are reserved for Clojure. Default reader tags are defined in http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/default-data-readers[default-data-readers] but may be overridden in `data_readers.clj` or by rebinding http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/%2Adata-readers%2A[pass:[*data-readers*]]. If no data reader is found for a tag, the function bound in http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/%2Adefault-data-reader-fn%2A[pass:[*default-data-reader-fn*]] will be invoked with the tag and value to produce a value. If pass:[*default-data-reader-fn*] is nil (the default), a RuntimeException will be thrown.
+Reader tags without namespace qualifiers are reserved for Clojure. Default reader tags are defined in https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/default-data-readers[default-data-readers] but may be overridden in `data_readers.clj` or by rebinding https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/%2Adata-readers%2A[pass:[*data-readers*]]. If no data reader is found for a tag, the function bound in https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/%2Adefault-data-reader-fn%2A[pass:[*default-data-reader-fn*]] will be invoked with the tag and value to produce a value. If pass:[*default-data-reader-fn*] is nil (the default), a RuntimeException will be thrown.
 
 == Reader Conditionals
 
@@ -233,7 +233,7 @@ The syntax for `pass:[#?@]` is exactly the same but the expression is expected t
 ;; anywhere else => [1 2]
 ----
 
-The http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/read[read] and http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/read-string[read-string] functions optionally take a map of options as a first argument. The current feature set and reader conditional behavior can be set in the options map with these keys and values:
+The https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/read[read] and https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/read-string[read-string] functions optionally take a map of options as a first argument. The current feature set and reader conditional behavior can be set in the options map with these keys and values:
 
 [source,clojure]
 ----
@@ -266,4 +266,4 @@ If the reader is invoked with `{:read-cond :preserve}`, the reader conditional a
 ----
 
 The following functions can also be used as predicates or constructors for these types: +
-http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/reader-conditional%3F[reader-conditional?] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/reader-conditional[reader-conditional] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/tagged-literal%3F[tagged-literal?] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/tagged-literal[tagged-literal]
+https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/reader-conditional%3F[reader-conditional?] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/reader-conditional[reader-conditional] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/tagged-literal%3F[tagged-literal?] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/tagged-literal[tagged-literal]

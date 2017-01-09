@@ -31,7 +31,7 @@ user=> (javax.swing.JOptionPane/showMessageDialog nil "Hello World")
 
 == Clojure with Leiningen
 
-http://leiningen.org/[Leiningen] is a build and project management tool written in Clojure and used pervasively throughout the Clojure community. Follow the instructions there to install Leiningen.
+https://leiningen.org/[Leiningen] is a build and project management tool written in Clojure and used pervasively throughout the Clojure community. Follow the instructions there to install Leiningen.
 
 Once it's installed you can start a REPL with:
 

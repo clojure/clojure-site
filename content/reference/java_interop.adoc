@@ -88,7 +88,7 @@ expands to:
 
 `(. (. System (getProperties)) (get "os.name"))`
 
-but is easier to write, read, and understand. See also the http://clojure.github.com/clojure/clojure.core-api.html#clojure.core/%2d%3e[pass:[->]] macro which can be used similarly:
+but is easier to write, read, and understand. See also the https://clojure.github.com/clojure/clojure.core-api.html#clojure.core/%2d%3e[pass:[->]] macro which can be used similarly:
 
 `(-> (System/getProperties) (.get "os.name"))`
 
@@ -187,7 +187,7 @@ Many of the Clojure library functions have defined semantics for objects of Java
 
 == Implementing Interfaces and Extending Classes
 
-Clojure supports the dynamic creation of objects that implement one or more interfaces and/or extend a class with the http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/proxy[proxy] macro. The resulting objects are of an anonymous class. You can also generate statically-named classes and .class files with http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/gen-class[gen-class]. As of Clojure 1.2, http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/reify[reify] is also available for implementing interfaces.
+Clojure supports the dynamic creation of objects that implement one or more interfaces and/or extend a class with the https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/proxy[proxy] macro. The resulting objects are of an anonymous class. You can also generate statically-named classes and .class files with https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/gen-class[gen-class]. As of Clojure 1.2, https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/reify[reify] is also available for implementing interfaces.
 
 ''''
 
@@ -208,12 +208,12 @@ Clojure supports the creation, reading and modification of Java arrays. It is re
 Note that many other Clojure functions work with arrays such as via the <<sequences#,seq library>>. The functions listed here exist for initial creation of arrays, or to support mutation or higher performance operations on arrays.
 
 [%hardbreaks]
-Create array from existing collection: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/aclone[aclone] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/amap[amap] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/to-array[to-array] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/to-array-2d[to-array-2d] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/into-array[into-array]
-Multi-dimensional array support: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/aget[aget] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/aset[aset] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/to-array-2d[to-array-2d] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/make-array[make-array]
-Type-specific array constructors: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/boolean-array[boolean-array] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/byte-array[byte-array] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/char-array[char-array] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/double-array[double-array] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/float-array[float-array] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/int-array[int-array] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/long-array[long-array] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/object-array[object-array] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/short-array[short-array]
-Primitive array casts: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/booleans[booleans] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/bytes[bytes] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/chars[chars] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/doubles[doubles] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/floats[floats] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ints[ints] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/longs[longs] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/shorts[shorts]
-Mutate an array: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/aset[aset]
-Process an existing array: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/aget[aget] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/alength[alength] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/amap[amap] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/areduce[areduce]
+Create array from existing collection: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/aclone[aclone] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/amap[amap] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/to-array[to-array] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/to-array-2d[to-array-2d] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/into-array[into-array]
+Multi-dimensional array support: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/aget[aget] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/aset[aset] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/to-array-2d[to-array-2d] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/make-array[make-array]
+Type-specific array constructors: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/boolean-array[boolean-array] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/byte-array[byte-array] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/char-array[char-array] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/double-array[double-array] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/float-array[float-array] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/int-array[int-array] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/long-array[long-array] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/object-array[object-array] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/short-array[short-array]
+Primitive array casts: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/booleans[booleans] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/bytes[bytes] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/chars[chars] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/doubles[doubles] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/floats[floats] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ints[ints] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/longs[longs] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/shorts[shorts]
+Mutate an array: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/aset[aset]
+Process an existing array: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/aget[aget] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/alength[alength] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/amap[amap] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/areduce[areduce]
 
 [[typehints]]
 == Type Hints
@@ -299,16 +299,16 @@ Clojure has support for high-performance manipulation of, and arithmetic involvi
 * _**let**_/_**loop**_-bound locals can be of primitive types, having the inferred, possibly primitive type of their init-form.
 * _**recur**_ forms that rebind primitive locals do so without boxing, and do type-checking for same primitive type.
 * Arithmetic (+,-,*,/,inc,dec,<,<=,>,>= etc) is overloaded for primitive types where semantics are same.
-* http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/aget[aget] / http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/aset[aset] are overloaded for arrays of primitives
-* http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/aclone[aclone], http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/alength[alength] functions for arrays of primitives
-* constructor functions for primitive arrays: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/float-array[float-array], http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/int-array[int-array], etc.
+* https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/aget[aget] / https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/aset[aset] are overloaded for arrays of primitives
+* https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/aclone[aclone], https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/alength[alength] functions for arrays of primitives
+* constructor functions for primitive arrays: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/float-array[float-array], https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/int-array[int-array], etc.
 * Type hints for primitive arrays - +^ints, ^floats+, etc.
-* Coercion ops http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/int[int], http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/float[float], etc. produce primitives when consumer can take primitive
-* The http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/num[num] coercion function boxes primitives to force generic arithmetic
-* Array cast functions http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ints[ints] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/longs[longs], etc. which produce +int[]+, +long[]+, etc.
-* A set of "unchecked" operations for utmost performing, but potentially unsafe, integer (int/long) ops: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/unchecked-multiply[unchecked-multiply] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/unchecked-dec[unchecked-dec] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/unchecked-inc[unchecked-inc] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/unchecked-negate[unchecked-negate] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/unchecked-add[unchecked-add] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/unchecked-subtract[unchecked-subtract] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/unchecked-remainder[unchecked-remainder] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/unchecked-divide[unchecked-divide]
-* A dynamic var to automatically swap safe operations with unchecked operations: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/%2Aunchecked-math%2A[pass:[*unchecked-math*]]
-* http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/amap[amap] and http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/areduce[areduce] macros for functionally (i.e. non-destructively) processing one or more arrays in order to produce a new array or aggregate value respectively.
+* Coercion ops https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/int[int], https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/float[float], etc. produce primitives when consumer can take primitive
+* The https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/num[num] coercion function boxes primitives to force generic arithmetic
+* Array cast functions https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ints[ints] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/longs[longs], etc. which produce +int[]+, +long[]+, etc.
+* A set of "unchecked" operations for utmost performing, but potentially unsafe, integer (int/long) ops: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/unchecked-multiply[unchecked-multiply] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/unchecked-dec[unchecked-dec] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/unchecked-inc[unchecked-inc] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/unchecked-negate[unchecked-negate] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/unchecked-add[unchecked-add] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/unchecked-subtract[unchecked-subtract] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/unchecked-remainder[unchecked-remainder] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/unchecked-divide[unchecked-divide]
+* A dynamic var to automatically swap safe operations with unchecked operations: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/%2Aunchecked-math%2A[pass:[*unchecked-math*]]
+* https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/amap[amap] and https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/areduce[areduce] macros for functionally (i.e. non-destructively) processing one or more arrays in order to produce a new array or aggregate value respectively.
 
 Rather than write this Java:
 [source,java]
@@ -360,7 +360,7 @@ The best aspect of this is that you need not do anything special in your initial
 
 == Coercions
 
-At times it is necessary to have a value of a particular primitive type. These coercion functions yield a value of the indicated type as long as such a coercion is possible: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/bigdec[bigdec] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/bigint[bigint] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/boolean[boolean] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/byte[byte] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/char[char] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/double[double] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/float[float] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/int[int] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/long[long] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/num[num] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/short[short]
+At times it is necessary to have a value of a particular primitive type. These coercion functions yield a value of the indicated type as long as such a coercion is possible: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/bigdec[bigdec] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/bigint[bigint] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/boolean[boolean] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/byte[byte] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/char[char] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/double[double] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/float[float] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/int[int] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/long[long] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/num[num] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/short[short]
 
 [[optimization]]
 == Some optimization tips
@@ -389,7 +389,7 @@ Parses and loads the source, which can be a File, InputStream or String naming a
 
 == Calling Clojure From Java
 
-The http://clojure.github.io/clojure/javadoc[clojure.java.api] package provides a minimal interface to bootstrap Clojure access from other JVM languages. It does this by providing:
+The https://clojure.github.io/clojure/javadoc[clojure.java.api] package provides a minimal interface to bootstrap Clojure access from other JVM languages. It does this by providing:
 
 1. The ability to use Clojure's namespaces to locate an arbitrary var, returning the var's clojure.lang.IFn interface.
 2. A convenience method read for reading data using Clojure's edn reader
@@ -398,8 +398,8 @@ IFns provide complete access to Clojure's APIs. You can also access any other li
 
 The public Java API for Clojure consists of the following classes and interfaces:
 
-* http://clojure.github.io/clojure/javadoc/clojure/java/api/Clojure.html[clojure.java.api.Clojure]
-* http://clojure.github.io/clojure/javadoc/clojure/lang/IFn.html[clojure.lang.IFn]
+* https://clojure.github.io/clojure/javadoc/clojure/java/api/Clojure.html[clojure.java.api.Clojure]
+* https://clojure.github.io/clojure/javadoc/clojure/lang/IFn.html[clojure.lang.IFn]
 
 All other Java classes should be treated as implementation details, and applications should avoid relying on them.
 

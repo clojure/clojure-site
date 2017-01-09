@@ -33,7 +33,7 @@ This information is provided for programmers familiar with Common Lisp or Scheme
 * lambda is _**fn**_, and supports overloading by arity
 * _**pass:[=]**_ is the equality predicate
 * Global Vars can be dynamically rebound (if declared dynamic) without interfering with lexical local bindings. No special declarations are necessary to distinguish between dynamic and lexical bindings. Since Clojure is a Lisp-1, (global) functions can be dynamically rebound (if they are marked as dynamic).
-* No letrec, labels or flet - use (fn name [args]...) for self-reference, http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/letfn[letfn] for mutual reference.
+* No letrec, labels or flet - use (fn name [args]...) for self-reference, https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/letfn[letfn] for mutual reference.
 * In Clojure _**nil**_ means 'nothing'. It signifies the absence of a value, of any type, and is not specific to lists or sequences.
 * Empty collections are distinct from _**nil**_. Clojure does not equate _**nil**_ and '().
 * _**false**_ means one of the two possible boolean values, the other being _**true**_

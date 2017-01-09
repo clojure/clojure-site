@@ -9,23 +9,23 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 == Stable Release: 1.8.0 (January 19, 2016)
 
-* http://repo1.maven.org/maven2/org/clojure/clojure/1.8.0/clojure-1.8.0.zip[Clojure 1.8.0]
+* https://repo1.maven.org/maven2/org/clojure/clojure/1.8.0/clojure-1.8.0.zip[Clojure 1.8.0]
 * https://github.com/clojure/clojure/blob/master/changes.md[Changelog]
 * Requirements: Java 1.6, 1.7, or 1.8
 
 == Development Release: 1.9.0-alpha14
 
-* http://repo1.maven.org/maven2/org/clojure/clojure/1.9.0-alpha14/clojure-1.9.0-alpha14.zip[Clojure 1.9.0-alpha14]
-* http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.clojure%22%20AND%20a%3A%22clojure%22%20AND%20v%3A1.9.0*[Clojure 1.9 pre-release builds]
+* https://repo1.maven.org/maven2/org/clojure/clojure/1.9.0-alpha14/clojure-1.9.0-alpha14.zip[Clojure 1.9.0-alpha14]
+* https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.clojure%22%20AND%20a%3A%22clojure%22%20AND%20v%3A1.9.0*[Clojure 1.9 pre-release builds]
 * Requirements: Java 1.6, 1.7, or 1.8
 
 == Clojure Source
 
-Clojure source code is hosted at http://github.com/clojure/clojure[github.com/clojure/clojure]. Builds of the very latest version of Clojure's master branch are available at https://oss.sonatype.org/content/repositories/snapshots/org/clojure/clojure/1.9.0-master-SNAPSHOT/[build.clojure.org].
+Clojure source code is hosted at https://github.com/clojure/clojure[github.com/clojure/clojure]. Builds of the very latest version of Clojure's master branch are available at https://oss.sonatype.org/content/repositories/snapshots/org/clojure/clojure/1.9.0-master-SNAPSHOT/[build.clojure.org].
 
 == Get Clojure via Leiningen
 
-Modify the dependencies and repositories sections of your http://leiningen.org/[Leiningen] project.clj file, specifying the version of Clojure that you want:
+Modify the dependencies and repositories sections of your https://leiningen.org/[Leiningen] project.clj file, specifying the version of Clojure that you want:
 [source,clojure]
 ----
 ; under dependencies, select the release of clojure that you want

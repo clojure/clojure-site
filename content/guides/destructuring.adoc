@@ -343,7 +343,7 @@ One special case is using associative destructuring for keyword-arg parsing. Con
 [source,clojure]
 ----
 (defn configure [val options]
-  (let [{:keys [debug verbose] :or {debug false, verbose false}}]
+  (let [{:keys [debug verbose] :or {debug false, verbose false}} options]
     (println "val =" val " debug =" debug " verbose =" verbose)))
 
 (configure 12 {:debug true})

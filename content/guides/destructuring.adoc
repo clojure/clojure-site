@@ -336,15 +336,49 @@ Associative destructuring can be nested and combined with sequential destructuri
 ;= Joe is a Ranger wielding a Longbow
 ----
 
-Associative destructuring also works with lists of key-value pairs for keyword-arg parsing.
+=== Keyword arguments
+
+One special case is using associative destructuring for keyword-arg parsing. Consider a function that takes options `:debug` and `:verbose`. These could be specified in an options map:
 
 [source,clojure]
 ----
-(def options '(:debug true))
-(let [{:keys [debug verbose] :or {verbose false}} options]
-  (println debug verbose))
-;= true false
+(defn configure [val options]
+  (let [{:keys [debug verbose] :or {debug false, verbose false}}]
+    (println "val =" val " debug =" debug " verbose =" verbose)))
+
+(configure 12 {:debug true})
+;;val = 12  debug = true  verbose = false
 ----
+
+However, it would be nicer to type if we could pass those optional arguments as just additional "keyword" arguments like this:
+
+[source,clojure]
+----
+(configure 12 :debug true)
+----
+
+To support this style of invocation, associative destructuring also works with lists or sequences of key-value pairs for keyword argument parsing. The sequence comes from the rest arg of a variadic function but is destructured not with sequential destructuring, but with associative destructuring (so a sequence destructured as if it were the key-value pairs in a map):
+
+[source,clojure]
+----
+(defn configure [val & {:keys [debug verbose]
+                        :or {debug false, verbose false}}]
+  (println "val =" val " debug =" debug " verbose =" verbose))
+
+(configure 10)
+;;val = 10  debug = false  verbose = false
+
+(configure 5 :debug true)
+;;val = 5  debug = true  verbose = false
+
+;; Note that any order is ok for the kwargs
+(configure 12 :verbose true :debug true)
+;;val = 12  debug = true  verbose = true
+----
+
+The use of keyword arguments has fallen in and out of fashion in the Clojure community over the years. They are now mostly used when presenting interfaces that people are expected to type at the REPL or the outermost layers of an API. In general, inner layers of the code find it easier to pass options as an explicit map.
+
+=== Namespaced keywords
 
 If the keys in your map are namespaced keywords, you can also use destructuring with it, even though local binding symbols are not allowed to have namespaces. Destructuring a namespaced key will bind a value to the local name part of the key and drop the namespace.
 

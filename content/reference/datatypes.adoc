@@ -120,7 +120,7 @@ Example:
 
 (definterface Foo (foo []))
 
-;annotation on type
+;; annotation on type
 (deftype ^{Deprecated true
             Retention RetentionPolicy/RUNTIME
             javax.annotation.processing.SupportedOptions ["foo" "bar" "baz"]
@@ -128,7 +128,7 @@ Example:
             WebServiceRefs [(WebServiceRef {:name "fred" :type String})
                             (WebServiceRef {:name "ethel" :mappedName "lucy"})]}
   Bar [^int a
-       ;on field
+       ;; on field
        ^{:tag int
           Deprecated true
           Retention RetentionPolicy/RUNTIME
@@ -137,7 +137,7 @@ Example:
           WebServiceRefs [(WebServiceRef {:name "fred" :type String})
                           (WebServiceRef {:name "ethel" :mappedName "lucy"})]}
        b]
-  ;on method
+  ;; on method
   Foo (^{Deprecated true
           Retention RetentionPolicy/RUNTIME
           javax.annotation.processing.SupportedOptions ["foo" "bar" "baz"]

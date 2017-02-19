@@ -243,7 +243,10 @@ When conformance is checked on a map, it does two things - checking that the req
 (s/explain ::person
   {::first-name "Elon"})
 ;; val: #:my.domain{:first-name "Elon"} fails spec: :my.domain/person
-;;  predicate: [(contains? % :my.domain/last-name) (contains? % :my.domain/email)]
+;;  predicate: (contains? % :my.domain/last-name)
+;; val: #:my.domain{:first-name "Elon"} fails spec: :my.domain/person
+;;  predicate: (contains? % :my.domain/email)
+
 
 ;; Fails attribute conformance
 (s/explain ::person
@@ -288,7 +291,9 @@ Let's consider a person map that uses unqualified keys but checks conformance ag
 (s/explain :unq/person
   {:first-name "Elon"})
 ;; val: {:first-name "Elon"} fails spec: :unq/person
-;;   predicate: [(contains? % :last-name) (contains? % :email)]
+;;  predicate: (contains? % :last-name)
+;; val: {:first-name "Elon"} fails spec: :unq/person
+;;  predicate: (contains? % :email)
 ----
 
 Unqualified keys can also be used to validate record attributes:

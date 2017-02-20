@@ -253,7 +253,7 @@ When conformance is checked on a map, it does two things - checking that the req
   {::first-name "Elon"
    ::last-name "Musk"
    ::email "n/a"})
-;; In: [:my.domain/email] val: "n/a" fails spec: :my.domain/email 
+;; In: [:my.domain/email] val: "n/a" fails spec: :my.domain/email-type 
 ;;   at: [:my.domain/email] predicate: (re-matches email-regex %)
 ----
 
@@ -285,7 +285,7 @@ Let's consider a person map that uses unqualified keys but checks conformance ag
   {:first-name "Elon"
    :last-name "Musk"
    :email "n/a"})
-;; In: [:email] val: "n/a" fails spec: :my.domain/email at: [:email] 
+;; In: [:email] val: "n/a" fails spec: :my.domain/email-type at: [:email] 
 ;;   predicate: (re-matches email-regex %)
 
 (s/explain :unq/person
@@ -305,7 +305,7 @@ Unqualified keys can also be used to validate record attributes:
 (s/explain :unq/person
            (->Person "Elon" nil nil nil))
 ;; In: [:last-name] val: nil fails spec: :my.domain/last-name at: [:last-name] predicate: string?
-;; In: [:email] val: nil fails spec: :my.domain/email at: [:email] predicate: string?
+;; In: [:email] val: nil fails spec: :my.domain/email-type at: [:email] predicate: string?
 
 (s/conform :unq/person
   (->Person "Elon" "Musk" "elon@example.com" nil))

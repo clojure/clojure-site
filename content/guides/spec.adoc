@@ -1194,10 +1194,9 @@ We mentioned earlier that `clojure.spec.test` provides tools for automatically t
 
 (stest/check `ranged-rand)
 ;;=> ({:spec #object[clojure.spec$fspec_impl$reify__13728 0x4a47e374 "clojure.spec$fspec_impl$reify__13728@4a47e374"],
-;;     :clojure.spec.test.check/ret {:result true, :num-tests 100, :seed 1466805740290},
+;;     :clojure.spec.test.check/ret {:result true, :num-tests 1000, :seed 1466805740290},
 ;;     :sym spec.examples.guide/ranged-rand,
-;;     :result true,
-;;     :type :pass})
+;;     :result true})
 ----
 
 `check` also takes a number of options that can be passed to test.check to influence the test run, as well as the option to override generators for parts of the spec, by either name or path.

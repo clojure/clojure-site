@@ -1008,7 +1008,7 @@ We can use many predicates to further refine the generated values. For example, 
 ;;=> (3 9 1524 3 1836 6 3 3 927 15027)
 ----
 
-However, it is possible to go too far with refinement and make something that fails to produce any values. The test.check https://clojure.github.io/test.check/clojure.test.check.generators.html#var-such-that[`such-that`] that implements the refinement will throw an error if the refinement predicate cannot be resolved within a relatively small number of attempts. For example, consider trying to generate strings that happen to contain the world "hello":
+However, it is possible to go too far with refinement and make something that fails to produce any values. The test.check https://clojure.github.io/test.check/clojure.test.check.generators.html#var-such-that[`such-that`] that implements the refinement will throw an error if the refinement predicate cannot be resolved within a relatively small number of attempts. For example, consider trying to generate strings that happen to contain the word "hello":
 
 [source,clojure]
 ----

@@ -90,7 +90,7 @@ expands to:
 
 but is easier to write, read, and understand. See also the https://clojure.github.com/clojure/clojure.core-api.html#clojure.core/%2d%3e[pass:[->]] macro which can be used similarly:
 
-`(-> (System/getProperties) (.get "os.name"))`
+`(pass:[->] (System/getProperties) (.get "os.name"))`
 
 ''''
 

@@ -1,0 +1,334 @@
+= Success Stories
+Justin Gehtland
+2017-03-22
+:type: community
+:toc: macro
+:icons: font
+
+Here are just some of the public success stories from companies using Clojure.
+
+++++
+		<link rel="stylesheet" type="text/css" href="/css/success_stories.css" />
+		<div class='row'>
+            <div class='small-12 columns'>
+              <ul class='small-block-grid-1 large-block-grid-3 case-study-tiles'>
+                <li>
+                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/walmart.jpg?1489859977" /></p>
+                  <p>
+                    <a target="walmart" href="http://walmart.com">Walmart</a> used Clojure to create a robust data management system that supports over 5,000 stores and integrates online and mobile data.
+                  </p>
+                  <hr>
+                  <p>
+                    <span class='read-more'>Learn how Walmart is running <a target="testimonial" href="http://blog.cognitect.com/blog/2015/6/30/walmart-runs-clojure-at-scale">Clojure at Scale.</a></span>
+                  </p>
+                  <blockquote style='margin-left: 0; padding: 0'>
+                    <p>"Our Clojure system just handled its first Walmart black Friday and came out without a scratch." - via Twitter, 11/28/2014</p>
+                    <cite>
+                      <strong>Anthony Marcar</strong>
+                      Senior Architect
+                    </cite>
+                  </blockquote>
+                </li>
+                <li>
+                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/chartbeat.jpg?1489859977" /></p>
+                  <p>
+                    <a target="chartbeat" href="https://chartbeat.com">Chartbeat</a> uses Kafka and Clojure to build a contextual site overlay which tracks internal traffic at a rate of over one million clicks per minute in real time.
+                  </p>
+                  <hr>
+                  <p>
+                    <span class='read-more'>Watch <a target="testimonial" href="https://www.youtube.com/watch?v=VC_MTD68erY">Devon discuss</a> how they use Clojure to process a stream of activity of tens of millions of users.</span>
+                  </p>
+                  <blockquote style='margin-left: 0; padding: 0'>
+                    <p>When we needed to extract insights from hundreds of thousands of requests per second in realtime, we knew Clojure was the answer. Clojure is really awesome for general stream processing.</p>
+                    <cite>
+                      <strong>Devon Peticolas, Sr.</strong>
+                      Backend Engineer and Team Lead
+                    </cite>
+                  </blockquote>
+                </li>
+                <li>
+                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/8thlight.jpg?1489859977" /></p>
+                  <p>
+                    <a target="8thlight" href="https://8thlight.com">8th Light</a> worked with a new-to-Clojure client team to complete their first Clojure project in just a month, from design to deployment.
+                  </p>
+                  <hr>
+                  <p>
+                    <span class='read-more'>Read about why they consider <a target="testimonial" href="https://8thlight.com/blog/colin-jones/2016/10/06/clojure-is-boring.html">Clojure a boring technology</a>, and why that's a good thing.</span>
+                  </p>
+                  <blockquote style='margin-left: 0; padding: 0'>
+                    <p>Clojure's flexibility, interactive development, and tooling have helped us to iterate and continuously deliver a product our clients can be proud of.</p>
+                    <cite>
+                      <strong>Colin Jones</strong>
+                      CTO
+                    </cite>
+                  </blockquote>
+                </li>
+                <li>
+                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/consumer-reports.jpg?1489859977" /></p>
+                  <p>
+                    <a target="consumerreports" href="http://www.consumerreports.org/cro/index.htm">Consumer Reports</a> chose Clojure and Datomic to bring together all their underlying backend systems and databases. Their new enterprise-wide container service enables developers to create applications providing the data consumers are searching for quickly with decreased risk and effort.
+                  </p>
+                  <hr>
+                  <p>
+                    <span class='read-more'>Watch Paul deGrandis discuss <a target="testimonial" href="https://www.youtube.com/watch?v=BNkYYYyfF48">Unlocking Data-driven Systems.</a></span>
+                  </p>
+                </li>
+                <li>
+                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/Cicayda.jpg?1489859977" /></p>
+                  <p>
+                    <a target="cicayda" href="http://cicayda.com/">Cicayda</a> used Clojure, Datomic, and ClojureScript to build a robust, multi-tenant cloud hosted SaaS that allows clients to manage diverse data and load profiles.
+                  </p>
+                  <hr>
+                  <p>
+                    <span class='read-more'>Learn how they <a target="testimonial" href="https://www.youtube.com/watch?v=sSUzn6g-6vE">used the familiar principles of Clojure</a> to build this legal data service.</span>
+                  </p>
+                  <blockquote style='margin-left: 0; padding: 0'>
+                    <p>
+                      ClojureScript has provided us with a unified development environment on both sides of the wire and has helped us push toward a data-oriented UI.
+                    </p>
+                    <cite>
+                      <strong>Jonathan Boston</strong>
+                      Software Developer
+                    </cite>
+                  </blockquote>
+                </li>
+                <li>
+                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/puppet-logo-new.png?1489859977" /></p>
+                  <p>
+                    <a target="puppetlabs" href="http://puppetlabs.com">Puppet</a> use Clojure to build Trapperkeeper (and more), relying on Clojure's simplicity to build an agile, scalable platform.
+                  </p>
+                  <hr>
+                  <p>
+                    <span class='read-more'>Read about <a target="testimonial" href="http://puppetlabs.com/blog/new-era-application-services-puppet-labs">Trapperkeeper.</a></span>
+                    <span class='read-more'>Or <a target="testimonial" href="https://puppetlabs.com/blog/clojure-nerds-puppet-labs-application-services">Dig deeper.</a></span>
+                    <span class='read-more'>Or read about <a target="testimonial" href="http://puppetlabs.com/blog/introducing-puppetdb-put-your-data-to-work">PuppetDB.</a></span>
+                  </p>
+                  <blockquote style='margin-left: 0; padding: 0'>
+                    <p>Clojure is a functional programming language from top to bottom. This means that code written in Clojure is very modular, composable, reusable and easy to reason about.</p>
+                    <cite>
+                      <strong>Chris Price</strong>
+                      Software Engineer
+                    </cite>
+                  </blockquote>
+                </li>
+                <li>
+                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/logo-beanstalk.jpg?1489859977" /></p>
+                  <p>
+                    <a target="beanstalk" href="http://beanstalkapp.com">Beanstalk</a> switches to Clojure to speed up caching by 20x.
+                  </p>
+                  <hr>
+                  <p>
+                    <span class='read-more'>Read about <a target="testimonial" href="http://blog.beanstalkapp.com/post/23998022427/beanstalk-clojure-love-and-20x-better">the love.</a></span>
+                  </p>
+                  <blockquote style='margin-left: 0; padding: 0'>
+                    <p>Yesterday we deployed to production a rewrite of Beanstalk’s caching system written in Clojure. It is 20 times faster than the previous version ... and allowed us to bring the latency between committing a change to a repo and seeing the update in Beanstalk’s UI to an average of 20 ms.</p>
+                    <cite>
+                      <strong>Dima Sabanin</strong>
+                    </cite>
+                  </blockquote>
+                </li>
+                <li>
+                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/logo_mol.jpg?1489859977" /></p>
+                  <p>
+                    <a target="mailonline" href="http://mailonline.com">MailOnline.com</a> rebuilds publishing platform in Clojure.
+                  </p>
+                  <hr>
+                  <p>
+                    <span class='read-more'>Read about <a target="testimonial" href="http://www.pitheringabout.com/?p=1018">Clojure at a newspaper.</a></span>
+                  </p>
+                  <blockquote style='margin-left: 0; padding: 0'>
+                    <p>Yet fundamentally we hadn’t written much code. I raised this sheepishly with the CTO and his response was: “that’s how I know it’s the right solution”. Clojure is the winner here.</p>
+                    <cite>
+                      <strong>Jon Pither</strong>
+                      Co-founder, Juxt.pro
+                    </cite>
+                  </blockquote>
+                </li>
+                <li>
+                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/drw-logo.jpg?1489859977" /></p>
+                  <p>
+                    <a target="drw" href="http://drw.com">DRW Trading Group</a> has adopted Clojure with great success.
+                  </p>
+                  <hr>
+                  <p>
+                    <span class='read-more'>Watch Jay discuss <a target="testimonial" href="https://yow.eventer.com/yow-2013-1080/lessons-learned-from-adopting-clojure-by-jey-fields-1397">why DRW chose Clojure.</a></span>
+                  </p>
+                  <blockquote style='margin-left: 0; padding: 0'>
+                    <p>Clojure wasn’t the first language that I’ve introduced to an organization; however, it’s unquestionably the most successful adoption I’ve ever been a part of. The use of Clojure has had many impacts on the firm: culturally, politically, and technically.</p>
+                    <cite>
+                      <strong>Jay Fields</strong>
+                      Software Engineer
+                    </cite>
+                  </blockquote>
+                </li>
+                <li>
+                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/ioof.jpg?1489859977" /></p>
+                  <p>
+                    <a target="ioof" href="http://www.ioof.com.au">IOOF</a> worked with <a target="thoughtworks" href="http://thoughtworks.com">Thoughtworks</a> to quickly replace and improve a critical component of their financial services platform.
+                  </p>
+                  <hr>
+                  <p>
+                    <span class='read-more'>Read about <a target="testimonial" href="http://www.thoughtworks.com/clients/ioof">recreating their superannuation services.</a></span>
+                  </p>
+                  <blockquote style='margin-left: 0; padding: 0'>
+                    <p>The project was a discrete module and allowed us to build it as a service which fits with our architecture goals. Importantly it required integration with our core administration system and that posed no challenge. Clojure allowed us to quickly and easily implement all the changes required to bring this custody function back in-house.</p>
+                    <cite>
+                      <strong>Andrew Todd</strong>
+                      CIO
+                    </cite>
+                  </blockquote>
+                </li>
+                <li>
+                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/tw-logo.jpg?1489859977" /></p>
+                  <p>
+                    <a target="thoughtworks" href="http://thoughtworks.com">Thoughtworks</a> leverages Clojure to accelerate a Java team.
+                  </p>
+                  <hr>
+                  <p>
+                    <span class='read-more'>Read about <a target="testimonial" href="http://thoughtworks.github.io/p2/issue09/two-months-early/">using Clojure to deliver early and under budget.</a></span>
+                  </p>
+                  <blockquote style='margin-left: 0; padding: 0'>
+                    <p>We discussed the existing Clojure community, the maturity of the language itself and the momentum we saw in the industry. Companies are seeing speed to market deliveries, that are based on Clojure.</p>
+                    <cite>
+                      <strong>Dave Eilman</strong>
+                    </cite>
+                  </blockquote>
+                </li>
+                <li>
+                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/the_climate_corporation_logo.jpg?1489859977" /></p>
+                  <p>
+                    <a target="climatecorp" href="http://www.climate.com">The Climate Corporation</a> uses Clojure to help the world’s farmers sustainably protect and care for their crops.
+                  </p>
+                  <hr>
+                  <p>
+                    <span class='read-more'>Read about how they used Clojure to build a <a target="testimonial" href="http://eng.climate.com/2014/08/01/multidimensional-arrays-with-mandoline/">versioned weather datastore</a>.</span>
+                  </p>
+                  <blockquote style='margin-left: 0; padding: 0'>
+                    <p>All our models, datastores, and services are built in Clojure. We find that Clojure’s support for parallelism makes it easy to run complex models with low latency.</p>
+                    <cite>
+                      <strong>Leon Barrett</strong>
+                      Software Engineer
+                    </cite>
+                  </blockquote>
+                </li>
+                <li>
+                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/precursor-thumbnail.png?1489859977" /></p>
+                  <p>
+                    <a target="precursor" href="https://precursorapp.com">Precursor</a> is real-time collaborative prototyping for teams built with Clojure, ClojureScript, and Datomic.
+                  </p>
+                  <hr>
+                  <p>
+                    <span class='read-more'>Read about how Precursor uses ClojureScript to <a target="testimonial" href="https://precursorapp.com/blog/clojure-is-a-product-design-tool">make designers productive</a>.</span>
+                  </p>
+                  <blockquote style='margin-left: 0; padding: 0'>
+                    <p>Learning to use ClojureScript, Om, and React finally made me feel like I was taking ownership of my design work from beginning to end.</p>
+                    <cite>
+                      <strong>Danny King</strong>
+                      Co-Founder/Designer
+                    </cite>
+                  </blockquote>
+                </li>
+                <li>
+                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/sonian.jpg?1489859977" /></p>
+                  <p>
+                    <a target="sonian" href="http://sonian.com/">Sonian</a> has been using Clojure in production at a large scale to develop a common foundation for back-end services.
+                  </p>
+                  <hr>
+                  <p>
+                    <span class='read-more'>Read about how Sonian stays <a target="testimonial" href="http://www.sonian.com/cloud/2015/05/13/video-staying-safe-a-foundation-for-clojure-applications/">SAFE</a>.</span>
+                  </p>
+                  <blockquote style='margin-left: 0; padding: 0'>
+                    <p>Clojure gives us a performance boost at both ends of the software development lifecycle: we can build new features as quick as any Python or Ruby shop, and when we ship it to production it runs as fast as any Java application.</p>
+                    <cite>
+                      <strong>Ron Toland</strong>
+                      Clojure Engineer
+                    </cite>
+                  </blockquote>
+                </li>
+                <li>
+                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/appsflyer.png?1489859977" /></p>
+                  <p>
+                    <a target="appsflyer" href="http://appsflyer.com/">Appsflyer</a> develops in Clojure for scalability and for the business agility it enables. They can grow and adapt as fast as the mobile advertising market.
+                  </p>
+                  <hr>
+                  <p>
+                    <span class='read-more'>For more about Appsflyer, visit their website.  And check out their blog post about <a target="testimonial" href="http://www.appsflyer.com/blog/end-end-production-clojure/?s=clojure&amp;amp;s=clojure">using Clojure in end-to-end production</a>.</span>
+                  </p>
+                  <blockquote style='margin-left: 0; padding: 0'>
+                    <p>When we transitioned from millions of daily events to billions, we knew that Clojure was the answer.</p>
+                    <cite>
+                      <strong>Reshef Mann</strong>
+                      CTO
+                    </cite>
+                  </blockquote>
+                </li>
+                <li>
+                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/atlassian.jpg?1489859977" /></p>
+                  <p>
+                    <a target="atlassian" href="http://atlassian.com/">Atlassian</a> is using Clojure to build realtime collaboration features into both new and existing products.
+                  </p>
+                  <hr>
+                  <p>
+                    <span class='read-more'>Leonardo Borges explains why Atlassian chose Clojure and the exciting results the team has achieved in his recent <a target="testimonial" href="https://www.youtube.com/watch?v=3QR8meTrh5g">presentation</a> at EuroClojure 2015.</span>
+                  </p>
+                </li>
+                <li>
+                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/base2.png?1489859977" /></p>
+                  <p>
+                    <a target="base2" href="http://base2s.com/">Base2</a> used Clojure to develop a feature-rich onboard diagnostic system for the Boeing 737 MAX. They structured the application with a service framework and message queues to enable communication between disparate parts of the service while preserving separation of concerns.
+                  </p>
+                  <hr>
+                  <p>
+                    <span class='read-more'>Watch Donevan discuss the development of this onboard application <a target="testimonial" href="https://www.youtube.com/watch?v=iUC7noGU1mQ">in this Clojure/west 2016 presentation</a>.</span>
+                  </p>
+                  <blockquote style='margin-left: 0; padding: 0'>
+                    <p>
+                      We picked Clojure for this project due to its ability to run parallel processes well, the strength of the available libraries, and because Clojure, which is a Boeing approved language, uses the JVM.
+                    </p>
+                    <cite>
+                      <strong>Donevan Dolby</strong>
+                      Software Engineer
+                    </cite>
+                  </blockquote>
+                </li>
+                <li>
+                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/rklogo.jpg?1489859977" /></p>
+                  <p>
+                    <a target="roomkey" href="http://roomkey.com">Room Key</a> works with Cognitect and leverages Clojure and Datomic to build a rapidly scalable, highly agile cloud-based hotel search engine.
+                  </p>
+                  <hr>
+                  <p>
+                    <span class='read-more'>Read about <a target="testimonial" href="http://www.colinsteele.org/post/27929539434/60-000-growth-in-7-months-using-clojure-and-aws">60,000% growth using Clojure and AWS.</a></span>
+                    <span class='read-more'>Or a <a target="testimonial" href="http://cognitect.com/consulting/case-studies/roomkey">case study about our collaboration.</a></span>
+                    <span class='read-more'>Or about <a target="testimonial" href="http://www.datomic.com/room-keys-story.html">how they use Datomic.</a></span>
+                  </p>
+                  <blockquote style='margin-left: 0; padding: 0'>
+                    <p>[We] knew Cognitect would provide the kind of support we needed. They have been our partner in every sense of the word. They resolved most of the few problems we encountered before I got to them.</p>
+                    <cite>
+                      <strong>Colin Steele</strong>
+                      CTO
+                    </cite>
+                  </blockquote>
+                </li>
+                <li>
+                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/greenius-logo.jpg?1489859977" /></p>
+                  <p>
+                    <a target="greenius" href="http://greeni.us">Greenius</a> chose Clojure and Datomic to build a scalable, agile platform for gardeners to collaborate and share ideas.
+                  </p>
+                  <hr>
+                  <p>
+                    <span class='read-more'>Learn about <a target="testimonial" href="http://about.greeni.us/greenius-clojurescript-integration-roadmap/">their ClojureScript integration roadmap.</a></span>
+                  </p>
+                  <blockquote style='margin-left: 0; padding: 0'>
+                    <p>[We designed our software] with just immutable data structures and pure functions (with much less code than traditional OO languages) allowing us to focus on our core business requirements rather than inherent technological problems.</p>
+                    <cite>
+                      <strong>Asier Galdos</strong>
+                      Co-founder/developer
+                    </cite>
+                  </blockquote>
+                </li>
+              </ul>
+            </div>
+
+++++
+

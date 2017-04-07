@@ -13,7 +13,7 @@ Here are just some of the public success stories from companies using Clojure.  
             <div class='small-12 columns'>
               <ul class='small-block-grid-1 large-block-grid-3 case-study-tiles'>
                 <li>
-                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/walmart.jpg?1489859977" /></p>
+                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/walmart.jpg" /></p>
                   <p>
                     <a target="walmart" href="http://walmart.com">Walmart</a> used Clojure to create a robust data management system that supports over 5,000 stores and integrates online and mobile data.
                   </p>
@@ -30,7 +30,7 @@ Here are just some of the public success stories from companies using Clojure.  
                   </blockquote>
                 </li>
                 <li>
-                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/chartbeat.jpg?1489859977" /></p>
+                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/chartbeat.jpg" /></p>
                   <p>
                     <a target="chartbeat" href="https://chartbeat.com">Chartbeat</a> uses Kafka and Clojure to build a contextual site overlay which tracks internal traffic at a rate of over one million clicks per minute in real time.
                   </p>
@@ -47,7 +47,7 @@ Here are just some of the public success stories from companies using Clojure.  
                   </blockquote>
                 </li>
                 <li>
-                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/8thlight.jpg?1489859977" /></p>
+                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/8thlight.jpg" /></p>
                   <p>
                     <a target="8thlight" href="https://8thlight.com">8th Light</a> worked with a new-to-Clojure client team to complete their first Clojure project in just a month, from design to deployment.
                   </p>
@@ -64,7 +64,7 @@ Here are just some of the public success stories from companies using Clojure.  
                   </blockquote>
                 </li>
                 <li>
-                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/consumer-reports.jpg?1489859977" /></p>
+                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/consumer-reports.jpg" /></p>
                   <p>
                     <a target="consumerreports" href="http://www.consumerreports.org/cro/index.htm">Consumer Reports</a> chose Clojure and Datomic to bring together all their underlying backend systems and databases. Their new enterprise-wide container service enables developers to create applications providing the data consumers are searching for quickly with decreased risk and effort.
                   </p>
@@ -74,7 +74,7 @@ Here are just some of the public success stories from companies using Clojure.  
                   </p>
                 </li>
                 <li>
-                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/Cicayda.jpg?1489859977" /></p>
+                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/Cicayda.jpg" /></p>
                   <p>
                     <a target="cicayda" href="http://cicayda.com/">Cicayda</a> used Clojure, Datomic, and ClojureScript to build a robust, multi-tenant cloud hosted SaaS that allows clients to manage diverse data and load profiles.
                   </p>
@@ -93,7 +93,7 @@ Here are just some of the public success stories from companies using Clojure.  
                   </blockquote>
                 </li>
                 <li>
-                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/puppet-logo-new.png?1489859977" /></p>
+                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/puppet-logo-new.png" /></p>
                   <p>
                     <a target="puppetlabs" href="http://puppetlabs.com">Puppet</a> use Clojure to build Trapperkeeper (and more), relying on Clojure's simplicity to build an agile, scalable platform.
                   </p>
@@ -112,7 +112,7 @@ Here are just some of the public success stories from companies using Clojure.  
                   </blockquote>
                 </li>
                 <li>
-                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/logo-beanstalk.jpg?1489859977" /></p>
+                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/logo-beanstalk.jpg" /></p>
                   <p>
                     <a target="beanstalk" href="http://beanstalkapp.com">Beanstalk</a> switches to Clojure to speed up caching by 20x.
                   </p>
@@ -128,7 +128,7 @@ Here are just some of the public success stories from companies using Clojure.  
                   </blockquote>
                 </li>
                 <li>
-                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/logo_mol.jpg?1489859977" /></p>
+                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/logo_mol.jpg" /></p>
                   <p>
                     <a target="mailonline" href="http://mailonline.com">MailOnline.com</a> rebuilds publishing platform in Clojure.
                   </p>
@@ -145,7 +145,7 @@ Here are just some of the public success stories from companies using Clojure.  
                   </blockquote>
                 </li>
                 <li>
-                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/drw-logo.jpg?1489859977" /></p>
+                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/drw-logo.jpg" /></p>
                   <p>
                     <a target="drw" href="http://drw.com">DRW Trading Group</a> has adopted Clojure with great success.
                   </p>
@@ -162,7 +162,7 @@ Here are just some of the public success stories from companies using Clojure.  
                   </blockquote>
                 </li>
                 <li>
-                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/ioof.jpg?1489859977" /></p>
+                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/ioof.jpg" /></p>
                   <p>
                     <a target="ioof" href="http://www.ioof.com.au">IOOF</a> worked with <a target="thoughtworks" href="http://thoughtworks.com">Thoughtworks</a> to quickly replace and improve a critical component of their financial services platform.
                   </p>
@@ -179,7 +179,7 @@ Here are just some of the public success stories from companies using Clojure.  
                   </blockquote>
                 </li>
                 <li>
-                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/tw-logo.jpg?1489859977" /></p>
+                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/tw-logo.jpg" /></p>
                   <p>
                     <a target="thoughtworks" href="http://thoughtworks.com">Thoughtworks</a> leverages Clojure to accelerate a Java team.
                   </p>
@@ -195,7 +195,7 @@ Here are just some of the public success stories from companies using Clojure.  
                   </blockquote>
                 </li>
                 <li>
-                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/the_climate_corporation_logo.jpg?1489859977" /></p>
+                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/the_climate_corporation_logo.jpg" /></p>
                   <p>
                     <a target="climatecorp" href="http://www.climate.com">The Climate Corporation</a> uses Clojure to help the world’s farmers sustainably protect and care for their crops.
                   </p>
@@ -212,7 +212,7 @@ Here are just some of the public success stories from companies using Clojure.  
                   </blockquote>
                 </li>
                 <li>
-                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/precursor-thumbnail.png?1489859977" /></p>
+                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/precursor-thumbnail.png" /></p>
                   <p>
                     <a target="precursor" href="https://precursorapp.com">Precursor</a> is real-time collaborative prototyping for teams built with Clojure, ClojureScript, and Datomic.
                   </p>
@@ -229,7 +229,7 @@ Here are just some of the public success stories from companies using Clojure.  
                   </blockquote>
                 </li>
                 <li>
-                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/sonian.jpg?1489859977" /></p>
+                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/sonian.jpg" /></p>
                   <p>
                     <a target="sonian" href="http://sonian.com/">Sonian</a> has been using Clojure in production at a large scale to develop a common foundation for back-end services.
                   </p>
@@ -246,7 +246,7 @@ Here are just some of the public success stories from companies using Clojure.  
                   </blockquote>
                 </li>
                 <li>
-                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/appsflyer.png?1489859977" /></p>
+                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/appsflyer.png" /></p>
                   <p>
                     <a target="appsflyer" href="http://appsflyer.com/">Appsflyer</a> develops in Clojure for scalability and for the business agility it enables. They can grow and adapt as fast as the mobile advertising market.
                   </p>
@@ -263,7 +263,7 @@ Here are just some of the public success stories from companies using Clojure.  
                   </blockquote>
                 </li>
                 <li>
-                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/atlassian.jpg?1489859977" /></p>
+                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/atlassian.jpg" /></p>
                   <p>
                     <a target="atlassian" href="http://atlassian.com/">Atlassian</a> is using Clojure to build realtime collaboration features into both new and existing products.
                   </p>
@@ -273,7 +273,7 @@ Here are just some of the public success stories from companies using Clojure.  
                   </p>
                 </li>
                 <li>
-                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/base2.png?1489859977" /></p>
+                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/base2.png" /></p>
                   <p>
                     <a target="base2" href="http://base2s.com/">Base2</a> used Clojure to develop a feature-rich onboard diagnostic system for the Boeing 737 MAX. They structured the application with a service framework and message queues to enable communication between disparate parts of the service while preserving separation of concerns.
                   </p>
@@ -292,7 +292,7 @@ Here are just some of the public success stories from companies using Clojure.  
                   </blockquote>
                 </li>
                 <li>
-                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/rklogo.jpg?1489859977" /></p>
+                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/rklogo.jpg" /></p>
                   <p>
                     <a target="roomkey" href="http://roomkey.com">Room Key</a> works with Cognitect and leverages Clojure and Datomic to build a rapidly scalable, highly agile cloud-based hotel search engine.
                   </p>
@@ -311,7 +311,7 @@ Here are just some of the public success stories from companies using Clojure.  
                   </blockquote>
                 </li>
                 <li>
-                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/greenius-logo.jpg?1489859977" /></p>
+                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/greenius-logo.jpg" /></p>
                   <p>
                     <a target="greenius" href="http://greeni.us">Greenius</a> chose Clojure and Datomic to build a scalable, agile platform for gardeners to collaborate and share ideas.
                   </p>
@@ -324,6 +324,23 @@ Here are just some of the public success stories from companies using Clojure.  
                     <cite>
                       <strong>Asier Galdos</strong>
                       Co-founder/developer
+                    </cite>
+                  </blockquote>
+                </li>
+                <li>
+                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/Funding-Circle.jpg" /></p>
+                  <p>
+                    <a target="fundingcircle" href="https://www.fundingcircle.com">Funding Circle</a> uses Clojure to write their exchange and accounting systems.
+                  </p>
+                  <hr>
+                  <p>
+                    <span class='read-more'>Learn about how they use Clojure for <a target="testimonial" href="https://juxt.pro/blog/posts/clojure-in-fundingcircle.html">perfomance sensitive back-end services.</a></span>
+                  </p>
+                  <blockquote style='margin-left: 0; padding: 0'>
+                    <p>Clojure is remarkably malleable. We write stream processors, API servers, and web applications in Clojure and it's a natural fit. We can focus on our data and solving problems unique to our business.</p>
+                    <cite>
+                      <strong>Rob Crim</strong>
+                      Chief Architect
                     </cite>
                   </blockquote>
                 </li>

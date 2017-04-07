@@ -1,0 +1,61 @@
+= Cybozu Startups
+Alex Miller
+2017-04-07
+:jbake-type: story
+:jbake-company: Cybozu Startups
+:jbake-link: https://anpi.cstap.com/anpi2.html
+
+This interview is with Ikuru Kanuma, a developer for Cybozu Startups in Japan.
+
+[.right]
+image:/images/content/stories/cstap.png["cstap",height="80"]
+
+*What product or service are you building with Clojure or ClojureScript?*
+
+We built a https://anpi.cstap.com/anpi2.html[safety confirmation service] with Clojure and ClojureScript.
+
+The main features are:
+
+* Trigger emails/notifications through disaster reports (earthquake, tsunami, etc) from the Japanese Meteorological Agency, or user action.
+* The users can access a questionnaire from the email/notification and answer their status, such as whether they are safe, can work/commute etc.
+* Provide a summarized view of the responses which can be used to make business continuity decisions in case of a disaster.
+
+The overall system is composed of:
+
+* A main user facing web application (Clojure/ClojureScript)
+* A worker that sends out the emails/notifications (Clojure)
+* An API server for the mobile app (Clojure)
+* An API server that allows external systems to update user data (Clojure)
+* A backend Admin application (Clojure/ClojureScript)
+* Mainly deployed on AWS Elastic Beanstalk.
+
+*How big is the team you have using Clojure or ClojureScript?*
+
+We are a team of 3, and all of us use Clojure for the server side, and ClojureScript for the frontend. All 3 of us develop in Emacs + Cider. 2 of us use a Linux machine, and 1 uses a Mac.
+
+*What Clojure or ClojureScript library have you enjoyed working with the most?*
+
+I would like to mention 2 libraries:
+
+* https://github.com/cognitect/transit-clj[transit-clj] - because it removes much of the friction when passing data between the server and the browser, which is a common problem in most other languages.
+* https://github.com/juxt/bidi[bidi] -  we cannot imagine life without it! Our app has quite a few dynamically generated URLs, and creating those without bidirectional routing would have been a nightmare.
+
+*What about working with Clojure or ClojureScript gives you the most value?*
+
+* Interactive development with the REPL and the excellent tools such as Cider and figwheel, which allows for extremely quick iteration.
+* Immutable data structures, for making the programs really simple and easy to understand
+* Ability to share code between the frontend and backend
+
+*Why is using Clojure or ClojureScript valuable to your business?*
+
+Apart from the technical benefits, we are focusing and investing on Clojure for tech branding, which in turn the ultimate goal is to recruit talented engineers. The factors that were important for branding were:
+
+* Something that is going to stay around for a long time (So a programing language over some library/framework)
+* Something that helps an engineer grow
+* Something that makes an engineer excited
+* Something that engineers interested in it tend to be talented
+* Did not have to be something popular as we wanted to keep a small team
+* Less competition in terms of recruitment
+* Something that we can be the best in Japan
+
+Clojure matches these factors really well, and so far we are happy with the results. That is how we gathered the 3 members of our team (all loving Clojure), and we constantly receive 1 or 2 applications every month. (FYI: We’re hiring in Japan! -> https://cstap.com/jobs/dev-engineer.html)

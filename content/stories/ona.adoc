@@ -1,0 +1,46 @@
+= Ona
+Alex Miller
+2017-04-13
+:jbake-type: story
+:jbake-company: Ona
+
+Today we talk to Peter Lubell-Doughtie about https://ona.io[Ona].
+
+[.right]
+image:/images/content/stories/ona-logo.png["Ona"]
+
+*How long have you been working with Clojure and ClojureScript?*
+
+Ona has been working with Clojure and ClojureScript for three years. We started using it when we built an updated version of the front-end to our data collection and management platform. I was introduced to Clojure about five years ago through Cascalog. I’ve had an affinity for LISPs ever since learning it in undergrad and using it in a genetic programming research project that generated s-expressions to evolve an agent communication language.
+ 
+*How big is the team you have using Clojure or ClojureScript?*
+
+At any one time we have about 4-6 team members working full-time on projects in Clojure and ClojureScript; this comes out to about a third of our engineering team. We use a number of different editors, including https://github.com/onaio/meow[Meow], an emacs config created by one of our engineers.
+ 
+*What product or service are you building with Clojure or ClojureScript?*
+
+We are building a data collection, management, and visualization platform targeted at humanitarian and international development organizations. These organizations, e.g. the World Food Program and UNICEF, use our platform to conduct on-going surveys in the field. Field data is merged with historic data in real-time to construct a comprehensive view of projects they have invested in or are running. This allows organizations to see problems as they occur and make adjustments, e.g. directing health workers to understaffed clinics or inspectors to buildings with more severe damage. The Clojure and ClojureScript component is a stateless layer with all data persistence and retrieval mediated through our API client, https://github.com/onaio/milia/[Milia], and visualization in our ClojureScript data viewers, https://github.com/onaio/hatti[Hatti] and https://github.com/onaio/vega-viewer[Vega-viewer].
+ 
+*What Clojure or ClojureScript library have you enjoyed working with the most?*
+
+On the Clojure side, we’ve benefited a lot from the Ring middleware https://github.com/magnars/optimus[Optimus], which bundles and optimizes all our assets.
+
+On the ClojureScript side, we were early adopters of Om and use it extensively to render reactive views. We use it with Hiccup-based markup, some of which is shared with Clojure (we’d like to share more).
+
+For libraries we use in both Clojure and ClojureScript, we make heavy use of the i18n library https://github.com/ptaoussanis/tempura[Tempura] combined with https://github.com/onaio/chimera/blob/master/src/chimera/i18n.cljc[custom helpers] to load all text from translation files. We also run a lot of static analyzers in our build step including https://github.com/jonase/kibit[Kibit] and https://github.com/dakrone/lein-bikeshed[Bikeshed] to catch duplication and enforce uniform code-style.
+ 
+*What about working with Clojure or ClojureScript gives you the most value?*
+
+Consistency and an approximation of purity give us the most value. When using Clojure and ClojureScript we can look at the front-end or back-end---really anywhere in our codebase---and know it’s following the same set of simple rules. We can trace through the data flow and explicitly see how transformations are happening.
+
+These features also help us when working with less experienced engineers or engineers without a functional programming background. Working in Clojure, with strict static analyzers, significantly limit the possible approaches to solve a problem, and rules out a bunch of anti-patterns.
+ 
+*What is your stack?*
+
+We use NGINX as a reverse-proxy to hand-off requests to our application server which runs a https://github.com/ring-clojure/ring[Ring] based Jetty server and routes requests to a set of views using https://github.com/weavejester/compojure[Compojure]. We render views on the server side using https://github.com/cgrand/enlive[Enlive] and occasionally https://github.com/weavejester/hiccup[Hiccup]. All styles are written in SCSS. The client side uses https://github.com/omcljs/om[Om] to render React views with https://github.com/gf3/secretary[Secretary] for routing and https://github.com/r0man/sablono[Sablono] for markup. We use our https://github.com/clojure/core.async[core.async] based API client https://github.com/onaio/milia[Milia] to interact with API data from the client side.
+
+For testing, we self-host https://github.com/drone/drone[Drone] to run continuous integration builds. Code must get past https://github.com/sasstools/sass-lint[Sass-lint], https://github.com/dakrone/lein-bikeshed[Bikeshed], https://github.com/weavejester/cljfmt[cljfmt], https://github.com/jonase/eastwood[Eastwood], https://github.com/jonase/kibit[Kibit], and a production ClojureScript build (which will alert us to any issues with advanced compilation), before we run the tests suites. We write Clojure tests in https://github.com/marick/Midje[Midje] and ClojureScript tests in https://github.com/clojure/clojurescript/wiki/Testing[cljs.test].
+ 
+*Why is using Clojure or ClojureScript valuable to your business?*
+
+Because our platform is used globally to improve child and maternal health, governance, agriculture, access to infrastructure, and government accountability, mistakes in our platform have serious consequences. E.g. fewer vaccinations given and fewer essential resources distributed (think water and blankets). In a very literal way, our mistakes mean fewer lives saved. Using Clojure and ClojureScript simplifies how we process real-time data streams from around the world, and helps us minimize our mistakes. If you're interested in working with us please https://ona.io/contact.html[get in touch].

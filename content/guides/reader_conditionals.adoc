@@ -12,7 +12,7 @@ toc::[]
 
 Reader conditionals are a feature added in Clojure 1.7. They are designed to allow different dialects of Clojure to share common code that is mostly platform independent, but contains some platform dependent code. If you are writing code across multiple platforms that is mostly independent you should separate `.clj` and `.cljs` files instead.
 
-Reader conditionals are integrated into the Clojure compiler, and don't require any extra tooling beyond Clojure 1.7 or greater. To use reader conditionals, all you need is for your file to have a `.cljc` extension and to use Clojure 1.7 or ClojureScript 0.0-3196 or higher. Reader conditionals are expressions, and can be manipulated like ordinary Clojure expressions. For more technical details, see the reference page on <<xref/../../reference/reader#,the reader>>.
+Reader conditionals are integrated into the Clojure reader, and don't require any extra tooling beyond Clojure 1.7 or greater. To use reader conditionals, all you need is for your file to have a `.cljc` extension and to use Clojure 1.7 or ClojureScript 0.0-3196 or higher. Reader conditionals are expressions, and can be manipulated like ordinary Clojure expressions. For more technical details, see the reference page on <<xref/../../reference/reader#,the reader>>.
 
 There are two types of reader conditionals, standard and splicing. The standard reader conditional behaves similarly to a traditional `cond`. The syntax for usage is `#?` and looks like:
 
@@ -20,8 +20,11 @@ There are two types of reader conditionals, standard and splicing. The standard 
 ----
 #?(:clj  (Clojure expression)
    :cljs (ClojureScript expression)
-   :cljr (Clojure CLR expression))
+   :cljr (Clojure CLR expression)
+   :default (fallthrough expression))
 ----
+
+The platform tags `:clj`, etc are a fixed set of tags hard-coded into each platform. The `:default` tag is a well-known tag to catch and provide an expression if no platform tag matches. If no tags match and `:default` is not provided, the reader conditional will read nothing (not nil, but as if nothing was read from the stream at all).
 
 The syntax for a splicing reader conditional is `#?@`. It is used to splice lists into the containing form. So the Clojure reader would read this:
 

@@ -21,7 +21,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 == Clojure Source
 
-Clojure source code is hosted at https://github.com/clojure/clojure[github.com/clojure/clojure]. Builds of the very latest version of Clojure's master branch are available at https://oss.sonatype.org/content/repositories/snapshots/org/clojure/clojure/1.9.0-master-SNAPSHOT/[build.clojure.org].
+Clojure source code is hosted at https://github.com/clojure/clojure[github.com/clojure/clojure]. Builds of the very latest version of Clojure's master branch are available at https://oss.sonatype.org/content/repositories/snapshots/org/clojure/clojure/1.9.0-master-SNAPSHOT/[oss.sonatype.org].
 
 == Get Clojure via Leiningen
 
@@ -34,6 +34,6 @@ Modify the dependencies and repositories sections of your https://leiningen.org/
 ----
 == Where did Clojure Contrib go?
 
-If you are migrating from a pre-1.3 version of Clojure, please see http://dev.clojure.org/display/community/Where+Did+Clojure.Contrib+Go[this page] for migration help regarding old contrib libraries.
+If you are migrating from a pre-1.3 version of Clojure, please see https://dev.clojure.org/display/community/Where+Did+Clojure.Contrib+Go[this page] for migration help regarding old contrib libraries.
 
 == <<downloads_older#,Older Releases>>

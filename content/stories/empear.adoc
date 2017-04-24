@@ -1,0 +1,50 @@
+= Empear
+Alex Miller
+2017-04-24
+:jbake-type: story
+:jbake-company: Empear
+
+This interview is a discussion with Adam Tornhill about http://www.empear.com/[Empear] and their code analysis tool https://codescene.io/[CodeScene].
+
+[.right]
+image:/images/content/stories/empear.png["Empear",height="100"]
+
+*How long have you been working with Clojure or ClojureScript?*
+
+Empear launched in 2015 and we used Clojure from the start. Prior to that I used Clojure for some of my side projects. Clojure was a natural step. I've been a big fan of Lisp for a decade and to be able to use a Lisp together with the ecosystem of the JVM was attractive.
+
+*How big is the team you have using Clojure or ClojureScript?*
+
+We're three developers at the moment and look to expand. All of us code in Clojure on a daily basis. We also have a few small components written in Haskell and Python.
+
+*What product or service are you building with Clojure or ClojureScript?*
+
+Our main product is CodeScene. CodeScene is a tool that helps software projects improve their efficiency by identifying and prioritizing technical debt. We take a different approach to software analysis since we base the results on behavioral and social data.
+
+Our main data source is version-control repositories, which CodeScene views as a behavioral log of how the developers interact with the codebase. This means we can prioritize based on how the system grows and also include a social dimension of code that lets our customers discover team productivity bottlenecks and save on- and off-boarding costs.
+
+We maintain two versions of CodeScene. One is our cloud version, https://codescene.io/, which is the analyses as a service. The other is our on-premises version of CodeScene, which our customers install in their own data centers.
+
+*What Clojure or ClojureScript library have you enjoyed working with the most?*
+
+The nature of Clojure and its tight integration with Java makes using Clojure libraries more of an optional convenience. Some high-quality libraries that we enjoy are https://github.com/ptaoussanis/carmine[Carmine], https://github.com/ptaoussanis/timbre[Timbre], and https://github.com/dakrone/cheshire[Cheshire]. We also found https://github.com/weavejester/ragtime[Ragtime] helpful for database migrations. In addition, we use several libraries for statistics and machine learning, although we often end-up implementing our core algorithms ourselves.
+
+*What about working with Clojure or ClojureScript gives you the most value?*
+
+The most rewarding aspect of Clojure is that the language lets you focus on the problem domain. "What does the data look like? How should we filter and transform it before we pass it on? Let's run this in the REPL and see what happens. OK, now put that in a function. Write a spec for it and stabilize it with tests." That workflow ties in really nice to how human problem solving works. In practice it lets us implement new features at a rapid pace.
+
+*What is your favorite feature of Clojure or ClojureScript?*
+
+The most important feature is Clojure's persistent immutable data structures. They remove a whole class of problems. No more worries that something else will change your data.
+
+We also like Clojure spec. Prior to spec we'd reached a point where certain functions got hard to reason about in isolation. That meant we had to look at the calling context to find out what data structures the code operated on and what it actually did. This is of course something that hits you in all dynamically typed languages, but the issue seemed more pronounced due to the high abstraction levels that Clojure encourages. spec helped a lot by making the code easier to reason about, which IMHO is the single most important aspect to optimize when it comes to software development.
+
+*What is your stack?*
+
+Our web systems use a traditional stack based on https://github.com/ring-clojure/ring[Ring] and https://github.com/weavejester/compojure[Compojure]. The rendering is mostly server-side using https://github.com/yogthos/Selmer[Selmer], with a thin layer of JavaScript on top. We use D3 for visualizations. Our cloud solution runs on Amazon Web Services.
+
+*Why is using Clojure or ClojureScript valuable to your business?*
+
+There are two main reasons. First of all, when we started up I was the only programmer and I knew we had to iterate fast to build something useful. That meant I had to use my time as efficiently as possible. Clojure was an enabler that allowed me to quickly prototype a new idea, evaluate it, and then iterate until we had a stable solution. This is an aspect of Clojure that we still benefit from since we're exploring a new domain with our analyses.
+
+The second reason isn't technical at all. One of the main reasons I chose Clojure for Empear was because the language looked fun. And fun is a much underestimated motivator in the software industry; Fun is virtually a guarantee that things get done.

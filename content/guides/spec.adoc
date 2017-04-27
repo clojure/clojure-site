@@ -11,18 +11,20 @@ toc::[]
 
 == Getting started
 
-The <<xref/../../../about/spec#,spec>> library specifies the structure of data, validates or destructures it, and can generate data based on the spec. The https://clojure.github.io/clojure/branch-master/clojure.spec-api.html[clojure.spec] namespace is included in the Clojure core distribution, so no extra library is required to use it. You will need to declare a dependency on the latest alpha version of Clojure (or higher) however:
+The <<xref/../../../about/spec#,spec>> library specifies the structure of data, validates or destructures it, and can generate data based on the spec. 
+
+To use spec, declare a dependency on the latest alpha version of Clojure (or higher):
 
 [source, clojure]
 ----
-[org.clojure/clojure "1.9.0-alpha15"]
+[org.clojure/clojure "1.9.0-alpha16"]
 ----
 
-To start working with spec, require the `clojure.spec` namespace at the REPL:
+To start working with spec, require the `clojure.spec.alpha` namespace at the REPL:
 
 [source,clojure]
 ----
-(require '[clojure.spec :as s])
+(require '[clojure.spec.alpha :as s])
 ----
 
 Or include spec in your namespace:
@@ -30,7 +32,7 @@ Or include spec in your namespace:
 [source,clojure]
 ----
 (ns my.ns
-  (:require [clojure.spec :as s]))
+  (:require [clojure.spec.alpha :as s]))
 ----
 
 == Predicates
@@ -45,9 +47,9 @@ Any existing Clojure function that takes a single argument and returns a truthy 
 ;;=> 1000
 ----
 
-The `conform` function takes something that can be a spec and a data value. Here we are passing a predicate which is implicitly converted into a spec. The return value is "conformed". Here, the conformed value is the same as the original value - we'll see later where that starts to deviate. If the value does not conform to the spec, the special value `:clojure.spec/invalid` is returned.
+The `conform` function takes something that can be a spec and a data value. Here we are passing a predicate which is implicitly converted into a spec. The return value is "conformed". Here, the conformed value is the same as the original value - we'll see later where that starts to deviate. If the value does not conform to the spec, the special value `:clojure.spec.alpha/invalid` is returned.
 
-If you don't want to use the conformed value or check for `:clojure.spec/invalid`, the helper https://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/valid?[`valid?`] can be used instead to return a boolean.
+If you don't want to use the conformed value or check for `:clojure.spec.alpha/invalid`, the helper https://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/valid?[`valid?`] can be used instead to return a boolean.
 
 [source,clojure]
 ----
@@ -185,7 +187,7 @@ In addition to `explain`, you can use https://clojure.github.io/clojure/branch-m
 [source,clojure]
 ----
 (s/explain-data ::name-or-id :foo)
-;;=> #:clojure.spec{
+;;=> #:clojure.spec.alpha{
 ;;     :problems ({:path [:name], 
 ;;                 :pred string?,
 ;;                 :val :foo,
@@ -200,7 +202,7 @@ In addition to `explain`, you can use https://clojure.github.io/clojure/branch-m
 
 [NOTE]
 ====
-This result also demonstrates the new namespace map literal syntax added in 1.9.0-alpha8. Maps may be prefixed with `#:` or `#::` (for autoresolve) to specify a default namespace for all keys in the map. In this example, this is equivalent to `{:clojure.spec/problems ...}`
+This result also demonstrates the new namespace map literal syntax added in 1.9.0-alpha8. Maps may be prefixed with `#:` or `#::` (for autoresolve) to specify a default namespace for all keys in the map. In this example, this is equivalent to `{:clojure.spec.alpha/problems ...}`
 ====
 
 == Entity Maps
@@ -651,9 +653,9 @@ Another option is to use `s/assert` within your code to assert that a value sati
 (person-name 100)
 ;; CompilerException clojure.lang.ExceptionInfo: Spec assertion failed
 ;; val: 100 fails predicate: map?
-;; :clojure.spec/failure  :assertion-failed
-;; #:clojure.spec{:problems [{:path [], :pred map?, :val 100, :via [], :in []}], 
-;;                :failure :assertion-failed}
+;; :clojure.spec.alpha/failure  :assertion-failed
+;; #:clojure.spec.alpha{:problems [{:path [], :pred map?, :val 100, :via [], :in []}], 
+;;                      :failure :assertion-failed}
 ----
 
 A deeper level of integration is to call conform and use the return value to destructure the input. This will be particularly useful for complex inputs with alternate options.
@@ -765,7 +767,7 @@ The Clojure macroexpander will look for and conform :args specs registered for m
 (declare 100)
 ;; ExceptionInfo: Call to clojure.core/declare did not conform to spec:
 ;; In: [0] val: 100 fails at: [:args :names] predicate: simple-symbol?
-;; :clojure.spec/args  (100)
+;; :clojure.spec.alpha/args  (100)
 ----
 
 Because macros are always checked during macro expansion, you do not need to call instrument for macro specs.
@@ -877,11 +879,11 @@ In Maven, declare your dependency as a test scope dependency:
 </project>
 ----
 
-In your code you also need to include the `clojure.spec.gen` namespace:
+In your code you also need to include the `clojure.spec.gen.alpha` namespace:
 
 [source,clojure]
 ----
-(require '[clojure.spec.gen :as gen])
+(require '[clojure.spec.gen.alpha :as gen])
 ----
 
 === Sampling Generators
@@ -1026,7 +1028,7 @@ Building your own generator gives you the freedom to be either narrower and/or b
 There are three ways to build up custom generators - in decreasing order of preference: 
 
 . Let spec create a generator based on a predicate/spec
-. Create your own generator from the tools in clojure.spec.gen
+. Create your own generator from the tools in clojure.spec.gen.alpha
 . Use test.check or other test.check compatible libraries (like https://github.com/gfredericks/test.chuck[test.chuck])
 
 [WARNING]
@@ -1067,11 +1069,11 @@ Note that `with-gen` (and other places that take a custom generator) take a no-a
 
 One downside to this approach is we are missing what property testing is really good at: automatically generating data across a wide search space to find unexpected problems. 
 
-The clojure.spec.gen namespace has a number of functions for generator "primitives" as well as "combinators" for combining them into more complicated generators. 
+The clojure.spec.gen.alpha namespace has a number of functions for generator "primitives" as well as "combinators" for combining them into more complicated generators. 
 
 [NOTE]
 ====
-Nearly all of the functions in the clojure.spec.gen namespace are merely wrappers that dynamically load functions of the same name in test.check. You should refer to the documentation for https://clojure.github.io/test.check/[test.check] for more details on how all of the clojure.spec.gen generator functions work.
+Nearly all of the functions in the clojure.spec.gen.alpha namespace are merely wrappers that dynamically load functions of the same name in test.check. You should refer to the documentation for https://clojure.github.io/test.check/[test.check] for more details on how all of the clojure.spec.gen.alpha generator functions work.
 ====
 
 In this case we want our keyword to have open names but fixed namespaces. There are many ways to accomplish this but one of the simplest is to use https://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec.gen/fmap[`fmap`] to build up a keyword based on generated strings:
@@ -1151,15 +1153,15 @@ Finally, https://clojure.github.io/clojure/branch-master/clojure.spec-api.html#c
 ;;=> (-1.0 -1.0 -1.5 1.25 -0.5 -1.0 -3.125 -1.5625 1.25 -0.390625)
 ----
 
-To learn more about generators, read the test.check https://clojure.github.io/test.check/intro.html[tutorial] or https://clojure.github.io/test.check/generator-examples.html[examples]. Do keep in mind that while clojure.spec.gen is a large subset of clojure.test.check.generators, not everything is included.
+To learn more about generators, read the test.check https://clojure.github.io/test.check/intro.html[tutorial] or https://clojure.github.io/test.check/generator-examples.html[examples]. Do keep in mind that while clojure.spec.gen.alpha is a large subset of clojure.test.check.generators, not everything is included.
 
 == Instrumentation and Testing
 
-spec provides a set of development and testing functionality in the `clojure.spec.test` namespace, which we can include with:
+spec provides a set of development and testing functionality in the `clojure.spec.test.alpha` namespace, which we can include with:
 
 [source,clojure]
 ----
-(require '[clojure.spec.test :as stest])
+(require '[clojure.spec.test.alpha :as stest])
 ----
 
 === Instrumentation
@@ -1178,9 +1180,11 @@ Instrument takes a fully-qualified symbol so we use `pass:[`]` here to resolve i
 (ranged-rand 8 5)
 CompilerException clojure.lang.ExceptionInfo: Call to #'spec.examples.guide/ranged-rand did not conform to spec:
 val: {:start 8, :end 5} fails at: [:args] predicate: (< (:start %) (:end %))
-:clojure.spec/args  (8 5)
-:clojure.spec/failure  :instrument-check-failed
- #:clojure.spec{:problems [{:path [:args], :pred (< (:start %) (:end %)), :val {:start 8, :end 5}, :via [], :in []}], :args (8 5), :failure :instrument-check-failed}
+:clojure.spec.alpha/args  (8 5)
+:clojure.spec.alpha/failure  :instrument-check-failed
+ #:clojure.spec.alpha{:problems [{:path [:args], :pred (< (:start %) (:end %)), :val {:start 8, :end 5}, :via [], :in []}],
+                      :args (8 5), 
+                      :failure :instrument-check-failed}
 ----
 
 The error fails in the second args predicate that checks `(< start end)`. Note that the `:ret` and `:fn` specs are not checked with instrumentation as validating the implementation should occur at testing time.
@@ -1189,16 +1193,16 @@ Instrumentation can be turned off using the complementary function `unstrument`.
 
 === Testing
 
-We mentioned earlier that `clojure.spec.test` provides tools for automatically testing functions. When functions have specs, we can use https://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec.test/check[`check`], to automatically generate tests that check the function using the specs.
+We mentioned earlier that `clojure.spec.test.alpha` provides tools for automatically testing functions. When functions have specs, we can use https://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec.test/check[`check`], to automatically generate tests that check the function using the specs.
 
 `check` will generate arguments based on the `:args` spec for a function, invoke the function, and check that the `:ret` and `:fn` specs were satisfied.
 
 [source,clojure]
 ----
-(require '[clojure.spec.test :as stest])
+(require '[clojure.spec.test.alpha :as stest])
 
 (stest/check `ranged-rand)
-;;=> ({:spec #object[clojure.spec$fspec_impl$reify__13728 0x4a47e374 "clojure.spec$fspec_impl$reify__13728@4a47e374"],
+;;=> ({:spec #object[clojure.spec.alpha$fspec_impl$reify__13728 ...],
 ;;     :clojure.spec.test.check/ret {:result true, :num-tests 1000, :seed 1466805740290},
 ;;     :sym spec.examples.guide/ranged-rand,
 ;;     :result true})
@@ -1228,14 +1232,14 @@ This broken function will still create random integers, just not in the expected
 ;;                  (fn* [p1__3469#] (>= (:ret p1__3469#) (-> p1__3469# :args :start)))
 ;;                  (fn* [p1__3470#] (< (:ret p1__3470#) (-> p1__3470# :args :end))))),
 ;;     :sym spec.examples.guide/ranged-rand,
-;;     :result {:clojure.spec/problems [{:path [:fn],
-;;                                       :pred (>= (:ret %) (-> % :args :start)),
-;;                                       :val {:args {:start -3, :end 0}, :ret -5},
-;;                                       :via [],
-;;                                      :in []}],
-;;              :clojure.spec.test/args (-3 0),
-;;              :clojure.spec.test/val {:args {:start -3, :end 0}, :ret -5},
-;;              :clojure.spec/failure :test-failed}}
+;;     :result {:clojure.spec.alpha/problems [{:path [:fn],
+;;                                             :pred (>= (:ret %) (-> % :args :start)),
+;;                                             :val {:args {:start -3, :end 0}, :ret -5},
+;;                                             :via [],
+;;                                             :in []}],
+;;              :clojure.spec.test.alpha/args (-3 0),
+;;              :clojure.spec.test.alpha/val {:args {:start -3, :end 0}, :ret -5},
+;;              :clojure.spec.alpha/failure :test-failed}}
 ----
 
 `check` has reported an error in the `:fn` spec. We can see the arguments passed were -3 and 0 and the return value was -5, which is out of the expected range.

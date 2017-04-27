@@ -249,7 +249,7 @@ the keys corresponding to the matched components. In this way **spec** regexes a
 
 [source,clojure]
 ----
-user=> (require '[clojure.spec :as s])
+user=> (require '[clojure.spec.alpha :as s])
 (s/def ::even? (s/and integer? even?))
 (s/def ::odd? (s/and integer? odd?))
 (s/def ::a integer?)
@@ -270,7 +270,7 @@ user=> (s/conform s [42 11 13 15 {:a 1 :b 2 :c 3} 1 2 3 42 43 44 11])
 
 ==== conform/explain
 As you can see above, the basic operation for using specs is ``conform``, which takes a spec and a value and
-returns the conformed value or ``:clojure.spec/invalid`` if the value did not conform. When the value does not conform
+returns the conformed value or ``:clojure.spec.alpha/invalid`` if the value did not conform. When the value does not conform
 you can call ``explain`` or ``explain-data`` to find out why it didn't.
 
 === Defining specs
@@ -356,7 +356,7 @@ The return values of ``cat``, ``alt``, ``*``, ``+``, ``?``, ``&``. When nested t
 === conform
 ``conform`` is the basic operation for consuming specs, and does both validation and conforming/destructuring.
 Note that conforming is 'deep' and flows through all of the spec and regex operations, map specs etc.
-Since ``nil`` and ``false`` are legitimate conformed values, conform returns the distinguished ``:clojure.spec/invalid``
+Since ``nil`` and ``false`` are legitimate conformed values, conform returns the distinguished ``:clojure.spec.alpha/invalid``
 when a value cannot be made to conform. ``valid``? can be used instead as a fully-boolean predicate.
 
 === explain

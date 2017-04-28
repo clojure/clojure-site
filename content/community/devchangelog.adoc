@@ -35,8 +35,39 @@ In most cases, you should be able to update your usage of Clojure 1.9.0-alphaX t
           [clojure.spec.test.alpha :as stest])
 ----
 
-Also see the prior announcement related to these changes:
-https://groups.google.com/d/msg/clojure/10dbF7w2IQo/ec37TzP5AQAJ
+=== https://groups.google.com/d/msg/clojure/10dbF7w2IQo/ec37TzP5AQAJ[1.9/spec split] (Apr 26, 2017)
+
+We are moving spec out of the Clojure repo/artifact and into a library to make it easier to evolve spec independently from Clojure. While we consider spec to be an essential part of Clojure 1.9, there are a number of design concerns to resolve before it can be finalized. This allows us to move towards a production Clojure release (1.9) that depends on an alpha version of spec. Users can also pick up newer versions of the spec alpha library as desired. Additionally, this is a first step towards increased support for leveraging dependencies within Clojure.
+
+We will be creating two new contrib libraries that will contain the following (renamed) namespaces:
+
+----
+org.clojure/spec.alpha
+    clojure.spec.alpha          (previously clojure.spec)
+    clojure.spec.gen.alpha      (previously clojure.spec.gen)
+    clojure.spec.test.alpha     (previously clojure.spec.test)
+
+org.clojure/core.specs.alpha
+    clojure.core.specs.alpha    (previously clojure.core.specs)
+----
+
+In most cases, we expect that users have aliased their reference to the spec namespaces and updating to the changed namespaces will only require a single change at the point of the require.
+
+*How will ClojureScript's spec implementation change?*
+
+ClojureScript will also change namespace names to match Clojure. Eventually, the ClojureScript implementation may move out of ClojureScript and into the spec.alpha library - this is still under discussion.
+
+*Why do the libraries and namespaces end in alpha?*
+
+The "alpha" indicates that the spec API and implementation is still subject to change.
+
+*What will happen when the spec api is no longer considered alpha?*
+
+At that point we expect to release a non-alpha version of the spec library (with non-alpha namespaces). Users may immediately begin to use that version of spec along with whatever version of Clojure it depends on. Clojure itself will depend on it at some later point. Timing of all these actions is TBD.
+
+*Will the library support Clojure 1.8 or older versions?*
+
+No. spec uses new functions in Clojure 1.9 and it has never been a goal to provide spec for older versions. Rather, we are trying to accelerate the release of a stable Clojure 1.9 so that users can migrate forward to a stable production release with access to an alpha version of spec, and access to ongoing updated versions as they become available.
 
 === https://groups.google.com/d/msg/clojure/7ZqGTjJoQEQ/RkUYCCbeAwAJ[1.9.0-alpha15] (Mar 14, 2017)
 

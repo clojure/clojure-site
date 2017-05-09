@@ -81,7 +81,7 @@ By default, the Clojure compiler produces code that eagerly clears GC references
 
 === Elide meta
 
-Var meta (docstrings, file and line info, etc) will be compiled into strings in the constant pool of the compiled classes. To descrease class size and make classloading faster, meta can be elided. This option takes a vector of meta keywords that should be removed - some common ones include `:doc`, `:file`, `:line`, and `:added`. Note that eliding meta may make certain features inoperable (for example, `doc` cannot return docstrings if they have been elided).
+Var meta (docstrings, file and line info, etc) will be compiled into strings in the constant pool of the compiled classes. To decrease class size and make classloading faster, meta can be elided. This option takes a vector of meta keywords that should be removed - some common ones include `:doc`, `:file`, `:line`, and `:added`. Note that eliding meta may make certain features inoperable (for example, `doc` cannot return docstrings if they have been elided).
 
 [[directlinking]]
 === Direct linking

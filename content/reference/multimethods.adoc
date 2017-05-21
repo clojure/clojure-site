@@ -87,14 +87,6 @@ https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/isa%3F[isa?
 -> true
 ----
 
-https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/isa%3F[isa?] works with vectors by calling https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/isa%3F[isa?] on their corresponding elements:
-
-[source,clojure]
-----
-(isa? [::square ::rect] [::shape ::shape])
--> true
-----
-
 as do https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/parents[parents] / https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ancestors[ancestors] (but not https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/descendants[descendants], since class descendants are an open set)
 
 [source,clojure]
@@ -104,6 +96,14 @@ as do https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/paren
     java.util.Collection java.io.Serializable
     java.util.AbstractCollection
     java.util.RandomAccess java.util.AbstractList}
+----
+
+https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/isa%3F[isa?] works with vectors by calling https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/isa%3F[isa?] on their corresponding elements:
+
+[source,clojure]
+----
+(isa? [::square ::rect] [::shape ::shape])
+-> true
 ----
 
 == isa? based dispatch

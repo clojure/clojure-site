@@ -49,6 +49,8 @@ The preferred idiomatic forms for accessing field or method members are given ab
 Classname/staticField ==> (. Classname staticField)
 ----
 
+The next section explains the behavior of those expanded forms in more detail.
+
 == The Dot special form
 
 [%hardbreaks]
@@ -62,7 +64,15 @@ Special form.
 
 The '.' special form is the basis for access to Java. It can be considered a member-access operator, and/or read as 'in the scope of'.
 
-If the first operand is a symbol that resolves to a class name, the access is considered to be to a static member of the named class. Note that nested classes are named EnclosingClass$NestedClass, per the JVM spec. Otherwise it is presumed to be an instance member and the first argument is evaluated to produce the target object.
+If the first operand is a symbol that resolves to a class name, the access is considered to be to a static member of the named class. Note that nested classes are named EnclosingClass$NestedClass, per the JVM spec. Otherwise it is presumed to be an instance member and the first argument is evaluated to produce the target object. For example:
+
+`(. String getName)`
+
+fails because _**String**_ is a symbol that resolves to a class name and this is treated as a static member access, but
+
+`(. (identity String) getName)`
+
+succeeds because _**(identity String)**_ is not a symbol and is therefore evaluated to produce an object of type _**Class**_, and the instance member _**getName**_ is called upon it. This is why _**(.getName String)**_, in _Member access_ above, expands to include a call to _**identity**_.
 
 For the special case of invoking an instance member on a Class instance, the first argument must be an expression that evaluates to the class instance - note that the preferred form at the top expands `Classname` to `(identity Classname)`.
 

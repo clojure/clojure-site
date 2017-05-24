@@ -40,7 +40,7 @@ A simple lib:
 ----
 (ns com.my-company.clojure.examples.my-utils
   (:import java.util.Date)
-  (:use [clojure.string :only (join)])
+  (:use [clojure.string :only [join]])
   (:require [clojure.java.io :as jio]))
 ----
 
@@ -56,7 +56,7 @@ It's common for a lib to depend on several other libs whose full names share a c
 [source,clojure]
 ----
 (require 'clojure.contrib.def 'clojure.contrib.except 'clojure.contrib.sql)
-(require '(clojure.contrib def except sql))
+(require '[clojure.contrib def except sql])
 ----
 
 ''''

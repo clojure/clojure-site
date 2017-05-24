@@ -15,6 +15,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 * <<threading_macros#,Threading Macros>>
 * <<comparators#,Comparators>>
 * <<reader_conditionals#,Reader Conditionals>>
+* <<core_async_go#,Go Block Best Practices>>
 
 === Tools
 

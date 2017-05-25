@@ -198,7 +198,7 @@ When Clojure starts, it searches for files named `data_readers.clj` at the root 
 {foo/bar my.project.foo/bar
  foo/baz my.project/baz}
 ----
-The key in each pair is a tag that will be recognized by the Clojure reader. The value in the pair is the fully-qualified name of a <<vars#,Var>> which will be invoked by the reader to parse the form following the tag. For example, given the data_readers.clj file above, the Clojure reader would parse this form:
+The key in each pair is a tag that will be recognized by the Clojure reader. The value in the pair is the fully-qualified name of a <<vars#,Var>> which will be invoked by the reader to parse the form following the tag. For example, given the `data_readers.clj` file above, the Clojure reader would parse this form:
 [source,clojure]
 ----
 #foo/bar [1 2 3]

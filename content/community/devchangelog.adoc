@@ -11,6 +11,16 @@ The official https://github.com/clojure/clojure/blob/master/changes.md[changelog
 
 == Release 1.9
 
+=== https://groups.google.com/d/msg/clojure/iceDBL5q4CY/GM6LryxpAQAJ[1.9.0-alpha17] (May 26, 2017)
+
+- https://dev.clojure.org/jira/browse/CLJ-1793[CLJ-1793] - Clear 'this' before calls in tail position
+- https://dev.clojure.org/jira/browse/CLJ-2091[CLJ-2091] clojure.lang.APersistentVector#hashCode is not thread-safe
+- https://dev.clojure.org/jira/browse/CLJ-1860[CLJ-1860] Make -0.0 hash consistent with 0.0
+- https://dev.clojure.org/jira/browse/CLJ-2141[CLJ-2141] Return only true/false from qualified-* predicates
+- https://dev.clojure.org/jira/browse/CLJ-2142[CLJ-2142] Fix check for duplicate keys with namespace map syntax
+- https://dev.clojure.org/jira/browse/CLJ-2128[CLJ-2128] spec error during macroexpand no longer throws compiler exception with location
+- Updated to use spec.alpha 0.1.123
+
 === https://groups.google.com/forum/#!topic/clojure/nB4qnDNGS2A[1.9.0-alpha16] (Apr 27, 2017)
 
 1.9.0-alpha16 includes the following changes since 1.9.0-alpha15:
@@ -73,7 +83,6 @@ No. spec uses new functions in Clojure 1.9 and it has never been a goal to provi
 
 1.9.0-alpha15 includes the following changes since 1.9.0-alpha14:
 
-- https://dev.clojure.org/jira/browse/CLJ-1793[CLJ-1793] - reducer instances hold onto the head of seqs (also applies to a broader set of head-holding cases)
 - https://dev.clojure.org/jira/browse/CLJ-2043[CLJ-2043] - s/form of conformer is broken
 - https://dev.clojure.org/jira/browse/CLJ-2035[CLJ-2035] - s/form of collection specs are broken
 - https://dev.clojure.org/jira/browse/CLJ-2100[CLJ-2100] - s/form of s/nilable should include the original spec, not the resolved spec

@@ -1,0 +1,354 @@
+= The Weird and Wonderful Characters of Clojure
+James Hughes
+2017-05-27
+:type: guides
+:toc: macro
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+[]
+====
+This is a reference collection of characters used in Clojure that are difficult to "google".
+Descriptions are sourced from various blogs, https://stackoverflow.com[StackOverflow],
+http://en.wikibooks.org/wiki/Learning_Clojure[Learning Clojure], and the
+http://clojure.org/documentation[official Clojure docs] -- sources attributed
+where necessary. Sections are not in any particular order, but related items
+are grouped for ease. This guide is a copy of http://twitter.com/kouphax[James Hughes]
+brilliant https://yobriefca.se/blog/2014/05/19/the-weird-and-wonderful-characters-of-clojure/[blog post] of the same name.
+====
+
+== # - Dispatch macro
+
+You'll see this macro character beside another e.g. `\#(` or `#"`.
+// " Comment needed for emacs to behave.
+This topic will act as a bit of a preamble before looking at your specific case.
+
+`#` is the dispatch macro, a reader macro that tells the Clojure
+reader (the thing that takes a file of Clojure code and parses it for
+consumption by the compiler) to go and look at another *read table*
+for the definition of the next character - in essence this allows
+extending default reader behaviour.
+
+Clojure doesn't provide support for creating reader macros, but it is possible
+through http://briancarper.net/blog/449/[a bit of hackery].
+
+If you se `#` *at the end* of a symbol, then it is used to automatically
+generate a new symbol. This is useful inside macros to keep macro specifics
+from leaking into the userspace. A regulare `let` will fail in a macro definition
+
+[source,clojure]
+----
+user=> (defmacro m [] `(let [x 1] x))
+#'user/m
+user=> (m)
+CompilerException java.lang.RuntimeException: Can't let qualified name: user/x, compiling:(NO_SOURCE_PATH:1)
+----
+
+Instead you need to append `#` to the end of the variable name and let Clojure
+generate a unique symbol for it:
+
+[source, clojure]
+----
+user=> (defmacro m [] `(let [x# 1] x#))
+#'user/m
+user=> (m)
+1
+user=>
+----
+
+If we expand this macro, we can see the `gensym` 'd name:
+
+[source, clojure]
+----
+user=> (macroexpand '(m))
+(let* [x__681__auto__ 1] x__681__auto__)
+----
+
+Another place you'll see the `#` is in
+http://clojure.org/reader#The%20Reader--Tagged%20Literals[tagged literals].
+Most commonly you'll see this use in https://github.com/edn-format/edn[EDN]
+(extensible data notation - a rich data fromat that can be used in Clojure)
+and in ClojureScript (`#js`). Search for `#inst`, `#uuid`, or `#js` for some
+more info.
+
+* http://clojure.org/reader[Clojure Documentation Reader]
+* http://briancarper.net/blog/449/[Clojure Reader Macros]
+* http://clojuredocs.org/clojure_core/clojure.core/gensym[ClojureDocs - gensyms]
+
+== #{ - Set macro
+
+See the dispatch (`\#`) macro for additional details.
+
+`#{` defines a set (a collection of unique values) specifically a `hash-set`. The
+following are equivalent:
+
+[source, clojure]
+----
+user=> #{1 2 3 4}
+#{1 2 3 4}
+user=> (hash-set 1 2 3 4)
+#{1 2 3 4}
+----
+
+Attempting to create a `set` using this literal form will throw if there
+are duplicates. Instead the `hash-set` function should be used on a vector.
+
+[source, clojure]
+----
+user=> #{1 2 3 4 1}
+
+IllegalArgumentException Duplicate key: 1  clojure.lang.PersistentHashSet.createWithCheck (PersistentHashSet.java:68)
+user=> (set [1 2 3 4 1]) ; convert vector to set, removing duplicates
+#{1 2 3 4}
+----
+
+* http://clojure.org/data_structures#Data%20Structures-Sets[Clojure Documentation: Sets]
+
+== #_ - Discard macro
+
+See the dispatch (`#`) macro for additional details.
+
+`#_` tells the reader to ignore the next form completely.
+
+[source,clojure]
+----
+user=> [1 2 3 #_ 4 5]
+[1 2 3 5]
+----
+The docs suggest that "The form following `#_` is completely skipped by the reader,
+(This is a more complete removal than the `comments` macro which yields `nil`).".
+This can prove useful for debugging situations or for multiline comments.
+
+* http://clojure.org/reader[Clojure Documentation - Reader
+
+== #" - Regular Expression macro
+// " for the pleasure of emacs.
+
+See the dispatch (`#`) macro for additional details.
+
+`#"` indicates the start of a regular expression
+// "
+[source,clojure]
+----
+user=> (re-matches #"^test$" "test")
+"test"
+----
+
+This form is compiled at *read time* into a host-specific regex machinery.
+
+* http://clojure.org/other_functions#Other%20Useful%20Functions%20and%20Macros-Regex%20Support[Clojure Documentation: Regex Support]
+
+== #( - Function macro
+
+See the dispatch (`#`) macro for additional details.
+
+`#(` begins the short hand syntax for an inline function definition. The
+following two snippets of code are similar:
+
+[source,clojure]
+----
+; anonymous function takin a single argument and printing it
+(fn [line] (println line)) ;
+
+; anonymous function takin a single argument and printing it - shorthand
+#(println %)
+----
+
+The macro expands the shorthand syntax into a function definition whose
+arity (the number of arguments it takes) is defined by how the `%` placeholders
+are declared. See the `%` character for discussion around arity.
+
+[source,clojure]
+----
+user=> (macroexpand `#(println %))
+(fn* [arg] (clojure.core/println arg)) ; argument names shortened for clarity
+----
+
+== #' - Var macro
+
+`#'` is the var quote. It is the same as the `var` function:
+
+[source,clojure]
+----
+user=> (def nine 9)
+#'user/nine
+user=> nine
+9
+user=> (var nine)
+#'user/nine
+user=> #'nine
+#'user/nine
+----
+When used it will attempt to return the referenced var. This is useful when
+you want to talk ab out the reference/declaration instead of teh value it represents.
+See the use of `meta` int the metadata (`^`) discussion.
+
+* http://clojure.org/special_forms#var[Clojure Official Documentation: Special Forms]
+
+== #inst, #uuid, and #js etc. - tagged literals
+
+Commonly found in EDN and ClojureScript this use of `#` is called the _tagged literal_.
+Look at this example:
+[source,clojure]
+----
+user=> (java.util.Date.)
+#inst "2014-05-19T19:12:37.925-00:00"
+----
+
+When we create a new date it is represented as a tagged literal, or in this case,
+a tagged string. We can use Clojures `read-string` to read this back (or use it directly):
+[source,clojure]
+----
+user=> (type #inst "2014-05-19T19:12:37.925-00:00")
+java.util.Date
+(read-string "#inst \"2014-05-19T19:12:37.925-00:00\"")
+#inst "2014-05-19T19:12:37.925-00:00"
+user=> (type (read-string "#inst \"2014-05-19T19:12:37.925-00:00\""))
+java.util.Date
+----
+
+A tagged literal tells the reader how to parse the literal value. Other common
+uses include `#uuid` for generating UUIDs and in the ClojureScript world an
+extremely common use of tagged literals is `#js` which can be used to convert
+ClojureScript data structures into JavaScript structures directly. Note that
+`#js` doesn't convert recursivly, so if you have a nested data-structure, use
+`cjs->js`.
+
+* https://github.com/edn-format/edn#tagged-elements[EDN Tagged Elements]
+
+== % - Argument placeholder
+
+`%` is not a macro, but a placeholder for use in the `#(` macro. It represents
+an argument that will be passed into the function when it is expanded.
+[source,clojure]
+----
+user=> (macroexpand `#(println %))
+(fn* [arg] (clojure.core/println arg)) ; takes a single arg, uses it once
+
+user=> (macroexpand `#(println % %))
+(fn* [arg] (clojure.core/println arg arg)) ; takes a single arg, uses it twice
+----
+Numbers can be placed directly after the `%` to indicate the arguments position.
+Numbers are also used by the `#(` macro to determine the number of arguments
+to pass in.
+[source,clojure]
+----
+user=> (macroexpand `#(println %1 %2))
+(fn* [arg1 arg2] (clojure.core/println arg1 arg2)) ; takes 2 args
+
+user=> (macroexpand `#(println %4))
+(fn* [arg1 arg2 arg3 arg4] (clojure.core/println arg4)) ; takes 4 args doesn't use 3
+----
+
+You don't have to use the arguments, but you do need to declare them in the order
+you'd expect an external caller to pass them in.
+
+`%` and `%1` can be used interchangably:
+[source,clojure]
+----
+user=> (macroexpand `#(println % %1)) ; use both % and %1
+(fn* [arg1] (clojure.core/println arg1 arg1)) ; still only takes 1 argument
+----
+
+== @ - Deref macro
+
+`@` is the deref macro, it is the shorthand equivalent of the `deref` function so
+these two forms are the same:
+[source,clojure]
+----
+user=> (def x (atom 1))
+#'user/x
+user=> @x
+1
+user=> (deref x)
+1
+user=>
+----
+`@` is used to get the current value of a reference. The above example uses
+`@` to get the current value of an http://clojure.org/atoms[atom], but `@` can
+be applied to other things such as `future` s, `delay` s, `promises` s etc. to
+force computation and potentially block.
+
+== ^ - Metadata
+
+`^` is the metadata marker. Metadata is a map of values (with shorthand option)
+that can be attached to various forms in Clojure. This provides extra information
+for these forms and can b e used for documentation, compilation warnings,
+typehints, and other features.
+[source,clojure]
+----
+user=> (def ^{ :debug true } five 5) ; meta map with single boolean value
+#'user/five
+----
+
+We can access the metadata by the `meta` function which should be executed
+against the declaration itself (rather than the returned value):
+[source,clojure]
+----
+user=> (def ^{ :debug true } five 5)
+#'user/five
+user=> (meta #'five)
+{:ns #<Namespace user>, :name five, :column 1, :debug true, :line 1, :file "NO_SOURCE_PATH"}
+----
+As we have a single value here, we can use a shorthand notation for declaring
+the metadata `^:name` which is useful for flags, as the value will be set to true.
+[source,clojure]
+----
+user=> (def ^:debug five 5)
+#'user/five
+user=> (meta #'five)
+{:ns #<Namespace user>, :name five, :column 1, :debug true, :line 1, :file "NO_SOURCE_PATH"}
+----
+Another use of `^` is for type hints. These are used to tell the compiler what
+type the value will be and allow it to perform type specific optimiztions
+thus potentially making resultant code faster:
+[source,clojure]
+----
+user=> (def ^Integer five 5)
+#'user/five
+user=> (meta #'five)
+{:ns #<Namespace user>, :name five, :column 1, :line 1, :file "NO_SOURCE_PATH", :tag java.lang.Integer}
+----
+We can see in that example the `:tag` property is set.
+
+You can also stak the shorthand notations:
+[source,clojure]
+----
+user=> (def ^Integer ^:debug ^:private five 5)
+#'user/five
+user=> (meta #'five)
+{:ns #<Namespace user>, :name five, :column 1, :private true, :debug true, :line 1, :file "NO_SOURCE_PATH", :tag java.lang.Integer}
+----
+
+* http://clojure.org/metadata[Clojure Official Documentation: Metadata]
+* http://en.wikibooks.org/wiki/Learning_Clojure/Meta_Data[Learning Clojure: Meta Data]
+
+== ' - Quote macro
+
+Can be used against symbols as part of a dispatch macro (see `#'`). Also
+used to quote forms and prevent their evalutation as with the quote function.
+[source,clojure]
+----
+user=> (1 3 4) ; fails as it tries to evaluate 1 as a function
+
+ClassCastException java.lang.Long cannot be cast to clojure.lang.IFn  user/eval925 (NO_SOURCE_FILE:1)
+user=> '(1 3 4) ; quote
+(1 3 4)
+user=> (quote (1 2 3)) ; using the longer quote method
+(1 2 3)
+user=>
+----
+
+* http://clojure.org/special_forms#quote[Clojure Official Documentation]
+
+== ; - Comment
+
+`;` is a comment. In fact it's a comment *macro* that takes all input from its
+starting point to the end of the line and ensures that the reader ignores it.
+[source,clojure]
+----
+user=> (def x "x") ; this is a comment
+#'user/x
+user=> ; this is a comment too
+<returns nothing>
+----

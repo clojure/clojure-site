@@ -531,6 +531,88 @@ want to print the new value every time it changes
 `add-watch` takes four arguments, but in our case we only really care about the
 last argument - the new value of the atom.
 
+== #? - Standard Reader conditional
+
+Reader conditionals are designed to allow
+different dialects of Clojure to share common code. The standard reader
+conditional behaves similarly to a traditional `cond`. The syntax for usage
+is `#?` and looks like:
+[source,clojure]
+----
+#?(:clj  (Clojure expression)
+   :cljs (ClojureScript expression)
+   :cljr (Clojure CLR expression)
+   :default (fallthrough expression))
+----
+* <<xref/../reader_conditionals#,Reader conditonals>>
+
+== #@ - Splicing Reader conditional
+
+The syntax for a splicing reader conditional is `#?@`. It is used to splice
+lists into the containing form. So the Clojure reader would read this:
+[source,clojure]
+----
+(defn build-list []
+  (list #?@(:clj  [5 6 7 8]
+            :cljs [1 2 3 4])))
+----
+as this:
+[source,clojure]
+----
+(defn build-list []
+  (list 5 6 7 8))
+----
+* <<xref/../reader_conditionals#,Reader conditonals>>
+
+== #: Map Namespace Syntax
+
+Map namespace syntax was added in Clojure 1.9 and is used to specify a default
+namespace context for keys in the map using a `#:ns` prefix, where _ns_ is the
+name of a namespace and the prefix precedes teh opening brace `{` of the map.
+
+For example, the following map literal with namespace syntax:
+[source,clojure]
+----
+#:person{:first "Han"
+         :last "Solo"
+         :ship #:ship{:name "Millenium Falcon"
+                      :model "YT-1300f light freighter"}}
+----
+is read as:
+[source,clojure]
+----
+{:person/first "Han"
+ :person/last "Solo"
+ :person/ship {:ship/name "Millenium Falcon"
+               :ship/model "YT-1300f light freighter"}}
+----
+
+* <<xref/../../reference/reader#,Reader>>
+
+== Auto Resolving Namespace Syntax
+
+`#::` can be used to auto-resolve namespaces with the same semantics as
+auto-resolved keywords.
+
+* <<xref/../../reference/reader#,Reader>>
+
+== #= Reader eval
+
+`#=` allows the reader to evaluate the following form.
+Examples
+[source,clojure]
+----
+#=123
+;;=> 123
+
+#="foo"
+;;=> foo
+
+(def foo 1)
+#='foo
+;;=> 1
+----
+
 []
 ====
 Many thanks to everyone who has contributed ideas and [the copious amounts of]

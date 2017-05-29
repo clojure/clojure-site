@@ -352,3 +352,190 @@ user=> (def x "x") ; this is a comment
 user=> ; this is a comment too
 <returns nothing>
 ----
+
+
+// =================================
+
+== ` - Syntax quote
+
+See `~@` (unquote splicing) and `~` (unquote) for additional information
+````` is the syntax quote. When used on a symbol it resolves to the symbol
+in the current context:
+[source,clojure]
+----
+user=> (def five 5)
+#'user/five
+user=> `five
+user/five
+----
+When used with lists (remember everything in Clojure is data) it forms a
+*template* for the data strucutre and won't immediately resolve it.
+
+[source,clojure]
+----
+user=> (1 2 3)
+ClassCastException java.lang.Long cannot be cast to clojure.lang.IFn  user/eval832 (NO_SOURCE_FILE:1)
+user=> `(1 2 3)
+(1 2 3)
+----
+You'll see this most often in teh context of macros. We can write one now:
+[source,clojure]
+----
+user=> (defmacro debug [body]
+  #_=>   `(let [val# ~body]
+  #_=>      (println "DEBUG: " val#)
+  #_=>      val#))
+#'user/debug
+user=> (debug (+ 2 2))
+DEBUG:  4
+4
+----
+The macro takes a single statement and wraps it in a *quoted* `let` block,
+evaluates and prints the result and then evaluates the body. In effect this
+`defmacro` call returns a quoted data structure representing the program we
+are writing with it. The ``` allows this to happen.
+
+* http://www.braveclojure.com/writing-macros/[Clojure for the Brave and True - Writing Macros]
+* http://aphyr.com/posts/305-clojure-from-the-ground-up-macros[Clojure from the ground up: macros]
+* http://clojure.org/macros[Clojure Official Documentation]
+
+== \*var-name* - Earmuffs
+
+Earmuffs (a pair of asterisk bookending var names) is a *naming convention* in
+many LISPs used to denote *special vars*. Most commonly in Clojure this seems
+to be used to denote *dynamic* vars, i.e. ones that can change depending on
+where you are in the program. The earmuffs act as a warning that "here be dragons"
+and to never assume the state of the var. Remember, this is a *convention*, not a
+*rule*.
+
+Core Clojure exampels are `\*out*` and `\*in*` which represent the standard in and
+out writers for Clojure.
+
+* http://stackoverflow.com/questions/1986961/how-is-the-var-name-naming-convention-used-in-clojure[How is the var-name naming-convention used in clojure?]
+* http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/\*out*[Clojure API Docs]
+
+== >!!, <!!, >! and <! - core.async channel macros
+
+These symbols are channel operations in `core.async` - a Clojure/ClojureScript
+library for channel based asynchronous programming (specifically http://en.wikipedia.org/wiki/Communicating_sequential_processes[CSP - Communicating Sequential Processes]).
+
+If you imagine, for the sake of argument, a channel is a bit like a queue that
+things can put stuff on and take stuff off, then these symbols support that
+simple API.
+
+* `>!!` and `<!!` are *blocking put* and *take* respectively
+* `>!` and `<!`are, simply *put* and *take*
+
+THe difference being the blocking version operate outside `go` blocks and block
+the tread they operate on.
+[source,clojure]
+----
+user=> (def my-channel (chan 10)) ; create a channel
+user=> (>!! my-channel "hello")   ; put stuff on the channel
+user=> (println (<!! my-channel)) ; take stuff off the channel
+hello
+----
+The non-blocking version sneed to be executed within a `go` block, otherwise
+they'll throw an exception.
+[source,clojure]
+----
+user=> (def c (chan))
+#'user/c
+user=> (>! c "nope")
+AssertionError Assert failed: >! used not in (go ...) block
+nil  clojure.core.async/>! (async.clj:123)
+----
+While the diffence between these is well outside the scope of this guide,
+fundamentally the `go` blocks operate and manage their own resources pausing
+*execution* of code without blocking threads. This makes asynchronously executed
+code appear to be synchronous, removing the pain of managing
+asynchronous code from the code base.
+
+* https://github.com/clojure/core.async/blob/master/examples/walkthrough.clj[core.async Code Walkthrough]
+* https://github.com/clojure/core.async/wiki[core.async Wiki]
+
+== <symbol>? - Predicate Marker
+
+Putting `?` at the end of a symbol is a *naming convention* common across
+many languages that support special characters in their symbol names. It is
+used to indicate that the thing is a predicate, i.e. that it *poses a question*.
+For example, imagine using an API that delt with buffer manipulation:
+[source,clojure]
+----
+(def my-buffer (buffers/create-buffer [1 2 3]))
+(buffers/empty my-buffer)
+----
+At a glance, how would you know if the function `empty` in this case,
+* Returned `true` if the passed in buffer was empty, or,
+* Cleared the buffer
+While the author could have renamed `empty` to `is-empty`, the richness of
+symbol naming in Clojure allows us to express intent more symbolically.
+[source,clojure]
+----
+(def my-buffer (buffers/create-buffer [1 2 3]))
+(buffers/empty? my-buffer)
+false
+----
+This is simply a recommended *convension*, not a *requirement*.
+
+* https://github.com/bbatsov/clojure-style-guide#naming[Clojure Style Guide]
+
+== <symbol>! - Unsafe Operations
+
+The Clojure style guide has this to say
+
+[]
+====
+The names of functions/macros that are not safe in STM transactions
+should end with an excalamation mark (e.g `reset!`).
+====
+You'll most commonly see this appended to function names whose purpose
+is to mutate state, e.g. connecting to a data store, updating an atom or
+closing a file stream
+[source,clojure]
+----
+user=> (def my-stateful-thing (atom 0))
+#'user/my-stateful-thing
+user=> (swap! my-stateful-thing inc)
+1
+user=> @my-stateful-thing
+1
+----
+
+This is simply a recommended *convention* and not a *requirement*
+
+* https://github.com/bbatsov/clojure-style-guide#naming[Clojure Style Guide]
+
+== _ - Irrelevant var
+
+When you see this used as function arguments or similar, it is a common
+naming convention for vars or arguments you are not interested in using.
+That is you don't intend to use them, so you aren't really interested in
+thinking of a useful name for them.
+
+This is an example using the `add-watch` function that can be used to add
+callback style behaviour when atoms change value. Imagine, given an atom, we
+want to print the new value every time it changes
+[source,clojure]
+----
+(def value (atom 0))
+
+(add-watch value nil (fn [_ _ _ new-value]
+                       (println new-value))
+
+(reset! value 6)
+; prints 6
+(reset! value 9)
+; prints 9
+----
+`add-watch` takes four arguments, but in our case we only really care about the
+last argument - the new value of the atom.
+
+[]
+====
+Many thanks to everyone who has contributed ideas and [the copious amounts of]
+spelling corrections (crikey I'm bad at speelingz - so thanks Michael R. Mayne,
+lobsang_ludd). I've tried to call out people who have specifically asked for
+things. Sorry if I've missed you.
+====
+

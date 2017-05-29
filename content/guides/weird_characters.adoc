@@ -353,8 +353,170 @@ user=> ; this is a comment too
 <returns nothing>
 ----
 
+== : - Keyword
 
-// =================================
+`:` is the indicator for a keyword which is an interned string that provides
+fast comparison and lower memory overhead.
+
+[source,clojure]
+----
+user=> (type :test)
+clojure.lang.Keyword
+----
+Alternatively you can use `keyword` to create a keyword from a string
+[source,clojure]
+----
+user=> (keyword "test")
+:test
+----
+A neat thing about keywords is that they alsoe implement `IFn` and can act as
+functions for extracting values from maps which is very nice:
+[source,clojure]
+----
+user=> (def my-map { :one 1 :two 2 })
+#'user/my-map
+user=> (:one my-map) ; get the value for :one by invoking it as function
+1
+user=> (:three my-map) ; it can safely access non-keys
+nil
+user=> (:three my-map 3) ; it can return a default if specified
+3
+----
+
+* http://clojure.org/data_structures#Data%20Structures-Keywords[Clojure Official Documentation]
+
+== :: - Qualified keyword
+
+`::` is used to fully qualify a keyword with the current namespace:
+[source,clojure]
+----
+user=> :my-keyword
+:my-keyword
+user=> ::my-keyword
+:user/my-keyword
+user=> (= ::my-keyword :my-keyword)
+false
+----
+This is useful when creating macros. If you want to ensure a macro, that calls
+another function in the macro namespace, correctly expands to call the function,
+you could use `::my-function` to refer to the fully qualified name.
+
+== / - Namespace separator
+
+`/` can be the division function `/`, but can also act as a separator in a
+symbol name to break apart the symbol name and the namespace it resides in, eg
+`my-namespace/utils`. this allows symbols to be fully qualified to prevent
+collitsions or spread.
+
+* http://clojure.org/reader[Clojure Official Documentation]
+
+== $ - Inner class reference
+
+Used to reference inner classes and interfaces in Java. Separates the
+container class name and the inner class name.
+[source,clojure]
+----
+(:import (basex.core BaseXClient$EventNotifier)
+
+(defn- build-notifier [notifier-action]
+  (reify BaseXClient$EventNotifier
+    (notify [this value]
+      (notifier-action value))))
+----
+
+`EventNotifier` is an inner interface of the `BaseXClient` class which is an
+imported Java class
+
+* http://blog.jayfields.com/2011/01/clojure-using-java-inner-classes.html[Clojure: Using Java Inner Classes]
+
+== -> ->> some-> cond-> as-> etc. - Threading macros
+
+These are threading macros. Almost all of them take an initial value and
+*tread* this value through a number of forms. Let's imagine (for reasons unknown)
+we wanted to take a number, find the square root, cast it to an int, then a
+string and then back to an integer again. We could write it like this:
+[source,clojure]
+----
+user=> (Integer. (str (int (Math/sqrt 25))))
+5
+----
+The threading macro allows us to unravel this deep nesting:
+[source,clojure]
+----
+user=> (-> 25 (Math/sqrt) int str Integer.)
+5
+----
+Or if you prefer multiline and consistent brackettering
+[source,clojure]
+----
+(-> 25
+    (Math/sqrt)
+    (int)
+    (str)
+    (Integer.))
+----
+
+What the macro does is take the value returned from each expression and push
+it in as the first argument to the next one.
+
+`->>` (thread last) is the same, but different. Rather than push the last value
+in as the *first* argument, it passes it in as the *last* argument.
+
+The "etc." in the title refers to the fact that there are a whole host of
+threading macros that perform variations on the same theme (`cond->`, `some->`,
+`as->` and their `->>` equivalents). There is also an entire libary,
+https://github.com/rplevy/swiss-arrows[swiss arrows], dedicated to the threading
+macros.
+
+* http://blog.fogus.me/2009/09/04/understanding-the-clojure-macro/[Understanding the Clojure -> macro
+
+== ~ - Unquote macro
+
+See ``` (syntax quote) for additional information.
+
+`~` is unquote. That is within a syntax quoted (```) block `~` will *unquote*
+the associated symbol, i.e. resolve it in the current context:
+[source,clojure]
+----
+user=> (def five 5) ; create a named ref representing the number 5
+#'user/five
+user=> five ; five will yeild its internal value
+5
+user=> `five ; syntax quoting five will fully resolve the SYMBOL
+user/five
+user=> `~five ; within a syntax quoted block ~ wil resolve the value in the current context
+5
+----
+This forms the meat and potatoes of creating macros which are, to be highly
+reductionist, functions that return blocks of syntax with parts evaluated in
+various contexts
+
+* http://www.braveclojure.com/writing-macros/[Clojure for the Brave and True - Writing Macros]
+* http://aphyr.com/posts/305-clojure-from-the-ground-up-macros[Clojure from the ground up: macros]
+* http://clojure.org/macros[Clojure Official Documentation]
+
+== ~@ - Unquote splicing macro
+
+See ``` (syntax quote) and `~` (unquote) for additional information.
+
+`~@` is unquote-splicing. Where unquote (`~`) deals with single values (or
+treats its attached item as a single item), `~@` works on lists and expands
+them out into multiple statements. Think of `apply` which takes a seq and expands
+it out as arguments to the applied function.
+[source,clojure]
+----
+user=> (def three-and-four (list 3 4))
+#'user/three-and-four
+user=> `(1 ~three-and-four) ; treates as a single statement produces a nested list
+(1 (3 4))
+user=> `(1 ~@three-and-four) ; expand out as seperate statements
+(1 3 4)
+----
+Again, this gives us a lot of power in macros.
+
+* http://www.braveclojure.com/writing-macros/[Clojure for the Brave and True - Writing Macros]
+* http://aphyr.com/posts/305-clojure-from-the-ground-up-macros[Clojure from the ground up: macros]
+* http://clojure.org/macros[Clojure Official Documentation]
 
 == ` - Syntax quote
 
@@ -620,4 +782,3 @@ spelling corrections (crikey I'm bad at speelingz - so thanks Michael R. Mayne,
 lobsang_ludd). I've tried to call out people who have specifically asked for
 things. Sorry if I've missed you.
 ====
-

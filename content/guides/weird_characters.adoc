@@ -34,7 +34,7 @@ through http://briancarper.net/blog/449/[a bit of hackery].
 
 If you se `#` *at the end* of a symbol, then it is used to automatically
 generate a new symbol. This is useful inside macros to keep macro specifics
-from leaking into the userspace. A regulare `let` will fail in a macro definition
+from leaking into the userspace. A regular `let` will fail in a macro definition
 
 [source,clojure]
 ----
@@ -68,8 +68,7 @@ Another place you'll see the `#` is in
 <<xref/../../reference/reader#tagged_literals,tagged literals>>
 Most commonly you'll see this use in https://github.com/edn-format/edn[EDN]
 (extensible data notation - a rich data fromat that can be used in Clojure)
-and in ClojureScript (`#js`). Search for `#inst`, `#uuid`, or `#js` for some
-more info.
+and in ClojureScript (`#js`). See  <<xref/../weird_characters#tagged_literals,`#inst`, `#uuid`, or `#js`>> for more info.
 
 * <<xref/../../reference/reader#tagged_literals,Clojure Documentation Reader>>
 * http://briancarper.net/blog/449/[Clojure Reader Macros]
@@ -115,11 +114,20 @@ See <<xref/../weird_characters#dispatch,(`#`)>> for additional details.
 user=> [1 2 3 #_ 4 5]
 [1 2 3 5]
 ----
-The docs suggest that "The form following `#_` is completely skipped by the reader,
+Note that the space following `#_` is optional, so
+[source,clojure]
+----
+user=> [1 2 3 #_4 5]
+[1 2 3 5]
+----
+also works. Also note that the discard macro works for EDN
+
+The docs suggest that "The form following `#_` is completely skipped by the reader
 (This is a more complete removal than the `comments` macro which yields `nil`).".
 This can prove useful for debugging situations or for multiline comments.
 
 * <<xref/../../reference/reader#,Clojure Documentation - Reader>>
+* https://github.com/edn-format/edn#tagged-elements[EDN Tagged Elements]
 
 == #" - Regular Expression macro
 // " for the pleasure of emacs.
@@ -134,7 +142,8 @@ user=> (re-matches #"^test$" "test")
 "test"
 ----
 
-This form is compiled at *read time* into a host-specific regex machinery.
+This form is compiled at *read time* into a host-specific regex machinery, but
+it is not available in EDN.
 
 * <<xref/../../reference/other_functions#regex,Clojure Documentation: Regex Support>>
 
@@ -147,8 +156,8 @@ following two snippets of code are similar:
 
 [source,clojure]
 ----
-; anonymous function takin a single argument and printing it
-(fn [line] (println line)) ;
+; anonymous function taking a single argument and printing it
+(fn [line] (println line))
 
 ; anonymous function takin a single argument and printing it - shorthand
 #(println %)
@@ -166,10 +175,12 @@ user=> (macroexpand `#(println %))
 
 == #' - Var macro
 
-`#'` is the var quote. It is the same as the `var` function:
+`#'` is the var quote which expands into the `var` function:
 
 [source,clojure]
 ----
+user=> (read-string "'foo")
+(var foo)
 user=> (def nine 9)
 #'user/nine
 user=> nine
@@ -180,23 +191,27 @@ user=> #'nine
 #'user/nine
 ----
 When used it will attempt to return the referenced var. This is useful when
-you want to talk ab out the reference/declaration instead of teh value it represents.
-See the use of `meta` int the metadata (`^`) discussion.
+you want to talk about the reference/declaration instead of the value it represents.
+See the use of `meta` int the metadata (<<xref/../weird_characters#metadata,`^`>>) discussion.
+
+Note that the var quote is not available in EDN.
 
 * <<xref/../../reference/special_forms#var,Clojure Official Documentation: Special Forms>>
 
+[[tagged_literals]]
 == #inst, #uuid, and #js etc. - tagged literals
 
-Commonly found in EDN and ClojureScript this use of `#` is called the _tagged literal_.
-Look at this example:
+Commonly found in EDN and Clojure/ClojureScript this use of `#` is called
+the _tagged literal_. Look at this example:
 [source,clojure]
 ----
 user=> (java.util.Date.)
 #inst "2014-05-19T19:12:37.925-00:00"
 ----
 
-When we create a new date it is represented as a tagged literal, or in this case,
-a tagged string. We can use Clojures `read-string` to read this back (or use it directly):
+When we print a date it is represented as a tagged literal, or in this case,
+a tagged string. We can use Clojure's `read-string` to read this back
+(or use it directly):
 [source,clojure]
 ----
 user=> (type #inst "2014-05-19T19:12:37.925-00:00")
@@ -204,15 +219,19 @@ java.util.Date
 (read-string "#inst \"2014-05-19T19:12:37.925-00:00\"")
 #inst "2014-05-19T19:12:37.925-00:00"
 user=> (type (read-string "#inst \"2014-05-19T19:12:37.925-00:00\""))
+;; this type is host-dependent.
 java.util.Date
 ----
 
 A tagged literal tells the reader how to parse the literal value. Other common
-uses include `#uuid` for generating UUIDs and in the ClojureScript world an
+uses include `#uuid` for expressing UUIDs and in the ClojureScript world an
 extremely common use of tagged literals is `#js` which can be used to convert
 ClojureScript data structures into JavaScript structures directly. Note that
-`#js` doesn't convert recursivly, so if you have a nested data-structure, use
-`cjs->js`.
+`#js` doesn't convert recursively, so if you have a nested data-structure, use
+https://cljs.github.io/api/cljs.core/js-GTclj[`cjs->js`].
+
+Note that while `#inst` and `#uuid` are available in EDN, `#js` isn't.
+
 
 * https://github.com/edn-format/edn#tagged-elements[EDN Tagged Elements]
 
@@ -249,7 +268,14 @@ you'd expect an external caller to pass them in.
 user=> (macroexpand `#(println % %1)) ; use both % and %1
 (fn* [arg1] (clojure.core/println arg1 arg1)) ; still only takes 1 argument
 ----
-There is also `%&` which is the symbol for variadic arguments
+There is also `%&` which is the symbol for variadic arguments.
+[source,clojure]
+----
+user=> (macroexpand '#(println %&))
+(fn* [& rest__11#] (println rest__11#))
+----
+
+Note that `%&` is not available in EDN.
 
 == @ - Deref macro
 
@@ -270,6 +296,8 @@ user=>
 be applied to other things such as `future` s, `delay` s, `promises` s etc. to
 force computation and potentially block.
 
+Note that `@` is not available in EDN.
+
 == ^ - Metadata
 
 `^` is the metadata marker. Metadata is a map of values (with shorthand option)
@@ -278,7 +306,7 @@ for these forms and can b e used for documentation, compilation warnings,
 typehints, and other features.
 [source,clojure]
 ----
-user=> (def ^{ :debug true } five 5) ; meta map with single boolean value
+user=> (def ^{:debug true} five 5) ; meta map with single boolean value
 #'user/five
 ----
 
@@ -286,7 +314,7 @@ We can access the metadata by the `meta` function which should be executed
 against the declaration itself (rather than the returned value):
 [source,clojure]
 ----
-user=> (def ^{ :debug true } five 5)
+user=> (def ^{:debug true} five 5)
 #'user/five
 user=> (meta #'five)
 {:ns #<Namespace user>, :name five, :column 1, :debug true, :line 1, :file "NO_SOURCE_PATH"}
@@ -312,7 +340,7 @@ user=> (meta #'five)
 ----
 We can see in that example the `:tag` property is set.
 
-You can also stak the shorthand notations:
+You can also stack the shorthand notations:
 [source,clojure]
 ----
 user=> (def ^Integer ^:debug ^:private five 5)
@@ -320,6 +348,8 @@ user=> (def ^Integer ^:debug ^:private five 5)
 user=> (meta #'five)
 {:ns #<Namespace user>, :name five, :column 1, :private true, :debug true, :line 1, :file "NO_SOURCE_PATH", :tag java.lang.Integer}
 ----
+
+Note that metadata is available in EDN, but bype hints are not.
 
 * <<xref/../../reference/metadata#,Clojure Official Documentation>>
 * http://en.wikibooks.org/wiki/Learning_Clojure/Meta_Data[Learning Clojure: Meta Data]
@@ -341,12 +371,14 @@ user=> (quote (1 2 3)) ; using the longer quote method
 user=>
 ----
 
+Note that ``` is available in EDN.
+
 * <<xref/../../reference/special_forms#quote,Clojure Official Documentation>>
 
 == ; - Comment
 
-`;` is a comment. In fact it's a comment *macro* that takes all input from its
-starting point to the end of the line and ensures that the reader ignores it.
+`;` is a comment. It takes all input from its starting point to the end of the
+line and ensures that the reader ignores it.
 [source,clojure]
 ----
 user=> (def x "x") ; this is a comment
@@ -375,7 +407,7 @@ A neat thing about keywords is that they alsoe implement `IFn` and can act as
 functions for extracting values from maps which is very nice:
 [source,clojure]
 ----
-user=> (def my-map { :one 1 :two 2 })
+user=> (def my-map {:one 1 :two 2})
 #'user/my-map
 user=> (:one my-map) ; get the value for :one by invoking it as function
 1
@@ -400,18 +432,20 @@ user=> ::my-keyword
 user=> (= ::my-keyword :my-keyword)
 false
 ----
-This is useful when creating macros. If you want to ensure a macro, that calls
-another function in the macro namespace, correctly expands to call the function,
+This is useful when creating macros. If you want to ensure that a macro that calls
+another function in the macro namespace correctly expands to call the function,
 you could use `::my-function` to refer to the fully qualified name.
+
+Note that `::` is not available in EDN
 
 * <<xref/../../reference/reader#,Reader>>
 
 == / - Namespace separator
 
-`/` can be the division function `/`, but can also act as a separator in a
-symbol name to break apart the symbol name and the namespace it resides in, eg
-`my-namespace/utils`. this allows symbols to be fully qualified to prevent
-collitsions or spread.
+`/` can be the division function `clojure.core//`, but can also act as a
+separator in a symbol name to break apart the symbol name and the namespace it
+resides in, e.g. `my-namespace/utils`. This allows symbols to be fully qualified
+to prevent collisions.
 
 * <<xref/../../reference/reader#,Reader>>
 
@@ -474,6 +508,7 @@ threading macros that perform variations on the same theme (`cond->`, `some->`,
 https://github.com/rplevy/swiss-arrows[swiss arrows], dedicated to the threading
 macros.
 
+* <<xref/../../reference/threading_macros#,Official Clojure Documentation>>
 * http://blog.fogus.me/2009/09/04/understanding-the-clojure-macro/[Understanding the Clojure +->+ macro]
 
 [[unqote]]
@@ -515,7 +550,7 @@ which takes a seq and expands it out as arguments to the applied function.
 ----
 user=> (def three-and-four (list 3 4))
 #'user/three-and-four
-user=> `(1 ~three-and-four) ; treates as a single statement produces a nested list
+user=> `(1 ~three-and-four) ; treats as a single statement produces a nested list
 (1 (3 4))
 user=> `(1 ~@three-and-four) ; expand out as seperate statements
 (1 3 4)
@@ -549,7 +584,7 @@ ClassCastException java.lang.Long cannot be cast to clojure.lang.IFn  user/eval8
 user=> `(1 2 3)
 (1 2 3)
 ----
-You'll see this most often in teh context of macros. We can write one now:
+You'll see this most often in the context of macros. We can write one now:
 [source,clojure]
 ----
 user=> (defmacro debug [body]
@@ -579,8 +614,8 @@ where you are in the program. The earmuffs act as a warning that "here be dragon
 and to never assume the state of the var. Remember, this is a *convention*, not a
 *rule*.
 
-Core Clojure exampels are `\*out*` and `\*in*` which represent the standard in and
-out writers for Clojure.
+Core Clojure exampels include `\*out*` and `\*in*` which represent the standard in
+and out writers for Clojure.
 
 * http://stackoverflow.com/questions/1986961/how-is-the-var-name-naming-convention-used-in-clojure[How is the var-name naming-convention used in clojure?]
 * http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/\*out*[Clojure API Docs]
@@ -654,9 +689,8 @@ This is simply a recommended *convension*, not a *requirement*.
 
 == <symbol>! - Unsafe Operations
 
-The Clojure style guide has this to say
+https://github.com/bbatsov/clojure-style-guide#changing-state-fns-with-exclamation-mark[The Clojure style guide has this to say]:
 
-[]
 ====
 The names of functions/macros that are not safe in STM transactions
 should end with an exclamation mark (e.g `reset!`).
@@ -676,12 +710,14 @@ user=> @my-stateful-thing
 
 This is simply a recommended *convention* and not a *requirement*
 
+Note that the exclamation mark is often pronounced as bang.
+
 * https://github.com/bbatsov/clojure-style-guide#naming[Clojure Style Guide]
 
 == _ - Irrelevant var
 
-When you see this used as function arguments or similar, it is a common
-naming convention for vars or arguments you are not interested in using.
+When you see the underscore character used as function arguments or similar,
+it is a common naming convention for vars or arguments you are not interested in using.
 That is you don't intend to use them, so you aren't really interested in
 thinking of a useful name for them.
 
@@ -708,7 +744,7 @@ last argument - the new value of the atom.
 Reader conditionals are designed to allow
 different dialects of Clojure to share common code. The standard reader
 conditional behaves similarly to a traditional `cond`. The syntax for usage
-is `#?` and looks like:
+is `#?` and looks like this:
 [source,clojure]
 ----
 #?(:clj  (Clojure expression)
@@ -740,7 +776,7 @@ as this:
 
 Map namespace syntax was added in Clojure 1.9 and is used to specify a default
 namespace context for keys in the map using a `#:ns` prefix, where _ns_ is the
-name of a namespace and the prefix precedes teh opening brace `{` of the map.
+name of a namespace and the prefix precedes the opening brace `{` of the map.
 
 For example, the following map literal with namespace syntax:
 [source,clojure]
@@ -764,16 +800,18 @@ is read as:
 == +#::+ Autoresolving Namespace Syntax
 
 `#::` can be used to auto-resolve namespaces with the same semantics as
-<<xref/../weird_characters#autoresolved_keys,autoresolved keywords.>>.
+<<xref/../weird_characters#autoresolved_keys,autoresolved keywords>>.
 
 * <<xref/../../reference/reader#map_namespace_syntax,Reader>>
 
 == #= Reader eval
 
-`#=` allows the reader to evaluate the following form.
-Examples
+`#=` allows the reader to evaluate an arbitrary form during read time:
+
 [source,clojure]
 ----
+user=> (read-string "#=(+ 3 4)")
+;;=> 7
 #=123
 ;;=> 123
 
@@ -784,6 +822,20 @@ Examples
 #='foo
 ;;=> 1
 ----
+
+Note that the read-time evaluation can also cause side-effects:
+[source,clojure]
+----
+user=> (read-string "#=(println :foo)")
+:foo
+nil
+----
+Consequently, `read-string` is not safe to call with unverified user input.
+For a safe alternative, see https://clojure.github.io/clojure/clojure.edn-api.html#clojure.edn/read-string[`clojure.edn/read-string`].
+
+Note that `#=` is not an officially supported feature of the reader, so you
+shouldn't rely on its presence in future versions of Clojure.
+
 
 []
 ====

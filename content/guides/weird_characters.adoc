@@ -16,15 +16,15 @@ where necessary. Sections are not in any particular order, but related items
 are grouped for ease. This guide is a copy of http://twitter.com/kouphax[James Hughes]
 brilliant https://yobriefca.se/blog/2014/05/19/the-weird-and-wonderful-characters-of-clojure/[blog post] of the same name.
 ====
-
+[[dispatch]]
 == # - Dispatch macro
 
 You'll see this macro character beside another e.g. `\#(` or `#"`.
 // " Comment needed for emacs to behave.
 This topic will act as a bit of a preamble before looking at your specific case.
 
-`#` is the dispatch macro, a reader macro that tells the Clojure
-reader (the thing that takes a file of Clojure code and parses it for
+`#` is a reader macro that tells the Clojure reader (the thing that takes a
+file of Clojure code and parses it for
 consumption by the compiler) to go and look at another *read table*
 for the definition of the next character - in essence this allows
 extending default reader behaviour.
@@ -65,19 +65,19 @@ user=> (macroexpand '(m))
 ----
 
 Another place you'll see the `#` is in
-http://clojure.org/reader#The%20Reader--Tagged%20Literals[tagged literals].
+<<xref/../../reference/reader#tagged_literals,tagged literals>>
 Most commonly you'll see this use in https://github.com/edn-format/edn[EDN]
 (extensible data notation - a rich data fromat that can be used in Clojure)
 and in ClojureScript (`#js`). Search for `#inst`, `#uuid`, or `#js` for some
 more info.
 
-* http://clojure.org/reader[Clojure Documentation Reader]
+* <<xref/../../reference/reader#tagged_literals,Clojure Documentation Reader>>
 * http://briancarper.net/blog/449/[Clojure Reader Macros]
 * http://clojuredocs.org/clojure_core/clojure.core/gensym[ClojureDocs - gensyms]
 
 == #{ - Set macro
 
-See the dispatch (`\#`) macro for additional details.
+See <<xref/../weird_characters#dispatch,(`#`)>> for additional details.
 
 `#{` defines a set (a collection of unique values) specifically a `hash-set`. The
 following are equivalent:
@@ -102,11 +102,11 @@ user=> (set [1 2 3 4 1]) ; convert vector to set, removing duplicates
 #{1 2 3 4}
 ----
 
-* http://clojure.org/data_structures#Data%20Structures-Sets[Clojure Documentation: Sets]
+* <<xref/../../reference/data_structures#sets,Clojure Documentation: Sets>>
 
 == #_ - Discard macro
 
-See the dispatch (`#`) macro for additional details.
+See <<xref/../weird_characters#dispatch,(`#`)>> for additional details.
 
 `#_` tells the reader to ignore the next form completely.
 
@@ -119,12 +119,12 @@ The docs suggest that "The form following `#_` is completely skipped by the read
 (This is a more complete removal than the `comments` macro which yields `nil`).".
 This can prove useful for debugging situations or for multiline comments.
 
-* http://clojure.org/reader[Clojure Documentation - Reader
+* <<xref/../../reference/reader#,Clojure Documentation - Reader>>
 
 == #" - Regular Expression macro
 // " for the pleasure of emacs.
 
-See the dispatch (`#`) macro for additional details.
+See <<xref/../weird_characters#dispatch,(`#`)>> for additional details.
 
 `#"` indicates the start of a regular expression
 // "
@@ -136,11 +136,11 @@ user=> (re-matches #"^test$" "test")
 
 This form is compiled at *read time* into a host-specific regex machinery.
 
-* http://clojure.org/other_functions#Other%20Useful%20Functions%20and%20Macros-Regex%20Support[Clojure Documentation: Regex Support]
+* <<xref/../../reference/other_functions#regex,Clojure Documentation: Regex Support>>
 
 == #( - Function macro
 
-See the dispatch (`#`) macro for additional details.
+See <<xref/../weird_characters#dispatch,(`#`)>> for additional details.
 
 `#(` begins the short hand syntax for an inline function definition. The
 following two snippets of code are similar:
@@ -183,7 +183,7 @@ When used it will attempt to return the referenced var. This is useful when
 you want to talk ab out the reference/declaration instead of teh value it represents.
 See the use of `meta` int the metadata (`^`) discussion.
 
-* http://clojure.org/special_forms#var[Clojure Official Documentation: Special Forms]
+* <<xref/../../reference/special_forms#var,Clojure Official Documentation: Special Forms>>
 
 == #inst, #uuid, and #js etc. - tagged literals
 
@@ -249,11 +249,12 @@ you'd expect an external caller to pass them in.
 user=> (macroexpand `#(println % %1)) ; use both % and %1
 (fn* [arg1] (clojure.core/println arg1 arg1)) ; still only takes 1 argument
 ----
+There is also `%&` which is the symbol for variadic arguments
 
 == @ - Deref macro
 
-`@` is the deref macro, it is the shorthand equivalent of the `deref` function so
-these two forms are the same:
+`@` is the shorthand equivalent of the `deref` function so these two forms
+are the same:
 [source,clojure]
 ----
 user=> (def x (atom 1))
@@ -265,7 +266,7 @@ user=> (deref x)
 user=>
 ----
 `@` is used to get the current value of a reference. The above example uses
-`@` to get the current value of an http://clojure.org/atoms[atom], but `@` can
+`@` to get the current value of an <<xref/../../reference/atom#,atom>>, but `@` can
 be applied to other things such as `future` s, `delay` s, `promises` s etc. to
 force computation and potentially block.
 
@@ -320,13 +321,14 @@ user=> (meta #'five)
 {:ns #<Namespace user>, :name five, :column 1, :private true, :debug true, :line 1, :file "NO_SOURCE_PATH", :tag java.lang.Integer}
 ----
 
-* http://clojure.org/metadata[Clojure Official Documentation: Metadata]
+* <<xref/../../reference/metadata#,Clojure Official Documentation>>
 * http://en.wikibooks.org/wiki/Learning_Clojure/Meta_Data[Learning Clojure: Meta Data]
 
 == ' - Quote macro
 
-Can be used against symbols as part of a dispatch macro (see `#'`). Also
-used to quote forms and prevent their evalutation as with the quote function.
+Can be used against symbols as part of a dispatch macro
+(see <<xref/../weird_characters#dispatch,`#`>>). Also used to quote forms
+and prevent their evalutation as with the quote function.
 [source,clojure]
 ----
 user=> (1 3 4) ; fails as it tries to evaluate 1 as a function
@@ -339,7 +341,7 @@ user=> (quote (1 2 3)) ; using the longer quote method
 user=>
 ----
 
-* http://clojure.org/special_forms#quote[Clojure Official Documentation]
+* <<xref/../../reference/special_forms#quote,Clojure Official Documentation>>
 
 == ; - Comment
 
@@ -383,11 +385,12 @@ user=> (:three my-map 3) ; it can return a default if specified
 3
 ----
 
-* http://clojure.org/data_structures#Data%20Structures-Keywords[Clojure Official Documentation]
+* <<xref/../../reference/data_structures#Keywords,Clojure Official Documentation>>
 
-== :: - Qualified keyword
+[[autoresolved_keys]]
+== +::+ - Autoresolved keyword
 
-`::` is used to fully qualify a keyword with the current namespace:
+`::` is used to autoresolve a keyword to the current namespace:
 [source,clojure]
 ----
 user=> :my-keyword
@@ -401,6 +404,8 @@ This is useful when creating macros. If you want to ensure a macro, that calls
 another function in the macro namespace, correctly expands to call the function,
 you could use `::my-function` to refer to the fully qualified name.
 
+* <<xref/../../reference/reader#,Reader>>
+
 == / - Namespace separator
 
 `/` can be the division function `/`, but can also act as a separator in a
@@ -408,7 +413,7 @@ symbol name to break apart the symbol name and the namespace it resides in, eg
 `my-namespace/utils`. this allows symbols to be fully qualified to prevent
 collitsions or spread.
 
-* http://clojure.org/reader[Clojure Official Documentation]
+* <<xref/../../reference/reader#,Reader>>
 
 == $ - Inner class reference
 
@@ -428,8 +433,9 @@ container class name and the inner class name.
 imported Java class
 
 * http://blog.jayfields.com/2011/01/clojure-using-java-inner-classes.html[Clojure: Using Java Inner Classes]
+* <<xref/../../reference/java_interop#,Official Documentation>>
 
-== -> ->> some-> cond-> as-> etc. - Threading macros
+== ->, +->>+ some-> cond-> as-> etc. - Threading macros
 
 These are threading macros. Almost all of them take an initial value and
 *tread* this value through a number of forms. Let's imagine (for reasons unknown)
@@ -459,22 +465,23 @@ Or if you prefer multiline and consistent brackettering
 What the macro does is take the value returned from each expression and push
 it in as the first argument to the next one.
 
-`->>` (thread last) is the same, but different. Rather than push the last value
++->>+ (thread last) is the same, but different. Rather than push the last value
 in as the *first* argument, it passes it in as the *last* argument.
 
 The "etc." in the title refers to the fact that there are a whole host of
 threading macros that perform variations on the same theme (`cond->`, `some->`,
-`as->` and their `->>` equivalents). There is also an entire libary,
+`as->` and their +->>+ equivalents). There is also an entire libary,
 https://github.com/rplevy/swiss-arrows[swiss arrows], dedicated to the threading
 macros.
 
-* http://blog.fogus.me/2009/09/04/understanding-the-clojure-macro/[Understanding the Clojure -> macro
+* http://blog.fogus.me/2009/09/04/understanding-the-clojure-macro/[Understanding the Clojure +->+ macro]
 
+[[unqote]]
 == ~ - Unquote macro
 
-See ``` (syntax quote) for additional information.
+See <<xref/../weird_characters#syntax_quote,```>> for additional information.
 
-`~` is unquote. That is within a syntax quoted (```) block `~` will *unquote*
+`~` is unquote. That is within a syntax quoted (<<xref/../weird_characters#syntax_quote,```>>) block `~` will *unquote*
 the associated symbol, i.e. resolve it in the current context:
 [source,clojure]
 ----
@@ -493,16 +500,17 @@ various contexts
 
 * http://www.braveclojure.com/writing-macros/[Clojure for the Brave and True - Writing Macros]
 * http://aphyr.com/posts/305-clojure-from-the-ground-up-macros[Clojure from the ground up: macros]
-* http://clojure.org/macros[Clojure Official Documentation]
+* <<xref/../../macros#,Clojure Official Documentation>>
 
+[[unquote_splicing]]
 == ~@ - Unquote splicing macro
 
-See ``` (syntax quote) and `~` (unquote) for additional information.
+See <<xref/../weird_characters#syntax_quote,(```)>> and <<xref/../weird_characters#unquote,(`~`)>> for additional information.
 
-`~@` is unquote-splicing. Where unquote (`~`) deals with single values (or
-treats its attached item as a single item), `~@` works on lists and expands
-them out into multiple statements. Think of `apply` which takes a seq and expands
-it out as arguments to the applied function.
+`~@` is unquote-splicing. Where unquote <<xref/../weird_characters#unquote,(`~`)>>
+deals with single values (or treats its attached item as a single item), `~@`
+works on lists and expands them out into multiple statements. Think of `apply`
+which takes a seq and expands it out as arguments to the applied function.
 [source,clojure]
 ----
 user=> (def three-and-four (list 3 4))
@@ -516,11 +524,12 @@ Again, this gives us a lot of power in macros.
 
 * http://www.braveclojure.com/writing-macros/[Clojure for the Brave and True - Writing Macros]
 * http://aphyr.com/posts/305-clojure-from-the-ground-up-macros[Clojure from the ground up: macros]
-* http://clojure.org/macros[Clojure Official Documentation]
+* <<xref/../../macros#,Clojure Official Documentation>>
 
+[[syntax_quote]]
 == ` - Syntax quote
 
-See `~@` (unquote splicing) and `~` (unquote) for additional information
+See <<xref/../weird_characters#unquote_splicing,`~@`>> and <<xref/../weird_characters#unquote,(`~`)>> for additional information
 ````` is the syntax quote. When used on a symbol it resolves to the symbol
 in the current context:
 [source,clojure]
@@ -559,7 +568,7 @@ are writing with it. The ``` allows this to happen.
 
 * http://www.braveclojure.com/writing-macros/[Clojure for the Brave and True - Writing Macros]
 * http://aphyr.com/posts/305-clojure-from-the-ground-up-macros[Clojure from the ground up: macros]
-* http://clojure.org/macros[Clojure Official Documentation]
+* <<xref/../../macros#,Clojure Official Documentation>>
 
 == \*var-name* - Earmuffs
 
@@ -615,6 +624,7 @@ asynchronous code from the code base.
 
 * https://github.com/clojure/core.async/blob/master/examples/walkthrough.clj[core.async Code Walkthrough]
 * https://github.com/clojure/core.async/wiki[core.async Wiki]
+* <<xref/../core_async_go#,Go Block Best Practices>>
 
 == <symbol>? - Predicate Marker
 
@@ -649,7 +659,7 @@ The Clojure style guide has this to say
 []
 ====
 The names of functions/macros that are not safe in STM transactions
-should end with an excalamation mark (e.g `reset!`).
+should end with an exclamation mark (e.g `reset!`).
 ====
 You'll most commonly see this appended to function names whose purpose
 is to mutate state, e.g. connecting to a data store, updating an atom or
@@ -749,14 +759,14 @@ is read as:
                :ship/model "YT-1300f light freighter"}}
 ----
 
-* <<xref/../../reference/reader#,Reader>>
+* <<xref/../../reference/reader#map_namespace_syntax,Reader>>
 
-== Auto Resolving Namespace Syntax
+== +#::+ Autoresolving Namespace Syntax
 
 `#::` can be used to auto-resolve namespaces with the same semantics as
-auto-resolved keywords.
+<<xref/../weird_characters#autoresolved_keys,autoresolved keywords.>>.
 
-* <<xref/../../reference/reader#,Reader>>
+* <<xref/../../reference/reader#map_namespace_syntax,Reader>>
 
 == #= Reader eval
 

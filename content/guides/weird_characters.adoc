@@ -508,7 +508,7 @@ threading macros that perform variations on the same theme (`cond->`, `some->`,
 https://github.com/rplevy/swiss-arrows[swiss arrows], dedicated to the threading
 macros.
 
-* <<xref/../../reference/threading_macros#,Official Clojure Documentation>>
+* <<xref/../threading_macros#,Official Clojure Documentation>>
 * http://blog.fogus.me/2009/09/04/understanding-the-clojure-macro/[Understanding the Clojure +->+ macro]
 
 [[unqote]]

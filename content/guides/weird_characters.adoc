@@ -17,7 +17,7 @@ are grouped for ease. This guide is a copy of http://twitter.com/kouphax[James H
 brilliant https://yobriefca.se/blog/2014/05/19/the-weird-and-wonderful-characters-of-clojure/[blog post] of the same name.
 ====
 [[dispatch]]
-== # - Dispatch macro
+== `#` - Dispatch macro
 
 You'll see this macro character beside another e.g. `\#(` or `#"`.
 // " Comment needed for emacs to behave.
@@ -74,7 +74,7 @@ and in ClojureScript (`#js`). See  <<xref/../weird_characters#tagged_literals,`#
 * http://briancarper.net/blog/449/[Clojure Reader Macros]
 * http://clojuredocs.org/clojure_core/clojure.core/gensym[ClojureDocs - gensyms]
 
-== #{ - Set macro
+== `#{` - Set macro
 
 See <<xref/../weird_characters#dispatch,(`#`)>> for additional details.
 
@@ -103,7 +103,7 @@ user=> (set [1 2 3 4 1]) ; convert vector to set, removing duplicates
 
 * <<xref/../../reference/data_structures#sets,Clojure Documentation: Sets>>
 
-== #_ - Discard macro
+== `#_` - Discard macro
 
 See <<xref/../weird_characters#dispatch,(`#`)>> for additional details.
 
@@ -129,7 +129,7 @@ This can prove useful for debugging situations or for multiline comments.
 * <<xref/../../reference/reader#,Clojure Documentation - Reader>>
 * https://github.com/edn-format/edn#tagged-elements[EDN Tagged Elements]
 
-== #" - Regular Expression macro
+== `#"` - Regular Expression macro
 // " for the pleasure of emacs.
 
 See <<xref/../weird_characters#dispatch,(`#`)>> for additional details.
@@ -147,7 +147,7 @@ it is not available in EDN.
 
 * <<xref/../../reference/other_functions#regex,Clojure Documentation: Regex Support>>
 
-== #( - Function macro
+== `#(` - Function macro
 
 See <<xref/../weird_characters#dispatch,(`#`)>> for additional details.
 
@@ -173,7 +173,7 @@ user=> (macroexpand `#(println %))
 (fn* [arg] (clojure.core/println arg)) ; argument names shortened for clarity
 ----
 
-== #' - Var macro
+== `#'` - Var macro
 
 `#'` is the var quote which expands into the `var` function:
 
@@ -199,7 +199,7 @@ Note that the var quote is not available in EDN.
 * <<xref/../../reference/special_forms#var,Clojure Official Documentation: Special Forms>>
 
 [[tagged_literals]]
-== #inst, #uuid, and #js etc. - tagged literals
+== `#inst`, `#uuid`, and `#js` etc. - tagged literals
 
 Commonly found in EDN and Clojure/ClojureScript this use of `#` is called
 the _tagged literal_. Look at this example:
@@ -235,7 +235,7 @@ Note that while `#inst` and `#uuid` are available in EDN, `#js` isn't.
 
 * https://github.com/edn-format/edn#tagged-elements[EDN Tagged Elements]
 
-== % - Argument placeholder
+== `%` - Argument placeholder
 
 `%` is not a macro, but a placeholder for use in the `#(` macro. It represents
 an argument that will be passed into the function when it is expanded.
@@ -277,7 +277,7 @@ user=> (macroexpand '#(println %&))
 
 Note that `%&` is not available in EDN.
 
-== @ - Deref macro
+== `@` - Deref macro
 
 `@` is the shorthand equivalent of the `deref` function so these two forms
 are the same:
@@ -298,7 +298,7 @@ force computation and potentially block.
 
 Note that `@` is not available in EDN.
 
-== ^ - Metadata
+== `^` - Metadata
 
 `^` is the metadata marker. Metadata is a map of values (with shorthand option)
 that can be attached to various forms in Clojure. This provides extra information
@@ -354,7 +354,7 @@ Note that metadata is available in EDN, but bype hints are not.
 * <<xref/../../reference/metadata#,Clojure Official Documentation>>
 * http://en.wikibooks.org/wiki/Learning_Clojure/Meta_Data[Learning Clojure: Meta Data]
 
-== ' - Quote macro
+== `'` - Quote macro
 
 Can be used against symbols as part of a dispatch macro
 (see <<xref/../weird_characters#dispatch,`#`>>). Also used to quote forms
@@ -375,7 +375,7 @@ Note that ``` is available in EDN.
 
 * <<xref/../../reference/special_forms#quote,Clojure Official Documentation>>
 
-== ; - Comment
+== `;` - Comment
 
 `;` is a comment. It takes all input from its starting point to the end of the
 line and ensures that the reader ignores it.
@@ -387,7 +387,7 @@ user=> ; this is a comment too
 <returns nothing>
 ----
 
-== : - Keyword
+== `:` - Keyword
 
 `:` is the indicator for a keyword which is an interned string that provides
 fast comparison and lower memory overhead.
@@ -420,7 +420,7 @@ user=> (:three my-map 3) ; it can return a default if specified
 * <<xref/../../reference/data_structures#Keywords,Clojure Official Documentation>>
 
 [[autoresolved_keys]]
-== +::+ - Autoresolved keyword
+== `::` - Autoresolved keyword
 
 `::` is used to autoresolve a keyword to the current namespace:
 [source,clojure]
@@ -440,7 +440,7 @@ Note that `::` is not available in EDN
 
 * <<xref/../../reference/reader#,Reader>>
 
-== / - Namespace separator
+== `/` - Namespace separator
 
 `/` can be the division function `clojure.core//`, but can also act as a
 separator in a symbol name to break apart the symbol name and the namespace it
@@ -449,7 +449,7 @@ to prevent collisions.
 
 * <<xref/../../reference/reader#,Reader>>
 
-== $ - Inner class reference
+== `$` - Inner class reference
 
 Used to reference inner classes and interfaces in Java. Separates the
 container class name and the inner class name.
@@ -469,7 +469,7 @@ imported Java class
 * http://blog.jayfields.com/2011/01/clojure-using-java-inner-classes.html[Clojure: Using Java Inner Classes]
 * <<xref/../../reference/java_interop#,Official Documentation>>
 
-== ->, +->>+ some-> cond-> as-> etc. - Threading macros
+== `->`, `->>`, `some->`, `cond->`, `as->` etc. - Threading macros
 
 These are threading macros. Almost all of them take an initial value and
 *tread* this value through a number of forms. Let's imagine (for reasons unknown)
@@ -512,7 +512,7 @@ macros.
 * http://blog.fogus.me/2009/09/04/understanding-the-clojure-macro/[Understanding the Clojure +->+ macro]
 
 [[unqote]]
-== ~ - Unquote macro
+== `~` - Unquote macro
 
 See <<xref/../weird_characters#syntax_quote,```>> for additional information.
 
@@ -538,7 +538,7 @@ various contexts
 * <<xref/../../macros#,Clojure Official Documentation>>
 
 [[unquote_splicing]]
-== ~@ - Unquote splicing macro
+== `~@` - Unquote splicing macro
 
 See <<xref/../weird_characters#syntax_quote,(```)>> and <<xref/../weird_characters#unquote,(`~`)>> for additional information.
 
@@ -562,7 +562,7 @@ Again, this gives us a lot of power in macros.
 * <<xref/../../macros#,Clojure Official Documentation>>
 
 [[syntax_quote]]
-== ` - Syntax quote
+== ````` - Syntax quote
 
 See <<xref/../weird_characters#unquote_splicing,`~@`>> and <<xref/../weird_characters#unquote,(`~`)>> for additional information
 ````` is the syntax quote. When used on a symbol it resolves to the symbol
@@ -605,7 +605,7 @@ are writing with it. The ``` allows this to happen.
 * http://aphyr.com/posts/305-clojure-from-the-ground-up-macros[Clojure from the ground up: macros]
 * <<xref/../../macros#,Clojure Official Documentation>>
 
-== \*var-name* - Earmuffs
+== `\*var-name*` - Earmuffs
 
 Earmuffs (a pair of asterisk bookending var names) is a *naming convention* in
 many LISPs used to denote *special vars*. Most commonly in Clojure this seems
@@ -620,7 +620,7 @@ and out writers for Clojure.
 * http://stackoverflow.com/questions/1986961/how-is-the-var-name-naming-convention-used-in-clojure[How is the var-name naming-convention used in clojure?]
 * http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/\*out*[Clojure API Docs]
 
-== >!!, <!!, >! and <! - core.async channel macros
+== `>!!`, `<!!`, `>!`, and `<!` - core.async channel macros
 
 These symbols are channel operations in `core.async` - a Clojure/ClojureScript
 library for channel based asynchronous programming (specifically http://en.wikipedia.org/wiki/Communicating_sequential_processes[CSP - Communicating Sequential Processes]).
@@ -661,7 +661,7 @@ asynchronous code from the code base.
 * https://github.com/clojure/core.async/wiki[core.async Wiki]
 * <<xref/../core_async_go#,Go Block Best Practices>>
 
-== <symbol>? - Predicate Marker
+== `<symbol>?` - Predicate Marker
 
 Putting `?` at the end of a symbol is a *naming convention* common across
 many languages that support special characters in their symbol names. It is
@@ -687,7 +687,7 @@ This is simply a recommended *convension*, not a *requirement*.
 
 * https://github.com/bbatsov/clojure-style-guide#naming[Clojure Style Guide]
 
-== <symbol>! - Unsafe Operations
+== `<symbol>!` - Unsafe Operations
 
 https://github.com/bbatsov/clojure-style-guide#changing-state-fns-with-exclamation-mark[The Clojure style guide has this to say]:
 
@@ -714,7 +714,7 @@ Note that the exclamation mark is often pronounced as bang.
 
 * https://github.com/bbatsov/clojure-style-guide#naming[Clojure Style Guide]
 
-== _ - Irrelevant var
+== `_` - Irrelevant var
 
 When you see the underscore character used as function arguments or similar,
 it is a common naming convention for vars or arguments you are not interested in using.
@@ -739,7 +739,7 @@ want to print the new value every time it changes
 `add-watch` takes four arguments, but in our case we only really care about the
 last argument - the new value of the atom.
 
-== #? - Standard Reader conditional
+== `#?` - Standard Reader conditional
 
 Reader conditionals are designed to allow
 different dialects of Clojure to share common code. The standard reader
@@ -754,7 +754,7 @@ is `#?` and looks like this:
 ----
 * <<xref/../reader_conditionals#,Reader conditonals>>
 
-== #@ - Splicing Reader conditional
+== `#@` - Splicing Reader conditional
 
 The syntax for a splicing reader conditional is `#?@`. It is used to splice
 lists into the containing form. So the Clojure reader would read this:
@@ -772,7 +772,7 @@ as this:
 ----
 * <<xref/../reader_conditionals#,Reader conditonals>>
 
-== #: Map Namespace Syntax
+== `#:` Map Namespace Syntax
 
 Map namespace syntax was added in Clojure 1.9 and is used to specify a default
 namespace context for keys in the map using a `#:ns` prefix, where _ns_ is the
@@ -797,14 +797,14 @@ is read as:
 
 * <<xref/../../reference/reader#map_namespace_syntax,Reader>>
 
-== +#::+ Autoresolving Namespace Syntax
+== `#::` Autoresolving Namespace Syntax
 
 `#::` can be used to auto-resolve namespaces with the same semantics as
 <<xref/../weird_characters#autoresolved_keys,autoresolved keywords>>.
 
 * <<xref/../../reference/reader#map_namespace_syntax,Reader>>
 
-== #= Reader eval
+== `#=` Reader eval
 
 `#=` allows the reader to evaluate an arbitrary form during read time:
 

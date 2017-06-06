@@ -177,7 +177,7 @@ Let's examine the output of the final example more closely. First note that ther
 * val - the value in the user's input that does not match
 * spec - the spec that was being evaluated
 * at - a path (a vector of keywords) indicating the location within the spec where the error occurred - the tags in the path correspond to any tagged part in a spec (the alternatives in an `or` or `alt`, the parts of a `cat`, the keys in a map, etc)
-* predicate - the actual predicate that was not satsified by val
+* predicate - the actual predicate that was not satisfied by val
 * in - the key path through a nested data val to the failing value. In this example, the top-level value is the one that is failing so this is essentially an empty path and is omitted.
 
 For the first reported error we can see that the value `:foo` did not satisfy the predicate `string?` at the path `:name` in the spec `::name-or-id`. The second reported error is similar but fails on the `:id` path instead. The actual value is a keyword so neither is a match.
@@ -527,7 +527,7 @@ The data is conformed as a map with the tags as keys. We can use `explain` to ex
 ;; val: () fails spec: ::ingredient at: [:unit] predicate: keyword?,  Insufficient input
 ----
 
-Let's now see the various occurence operators `*`, `+`, and `?`:
+Let's now see the various occurrence operators `*`, `+`, and `?`:
 
 [source,clojure]
 ----

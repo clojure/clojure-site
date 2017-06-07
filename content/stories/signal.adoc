@@ -1,0 +1,43 @@
+= Signal
+Alex Miller
+2017-06-07
+:jbake-type: story
+:jbake-company: Signal
+:jbake-link: http://signalmedia.co/
+
+We talked with Luca Grulla about their use of Clojure and ClojureScript at http://signalmedia.co/[Signal].
+
+[.right]
+image:/images/content/stories/signal.jpg["Signal",height="80"]
+
+*How long have you been working with Clojure and ClojureScript?*
+
+Signal has been working with Clojure since 2014 and with ClojureScript since 2016.
+
+*How big is your team?*
+
+We are a team of 14 (between developers and researchers) using Clojure and ClojureScript on different parts of our system.
+
+*What product or service are you building?*
+
+Signal is an AI company. We ingest unstructured text and make sense of it via a text analytics pipeline. A large part of our ingestion pipeline is written in Clojure. We also extensively use Clojure for some of our internal APIs. Over the last year we've been using Clojurescript to build a new product for search and retrieval of legal data on large scale.
+
+*What Clojure or ClojureScript library have you enjoyed working with the most?*
+
+Reagent is really nice. We use Ring and Compojure in anger and we find them very valuable. Recently we also started using http-kit more and more.
+
+*What about working with Clojure and ClojureScript gives you the most value?*
+
+Elegance of code, composability, implicit parallelisation and access to a great community.
+
+*What is your favorite feature of Clojure or ClojureScript?*
+
+The Clojure core is just brilliant. It’s small enough to be easy to remember but it has pretty much all you need to compose functions in more sophisticated ones.
+
+*What is your stack?*
+
+Right now the majority of our stack is written in a mix of Clojure, Python and Javascript. A core component of our system is Elasticsearch: we self-host and manage a 20TB cluster. All our infrastructure is on AWS and we use Terraform to manage it. We're also experimenting with Golang and Erlang.
+
+*Why is using Clojure or ClojureScript valuable to your business?*
+
+The nature of the language allows us to express complex concepts in a very terse way. The fact that us running over the JVM is an incredible added value; JVM is easy to monitor and it's incredibly resilient. The Clojure community is also very strong and it's a great source for talented people to join our team!

@@ -60,6 +60,7 @@ Vectors are zero or more forms enclosed in square brackets: `[1 2 3]`
 * Commas are considered whitespace, and can be used to organize the pairs: `{:a 1, :b 2}`
 * Keys and values can be any forms.
 
+[[map_namespace_syntax]]
 ==== Map namespace syntax
 
 _Added in Clojure 1.9_
@@ -189,6 +190,7 @@ The read table is currently not accessible to user programs.
 == extensible data notation (edn)
 Clojure's reader supports a superset of https://github.com/edn-format/edn[extensible data notation (edn)]. The edn specification is under active development, and complements this document by defining a subset of Clojure data syntax in a language-neutral way.
 
+[[tagged_literals]]
 == Tagged Literals
 Tagged literals are Clojure's implementation of edn https://github.com/edn-format/edn#tagged-elements[tagged elements].
 

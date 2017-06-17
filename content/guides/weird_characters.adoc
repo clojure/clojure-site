@@ -503,7 +503,7 @@ Used to reference inner classes and interfaces in Java. Separates the
 container class name and the inner class name.
 [source,clojure]
 ----
-(:import (basex.core BaseXClient$EventNotifier)
+(import (basex.core BaseXClient$EventNotifier)
 
 (defn- build-notifier [notifier-action]
   (reify BaseXClient$EventNotifier

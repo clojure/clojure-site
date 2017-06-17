@@ -226,19 +226,19 @@ Note that while `#inst` and `#uuid` are available in edn, `#js` is not.
 
 == `%`, `%n`, `%&` - Anonymous function arguments
 
-`%` is an argument in an anonymous function `#(...)`. It represents
-an argument that will be passed into the function when it is expanded.
+`%` is an argument in an anonymous function `#(...)` as in `#(* % %)`.
+
+When an anonymous function is expanded, it becomes an `fn` form and `%` args are replaced with gensym'ed names
+(here we use arg1, etc for readability):
+
 [source,clojure]
 ----
 user=> (macroexpand `#(println %))
-(fn* [arg] (clojure.core/println arg)) ; takes a single arg, uses it once
-
-user=> (macroexpand `#(println % %))
-(fn* [arg] (clojure.core/println arg arg)) ; takes a single arg, uses it twice
+(fn* [arg1] (clojure.core/println arg1)) 
 ----
-Numbers can be placed directly after the `%` to indicate the arguments position,
-note that these numbers are 1-based integers.
-Anonymous functions defined by `#(...)` use the highest numbered `%` argument to determine the arity of the anonymous function.
+
+Numbers can be placed directly after the `%` to indicate the argument positions (1-based).
+Anonymous function arity is determined based on the highest number `%` argument.
 
 [source,clojure]
 ----

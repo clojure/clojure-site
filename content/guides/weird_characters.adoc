@@ -814,16 +814,15 @@ Note that the exclamation mark is often pronounced as bang.
 
 * https://github.com/bbatsov/clojure-style-guide#naming[Clojure Style Guide]
 
-== `_` - Irrelevant var
+== `_` - Unused argument
 
-When you see the underscore character used as function arguments or similar,
-it is a common _naming convention_ for vars or arguments you are not interested in using.
-That is you don't intend to use them, so you aren't really interested in
-thinking of a useful name for them.
+When you see the underscore character used as function arguments or in a `let` binding,
+`_` is a common _naming convention_ to indicate you won't be using this argument.
 
 This is an example using the `add-watch` function that can be used to add
 callback style behaviour when atoms change value. Imagine, given an atom, we
-want to print the new value every time it changes
+want to print the new value every time it changes:
+
 [source,clojure]
 ----
 (def value (atom 0))
@@ -836,8 +835,9 @@ want to print the new value every time it changes
 (reset! value 9)
 ; prints 9
 ----
+
 `add-watch` takes four arguments, but in our case we only really care about the
-last argument - the new value of the atom.
+last argument - the new value of the atom so we use `_` for the others.
 
 == `,` - Whitespace character
 

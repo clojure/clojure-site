@@ -252,7 +252,7 @@ user=> (macroexpand `#(println %4))
 You don't have to use the arguments, but you do need to declare them in the order
 you'd expect an external caller to pass them in.
 
-`%` and `%1` can be used interchangably:
+`%` and `%1` can be used interchangeably:
 [source,clojure]
 ----
 user=> (macroexpand `#(println % %1)) ; use both % and %1
@@ -322,7 +322,7 @@ user=> (meta #'five)
 {:ns #<Namespace user>, :name five, :column 1, :debug true, :line 1, :file "NO_SOURCE_PATH"}
 ----
 Another use of `^` is for type hints. These are used to tell the compiler what
-type the value will be and allow it to perform type specific optimiztions
+type the value will be and allow it to perform type specific optimizations
 thus potentially making resultant code faster:
 [source,clojure]
 ----
@@ -475,7 +475,7 @@ For example, the following map literal with namespace syntax:
 ----
 #:person{:first "Han"
          :last "Solo"
-         :ship #:ship{:name "Millenium Falcon"
+         :ship #:ship{:name "Millennium Falcon"
                       :model "YT-1300f light freighter"}}
 ----
 is read as:
@@ -483,7 +483,7 @@ is read as:
 ----
 {:person/first "Han"
  :person/last "Solo"
- :person/ship {:ship/name "Millenium Falcon"
+ :person/ship {:ship/name "Millennium Falcon"
                :ship/model "YT-1300f light freighter"}}
 ----
 

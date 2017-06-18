@@ -708,7 +708,7 @@ Earmuffs (a pair of asterisk bookending var names) is a naming convention in
 many LISPs used to denote _special vars_. Most commonly in Clojure this is
 used to denote _dynamic_ vars, i.e. ones that can change depending on
 dynamic scope. The earmuffs act as a warning that "here be dragons"
-and to never assume the state of the var. Remember, this is a _convention_, not a
+and to never assume the state of the var. Remember, this is a convention, not a
 rule.
 
 Core Clojure examples include `\*out*` and `\*in*` which represent the standard in
@@ -761,7 +761,7 @@ asynchronous code from the code base.
 
 == `<symbol>?` - Predicate Suffix
 
-Putting `?` at the end of a symbol is a _naming convention_ common across
+Putting `?` at the end of a symbol is a naming convention common across
 many languages that support special characters in their symbol names. It is
 used to indicate that the thing is a predicate, i.e. that it _poses a question_.
 For example, imagine using an API that dealt with buffer manipulation:
@@ -783,7 +783,7 @@ symbol naming in Clojure allows us to express intent more symbolically.
 (buffers/empty? my-buffer)
 false
 ----
-This is simply a recommended _convention_, not a requirement.
+This is simply a recommended convention, not a requirement.
 
 * https://github.com/bbatsov/clojure-style-guide#naming[Clojure Style Guide]
 
@@ -808,7 +808,7 @@ user=> @my-stateful-thing
 1
 ----
 
-This is simply a recommended _convention_ and not a requirement.
+This is simply a recommended convention and not a requirement.
 
 Note that the exclamation mark is often pronounced as bang.
 
@@ -817,7 +817,7 @@ Note that the exclamation mark is often pronounced as bang.
 == `_` - Unused argument
 
 When you see the underscore character used as function arguments or in a `let` binding,
-`_` is a common _naming convention_ to indicate you won't be using this argument.
+`pass:[_]` is a common naming convention to indicate you won't be using this argument.
 
 This is an example using the `add-watch` function that can be used to add
 callback style behaviour when atoms change value. Imagine, given an atom, we

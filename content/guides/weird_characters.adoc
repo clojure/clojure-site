@@ -497,6 +497,23 @@ for simple names.
 
 * <<xref/../../reference/reader#,Reader>>
 
+== `\` - Character literal
+
+`\` indicates a literal character as in:
+
+[source,clojure]
+----
+user=> (str \h \i)
+"hi"
+----
+
+There are also a small number of special characters to name special ASCII characters: `\newline`, `\space`, `\tab`, `\formfeed`, `\backspace`, and `\return`.
+
+The `\` can also be followed by a Unicode literal of the form `\uNNNN`. For example, `\u03A9` is the literal for Ω.
+
+
+
+
 == `$` - Inner class reference
 
 Used to reference inner classes and interfaces in Java. Separates the

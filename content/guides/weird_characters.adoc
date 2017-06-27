@@ -745,7 +745,7 @@ things can put stuff on and take stuff off, then these symbols support that
 simple API.
 
 * `>!!` and `<!!` are _blocking put_ and _take_ respectively
-* `>!` and `<!`are, simply _put_ and _take_
+* `>!` and `<!` are, simply _put_ and _take_
 
 THe difference being the blocking version operate outside `go` blocks and block
 the thread they operate on.

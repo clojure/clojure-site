@@ -55,8 +55,8 @@ Classname/staticField ==> (. Classname staticField)
 *(_._ instance-expr member-symbol)*
 *(_._ Classname-symbol member-symbol)*
 *(_._ instance-expr -field-symbol)*
-*(_._ instance-expr (method-symbol args*))* or *(_._ instance-expr method-symbol args*)*
-*(_._ Classname-symbol (method-symbol args*))* or *(_._ Classname-symbol method-symbol args*)*
+**(_._ instance-expr (method-symbol args*))** or **(_._ instance-expr method-symbol args*)**
+**(_._ Classname-symbol (method-symbol args*))** or **(_._ Classname-symbol method-symbol args*)**
 
 Special form.
 
@@ -110,8 +110,8 @@ Macro. Evaluates instance-expr then calls all of the methods/functions with the 
 ''''
 
 [%hardbreaks]
-*(Classname. args*)*
-*(_new_ Classname args*)*
+**(Classname. args*)**
+**(_new_ Classname args*)**
 
 Special form.
 
@@ -152,7 +152,7 @@ Note - _you cannot assign to function params or local bindings. Only Java fields
 
 ''''
 
-*(_memfn_ method-name arg-names*)*
+**(_memfn_ method-name arg-names*)**
 
 Macro. Expands into code that creates a fn that expects to be passed an object and any args and calls the named instance method on the object passing the args. Use when you want to treat a Java method as a first-class fn.
 

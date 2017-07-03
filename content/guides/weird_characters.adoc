@@ -900,7 +900,6 @@ For a safe alternative, see https://clojure.github.io/clojure/clojure.edn-api.ht
 Note that `#=` is not an officially supported feature of the reader, so you
 shouldn't rely on its presence in future versions of Clojure.
 
-[]
 ====
 Many thanks to everyone who has contributed ideas and [the copious amounts of]
 spelling corrections (crikey I'm bad at speelingz - so thanks Michael R. Mayne,

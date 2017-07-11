@@ -92,7 +92,7 @@ Retrieve the content:
 
 Retrieve and install the current theme assets (these don't change very often so you don't need to do this every time):
 
-. `curl -O http://cdn.cognitect.com/clojure.org/clojuretheme.zip` (or download this file with your browser to the clojure-site directory)
+. `curl -O https://clojure.org/clojuretheme.zip` (or download this file with your browser to the clojure-site directory)
 . `unzip -o clojuretheme.zip`
 
 Generate the pages:

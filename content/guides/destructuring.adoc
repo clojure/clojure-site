@@ -184,7 +184,7 @@ You can combine any or all of these techniques at the same time at your discreti
 ;= The fruits after them are (peach pear lemon)
 ----
 
-Destructuring can also be nested to get access to arbitrary levels of sequential structure.. Let's go back to our vector from the very beginning, `my-line`.
+Destructuring can also be nested to get access to arbitrary levels of sequential structure. Let's go back to our vector from the very beginning, `my-line`.
 
 [source,clojure]
 ----

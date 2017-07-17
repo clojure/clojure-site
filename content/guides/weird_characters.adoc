@@ -178,7 +178,7 @@ user=> (macroexpand `#(println %))
 
 [source,clojure]
 ----
-user=> (read-string "'foo")
+user=> (read-string "#'foo")
 (var foo)
 user=> (def nine 9)
 #'user/nine

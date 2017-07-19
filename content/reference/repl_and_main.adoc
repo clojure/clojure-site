@@ -20,7 +20,33 @@ The `clojure.main` namespace provides functions that allow Clojure programs and 
 
 == clojure.main --help
 
-The `clojure.main/main` entry point accepts a variety of arguments and flags as described in its usage message:
+The `clojure.main/main` entry point accepts a variety of arguments and flags.
+
+* With no options or args, runs an interactive Read-Eval-Print Loop
+* init options:
+** -i, --init path Load a file or resource
+** -e, --eval string Evaluate expressions in string; print non-nil values
+* main options:
+** -r, --repl Run a repl
+** path Run a script from a file or resource
+** - Run a script from standard input
+** -m, --main A namespace to find a -main function for execution
+** -h, -?, --help Print this help message and exit
+* operation:
+1. Establishes thread-local bindings for commonly set!-able vars
+2. Enters the user namespace
+3. Binds \*command-line-args* to a seq of strings containing command line args that appear after any main option
+4.  Runs all init options in order
+5. Runs a repl or script if requested
+
+The init options may be repeated and mixed freely, but must appear before
+any main option. The appearance of any eval option before running a repl
+suppresses the usual repl greeting message: "Clojure ~(clojure-version)".
+
+Paths may be absolute or relative in the filesystem or relative to
+classpath. Classpath-relative paths have prefix of @ or @/
+
+The same is also described in the usage message:
 
 [source,clojure]
 ----

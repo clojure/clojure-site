@@ -48,7 +48,7 @@ classpath. Classpath-relative paths have prefix of @ or @/
 
 The same is also described in the usage message:
 
-[source,clojure]
+[source,shell]
 ----
 Usage: java -cp clojure.jar clojure.main [init-opt*] [main-opt] [arg*]
 
@@ -86,7 +86,7 @@ classpath. Classpath-relative paths have prefix of @ or @/
 
 The simplest way to launch a Clojure _repl_ is to use the following command line from within Clojure's home directory:
 
-[source,clojure]
+[source,shell]
 ----
 java -cp clojure.jar clojure.main
 ----
@@ -110,7 +110,7 @@ The https://clojure.github.io/clojure/clojure.repl-api.html[clojure.repl] namesp
 
 To run a file full of Clojure code as a script, pass the path to the script to `clojure.main` as an argument:
 
-[source,clojure]
+[source,shell]
 ----
 java -cp clojure.jar clojure.main /path/to/myscript.clj
 ----
@@ -119,14 +119,14 @@ java -cp clojure.jar clojure.main /path/to/myscript.clj
 
 To pass in arguments to a script, pass them in as further arguments when launching `clojure.main`:
 
-[source,clojure]
+[source,shell]
 ----
 java -cp clojure.jar clojure.main /path/to/myscript.clj arg1 arg2 arg3
 ----
 
 The arguments will be provided to your program as a seq of strings bound to the var `pass:[*command-line-args*]`:
 
-[source,clojure]
+[source,shell]
 ----
 *command-line-args* => ("arg1" "arg2" "arg3")
 ----
@@ -152,14 +152,14 @@ Additionally, there is a repl function provided that is slightly customized for 
 
 Following is an example of starting a socket server with a repl listener. This can be added to any existing Clojure program to allow it to accept external REPL clients via a local connection to port 5555.
 
-[source,clojure]
+[source,shell]
 ----
 -Dclojure.server.repl="{:port 5555 :accept clojure.core.server/repl}"
 ----
 
 An example client you can use to connect to this socket repl is telnet:
 
-[source,clojure]
+[source,shell]
 ----
 $ telnet 127.0.0.1 5555
 Trying 127.0.0.1...
@@ -171,7 +171,7 @@ hello
 
 You can instruct the server to close the client socket repl session by using the special command `:repl/quit`:
 
-[source,clojure]
+[source,clojure-repl]
 ----
 user=> :repl/quit
 Connection closed by foreign host.
@@ -190,6 +190,6 @@ Reusable REPL: `https://clojure.github.io/clojure/clojure.main-api.html#clojure.
 
 Allowing set! for the customary REPL vars: `https://clojure.github.io/clojure/clojure.main-api.html#clojure.main/with-bindings[clojure.main/with-bindings]`
 
-Socket server control: `https://clojure.github.io/clojure/clojure.core-api.html#clojure.core.server/start-server[clojure.core.server/start-server]` `https://clojure.github.io/clojure/clojure.core-api.html#clojure.core.server/stop-server[clojure.core.server/stop-server]` `https://clojure.github.io/clojure/clojure.core-api.html#clojure.core.server/stop-servers[clojure.core.server/stop-servers]` 
+Socket server control: `https://clojure.github.io/clojure/clojure.core-api.html#clojure.core.server/start-server[clojure.core.server/start-server]` `https://clojure.github.io/clojure/clojure.core-api.html#clojure.core.server/stop-server[clojure.core.server/stop-server]` `https://clojure.github.io/clojure/clojure.core-api.html#clojure.core.server/stop-servers[clojure.core.server/stop-servers]`
 
 Socket repl: `https://clojure.github.io/clojure/clojure.core-api.html#clojure.core.server/repl[clojure.core.server/repl]`

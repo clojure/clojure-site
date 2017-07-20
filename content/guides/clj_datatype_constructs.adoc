@@ -1,0 +1,153 @@
+= Understanding Clojure's Polymorphism
+Ikuru Kanuma
+2017-07-20
+:type: guides
+:toc: macro
+:icons: font
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+== Goals of this guide
+
+Clojue supports several constructs for speaking to the Java world
+and creating types for polymorphic dispatch. +
+Because these constructs have overlapping capabilities, it may be confusing to know which construct to use at a given situation. +
+Hopefully this guide clarifies what each construct is good at, while presenting minimal usage examples.
+
+== Warm up with some Java
+
+Let's warm up with some Java interop:
+
+[source,clojure-repl]
+----
+user=> (import 'java.util.Date)
+java.util.Date
+user=> (.toString (Date.))
+"Fri Jul 21 11:40:49 JST 2017"
+----
+
+Java Interop works. Cool!
+
+== Proxy a Java class and/or Interfaces
+
+Say we want the .toString method to add a greeting at the beginning for friendlyness. +
+The proxy macro can be used to create an adhoc object that extends a Java Class:
+
+[source,clojure-repl]
+----
+user=> (def px (proxy [Date] []
+                 (toString []
+                    (str "Hello there! It is now "
+                         (proxy-super toString)))))
+user=> (.toString px)
+"Hello there! It is now Fri Jul 21 11:48:14 JST 2017"
+----
+The ad hoc object can also implement Java Interfaces:
+
+[source,clojure-repl]
+----
+(import 'java.io.Closeable)
+(import 'java.util.concurrent.Callable)
+user=> (def px (proxy [Date Callable Closeable] []
+                 (toString []
+                   (str "Hello there! It is now "
+                        (proxy-super toString)))
+                 (call []
+                   (prn "Someone called me!"))
+                 (close []
+                   (prn "closing!"))))
+user=> (.close px)
+"closing!"
+nil
+user=> (.call px)
+"Someone called me!"
+nil
+----
+
+== Leaving Java with defrecord
+
+Sofar this is all dealing with Java stuff from Clojure. +
+If we do not have to extend from a concrete Java Type, we can define our own types
+that implement interfaces (and protocols, coming up next!) from Clojure via the
+link:https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defrecord[defrecord] macro:
+
+[source,clojure-repl]
+----
+user=> (defrecord Foo [a b]
+         Closeable
+         (close [this]
+           (prn (+ a b))))
+user.Foo
+user=> (.close (Foo. 2 2))
+4
+nil
+----
+
+Records are nicer for the reasons described in the https://clojure.org/reference/datatypes#_deftype_and_defrecord[reference].
+
+https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/deftype[deftype] is
+also available for implementing lower level constructs that require mutatable fields.
+
+== Protocols; like Java Interfaces, but better
+https://clojure.org/reference/protocols[protocols] offer similar capabilities as Java interfaces, but is more powerfuld because:
+
+* It is a cross platform construct
+* It allows third party types to participate in any protocols
+
+Let's make a protocol that handles Java Date instances as well as Foo records:
+
+[source,clojure-repl]
+----
+user=> (extend-protocol IBaz
+         Date;;Thing from Java
+         (baz [this]
+           (str "baz method for a Date: "
+                (.toString this)))
+         Foo;;Clojure Record
+         (baz [this]
+            (str "baz method for a Foo record!")))
+nil
+user=> (baz (Date.))
+"baz method for a Date: Fri Jul 21 14:04:46 JST 2017"
+user=> (baz (Foo. 1 1))
+"baz method for a Foo record!"
+----
+
+The main thing to realize here is that protocols are more powerful than Interfaces because we are able to create custom abstraction for Types that we do not control (e.g. java.util.Date). +
+If we were to apply a custom abstraction for Java Dates with an Interface IBaz,
+we must:
+
+* Go to the original source code of java.util.Date and say it implements IBaz
+* Also add IBaz to the official jdk release
+
+Unlikely to happen, right?
+
+== Reify-ing Java Interfaces or Protocols
+Sometimes we want to create things that implement a Protocol/Interface but do not want to give it a name for each of them. link:https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/reify[reify] does exactly that:
+
+[source,clojure-repl]
+----
+user=> (def rf (reify
+                 Closeable
+                 (close [this]
+                   (prn "reified closing!!"))
+                 IBaz
+                 (baz [this]
+                   "reified baz")))
+nil
+user=> (baz rf)
+"reified baz"
+user=> (.close rf)
+"reified closing!!"
+nil
+----
+
+One might ask "Doesn't proxy achieves the same if you do not need to extend a concrete Type?" +
+The answer is reify has better performance.
+
+== Take away
+To wrap up, here are some rules of thumb:
+
+* Prefer protocols and records over Java Types; stay in Clojure
+* If you must extend a Java Class, use proxy
+* If you want a on-off implementation of a Protocol/Interface, use reify

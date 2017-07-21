@@ -157,7 +157,7 @@ There isn't a clear community consensus yet around where to put `.cljc` files. T
 
 Before reader conditionals were introduced, the same goal of sharing code between platforms was solved by a Leiningen plugin called https://github.com/lynaghk/cljx[cljx]. cljx processes files with the `.cljx` extension and outputs multiple platform specific files to a generated sources directory. These were then read as normal Clojure or ClojureScript files by the Clojure <<xref/../../reference/reader#,reader>>. This worked well, but required another piece of tooling to run. cljx was deprecated on June 13 2015 in favour of reader conditionals.
 
-Sente uses cljs for sharing code between Clojure and ClojureScript. I've rewritten the https://github.com/ptaoussanis/sente/blob/v1.4.1/src/taoensso/sente.cljx[main] namespace to use reader conditionals. Notice that we've used the splicing reader conditional to splice the vector into the parent `:require`. Notice also that some of the requires are duplicated between `:clj` and `:cljs`.
+Sente previously used cljx for sharing code between Clojure and ClojureScript. I've rewritten the https://github.com/ptaoussanis/sente/blob/v1.4.1/src/taoensso/sente.cljx[main] namespace to use reader conditionals. Notice that we've used the splicing reader conditional to splice the vector into the parent `:require`. Notice also that some of the requires are duplicated between `:clj` and `:cljs`.
 
 [source,clojure]
 ----

@@ -15,19 +15,22 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 Clojure is designed to be a hosted language, sharing the JVM type system, GC, threads etc. It compiles all functions to JVM bytecode. Clojure is a great Java library consumer, offering the dot-target-member notation for calls to Java. Class names can be referenced in full, or as non-qualified names after being imported. Clojure supports the dynamic implementation of Java interfaces and classes using https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/reify[reify] and https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/proxy[proxy]:
 
-Tapping into Java Classes are as easy as:
+Tapping into a Java class is as easy as:
 [source,clojure]
 ----
-(import 'java.util.HashMap)
+(import '[java.time LocalDate])
 
-(def a-hashmap
-  (doto (HashMap.)
-    (.put "foo" "bar")
-    (.put "bat" "baz")))
-;; a-hashmap => {"bat" "baz", "foo" "bar"}
+(defn add-week ^LocalDate [^LocalDate date] 
+  (.plusDays date 7))
 
-(get a-hashmap "foo")
-;; => "bar"
+(defn day->str [^LocalDate date] 
+  (format "%s %s, %s" (.getMonth date) (.getDayOfMonth date) (.getYear date)))
+
+;; infinite sequence of weekly dates, starting from today
+(def future-weeks (iterate add-week (LocalDate/now)))
+
+(map day->str (take 4 future-weeks))
+;; ("JULY 24, 2017" "JULY 31, 2017" "AUGUST 7, 2017" "AUGUST 14, 2017")
 ----
 
 Here's a small Swing app as a more involved example:

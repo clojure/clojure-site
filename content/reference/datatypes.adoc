@@ -52,7 +52,7 @@ https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/deftype[def
 ** extensible fields (you can assoc keys not supplied with the defrecord definition)
 ** etc
 * deftype supports mutable fields, defrecord does not
-* defrecord support an additional reader form of #my.record{:a 1, :b 2} taking a map that initializes a defrecord according to:
+* defrecord supports an additional reader form of #my.record{:a 1, :b 2} taking a map that initializes a defrecord according to:
 ** the defrecord name must be fully qualified
 ** the elements in the map are un-evaluated
 ** existing defrecord fields take the keyed values

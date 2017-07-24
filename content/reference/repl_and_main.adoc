@@ -33,11 +33,11 @@ The `clojure.main/main` entry point accepts a variety of arguments and flags.
 ** -m, --main A namespace to find a -main function for execution
 ** -h, -?, --help Print this help message and exit
 * operation:
-1. Establishes thread-local bindings for commonly set!-able vars
-2. Enters the user namespace
-3. Binds \*command-line-args* to a seq of strings containing command line args that appear after any main option
-4.  Runs all init options in order
-5. Runs a repl or script if requested
+** Establishes thread-local bindings for commonly set!-able vars
+** Enters the user namespace
+** Binds \*command-line-args* to a seq of strings containing command line args that appear after any main option
+** Runs all init options in order
+** Runs a repl or script if requested
 
 The init options may be repeated and mixed freely, but must appear before
 any main option. The appearance of any eval option before running a repl

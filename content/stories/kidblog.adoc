@@ -1,0 +1,37 @@
+= Kidblog 
+Alex Miller
+2017-07-28
+:jbake-type: story
+:jbake-company: Kidblog
+:jbake-link: https://kidblog.org
+
+We talked with Matt Hardy about their use of Clojure at https://kidblog.org[Kidblog].
+
+image:/images/content/stories/kidblog.jpg["Kidblog",height="85"]
+
+*How long have you been working with Clojure?*
+
+Kidblog has been using Clojure in production since 2013 when we refactored our Java REST api to use an early version of Compojure. 
+
+*How big is your team?*
+
+Kidblog's product team includes three engineers and a project manager.
+
+*What product or service are you building with Clojure?*
+
+Kidblog provides safe student publishing for K-12 teachers and schools in over 70 countries around the world. Our web-based blogging platform offers teachers unique privacy and moderation tools, while giving students an opportunity to share their voice with an authentic audience.
+
+*What is your stack?*
+
+Elasticsearch, Clojure, Java, Hazelcast, AngularJS
+
+*What Clojure library have you enjoyed working with the most?*
+
+- https://github.com/ptaoussanis/tufte[Tufte] has helped us understand inefficient areas of our code to drive performance improvements. 
+- Switching from Spring to https://github.com/tolitius/mount[Mount] has made managing app state much easier and more testable. 
+- https://github.com/scgilardi/slingshot[Slingshot] enables clojure-centric exception handling.
+- https://github.com/KirinDave/clj-time[clj-time] is non-glamourous, but an extremely useful utility library.
+
+*What about working with Clojure gives you the most value?*
+
+Persistent data structures reduce cognitive load and eliminate an entire class of errors caused by mutation. REPL-driven development provides immediate feedback and is more enjoyable, helping us rapidly deliver features to customers. Java interop lets us leverage existing libraries and benefit from the maturity of the JVM. The standard library is built around simple, powerful, and composable data manipulation functions. Overall, Clojure makes our code more enjoyable to write, pleasant to read, and easier to review.

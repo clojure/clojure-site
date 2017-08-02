@@ -9,7 +9,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 == Goals of this guide
 
-Clojue supports several constructs for speaking to the Java world
+Clojure supports several constructs for speaking to the Java world
 and creating types for polymorphic dispatch. +
 Because these constructs have overlapping capabilities, it may be confusing to know which construct to use at a given situation. +
 Hopefully this guide clarifies what each construct is good at, while presenting minimal usage examples.
@@ -142,7 +142,7 @@ user=> (.close rf)
 nil
 ----
 
-One might ask "Doesn't proxy achieves the same if you do not need to extend a concrete Type?" +
+One might ask "Doesn't proxy achieve the same if you do not need to extend a concrete Type?" +
 The answer is reify has better performance.
 
 == Take away

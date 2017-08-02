@@ -150,4 +150,4 @@ To wrap up, here are some rules of thumb:
 
 * Prefer protocols and records over Java Types; stay in Clojure
 * If you must extend a Java Class, use proxy
-* If you want a on-off implementation of a Protocol/Interface, use reify
+* If you want a one-off implementation of a Protocol/Interface, use reify

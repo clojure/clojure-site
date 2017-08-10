@@ -1,0 +1,39 @@
+= LendUp 
+Alex Miller
+2017-08-07
+:jbake-type: story
+:jbake-company: LendUp
+:jbake-link: https://www.lendup.com
+
+We talked to https://www.lendup.com[LendUp] about their use of Clojure.
+
+image:/images/content/stories/lendup.jpg["LendUp",height="85"]
+
+*How long have you been working with Clojure?*
+
+We have been using Clojure in production since 2016.
+
+*How big is your team?*
+
+Currently we have around 5 engineers from the data platform and core services teams developing tools and services entirely in Clojure.
+
+*What product or service are you building with Clojure?*
+
+The LendUp data engineering team started using Clojure in production to bootstrap some tooling around a few existing ETL pipelines. This experiment proved to be quite successful and as we started to evolve our architecture and move to a more services oriented pattern, we started to adopt Clojure more widely across other parts of our system as well. We now have Clojure services and tooling powering our data pipelines and core real-time decisioning & servicing infrastructure.
+
+*What Clojure library have you enjoyed working with the most?*
+
+We have been using https://github.com/ring-clojure/ring[Ring] and https://github.com/plumatic/schema[Schema] extensively at LendUp. Ring is an elegant web framework that enables us to quickly start up a web application and leverage a large selection of pre-written middlewares. Coming from a Java background, we definitely miss the static type checking. The Schema library is a solid alternative to a full-blown type system, and it has helped us ensure the contracts over data from internal functions and external services.
+
+*What is your favorite feature of Clojure or ClojureScript?*
+
+Some of the language features, especially the ability to express "code as data" and macro support, has enabled to create pretty effective DSLs to express pretty complex business logic. The built in support for immutability in the language and data structures have also fundamentally changed our code base and data architecture as well.
+
+*What is your stack?*
+
+LendUp backend is primarily built on Java. We also have production services written in Python and Clojure. On the frontend side, the company started with Backbone, and has been gradually migrating to React + GraphQL. 
+
+*Why is using Clojure or ClojureScript valuable to your business?*
+
+At LendUp, we have a set of engineering values that guide us as individuals and teams: pragmatism, simplicity, relentlessness, collaboration, ownership and excellence. Clojure fits nicely into our value system. It's made enterprise software development a lot more fun. We're able to iterate on changes faster, build composable and focused components, leverage massive amount of battle-tested, production-ready Java libraries, and we have a much smaller code base to maintain. 
+

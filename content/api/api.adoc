@@ -48,7 +48,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 * https://clojure.github.io/java.jmx/[java.jmx] JMX interface
 * https://clojure.github.io/math.combinatorics/[math.combinatorics] Lazy sequences for common combinatorial functions
 * https://clojure.github.io/math.numeric-tower/[math.numeric-tower] Math functions and numeric tower
-* https://clojure.github.io/spec.alpha/[spec.alpha] Describing the structure of data and functions
+* https://github.com/clojure/spec.alpha[spec.alpha] Describing the structure of data and functions
 * https://clojure.github.io/test.generative/[test.generative] Test data generation and execution harness
 * https://clojure.github.io/tools.analyzer/[tools.analyzer] Analyzer framework for Clojure code 
 * https://clojure.github.io/tools.analyzer.jvm/[tools.analyzer.jvm] JVM-specific passes for tools.analyzer

@@ -347,7 +347,7 @@ Here are just some of the public success stories from companies using Clojure.  
                 <li>
                   <p><img style="border: 3px solid #ebebeb;" src="/images/logos/kidblog.jpg" /></p>
                   <p>
-                    <a target="fundingcircle" href="https://kidblog.org">Kidblog</a> uses Clojure to provide safe student publishing for K-12 teachers and students.
+                    <a target="kidblog" href="https://kidblog.org">Kidblog</a> uses Clojure to provide safe student publishing for K-12 teachers and students.
                   </p>
                   <hr>
                   <p>
@@ -358,6 +358,23 @@ Here are just some of the public success stories from companies using Clojure.  
                     <cite>
                       <strong>Matt Hardy</strong>
                       Founder
+                    </cite>
+                  </blockquote>
+                </li>
+                <li>
+                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/lendup.jpg" /></p>
+                  <p>
+                    <a target="lendup" href="https://www.lendup.com/">LendUp</a> uses Clojure to build enterprise financial software that helps provide anyone with a path to better financial health.
+                  </p>
+                  <hr>
+                  <p>
+                    <span class='read-more'>LendUp uses Clojure to <a target="testimonial" href="https://clojure.org/stories/lendup">power data pipelines</a> and core real-time decisioning & servicing infrastructure.</span>
+                  </p>
+                  <blockquote style='margin-left: 0; padding: 0'>
+                    <p>Clojure is elegant and pragmatic; it helps me focus more on solving business problems.</p>
+                    <cite>
+                      <strong>Mengxi Lu</strong>
+                      Data Engineering Lead
                     </cite>
                   </blockquote>
                 </li>

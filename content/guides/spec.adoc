@@ -1110,7 +1110,7 @@ Returning to our "hello" example, we now have the tools to make that generator:
 ;;=> ("hello" "ehello3" "eShelloO1" "vhello31p" "hello" "1Xhellow" "S5bhello" "aRejhellorAJ7Yj" "3hellowPMDOgv7" "UhelloIx9E")
 ----
 
-Here we generate a tuple of a random prefix and random suffix strings, then insert "hello" bewteen them.
+Here we generate a tuple of a random prefix and random suffix strings, then insert "hello" between them.
 
 === Range Specs and Generators
 

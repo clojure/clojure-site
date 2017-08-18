@@ -112,6 +112,23 @@ In this guide we will often use auto-resolved keywords like `::date`. The Clojur
 Generally, Clojure code should use keyword namespaces that are sufficiently unique such that they will not conflict with other spec users. If you are writing a library for public use, spec namespaces should include the project name, url, or organization such that you will not conflict. Within a private organization, you may be able to use shorter names - the important thing is that they are sufficiently unique to avoid conflicts.
 ****
 
+Once a spec has been added to the registry, `doc` knows how to find it and print it as well:
+
+[source,clojure]
+----
+(doc ::date)
+-------------------------
+:user/date
+Spec
+  inst?
+
+(doc ::suit)
+-------------------------
+:user/suit
+Spec
+  #{:spade :heart :diamond :club}
+----
+
 == Composing predicates
 
 The simplest way to compose specs is with https://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/and[`and`] and https://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/or[`or`]. Let's create a spec that combines several predicates into a composite spec with `s/and`:

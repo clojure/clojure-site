@@ -738,6 +738,21 @@ This function spec demonstrates a number of features. First the `:args` is a com
 
 The second `:args` predicate takes as input the conformed result of the first predicate and verifies that start < end. The `:ret` spec indicates the return is also an integer. Finally, the `:fn` spec checks that the return value is >= start and < end.
 
+Once a spec has been created for a function, the `doc` for the function will also include it:
+
+[source,clojure]
+----
+(doc ranged-rand)
+-------------------------
+user/ranged-rand
+([start end])
+  Returns random int in range start <= rand < end
+Spec
+  args: (and (cat :start int? :end int?) (< (:start %) (:end %)))
+  ret: int?
+  fn: (and (>= (:ret %) (-> % :args :start)) (< (:ret %) (-> % :args :end)))
+----
+
 We'll see later how we can use a function spec for development and testing.
 
 == Higher order functions

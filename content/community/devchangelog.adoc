@@ -11,6 +11,12 @@ The official https://github.com/clojure/clojure/blob/master/changes.md[changelog
 
 == Release 1.9
 
+=== https://groups.google.com/d/msg/clojure/rb22V98rPLM/MFBBcz-gAQAJ[1.9.0-alpha18] (May 26, 2017)
+
+- Can now bind *reader-resolver* to an impl of LispReader$Resolver to control the reader's use of namespace interactions when resolving autoresolved keywords and maps.
+- Tighten autoresolved keywords and autoresolved namespace map syntax to support *only* aliases, as originally intended
+- Updated to use core.specs.alpha 0.1.24
+
 === https://groups.google.com/d/msg/clojure/iceDBL5q4CY/GM6LryxpAQAJ[1.9.0-alpha17] (May 26, 2017)
 
 - https://dev.clojure.org/jira/browse/CLJ-1793[CLJ-1793] - Clear 'this' before calls in tail position

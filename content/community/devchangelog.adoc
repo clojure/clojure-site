@@ -11,9 +11,13 @@ The official https://github.com/clojure/clojure/blob/master/changes.md[changelog
 
 == Release 1.9
 
-=== https://groups.google.com/d/msg/clojure/rb22V98rPLM/MFBBcz-gAQAJ[1.9.0-alpha18] (May 26, 2017)
+=== https://groups.google.com/d/msg/clojure/oy2O_akFJ2U/w6-C0hPoAQAJ[1.9.0-alpha19] (Aug 24, 2017)
 
-- Can now bind *reader-resolver* to an impl of LispReader$Resolver to control the reader's use of namespace interactions when resolving autoresolved keywords and maps.
+- Make the default import set public in RT
+
+=== https://groups.google.com/d/msg/clojure/rb22V98rPLM/MFBBcz-gAQAJ[1.9.0-alpha18] (Aug 23, 2017)
+
+- Can now bind `*reader-resolver*` to an impl of LispReader$Resolver to control the reader's use of namespace interactions when resolving autoresolved keywords and maps.
 - Tighten autoresolved keywords and autoresolved namespace map syntax to support *only* aliases, as originally intended
 - Updated to use core.specs.alpha 0.1.24
 

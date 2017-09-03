@@ -1,0 +1,406 @@
+= Learn Clojure - Hashed Collections
+Alex Miller
+2017-09-02
+:type: guides
+:toc: macro
+:icons: font
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+toc::[]
+
+As described in the previous section, there are four key Clojure collection types: vectors, lists, sets, and maps. Of those four collection types, sets and maps are hashed collections, designed for efficient lookup of elements.
+
+== Sets
+
+Sets are like mathematical sets - unordered and with no duplicates. Sets are ideal for efficiently checking whether a collection contains an element, or to remove any arbitrary element.
+
+[source,clojure]
+----
+(def players #{"Alice", "Bob", "Kelly"})
+----
+
+=== Adding to a set
+
+As with vectors and lists, `conj` is used to add elements.
+
+[source,clojure-repl]
+----
+user=> (conj players "Fred")
+#{"Alice" "Fred" "Bob" "Kelly"}
+----
+
+=== Removing from a set
+
+The `disj` ("disjoin") function is used to remove one or more elements from a set.
+
+[source,clojure-repl]
+----
+user=> (disj players "Bob" "Sal")
+#{"Alice" "Kelly"}
+----
+
+=== Checking containment
+
+[source,clojure-repl]
+----
+user=> (contains? players "Kelly")
+true
+----
+
+=== Sorted sets
+
+Sorted sets are sorted according to a comparator function which can compare two elements. By default, Clojure's `compare` function is used, which sorts in "natural" order for numbers, strings, etc.
+
+[source,clojure-repl]
+----
+user=> (conj (sorted-set) "Bravo" "Charlie" "Sigma" "Alpha")
+#{"Alpha" "Bravo" "Charlie" "Sigma"}
+----
+
+A custom comparator can also be used with `sorted-set-by`.
+
+=== `into`
+
+`into` is used for putting one collection into another.
+
+[source,clojure-repl]
+----
+user=> (def players #{"Alice" "Bob" "Kelly"})
+user=> (def new-players ["Tim" "Sue" "Greg"])
+user=> (into players new-players)
+#{"Alice" "Greg" "Sue" "Bob" "Tim" "Kelly"}
+----
+
+`into` returns a collection of the same type as its first argument.
+
+== Maps
+
+Maps are commonly used for two purposes - to manage an association of keys to values and to represent domain application data. The first use case is often referred to as dictionaries or hash maps in other languages.
+
+=== Creating a literal map
+
+Maps are represented as alternating keys and values surrounded by `{` and `}`.
+
+[source,clojure]
+----
+(def scores {"Fred"  1400
+             "Bob"   1240
+             "Angela" 1024})
+----
+
+When Clojure prints a map at the REPL, it will put `,`'s between each key/value pair. These are purely used for readability - commas are treated as whitespace in Clojure. Feel free to use them in cases where they help you!
+
+[source,clojure]
+----
+;; same as the last one!
+(def scores {"Fred" 1400, "Bob" 1240, "Angela" 1024})
+----
+
+=== Adding new key-value pairs
+
+New values are added to maps with the `assoc` (short for "associate") function:
+
+[source,clojure-repl]
+----
+user=> (assoc scores "Sally" 0)
+{"Angela" 1024, "Bob" 1240, "Fred" 1400, "Sally" 0}
+----
+
+If the key used in `assoc` already exists, the value is replaced.
+
+[source,clojure-repl]
+----
+user=> (assoc scores "Bob" 0)
+{"Angela" 1024, "Bob" 0, "Fred" 1400}
+----
+
+=== Removing key-value pairs
+
+The complementary operation for removing key-value pairs is `dissoc` ("dissociate"):
+
+[source,clojure-repl]
+----
+user=> (dissoc scores "Bob")
+{"Angela" 1024, "Fred" 1400}
+----
+
+=== Looking up by key
+
+There are several ways to look up a value in a map. The most obvious is the function `get`:
+
+[source,clojure-repl]
+----
+user=> (get scores "Angela")
+1024
+----
+
+When the map in question is being treated as a constant lookup table, its common to invoke the map itself, treating it as a function:
+
+[source,clojure-repl]
+----
+user=> (def directions {:north 0
+                        :east 1
+                        :south 2
+                        :west 3})
+#'user/directions
+
+user=> (directions :north)
+0
+----
+
+You should not directly invoke a map unless you can guarantee it will be non-nil:
+
+[source,clojure-repl]
+----
+user=> (def bad-lookup-map nil)
+#'user/bad-lookup-map
+
+user=> (bad-lookup-map :foo)
+NullPointerException
+----
+
+=== Looking up with a default
+
+If you want to do a lookup and fall back to a default value when the key is not found, specify the default as an extra parameter:
+
+[source,clojure-repl]
+----
+user=> (get scores "Sam" 0)
+0
+​
+user=> (directions :northwest -1)
+-1
+----
+
+Using a default is also helpful to distinguish between a missing key and an existing key with a `nil` value.
+
+=== Checking contains
+
+There are two other functions that are helpful in checking whether a map contains an entry.
+
+[source,clojure-repl]
+----
+user=> (contains? scores "Fred")
+true
+
+user=> (find scores "Fred")
+["Fred" 1400]
+----
+
+The `contains?` function is a predicate for checking containment. The `find` function finds the key/value entry in a map, not just the value.
+
+=== Keys or values
+
+You can also get just the keys or just the values in a map:
+
+[source,clojure-repl]
+----
+user=> (keys scores)
+("Fred" "Bob" "Angela")
+
+user=> (vals scores)
+(1400 1240 1024)
+----
+
+While maps are unordered, there is a guarantee that keys, vals, and other functions that walk in "sequence" order will always walk a particular map instance entries in the same order.
+
+=== Building a map
+
+The `zipmap` function can be used to "zip" together two sequences (the keys and vals) into a map:
+
+[source,clojure-repl]
+----
+user=> (def players #{"Alice" "Bob" "Kelly"})
+#'user/players
+
+user=> (zipmap players (repeat 0))
+{"Kelly" 0, "Bob" 0, "Alice" 0}
+----
+
+There are a variety of other ways to build up a map using Clojure's sequence functions (which we have not yet discussed). Come back to these later!
+
+[source,clojure]
+----
+;; with map and into
+(into {} (map (fn [player] [player 0]) players))
+
+;; with reduce
+(reduce (fn [m player]
+          (assoc m player 0))
+        {} ; initial value
+        players)
+----
+
+=== Combining maps
+
+The `merge` function can be used to combine multiple maps into a single map:
+
+[source,clojure-repl]
+----
+user=> (def new-scores {"Angela" 300 "Jeff" 900})
+#'user/new-scores
+
+user=> (merge scores new-scores)
+{"Fred" 1400, "Bob" 1240, "Jeff" 900, "Angela" 300}
+----
+
+We merged two maps here but you can pass more as well.
+
+If both maps contain the same key, the rightmost one wins. Alternately, you can use `merge-with` to supply a function to invoke when there is a conflict:
+
+[source,clojure-repl]
+----
+user=> (def new-scores {"Fred" 550 "Angela" 900 "Sam" 1000})
+#'user/new-scores
+
+user=> (merge-with + scores new-scores)
+{"Sam" 1000, "Fred" 1950, "Bob" 1240, "Angela" 1924}
+----
+
+In the case of a conflict, the function is called on both values to get the new value.
+
+=== Sorted maps
+
+Similar to sorted sets, sorted maps maintain the keys in sorted order based on a comparator, using `compare` as the default comparator function.
+
+[source,clojure-repl]
+----
+user=> (def sm (sorted-map
+         "Bravo" 204
+         "Alfa" 35
+         "Sigma" 99
+         "Charlie" 100))
+{"Alfa" 35, "Bravo" 204, "Charlie" 100, "Sigma" 99}
+
+user=> (keys sm)
+("Alfa" "Bravo" "Charlie" "Sigma")
+
+user=> (vals sm)
+(35 204 100 99)
+----
+
+== Representing application domain information
+
+When we need to represent many domain information with the same set of fields known in advance, you can use a map with keyword keys.
+
+[source,clojure]
+----
+(def person
+  {:first-name "Kelly"
+   :last-name "Keen"
+   :age 32
+   :occupation "Programmer"})
+----
+
+=== Field accessors
+
+Since this is a map, the ways we've already discussed for looking up a value by key work:
+
+[source,clojure-repl]
+----
+user=> (get person :occupation)
+"Programmer"
+
+user=> (person :occupation)
+"Programmer"
+----
+
+But really, the most common way to get field values for this use is by invoking the kewyord. Just like with maps and sets, keywords are also functions. When a keyword is invoked, it looks itself up in the associative data structure that it was passed.
+
+[source,clojure-repl]
+----
+user=> (:occupation person)
+"Programmer"
+----
+
+Keyword invocation also takes an optional default value:
+
+[source,clojure-repl]
+----
+user=> (:favorite-color person "beige")
+"beige"
+----
+
+=== Updating fields
+
+Since this is a map, we can just use `assoc` to add or modify fields:
+
+[source,clojure-repl]
+----
+user=> (assoc person :occupation "Baker")
+{:age 32, :last-name "Keen", :first-name "Kelly", :occupation "Baker"}
+----
+
+=== Removing a field
+
+Use dissoc to remove fields:
+
+[source,clojure-repl]
+----
+user=> (dissoc person :age)
+{:last-name "Keen", :first-name "Kelly", :occupation "Programmer"}
+----
+
+=== Nested entities
+
+It is common to see entities nested within other entities:
+
+[source,clojure]
+----
+(def company
+  {:name "WidgetCo"
+   :address {:street "123 Main St"
+             :city "Springfield"
+             :state "IL"}})
+----
+
+You can use `get-in` to access fields at any level inside nested entities:
+
+[source,clojure-repl]
+----
+user=> (get-in company [:address :city])
+"Springfield"
+----
+
+You can also use `assoc-in` or `update-in` to modify nested entities:
+
+[source,clojure-repl]
+----
+user=> (assoc-in company [:address :street] "303 Broadway")
+{:name "WidgetCo",
+ :address
+ {:state "IL",
+  :city "Springfield",
+  :street "303 Broadway"}}
+----
+
+=== Records
+
+An alternative to using maps is to create a "record". Records are designed specifically for this use case and generally have better performance. In addition, they have a named "type" which can be used for polymorphic behavior (more on that later).
+
+Records are defined with the list of field names for record instances. These will be treated as keyword keys in each record instance.
+
+[source,clojure]
+----
+;; Define a record structure
+(defrecord Person [first-name last-name age occupation])
+
+;; Positional constructor - generated
+(def kelly (->Person "Kelly" "Keen" 32 "Programmer"))
+
+;; Map constructor - generated
+(def kelly (map->Person
+             {:first-name "Kelly"
+              :last-name "Keen"
+              :age 32
+              :occupation "Programmer"}))
+----
+
+Records are used almost exactly the same as maps, with the caveat that they cannot be invoked as a function like maps.
+
+[source,clojure-repl]
+----
+user=> (:occupation kelly)
+"Programmer"
+----

@@ -1,7 +1,7 @@
 = Learn Clojure - Syntax
 Alex Miller
 2017-09-02
-:type: guides
+:type: learn
 :toc: macro
 :icons: font
 
@@ -59,15 +59,15 @@ Next we will consider how Clojure reads and evaluates expressions.
 
 === Traditional Evaluation (Java)
 
-image:/images/content/guides/syntax/traditional-evaluation.png["Java evaluation"]
+image:/images/content/guides/learn/syntax/traditional-evaluation.png["Java evaluation"]
 
 In Java, source code (.java files) are read as characters by the compiler (javac), which produces bytecode (.class files) which can be loaded by the JVM.
 
 === Clojure Evaluation
 
-image:/images/content/guides/syntax/clojure-evaluation.png["Clojure evaluation"]
+image:/images/content/guides/learn/syntax/clojure-evaluation.png["Clojure evaluation"]
 
-In Clojure, source code is read as characters by the <<xref/../../reference/reader#,Reader>>. The Reader may read the source either from .clj files or be given a series of expressions interactively. The Reader produces Clojure data. The Clojure compiler then produces the bytecode for the JVM.
+In Clojure, source code is read as characters by the <<xref/../../../reference/reader#,Reader>>. The Reader may read the source either from .clj files or be given a series of expressions interactively. The Reader produces Clojure data. The Clojure compiler then produces the bytecode for the JVM.
 
 There are two important points here:
 
@@ -78,7 +78,7 @@ There are two important points here:
 
 Consider a Clojure expression: 
 
-image:/images/content/guides/syntax/structure-and-semantics.png["Structure and semantics"]
+image:/images/content/guides/learn/syntax/structure-and-semantics.png["Structure and semantics"]
 
 This diagram illustrates the difference between syntax in green (the Clojure data structure produced by the Reader) and semantics in blue (how that data is understood by the Clojure runtime).
 

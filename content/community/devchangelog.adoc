@@ -11,6 +11,42 @@ The official https://github.com/clojure/clojure/blob/master/changes.md[changelog
 
 == Release 1.9
 
+=== https://groups.google.com/d/msg/clojure/IB2CaORBMnM/a0f66eC1DAAJ[1.9.0-alpha20] (Sep 7, 2017)
+
+1.9.0-alpha20 includes the following changes since 1.9.0-alpha19:
+
+- https://dev.clojure.org/jira/browse/CLJ-1074[CLJ-1074] - (new) add new pass:[##] reader macro for symbolic values, and read/print support for double vals pass:[##Inf], pass:[##-Inf], pass:[##NaN]
+- https://dev.clojure.org/jira/browse/CLJ-1454[CLJ-1454] - (new) add swap-vals! and reset-vals! that return both old and new values
+- https://dev.clojure.org/jira/browse/CLJ-2184[CLJ-2184] - (errors) propagate meta in doto forms to improve error reporting
+- https://dev.clojure.org/jira/browse/CLJ-2210[CLJ-2210] - (perf) cache class derivation in compiler to improve compiler performance
+- https://dev.clojure.org/jira/browse/CLJ-2070[CLJ-2070] - (perf) clojure.core/delay - improve performance
+- https://dev.clojure.org/jira/browse/CLJ-1917[CLJ-1917] - (perf) reducing seq over string should call String/length outside of loop
+- https://dev.clojure.org/jira/browse/CLJ-1901[CLJ-1901] - (perf) amap - should call alength only once
+- https://dev.clojure.org/jira/browse/CLJ-99[CLJ-99]   - (perf) min-key and max-key - evaluate k on each arg at most once
+- https://dev.clojure.org/jira/browse/CLJ-2188[CLJ-2188] - (perf) slurp - mark return type as String
+- https://dev.clojure.org/jira/browse/CLJ-2108[CLJ-2108] - (startup time) delay loading of spec and core specs (still more to do on this)
+- https://dev.clojure.org/jira/browse/CLJ-2204[CLJ-2204] - (security) disable serialization of proxy classes to avoid potential issue when deserializing
+- https://dev.clojure.org/jira/browse/CLJ-2048[CLJ-2048] - (fix) specify type to avoid ClassCastException when stack trace is elided by JVM
+- https://dev.clojure.org/jira/browse/CLJ-1887[CLJ-1887] - (fix) IPersistentVector.length() - implement missing method
+- https://dev.clojure.org/jira/browse/CLJ-1841[CLJ-1841] - (fix) bean - iterator was broken
+- https://dev.clojure.org/jira/browse/CLJ-1714[CLJ-1714] - (fix) using a class in a type hint shouldn't load the class
+- https://dev.clojure.org/jira/browse/CLJ-1398[CLJ-1398] - (fix) clojure.java.javadoc/javadoc - update doc urls
+- https://dev.clojure.org/jira/browse/CLJ-1371[CLJ-1371] - (fix) Numbers.divide(Object, Object) - add checks for NaN
+- https://dev.clojure.org/jira/browse/CLJ-1358[CLJ-1358] - (fix) doc - does not expand special cases properly (try, catch)
+- https://dev.clojure.org/jira/browse/CLJ-1705[CLJ-1705] - (fix) vector-of - fix NullPointerException if given unrecognized type
+- https://dev.clojure.org/jira/browse/CLJ-2170[CLJ-2170] - (doc) fix improperly located docstrings
+- https://dev.clojure.org/jira/browse/CLJ-2156[CLJ-2156] - (doc) clojure.java.io/copy - doc char[] support
+- https://dev.clojure.org/jira/browse/CLJ-2051[CLJ-2051] - (doc) clojure.instant/validated docstring - fix typo
+- https://dev.clojure.org/jira/browse/CLJ-2104[CLJ-2104] - (doc) clojure.pprint docstring - fix typo
+- https://dev.clojure.org/jira/browse/CLJ-2028[CLJ-2028] - (doc) filter, filterv, remove, take-while - fix docstrings
+- https://dev.clojure.org/jira/browse/CLJ-1873[CLJ-1873] - (doc) require, *data-readers* - add .cljc files to docstrings
+- https://dev.clojure.org/jira/browse/CLJ-1159[CLJ-1159] - (doc) clojure.java.io/delete-file - improve docstring
+- https://dev.clojure.org/jira/browse/CLJ-2039[CLJ-2039] - (doc) deftype - fix typo in docstring
+- https://dev.clojure.org/jira/browse/CLJ-1918[CLJ-1918] - (doc) await - improve docstring re shutdown-agents
+- https://dev.clojure.org/jira/browse/CLJ-1837[CLJ-1837] - (doc) index-of, last-index-of - clarify docstrings
+- https://dev.clojure.org/jira/browse/CLJ-1826[CLJ-1826] - (doc) drop-last - fix docstring
+- https://dev.clojure.org/jira/browse/CLJ-1859[CLJ-1859] - (doc) zero?, pos?, neg? - fix docstrings
+
 === https://groups.google.com/d/msg/clojure/oy2O_akFJ2U/w6-C0hPoAQAJ[1.9.0-alpha19] (Aug 24, 2017)
 
 - Make the default import set public in RT

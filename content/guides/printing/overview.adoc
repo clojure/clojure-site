@@ -1,0 +1,50 @@
+= Overview
+Sameer Rahmani
+2016-09-07
+:type: guides
+:icons: font
+:status: published
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+In this series of articles we're going to take a look at different ways of printing in Clojure.
+
+
+== clojure.pprint
+This namespace adds a new feature to Clojure: a generalized pretty printer.
+
+The pretty printer is easy to use:
+
+[source,clojure]
+----
+user=> (println (for [x (range 10)] (range x)))
+(() (0) (0 1) (0 1 2) (0 1 2 3) (0 1 2 3 4) (0 1 2 3 4 5) (0 1 2 3 4 5 6) (0 1 2 3 4 5 6 7) (0 1 2 3 4 5 6 7 8))
+nil
+user=> (use 'clojure.pprint)
+nil
+user=> (pprint (for [x (range 10)] (range x)))
+(()
+ (0)
+ (0 1)
+ (0 1 2)
+ (0 1 2 3)
+ (0 1 2 3 4)
+ (0 1 2 3 4 5)
+ (0 1 2 3 4 5 6)
+ (0 1 2 3 4 5 6 7)
+ (0 1 2 3 4 5 6 7 8))
+nil
+user=>
+
+----
+
+The pretty printer supports two modes: code which has special formatting for special forms and core macros and simple (the default)
+which formats the various Clojure data structures as appropriate for raw data. In fact, the pretty printer is highly customizable,
+but basic use is pretty simple.
+
+All the functions and variables described here are in the clojure.pprint namespace. Using them is as simple as adding a `(:use clojure.pprint)`
+to your namespace declarations. Or, better practice would be `(:use [clojure.pprint :only (<functions you wish to use>)])`.
+
+pprint is being developed by Tom Faulhaber (to mail me you can use my first name at my domain which is infolace.com).
+As with the rest of Clojure, the pretty printer is licensed under the http://opensource.org/licenses/eclipse-1.0.php[Eclipse Public License 1.0].
+Future development is guided by those using it, so send feedback about what's working and not working for you and what you'd like to see in the pretty printer.

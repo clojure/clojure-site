@@ -48,3 +48,12 @@ to your namespace declarations. Or, better practice would be `(:use [clojure.ppr
 pprint is being developed by Tom Faulhaber (to mail me you can use my first name at my domain which is infolace.com).
 As with the rest of Clojure, the pretty printer is licensed under the http://opensource.org/licenses/eclipse-1.0.php[Eclipse Public License 1.0].
 Future development is guided by those using it, so send feedback about what's working and not working for you and what you'd like to see in the pretty printer.
+
+=== pr
+TBA
+
+=== prn
+TBA
+
+=== println
+TBA

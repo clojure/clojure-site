@@ -97,9 +97,9 @@ The `dep_opts` are used to compute the `<classpath>` in this final invocation. C
 * Compute the deps map
 ** Read the deps.edn file in the following locations:
 *** Install directory
-*** Config directory
-*** Current directory
-** Combine these two maps with `merge-with merge`
+*** Config directory (if it exists)
+*** Current directory (if it exists)
+** Combine these deps.edn maps in that order with `merge-with merge`
 * Compute the resolve-deps args
 ** If `-R` specifies one or more aliases, find each alias in the deps map `:aliases`
 ** `merge-with` `merge` the alias maps - the result is the resolve-args map

@@ -9,7 +9,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 Welcome to Clojure!
 
-== Brew install
+== Clojure scripts and deps support
 
 If you are on Mac OS X, you can install the latest stable version of Clojure with:
 
@@ -32,7 +32,7 @@ Then start the interactive REPL with:
 clj
 ----
 
-You can find more info on using the `clj` and `clojure` scripts in the <<deps_and_cli#,Deps and CLI Guide>>.
+Installers for more systems are coming soon. You can find more info on using the `clj` and `clojure` scripts in the <<deps_and_cli#,Deps and CLI Guide>>.
 
 == JAR Install
 

@@ -33,7 +33,7 @@ The latest development version of the Clojure scripts can be installed by select
 brew install --devel clojure
 ----
 
-If you omit, the `--devel`, you will instead get the latest stable version of Clojure, currently 1.8.0.
+If you omit the `--devel` you will instead get the latest stable version of Clojure, currently 1.8.0.
 
 === Installation on Linux
 
@@ -94,8 +94,10 @@ java <java_opts> -cp <classpath> clojure.main <main_opts>
 The `dep_opts` are used to compute the `<classpath>` in this final invocation. Classpaths are cached (except when using `-P`) - see the section on classpath caching below for more details. When a classpath is not available, the following process is used to construct the classpath:
 
 * Compute the deps map
-** Read the system deps.edn file from the config directory
-** If a local deps file exists at ./deps.edn, read that file
+** Read the deps.edn file in the following locations:
+*** Install directory
+*** Config directory
+*** Current directory
 ** Combine these two maps with `merge-with merge`
 * Compute the resolve-deps args
 ** If `-R` specifies one or more aliases, find each alias in the deps map `:aliases`
@@ -173,7 +175,7 @@ Example:
 
 * Invoke: `clj`
 * Given: No deps.edn file in the current directory.
-* Result: Start a repl using the default deps file at ~/.clojure/deps.edn.
+* Result: Start a repl using the default deps file at <install>/deps.edn.
 
 === Running a REPL using deps.edn in the current directory
 
@@ -337,10 +339,11 @@ The `clojure` and `clj` scripts rely on several directories and optionally on se
 ** Contents:
 *** `bin/clojure` - main script
 *** `bin/clj` - wrapper script for interactive repl use (uses `rlwrap`)
-*** `deps.edn` - initial user deps.edn file to be copied to the config directory
+*** `deps.edn` - install level deps.edn file, with some default deps (Clojure, etc)
 *** `libexec/clojure-scripts-X.Y.Z.jar` - uberjar invoked by `clojure` to construct classpaths
 * config directory
-** Lazily created by `clojure` if no config directory is detected. Locations checked in this order:
+** Can be created to hold a deps.edn file that carries across installation upgrades and takes affect across projects
+** Locations checked in this order:
 *** If `$CLJ_CONFIG` is set, then use `$CLJ_CONFIG` (explicit override)
 *** If `$XDG_CONFIG_HOME` is set, then use `$XDG_CONFIG_HOME/clojure` (follows Freedesktop conventions)
 *** Else use `$HOME/.clojure`

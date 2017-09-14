@@ -293,8 +293,6 @@ We would like to support:
 
 An ordered list of local 'places' (filesystem directories and/or jars) that will form root paths for searches of requires/imports at runtime, supplied as an argument to Java which controls the semantics. We discourage order-dependence in the classpath, which implies something is duplicated (and thus likely broken).
 
-Classpaths are a list of paths, separated by a platform-specific file separator (`:` on *nix and `;` on Windows).
-
 **Expansion**
 
 Given a set of root dependencies, a full walk of the transitive dependencies.

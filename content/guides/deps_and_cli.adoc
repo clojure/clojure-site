@@ -155,20 +155,23 @@ Example:
 
  ;; Aliases that can be used with -R and -C
  :aliases {
-   ;; An alias that adds an extra dep to use for benchmarking
+   ;; An alias that adds an extra dep to use for benchmarking: -R:bench
    :bench {:extra-deps {criterium {:mvn/version "0.4.4"}}}
 
-   ;; An alias to override the default Clojure version
+   ;; An alias to override the default Clojure version: -R:1.9
    :1.9 {:override-deps {org.clojure/clojure {:mvn/version "1.9.0-alpha20"}}}
 
-   ;; A classpath override alias to use a local build of Clojure
-   :dev {:override-deps {org.clojure/clojure "/Users/me/clojure/target/classes"}}
+   ;; A classpath override alias to use a local build of Clojure: -C:dev
+   :dev {:classpath-overrides {org.clojure/clojure "/Users/me/clojure/target/classes"}}
+
+   ;; Add extra paths to the classpath: -C:test
+   :test {:extra-paths ["test"]}
  }
 
  ;; Configure Maven repos - these are typical set in the system deps.edn only
  :mvn/repos {
-   :repos {"central" {:url "https://repo1.maven.org/maven2/"}
-           "clojars" {:url "https://clojars.org/repo/"}}
+   "central" {:url "https://repo1.maven.org/maven2/"}
+   "clojars" {:url "https://clojars.org/repo/"}
  }
 }
 ----
@@ -246,7 +249,7 @@ Example:
 ;; deps.edn
 {:deps {org.clojure/clojure {:mvn/version "1.8.0"}}
  :aliases {:1.9 {:override-deps {org.clojure/clojure {:mvn/version "1.9.0-alpha20"}}}
-           :dev {org.clojure/clojure "/Users/me/code/clojure/target/classes"}}}
+           :dev {:classpath-overrides {org.clojure/clojure "/Users/me/code/clojure/target/classes"}}}}
 ----
 
 === Show classpath
@@ -258,7 +261,7 @@ Example:
 [source,clojure]
 ----
 ;; deps.edn
-{:deps {:org.clojure/clojure {:type :mvn :version "1.8.0"}}}
+{:deps {:org.clojure/clojure {:mvn/version "1.8.0"}}}
 ----
 
 Note that `-S` can be combined with other `clj` options as well.

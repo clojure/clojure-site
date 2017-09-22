@@ -349,8 +349,8 @@ Since binding forms can be nested within one another arbitrarily, you can pull a
 
 [source,clojure]
 ----
-(let [{j :j, k :k, i :i, [r s & t :as v] :ivec, :or {i 12 j 13}}
-      {:j 15 :k 16 :ivec [22 23 24 25]}]
+(let [m {:j 15 :k 16 :ivec [22 23 24 25]}
+      {j :j, k :k, i :i, [r s & t :as v] :ivec, :or {i 12 j 13}} m]
   [i j k r s t v])
 
 -> [12 15 16 22 23 (24 25) [22 23 24 25]]

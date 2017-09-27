@@ -34,7 +34,7 @@ This lacks a little bit of extensibility that functional languages give you.
 ----
 
 This looks quite similar to what we did above, but there is a subtle but important difference.
-Instead of defining a function, we define a var called `double` whos value is a function.
+Instead of defining a function, we define a var called `double` whose value is a function.
 Just like strings or numbers, we can assign functions to variables.
 It's _almost_ the same, but with this we can create what are called, higher order functions.
 

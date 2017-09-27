@@ -99,7 +99,7 @@ The function returned by `adder` will also take a single number, `a`, as it's ar
 [source, clojure]
 ----
 (defn adder [x]
-  (fn [a] (+ a x)))
+  (fn [a] (+ x a)))
 
 (def add-five (adder 5))
 

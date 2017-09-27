@@ -121,5 +121,5 @@ The return value will be a function which takes a string, `p`, and returns a str
 ;; => "Hello there Jake!"
 
 (greet-dog "Sparky")
-;; => "Hello there Sparky!"
+;; => "Woof woof Sparky!"
 ----

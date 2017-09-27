@@ -16,9 +16,11 @@ In functional programming languages, functions are values.
 For instance, say we want to write a function that will double a number.
 In most languages, you can define a function like so.
 
-[source, clojure]
+[source, java]
 ----
-(defn double [x] (* 2 x))
+public static Int double (int a ) {
+    return 2 * a;
+}
 ----
 
 This should look very familiar.

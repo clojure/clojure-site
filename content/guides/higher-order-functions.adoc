@@ -40,7 +40,7 @@ It's _almost_ the same, but with this we can create what are called, higher orde
 
 A higher order function is a function that either;
 
-1. Takes one of more functions as arguments
+1. Takes one or more functions as arguments
 2. Returns a function as it's result
 
 This will turn out to be a very important concept to functional programming as well as Clojure.

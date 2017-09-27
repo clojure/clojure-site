@@ -1,0 +1,125 @@
+= Higher Order Functions 
+Michael Zavarella
+2017-09-15
+:jbake-type: guides
+:toc macro
+:icons: font
+
+ifdef::env-github,env-browser[:outfilesuffic: .adoc]
+
+toc:[]
+
+== Functions are Values
+
+In functional programming languages, functions are values.
+
+For instance, say we want to write a function that will double a number.
+In most languages, you can define a function like so.
+
+[source, clojure]
+----
+(defn double [x] (* 2 x))
+----
+
+This should look very familiar.
+This defines a function that we call `double`.
+Very useful indeed, could you imagine programming without functions?
+This lacks a little bit of extensibility that functional languages give you.
+
+[source, clojure]
+----
+(def double (fn [x] (* 2 x)))
+----
+
+This looks quite similar to what we did above, but there is a subtle but important difference.
+Instead of defining a function, we define a var called `double` whos value is a function.
+Just like strings or numbers, we can assign functions to variables.
+It's _almost_ the same, but with this we can create what are called, higher order functions.
+
+== Higher Order Functions
+
+A higher order function is a function that either;
+
+1. Takes one of more functions as arguments
+2. Returns a function as it's result
+
+This will turn out to be a very important concept to functional programming as well as Clojure.
+
+Higher order functions allow us to _compose_ functions.
+This allows us to compose a lot of small functions into bigger functions.
+
+Let's move away from theory a bit and look at an example.
+
+=== Filter
+
+Filter is a function that accepts a predicate function and a collection.
+It will use the predicate function to return a filtered version of the collection.
+
+[source, clojure]
+----
+(def bands [
+    {:name "Kiss"
+     :genre :rock}
+    {:name "Led Zeppelin"
+     :genre :rock}
+    {:name "Michael Jackson"
+     :genre :pop}
+    {:name "Eminem"
+     :genre :rap}])
+
+(defn rock-band? 
+    [band]
+    (= :rock (:genre band)))
+
+(def rock-bands
+    (filter rock-band? bands))
+;; => [{:name "Kiss" :genre :rock} {:name "Led Zeppelin" :genre :rock}]
+----
+
+We have a collection of maps called `bands` and a function `rock-band?`.
+`rock-band?` takes a band map and returns true or fales depending on whether or not the genre is `:rock`.
+We can use these two things with filter to get our subset of bands.
+Filter will loop through all of our bands and call `rock-band?` on all of it's elements.
+For each of these elements, filter will expect `rock-band?` to return true or false (truthy or falsey).
+Depending on that result, filter will decide whether or not to add that element to the returned collection.
+
+== Writing Higher Order Functions
+
+We're going to write now, two higher order functions.
+The first will return a function as it's result.
+The second will accept a function as an argument.
+
+Our first function will be called `adder`.
+It will take a number, `x`, as it's only argument and return a function.
+The return function will also take a single number, `a`, as it's argument and return `x + a`.
+
+[source, clojure]
+----
+(defn adder [x]
+  (fn [a] (+ a x)))
+
+(def add-five (adder 5))
+
+(add-five 100)
+;; => 105
+----
+
+Our second function is going to be a factory of sorts.
+We're going to call it, `make-greeter`.
+It will take a greeting format, `s` as it's only argument.
+The return value will be a function which takes a string, `p`, and returns a string.
+
+[source, clojure]
+----
+(defn make-greeter [s]
+  (fn [p] (format s p)))
+
+(def greet-person (make-greeter "Hello there %s!"))
+(def greet-dog (make-greeter "Woof woof %s!"))
+
+(greet-person "Jake")
+;; => "Hello there Jake!"
+
+(greet-dog "Sparky")
+;; => "Hello there Sparky!"
+----

@@ -45,10 +45,11 @@ A higher order function is a function that either;
 1. Takes one or more functions as arguments
 2. Returns a function as it's result
 
-This will turn out to be a very important concept to functional programming as well as Clojure.
+This will turn out to be a very important concept in functional programming in any language.
 
 Higher order functions allow us to _compose_ functions.
-This allows us to compose a lot of small functions into bigger functions.
+This means we can write small functions and combine them to create larger functions.
+Like putting a bunch of small lego bricks together to build a house.
 
 Let's move away from theory a bit and look at an example.
 
@@ -79,7 +80,7 @@ It will use the predicate function to return a filtered version of the collectio
 ----
 
 We have a collection of maps called `bands` and a function `rock-band?`.
-`rock-band?` takes a band map and returns true or fales depending on whether or not the genre is `:rock`.
+`rock-band?` takes a band map and returns true or false depending on whether or not the genre is `:rock`.
 We can use these two things with filter to get our subset of bands.
 Filter will loop through all of our bands and call `rock-band?` on all of it's elements.
 For each of these elements, filter will expect `rock-band?` to return true or false (truthy or falsey).
@@ -87,13 +88,13 @@ Depending on that result, filter will decide whether or not to add that element 
 
 == Writing Higher Order Functions
 
-We're going to write now, two higher order functions.
-The first will return a function as it's result.
+Let's try an example with two higher order functions.
+The first will return a function as its result.
 The second will accept a function as an argument.
 
 Our first function will be called `adder`.
 It will take a number, `x`, as it's only argument and return a function.
-The return function will also take a single number, `a`, as it's argument and return `x + a`.
+The function returned by `adder` will also take a single number, `a`, as it's argument and return `x + a`.
 
 [source, clojure]
 ----

@@ -9,54 +9,24 @@ ifdef::env-github,env-browser[:outfilesuffic: .adoc]
 
 toc:[]
 
-== Functions are Values
+== First Class Functions
 
-In functional programming languages, functions are first class citizens.
-This means that functions can be treated like variables.
-We can pass them around as arguments to other functions.
-Return them from functions as a result.
-Assign variables a function as their value.
+In functional programming, functions are first class citizens.
+This means functions can be treated as values.
+They can be assigned as values, passed into functions, and returned from functions.
 
-For instance, say we want to write a function that will double a number.
-In most languages, you can define a function like so.
-
-[source, java]
-----
-public static Int timesTwo (int a ) {
-    return 2 * a;
-}
-----
-
-Or in Clojure,
-
-[source, clojure]
-----
-(defn times-two [a] (* 2 a))
-----
-
-This should look very familiar.
-This defines a function that we call `double`.
-Very useful indeed, could you imagine programming without functions?
-This lacks a little bit of extensibility that functional languages give you.
-
-[source, clojure]
-----
-(def double (fn [x] (* 2 x)))
-----
-
-This looks quite similar to what we did above, but there is a subtle but important difference.
-Instead of defining a function, we define a var called `double` whose value is a function.
-Just like strings or numbers, we can assign functions to variables.
-It's _almost_ the same, but with this we can create what are called, higher order functions.
+It's common to see function definitions in Clojure using `defn` like `(defn foo ...)`.
+However, this is just syntactic sugar for `(def foo (fn ...))`
+`fn`, and implicitly `defn`, yield a function object as its value that can be passed around like any other Clojure object.
 
 == Higher Order Functions
 
-A higher order function is a function that either;
+A higher order function is a function that either:
 
 1. Takes one or more functions as arguments
-2. Returns a function as it's result
+2. Returns a function as its result
 
-This will turn out to be a very important concept in functional programming in any language.
+This will turn out to be a important concept in functional programming in any language.
 
 Higher order functions allow us to _compose_ functions.
 This means we can write small functions and combine them to create larger functions.
@@ -64,91 +34,50 @@ Like putting a bunch of small lego bricks together to build a house.
 
 Let's move away from theory a bit and look at an example.
 
-=== Filter
-
-Filter is a function that accepts a predicate function and a collection.
-It will use the predicate function to return a filtered version of the collection.
-
-[source, clojure]
-----
-(def bands [{:name "Kiss"
-             :genre :rock}
-            {:name "Led Zeppelin"
-             :genre :rock}
-            {:name "Michael Jackson"
-             :genre :pop}
-            {:name "Eminem"
-             :genre :rap}])
-
-(defn rock-band? 
-    [band]
-    (= :rock (:genre band)))
-
-(def rock-bands
-    (filter rock-band? bands))
-;; => [{:name "Kiss" :genre :rock} {:name "Led Zeppelin" :genre :rock}]
-----
-
-We have a collection of maps called `bands` and a function `rock-band?`.
-`rock-band?` takes a band map and returns true or false depending on whether or not the genre is `:rock`.
-We can use these two things with filter to get our subset of bands.
-Filter will loop through all of our bands and call `rock-band?` on all of it's elements.
-For each of these elements, filter will expect `rock-band?` to return true or false (truthy or falsey).
-Depending on that result, filter will decide whether or not to add that element to the returned collection.
-
-== Writing Higher Order Functions
-
-Let's try an example with two higher order functions.
-The first will return a function as its result.
-The second will accept a function as an argument.
-
-=== Functions Returning Functions and Closures
-
-Our first function will be called `adder`.
-It will take a number, `x`, as it's only argument and return a function.
-The function returned by `adder` will also take a single number, `a`, as it's argument and return `x + a`.
-
-[source, clojure]
-----
-(defn adder [x]
-  (fn [a] (+ x a)))
-
-(def add-five (adder 5))
-
-(add-five 100)
-;; => 105
-----
-
-The returned function form `adder` is a closure.
-This means, it can access all of the variables that we're in scope when the function was created.
-`add-five` has access to `x` even though it is outside of the `adder` function definition.
-
 === Functions as Arguments
 
-Our second function is going to be a factory of sorts.
-We're going to call it, `make-greeter`.
-It will take a greeting format, `s` as it's only argument.
-The return value will be a function which takes a string, `p`, and returns a string.
+Let's look at two functions
 
 [source, clojure]
 ----
-(defn make-greeter [s]
-  (fn [p] (format s p)))
-
-(def greet-person (make-greeter "Hello there %s!"))
-(def greet-dog (make-greeter "Woof woof %s!"))
-
-(greet-person "Jake")
-;; => "Hello there Jake!"
-
-(greet-dog "Sparky")
-;; => "Woof woof Sparky!"
+(defn double-+
+    [a b]
+    (* 2 (+ a b)))
 ----
+
+[source, clojure]
+----
+(defn double-*
+    [a b]
+    (* 2 (* a b)))
+----
+
+These functions share a common pattern.
+They only differ in name and the function used in the computation of `a` and `b`.
+In general, the pattern looks like this.
+
+[source, clojure]
+----
+(defn double-<f>
+    [a b]
+    (* 2 (f a b)))
+----
+
+We can generalize our `double-` function by passing `f` in as an argument.
+
+[source, clojure]
+----
+(defn double-op
+    [f a b]
+    (* 2 (f a b)))
+----
+
+We can use this to express the concept of doubling the result of an operation rather than having to write functions that perform specific doubled operations individually.
 
 == Anonymous Functions
 
 An anonymous function is a function without a name.
-In Clojure these can be defined in two ways, `defn` and the literal `#(...)`.
+In Clojure these can be defined in two ways, `fn` and the literal `#(...)`.
 Creating a function with `defn` immediately binds it to a name, `fn` just creates a function.
 
 Lets go back to the example of the bands.
@@ -182,15 +111,56 @@ If you're writing an anonymous function, the literal syntax is nice because it's
 However, beyond a few arguments, the syntax can become difficult to read.
 In that case, using `fn` may be more appropriate.
 
+=== Functions Returning Functions and Closures
 
+Our first function will be called `adder`.
+It will take a number, `x`, as it's only argument and return a function.
+The function returned by `adder` will also take a single number, `a`, as it's argument and return `x + a`.
 
+[source, clojure]
+----
+(defn adder [x]
+  (fn [a] (+ x a)))
 
+(def add-five (adder 5))
 
+(add-five 100)
+;; => 105
+----
 
+The returned function form `adder` is a closure.
+This means, it can access all of the variables that we're in scope when the function was created.
+`add-five` has access to `x` even though it is outside of the `adder` function definition.
 
+=== Filter
 
+Filter is a function that accepts a predicate function and a collection.
+It will use the predicate function to return a filtered version of the collection.
 
+[source, clojure]
+----
+(def bands [{:name "Kiss"
+             :genre :rock}
+            {:name "Led Zeppelin"
+             :genre :rock}
+            {:name "Michael Jackson"
+             :genre :pop}
+            {:name "Eminem"
+             :genre :rap}])
 
+(defn rock-band? 
+    [band]
+    (= :rock (:genre band)))
 
+(def rock-bands
+    (filter rock-band? bands))
+;; => [{:name "Kiss" :genre :rock} {:name "Led Zeppelin" :genre :rock}]
+----
 
+We have a collection of maps called `bands` and a function `rock-band?`.
+`rock-band?` takes a band map and returns true or false depending on whether or not the genre is `:rock`.
+We can use these two things with filter to get our subset of bands.
+Filter will loop through all of our bands and call `rock-band?` on all of it's elements.
+For each of these elements, filter will expect `rock-band?` to return true or false (truthy or falsey).
+Depending on that result, filter will decide whether or not to add that element to the returned collection.
 

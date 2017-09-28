@@ -134,33 +134,43 @@ This means, it can access all of the variables that we're in scope when the func
 
 === Filter
 
-Filter is a function that accepts a predicate function and a collection.
-It will use the predicate function to return a filtered version of the collection.
+Filtering is a common operation in computer programming.
+Take this set of animals
 
 [source, clojure]
 ----
-(def bands [{:name "Kiss"
-             :genre :rock}
-            {:name "Led Zeppelin"
-             :genre :rock}
-            {:name "Michael Jackson"
-             :genre :pop}
-            {:name "Eminem"
-             :genre :rap}])
-
-(defn rock-band? 
-    [band]
-    (= :rock (:genre band)))
-
-(def rock-bands
-    (filter rock-band? bands))
-;; => [{:name "Kiss" :genre :rock} {:name "Led Zeppelin" :genre :rock}]
+(def pets [
+    {:name "Fluffykins" :type :cat}
+    {:name "Sparky" :type :dog}
+    {:name "Tibby" :type :dog}
+    {:name "Al" :type :fish}
+    {:name "Victor" :type :bear}
+])
 ----
 
-We have a collection of maps called `bands` and a function `rock-band?`.
-`rock-band?` takes a band map and returns true or false depending on whether or not the genre is `:rock`.
-We can use these two things with filter to get our subset of bands.
-Filter will loop through all of our bands and call `rock-band?` on all of it's elements.
-For each of these elements, filter will expect `rock-band?` to return true or false (truthy or falsey).
-Depending on that result, filter will decide whether or not to add that element to the returned collection.
+We want to filter out the dogs because we're writing enterprise grade software.
+First, let's look at a normal for loop.
 
+[source, clojure]
+----
+(defn filter-dogs [pets]
+    (loop [pets pets
+           dogs []]
+        (if (first pets) 
+            (recur (rest pets)
+                   (if (= :dog (:type (first pets)))
+                       (conj dogs (first pets))
+                       dogs))
+            dogs)))
+----
+
+This code works fine, but it's bulky and confusing.
+We can simplpify this using `filter`, a higher order function.
+
+[source, clojure]
+----
+(defn filter-dogs [pets] 
+    (filter #(= :dog (:type %)) pets))
+----
+
+The solution using `filter` is much clearer and allows us to show intent rather than just give commands.

@@ -1,4 +1,4 @@
-= Higher Order Functions 
+= Higher Order Functions
 Michael Zavarella
 2017-09-15
 :jbake-type: guides
@@ -88,8 +88,8 @@ We can save ourselves some keystrokes by using an anonymous function.
 [source, clojure]
 ----
 (def rock-bands
-    (filter 
-        (fn [band] (= :rock (:genre band))) 
+    (filter
+        (fn [band] (= :rock (:genre band)))
         bands))
 ----
 
@@ -99,7 +99,7 @@ Even more concisely, using the function literal, we can define `rock-bands` like
 ----
 (def rock-bands (filter #(= :rock (:genre %)) bands))
 ----
-    
+
 The function literal supports multiple arguments via `%1`, `%2`, and so on.
 
 [source, clojure]
@@ -156,7 +156,7 @@ First, let's look at a normal for loop.
 (defn filter-dogs [pets]
     (loop [pets pets
            dogs []]
-        (if (first pets) 
+        (if (first pets)
             (recur (rest pets)
                    (if (= :dog (:type (first pets)))
                        (conj dogs (first pets))
@@ -169,7 +169,7 @@ We can simplpify this using `filter`, a higher order function.
 
 [source, clojure]
 ----
-(defn filter-dogs [pets] 
+(defn filter-dogs [pets]
     (filter #(= :dog (:type %)) pets))
 ----
 

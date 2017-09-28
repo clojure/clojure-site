@@ -11,16 +11,27 @@ toc:[]
 
 == Functions are Values
 
-In functional programming languages, functions are values.
+In functional programming languages, functions are first class citizens.
+This means that functions can be treated like variables.
+We can pass them around as arguments to other functions.
+Return them from functions as a result.
+Assign variables a function as their value.
 
 For instance, say we want to write a function that will double a number.
 In most languages, you can define a function like so.
 
 [source, java]
 ----
-public static Int double (int a ) {
+public static Int timesTwo (int a ) {
     return 2 * a;
 }
+----
+
+Or in Clojure,
+
+[source, clojure]
+----
+(defn times-two [a] (* 2 a))
 ----
 
 This should look very familiar.
@@ -60,15 +71,14 @@ It will use the predicate function to return a filtered version of the collectio
 
 [source, clojure]
 ----
-(def bands [
-    {:name "Kiss"
-     :genre :rock}
-    {:name "Led Zeppelin"
-     :genre :rock}
-    {:name "Michael Jackson"
-     :genre :pop}
-    {:name "Eminem"
-     :genre :rap}])
+(def bands [{:name "Kiss"
+             :genre :rock}
+            {:name "Led Zeppelin"
+             :genre :rock}
+            {:name "Michael Jackson"
+             :genre :pop}
+            {:name "Eminem"
+             :genre :rap}])
 
 (defn rock-band? 
     [band]
@@ -92,6 +102,8 @@ Let's try an example with two higher order functions.
 The first will return a function as its result.
 The second will accept a function as an argument.
 
+=== Functions Returning Functions and Closures
+
 Our first function will be called `adder`.
 It will take a number, `x`, as it's only argument and return a function.
 The function returned by `adder` will also take a single number, `a`, as it's argument and return `x + a`.
@@ -106,6 +118,12 @@ The function returned by `adder` will also take a single number, `a`, as it's ar
 (add-five 100)
 ;; => 105
 ----
+
+The returned function form `adder` is a closure.
+This means, it can access all of the variables that we're in scope when the function was created.
+`add-five` has access to `x` even though it is outside of the `adder` function definition.
+
+=== Functions as Arguments
 
 Our second function is going to be a factory of sorts.
 We're going to call it, `make-greeter`.
@@ -126,3 +144,53 @@ The return value will be a function which takes a string, `p`, and returns a str
 (greet-dog "Sparky")
 ;; => "Woof woof Sparky!"
 ----
+
+== Anonymous Functions
+
+An anonymous function is a function without a name.
+In Clojure these can be defined in two ways, `defn` and the literal `#(...)`.
+Creating a function with `defn` immediately binds it to a name, `fn` just creates a function.
+
+Lets go back to the example of the bands.
+We wrote a function called `rock-band?` to determine whether or not our band was a rock band.
+This is a one-off operation, we're not going to use it anywhere else in our code.
+We can save ourselves some keystrokes by using an anonymous function.
+
+[source, clojure]
+----
+(def rock-bands
+    (filter 
+        (fn [band] (= :rock (:genre band))) 
+        bands))
+----
+
+Even more concisely, using the function literal, we can define `rock-bands` like so.
+
+[source, clojure]
+----
+(def rock-bands (filter #(= :rock (:genre %)) bands))
+----
+    
+The function literal supports multiple arguments via `%1`, `%2`, and so on.
+
+[source, clojure]
+----
+#(println %1 %2 %3)
+----
+
+If you're writing an anonymous function, the literal syntax is nice because it's so compact.
+However, beyond a few arguments, the syntax can become difficult to read.
+In that case, using `fn` may be more appropriate.
+
+
+
+
+
+
+
+
+
+
+
+
+

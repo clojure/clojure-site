@@ -17,7 +17,12 @@ Special forms are primitives built-in to Clojure. They are the fundamental build
 
 Special forms may evaluate their arguments in non-standard ways compared to functions.
 
-Arguments ending in ? are optional. Arguments ending in * represent 0 or more arguments. Arguments ending in + represent 1 or more arguments. In the text these arguments are denoted with `monospace`, without these suffixes.
+Headings for each special form below use the following suffixes in the argument list:
+* arguments ending in ? are optional
+* arguments ending in * represent 0 or more arguments
+* arguments ending in + represent 1 or more arguments
+
+In the text these arguments are denoted with `monospace`, without suffixes.
 
 [[def]]
 == (_def_ symbol init?)

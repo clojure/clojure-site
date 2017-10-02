@@ -13,6 +13,12 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 toc::[]
 
+Special forms are primitives built-in to Clojure. They are the fundamental building blocks of the language, used to perform core operations.
+
+Special forms may evaluate their arguments in non-standard ways compared to functions.
+
+Arguments ending in ? are optional. Arguments ending in * represent 0 or more arguments. Arguments ending in + represent 1 or more arguments. In the text these arguments are denoted with `monospace`, without these suffixes.
+
 [[def]]
 == (_def_ symbol init?)
 

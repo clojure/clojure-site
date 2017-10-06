@@ -1240,6 +1240,14 @@ We mentioned earlier that `clojure.spec.test.alpha` provides tools for automatic
 ;;     :result true})
 ----
 
+[NOTE]
+====
+A keen observer will notice that `ranged-rand` contains a subtle bug. If the difference between start
+and end is very large (larger than is representable by `Long/MAX_VALUE`), then `ranged-rand` will
+produce an IntegerOverflowException. If you run `check` several times you will eventually
+cause this case to occur.
+====
+
 `check` also takes a number of options that can be passed to test.check to influence the test run, as well as the option to override generators for parts of the spec, by either name or path.
 
 Imagine instead that we made an error in the ranged-rand code and swapped start and end:

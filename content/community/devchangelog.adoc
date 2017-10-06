@@ -18,7 +18,7 @@ The official https://github.com/clojure/clojure/blob/master/changes.md[changelog
 - https://dev.clojure.org/jira/browse/CLJ-700[CLJ-700] - (fix) `contains?`, `get`, and `find` broken for transient collections
 - https://dev.clojure.org/jira/browse/CLJ-2247[CLJ-2247] - (regression) restore and doc last match semantics of {min,max}-key
 - https://dev.clojure.org/jira/browse/CLJ-2239[CLJ-2239] - (regression) fix Guava javadoc location
-- Updated dep to spec.alpha 0.1.134 - see [changes](https://github.com/clojure/spec.alpha/blob/master/CHANGES.md)
+- Updated dep to spec.alpha 0.1.134 - see https://github.com/clojure/spec.alpha/blob/master/CHANGES.md[changes]
 
 === https://groups.google.com/d/msg/clojure/UEtE1K9C7XE/5p5BJe2tAQAJ[1.9.0-beta1] (Sep 18, 2017)
 

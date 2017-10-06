@@ -92,8 +92,8 @@ In the diagram, (+ 3 4) is read as a list containing the symbol (+) and two numb
 Considering the evaluation of the expression above:
 
 * 3 and 4 evaluate to themselves (longs)
-* + evaluates to a function that implements +
-* evaluating the list will invoke the + function with 3 and 4 as arguments
+* + evaluates to a function that implements `+`
+* evaluating the list will invoke the `+` function with 3 and 4 as arguments
 
 Many languages have both statements and expressions, where statements have some stateful effect but do not return a value. In Clojure, everything is an expression that evaluates to a value. Some expressions (but not most) also have side effects.
 

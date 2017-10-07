@@ -159,7 +159,7 @@ Example:
    :bench {:extra-deps {criterium {:mvn/version "0.4.4"}}}
 
    ;; An alias to override the default Clojure version: -R:1.9
-   :1.9 {:override-deps {org.clojure/clojure {:mvn/version "1.9.0-alpha20"}}}
+   :1.9 {:override-deps {org.clojure/clojure {:mvn/version "1.9.0-beta2"}}}
 
    ;; A classpath override alias to use a local build of Clojure: -C:dev
    :dev {:classpath-overrides {org.clojure/clojure "/Users/me/clojure/target/classes"}}
@@ -199,7 +199,7 @@ Example:
 [source,clojure]
 ----
 ;; deps.edn
-{:deps {org.clojure/clojure {:mvn/version "1.9.0-alpha20"}}
+{:deps {org.clojure/clojure {:mvn/version "1.9.0-beta2"}}
  :aliases {
    :test {:extra-paths ["test"]}
  }
@@ -234,7 +234,7 @@ Example:
 ----
 ;; deps.edn
 {:deps {org.clojure/clojure {:mvn/version "1.8.0"}}
- :aliases {:1.9 {:override-deps {org.clojure/clojure {:mvn/version "1.9.0-alpha20"}}}
+ :aliases {:1.9 {:override-deps {org.clojure/clojure {:mvn/version "1.9.0-beta2"}}}
            :bench {:extra-deps {criterium {:mvn/version "0.4.4"}}}}}
 ----
 
@@ -248,7 +248,7 @@ Example:
 ----
 ;; deps.edn
 {:deps {org.clojure/clojure {:mvn/version "1.8.0"}}
- :aliases {:1.9 {:override-deps {org.clojure/clojure {:mvn/version "1.9.0-alpha20"}}}
+ :aliases {:1.9 {:override-deps {org.clojure/clojure {:mvn/version "1.9.0-beta2"}}}
            :dev {:classpath-overrides {org.clojure/clojure "/Users/me/code/clojure/target/classes"}}}}
 ----
 

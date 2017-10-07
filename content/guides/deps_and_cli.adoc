@@ -206,6 +206,32 @@ Example:
 }
 ----
 
+=== Refer to a specific jar on disk
+
+* Invoke `clj`
+* Given: A deps.edn file like the one below.
+* Result: Includes a specific jar file in your classpath
+
+[source,clojure]
+----
+;; deps.edn
+{:deps {org.clojure/clojure {:mvn/version "1.9.0-beta2"}
+        oracle/driver {:local/root "/path/to/oracle/driver.jar"}}}
+----
+
+=== Refer to another project on disk that has a deps.edn file
+
+* Invoke `clj`
+* Given: A deps.edn file like the one below
+* Result: Includes another project defined on disk, using /path/to/project/deps.edn will be used as the source of paths and deps for the dependency project. Support for other project types (pom.xml, project.clj) will be possible, but is not yet implemented.
+
+[source,clojure]
+----
+;; deps.edn
+{:deps {org.clojure/clojure {:mvn/version "1.9.0-beta2"}
+        my.company/sibling-project {:local/root "/path/to/project"}}}
+----
+
 === Running a Clojure namespace in the current directory
 
 * Invoke: `clojure -m my.app 1 2 3`
@@ -256,7 +282,7 @@ Example:
 
 * Invoke `clj -Spath`
 * Given: A deps.edn like the one below.
-* Result: Computes the classpath and echoes it to stdout
+* Result: Computes the classpath and prints it to stdout
 
 [source,clojure]
 ----

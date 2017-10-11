@@ -101,7 +101,7 @@ Even more concisely, using the function literal, we can define `rock-bands` like
 (def rock-bands (filter #(= :rock (:genre %)) bands))
 ----
 
-The function literal supports multiple arguments via `%1`, `%2`, and so on.
+The function literal supports multiple arguments via `%`, `%n`, and `%&`.
 
 [source, clojure]
 ----

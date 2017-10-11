@@ -17,7 +17,8 @@ They can be assigned as values, passed into functions, and returned from functio
 
 It's common to see function definitions in Clojure using `defn` like `(defn foo ...)`.
 However, this is just syntactic sugar for `(def foo (fn ...))`
-`fn`, and implicitly `defn`, yield a function object as its value that can be passed around like any other Clojure object.
+`fn` returns a function object.
+`defn` returns a var which points to a function object.
 
 == Higher Order Functions
 
@@ -26,11 +27,11 @@ A higher order function is a function that either:
 1. Takes one or more functions as arguments
 2. Returns a function as its result
 
-This will turn out to be a important concept in functional programming in any language.
+This is an important concept in functional programming in any language.
 
 Higher order functions allow us to _compose_ functions.
 This means we can write small functions and combine them to create larger functions.
-Like putting a bunch of small lego bricks together to build a house.
+Like putting a bunch of small LEGO bricks together to build a house.
 
 Let's move away from theory a bit and look at an example.
 
@@ -74,7 +75,7 @@ We can generalize our `double-` function by passing `f` in as an argument.
 
 We can use this to express the concept of doubling the result of an operation rather than having to write functions that perform specific doubled operations individually.
 
-== Anonymous Functions
+== Function Literals
 
 An anonymous function is a function without a name.
 In Clojure these can be defined in two ways, `fn` and the literal `#(...)`.
@@ -129,7 +130,7 @@ The function returned by `adder` will also take a single number, `a`, as it's ar
 ----
 
 The returned function form `adder` is a closure.
-This means, it can access all of the variables that we're in scope when the function was created.
+This means, it can access all of the variables that were in scope when the function was created.
 `add-five` has access to `x` even though it is outside of the `adder` function definition.
 
 === Filter
@@ -148,7 +149,7 @@ Take this set of animals
 ])
 ----
 
-We want to filter out the dogs because we're writing enterprise grade software.
+We want to filter out the non-dog animals because we're writing enterprise grade software.
 First, let's look at a normal for loop.
 
 [source, clojure]
@@ -165,7 +166,7 @@ First, let's look at a normal for loop.
 ----
 
 This code works fine, but it's bulky and confusing.
-We can simplpify this using `filter`, a higher order function.
+We can simplify this using `filter`, a higher order function.
 
 [source, clojure]
 ----

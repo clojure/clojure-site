@@ -82,6 +82,7 @@ where:
 ** `-Spath` - compute classpath and show it, without running Clojure
 ** `-Srepro` - use only the local deps.edn (ignore install and user deps.edn)
 ** `-Sforce` - force recomputation of the classpath (ignore the cache)
+** `-Spom` - generate (or update an existing) pom.xml with the dependencies and paths from deps.edn
 ** `-Sverbose` - print important paths while running the clojure script
 * `main_opts` are the `clojure.main` arguments, see [docs](https://clojure.org/reference/repl_and_main)
 
@@ -291,6 +292,36 @@ Example:
 ----
 
 Note that `-S` can be combined with other `clj` options as well.
+
+== Connecting to S3 Maven repositories
+
+The clj script includes support for connecting to private S3 Maven repositories (thanks to the https://github.com/s3-wagon-private/s3-wagon-private[s3-wagon-private] and https://github.com/spring-projects/aws-maven[aws-wagon] projects).
+
+=== S3 repository
+
+In your deps.edn file, include the s3 repository root:
+
+[source,clojure]
+----
+{:deps {
+   my.library {:mvn/version "0.1.2"}
+ }
+ :mvn/repos {
+   "my-private-repo" {:url "s3://my-bucket/maven/releases"}
+ }
+}
+----
+
+=== S3 credentials
+
+There are several ways to specify your AWS S3 credentials:
+
+1. Set the environment variables `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`.
+2. Create a default profile in the AWS credentials file `~/.aws/credentials` (older `~/.aws/config` also supported).
+3. Create a named profile in the AWS credentials file and set the environment variable `AWS_PROFILE` with its name.
+4. Amazon ECS container and instance profile credentials should also work, but have not been tested.
+
+For more information, most of the advice in http://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/credentials.html[this AWS document] describes how credentials are located. Note however that the Java system properties options will NOT work with the clojure scripts (but would work if using the tools.deps.alpha library directly).
 
 == Glossary
 

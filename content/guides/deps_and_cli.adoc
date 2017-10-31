@@ -253,7 +253,7 @@ Example:
 
 === Add an optional dependency and override a dependency
 
-* Invoke: `clj -R:bench,1.9`
+* Invoke: `clj -R:bench:1.9`
 * Given: A deps.edn file like the one below.
 * Result: Start a repl using the deps and add the extra deps defined by the `:bench` alias and the override deps defined by the `:1.9` alias.
 

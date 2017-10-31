@@ -11,6 +11,11 @@ The official https://github.com/clojure/clojure/blob/master/changes.md[changelog
 
 == Release 1.9
 
+=== https://groups.google.com/d/msg/clojure/X_A6B_LiGvQ/I-bDODILAgAJ[1.9.0-beta4] (Oct 31, 2017)
+
+- https://dev.clojure.org/jira/browse/CLJ-2259[CLJ-2259] - Remove unnecessary bigdec? predicate added in 1.9
+- Bumped spec.alpha dependency to 0.1.143
+
 === https://groups.google.com/d/msg/clojure/jKsa9asMFm4/Uqf1m6ENAQAJ[1.9.0-beta3] (Oct 25, 2017)
 
 - https://dev.clojure.org/jira/browse/CLJ-2254[CLJ-2254] - add System property clojure.spec.skip-macros (default=false) that can be used to turn off spec checking in macros

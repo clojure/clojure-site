@@ -300,7 +300,7 @@ When we need to represent many domain information with the same set of fields kn
 
 === Field accessors
 
-Since this is a map, the ways we've already discussed for looking up a value by key work:
+Since this is a map, the ways we've already discussed for looking up a value by key also work:
 
 [source,clojure-repl]
 ----

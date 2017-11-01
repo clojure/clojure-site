@@ -147,7 +147,7 @@ user=> (foo 11)
 IllegalArgumentException No matching clause: 11
 ----
 
-=== ``case` with `else`-expression
+=== `case` with `else`-expression
 
 `case` can have a final trailing expression that will be evaluated if no test matches.
 

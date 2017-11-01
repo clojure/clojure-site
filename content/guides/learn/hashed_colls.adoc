@@ -309,7 +309,7 @@ user=> (person :occupation)
 "Programmer"
 ----
 
-But really, the most common way to get field values for this use is by invoking the kewyord. Just like with maps and sets, keywords are also functions. When a keyword is invoked, it looks itself up in the associative data structure that it was passed.
+But really, the most common way to get field values for this use is by invoking the keyword. Just like with maps and sets, keywords are also functions. When a keyword is invoked, it looks itself up in the associative data structure that it was passed.
 
 [source,clojure-repl]
 ----

@@ -144,9 +144,7 @@ user=> (+ 3 4)
 7
 ----
 
-The box above demonstrates evaluating an expression (+ 3 4) and receiving a result. In this workshop, you will evaluate expressions directly in this web page. Each expression is editable and can be evaluated by pressing Shift-Enter.
-​
-This web page is providing a bunch of web goo between your browser and the Clojure runtime, but otherwise is operating just like any other Clojure REPL.
+The box above demonstrates evaluating an expression (+ 3 4) and receiving a result. 
 
 === Exploring at the REPL
 

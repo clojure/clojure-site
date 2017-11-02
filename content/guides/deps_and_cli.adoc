@@ -68,15 +68,14 @@ COMING SOON
 
 Usage:
 
-* `clojure [<clj_opts>] [<dep_opts>] [<main_opts>]`
-* `clj [<jvm_opts>] [<dep_opts>] [<main_opts>]`
+* `clojure [<dep_opts>] [<main_opts>]`
+* `clj [<dep_opts>] [<main_opts>]`
 
 where:
 
 * `clojure` is the primary script. `clj` is a wrapper for interactive repl use. 
-* `jvm_opts` is 0 or more of the following:
-** `-Jopt` - passes `opt` through to the JVM, ex: `-J-server`
 * `dep_opts` is any of the following (but each at most once):
+** `-Jopt` - passes `opt` through to the JVM, ex: `-J-server`
 ** `-Ralias...` - concatenated resolve-args aliases, ex: `-R:bench:1.9`
 ** `-Calias...` - concatenated classpath-override aliases, ex: `-C:dev`
 ** `-Spath` - compute classpath and show it, without running Clojure

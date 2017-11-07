@@ -11,6 +11,10 @@ The official https://github.com/clojure/clojure/blob/master/changes.md[changelog
 
 == Release 1.9
 
+=== https://groups.google.com/d/msg/clojure/tWcLAhnEzIs/OnwSSXFsBAAJ[1.9.0-RC1] (Nov 7, 2017)
+
+- Same as 1.9.0-beta4
+
 === https://groups.google.com/d/msg/clojure/X_A6B_LiGvQ/I-bDODILAgAJ[1.9.0-beta4] (Oct 31, 2017)
 
 - https://dev.clojure.org/jira/browse/CLJ-2259[CLJ-2259] - Remove unnecessary bigdec? predicate added in 1.9

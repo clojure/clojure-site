@@ -360,6 +360,17 @@ The best aspect of this is that you need not do anything special in your initial
 100000
 ----
 
+Functions have limited support for primitive arguments and return type: type hints for `long` and `double` (only these) generate primitive-typed overloads. Note that this capability is restricted to functions of arity no greater than 4.
+
+Thus a function defined as
+
+[source,clojure]
+----
+(defn foo ^long [^long n])
+----
+
+both takes and returns values of primitive type `long` (invocations with a boxed argument and indeed any object result in a cast and delegation to the primitive-typed overload).
+
 == Coercions
 
 At times it is necessary to have a value of a particular primitive type. These coercion functions yield a value of the indicated type as long as such a coercion is possible: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/bigdec[bigdec] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/bigint[bigint] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/boolean[boolean] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/byte[byte] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/char[char] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/double[double] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/float[float] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/int[int] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/long[long] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/num[num] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/short[short]
@@ -367,7 +378,7 @@ At times it is necessary to have a value of a particular primitive type. These c
 [[optimization]]
 == Some optimization tips
 
-* All arguments are passed to Clojure fns as objects, so there's no point to putting non-array primitive type hints on fn args. Instead, use the let technique shown to place args in primitive locals if they need to participate in primitive arithmetic in the body.
+* All arguments are passed to Clojure fns as objects, so there's no point to putting arbitrary primitive type hints on fn args (excepting primitive array type hints, and long and double as noted). Instead, use the let technique shown to place args in primitive locals if they need to participate in primitive arithmetic in the body.
 * (let [foo (int bar)] ...) is the correct way to get a primitive local. Do not use ^Integer etc.
 * Don't rush to unchecked math unless you want truncating operations. HotSpot does a good job at optimizing the overflow check, which will yield an exception instead of silent truncation. On a typical example, that has about a 5% difference in speed - well worth it. Also, people reading your code don't know if you are using unchecked for truncation or performance - best to reserve it for the former and comment if the latter.
 * There's usually no point in trying to optimize an outer loop, in fact it can hurt you as you'll be representing things as primitives which just have to be re-boxed in order to become args to the inner call. The only exception is reflection warnings - you must get rid of them in any code that gets called frequently.

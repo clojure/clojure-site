@@ -378,6 +378,23 @@ Here are just some of the public success stories from companies using Clojure.  
                     </cite>
                   </blockquote>
                 </li>
+                <li>
+                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/zimpler.png" /></p>
+                  <p>
+                    <a target="zimpler" href="https://www.zimpler.com/">Zimpler</a>, being a payment company, strives to deliver a smooth payment experience. For achieving this we use ClojureScript in all our user facing applications.
+                  </p>
+                  <hr>
+                  <p>
+                    <span class='read-more'>Watch as Zimplers CTO <a target="testimonial" href="https://www.youtube.com/watch?v=s0QG3QCV1LY&index=13&list=PLZdCLR02grLowQLPjuZ7k3pl2ScEyW7A7">tells the tale</a> about ClojureScript in production at a payment company.</span>
+                  </p>
+                  <blockquote style='margin-left: 0; padding: 0'>
+                    <p>Working with Clojure and ClojureScript has allowed us to collaborate more easily and iterate faster.</p>
+                    <cite>
+                      <strong>Jean-Louis Giordano</strong>
+                      CTO
+                    </cite>
+                  </blockquote>
+                </li>
               </ul>
             </div>
 

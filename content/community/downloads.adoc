@@ -9,13 +9,13 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 == Stable Release: 1.8.0 (Jan 19, 2016)
 
-* https://repo1.maven.org/maven2/org/clojure/clojure/1.8.0/clojure-1.8.0.zip[Clojure 1.8.0]
+* https://repo1.maven.org/maven2/org/clojure/clojure/1.8.0/[Clojure 1.8.0]
 * https://github.com/clojure/clojure/blob/master/changes.md[Changelog]
 * Requirements: Java 1.6, 1.7, or 1.8
 
 == Development Release: 1.9.0-RC2 (Nov 27, 2017)
 
-* https://repo1.maven.org/maven2/org/clojure/clojure/1.9.0-RC2/clojure-1.9.0-RC2.zip[Clojure 1.9.0-RC2]
+* https://repo1.maven.org/maven2/org/clojure/clojure/1.9.0-RC2/[Clojure 1.9.0-RC2]
 * https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.clojure%22%20AND%20a%3A%22clojure%22%20AND%20v%3A1.9.0*[Clojure 1.9 pre-release builds]
 * <<devchangelog#,Dev changelog>>
 * Requirements: Java 1.6, 1.7, or 1.8

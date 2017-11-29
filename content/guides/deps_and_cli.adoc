@@ -37,28 +37,14 @@ If you omit the `--devel` you will instead get the latest stable version of Cloj
 
 === Installation on Linux
 
-Package installers - COMING SOON
-
-The following process can be used to manually install the latest devel version of the `clj` script on a *nix system.
+Package installers are not yet available but the following process can be used to manually install the latest devel version of the `clj` script on a *nix system. First ensure that the following dependencies are installed: curl, rlwrap, and Java. Then use the following commands to download and run the installer script, which will create /usr/local/bin/clj, /usr/local/bin/clojure, and /usr/local/lib/clojure:
 
 [source,shell]
 ----
-# Download and extract the tar file in any scratch directory
-mkdir scratch
-cd scratch
-curl -O https://download.clojure.org/install/brew/clojure-scripts.tar.gz
-tar xzf clojure-scripts.tar.gz
-
-# Install the scripts to a directory (that must exist or be created)
-export CLJ_SCRIPTS=$HOME/clojure-scripts
-mkdir -p $CLJ_SCRIPTS
-./install.sh $CLJ_SCRIPTS
-
-# Add scripts to your path
-export PATH=$PATH:$CLJ_SCRIPTS/bin
+curl -O https://download.clojure.org/install/linux-install.sh
+chmod +x linux-install.sh
+sudo ./linux-install.sh
 ----
-
-Note that you will need to remove the scripts above from your path when package installers are available. 
 
 === Installation on Windows
 

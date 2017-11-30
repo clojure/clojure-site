@@ -75,7 +75,7 @@ user=> (if 0 :truthy :falsey) ; zero is true
 
 === `if` and `do`
 
-The `if` only takes a single expression for the "then" and "else". Use do to create larger blocks that are a single expression. 
+The `if` only takes a single expression for the "then" and "else". Use `do` to create larger blocks that are a single expression. 
 
 Note that the only reason to do this is if your bodies have side effects! (Why?)
 

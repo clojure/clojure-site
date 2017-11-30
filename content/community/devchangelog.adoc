@@ -11,6 +11,12 @@ The official https://github.com/clojure/clojure/blob/master/changes.md[changelog
 
 == Release 1.9
 
+=== https://groups.google.com/d/msg/clojure/Pz_Kzg-k2Ac/ACVoLkXYDwAJ[1.9.0-RC2] (Nov 27, 2017)
+
+- There is a new Maven profile and Ant target in the build to build an executable Clojure jar with deps included (and test.check). This can be useful for doing dev on Clojure itself or for just cloning the repo and doing a quick build to get something runnable.
+- The readme.txt has been updated to include information about how to create and run a local jar.
+- Stopped publishing the clojure-VERSION.zip file as part of the release.
+
 === https://groups.google.com/d/msg/clojure/tWcLAhnEzIs/OnwSSXFsBAAJ[1.9.0-RC1] (Nov 7, 2017)
 
 - Same as 1.9.0-beta4

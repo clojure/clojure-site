@@ -39,7 +39,7 @@ Or include spec in your namespace:
 
 Each spec describes a set of allowed values. There are several ways to build specs and all of them can be composed to build more sophisticated specs.
 
-Any existing Clojure function that takes a single argument and returns a truthy value is a valid predicate spec. We can check whether a particular data value conforms to a spec using https://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/conform[`conform`]:
+Any existing Clojure function that takes a single argument and returns a truthy value is a valid predicate spec. We can check whether a particular data value conforms to a spec using https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/conform[`conform`]:
 
 [source,clojure]
 ----
@@ -49,7 +49,7 @@ Any existing Clojure function that takes a single argument and returns a truthy 
 
 The `conform` function takes something that can be a spec and a data value. Here we are passing a predicate which is implicitly converted into a spec. The return value is "conformed". Here, the conformed value is the same as the original value - we'll see later where that starts to deviate. If the value does not conform to the spec, the special value `:clojure.spec.alpha/invalid` is returned.
 
-If you don't want to use the conformed value or check for `:clojure.spec.alpha/invalid`, the helper https://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/valid?[`valid?`] can be used instead to return a boolean.
+If you don't want to use the conformed value or check for `:clojure.spec.alpha/invalid`, the helper https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/valid?[`valid?`] can be used instead to return a boolean.
 
 [source,clojure]
 ----
@@ -85,7 +85,7 @@ Sets can also be used as predicates that match one or more literal values:
 
 Until now, we've been using specs directly. However, spec provides a central registry for globally declaring reusable specs. The registry associates a namespaced keyword with a specification. The use of namespaces ensures that we can define reusable non-conflicting specs across libraries or applications.
 
-Specs are registered using https://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/def[`def`]. It's up to you to register the specification in a namespace that makes sense (typically a namespace you control).
+Specs are registered using https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/def[`def`]. It's up to you to register the specification in a namespace that makes sense (typically a namespace you control).
 
 [source,clojure]
 ----
@@ -131,7 +131,7 @@ Spec
 
 == Composing predicates
 
-The simplest way to compose specs is with https://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/and[`and`] and https://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/or[`or`]. Let's create a spec that combines several predicates into a composite spec with `s/and`:
+The simplest way to compose specs is with https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/and[`and`] and https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/or[`or`]. Let's create a spec that combines several predicates into a composite spec with `s/and`:
 
 [source,clojure]
 ----
@@ -164,7 +164,7 @@ When an `or` is conformed, it returns a vector with the tag name and conformed v
 ;;=> [:id 100]
 ----
 
-Many predicates that check an instance's type do not allow `nil` as a valid value (`string?`, `number?`, `keyword?`, etc). To include `nil` as a valid value, use the provided function https://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/nilable[`nilable`] to make a spec:
+Many predicates that check an instance's type do not allow `nil` as a valid value (`string?`, `number?`, `keyword?`, etc). To include `nil` as a valid value, use the provided function https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/nilable[`nilable`] to make a spec:
 
 [source,clojure]
 ----
@@ -176,7 +176,7 @@ Many predicates that check an instance's type do not allow `nil` as a valid valu
 
 == Explain
 
-https://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/explain[`explain`] is another high-level operation in spec that can be used to report (to `pass:[*out*]`) why a value does not conform to a spec. Let's see what explain says about some non-conforming examples we've seen so far.
+https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/explain[`explain`] is another high-level operation in spec that can be used to report (to `pass:[*out*]`) why a value does not conform to a spec. Let's see what explain says about some non-conforming examples we've seen so far.
 
 [source,clojure]
 ----
@@ -199,7 +199,7 @@ Let's examine the output of the final example more closely. First note that ther
 
 For the first reported error we can see that the value `:foo` did not satisfy the predicate `string?` at the path `:name` in the spec `::name-or-id`. The second reported error is similar but fails on the `:id` path instead. The actual value is a keyword so neither is a match.
 
-In addition to `explain`, you can use https://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/explain-str[`explain-str`] to receive the error messages as a string or  https://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/explain-data[`explain-data`] to receive the errors as data.
+In addition to `explain`, you can use https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/explain-str[`explain-str`] to receive the error messages as a string or  https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/explain-data[`explain-data`] to receive the errors as data.
 
 [source,clojure]
 ----
@@ -230,7 +230,7 @@ semantics at the attribute level across our libraries and applications.
 
 For example, most Ring middleware functions modify the request or response map with unqualified keys. However, each middleware could instead use namespaced keys with registered semantics for those keys. The keys could then be checked for conformance, creating a system with greater opportunities for collaboration and consistency.
 
-Entity maps in spec are defined with https://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/keys[`keys`]:
+Entity maps in spec are defined with https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/keys[`keys`]:
 
 [source,clojure]
 ----
@@ -332,7 +332,7 @@ Unqualified keys can also be used to validate record attributes:
 ;;=>                   :email "elon@example.com", :phone nil}
 ----
 
-One common occurrence in Clojure is the use of "keyword args" where keyword keys and values are passed in a sequential data structure as options. Spec provides special support for this pattern with the regex op https://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/keys*[`keys*`]. `keys*` has the same syntax and semantics as `keys` but can be embedded inside a sequential regex structure.
+One common occurrence in Clojure is the use of "keyword args" where keyword keys and values are passed in a sequential data structure as options. Spec provides special support for this pattern with the regex op https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/keys*[`keys*`]. `keys*` has the same syntax and semantics as `keys` but can be embedded inside a sequential regex structure.
 
 [source,clojure]
 ----
@@ -366,7 +366,7 @@ Sometimes it will be convenient to declare entity maps in parts, either because 
 
 One common occurrence in Clojure is to use maps as tagged entities and a special field that indicates the "type" of the map where type indicates a potentially open set of types, often with shared attributes across the types. 
 
-As previously discussed, the attributes for all types are well-specified using attributes stored in the registry by namespaced keyword. Attributes shared across entity types automatically gain shared semantics. However, we also want to be able to specify the required keys per entity type and for that spec provides https://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/multi-spec[`multi-spec`] which leverages a multimethod to provide for the specification of an open set of entity types based on a type tag.
+As previously discussed, the attributes for all types are well-specified using attributes stored in the registry by namespaced keyword. Attributes shared across entity types automatically gain shared semantics. However, we also want to be able to specify the required keys per entity type and for that spec provides https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/multi-spec[`multi-spec`] which leverages a multimethod to provide for the specification of an open set of entity types based on a type tag.
 
 For example, imagine an API that received event objects which shared some common fields but also had type-specific shapes. First we would register the event attributes:
 
@@ -434,7 +434,7 @@ The `multi-spec` approach allows us to create an *open* system for spec validati
 
 == Collections
 
-A few helpers are provided for other special collection cases - https://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/coll-of[`coll-of`], https://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/tuple[`tuple`], and  https://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/map-of[`map-of`].
+A few helpers are provided for other special collection cases - https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/coll-of[`coll-of`], https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/tuple[`tuple`], and  https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/map-of[`map-of`].
 
 For the special case of a homogenous collection of arbitrary size, you can use `coll-of` to specify a collection of elements satisfying a predicate.
 
@@ -471,7 +471,7 @@ Following is an example utilizing some of these options to spec a vector contain
 
 [NOTE]
 ====
-Both `coll-of` and `map-of` will conform all of their elements, which may make them unsuitable for large collections. In that case, consider https://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/every[`every`] or for maps  https://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/every-kv[`every-kv`].
+Both `coll-of` and `map-of` will conform all of their elements, which may make them unsuitable for large collections. In that case, consider https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/every[`every`] or for maps  https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/every-kv[`every-kv`].
 ====
 
 While `coll-of` is good for homogenous collections of any size, another case is a fixed-size positional collection with fields of known type at different positions. For that we have `tuple`.
@@ -514,11 +514,11 @@ You can also use the various count-related options on `map-of` that you have wit
 
 Sometimes sequential data is used to encode additional structure (typically new syntax, often used in macros). spec provides the standard https://en.wikipedia.org/wiki/Regular_expression[regular expression] operators to describe the structure of a sequential data value:
 
-* https://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/cat[`cat`] - concatenation of predicates/patterns
-* https://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/alt[`alt`] - choice among alternative predicates/patterns
-* https://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/*[`pass:[*]`] - 0 or more of a predicate/pattern
-* https://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/%2B[`+`] - 1 or more of a predicate/pattern
-* https://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/%3F[`?`] - 0 or 1 of a predicate/pattern
+* https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/cat[`cat`] - concatenation of predicates/patterns
+* https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/alt[`alt`] - choice among alternative predicates/patterns
+* https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/*[`pass:[*]`] - 0 or more of a predicate/pattern
+* https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/%2B[`+`] - 1 or more of a predicate/pattern
+* https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/%3F[`?`] - 0 or 1 of a predicate/pattern
 
 Like `or`, both `cat` and `alt` tag their "parts" - these tags are then used in the conformed value to identify what was matched, to report errors, and more.
 
@@ -594,7 +594,7 @@ If you need a description of a specification, use `describe` to retrieve one. Le
 ;;=> (* (cat :opt keyword? :val boolean?))
 ----
 
-Spec also defines one additional regex operator, https://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/&[`&`], which takes a regex operator and constrains it with one or more additional predicates. This can be used to create regular expressions with additional constraints that would otherwise require custom predicates. For example, consider wanting to match only sequences with an even number of strings:
+Spec also defines one additional regex operator, https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/&[`&`], which takes a regex operator and constrains it with one or more additional predicates. This can be used to create regular expressions with additional constraints that would otherwise require custom predicates. For example, consider wanting to match only sequences with an even number of strings:
 
 [source,clojure]
 ----
@@ -606,7 +606,7 @@ Spec also defines one additional regex operator, https://clojure.github.io/cloju
 ----
 
 When regex ops are combined, they describe a single sequence. If you need to spec a nested sequential collection,
-you must use an explicit call to https://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/spec[`spec`]
+you must use an explicit call to https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/spec[`spec`]
 to start a new nested regex context. For example to describe a sequence like `[:names ["a" "b"] :nums [1 2 3]]`,
 you need nested regular expressions to describe the inner sequential data:
 
@@ -710,7 +710,7 @@ In the success case, the parsed input is transformed into the desired shape for 
 
 The pre- and post-condition example in the previous section hinted at an interesting question - how do we define the input and output specifications for a function or macro?
 
-Spec has explicit support for this using https://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/fdef[`fdef`], which defines specifications for a function - the arguments and/or the return value spec, and optionally a function that can specify a relationship between args and return.
+Spec has explicit support for this using https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/fdef[`fdef`], which defines specifications for a function - the arguments and/or the return value spec, and optionally a function that can specify a relationship between args and return.
 
 Let's consider a `ranged-rand` function that produces a random number in a range:
 
@@ -757,7 +757,7 @@ We'll see later how we can use a function spec for development and testing.
 
 == Higher order functions
 
-Higher order functions are common in Clojure and spec provides https://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/fspec[`fspec`] to support spec'ing them.
+Higher order functions are common in Clojure and spec provides https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/fspec[`fspec`] to support spec'ing them.
 
 For example, consider the `adder` function:
 
@@ -920,9 +920,9 @@ In your code you also need to include the `clojure.spec.gen.alpha` namespace:
 
 === Sampling Generators
 
-The https://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/gen[`gen`] function can be used to obtain the generator for any spec.
+The https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/gen[`gen`] function can be used to obtain the generator for any spec.
 
-Once you have obtained a generator with `gen`, there are several ways to use it. You can generate a single sample value with https://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec.gen/generate[`generate`] or a series of samples with https://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec.gen/sample[`sample`]. Let's see some basic examples:
+Once you have obtained a generator with `gen`, there are several ways to use it. You can generate a single sample value with https://clojure.github.io/spec.alpha/clojure.spec.gen.alpha-api.html#clojure.spec.gen.alpha/generate[`generate`] or a series of samples with https://clojure.github.io/spec.alpha/clojure.spec.gen.alpha-api.html#clojure.spec.gen.alpha/sample[`sample`]. Let's see some basic examples:
 
 [source,clojure]
 ----
@@ -970,7 +970,7 @@ So we can now start with a spec, extract a generator, and generate some data. Al
 
 === Exercise
 
-For this we have https://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec.gen/exercise[`exercise`], which returns pairs of generated and conformed values for a spec. `exercise` by default produces 10 samples (like `sample`) but you can pass both functions a number indicating the number of samples to produce.
+For this we have https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/exercise[`exercise`], which returns pairs of generated and conformed values for a spec. `exercise` by default produces 10 samples (like `sample`) but you can pass both functions a number indicating the number of samples to produce.
 
 [source,clojure]
 ----
@@ -990,7 +990,7 @@ For this we have https://clojure.github.io/clojure/branch-master/clojure.spec-ap
 ;;    [-3.0 [:n -3.0]])
 ----
 
-For spec'ed functions we also have https://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec.gen/exercise-fn[`exercise-fn`], which generates sample args, invokes the spec'ed function and returns the args and the return value.
+For spec'ed functions we also have https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/exercise-fn[`exercise-fn`], which generates sample args, invokes the spec'ed function and returns the args and the return value.
 
 [source,clojure]
 ----
@@ -1086,7 +1086,7 @@ The simplest way to start generating values for this spec is to have spec create
 ;;=> (:my.domain/occupation :my.domain/occupation :my.domain/name :my.domain/id :my.domain/name)
 ----
 
-To redefine our spec using this custom generator, use https://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec.gen/with-gen[`with-gen`] which takes a spec and a replacement generator:
+To redefine our spec using this custom generator, use https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/with-gen[`with-gen`] which takes a spec and a replacement generator:
 
 [source,clojure]
 ----
@@ -1108,7 +1108,7 @@ The clojure.spec.gen.alpha namespace has a number of functions for generator "pr
 Nearly all of the functions in the clojure.spec.gen.alpha namespace are merely wrappers that dynamically load functions of the same name in test.check. You should refer to the documentation for https://clojure.github.io/test.check/[test.check] for more details on how all of the clojure.spec.gen.alpha generator functions work.
 ====
 
-In this case we want our keyword to have open names but fixed namespaces. There are many ways to accomplish this but one of the simplest is to use https://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec.gen/fmap[`fmap`] to build up a keyword based on generated strings:
+In this case we want our keyword to have open names but fixed namespaces. There are many ways to accomplish this but one of the simplest is to use https://clojure.github.io/spec.alpha/clojure.spec.gen.alpha-api.html#clojure.spec.gen.alpha/fmap[`fmap`] to build up a keyword based on generated strings:
 
 [source,clojure]
 ----
@@ -1119,7 +1119,7 @@ In this case we want our keyword to have open names but fixed namespaces. There 
 
 `gen/fmap` takes a function to apply and a generator. The function will be applied to each sample produced by the generator allowing us to build one generator on another.
 
-However, we can spot a problem in the example above - generators are often designed to return "simpler" values first and any string-oriented generator will often return an empty string which is not a valid keyword. We can make a slight adjustment to omit that particular value using https://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec.gen/such-that[`such-that`] which lets us specify a filtering condition:
+However, we can spot a problem in the example above - generators are often designed to return "simpler" values first and any string-oriented generator will often return an empty string which is not a valid keyword. We can make a slight adjustment to omit that particular value using https://clojure.github.io/spec.alpha/clojure.spec.gen.alpha-api.html#clojure.spec.gen.alpha/such-that[`such-that`] which lets us specify a filtering condition:
 
 [source,clojure]
 ----
@@ -1148,7 +1148,7 @@ Here we generate a tuple of a random prefix and random suffix strings, then inse
 
 There are several cases where it's useful to spec (and generate) values in a range and spec provides helpers for these cases.
 
-For example, in the case of a range of integer values (for example, a bowling roll), use https://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec.gen/int-in[`int-in`] to spec a range (end is exclusive):
+For example, in the case of a range of integer values (for example, a bowling roll), use https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/int-in[`int-in`] to spec a range (end is exclusive):
 
 [source,clojure]
 ----
@@ -1157,7 +1157,7 @@ For example, in the case of a range of integer values (for example, a bowling ro
 ;;=> (1 0 0 3 1 7 10 1 5 0)
 ----
 
-spec also includes https://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec.gen/inst-in[`inst-in`] for a range of instants:
+spec also includes https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/inst-in[`inst-in`] for a range of instants:
 
 [source,clojure]
 ----
@@ -1172,7 +1172,7 @@ spec also includes https://clojure.github.io/clojure/branch-master/clojure.spec-
 
 Due to the generator implementation, it takes a few samples to get "interesting" so I skipped ahead a bit.
 
-Finally, https://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec.gen/double-in[`double-in`] has support for double ranges and special options for checking special double values like `NaN` (not a number), `Infinity`, and `-Infinity`. 
+Finally, https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/double-in[`double-in`] has support for double ranges and special options for checking special double values like `NaN` (not a number), `Infinity`, and `-Infinity`. 
 
 [source,clojure]
 ----
@@ -1225,7 +1225,7 @@ Instrumentation can be turned off using the complementary function `unstrument`.
 
 === Testing
 
-We mentioned earlier that `clojure.spec.test.alpha` provides tools for automatically testing functions. When functions have specs, we can use https://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec.test/check[`check`], to automatically generate tests that check the function using the specs.
+We mentioned earlier that `clojure.spec.test.alpha` provides tools for automatically testing functions. When functions have specs, we can use https://clojure.github.io/spec.alpha/clojure.spec.test.alpha-api.html#clojure.spec.test.alpha/check[`check`], to automatically generate tests that check the function using the specs.
 
 `check` will generate arguments based on the `:args` spec for a function, invoke the function, and check that the `:ret` and `:fn` specs were satisfied.
 
@@ -1284,7 +1284,7 @@ This broken function will still create random integers, just not in the expected
 
 `check` has reported an error in the `:fn` spec. We can see the arguments passed were -3 and 0 and the return value was -5, which is out of the expected range.
 
-To test all of the spec'ed functions in a namespace (or multiple namespaces), use https://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec.test/enumerate-namespace[`enumerate-namespace`] to generate the set of symbols naming vars in the namespace:
+To test all of the spec'ed functions in a namespace (or multiple namespaces), use https://clojure.github.io/spec.alpha/clojure.spec.test.alpha-api.html#clojure.spec.test.alpha/enumerate-namespace[`enumerate-namespace`] to generate the set of symbols naming vars in the namespace:
 
 [source,clojure]
 ----

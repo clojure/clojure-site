@@ -1,0 +1,43 @@
+= Zimpler
+Alex Miller
+2017-11-15
+:jbake-type: story
+:jbake-company: Zimpler
+:jbake-link: https://www.zimpler.com/
+
+[.right]
+image:/images/content/stories/zimpler.png["Zimpler",height="80"]
+
+This story is about https://www.zimpler.com/[Zimpler] and their use of Clojure and ClojureScript, 
+
+*How long have you been working with Clojure and ClojureScript?*
+
+We started working with ClojureScript in 2015 and Clojure from 2016. Today we see it as our main language moving forward.
+
+*How big is the team you have using Clojure and ClojureScript?*
+
+Today we are 12 people working in Clojure/ClojureScript but we are constantly looking to grow the team further.
+
+*What product or service are you building?*
+
+Zimpler is a payment solution. All user facing part of the product, such as the checkout is written in ClojureScript. Most of the future applications will be written in Clojure/ClojureScript.
+
+*What Clojure or ClojureScript library have you enjoyed working with the most?*
+
+For ClojureScript, https://reagent-project.github.io/[Reagent] and https://github.com/Day8/re-frame[re-frame] are just really nice to work with, enabling to express complex logic in a very simple way. On the backend side, https://www.hugsql.org/[HugSQL] is also a very neat library allowing us to write SQL queries without adding unnecessary layers of complexity.
+
+*What about working with Clojure and ClojureScript gives you the most value?*
+
+Namespaces and immutability by default makes everything more explicit and allows us to understand where everything is coming from. This in turns allows us to collaborate more easily and iterate faster. Also thanks to the seamless interop with Java and JavaScript, we have access to a large ecosystem of well tested libraries, making Clojure(Script) a safe bet.
+
+*What is your favorite feature of Clojure or ClojureScript?*
+
+The focus on values and a REPL driven development makes for a very interactive experience that many of us enjoy.
+ 
+*What is your stack?*
+
+In the front-end, reagent + re-frame for all our apps. In the backend, we have a large Ruby codebase and a growing number of Clojure projects, with a bit of Haskell (gasp!) here and there.
+ 
+*Why is using Clojure or ClojureScript valuable to your business?*
+
+Besides the technological benefits discussed above, we also really like being a part of the Clojure community where we feel that we share a lot of common values. As a result of this we have had the fortune to be able to help out supporting both conferences such as http://euroclojure.org/[EuroClojure] and also local communities like https://www.meetup.com/got-lambda/[Got.lambda] in Gothenburg and http://clojurebridge-berlin.org/[ClojureBridge in Berlin].

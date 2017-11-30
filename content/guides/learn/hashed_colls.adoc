@@ -7,6 +7,8 @@ Alex Miller
 :navlinktext: Hashed Collections
 :prevpagehref: sequential_colls
 :prevpagetitle: Sequential Collections 
+:nextpagehref: flow
+:nextpagetitle: Flow Control
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
@@ -298,7 +300,7 @@ When we need to represent many domain information with the same set of fields kn
 
 === Field accessors
 
-Since this is a map, the ways we've already discussed for looking up a value by key work:
+Since this is a map, the ways we've already discussed for looking up a value by key also work:
 
 [source,clojure-repl]
 ----
@@ -309,7 +311,7 @@ user=> (person :occupation)
 "Programmer"
 ----
 
-But really, the most common way to get field values for this use is by invoking the kewyord. Just like with maps and sets, keywords are also functions. When a keyword is invoked, it looks itself up in the associative data structure that it was passed.
+But really, the most common way to get field values for this use is by invoking the keyword. Just like with maps and sets, keywords are also functions. When a keyword is invoked, it looks itself up in the associative data structure that it was passed.
 
 [source,clojure-repl]
 ----

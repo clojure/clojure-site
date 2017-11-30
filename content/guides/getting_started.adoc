@@ -11,7 +11,7 @@ Welcome to Clojure!
 
 == Minimal Install
 
-Clojure requires only http://java.sun.com/javase/downloads/index.jsp[Java] 1.6 or greater, plus the Clojure JAR file itself.
+Clojure requires only http://www.oracle.com/technetwork/java/javase/downloads/index.html[Java] 1.6 or greater, plus the Clojure JAR file itself.
 
 <<xref/../../community/downloads#,Download>> and unzip Clojure. In the directory in which you expanded clojure.zip, run:
 [source,clojure]
@@ -24,10 +24,9 @@ This will bring up a read-eval-print loop (REPL).
 
 == Try Clojure Online
 
-These sites provide browser-based Clojure repls for interactive exploration:
+This site provides a browser-based Clojure repl for interactive exploration:
 
 * https://repl.it/languages/clojure[repl.it]
-* http://tryclj.com/[TryClojure]
 
 == Leiningen
 

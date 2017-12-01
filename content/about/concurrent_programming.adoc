@@ -16,7 +16,7 @@ Today's systems have to deal with many simultaneous tasks and leverage the power
 
 In all cases, Clojure does not replace the Java thread system, rather it works with it. Clojure functions are java.util.concurrent.Callable, therefore they work with the Executor framework etc.
 
-Most of this is covered in more detail in the https://www.youtube.com/watch?v=dGVqrGmwOAw[concurrency screencast].
+Most of this is covered in more detail in the https://www.youtube.com/watch?v=nDAfZK8m5_8[concurrency screencast].
 
 <<xref/../../reference/refs#,Refs>> are mutable references to objects. They can be https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ref-set[ref-set] or https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/alter[alter]ed to refer to different objects during transactions, which are delimited by https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/dosync[dosync] blocks. All ref modifications within a transaction happen or none do. Also, reads of refs within a transaction reflect a snapshot of the reference world at a particular point in time, i.e. each transaction is isolated from other transactions. If a conflict occurs between 2 transactions trying to modify the same reference, one of them will be retried. All of this occurs without explicit locking.
 

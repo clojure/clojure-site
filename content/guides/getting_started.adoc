@@ -19,7 +19,7 @@ There are several ways to get started using Clojure:
 * Local build
 * Try Clojure online
 
-Once you've installed, check out <<learn/syntax#,Learn Clojure>> pages or <<xref/../../community/resources#,Resources>> page to get started with tutorials and resources on learning Clojure!
+Once you've installed, check out <<learn/syntax#,Learn Clojure>> pages or <<xref/../../community/resources#,Resources>> page to find tutorials and resources for learning Clojure!
 
 == Script installation
 
@@ -51,7 +51,7 @@ sudo ./linux-install.sh
 
 === Installation on Windows
 
-COMING SOON
+Not yet available - see Leiningen or Boot instead.
 
 == Build tool
 

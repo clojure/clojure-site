@@ -24,7 +24,7 @@ The Clojure 1.9 release for the first time requires multiple artifacts to run Cl
 
 Maven-artifacts-first orientation of current tooling has created great rigidity and friction for dev processes - making it hard to e.g. work with libs not yet building/publishing artifacts (new users!), work on speculative changes w/o artifacts, working on mutual changes across multiple libs, give control to a 3rd party tool to manage shared dependencies, and to directly leverage git which is now widely used as a source of truth for code lifecycles.
 
-== Consider the Classpath
+== Building the Classpath
 
 Our ultimate goal is to build a JVM classpath. The classpath consists of a series of roots, either a directory path or the path to a jar file. Classes (and Clojure files) map via package or namespace to a relative path. For example, the `java.lang.String` class can be found at path `java/lang/String.class` and the `clojure.set` Clojure file can be found at paths `clojure/set.class` (for AOT), `clojure/set.clj`, or `clojure/set.cljc`. When the JVM needs to load one of these files it searches each root for the relative path and loads it if found.
 

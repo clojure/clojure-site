@@ -54,15 +54,21 @@ Coordinates can take several forms depending on the coordinate type:
 * Local project coordinate: `{:local/root "/path/to/project"}`
 ** Optional key `:deps/manifest`
 *** Specifies the project manifest type
-*** Default is to auto-detect the project type (`:deps`, `:lein`, `:pom`)
+*** Default is to auto-detect the project type (such as `:deps`, `:lein`, `:pom`)
 *** Currently only `:deps` is supported
 * Local jar: `{:local/root "/path/to/file.jar"}`
 
 This list may expand in the future to cover other coordinate types and other manifest types.
 
+=== Paths
+
+Paths are declared in a top level key `:paths` and is a vector of string paths (typically relative to the project root). These source paths will be included on the classpath.
+
+While dependency sets are merged across all of the configuration files, paths replace paths declared in a prior configuration file (last one wins).
+
 === Aliases
 
-Aliases (as defined in the `:aliases` section of the merged config files) are used to select sets of modifications to the resolved-deps or make-classpath steps. Aliases for `resolve-deps` modifications are selected with -R (which takes a concatenated list of alias keywords). Aliases for `make-classpath` modifications are selected with -C (also a concatenated list of alias keywords). The modifications from all aliases will be combined by merging in the order specified (last one wins).
+Aliases are defined in the `:aliases` section of the config file and are used to select sets of modifications to the resolved-deps or make-classpath steps. Aliases for `resolve-deps` modifications are selected with -R (which takes a concatenated list of alias keywords). Aliases for `make-classpath` modifications are selected with -C (also a concatenated list of alias keywords). The modifications from all aliases will be combined by merging in the order specified (last one wins).
 
 So given a deps.edn like:
 
@@ -87,7 +93,7 @@ You can activate all three aliases to create a classpath that switches to an old
 clj -R:1.7:bench -C:test -Spath
 ----
 
-It's up to you to define the dependency and classpath modifications that are useful in your project context. They can be combined or assembled in whatever way you see fit.
+It's up to you to define the dependency and classpath modifications that are useful in your project context. Combine or assemble them in whatever ways are useful to your project.
 
 So far we have been using `clj` with `-Spath`, which just prints the computed classpath. Usually, however, you will omit that and instead the script will invoke clojure.main with the other arguments you specify. By default, clojure.main without args will start a REPL but you can also use `-e` to evaluate an expression, `-m` to call the `-main` in a namespace, or specify a scriptpath or `-` to run a script on stdin.
 
@@ -119,7 +125,7 @@ Invoking `clj` will then use the install, config, and local `deps.edn` files, me
 
 === Include a test source directory
 
-The primary project classpath will not include the test source directory, but you can add extra paths as modifications to the make-classpath step of the classpath construction. To do so, add an alias `:test` that includes the extra relative source path `"test"`:
+Typically, the project classpath includes only the project source, not its test source by default. You can add extra paths as modifications to the primary classpath in the make-classpath step of the classpath construction. To do so, add an alias `:test` that includes the extra relative source path `"test"`:
 
 [source,clojure]
 ----
@@ -139,7 +145,7 @@ Apply that classpath modification and start a REPL by invoking `clj -C:test`.
 
 Occasionally you may need to refer directly to a jar on disk that is not present in a Maven repository. One common example is a database driver jar that is not distributed via Maven.
 
-Local jar dependencies can be specified by using a local coordinate with the key `:local/root`. The local artifact provider will detect that this refers to a specific file.
+Specify local jar dependencies with a local coordinate which includes a `:local/root` key. The local artifact provider will detect that this refers to a specific file.
 
 [source,clojure]
 ----

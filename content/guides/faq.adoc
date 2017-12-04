@@ -99,6 +99,13 @@ Design benefits of sequences:
 
 - Consumer control - returning a seq from an API lets you combine input + transformation into something that gives the consumer control. Transducers don't work as well for this (but will work better for cases where input and transformation are separated).
 
+== Spec
+
+[[spec_alpha]]
+**<<faq#spec_alpha,Why is spec alpha?>>**
+
+spec is in alpha to indicate that the API may still change. spec was broken out of Clojure core so that spec can be updated independently from the main Clojure version. At some point spec's API will be considered stable and at that point the alpha will be removed.
+
 == State and Concurrency
 
 [[concurrency_features]]
@@ -193,3 +200,21 @@ Because of its focus on immutable data, there is generally not a high value plac
 
 All Clojure vars are globally available so again there is not much in the way of encapsulation of functions within namespaces. However, the ability to mark vars private (either using `defn-` for functions or `def` with `^:private` for values) is a convenience for a developer to indicate which parts of an API should be considered public for use vs part of the implementation.
 
+== Deps and CLI
+
+[[clj_alpha]]
+**<<faq#clj_alpha,Are these scripts and tools.deps.alpha done?>>**
+
+No. There are lots of known gaps and ideas still to implement. But it is useful now. :)
+
+[[clj_replace]]
+**<<faq#clj_replace,Is clj a replacement for lein and boot?>>**
+
+No. The clojure scripts are focused on a) building classpaths and b) launching clojure programs. They do not (and will not) create artifacts, deploy artifacts, etc.
+
+tools.deps.alpha aims to provide programmatic building blocks for dependency resolution and classpath construction. clj/clojure wraps these into a command-line form that can be used to run Clojure programs. You can compose these pieces to do many other things.
+
+[[clj_dynamic]]
+**<<faq#clj_dynamic,Do these scripts allow you to dynamically add dependencies to a running repl?>>**
+
+No. Other tools exist to do this now or could be added on top of the existing functionality but this was not part of the initial goal.

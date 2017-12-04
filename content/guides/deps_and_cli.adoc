@@ -207,22 +207,6 @@ So far we have been using `clj` with `-Spath`, which just prints the computed cl
 
 For more details on clojure.main, see <<xref/../../reference/repl_and_main#,REPL and main>>. For more info on installing and using the scripts, see <<xref/../../reference/deps_and_cli#,Deps and CLI Reference>>.
 
-== Frequently Asked Questions
-
-*Are these scripts and tools.deps.alpha done?*
-
-No. There are lots of known gaps and ideas still to implement. But it is useful now. :)
-
-*Is clj a replacement for lein and boot?*
-
-No. The clojure scripts are focused on a) building classpaths and b) launching clojure programs. They do not (and will not) create artifacts, deploy artifacts, etc. 
-
-tools.deps.alpha aims to provide programmatic building blocks for dependency resolution and classpath construction. clj/clojure wraps these into a command-line form that can be used to run Clojure programs. You can compose these pieces to do many other things.
-
-*Do these scripts allow you to dynamically add dependencies to a running repl?*
-
-No. Other tools exist to do this now or could be added on top of the existing functionality but this was not part of the initial goal.
-
 == Glossary
 
 **Library**

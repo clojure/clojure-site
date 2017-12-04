@@ -22,291 +22,206 @@ The Clojure 1.9 release for the first time requires multiple artifacts to run Cl
 
 Maven-artifacts-first orientation of current tooling has created great rigidity and friction for dev processes - making it hard to e.g. work with libs not yet building/publishing artifacts (new users!), work on speculative changes w/o artifacts, working on mutual changes across multiple libs, give control to a 3rd party tool to manage shared dependencies, and to directly leverage git which is now widely used as a source of truth for code lifecycles.
 
-== Installation
+== Consider the Classpath
 
-=== Installation on Mac via `brew`
+Our ultimate goal is to build a JVM classpath. The classpath consists of a series of roots, either a directory path or the path to a jar file. Classes (and Clojure files) map via package or namespace to a relative path. For example, the `java.lang.String` class can be found at path `java/lang/String.class` and the `clojure.set` Clojure file can be found at paths `clojure/set.class` (for AOT), `clojure/set.clj`, or `clojure/set.cljc`. When the JVM needs to load one of these files it searches each root for the relative path and loads it if found.
 
-The latest development version of the Clojure scripts can be installed by selecting the `devel` version of Clojure as follows:
+Classpaths are needed any time we start a JVM which covers many different scenarios. We might want to spin up a REPL disconnected from a project, or run a project REPL including external dependencies and project paths, or execute our tests with extra jars and source, etc. We need tools that let us handle all of these cases by composing different operations.
 
-[source,shell]
-----
-brew install --devel clojure
-----
+We divide the process of building a classpath into two primary operations: `resolve-deps` and `make-classpath`. Below is a high-level view of this process:
 
-If you omit the `--devel` you will instead get the latest stable version of Clojure, currently 1.8.0.
+image:/images/content/guides/deps/cp.jpg["Classpath Process",height="300"]
 
-=== Installation on Linux
+=== resolve-deps
 
-Package installers are not yet available but the following process can be used to manually install the latest devel version of the `clj` script on a *nix system. First ensure that the following dependencies are installed: curl, rlwrap, and Java. Then use the following commands to download and run the installer script, which will create /usr/local/bin/clj, /usr/local/bin/clojure, and /usr/local/lib/clojure:
+Much of the complexity in building the classpath comes from traversing external dependencies and downloading their artifacts (jar files) for inclusion on the classpath. Maven repositories provide an immutable, append-only, redundant store of named and versioned artifacts, which effectively defines the Java library ecosystem.
 
-[source,shell]
-----
-curl -O https://download.clojure.org/install/linux-install.sh
-chmod +x linux-install.sh
-sudo ./linux-install.sh
-----
+However, defining libraries and artifacts only in Maven terms unnecessarily limits us from a Clojure perspective. Clojure doesn't care at all about artifacts, and in fact Clojure doesn't even need source to be "built" at all to be useful. Maven (and build systems that depend solely on and deploy solely to Maven) have entangled dependency management with artifact production. We would like to retain the ability to use Maven artifacts while also not restricting ourselves solely to libraries built and deployed into Maven.
 
-=== Installation on Windows
+The first step in our classpath building process is to resolve the transitive set of dependencies aka `resolve-deps`. The primary input to this process is a list of immediate dependencies. Dependencies are described using the Maven "coordinates" - the groupID, artifactID, and version that describe a library and allow it to be located in a Maven repository or other provider.
 
-COMING SOON
-
-== Usage
-
-Usage:
-
-* `clojure [<dep_opts>] [<main_opts>]`
-* `clj [<dep_opts>] [<main_opts>]`
-
-where:
-
-* `clojure` is the primary script. `clj` is a wrapper for interactive repl use. 
-* `dep_opts` is any of the following (but each at most once):
-** `-Jopt` - passes `opt` through to the JVM, ex: `-J-server`
-** `-Ralias...` - concatenated resolve-args aliases, ex: `-R:bench:1.9`
-** `-Calias...` - concatenated classpath-override aliases, ex: `-C:dev`
-** `-Spath` - compute classpath and show it, without running Clojure
-** `-Srepro` - use only the local deps.edn (ignore install and user deps.edn)
-** `-Sforce` - force recomputation of the classpath (ignore the cache)
-** `-Spom` - generate (or update an existing) pom.xml with the dependencies and paths from deps.edn
-** `-Sverbose` - print important paths while running the clojure script
-* `main_opts` are the `clojure.main` arguments, see [docs](https://clojure.org/reference/repl_and_main)
-
-The `clojure` and `clj` scripts ultimately construct and invoke a command-line of the form:
-
-[source,shell]
-----
-java <java_opts> -cp <classpath> clojure.main <main_opts>
-----
-
-The `dep_opts` are used to compute the `<classpath>` in this final invocation. Classpaths are cached (except when using `-P`) - see the section on classpath caching below for more details. When a classpath is not available, the following process is used to construct the classpath:
-
-* Compute the deps map
-** Read the deps.edn file in the following locations:
-*** Install directory (unless -Srepro)
-*** Config directory (if it exists and unless -Srepro)
-*** Current directory (if it exists)
-** Combine the deps.edn maps in that order with `merge-with merge`
-* Compute the resolve-deps args
-** If `-R` specifies one or more aliases, find each alias in the deps map `:aliases`
-** `merge-with` `merge` the alias maps - the result is the resolve-args map
-* Invoke `resolve-deps` with deps map and resolve-args map
-* Compute the classpath-overrides map
-** If `-C` specifies one or more aliases, find each alias in the deps map `:aliases`
-** `merge` the classpath-override alias maps
-* Invoke `make-classpath` with the libs map returned by `resolve-deps`, the paths, and the classpath-args map
-* Write the libs map to the classpath cache
-* Write the classpath to the classpath cache
-
-== deps.edn
-
-The deps.edn file is an instance of the `::deps-map` https://github.com/clojure/tools.deps.alpha/blob/master/src/main/clojure/clojure/tools/deps/alpha/specs.clj[spec]. The full spec is defined below:
-
-[cols="3<*", options="header", role="table"]
-|===
-| Spec name | Definition | Description |
-| `::deps-map` | `(s/keys :opt-un [::paths ::deps ::aliases])` | The deps.edn format |
-| `::paths` | `(s/coll-of string? :kind vector? :into [])` | Paths in current project to include in classpath |
-| `::deps` | `(s/map-of ::lib ::coord)` | Dependencies, a map from lib to (optional) coord |
-| `::lib` | `symbol?` | A library like `org.clojure/core` or `criterium` |
-| `::coord` | `(s/or :mvn :mvn/coord :local :local/coord)` | The coordinate of different types. |
-| `::aliases` | `(s/map-of ::alias (s/or :resolve-deps ::resolve-args :make-classpath ::classpath-args))` | Aliases for use at the command line |
-| `::alias` | `keyword?` | The command line alias to use with `clj -R` or `clj -C` |
-| `::resolve-args` | `(s/keys :opt-un [::extra-deps ::override-deps ::default-deps])` | Dep modifications to pass to `resolve-deps` |
-| `::extra-deps` | `(s/map-of ::lib ::coord)` | Dependencies to add to the initial set |
-| `::override-deps` | `(s/map-of ::lib ::coord)` | If dep is found when expanding deps, use this coordinate, regardless of what is specified |
-| `::default-deps` | `(s/map-of ::lib ::coord)` | If dep is found when expanding deps and no coordinate is provided, use this coordinate |
-| `::classpath-args` | `(s/keys :opt-un [::classpath-overrides ::extra-paths])` | Classpath modifications to pass to `make-classpath` |
-| `::classpath-overrides` | `(s/map-of ::lib ::path)` | Override paths to use for libraries, passed to `make-classpath` |
-| `::extra-paths` | `(s/coll-of string? :kind vector? :into [])` | Collection of extra paths to add to the classpath in addition to ::paths |
-| `::mvn/repos` | `(s/map-of ::repo-id ::repo)` | Maven provider repo config |
-| `::repo-id` | `string?` | Repository name |
-| `::repo` | `(s/keys :opt-un [::url])` | A Maven repository configuration |
-| `::url` | `string?` | A Maven repository url |
-|===
-
-Example:
+However, we think it is important to separate the groupID and artifactID (the library you care about) from the version, which is really part of resolution process. Thus the intial dependencies are a map of library to coordinate, where a coordinate is a provider-specific representation of the requested version.
 
 [source,clojure]
 ----
 {
- ;; Paths in project
- :paths ["src"]
+  org.clojure/clojure {:mvn/version "1.9.0-beta1"}
+  org.clojure/core.cache {:mvn/version "0.6.5"}
+}
+----
 
- ;; Project dependencies, a map from lib to coordinate
+When these are persisted into a configuration (more on that later), they are stored under a top-level `:deps` key:
+
+[source,clojure]
+----
+{
+ :deps {
+   org.clojure/clojure {:mvn/version "1.9.0-beta1"}
+   org.clojure/core.cache {:mvn/version "0.6.5"}
+ }
+}
+----
+
+
+The `resolve-deps` code will use the library and coordinate to locate and retrieve the metadata for the specified artifact, including its transitive dependencies. The complete operation will walk the transitive dependencies as well, discovering the entire tree (cycles are cut) representing the full transitive dependency set.
+
+Once the tree has been expanded, `resolve-deps` will remove any excluded dependencies, resolve incompatible versions (generally by choosing the newest one), and download all of the dependent artifacts to disk. Finally, a data structure called a *lib map* is returned:
+
+[source,clojure]
+----
+{org.clojure/clojure           {:mvn/version "1.8.0"
+                                :path ".../clojure-1.8.0.jar"}
+ org.clojure/core.cache        {:mvn/version "0.6.5"
+                                :path  ".../core.cache-0.6.5.jar"} 
+ org.clojure/data.priority-map {:mvn/version "0.0.7"
+                                :dependents [org.clojure/core.cache]}}
+----
+
+The lib map lists all libraries and their selected coordinates, which will contain a `:path` on disk and a list of dependents that caused it to be included. Here you can see that `data.priority-map` was included as a dependency of core.cache.
+
+There are a number of reasons to alter the default transitive dependency set and `resolve-deps` takes a *resolve-args* map to provide various modifications to the base dependency set and options are available for the three use cases: adding extra dependencies, overriding deps, and default deps.
+
+==== Adding extra dependencies
+
+One modification is to add extra artifacts to the classpath to augment the normal external dependencies. For example, you might want to add a benchmark library like criterium when building a classpath to run some benchmarks. Extra dependencies can be specified with `:extra-deps` which takes a map of library to coordinate:
+
+[source,clojure]
+----
+{:extra-deps {criterium/criterium {:mvn/version "0.4.4"}}}
+----
+
+==== Overriding the coordinate
+
+Another possible modification is to override the coordinate version that would be chosen by the default algorithm and force a specific version instead. For example, say you wanted to run a test to see if your application worked with a beta version of Clojure. In this case, rather than modifying the base set of dependencies, you can specify an override:
+
+[source,clojure]
+----
+{:override-deps {org.clojure/clojure {:mvn/version "1.9.0-beta1"}}}
+----
+
+==== Specifying default coordinates
+
+When using multiple projects, you may wish to specify a set of default dependency coordinates to use when no coordinate is specified. These can be provided using `:default-deps`:
+
+[source,clojure]
+----
+{:default-deps {org.clojure/core.cache {:mvn/version "0.6.4"}}}
+----
+
+==== Aliases
+
+Rather than specify these modifications on the command-line, you can instead persist modifications under an alias name:
+
+[source,clojure]
+----
+{
+ :aliases {
+   :benchmark {:extra-deps {criterium/criterium {:mvn/version "0.4.4"}}}
+   :beta      {:override-deps {org.clojure/clojure {:mvn/version "1.9.0-beta1"}}}
+   :defaults  {:default-deps {org.clojure/core.cache {:mvn/version "0.6.4"}}}
+ }
+}
+----
+
+This example creates three different aliases (`:benchmark`, `:beta`, and `:defaults`). At the command line you can specify one or more of these to use in combination to alter your classpath.
+
+The output of deps resolution is a map of library to chosen coordinate where each coordinate has a known location on disk. The JVM however needs a classpath and thus the second stage is to actually build the classpath.
+
+=== make-classpath
+
+The primary inputs to this process are the libs map (the result of `resolve-deps`) and the internal paths of the current project (directories that specify source paths). The paths are a collection of string paths, represented in the configuration file as:
+
+[source,clojure]
+----
+{:paths ["src"]}
+----
+
+In addition to the modifications that can be done during deps resolution, there are some modifications that can be performed during this stage as well. Similar to the `resolve-deps` modifications, these can be named and persisted under an alias name.
+
+==== Extra paths
+
+When building a special classpath (the "test" classpath for example), you may want to include additional source paths. These can be added with `:extra-paths` which is a vector of paths, similar to `:paths`:
+
+[source,clojure]
+----
+{:extra-paths ["test" "resources"]}
+----
+
+==== Classpath overrides
+
+You may have an alternate location on disk that can be used to satisfy a particular dependency found during `resolve-deps`. For this, you can use `:classpath-overrides`:
+
+[source,clojure]
+----
+{:classpath-overrides {org.clojure/clojure {:path "/my/clojure/target"}}}
+----
+
+== The command line
+
+Let's now put all of this functionality together such that it can be useful in our work. Clojure provides a command-line script `clojure` and a wrapper script `clj` designed for use at the terminal. For more information on installation and detailed configuration see the <<xref/../../reference/deps_and_cli#,CLI Reference>> page.
+
+=== Configuration files
+
+The configuration file format (in "deps.edn" files) is an edn map as described above: a map with top-level keys for `:deps`, `:paths`, and `:aliases`, plus provider-specific keys for configuring dependency sources.
+
+After installation, deps.edn configuration files can be found in (up to) three locations:
+
+- installation directory - created and modified only at install time
+- config directory (often ~/.clojure) - modified by you to change cross-project (or no-project) defaults
+- the local directory - for per-project settings
+
+The deps.edn files in each of these locations (if they exist) are merged to form one combined dependency configuration. The merge is done in the order above, giving local precedence over config over install. The operation is essentially `merge-with merge`, except for the `:paths` key, where only the last one found is used (they are not combined).
+
+You can run `clj -Sverbose -Spath` to see all of the configuration directories and the final computed classpath.
+
+=== Aliases
+
+Aliases (as defined in the `:aliases` section of the merged config files) are used to select sets of modifications to the resolved-deps or make-classpath steps. Aliases for `resolve-deps` modifications are selected with -R (which takes a concatenated list of alias keywords). Aliases for `make-classpath` modifications are selected with -C (also a concatenated list of alias keywords). The modifications from all aliases will be combined by merging in the order specified (last one wins).
+
+So given a deps.edn like:
+
+[source,clojure]
+----
+{:paths ["src"]
  :deps {
    org.clojure/clojure {:mvn/version "1.8.0"}
-   ring {:mvn/version "1.5.0"}
-   hiccup {:mvn/version "1.0.5"}
  }
-
- ;; Aliases that can be used with -R and -C
  :aliases {
-   ;; An alias that adds an extra dep to use for benchmarking: -R:bench
-   :bench {:extra-deps {criterium {:mvn/version "0.4.4"}}}
-
-   ;; An alias to override the default Clojure version: -R:1.9
-   :1.9 {:override-deps {org.clojure/clojure {:mvn/version "1.9.0-beta2"}}}
-
-   ;; A classpath override alias to use a local build of Clojure: -C:dev
-   :dev {:classpath-overrides {org.clojure/clojure "/Users/me/clojure/target/classes"}}
-
-   ;; Add extra paths to the classpath: -C:test
-   :test {:extra-paths ["test"]}
- }
-
- ;; Configure Maven repos - these are typical set in the system deps.edn only
- :mvn/repos {
-   "central" {:url "https://repo1.maven.org/maven2/"}
-   "clojars" {:url "https://clojars.org/repo/"}
- }
-}
-----
-
-== Examples
-
-=== Running a REPL from anywhere
-
-* Invoke: `clj`
-* Given: No deps.edn file in the current directory.
-* Result: Start a repl using the default deps file at <install>/deps.edn.
-
-=== Running a REPL using deps.edn in the current directory
-
-* Invoke: `clj`
-* Given: A deps.edn file in the current directory.
-* Result: Start a repl using the deps.edn file at ./deps.edn.
-
-=== Including a test source directory into a classpath
-
-* Invoke: `clj -C:test`
-* Given: A deps.edn file like the one below.
-* Result: Start a repl including external deps and a test source directory root.
-
-[source,clojure]
-----
-;; deps.edn
-{:deps {org.clojure/clojure {:mvn/version "1.9.0-beta2"}}
- :aliases {
+   :1.7 {:override-deps {org.clojure/clojure {:mvn/version "1.7.0"}}}
+   :bench {:extra-deps {criterium/criterium {:mvn/version "0.4.4"}}}
    :test {:extra-paths ["test"]}
  }
 }
 ----
 
-=== Refer to a specific jar on disk
+You can activate all three aliases to create a classpath that switches to an older Clojure version, adds the benchmarking library, and includes the test directory in the classpath to see how it changes the classpath:
 
-* Invoke `clj`
-* Given: A deps.edn file like the one below.
-* Result: Includes a specific jar file in your classpath
-
-[source,clojure]
+[source]
 ----
-;; deps.edn
-{:deps {org.clojure/clojure {:mvn/version "1.9.0-beta2"}
-        oracle/driver {:local/root "/path/to/oracle/driver.jar"}}}
+clj -R:1.7:bench -C:test -Spath
 ----
 
-=== Refer to another project on disk that has a deps.edn file
+It's up to you to define the dependency and classpath modifications that are useful in your project context. They can be combined or assembled in whatever way you see fit. 
 
-* Invoke `clj`
-* Given: A deps.edn file like the one below
-* Result: Includes another project defined on disk, using /path/to/project/deps.edn will be used as the source of paths and deps for the dependency project. Support for other project types (pom.xml, project.clj) will be possible, but is not yet implemented.
+So far we have been using `clj` with `-Spath`, which just prints the computed classpath. Usually, however, you will omit that and instead the script will invoke clojure.main with the other arguments you specify. By default, clojure.main without args will start a REPL but you can also use `-e` to evaluate an expression, `-m` to call the `-main` in a namespace, or specify a scriptpath or `-` to run a script on stdin. 
 
-[source,clojure]
-----
-;; deps.edn
-{:deps {org.clojure/clojure {:mvn/version "1.9.0-beta2"}
-        my.company/sibling-project {:local/root "/path/to/project"}}}
-----
+For more details on clojure.main, see <<xref/../../reference/repl_and_main#,REPL and main>>. For more info on installing and using the scripts, see <<xref/../../reference/deps_and_cli#,Deps and CLI Reference>>.
 
-=== Running a Clojure namespace in the current directory
+== Frequently Asked Questions
 
-* Invoke: `clojure -m my.app 1 2 3`
-* Result: Load the my.app namespace and invoke my.app/-main with the arguments `1 2 3`. If a deps.edn file exists, use it, otherwise use the default deps file.
+*Are these scripts and tools.deps.alpha done?*
 
-=== Add an optional dependency to your classpath
+No. There are lots of known gaps and ideas still to implement. But it is useful now. :)
 
-* Invoke: `clj -R:bench`
-* Given: A deps.edn file like the one below.
-* Result: Start a repl using the deps and add the extra deps defined by the `:bench` alias.
+*Is clj a replacement for lein and boot?*
 
-[source,clojure]
-----
-;; deps.edn
-{:deps {org.clojure/clojure {:mvn/version "1.8.0"}}
- :aliases {:bench {:extra-deps {criterium {:mvn/version "0.4.4"}}}}}
-----
+No. The clojure scripts are focused on a) building classpaths and b) launching clojure programs. They do not (and will not) create artifacts, deploy artifacts, etc. 
 
-=== Add an optional dependency and override a dependency
+tools.deps.alpha aims to provide programmatic building blocks for dependency resolution and classpath construction. clj/clojure wraps these into a command-line form that can be used to run Clojure programs. You can compose these pieces to do many other things.
 
-* Invoke: `clj -R:bench:1.9`
-* Given: A deps.edn file like the one below.
-* Result: Start a repl using the deps and add the extra deps defined by the `:bench` alias and the override deps defined by the `:1.9` alias.
+*Do these scripts allow you to dynamically add dependencies to a running repl?*
 
-[source,clojure]
-----
-;; deps.edn
-{:deps {org.clojure/clojure {:mvn/version "1.8.0"}}
- :aliases {:1.9 {:override-deps {org.clojure/clojure {:mvn/version "1.9.0-beta2"}}}
-           :bench {:extra-deps {criterium {:mvn/version "0.4.4"}}}}}
-----
-
-=== Override a classpath source
-
-* Invoke: `clj -R1.9 -Cdev`
-* Given: A deps.edn file like the one below.
-* Result: Start a repl using the deps, the override deps defined by the `:1.9` alias, and the classpath override for the dev path.
-
-[source,clojure]
-----
-;; deps.edn
-{:deps {org.clojure/clojure {:mvn/version "1.8.0"}}
- :aliases {:1.9 {:override-deps {org.clojure/clojure {:mvn/version "1.9.0-beta2"}}}
-           :dev {:classpath-overrides {org.clojure/clojure "/Users/me/code/clojure/target/classes"}}}}
-----
-
-=== Show classpath
-
-* Invoke `clj -Spath`
-* Given: A deps.edn like the one below.
-* Result: Computes the classpath and prints it to stdout
-
-[source,clojure]
-----
-;; deps.edn
-{:deps {:org.clojure/clojure {:mvn/version "1.8.0"}}}
-----
-
-Note that `-S` can be combined with other `clj` options as well.
-
-== Connecting to S3 Maven repositories
-
-The clj script includes support for connecting to private S3 Maven repositories (thanks to the https://github.com/s3-wagon-private/s3-wagon-private[s3-wagon-private] and https://github.com/spring-projects/aws-maven[aws-wagon] projects).
-
-=== S3 repository
-
-In your deps.edn file, include the s3 repository root:
-
-[source,clojure]
-----
-{:deps {
-   my.library {:mvn/version "0.1.2"}
- }
- :mvn/repos {
-   "my-private-repo" {:url "s3://my-bucket/maven/releases"}
- }
-}
-----
-
-=== S3 credentials
-
-There are several ways to specify your AWS S3 credentials:
-
-1. Set the environment variables `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`.
-2. Create a default profile in the AWS credentials file `~/.aws/credentials` (older `~/.aws/config` also supported).
-3. Create a named profile in the AWS credentials file and set the environment variable `AWS_PROFILE` with its name.
-4. Amazon ECS container and instance profile credentials should also work, but have not been tested.
-
-For more information, most of the advice in http://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/credentials.html[this AWS document] describes how credentials are located. Note however that the Java system properties options will NOT work with the clojure scripts (but would work if using the tools.deps.alpha library directly).
+No. Other tools exist to do this now or could be added on top of the existing functionality but this was not part of the initial goal.
 
 == Glossary
 
@@ -367,74 +282,3 @@ A repository of library artifacts - e.g. Maven central or Clojars
 **Requires and imports**
 
 Mentions in source code of library (sub)components that must be in the classpath in order to succeed. namespace and package/class names are transformed into path components.
-
-== Environment
-
-The `clojure` and `clj` scripts rely on several directories and optionally on several environment variables. In general, as a new user of `clj`, you can ignore this section as everything is taken care of by default.
-
-* scripts directory
-** Created during installation
-** Contents:
-*** `bin/clojure` - main script
-*** `bin/clj` - wrapper script for interactive repl use (uses `rlwrap`)
-*** `deps.edn` - install level deps.edn file, with some default deps (Clojure, etc)
-*** `example-deps.edn` - commented example that gets copied to `<config_dir>/deps.edn`
-*** `libexec/clojure-scripts-X.Y.Z.jar` - uberjar invoked by `clojure` to construct classpaths
-* config directory
-** Can be created to hold a deps.edn file that carries across installation upgrades and takes affect across projects
-** Locations checked in this order:
-*** If `$CLJ_CONFIG` is set, then use `$CLJ_CONFIG` (explicit override)
-*** If `$XDG_CONFIG_HOME` is set, then use `$XDG_CONFIG_HOME/clojure` (follows Freedesktop conventions)
-*** Else use `$HOME/.clojure`
-** Contents:
-*** `deps.edn` - user deps file, defines default Clojure version and provider defaults
-* cache directory
-** Lazily created if `clojure` is invoked without a local `deps.edn` file. Locations checked in this order:
-*** If `$CLJ_CACHE` is set, then use `$CLJ_CACHE` (explicit override)
-*** If `$XDG_CACHE_HOME` is set, then use `$XDG_CACHE_HOME/clojure` (follows Freedesktop conventions)
-*** Else use `config_dir/.cpcache`
-** Contents:
-*** See the section below on classpath caching
-
-== Classpath caching
-
-Classpath files are cached in the current directory under `.cpcache/`. File are of two forms:
-
-* `.cpcache/<hash>.libs` - a `::lib-map` in the https://github.com/clojure/tools.deps.alpha/blob/master/src/main/clojure/clojure/tools/deps/alpha/specs.clj[specs], the output of running `resolve-deps`
-* `.cpcache/<hash>.cp` - a classpath string, the output of `make-classpath`
-
-where the `<hash>` is based on the config file paths, the resolve-aliases, and the classpath aliases.
-
-The cached classpath file is used when:
-
-* It exists
-* It is newer than `deps.edn`
-* It is newer than all of the existing config files
-
-== Links
-
-Resources:
-
-* "Dependency Heaven" talk from EuroClojure 2017 - http://cdn.cognitect.com/presentations/2017/dependency_heaven.pdf[slides], https://youtube.com/watch?v=sStlTye-Kjk[video]
-
-Repositories:
-
-* https://github.com/clojure/tools.deps.alpha[tools.deps.alpha] - library for walking dependencies and building classpaths
-* https://github.com/clojure/brew-install[brew-install] - the clojure scripts and brew formula
-
-== Frequently Asked Questions
-
-*Are these scripts and tools.deps.alpha done?*
-
-No. There are lots of known gaps and ideas still to implement. But it is useful now. :)
-
-*Is clj a replacement for lein and boot?*
-
-No. The clojure scripts are focused on a) building classpaths and b) launching clojure programs. They do not (and will not) create artifacts, deploy artifacts, etc. 
-
-tools.deps.alpha aims to provide programmatic building blocks for dependency resolution and classpath construction. clj/clojure wraps these into a command-line form that can be used to run Clojure programs. You can compose these pieces to do many other things.
-
-*Do these scripts allow you to dynamically add dependencies to a running repl?*
-
-No. Other tools exist to do this now or could be added on top of the existing functionality but this was not part of the initial goal.
-

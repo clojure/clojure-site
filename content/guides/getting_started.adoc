@@ -1,5 +1,5 @@
 = Getting Started
-Rich Hickey
+Alex Miller
 2016-01-14
 :type: guides
 :toc: macro
@@ -7,28 +7,57 @@ Rich Hickey
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
+toc::[]
+
 Welcome to Clojure!
 
-== Minimal Install
+There are several ways to get started using Clojure:
 
-Clojure requires only http://www.oracle.com/technetwork/java/javase/downloads/index.html[Java] 1.6 or greater, plus the Clojure JAR file itself.
+* Script installation
+* Build tools like Leiningen or Boot
+* Minimal installation
+* Local build
+* Try Clojure online
 
-<<xref/../../community/downloads#,Download>> and unzip Clojure. In the directory in which you expanded clojure.zip, run:
-[source,clojure]
+Once you've installed, check out <<learn/syntax#,Learn Clojure>> pages or <<xref/../../community/resources#,Resources>> page to get started with tutorials and resources on learning Clojure!
+
+== Script installation
+
+Clojure provides <<deps_and_cli#,scripts>> that can be used to start a Clojure repl, use Clojure and Java libraries, and start Clojure programs.
+
+=== Installation on Mac via `brew`
+
+The script can be installed with brew as follows:
+
+[source,shell]
 ----
-java -cp clojure-1.8.0.jar clojure.main
+# Latest stable version
+brew install clojure
+
+# Latest development version
+brew install --devel clojure
 ----
-This will bring up a read-eval-print loop (REPL). 
 
-* Note: This process will not work in the latest development version (1.9.0-alpha...) as Clojure has been split into several jars. More info to come when 1.9 releases.
+=== Installation on Linux
 
-== Try Clojure Online
+Package installers are not yet available but this process can be used to manually install the latest version of the `clj` script on a *nix system. First ensure that the following dependencies are installed: curl, rlwrap, and Java. Then use the following commands to download and run the installer script, which will create /usr/local/bin/clj, /usr/local/bin/clojure, and /usr/local/lib/clojure:
 
-This site provides a browser-based Clojure repl for interactive exploration:
+[source,shell]
+----
+curl -O https://download.clojure.org/install/linux-install.sh
+chmod +x linux-install.sh
+sudo ./linux-install.sh
+----
 
-* https://repl.it/languages/clojure[repl.it]
+=== Installation on Windows
 
-== Leiningen
+COMING SOON
+
+== Build tool
+
+Build tools provide a much wider range of capabilities for building, running, and deploying Clojure libraries and applications. The two most popular Clojure build tools are Leiningen and Boot.
+
+=== Leiningen
 
 https://leiningen.org/[Leiningen] is a build and project management tool written in Clojure and used pervasively throughout the Clojure community. Follow the instructions there to install Leiningen.
 
@@ -39,13 +68,51 @@ Once it's installed you can start a REPL with:
 lein repl
 ----
 
-== Boot
+=== Boot
 
-http://boot-clj.com/[Boot] is a build-focused DSL written in Clojure. Follow the Getting Started instructions to install Boot, then start a REPL with:
+http://boot-clj.com/[Boot] is a build-focused DSL written in Clojure. Follow the https://github.com/boot-clj/boot#install[Getting Started] instructions to install Boot, then start a REPL with:
 
 [source,shell]
 ----
 boot repl
 ----
 
-Check out the <<learn/syntax#,Learn Clojure>> pages or <<xref/../../community/resources#,Resources>> page to get started with tutorials and resources on learning Clojure!
+== Minimal Install
+
+Clojure requires http://www.oracle.com/technetwork/java/javase/downloads/index.html[Java] 1.6 or greater.
+
+For Clojure 1.8, you can download the Clojure jar and start a REPL:
+
+[source,shell]
+----
+curl -O http://central.maven.org/maven2/org/clojure/clojure/1.8.0/clojure-1.8.0.jar
+java -cp clojure-1.8.0.jar clojure.main
+----
+
+As of Clojure 1.9, Clojure depends on two additional libraries, so you need to download both Clojure and those libraries:
+
+[source,shell]
+----
+curl -O http://central.maven.org/maven2/org/clojure/clojure/1.9.0-RC2/clojure-1.9.0-RC2.jar
+curl -O http://central.maven.org/maven2/org/clojure/spec.alpha/0.1.143/spec.alpha-0.1.143.jar
+curl -O http://central.maven.org/maven2/org/clojure/core.specs.alpha/0.1.24/core.specs.alpha-0.1.24.jar
+java -cp clojure-1.9.0-RC2.jar:spec.alpha-0.1.143.jar:core.specs.alpha-0.1.24.jar clojure.main
+----
+
+== Local build
+
+You can build your own self-contained local jar using the Clojure Maven build:
+
+[source,shell]
+----
+git clone https://github.com/clojure/clojure.git
+cd clojure
+mvn -Plocal -Dmaven.test.skip=true package
+java -cp clojure.jar clojure.main
+----
+
+== Try Clojure Online
+
+This site provides a browser-based Clojure repl for interactive exploration:
+
+* https://repl.it/languages/clojure[repl.it]

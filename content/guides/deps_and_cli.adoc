@@ -58,7 +58,16 @@ Coordinates can take several forms depending on the coordinate type:
 *** Currently only `:deps` is supported
 * Local jar: `{:local/root "/path/to/file.jar"}`
 
-This list may expand in the future to cover other coordinate types and other manifest types.
+This list may expand in the future to cover other coordinate and manifest types.
+
+[source,clojure]
+----
+{
+ :deps {
+   org.clojure/clojure {:mvn/version "1.8.0"}
+ }
+}
+----
 
 === Paths
 

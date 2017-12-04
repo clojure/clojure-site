@@ -13,11 +13,11 @@ toc::[]
 
 The <<xref/../../../about/spec#,spec>> library specifies the structure of data, validates or destructures it, and can generate data based on the spec. 
 
-To use spec, declare a dependency on the latest alpha version of Clojure (or higher):
+To use spec, declare a dependency on Clojure 1.9:
 
 [source, clojure]
 ----
-[org.clojure/clojure "1.9.0-alpha16"]
+[org.clojure/clojure "1.9.0-RC2"]
 ----
 
 To start working with spec, require the `clojure.spec.alpha` namespace at the REPL:
@@ -219,7 +219,7 @@ In addition to `explain`, you can use https://clojure.github.io/spec.alpha/cloju
 
 [NOTE]
 ====
-This result also demonstrates the new namespace map literal syntax added in 1.9.0-alpha8. Maps may be prefixed with `\#:` or `#::` (for autoresolve) to specify a default namespace for all keys in the map. In this example, this is equivalent to `{:clojure.spec.alpha/problems ...}`
+This result also demonstrates the new namespace map literal syntax added in Clojure 1.9. Maps may be prefixed with `\#:` or `#::` (for autoresolve) to specify a default namespace for all keys in the map. In this example, this is equivalent to `{:clojure.spec.alpha/problems ...}`
 ====
 
 == Entity Maps

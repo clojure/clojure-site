@@ -387,7 +387,7 @@ If the keys in your map are namespaced keywords, you can also use destructuring 
 (def human {:person/name "Franklin"
             :person/age 25
             :hobby/hobbies "running"})
-(let [{:keys [:person/name :person/age :hobby/hobbies]} human]
+(let [{:keys [person/name person/age hobby/hobbies]} human]
   (println name "is" age "and likes" hobbies))
 ;= Franklin is 25 and likes running
 ----

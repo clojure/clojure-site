@@ -23,7 +23,7 @@ Clojure build tools have traditionally taken the approach of wrapping the Maven 
 As of 1.9, Clojure now provides:
 
 * https://github.com/clojure/tools.deps.alpha[tools.deps.alpha] - a library providing a functional API for resolving dependency graphs and building classpaths that can utilize both Maven and other providers of code or artifacts
-* Scripts (`clojure` and `clj`) that enable users to make use of this capability at the termainl to declare dependencies, assemble classpaths, and launch Clojure programs
+* Scripts (`clojure` and `clj`) that enable users to make use of this capability at the terminal to declare dependencies, assemble classpaths, and launch Clojure programs
 * System-specific installers for downloading the scripts, improving the "Getting Started" experience
 
 == Building classpaths with tools.deps.alpha
@@ -67,7 +67,7 @@ For example, this deps map specifies two (Maven-based) dependencies:
 }
 ----
 
-The lib map lists all libraries, their selected coordinates, the `:path` on disk, and a list of dependents that caused it to be included. Here you can see that `data.priority-map` was included as a dependency of core.cache.
+The lib map lists all libraries, their selected coordinates, the `:paths` on disk, and a list of dependents that caused it to be included. Here you can see that `data.priority-map` was included as a dependency of core.cache.
 
 The second `args-map` is a map of optional modifications to the standard expansion to account for common use cases: adding extra dependencies, overriding deps, and default deps. These can be used separately or together, or not at all:
 

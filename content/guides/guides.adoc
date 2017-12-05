@@ -9,16 +9,22 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 === Learning
 
 * <<getting_started#,Getting Started>>
+* <<learn/syntax#,Learn Clojure>>
+* <<faq#,FAQ>>
 
 === Language
 
-* <<weird_characters#,Characters>>
+* <<spec#,spec>>
+* <<weird_characters#,Reading Clojure Characters>>
+* <<destructuring#,Destructuring>>
 * <<threading_macros#,Threading Macros>>
 * <<comparators#,Comparators>>
 * <<reader_conditionals#,Reader Conditionals>>
-* <<core_async_go#,Go Block Best Practices>>
 
 === Tools
 
+* <<deps_and_cli#,Deps and CLI>>
+
 === Libraries
 
+* <<core_async_go#,Go Block Best Practices>>

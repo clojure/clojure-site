@@ -26,7 +26,7 @@ As of 1.9, Clojure now provides:
 * Scripts (`clojure` and `clj`) that enable users to make use of this capability at the termainl to declare dependencies, assemble classpaths, and launch Clojure programs
 * System-specific installers for downloading the scripts, improving the "Getting Started" experience
 
-== Building classpaths
+== Building classpaths with tools.deps.alpha
 
 The JVM classpath consists of a series of roots, either directory paths or the path to a jar file. Classes (and Clojure files) map via package or namespace to a path relative to a classpath root. For example, the `java.lang.String` class can be found at path `java/lang/String.class` and the `clojure.set` Clojure namespace may be found at paths `clojure/set.class` (for AOT), `clojure/set.clj`, or `clojure/set.cljc`. When the JVM needs to load one of these files it searches each root for the relative path and loads it when found.
 
@@ -136,9 +136,160 @@ The args-map includes support for modifications to be applied while making the c
 
 == Scripts
 
-=== Installation
+=== Configuration
 
-For installation, see the instructions in the <<xref/../../guides/getting_started#,Getting Started>> guide.
+==== Directories
+
+The scripts rely on several directories and optionally on several environment variables.
+
+* Installation directory
+** Created during installation
+** Contents:
+*** `bin/clojure` - main script
+*** `bin/clj` - wrapper script for interactive repl use (uses `rlwrap`)
+*** `deps.edn` - install level deps.edn file, with some default deps (Clojure, etc) and provider config
+*** `example-deps.edn` - commented example that gets copied to `<config_dir>/deps.edn`
+*** `libexec/clojure-scripts-X.Y.Z.jar` - uberjar invoked by `clojure` to construct classpaths
+* Config directory
+** Holds a deps.edn file that persists across script upgrades and affects all projects
+** Locations used in this order:
+*** If `$CLJ_CONFIG` is set, then use `$CLJ_CONFIG` (explicit override)
+*** If `$XDG_CONFIG_HOME` is set, then use `$XDG_CONFIG_HOME/clojure` (Freedesktop conventions)
+*** Else use `$HOME/.clojure` (most common)
+** Contents:
+*** `deps.edn` - user deps file, defines default Clojure version and provider defaults
+* Cache directory
+** Lazily created when `clojure` is invoked without a local `deps.edn` file. Locations used in this order:
+*** If `$CLJ_CACHE` is set, then use `$CLJ_CACHE` (explicit override)
+*** If `$XDG_CACHE_HOME` is set, then use `$XDG_CACHE_HOME/clojure` (Freedesktop conventions)
+*** Else use `config_dir/.cpcache` (most common)
+* Project directory
+** The current directory
+** Contents:
+*** `deps.edn` - optional project deps
+*** `.cpcache` - project cache directory, same as the user-level cache directory, created if there is a `deps.edn`
+
+==== deps.edn
+
+The configuration file format (in "deps.edn" files) is an edn map with top-level keys for `:deps`, `:paths`, and `:aliases`, plus provider-specific keys for configuring dependency sources.
+
+After installation, deps.edn configuration files can be found in (up to) three locations:
+
+- installation directory - created only at install time
+- config directory (often ~/.clojure) - modified to change cross-project (or no-project) defaults
+- the local directory - per-project settings
+
+The `deps.edn` files in each of these locations (if they exist) are merged to form one combined dependency configuration. The merge is done in the order above install/config/local, last one wins. The operation is essentially `merge-with merge`, except for the `:paths` key, where only the last one found is used (they are not combined).
+
+You can use the  `-Sverbose` option to see all of the actual directory locations.
+
+==== Dependencies
+
+Dependencies are declared in deps.edn with a top level key `:deps` - a map from library to coordinate. Libraries are symbols of the form <groupID>/<artifactId> or simply <id> if the group and artifact ID are the same.
+
+Coordinates can take several forms depending on the coordinate type:
+
+* Maven coordinate: `{:mvn/version "1.2.3"}`
+** Other optional keys: `:classifier`, `:extension`, `:exclusions`
+* Local project coordinate: `{:local/root "/path/to/project"}`
+** Optional key `:deps/manifest`
+*** Specifies the project manifest type
+*** Default is to auto-detect the project type (such as `:deps`, `:lein`, `:pom`)
+*** Currently only `:deps` is supported
+* Local jar: `{:local/root "/path/to/file.jar"}`
+* _Others may be added_
+
+[source,clojure]
+----
+{
+ :deps {
+   org.clojure/clojure {:mvn/version "1.8.0"}
+   ;; ... add more here
+ }
+}
+----
+
+==== Paths
+
+Paths are declared in a top level key `:paths` and is a vector of string paths (typically relative to the project root). These source paths will be included on the classpath.
+
+While dependency sets are merged across all of the configuration files, only the last paths found in one of the config files is used, prior ones are ignored.
+
+[source,clojure]
+----
+{
+ :paths ["src"]
+}
+----
+
+==== Aliases
+
+Aliases are defined in the `:aliases` section of the config file and are used to select sets of modifications to the `resolve-deps` or make-classpath steps. Aliases for `resolve-deps` modifications are selected with -R (which takes a concatenated list of alias keywords). Aliases for `make-classpath` modifications are selected with -C (also a concatenated list of alias keywords). The modifications from all aliases will be combined by merging in the order specified (last one wins).
+
+So given a deps.edn like:
+
+[source,clojure]
+----
+{:paths ["src"]
+ :deps {
+   org.clojure/clojure {:mvn/version "1.8.0"}
+ }
+ :aliases {
+   :1.7 {:override-deps {org.clojure/clojure {:mvn/version "1.7.0"}}}
+   :bench {:extra-deps {criterium/criterium {:mvn/version "0.4.4"}}}
+   :test {:extra-paths ["test"]}
+ }
+}
+----
+
+You can activate all three aliases to create a classpath that switches to an older Clojure version, adds the benchmarking library, and includes the test directory in the classpath to see how it changes the classpath:
+
+[source]
+----
+clj -R:1.7:bench -C:test -Spath
+----
+
+==== Providers
+
+Coordinates are interpreted by providers, which know how to determine dependencies for a library and download artifacts. tools.deps.alpha is designed to support an extensible set of providers that can expand over time. For now, two providers are available: `mvn` and `local`.
+
+The provider used is determined by examining the attributes of the coordinate and using the first attribute qualifier that's found (ignoring the reserved qualifier "deps"). For example, a Maven coordinate contains a `:mvn/version` attribute and a local coordinate contains a `:local/root` attribute.
+
+Providers may also have provider configuration attributes stored at the root of the configuration map under the same qualifier. The `mvn` provider will look for `:mvn/repos`. The installation deps.edn configures the default repos:
+
+[source,clojure]
+----
+{ ...
+  :mvn/repos {
+    "central" {:url "https://repo1.maven.org/maven2/"}
+    "clojars" {:url "https://repo.clojars.org/"}
+  }
+}
+----
+
+The scripts also provide support for connecting to private S3 Maven repositories (thanks to the https://github.com/s3-wagon-private/s3-wagon-private[s3-wagon-private] and https://github.com/spring-projects/aws-maven[aws-wagon] projects).
+
+Add a `:mvn/repos` that includes the s3 repository root:
+
+[source,clojure]
+----
+{:deps {
+   my.library {:mvn/version "0.1.2"}
+ }
+ :mvn/repos {
+   "my-private-repo" {:url "s3://my-bucket/maven/releases"}
+ }
+}
+----
+
+Specify your AWS S3 credentials using one of these mechanisms:
+
+1. Set the environment variables `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`.
+2. Create a default profile in the AWS credentials file `~/.aws/credentials` (older `~/.aws/config` also supported).
+3. Create a named profile in the AWS credentials file and set the environment variable `AWS_PROFILE` with its name.
+4. Amazon ECS container and instance profile credentials should also work, but have not been tested.
+
+For more information, most of the advice in http://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/credentials.html[this AWS document] describes how credentials are located. Note however that the Java system properties options will NOT work with the clojure scripts (but would work if using the tools.deps.alpha library directly).
 
 === Usage
 
@@ -181,54 +332,6 @@ path                Run a script from a file or resource
 -h, -?, --help      Print this help message and exit
 ----
 
-=== deps.edn
-
-The dependency configuration is stored in files named deps.edn. After installation, deps.edn configuration files can be found in (up to) three locations:
-
-- installation directory - created and modified only at install time
-- config directory (often ~/.clojure) - modified by you to change cross-project (or no-project) defaults
-- the local directory - for per-project settings
- 
-The deps.edn file is an instance of the `::deps-map` https://github.com/clojure/tools.deps.alpha/blob/master/src/main/clojure/clojure/tools/deps/alpha/specs.clj[spec]. 
-
-Example:
-
-[source,clojure]
-----
-{
- ;; Paths in project
- :paths ["src"]
-
- ;; Project dependencies, a map from lib to coordinate
- :deps {
-   org.clojure/clojure {:mvn/version "1.8.0"}
-   ring {:mvn/version "1.5.0"}
-   hiccup {:mvn/version "1.0.5"}
- }
-
- ;; Aliases that can be used with -R and -C
- :aliases {
-   ;; An alias that adds an extra dep to use for benchmarking: -R:bench
-   :bench {:extra-deps {criterium {:mvn/version "0.4.4"}}}
-
-   ;; An alias to override the default Clojure version: -R:1.9
-   :1.9 {:override-deps {org.clojure/clojure {:mvn/version "1.9.0-beta2"}}}
-
-   ;; A classpath override alias to use a local build of Clojure: -C:dev
-   :dev {:classpath-overrides {org.clojure/clojure "/Users/me/clojure/target/classes"}}
-
-   ;; Add extra paths to the classpath: -C:test
-   :test {:extra-paths ["test"]}
- }
-
- ;; Configure Maven repos - these are typical set in the system deps.edn only
- :mvn/repos {
-   "central" {:url "https://repo1.maven.org/maven2/"}
-   "clojars" {:url "https://clojars.org/repo/"}
- }
-}
-----
-
 === Classpath construction
 
 The following process is used to construct the classpath for invoking clojure.main:
@@ -262,66 +365,9 @@ The cached classpath file is used when:
 * It exists
 * It is newer than all `deps.edn` files
 
-=== Files and directories
+== Installation
 
-The `clojure` and `clj` scripts rely on several directories and optionally on several environment variables.
-
-* Installation directory
-** Created during installation
-** Contents:
-*** `bin/clojure` - main script
-*** `bin/clj` - wrapper script for interactive repl use (uses `rlwrap`)
-*** `deps.edn` - install level deps.edn file, with some default deps (Clojure, etc)
-*** `example-deps.edn` - commented example that gets copied to `<config_dir>/deps.edn`
-*** `libexec/clojure-scripts-X.Y.Z.jar` - uberjar invoked by `clojure` to construct classpaths
-* Config directory
-** Can be created to hold a deps.edn file that carries across installation upgrades and takes affect across projects
-** Locations checked in this order:
-*** If `$CLJ_CONFIG` is set, then use `$CLJ_CONFIG` (explicit override)
-*** If `$XDG_CONFIG_HOME` is set, then use `$XDG_CONFIG_HOME/clojure` (follows Freedesktop conventions)
-*** Else use `$HOME/.clojure`
-** Contents:
-*** `deps.edn` - user deps file, defines default Clojure version and provider defaults
-* Cache directory
-** Lazily created if `clojure` is invoked without a local `deps.edn` file. Locations checked in this order:
-*** If `$CLJ_CACHE` is set, then use `$CLJ_CACHE` (explicit override)
-*** If `$XDG_CACHE_HOME` is set, then use `$XDG_CACHE_HOME/clojure` (follows Freedesktop conventions)
-*** Else use `config_dir/.cpcache`
-* Project directory
-** The current directory
-** Contents:
-*** `deps.edn` - optional project deps
-*** `.cpcache` - project cache directory, same as the user-level cache directory, created if there is a `deps.edn`
-
-=== Connecting to S3 Maven repositories
-
-The clj script includes support for connecting to private S3 Maven repositories (thanks to the https://github.com/s3-wagon-private/s3-wagon-private[s3-wagon-private] and https://github.com/spring-projects/aws-maven[aws-wagon] projects).
-
-=== S3 repository
-
-In your deps.edn file, include the s3 repository root:
-
-[source,clojure]
-----
-{:deps {
-   my.library {:mvn/version "0.1.2"}
- }
- :mvn/repos {
-   "my-private-repo" {:url "s3://my-bucket/maven/releases"}
- }
-}
-----
-
-==== S3 credentials
-
-There are several ways to specify your AWS S3 credentials:
-
-1. Set the environment variables `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`.
-2. Create a default profile in the AWS credentials file `~/.aws/credentials` (older `~/.aws/config` also supported).
-3. Create a named profile in the AWS credentials file and set the environment variable `AWS_PROFILE` with its name.
-4. Amazon ECS container and instance profile credentials should also work, but have not been tested.
-
-For more information, most of the advice in http://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/credentials.html[this AWS document] describes how credentials are located. Note however that the Java system properties options will NOT work with the clojure scripts (but would work if using the tools.deps.alpha library directly).
+For script installation, see the instructions in the <<xref/../../guides/getting_started#,Getting Started>> guide.
 
 == Glossary
 

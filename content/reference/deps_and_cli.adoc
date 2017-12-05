@@ -136,9 +136,7 @@ The args-map includes support for modifications to be applied while making the c
 
 == Scripts
 
-=== Configuration
-
-==== Directories
+=== Directories
 
 The scripts rely on several directories and optionally on several environment variables.
 
@@ -169,7 +167,7 @@ The scripts rely on several directories and optionally on several environment va
 *** `deps.edn` - optional project deps
 *** `.cpcache` - project cache directory, same as the user-level cache directory, created if there is a `deps.edn`
 
-==== deps.edn
+=== deps.edn
 
 The configuration file format (in "deps.edn" files) is an edn map with top-level keys for `:deps`, `:paths`, and `:aliases`, plus provider-specific keys for configuring dependency sources.
 
@@ -183,7 +181,7 @@ The `deps.edn` files in each of these locations (if they exist) are merged to fo
 
 You can use the  `-Sverbose` option to see all of the actual directory locations.
 
-==== Dependencies
+=== Dependencies
 
 Dependencies are declared in deps.edn with a top level key `:deps` - a map from library to coordinate. Libraries are symbols of the form <groupID>/<artifactId> or simply <id> if the group and artifact ID are the same.
 
@@ -209,7 +207,7 @@ Coordinates can take several forms depending on the coordinate type:
 }
 ----
 
-==== Paths
+=== Paths
 
 Paths are declared in a top level key `:paths` and is a vector of string paths (typically relative to the project root). These source paths will be included on the classpath.
 
@@ -222,7 +220,7 @@ While dependency sets are merged across all of the configuration files, only the
 }
 ----
 
-==== Aliases
+=== Aliases
 
 Aliases are defined in the `:aliases` section of the config file and are used to select sets of modifications to the `resolve-deps` or make-classpath steps. Aliases for `resolve-deps` modifications are selected with -R (which takes a concatenated list of alias keywords). Aliases for `make-classpath` modifications are selected with -C (also a concatenated list of alias keywords). The modifications from all aliases will be combined by merging in the order specified (last one wins).
 
@@ -249,7 +247,7 @@ You can activate all three aliases to create a classpath that switches to an old
 clj -R:1.7:bench -C:test -Spath
 ----
 
-==== Providers
+=== Providers
 
 Coordinates are interpreted by providers, which know how to determine dependencies for a library and download artifacts. tools.deps.alpha is designed to support an extensible set of providers that can expand over time. For now, two providers are available: `mvn` and `local`.
 
@@ -365,7 +363,7 @@ The cached classpath file is used when:
 * It exists
 * It is newer than all `deps.edn` files
 
-== Installation
+== Installers
 
 For script installation, see the instructions in the <<xref/../../guides/getting_started#,Getting Started>> guide.
 

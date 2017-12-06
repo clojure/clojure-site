@@ -91,7 +91,7 @@ The second `args-map` is a map of optional modifications to the standard expansi
 
 [source,clojure]
 ----
-{:override-deps {org.clojure/clojure {:mvn/version "1.9.0-beta1"}}}
+{:override-deps {org.clojure/clojure {:mvn/version "1.9.0"}}}
 ----
 
 `:default-deps` provides a set of default coordinate versions to use if no coordinate is specified. The default deps can be used across a set of shared projects to act as a dependency management system:

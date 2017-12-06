@@ -19,7 +19,7 @@ Details on how to install the command line tools can be found on the <<getting_s
 
 == Running a REPL and using libraries
 
-When you download and install the tools, you can immediately start a REPL by running the `clj` tool:
+After you download and install the tools, you can start a REPL by running the `clj` tool:
 
 [source,shell]
 ----
@@ -85,7 +85,7 @@ You can use the same process to add other libraries to your `deps.edn` file and 
 
 == Writing a program
 
-Soon you may want to start building and saving your own code that makes use of these libraries. Consider the following program that uses clj-time:
+Soon you will want to build and save your own code that makes use of these libraries. Consider the following program that uses clj-time:
 
 [source,clojure]
 ----
@@ -106,7 +106,7 @@ Soon you may want to start building and saving your own code that makes use of t
 
 Following common conventions we'll create a `src` directory, and then create a subdirectory for each namespace segment, except for the last which becomes a `.clj` file. This file should thus be saved at `src/hello/world.clj`.
 
-We should also update our `deps.edn` file to include the source path:
+We should also update our `deps.edn` file to include the source directory path:
 
 [source,clojure]
 ----
@@ -118,7 +118,7 @@ We should also update our `deps.edn` file to include the source path:
 }
 ----
 
-The program is in the namespace `hello` and has a static entry point named `-main` that is suitable for external invocation. You can run this program using the `clj` tool like this:
+The program is in the namespace `hello.world` and has a static entry point named `-main` that is suitable for external invocation. You can run this program using the `clj` tool like this:
 
 [source,shell]
 ----
@@ -130,7 +130,7 @@ user=> (-main)
 Hello world, the time is 02:03 PM
 ----
 
-The `clj` tool can act as a Clojure program launcher by running the `-main` function of a namespace with the `-m` option:
+The `clj` tool can act as a Clojure program launcher by using the `-m` option, which refers to a namespace:
 
 [source,shell]
 ----
@@ -148,7 +148,7 @@ Hello world, the time is 02:05 PM
 
 == Using local libraries
 
-After a while you might decide to break a reusable library out of this application. The `clj` tool uses local coordinates to support projects that exist only on your local disk. Let's extract the clj-time parts of this application out into a library called hello/time.
+After a while you might decide to break a library out of this application. The `clj` tool uses local coordinates to support projects that exist only on your local disk. Let's extract the clj-time parts of this application out into a library called hello/time.
 
 In a new directory, use the deps.edn file you already have, and create a file `src/hello/time.clj`:
 

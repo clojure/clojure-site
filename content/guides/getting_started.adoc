@@ -11,22 +11,15 @@ toc::[]
 
 Welcome to Clojure!
 
-There are several ways to get started using Clojure:
-
-* Clojure installer and CLI tools
-* Local build
-* Try Clojure online
-* Build tools
-
-Once you've installed, check out <<learn/syntax#,Learn Clojure>> pages or <<xref/../../community/resources#,Resources>> page to find tutorials and resources for learning Clojure!
+Check out <<learn/syntax#,Learn Clojure>> pages or <<xref/../../community/resources#,Resources>> page to find tutorials and resources for learning the language!
 
 == Clojure installer and CLI tools
 
-Clojure provides <<deps_and_cli#,scripts>> that can be used to start a Clojure repl, use Clojure and Java libraries, and start Clojure programs. The best way to get started is by installing the tools using the platform installers.
+Clojure provides <<deps_and_cli#,command line tools>> that can be used to start a Clojure repl, use Clojure and Java libraries, and start Clojure programs.
 
 === Installation on Mac via `brew`
 
-The script can be installed with brew as follows:
+Install the command line tools with brew:
 
 [source,shell]
 ----
@@ -39,7 +32,8 @@ brew install --devel clojure
 
 === Installation on Linux
 
-Platform installers are not yet available but the process below can be used to manually install the latest version of the `clj` script on a *nix system. First ensure that the following dependencies are installed: curl, rlwrap, and Java. Then use the following commands to download and run the installer script, which will create /usr/local/bin/clj, /usr/local/bin/clojure, and /usr/local/lib/clojure:
+1. Ensure that the following dependencies are installed: curl, rlwrap, and Java.
+2. Use the linux-install script to download and run the install, which will create /usr/local/bin/clj, /usr/local/bin/clojure, and /usr/local/lib/clojure:
 
 [source,shell]
 ----
@@ -48,13 +42,17 @@ chmod +x linux-install.sh
 sudo ./linux-install.sh
 ----
 
+Platform installers (apt-get, etc) will be available in the future.
+
 === Installation on Windows
 
 Not yet available - see Leiningen or Boot instead.
 
-== Local build
+== Other ways to run Clojure
 
-You can build your own self-contained local jar from the Clojure source:
+*Local build*
+
+Download and build the Clojure source:
 
 [source,shell]
 ----
@@ -62,15 +60,19 @@ git clone https://github.com/clojure/clojure.git
 cd clojure
 ./antsetup.sh
 ant local
+----
+
+Then start the REPL with the local jar:
+
+[source,shell]
+----
 java -jar clojure.jar
 ----
 
-== Try Clojure Online
+*Try Clojure online*
 
-This site provides a browser-based Clojure repl for interactive exploration:
+https://repl.it/languages/clojure[repl.it] provides a browser-based Clojure repl for interactive exploration.
 
-* https://repl.it/languages/clojure[repl.it]
-
-== Build tools
+*Build tools*
 
 Build tools provide a range of capabilities for building, running, and deploying Clojure libraries and applications. The two most popular Clojure build tools are https://leiningen.org/[Leiningen] and http://boot-clj.com/[Boot].

@@ -14,9 +14,9 @@ Welcome to Clojure!
 There are several ways to get started using Clojure:
 
 * Clojure installer and CLI tools
-* Build tools like Leiningen or Boot
 * Local build
 * Try Clojure online
+* Build tools
 
 Once you've installed, check out <<learn/syntax#,Learn Clojure>> pages or <<xref/../../community/resources#,Resources>> page to find tutorials and resources for learning Clojure!
 
@@ -52,30 +52,6 @@ sudo ./linux-install.sh
 
 Not yet available - see Leiningen or Boot instead.
 
-== Build tool
-
-Build tools provide a much wider range of capabilities for building, running, and deploying Clojure libraries and applications. The two most popular Clojure build tools are Leiningen and Boot.
-
-=== Leiningen
-
-https://leiningen.org/[Leiningen] is a build and project management tool written in Clojure and used pervasively throughout the Clojure community. Follow the instructions there to install Leiningen.
-
-Once it's installed you can start a REPL with:
-
-[source,shell]
-----
-lein repl
-----
-
-=== Boot
-
-http://boot-clj.com/[Boot] is a build-focused DSL written in Clojure. Follow the https://github.com/boot-clj/boot#install[Getting Started] instructions to install Boot, then start a REPL with:
-
-[source,shell]
-----
-boot repl
-----
-
 == Local build
 
 You can build your own self-contained local jar using the Clojure Maven build:
@@ -94,3 +70,7 @@ java -jar clojure.jar
 This site provides a browser-based Clojure repl for interactive exploration:
 
 * https://repl.it/languages/clojure[repl.it]
+
+== Build tools
+
+Build tools provide a range of capabilities for building, running, and deploying Clojure libraries and applications. The two most popular Clojure build tools are https://leiningen.org/[Leiningen] and http://boot-clj.com/[Boot].

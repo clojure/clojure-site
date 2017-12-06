@@ -294,7 +294,7 @@ Specify local jar dependencies with a local coordinate that points directly to a
 {
  :deps {
    org.clojure/clojure {:mvn/version "1.9.0"}
-   oracle/driver {:local/root "/path/to/db/driver.jar"}
+   db/driver {:local/root "/path/to/db/driver.jar"}
  }
 }
 ----

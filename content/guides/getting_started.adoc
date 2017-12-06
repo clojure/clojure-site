@@ -54,7 +54,7 @@ Not yet available - see Leiningen or Boot instead.
 
 == Local build
 
-You can build your own self-contained local jar using the Clojure Maven build:
+You can build your own self-contained local jar from the Clojure source:
 
 [source,shell]
 ----

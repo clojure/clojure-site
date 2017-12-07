@@ -15,7 +15,16 @@ Clojure provides command line tools for:
 * Running Clojure programs
 * Evaluating Clojure expressions
 
-Details on how to install the command line tools can be found on the <<getting_started#,Getting Started>> page. A complete reference can be found on the <<xref/../../reference/deps_and_cli#,Deps and CLI>> reference page. Here we will demonstrate how to start working with the command line tools to interact with Clojure and use libraries.
+In all the above scenarios you might want to use other Clojure and Java libraries (dependencies or 'deps'). These may be libraries you are writing locally, projects in git (e.g. on github) or, commonly, libraries available in the Maven ecosystem and hosted by central repositories like Maven Central or Clojars.
+
+In all cases, using a library involves: +
+a) specifying which library you want to use, providing its name and other aspects like version +
+b) getting it (once) from the git or maven repositories to your local machine +
+c) making it available on the JVM classpath so Clojure can find it while your REPL or program is running +
+
+Clojure tools specify a syntax and file (deps.edn) for (a), given which they'll handle (b) and (c) automatically.
+
+See <<getting_started#,Getting Started>> for details on how to install the tools. Here we will demonstrate how to get started. See <<xref/../../reference/deps_and_cli#,Deps and CLI>> for a complete reference.
 
 == Running a REPL and using libraries
 
@@ -43,30 +52,12 @@ Please check that namespaces with dashes use underscores in the Clojure file nam
 
 The error message indicates that the `clj-time.core` namespace isn't on the JVM's classpath. The classpath specifies all of the places the JVM will look to load Clojure namespaces (or Java classes).
 
-Using a dep involves specifying which library (dependency or "dep") you want to use by providing its name and other aspects like version, getting it (once) from a repository to your local machine, and making it available on the JVM classpath so Clojure can find it while your REPL or program is running. Clojure tools specify a syntax and file (deps.edn) for dependencies and handle downloading the library and adding it to the classpath automatically.
-
-Exit the REPL by typing Ctrl-D at the prompt to return to the terminal.
- 
-Create a file in the current directory named `deps.edn`. This file is in the https://github.com/edn-format/edn[edn] data format, a subset of Clojure syntax. It contains a map with the well-known key `:deps` which is a map from library to coordinate:
+Exit the REPL by typing Ctrl-D at the prompt to return to the terminal. Create a file in the current directory named `deps.edn`. This file is in the https://github.com/edn-format/edn[edn] data format, a subset of Clojure syntax. It contains a map with the well-known key `:deps` which is a map from library to coordinate:
 
 [source,clojure]
 ----
-{
- :deps {
-   clj-time nil
- }
-}
-----
-
-The coordinate here is `nil` indicating to just use the newest version available. We could also select a specfic version by using a Maven coordinate:
-
-[source,clojure]
-----
-{ 
- :deps {
-   clj-time {:mvn/version "0.14.2"}
- }
-}
+{:deps
+ {clj-time {:mvn/version "0.14.2"}}}
 ----
 
 Restart the REPL with the `clj` tool and try again:
@@ -154,11 +145,8 @@ To create the dependency on the other local library, create a new `deps.edn` and
 
 [source,clojure]
 ----
-{
- :deps {
-   hello/time {:local/root "../time"}
- }
-}
+{:deps
+ {hello/time {:local/root "../time"}}}
 ----
 
 
@@ -171,14 +159,14 @@ clj -m hello.world
 Hello world, the time is 02:07 PM
 ----
 
+== Other examples
+
 As your program gets more involved you might need to create variations on the standard classpath. The Clojure tools supports classpath modifications using aliases, which are parts of the deps file that are only used when the corresponding alias is supplied. Some of the things you can do are:
 
 * <<deps_and_cli#extra_paths,Include a test source directory>>
 * <<deps_and_cli#extra_deps,Add an optional dependency>>
 * <<deps_and_cli#override_deps,Override a dependency version>>
 * <<deps_and_cli#local_jar,Use a local jar on disk>>
-
-== Other examples
 
 [[extra_paths]]
 === Include a test source directory
@@ -187,14 +175,11 @@ Typically, the project classpath includes only the project source, not its test 
 
 [source,clojure]
 ----
-{
- :deps {
-   org.clojure/core.async {:mvn/version "0.3.465"}
- }
- :aliases {
-   :test {:extra-paths ["test"]}
- }
-}
+{:deps
+ {org.clojure/core.async {:mvn/version "0.3.465"}}
+
+ :aliases
+ {:test {:extra-paths ["test"]}}}
 ----
 
 Apply that classpath modification and examine the modified classpath by invoking `clj -C:test -Spath`:
@@ -218,11 +203,8 @@ Aliases in the `deps.edn` file can also be used to add optional dependencies tha
 
 [source,clojure]
 ----
-{
- :aliases {
-   :bench {:extra-deps {criterium {:mvn/version "0.4.4"}}}
- }
-}
+{:aliases
+ {:bench {:extra-deps {criterium {:mvn/version "0.4.4"}}}}}
 ----
 
 Here the `:bench` alias is used to add an extra dependency, namely the criterium benchmarking library.
@@ -236,15 +218,12 @@ You can use multiple aliases in combination. For example this `deps.edn` file de
 
 [source,clojure]
 ----
-{
- :deps {
-   org.clojure/core.async {:mvn/version "0.3.465"}
- }
- :aliases {
-   :old-async {:override-deps {org.clojure/core.async {:mvn/version "0.3.426"}}}
-   :bench {:extra-deps {criterium {:mvn/version "0.4.4"}}}
- }
-}
+{:deps 
+ {org.clojure/core.async {:mvn/version "0.3.465"}}
+
+ :aliases
+ {:old-async {:override-deps {org.clojure/core.async {:mvn/version "0.3.426"}}}
+  :bench {:extra-deps {criterium {:mvn/version "0.4.4"}}}}}
 ----
 
 Activate both aliases as follows: `clj -R:bench:old-async`.
@@ -258,9 +237,6 @@ Specify local jar dependencies with a local coordinate that points directly to a
 
 [source,clojure]
 ----
-{
- :deps {
-   db/driver {:local/root "/path/to/db/driver.jar"}
- }
-}
+{:deps
+ {db/driver {:local/root "/path/to/db/driver.jar"}}}
 ----

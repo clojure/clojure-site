@@ -139,7 +139,7 @@ In a new directory, use the deps.edn file you already have, and create a file `s
     dt))
 ----
 
-Then our application is reduced to:
+Then the original application is reduced to:
 
 [source,clojure]
 ----

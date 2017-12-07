@@ -55,7 +55,6 @@ Restart the REPL with the `clj` tool:
 
 [source,clojure]
 ----
-$ cd hello-world
 $ clj
 Downloading: clj-time/clj-time/0.14.2/clj-time-0.14.2.pom from https://clojars.org/repo/
 Downloading: clj-time/clj-time/0.14.2/clj-time-0.14.2.jar from https://clojars.org/repo/

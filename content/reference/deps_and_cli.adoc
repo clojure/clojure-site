@@ -23,8 +23,8 @@ Clojure build tools have traditionally taken the approach of wrapping the Maven 
 As of 1.9, Clojure now provides:
 
 * https://github.com/clojure/tools.deps.alpha[tools.deps.alpha] - a library providing a functional API for resolving dependency graphs and building classpaths that can utilize both Maven and other providers of code or artifacts
-* Scripts (`clojure` and `clj`) that enable users to make use of this capability at the terminal to declare dependencies, assemble classpaths, and launch Clojure programs
-* System-specific installers for downloading the scripts, improving the "Getting Started" experience
+* Command line tools (`clojure` and `clj`) that enable users to make use of this capability at the terminal to declare dependencies, assemble classpaths, and launch Clojure programs
+* System-specific installers for downloading the tools, improving the "Getting Started" experience
 
 == Building classpaths with tools.deps.alpha
 
@@ -134,22 +134,22 @@ The args-map includes support for modifications to be applied while making the c
 }
 ----
 
-== Scripts
+== Command line tools
 
 === Directories
 
-The scripts rely on several directories and optionally on several environment variables.
+The tools rely on several directories and optionally on several environment variables.
 
 * Installation directory
 ** Created during installation
 ** Contents:
-*** `bin/clojure` - main script
-*** `bin/clj` - wrapper script for interactive repl use (uses `rlwrap`)
+*** `bin/clojure` - main tool
+*** `bin/clj` - wrapper for interactive repl use (uses `rlwrap`)
 *** `deps.edn` - install level deps.edn file, with some default deps (Clojure, etc) and provider config
 *** `example-deps.edn` - commented example that gets copied to `<config_dir>/deps.edn`
-*** `libexec/clojure-scripts-X.Y.Z.jar` - uberjar invoked by `clojure` to construct classpaths
+*** `libexec/clojure-tools-X.Y.Z.jar` - uberjar invoked by `clojure` to construct classpaths
 * Config directory
-** Holds a deps.edn file that persists across script upgrades and affects all projects
+** Holds a deps.edn file that persists across tool upgrades and affects all projects
 ** Locations used in this order:
 *** If `$CLJ_CONFIG` is set, then use `$CLJ_CONFIG` (explicit override)
 *** If `$XDG_CONFIG_HOME` is set, then use `$XDG_CONFIG_HOME/clojure` (Freedesktop conventions)
@@ -265,7 +265,7 @@ Providers may also have provider configuration attributes stored at the root of 
 }
 ----
 
-The scripts also provide support for connecting to private S3 Maven repositories (thanks to the https://github.com/s3-wagon-private/s3-wagon-private[s3-wagon-private] and https://github.com/spring-projects/aws-maven[aws-wagon] projects).
+The tools also provide support for connecting to private S3 Maven repositories (thanks to the https://github.com/s3-wagon-private/s3-wagon-private[s3-wagon-private] and https://github.com/spring-projects/aws-maven[aws-wagon] projects).
 
 Add a `:mvn/repos` that includes the s3 repository root:
 
@@ -287,7 +287,7 @@ Specify your AWS S3 credentials using one of these mechanisms:
 3. Create a named profile in the AWS credentials file and set the environment variable `AWS_PROFILE` with its name.
 4. Amazon ECS container and instance profile credentials should also work, but have not been tested.
 
-For more information, most of the advice in http://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/credentials.html[this AWS document] describes how credentials are located. Note however that the Java system properties options will NOT work with the clojure scripts (but would work if using the tools.deps.alpha library directly).
+For more information, most of the advice in http://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/credentials.html[this AWS document] describes how credentials are located. Note however that the Java system properties options will NOT work with the command line tools (but would work if using the tools.deps.alpha library directly).
 
 === Usage
 
@@ -296,7 +296,7 @@ Usage:
 * `clojure [dep-opt*] [init-opt*] [main-opt] [arg*]`
 * `clj     [dep-opt*] [init-opt*] [main-opt] [arg*]`
 
-The clojure script is a runner for Clojure. clj is a wrapper for interactive repl use. These scripts ultimately construct and invoke a command-line of the form:
+The clojure tool is a runner for Clojure. clj is a wrapper for interactive repl use. These tools ultimately construct and invoke a command-line of the form:
 
 `java [java-opt*] -cp classpath clojure.main [init-opt*] [main-opt] [arg*]`
 
@@ -365,7 +365,7 @@ The cached classpath file is used when:
 
 == Installers
 
-For script installation, see the instructions in the <<xref/../../guides/getting_started#,Getting Started>> guide.
+For tools installation, see the instructions in the <<xref/../../guides/getting_started#,Getting Started>> guide.
 
 == Glossary
 

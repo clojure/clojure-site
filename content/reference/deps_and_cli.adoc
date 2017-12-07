@@ -42,29 +42,25 @@ image:/images/content/guides/deps/cp.jpg["Classpath Process",height="300"]
 
 The deps are a map of library to coordinate. The library is (in Maven terms) the groupId and artifactId, which are sufficient to locate the desired project. The coordinate is used to describe a particular version that is being requested from a particular provider (like Maven).
 
-For example, this deps map specifies two (Maven-based) dependencies:
+For example, this deps map specifies a (Maven-based) dependency:
 
 [source,clojure]
 ----
-{
-  org.clojure/clojure {:mvn/version "1.9.0"}
-  org.clojure/core.cache {:mvn/version "0.6.5"}
-}
+{org.clojure/core.cache {:mvn/version "0.6.5"}}
 ----
 
 `resolve-deps` expands these dependencies to include all transitive dependencies, cut cycles, resolve version differences, download required artifacts from the provider, and produce a *lib map* of the flattened set of all needed dependencies and where to find their artifacts:
 
 [source,clojure]
 ----
-{
- org.clojure/clojure           {:mvn/version "1.8.0"
-                                :paths [".../clojure-1.8.0.jar"]}
- org.clojure/core.cache        {:mvn/version "0.6.5"
-                                :paths [".../core.cache-0.6.5.jar"]} 
- org.clojure/data.priority-map {:mvn/version "0.0.7"
-                                :paths [".../data.priority-map-0.0.7"]
-                                :dependents [org.clojure/core.cache]}
-}
+{org.clojure/core.cache        {:mvn/version "0.6.5",
+                                :deps/manifest :mvn,
+                                :paths [".../core.cache-0.6.5.jar"]}
+ org.clojure/data.priority-map {:mvn/version "0.0.7",
+                                :deps/manifest :mvn,
+                                :dependents [org.clojure/core.cache],
+                                :paths [".../data.priority-map-0.0.7.jar"]} 
+ ... }
 ----
 
 The lib map lists all libraries, their selected coordinates, the `:paths` on disk, and a list of dependents that caused it to be included. Here you can see that `data.priority-map` was included as a dependency of core.cache.
@@ -73,11 +69,9 @@ The second `args-map` is a map of optional modifications to the standard expansi
 
 [source,clojure]
 ----
-{
- :extra-deps { ... }
+{:extra-deps { ... }
  :override-deps { ... }
- :default-deps { ... }
-}
+ :default-deps { ... }}
 ----
 
 `:extra-deps` is the most common modification - it allows you to optionally add extra dependencies to the base dependency set. The value is a map of library to coordinate:
@@ -111,10 +105,8 @@ The args-map includes support for modifications to be applied while making the c
 
 [source,clojure]
 ----
-{
- :extra-paths [ ... ]
- :classpath-overrides { ... }
-}
+{:extra-paths [ ... ]
+ :classpath-overrides { ... }}
 ----
 
 `:extra-paths` is used to include source paths in addition to your standard source paths, for example to include directories of test source:
@@ -128,10 +120,8 @@ The args-map includes support for modifications to be applied while making the c
 
 [source,clojure]
 ----
-{:classpath-overrides {
-  org.clojure/clojure "/my/clojure/target"
- }
-}
+{:classpath-overrides 
+ {org.clojure/clojure "/my/clojure/target"}}
 ----
 
 == Command line tools
@@ -199,12 +189,10 @@ Coordinates can take several forms depending on the coordinate type:
 
 [source,clojure]
 ----
-{
- :deps {
-   org.clojure/clojure {:mvn/version "1.8.0"}
-   ;; ... add more here
- }
-}
+{:deps
+ {org.clojure/tools.reader {:mvn/version "1.1.1"}
+  ;; ... add more here
+ }}
 ----
 
 === Paths
@@ -215,9 +203,7 @@ While dependency sets are merged across all of the configuration files, only the
 
 [source,clojure]
 ----
-{
- :paths ["src"]
-}
+{:paths ["src"]}
 ----
 
 === Aliases
@@ -229,15 +215,11 @@ So given a deps.edn like:
 [source,clojure]
 ----
 {:paths ["src"]
- :deps {
-   org.clojure/clojure {:mvn/version "1.8.0"}
- }
- :aliases {
-   :1.7 {:override-deps {org.clojure/clojure {:mvn/version "1.7.0"}}}
-   :bench {:extra-deps {criterium/criterium {:mvn/version "0.4.4"}}}
-   :test {:extra-paths ["test"]}
- }
-}
+ :deps {}
+ :aliases
+ {:1.7 {:override-deps {org.clojure/clojure {:mvn/version "1.7.0"}}}
+  :bench {:extra-deps {criterium/criterium {:mvn/version "0.4.4"}}}
+  :test {:extra-paths ["test"]}}}
 ----
 
 You can activate all three aliases to create a classpath that switches to an older Clojure version, adds the benchmarking library, and includes the test directory in the classpath to see how it changes the classpath:
@@ -257,12 +239,9 @@ Providers may also have provider configuration attributes stored at the root of 
 
 [source,clojure]
 ----
-{ ...
-  :mvn/repos {
-    "central" {:url "https://repo1.maven.org/maven2/"}
-    "clojars" {:url "https://repo.clojars.org/"}
-  }
-}
+{:mvn/repos
+ {"central" {:url "https://repo1.maven.org/maven2/"}
+  "clojars" {:url "https://repo.clojars.org/"}}}
 ----
 
 The tools also provide support for connecting to private S3 Maven repositories (thanks to the https://github.com/s3-wagon-private/s3-wagon-private[s3-wagon-private] and https://github.com/spring-projects/aws-maven[aws-wagon] projects).
@@ -271,13 +250,10 @@ Add a `:mvn/repos` that includes the s3 repository root:
 
 [source,clojure]
 ----
-{:deps {
-   my.library {:mvn/version "0.1.2"}
- }
- :mvn/repos {
-   "my-private-repo" {:url "s3://my-bucket/maven/releases"}
- }
-}
+{:deps
+ {my.library {:mvn/version "0.1.2"}}
+ :mvn/repos
+ {"my-private-repo" {:url "s3://my-bucket/maven/releases"}}}
 ----
 
 Specify your AWS S3 credentials using one of these mechanisms:

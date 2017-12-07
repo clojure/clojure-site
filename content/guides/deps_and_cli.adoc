@@ -67,9 +67,7 @@ You will see messages about a library being downloaded the first time you use a 
 
 == Writing a program
 
-Soon you will want to build and save your own code that makes use of these libraries. Create a directory `hello-world` and change to that directory. By default, the `clj` tool will look for source files in the `src` directory, so create the `src` directory and declare your program at `src/hello.clj`.
-
-Consider the following program that uses clj-time:
+Soon you will want to build and save your own code that makes use of these libraries. Create a directory `hello-world` and change to that directory. By default, the `clj` tool will look for source files in the `src` directory, so create the `src` directory and declare your program at `src/hello.clj`:
 
 [source,clojure]
 ----

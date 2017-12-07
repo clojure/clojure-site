@@ -41,7 +41,7 @@ Once in the REPL you can type Clojure expressions and press enter to evaluate th
 
 There are many Clojure and Java libraries available that provide access to practically any functionality you might need. For example, consider the commonly used Clojure library https://github.com/clj-time/clj-time[clj-time] for working with dates and times.
 
-To work with this library, it needs to be declared as a dependency so that the tool can ensure it has been downloaded and added to the classpath. The readme in most projects shows the name and version, such as `[clj-time "0.14.2"]`.
+To work with this library, declare it as a dependency so the tool can ensure it has been downloaded and added to the classpath. The readme in most projects shows the name and version, such as `[clj-time "0.14.2"]`.
 
 Create a `deps.edn` file to declare a dependency using the library name and version:
 

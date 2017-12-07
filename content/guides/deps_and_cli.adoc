@@ -41,9 +41,7 @@ Once in the REPL you can type Clojure expressions and press enter to evaluate th
 
 There are many Clojure and Java libraries available that provide access to practically any functionality you might need. For example, consider the commonly used Clojure library https://github.com/clj-time/clj-time[clj-time] for working with dates and times.
 
-To work with this library, declare it as a dependency so the tool can ensure it has been downloaded and added to the classpath. The readme in most projects shows the name and version, such as `[clj-time "0.14.2"]`.
-
-Create a `deps.edn` file to declare a dependency using the library name and version:
+To work with this library, you need to declare it as a dependency so the tool can ensure it has been downloaded and add it to the classpath. The readme in most projects shows the name and version, such as `[clj-time "0.14.2"]`. Create a `deps.edn` file to declare the dependency:
 
 [source,clojure]
 ----
@@ -108,19 +106,18 @@ You might decide to move part of this application into a library. The `clj` tool
 ├── hello-time
 │   ├── deps.edn
 │   └── src
-│       └── hello
-│           └── time.clj
+│       └── hello_time.clj
 └── hello-world
     ├── deps.edn
     └── src
         └── hello.clj
 ----
 
-Under hello-time, use a copy of the deps.edn file you already have, and create a file `src/hello/time.clj`:
+Under hello-time, use a copy of the deps.edn file you already have, and create a file `src/hello_time.clj`:
 
 [source,clojure]
 ----
-(ns hello.time
+(ns hello-time
   (:require [clj-time.core :as t]
             [clj-time.format :as f]))
 
@@ -141,8 +138,8 @@ Update the application at hello-world/src/hello.clj to use our library instead:
 
 [source,clojure]
 ----
-(ns hello.world
-  (:require [hello.time :as ht]))
+(ns hello
+  (:require [hello-time :as ht]))
 
 (defn -main []
   (println "Hello world, the time is" (ht/time-str (ht/now))))
@@ -160,7 +157,7 @@ You can then test everything from the hello-world directory by running the appli
 
 [source,shell]
 ----
-$ clj -m hello.world
+$ clj -m hello
 Hello world, the time is 02:07 PM
 ----
 

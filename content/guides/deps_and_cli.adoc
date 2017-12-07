@@ -30,7 +30,9 @@ user=>
 
 Once in the REPL you can type Clojure expressions and press enter to evaluate them.
 
-There are many Clojure and Java libraries available that provide access to practically any functionality you might need. Java includes several libraries for time and date handling, but you might find some code on the Internet for the commonly used Clojure https://github.com/clj-time/clj-time[clj-time] library:
+There are many Clojure and Java libraries available that provide access to practically any functionality you might need. These may be libraries you are writing locally, projects in git (e.g. on github) or, commonly, libraries available in the Maven ecosystem and hosted by central repositories like Maven central or Clojars. 
+
+For example, consider the commonly used Clojure library https://github.com/clj-time/clj-time[clj-time] for working with dates and times. If you tried to use it at the REPL, it would fail:
 
 [source,clojure]
 ----
@@ -41,11 +43,11 @@ Please check that namespaces with dashes use underscores in the Clojure file nam
 
 The error message indicates that the `clj-time.core` namespace isn't on the JVM's classpath. The classpath specifies all of the places the JVM will look to load Clojure namespaces (or Java classes).
 
-The `clj` tool provides a means to configure which libraries you want to use by creating a configuration file named `deps.edn`. Exit the REPL by typing Ctrl-D at the prompt to return to the terminal.
+Using a dep involves specifying which library (dependency or "dep") you want to use by providing its name and other aspects like version, getting it (once) from a repository to your local machine, and making it available on the JVM classpath so Clojure can find it while your REPL or program is running. Clojure tools specify a syntax and file (deps.edn) for dependencies and handle downloading the library and adding it to the classpath automatically.
 
-The deps file declares dependencies as a map from library to coordinate (the version of the library to use). Libraries are published and downloaded from web sites that conform to a well-known layout known as a "Maven repository". Maven repositories identify libraries using a combination of groupId and artifactId which together form a qualified library identifier like `org.clojure/core.async`. Some Clojure libraries (particularly those published in the Clojars repository) use the same name for both. In that case you can just refer to the artifactId without the qualifier: `clj-time` (the fully-qualified `clj-time/clj-time` is also acceptable).
+Exit the REPL by typing Ctrl-D at the prompt to return to the terminal.
  
-Create a file in the current directory named `deps.edn`. This file is in the https://github.com/edn-format/edn[edn] data format, which is a subset of Clojure syntax. It contains a map with the well-known key `:deps` which is a map from library to coordinate:
+Create a file in the current directory named `deps.edn`. This file is in the https://github.com/edn-format/edn[edn] data format, a subset of Clojure syntax. It contains a map with the well-known key `:deps` which is a map from library to coordinate:
 
 [source,clojure]
 ----
@@ -56,9 +58,7 @@ Create a file in the current directory named `deps.edn`. This file is in the htt
 }
 ----
 
-The coordinate can be used to specify a version. Here we have used `nil` to leave the coordinate blank - this tells the `clj` tool to find the newest version available.
-
-We could also select a specfic version by using a Maven version coordinate:
+The coordinate here is `nil` indicating to just use the newest version available. We could also select a specfic version by using a Maven coordinate:
 
 [source,clojure]
 ----
@@ -69,7 +69,7 @@ We could also select a specfic version by using a Maven version coordinate:
 }
 ----
 
-Restart the REPL and try again:
+Restart the REPL with the `clj` tool and try again:
 
 [source,clojure]
 ----
@@ -104,33 +104,9 @@ Soon you will want to build and save your own code that makes use of these libra
   (println "Hello world, the time is" (time-str (t/now))))
 ----
 
-Following common conventions we'll create a `src` directory, and then create a subdirectory for each namespace segment, except for the last which becomes a `.clj` file. This file should thus be saved at `src/hello/world.clj`.
+By default, the `clj` tool will look for source files in the `src` directory, so Clojure will look for a file with this namespace at `src/hello/world.clj`.
 
-We should also update our `deps.edn` file to include the source directory path:
-
-[source,clojure]
-----
-{
- :paths ["src"]
- :deps {
-   clj-time {:mvn/version "0.14.2"}
- }
-}
-----
-
-The program is in the namespace `hello.world` and has a static entry point named `-main` that is suitable for external invocation. You can run this program using the `clj` tool like this:
-
-[source,shell]
-----
-$ clj
-Clojure 1.9.0
-user=> (use 'hello.world)
-nil
-user=> (-main)
-Hello world, the time is 02:03 PM
-----
-
-The `clj` tool can act as a Clojure program launcher by using the `-m` option, which refers to a namespace:
+This program has a static entry point named `-main` that is suitable for external invocation. The `clj` tool can act as a Clojure program launcher by using the `-m` option, which specifies the namespace to run:
 
 [source,shell]
 ----
@@ -138,17 +114,9 @@ $ clj -m hello.world
 Hello world, the time is 02:04 PM
 ----
 
-And finally, the `clj` tool can also evaluate one or more expressions directly from the command line:
-
-[source,shell]
-----
-$ clj -e "(use 'hello.world) (-main)"
-Hello world, the time is 02:05 PM
-----
-
 == Using local libraries
 
-After a while you might decide to break a library out of this application. The `clj` tool uses local coordinates to support projects that exist only on your local disk. Let's extract the clj-time parts of this application out into a library called hello/time.
+After a while you might decide to break part of this application out as a library. The `clj` tool uses local coordinates to support projects that exist only on your local disk. Let's extract the clj-time parts of this application out into a library called hello/time.
 
 In a new directory, use the deps.edn file you already have, and create a file `src/hello/time.clj`:
 
@@ -182,19 +150,18 @@ Then our application is reduced to:
   (println "Hello world, the time is" (ht/time-str (ht/now))))
 ----
 
-To create the dependency on the other local project, create a new `deps.edn`:
+To create the dependency on the other local library, create a new `deps.edn` and use a local coordinate to refer to the root directory of the hello/time library.:
 
 [source,clojure]
 ----
 {
- :paths ["src"]
  :deps {
    hello/time {:local/root "../time"}
  }
 }
 ----
 
-Where the local coordinate refers to the root directory of the hello/time library.
+
 
 You can then test everything by running the application:
 
@@ -204,7 +171,7 @@ clj -m hello.world
 Hello world, the time is 02:07 PM
 ----
 
-As your program gets more involved you might need to create variations on the standard classpath. The Clojure tools support these using aliases, which are parts of the deps file that are only used when the corresponding alias is supplied. Some of the things you can do are:
+As your program gets more involved you might need to create variations on the standard classpath. The Clojure tools supports classpath modifications using aliases, which are parts of the deps file that are only used when the corresponding alias is supplied. Some of the things you can do are:
 
 * <<deps_and_cli#extra_paths,Include a test source directory>>
 * <<deps_and_cli#extra_deps,Add an optional dependency>>
@@ -280,7 +247,7 @@ You can use multiple aliases in combination. For example this `deps.edn` file de
 }
 ----
 
-Activate both aliases as follows: `clj -R:bench:old-sync`.
+Activate both aliases as follows: `clj -R:bench:old-async`.
 
 [[local_jar]]
 === Include a local jar on disk
@@ -293,7 +260,6 @@ Specify local jar dependencies with a local coordinate that points directly to a
 ----
 {
  :deps {
-   org.clojure/clojure {:mvn/version "1.9.0"}
    db/driver {:local/root "/path/to/db/driver.jar"}
  }
 }

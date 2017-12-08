@@ -26,7 +26,7 @@ Clojure integrates spec via two new libraries (still in alpha):
 
 This modularization facilitates refinement of spec separate from the Clojure release cycle.
 
-The command line tools (<<xref/../../../../../guides/deps_and_cli#,guide>>, <<xref/../../../../../reference/deps_and_cli#,reference) provide:
+The command line tools (<<xref/../../../../../guides/deps_and_cli#,guide>>, <<xref/../../../../../reference/deps_and_cli#,reference>>) provide:
 
 * Quick and easy install
 * Clojure REPL and runner

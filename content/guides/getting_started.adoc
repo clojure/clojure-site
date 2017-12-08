@@ -23,11 +23,7 @@ Install the command line tools with brew:
 
 [source,shell]
 ----
-# Latest stable version
 brew install clojure
-
-# Latest development version
-brew install --devel clojure
 ----
 
 === Installation on Linux

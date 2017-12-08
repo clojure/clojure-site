@@ -17,10 +17,11 @@ Clojure provides command line tools for:
 
 In all the above scenarios you might want to use other Clojure and Java libraries (dependencies or 'deps'). These may be libraries you are writing locally, projects in git (e.g. on GitHub) or, commonly, libraries available in the Maven ecosystem and hosted by central repositories like Maven Central or Clojars.
 
-In all cases, using a library involves: +
-a) specifying which library you want to use, providing its name and other aspects like version +
-b) getting it (once) from the git or maven repositories to your local machine +
-c) making it available on the JVM classpath so Clojure can find it while your REPL or program is running +
+In all cases, using a library involves:
+
+a. specifying which library you want to use, providing its name and other aspects like version
+b. getting it (once) from the git or maven repositories to your local machine
+c. making it available on the JVM classpath so Clojure can find it while your REPL or program is running
 
 Clojure tools specify a syntax and file (deps.edn) for (a), given which they'll handle (b) and (c) automatically.
 
@@ -98,10 +99,10 @@ Hello world, the time is 02:04 PM
 
 == Using local libraries
 
-You might decide to move part of this application into a library. The `clj` tool uses local coordinates to support projects that exist only on your local disk. Let's extract the clj-time parts of this application out into a library in a parallel directory hello-time. The final structure will look something like this:
+You might decide to move part of this application into a library. The `clj` tool uses local coordinates to support projects that exist only on your local disk. Let's extract the clj-time parts of this application out into a library in a parallel directory time-lib. The final structure will look something like this:
 
 ----
-├── hello-time
+├── time-lib
 │   ├── deps.edn
 │   └── src
 │       └── hello_time.clj
@@ -111,7 +112,7 @@ You might decide to move part of this application into a library. The `clj` tool
         └── hello.clj
 ----
 
-Under hello-time, use a copy of the deps.edn file you already have, and create a file `src/hello_time.clj`:
+Under time-lib, use a copy of the deps.edn file you already have, and create a file `src/hello_time.clj`:
 
 [source,clojure]
 ----
@@ -132,7 +133,7 @@ Under hello-time, use a copy of the deps.edn file you already have, and create a
     dt))
 ----
 
-Update the application at hello-world/src/hello.clj to use our library instead:
+Update the application at hello-world/src/hello.clj to use your library instead:
 
 [source,clojure]
 ----
@@ -143,12 +144,12 @@ Update the application at hello-world/src/hello.clj to use our library instead:
   (println "Hello world, the time is" (ht/time-str (ht/now))))
 ----
 
-Modify hello-world/deps.edn to use a local coordinate that refers to the root directory of the hello-time library (make sure to update the path for your machine):
+Modify hello-world/deps.edn to use a local coordinate that refers to the root directory of the time-lib library (make sure to update the path for your machine):
 
 [source,clojure]
 ----
 {:deps
- {hello-time {:local/root "/path/to/hello-time"}}}
+ {time-lib {:local/root "/path/to/time-lib"}}}
 ----
 
 You can then test everything from the hello-world directory by running the application:

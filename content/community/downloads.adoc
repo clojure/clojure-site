@@ -29,7 +29,7 @@ Modify the dependencies and repositories sections of your https://leiningen.org/
 [source,clojure]
 ----
 ; under dependencies, select the release of clojure that you want
-:dependencies [[org.clojure/clojure "1.8.0"]]
+:dependencies [[org.clojure/clojure "1.9.0"]]
 
 ----
 == Where did Clojure Contrib go?

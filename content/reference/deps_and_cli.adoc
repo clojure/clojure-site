@@ -32,7 +32,8 @@ The JVM classpath consists of a series of roots, either directory paths or the p
 
 We divide the process of building a classpath into two primary operations: `resolve-deps` and `make-classpath`. Below is a high-level view of this process:
 
-image:/images/content/guides/deps/deps.jpg["Dep Tools",width="800"]
+
+image::/images/content/guides/deps/deps.svg["Dep Tools", link="/images/content/guides/deps/deps.svg"]
 
 === resolve-deps
 

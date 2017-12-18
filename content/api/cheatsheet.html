@@ -4,7 +4,7 @@ type=page
 status=published
 ~~~~~~
 
-<h2>Clojure 1.9 Cheat Sheet (v42)</h2>
+<h2>Clojure 1.9 Cheat Sheet (v43)</h2>
 
 <p><a href="https://github.com/jafingerhut/clojure-cheatsheets/blob/master/pdf/cheatsheet-usletter-color.pdf?raw=true">Download PDF version</a> / <a href="https://jafingerhut.github.io/">Source repo</a></p>
 
@@ -1088,10 +1088,6 @@ default-comparator.">ordering-map</a> (clojure.data.int-map/) <a href="https://g
               </tr>
             </tbody>
           </table>
-        </div><!-- /section -->
-      </div><!-- /column -->
-      <div class="column">
-        <div class="section">
           <h3>Queues (conj at end, peek &amp; pop from beginning)</h3>
           <table>
             <tbody>
@@ -1121,6 +1117,10 @@ default-comparator.">ordering-map</a> (clojure.data.int-map/) <a href="https://g
               </tr>
             </tbody>
           </table>
+        </div><!-- /section -->
+      </div><!-- /column -->
+      <div class="column">
+        <div class="section">
           <h3>Relations (set of maps, each with same keys, aka rels)</h3>
           <table>
             <tbody>
@@ -1938,7 +1938,406 @@ transaction,
           </table>
         </div><!-- /section -->
         <div class="section">
-          <h2>Spec</h2>
+          <h2>Spec (<a href="https://clojure.org/about/spec">rationale</a>, <a href="https://clojure.org/guidess/spec">guide</a>)</h2>
+          <table>
+            <tbody>
+              <tr class="odd">
+                <td>Operations</td>
+                <td><code><a href="https://clojuredocs.org/clojure_core/clojure.spec/valid_q" title="clojure.spec.alpha/valid?
+([spec x] [spec x form])
+  Helper function that returns true when x is valid for spec.">valid?</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/conform" title="clojure.spec.alpha/conform
+([spec x])
+  Given a spec and a value, returns :clojure.spec.alpha/invalid
+	if value does not match spec, else the (possibly destructured) value.">conform</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/unform" title="clojure.spec.alpha/unform
+([spec x])
+  Given a spec and a value created by or compliant with a call to
+  'conform' with the same spec, returns a value with all conform
+  destructuring undone.">unform</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/explain" title="clojure.spec.alpha/explain
+([spec x])
+  Given a spec and a value that fails to conform, prints an explanation to
+*out*.">explain</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/explain-data" title="clojure.spec.alpha/explain-data
+([spec x])
+  Given a spec and a value x which ought to conform, returns nil if x
+  conforms, else a map with at least the key ::problems whose value is
+  a collection of problem-maps, where problem-map has at least :path :pred and
+:val
+  keys describing the predicate and the value that failed at that
+  path.">explain-data</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/explain-str" title="clojure.spec.alpha/explain-str
+([spec x])
+  Given a spec and a value that fails to conform, returns an explanation as a
+string.">explain-str</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/explain-out" title="clojure.spec.alpha/explain-out
+([ed])
+  Prints explanation data (per 'explain-data') to *out* using the printer in
+*explain-out*,
+   by default explain-printer.">explain-out</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/form" title="clojure.spec.alpha/form
+([spec])
+  returns the spec as data">form</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/describe" title="clojure.spec.alpha/describe
+([spec])
+  returns an abbreviated description of the spec as data">describe</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/assert" title="clojure.spec.alpha/assert
+([spec x])
+Macro
+  spec-checking assert expression. Returns x if x is valid? according
+to spec, else throws an ex-info with explain-data plus ::failure of
+:assertion-failed.
+
+Can be disabled at either compile time or runtime:
+
+If *compile-asserts* is false at compile time, compiles to x. Defaults
+to value of 'clojure.spec.compile-asserts' system property, or true if
+not set.
+
+If (check-asserts?) is false at runtime, always returns x. Defaults to
+value of 'clojure.spec.check-asserts' system property, or false if not
+set. You can toggle check-asserts? with (check-asserts bool).">assert</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/check-asserts" title="clojure.spec.alpha/check-asserts
+([flag])
+  Enable or disable spec asserts that have been compiled
+with '*compile-asserts*' true.  See 'assert'.
+
+Initially set to boolean value of clojure.spec.check-asserts
+system property. Defaults to false.">check-asserts</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/check-asserts_q" title="clojure.spec.alpha/check-asserts?
+([])
+  Returns the value set by check-asserts.">check-asserts?</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>Generator ops</td>
+                <td><code><a href="https://clojuredocs.org/clojure_core/clojure.spec/gen" title="clojure.spec.alpha/gen
+([spec] [spec overrides])
+  Given a spec, returns the generator for it, or throws if none can
+  be constructed. Optionally an overrides map can be provided which
+  should map spec names or paths (vectors of keywords) to no-arg
+  generator-creating fns. These will be used instead of the generators at those
+  names/paths. Note that parent generator (in the spec or overrides
+  map) will supersede those of any subtrees. A generator for a regex
+  op must always return a sequential collection (i.e. a generator for
+  s/? should return either an empty sequence/vector or a
+  sequence/vector with one item in it)">gen</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/exercise" title="clojure.spec.alpha/exercise
+([spec] [spec n] [spec n overrides])
+  generates a number (default 10) of values compatible with spec and maps
+conform over them,
+  returning a sequence of [val conformed-val] tuples. Optionally takes
+  a generator overrides map as per gen">exercise</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/exercise-fn" title="clojure.spec.alpha/exercise-fn
+([sym] [sym n] [sym-or-f n fspec])
+  exercises the fn named by sym (a symbol) by applying it to
+  n (default 10) generated samples of its args spec. When fspec is
+  supplied its arg spec is used, and sym-or-f can be a fn.  Returns a
+  sequence of tuples of [args ret].">exercise-fn</a></code></td>
+              </tr>
+              <tr class="odd">
+                <td>Defn. &amp; registry</td>
+                <td><code><a href="https://clojuredocs.org/clojure_core/clojure.spec/def" title="clojure.spec.alpha/def
+([k spec-form])
+Macro
+  Given a namespace-qualified keyword or resolvable symbol k, and a
+  spec, spec-name, predicate or regex-op makes an entry in the
+  registry mapping k to the spec">def</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/fdef" title="clojure.spec.alpha/fdef
+([fn-sym &amp; specs])
+Macro
+  Takes a symbol naming a function, and one or more of the following:
+
+  :args A regex spec for the function arguments as they were a list to be
+    passed to apply - in this way, a single spec can handle functions with
+    multiple arities
+  :ret A spec for the function's return value
+  :fn A spec of the relationship between args and ret - the
+    value passed is {:args conformed-args :ret conformed-ret} and is
+    expected to contain predicates that relate those values
+
+  Qualifies fn-sym with resolve, or using *ns* if no resolution found.
+  Registers an fspec in the global registry, where it can be retrieved
+  by calling get-spec with the var or fully-qualified symbol.
+
+  Once registered, function specs are included in doc, checked by
+  instrument, tested by the runner clojure.spec.test.alpha/check, and (if
+  a macro) used to explain errors during macroexpansion.
+
+  Note that :fn specs require the presence of :args and :ret specs to
+  conform values, and so :fn specs will be ignored if :args or :ret
+  are missing.
+
+[ documentation truncated.  Click link for the rest. ]">fdef</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/registry" title="clojure.spec.alpha/registry
+([])
+  returns the registry map, prefer 'get-spec' to lookup a spec by name">registry</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/get-spec" title="clojure.spec.alpha/get-spec
+([k])
+  Returns spec registered for keyword/symbol/var k, or nil.">get-spec</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/spec_q" title="clojure.spec.alpha/spec?
+([x])
+  returns x if x is a spec object, else logical false">spec?</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/spec" title="clojure.spec.alpha/spec
+([form &amp; {:keys [gen]}])
+Macro
+  Takes a single predicate form, e.g. can be the name of a predicate,
+  like even?, or a fn literal like #(&lt; % 42). Note that it is not
+  generally necessary to wrap predicates in spec when using the rest
+  of the spec macros, only to attach a unique generator
+
+  Can also be passed the result of one of the regex ops -
+  cat, alt, *, +, ?, in which case it will return a regex-conforming
+  spec, useful when nesting an independent regex.
+  ---
+
+  Optionally takes :gen generator-fn, which must be a fn of no args that
+  returns a test.check generator.
+
+  Returns a spec.">spec</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/with-gen" title="clojure.spec.alpha/with-gen
+([spec gen-fn])
+  Takes a spec and a no-arg, generator-returning fn and returns a version of
+that spec that uses that generator">with-gen</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>Logical</td>
+                <td><code><a href="https://clojuredocs.org/clojure_core/clojure.spec/and" title="clojure.spec.alpha/and
+([&amp; pred-forms])
+Macro
+  Takes predicate/spec-forms, e.g.
+
+  (s/and even? #(&lt; % 42))
+
+  Returns a spec that returns the conformed value. Successive
+  conformed values propagate through rest of predicates.">and</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/or" title="clojure.spec.alpha/or
+([&amp; key-pred-forms])
+Macro
+  Takes key+pred pairs, e.g.
+
+  (s/or :even even? :small #(&lt; % 42))
+
+  Returns a destructuring spec that returns a map entry containing the
+  key of the first matching pred and the corresponding value. Thus the
+  'key' and 'val' functions can be used to refer generically to the
+  components of the tagged return.">or</a></code></td>
+              </tr>
+              <tr class="odd">
+                <td>Collection</td>
+                <td><code><a href="https://clojuredocs.org/clojure_core/clojure.spec/coll-of" title="clojure.spec.alpha/coll-of
+([pred &amp; opts])
+Macro
+  Returns a spec for a collection of items satisfying pred. Unlike
+  'every', coll-of will exhaustively conform every value.
+
+  Same options as 'every'. conform will produce a collection
+  corresponding to :into if supplied, else will match the input collection,
+  avoiding rebuilding when possible.
+
+  See also - every, map-of">coll-of</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/map-of" title="clojure.spec.alpha/map-of
+([kpred vpred &amp; opts])
+Macro
+  Returns a spec for a map whose keys satisfy kpred and vals satisfy
+  vpred. Unlike 'every-kv', map-of will exhaustively conform every
+  value.
+
+  Same options as 'every', :kind defaults to map?, with the addition of:
+
+  :conform-keys - conform keys as well as values (default false)
+
+  See also - every-kv">map-of</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/every" title="clojure.spec.alpha/every
+([pred &amp; {:keys [into kind count max-count min-count distinct gen-max gen], :as
+opts}])
+Macro
+  takes a pred and validates collection elements against that pred.
+
+  Note that 'every' does not do exhaustive checking, rather it samples
+  *coll-check-limit* elements. Nor (as a result) does it do any
+  conforming of elements. 'explain' will report at most *coll-error-limit*
+  problems.  Thus 'every' should be suitable for potentially large
+  collections.
+
+  Takes several kwargs options that further constrain the collection:
+
+  :kind - a pred/spec that the collection type must satisfy, e.g. vector?
+        (default nil) Note that if :kind is specified and :into is
+        not, this pred must generate in order for every to generate.
+  :count - specifies coll has exactly this count (default nil)
+  :min-count, :max-count - coll has count (&lt;= min-count count max-count)
+(defaults nil)
+  :distinct - all the elements are distinct (default nil)
+
+  And additional args that control gen
+
+  :gen-max - the maximum coll size to generate (default 20)
+
+[ documentation truncated.  Click link for the rest. ]">every</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/every-kv" title="clojure.spec.alpha/every-kv
+([kpred vpred &amp; opts])
+Macro
+  like 'every' but takes separate key and val preds and works on associative
+collections.
+
+  Same options as 'every', :into defaults to {}
+
+  See also - map-of">every-kv</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/keys" title="clojure.spec.alpha/keys
+([&amp; {:keys [req req-un opt opt-un gen]}])
+Macro
+  Creates and returns a map validating spec. :req and :opt are both
+  vectors of namespaced-qualified keywords. The validator will ensure
+  the :req keys are present. The :opt keys serve as documentation and
+  may be used by the generator.
+
+  The :req key vector supports 'and' and 'or' for key groups:
+
+  (s/keys :req [::x ::y (or ::secret (and ::user ::pwd))] :opt [::z])
+
+  There are also -un versions of :req and :opt. These allow
+  you to connect unqualified keys to specs.  In each case, fully
+  qualfied keywords are passed, which name the specs, but unqualified
+  keys (with the same name component) are expected and checked at
+  conform-time, and generated during gen:
+
+  (s/keys :req-un [:my.ns/x :my.ns/y])
+
+  The above says keys :x and :y are required, and will be validated
+  and generated by specs (if they exist) named :my.ns/x :my.ns/y
+  respectively.
+
+  In addition, the values of *all* namespace-qualified keys will be validated
+
+[ documentation truncated.  Click link for the rest. ]">keys</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/merge" title="clojure.spec.alpha/merge
+([&amp; pred-forms])
+Macro
+  Takes map-validating specs (e.g. 'keys' specs) and
+  returns a spec that returns a conformed map satisfying all of the
+  specs.  Unlike 'and', merge can generate maps satisfying the
+  union of the predicates.">merge</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>Regex</td>
+                <td><code><a href="https://clojuredocs.org/clojure_core/clojure.spec/cat" title="clojure.spec.alpha/cat
+([&amp; key-pred-forms])
+Macro
+  Takes key+pred pairs, e.g.
+
+  (s/cat :e even? :o odd?)
+
+  Returns a regex op that matches (all) values in sequence, returning a map
+  containing the keys of each pred and the corresponding value.">cat</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/alt" title="clojure.spec.alpha/alt
+([&amp; key-pred-forms])
+Macro
+  Takes key+pred pairs, e.g.
+
+  (s/alt :even even? :small #(&lt; % 42))
+
+  Returns a regex op that returns a map entry containing the key of the
+  first matching pred and the corresponding value. Thus the
+  'key' and 'val' functions can be used to refer generically to the
+  components of the tagged return">alt</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/*" title="clojure.spec.alpha/*
+([pred-form])
+Macro
+  Returns a regex op that matches zero or more values matching
+  pred. Produces a vector of matches iff there is at least one match">*</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/%2B" title="clojure.spec.alpha/+
+([pred-form])
+Macro
+  Returns a regex op that matches one or more values matching
+  pred. Produces a vector of matches">+</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/_q" title="clojure.spec.alpha/?
+([pred-form])
+Macro
+  Returns a regex op that matches zero or one value matching
+  pred. Produces a single value (not a collection) if matched.">?</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/%26" title="clojure.spec.alpha/&amp;
+([re &amp; preds])
+Macro
+  takes a regex op re, and predicates. Returns a regex-op that consumes
+  input as per re but subjects the resulting value to the
+  conjunction of the predicates, and any conforming they might perform.">&amp;</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/keys*" title="clojure.spec.alpha/keys*
+([&amp; kspecs])
+Macro
+  takes the same arguments as spec/keys and returns a regex op that matches
+sequences of key/values,
+  converts them into a map, and conforms that map with a corresponding
+  spec/keys call:
+
+  user=&gt; (s/conform (s/keys :req-un [::a ::c]) {:a 1 :c 2})
+  {:a 1, :c 2}
+  user=&gt; (s/conform (s/keys* :req-un [::a ::c]) [:a 1 :c 2])
+  {:a 1, :c 2}
+
+  the resulting regex op can be composed into a larger regex:
+
+  user=&gt; (s/conform (s/cat :i1 integer? :m (s/keys* :req-un [::a ::c]) :i2
+integer?) [42 :a 1 :c 2 :d 4 99])
+  {:i1 42, :m {:a 1, :c 2, :d 4}, :i2 99}">keys*</a></code></td>
+              </tr>
+              <tr class="odd">
+                <td>Range</td>
+                <td><code><a href="https://clojuredocs.org/clojure_core/clojure.spec/int-in" title="clojure.spec.alpha/int-in
+([start end])
+Macro
+  Returns a spec that validates fixed precision integers in the
+  range from start (inclusive) to end (exclusive).">int-in</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/inst-in" title="clojure.spec.alpha/inst-in
+([start end])
+Macro
+  Returns a spec that validates insts in the range from start
+(inclusive) to end (exclusive).">inst-in</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/double-in" title="clojure.spec.alpha/double-in
+([&amp; {:keys [infinite? NaN? min max], :or {infinite? true, NaN? true}, :as m}])
+Macro
+  Specs a 64-bit floating point number. Options:
+
+    :infinite? - whether +/- infinity allowed (default true)
+    :NaN?      - whether NaN allowed (default true)
+    :min       - minimum value (inclusive, default none)
+    :max       - maximum value (inclusive, default none)">double-in</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/int-in-range_q" title="clojure.spec.alpha/int-in-range?
+([start end val])
+  Return true if start &lt;= val, val &lt; end and val is a fixed
+  precision integer.">int-in-range?</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/inst-in-range_q" title="clojure.spec.alpha/inst-in-range?
+([start end inst])
+  Return true if inst at or after start and before end">inst-in-range?</a></code></td>
+              </tr>
+              <tr class="even">
+                <td>Other</td>
+                <td><code><a href="https://clojuredocs.org/clojure_core/clojure.spec/nilable" title="clojure.spec.alpha/nilable
+([pred])
+Macro
+  returns a spec that accepts nil and values satisfying pred">nilable</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/multi-spec" title="clojure.spec.alpha/multi-spec
+([mm retag])
+Macro
+  Takes the name of a spec/predicate-returning multimethod and a
+  tag-restoring keyword or fn (retag).  Returns a spec that when
+  conforming or explaining data will pass it to the multimethod to get
+  an appropriate spec. You can e.g. use multi-spec to dynamically and
+  extensibly associate specs with 'tagged' data (i.e. data where one
+  of the fields indicates the shape of the rest of the structure).
+
+  (defmulti mspec :tag)
+
+  The methods should ignore their argument and return a predicate/spec:
+  (defmethod mspec :int [_] (s/keys :req-un [::tag ::i]))
+
+  retag is used during generation to retag generated values with
+  matching tags. retag can either be a keyword, at which key the
+  dispatch-tag will be assoc'ed, or a fn of generated value and
+  dispatch-tag that should return an appropriately retagged value.
+
+  Note that because the tags themselves comprise an open set,
+  the tag key spec cannot enumerate the values, but can e.g.
+  test for keyword?.
+
+  Note also that the dispatch values of the multimethod will be
+
+[ documentation truncated.  Click link for the rest. ]">multi-spec</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/fspec" title="clojure.spec.alpha/fspec
+([&amp; {:keys [args ret fn gen], :or {ret (quote clojure.core/any?)}}])
+Macro
+  takes :args :ret and (optional) :fn kwargs whose values are preds
+  and returns a spec whose conform/explain take a fn and validates it
+  using generative testing. The conformed value is always the fn itself.
+
+  See 'fdef' for a single operation that creates an fspec and
+  registers it, as well as a full description of :args, :ret and :fn
+
+  fspecs can generate functions that validate the arguments and
+  fabricate a return value compliant with the :ret spec, ignoring
+  the :fn spec if present.
+
+  Optionally takes :gen generator-fn, which must be a fn of no args
+  that returns a test.check generator.">fspec</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/conformer" title="clojure.spec.alpha/conformer
+([f] [f unf])
+Macro
+  takes a predicate function with the semantics of conform i.e. it should return
+either a
+  (possibly converted) value or :clojure.spec.alpha/invalid, and returns a
+  spec that uses it as a predicate/conformer. Optionally takes a
+  second fn that does unform of result of first">conformer</a></code></td>
+              </tr>
+              <tr class="odd">
+                <td>Custom explain</td>
+                <td><code><a href="https://clojuredocs.org/clojure_core/clojure.spec/explain-printer" title="clojure.spec.alpha/explain-printer
+([ed])
+  Default printer for explain-data. nil indicates a successful validation.">explain-printer</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/*explain-out*" title="clojure.spec.alpha/*explain-out*">*explain-out*</a></code></td>
+              </tr>
+            </tbody>
+          </table>
           <h3>Predicates with test.check generators</h3>
           <table>
             <tbody>

@@ -168,7 +168,7 @@ x isn't 5 or 10
 
 === `dotimes`
 
-* Evaluate expresson _n_ times
+* Evaluate expression _n_ times
 * Returns `nil`
 
 [source, clojure]

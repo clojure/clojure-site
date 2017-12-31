@@ -9,6 +9,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 == Stable Release: 1.9.0 (Dec 8, 2017)
 
+* See: <<xref/../../guides/getting_started#,Getting Started>>
 * https://repo1.maven.org/maven2/org/clojure/clojure/1.9.0/[Clojure 1.9.0]
 * https://github.com/clojure/clojure/blob/master/changes.md[Changelog]
 * Requirements: Java 1.6+ (recommended: Java 1.8+)

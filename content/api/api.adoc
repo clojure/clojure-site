@@ -53,6 +53,8 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 * https://clojure.github.io/tools.analyzer/[tools.analyzer] Analyzer framework for Clojure code 
 * https://clojure.github.io/tools.analyzer.jvm/[tools.analyzer.jvm] JVM-specific passes for tools.analyzer
 * https://clojure.github.io/tools.cli/[tools.cli] Command-line argument processor
+* https://clojure.github.io/tools.deps.alpha/[tools.deps.alpha] Tools for dependency management and classpath construction
+* https://clojure.github.io/tools.gitlibs/[tools.gitlibs] Tools for retrieving, caching, and using git-based projects
 * https://clojure.github.io/tools.emitter.jvm/[tools.emitter.jvm] JVM bytecode generator
 * https://clojure.github.io/tools.logging/[tools.logging] Logging tools 
 * https://clojure.github.io/tools.macro/[tools.macro] Tools for macro writers

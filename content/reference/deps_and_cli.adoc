@@ -186,12 +186,22 @@ Coordinates can take several forms depending on the coordinate type:
 *** Default is to auto-detect the project type (such as `:deps`, `:lein`, `:pom`)
 *** Currently only `:deps` is supported
 * Local jar: `{:local/root "/path/to/file.jar"}`
-* _Others may be added_
+* Git coordinate: `{:git/url "https://github.com/user/project.git", :rev "tag-name"}`
+** The `:git/url` can be one of the following:
+*** https - secure anonymous access to public repos
+*** ssh or user@host form urls (including GitHub) - ssh-based access (see Git configuration section)
+*** http, git protocol - insecure, not recommended
+** The `:rev` attribute can be one of the following:
+*** A full sha
+*** A partial prefix sha, sufficiently unique in the repo
+*** An annotated tag name
+*** Note: Branch names should not be used!
 
 [source,clojure]
 ----
 {:deps
  {org.clojure/tools.reader {:mvn/version "1.1.1"}
+  sally/awesome {:git/url "https://github.com/sally/awesome.git", :rev "awesome-1.2.3"}
   ;; ... add more here
  }}
 ----
@@ -230,20 +240,22 @@ You can activate all three aliases to create a classpath that switches to an old
 clj -R:1.7:bench -C:test -Spath
 ----
 
-=== Providers
+=== Procurers
 
-Coordinates are interpreted by providers, which know how to determine dependencies for a library and download artifacts. tools.deps.alpha is designed to support an extensible set of providers that can expand over time. For now, two providers are available: `mvn` and `local`.
+Coordinates are interpreted by procurers, which know how to determine dependencies for a library and download artifacts. tools.deps.alpha is designed to support an extensible set of procurers that can expand over time. Currently the available procurers are: `mvn`,  `local`, and `git`.
 
-The provider used is determined by examining the attributes of the coordinate and using the first attribute qualifier that's found (ignoring the reserved qualifier "deps"). For example, a Maven coordinate contains a `:mvn/version` attribute and a local coordinate contains a `:local/root` attribute.
+The procurer to use is determined by examining the attributes of the coordinate and using the first attribute qualifier that's found (ignoring the reserved qualifier "deps"). For example, a Maven coordinate contains a `:mvn/version` attribute and a local coordinate contains a `:local/root` attribute.
 
-Providers may also have provider configuration attributes stored at the root of the configuration map under the same qualifier. The `mvn` provider will look for `:mvn/repos`. The installation deps.edn configures the default repos:
+Procurers may also have configuration attributes stored at the root of the configuration map under the same qualifier. The `mvn` procurer will look for `:mvn/repos`. The installation deps.edn configures the default Maven repos:
 
 [source,clojure]
 ----
 {:mvn/repos
  {"central" {:url "https://repo1.maven.org/maven2/"}
-  "clojars" {:url "https://repo.clojars.org/"}}}
+  "clojars" {:url "https://clojars.org/repo"}}}
 ----
+
+==== Maven private S3 repos
 
 The tools also provide support for connecting to private S3 Maven repositories (thanks to the https://github.com/s3-wagon-private/s3-wagon-private[s3-wagon-private] and https://github.com/spring-projects/aws-maven[aws-wagon] projects).
 
@@ -265,6 +277,32 @@ Specify your AWS S3 credentials using one of these mechanisms:
 4. Amazon ECS container and instance profile credentials should also work, but have not been tested.
 
 For more information, most of the advice in http://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/credentials.html[this AWS document] describes how credentials are located. Note however that the Java system properties options will NOT work with the command line tools (but would work if using the tools.deps.alpha library directly).
+
+==== Git configuration
+
+The supported git url protocols are https and ssh. https repos will be access anonymously and require no additional authentication information. This approach is recommended for public repos.
+
+ssh repos may be either public or private. Access to a git repo via ssh requires an ssh keypair. The private key of this keypair may or may not have a passphrase. The Clojure tools will connect to and use your ssh agent to validate your ssh key. On *nix, this is typically ssh-agent and on Windows it is Pageant/PuTTY. 
+
+You can verify that your ssh agent is running and has a registered identity using:
+
+[source,shell]
+----
+$ ssh-add -l
+2048 SHA256:S2SMY1YRTRFg3sqsMy1eTve4ag78XEzhbzzdVxZroDk /Users/me/.ssh/id_rsa (RSA)
+----
+
+Which should list at least one identity, typically the key at `~/.ssh/id_rsa`. If no identities are listed, you can add one. This will prompt you for your private key passphrase if your keypair is stored with one:
+
+[source,shell]
+----
+$ ssh-add ~/.ssh/id_rsa
+Enter passphrase for /Users/me/.ssh/id_rsa: 
+----
+
+Tip: If you have forgotten your passphrase, and you're using Mac OS X, you may be able to recover it via the keychain. Open Keychain Access, search for `id_rsa`, click "Show password", then enter your OS X user password to retrieve it.
+
+Note: user/password authentication is not supported for any protocol.
 
 === Usage
 

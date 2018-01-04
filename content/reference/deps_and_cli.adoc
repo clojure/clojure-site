@@ -186,22 +186,21 @@ Coordinates can take several forms depending on the coordinate type:
 *** Default is to auto-detect the project type (such as `:deps`, `:lein`, `:pom`)
 *** Currently only `:deps` is supported
 * Local jar: `{:local/root "/path/to/file.jar"}`
-* Git coordinate: `{:git/url "https://github.com/user/project.git", :rev "tag-name"}`
+* Git coordinate: `{:git/url "https://github.com/user/project.git", :rev "sha-or-tag"}`
 ** The `:git/url` can be one of the following:
 *** https - secure anonymous access to public repos
 *** ssh or user@host form urls (including GitHub) - ssh-based access (see Git configuration section)
-*** http, git protocol - insecure, not recommended
 ** The `:rev` attribute can be one of the following:
 *** A full sha
 *** A partial prefix sha, sufficiently unique in the repo
-*** An annotated tag name
-*** Note: Branch names should not be used!
+*** A tag name
+*** Note: Branch names should not be used! revs should always refer to a fixed commit
 
 [source,clojure]
 ----
 {:deps
  {org.clojure/tools.reader {:mvn/version "1.1.1"}
-  sally/awesome {:git/url "https://github.com/sally/awesome.git", :rev "awesome-1.2.3"}
+  github-sally/awesome {:git/url "https://github.com/sally/awesome.git", :rev "awesome-1.2.3"}
   ;; ... add more here
  }}
 ----
@@ -280,11 +279,11 @@ For more information, most of the advice in http://docs.aws.amazon.com/sdk-for-j
 
 ==== Git configuration
 
-The supported git url protocols are https and ssh. https repos will be access anonymously and require no additional authentication information. This approach is recommended for public repos.
+The supported git url protocols are https and ssh. https repos will be accessed anonymously and require no additional authentication information. This approach is recommended for public repos.
 
-ssh repos may be either public or private. Access to a git repo via ssh requires an ssh keypair. The private key of this keypair may or may not have a passphrase. The Clojure tools will connect to and use your ssh agent to validate your ssh key. On *nix, this is typically ssh-agent and on Windows it is Pageant/PuTTY. 
-
-You can verify that your ssh agent is running and has a registered identity using:
+ssh repos may be either public or private. Access to a git repo via ssh requires an ssh keypair. The private key of this keypair may or may not have a passphrase. ssh authentication works by connecting to the local ssh agent (ssh-agent on *nix or Pageant via PuTTY on Windows).
+The ssh-agent must have a registered identity for the key being used to access the Git repository.
+To check whether you have registered identities, use:
 
 [source,shell]
 ----
@@ -292,17 +291,14 @@ $ ssh-add -l
 2048 SHA256:S2SMY1YRTRFg3sqsMy1eTve4ag78XEzhbzzdVxZroDk /Users/me/.ssh/id_rsa (RSA)
 ----
 
-Which should list at least one identity, typically the key at `~/.ssh/id_rsa`. If no identities are listed, you can add one. This will prompt you for your private key passphrase if your keypair is stored with one:
+which should return one or more registered identities, typically the one at `~/.ssh/id_rsa`.
 
-[source,shell]
-----
-$ ssh-add ~/.ssh/id_rsa
-Enter passphrase for /Users/me/.ssh/id_rsa: 
-----
+For more information on creating keys and using the ssh-agent to manage your ssh identities, GitHub provides excellent info:
 
-Tip: If you have forgotten your passphrase, and you're using Mac OS X, you may be able to recover it via the keychain. Open Keychain Access, search for `id_rsa`, click "Show password", then enter your OS X user password to retrieve it.
+* https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/
+* https://help.github.com/articles/working-with-ssh-key-passphrases/
 
-Note: user/password authentication is not supported for any protocol.
+_Note: user/password authentication is not supported for any protocol._
 
 === Usage
 
@@ -404,7 +400,7 @@ Dependency types:
 
 * maven artifacts
 * unversioned libraries - a file location identifying a jar or directory root
-* git coordinates (later)
+* git coordinates
 
 **Classpath (and roots/paths)**
 
@@ -435,7 +431,7 @@ This occurs when the dependency expansion contains the same library with more th
 A version conflict occurs when the dependency expansion contains the same library with more than one "version" such that the best choice cannot be automatically chosen:
 
 * semver version breakage (major version changed)
-* github shas that do not contain any common root or ancestry (two shas on different branches for example)
+* github shas that do not contain any common root or ancestry (two shas on different branches or unrelated repos, for example)
 * versions that cross different repos or repo types such that no relative relationship can be established
 
 **Maven Repo**

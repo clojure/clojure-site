@@ -133,7 +133,7 @@ Under time-lib, use a copy of the deps.edn file you already have, and create a f
     dt))
 ----
 
-Update the application at hello-world/src/hello.clj to use your library instead:
+Update the application at `hello-world/src/hello.clj` to use your library instead:
 
 [source,clojure]
 ----
@@ -144,7 +144,7 @@ Update the application at hello-world/src/hello.clj to use your library instead:
   (println "Hello world, the time is" (ht/time-str (ht/now))))
 ----
 
-Modify hello-world/deps.edn to use a local coordinate that refers to the root directory of the time-lib library (make sure to update the path for your machine):
+Modify `hello-world/deps.edn` to use a local coordinate that refers to the root directory of the time-lib library (make sure to update the path for your machine):
 
 [source,clojure]
 ----
@@ -159,6 +159,50 @@ You can then test everything from the hello-world directory by running the appli
 $ clj -m hello
 Hello world, the time is 02:07 PM
 ----
+
+== Using git libraries
+
+It would be great to share that library with others. You can accomplish this by pushing the project to a public or private git repository and letting others use it with a git dependency coordinate.
+
+First, create a git library for the time-lib:
+
+[source,shell]
+----
+cd time-lib
+git init
+git add deps.edn src
+git commit -m 'init'
+----
+
+Then go to a public git repository host (like GitHub) and follow the instructions for creating and publishing this git repository.
+
+Finally, modify your app to use the git dependency instead. You'll need to gather the following information:
+
+* repository url - in GitHub, use the HTTPS url, like `https://github.com/yourname/time-lib.git`
+* rev (commit or tag) - this will indicate which version of the git library you want to use. You can run `git rev-parse --short HEAD` to get the partial sha of the current repo.
+
+Update the `hello-world/deps.edn` to use a git coordinate instead:
+
+[source,clojure]
+----
+{:deps
+ {github-yourname/time-lib
+  {:git/url "https://github.com/yourname/time-lib" :rev "04d2744"}}}
+----
+
+Note that we've altered the library name. When artifacts are deployed in a Maven repository, it's a best practice to use a groupId (the first part of the name) that is something you control (usually via DNS or trademark). In the case where you have neither, you can instead combine the name of a site that establishes identities (like GitHub) with your identity on that site, here `github-yourname`.
+
+Now you you can run the app again, making use of the (shared) git repository library. The first time you run it you'll see extra messages on the console when `clj` downloads and caches the repository and the commit working tree:
+
+[source,shell]
+----
+$ clj -m hello
+Cloning: https://github.com/yourname/time-lib
+Checking out: https://github.com/yourname/time-lib at 04d2744
+Hello world, the time is 02:10 PM
+----
+
+Now your friends can use `time-lib` too!
 
 == Other examples
 

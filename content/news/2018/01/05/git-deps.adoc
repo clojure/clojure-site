@@ -1,0 +1,40 @@
+= Git Deps for Clojure
+Rich Hickey
+2018-01-05
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Clojure was designed to empower developers by enabling them to leveraging existing libraries. When Clojure was first released, this manifest itself in strong interop support for Java. Eventually tooling (Leiningen et al) arose around procuring Java libs from the Maven ecosystem, and Clojure, its contribs, and the community also adopted the Maven approach to _delivering_ libraries via artifacts hosted in well known repositories like Maven Central and Clojars.
+
+There were many benefits to this, but, like most things in programming, there were attendant costs. Artifact based releases predate the widespread adoption of content-based addressing systems like Git. Without content-based addressing, they depend on conventions of release naming and weak notions like semantic versioning. They also reflect the nature of languages like Java and C that require a build step prior to execution. Most Clojure libraries do not.
+
+The modern reality of Clojure development is that (mostly) we use Git, we use centralized Git repos like Github, Bitbucket et al, and code is executable. Producing and consuming artifacts creates a lot of unnecessary friction between creating code and using it. Let's get rid of it when not needed!
+
+Today we're happy to announce the availability of git deps support in Clojure tools. It leverages the fact that tools.deps does not use the Maven dependency resolver but instead resolves dependencies on its own. This decouples dependency resolution and classpath creation from any single library publishing/procurement mechanism. Git repos become a source of libraries directly.
+
+With this support you can now specify git coordinates in deps.edn (in addition to mvn and local):
+
+[source,clojure]
+----
+{:deps 
+ {org.clojure/data.csv {:git/url "https://github.com/clojure/data.csv.git" :rev "e5becca"}}}
+----
+
+The tools support (available as a library in tools.gitlibs) will:
+
+* securely log into the git repository host and clone the repo (if needed)
+* checkout and cache (per library+sha) the specified working tree (if needed)
+* incorporate the cached directory and its dependencies into the classpath
+
+Of course, not every commit is stable, so one can designate stable points using tags.
+
+This greatly reduces the ceremony and tooling required to share and consume libraries, facilitates parallel development of sibling libraries, testing, speculative forks etc. and fosters a greater connection to source truth while preserving the secure centralized hosting, stable repeatability and caching one gets from e.g. Maven.
+
+I am hopeful this git support will usher in a new level of agility for Clojure development. Many thanks to Alex Miller for his tireless efforts to convert these ideas into a working system.
+
+For more information see:
+
+* https://clojure.org/guides/getting_started[Getting Started] - to install the Clojure tools
+* https://clojure.org/guides/deps_and_cli[Deps and CLI Guide] - on how to use the Clojure tools
+* https://clojure.org/reference/deps_and_cli[Deps and CLI Reference] - complete reference info

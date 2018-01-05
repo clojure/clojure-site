@@ -35,6 +35,6 @@ I am hopeful this git support will usher in a new level of agility for Clojure d
 
 For more information see:
 
-* https://clojure.org/guides/getting_started[Getting Started] - to install the Clojure tools
-* https://clojure.org/guides/deps_and_cli[Deps and CLI Guide] - on how to use the Clojure tools
-* https://clojure.org/reference/deps_and_cli[Deps and CLI Reference] - complete reference info
+* <<xref/../../../../../guides/getting_started#,Getting Started>> - to install or update the Clojure tools
+* <<xref/../../../../../guides/deps_and_cli#,Deps and CLI Guide>> - on how to use the Clojure tools
+* <<xref/../../../../../reference/deps_and_cli#,Deps and CLI Reference>> - complete reference info

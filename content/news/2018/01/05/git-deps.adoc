@@ -13,7 +13,7 @@ The modern reality of Clojure development is that (mostly) we use Git, we use ce
 
 Today we're happy to announce the availability of git deps support in Clojure tools. It leverages the fact that tools.deps does not use the Maven dependency resolver but instead resolves dependencies on its own. This decouples dependency resolution and classpath creation from any single library publishing/procurement mechanism. Git repos become a source of libraries directly.
 
-With this support you can now specify git coordinates in deps.edn (in addition to mvn and local):
+You can now specify git coordinates (in addition to mvn and local) in deps.edn:
 
 [source,clojure]
 ----
@@ -25,7 +25,7 @@ The tools support (available as a library in tools.gitlibs) will:
 
 * securely log into the git repository host and clone the repo (if needed)
 * checkout and cache (per library+sha) the specified working tree (if needed)
-* incorporate the cached directory and its dependencies into the classpath
+* resolve transitive deps and incorporate the cached directory into the classpath
 
 Of course, not every commit is stable, so one can designate stable points using tags.
 

@@ -26,6 +26,13 @@ Install the command line tools with brew:
 brew install clojure
 ----
 
+If you've already installed, you can upgrade to the latest release with:
+
+[source,shell]
+----
+brew upgrade clojure
+----
+
 === Installation on Linux
 
 1. Ensure that the following dependencies are installed: curl, rlwrap, and Java.
@@ -33,9 +40,9 @@ brew install clojure
 
 [source,shell]
 ----
-curl -O https://download.clojure.org/install/linux-install-1.9.0.273.sh
-chmod +x linux-install-1.9.0.273.sh
-sudo ./linux-install-1.9.0.273.sh
+curl -O https://download.clojure.org/install/linux-install-1.9.0.297.sh
+chmod +x linux-install-1.9.0.297.sh
+sudo ./linux-install-1.9.0.297.sh
 ----
 
 Platform installers (apt-get, etc) will be available in the future.

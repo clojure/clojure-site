@@ -186,21 +186,18 @@ Coordinates can take several forms depending on the coordinate type:
 *** Default is to auto-detect the project type (such as `:deps`, `:lein`, `:pom`)
 *** Currently only `:deps` is supported
 * Local jar: `{:local/root "/path/to/file.jar"}`
-* Git coordinate: `{:git/url "https://github.com/user/project.git", :rev "sha-or-tag"}`
+* Git coordinate: `{:git/url "https://github.com/user/project.git", :sha "sha", :tag "tag"}`
 ** The `:git/url` can be one of the following:
 *** https - secure anonymous access to public repos
 *** ssh or user@host form urls (including GitHub) - ssh-based access (see Git configuration section)
-** The `:rev` attribute can be one of the following:
-*** A full sha
-*** A partial prefix sha, sufficiently unique in the repo
-*** A tag name
-*** Note: Branch names should not be used! revs should always refer to a fixed commit
+** The `:sha` attribute should indicate the commit sha, preferably the full sha
+** The `:tag` attribute is optional but can be used to indicate the semantics of the sha
 
 [source,clojure]
 ----
 {:deps
  {org.clojure/tools.reader {:mvn/version "1.1.1"}
-  github-sally/awesome {:git/url "https://github.com/sally/awesome.git", :rev "awesome-1.2.3"}
+  github-sally/awesome {:git/url "https://github.com/sally/awesome.git", :sha "123abcd"}
   ;; ... add more here
  }}
 ----
@@ -314,14 +311,15 @@ The clojure tool is a runner for Clojure. clj is a wrapper for interactive repl 
 The dep-opts are used to build the java-opts and classpath:
 
 ----
--Jopt      Pass opt through in java_opts, ex: -J-Xmx512m
--Ralias... Concatenated resolve-deps aliases, ex: -R:bench:1.9
--Calias... Concatenated make-classpath aliases, ex: -C:dev
--Spath     Compute classpath and echo to stdout only
--Srepro    Use only the local deps.edn (ignore other config files)
--Sforce    Force recomputation of the classpath (don't use the cache)
--Spom      Generate (or update an existing) pom.xml with deps and paths
--Sverbose  Print important path info to console
+-Jopt           Pass opt through in java_opts, ex: -J-Xmx512m
+-Ralias...      Concatenated resolve-deps aliases, ex: -R:bench:1.9
+-Calias...      Concatenated make-classpath aliases, ex: -C:dev
+-Spath          Compute classpath and echo to stdout only
+-Srepro         Use only the local deps.edn (ignore other config files)
+-Sforce         Force recomputation of the classpath (don't use the cache)
+-Spom           Generate (or update an existing) pom.xml with deps and paths
+-Sresolve-tags  Resolve git coordinate tags to shas and update deps.edn
+-Sverbose       Print important path info to console
 ----
 
 init-opt:

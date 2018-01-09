@@ -18,7 +18,7 @@ You can now specify git coordinates (in addition to mvn and local) in deps.edn:
 [source,clojure]
 ----
 {:deps 
- {org.clojure/data.csv {:git/url "https://github.com/clojure/data.csv.git" :rev "e5becca"}}}
+ {org.clojure/data.csv {:git/url "https://github.com/clojure/data.csv.git" :sha "e5becca"}}}
 ----
 
 The tools support (available as a library in tools.gitlibs) will:

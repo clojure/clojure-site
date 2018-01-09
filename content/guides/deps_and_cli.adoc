@@ -179,7 +179,8 @@ Then go to a public git repository host (like GitHub) and follow the instruction
 Finally, modify your app to use the git dependency instead. You'll need to gather the following information:
 
 * repository url - in GitHub, use the HTTPS url, like `https://github.com/yourname/time-lib.git`
-* rev (commit or tag) - this will indicate which version of the git library you want to use. You can run `git rev-parse --short HEAD` to get the partial sha of the current repo.
+* sha - indicate which version of the git library you want to use. You can run `git rev-parse HEAD` to get the sha of the current repo
+* tag - optionally, indicate a tag name (which must match the sha)
 
 Update the `hello-world/deps.edn` to use a git coordinate instead:
 
@@ -187,7 +188,7 @@ Update the `hello-world/deps.edn` to use a git coordinate instead:
 ----
 {:deps
  {github-yourname/time-lib
-  {:git/url "https://github.com/yourname/time-lib" :rev "04d2744"}}}
+  {:git/url "https://github.com/yourname/time-lib" :sha "04d2744"}}}
 ----
 
 Note that we've altered the library name. When artifacts are deployed in a Maven repository, it's a best practice to use a groupId (the first part of the name) that is something you control (usually via DNS or trademark). In the case where you have neither, you can instead combine the name of a site that establishes identities (like GitHub) with your identity on that site, here `github-yourname`.

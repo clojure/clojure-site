@@ -197,7 +197,7 @@ Coordinates can take several forms depending on the coordinate type:
 ----
 {:deps
  {org.clojure/tools.reader {:mvn/version "1.1.1"}
-  github-sally/awesome {:git/url "https://github.com/sally/awesome.git", :sha "123abcd"}
+  github-sally/awesome {:git/url "https://github.com/sally/awesome.git", :sha "123abcd549214b5cba04002b6875bdf59f9d88b6"}
   ;; ... add more here
  }}
 ----

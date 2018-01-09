@@ -180,7 +180,6 @@ Finally, modify your app to use the git dependency instead. You'll need to gathe
 
 * repository url - in GitHub, use the HTTPS url, like `https://github.com/yourname/time-lib.git`
 * sha - indicate which version of the git library you want to use. You can run `git rev-parse HEAD` to get the sha of the current repo
-* tag - optionally, indicate a tag name (which must match the sha)
 
 Update the `hello-world/deps.edn` to use a git coordinate instead:
 

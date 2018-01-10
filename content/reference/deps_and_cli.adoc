@@ -253,7 +253,7 @@ Procurers may also have configuration attributes stored at the root of the confi
 
 ==== Maven private S3 repos
 
-The tools also provide support for connecting to private S3 Maven repositories (thanks to the https://github.com/s3-wagon-private/s3-wagon-private[s3-wagon-private] and https://github.com/spring-projects/aws-maven[aws-wagon] projects).
+The tools also provide support for connecting to private S3 Maven repositories (thanks to the https://github.com/s3-wagon-private/s3-wagon-private[s3-wagon-private] and https://github.com/spring-projects/aws-maven[aws-maven] projects).
 
 Add a `:mvn/repos` that includes the s3 repository root:
 

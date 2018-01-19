@@ -9,6 +9,12 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 The official https://github.com/clojure/clojure/blob/master/changes.md[changelog] tracks deltas between major stable versions. This page gathers the interim dev release announcements during development. 
 
+== Release 1.10
+
+=== 1.10.0-alpha1 (Jan 18, 2018)
+
+- Add string capture mode to LineNumberingPushbackReader
+
 == Release 1.9
 
 === https://groups.google.com/d/msg/clojure/Pz_Kzg-k2Ac/ACVoLkXYDwAJ[1.9.0-RC2] (Nov 27, 2017)

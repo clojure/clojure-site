@@ -11,6 +11,10 @@ The official https://github.com/clojure/clojure/blob/master/changes.md[changelog
 
 == Release 1.10
 
+=== 1.10.0-alpha2 (Jan 19, 2018)
+
+- https://dev.clojure.org/jira/browse/CLJ-2313[CLJ-2313] - Fix for string capture mode
+
 === 1.10.0-alpha1 (Jan 18, 2018)
 
 - Add string capture mode to LineNumberingPushbackReader

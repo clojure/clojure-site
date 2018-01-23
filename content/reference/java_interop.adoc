@@ -267,6 +267,8 @@ For function return values, the type hint can be placed before the arguments vec
 -> #user/hinted
 ----
 
+(Notice that this will attach the type hint to the arguments vector, which is preferred. To obtain e.g. the first one, you would need to do `(-> #'hinted meta :arglists first meta :tag)`.)
+
 [[TypeAliases]]
 == Aliases
 

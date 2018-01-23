@@ -190,7 +190,7 @@ Coordinates can take several forms depending on the coordinate type:
 ** The `:git/url` can be one of the following:
 *** https - secure anonymous access to public repos
 *** ssh or user@host form urls (including GitHub) - ssh-based access (see Git configuration section)
-** The `:sha` attribute should indicate the commit sha, preferably the full sha
+** The `:sha` attribute should indicate the full commit sha
 ** The `:tag` attribute is optional but can be used to indicate the semantics of the sha
 
 [source,clojure]
@@ -314,10 +314,12 @@ The dep-opts are used to build the java-opts and classpath:
 -Jopt           Pass opt through in java_opts, ex: -J-Xmx512m
 -Ralias...      Concatenated resolve-deps aliases, ex: -R:bench:1.9
 -Calias...      Concatenated make-classpath aliases, ex: -C:dev
+-Sdeps DEPS     Deps data to use as the final deps file
 -Spath          Compute classpath and echo to stdout only
 -Srepro         Use only the local deps.edn (ignore other config files)
 -Sforce         Force recomputation of the classpath (don't use the cache)
 -Spom           Generate (or update an existing) pom.xml with deps and paths
+-Stree          Print dependency tree
 -Sresolve-tags  Resolve git coordinate tags to shas and update deps.edn
 -Sverbose       Print important path info to console
 ----
@@ -348,6 +350,7 @@ The following process is used to construct the classpath for invoking clojure.ma
 *** Install directory (unless -Srepro)
 *** Config directory (if it exists and unless -Srepro)
 *** Current directory (if it exists)
+*** -Sdeps data (if it exists)
 ** Combine the deps.edn maps in that order with `merge-with merge` (except for :paths where last wins)
 * Compute the resolve-deps args
 ** If `-R` specifies one or more aliases, find each alias in the deps map `:aliases`

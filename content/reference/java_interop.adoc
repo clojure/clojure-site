@@ -220,7 +220,7 @@ Process an existing array: https://clojure.github.io/clojure/clojure.core-api.ht
 [[typehints]]
 == Type Hints
 
-Clojure supports the use of type hints to assist the compiler in avoiding reflection in performance-critical areas of code. Normally, one should avoid the use of type hints until there is a known performance bottleneck. Type hints are metadata tags placed on symbols or expressions that are consumed by the compiler. They can be placed on function parameters, let-bound names, var names (when defined), and expressions:
+Clojure supports the use of type hints to assist the compiler in avoiding reflection in performance-critical areas of code. Normally, one should avoid the use of type hints until there is a known performance bottleneck. Type hints are https://clojure.org/reference/metadata#_metadata_reader_macros[metadata tags] placed on symbols or expressions that are consumed by the compiler. They can be placed on function parameters, let-bound names, var names (when defined), and expressions:
 
 [source,clojure]
 ----

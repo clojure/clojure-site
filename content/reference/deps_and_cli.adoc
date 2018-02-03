@@ -215,7 +215,31 @@ While dependency sets are merged across all of the configuration files, only the
 
 === Aliases
 
-Aliases are defined in the `:aliases` section of the config file and are used to select sets of modifications to the `resolve-deps` or make-classpath steps. Aliases for `resolve-deps` modifications are selected with -R (which takes a concatenated list of alias keywords). Aliases for `make-classpath` modifications are selected with -C (also a concatenated list of alias keywords). The modifications from all aliases will be combined by merging in the order specified (last one wins).
+Aliases are defined in the `:aliases` section of the config file. The Clojure tool supports several kinds of aliases:
+
+* -R - `resolve-deps` aliases are modifications applied during `resolve-deps`
+** Allowed keys in these aliases are:
+*** `:extra-deps` - a deps map from lib to coordinate of deps to add to the deps
+*** `:override-deps` - a deps map from lib to coordinate of override versions to use
+*** `:default-deps` - a deps map from lib to coordinate of versions to use if none is found
+** If multiple -R alias maps are activated, all of these are merge-with merged
+* -C - `make-classpath` aliases are modifications applied during `make-classpath`
+** Allowed keys in these aliases are:
+*** `:extra-paths` - a collection of string paths to add to `:paths`
+*** `:classpath-overrides` - a map of lib to string path to replace the location of the lib
+*** If multiple -C alias maps are activated, `:extra-paths` concatenate and `:classpath-overrides` merge-with merge
+* -O - JVM option aliases
+** Allowed keys in these aliases are:
+*** `:jvm-opts` - a collection of string JVM options
+** If multiple -O alias maps are activated, `:jvm-opts` concatenate
+** If -J JVM options are also specified on the command line, they are concatenated after the alias options
+* -M - clojure.main option aliases
+** Allowed keys in these aliases are:
+*** `:main-opts` - a collection of clojure.main options
+** If multiple -M alias maps are activated, only the last one will be used
+** If command line clojure.main arguments are supplied on the command line, they are concatenated after the last main alias map
+* -A - applies across all alias types
+** These aliases support ALL alias keys above and all will be applied
 
 So given a deps.edn like:
 
@@ -234,6 +258,13 @@ You can activate all three aliases to create a classpath that switches to an old
 [source]
 ----
 clj -R:1.7:bench -C:test -Spath
+----
+
+You can use -A to include all types of aliases or define aliases that cross multiple alias types:
+
+[source]
+----
+clj -A:1.7:bench:test -Spath
 ----
 
 === Procurers
@@ -314,6 +345,9 @@ The dep-opts are used to build the java-opts and classpath:
 -Jopt           Pass opt through in java_opts, ex: -J-Xmx512m
 -Ralias...      Concatenated resolve-deps aliases, ex: -R:bench:1.9
 -Calias...      Concatenated make-classpath aliases, ex: -C:dev
+-Oalias...      Concatenated jvm option aliases, ex: -O:mem
+-Malias...      Concatenated clojure.main option aliases, ex: -M:myapp
+-Aalias...      Concatenated aliases of any type
 -Sdeps DEPS     Deps data to use as the final deps file
 -Spath          Compute classpath and echo to stdout only
 -Srepro         Use only the local deps.edn (ignore other config files)

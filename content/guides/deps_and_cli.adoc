@@ -192,7 +192,7 @@ Update the `hello-world/deps.edn` to use a git coordinate instead:
 
 Note that we've altered the library name. When artifacts are deployed in a Maven repository, it's a best practice to use a groupId (the first part of the name) that is something you control (usually via DNS or trademark). In the case where you have neither, you can instead combine the name of a site that establishes identities (like GitHub) with your identity on that site, here `github-yourname`.
 
-Now you you can run the app again, making use of the (shared) git repository library. The first time you run it you'll see extra messages on the console when `clj` downloads and caches the repository and the commit working tree:
+Now you can run the app again, making use of the (shared) git repository library. The first time you run it you'll see extra messages on the console when `clj` downloads and caches the repository and the commit working tree:
 
 [source,shell]
 ----

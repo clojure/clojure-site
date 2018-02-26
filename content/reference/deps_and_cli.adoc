@@ -350,12 +350,14 @@ The dep-opts are used to build the java-opts and classpath:
 -Aalias...      Concatenated aliases of any type
 -Sdeps DEPS     Deps data to use as the final deps file
 -Spath          Compute classpath and echo to stdout only
--Srepro         Use only the local deps.edn (ignore other config files)
+-Scp CP         Do NOT compute or cache classpath, use this one instead
+-Srepro         Ignore the ~/.clojure/deps.edn config file
 -Sforce         Force recomputation of the classpath (don't use the cache)
 -Spom           Generate (or update an existing) pom.xml with deps and paths
 -Stree          Print dependency tree
 -Sresolve-tags  Resolve git coordinate tags to shas and update deps.edn
 -Sverbose       Print important path info to console
+-Sdescribe     Print environment and command parsing info as data
 ----
 
 init-opt:

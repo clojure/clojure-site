@@ -197,7 +197,7 @@ cases is to add an explict guard:
 (some-> a-map :counter Long/parseLong inc)
 ----
 
-If `a-map` lacks the key `:foo`, the entire expression will evaluate to `nil`
+If `a-map` lacks the key `:counter`, the entire expression will evaluate to `nil`
 rather than raising an exception. In fact, this behavior is so useful that it is
 common to see `+++some->+++` used when threading is not required:
 

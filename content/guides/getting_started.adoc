@@ -35,7 +35,7 @@ brew upgrade clojure
 
 === Installation on Linux
 
-1. Ensure that the following dependencies are installed: curl, rlwrap, and Java.
+1. Ensure that the following dependencies are installed: bash, curl, rlwrap, and Java.
 2. Use the linux-install script to download and run the install, which will create /usr/local/bin/clj, /usr/local/bin/clojure, and /usr/local/lib/clojure:
 
 [source,shell]

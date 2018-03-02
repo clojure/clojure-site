@@ -149,7 +149,7 @@ Modify `hello-world/deps.edn` to use a local coordinate that refers to the root 
 [source,clojure]
 ----
 {:deps
- {time-lib {:local/root "/path/to/time-lib"}}}
+ {time-lib {:local/root "../time-lib"}}}
 ----
 
 You can then test everything from the hello-world directory by running the application:

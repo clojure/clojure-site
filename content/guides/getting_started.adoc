@@ -40,9 +40,9 @@ brew upgrade clojure
 
 [source,shell]
 ----
-curl -O https://download.clojure.org/install/linux-install-1.9.0.348.sh
-chmod +x linux-install-1.9.0.348.sh
-sudo ./linux-install-1.9.0.348.sh
+curl -O https://download.clojure.org/install/linux-install-1.9.0.358.sh
+chmod +x linux-install-1.9.0.358.sh
+sudo ./linux-install-1.9.0.358.sh
 ----
 
 Platform installers (apt-get, etc) will be available in the future.

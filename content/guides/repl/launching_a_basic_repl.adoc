@@ -1,0 +1,118 @@
+= Programming at the REPL: Launching a Basic REPL
+Valentin Waeselynck
+2018-02-10
+:type: programming_at_the_repl
+:toc: macro
+:icons: font
+:navlinktext: Launching a Basic REPL
+:prevpagehref: introduction
+:prevpagetitle: Introduction
+:nextpagehref: basic_usage
+:nextpagetitle: Basic Usage
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+toc::[]
+
+Use any of the following methods to start a basic Clojure REPL in a terminal window:
+
+== Using the CLI tools
+
+The easiest way to start a Clojure REPL is with using the `clj` command of the Clojure <</guides/deps_and_cli#, CLI tools>>:
+
+[source,shell]
+----
+clj ## run this command in a terminal window
+----
+
+You should see output like the following:
+
+[source,clojure-repl]
+----
+Clojure 1.9.0
+user=>
+----
+
+See <</guides/getting_started#,Getting Started>> to learn how to install the Clojure CLI.
+
+You can exit the REPL by typing `Ctrl+D` (pressing the `Ctrl` and `D` keys at the same time).
+
+== Using a project management tool
+
+=== Leiningen
+
+If you have installed https://leiningen.org/[Leiningen], you can use it to launch a REPL:
+
+[source,shell]
+----
+lein repl
+----
+
+You should see output like the following:
+
+[source,clojure-repl]
+----
+nREPL server started on port 64411 on host 127.0.0.1 - nrepl://127.0.0.1:64411
+REPL-y 0.3.7, nREPL 0.2.12
+Clojure 1.8.0
+Java HotSpot(TM) 64-Bit Server VM 1.8.0_05-b13
+    Docs: (doc function-name-here)
+          (find-doc "part-of-name-here")
+  Source: (source function-name-here)
+ Javadoc: (javadoc java-object-or-class-here)
+    Exit: Control+D or (exit) or (quit)
+ Results: Stored in vars *1, *2, *3, an exception in *e
+
+user=>
+----
+
+If you run `lein repl` from inside a Leiningen project directory, the library dependencies
+ and source code of the project will be available at the REPL.
+
+=== Boot
+
+If you have installed http://boot-clj.com/[Boot], you can use it to launch a REPL:
+
+[source,shell]
+----
+boot repl
+----
+
+You should see output like the following:
+
+[source,clojure-repl]
+----
+nREPL server started on port 50109 on host 127.0.0.1 - nrepl://127.0.0.1:50109
+REPL-y 0.3.7, nREPL 0.2.12
+Clojure 1.9.0
+Java HotSpot(TM) 64-Bit Server VM 1.8.0_05-b13
+        Exit: Control+D or (exit) or (quit)
+    Commands: (user/help)
+        Docs: (doc function-name-here)
+              (find-doc "part-of-name-here")
+Find by Name: (find-name "part-of-name-here")
+      Source: (source function-name-here)
+     Javadoc: (javadoc java-object-or-class-here)
+    Examples from clojuredocs.org: [clojuredocs or cdoc]
+              (user/clojuredocs name-here)
+              (user/clojuredocs "ns-here" "name-here")
+boot.user=>
+----
+
+== Using Java and the Clojure JAR
+
+If you have <</guides/getting_started#_other_ways_to_run_clojure,downloaded and built Clojure>>,
+ you can use Java to launch a Clojure REPL:
+
+[source,shell]
+----
+java -jar clojure.jar
+----
+
+You should see output like the following:
+
+[source,clojure-repl]
+----
+Clojure 1.9.0
+user=>
+----

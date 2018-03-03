@@ -1,0 +1,377 @@
+= Programming at the REPL: Navigating Namespaces
+Valentin Waeselynck
+2018-02-10
+:type: programming_at_the_repl
+:toc: macro
+:icons: font
+:navlinktext: Navigating Namespaces
+:prevpagehref: data_visualization_at_the_repl
+:prevpagetitle: Data Visualization at the REPL
+:nextpagehref: enhancing_your_repl_workflow
+:nextpagetitle: Enhancing your REPL workflow
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+toc::[]
+
+So far we have only used the REPL for small self-contained experiments; but the REPL is most
+valuable for **_putting yourself in the shoes_ of the program** you are developing or debugging,
+i.e evaluating exactly the same expressions in the REPL as your program does when it runs.
+
+This is achieved by giving your REPL the same context as your running program, which implies
+using REPL in the same <</reference/namespaces#,namespaces>> where your code is defined.
+We will see how to do that in the following sections.
+
+**NOTE:** Namespaces are one of the trickiest parts of Clojure. If you're just learning the language,
+feel free to skip this chapter for now; you can come back to it when you start working on 'real-world' Clojure projects.
+
+== The current namespace
+
+When you evaluate code in the REPL, you are always evaluating code in the context of the _current namespace_.
+
+**The current namespace determines:**
+
+* **_How the code that you are writing may refer to code from other namespaces._**
+
+For example, if the current namespace is `myapp.foo.bar` and you evaluate `(require [clojure.set :as cset :refer [union]])`,
+ you can now refer to the `clojure.set/union` Var either by `cset/union` (because of the `:as cset` alias) or just `union`
+ (because of `:refer [union]`):
+
+[source,clojure-repl]
+----
+$ clj
+Clojure 1.9.0
+user=> *ns*
+#object[clojure.lang.Namespace 0x7d1cfb8b "user"]
+user=> (ns myapp.foo.bar) ;; creating and switching to the myapp.foo.bar namespace - `ns` will be explained later in this guide.
+nil
+myapp.foo.bar=> (require '[clojure.set :as cset :refer [union]]) ;; this will only affect the current namespace
+nil
+myapp.foo.bar=> (cset/union #{1 2} #{2 3})
+#{1 3 2}
+myapp.foo.bar=> (union #{1 2} #{2 3})
+#{1 3 2}
+myapp.foo.bar=> (cset/intersection #{1 2} #{2 3})
+#{2}
+myapp.foo.bar=> (in-ns 'user) ;; now switching back to the `user` namespace - `in-ns` will be explained later in this guide.
+#object[clojure.lang.Namespace 0x7d1cfb8b "user"]
+user=> (union #{1 2} #{2 3})  ;; won't work, because `union` has not been :refer'ed in the `user` namespace
+CompilerException java.lang.RuntimeException: Unable to resolve symbol: union in this context, compiling:(NO_SOURCE_PATH:9:1)
+user=> (cset/intersection #{1 2} #{2 3}) ;; won't work, because the `cset` alias has not been defined in the current namespace.
+CompilerException java.lang.RuntimeException: No such namespace: cset, compiling:(NO_SOURCE_PATH:10:1)
+user=>
+----
+
+[TIP]
+====
+**TIP:** You can find what aliases are defined in a given namespace by calling https://clojuredocs.org/clojure.core/ns-aliases[ns-aliases].
+
+[source,clojure-repl]
+----
+myapp.foo.bar=> (ns-aliases 'myapp.foo.bar)
+{cset #object[clojure.lang.Namespace 0x4b2a01d4 "clojure.set"]}
+----
+====
+
+* **_In what namespace the Vars that you define (using for example `(def ...)` or `(defn ...)`) will exist._**
+
+For example, if the current namespace is `myapp.foo.bar` and you define a Var named `my-favorite-number`,
+you will be able to reference that Var as `myapp.foo.bar/my-favorite-number` from other namespaces:
+
+[source,clojure-repl]
+----
+$ clj
+Clojure 1.9.0
+user=> (ns myapp.foo.bar) ;; creating and switching to the `myapp.foo.bar` namespace - NOTE `ns` will be explained later in this guide
+nil
+myapp.foo.bar=> (def my-favorite-number 42) ;; defining a Var named `my-favorite-number`
+#'myapp.foo.bar/my-favorite-number
+myapp.foo.bar=> my-favorite-number
+42
+myapp.foo.bar=> (ns myapp.baz) ;; creating and switching to another namespace `myapp.baz`
+nil
+myapp.baz=> myapp.foo.bar/my-favorite-number ;; refering to `my-favorite-number`
+42
+myapp.baz=> (require '[myapp.foo.bar :as foobar]) ;; we can also use an alias to make it shorter
+nil
+myapp.baz=> foobar/my-favorite-number
+42
+----
+
+[NOTE]
+====
+You can find what the current namespace is by evaluating `\*ns*`:
+
+[source,clojure-repl]
+----
+$ clj
+Clojure 1.9.0
+user=> *ns*
+#object[clojure.lang.Namespace 0x7d1cfb8b "user"]
+----
+
+As you can see, by default, when you start a REPL with `clj`, the current namespace is `user`.
+====
+
+== Creating a namespace with `ns`
+
+You can create and switch to a new namespace by evaluating `(https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ns[ns] MY-NAMESPACE-NAME)`:
+
+[source,clojure-repl]
+----
+$ clj
+Clojure 1.9.0
+user=> (ns myapp.foo-bar)
+nil
+myapp.foo-bar=> *ns*
+#object[clojure.lang.Namespace 0xacdb094 "myapp.foo-bar"]
+myapp.foo-bar=> (def x 42)
+#'myapp.foo-bar/x
+----
+
+**Note:** when you switch to a new namespace, the names and aliases that were defined
+ in the previous namespaces are no longer available:
+
+[source,clojure-repl]
+----
+$ clj
+Clojure 1.9.0
+user=> (ns myapp.ns1) ;; creating a new namespace and defining a Var `x` and an alias `str/`:
+nil
+myapp.ns1=> (def x 42)
+#'myapp.ns1/x
+myapp.ns1=> x
+42
+myapp.ns1=> (require '[clojure.string :as str])
+nil
+myapp.ns1=> (str/upper-case "hello")
+"HELLO"
+myapp.ns1=> (ns myapp.ns2) ;; now switching to another namespace:
+nil
+myapp.ns2=> x ;; won't work, because x has not been defined in namespace `myapp.ns2`
+CompilerException java.lang.RuntimeException: Unable to resolve symbol: x in this context, compiling:(NO_SOURCE_PATH:0:0)
+myapp.ns2=> (str/upper-case "hello") ;; won't work, because alias `str` has not been defined in namespace `myapp.ns2`
+CompilerException java.lang.RuntimeException: No such namespace: str, compiling:(NO_SOURCE_PATH:9:1)
+----
+
+== Switching to an existing namespace with `in-ns`
+
+You can switch to an existing namespace by evaluating `(https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/in-ns[in-ns] 'MY-NAMESPACE-NAME)`.
+Here's an example REPL session that creates a namespace `myapp.some-ns`, defines a Var named `x` in it,
+moves back to the `user` namespace, then moves again to `myapp.some-ns`:
+
+[source,clojure-repl]
+----
+$ clj
+Clojure 1.9.0
+user=> (ns myapp.some-ns) ;;;; creating the namespace `myapp.some-ns`
+nil
+myapp.some-ns=> *ns* ;; where are we?
+#object[clojure.lang.Namespace 0xacdb094 "myapp.some-ns"]
+myapp.some-ns=> (def x 42) ;; defining `x`
+#'myapp.some-ns/x
+myapp.some-ns=> (in-ns 'user) ;;;; switching back to `user`
+#object[clojure.lang.Namespace 0x4b45dcb8 "user"]
+user=> *ns* ;; where are we?
+#object[clojure.lang.Namespace 0x4b45dcb8 "user"]
+user=> (in-ns 'myapp.some-ns) ;;;; ...switching back again to `myapp.some-ns`
+#object[clojure.lang.Namespace 0xacdb094 "myapp.some-ns"]
+myapp.some-ns=> *ns* ;; where are we?
+#object[clojure.lang.Namespace 0xacdb094 "myapp.some-ns"]
+myapp.some-ns=> x ;; `x` is still here!
+42
+----
+
+**_What happens if you `in-ns` to a namespace that has never been created?_**
+You will see strange things happening. For instance, you will not be able to define
+a function using `defn`:
+
+[source,clojure-repl]
+----
+$ clj
+Clojure 1.9.0
+user=> (in-ns 'myapp.never-created)
+#object[clojure.lang.Namespace 0x22356acd "myapp.never-created"]
+myapp.never-created=> (defn say-hello [x] (println "Hello, " x "!"))
+CompilerException java.lang.RuntimeException: Unable to resolve symbol: defn in this context, compiling:(NO_SOURCE_PATH:2:1)
+----
+
+**Explanation:** in this situation, https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/in-ns[in-ns]
+creates the new namespace and switches to it like https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ns[ns] does,
+but it does a little less work than https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ns[ns],
+because it does not automatically make available all the names defined in `clojure.core`,
+such as https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defn[defn].
+You can fix that by evaluating `(https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/refer-clojure[clojure.core/refer-clojure])`:
+
+[source,clojure-repl]
+----
+myapp.never-created=> (clojure.core/refer-clojure)
+nil
+myapp.never-created=> (defn say-hello [x] (println "Hello, " x "!"))
+#'myapp.never-created/say-hello
+myapp.never-created=> (say-hello "Jane")
+Hello,  Jane !
+nil
+----
+
+If you only use https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/in-ns[in-ns]
+to switch to namespaces that have already been created, you won't have to deal with these subtleties.
+
+[#_working_with_libs]
+== Working with libs
+
+Most of the namespaces you will navigate at the REPL will already exist in source files or dependencies 
+of your project, i.e in <</reference/libs#,libs>> of your project.
+
+There is an important usage precaution for switching to namespaces defined in libs:
+
+[NOTE]
+====
+**If a namespace is defined in a <</reference/libs#,lib>> of your project, 
+always make sure you have _loaded_ the lib in the REPL before switching to it.**
+====
+
+[#how-to-make-sure-a-lib-is-loaded]
+=== How to make sure a lib is loaded
+
+To make sure that a lib with namespace `mylib.ns1` has been loaded in the REPL, you can do any one of the following:
+
+1. `https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/require[require]` it directly: `(require '[mylib.ns1])`
+2. load a namespace which itself requires `mylib.ns1` (directly or indirectly).
+3. evaluate manually all the code in the source file `mylib.ns1`
+
+=== Example: a project for greeting people
+
+For example, assume a Clojure project with the following structure and content:
+
+[source,plain-text]
+----
+.
+└── src
+    └── myproject
+        ├── person_names.clj
+        └── welcome.clj
+----
+
+[source,clojure]
+---- 
+;; -----------------------------------------------
+;; src/myproject/welcome.clj
+(ns myproject.welcome 
+  (:require [myproject.person-names :as pnames])) ;; NOTE: `myproject.welcome` requires `myproject.person-names` 
+  
+(defn greet
+  [first-name last-name]
+  (str "Hello, " (pnames/familiar-name first-name last-name)))  
+
+
+;; -----------------------------------------------
+;; src/myproject/person_names.clj
+(ns myproject.person-names 
+  (:require [clojure.string :as str]))
+
+(def nicknames 
+  {"Robert"     "Bob"
+   "Abigail"    "Abbie"
+   "William"    "Bill"
+   "Jacqueline" "Jackie"})
+
+(defn familiar-name
+  "What to call someone you may be familiar with."
+  [first-name last-name]
+  (let [fname (str/capitalize first-name)
+        lname (str/capitalize last-name)]
+    (or 
+      (get nicknames fname)
+      (str fname " " lname))))
+----
+
+Here are 3 ways to make sure `myproject.person-names` is loaded:
+
+[source,clojure-repl]
+---- 
+$ clj ## APPROACH 1: requiring myproject.person-names directly
+Clojure 1.9.0
+user=> (require '[myproject.person-names])
+nil
+user=> myproject.person-names/nicknames ;; checking that the myproject.person-names was loaded.
+{"Robert" "Bob", "Abigail" "Abbie", "William" "Bill", "Jacqueline" "Jackie"}
+----
+
+[source,clojure-repl]
+---- 
+$ clj ## APPROACH 2: requiring myproject.welcome, which itself requires myproject.person-names 
+Clojure 1.9.0
+user=> (require '[myproject.welcome])
+nil
+user=> myproject.person-names/nicknames ;; checking that the myproject.person-names was loaded.
+{"Robert" "Bob", "Abigail" "Abbie", "William" "Bill", "Jacqueline" "Jackie"}
+----
+
+[source,clojure-repl]
+---- 
+$ clj ## APPROACH 3: manually copying the code of myproject.person-names in the REPL.
+Clojure 1.9.0
+(ns myproject.person-names
+  (:require [clojure.string :as str]))
+
+(def nicknames
+  {"Robert"     "Bob"
+   "Abigail"    "Abbie"
+   "William"    "Bill"
+   "Jacqueline" "Jackie"})
+
+(defn familiar-name
+  "What to call someone you may be familiar with."
+  [first-name last-name]
+  (let [fname (str/capitalize first-name)
+        lname (str/capitalize last-name)]
+    (or
+      (get nicknames fname)
+      (str fname " " lname))))
+nil
+myproject.person-names=> myproject.person-names=> #'myproject.person-names/nicknames
+myproject.person-names=> myproject.person-names=> #'myproject.person-names/familiar-name
+myproject.person-names=> myproject.person-names/nicknames ;; checking that the myproject.person-names was loaded.
+{"Robert" "Bob", "Abigail" "Abbie", "William" "Bill", "Jacqueline" "Jackie"}
+----
+
+[TIP]
+====
+**TIP:** you can see (among other things) what libs get loaded by using the `:verbose` tag in `https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/require[require]`:
+
+[source,clojure-repl]
+----
+$ clj
+Clojure 1.9.0
+user=> (require '[myproject.welcome] :verbose)
+(clojure.core/load "/myproject/welcome")
+(clojure.core/in-ns 'clojure.core.specs.alpha)
+(clojure.core/alias 's 'clojure.spec.alpha)
+(clojure.core/load "/myproject/person_names")
+(clojure.core/in-ns 'myproject.person-names)
+(clojure.core/alias 'str 'clojure.string)
+(clojure.core/in-ns 'myproject.welcome)
+(clojure.core/alias 'pnames 'myproject.person-names)
+nil
+----
+====
+
+=== How things can go wrong
+
+Continuing with the above example project, here is a REPL session showing how things can go wrong 
+if you switch to a lib namespace without loading it first:
+
+[source,clojure-repl]
+----
+$ clj
+Clojure 1.9.0
+user=> (ns myproject.person-names)
+nil
+myproject.person-names=> nicknames ;; #'nicknames won't be defined, because the lib has not been loaded.
+CompilerException java.lang.RuntimeException: Unable to resolve symbol: nicknames in this context, compiling:(NO_SOURCE_PATH:0:0)
+myproject.person-names=> (require '[myproject.person-names]) ;; won't fix the situation, because the namespaces has already been created
+nil
+myproject.person-names=> nicknames
+CompilerException java.lang.RuntimeException: Unable to resolve symbol: nicknames in this context, compiling:(NO_SOURCE_PATH:0:0)
+----

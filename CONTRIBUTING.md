@@ -1,5 +1,5 @@
 This repository hosts the content for the Clojure programming language web
-site, hosted at https://clojure.org. [Contributions] are accepted via
+site, hosted at https://clojure.org. [Contributions] are accepted via 
 [issue] or [pull request]. For pull requests, contributors must sign the
 [contributor agreement].
 

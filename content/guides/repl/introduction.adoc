@@ -17,9 +17,19 @@ This guide is for developers who have at least a <</guides/learn/syntax#,basic u
 
 == What is a REPL?
 
+
 A Clojure _REPL_ (standing for _Read-Eval-Print Loop_) is a programming environment which 
 enables the programmer to interact with a running Clojure program and modify it, by evaluating 
 one code expression at a time.
+
+.A Clojure REPL in a terminal window
+image::/images/content/guides/repl/show-terminal-repl.gif["A Clojure REPL in a terminal"]
+
+{nbsp}
+
+.An editor-integrated Clojure REPL
+image::/images/content/guides/repl/show-editor-repl.gif["An editor-integrated Clojure REPL"]
+
 
 == Why use a REPL?
 

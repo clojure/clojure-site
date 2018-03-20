@@ -71,9 +71,9 @@ Depending on your needs, you may not need to read the entirety of this guide:
 <<launching_a_basic_repl#, Launching a basic Clojure REPL>> and <<basic_usage#, Basic Usage>>
 are enough to get you started with a productive learning environment.
 * As soon as you start **_developing non-trivial programs_** (such as a hobby web app), 
-you will need the ideas presented in at least the next 2 chapters: <<data-visualization-at-the-repl,Data visualization at the REPL>>
-and <<navigating-namespaces,Navigating namespaces>>_.
+you will need the ideas presented in at least the next 2 chapters: <<data_visualization_at_the_repl#,Data visualization at the REPL>>
+and <<navigating_namespaces#,Navigating namespaces>>.
 * For **_working on Clojure projects at a professional level_**,
- <<enhancing-your-repl-workflow,Enhancing your REPL workflow>> is a must.
+ <<enhancing_your_repl_workflow#,Enhancing your REPL workflow>> is a must.
 
 First, we'll learn how to <<launching_a_basic_repl#, launch a basic Clojure REPL>>.

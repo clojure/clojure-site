@@ -259,6 +259,10 @@ For function return values, the type hint can be placed before the arguments vec
 
 [source,clojure]
 ----
+(defn hinted-single ^String [])
+
+-> #user/hinted-single
+
 (defn hinted
   (^String [])
   (^Integer [a])

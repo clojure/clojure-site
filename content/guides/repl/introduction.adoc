@@ -1,0 +1,79 @@
+= Programming at the REPL: Introduction
+Valentin Waeselynck
+2018-02-10
+:type: programming_at_the_repl
+:toc: macro
+:icons: font
+:navlinktext: Introduction
+:nextpagehref: launching_a_basic_repl
+:nextpagetitle: Launching a Basic REPL
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+toc::[]
+
+This guide is for developers who have at least a <</guides/learn/syntax#,basic understanding>> of Clojure,
+ and want to become more proficient at using the Clojure REPL.
+
+== What is a REPL?
+
+
+A Clojure _REPL_ (standing for _Read-Eval-Print Loop_) is a programming environment which 
+enables the programmer to interact with a running Clojure program and modify it, by evaluating 
+one code expression at a time.
+
+.A Clojure REPL in a terminal window
+image::/images/content/guides/repl/show-terminal-repl.gif["A Clojure REPL in a terminal"]
+
+{nbsp}
+
+.An editor-integrated Clojure REPL
+image::/images/content/guides/repl/show-editor-repl.gif["An editor-integrated Clojure REPL"]
+
+
+== Why use a REPL?
+
+The Clojure REPL gives the programmer an interactive development experience.
+When developing new functionality, it enables her to build programs first by performing small tasks manually, 
+as if she _were_ the computer, then gradually make them more and more automated, until the desired
+functionality is fully programmed. When debugging, the REPL makes the execution of her programs feel _tangible:_
+it enables the programmer to rapidly reproduce the problem, observe its symptoms closely,
+then improvise experiments to rapidly narrow down the cause of the bug and iterate towards a fix.
+
+Many Clojure programmers consider the REPL, and the tight feedback loop it provides, to be the most compelling 
+reason to use Clojure. This does not mean that the language features of Clojure, such as immutable data structures, are not valuable: the Clojure REPL
+gets most of its leverage _because_ of these features, in particular because Clojure was designed with interactive development
+in mind.
+
+In Clojure, a programmer will typically use the REPL for a wide spectrum of programming tasks, when in another 
+language she would turn to other sorts of tools. Such tasks include:
+
+* launching local development environments, 
+* running automated test suites,
+* one-off database queries and interventions,
+* debugging,
+* orchestrating remote machines,
+* getting familiar with libraries and APIs,
+* ...and many forms of exploration.
+
+Fundamentally, the reason programmers use the REPL for all these tasks is always the same:
+because they want a mix of automation and improvisation that can be provided neither by fully manual tools (such as dashboard, consoles, etc.)
+nor by fully automated ones (such as scripts), while keeping their workflow focused in one full-featured programming environment.
+
+== What this guide will cover
+
+This guide will start by getting you started with a Clojure REPL, 
+then gradually move to more and more advanced ways of using Clojure REPLs.
+
+Depending on your needs, you may not need to read the entirety of this guide:
+
+* If you are **_just starting to learn Clojure_**, the first 2 chapters 
+<<launching_a_basic_repl#, Launching a basic Clojure REPL>> and <<basic_usage#, Basic Usage>>
+are enough to get you started with a productive learning environment.
+* As soon as you start **_developing non-trivial programs_** (such as a hobby web app), 
+you will need the ideas presented in at least the next 2 chapters: <<data_visualization_at_the_repl#,Data visualization at the REPL>>
+and <<navigating_namespaces#,Navigating namespaces>>.
+* For **_working on Clojure projects at a professional level_**,
+ <<enhancing_your_repl_workflow#,Enhancing your REPL workflow>> is a must.
+
+First, we'll learn how to <<launching_a_basic_repl#, launch a basic Clojure REPL>>.

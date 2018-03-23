@@ -1,0 +1,314 @@
+= Programming at the REPL: Basic Usage
+Valentin Waeselynck
+2018-02-10
+:type: programming_at_the_repl
+:toc: macro
+:icons: font
+:navlinktext: Basic Usage
+:prevpagehref: launching_a_basic_repl
+:prevpagetitle: Launching a basic REPL
+:nextpagehref: data_visualization_at_the_repl
+:nextpagetitle: Data Visualization at the REPL
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+toc::[]
+
+== Evaluating Clojure expressions
+
+Having started the REPL (as described <<launching_a_basic_repl#,in the previous chapter>>), 
+you can now evaluate Clojure expressions by simply typing them into the REPL and pressing ENTER:
+
+[source,clojure-repl]
+----
+user=> (+ 2 3)
+5
+user=> (defn factorial [n]
+(if (= n 0)
+  1
+  (* n (factorial (dec n)))))
+#'user/factorial
+user=> (factorial 10)
+3628800
+user=>
+----
+
+Under each expression, we see the _result_ of evaluating the expression.
+ This is what a REPL does: for each expression that we submit to it, the REPL **R**eads it,
+ **E**valuates it, then **P**rints the result, all of this in a **L**oop.
+
+[NOTE]
+====
+If you are in the process of learning Clojure, take some time to experiment at the REPL.
+The rapid feedback loop it provides makes for a very effective learning environment.
+====
+
+Although the above examples are very basic, you can run full-featured Clojure programs
+ in this way. Clojure was designed so that its REPL environment provides the full power of the language:
+ you could actually run any existing Clojure program simply by pasting the content of the source files
+ in the right order into the REPL.
+
+[TIP]
+====
+**TIP: using an editor next to your REPL**
+
+Editing Clojure code inside the terminal window can get tedious; when that is the case,
+ one simple trick is to write the code in a text editor of your choosing that has a syntax-aware
+ Clojure mode, and copy and paste code from the editor to the REPL terminal window. Here's an
+ example of what this looks like (the editor used is https://atom.io/packages/language-clojure/[Atom]):
+
+image:/images/content/guides/repl/editor-cli-repl.gif["Editor next to CLI REPL"]
+
+In the _<<enhancing_your_repl_workflow#,Enhancing your REPL workflow>>_ chapter of this guide, 
+we will see more ergonomic configurations for using the REPL. 
+However, this minimalist setup is sufficient for the scope of this tutorial,
+and is important for mastering the fundamentals. 
+====
+
+
+== The 2 flavors of printing
+
+Consider the following evaluation:
+
+[source,clojure-repl]
+----
+user=> (println "Hello World")
+Hello World
+nil
+----
+
+This is strange: unlike the previous examples, it looks like evaluating the `(println "Hello World")` expression
+ yielded 2 results: `Hello World` and `nil`.
+
+This is because the https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/println[println]
+ function _prints_ its argument to the standard output but _returns_ nil.
+ Therefore, the 2 lines we see under our expression are very different in nature:
+
+* `Hello World` is a _side effect_ of evaluating the expression (printing to standard output): the printing was done by our code.
+* `nil` is the _result_ of evaluating the expression: the printing was done by the REPL.
+
+== Calling Clojure libs from the REPL
+
+So far, we have only called code that we had defined manually at the REPL (for instance our `factorial` function defined above).
+But the REPL also lets you use pre-existing Clojure code, i.e Clojure <</reference/libs#,libs>>.footnote:[
+Note that what we call a Clojure <</reference/libs#,lib>> is not necessarily a https://en.wikipedia.org/wiki/Library_(computing)[library]:
+it can also be a source code file in your current project.]
+Given a Clojure lib with namespace `my.name.space`, you can evaluate `(https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/require[require] '[my.name.space])`
+ to make that lib's code loaded and available in the REPL.
+
+=== Example: using clojure.string
+
+For example, `https://clojure.github.io/clojure/clojure.string-api.html[clojure.string]`
+ is a lib bundled with Clojure for manipulating text.
+ Let's require `clojure.string` and call its `clojure.string/upper-case` function:
+
+[source,clojure-repl]
+----
+user=> (require '[clojure.string])
+nil
+user=> (clojure.string/upper-case "clojure")
+"CLOJURE"
+----
+
+`https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/require[require]` also lets use
+ define an _alias_ for the `clojure.string` namespace, by adding an `:as` clause. This enables us to
+ refer to names defined in the `clojure.string` namespace more concisely:
+
+[source,clojure-repl]
+----
+user=> (require '[clojure.string :as str])
+nil
+user=> (str/upper-case "clojure")
+"CLOJURE"
+----
+
+Finally, if we're _very_ lazy and don't want to type an alias at all, we can add a `:refer` clause:
+
+[source,clojure-repl]
+----
+user=> (require '[clojure.string :refer [upper-case]])
+nil
+user=> (upper-case "clojure")
+"CLOJURE"
+----
+
+== Looking up documentation
+
+The REPL can also be used for looking up API documentation, using the `https://clojure.github.io/clojure/clojure.repl-api.html[clojure.repl]` lib.
+ Evaluate the following expression at the REPL:
+
+[source,clojure-repl]
+----
+user=> (require '[clojure.repl :refer :all])
+nil
+----
+
+This expression makes all the names defined in the `clojure.repl` namespace available in the REPL.
+
+==== doc
+You can print the API documentation of a given Var by evaluating `(https://clojuredocs.org/clojure.repl/doc[doc] MY-VAR-NAME)`:
+
+[source,clojure-repl]
+----
+user=> (doc nil?)
+-------------------------
+clojure.core/nil?
+([x])
+  Returns true if x is nil, false otherwise.
+nil
+user=> (doc clojure.string/upper-case)
+-------------------------
+clojure.string/upper-case
+([s])
+  Converts string to all upper-case.
+nil
+----
+
+==== source
+You can also view the source code that was used to define a Var using `https://clojuredocs.org/clojure.repl/source[source]`:
+
+[source,clojure-repl]
+----
+user=> (source some?)
+(defn some?
+  "Returns true if x is not nil, false otherwise."
+  {:tag Boolean
+   :added "1.6"
+   :static true}
+  [x] (not (nil? x)))
+nil
+----
+
+==== dir
+You can use `https://clojuredocs.org/clojure.repl/dir[dir]` to list the names of all the Vars defined a given namespace.
+ Let's do this with the `clojure.string` namespace:
+
+[source,clojure-repl]
+----
+user=> (dir clojure.string)
+blank?
+capitalize
+ends-with?
+escape
+includes?
+index-of
+join
+last-index-of
+lower-case
+re-quote-replacement
+replace
+replace-first
+reverse
+split
+split-lines
+starts-with?
+trim
+trim-newline
+triml
+trimr
+upper-case
+nil
+----
+
+As another example, let's use `dir` to see what's available in `clojure.repl` itself:
+
+[source,clojure-repl]
+----
+user=> (dir clojure.repl)
+apropos
+demunge
+dir
+dir-fn
+doc
+find-doc
+pst
+root-cause
+set-break-handler!
+source
+source-fn
+stack-element-str
+thread-stopper
+nil
+----
+
+We recognize the `doc`, `source` and `dir` operations we've used so far.
+
+==== apropos
+
+If you don't exactly remember the name of some Var, you can search for it
+ using `https://clojuredocs.org/clojure.repl/apropos[apropos]`:
+
+[source,clojure-repl]
+----
+user=> (apropos "index")
+(clojure.core/indexed? clojure.core/keep-indexed clojure.core/map-indexed clojure.string/index-of clojure.string/last-index-of)
+----
+
+`https://clojuredocs.org/clojure.repl/apropos[apropos]` only searches Var names; you can search docstrings
+ (the text that is printed by `https://clojuredocs.org/clojure.repl/doc[doc]`) using
+ `https://clojuredocs.org/clojure.repl/find-doc[find-doc]`:
+
+==== find-doc
+[source,clojure-repl]
+----
+user=> (find-doc "indexed")
+-------------------------
+clojure.core/contains?
+([coll key])
+ Returns true if key is present in the given collection, otherwise
+ returns false.  Note that for numerically indexed collections like
+ vectors and Java arrays, this tests if the numeric key is within the
+ range of indexes. 'contains?' operates constant or logarithmic time;
+ it will not perform a linear search for a value.  See also 'some'.
+-------------------------
+clojure.core/indexed?
+([coll])
+ Return true if coll implements Indexed, indicating efficient lookup by index
+-------------------------
+clojure.core/keep-indexed
+([f] [f coll])
+ Returns a lazy sequence of the non-nil results of (f index item). Note,
+ this means false return values will be included.  f must be free of
+ side-effects.  Returns a stateful transducer when no collection is
+ provided.
+-------------------------
+clojure.core/map-indexed
+([f] [f coll])
+ Returns a lazy sequence consisting of the result of applying f to 0
+ and the first item of coll, followed by applying f to 1 and the second
+ item in coll, etc, until coll is exhausted. Thus function f should
+ accept 2 arguments, index and item. Returns a stateful transducer when
+ no collection is provided.
+nil
+----
+
+[WARNING]
+====
+**Documentation is available only for libs that have been required.**
+
+For instance, if you have not required the `clojure.set` namespace, you won't be
+able to search documentation for `clojure.set/union`. This is illustrated by this
+example REPL session:
+
+[source,clojure-repl]
+----
+clj
+Clojure 1.9.0
+user=> (doc clojure.set/union)
+nil                             ;; no doc found
+user=> (apropos "union")
+()
+user=> (require '[clojure.set]) ;; now we're requiring clojure.set
+nil
+user=> (doc clojure.set/union)
+-------------------------
+clojure.set/union
+([] [s1] [s1 s2] [s1 s2 & sets])
+  Return a set that is the union of the input sets
+nil
+user=> (apropos "union")
+(clojure.set/union)
+user=>
+----
+
+====

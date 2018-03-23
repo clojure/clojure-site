@@ -8,13 +8,7 @@ Timothy Pratley
 
 == For teams
 
-Adding Clojure to your company's capabilities?
-Give your employees a head start!
-Training services are available for small to large groups.
-These courses are typically 1-3 day events with 5-30 people,
-in a hotel meeting room. Lunch and snacks included.
-Content is tailored to the group.
-Prices range from 5 to 15k USD, depending on group size.
+Adding Clojure to your company's capabilities? Give your employees a head start!
 Here is list of companies and individuals that offer Clojure training courses.
 
 [options="header"]
@@ -40,32 +34,26 @@ Several courses are offered.
 |===
 | Link | Short description
 | https://lambdaisland.com | A series of video tutorial about web development using ClojureScript and Clojure
-| https://purelyfunctional.tv | Our mission is to help people thrive with Functional Programming.
-| https://www.udemy.com/learning-clojure | Will teach you how to write Clojure code and structure Clojure products.
+| https://purelyfunctional.tv | Our mission is to help people thrive with Functional Programming
+| https://www.udemy.com/learning-clojure | Will teach you how to write Clojure code and structure Clojure products
 |===
 
 === ClojureBridge
 
-ClojureBridge aims to increase diversity within the Clojure community by offering free,
+http://www.clojurebridge.org[ClojureBridge] aims to increase diversity within the Clojure community by offering free,
 beginner-friendly Clojure programming workshops for underrepresented groups in tech.
 ClojureBridge holds free training events for women and minorities.
 Typically these are 1 day events hosted by one or more sponsors.
-http://www.clojurebridge.org
-
 
 === Conferences
 
-Clojure training events are held just prior to Clojure/Conj conferences.
-This is a great opportunity for individuals to participate in a group training session.
-Check out the Clojure/Conj website for details.
-
+For conferences and upcoming events, check the upcoming <<events,Events>> list.
 
 == Resources for trainers
 
 * https://github.com/cognitect/clojure-lab
 * https://github.com/braveclojure/training
 * https://github.com/timothypratley/enterprise-clojure-training
-
 
 == Maintenance
 

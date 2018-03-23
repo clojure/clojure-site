@@ -481,7 +481,7 @@ Now that we have John's personal information we need to access the values within
 ;= You can reach him at 555-555-5555
 ----
 
-This function will associatively destructure the the input using the `:keys` shortcut and then print out the contact information that we provided.
+This function will associatively destructure the input using the `:keys` shortcut and then print out the contact information that we provided.
 
 But what about when we want to send John a nice letter?
 

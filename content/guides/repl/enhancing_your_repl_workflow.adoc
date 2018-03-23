@@ -256,7 +256,7 @@ This 'inline-def' technique is described in more depth in https://blog.michielbo
 === Reproducing the context of an expression
 
 When debugging at the REPL, we often want to reproduce manually something that our program did automatically,
-that is evaluating some expressions inside a function body. To do that, we need to recreate the the context 
+that is evaluating some expressions inside a function body. To do that, we need to recreate the context
 of the expressions of interest: one trick to achieve that is to define Vars (using `def`) with the same names 
 and values as the locals used by the expressions. The 'physics' example below illustrates this approach:
 

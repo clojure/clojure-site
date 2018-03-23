@@ -277,7 +277,7 @@ ArithmeticException Divide by zero  clojure.lang.Numbers.divide (Numbers.java:16
 
 This can be enough in many cases, but there is more information available.
 
-First, you can visualize the the _stacktrace_ of the Exception - that is, the chain
+First, you can visualize the _stacktrace_ of the Exception - that is, the chain
  of function calls which led to the faulty instruction. The stacktrace can be printed
  using https://clojure.github.io/clojure/clojure.repl-api.html#clojure.repl/pst[clojure.repl/pst]:
 

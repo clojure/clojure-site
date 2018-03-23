@@ -19,7 +19,7 @@ valuable for **_putting yourself in the shoes_ of the program** you are developi
 i.e evaluating exactly the same expressions in the REPL as your program does when it runs.
 
 This is achieved by giving your REPL the same context as your running program, which implies
-using REPL in the same <</reference/namespaces#,namespaces>> where your code is defined.
+using REPL in the same <<xref/../../../reference/namespaces#,namespaces>> where your code is defined.
 We will see how to do that in the following sections.
 
 **NOTE:** Namespaces are one of the trickiest parts of Clojure. If you're just learning the language,
@@ -221,13 +221,13 @@ to switch to namespaces that have already been created, you won't have to deal w
 == Working with libs
 
 Most of the namespaces you will navigate at the REPL will already exist in source files or dependencies 
-of your project, i.e in <</reference/libs#,libs>> of your project.
+of your project, i.e in <<xref/../../../reference/libs#,libs>> of your project.
 
 There is an important usage precaution for switching to namespaces defined in libs:
 
 [NOTE]
 ====
-**If a namespace is defined in a <</reference/libs#,lib>> of your project, 
+**If a namespace is defined in a <<xref/../../../reference/libs#,lib>> of your project, 
 always make sure you have _loaded_ the lib in the REPL before switching to it.**
 ====
 

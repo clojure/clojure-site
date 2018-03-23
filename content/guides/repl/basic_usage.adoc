@@ -90,8 +90,8 @@ This is because the https://clojure.github.io/clojure/clojure.core-api.html#cloj
 == Calling Clojure libs from the REPL
 
 So far, we have only called code that we had defined manually at the REPL (for instance our `factorial` function defined above).
-But the REPL also lets you use pre-existing Clojure code, i.e Clojure <</reference/libs#,libs>>.footnote:[
-Note that what we call a Clojure <</reference/libs#,lib>> is not necessarily a https://en.wikipedia.org/wiki/Library_(computing)[library]:
+But the REPL also lets you use pre-existing Clojure code, i.e Clojure <<xref/../../../reference/libs#,libs>>.footnote:[
+Note that what we call a Clojure <<xref/../../../reference/libs#,lib>> is not necessarily a https://en.wikipedia.org/wiki/Library_(computing)[library]:
 it can also be a source code file in your current project.]
 Given a Clojure lib with namespace `my.name.space`, you can evaluate `(https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/require[require] '[my.name.space])`
  to make that lib's code loaded and available in the REPL.

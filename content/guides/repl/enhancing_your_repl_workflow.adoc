@@ -40,7 +40,7 @@ provide a 'batteries-included' experience for Clojure.
 However, if setting up an editor is too heavy for your taste, there also exist more ergonomic terminal REPL clients:
 
 * **https://github.com/bhauman/rebel-readline[rebel-readline]** is a terminal readline library made by Bruce Hauman.
-If you have already installed the <</guides/deps_and_cli#,Clojure CLI tools>>, you can launch it in https://github.com/bhauman/rebel-readline#quick-try[one line at the terminal]
+If you have already installed the <<xref/../../deps_and_cli#,Clojure CLI tools>>, you can launch it in https://github.com/bhauman/rebel-readline#quick-try[one line at the terminal]
 without any additional installation steps.
 * **https://github.com/Unrepl/unravel[Unravel]** by Paulus Esterhazy is another option, based on the https://github.com/Unrepl/unrepl[unrepl] communication protocol.
 
@@ -102,7 +102,7 @@ ____
 You can usually customize how your REPL reads, evaluates and prints, but the method to do it 
 depends on your toolchain. For instance:
 
-* when using a REPL started from <</reference/repl_and_main#,clojure.main>> - as is the case when using the `clj` tool,
+* when using a REPL started from <<xref/../../../reference/repl_and_main#,clojure.main>> - as is the case when using the `clj` tool,
 you can customize the REPL by launching a 'sub-REPL': see https://clojure.github.io/clojure/clojure.main-api.html#clojure.main/repl[clojure.main/repl].
 * when using https://github.com/clojure/tools.nrepl[nREPL].footnote:[
 At the time of writing (March 2018), https://github.com/clojure/tools.nrepl[nREPL] is the most popular toolchain
@@ -113,7 +113,7 @@ ____
 **_I want to use the REPL to connect to a live production system._**
 ____
 
-The Clojure <</reference/repl_and_main#launching_a_socket_server,Socket Server>> feature can be used 
+The Clojure <<xref/../../../reference/repl_and_main#launching_a_socket_server,Socket Server>> feature can be used 
 to that end. Tools like **https://github.com/clojure/tools.nrepl[tools.nrepl]** and **https://github.com/Unrepl/unrepl[unrepl]**
 can be used to provide a richer experience.
 
@@ -128,7 +128,7 @@ It's important to know that these options exist, but don't try to adopt all of t
 [#editor-integrations]
 == Editor integrations
 
-All <</community/resources#_clojure_tools,major Clojure editors>> support a way of evaluating code in the REPL without leaving 
+All <<xref/../../../community/resources#_clojure_tools,major Clojure editors>> support a way of evaluating code in the REPL without leaving 
 the current code buffer, which reduces the amount of context switching a programmer has to do.
 Here's what it looks like (the editor used in this example is https://cursive-ide.com/userguide/repl.html[Cursive]):
 

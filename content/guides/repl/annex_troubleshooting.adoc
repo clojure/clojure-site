@@ -76,7 +76,7 @@ FileNotFoundException Could not locate a/b/c__init.class or a/b/c.clj on classpa
 ----
 
 **Explanations:** Clojure did not find any existing namespace named `a.b.c`, then searched the classpath 
-for a <</reference/libs#,lib>> that would define it, eventualling failing with the above Exception.
+for a <<xref/../../../reference/libs#,lib>> that would define it, eventualling failing with the above Exception.
 The cause may vary:
 
 * maybe you just made a typo in the namespace name

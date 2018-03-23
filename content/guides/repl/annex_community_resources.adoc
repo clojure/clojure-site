@@ -10,8 +10,6 @@ Valentin Waeselynck
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-toc::[]
-
 Here is a list of useful REPL-related resources by the Clojure community:
 
 * https://lambdaisland.com/guides/clojure-repls[The Ultimate Guide to Clojure REPLs] on Lambda Island:

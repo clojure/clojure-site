@@ -11,7 +11,7 @@ Timothy Pratley
 Adding Clojure to your company's capabilities? Give your employees a head start!
 Here is list of companies and individuals that offer Clojure training courses.
 
-[options="header"]
+[options="header", role="table"]
 |===
 | Company | Location | Courses | Link | contact
 | Cognitect | North America | All levels | https://cognitect.com/services.html | info@cognitect.com +1 919.283.2748
@@ -30,7 +30,7 @@ Several courses are offered.
 
 === Online courses
 
-[options="header"]
+[options="header", role="table"]
 |===
 | Link | Short description
 | https://lambdaisland.com | A series of video tutorial about web development using ClojureScript and Clojure

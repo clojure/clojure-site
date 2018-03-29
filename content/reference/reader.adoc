@@ -212,7 +212,8 @@ Reader tags without namespace qualifiers are reserved for Clojure. Default reade
 Clojure 1.4 introduced some tagged literals useful for Java interop. So far, these include instants and UUIDs.
 
 Instants have the format `#inst "yyyy-mm-ddThh:mm:ss.fff+hh:mm"`. The default reader will parse the supplied string into a
-`java.util.date` by default. For example:
+`java.util.Date` by default. For example:
+
 ----
 (def instant #inst "2018-03-28T10:48:00.000")
 (= java.util.Date (class instant))

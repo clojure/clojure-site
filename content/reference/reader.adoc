@@ -209,6 +209,8 @@ by invoking the Var `#'my.project.foo/bar` on the vector `[1 2 3]`. The data rea
 
 Reader tags without namespace qualifiers are reserved for Clojure. Default reader tags are defined in https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/default-data-readers[default-data-readers] but may be overridden in `data_readers.clj` or by rebinding https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/%2Adata-readers%2A[pass:[*data-readers*]]. If no data reader is found for a tag, the function bound in https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/%2Adefault-data-reader-fn%2A[pass:[*default-data-reader-fn*]] will be invoked with the tag and value to produce a value. If pass:[*default-data-reader-fn*] is nil (the default), a RuntimeException will be thrown.
 
+=== Built-in tagged literals
+
 Clojure 1.4 introduced the _instant_ and _UUID_ tagged literals. Instants have the format `#inst "yyyy-mm-ddThh:mm:ss.fff+hh:mm"`.
 NOTE: Some of the elements of this format are optional. See the code for details.
 The default reader will parse the supplied string into a `java.util.Date` by default. For example:
@@ -236,7 +238,6 @@ The `#uuid` tagged literal will be parsed into a `java.util.UUID`:
 (= java.util.UUID (class (read-string "#uuid \"3b8a31ed-fd89-4f1b-a00f-42e3d60cf5ce\"")))
 ;=> true
 ----
-
 
 == Reader Conditionals
 

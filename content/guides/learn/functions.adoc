@@ -275,7 +275,7 @@ Below is a summary of calling conventions for calling into Java from Clojure:
 |===
 | Task | Java | Clojure |
 |Instantiation| `new Widget("foo")` | `(Widget. "foo")` | 
-|Instance method| `rnd.next()` | `(.nextInt rnd)` |
+|Instance method| `rnd.next()` | `(.next rnd)` |
 |Instance field| `object.field` | `(.-field object)` |
 |Static method| `Math.sqrt(25)` | `(Math/sqrt 25)` |
 |Static field| `Math.PI` | `Math/PI` |

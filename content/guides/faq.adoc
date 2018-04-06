@@ -74,6 +74,50 @@ It sounds like you are using the latter but expecting the semantics of the forme
 
 Note that all of these are eager transformations - they produce the output vector when you invoke them. The original sequence version `(map inc (filter odd? [1 2 3]))` is lazy and will only produce values as needed (with chunking under the hood for greater performance). Neither of these is right or wrong, but they are both useful in different circumstances.
 
+[[arg_order]]
+**<<faq#arg_order,What are the rules of thumb for arg order in core functions?>>**
+
+Primary collection operands come first. That way one can write `->` and 
+its ilk, and their position is independent of whether or not they have 
+variable arity parameters. There is a tradition of this in OO 
+languages and Common Lisp (`slot-value`, `aref`, `elt`). 
+
+One way to think about sequences is that they are read from the left, 
+and fed from the right: 
+
+[source]
+----
+<- [1 2 3 4] 
+----
+
+Most of the sequence functions consume and produce sequences. So one 
+way to visualize that is as a chain: 
+
+[source]
+----
+map <- filter <- [1 2 3 4] 
+----
+
+and one way to think about many of the seq functions is that they are 
+parameterized in some way: 
+
+[source]
+----
+(map f) <- (filter pred) <- [1 2 3 4] 
+----
+
+So, sequence functions take their source(s) last, and any other 
+parameters before them, and partial allows for direct parameterization 
+as above. There is a tradition of this in functional languages and 
+Lisps. 
+
+Note that this is not the same as taking the primary operand last. 
+Some sequence functions have more than one source (concat, 
+interleave). When sequence functions are variadic, it is usually in 
+their sources. 
+
+_Adapted from https://groups.google.com/d/msg/clojure/iyyNyWs53dc/Q_8BtjRthqgJ[comments by Rich Hickey]._
+
 [[transducers_vs_seqs]]
 **<<faq#transducers_vs_seqs,What are good use cases for transducers?>>**
 

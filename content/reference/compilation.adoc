@@ -73,6 +73,8 @@ Alternately, compiler options can also be set via the Java system properties at 
 * `-Dclojure.compiler.elide-meta="[:doc :file :line :added]"`
 * `-Dclojure.compiler.direct-linking=true`
 
+To set these compiler options in other tools, see the docs for setting JVM options in https://github.com/technomancy/leiningen/blob/master/doc/TUTORIAL.md#setting-jvm-options[Leiningen] and https://github.com/boot-clj/boot/wiki/JVM-Options[Boot].
+
 See below for more info on each of these options.
 
 === Locals clearing

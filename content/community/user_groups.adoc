@@ -1,0 +1,150 @@
+= Clojure user groups
+2018-04-06
+:type: community
+:toc: macro
+:icons: font
+
+ifdef::env-github,env-browser[:outfilessuffix: .adoc]
+
+Do you wish there was a Clojure User Group in your area? Check
+out our page of <<xref/../start_group,tips for starting your own>>
+
+If you'd like to have your group listed here, please submit a PR against the
+https://gitub.com/clojure/clojure-site[clojure-site] github repo.
+
+Join the https://groups.google.com/forum/?fromgroups#!forum/clojure-power[clojure-power]
+mailing list for group organizers!
+
+[ <<xref/../user_groups#americas,Americas>>] [<<xref/../user_groups#europe,Europe>>]
+[ <<xref/../user_groups#asia,Asia>> ] [<<xref/../user_groups#australiannz,Australia / New Zealand>>]
+
+[[americas]]
+== Americas
+[[argentina]]
+* Argentina http://www.meetup.com/ClojureBA/[Clojure User Group Buenos Aires] (Twitter: https://twitter.com/ClojureBA[@ClojureBA])
+[[brazil]]
+* Brazil http://www.meetup.com/clj-sp/[Grupo de Usuários Clojure de São Paulo e Rio de Janeiro]
+[[canada]]
+* Canada
+** https://groups.google.com/forum/#!forum/montreal-clojure-user-group[Montreal Clojure User
+Group]
+** http://www.meetup.com/Clojure-Toronto/[Clojure Toronto]
+** http://www.meetup.com/Vancouver-Clojure[Vancouver Clojure]
+[[unitedstates]]
+* United states
+** Northeast
+*** http://www.meetup.com/Boston-Clojure-Group/[Boston Clojure Group]
+*** Functional Programming Connoisseurs (Western
+Massachusetts & surroundings) Welcoming all FP-ers (Erlang/Scheme/Scala/Haskell/etc etc etc), but
+Clojure fans generally form a plurality.
+*** http://www.meetup.com/Clojure-NYC/[NYC Clojure Users Group] (Twitter: https://twitter.com/ClojureNYC[@ClojureNYC])
+*** http://www.meetup.com/ClojureScript-NYC[ClojureScript NYC] (Twitter: https://twitter.com/ClojureNYC[ClojureNYC])
+*** http://www.meetup.com/Clojadelphia/[Clojadelphia - The Philadelphia User
+Group]
+*** Pittsburgh Clojure Users Group is part of http://www.codeandsupply.co/[Pittsburgh Code & Supply]
+** Midwest
+*** http://www.meetup.com/Chicago-Clojure/[Chicago]
+*** https://cincyfp.wordpress.com/[Cincy Functional Programmers Group]
+*** http://www.meetup.com/detroit-clojur[eDetroit Clojure Group]
+*** https://www.meetup.com/clojure-mke/[Clojure MKE - Milwaukee, WI]
+*** http://www.meetup.com/Madison-Clojure-Meetup/[Madison Clojure Meetup] - Madison, WI
+*** http://clojure.mn/[Minnesota Clojure Users Group]
+*** http://www.meetup.com/stl-clojure[St. Louis Clojure Meetup]
+*** http://www.columbusclojure.com[Columbus Clojure User Group]
+** South
+*** http://www.meetup.com/Baltimore-Clojure/[Baltimore Clojure Meetup]
+*** http://www.meetup.com/Cap-Clug/[National Capital Area Clojure Users
+Group] - Reston, VA
+*** http://www.meetup.com/ClojureDC/[ClojureDC] - Washington, DC
+*** http://meetup.com/TriClojure/[TriClojure Meetup]
+*** http://www.meetup.com/Atl-Clj/[Atlanta Clojure User Group]
+*** http://groups.google.com/group/clj-houston[Clojure Houston User Group]
+*** Dallas/Fort Worth Clojure Interest Group (https://groups.google.com/forum/#topic/clojure/Cym7oiViFoQ[
+See mailing list thread for more info])
+*** http://www.meetup.com/Austin-Clojure-Meetup/[Austin Clojure Meetup]
+*** http://www.meetup.com/Greenville-Clojure-Users-Group/[Greenville Clojure Users
+Group] (and https://groups.google.com/forum/#!forum/greenville-clojure[mailing list])
+*** https://www.meetup.com/Clojure-Co-Lab/[Clojure Co-Lab] - Columbia, South
+Carolina
+** West
+*** http://seajure.github.com[Seajure - Seattle Clojure Group]
+*** http://www.meetup.com/clojerks/[Clojure user group in Portland]
+*** http://www.meetup.com/The-Bay-Area-Clojure-User-Group/[Bay Area Clojure User
+Group] - San Francisco (monthly meetup plus monthly
+dojo); San Mateo (monthly meetup)
+*** http://www.meetup.com/Denver-Clojure-Meetup/[Denver Clojure Meetup]
+*** http://www.meetup.com/Los-Angeles-Clojure-Users-Group/[Los Angeles Clojure Users Group] and https://groups.google.com/forum/#!forum/clj-la[mailing list]
+*** Santa Barbara Clojure Users Group
+*** https://groups.google.com/forum/#!forum/clj-phx[Phoenix Clojure User Group]
+*** http://www.meetup.com/San-Diego-Clojure-Users-Group/[San Diego Clojure Users Group]
+
+[[europe]]
+== Europe
+** Austria
+*** http://www.meetup.com/clojure-vienna/[Vienna Clojure User Group]
+** Belgium
+*** http://www.beclojure.org[BeClojure] (Twitter: https://twitter.com/beclojure[@beclojure])
+** Czech Republic
+*** https://plus.google.com/communities/110902954360410928675[Lambda Meetup Ostrava]
+*** http://www.meetup.com/Lambda-Meetup-Group/[Prague Lambda Meetup]
+** Denmark
+*** https://www.meetup.com/aarhusclj/[Aarhus Clojure Meetup] (Twitter: https://twitter.com/aarhusclj[@aarhusclj])
+*** http://www.meetup.com/Copenhagen-Clojure-Meetup/[Copenhagen Clojure Meetup]- meetings every 6 weeks
+** Finland
+*** https://groups.google.com/forum/#%21forum/clojure-finland[Clojure Finland]
+** France
+*** http://groups.google.com/group/clojure-fr/[French community mailing list]
+*** https://www.meetup.com/fr-FR/Paris-Clojure-User-Group/[Paris Clojure Meetup]
+*** http://clojure-lyon.eventbrite.fr/[Clojure Lyon EventBrite (France)]- local meetups registration
+*** http://www.meetup.com/riviera-scala-clojure[Riviera Clojure] (Join with
+Riviera Scala, (Twitter: https://twitter.com/riviera_func[@riviera_func])
+** Germany
+*** http://www.meetup.com/Clojure-Berlin/[Berlin Clojure User Group] and https://groups.google.com/forum/#!forum/clojure-user-group-berlin[mailing list]
+*** http://www.cugb.de[Bonn Clojure User Group]
+*** https://www.meetup.com/de-DE/Clojure-Usergroup-Franken/[Clojure Usergroup Franken]
+*** http://www.meetup.com/clojure-cologne/[Cologne Clojure User Group]
+*** http://www.meetup.com/de-DE/Dusseldorf-Clojure-Meetup/[Düsseldorf Clojure User Group]
+*** http://www.meetup.com/ClojureUserGroupHH/[Hamburg Clojure User Group]
+** Hungary
+*** http://www.meetup.com/Budapest-Clojure-User-Group/[Budapest Clojure User Group]
+** Ireland
+*** http://www.meetup.com/Clojure-Ireland/[Clojure Ireland]
+** Italia
+*** http://groups.google.com/group/clojure-italy[Italian Clojure User Group]
+** Netherlands
+*** http://amsclj.nl/[Amsterdam Clojurians] (Twitter: https://twitter.com/amsclj[@amsclj])
+*** http://www.meetup.com/ehrd-clj[Rotterdam/Den Haag]
+** Norway
+*** http://www.meetup.com/Oslo-Socially-Functional/[Oslo Socially Functional Programmers]
+** Russia
+*** https://plus.google.com/u/0/communities/114227952963737516047[Clojure Russia]
+** Slovakia
+*** http://groups.google.com/group/bratislava-clojure/[Bratislava Clojure]
+** Sweden
+*** http://www.meetup.com/got-lambda[Got.λ - Göteborg Functional Programming Group]
+*** http://groups.google.com/group/stockholm-clojure-user-group[Stockholm Clojure User Group] (Twitter: https://twitter.com/sclojug[@sclojug])
+** Switzerland
+*** http://www.meetup.com/zh-clj-Zurich-Clojure-User-Group/[Zürich Clojure User Group]
+** UK
+*** http://londonclojurians.org/[London Clojurians]
+*** Manchester Clojure Dojo
+*** http://www.meetup.com/Cambridge-NonDysFunctional-Programmers/[Cambridge NonDysFunctional Programmers] and https://groups.google.com/forum/#!forum/camclj[Cambridge Clojure User Group] mailing list
+*** http://www.meetup.com/Bristol-Clojurians/[Bristol Clojurians]
+*** https://groups.google.com/forum/#!forum/edinburgh-clojurians[Edinburgh Clojurians]
+*** https://groups.google.com/forum/#!forum/glasgow-clojurians[Glasgow Clojurians]
+
+[[asia]]
+== Asia
+** http://groups.google.com/group/bangalore-clj[Bangalore Clojure Group]
+** https://groups.google.com/group/cn-clojure[Chinese Clojure Group]
+** http://clojure-china.org/[Clojure China] and http://weibo.com/clojurechina
+** http://www.meetup.com/Clojure-Israel/[Clojure Israel]
+** https://groups.google.com/forum/#!forum/clojuresg[Singapore Clojure User Group]
+** http://clojure.kr[Clojure Korea]
+** http://clojure.tw[Clojure Taiwan]
+
+[[australianz]]
+== Australia / New Zealand
+** http://www.meetup.com/clj-syd/[Sydney Clojure User Group]
+** http://www.meetup.com/clj-melb/[Melbourne Clojure User Group]
+** http://www.meetup.com/Auckland-Clojure/[Auckland Clojure User Group]

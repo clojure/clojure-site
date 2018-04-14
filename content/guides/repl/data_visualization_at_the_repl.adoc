@@ -466,3 +466,112 @@ image:/images/content/guides/repl/clj-inspect-table.png["clojure.inspector table
 
 Finally, https://clojure.github.io/clojure/clojure.java.browse-api.html#clojure.java.browse/browse-url[clojure.java.browse/browse-url]
 lets you open any URL in a Web browser, which can be handy for specific needs.
+
+== Dealing with mysterious values (advanced)
+
+Sometimes, the printed representation of a value in the REPL is not very informative; sometimes,
+it can even be misleading as to the nature of that value.footnote:[For instance, 
+https://docs.datomic.com/on-prem/entities.html[Datomic] and https://github.com/tonsky/datascript[DataScript] Entity objects are 
+printed like Clojure maps, even though they are significantly different from ordinary maps.] 
+This often happens with values which are obtained via Java interop.
+
+As an example, we'll create an InputStream object using the https://clojuredocs.org/clojure.java.io[`clojure.java.io`] lib. If you don't know 
+what an InputStream is, all the better - the point of this section is to teach you how to find your footing 
+in uncharted territory:
+
+[source,clojure-repl]
+----
+user=> (require '[clojure.java.io :as io])
+nil
+user=> (def v (io/input-stream "https://www.clojure.org")) ;; NOTE won't work if you're not connected to the Internet
+#'user/v
+user=> v
+#object[java.io.BufferedInputStream 0x4ee37ca3 "java.io.BufferedInputStream@4ee37ca3"]
+----
+
+The above code sample defined an InputStream named `v`.
+
+Now imagine you don't know where `v` comes from, and let's try to interact with it at the REPL 
+so as to gain more understanding of it.
+
+==== Viewing the type hierarchy using `type` and `ancestors`
+
+The printed representation of `v` tells us one thing about it: its _runtime type_, in this case `java.io.BufferedInputStream`.
+The _type_ of a value can help us know what operations we may call on it.
+We can evaluate `(https://clojuredocs.org/clojure.core/type[type] v)` to obtain the _concrete type_ of `v`, and 
+`(https://clojuredocs.org/clojure.core/ancestors[ancestors] (type v))` to obtain its entire _type hierarchy:_
+
+[source,clojure-repl]
+----
+user=> (type v) ;; what is the type of our obscure value?
+java.io.BufferedInputStream
+user=> (ancestors (type v))
+#{java.io.InputStream java.lang.AutoCloseable java.io.Closeable java.lang.Object java.io.FilterInputStream}
+----
+
+==== Using Javadoc
+
+As we saw in the previous section, we can use the https://clojure.github.io/clojure/clojure.java.javadoc-api.html[clojure.java.javadoc] lib 
+to view online documentation about a Java type:
+
+[source,clojure-repl]
+----
+user=> (require '[clojure.java.javadoc :as jdoc])
+nil
+user=> (jdoc/javadoc java.io.InputStream) ;; should open a web page about java.io.InputStream
+true
+----
+
+==== Inspecting Java types with `clojure.reflect`
+
+Javadoc is helpful, but sometimes Javadoc won't even be available. In such cases, we can use 
+the REPL itself to inspect types, via Java reflection.
+
+We can use the `https://clojure.github.io/clojure/clojure.reflect-api.html#clojure.reflect/reflect[clojure.reflect/reflect]`
+function to obtain information about a Java type as a plain Clojure data structure:
+
+[source,clojure-repl]
+----
+user=> (require '[clojure.reflect :as reflect])
+nil
+user=> (reflect/reflect java.io.InputStream)
+{:bases #{java.lang.Object java.io.Closeable}, :flags #{:public :abstract}, :members #{#clojure.reflect.Method{:name close, :return-type void, :declaring-class java.io.InputStream, :parameter-types [], :exception-types [java.io.IOException], :flags #{:public}} #clojure.reflect.Method{:name mark, :return-type void, :declaring-class java.io.InputStream, :parameter-types [int], :exception-types [], :flags #{:public :synchronized}} #clojure.reflect.Method{:name available, :return-type int, :declaring-class java.io.InputStream, :parameter-types [], :exception-types [java.io.IOException], :flags #{:public}} #clojure.reflect.Method{:name read, :return-type int, :declaring-class java.io.InputStream, :parameter-types [], :exception-types [java.io.IOException], :flags #{:public :abstract}} #clojure.reflect.Method{:name markSupported, :return-type boolean, :declaring-class java.io.InputStream, :parameter-types [], :exception-types [], :flags #{:public}} #clojure.reflect.Field{:name MAX_SKIP_BUFFER_SIZE, :type int, :declaring-class java.io.InputStream, :flags #{:private :static :final}} #clojure.reflect.Constructor{:name java.io.InputStream, :declaring-class java.io.InputStream, :parameter-types [], :exception-types [], :flags #{:public}} #clojure.reflect.Method{:name read, :return-type int, :declaring-class java.io.InputStream, :parameter-types [byte<>], :exception-types [java.io.IOException], :flags #{:public}} #clojure.reflect.Method{:name skip, :return-type long, :declaring-class java.io.InputStream, :parameter-types [long], :exception-types [java.io.IOException], :flags #{:public}} #clojure.reflect.Method{:name reset, :return-type void, :declaring-class java.io.InputStream, :parameter-types [], :exception-types [java.io.IOException], :flags #{:public :synchronized}} #clojure.reflect.Method{:name read, :return-type int, :declaring-class java.io.InputStream, :parameter-types [byte<> int int], :exception-types [java.io.IOException], :flags #{:public}}}}
+----
+
+Now, that is a _very_ hairy data structure. Fortunately, we have learned how to deal with hairy data structures in the 
+<<_pretty_printing_using_code_clojure_pprint_code,first section>> of this chapter: pretty-printing to the rescue!
+Let's use pretty-printing to display the methods exposed by `java.io.InputStream` in a table:
+
+[source,clojure-repl]
+----
+user=> (->> (reflect/reflect java.io.InputStream) :members (sort-by :name) (pp/print-table [:name :flags :parameter-types :return-type]))
+
+|                :name |                     :flags | :parameter-types | :return-type |
+|----------------------+----------------------------+------------------+--------------|
+| MAX_SKIP_BUFFER_SIZE | #{:private :static :final} |                  |              |
+|            available |                 #{:public} |               [] |          int |
+|                close |                 #{:public} |               [] |         void |
+|  java.io.InputStream |                 #{:public} |               [] |              |
+|                 mark |   #{:public :synchronized} |            [int] |         void |
+|        markSupported |                 #{:public} |               [] |      boolean |
+|                 read |       #{:public :abstract} |               [] |          int |
+|                 read |                 #{:public} |         [byte<>] |          int |
+|                 read |                 #{:public} | [byte<> int int] |          int |
+|                reset |   #{:public :synchronized} |               [] |         void |
+|                 skip |                 #{:public} |           [long] |         long |
+nil
+----
+
+For example, this tells us that we can call a `.read` method on `v` with no arguments, which will return an `int`:
+
+[source,clojure-repl]
+----
+user=> (.read v)
+60  
+user=> (.read v)
+33
+user=> (.read v)
+68
+----
+
+Without any prior knowledge, we have managed to learn that `v` is an InputStream, and read bytes from it.

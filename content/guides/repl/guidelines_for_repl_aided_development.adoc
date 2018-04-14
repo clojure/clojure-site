@@ -1,0 +1,78 @@
+= Programming at the REPL: Guidelines for REPL-Aided Development
+Valentin Waeselynck
+2018-04-14
+:type: repl
+:toc: macro
+:icons: font
+:navlinktext: Guidelines for REPL-Aided Development
+:prevpagehref: enhancing_your_repl_workflow
+:prevpagetitle: Enhancing your REPL workflow
+:nextpagehref: annex_community_resources
+:nextpagetitle: Annex: Community resources about the REPL
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+toc::[]
+
+Clojure REPLs are used for a broad spectrum of purposes, from learning the language 
+to data exploration to live music performance. This chapter will provide some guiding 
+principles for applying Clojure REPLs to the more common use case of pragmatic software 
+development.
+
+
+== The REPL is a User Interface to your program
+
+Programs commonly offer User Interfaces through a variety of media:
+
+* Graphical: web pages, mobile and desktop apps 
+* Network-based: Web Services / HTTP APIs / ...
+* Storage-based: the program keeps a database up to date, which can then be queried
+* Command-Line Interfaces (CLI): from interaction via a terminal
+
+You should think of the REPL as another medium for user-to-program interaction; 
+compared to those listed above, it requires advanced knowledge (programming in Clojure!),
+but it is also extremely expressive and cheap to develop, since it requires almost 
+no anticipation of what parts of the code users will want to leverage. For instance, 
+the REPL is a very suitable UI for _ad hoc_ data exports.
+
+In Clojure projects, it is common practice to define functions and namespaces solely 
+intended for REPL interaction: consider it an alternative to CLI, dashboards, etc.
+
+
+== Don't get carried away by the REPL
+
+The REPL can give you a lot of velocity, but do not mistake motion for progress. 
+You should **_always come to the REPL with a plan_**, otherwise the REPL will bring you 
+more distraction than focus. If you find it difficult to keep the plan in your head 
+while using the REPL, **_consider writing it down_**.
+
+The REPL will only guide you through very incremental changes, which is prone to getting 
+you stuck in 'local maxima'. When more strategic thinking is required, force yourself to 
+take a step back. In particular, **_rapid feedback is no substitute for software design 
+and methodic problem-solving._**
+
+
+== Don't forget to save your work, and make it accessible
+
+The REPL is a very ephemeral and exclusive medium. If there is anything to take away from a REPL session, 
+it should probably reside in other places than your flawed human memory (for instance in 
+code, tests, commented-out code, documentation, data files, etc.). 
+
+If what you learned in the REPL is a prerequisite to your project, you should do some extra work 
+to make it accessible to other contributors (including yourself in a few months).
+
+
+== The REPL is not the only tool for interactive development
+
+There are other tools which provide a tight feedback loop while programming:
+
+* auto-reloading test suites (example: https://github.com/marick/Midje[Midje])
+* static code analysis tools (linters, static type checkers)
+* hot-code reloading (example: https://github.com/bhauman/lein-figwheel[Figwheel])
+* 'visual' test suites (example: https://github.com/bhauman/devcards[Devcards])
+
+There is no reason to see these approaches as 'competing' with REPL-aided development,
+and oftentimes the REPL can assist you in using them. Each of these approaches has 
+its strengths and weaknesses: for instance, the REPL makes the execution of programs 
+very tangible, but is a poor tool for detecting breakage.
+

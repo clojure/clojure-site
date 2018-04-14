@@ -74,6 +74,7 @@ are enough to get you started with a productive learning environment.
 you will need the ideas presented in at least the next 2 chapters: <<data_visualization_at_the_repl#,Data visualization at the REPL>>
 and <<navigating_namespaces#,Navigating namespaces>>.
 * For **_working on Clojure projects at a professional level_**,
- <<enhancing_your_repl_workflow#,Enhancing your REPL workflow>> is a must.
+ <<enhancing_your_repl_workflow#,Enhancing your REPL workflow>> 
+ and <<guidelines_for_repl_aided_development#, Guidelines for REPL-Aided Development>> are must-reads.
 
 First, we'll learn how to <<launching_a_basic_repl#, launch a basic Clojure REPL>>.

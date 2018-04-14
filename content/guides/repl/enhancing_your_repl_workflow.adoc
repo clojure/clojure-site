@@ -15,7 +15,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 toc::[]
 
 At this point, you know enough to understand how the REPL works; we'll now focus on giving 
-you a more streamlined development experience with the REPL. There is a variety of things 
+you a more streamlined development experience with the REPL. There are a variety of things
 you may want to improve:
 
 [quote]
@@ -33,7 +33,7 @@ ____
 **_I want to do small experiments in Clojure, but it's painful to write code in the default CLI tool._**
 ____
 
-As mentioned above, one solution could be to use an <<editor-integrations,Editor integration>>; 
+As mentioned above, one solution could be to use an <<editor-integrations,editor integration>>.
 Note that some editors such as **https://sekao.net/nightcode/[Nightcode]** are designed specifically to 
 provide a 'batteries-included' experience for Clojure.
 
@@ -88,11 +88,11 @@ Having said that, keep in mind that the REPL is a full-feature execution environ
 to launch special-purpose visualization tools (including ones that you develop yourself).
 For instance: 
 
-* **https://github.com/metasoarous/oz[oz]** is a Clojure library for displaying numerical charts;
+* **https://github.com/metasoarous/oz[oz]** is a Clojure library for displaying numerical charts
 * **https://github.com/eggsyntax/datawalk[datawalk]** is a Clojure library for interactively exploring complex 
-Clojure data structures.
+Clojure data structures
 * **https://github.com/walmartlabs/system-viz[system-viz]** is a Clojure library for visualizing the components of a running 
-Clojure system.
+Clojure system
 
 [quote]
 ____
@@ -102,7 +102,7 @@ ____
 You can usually customize how your REPL reads, evaluates and prints, but the method to do it 
 depends on your toolchain. For instance:
 
-* when using a REPL started from <<xref/../../../reference/repl_and_main#,clojure.main>> - as is the case when using the `clj` tool,
+* when using a REPL started from <<xref/../../../reference/repl_and_main#,clojure.main>> (as is the case when using the `clj` tool)
 you can customize the REPL by launching a 'sub-REPL': see https://clojure.github.io/clojure/clojure.main-api.html#clojure.main/repl[clojure.main/repl].
 * when using https://github.com/clojure/tools.nrepl[nREPL].footnote:[
 At the time of writing (March 2018), https://github.com/clojure/tools.nrepl[nREPL] is the most popular toolchain
@@ -113,7 +113,7 @@ ____
 **_I want to use the REPL to connect to a live production system._**
 ____
 
-The Clojure <<xref/../../../reference/repl_and_main#launching_a_socket_server,Socket Server>> feature can be used 
+The Clojure <<xref/../../../reference/repl_and_main#launching_a_socket_server,socket server>> feature can be used
 to that end. Tools like **https://github.com/clojure/tools.nrepl[tools.nrepl]** and **https://github.com/Unrepl/unrepl[unrepl]**
 can be used to provide a richer experience.
 
@@ -290,11 +290,9 @@ and values as the locals used by the expressions. The 'physics' example below il
 ;; note: the same effect could be achieved using the 'inline-def' technique described in the previous section.
 
 ;;;; we can now directly evaluate any expression in the function body:
-    (* r r) ; => 2.5E13    
-    
-          (>= r earth-radius) ; => false
-          
-          (Math/pow (/ r earth-radius) 3.0) ; => 0.48337835316173317
+(* r r) ; => 2.5E13
+(>= r earth-radius) ; => false
+(Math/pow (/ r earth-radius) 3.0) ; => 0.48337835316173317
 ----
 
 This technique is described in more depth in Stuart Halloway's article

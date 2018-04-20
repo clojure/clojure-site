@@ -1,0 +1,40 @@
+= AnyChart
+Alex Miller
+2018-04-19
+:jbake-type: story
+:jbake-company: Stitch
+
+[.right]
+image:/images/content/stories/stitch.jpg["Stitch",height="125"]
+
+**What product or service are you building with Clojure or ClojureScript?**
+
+https://www.stitchdata.com/?utm_medium=partner&utm_campaign=clojure.org[Stitch] is an extract-transform-load (ETL) service that connects to tools like Salesforce and Facebook Ads and consolidates data from those platforms into a central location – a data warehouse – where it’s available for analysis.
+
+**How long have you been working with Clojure?**
+
+We've been using Clojure in production since our company’s inception in 2016. Many of our early team members had worked with Clojure in prior roles, so it was an obvious choice.
+
+**How big is your team?**
+
+We have 12 engineers working on our back-end services in Clojure.
+
+**What Clojure library have you enjoyed working with the most?**
+
+We use a few different native Clojure libraries, such as ring, compojure, and http-kit. However, when a well-supported Java library exists for a particular purpose, we tend to use the Java version and rely on Clojure’s excellent https://clojure.org/reference/java_interop[Java interop] support. For example, we use Java client libraries for various AWS services, Apache ZooKeeper, and Apache Kafka.
+
+**What is your favorite feature of Clojure or ClojureScript?**
+
+There are many, but a couple stand out:
+* Immutability. We try to rely on referential transparency as much as possible, which makes our applications easier to test and understand.
+* Interactive development. Many of us use Emacs with CIDER, which allows us to develop, debug, and test things interactively.
+
+**What is your stack?**
+
+Our web services run on AWS EC2 instances behind an ELB load balancer. We use ring and Jetty as our web servers. Most of our newer databases are Postgres RDS. Some of our applications use Redis for caching.
+
+Our actual data pipeline is fronted by a Clojure web service that stores data to Kafka, and then several more small Clojure services that route, transform, and load the data to its destination.
+
+**Why is using Clojure or ClojureScript valuable to your business?**
+
+Clojure allows us to develop robust applications that are simpler, smaller, and easier to understand than they would be if we wrote them in some other languages. We have the entire ecosystem of Java libraries at our disposal. It allows our developers to debug problems quickly by connecting to a running JVM and executing code. And using clojure.test combined with the interactivity of an nREPL connection lets us prototype quickly with a tight iterative TDD loop.

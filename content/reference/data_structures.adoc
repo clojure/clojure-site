@@ -157,7 +157,7 @@ The https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/mix-col
 [[Lists]]
 == Lists (IPersistentList)
 
-Lists are collections. They implement the ISeq interface directly (except for the empty list, which is not a valid seq). https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/count[count] is O(1). https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/conj[conj] puts the item at the front of the list.
+Lists are collections. They implement the ISeq interface directly. (Note that the empty list implements ISeq as well, however the `seq` function will always return `nil` for an empty sequence.) https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/count[count] is O(1). https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/conj[conj] puts the item at the front of the list.
 
 === Related functions
 

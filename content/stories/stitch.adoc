@@ -26,6 +26,7 @@ We use a few different native Clojure libraries, such as ring, compojure, and ht
 **What is your favorite feature of Clojure or ClojureScript?**
 
 There are many, but a couple stand out:
+
 * Immutability. We try to rely on referential transparency as much as possible, which makes our applications easier to test and understand.
 * Interactive development. Many of us use Emacs with CIDER, which allows us to develop, debug, and test things interactively.
 

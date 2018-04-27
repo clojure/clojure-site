@@ -1,0 +1,36 @@
+= CloudRepo
+Alex Miller
+2018-04-27
+:jbake-type: story
+:jbake-company: CloudRepo
+
+[.right]
+image:/images/content/stories/cloudrepo.png["CloudRepo",height="100"]
+
+**What product or service are you building with Clojure or ClojureScript?**
+
+https://www.cloudrepo.io/[CloudRepo] is a fully managed, cloud repository manager.   We store software artifacts for software development teams that use tools like Leiningen, Boot, and Maven for dependency management.
+
+**What Clojure library have you enjoyed working with the most?**
+
+There are a bunch of libraries that have really been solid and helped our development process.   We use Faraday for very simple AWS Dynamo DB access.  clj-http for all of our http client needs (testing, etc) and cheshire works like a charm for JSON Parsing.  
+
+However, the most eye opening and educational library we have used is Ring - it was a paradigm shift to see how http requests could be modeled as simple data and then passed through the system.  Once we realized that requests could be modeled as data, we were able to just let the requests flow through our system making transformations as needed.  That was a key learning for us and really helped us to understand more about designing systems based on data flow, which I detail further in https://medium.com/@chris.shellenbarger/key-lesson-building-cloudrepo-with-clojure-99bc1c1c405e[this post]
+
+Most recently, using spec has been really great.  The idea of generational tests has been game changing for us.  It also has provided us with, what we think is, an improvement over static typed system for defining functional contracts and validating programs.  We can now validate based on the 'shape' of the data or even specific values - this goes miles beyond the limits of what traditional type systems provide.
+
+**What is your favorite feature of Clojure?**
+
+We absolutely love the power that comes with passing around maps and letting them flow through the system.  When we can implement an endpoint by simply using the pass:[->] function and a chain of functions we are always pleasantly surprised at how elegant programming can really be with Clojure.
+
+Modeling our system state as maps has also been enlightening.  It allows us to understand our system better by looking at maps of data rather than a large object hierarchy. Combined with immutability, this makes Clojure a joy to work with.
+
+**What is your stack?**
+
+We're built 100% in AWS.   We leverage Amazon S3 for storage of artifacts and DynamoDB for metadata.
+
+In order to achieve high availability for our customers, we run CloudRepo in Docker containers distributed across multiple hosts running in Amazon Elastic Container Services.   Our backend services are written 100% in Clojure.  It's great that we can leverage the reliability of the JVM along with the power of a language like Clojure.
+
+**Why is Clojure valuable to your business?**
+
+Clojure is valuable to our business because we can do so much more with less.   We have a very small team and we are usually able to add features within a couple of hours.   We achieve this power because we flow data through the system and adding new features tends to be just about figuring out where best to plug into that flow.  Once that's decided, we can hook in and not worry about impacting state in other areas of the code thanks to immutability.

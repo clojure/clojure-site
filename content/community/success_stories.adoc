@@ -412,6 +412,23 @@ Here are just some of the public success stories from companies using Clojure.  
                     </cite>
                   </blockquote>
                 </li>
+                <li>
+                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/anychart.png" /></p>
+                  <p>
+                    <a target="anychart" href="https://www.anychart.com/">AnyChart</a> chose Clojure and ClojureScript to power their JavaScript (HTML5) charting libraries’ technical documentation ecosystem: user’s guide, API reference, and chart playground.
+                  </p>
+                  <hr>
+                  <p>
+                    <span class='read-more'>Read about how <a target="testimonial" href="https://www.anychart.com/blog/2018/04/11/clojure-clojurescript-anychart/">how the AnyChart team uses Clojure</a> and why.</span>
+                  </p>
+                  <blockquote style='margin-left: 0; padding: 0'>
+                    <p>We love Clojure for the ability to use Java libraries, writing shared code for the backend and the frontend, and for the inherent boost to the speed of development it provides.</p>
+                    <cite>
+                      <strong>Vitaly Radionov</strong>
+                      Head of R&amp;D, AnyChart
+                    </cite>
+                  </blockquote>
+                </li>
               </ul>
             </div>
 

@@ -221,14 +221,14 @@ The default reader will parse the supplied string into a `java.util.Date` by def
 ;=> true
 ----
 
-Since pass[*data-readers*] is a dynamic var that can be bound, you can replace the default reader with a different one. For example, `clojure.instant/read-instant-calendar` will parse the literal into a `java.util.Calendar`, while `clojure.instant/read-instant-timestamp` will parse it into a `java.util.Timestamp`:
+Since https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/%2Adata-readers%2A[pass:[*data-readers*]] is a dynamic var that can be bound, you can replace the default reader with a different one. For example, `clojure.instant/read-instant-calendar` will parse the literal into a `java.util.Calendar`, while `clojure.instant/read-instant-timestamp` will parse it into a `java.util.Timestamp`:
 ----
 (binding [*data-readers* {'inst read-instant-calendar}]
-  (= java.util.Calendar (class (read-string instant))))
+  (= java.util.Calendar (class (read-string (pr-str instant)))))
 ;=> true
 
 (binding [*data-readers* {'inst read-instant-timestamp}]
-  (= java.util.Timestamp (class (read-string instant))))
+  (= java.util.Timestamp (class (read-string (pr-str instant)))))
 ;=> true
 ----
 

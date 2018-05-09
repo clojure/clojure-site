@@ -24,9 +24,9 @@ Clojure's `=` is true when called with two immutable scalar values, if:
 * Both arguments are symbols, or both keywords, with equal namespaces and names.
 * Both arguments are numbers in the same 'category', and numerically
   the same, where category is one of:
-  * integer or ratio
-  * floating point (float or double)
-  * https://docs.oracle.com/javase/8/docs/api/java/math/BigDecimal.html[BigDecimal].
+** integer or ratio
+** floating point (float or double)
+** https://docs.oracle.com/javase/8/docs/api/java/math/BigDecimal.html[BigDecimal].
 
 Clojure's `=` is true when called with two collections, if:
 
@@ -334,7 +334,7 @@ are numerically equal, even if they are in different categories.  Thus
 `(= 1 1.0)` is false, but `(== 1 1.0)` is true.
 
 Why does `=` have different categories for numbers, you might wonder?
-It would difficult (if it is even possible) to make `hash` consistent
+It would be difficult (if it is even possible) to make `hash` consistent
 with `=` if it behaved like `==` (see section "Equality and hash"
 below).  Imagine trying to write `hash` such that it was guaranteed to
 return the same hash value for all of `(float 1.5)`, `(double 1.5)`,

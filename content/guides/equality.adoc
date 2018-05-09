@@ -309,7 +309,7 @@ Long 1, because they have different types.  Exception: Java `equals`
 is also false for two BigDecimal values that are numerically equal if
 they have different scales, e.g. 1.50M and 1.500M are not equal.  This
 behavior is documented for BigDecimal method
-https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html#equals-java.lang.Object-[J`equals`].
+https://docs.oracle.com/javase/8/docs/api/java/math/BigDecimal.html#equals-java.lang.Object-[`equals`].
 
 Clojure `=` is true if the 'category' and numeric values are the same.
 Category is one of:

@@ -655,10 +655,19 @@ the restriction on `hash`, but there is no decision on that yet.
 
 == Defining equality for your own types
 
-See these for examples on how to do this, and much more:
+See these for examples on how to do this, and much more.  In
+particular, the Java methods `equals` and `hashCode` from standard
+Java objects, and the Clojure Java methods `equiv` and `hasheq` are
+the most relevant for how `=` and `hash` behave.
 
-* https://github.com/clojure/data.priority-map[data.priority-map]
-* https://github.com/flatland/ordered[flatland/ordered-set]
+* https://github.com/clojure/data.priority-map[org.clojure/data.priority-map]
+  but note that it needs a change to implement `hash` consistently
+  with `=`.
+  https://dev.clojure.org/jira/browse/DPRIMAP-12[DPRIMAP-12]
+* https://github.com/amalloy/ordered[org.flatland/ordered] but note
+  that it needs a change so that its custom ordered map data structure
+  is not `=` to any Clojure record:
+  https://github.com/amalloy/ordered/pull/34[PR #34]
 
 == References
 

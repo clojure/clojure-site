@@ -74,7 +74,7 @@ Exceptions, or possible surprises:
   structures where you want to compare them to each other using `=`,
   and sometimes get `true` as the result.
 * 0.0 is `=` to -0.0
-* Clojure regex's, e.g. #"a.*bc", are implemented using Java
+* Clojure regex's, e.g. `#"a.*bc"`, are implemented using Java
   `java.util.regex.Pattern` objects, and Java's `equals` on two
   `Pattern` objects returns `(identical? re1 re2)`, even though they
   are documented as immutable objects.  Thus `(= #"abc" #"abc")`
@@ -84,7 +84,8 @@ Exceptions, or possible surprises:
   compare them to each other using `=`, and get `true` as the result
   even if the regex instances are not identical objects.  If you feel
   the need to, consider converting them to strings first, e.g. `(str
-  #"abc")` -> `"abc"`.
+  #"abc")` -> `"abc"` (see
+  http://dev.clojure.org/jira/browse/CLJ-1182[CLJ-1182])
 * Clojure persistent queues are never `=` to Java collections
   implementing `java.util.List`, not even if they have `=` elements in
   the same order (see

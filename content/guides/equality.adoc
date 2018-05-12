@@ -43,7 +43,8 @@ Clojure's `=` is true when called with two collections, if:
   their keys and values, because they do not have the same type.
 
 Clojure's `=` is true when called with two mutable Clojure objects,
-i.e. vars, refs, atoms, or agents, if:
+i.e. vars, refs, atoms, or agents, or with two "pending" Clojure
+objects, i.e. futures, promises, or delays, if:
 
 * Both arguments are the identical object, i.e. `(identical?  x y)` is true.
 

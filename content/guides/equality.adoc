@@ -675,7 +675,91 @@ the most relevant for how `=` and `hash` behave.
 
 The paper
 http://home.pipeline.com/~hbaker1/ObjectIdentity.html["Equal Rights for Functional Objects, or, the More Things Change, The More They Are the Same"] by Henry
-Baker includes code written in Common Lisp, but the idea of equality
-making sense for immutable values, and not as much sense for mutable
-objects (unless the mutable objects are
-the same object in memory), is independent of programming language.
+Baker includes code written in Common Lisp for a function `EGAL` that
+was an inspiration for Clojure's `=`.  The idea of "deep equality"
+making sense for immutable values, but not as much sense for mutable
+objects (unless the mutable objects are the same object in memory), is
+independent of programming language.
+
+Some differences between `EGAL` and Clojure's `=` are described below.
+These are fairly esoteric details about the behavior of `EGAL`, and
+are not necessary to know for an understanding of Clojure's `=`.
+
+=== Comparing mutable collections to other things
+
+`EGAL` is defined to be `false` when comparing mutable objects to
+anything else, unless that other thing is the same identical mutable
+object in memory.
+
+As a convenience, Clojure's `=` is designed to return `true` in some
+cases when comparing Clojure immutable collections to non-Clojure
+collections.
+
+There is no Java method to determine whether an arbitrary collection
+is mutable or immutable, so it is not possible in Clojure to implement
+`EGAL`'s intended behavior, although one might consider `=` "closer"
+to `EGAL` if it always returned `false` when one of the arguments was
+a non-Clojure collection.
+
+=== Lazy and pending values
+
+Baker recommends that `EGAL` force lazy values when comparing them
+(see Section 3. J. "Lazy Values").  When comparing a lazy sequence to
+another sequential thing, Clojure's `=` does force the evaluation of
+the lazy sequence, stopping if it reaches a non-`=` sequence element.
+Chunked sequences, e.g. as produced by `range`, can cause evaluation
+to proceed a little bit further than that point, as is the case for
+any event in Clojure that causes evaluation of part of a lazy
+sequence.
+
+Clojure's `=` does not `deref` delay, promise, or future objects when
+comparing them.  Instead, it compares them via `identical?`, thus
+returning `true` only if they are the same identical object in memory,
+even if calling `deref` on them would result in values that were `=`.
+
+=== Closures
+
+Baker describes in detail how `EGAL` can return `true` in some cases
+when comparing
+https://en.wikipedia.org/wiki/Closure_(computer_programming)[closures]
+to each other (see Section 3. D. "Equality of Functions and
+Function-Closures").
+
+When given a function or closure as an argument, Clojure's `=` only
+returns `true` if they are `identical?` to each other.
+
+Baker appeared to be motivated to define `EGAL` this way because of
+the prevalence in some Lisp family languages of using closures to
+represent objects, where those objects could contain mutable state, or
+immutable values (see the example below).  Given that Clojure has
+multiple other ways of creating immutable values and mutable objects
+(e.g. records, reify, proxy, deftype), using closures to do so is
+uncommon.
+
+```clojure
+(defn make-point [init-x init-y]
+  (let [x init-x
+        y init-y]
+    (fn [msg]
+      (cond (= msg :get-x) x
+            (= msg :get-y) y
+	    (= msg :get-both) [x y]
+	    :else nil))))
+
+user=> (def p1 (make-point 5 7))
+#'user/p1
+user=> (def p2 (make-point -3 4))
+#'user/p2
+user=> (p1 :get-x)
+5
+user=> (p2 :get-both)
+[-3 4]
+user=> (= p1 p2)
+false             ; We expect this to be false,
+                  ; because p1 and p2 have different x, y values
+user=> (def p3 (make-point 5 7))
+#'user/p3
+user=> (= p1 p3)
+false             ; Baker's EGAL would return true here.  Clojure
+                  ; = returns false because p1 and p3 are not identical?
+```

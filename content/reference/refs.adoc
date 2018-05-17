@@ -23,7 +23,7 @@ In practice, this means:
 
 . All reads of Refs will see a consistent snapshot of the 'Ref world' as of the starting point of the transaction (its 'read point'). The transaction _will_ see any changes it has made. This is called the _in-transaction-value_.
 . All changes made to Refs during a transaction (via https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ref-set[ref-set], https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/alter[alter] or https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/commute[commute]) will appear to occur at a single point in the 'Ref world' timeline (its 'write point').
-. No changes will have been made by any other transactions to any Refs that have been *ref-set**_ / _**altered**_ / _**ensured**_ by this transaction.
+. No changes will have been made by any other transactions to any Refs that have been _**ref-set**_ / _**altered**_ / _**ensured**_ by this transaction.
 . Changes _may have_ been made by other transactions to any Refs that have been commuted by this transaction. That should be okay since the function applied by _**commute**_ should be commutative.
 . Readers and commuters will never block writers, commuters, or other readers.
 . Writers will never block commuters, or readers.

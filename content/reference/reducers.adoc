@@ -44,7 +44,7 @@ In general most users will not call r/reduce directly and instead should prefer 
 [%hardbreaks]
 *(r/fold reducef coll)*
 *(r/fold combinef reducef coll)*
-*(r/fold n combinef reducef coll)**
+*(r/fold n combinef reducef coll)*
 
 r/fold takes a reducible collection and partitions it into groups of approximately n (default 512) elements. Each group is reduced using the reducef function. The reducef function will be called with no arguments to produce an identity value _in each partition_. The results of those reductions are then reduced with the combinef (defaults to reducef) function. When called with no arguments, (combinef) must produce its identity element - this will be called multiple times. Operations may be performed in parallel. Results will preserve order.
 

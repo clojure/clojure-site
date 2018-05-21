@@ -262,3 +262,18 @@ tools.deps.alpha aims to provide programmatic building blocks for dependency res
 **<<faq#clj_dynamic,Do these scripts allow you to dynamically add dependencies to a running repl?>>**
 
 No. Other tools exist to do this now or could be added on top of the existing functionality but this was not part of the initial goal.
+
+[[clj_standalone]]
+**<<faq#clj_standalone,How can I create a single-file Clojure script, ideally self-invokable via a https://en.wikipedia.org/wiki/Shebang_(Unix)[shebang line]?>>**
+
+If you don't need any extra dependencies, just put `#!/usr/bin/env clojure` as the first line. Note that `clojure` won't automatically call a `-main` function, so be sure your file does more than just define functions.
+
+If you do need extra dependencies, try the following, courtesy Dominic Monroe, substituting whatever deps you need in place of `funcool/tubax`:
+
+....
+#!/bin/sh
+
+"exec" "clojure" "-Sdeps" '{:deps {funcool/tubax {:mvn/version "0.2.0"}}}' "$0" "$@"
+
+;; Clojure code goes here.
+....

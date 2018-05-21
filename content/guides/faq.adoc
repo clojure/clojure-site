@@ -266,7 +266,7 @@ No. Other tools exist to do this now or could be added on top of the existing fu
 [[clj_standalone]]
 **<<faq#clj_standalone,How can I create a single-file Clojure script, ideally self-invokable via a https://en.wikipedia.org/wiki/Shebang_(Unix)[shebang line]?>>**
 
-If you don't need any extra dependencies, just put `#!/usr/bin/env clojure` as the first line. Note that `clojure` won't automatically call a `-main` function, so be sure your file does more than just define functions.
+If you don't need any extra dependencies, just put `#!/usr/bin/env clojure` as the first line. Note that `clojure` won't automatically call a `-main` function, so be sure your file does more than just define functions. You can find command-line arguments in `*command-line-args*`.
 
 If you do need extra dependencies, try the following, courtesy Dominic Monroe, substituting whatever deps you need in place of `funcool/tubax`:
 

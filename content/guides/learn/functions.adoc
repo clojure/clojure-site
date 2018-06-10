@@ -398,6 +398,7 @@ In Clojure, this is the complement function.
 ----
 
 10) Using the http://docs.oracle.com/javase/8/docs/api/java/lang/Math.html[java.lang.Math] class (`Math/pow`, `Math/cos`, `Math/sin`, `Math/PI`), demonstrate the following mathematical facts:
+
 * The cosine of pi is -1
 * For some x, sin(x)^2 + cos(x)^2 = 1
 
@@ -419,6 +420,7 @@ In fact, the Clojure `slurp` function interprets its argument as a URL first bef
 ----
 
 12) Define a function `one-less-arg` that takes two arguments:
+
 * `f`, a function
 * `x`, a value
 

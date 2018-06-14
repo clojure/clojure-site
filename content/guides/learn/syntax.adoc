@@ -328,7 +328,7 @@ What is this: 3
 
 The println function has side-effects (printing) and returns nil as a result.
 
-Note that "What is this:" above did not print the surrouding quotes and is not a string that the Reader could read again in the same way. For that purpose, use the machine-readable version prn:
+Note that "What is this:" above did not print the surrounding quotes and is not a string that the Reader could read again in the same way. For that purpose, use the machine-readable version prn:
 
 [source,clojure-repl]
 ----

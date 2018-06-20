@@ -282,6 +282,37 @@ Procurers may also have configuration attributes stored at the root of the confi
   "clojars" {:url "https://clojars.org/repo"}}}
 ----
 
+==== Maven authenticated repos
+
+For Maven deps in authenticated repositories, existing Maven infrastructure is used to convey credentials.
+
+In your ~/.m2/settings.xml:
+
+[source,xml]
+----
+<servers>
+  ...
+  <server>
+    <id>my-auth-repo</id>
+    <username>zango</username>
+    <password>123</password>
+  </server>
+  ...
+</servers>
+----
+
+Then in your deps.edn include a repo with a name matching the server id (here `my-auth-repo`):
+
+[source,clojure]
+----
+{:deps
+ {authenticated/dep {:mvn/version "1.2.3"}}
+ :mvn/repos
+ {"my-auth-repo" {:url "https://my.auth.com/repo"}}}
+----
+
+Then just refer to your dependencies as usual in the `:deps`.
+
 ==== Maven private S3 repos
 
 The tools also provide support for connecting to private S3 Maven repositories (thanks to the https://github.com/s3-wagon-private/s3-wagon-private[s3-wagon-private] and https://github.com/spring-projects/aws-maven[aws-maven] projects).

@@ -1,0 +1,75 @@
+= State of Clojure 2018 Results
+Alex Miller
+2019-03-19
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the annual State of Clojure 2018 survey results! Thanks so much for taking the time to check in and provide your feedback. We are very fortunate to have data for some of these questions going all the way back to 2010, giving us a long view on how the data is trending. This year, we had 2325 respondents, about the same as last year.
+
+== Rapid Uptake of Clojure 1.9
+
+With the release of Clojure 1.9 in December, we expected to see a shift in version usage, and we did. 72% of developers are already using it with about 60% still using Clojure 1.8 as well. Only a small (6%) number of developers are still using versions 1.7 or older.
+
+image::/images/content/news/2018-03-19/clojure-use.png[Clojure version use]
+
+We also keep an eye on JDK usage. Uptake of Java 1.9, released last year, has been a bit slower with only 29% adopting Java 1.9 so far and 88% of developers using Java 1.8. Only 6% of developers are using Java 1.7 and less than 1% are still using Java 1.6.
+
+In the editor/IDE world we saw some consolidation this year with both Emacs (50%) and IntelliJ/Cursive (29%) making gains. All other editors saw decreases, although there is still a lot of interesting innovation happening around Atom and VS Code, which was not included but saw a lot of mentions in the comments (~5% of total respondents) - will definitely add next year!
+
+image::/images/content/news/2018-03-19/editor.png[Editor use]
+
+In the ClojureScript world, Figwheel continues to dominate as a critical part of most ClojureScript developer's REPL workflow (76%). https://clojuriststogether.org/[Clojurists Together] is a new community effort to support open source projects in the community and they have been https://clojuriststogether.org/news/february-2018-monthly-update/[funding] work on Figwheel among other projects. Lumo was a new REPL option this year and made a strong showing of 12%.
+
+image::/images/content/news/2018-03-19/repl.png[CLJS REPL use]
+
+In CLJS target environments, we saw an increase of +6% targeting Node (to 29%) and +4% targeting Lambda (to 13%) - both things to watch.
+
+In the build tooling world, the entry of the https://clojure.org/guides/deps_and_cli[clj] tool is driving a lot of reevaluation and change right now. With so many things in flux, this area is sure to evolve significantly in 2018 and it will be interesting to see where we are in 2019. One important omission in the choices this year was shadow-cljs. There were a lot of mentions in the comments and it's clearly an important tool for many to build and deploy - we'll be sure to add it next year.
+
+== Interest Surging from JavaScript Programmers
+
+When we look at which language communities people are coming from, those answers have been remarkably stable for years, but there was significant movement this year for JavaScript (which vaulted over both Python and Ruby). Clearly people are finding ClojureScript (and its strong resonance with React) as an interesting and viable alternative to JavaScript.
+
+image::/images/content/news/2018-03-19/prior-langs.png[Prior language]
+
+As to where Clojurists hang out, we saw significant increases in use of Reddit (+5%) and Slack (+4%) and some decreases in use of the Clojure mailing lists, IRC, and attendance at both in-person and on-line conferences. One new choice added this year was the ClojureVerse Discourse server - it seems to be a useful midpoint between Slack (high volume live chat) and mailing lists (low volume asynchronous discussion). This was a new option yet 17% of respondents reported using it.
+
+image::/images/content/news/2018-03-19/community-forums.png[Community forums]
+
+== Clojure and ClojureScript Used in Many Domains and Industries
+
+One of the things we are always watching is the trend of people using Clojure for their day-to-day work. This year, we continued to see about 2/3 of respondents using Clojure for work (compare that to the very first survey back in 2010 when less than 1/3 were doing so). Web development has always been the most dominant domain - in 2010, 53% were doing web dev and these days fully 82% of Clojure devs are involved in some kind of web development (not surprising given how many Clojure devs are using both Clojure and ClojureScript together).
+
+image::/images/content/news/2018-03-19/domains.png[Domains]
+
+When looking at the industries using Clojure, we added a few choices this year based on prominent results in last year's "Other" category - entertainment (3%), energy/utility (2%), automotive/manufacturing (2%). We also saw a noticeable increase (+3%) in Financial services. Perhaps due to the new choices, we saw small decreases in the largest and most generic categories, enterprise software and consumer software. 
+
+image::/images/content/news/2018-03-19/industries.png[Industries]
+
+== Interest in Hiring Stays Strong
+
+There are several questions about how Clojure and ClojureScript should change or be prioritized for improvement. The results are largely similar to prior years, although the question format changed a little making it hard to directly compare every detail. The top result is clearly error messages though - while spec has started us down a road, that is still a work in progress which will continue this year. Many people have been using the Expound library for taking spec error output and making the data easier to read.
+
+Hiring and staffing is always an interesting one to watch and that increased this year. We often see the seemingly contradictory dual complaints of companies that need more people and developers that have a hard time finding positions. To a large degree this is either a mismatch in the geographic distribution of jobs and people and/or a mismatch in needs and skill levels. It has been very encouraging to see so many large teams growing and hiring of late though.
+
+The need for more docs and tutorials is also one that has gone up and down over the years and seems to be up again this year. While there are a wealth of resources for new Clojure developers now in every format, it is also sometimes difficult for people to find just the right resource for their experience level and need. There have been many good discussions lately about this and lots of active work in the community.
+
+In general, there have been so many new tools, learning resources, companies, etc of late that it's hard to keep up - 2018 is going to be a great year for Clojure!
+
+== Check Out the Data
+
+If you'd like to dig into the full results, you can find the complete set of data from this and former years here:
+
+* https://www.surveymonkey.com/results/SM-9BC5FNJ68/[2018]
+* https://www.surveymonkey.com/results/SM-7K6NXJY3/[2016]
+* http://blog.cognitect.com/blog/2016/1/28/state-of-clojure-2015-survey-results[2015]
+* http://blog.cognitect.com/blog/2014/10/20/results-of-2014-state-of-clojure-and-clojurescript-survey[2014]
+* http://cemerick.com/2013/11/18/results-of-the-2013-state-of-clojure-clojurescript-survey/[2013]
+* http://cemerick.com/2012/08/06/results-of-the-2012-state-of-clojure-survey/[2012]
+* http://cemerick.com/2011/07/11/results-of-the-2011-state-of-clojure-survey/[2011]
+* http://cemerick.com/2010/06/07/results-from-the-state-of-clojure-summer-2010-survey/[2010]
+
+_Note that we are doing the survey about every 14 months so the last survey occurred in late 2016 rather than 2017._
+
+Thanks again for being part of the community!

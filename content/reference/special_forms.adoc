@@ -246,6 +246,8 @@ anchor:set![]
 
 Clojure supports abstract structural binding, often called destructuring, in let binding lists, fn parameter lists, and any macro that expands into a `let` or `fn`. A _binding-form_ can be a data structure literal containing symbols that get bound to the respective parts of the __init-expr__. The binding is abstract in that a vector literal can bind to anything that is sequential, while a map literal can bind to anything that is associative.
 
+All binding symbols that don't match their respective part due to an absence of data (too few elements in a sequential structure, no key in an associative structure, etc) are bound to nil.
+
 === Vector binding destructuring
 
 Vector __binding-expr__s allow you to bind names to parts of _sequential_ things (not just vectors), like vectors, lists, seqs, strings, arrays, and anything that supports https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/nth[`nth`]. The basic sequential form is a vector of __binding-form__s, which will be bound to successive elements from the __init-expr__, looked up via `nth`. In addition, and optionally, `&` followed by a __binding-form__ will cause that __binding-form__ to be bound to the remainder of the sequence, i.e. that part not yet bound, looked up via https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/nthnext[`nthnext`].

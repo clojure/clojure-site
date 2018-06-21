@@ -1,0 +1,213 @@
+= State of Clojure 2016 Results
+Justin Gehtland
+2017-01-31
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome back to the annual State of Clojure survey results. This year we held steady in our response rate as 2,420 of you took the time and effort to weigh in on your experience with Clojure - as always, we appreciate that time and effort very much. And, as always, thanks to Chas Emerick for starting this survey 7 years ago.
+
+Clojure (and ClojureScript) were envisioned as tools that could make programming simple, productive, and fun. They were always aimed squarely at the working developer - someone being paid to solve complicated problems who needed to focus more on the solution and less on the unnecessary complexity surrounding it. While we love the academics, open source developers, and hobbyists who have flocked to Clojure, we are always happy to see signs of commercial adoption.
+
+Last year, we had an outright majority of users (57%) using Clojure at work. This year, that number accelerates up to 67%.
+
+image::/images/content/news/2017-01-31/use.jpg[Clojure uses]
+
+Within this group of users, several interesting themes emerge:
+
+* <<state-of-clojure-2016#products,commercial Clojure use is for products, not just internal tooling>>
+* <<state-of-clojure-2016#cloud,Clojure users are adopting the public cloud>>
+* <<state-of-clojure-2016#companies,Clojure has penetrated all kinds of companies, not just startups>>
+* <<state-of-clojure-2016#adoption,one of the biggest barriers to adoption is corporate aversion to new technologies>>
+
+In addition to these themes, we've included <<state-of-clojure-2016#details,detailed analysis>> of the individual questions as well as links to the <<state-of-clojure-2016#raw,raw data>>.
+
+[[products]]
+=== Commercial Clojure use is for products, not just internal tools
+
+A whopping 60% of respondents who use Clojure at work are building applications for people "outside my organization". We changed the wording of the answers to this question from the 2015 survey, so a direct head-to-head comparison isn't possible. However, in 2015, fully 70% of respondents said their use was for "personal" projects, while 42% said "company-wide/enterprise". This year, only 5% answered "just me". Even without the direct results comparison, the data shows a dramatic shift towards building products.
+
+image::/images/content/news/2017-01-31/users.jpg[Clojure users]
+
+This year we also introduced a new question, asking what industry or industries people develop for. For commercial users, "Enterprise Software" was the leader (at 22%), followed by "Financial services/fintech", "Retail/ecommerce", "Consumer software", "Media/advertising", and "Healthcare". Everything else was at under 5% reporting. When we dig deeper and look at each of those industries in turn, we find that within each one, "outside my organization" is still the most common answer. In fact, only in "Financial services/fintech" do internal tools come within 15% of "outside my organization".
+
+image::/images/content/news/2017-01-31/industry.jpg[Industries]
+
+[[cloud]]
+=== Clojure users are adopting the public cloud
+
+Last year, 51% of respondents said they were deploying into the public cloud. This year, that number is up to 57%, coming almost entirely at the expense of "traditional infrastructure" (private/hybrid cloud was essentially unmoved). Recently, rescale released a report estimating that "we are in fact only at about 6% enterprise cloud penetration today" (https://blog.rescale.com/cloud-3-0-the-rise-of-big-compute/). Clojurists in the workforce are considerably ahead of this curve, if true.
+
+image::/images/content/news/2017-01-31/deploy.jpg[Deployment]
+
+There is, unsurprisingly, a heavy correlation between use of the public cloud and developing applications for use "outside my organization". The use of the public cloud also skews heavily towards smaller organizations (companies of fewer than 100 people make up 70% of the public cloud group, while only 55% of the "traditional infrastructure" fell into that category).
+
+There were only two industries where traditional infrastructure dramatically beat public cloud: Government/Military (which seems obvious) and Academia (which seems sad, although it could be a reflection of universities' sunk investment in infrastructure).  And only Telecom had a majority of respondents indicating "private/hybrid", which is almost certainly a reflection of the fact that hybrid cloud offerings are, by and large, products from the Telecom sector.
+
+image::/images/content/news/2017-01-31/deploy-private.jpg[Private deployment]
+
+[[companies]]
+=== Clojure has penetrated all kinds of companies, not just startups
+
+If you look at the spread of response for size of organization, while there is a clear winner (11-100), the split is fairly even otherwise. A full 17% of responses were from companies of 1000+ people.
+
+image::/images/content/news/2017-01-31/size.jpg[Organization size]
+
+Web development and open source development are the dominant two domains regardless of company size, but coming in at a strong #3 is "building and delivering commercial services", except when you look at responses from 1000+ companies, in which case "enterprise apps" unsurprisingly moves ahead.
+
+image::/images/content/news/2017-01-31/large-industry.jpg[Large company industries]
+
+"Enterprise software" is the #1 industry regardless of company size. However, #2 is quite distinctly different across sizes -- in smaller companies (< 100 employees), "consumer software" is the strong #2, whereas for companies > 100 employees, financial services is the dominant #2.
+
+(An interesting aside: most industries show a normal bell curve, with most respondents coming from the middle two categories, 11-100 and 101-1000. For example: 
+
+image::/images/content/news/2017-01-31/size-per-industry.jpg[Size per industry]
+
+Only two industries show the inverted bell curve, with the most respondents at the edges -- Academia, and Government/Military.
+
+image::/images/content/news/2017-01-31/size-per-industry-invert.jpg[Size per industry inverted]
+
+You will note that these are the two industries where "traditional infrastructure" also dominates, so the distribution of respondents either being from the largest [most conservative] and smallest [most disruptive] paints an interesting picture of how industries change.)
+
+[[adoption]]
+=== One of the biggest barriers to adoption is corporate aversion to new technologies
+
+As was true the last two years, error messages and "hiring and staffing" are the top 2 reasons given for "What has been most frustrating or has prevented you from using Clojure more than you do now?" though both have fallen several percent since then. Interestingly, "Need docs/tutorials" has jumped from #5 in 2015 to #3 now, which corresponds well with a continuing growth of new entrants into the community.
+
+image::/images/content/news/2017-01-31/prevent.jpg[Prevented from using]
+
+When you break down respondents by size, each category is relatively uniform with one glaring exception: for some reason, companies of 100-1000+ people have a problem with the lack of static typing (it is a strong #3 in that cohort). Everyone else has a carbon copy distribution of the overall answers. When you look by industry, the "enterprise software" crowd would clearly benefit from more tools and a better IDE experience.
+
+What we found fascinating was drilling through the free answer portion of the responses to this question. Next year, we'll be adding a new possible answer: "corporate aversion to new technologies". If it was captured as one of the main responses, it would come in #2 or #3 overall. We clearly have work to do as a community to arm the technologists who wish to adopt Clojure with the materials and support they need to overcome internal inertia or resistance. That's an area we'd love to both see more people contributing, but also letting us at Cognitect know what else we could provide that would be useful.
+
+=== Summary
+
+When you dig into these numbers, you see a technology that has been accepted as a viable tool for crafting solutions across industries, company types and sizes, and target domains. As you might expect, adoption of Clojure seems closely correlated with the adoption of other new technologies, like the public cloud, and Clojure is beset with some of the same headwinds, like corporate aversion to new things. We are encouraged by the maturation of the community and of the ability of the technology and its adherents to tackle the hard problems of commercial software development.
+
+[[details]]
+== Detailed Results
+
+In addition to the big themes above, this section highlights a few of the more interesting results for specific questions in the survey. For details on all questions, see the full results.
+
+=== Which dialects of Clojure do you use?
+
+The interesting detail here was that the percentage of respondents using ClojureScript rose yet again, such that 2/3 of users are now using both Clojure and ClojureScript together (this has continually risen from about 1/2 3 years ago):
+
+image::/images/content/news/2017-01-31/dialect.jpg[Clojure dialect]
+
+Clojure increasingly delivers on the promise of a single unified language stack that can be used to cover an entire application.
+
+=== Prior to using Clojure, ClojureScript, or ClojureCLR, what was your primary development language?
+
+We've changed the way this question is asked and the options provided several times so it's difficult to assess trends. However, it's clear that developers come to Clojure either from imperative/OO languages (Java, C#, C/C++) or from dynamic languages (Ruby, Python, JavaScript, etc) with only small numbers coming from functional programming languages like Scala, Common Lisp, Haskell, Erlang, etc.
+
+image::/images/content/news/2017-01-31/prior-lang.jpg[Prior language]
+
+=== What is your *primary* Clojure, ClojureScript, or ClojureCLR development environment?
+
+Due to the general volatility of tools, it's interesting to see how this changes year to year. However, this year things were mostly pretty static with the three most common choices again Emacs/CIDER, Cursive/IntelliJ, and Vim with no major changes in percent use. Sublime, Light Table, and Eclipse/Counterclockwise all became a bit less common. The most interesting development was the rise in the use of Atom which was a new choice and selected by 6% of respondents.
+
+image::/images/content/news/2017-01-31/editor.jpg[Editor]
+
+=== What Clojure, ClojureScript, or ClojureCLR community forums have you used or attended in the last year?
+
+This was a new question this year, trying to get a sense of how people are interacting with other members of the community. The Clojurians slack channel was the most frequently used - this is a great place to connect with others and has taken the place of IRC for many. About half of respondents are using the original language mailing lists, and almost that many have looked at the Clojure subreddit.
+
+image::/images/content/news/2017-01-31/community.jpg[Community forum]
+
+Interestingly, most respondents have not attended either local Clojure meetups or Clojure conferences either in-person or remotely. There are many active Clojure meetups and conferences in the world - if you'd like to talk to other Clojurists, take a look and see if one is near you!
+
+=== Which versions of Clojure do you currently use in development or production?
+
+Library maintainers are often interested in how quickly users are migrating to newer versions of Clojure as they decide whether they can use new features. We can see in this year's survey that most users are on the latest stable version (1.8.0) - 83%, with a third of respondents already using the 1.9 prereleases prior to final release. Less than 5% are using a Clojure version older than Clojure 1.7, which is good news for those that wish to rely on 1.7 features like cljc files or transducers.
+
+image::/images/content/news/2017-01-31/clojure-versions.jpg[Clojure versions]
+
+=== What versions of the JDK do you target?
+
+Similar to the prior question, it's useful to track what versions of the JDK are in use in the community. We saw significant consolidation to Java 1.8 over the past year (with Java 1.9 on the horizon) - 95% of users are using it with only about 2% using a version older than Java 1.7. For the moment, Clojure is still supported on Java 1.6 but eventually that support will be dropped.
+
+image::/images/content/news/2017-01-31/jdk-versions.jpg[JDK versions]
+
+=== What tools do you use to compile/package/deploy/release your Clojure projects?
+
+While Leiningen continues to be ubiquitous, boot made significant advances this year, moving from 13% usage to 22% usage.
+
+image::/images/content/news/2017-01-31/tools.jpg[Tools]
+
+=== What has been most frustrating or has prevented you from using Clojure more than you do now?
+
+Error messages continued to be the top frustration for people and we will continue to improve those with the integration of spec in Clojure 1.9. Interestingly, the majority of the other frustrations went down this year compared to last year:
+
+* Hiring/staffing - from 33% to 30%
+* Scripting - from 33% to 18% (maybe due to the rise of Planck and Lumo)
+* Docs - from 25% to 22% (hopefully the new Clojure and ClojureScript web sites have helped)
+* Static typing - from 23% to 16% (maybe due to the release of spec)
+* Long-term viability - from 20% to 10%
+* Finding libraries - from 16% to 11%
+* Portability - from 10% to 5% (continued uptake of cljc / reader conditionals)
+
+image::/images/content/news/2017-01-31/prevent-reason.jpg[Prevent reasons]
+
+=== Which JavaScript environments do you target?
+
+The most interesting story here is the rise in three areas:
+
+* React Native - 18% (new choice this year)
+* Electron - 11% (new choice this year)
+* AWS Lambda - 9% (vs 5% last year)
+
+As JavaScript continues to seep into every area of computing, ClojureScript is following along with it and seeing new and interesting uses. 
+
+image::/images/content/news/2017-01-31/js-env.jpg[JavaScript environments]
+
+=== Which tools do you use to compile/package/deploy/release your ClojureScript projects?
+
+We saw a small increase in Figwheel this year (after a huge jump after its release) with about 2/3 of ClojureScript users now using it. And as we saw in the prior tools question, there is a big jump in the number of ClojureScript developers using boot (from 15 to 23%).
+
+image::/images/content/news/2017-01-31/cljs-deploy.jpg[ClojureScript deploy tools]
+
+=== Which ClojureScript REPL do you use most often?
+
+Again, even more usage of Figwheel here (76%, up from 71% last year). We added Planck this year and it registered at 9%. The Lumo repl was not listed as a choice but did make a showing in the comments.
+
+image::/images/content/news/2017-01-31/cljs-repl.jpg[ClojureScript repl]
+
+=== How are you running your ClojureScript tests?
+
+We added this question to gather some information on what seems like an underserved area of the ecosystem. Of those who responded, we saw:
+
+image::/images/content/news/2017-01-31/cljs-test.jpg[ClojureScript test]
+
+However, there was a lot of information in the "Other" responses as well. At least 60 people (more than replied for the Nashorn choice above) responded that they were either not testing at all or were relying on testing their ClojureScript via cljc tests that ran in Clojure. This is a great area for future improvements with no real consensus and a lot of developers not even doing it at all. Some other choices seen in the comments were Devcards, Karma, Phantom, and doo.
+
+=== What has been most frustrating or has prevented you from using ClojureScript more than you do now?
+
+The top answer here was "Using JavaЅcript libs with ClojureScript / Google Closure", which was a new choice we added this year. David Nolen and the ClojureScript community have been working hard on some of the biggest pain points in this area, which culminated in the recent release of a new ClojureScript version with better support for externs and modules.
+
+image::/images/content/news/2017-01-31/cljs-prevent.jpg[ClojureScript prevent reasons]
+
+Some of the other choices fell in importance this year (similar to Clojure):
+
+* "Using ClojureScript REPLs" went from 45% to 34% (rise of Figwheel, Planck, Lumo)
+* "Availability of docs" went from 39% to 31% (new ClojureScript web site)
+* "Long-term viability" went from 15% to 10%
+
+=== Here you can add any final comments or opinions...
+
+The majority of responses (~62%) here either expressed sentiments of happiness or gratitude (always good to see). Other categories centered around expected themes (many are areas of current or future work): docs/tutorials, error messages, tooling, startup time, etc. One relatively stronger theme this year was the need for better marketing for the purposes of expanding or introducing Clojure within organizations, which is a great area for contribution from the entire community.
+
+[[raw]]
+== The data
+
+If you'd like to dig into the results more deeply, you can find the complete set of data from this and former years here:
+
+* https://www.surveymonkey.com/results/SM-7K6NXJY3/[2016]
+* http://blog.cognitect.com/blog/2016/1/28/state-of-clojure-2015-survey-results[2015]
+* http://blog.cognitect.com/blog/2014/10/20/results-of-2014-state-of-clojure-and-clojurescript-survey[2014]
+* http://cemerick.com/2013/11/18/results-of-the-2013-state-of-clojure-clojurescript-survey/[2013]
+* http://cemerick.com/2012/08/06/results-of-the-2012-state-of-clojure-survey/[2012]
+* http://cemerick.com/2011/07/11/results-of-the-2011-state-of-clojure-survey/[2011]
+* http://cemerick.com/2010/06/07/results-from-the-state-of-clojure-summer-2010-survey/[2010]
+
+Thanks again for providing your responses to help form this picture of our growing community!

@@ -11,6 +11,41 @@ The official https://github.com/clojure/clojure/blob/master/changes.md[changelog
 
 == Release 1.10
 
+=== 1.10.0-alpha5 (June 27, 2018)
+
+Clojure 1.10.0-alpha5 is now available.
+
+1.10.0-alpha5 includes the following changes since 1.10.0-alpha4:
+
+* https://dev.clojure.org/jira/browse/CLJ-2363[CLJ-2363] - make Java 8 the minimum requirement for Clojure (also bumps embedded ASM to latest) - thanks Ghadi Shayban!
+* https://dev.clojure.org/jira/browse/CLJ-2284[CLJ-2284] - fix invalid bytecode generation for static interface method calls in Java 9+ - thanks Ghadi Shayban!
+* https://dev.clojure.org/jira/browse/CLJ-2330[CLJ-2330] - fix brittle test that fails on Java 10 build due to serialization drift
+* https://dev.clojure.org/jira/browse/CLJ-2362[CLJ-2362] - withMeta() should return identity when new meta is identical to prior
+* https://dev.clojure.org/jira/browse/CLJ-1130[CLJ-1130] - when unable to match static method, improve error messages
+* https://dev.clojure.org/jira/browse/CLJ-2289[CLJ-2089] - sorted colls with default comparator don't check that first element is Comparable
+* https://dev.clojure.org/jira/browse/CLJ-2163[CLJ-2163] - add test for var serialization
+* Bump dependency version for spec.alpha to latest, 0.2.168 (see https://github.com/clojure/spec.alpha/blob/master/CHANGES.md[changes])
+* Bump dependency version for core.specs.alpha to latest, 0.2.36 (see https://github.com/clojure/core.specs.alpha/blob/master/CHANGES.md[changes])
+
+NOTE: 1.10.0-alpha5 drops support for Java 6 and 7 and makes Java 8 the minimum requirement. Compilation will produce Java 8 level bytecode (which will not run on earlier versions of Java). This is the first change in bytecode version since Clojure 1.6. We would greatly appreciate it if you tried this release with your library or project and provided feedback about errors, performance differences (good or bad), compatibility, etc.
+
+When using the `clj` tool and deps.edn, we recommend adding an alias to your ~/.clojure/deps.edn:
+
+[source,clojure]
+----
+{:aliases
+ {:clj/next
+  {:override-deps
+   {org.clojure/clojure {:mvn/version "1.10.0-alpha5"}}}}}
+----
+
+You can then run any of your projects with the latest Clojure dev release by activating the alias with `clj`: 
+
+[source,shell]
+----
+clj -A:clj/next
+----
+
 === 1.10.0-alpha4 (Feb 9, 2018)
 
 - Fix 0-arity bug for read+string

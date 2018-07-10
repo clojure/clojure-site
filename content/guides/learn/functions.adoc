@@ -244,7 +244,7 @@ This `let` expression creates two local bindings for `x` and `y`. The expression
 ) ;; end of function
 ----
 
-The messenger function takes a `msg` argument. Here the `defn` is also creating lexical scope for `msg` - it only has meanining within the `messenger` function.
+The messenger function takes a `msg` argument. Here the `defn` is also creating lexical scope for `msg` - it only has meaning within the `messenger` function.
 
 Within that function scope, the `let` creates a new scope to define `a`, `b`, and `c`. If we tried to use `a` after the let expression, the compiler would report an error.
 

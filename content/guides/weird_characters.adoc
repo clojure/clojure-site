@@ -197,6 +197,21 @@ Note that var quote is not available in edn.
 
 * <<xref/../../reference/special_forms#var,Clojure Official Documentation: Special Forms>>
 
+== `pass:[##]` - Symbolic values
+
+Clojure can read and print the symbolic values `pass:[##Inf]`,
+`pass:[##-Inf]`, and `pass:[##NaN]`.  These are also available in edn.
+
+[source,clojure]
+----
+user=> (/ 1.0 0.0)
+##Inf
+user=> (/ -1.0 0.0)
+##-Inf
+user=> (Math/sqrt -1.0)
+##NaN
+----
+
 [[tagged_literals]]
 == `#inst`, `#uuid`, and `#js` etc. - tagged literals
 

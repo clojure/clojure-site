@@ -38,6 +38,7 @@ Since we have to start somewhere, this reference starts where evaluation starts,
 * Characters - preceded by a backslash: `\c`. `\newline`, `\space`, `\tab`, `\formfeed`, `\backspace`, and `\return` yield the corresponding characters. Unicode characters are represented with `\uNNNN` as in Java. Octals are represented with `\oNNN`.
 * `nil` Means 'nothing/no-value'- represents Java null and tests logical false
 * Booleans - `true` and `false`
+* Symbolic values - `pass:[##Inf]`, `pass:[##-Inf]`, and `pass:[##NaN]`
 * Keywords - Keywords are like symbols, except:
 ** They can and must begin with a colon, e.g. :fred.
 ** They cannot contain '.' or name classes.

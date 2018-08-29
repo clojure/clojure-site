@@ -164,7 +164,7 @@ user=> (+ *1 *2)
 24
 ----
 
-In addition, there is a namespace `clojure.repl` that is included in the standard Clojure library that provides a number of helpful functions. To load that library and make it's functions available in our current context, call:
+In addition, there is a namespace `clojure.repl` that is included in the standard Clojure library that provides a number of helpful functions. To load that library and make its functions available in our current context, call:
 
 [source,clojure]
 ----

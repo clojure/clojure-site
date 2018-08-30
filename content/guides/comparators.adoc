@@ -78,7 +78,7 @@ If you do not specify your own comparator, sorting is done by a built-in functio
 `compare` works for many types of values, ordering them in one particular way: increasing
 numeric order for numbers; https://en.wikipedia.org/wiki/Lexicographical_order[lexicographic order]
 (aka dictionary order) for strings, symbols, and keywords; shortest-to-longest order by Clojure
-vectors, with lexicographic ordering among equal length vectors. All Java types implement
+vectors, with lexicographic ordering among equal length vectors. All Java types that implement
 the http://docs.oracle.com/javase/6/docs/api/java/lang/Comparable.html[Comparable]
 interface such as characters, booleans, File, URI, and UUID are compared via their
 `compareTo` methods. Finally, `nil` can be compared to all values described earlier, and

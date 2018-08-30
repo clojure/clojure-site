@@ -407,11 +407,12 @@ Destructuring namespaced keywords using `:keys` alone can result in local bindin
 ;= Franklin is 25 and likes running
 ----
 
-
 You can even destructure using auto-resolved keywords, which will again be bound to only the name part of the key:
 
 [source,clojure]
 ----
+;; this assumes you have a person.clj namespace in your project
+;; if not do the following at your repl instead: (create-ns 'person) (alias 'p 'person)
 (require '[person :as p])
 
 (let [person {::p/name "Franklin", ::p/age 25}

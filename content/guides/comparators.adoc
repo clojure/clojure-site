@@ -325,7 +325,7 @@ nil
 
 The problem here is that `by-2nd-\<=` gives inconsistent answers. If you ask it whether `["c" 1]` comes before `["b" 1]`,
 it returns true (which Clojure's boolean-to-int comparator conversion turns into -1).
-f you ask it whether `["b" 1]` comes before `["c" 1]`, again it returns true (again converted into -1 by Clojure).
+If you ask it whether `["b" 1]` comes before `["c" 1]`, again it returns true (again converted into -1 by Clojure).
 One cannot reasonably expect an implementation of a sorted data structure to provide any kind of guarantees on
 its behavior if you give it an inconsistent comparator.
 

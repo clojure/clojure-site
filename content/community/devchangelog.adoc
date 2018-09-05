@@ -11,6 +11,19 @@ The official https://github.com/clojure/clojure/blob/master/changes.md[changelog
 
 == Release 1.10
 
+=== 1.10.0-alpha7 (Sept 5, 2018)
+
+Clojure 1.10.0-alpha7 is now available.
+
+1.10.0-alpha7 includes the following changes since 1.10.0-alpha6:
+
+* Update deps to latest spec.alpha (0.2.176) and core.specs.alpha (0.2.44)
+* https://dev.clojure.org/jira/browse/CLJ-2373[CLJ-2373] - categorize and overhaul printing of exception messages at REPL
+* https://dev.clojure.org/jira/browse/CLJ-1279[CLJ-1279] - report correct arity count for function arity errors inside macros
+* https://dev.clojure.org/jira/browse/CLJ-2386[CLJ-2386] - omit ex-info construction stack frames
+* https://dev.clojure.org/jira/browse/CLJ-2394[CLJ-2394] - warn in pst that stack trace for syntax error failed before execution
+* https://dev.clojure.org/jira/browse/CLJ-2396[CLJ-2396] - omit :in clauses when printing spec function errors if using default explain printer
+
 === 1.10.0-alpha6 (July 4, 2018)
 
 Clojure 1.10.0-alpha6 is now available.

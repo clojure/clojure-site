@@ -251,7 +251,7 @@ user=> n
 3
 ----
 
-This 'inline-def' technique is described in more depth in https://blog.michielborkent.nl/blog/2017/05/25/inline-def-debugging/[this blog post by Michiel Borkent].
+This 'inline-def' technique is described in more depth in https://blog.michielborkent.nl/2017/05/25/inline-def-debugging/[this blog post by Michiel Borkent].
 
 === Reproducing the context of an expression
 

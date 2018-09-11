@@ -14,7 +14,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 toc::[]
 
-At this point, you know enough to understand how the REPL works; we'll now focus on giving 
+At this point, you know enough to understand how the REPL works; we'll now focus on giving
 you a more streamlined development experience with the REPL. There are a variety of things
 you may want to improve:
 
@@ -25,7 +25,7 @@ ____
 
 Most Clojure programmers don't use the terminal-based REPL for everyday development:
 instead, they use a REPL integration in their editor, which enables them to write expressions
-directly in their editor buffer and have them evaluated in the REPL with one hotkey. 
+directly in their editor buffer and have them evaluated in the REPL with one hotkey.
 See the <<editor-integrations,Editor integrations>> section below for more details.
 
 [quote]
@@ -34,7 +34,7 @@ ____
 ____
 
 As mentioned above, one solution could be to use an <<editor-integrations,editor integration>>.
-Note that some editors such as **https://sekao.net/nightcode/[Nightcode]** are designed specifically to 
+Note that some editors such as **https://sekao.net/nightcode/[Nightcode]** are designed specifically to
 provide a 'batteries-included' experience for Clojure.
 
 However, if setting up an editor is too heavy for your taste, there also exist more ergonomic terminal REPL clients:
@@ -56,7 +56,7 @@ ____
 **_I find myself repeating a lot of manual steps at the REPL for running my development environment._**
 ____
 
-Consider creating a 'dev' namespace in your project (e.g `myproject.dev`) in which you define functions 
+Consider creating a 'dev' namespace in your project (e.g `myproject.dev`) in which you define functions
 for automating common development tasks (for example: starting a local web server, running a database query,
 turning on/off email sending, etc.)
 
@@ -66,7 +66,7 @@ ____
 I have to do a lot of manual work in the REPL to make it happen.._**
 ____
 
-Depending on the choices you make when writing your programs, interacting with them at the REPL will 
+Depending on the choices you make when writing your programs, interacting with them at the REPL will
 become more or less practical. See the <<writing-repl-friendly-programs,Writing REPL-friendly programs>> section below.
 
 [quote]
@@ -84,14 +84,14 @@ ____
 You may get improved visualization features from a specialized Clojure editor:
  see the <<editor-integrations,Editor Integrations>> section below.
 
-Having said that, keep in mind that the REPL is a full-feature execution environment: in particular, you can use it 
+Having said that, keep in mind that the REPL is a full-feature execution environment: in particular, you can use it
 to launch special-purpose visualization tools (including ones that you develop yourself).
-For instance: 
+For instance:
 
 * **https://github.com/metasoarous/oz[oz]** is a Clojure library for displaying numerical charts
-* **https://github.com/eggsyntax/datawalk[datawalk]** is a Clojure library for interactively exploring complex 
+* **https://github.com/eggsyntax/datawalk[datawalk]** is a Clojure library for interactively exploring complex
 Clojure data structures
-* **https://github.com/walmartlabs/system-viz[system-viz]** is a Clojure library for visualizing the components of a running 
+* **https://github.com/walmartlabs/system-viz[system-viz]** is a Clojure library for visualizing the components of a running
 Clojure system
 
 [quote]
@@ -99,7 +99,7 @@ ____
 **_I want to customize my REPL._**
 ____
 
-You can usually customize how your REPL reads, evaluates and prints, but the method to do it 
+You can usually customize how your REPL reads, evaluates and prints, but the method to do it
 depends on your toolchain. For instance:
 
 * when using a REPL started from <<xref/../../../reference/repl_and_main#,clojure.main>> (as is the case when using the `clj` tool)
@@ -128,7 +128,7 @@ It's important to know that these options exist, but don't try to adopt all of t
 [#editor-integrations]
 == Editor integrations
 
-All <<xref/../../../community/resources#_clojure_tools,major Clojure editors>> support a way of evaluating code in the REPL without leaving 
+All <<xref/../../../community/resources#_clojure_tools,major Clojure editors>> support a way of evaluating code in the REPL without leaving
 the current code buffer, which reduces the amount of context switching a programmer has to do.
 Here's what it looks like (the editor used in this example is https://cursive-ide.com/userguide/repl.html[Cursive]):
 
@@ -154,13 +154,13 @@ block so that they don't get evaluated by accident when the file is loaded:
 
 === What to expect from an in-editor REPL integration?
 
-Here are some common editor commands provided by REPL integrations. All major Clojure 
+Here are some common editor commands provided by REPL integrations. All major Clojure
 editors support a majority of them:
 
-* **Send form before caret to REPL:** evaluate the expression before the cursor in the REPL, 
+* **Send form before caret to REPL:** evaluate the expression before the cursor in the REPL,
 in the namespace of the current file. Useful for experimenting in the context of the current namespace.
 * **Send top-level form to REPL:** evaluate the biggest expression in which the cursor is currently contained
--typically a `(defn ...)` or `(def ...)` expression-in the namespace of the current file. 
+-typically a `(defn ...)` or `(def ...)` expression-in the namespace of the current file.
 Useful for defining or re-defining Vars in a namespace.
 * **Load the current file in the REPL.** Useful to avoid <<_working_with_libs,loading libs manually>>.
 * **Switch the REPL's namespace to current file:** useful to avoid typing `(in-ns '...)`.
@@ -171,7 +171,7 @@ Useful for defining or re-defining Vars in a namespace.
 == Debugging tools and techniques
 
 While traditional debuggers can be used with Clojure, the REPL itself is a powerful debugging environment,
-because it lets you inspect and alter the flow of a running program. In this section, we'll study some 
+because it lets you inspect and alter the flow of a running program. In this section, we'll study some
 tools and techniques to leverage the REPL for debugging.
 
 === Printing in-flight values with `prn`
@@ -205,7 +205,7 @@ to make adding `prn` calls less invasive:
   [numbers]
   (let [sum (first numbers)
         n (count numbers)]
-    (/ 
+    (/
       (doto sum prn) ;; HERE
       n)))
 ----
@@ -213,26 +213,26 @@ to make adding `prn` calls less invasive:
 
 ==== Going further: 'spying' macros
 
-Some Clojure libraries provide 'enhanced' versions of `prn` that are more informative, by also printing information 
-about the wrapped expression. For example: 
+Some Clojure libraries provide 'enhanced' versions of `prn` that are more informative, by also printing information
+about the wrapped expression. For example:
 
-* the **https://github.com/clojure/tools.logging[tools.logging]** logging library 
-provides a http://clojure.github.io/tools.logging/#clojure.tools.logging/spy[spy] macro to log an expression's code along 
+* the **https://github.com/clojure/tools.logging[tools.logging]** logging library
+provides a http://clojure.github.io/tools.logging/#clojure.tools.logging/spy[spy] macro to log an expression's code along
 with its value
-* the **https://github.com/dgrnbrg/spyscope[spyscope]** library lets you to insert these printing calls with very 
+* the **https://github.com/dgrnbrg/spyscope[spyscope]** library lets you to insert these printing calls with very
 lightweight syntax.
 
 ==== Going further: tracing libraries
 
-_Tracing_ libraries such as **https://github.com/clojure/tools.trace[tools.trace]** and **http://bpiel.github.io/sayid/[Sayid]**
-can help you instrument larger portions of your code, for example by automatically printing all the function calls in a 
+_Tracing_ libraries such as **https://github.com/clojure/tools.trace[tools.trace]** and **http://clojure-emacs.github.io/sayid/[Sayid]**
+can help you instrument larger portions of your code, for example by automatically printing all the function calls in a
 given namespace, or all intermediary values in a given expression.
 
 === Intercepting and saving values on-the-fly
 
-Sometimes you want to do more with intermediary values than just print them: 
+Sometimes you want to do more with intermediary values than just print them:
 you want to save them to conduct further experiments on them at the REPL.
-This can be done by inserting a `(def ...)` call inside the expression where the value appears: 
+This can be done by inserting a `(def ...)` call inside the expression where the value appears:
 
 [source,clojure]
 ----
@@ -257,7 +257,7 @@ This 'inline-def' technique is described in more depth in https://blog.michielbo
 
 When debugging at the REPL, we often want to reproduce manually something that our program did automatically,
 that is evaluating some expressions inside a function body. To do that, we need to recreate the context
-of the expressions of interest: one trick to achieve that is to define Vars (using `def`) with the same names 
+of the expressions of interest: one trick to achieve that is to define Vars (using `def`) with the same names
 and values as the locals used by the expressions. The 'physics' example below illustrates this approach:
 
 [source,clojure]
@@ -267,20 +267,20 @@ and values as the locals used by the expressions. The 'physics' example below il
 (def earth-mass 5.972e24)
 
 (defn earth-gravitational-force
-  "Computes (an approximation of) the gravitational force between Earth and an object 
+  "Computes (an approximation of) the gravitational force between Earth and an object
   of mass `m`, at distance `r` of Earth's center."
   [m r]
-  (/ 
-    (* 
-      G 
-      m 
+  (/
+    (*
+      G
+      m
       (if (>= r earth-radius)
         earth-mass
-        (* 
-          earth-mass 
+        (*
+          earth-mass
           (Math/pow (/ r earth-radius) 3.0))))
     (* r r)))
-    
+
 ;;;; calling our function for an object of 80kg at distance 5000km.
 (earth-gravitational-force 80 5e6) ; => 616.5217226636292
 
@@ -297,18 +297,18 @@ and values as the locals used by the expressions. The 'physics' example below il
 
 This technique is described in more depth in Stuart Halloway's article
 http://blog.cognitect.com/blog/2017/6/5/repl-debugging-no-stacktrace-required[REPL Debugging: No Stacktrace Required].
-The **https://github.com/vvvvalvalval/scope-capture[scope-capture]** library was made to automate 
+The **https://github.com/vvvvalvalval/scope-capture[scope-capture]** library was made to automate
 the manual task of saving and re-creating the context of an expression.
 
 === Community resources about REPL debugging
 
 * https://www.clojure-toolbox.com/[The Clojure Toolbox] provides a list a Clojure libraries for debugging.
-* https://cambium.consulting/articles/2018/2/8/the-power-of-clojure-debugging[The Power of Clojure: debugging] 
+* https://cambium.consulting/articles/2018/2/8/the-power-of-clojure-debugging[The Power of Clojure: debugging]
 is an article by Cambium Consulting which provides a list of techniques for debugging at the REPL.
 * _Clojure From the Ground Up_ by Aphyr contains a https://aphyr.com/posts/319-clojure-from-the-ground-up-debugging[chapter about debugging],
 presenting techniques for debugging Clojure in particular and a principled approach to debugging in general.
 * In his article http://blog.cognitect.com/blog/2017/6/5/repl-debugging-no-stacktrace-required[REPL Debugging: No Stacktrace Required],
-Stuart Halloway demonstrates how the quick feedback loop at the REPL can be used to narrow down the cause of a bug 
+Stuart Halloway demonstrates how the quick feedback loop at the REPL can be used to narrow down the cause of a bug
 without using error information at all.
 * Eli Bendersky has written some https://eli.thegreenplace.net/2017/notes-on-debugging-clojure-code/#id3[Notes on debugging Clojure code].
 * https://www.youtube.com/watch?v=FihU5JxmnBg[Debugging with the Scientific Method] is a conference talk by Stuart Halloway
@@ -317,29 +317,29 @@ promoting a scientific approach to debugging in general.
 [#writing-repl-friendly-programs]
 == Writing REPL-friendly programs
 
-While interactive development at the REPL gives a lot of power to programmers, 
-it also adds new challenges: programs must be designed so that they lend themselves 
+While interactive development at the REPL gives a lot of power to programmers,
+it also adds new challenges: programs must be designed so that they lend themselves
 well to REPL interaction, which is a new constraint to be vigilant of when writing code.footnote:[
-A similar phenomenon happens with the well-known technique of https://en.wikipedia.org/wiki/Software_testing[automated testing]: 
+A similar phenomenon happens with the well-known technique of https://en.wikipedia.org/wiki/Software_testing[automated testing]:
 while testing can bring a lot of value to programmers, it requires extra care to write code that is 'testable'.
 Just like tests, the REPL should not be an afterthought when writing Clojure code.]
 
-Covering this topic extensively would take us too far for the scope of this guide, 
+Covering this topic extensively would take us too far for the scope of this guide,
 so we will merely provide some tips and resources to guide your own research and problem-solving.
 
-**_REPL-friendly code can be re-defined._** Code is more easily redefined when it is called via a Var 
+**_REPL-friendly code can be re-defined._** Code is more easily redefined when it is called via a Var
 (defined e.g via `(def ...)` or `(defn ...)`), because a Var can be redefined without touching the code that calls it.
 This is illustrated in the following example, which prints some numbers at a regular time interval:
 
 [source,clojure]
 ----
-;; Each of these 4 code examples start a loop in another thread 
+;; Each of these 4 code examples start a loop in another thread
 ;; which prints numbers at a regular time interval.
 
 ;;;; 1. NOT REPL-friendly
 ;; We won't be able to change the way numbers are printed without restarting the REPL.
-(future 
-  (run! 
+(future
+  (run!
     (fn [i]
       (println i "green bottles, standing on the wall. ♫")
       (Thread/sleep 1000))
@@ -353,8 +353,8 @@ This is illustrated in the following example, which prints some numbers at a reg
   (println i "green bottles, standing on the wall. ♫")
   (Thread/sleep 1000))
 
-(future 
-  (run! 
+(future
+  (run!
     (fn [i] (print-number-and-wait i))
     (range)))
 
@@ -366,8 +366,8 @@ This is illustrated in the following example, which prints some numbers at a reg
   (println i "green bottles, standing on the wall. ♫")
   (Thread/sleep 1000))
 
-(future 
-  (run! 
+(future
+  (run!
     print-number-and-wait
     (range)))
 
@@ -379,24 +379,24 @@ This is illustrated in the following example, which prints some numbers at a reg
   (println i "green bottles, standing on the wall. ♫")
   (Thread/sleep 1000))
 
-(future 
-  (run! 
+(future
+  (run!
     #'print-number-and-wait ;; mind the #' - the expression evaluates to the #'print-number-and-wait Var, not its value.
     (range)))
 ----
 
 **_Beware of derived Vars._** If Var `b` is defined in terms of the value of Var `a`,
-then you will need to re-define `b` each time you re-define `a`; it may be better to define 
+then you will need to re-define `b` each time you re-define `a`; it may be better to define
 `b` as a 0-arity function which uses `a`. Example:
 
 [source,clojure]
 ----
 ;;; NOT REPL-friendly
 ;; if you re-define `solar-system-planets`, you have to think of re-defining `n-planets` too.
-(def solar-system-planets 
+(def solar-system-planets
   "The set of planets which orbit the Sun."
   #{"Mercury" "Venus" "Earth" "Mars" "Jupiter" "Saturn" "Uranus" "Neptune"})
-  
+
 (def n-planets
   "The number of planets in the solar system"
   (count solar-system-planets))
@@ -404,38 +404,38 @@ then you will need to re-define `b` each time you re-define `a`; it may be bette
 
 ;;;; REPL-friendly
 ;; if you re-define `solar-system-planets`, the behaviour of `n-planets` will change accordingly.
-(def solar-system-planets 
+(def solar-system-planets
   "The set of planets which orbit the Sun."
   #{"Mercury" "Venus" "Earth" "Mars" "Jupiter" "Saturn" "Uranus" "Neptune"})
-  
+
 (defn n-planets
   "The number of planets in the solar system"
   []
   (count solar-system-planets))
 ----
 
-**_REPL-friendly code can be reloaded._** Make sure that reloading a namespace will not alter the 
-behaviour of the running program. If a Var needs to be defined exactly once (which should be very rare), 
+**_REPL-friendly code can be reloaded._** Make sure that reloading a namespace will not alter the
+behaviour of the running program. If a Var needs to be defined exactly once (which should be very rare),
 consider defining it with `https://clojuredocs.org/clojure.core/defonce[defonce]`.
 
-When dealing with a codebase with many namespaces, reloading the appropriate namespaces in the correct 
-order can become difficult: the **https://github.com/clojure/tools.namespace[tools.namespace]** library 
+When dealing with a codebase with many namespaces, reloading the appropriate namespaces in the correct
+order can become difficult: the **https://github.com/clojure/tools.namespace[tools.namespace]** library
 was made to assist the programmer in this task.
 
 **_Program state and source code should be kept in sync._** You usually want to make sure
-that your program state reflects your source code and vice-versa, but this is not automatic. 
+that your program state reflects your source code and vice-versa, but this is not automatic.
 Reloading the code is often not enough: you also need to transform the program state accordingly.
 Stuart Sierra has expounded on this problem in his article http://thinkrelevance.com/blog/2013/06/04/clojure-workflow-reloaded[My Clojure Workflow, Reloaded]
 and his talk https://www.youtube.com/watch?v=13cmHf_kt-Q[Components Just Enough Structure].
 
 This has motivated the creation of **_state management libraries:_**
 
-* **https://github.com/stuartsierra/component[Component]**, which promotes a representation of program state 
+* **https://github.com/stuartsierra/component[Component]**, which promotes a representation of program state
 as a managed map of Clojure records called a *system*.
 * **https://github.com/danielsz/system[System]** is a library on top of https://github.com/stuartsierra/component[Component]
 which provides a set of ready-made components.
-* **https://github.com/tolitius/mount[Mount]** takes a radically different approach as Component, choosing to 
+* **https://github.com/tolitius/mount[Mount]** takes a radically different approach as Component, choosing to
 use Vars and namespaces as the supporting infrastructure for state.footnote:[At the time of writing,
 there is controversy in the Clojure community regarding the relative merits of both approaches.]
-* **https://github.com/weavejester/integrant[Integrant]** is a more recent library which shares Component's approach 
+* **https://github.com/weavejester/integrant[Integrant]** is a more recent library which shares Component's approach
 while addressing some of its perceived limitations.

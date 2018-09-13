@@ -35,13 +35,13 @@ However, unlike Lisp, Clojure does not allow the user to extend this set of read
 [[underscore]]
 **<<faq#underscore,What does an _ mean in a let binding or parameter?>>**
 
-_ has no special meaning in Clojure as a symbol. However, it is a convention to use _ (or a leading _) to denote a binding that will not be used in the expression.
+_ has no special meaning in Clojure as a symbol. However, it is a convention to use _ (or a leading _) to denote a binding that will not be used in the expression. A common case for this is skipping unneeded values in <<destructuring#_sequential_destructuring,sequential destructuring>>:
 
 [source,clojure]
 ----
-(defn get-x [point]
-  (let [[x _] point]   ;; y-value of point is unused, so mark it with _
-    x))
+(defn get-y [point]
+  (let [[_ y] point]   ;; x-value of point is unused, so mark it with _
+    y))
 ----
 
 [[anon_vector]]

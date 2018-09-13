@@ -506,7 +506,7 @@ In addition to the support for information maps via `keys`, spec also provides `
 ;=> {"Sally" 1000, "Joe" 500}
 ----
 
-By default `map-of` will validate but not conform keys because conformed keys might create key duplicates that would cause entries in the map to be overridden. If conformed keys are desired, pass the option `:conform-keys true'.
+By default `map-of` will validate but not conform keys because conformed keys might create key duplicates that would cause entries in the map to be overridden. If conformed keys are desired, pass the option `:conform-keys true`.
 
 You can also use the various count-related options on `map-of` that you have with `coll-of`.
 

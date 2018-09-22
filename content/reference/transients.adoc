@@ -78,7 +78,6 @@ Transients provide a high-performance optimization of functional data-structure-
 
 
 * Single-path use
-* Thread isolation - enforced
 * O(1) creation from persistent data structures
 * Shares structure with persistent source
 * O(1) creation of persistent data structure when editing session finished

@@ -11,6 +11,19 @@ The official https://github.com/clojure/clojure/blob/master/changes.md[changelog
 
 == Release 1.10
 
+=== 1.10.0-alpha9 (Oct 4, 2018)
+
+1.10.0-alpha9 includes the following changes since 1.10.0-alpha8:
+
+* https://dev.clojure.org/jira/browse/CLJ-2374[CLJ-2374] - Add type hint to address reflection ambiguity in JDK 11
+* https://dev.clojure.org/jira/browse/CLJ-1209[CLJ-1209] - Print ex-data in clojure.test error reports
+* https://dev.clojure.org/jira/browse/CLJ-1120[CLJ-1120] - Add ex-cause and ex-message as in CLJS for portabile error handling
+* https://dev.clojure.org/jira/browse/CLJ-2385[CLJ-2385] - Delay start of tap-loop thread (addresses graal native-image issue)
+* https://dev.clojure.org/jira/browse/CLJ-2407[CLJ-2407] - Fix errors in unit tests
+* https://dev.clojure.org/jira/browse/CLJ-2066[CLJ-2066] - Add reflection fallback for --illegal-access warnings in Java 9+
+* https://dev.clojure.org/jira/browse/CLJ-2375[CLJ-2375] - Fix usage of deprecated JDK apis
+* https://dev.clojure.org/jira/browse/CLJ-2358[CLJ-2358] - Fix invalid arity of read+string
+
 === 1.10.0-alpha8 (Sept 14, 2018)
 
 1.10.0-alpha8 includes the following changes since 1.10.0-alpha7:

@@ -698,7 +698,7 @@ user=> (macroexpand '(m))
 (let* [x__681__auto__ 1] x__681__auto__)
 ----
 
-* http://clojuredocs.org/clojure_core/clojure.core/gensym[ClojureDocs - gensyms]
+* http://clojuredocs.org/clojure_core/clojure.core/gensym[ClojureDocs - gensym]
 
 == `#?` - Reader conditional
 
@@ -714,7 +714,7 @@ to share common code. The reader conditional behaves similarly to a traditional
    :default (fallthrough expression))
 ----
 
-* <<xref/../reader_conditionals#,Reader conditonals>>
+* <<xref/../reader_conditionals#,Reader conditionals>>
 
 == `#?@` - Splicing Reader conditional
 

@@ -11,6 +11,15 @@ The official https://github.com/clojure/clojure/blob/master/changes.md[changelog
 
 == Release 1.10
 
+=== 1.10.0-beta2 (Oct 9, 2018)
+
+1.10.0-beta2 includes the following changes since 1.10.0-beta1:
+
+* https://dev.clojure.org/jira/browse/CLJ-2414[CLJ-2414] - Regression in reflectively finding default methods
+* https://dev.clojure.org/jira/browse/CLJ-2415[CLJ-2415] - Error cause should always be on 2nd line of error message
+* Added clojure.datafy:
+** clojure.datafy is a facility for object to data transformation. The `datafy` and `nav` functions can be used to transform and (lazily) navigate through object graphs. The data transformation process can be influenced by consumers using protocols or metadata. datafy is alpha and subject to change.
+
 === 1.10.0-beta1 (Oct 5, 2018)
 
 1.10.0-beta1 includes the following changes since 1.10.0-alpha9:

@@ -11,6 +11,13 @@ The official https://github.com/clojure/clojure/blob/master/changes.md[changelog
 
 == Release 1.10
 
+=== 1.10.0-beta3 (Oct 12, 2018)
+
+1.10.0-beta3 includes the following changes since 1.10.0-RC1:
+
+* datafy - add :name to datafied classes and namespaces, :class to meta of all if datafied
+* https://dev.clojure.org/jira/browse/CLJ-1079[CLJ-1079] - Reader should retain rather than overwrite :line :column meta on lists and seqs. Also make clojure.main bind pass:[*file*] based on :file meta.
+
 === 1.10.0-RC1 (Oct 11, 2018)
 
 1.10.0-RC1 is the same code as 1.10.0-beta2 (just minor changelog updates).

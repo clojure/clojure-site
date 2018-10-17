@@ -313,7 +313,7 @@ Then in your deps.edn include a repo with a name matching the server id (here `m
 
 Then just refer to your dependencies as usual in the `:deps`.
 
-==== Maven private S3 repos
+==== Maven S3 repos
 
 The tools also provide support for connecting to private S3 Maven repositories (thanks to the https://github.com/s3-wagon-private/s3-wagon-private[s3-wagon-private] and https://github.com/spring-projects/aws-maven[aws-maven] projects).
 
@@ -327,7 +327,23 @@ Add a `:mvn/repos` that includes the s3 repository root:
  {"my-private-repo" {:url "s3://my-bucket/maven/releases"}}}
 ----
 
-Specify your AWS S3 credentials using one of these mechanisms:
+AWS credentials can be set in the ~/.m2/settings.xml on a per-server basis. The repository name in deps.edn must match the server id in settings.xml:
+
+[source,xml]
+----
+<servers>
+  ...
+  <server>
+    <id>my-private-repo</id>
+    <username>AWS_ACCESS_KEY_HERE</username>
+    <password>AWS_SECRET_ACCESS_KEY_HERE</password>
+  </server>
+  ...
+</servers>
+
+It is also possible to specify your AWS credentials using the AWS credential chain. This is NOT RECOMMENDED as the same AWS credentials will be used for all AWS repositories (unlike settings.xml, which lets you set these on a per-repository basis).
+
+AWS S3 credentials can be set in the environment using one of these mechanisms:
 
 1. Set the environment variables `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`.
 2. Create a default profile in the AWS credentials file `~/.aws/credentials` (older `~/.aws/config` also supported).

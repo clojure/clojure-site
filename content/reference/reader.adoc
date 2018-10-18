@@ -41,8 +41,8 @@ Since we have to start somewhere, this reference starts where evaluation starts,
 * Symbolic values - `pass:[##Inf]`, `pass:[##-Inf]`, and `pass:[##NaN]`
 * Keywords - Keywords are like symbols, except:
 ** They can and must begin with a colon, e.g. :fred.
-** They cannot contain '.' or name classes.
-** Like symbols, they can contain a namespace, `:person/name`
+** They cannot contain '.' in the name part, or name classes.
+** Like symbols, they can contain a namespace, `:person/name`, which may contain '.'s.
 ** A keyword that begins with two colons is auto-resolved in the current namespace to a qualified keyword:
 *** If the keyword is unqualified, the namespace will be the current namespace. In `user`, `::rect` is read as `:user/rect`.
 *** If the keyword is qualified, the namespace will be resolved using aliases in the current namespace. In a namespace where `x` is aliased to `example`, `::x/foo` resolves to `:example/foo`.

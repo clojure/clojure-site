@@ -340,6 +340,7 @@ AWS credentials can be set in the ~/.m2/settings.xml on a per-server basis. The 
   </server>
   ...
 </servers>
+----
 
 It is also possible to specify your AWS credentials using the AWS credential chain. This is NOT RECOMMENDED as the same AWS credentials will be used for all AWS repositories (unlike settings.xml, which lets you set these on a per-repository basis).
 

@@ -280,7 +280,7 @@ Let's take a moment to examine the explain error output on that final example:
 
 * in - the path within the data to the failing value (here, a key in the person instance)
 * val - the failing value, here `"n/a"`
-* spec - the spec that failed, here `:my.domain/email`
+* spec - the spec that failed, here `:my.domain/email-type`
 * at - the path in the spec where the failing value is located
 * predicate - the predicate that failed, here `(re-matches email-regex %)`
 

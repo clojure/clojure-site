@@ -13,7 +13,6 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 toc::[]
 
-[[dot]]
 == Member access
 
 [%hardbreaks]
@@ -49,6 +48,7 @@ The preferred idiomatic forms for accessing field or method members are given ab
 Classname/staticField ==> (. Classname staticField)
 ----
 
+[[dot]]
 == The Dot special form
 
 [%hardbreaks]

@@ -48,9 +48,9 @@ The preferred idiomatic forms for accessing field or method members are given ab
 Classname/staticField ==> (. Classname staticField)
 ----
 
-[[dot]]
 == The Dot special form
 
+[[dot]]
 [%hardbreaks]
 *(_._ instance-expr member-symbol)*
 *(_._ Classname-symbol member-symbol)*

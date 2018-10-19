@@ -891,15 +891,6 @@ user=>(def m {:a 1, :b 2, :c 3}
 ----
 user=> (read-string "#=(+ 3 4)")
 ;;=> 7
-#=123
-;;=> 123
-
-#="foo"
-;;=> foo
-
-(def foo 1)
-#='foo
-;;=> 1
 ----
 
 Note that the read-time evaluation can also cause side-effects:

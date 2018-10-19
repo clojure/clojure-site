@@ -81,9 +81,22 @@ An anonymous function is a function without a name.
 In Clojure these can be defined in two ways, `fn` and the literal `#(...)`.
 Creating a function with `defn` immediately binds it to a name, `fn` just creates a function.
 
-Lets go back to the example of the bands.
-We wrote a function called `rock-band?` to determine whether or not our band was a rock band.
-This is a one-off operation, we're not going to use it anywhere else in our code.
+Let's have an example with a few music bands:
+
+[source, clojure]
+----
+(def bands [
+    {:name "Brown Beaters"   :genre :rock}
+    {:name "Sunday Sunshine" :genre :blues}
+    {:name "Foolish Beaters" :genre :rock}
+    {:name "Monday Blues"    :genre :blues}
+    {:name "Friday Fewer"    :genre :blues}
+    {:name "Saturday Stars"  :genre :jazz}
+    {:name "Sunday Brunch"   :genre :jazz}
+])
+----
+
+We want to retrieve only rock bands. This is a one-off operation, we're not going to use it anywhere else in our code.
 We can save ourselves some keystrokes by using an anonymous function.
 
 [source, clojure]
@@ -115,8 +128,8 @@ In that case, using `fn` may be more appropriate.
 === Functions Returning Functions and Closures
 
 Our first function will be called `adder`.
-It will take a number, `x`, as it's only argument and return a function.
-The function returned by `adder` will also take a single number, `a`, as it's argument and return `x + a`.
+It will take a number, `x`, as its only argument and return a function.
+The function returned by `adder` will also take a single number, `a`, as its argument and return `x + a`.
 
 [source, clojure]
 ----

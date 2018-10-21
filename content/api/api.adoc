@@ -68,6 +68,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 * https://www.conj.io/[Grimoire] - community combined cheatsheet + examples
 * https://clojuredocs.org[ClojureDocs] - community provided example repository
 * https://crossclj.info/[CrossClj] - library cross-reference
+* https://cljdoc.org/[cljdoc] - library documentation
 
 == Deprecated (pre Clojure 1.3)
 

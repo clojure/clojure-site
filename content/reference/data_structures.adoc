@@ -114,7 +114,7 @@ Symbols are identifiers that are normally used to refer to something else. They 
 Symbols, just like Keywords, implement IFn for invoke() of one argument (a map) with an optional second argument (a default value). For example `('mysym my-hash-map :none)` means the same as `(get my-hash-map 'mysym :none)`. See https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/get[get].
 
 === Related functions
-https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/symbol[symbol] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/symbol?[symbol?] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/genysm[gensym] (see also the \#-suffix <<reader#,reader>> macro)
+https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/symbol[symbol] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/symbol?[symbol?] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/genysm[gensym] (see also the \#-prefix <<reader#,reader>> macro)
 
 [[Collections]]
 == Collections

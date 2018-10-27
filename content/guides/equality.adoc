@@ -66,6 +66,12 @@ consistent with `=`, with the exceptions given below.
 
 Exceptions, or possible surprises:
 
+* When using non-Clojure collections in a Clojure hash-based
+  collection (as map keys, or set elements), it will not appear equal
+  to a similar collection with Clojure counterparts, due to the
+  difference in hashing behavior.  (see
+  <<xref/../equality#equality_and_hash,Equality and hash>> and
+  http://dev.clojure.org/jira/browse/CLJ-1372[CLJ-1372])
 * When comparing collections with `=`, numbers within the collections
   are also compared with `=`, so the three numeric categories above
   are significant.
@@ -448,6 +454,7 @@ user> (.equals Double/NaN Double/NaN)
 true
 ----
 
+[[equality_and_hash]]
 == Equality and hash
 
 Java has `equals` to compare pairs of objects for equality.

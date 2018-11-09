@@ -55,14 +55,13 @@ Not yet available - see https://leiningen.org/[Leiningen] or http://boot-clj.com
 
 *Local build*
 
-Download and build Clojure from source:
+Download and build Clojure from source (requires Git, Java, and Maven):
 
 [source,shell]
 ----
 git clone https://github.com/clojure/clojure.git
 cd clojure
-./antsetup.sh
-ant local
+mvn -Plocal -Dmaven.test.skip=true package
 ----
 
 Then start the REPL with the local jar:

@@ -55,6 +55,8 @@ Not yet available - see Leiningen or Boot instead.
 
 *Local build*
 
+Note: this assumes you have Java, Git, and Ant installed locally.
+
 Download and build Clojure from source:
 
 [source,shell]

@@ -170,7 +170,7 @@ This is most commonly asked in the context of programs that use `future`, `pmap`
 Clojure uses two internal thread pools to service futures and agent function executions. Both pools use non-daemon threads and the JVM will not exit while any non-daemon thread is alive. In particular, the pool that services futures and agent send-off calls uses an Executor cached thread pool with a 60 second timeout. In the scenario above, the program will wait until the background threads have completed their work and the threads expire before it can exit.
 
 [[write_skew]]
-**<<faq#write_skew,Why does the Clojure STM does not guarantee serializability but only snapshot isolation?>>**
+**<<faq#write_skew,Why the Clojure STM does not guarantee serializability but only snapshot isolation?>>**
 
 If reads were included by default, then STM would be slower (as more transactions would require serializability). However, in many cases, reads do not need to be included. Thus, users can choose to accept the performance penalty when it is necessary and get faster performance when it is not.
 

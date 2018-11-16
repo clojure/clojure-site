@@ -11,6 +11,16 @@ The official https://github.com/clojure/clojure/blob/master/changes.md[changelog
 
 == Release 1.10
 
+=== 1.10.0-beta6 (Nov 16, 2018)
+
+Changes in 1.10.0-beta6:
+
+* The metadata protocol extension added in 1.10.0-beta5 now requires opt-in when the protocol is defined, using :extend-via-metadata.
+* The JavaReflector under clojure.reflect has been datafied
+* https://dev.clojure.org/jira/browse/CLJ-CLJ-2432[CLJ-2432] - Added clojure.core/requiring-resolve which is like `resolve` but will `require` the symbol's namespace if needed.
+* https://dev.clojure.org/jira/browse/CLJ-CLJ-2427[CLJ-2427] - fix bug in CompilerException.toString() that could cause a secondary exception to be thrown while making the exception string, obscuring the original exception.
+* https://dev.clojure.org/jira/browse/CLJ-CLJ-2430[CLJ-2430] - more work on error phases, ex-triage, and allowing prepl to better use the new error reporting infrastructure
+
 === 1.10.0-beta5 (Nov 6, 2018)
 
 Changes in 1.10.0-beta5:

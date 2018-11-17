@@ -8,7 +8,7 @@ Erik Assum
 ifdef::env-github,env-browser[:outfilessuffix: .adoc]
 
 Do you wish there was a Clojure User Group in your area? Check
-out our page of <<start_group,tips for starting your own>>
+out our page of <<start_group#,tips for starting your own>>
 
 If you'd like to have your group listed here, please submit a PR against the
 https://github.com/clojure/clojure-site[clojure-site] github repo.

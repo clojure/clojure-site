@@ -11,6 +11,10 @@ The official https://github.com/clojure/clojure/blob/master/changes.md[changelog
 
 == Release 1.10
 
+=== 1.10.0-beta7 (Nov 19, 2018)
+
+* https://dev.clojure.org/jira/browse/CLJ-CLJ-2435[CLJ-2435] - include root cause class name in compilation and macroexpansion errors
+
 === 1.10.0-beta6 (Nov 16, 2018)
 
 Changes in 1.10.0-beta6:

@@ -11,6 +11,12 @@ The official https://github.com/clojure/clojure/blob/master/changes.md[changelog
 
 == Release 1.10
 
+=== 1.10.0-beta8 (Nov 21, 2018)
+
+* https://dev.clojure.org/jira/browse/CLJ-CLJ-2438[CLJ-2438] - demunge source location in execution error messages
+* https://dev.clojure.org/jira/browse/CLJ-CLJ-2437[CLJ-2437] - add async-require and use it from requiring-resolve
+* https://dev.clojure.org/jira/browse/CLJ-CLJ-2436[CLJ-2436] - fix reflection warning in reflect.java
+
 === 1.10.0-beta7 (Nov 19, 2018)
 
 * https://dev.clojure.org/jira/browse/CLJ-CLJ-2435[CLJ-2435] - include root cause class name in compilation and macroexpansion errors

@@ -26,7 +26,7 @@ Clojure has a rich set of data structures. They share a set of properties:
 ** Support persistent manipulation.
 ** Support metadata
 ** Implement java.lang.Iterable
-** Implement the non-optional (read-only) portion of java.util.Collection
+** Implement the non-optional (read-only) portion of java.util.Collection or java.util.Map
 
 [[nil]]
 == nil

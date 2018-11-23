@@ -67,7 +67,7 @@ Any object other than those discussed above will evaluate to itself.
 
 The above describes the evaluation of a single form. The various load forms will sequentially read and evaluate the set of forms contained in the source. Such sets of forms usually have side effects, often on the global environment, defining functions etc.
 
-The loading functions occur in a temporary context, in which +*ns*+ has a fresh binding. That means that, should any form have an effect on that var (e.g. +in-namespace+), the effect will unwind at the completion of the load. load et al return the value produced by the last expression.
+The loading functions occur in a temporary context, in which `pass:[*ns*]` has a fresh binding. That means that, should any form have an effect on that var (e.g. +in-namespace+), the effect will unwind at the completion of the load. load et al return the value produced by the last expression.
 
 ''''
 

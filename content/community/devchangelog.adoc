@@ -247,7 +247,7 @@ clj -A:clj/next
 - https://dev.clojure.org/jira/browse/CLJ-2051[CLJ-2051] - (doc) clojure.instant/validated docstring - fix typo
 - https://dev.clojure.org/jira/browse/CLJ-2104[CLJ-2104] - (doc) clojure.pprint docstring - fix typo
 - https://dev.clojure.org/jira/browse/CLJ-2028[CLJ-2028] - (doc) filter, filterv, remove, take-while - fix docstrings
-- https://dev.clojure.org/jira/browse/CLJ-1873[CLJ-1873] - (doc) require, *data-readers* - add .cljc files to docstrings
+- https://dev.clojure.org/jira/browse/CLJ-1873[CLJ-1873] - (doc) require, `pass:[*data-readers*]` - add .cljc files to docstrings
 - https://dev.clojure.org/jira/browse/CLJ-1159[CLJ-1159] - (doc) clojure.java.io/delete-file - improve docstring
 - https://dev.clojure.org/jira/browse/CLJ-2039[CLJ-2039] - (doc) deftype - fix typo in docstring
 - https://dev.clojure.org/jira/browse/CLJ-1918[CLJ-1918] - (doc) await - improve docstring re shutdown-agents
@@ -261,7 +261,7 @@ clj -A:clj/next
 
 === https://groups.google.com/d/msg/clojure/rb22V98rPLM/MFBBcz-gAQAJ[1.9.0-alpha18] (Aug 23, 2017)
 
-- Can now bind `*reader-resolver*` to an impl of LispReader$Resolver to control the reader's use of namespace interactions when resolving autoresolved keywords and maps.
+- Can now bind `pass:[*reader-resolver*]` to an impl of LispReader$Resolver to control the reader's use of namespace interactions when resolving autoresolved keywords and maps.
 - Tighten autoresolved keywords and autoresolved namespace map syntax to support *only* aliases, as originally intended
 - Updated to use core.specs.alpha 0.1.24
 
@@ -378,11 +378,11 @@ Infrastructure:
 1.9.0-alpha12 includes the following changes since 1.9.0-alpha11:
 
 - spec performance has been improved for many use cases
-- spec explain printer is now pluggable via the dynamic var clojure.spec/*explain-out*
-  which should be a function that takes an explain-data and prints to *out*	
+- spec explain printer is now pluggable via the dynamic var `pass:[clojure.spec/*explain-out*]`
+  which should be a function that takes an explain-data and prints to `pass:[*out*]`
 - when a macro spec fails during macroexpand, throw ex-info with explain-data payload
   rather than IllegalArgumentException
-- pprint prints maps with namespace literal syntax when *print-namespace-maps* is true
+- pprint prints maps with namespace literal syntax when `pass:[*print-namespace-maps*]` is true
 - https://dev.clojure.org/jira/browse/CLJ-1988[CLJ-1988] - coll-of, every extended to conform sequences properly
 - https://dev.clojure.org/jira/browse/CLJ-2004[CLJ-2004] - multi-spec form was missing retag
 - https://dev.clojure.org/jira/browse/CLJ-2006[CLJ-2006] - fix old function name in docstring
@@ -401,7 +401,7 @@ Clojure now has specs for the following clojure.core macros: let, if-let, when-l
 - https://dev.clojure.org/jira/browse/CLJ-1870[CLJ-1870] - Fixed reloading a defmulti removes metadata on the var
 - https://dev.clojure.org/jira/browse/CLJ-1744[CLJ-1744] - Clear unused locals, which can prevent memory leaks in some cases
 - https://dev.clojure.org/jira/browse/CLJ-1423[CLJ-1423] - Allow vars to be invoked with infinite arglists (also, faster)
-- https://dev.clojure.org/jira/browse/CLJ-1993[CLJ-1993] - Added *print-namespace-maps* dynamic var that controls whether to use namespace map syntax for maps with keys from the same namespace. The default is false, but standard REPL bindings set this to true.
+- https://dev.clojure.org/jira/browse/CLJ-1993[CLJ-1993] - Added `pass:[*print-namespace-maps*]` dynamic var that controls whether to use namespace map syntax for maps with keys from the same namespace. The default is false, but standard REPL bindings set this to true.
 - https://dev.clojure.org/jira/browse/CLJ-1985[CLJ-1985] - Fixed with-gen of conformer losing unform fn
 - Fixed clojure.spec.test/check to skip spec'ed macros
 - Fixed regression from 1.9.0-alpha8 where type hints within destructuring were lost
@@ -424,7 +424,7 @@ Clojure now has specs for the following clojure.core macros: let, if-let, when-l
 
 1.9.0-alpha9 includes the following changes since 1.9.0-alpha8:
 
-- NEW clojure.spec/assert - a facility for adding spec assertions to your code. See the docs for *compile-asserts* and assert for more details.
+- NEW clojure.spec/assert - a facility for adding spec assertions to your code. See the docs for `pass:[*compile-asserts*]` and assert for more details.
 
 - clojure.spec/merge - now merges rather than flows in conform/unform
 

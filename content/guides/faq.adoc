@@ -187,7 +187,7 @@ No (although that is typical). One namespace can be split across multiple files 
 ns is a macro that does a number of things:
 
 - creates a new internal Namespace object (if it does not yet exist)
-- makes that namespace the new current namespace (*ns*)
+- makes that namespace the new current namespace (`pass:[*ns*]`)
 - auto-refers all vars from clojure.core and imports all classes from java.lang
 - requires/refers other namespaces and vars as specified
 - (and other optional things)

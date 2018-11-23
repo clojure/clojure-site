@@ -52,7 +52,7 @@ The Clojure compilation model preserves as much as possible the dynamic nature o
 == Compiling
 To compile a lib, use the https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/compile[compile] function, and supply the namespace name as a symbol. For some namespace my.domain.lib, defined in my/domain/lib.clj, in the classpath, the following should occur:
 
-* A loader classfile will produced in ``my/domain/lib__init.class``, under *compile-path*, which must be in the classpath
+* A loader classfile will be produced in ``my/domain/lib__init.class``, under `pass:[*compile-path*]`, which must be in the classpath
 * A set of classfiles will be produced, one per fn in the namespace, with names such as ``my/domain/lib$fnname__1234.class``
 * For each gen-class:
 ** A stub classfile will be produced with the specified name

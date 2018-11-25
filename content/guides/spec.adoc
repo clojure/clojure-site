@@ -1137,7 +1137,7 @@ Returning to our "hello" example, we now have the tools to make that generator:
 (s/def ::hello
   (s/with-gen #(clojure.string/includes? % "hello")
     #(gen/fmap (fn [[s1 s2]] (str s1 "hello" s2))
-      (gen/tuple (gen/string-alphanumeric) (gen/string-alphanumeric)))))
+      (gen/tuple gen/string-alphanumeric gen/string-alphanumeric))))
 (gen/sample (s/gen ::hello))
 ;;=> ("hello" "ehello3" "eShelloO1" "vhello31p" "hello" "1Xhellow" "S5bhello" "aRejhellorAJ7Yj" "3hellowPMDOgv7" "UhelloIx9E")
 ----

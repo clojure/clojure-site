@@ -17,13 +17,13 @@ No changes other than changelog updates.
 
 === 1.10.0-beta8 (Nov 21, 2018)
 
-* https://dev.clojure.org/jira/browse/CLJ-CLJ-2438[CLJ-2438] - demunge source location in execution error messages
-* https://dev.clojure.org/jira/browse/CLJ-CLJ-2437[CLJ-2437] - add async-require and use it from requiring-resolve
-* https://dev.clojure.org/jira/browse/CLJ-CLJ-2436[CLJ-2436] - fix reflection warning in reflect.java
+* https://dev.clojure.org/jira/browse/CLJ-2438[CLJ-2438] - demunge source location in execution error messages
+* https://dev.clojure.org/jira/browse/CLJ-2437[CLJ-2437] - add async-require and use it from requiring-resolve
+* https://dev.clojure.org/jira/browse/CLJ-2436[CLJ-2436] - fix reflection warning in reflect.java
 
 === 1.10.0-beta7 (Nov 19, 2018)
 
-* https://dev.clojure.org/jira/browse/CLJ-CLJ-2435[CLJ-2435] - include root cause class name in compilation and macroexpansion errors
+* https://dev.clojure.org/jira/browse/CLJ-2435[CLJ-2435] - include root cause class name in compilation and macroexpansion errors
 
 === 1.10.0-beta6 (Nov 16, 2018)
 
@@ -31,9 +31,9 @@ Changes in 1.10.0-beta6:
 
 * The metadata protocol extension added in 1.10.0-beta5 now requires opt-in when the protocol is defined, using :extend-via-metadata.
 * The JavaReflector under clojure.reflect has been datafied
-* https://dev.clojure.org/jira/browse/CLJ-CLJ-2432[CLJ-2432] - Added clojure.core/requiring-resolve which is like `resolve` but will `require` the symbol's namespace if needed.
-* https://dev.clojure.org/jira/browse/CLJ-CLJ-2427[CLJ-2427] - fix bug in CompilerException.toString() that could cause a secondary exception to be thrown while making the exception string, obscuring the original exception.
-* https://dev.clojure.org/jira/browse/CLJ-CLJ-2430[CLJ-2430] - more work on error phases, ex-triage, and allowing prepl to better use the new error reporting infrastructure
+* https://dev.clojure.org/jira/browse/CLJ-2432[CLJ-2432] - Added clojure.core/requiring-resolve which is like `resolve` but will `require` the symbol's namespace if needed.
+* https://dev.clojure.org/jira/browse/CLJ-2427[CLJ-2427] - fix bug in CompilerException.toString() that could cause a secondary exception to be thrown while making the exception string, obscuring the original exception.
+* https://dev.clojure.org/jira/browse/CLJ-2430[CLJ-2430] - more work on error phases, ex-triage, and allowing prepl to better use the new error reporting infrastructure
 
 === 1.10.0-beta5 (Nov 6, 2018)
 

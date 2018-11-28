@@ -712,14 +712,14 @@ The pre- and post-condition example in the previous section hinted at an interes
 
 Spec has explicit support for this using https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/fdef[`fdef`], which defines specifications for a function - the arguments and/or the return value spec, and optionally a function that can specify a relationship between args and return.
 
-Let's consider a `ranged-rand` function that produces a random number in a range:
+Let's consider a `ranged-rand` function that produces a random integer in a range:
 
 [source,clojure]
 ----
 (defn ranged-rand
   "Returns random int in range start <= rand < end"
   [start end]
-  (+ start (long (rand (- end start)))))
+  (+ start (rand-int (- end start))))
 ----
 
 We can then provide a specification for that function:

@@ -1,0 +1,101 @@
+= Creating Tickets
+Alex Miller
+2018-12-05
+:type: community
+:toc: macro
+:icons: font
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+== Creating Tickets
+
+The first step in the contribution process is to open a ticket. Please do so through http://dev.clojure.org/jira/browse/CLJ[JIRA] and not through GitHub. Tickets can be created by anyone, whether or not they have signed a http://clojure.org/contributing[Clojure contributor agreement]. It is OK to create a ticket and submit a patch at the same time, but please be aware, if the ticket is later rejected, the time spent developing the patch will be lost. Therefore it is recommended that coding on non-trivial patches should be postponed until after the vetting process.  One possible advantage to submitting a patch before the ticket is vetted, is that it might be vetted and screened all at once by the screener, if they choose to do that, saving some time.
+
+If you have questions about whether some behavior of Clojure is a bug, or submitting bug reports or enhancement requests, please ask on the http://groups.google.com/group/clojure[clojure Google group].
+
+You need a Clojure JIRA account to create a ticket.  Go to the http://dev.clojure.org/jira/browse/CLJ[Clojure JIRA page] and click the "Log In" link near the top right of the page, then on the next page click the "sign up" link.  If you see your name instead of a "Log in" link, you already have an account and are signed in.
+
+== Qualities of a Great Ticket
+
+All tickets should have:
+
+* Type: Correct categorization (Defect, Enhancement, or Feature)
+* Summary: concise title
+* Description: 
+** Exactly one issue (if multiple, split across tickets and link)
+** (If Defect) Reproducible demonstration of problem (commands that can be duplicated in a repl are preferred, particularly a plain Clojure repl, not a Leiningen repl), and a description of what you think should happen instead
+** (If Enhancement) Statement of the what should be improved 
+** Links to relevant prior discussion on clojure-dev, IRC, or email thread as appropriate
+* Priority: categorize based on impact and whether this is a theoretical issue or one actually encountered in real code
+* Labels: (see section below)
+
+Tickets ready for screening should also have:
+
+* Description:
+** The cause of the problem
+** An accurate description of the approach being pursued to solve the problem
+** Name of current patch to consider
+** Summary or reference to alternative approaches that were considered
+* Patch attachment:
+** Implementation that follows the approach specified in the description
+** Tests as appropriate
+** Benchmark data (if performance related)
+ 
+Example:
+ 
+This is an example of how the description might look once a ticket has gone through screening - it starts with a succinct description of the problem and a demonstration that can be tried at the REPL. That may be all that exists when the ticket comes into the system. By the time it gets through screening, we should expect to see the dev's analysis of the cause of the problem, the solution that is being offered (and possibly alternatives that were considered), and the patch currently implementing the solution and test.
+ 
+Adding odd numbers doesn't work. 
+
+[source]
+----
+user> (+ 2 2)
+4
+user> (+ 1 3)
+ClassCastException
+
+Cause:  Never implemented odd number adding in the Compiler! See the missing branch in FooExpr.
+
+Solution:  Fully implemented the branch for odd numbers to be just like even numbers. Considered just getting rid of addition altogether but I guess people use it.
+
+Patch: add-odd-3.patch
+----
+
+== Tend Your Ticket
+
+As work progresses on a ticket, it is common for it to accumulate discussion between submitter, screeners, and patch developers. As this occurs, it is essential to edit the ticket description to stay up to date as a summary of the essential problem, solution approach, and patch. It should not be necessary to read the the full ticket history to evaluate the patch.
+
+== Labels
+
+The following labels should be used to tag specific categories (sometimes these are useful for searching):
+
+* aot - ahead-of-time compilation bugs
+* compiler - Clojure compiler
+* checkargs - additional argument checking for functions
+* deftype - types
+* defrecord - records
+* docstring - function docstrings
+* documentation - clojure.org docs or other doc-related issues
+* edn - EDN
+* errormsgs - improving (or sometimes adding) an error message returned by Clojure
+* interop - Java interop
+* io - clojure.java/io 
+* math - arithmetic issues - overflow, underflow, etc
+* memory - memory issues (GC, head holding, locals clearing, etc)
+* performance - make it faster!
+* print - print and pprint
+* protocols - defprotocol
+* reader - reader (either clojure or edn)
+* reducers
+* repl - usability on the repl (doc, source, apropos, etc)
+* string - clojure.string, subs, etc
+* typehints - their definition or application
+* walk - clojure.walk
+* zip - clojure.zip
+
+DO NOT use these tags:
+
+* bug - this is already covered by the issue type
+* enhancement - this is already covered by the issue type
+* patch - already covered by the patch field
+* test - already covered by the patch field

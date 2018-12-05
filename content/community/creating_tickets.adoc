@@ -9,11 +9,11 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 == Creating Tickets
 
-The first step in the contribution process is to open a ticket. Please do so through http://dev.clojure.org/jira/browse/CLJ[JIRA] and not through GitHub. Tickets can be created by anyone, whether or not they have signed a http://clojure.org/contributing[Clojure contributor agreement]. It is OK to create a ticket and submit a patch at the same time, but please be aware, if the ticket is later rejected, the time spent developing the patch will be lost. Therefore it is recommended that coding on non-trivial patches should be postponed until after the vetting process.  One possible advantage to submitting a patch before the ticket is vetted, is that it might be vetted and screened all at once by the screener, if they choose to do that, saving some time.
+The first step in the contribution process is to open a ticket. Please do so through https://dev.clojure.org/jira/browse/CLJ[JIRA] and not through GitHub. Tickets can be created by anyone, whether or not they have signed a <<contributing#,Clojure contributor agreement>>. It is OK to create a ticket and submit a patch at the same time, but please be aware, if the ticket is later rejected, the time spent developing the patch will be lost. Therefore it is recommended that coding on non-trivial patches should be postponed until after the vetting process.  One possible advantage to submitting a patch before the ticket is vetted, is that it might be vetted and screened all at once by the screener, if they choose to do that, saving some time.
 
-If you have questions about whether some behavior of Clojure is a bug, or submitting bug reports or enhancement requests, please ask on the http://groups.google.com/group/clojure[clojure Google group].
+If you have questions about whether some behavior of Clojure is a bug, or submitting bug reports or enhancement requests, please ask on the https://groups.google.com/group/clojure[clojure Google group].
 
-You need a Clojure JIRA account to create a ticket.  Go to the http://dev.clojure.org/jira/browse/CLJ[Clojure JIRA page] and click the "Log In" link near the top right of the page, then on the next page click the "sign up" link.  If you see your name instead of a "Log in" link, you already have an account and are signed in.
+You need a Clojure JIRA account to create a ticket.  Go to the https://dev.clojure.org/jira/browse/CLJ[Clojure JIRA page] and click the "Log In" link near the top right of the page, then on the next page click the "sign up" link.  If you see your name instead of a "Log in" link, you already have an account and are signed in.
 
 == Qualities of a Great Ticket
 
@@ -45,21 +45,25 @@ Example:
  
 This is an example of how the description might look once a ticket has gone through screening - it starts with a succinct description of the problem and a demonstration that can be tried at the REPL. That may be all that exists when the ticket comes into the system. By the time it gets through screening, we should expect to see the dev's analysis of the cause of the problem, the solution that is being offered (and possibly alternatives that were considered), and the patch currently implementing the solution and test.
  
+....
 Adding odd numbers doesn't work. 
 
-[source]
 ----
 user> (+ 2 2)
 4
 user> (+ 1 3)
 ClassCastException
+----
 
-Cause:  Never implemented odd number adding in the Compiler! See the missing branch in FooExpr.
+Cause:  Never implemented odd number adding in the Compiler!
+See the missing branch in FooExpr.
 
-Solution:  Fully implemented the branch for odd numbers to be just like even numbers. Considered just getting rid of addition altogether but I guess people use it.
+Solution:  Fully implemented the branch for odd numbers to
+be just like even numbers. Considered just getting rid of
+addition altogether but I guess people use it.
 
 Patch: add-odd-3.patch
-----
+....
 
 == Tend Your Ticket
 

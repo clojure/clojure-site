@@ -212,6 +212,7 @@ As your program gets more involved you might need to create variations on the st
 * <<deps_and_cli#extra_deps,Add an optional dependency>>
 * <<deps_and_cli#override_deps,Override a dependency version>>
 * <<deps_and_cli#local_jar,Use a local jar on disk>>
+* <<deps_and_cli#aot_compilation,Ahead-of-time (AOT) compilation>>
 
 [[extra_paths]]
 === Include a test source directory
@@ -263,7 +264,7 @@ You can use multiple aliases in combination. For example this `deps.edn` file de
 
 [source,clojure]
 ----
-{:deps 
+{:deps
  {org.clojure/core.async {:mvn/version "0.3.465"}}
 
  :aliases
@@ -285,3 +286,65 @@ Specify local jar dependencies with a local coordinate that points directly to a
 {:deps
  {db/driver {:local/root "/path/to/db/driver.jar"}}}
 ----
+
+[[aot_compilation]]
+=== Ahead-of-time (AOT) compilation
+
+When using https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/gen-class[gen-class] or https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/gen-interface[gen-interface], the Clojure source must be ahead-of-time compiled to generate the java class(es).
+
+This can be done by calling `compile`. The default destination for compiled class files is `classes/`, which needs to be created and added to the classpath:
+
+[source,shell]
+----
+$ mkdir classes
+----
+
+Edit `deps.edn` to add `"classes"` to the paths:
+[source,clojure]
+----
+{:paths ["src" "classes"]}
+----
+
+Declare a class with gen-class in `src/my_class.clj`:
+
+[source,clojure]
+----
+(ns my-class)
+
+(gen-class
+  :name my_class.MyClass
+  :methods [[hello [] String]])
+
+(defn -hello []
+  "Hello, World!")
+----
+
+Then you can reference the class with `:import` in another source file `src/hello.clj`. Notice that the namespace is also added in `:require` so compilation can automatically find all dependent namespaces and compile them.
+
+[source,clojure]
+----
+(ns hello
+  (:require [my-class])
+  (:import (my_class MyClass)))
+
+(defn -main [& args]
+  (let [inst (MyClass.)]
+    (println (.hello inst))))
+----
+
+You can compile in the REPL or run a script to do the compilation:
+
+[source,shell]
+----
+$ clj -e "(compile 'hello)"
+----
+
+And then run the hello namespace:
+
+[source,shell]
+----
+$ clj -m hello
+Hello, World!
+----
+
+See <<xref/../../reference/compilation#,Compilation and Class Generation>> for a complete reference.

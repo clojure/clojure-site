@@ -117,7 +117,7 @@ To compile, first ensure the target output directory `classes` exists:
 mkdir classes
 ----
 
-This gets compiled as follows:
+Then compile to generate the classes as follows:
 
 [source,clojure]
 ----

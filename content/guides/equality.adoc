@@ -394,63 +394,64 @@ or the square root of 2.
 Clojure uses the underlying Java double-size floating point numbers
 (64-bit) with representation and behavior defined by a standard, IEEE
 754.  There is a special value http://en.wikipedia.org/wiki/NaN[`NaN`] ("Not A Number")
-that is not even equal to itself.
+that is not even equal to itself. Clojure represents this value as
+the symbolic value ##NaN.
 
 [source,clojure]
 ----
 user> (Math/sqrt -1)
-Double/NaN
-user> (= Double/NaN Double/NaN)
+##NaN
+user> (= ##NaN ##NaN)
 false
-user> (== Double/NaN Double/NaN)
+user> (== ##NaN ##NaN)
 false
 ----
 
 This leads to some odd behavior if this "value" appears in your data.
-While no error occurs when adding `NaN` as a set element or a key in a
+While no error occurs when adding `##NaN` as a set element or a key in a
 map, you cannot then search for it and find it.  You also cannot
 remove it using functions like `disj` or `dissoc`.  It will appear
 normally in sequences created from collections containing it.
 
 [source,clojure]
 ----
-user> (def s1 #{1.0 2.0 Double/NaN})
+user> (def s1 #{1.0 2.0 ##NaN})
 #'user/s1
 user> s1
-#{2.0 1.0 Double/NaN}
+#{2.0 1.0 ##NaN}
 user> (s1 1.0)
 1.0
 user> (s1 1.5)
 nil
-user> (s1 Double/NaN)
-nil             ; cannot find Double/NaN in a set, because it is not = to itself
+user> (s1 ##NaN)
+nil             ; cannot find ##NaN in a set, because it is not = to itself
 
 user> (disj s1 2.0)
-#{1.0 Double/NaN}
-user> (disj s1 Double/NaN)
-#{2.0 1.0 Double/NaN}    ; Double/NaN is still in the result!
+#{1.0 ##NaN}
+user> (disj s1 ##NaN)
+#{2.0 1.0 ##NaN}    ; ##NaN is still in the result!
 ----
 
-This also means that _any_ collection that contains `NaN` will never be `=` to anything else:
+This also means that _any_ collection that contains `##NaN` will never be `=` to anything else:
 
 [source,clojure]
 ----
-user> (def s2 #{Double/NaN 2.0 1.0})
+user> (def s2 #{##NaN 2.0 1.0})
 #'user/s2
 user> s2
-#{2.0 1.0 Double/NaN}
+#{2.0 1.0 ##NaN}
 user> (= s1 s2)
 false
-user> (= [1 Double/NaN] [1 Double/NaN])
+user> (= [1 ##NaN] [1 ##NaN])
 false
 ----
 
 Java has a special case in its `equals` method for floating point
-values that makes `NaN` equal to itself.  Clojure `=` and `==` do not.
+values that makes `##NaN` equal to itself.  Clojure `=` and `==` do not.
 
 [source,clojure]
 ----
-user> (.equals Double/NaN Double/NaN)
+user> (.equals ##NaN ##NaN)
 true
 ----
 

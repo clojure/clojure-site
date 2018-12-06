@@ -109,13 +109,21 @@ In the simplest case, an empty :gen-class is supplied, and the compiled class ha
   (println (str "Hello " greetee "!")))
 
 ----
-This gets compiled as follows, after ensuring the output directory exists:
+
+To compile, first ensure the target output directory `classes` exists:
+
+[source,shell]
+----
+mkdir classes
+----
+
+This gets compiled as follows:
+
 [source,clojure]
 ----
-(.mkdir (java.io.File. "classes"))
 (compile 'clojure.examples.hello)
 ----
-And can be run like an ordinary Java app like so:
+And can be run like an ordinary Java app like so (be sure to include the output classes directory):
 [source,clojure]
 ----
 java -cp ./classes:clojure.jar clojure.examples.hello Fred

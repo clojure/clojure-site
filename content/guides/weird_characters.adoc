@@ -464,25 +464,11 @@ Note that `::` is not available in edn.
 == `pass:[#:]` and `#::` - Namespace Map Syntax
 
 Namespace map syntax was added in Clojure 1.9 and is used to specify a default
-namespace context for keys in a map, where those keywords (or symbols) share a
+namespace context when keys or symbols in a map where they share a
 common namespace.
 
-`#::` can be used to auto-resolve the namespace of keyword or symbol keys
-in a map using the current namespace. 
-
-These two examples are equivalent:
-
-[source,clojure]
-----
-user=> (keys {:user/a 1, :user/b 2})
-(:user/a :user/b)
-user=> (keys #::{:a 1, :b 2})
-(:user/a :user/b)
-----
-
-Similar to <<xref/../weird_characters#autoresolved_keys,autoresolved keywords>>,
-you can also specify an alias in the namespace map prefix with
-`#:ns` prefix, where _ns_ is the name of a namespace and the prefix 
+The `pass:[#:ns]` syntax specifies a fully-qualified namespace map prefix n alias 
+in the namespace map prefix with, where _ns_ is the name of a namespace and the prefix
 precedes the opening brace `{` of the map.
 
 For example, the following map literal with namespace syntax:
@@ -502,7 +488,25 @@ is read as:
                :ship/model "YT-1300f light freighter"}}
 ----
 
-You can also use namespace aliases defined in the `ns` form:
+Note that these maps represent the identical object - these are just alternate syntaxes.
+
+`#::` can be used to auto-resolve the namespace of keyword or symbol keys
+in a map using the current namespace.
+
+These two examples are equivalent:
+
+[source,clojure]
+----
+user=> (keys {:user/a 1, :user/b 2})
+(:user/a :user/b)
+user=> (keys #::{:a 1, :b 2})
+(:user/a :user/b)
+----
+
+Similar to <<xref/../weird_characters#autoresolved_keys,autoresolved keywords>>,
+you can also use `#::alias` to auto-resolve with a namespace alias defined in
+the `ns` form:
+
 [source,clojure]
 ----
 (ns rebel.core
@@ -515,23 +519,15 @@ You can also use namespace aliases defined in the `ns` form:
      :ship #::s{:name "Millennium Falcon"
                 :model "YT-1300f light freighter"}}
 ----
-will also be read as:
+
+is read the same as:
+
 [source,clojure]
 ----
 {:rebel.person/first "Han"
  :rebel.person/last "Solo"
  :rebel.person/ship {:rebel.ship/name "Millennium Falcon"
                      :rebel.ship/model "YT-1300f light freighter"}}
-----
-
-
-or in compact form:
-[source,clojure]
-----
-#:rebel.person{:first "Han",
-               :last "Solo",
-               :ship #:rebel.ship{:name "Millennium Falcon",
-                                  :model "YT-1300f light freighter"}}
 ----
 
 * <<xref/../../reference/reader#map_namespace_syntax,Reader>>

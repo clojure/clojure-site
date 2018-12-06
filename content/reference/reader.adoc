@@ -23,7 +23,7 @@ Since we have to start somewhere, this reference starts where evaluation starts,
 
 === Symbols
 
-* Symbols begin with a non-numeric character and can contain alphanumeric characters and *, +, !, -, _, ', and ? (other characters may be allowed eventually).
+* Symbols begin with a non-numeric character and can contain alphanumeric characters and *, +, !, -, _, ', ?, <, > and = (other characters may be allowed eventually).
 * '/' has special meaning, it can be used once in the middle of a symbol to separate the namespace from the name, e.g. `my-namespace/foo`. '/' by itself names the division function.
 * '.' has special meaning - it can be used one or more times in the middle of a symbol to designate a fully-qualified class name, e.g. `java.util.BitSet`, or in namespace names. Symbols beginning or ending with '.' are reserved by Clojure. Symbols containing / or . are said to be 'qualified'.
 * Symbols beginning or ending with ':' are reserved by Clojure. A symbol can contain one or more non-repeating ':'s.

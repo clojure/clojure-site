@@ -502,6 +502,38 @@ is read as:
                :ship/model "YT-1300f light freighter"}}
 ----
 
+You can also use namespace aliases defined in the `ns` form:
+[source,clojure]
+----
+(ns rebel.core
+  (:require 
+    [rebel.person :as p]
+    [rebel.ship   :as s] ))
+
+#::p{:first "Han"
+     :last "Solo"
+     :ship #::s{:name "Millennium Falcon"
+                :model "YT-1300f light freighter"}}
+----
+will also be read as:
+[source,clojure]
+----
+{:rebel.person/first "Han"
+ :rebel.person/last "Solo"
+ :rebel.person/ship {:rebel.ship/name "Millennium Falcon"
+                     :rebel.ship/model "YT-1300f light freighter"}}
+----
+
+
+or in compact form:
+[source,clojure]
+----
+#:rebel.person{:first "Han",
+               :last "Solo",
+               :ship #:rebel.ship{:name "Millennium Falcon",
+                                  :model "YT-1300f light freighter"}}
+----
+
 * <<xref/../../reference/reader#map_namespace_syntax,Reader>>
 
 == `/` - Namespace separator

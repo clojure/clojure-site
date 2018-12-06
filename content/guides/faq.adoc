@@ -277,3 +277,29 @@ If you do need extra dependencies, try the following, courtesy Dominic Monroe, s
 
 ;; Clojure code goes here.
 ....
+
+== Contributing
+
+[[ca]]
+**<<faq##ca,Why does Clojure require that contributors first sign a contributor agreement (CA)?>>**
+
+See http://clojure.org/contributing
+
+It boils down to two reasons:
+
+1. To protect Clojure from future legal challenges that might discourage businesses from adopting it.
+2. To enable Clojure to be relicensed under a different open-source license if that would be advantageous.
+
+Signing the Contributor Agreement grants Rich Hickey joint ownership of your contributions. In exchange, Rich Hickey guarantees that Clojure will always be available under an open-source license approved by either the http://www.fsf.org/[Free Software Foundation] or the http://opensource.org/[Open Source Initiative].
+
+[[echosign_bug]]
+**<<faq#echosign_bug,Why does my CA email confirmation say "Clojure CA (between <my-company> and Rich Hickey) is Signed and Filed!">>**
+
+This is a quirk of Adobe EchoSign specific to users whose email account is already associated with an Adobe EchoSign account. In those cases, EchoSign will use the company name from your existing profile in the subject line rather than the individual name that was signed on the form. Don't worry! This has no effect - the agreement is as signed and attached in the email.
+
+[[prs]]
+**<<faq#prs,Other projects hosted on GitHub accept pull requests.  Why not Clojure?>>**
+
+Rich Hickey prefers to evaluate patches attached to JIRA tickets.  This is not to make it more difficult for contributors, or for legal reasons, but because of workflow preferences.  The process of <<xref/../../community/creating_tickets#,creating JIRA tickets>> and <<xref/../../community/developing_patches#,patches>> is documented and not terribly difficult.
+
+https://groups.google.com/forum/#!msg/clojure/jWMaop_eVaQ/3M4gddaXDZoJ[Link] to Oct 2012 Clojure Google group message from Rich Hickey on this topic.

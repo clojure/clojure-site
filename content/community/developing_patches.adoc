@@ -180,7 +180,7 @@ First, build the latest Clojure without running any tests:
 ----
 $ mvn -Dmaven.test.skip=true clean package
 # If no compilation errors, mvn command above creates target/clojure-VERSION-master-SNAPSHOT.jar
-------------------------------------------------------------------------
+----
 
 The commands above build a Clojure jar file, but neither compile nor run the tests.
 

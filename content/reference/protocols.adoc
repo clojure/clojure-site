@@ -134,3 +134,21 @@ Protocols are fully reified and support reflective capabilities via https://cloj
    {:baz (fn ([x] ...) ([x y zs] ...))
     :bar (fn [x y] ...)})
 ----
+
+As of Clojure 1.10, protocols can optionally elect to be extensded via per-value metadata:
+
+[source,clojure]
+----
+(defprotocol Component
+  :extend-via-metadata true
+  (start [component]))
+----
+
+When :extend-via-metadata is true, values can extend protocols by adding metadata where keys are fully-qualified protocol function symbols and values are function implementations. Protocol implementations are checked first for direct definitions (defrecord, deftype, reify), then metadata definitions, then external extensions (extend, extend-type, extend-protocol).
+
+[source,clojure]
+----
+(def component (with-meta {:name "db"} {`start (constantly "started")}))
+(start component)
+;;=> "started"
+----

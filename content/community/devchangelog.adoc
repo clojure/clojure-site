@@ -9,6 +9,12 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 The official https://github.com/clojure/clojure/blob/master/changes.md[changelog] tracks deltas between major stable versions. This page gathers the interim dev release announcements during development. 
 
+== Naming guide
+
+* Alpha - new feature work and enhancements still in development
+* Beta - new feature work for the release is complete, fixing bugs only
+* RC - a release candidate, which will be released as a final release unless a critical issue is found
+
 == Release 1.10
 
 === 1.10.0-RC4 (Dec 7, 2018)

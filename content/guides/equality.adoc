@@ -395,7 +395,7 @@ Clojure uses the underlying Java double-size floating point numbers
 (64-bit) with representation and behavior defined by a standard, IEEE
 754.  There is a special value http://en.wikipedia.org/wiki/NaN[`NaN`] ("Not A Number")
 that is not even equal to itself. Clojure represents this value as
-the symbolic value ##NaN.
+the symbolic value `##NaN`.
 
 [source,clojure]
 ----

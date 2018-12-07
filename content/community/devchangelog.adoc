@@ -11,6 +11,10 @@ The official https://github.com/clojure/clojure/blob/master/changes.md[changelog
 
 == Release 1.10
 
+=== 1.10.0-RC4 (Dec 7, 2018)
+
+* https://dev.clojure.org/jira/browse/CLJ-2449[CLJ-2449] - make serialized-require private
+
 === 1.10.0-RC3 (Dec 3, 2018)
 
 * https://dev.clojure.org/jira/browse/CLJ-2447[CLJ-2447] - clojure.datafy docstring is missing

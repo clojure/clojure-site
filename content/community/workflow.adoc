@@ -1,0 +1,182 @@
+= Workflow
+Alex Miller
+2018-12-06
+:type: community
+:toc: macro
+:icons: font
+
+ifdef::env-github,env-browser[:outfilessuffix: .adoc]
+
+== How a Ticket Becomes a Commit
+
+This page describes the overall workflow for how tickets (bugs and enhancement requests) make their way through the JIRA ticketing system and ultimately become part of Clojure, ClojureScript, and ClojureCLR.
+
+The overall process described here has several goals:
+
+* Maintain Clojure quality
+* Fix problems that are important to users
+* Engage the community in working toward the best possible Clojure
+
+== Groups
+
+There are several groups involved in this process with increasing levels of responsibility:
+
+* Anyone - anyone can submit a bug or enhancement request to Clojure once you have created a Clojure JIRA account
+* Contributors - anyone that has <<contributing#,signed the contributor agreement>> can supply patches or work on improving tickets
+* Screeners - a smaller group of trusted individuals have been granted the ability to move tickets through (some of) the stages of the process, in particular the Triage and Screening activities
+* BDFL - Rich Hickey is the creator and Benevolent Dictator for Life of what goes into Clojure. Stuart Halloway also has a special level of access and typically commits patches to Clojure.
+
+== Ticket fields
+
+There are several important fields on a ticket that jointly determine it's "state" in the workflow below. Some key fields to know about:
+
+* JIRA status- these govern the default JIRA workflow and consist of Open, In progress, Reopened, Resolved, Closed
+** The Clojure workflow does not really distinguish between these much other than general open/closed differentiation
+* Approval- a custom field that is (mostly) how Screeners change the state of a ticket
+** None - new ticket
+** Triaged - screener has approved the ticket as worth working on
+** Prescreened - screener has approved the ticket and screened the patch for review
+** Vetted - screener and Rich have approved the ticket as worth working on
+** Screened - screener has approved a ticket's patch for review by Rich
+** Incomplete - screener has requested improvements to a ticket or patch
+** Ok - Rich has approved the ticket for inclusion
+* Patch- qualifies the kind of patch attached
+** None - no patch
+** Code - code only, no test
+** Code and Test - code and test
+* Fix version
+** Release X.X - specific targeted release 
+** Backlog - will consider in future release 
+* Resolution- when a ticket is closed, it will have a resolution
+** Declined - did not accept a ticket for work
+** Duplicate
+** Completed
+** Unresolved 
+
+== Workflow
+
+The diagram below documents the process used for how tickets make their way through the system. The rounded boxes represent states in the workflow. They have well defined criteria (which sometimes cover multiple fields) such that each of these states can have a report. In general, a single line state indicates the Approval state. If additional fields are in play, they are listed after the state.
+
+The colored blocks represent activities performed by different groups - the colors correspond to the group (Orange = contributors, Blue = screeners, Green = BDFL). Diamonds represent decisions to be made during an activity. Activities are described in more detail below the diagram.
+
+image::/images/content/community/process.png[JIRA Workflow]
+
+== Activities
+
+**Triage**
+
+* Who: Screeners
+* Report: http://dev.clojure.org/jira/secure/IssueNavigator.jspa?mode=hide&requestId=10371[Open tickets] 
+* Goal: decide whether the bug or enhancement described in the ticket is actually a real bug or enhancement. 
+* Process (see: <<creating_tickets#,Creating Tickets>>):
+  . Is the ticket about 1 thing?  If not, then either split the ticket yourself or ask the submitter to do so.
+  . Does the ticket clearly state the problem? If not, then either update yourself or ask the submitter to do so.
+  . For larger enhancements / features, it is probably better to suggest the submitter post to clojure-dev and then create a page on the design wiki instead.
+  . For bugs, there should be some demonstration that the problem actually exists (output from a repl, test, etc). Verify the problem exists in the current release of Clojure.
+  . Does the ticket include a link to other relevant discussion (such as a clojure-dev thread, IRC conversation, etc)?
+  . At this stage, it is not necessary for there to be a patch or to validate it fixes the problem.
+* Actions, pick one of:
+** Comment on ticket to ask for more information, better description, better demonstration of problem, etc
+** Close with Resolution=Decline, reasons: 
+*** Not a bug: submitter misunderstood or misused a feature or ticket doesn't make sense
+*** Scope too big: feature may be better served by creating a page in the design wiki than in a ticket
+*** Enhancement not wanted: enhancement is not something we want to do
+*** Duplicate: of existing ticket
+*** Too many things: break this ticket apart into smaller pieces
+** Set Approval=Triaged - problem is ok
+*** If needed, adjust ticket to standards in <<creating_tickets#,Creating Tickets>>
+
+**Prescreening**
+
+* Who: Screeners
+* Report: http://dev.clojure.org/jira/secure/IssueNavigator.jspa?mode=hide&requestId=10370[Triaged tickets]
+* Goal: improve the ticket and screen the patch before Rich does vetting, allows faster path through the remainder of the process
+* Actions:
+** Set Approval=Prescreened - patch is ok
+** Comment on ticket regarding issues with patch (leaves in Triaged)
+
+**Vetting**
+
+* Who: Rich
+* Report: http://dev.clojure.org/jira/secure/IssueNavigator.jspa?mode=hide&requestId=10370[Triaged] and http://dev.clojure.org/jira/secure/IssueNavigator.jspa?mode=hide&requestId=10511[Prescreened] tickets
+* Goal: second check on whether the bug/enhancement is worth working on and decision of whether it's suitable for the next release.
+* Actions:
+** Close w Resolution=Declined - as above, ticket may not be something we want to address
+** Set Approval=Vetted - problem is good
+
+**Release scheduling**
+
+* Who: Rich
+* Report: http://dev.clojure.org/jira/secure/IssueNavigator.jspa?mode=hide&requestId=10376[Vetted tickets]
+* Goal: determine whether a ticket is in scope for next release or should be in backlog
+* Actions:
+** Set Fix Version to "Backlog" - don't want to fix it in the next release
+** Set Fix Version to current release
+*** If does not have patch, will show up in http://dev.clojure.org/jira/secure/IssueNavigator.jspa?mode=hide&requestId=10373[Needs Patch] report
+*** If does have patch, will show up in http://dev.clojure.org/jira/secure/IssueNavigator.jspa?mode=hide&requestId=10374[Screenable] report
+
+**Dev patch**
+
+* Who: contributors (anyone with signed CA)
+* Report: 
+** http://dev.clojure.org/jira/secure/IssueNavigator.jspa?mode=hide&requestId=10373[Needs Patch] - for tickets that need a patch
+** http://dev.clojure.org/jira/secure/IssueNavigator.jspa?mode=hide&requestId=10375[Incomplete] tickets - for tickets that have patches that need work
+* Goal: create a high quality ticket and patch for consideration (see sections below)
+* Actions: 
+** Edit ticket or update patch to address problems or gaps based on comments. 
+** Adding a new patch and changing "Patch" attribute to "Code" or "Code and Test" automatically causes a patch to move from the "Needs Patch" to the "Screenable" list of tickets.  However, adding a patch to an incomplete ticket does not.  Alex Miller periodically scans Incomplete tickets to see if they appear ready to go back to Screenable, and makes those state changes manually.
+
+**Screening**
+
+* Who: Screeners
+* Reports: 
+** http://dev.clojure.org/jira/secure/IssueNavigator.jspa?mode=hide&requestId=10374[Screenable] tickets (for new vetted tickets with patches)
+** http://dev.clojure.org/jira/secure/IssueNavigator.jspa?mode=hide&requestId=10375[Incomplete] tickets that have changed recently - need to re-review if submitter has updated ticket since marked Incomplete.
+* Goal: verify that ticket and patch are ready for Rich to review.  The quality bar is HIGH - the ticket and patch should be perfect.
+* Checks (see <<creating_tickets#,Creating Tickets>> and <<developing_patches#,Developing Patches>>):
+  . Is there a patch?
+  . Is there a test?
+  . Has author <<contributing#,signed the CA>>?
+  . Can you apply the patch to current source tree? 
+  . Do all tests pass?
+  . Is patch clean (no extraneous whitespace or changes outside the scope of the problem)?
+  . Are docstrings still accurate?
+  . Are there potential performance impacts? If so, what benchmarks have been performed?
+  . Does the solution follow code guidelines and look like the surrounding code in style?
+  . Does the solution imply possible similar changes elsewhere?
+  . Does the solution introduce new failure conditions that might need to be considered or documented?
+  . Does the solution change external or internal APIs that might affect users?
+* Actions:
+** Set Approval=Incomplete and add comment describing needed improvements
+** Set Approval=Screened - ticket and patch are perfect and Rich should review
+
+**Final screening**
+
+* Who: Rich 
+* Report: http://dev.clojure.org/jira/secure/IssueNavigator.jspa?mode=hide&requestId=10383[Screened tickets]
+* Goal: Rich blessing the change
+* Actions:
+** Set Approval=Incomplete - ticket or patch needs improvement 
+** Set Approval=OK - everything is good, ready to commit
+
+**Commit**
+
+* Who: Stu H (usually)
+* Report: http://dev.clojure.org/jira/secure/IssueNavigator.jspa?mode=hide&requestId=10377[OK tickets] 
+* Goal: Final review of change and commit to Clojure source
+* Actions:
+** Make sure you have the right patch
+** Make sure the author has signed the CA
+** Double-check that the patch applies cleanly and builds locally
+** Commit and push the patch
+*** I find it safest to do committing from a separate local repository. I have a "clojure" git clone that does not have push permissions for dev and screening, and a separate "clojure-for-commit" checkout for committing. This reduces the chance that my muscle memory will produce a "git push" at the wrong time.
+** Set Approval=Accepted and close ticket
+
+**Backlog Review**
+
+* Who: Rich (primarily)
+* Report: http://dev.clojure.org/jira/secure/IssueNavigator.jspa?mode=hide&requestId=10372[Backlog tickets]
+* Goal: See if backlogged tickets should be pulled into next release
+* Actions:
+** Set Fix Version from Backlog to current release 
+** (or don't to leave in Backlog)

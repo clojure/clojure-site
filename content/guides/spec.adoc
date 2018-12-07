@@ -13,11 +13,11 @@ toc::[]
 
 The <<xref/../../../about/spec#,spec>> library specifies the structure of data, validates or destructures it, and can generate data based on the spec. 
 
-To use spec, declare a dependency on Clojure 1.9:
+To use spec, declare a dependency on Clojure 1.9.0 or higher:
 
 [source, clojure]
 ----
-[org.clojure/clojure "1.9.0"]
+[org.clojure/clojure "1.10.0-RC4"]
 ----
 
 To start working with spec, require the `clojure.spec.alpha` namespace at the REPL:
@@ -97,7 +97,7 @@ A registered spec identifier can be used in place of a spec definition in the op
 
 [source,clojure]
 ----
-(s/valid? ::date (Date.))
+(s/valid? ::date (java.util.Date.))
 ;;=> true
 (s/conform ::suit :club)
 ;;=> :club
@@ -181,12 +181,12 @@ https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.al
 [source,clojure]
 ----
 (s/explain ::suit 42)
-;; val: 42 fails spec: ::suit predicate: #{:spade :heart :diamond :club}
+;; 42 - failed: #{:spade :heart :diamond :club} spec: :user/suit
 (s/explain ::big-even 5)
-;; val: 5 fails spec: ::big-even predicate: even?
+;; 5 - failed: even? spec: :user/big-even
 (s/explain ::name-or-id :foo)
-;; val: :foo fails spec: ::name-or-id at: [:name] predicate: string?
-;; val: :foo fails spec: ::name-or-id at: [:id] predicate: int?
+;; :foo - failed: string? at: [:name] spec: :user/name-or-id
+;; :foo - failed: int? at: [:id] spec: :user/name-or-id
 ----
 
 Let's examine the output of the final example more closely. First note that there are two errors being reported - spec will evaluate all possible alternatives and report errors on every path. The parts of each error are:
@@ -219,7 +219,7 @@ In addition to `explain`, you can use https://clojure.github.io/spec.alpha/cloju
 
 [NOTE]
 ====
-This result also demonstrates the new namespace map literal syntax added in Clojure 1.9. Maps may be prefixed with `\#:` or `#::` (for autoresolve) to specify a default namespace for all keys in the map. In this example, this is equivalent to `{:clojure.spec.alpha/problems ...}`
+This result also demonstrates the namespace map literal syntax added in Clojure 1.9. Maps may be prefixed with `\#:` or `#::` (for autoresolve) to specify a default namespace for all keys in the map. In this example, this is equivalent to `{:clojure.spec.alpha/problems ...}`
 ====
 
 == Entity Maps
@@ -234,6 +234,7 @@ Entity maps in spec are defined with https://clojure.github.io/spec.alpha/clojur
 
 [source,clojure]
 ----
+(ns my.domain (:require [clojure.spec.alpha :as s]))
 (def email-regex #"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,63}$")
 (s/def ::email-type (s/and string? #(re-matches email-regex %)))
 
@@ -261,19 +262,18 @@ When conformance is checked on a map, it does two things - checking that the req
 ;; Fails required key check
 (s/explain ::person
   {::first-name "Elon"})
-;; val: #:my.domain{:first-name "Elon"} fails spec: :my.domain/person
-;;  predicate: (contains? % :my.domain/last-name)
-;; val: #:my.domain{:first-name "Elon"} fails spec: :my.domain/person
-;;  predicate: (contains? % :my.domain/email)
-
+;; #:my.domain{:first-name "Elon"} - failed: (contains? % :my.domain/last-name) 
+;;   spec: :my.domain/person
+;; #:my.domain{:first-name "Elon"} - failed: (contains? % :my.domain/email)
+;;   spec: :my.domain/person
 
 ;; Fails attribute conformance
 (s/explain ::person
   {::first-name "Elon"
    ::last-name "Musk"
    ::email "n/a"})
-;; In: [:my.domain/email] val: "n/a" fails spec: :my.domain/email-type 
-;;   at: [:my.domain/email] predicate: (re-matches email-regex %)
+;; "n/a" - failed: (re-matches email-regex %) in: [:my.domain/email]
+;;   at: [:my.domain/email] spec: :my.domain/email-type
 ----
 
 Let's take a moment to examine the explain error output on that final example:
@@ -304,15 +304,13 @@ Let's consider a person map that uses unqualified keys but checks conformance ag
   {:first-name "Elon"
    :last-name "Musk"
    :email "n/a"})
-;; In: [:email] val: "n/a" fails spec: :my.domain/email-type at: [:email] 
-;;   predicate: (re-matches email-regex %)
+;; "n/a" - failed: (re-matches email-regex %) in: [:email] at: [:email] 
+;;   spec: :my.domain/email-type
 
 (s/explain :unq/person
   {:first-name "Elon"})
-;; val: {:first-name "Elon"} fails spec: :unq/person
-;;  predicate: (contains? % :last-name)
-;; val: {:first-name "Elon"} fails spec: :unq/person
-;;  predicate: (contains? % :email)
+;; {:first-name "Elon"} - failed: (contains? % :last-name) spec: :unq/person
+;; {:first-name "Elon"} - failed: (contains? % :email) spec: :unq/person
 ----
 
 Unqualified keys can also be used to validate record attributes:
@@ -323,8 +321,8 @@ Unqualified keys can also be used to validate record attributes:
 
 (s/explain :unq/person
            (->Person "Elon" nil nil nil))
-;; In: [:last-name] val: nil fails spec: :my.domain/last-name at: [:last-name] predicate: string?
-;; In: [:email] val: nil fails spec: :my.domain/email-type at: [:email] predicate: string?
+;; nil - failed: string? in: [:last-name] at: [:last-name] spec: :my.domain/last-name
+;; nil - failed: string? in: [:email] at: [:email] spec: :my.domain/email-type
 
 (s/conform :unq/person
   (->Person "Elon" "Musk" "elon@example.com" nil))
@@ -411,15 +409,15 @@ And then finally we are ready to declare our `multi-spec` and try it out.
 ;=> true
 (s/explain :event/event
   {:event/type :event/restart})
-;; val: #:event{:type :event/restart} fails spec: :event/event 
-;;   at: [:event/restart] predicate: my.domain/event-type,  no method
+;; #:event{:type :event/restart} - failed: no method at: [:event/restart] 
+;;   spec: :event/event
 (s/explain :event/event
   {:event/type :event/search
    :search/url 200})
-;; val: {:event/type :event/search, :search/url 200} fails spec: :event/event 
-;;   at: [:event/search] predicate: [(contains? % :event/timestamp)]
-;; In: [:search/url] val: 200 fails spec: :search/url 
-;;   at: [:event/search :search/url] predicate: string?
+;; 200 - failed: string? in: [:search/url] 
+;;   at: [:event/search :search/url] spec: :search/url
+;; {:event/type :event/search, :search/url 200} - failed: (contains? % :event/timestamp) 
+;;   at: [:event/search] spec: :event/event
 ----
 
 Let's take a moment to examine the explain error output on that final example. There were two different kinds of failures detected. The first failure is due to the missing required `:event/timestamp` key in the event. The second is from the invalid `:search/url` value (a number instead of a string). We see the same parts as prior explain errors:
@@ -462,11 +460,11 @@ Following is an example utilizing some of these options to spec a vector contain
 (s/conform ::vnum3 [1 2 3])
 ;;=> #{1 2 3}
 (s/explain ::vnum3 #{1 2 3})   ;; not a vector
-;; val: #{1 3 2} fails spec: ::vnum3 predicate: clojure.core/vector?
+;; #{1 3 2} - failed: vector? spec: :user/vnum3
 (s/explain ::vnum3 [1 1 1])    ;; not distinct
-;; val: [1 1 1] fails spec: ::vnum3 predicate: distinct?
+;; [1 1 1] - failed: distinct? spec: :user/vnum3
 (s/explain ::vnum3 [1 2 :a])   ;; not a number
-;; In: [2] val: :a fails spec: ::vnum3 predicate: number?
+;; :a - failed: number? in: [2] spec: :user/vnum3
 ----
 
 [NOTE]
@@ -537,11 +535,11 @@ The data is conformed as a map with the tags as keys. We can use `explain` to ex
 ----
 ;; pass string for unit instead of keyword
 (s/explain ::ingredient [11 "peaches"])
-;; In: [1] val: \"peaches\" fails spec: ::ingredient at: [:unit] predicate: keyword?
+;; "peaches" - failed: keyword? in: [1] at: [:unit] spec: :user/ingredient
 
 ;; leave out the unit
 (s/explain ::ingredient [2])
-;; val: () fails spec: ::ingredient at: [:unit] predicate: keyword?,  Insufficient input
+;; () - failed: Insufficient input at: [:unit] spec: :user/ingredient
 ----
 
 Let's now see the various occurrence operators `*`, `+`, and `?`:
@@ -552,7 +550,7 @@ Let's now see the various occurrence operators `*`, `+`, and `?`:
 (s/conform ::seq-of-keywords [:a :b :c])
 ;;=> [:a :b :c]
 (s/explain ::seq-of-keywords [10 20])
-;; In: [0] val: 10 fails spec: :spec.examples.guide/seq-of-keywords predicate: keyword?
+;; 10 - failed: keyword? in: [0] spec: :user/seq-of-keywords
 
 (s/def ::odds-then-maybe-even (s/cat :odds (s/+ odd?)
                                      :even (s/? even?)))
@@ -561,7 +559,7 @@ Let's now see the various occurrence operators `*`, `+`, and `?`:
 (s/conform ::odds-then-maybe-even [1])
 ;;=> {:odds [1]}
 (s/explain ::odds-then-maybe-even [100])
-;; In: [0] val: 100 fails spec: ::odds-then-maybe-even at: [:odds] predicate: odd?
+;; 100 - failed: odd? in: [0] at: [:odds] spec: :user/odds-then-maybe-even
 
 ;; opts are alternating keywords and booleans
 (s/def ::opts (s/* (s/cat :opt keyword? :val boolean?)))
@@ -668,11 +666,8 @@ Another option is to use `s/assert` within your code to assert that a value sati
 
 (s/check-asserts true)
 (person-name 100)
-;; CompilerException clojure.lang.ExceptionInfo: Spec assertion failed
-;; val: 100 fails predicate: map?
-;; :clojure.spec.alpha/failure  :assertion-failed
-;; #:clojure.spec.alpha{:problems [{:path [], :pred map?, :val 100, :via [], :in []}], 
-;;                      :failure :assertion-failed}
+;; Execution error - invalid arguments to my.domain/person-name at (REPL:3).
+;; 100 - failed: map?
 ----
 
 A deeper level of integration is to call conform and use the return value to destructure the input. This will be particularly useful for complex inputs with alternate options.
@@ -797,9 +792,8 @@ The Clojure macroexpander will look for and conform :args specs registered for m
 [source,clojure]
 ----
 (declare 100)
-;; ExceptionInfo: Call to clojure.core/declare did not conform to spec:
-;; In: [0] val: 100 fails at: [:args :names] predicate: simple-symbol?
-;; :clojure.spec.alpha/args  (100)
+;; Syntax error macroexpanding clojure.core/declare at (REPL:1:1).
+;; 100 - failed: simple-symbol? at: [:names]
 ----
 
 Because macros are always checked during macro expansion, you do not need to call instrument for macro specs.
@@ -847,7 +841,8 @@ Or look at the errors we'll get from some bad data:
    ::players [{::name "Kenny Rogers"
                ::score 100
                ::hand [[2 :banana]]}]})
-;; In: [::players 0 ::hand 0 1] val: :banana fails spec: ::card at: [::players ::hand 1] predicate: suit?
+;; :banana - failed: suit? in: [:user/players 0 :user/hand 0 1] 
+;;   at: [:user/players :user/hand 1] spec: :user/card
 ----
 
 The error indicates the key path in the data structure down to the invalid value, the non-matching value, the spec part it's trying to match, the path in that spec, and the predicate that failed.
@@ -1015,7 +1010,8 @@ All of the generators we've seen worked fine but there are a number of cases whe
 [source,clojure]
 ----
 (gen/generate (s/gen even?))
-;; CompilerException java.lang.Exception: Unable to construct gen at: [] for: clojure.core$even_QMARK_@188fc6fd
+;; Execution error (ExceptionInfo) at user/eval1281 (REPL:1).
+;; Unable to construct gen at: [] for: clojure.core$even_QMARK_@73ab3aac
 ----
 
 In this case spec was not able to find a generator for the `even?` predicate. Most of the primitive generators in spec are mapped to the common type predicates (strings, numbers, keywords, etc).
@@ -1048,7 +1044,8 @@ However, it is possible to go too far with refinement and make something that fa
 ----
 ;; hello, are you the one I'm looking for?
 (gen/sample (s/gen (s/and string? #(clojure.string/includes? % "hello"))))
-;; ExceptionInfo Couldn't satisfy such-that predicate after 100 tries.
+;; Error printing return value (ExceptionInfo) at clojure.test.check.generators/such-that-helper (generators.cljc:320).
+;; Couldn't satisfy such-that predicate after 100 tries.
 ----
 
 Given enough time (maybe a lot of time), the generator probably would come up with a string like this, but the underlying `such-that` will make only 100 attempts to generate a value that passes the filter. This is a case where you will need to step in and provide a custom generator.
@@ -1210,13 +1207,8 @@ Instrument takes a fully-qualified symbol so we use `pass:[`]` here to resolve i
 [source,clojure]
 ----
 (ranged-rand 8 5)
-CompilerException clojure.lang.ExceptionInfo: Call to #'spec.examples.guide/ranged-rand did not conform to spec:
-val: {:start 8, :end 5} fails at: [:args] predicate: (< (:start %) (:end %))
-:clojure.spec.alpha/args  (8 5)
-:clojure.spec.alpha/failure  :instrument-check-failed
- #:clojure.spec.alpha{:problems [{:path [:args], :pred (< (:start %) (:end %)), :val {:start 8, :end 5}, :via [], :in []}],
-                      :args (8 5), 
-                      :failure :instrument-check-failed}
+Execution error - invalid arguments to user/ranged-rand at (REPL:1).
+{:start 8, :end 5} - failed: (< (:start %) (:end %))
 ----
 
 The error fails in the second args predicate that checks `(< start end)`. Note that the `:ret` and `:fn` specs are not checked with instrumentation as validating the implementation should occur at testing time.

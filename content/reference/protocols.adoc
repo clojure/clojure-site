@@ -135,7 +135,7 @@ Protocols are fully reified and support reflective capabilities via https://cloj
     :bar (fn [x y] ...)})
 ----
 
-As of Clojure 1.10, protocols can optionally elect to be extensded via per-value metadata:
+As of Clojure 1.10, protocols can optionally elect to be extended via per-value metadata:
 
 [source,clojure]
 ----

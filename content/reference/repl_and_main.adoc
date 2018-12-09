@@ -220,8 +220,8 @@ Exceptions thrown during all phases (exception `:execution`) will have ex-data a
 
 The clojure.main REPL includes the categorization and printing of errors by default, but the individual steps of this process are exposed as well for other REPLs to use, specifically the functions:
 
-* http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/Throwable-%3Emap[Throwable->map] - converts an Exception chain into Clojure data
+* http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/Throwable-%3Emap[pass:[Throwable->map]] - converts an Exception chain into Clojure data
 * http://clojure.github.io/clojure/branch-master/clojure.main-api.html#clojure.main/ex-triage[ex-triage] - analyzes Clojure exception data to pull relevant information from the top and bottom of the exception chain into a map describing just the set of data needed to format an exception string
 * http://clojure.github.io/clojure/branch-master/clojure.main-api.html#clojure.main/ex-str[ex-str] - produces a phase-appropriate message given a set of exception data
 
-The clojure.main REPL combines these functions in a pipeline to produce the printed exception message: `(-> ex Throwable->map clojure.main/ex-triage clojure.main/ex-str)`. Other REPLs can use one or more pieces of this pipeline as necessary when building or customizing their exception printing.
+The clojure.main REPL combines these functions in a pipeline to produce the printed exception message: `pass:[(-> ex Throwable->map clojure.main/ex-triage clojure.main/ex-str)]`. Other REPLs can use one or more pieces of this pipeline as necessary when building or customizing their exception printing.

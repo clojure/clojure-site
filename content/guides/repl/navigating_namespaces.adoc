@@ -40,7 +40,7 @@ For example, if the current namespace is `myapp.foo.bar` and you evaluate `(requ
 [source,clojure-repl]
 ----
 $ clj
-Clojure 1.9.0
+Clojure 1.10.0
 user=> *ns*
 #object[clojure.lang.Namespace 0x7d1cfb8b "user"]
 user=> (ns myapp.foo.bar) ;; creating and switching to the myapp.foo.bar namespace - `ns` will be explained later in this guide.
@@ -56,9 +56,11 @@ myapp.foo.bar=> (cset/intersection #{1 2} #{2 3})
 myapp.foo.bar=> (in-ns 'user) ;; now switching back to the `user` namespace - `in-ns` will be explained later in this guide.
 #object[clojure.lang.Namespace 0x7d1cfb8b "user"]
 user=> (union #{1 2} #{2 3})  ;; won't work, because `union` has not been :refer'ed in the `user` namespace
-CompilerException java.lang.RuntimeException: Unable to resolve symbol: union in this context, compiling:(NO_SOURCE_PATH:9:1)
+Syntax error compiling at (REPL:1:1).
+Unable to resolve symbol: union in this context
 user=> (cset/intersection #{1 2} #{2 3}) ;; won't work, because the `cset` alias has not been defined in the current namespace.
-CompilerException java.lang.RuntimeException: No such namespace: cset, compiling:(NO_SOURCE_PATH:10:1)
+Syntax error compiling at (REPL:1:1).
+No such namespace: cset
 user=>
 ----
 
@@ -81,7 +83,7 @@ you will be able to reference that Var as `myapp.foo.bar/my-favorite-number` fro
 [source,clojure-repl]
 ----
 $ clj
-Clojure 1.9.0
+Clojure 1.10.0
 user=> (ns myapp.foo.bar) ;; creating and switching to the `myapp.foo.bar` namespace - NOTE `ns` will be explained later in this guide
 nil
 myapp.foo.bar=> (def my-favorite-number 42) ;; defining a Var named `my-favorite-number`
@@ -105,7 +107,7 @@ You can find what the current namespace is by evaluating `\*ns*`:
 [source,clojure-repl]
 ----
 $ clj
-Clojure 1.9.0
+Clojure 1.10.0
 user=> *ns*
 #object[clojure.lang.Namespace 0x7d1cfb8b "user"]
 ----
@@ -120,7 +122,7 @@ You can create and switch to a new namespace by evaluating `(https://clojure.git
 [source,clojure-repl]
 ----
 $ clj
-Clojure 1.9.0
+Clojure 1.10.0
 user=> (ns myapp.foo-bar)
 nil
 myapp.foo-bar=> *ns*
@@ -135,7 +137,7 @@ myapp.foo-bar=> (def x 42)
 [source,clojure-repl]
 ----
 $ clj
-Clojure 1.9.0
+Clojure 1.10.0
 user=> (ns myapp.ns1) ;; creating a new namespace and defining a Var `x` and an alias `str/`:
 nil
 myapp.ns1=> (def x 42)
@@ -149,9 +151,11 @@ myapp.ns1=> (str/upper-case "hello")
 myapp.ns1=> (ns myapp.ns2) ;; now switching to another namespace:
 nil
 myapp.ns2=> x ;; won't work, because x has not been defined in namespace `myapp.ns2`
-CompilerException java.lang.RuntimeException: Unable to resolve symbol: x in this context, compiling:(NO_SOURCE_PATH:0:0)
+Syntax error compiling at (REPL:0:0).
+Unable to resolve symbol: x in this context
 myapp.ns2=> (str/upper-case "hello") ;; won't work, because alias `str` has not been defined in namespace `myapp.ns2`
-CompilerException java.lang.RuntimeException: No such namespace: str, compiling:(NO_SOURCE_PATH:9:1)
+Syntax error compiling at (REPL:1:1).
+No such namespace: str
 ----
 
 == Switching to an existing namespace with `in-ns`
@@ -163,7 +167,7 @@ moves back to the `user` namespace, then moves again to `myapp.some-ns`:
 [source,clojure-repl]
 ----
 $ clj
-Clojure 1.9.0
+Clojure 1.10.0
 user=> (ns myapp.some-ns) ;;;; creating the namespace `myapp.some-ns`
 nil
 myapp.some-ns=> *ns* ;; where are we?
@@ -189,11 +193,12 @@ a function using `defn`:
 [source,clojure-repl]
 ----
 $ clj
-Clojure 1.9.0
+Clojure 1.10.0
 user=> (in-ns 'myapp.never-created)
 #object[clojure.lang.Namespace 0x22356acd "myapp.never-created"]
 myapp.never-created=> (defn say-hello [x] (println "Hello, " x "!"))
-CompilerException java.lang.RuntimeException: Unable to resolve symbol: defn in this context, compiling:(NO_SOURCE_PATH:2:1)
+Syntax error compiling at (REPL:1:1).
+Unable to resolve symbol: defn in this context
 ----
 
 **Explanation:** in this situation, https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/in-ns[in-ns]
@@ -291,7 +296,7 @@ Here are 3 ways to make sure `myproject.person-names` is loaded:
 [source,clojure-repl]
 ---- 
 $ clj ## APPROACH 1: requiring myproject.person-names directly
-Clojure 1.9.0
+Clojure 1.10.0
 user=> (require '[myproject.person-names])
 nil
 user=> myproject.person-names/nicknames ;; checking that the myproject.person-names was loaded.
@@ -301,7 +306,7 @@ user=> myproject.person-names/nicknames ;; checking that the myproject.person-na
 [source,clojure-repl]
 ---- 
 $ clj ## APPROACH 2: requiring myproject.welcome, which itself requires myproject.person-names 
-Clojure 1.9.0
+Clojure 1.10.0
 user=> (require '[myproject.welcome])
 nil
 user=> myproject.person-names/nicknames ;; checking that the myproject.person-names was loaded.
@@ -311,7 +316,7 @@ user=> myproject.person-names/nicknames ;; checking that the myproject.person-na
 [source,clojure-repl]
 ---- 
 $ clj ## APPROACH 3: manually copying the code of myproject.person-names in the REPL.
-Clojure 1.9.0
+Clojure 1.10.0
 (ns myproject.person-names
   (:require [clojure.string :as str]))
 
@@ -343,7 +348,7 @@ myproject.person-names=> myproject.person-names/nicknames ;; checking that the m
 [source,clojure-repl]
 ----
 $ clj
-Clojure 1.9.0
+Clojure 1.10.0
 user=> (require '[myproject.welcome] :verbose)
 (clojure.core/load "/myproject/welcome")
 (clojure.core/in-ns 'clojure.core.specs.alpha)
@@ -365,13 +370,15 @@ if you switch to a lib namespace without loading it first:
 [source,clojure-repl]
 ----
 $ clj
-Clojure 1.9.0
+Clojure 1.10.0
 user=> (ns myproject.person-names)
 nil
 myproject.person-names=> nicknames ;; #'nicknames won't be defined, because the lib has not been loaded.
-CompilerException java.lang.RuntimeException: Unable to resolve symbol: nicknames in this context, compiling:(NO_SOURCE_PATH:0:0)
+Syntax error compiling at (REPL:0:0).
+Unable to resolve symbol: nicknames in this context
 myproject.person-names=> (require '[myproject.person-names]) ;; won't fix the situation, because the namespaces has already been created
 nil
 myproject.person-names=> nicknames
-CompilerException java.lang.RuntimeException: Unable to resolve symbol: nicknames in this context, compiling:(NO_SOURCE_PATH:0:0)
+Syntax error compiling at (REPL:0:0).
+Unable to resolve symbol: nicknames in this context
 ----

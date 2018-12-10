@@ -131,6 +131,38 @@ The arguments will be provided to your program as a seq of strings bound to the 
 *command-line-args* => ("arg1" "arg2" "arg3")
 ----
 
+== Error printing
+
+As of Clojure 1.10, Clojure errors at the REPL are categorized into one of several phases:
+
+* `:read-source` - an error thrown while reading characters at the REPL or from a source file.
+* `:macro-syntax-check` - a syntax error found in the syntax of a macro call, either from spec or from a macro throwing IllegalArgumentException, IllegalStateException, or ExceptionInfo.
+* `:macroexpansion` - all other errors thrown during macro evaluation are categorized as macroexpansion errors.
+* `:compile-syntax-check` - a syntax error caught during compilation.
+* `:compilation` - non-syntax errors caught during compilation.
+* `:execution` - any errors thrown at execution time.
+* `:read-eval-result` - any error thrown while reading the result of execution (only applicable for REPLs that read the result).
+* `:print-eval-result` - any error thrown while printing the result of execution.
+
+Exceptions thrown during all phases (exception `:execution`) will have ex-data attached with one or more the following keys:
+
+* `:clojure.error/phase` - phase indicator
+* `:clojure.error/source` - file name (no path)
+* `:clojure.error/line` - integer line number
+* `:clojure.error/column` - integer column number
+* `:clojure.error/symbol` - symbol being expanded/compiled/invoked
+* `:clojure.error/class` - cause exception class symbol
+* `:clojure.error/cause` - cause exception message
+* `:clojure.error/spec` - explain-data for a spec error
+
+The clojure.main REPL includes the categorization and printing of errors by default, but the individual steps of this process are exposed as well for other REPLs to use, specifically the functions:
+
+* http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/Throwable-%3Emap[pass:[Throwable->map]] - converts an Exception chain into Clojure data
+* http://clojure.github.io/clojure/branch-master/clojure.main-api.html#clojure.main/ex-triage[ex-triage] - analyzes Clojure exception data to pull relevant information from the top and bottom of the exception chain into a map describing just the set of data needed to format an exception string
+* http://clojure.github.io/clojure/branch-master/clojure.main-api.html#clojure.main/ex-str[ex-str] - produces a phase-appropriate message given a set of exception data
+
+The clojure.main REPL combines these functions in a pipeline to produce the printed exception message: `pass:[(-> ex Throwable->map clojure.main/ex-triage clojure.main/ex-str)]`. Other REPLs can use one or more pieces of this pipeline as necessary when building or customizing their exception printing.
+
 == Launching a Socket Server
 
 [NOTE]
@@ -188,40 +220,10 @@ Main entry point: `https://clojure.github.io/clojure/clojure.main-api.html#cloju
 
 Reusable REPL: `https://clojure.github.io/clojure/clojure.main-api.html#clojure.main/repl[clojure.main/repl]`
 
+Error handling: `http://clojure.github.io/clojure/branch-master/clojure.main-api.html#clojure.main/ex-triage[clojure.main/ex-triage]` `http://clojure.github.io/clojure/branch-master/clojure.main-api.html#clojure.main/ex-str[clojure.main/ex-str]`
+
 Allowing set! for the customary REPL vars: `https://clojure.github.io/clojure/clojure.main-api.html#clojure.main/with-bindings[clojure.main/with-bindings]`
 
 Socket server control: `https://clojure.github.io/clojure/clojure.core-api.html#clojure.core.server/start-server[clojure.core.server/start-server]` `https://clojure.github.io/clojure/clojure.core-api.html#clojure.core.server/stop-server[clojure.core.server/stop-server]` `https://clojure.github.io/clojure/clojure.core-api.html#clojure.core.server/stop-servers[clojure.core.server/stop-servers]`
 
 Socket repl: `https://clojure.github.io/clojure/clojure.core-api.html#clojure.core.server/repl[clojure.core.server/repl]`
-
-== Error printing
-
-As of Clojure 1.10, Clojure errors at the REPL are categorized into one of several phases:
-
-* `:read-source` - an error thrown while reading characters at the REPL or from a source file.
-* `:macro-syntax-check` - a syntax error found in the syntax of a macro call, either from spec or from a macro throwing IllegalArgumentException, IllegalStateException, or ExceptionInfo.
-* `:macroexpansion` - all other errors thrown during macro evaluation are categorized as macroexpansion errors.
-* `:compile-syntax-check` - a syntax error caught during compilation.
-* `:compilation` - non-syntax errors caught during compilation.
-* `:execution` - any errors thrown at execution time.
-* `:read-eval-result` - any error thrown while reading the result of execution (only applicable for REPLs that read the result).
-* `:print-eval-result` - any error thrown while printing the result of execution.
-
-Exceptions thrown during all phases (exception `:execution`) will have ex-data attached with one or more the following keys:
-
-* `:clojure.error/phase` - phase indicator
-* `:clojure.error/source` - file name (no path)
-* `:clojure.error/line` - integer line number
-* `:clojure.error/column` - integer column number
-* `:clojure.error/symbol` - symbol being expanded/compiled/invoked
-* `:clojure.error/class` - cause exception class symbol
-* `:clojure.error/cause` - cause exception message
-* `:clojure.error/spec` - explain-data for a spec error
-
-The clojure.main REPL includes the categorization and printing of errors by default, but the individual steps of this process are exposed as well for other REPLs to use, specifically the functions:
-
-* http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/Throwable-%3Emap[pass:[Throwable->map]] - converts an Exception chain into Clojure data
-* http://clojure.github.io/clojure/branch-master/clojure.main-api.html#clojure.main/ex-triage[ex-triage] - analyzes Clojure exception data to pull relevant information from the top and bottom of the exception chain into a map describing just the set of data needed to format an exception string
-* http://clojure.github.io/clojure/branch-master/clojure.main-api.html#clojure.main/ex-str[ex-str] - produces a phase-appropriate message given a set of exception data
-
-The clojure.main REPL combines these functions in a pipeline to produce the printed exception message: `pass:[(-> ex Throwable->map clojure.main/ex-triage clojure.main/ex-str)]`. Other REPLs can use one or more pieces of this pipeline as necessary when building or customizing their exception printing.

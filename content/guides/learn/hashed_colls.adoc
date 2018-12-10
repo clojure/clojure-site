@@ -162,7 +162,8 @@ user=> (def bad-lookup-map nil)
 #'user/bad-lookup-map
 
 user=> (bad-lookup-map :foo)
-NullPointerException
+Execution error (NullPointerException) at user/eval154 (REPL:1).
+null
 ----
 
 === Looking up with a default

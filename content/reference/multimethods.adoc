@@ -137,11 +137,10 @@ https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/prefer-meth
 (defmethod bar [::shape ::rect] [x y] :shape-rect)
 
 (bar ::rect ::rect)
--> java.lang.IllegalArgumentException:
-   Multiple methods match dispatch value:
-   [:user/rect :user/rect] -> [:user/rect :user/shape]
-   and [:user/shape :user/rect],
-   and neither is preferred
+-> Execution error (IllegalArgumentException) at user/eval152 (REPL:1).
+   Multiple methods in multimethod 'bar' match dispatch value: 
+   [:user/rect :user/rect] -> [:user/shape :user/rect] 
+   and [:user/rect :user/shape], and neither is preferred
 
 (prefer-method bar [::rect ::shape] [::shape ::rect])
 (bar ::rect ::rect)

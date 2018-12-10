@@ -458,7 +458,8 @@ for `compare` to work on, and those vectors have the same second element:
 ;; compare throws exception if you try to compare a string and a
 ;; keyword
 user> (sort by-number-then-whatever [["a" 2] ["c" 3] [:b 2]])
-ClassCastException java.lang.String cannot be cast to clojure.lang.Keyword  clojure.lang.Keyword.compareTo (Keyword.java:109)
+Execution error (ClassCastException) at user/by-number-then-whatever (REPL:2).
+class java.lang.String cannot be cast to class clojure.lang.Keyword
 ----
 
 `cc-cmp` ("cross class compare") below may be useful in such cases.

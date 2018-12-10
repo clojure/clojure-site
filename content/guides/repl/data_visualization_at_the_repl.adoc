@@ -263,17 +263,11 @@ For instance, an Exception will be thrown if you divide a number by zero:
 [source,clojure-repl]
 ----
 user=> (/ 1 0)
-ArithmeticException Divide by zero  clojure.lang.Numbers.divide (Numbers.java:163)
+Execution error (ArithmeticException) at user/eval163 (REPL:1).
+Divide by zero
 ----
 
-By default, the REPL prints a one-line summary of the Exception: its type, its message, and the source code location
- where the Exception was thrown:
-
-[source, plain-text]
-----
-ArithmeticException Divide by zero  clojure.lang.Numbers.divide (Numbers.java:163)
-^------type-------- ^--message----  ^location where the Exception was thrown
-----
+By default, the REPL prints a two-line summary of the Exception. The first line reports the error phase (execution, compilation, macroexpansion, etc) and its location. The second line reports the cause.
 
 This can be enough in many cases, but there is more information available.
 
@@ -389,45 +383,46 @@ that we calling our function with an empty vector of numbers led to dividing zer
 [source,clojure-repl]
 ----
 user=> (average [])
-ArithmeticException Divide by zero  clojure.lang.Numbers.divide (Numbers.java:163)
+Execution error (ArithmeticException) at user/divide-verbose (REPL:6).
+Divide by zero
 user=> *e  ;; notice the `:data` key inside the chain of Exceptions represented in `:via`
 #error {
  :cause "Divide by zero"
  :via
  [{:type clojure.lang.ExceptionInfo
    :message "Failed to compute the average of numbers"
-   :data {:numbers []}                                      ;; <-- HERE
-   :at [clojure.core$ex_info invokeStatic "core.clj" 4739]}
+   :data {:numbers []}
+   :at [user$average invokeStatic "NO_SOURCE_FILE" 10]}
   {:type clojure.lang.ExceptionInfo
    :message "Failed to divide 0 by 0"
-   :data {:numerator 0, :denominator 0}                     ;; <-- HERE
-   :at [clojure.core$ex_info invokeStatic "core.clj" 4739]}
+   :data {:numerator 0, :denominator 0}
+   :at [user$divide_verbose invokeStatic "NO_SOURCE_FILE" 9]}
   {:type java.lang.ArithmeticException
    :message "Divide by zero"
-   :at [clojure.lang.Numbers divide "Numbers.java" 163]}]
+   :at [clojure.lang.Numbers divide "Numbers.java" 188]}]
  :trace
- [[clojure.lang.Numbers divide "Numbers.java" 163]
-  [user$divide_verbose invokeStatic "NO_SOURCE_FILE" 11]
-  [user$divide_verbose invoke "NO_SOURCE_FILE" 6]
-  [user$average invokeStatic "NO_SOURCE_FILE" 25]
-  [user$average invoke "NO_SOURCE_FILE" 19]
-  [user$eval155 invokeStatic "NO_SOURCE_FILE" 32]
-  [user$eval155 invoke "NO_SOURCE_FILE" 32]
-  [clojure.lang.Compiler eval "Compiler.java" 7062]
-  [clojure.lang.Compiler eval "Compiler.java" 7025]
-  [clojure.core$eval invokeStatic "core.clj" 3206]
-  [clojure.core$eval invoke "core.clj" 3202]
-  [clojure.main$repl$read_eval_print__8572$fn__8575 invoke "main.clj" 243]
-  [clojure.main$repl$read_eval_print__8572 invoke "main.clj" 243]
-  [clojure.main$repl$fn__8581 invoke "main.clj" 261]
-  [clojure.main$repl invokeStatic "main.clj" 261]
-  [clojure.main$repl_opt invokeStatic "main.clj" 325]
-  [clojure.main$main invokeStatic "main.clj" 424]
-  [clojure.main$main doInvoke "main.clj" 387]
+ [[clojure.lang.Numbers divide "Numbers.java" 188]
+  [user$divide_verbose invokeStatic "NO_SOURCE_FILE" 6]
+  [user$divide_verbose invoke "NO_SOURCE_FILE" 1]
+  [user$average invokeStatic "NO_SOURCE_FILE" 7]
+  [user$average invoke "NO_SOURCE_FILE" 1]
+  [user$eval173 invokeStatic "NO_SOURCE_FILE" 1]
+  [user$eval173 invoke "NO_SOURCE_FILE" 1]
+  [clojure.lang.Compiler eval "Compiler.java" 7176]
+  [clojure.lang.Compiler eval "Compiler.java" 7131]
+  [clojure.core$eval invokeStatic "core.clj" 3214]
+  [clojure.core$eval invoke "core.clj" 3210]
+  [clojure.main$repl$read_eval_print__9068$fn__9071 invoke "main.clj" 414]
+  [clojure.main$repl$read_eval_print__9068 invoke "main.clj" 414]
+  [clojure.main$repl$fn__9077 invoke "main.clj" 435]
+  [clojure.main$repl invokeStatic "main.clj" 435]
+  [clojure.main$repl_opt invokeStatic "main.clj" 499]
+  [clojure.main$main invokeStatic "main.clj" 598]
+  [clojure.main$main doInvoke "main.clj" 561]
   [clojure.lang.RestFn invoke "RestFn.java" 397]
   [clojure.lang.AFn applyToHelper "AFn.java" 152]
   [clojure.lang.RestFn applyTo "RestFn.java" 132]
-  [clojure.lang.Var applyTo "Var.java" 702]
+  [clojure.lang.Var applyTo "Var.java" 705]
   [clojure.main main "main.java" 37]]}
 ----
 

@@ -21,7 +21,8 @@ This section lists common issues when using the REPL, and how to diagnose them:
 [source,clojure-repl]
 ----
 user=> my-nonexistent-name
-CompilerException java.lang.RuntimeException: Unable to resolve symbol: my-nonexistent-name in this context, compiling:(NO_SOURCE_PATH:0:0)
+Syntax error compiling at (REPL:0:0).
+Unable to resolve symbol: my-nonexistent-name in this context
 ----
 
 **Explanations:**
@@ -38,7 +39,8 @@ You should either write `myapp.ns23/my-non-existent-name` or switch to namespace
 [source,clojure-repl]
 ----
 user=> ns3/foo-bar
-CompilerException java.lang.RuntimeException: No such namespace: ns3, compiling:(NO_SOURCE_PATH:0:0)
+Syntax error compiling at (REPL:0:0).
+No such namespace: ns3
 ----
 
 **Explanations:**
@@ -56,8 +58,8 @@ you can fix that by evaluating `(require '[myapp.ns3 :as ns3])`
 $ clj
 Clojure 1.9.0
 user=> clojure.set/union
-CompilerException java.lang.ClassNotFoundException: clojure.set, compiling:(NO_SOURCE_PATH:0:0)
-user=>
+Syntax error (ClassNotFoundException) compiling at (REPL:0:0).
+clojure.set
 ----
 
 **Explanations:**
@@ -74,7 +76,8 @@ lib <<navigating_namespaces#how-to-make-sure-a-lib-is-loaded,has been loaded>>.
 [source,clojure-repl]
 ----
 user=> (require '[a.b.c])
-FileNotFoundException Could not locate a/b/c__init.class or a/b/c.clj on classpath.  clojure.lang.RT.load (RT.java:463)
+Execution error (FileNotFoundException) at user/eval161 (REPL:1).
+Could not locate a/b/c__init.class, a/b/c.clj or a/b/c.cljc on classpath.
 ----
 
 **Explanations:** Clojure did not find any existing namespace named `a.b.c`, then searched the classpath 

@@ -23,7 +23,7 @@ The special form _**def**_ creates (and <<vars#Interning,interns>>) a Var. If th
 user=> (def x)
 .'user/x
 user=> x
-java.lang.IllegalStateException: Var user/x is unbound.
+#object[clojure.lang.Var$Unbound 0x14008db3 "Unbound: #'user/x"]
 ----
 
 Supplying an initial value binds the root (even if it was already bound).

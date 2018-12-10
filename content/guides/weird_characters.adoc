@@ -88,8 +88,8 @@ Sets cannot contain duplicates and thus the `set` reader will throw an exception
 [source, clojure]
 ----
 user=> #{1 2 3 4 1}
-
-IllegalArgumentException Duplicate key: 1  clojure.lang.PersistentHashSet.createWithCheck (PersistentHashSet.java:68)
+Syntax error reading source at (REPL:83:13).
+Duplicate key: 1
 ----
 
 * <<xref/../../reference/data_structures#sets,Clojure Documentation: Sets>>
@@ -373,9 +373,12 @@ The reader expands `'` into a call to the `quote` special form.
 ----
 user=> (1 3 4) ; fails as it tries to invoke 1 as a function
 
-ClassCastException java.lang.Long cannot be cast to clojure.lang.IFn  user/eval925 (NO_SOURCE_FILE:1)
+Execution error (ClassCastException) at myproject.person-names/eval230 (REPL:1).
+class java.lang.Long cannot be cast to class clojure.lang.IFn
+
 user=> '(1 3 4) ; quote
 (1 3 4)
+
 user=> (quote (1 2 3)) ; using the longer quote method
 (1 2 3)
 user=>
@@ -594,7 +597,8 @@ Basic syntax quote may look similar to normal quoting:
 [source,clojure]
 ----
 user=> (1 2 3)
-ClassCastException java.lang.Long cannot be cast to clojure.lang.IFn  user/eval832 (NO_SOURCE_FILE:1)
+Execution error (ClassCastException) at myproject.person-names/eval232 (REPL:1).
+class java.lang.Long cannot be cast to class clojure.lang.IFn
 user=> `(1 2 3)
 (1 2 3)
 ----
@@ -698,7 +702,15 @@ userspace. A regular `let` will fail in a macro definition:
 user=> (defmacro m [] `(let [x 1] x))
 #'user/m
 user=> (m)
-CompilerException java.lang.RuntimeException: Can't let qualified name: user/x, compiling:(NO_SOURCE_PATH:1)
+Syntax error macroexpanding clojure.core/let at (REPL:1:1).
+myproject.person-names/x - failed: simple-symbol? at: [:bindings :form :local-symbol]
+  spec: :clojure.core.specs.alpha/local-name
+myproject.person-names/x - failed: vector? at: [:bindings :form :seq-destructure]
+  spec: :clojure.core.specs.alpha/seq-binding-form
+myproject.person-names/x - failed: map? at: [:bindings :form :map-destructure]
+  spec: :clojure.core.specs.alpha/map-bindings
+myproject.person-names/x - failed: map? at: [:bindings :form :map-destructure]
+  spec: :clojure.core.specs.alpha/map-special-binding
 ----
 
 This is because symbols inside a syntax quote are fully resolved, including the

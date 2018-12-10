@@ -293,7 +293,7 @@ example REPL session:
 [source,clojure-repl]
 ----
 clj
-Clojure 1.9.0
+Clojure 1.10.0
 user=> (doc clojure.set/union)
 nil                             ;; no doc found
 user=> (apropos "union")

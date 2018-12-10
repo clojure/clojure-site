@@ -56,7 +56,7 @@ you can fix that by evaluating `(require '[myapp.ns3 :as ns3])`
 [source,clojure-repl]
 ----
 $ clj
-Clojure 1.9.0
+Clojure 1.10.0
 user=> clojure.set/union
 Syntax error (ClassNotFoundException) compiling at (REPL:0:0).
 clojure.set

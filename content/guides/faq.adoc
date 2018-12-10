@@ -235,6 +235,40 @@ Example:
 (String/format "%s %s, %s" (object-array ["March" 1 2016]))
 ----
 
+[[illegal_access]]
+**<<faq#illegal_access,Why do I get an illegal access warning?>>**
+
+Java 9 added a module system, allowing code to be partitioned into modules where code outside a module cannot invoke code inside the module unless it has been exported by the module. One of the areas affected by this change in Java is reflective access. Clojure uses reflection when it encounters a Java interop call without sufficient type information about the target object or the function arguments. For example:
+
+[source,clojure]
+----
+(def fac (javax.xml.stream.XMLInputFactory/newInstance))
+(.createXMLStreamReader fac (java.io.StringReader. ""))
+----
+
+Here `fac` is an instance of `com.sun.xml.internal.stream.XMLInputFactoryImpl`, which is an extension of `javax.xml.stream.XMLInputFactory`. In the java.xml module, javax.xml.stream is an exported package, but the XMLInputFactoryImpl is an internal implementation of the public abstract class in that package. The invocation of `createXMLStreamReader` here will be reflective and the Reflector will attempt to invoke the method based on the implementation class, which is not accessible outside the module, yielding:
+
+[source,shell]
+----
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by clojure.lang.Reflector (file:/Users/alex/.m2/repository/org/clojure/clojure/1.10.0-alpha8/clojure-1.10.0-alpha8.jar) to method com.sun.xml.internal.stream.XMLInputFactoryImpl.createXMLStreamReader(java.io.Reader)
+WARNING: Please consider reporting this to the maintainers of clojure.lang.Reflector
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+----
+
+The first thing to note here is that this is a warning. Java 9, 10, and 11 will all permit the call to be made and the code will continue to work.
+
+There are several potential workarounds:
+
+* Perhaps the best is to provide type hints to the exported types so the call is no longer reflective: +
+[source,clojure]
+----
+(.createXMLStreamReader ^javax.xml.stream.XMLInputFactory fac (java.io.StringReader. ""))
+----
+* As of Clojure 10, turn off illegal access with `--illegal-access=deny`. The Java reflection system will then provide the necessary feedback to Clojure to detect that calling through the inaccessible class is not an option. Clojure will find the public invocation path instead and no warning will be issued.
+* Use JVM module system flags (`--add-exports` etc ) to forcibly export the internal packages to avoid the warning. This is not recommended.
+
 == Design and Use
 
 [[encapsulation]]

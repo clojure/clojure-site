@@ -122,7 +122,8 @@ One confusing error you might see is the result of accidentally trying to evalua
 [source,clojure-repl]
 ----
 user=> (1 2 3)
-ClassCastException java.lang.Long cannot be cast to clojure.lang.IFn
+Execution error (ClassCastException) at user/eval156 (REPL:1).
+class java.lang.Long cannot be cast to class clojure.lang.IFn
 ----
 
 For now, don't worry too much about quote but you will see it occasionally in these materials to avoid evaluation of symbols or lists.

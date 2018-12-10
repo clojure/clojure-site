@@ -163,6 +163,12 @@ The clojure.main REPL includes the categorization and printing of errors by defa
 
 The clojure.main REPL combines these functions in a pipeline to produce the printed exception message: `pass:[(-> ex Throwable->map clojure.main/ex-triage clojure.main/ex-str)]`. Other REPLs can use one or more pieces of this pipeline as necessary when building or customizing their exception printing.
 
+== tap
+
+tap is a shared, globally accessible system for distributing a series of informational or diagnostic values to a set of (presumably effectful) handler functions. It can be used as a better debug `prn`, or for facilities like logging etc.
+
+http://clojure.github.io/clojure/branch-master/clojure.core-api.html#clojure.core/tap%3E[`pass:[tap>]`] sends a value to the set of taps. Taps can be added with http://clojure.github.io/clojure/branch-master/clojure.core-api.html#clojure.core/add-tap[`add-tap`] and will be called with any value sent to tap>. The tap function may (briefly) block (e.g. for streams) and will never impede calls to tap>, but blocking indefinitely may cause tap values to be dropped. If no taps are registered, tap> discards. Remove taps with http://clojure.github.io/clojure/branch-master/clojure.core-api.html#clojure.core/remove-tap[`remove-tap`].
+
 == Launching a Socket Server
 
 [NOTE]

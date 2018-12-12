@@ -33,7 +33,7 @@ There are several motivations for protocols:
 [NOTE]
 Protocols were introduced in Clojure 1.2.
 
-== Basics
+=== Basics
 
 A protocol is a named set of named methods and their signatures, defined using https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defprotocol[defprotocol]:
 
@@ -134,6 +134,8 @@ Protocols are fully reified and support reflective capabilities via https://cloj
    {:baz (fn ([x] ...) ([x y zs] ...))
     :bar (fn [x y] ...)})
 ----
+
+=== Extend via metadata
 
 As of Clojure 1.10, protocols can optionally elect to be extended via per-value metadata:
 

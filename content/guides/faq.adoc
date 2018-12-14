@@ -150,7 +150,7 @@ Design benefits of sequences:
 
 spec is in alpha to indicate that the API may still change. spec was broken out of Clojure core so that spec can be updated independently from the main Clojure version. At some point spec's API will be considered stable and at that point the alpha will be removed.
 
-[[spec_skip_macros]]
+[[skip_macros]]
 **<<faq#skip_macros,Is there a way to skip checking macro specs?>>**
 
 Yes, set the Java system property `-Dclojure.spec.skip-macros=true` and no macro specs will be checked during macroexpansion.

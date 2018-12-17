@@ -1,0 +1,37 @@
+= Clojure 1.10 release
+Alex Miller
+2018-12-17
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Clojure 1.10 focuses on two major areas: improved error reporting and Java compatibility.
+
+Error reporting at the REPL now <<xref/../../../../../reference/repl_and_main#_error_printing,categorizes>> errors based on their phase of execution (read, macroexpand, compile, etc). Errors carry additional information about location and context as data, and present phase-specific error messages with better location reporting. This functionality is built into the clojure.main REPL, but the functionality is also available to other REPLs and tools with the ability to use and/or modify the data to produce better error messages.
+
+Clojure 1.10 now requires Java 8 or above and has been updated particularly for compatibility with Java 8 and Java 11. Changes included bytecode-related bug fixes, removed use of deprecated APIs, and updates related to the module system introduced in Java 9.
+
+See the https://github.com/clojure/clojure/blob/master/changes.md#changes-to-clojure-in-version-110[change log] for a complete list of all fixes, enhancements, and new features in Clojure 1.10.
+
+## Contributors
+
+Thanks to all of the community members who contributed patches to Clojure 1.10 (first time contributors in bold):
+
+* *Alexander Kiel*
+* *Ben Bader*
+* Bruce Adams
+* *Cezary Kosko*
+* Erik Assum
+* *Eugene Kostenko*
+* Ghadi Shayban
+* *Gijs Stuurman*
+* Jozef Wagner
+* *Kwang Yul Seo*
+* *Matthew Gilliard*
+* Michał Marczyk
+* Nicola Mometto
+* Nikita Prokopov
+* *Sean Corfield*
+* *Sebastien Martel*
+* Shogo Ohta
+* Stuart Sierra

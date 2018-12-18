@@ -16,6 +16,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 == Development Release: none available for next release yet
 
+-* https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.clojure%22%20AND%20a%3A%22clojure%22%20AND%20v%3A1.11.0*[Clojure 1.11 pre-release builds]
 * <<devchangelog#,Dev changelog>>
 * Requirements: Java 8 or higher (recommended: Java 8 or Java 11)
 
@@ -41,9 +42,5 @@ Modify the dependencies and repositories sections of your https://leiningen.org/
 ; under dependencies, select the release of clojure that you want
 :dependencies [[org.clojure/clojure "1.10.0"]]
 ----
-
-== Where did Clojure Contrib go?
-
-If you are migrating from a pre-1.3 version of Clojure, please see https://dev.clojure.org/display/community/Where+Did+Clojure.Contrib+Go[this page] for migration help regarding old contrib libraries.
 
 == <<downloads_older#,Older Releases>>

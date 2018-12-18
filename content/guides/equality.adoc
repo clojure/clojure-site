@@ -9,7 +9,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 This document discusses the concept of equality in Clojure, including the functions `=`, `==`, and `identical?`, and how they differ from Java's `equals` method.  It also has some description of Clojure's `hash`, and how it differs from Java's `hashCode`. The beginning of this guide provides a summary of the most important information for quick reference followed by a much more extensive review of the details.
 
-_Information in this guide describes the behavior of Clojure 1.9.0 unless noted otherwise._
+_Information in this guide describes the behavior of Clojure 1.10.0 unless noted otherwise._
 
 == Summary
 
@@ -78,9 +78,9 @@ Exceptions, or possible surprises:
 * When comparing collections with `=`, numbers within the collections
   are also compared with `=`, so the three numeric categories above
   are significant.
-* 'Not a Number' values `Float/NaN` and `Double/NaN` are not `=` or
-  `==` to anything, not even themselves.
-  _Recommendation:_ Avoid including `NaN` inside of Clojure data
+* 'Not a Number' values `pass:[##NaN]`, `Float/NaN`, and `Double/NaN` are not
+  `=` or `==` to anything, not even themselves.
+  _Recommendation:_ Avoid including `pass:[##NaN]` inside of Clojure data
   structures where you want to compare them to each other using `=`,
   and sometimes get `true` as the result.
 * 0.0 is `=` to -0.0
@@ -116,8 +116,9 @@ items as elements, or hash-based maps with those items as keys.
   and double values.  _Recommendation:_ Convert floats to doubles with
   `(double x)` to avoid this issue.
 * `hash` is not consistent with `=` for immutable Clojure collections
-  and their non-Clojure counterparts.  See the "Equality and hash"
-  section below for more details.  _Recommendation:_ Convert
+  and their non-Clojure counterparts.  See the
+  <<xref/../equality#equality_and_hash,Equality and hash>>
+  section for more details.  _Recommendation:_ Convert
   non-Clojure collections to their Clojure immutable counterparts
   before including them in other Clojure data structures.
 * `hash` is not consistent with `=` for objects with class `VecSeq`,
@@ -156,7 +157,7 @@ user> (= 2 2.0)
 false
 ----
 
-If you want to test for numeric equality across different numeric categories, use `==`.  See the section "Numbers" below for details.
+If you want to test for numeric equality across different numeric categories, use `==`.  See the section <<xref/../equality#numbers,Numbers>> below for details.
 
 Sequential collections (sequences, vectors, lists, and queues) with equal elements in the same order are equal:
 
@@ -312,6 +313,7 @@ comparison).  It achieves this by its `intern` method of the Keyword
 class guaranteeing that all keywords with the same namespace and name
 will return the same keyword object.
 
+[[numbers]]
 == Numbers
 
 Java `equals` is only true for two numbers if the types and numeric
@@ -346,8 +348,9 @@ are numerically equal, even if they are in different categories.  Thus
 
 Why does `=` have different categories for numbers, you might wonder?
 It would be difficult (if it is even possible) to make `hash` consistent
-with `=` if it behaved like `==` (see section "Equality and hash"
-below).  Imagine trying to write `hash` such that it was guaranteed to
+with `=` if it behaved like `==` (see section
+<<xref/../equality#equality_and_hash,Equality and hash>>).
+Imagine trying to write `hash` such that it was guaranteed to
 return the same hash value for all of `(float 1.5)`, `(double 1.5)`,
 BigDecimal values 1.50M, 1.500M, etc. and the ratio `(/ 3 2)`.
 
@@ -398,7 +401,7 @@ Clojure uses the underlying Java double-size floating point numbers
 (64-bit) with representation and behavior defined by a standard, IEEE
 754.  There is a special value http://en.wikipedia.org/wiki/NaN[`NaN`] ("Not A Number")
 that is not even equal to itself. Clojure represents this value as
-the symbolic value `##NaN`.
+the symbolic value `pass:[##NaN]`.
 
 [source,clojure]
 ----
@@ -411,7 +414,7 @@ false
 ----
 
 This leads to some odd behavior if this "value" appears in your data.
-While no error occurs when adding `##NaN` as a set element or a key in a
+While no error occurs when adding `pass:[##NaN]` as a set element or a key in a
 map, you cannot then search for it and find it.  You also cannot
 remove it using functions like `disj` or `dissoc`.  It will appear
 normally in sequences created from collections containing it.
@@ -435,7 +438,15 @@ user> (disj s1 ##NaN)
 #{2.0 1.0 ##NaN}    ; ##NaN is still in the result!
 ----
 
-This also means that _any_ collection that contains `##NaN` will never be `=` to anything else:
+In many cases, collections that contain `pass:[##NaN]` will not be `=` to another collection, even if they look like they should be, because `pass:[(= ##NaN ##NaN)]` is `false`:
+
+[source,clojure]
+----
+user> (= [1 ##NaN] [1 ##NaN])
+false
+----
+
+Oddly enough, there are exceptions where collections contain `pass:[##NaN]` that look like they should be `=`, and they are, because `pass:[(identical? ##NaN ##NaN)]` is `true`:
 
 [source,clojure]
 ----
@@ -444,9 +455,7 @@ user> (def s2 #{##NaN 2.0 1.0})
 user> s2
 #{2.0 1.0 ##NaN}
 user> (= s1 s2)
-false
-user> (= [1 ##NaN] [1 ##NaN])
-false
+true
 ----
 
 Java has a special case in its `equals` method for floating point
@@ -668,19 +677,16 @@ the restriction on `hash`, but there is no decision on that yet.
 
 == Defining equality for your own types
 
-See these for examples on how to do this, and much more.  In
+See the code of the projects below for examples of how to do this, and much more.  In
 particular, the Java methods `equals` and `hashCode` from standard
 Java objects, and the Clojure Java methods `equiv` and `hasheq` are
 the most relevant for how `=` and `hash` behave.
 
 * https://github.com/clojure/data.priority-map[org.clojure/data.priority-map]
-  but note that it needs a change to implement `hash` consistently
-  with `=`.
-  https://dev.clojure.org/jira/browse/DPRIMAP-12[DPRIMAP-12]
-* https://github.com/amalloy/ordered[org.flatland/ordered] but note
+* https://github.com/clj-commons/ordered[org.flatland/ordered] but note
   that it needs a change so that its custom ordered map data structure
   is not `=` to any Clojure record:
-  https://github.com/amalloy/ordered/pull/34[PR #34]
+  https://github.com/clj-commons/ordered/pull/34[PR #34]
 
 == References
 
@@ -708,14 +714,14 @@ collections.
 
 There is no Java method to determine whether an arbitrary collection
 is mutable or immutable, so it is not possible in Clojure to implement
-`EGAL`'s intended behavior, although one might consider `=` "closer"
+the intended behavior of `EGAL`, although one might consider `=` "closer"
 to `EGAL` if it always returned `false` when one of the arguments was
 a non-Clojure collection.
 
 === Lazy and pending values
 
 Baker recommends that `EGAL` force lazy values when comparing them
-(see Section 3. J. "Lazy Values").  When comparing a lazy sequence to
+(see Section 3. J. "Lazy Values" in the "Equal Rights for Functional Objects" paper).  When comparing a lazy sequence to
 another sequential thing, Clojure's `=` does force the evaluation of
 the lazy sequence, stopping if it reaches a non-`=` sequence element.
 Chunked sequences, e.g. as produced by `range`, can cause evaluation
@@ -734,7 +740,7 @@ Baker describes in detail how `EGAL` can return `true` in some cases
 when comparing
 https://en.wikipedia.org/wiki/Closure_(computer_programming)[closures]
 to each other (see Section 3. D. "Equality of Functions and
-Function-Closures").
+Function-Closures" in the "Equal Rights for Functional Objects" paper).
 
 When given a function or closure as an argument, Clojure's `=` only
 returns `true` if they are `identical?` to each other.

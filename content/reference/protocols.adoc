@@ -137,7 +137,7 @@ Protocols are fully reified and support reflective capabilities via https://cloj
 
 === Extend only things you control
 
-You should extend a protocol to a type only if you control the type, the protocol, or both. This is particularly important for the protocols included with Clojure itself. For more information see the https://groups.google.com/d/topic/clojure/vyX5-F3NiVg/discussion[mailing list discussion].
+You should extend a protocol to a type only if you control the type, the protocol, or both. This is particularly important for the protocols included with Clojure itself. For more information see the https://groups.google.com/d/msg/clojure/vyX5-F3NiVg/Ti1apkxDFl0J[mailing list discussion].
 
 === Extend via metadata
 

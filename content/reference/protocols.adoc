@@ -135,6 +135,10 @@ Protocols are fully reified and support reflective capabilities via https://cloj
     :bar (fn [x y] ...)})
 ----
 
+=== Extend only things you control
+
+You should extend a protocol to a type only if you control the type, the protocol, or both. This is particularly important for the protocols included with Clojure itself. For more information see the https://groups.google.com/d/topic/clojure/vyX5-F3NiVg/discussion[mailing list discussion].
+
 === Extend via metadata
 
 As of Clojure 1.10, protocols can optionally elect to be extended via per-value metadata:

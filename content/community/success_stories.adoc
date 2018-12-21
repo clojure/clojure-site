@@ -432,12 +432,19 @@ Here are just some of the public success stories from companies using Clojure.  
                 <li>
                   <p><img style="border: 3px solid #ebebeb;" src="/images/logos/gojek.jpg" /></p>
                   <p>
-                    At <a target="gojek" href="https://www.gojek.io/">GO-JEK</a>, we rewrote our Allocation Engine in Clojure which enabled which enabled us to serve millions of customers to find a suitable drive for them.
+                    At <a target="gojek" href="https://www.gojek.io/">GO-JEK</a>, we rewrote our Allocation Engine in Clojure which enabled us to serve millions of customers to find a suitable driver for them.
                   </p>
                   <hr>
                   <p>
                     <span class='read-more'>Watch Abinav and Kartik <a target="testimonial" href="https://www.youtube.com/watch?v=3y7xzH8jB8A">discuss</a> at EuroClojure 2017.</span>
                   </p>
+                  <blockquote style='margin-left: 0; padding: 0'>
+                    <p>We were looking for a language which allows us to express our domain beautifully at the heart of our matchmaking system. Clojure was a way to go which allowed us to write high-level abstraction for matching drivers and customers.</p>
+                    <cite>
+                      <strong>Shobhit Srivastava</strong>
+                      Head of Technology
+                    </cite>
+                  </blockquote>
                 </li>
               </ul>
             </div>

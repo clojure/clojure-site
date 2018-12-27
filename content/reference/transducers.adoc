@@ -123,7 +123,8 @@ The resulting sequence elements are incrementally computed. These sequences will
 
 == Creating Transducers
 
-Most functions that produce transducers have the following shape (custom code in "..."):
+Transducers have the following shape (custom code in "..."):
+
 [source,clojure]
 ----
 (fn [xf]
@@ -131,6 +132,7 @@ Most functions that produce transducers have the following shape (custom code in
       ([result] ...)
       ([result input] ...)))
 ----
+
 Many of the core sequence functions (like map, filter, etc) take operation-specific arguments (a predicate, function, count, etc) and return a transducer of this shape closing over those arguments. In some cases, like *cat*, the core function _is_ a transducer function and does not take an *xf*.
 
 The inner function is defined with 3 arities used for different purposes:

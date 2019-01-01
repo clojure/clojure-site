@@ -15,7 +15,7 @@ toc::[]
 
 Clojure has a programmatic macro system which allows the compiler to be extended by user code. Macros can be used to define syntactic constructs which would require primitives or built-in support in other languages. Many core constructs of Clojure are not, in fact, primitives, but are normal macros.
 
-Some macros produce simple combinations of primitive forms. For example, https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/when[`when`] combines <<special_forms#if#,`if`>> and <<special_forms#do#,`do`>>:
+Some macros produce simple combinations of primitive forms. For example, https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/when[`when`] combines <<special_forms#if,`if`>> and <<special_forms#do,`do`>>:
 
 [source,clojure-repl]
 ----

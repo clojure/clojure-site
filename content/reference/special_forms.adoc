@@ -101,7 +101,7 @@ Evaluates the expressions __expr__s in a lexical context in which the symbols in
 -> 1
 ----
 
-See <<special_forms#binding-forms#,Binding Forms>> for more information about binding forms.
+See <<special_forms#binding-forms,Binding Forms>> for more information about binding forms.
 
 *Locals created with `let` are not variables. Once created their values never change!*
 
@@ -149,7 +149,7 @@ The expressions __expr__s are compiled in an environment in which the _params_ a
 ----
 Note that named fns such as `mult` are normally defined with `defn`, which expands into something such as the above.
 
-A fn (overload) defines a recursion point at the top of the function, with arity equal to the number of __param__s _including the rest param, if present_. See <<special_forms#recur#,`recur`>>.
+A fn (overload) defines a recursion point at the top of the function, with arity equal to the number of __param__s _including the rest param, if present_. See <<special_forms#recur,`recur`>>.
 
 fns implement the Java `Callable`, `Runnable` and `Comparator` interfaces.
 
@@ -187,17 +187,17 @@ Example:
     (* x x))
 ----
 
-See <<special_forms#binding-forms#,Binding Forms>> for more information about binding forms.
+See <<special_forms#binding-forms,Binding Forms>> for more information about binding forms.
 
 [[loop]]
 == (`loop` [__binding__* ] __expr__*)
 
-`loop` is exactly like `let`, except that it establishes a recursion point at the top of the loop, with arity equal to the number of bindings. See <<special_forms#recur#,`recur`>>.
+`loop` is exactly like `let`, except that it establishes a recursion point at the top of the loop, with arity equal to the number of bindings. See <<special_forms#recur,`recur`>>.
 
 [[recur]]
 == (`recur` __expr__*)
 
-Evaluates the expressions __expr__s in order, then, in parallel, rebinds the bindings of the recursion point to the values of the __expr__s. If the recursion point was a `fn` method, then it rebinds the params. If the recursion point was a <<special_forms#loop#,`loop`>>, then it rebinds the `loop` bindings. Execution then jumps back to the recursion point. The `recur` expression must match the arity of the recursion point exactly. In particular, if the recursion point was the top of a variadic fn method, there is no gathering of `rest` args - a single seq (or null) should be passed. `recur` in other than a tail position is an error.
+Evaluates the expressions __expr__s in order, then, in parallel, rebinds the bindings of the recursion point to the values of the __expr__s. If the recursion point was a `fn` method, then it rebinds the params. If the recursion point was a <<special_forms#loop,`loop`>>, then it rebinds the `loop` bindings. Execution then jumps back to the recursion point. The `recur` expression must match the arity of the recursion point exactly. In particular, if the recursion point was the top of a variadic fn method, there is no gathering of `rest` args - a single seq (or null) should be passed. `recur` in other than a tail position is an error.
 
 Note that `recur` is the only non-stack-consuming looping construct in Clojure. There is no tail-call optimization and the use of self-calls for looping of unknown bounds is discouraged. `recur` is functional and its use in tail-position is verified by the compiler.
 

@@ -25,7 +25,7 @@ Miscellaneous: https://clojure.github.io/clojure/clojure.core-api.html#clojure.c
 [cols="<*,", options="header", role="table"]
 |===
 | Function | Example expression | Return value |
-| <<special_forms#fn#,fn>> | `(map (fn [x] (+ 2 x)) [1 2 3])` | `(3 4 5)` |
+| <<special_forms#fn,fn>> | `(map (fn [x] (+ 2 x)) [1 2 3])` | `(3 4 5)` |
 | pass:[#()] <<reader#,reader>> macro | `(map #(+ 2 %) [1 2 3])` | `(3 4 5)` |
 | https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/partial[partial] | `(map (partial + 2) [1 2 3])` | `(3 4 5)` |
 | https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/comp[comp] | `(map (comp - *) [2 4 6] [1 2 3])` | `(-2 -8 -18)` |

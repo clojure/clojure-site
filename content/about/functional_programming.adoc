@@ -17,7 +17,7 @@ Clojure is a functional programming language. It provides the tools to avoid mut
 
 == First-class functions
 
-<<xref/../../reference/special_forms#fn#,fn>> creates a function object. It yields a value like any other - you can store it in a var, pass it to functions etc.
+<<xref/../../reference/special_forms#fn,fn>> creates a function object. It yields a value like any other - you can store it in a var, pass it to functions etc.
 [source,clojure]
 ----
 (def hello (fn [] "Hello world"))

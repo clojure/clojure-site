@@ -104,9 +104,9 @@ depends on your toolchain. For instance:
 
 * when using a REPL started from <<xref/../../../reference/repl_and_main#,clojure.main>> (as is the case when using the `clj` tool)
 you can customize the REPL by launching a 'sub-REPL': see https://clojure.github.io/clojure/clojure.main-api.html#clojure.main/repl[clojure.main/repl].
-* when using https://github.com/clojure/tools.nrepl[nREPL].footnote:[
-At the time of writing (March 2018), https://github.com/clojure/tools.nrepl[nREPL] is the most popular toolchain
-for REPL-editor integration], this can be done by writing custom https://github.com/clojure/tools.nrepl#middleware[middleware].
+* when using https://nrepl.org[nREPL].footnote:[
+At the time of writing (March 2018), https://nrepl.org[nREPL] is the most popular toolchain
+for REPL-editor integration], this can be done by writing custom https://nrepl.org/nrepl/design/middleware.html[middleware].
 
 [quote]
 ____
@@ -114,7 +114,7 @@ ____
 ____
 
 The Clojure <<xref/../../../reference/repl_and_main#launching_a_socket_server,socket server>> feature can be used
-to that end. Tools like **https://github.com/clojure/tools.nrepl[tools.nrepl]** and **https://github.com/Unrepl/unrepl[unrepl]**
+to that end. Tools like **https://nrepl.org[nREPL]** and **https://github.com/Unrepl/unrepl[unrepl]**
 can be used to provide a richer experience.
 
 [WARNING]

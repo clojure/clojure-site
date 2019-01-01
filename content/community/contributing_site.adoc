@@ -77,11 +77,11 @@ To actively contribute to the site, it's important to keep your own fork up-to-d
 
 When working on bigger changes it's useful to build the site locally. The site is built using http://jbake.org/[JBake].
 
-To http://jbake.org/docs/2.4.0/#installation[install] JBake 2.5.0-SNAPSHOT:
+To https://jbake.org/docs/2.6.3/#installation[install] JBake 2.6.3:
 
-. `curl -O http://cdn.cognitect.com/clojure.org/jbake-2.5.0-SNAPSHOT-bin.zip` (or download this file with your browser)
-. `unzip -o jbake-2.5.0-SNAPSHOT-bin.zip`
-. Add jbake-2.5.0-SNAPSHOT/bin to your system PATH
+. `curl -O https://dl.bintray.com/jbake/binary/jbake-2.6.3-bin.zip` (or download this file with your browser)
+. `unzip -o jbake-2.6.3-bin.zip`
+. Add jbake-2.6.3-bin/bin to your system PATH
 
 To build the site:
 

@@ -127,19 +127,19 @@ Transducers have the following shape (custom code in "..."):
 
 [source,clojure]
 ----
-(fn [xf]
+(fn [rf]
   (fn ([] ...)
       ([result] ...)
       ([result input] ...)))
 ----
 
-Many of the core sequence functions (like map, filter, etc) take operation-specific arguments (a predicate, function, count, etc) and return a transducer of this shape closing over those arguments. In some cases, like *cat*, the core function _is_ a transducer function and does not take an *xf*.
+Many of the core sequence functions (like map, filter, etc) take operation-specific arguments (a predicate, function, count, etc) and return a transducer of this shape closing over those arguments. In some cases, like *cat*, the core function _is_ a transducer function and does not take an *rf*.
 
 The inner function is defined with 3 arities used for different purposes:
 
-* *Init* (arity 0) - should call the init arity on the nested transform *xf*, which will eventually call out to the transducing process.
-* *Step* (arity 2) - this is a standard reduction function but it is expected to call the *xf* step arity 0 or more times as appropriate in the transducer. For example, filter will choose (based on the predicate) whether to call *xf* or not. map will always call it exactly once. cat may call it many times depending on the inputs.
-* *Completion* (arity 1) - some processes will not end, but for those that do (like *transduce*), the completion arity is used to produce a final value and/or flush state. This arity must call the *xf* completion arity exactly once.
+* *Init* (arity 0) - should call the init arity on the nested transform *rf*, which will eventually call out to the transducing process.
+* *Step* (arity 2) - this is a standard reduction function but it is expected to call the *rf* step arity 0 or more times as appropriate in the transducer. For example, filter will choose (based on the predicate) whether to call *rf* or not. map will always call it exactly once. cat may call it many times depending on the inputs.
+* *Completion* (arity 1) - some processes will not end, but for those that do (like *transduce*), the completion arity is used to produce a final value and/or flush state. This arity must call the *rf* completion arity exactly once.
 
 An example use of *completion* is *partition-all*, which must flush any remaining elements at the end of the input. The https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/completing[completing] function can be used to convert a reducing function to a transducing function by adding a default completion arity.
 

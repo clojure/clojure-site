@@ -11,7 +11,7 @@ Below is a list of all signers of the Clojure Contributor Agreement. For more in
 
 == _Signed Contributor Agreement:_
 
-[format="csv", options="header"]
+[format="csv", options="header", role="table"]
 |===
 include::contributors.csv[]
 |===

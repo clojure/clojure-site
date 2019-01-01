@@ -22,7 +22,7 @@ Miscellaneous: https://clojure.github.io/clojure/clojure.core-api.html#clojure.c
 [[creating-functions]]
 == Creating functions
 
-[cols="<*,", options="header", role="table"]
+[cols="<*", options="header", role="table"]
 |===
 | Function | Example expression | Return value |
 | <<special_forms#fn,fn>> | `(map (fn [x] (+ 2 x)) [1 2 3])` | `(3 4 5)` |

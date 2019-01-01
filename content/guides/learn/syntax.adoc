@@ -312,7 +312,7 @@ user=> (+ x x)
 
 One of the most common things you do when learning a language is to print out values. Clojure provides several functions for printing values:
 
-[cols="<*,", options="header", role="table"]
+[cols="<*", options="header", role="table"]
 |===
 | | Human-Readable | Machine-Readable |
 |With newline| println | prn | 

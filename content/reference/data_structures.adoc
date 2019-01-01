@@ -56,7 +56,7 @@ BigInts and floating point types are "contagious" across operations. That is, an
 
 Numeric literals for BigInt and BigDecimal are specified using a postfix N and M respectively.
 
-[cols="<*,", options="header", role="table"]
+[cols="<*", options="header", role="table"]
 |===
 | Example expression | Return value
 | `(== 1 1.0 1M)` | `true`

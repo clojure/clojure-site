@@ -271,7 +271,7 @@ The `fn` special form creates a "closure". It "closes over" the surrounding lexi
 
 Below is a summary of calling conventions for calling into Java from Clojure:
 
-[cols="<*,", options="header", role="table"]
+[cols="<*", options="header", role="table"]
 |===
 | Task | Java | Clojure |
 |Instantiation| `new Widget("foo")` | `(Widget. "foo")` | 

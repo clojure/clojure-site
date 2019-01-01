@@ -45,7 +45,7 @@ The first lines indicate the title, author, and creation date. The last two line
 
 == Text markup
 
-[cols="<*,", options="header"]
+[cols="2*<", options="header"]
 |===
 | markup | effect
 | pass:[_italic_] | _italic_

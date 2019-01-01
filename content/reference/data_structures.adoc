@@ -80,7 +80,7 @@ Coercions: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/
 [[Strings]]
 == Strings
 
-Clojure strings are Java Strings. See also <<other_functions#printing#,Printing>>.
+Clojure strings are Java Strings. See also <<other_functions#printing,Printing>>.
 [source,clojure-repl]
 ----
 user=> (map (fn [x] (.toUpperCase x)) (.split "Dasher Dancer Prancer" " "))

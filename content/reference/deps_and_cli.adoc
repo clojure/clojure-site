@@ -174,12 +174,13 @@ You can use the  `-Sverbose` option to see all of the actual directory locations
 
 === Dependencies
 
-Dependencies are declared in deps.edn with a top level key `:deps` - a map from library to coordinate. Libraries are symbols of the form <groupID>/<artifactId> or simply <id> if the group and artifact ID are the same.
+Dependencies are declared in deps.edn with a top level key `:deps` - a map from library to coordinate. Libraries are symbols of the form <groupID>/<artifactId> or simply <id> if the group and artifact ID are the same. To indicate a classifier, use <groupId>/<artifactId>$<classifier>. 
 
 Coordinates can take several forms depending on the coordinate type:
 
 * Maven coordinate: `{:mvn/version "1.2.3"}`
-** Other optional keys: `:classifier`, `:extension`, `:exclusions`
+** Other optional keys: `:extension`, `:exclusions`
+** Note: `:classifier` is no longer supported - add to lib name as specified above
 * Local project coordinate: `{:local/root "/path/to/project"}`
 ** Optional key `:deps/manifest`
 *** Specifies the project manifest type

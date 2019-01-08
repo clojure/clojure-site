@@ -9,6 +9,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 == Older Clojure Releases
 
+* https://repo1.maven.org/maven2/org/clojure/clojure/1.9.0/[Clojure 1.9.0] (December, 2017)
 * https://repo1.maven.org/maven2/org/clojure/clojure/1.8.0/[Clojure 1.8.0] (January, 2016)
 * https://repo1.maven.org/maven2/org/clojure/clojure/1.7.0/[Clojure 1.7.0] (June, 2015)
 * https://repo1.maven.org/maven2/org/clojure/clojure/1.6.0/[Clojure 1.6.0] (March, 2014)
@@ -25,7 +26,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 == Old Clojure Contrib Releases
 
 * https://repo1.maven.org/maven2/org/clojure/clojure-contrib/1.2.0/[Clojure Contrib 1.2.0] (February, 2011)
-* https://repo1.maven.org/maven2/org/clojure/clojure-contrib/1.1.0/[Clojure Contrib 1.1.0]
+* https://repo1.maven.org/maven2/org/clojure/clojure-contrib/1.1.0/[Clojure Contrib 1.1.0] (January, 2010)
 * https://repo1.maven.org/maven2/org/clojure/clojure-contrib/1.0.0/[Clojure Contrib 1.0.0]
 
 == Where did Clojure Contrib go?

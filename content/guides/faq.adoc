@@ -342,3 +342,13 @@ This is a quirk of Adobe EchoSign specific to users whose email account is alrea
 Rich Hickey prefers to evaluate patches attached to JIRA tickets.  This is not to make it more difficult for contributors, or for legal reasons, but because of workflow preferences.  The process of <<xref/../../community/creating_tickets#,creating JIRA tickets>> and <<xref/../../community/developing_patches#,patches>> is documented and not terribly difficult.
 
 https://groups.google.com/forum/#!msg/clojure/jWMaop_eVaQ/3M4gddaXDZoJ[Link] to Oct 2012 Clojure Google group message from Rich Hickey on this topic.
+
+== Future ideas
+
+[[native]]
+**<<faq#native,Will there be a native version of Clojure in the future?>>**
+
+Frequently people ask for a "native" version of Clojure, ie one that does not rely on the JVM. ClojureScript self-hosting is one current path but probably only useful for a subset of use cases. The [https://www.graalvm.org/](GraalVM) project includes standalone execution using the SubstrateVM. Native images produced with Graal start extremely fast but may have fewer opportunities to optimize performance than the full JVM.
+
+However, neither of these is likely what people are envisioning when they ask for a "native version of Clojure", which is a version of the language that is not JVM-hosted and compiles directly to a native executable, probably via something like LLVM. Clojure leverages an enormous amount of performance, portability, and functionality from the JVM and relies heavily on things like a world-class garbage collector. Building a "Clojure native" would require a large amount of work to make a version of Clojure that was slower (probably much slower), less portable, and with significantly less functionality (as the Clojure library relies heavily on the JDK). The Clojure core team has no plans to work on this but it would be an amazing learning project for anyone and we encourage you to go for it!
+

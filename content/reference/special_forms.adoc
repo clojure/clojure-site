@@ -176,7 +176,7 @@ The __condition-map__ parameter may be used to specify pre- and post-conditions 
 
 where either key is optional. The condition map may also be provided as metadata of the arglist.
 
-_pre-expr_ and _post-expr_ are boolean expressions that may refer to the parameters of the function. In addition, `%` may be used in a _post-expr_ to refer to the function's return value. If any of the conditions evaluate to `false` and `pass:[*assert*]` is true, an assertion failure exception is thrown.
+_pre-expr_ and _post-expr_ are boolean expressions that may refer to the parameters of the function. In addition, `%` may be used in a _post-expr_ to refer to the function's return value. If any of the conditions evaluate to `false` and `pass:[*assert*]` is true, a Java `java.lang.AssertionError` is thrown.
 
 Example:
 [source,clojure]

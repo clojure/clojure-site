@@ -1257,7 +1257,7 @@ This broken function will still create random integers, just not in the expected
 [source,clojure]
 ----
 (stest/abbrev-result (first (stest/check `ranged-rand)))
-;;=> ({:spec (fspec
+;;=> {:spec (fspec
 ;;            :args (and (cat :start int? :end int?) (fn* [p1__3468#] (< (:start p1__3468#) (:end p1__3468#))))
 ;;            :ret int?
 ;;            :fn (and

@@ -254,23 +254,23 @@ When conformance is checked on a map, it does two things - checking that the req
 [source,clojure]
 ----
 (s/valid? ::person
-  {::first-name "Elon"
-   ::last-name "Musk"
-   ::email "elon@example.com"})
+  {::first-name "Bugs"
+   ::last-name "Bunny"
+   ::email "bugs@example.com"})
 ;;=> true
 
 ;; Fails required key check
 (s/explain ::person
-  {::first-name "Elon"})
-;; #:my.domain{:first-name "Elon"} - failed: (contains? % :my.domain/last-name) 
+  {::first-name "Bugs"})
+;; #:my.domain{:first-name "Bugs"} - failed: (contains? % :my.domain/last-name) 
 ;;   spec: :my.domain/person
-;; #:my.domain{:first-name "Elon"} - failed: (contains? % :my.domain/email)
+;; #:my.domain{:first-name "Bugs"} - failed: (contains? % :my.domain/email)
 ;;   spec: :my.domain/person
 
 ;; Fails attribute conformance
 (s/explain ::person
-  {::first-name "Elon"
-   ::last-name "Musk"
+  {::first-name "Bugs"
+   ::last-name "Bunny"
    ::email "n/a"})
 ;; "n/a" - failed: (re-matches email-regex %) in: [:my.domain/email]
 ;;   at: [:my.domain/email] spec: :my.domain/email-type
@@ -295,22 +295,22 @@ Let's consider a person map that uses unqualified keys but checks conformance ag
           :opt-un [::phone]))
 
 (s/conform :unq/person
-  {:first-name "Elon"
-   :last-name "Musk"
-   :email "elon@example.com"})
-;;=> {:first-name "Elon", :last-name "Musk", :email "elon@example.com"}
+  {:first-name "Bugs"
+   :last-name "Bunny"
+   :email "bugs@example.com"})
+;;=> {:first-name "Bugs", :last-name "Bunny", :email "bugs@example.com"}
 
 (s/explain :unq/person
-  {:first-name "Elon"
-   :last-name "Musk"
+  {:first-name "Bugs"
+   :last-name "Bunny"
    :email "n/a"})
 ;; "n/a" - failed: (re-matches email-regex %) in: [:email] at: [:email] 
 ;;   spec: :my.domain/email-type
 
 (s/explain :unq/person
-  {:first-name "Elon"})
-;; {:first-name "Elon"} - failed: (contains? % :last-name) spec: :unq/person
-;; {:first-name "Elon"} - failed: (contains? % :email) spec: :unq/person
+  {:first-name "Bugs"})
+;; {:first-name "Bugs"} - failed: (contains? % :last-name) spec: :unq/person
+;; {:first-name "Bugs"} - failed: (contains? % :email) spec: :unq/person
 ----
 
 Unqualified keys can also be used to validate record attributes:
@@ -320,14 +320,14 @@ Unqualified keys can also be used to validate record attributes:
 (defrecord Person [first-name last-name email phone])
 
 (s/explain :unq/person
-           (->Person "Elon" nil nil nil))
+           (->Person "Bugs" nil nil nil))
 ;; nil - failed: string? in: [:last-name] at: [:last-name] spec: :my.domain/last-name
 ;; nil - failed: string? in: [:email] at: [:email] spec: :my.domain/email-type
 
 (s/conform :unq/person
-  (->Person "Elon" "Musk" "elon@example.com" nil))
-;;=> #my.domain.Person{:first-name "Elon", :last-name "Musk", 
-;;=>                   :email "elon@example.com", :phone nil}
+  (->Person "Bugs" "Bunny" "bugs@example.com" nil))
+;;=> #my.domain.Person{:first-name "Bugs", :last-name "Bunny", 
+;;=>                   :email "bugs@example.com", :phone nil}
 ----
 
 One common occurrence in Clojure is the use of "keyword args" where keyword keys and values are passed in a sequential data structure as options. Spec provides special support for this pattern with the regex op https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/keys*[`keys*`]. `keys*` has the same syntax and semantics as `keys` but can be embedded inside a sequential regex structure.
@@ -649,8 +649,8 @@ One way to use spec is to explicitly call `valid?` to verify input data passed t
 (person-name 42)
 ;;=> java.lang.AssertionError: Assert failed: (s/valid? :my.domain/person person)
 
-(person-name {::first-name "Elon" ::last-name "Musk" ::email "elon@example.com"})
-;; Elon Musk
+(person-name {::first-name "Bugs" ::last-name "Bunny" ::email "bugs@example.com"})
+;; Bugs Bunny
 ----
 
 When the function is invoked with something that isn't valid `::person` data, the pre-condition fails. Similarly, if there was a bug in our code and the output was not a string, the post-condition would fail.

@@ -1,0 +1,198 @@
+= Anatomy of a Reducer
+Rich Hickey
+2012-05-15
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Last time, <<xref/../../08/reducers#,I blogged>> about Clojure's new https://github.com/clojure/clojure/blob/master/src/clj/clojure/core/reducers.clj[reducers library]. This time I'd like to look at the details of what constitutes a reducer, as well as some background about the library.
+
+== What's a Reducing Function?
+
+The reducers library is built around transforming reducing functions. A reducing function is simply a binary function, akin to the one you might pass to _reduce_. While the two arguments might be treated symmetrically by the function, there is an implied semantic that distinguishes the arguments: the first argument is a result or accumulator that is being built up by the reduction, while the second is some new input value from the source being reduced. While _reduce_ works from the 'left', that is neither a property nor promise of the reducing function, but one of _reduce_ itself. So we'll say simply that a reducing fn has the shape:
+
+[source,clojure]
+----  
+(f result input) -> new-result
+----
+  
+In addition, a reducing fn may be called with no args, and should then return an identity value for its operation.
+
+== Transforming Reducing Functions
+
+A function that transforms a reducing fn simply takes one, and returns another one:
+
+[source,clojure]
+----  
+(xf reducing-fn) -> reducing-fn
+----
+  
+Many of the core collection operations can be expressed in terms of such a transformation. Imagine if we were to define the cores of _map_, _filter_ and _mapcat_ in this way:
+
+[source,clojure]
+----
+(defn mapping [f]
+  (fn [f1]
+    (fn [result input]
+      (f1 result (f input)))))
+
+(defn filtering [pred]
+  (fn [f1]
+    (fn [result input]
+      (if (pred input)
+        (f1 result input)
+        result))))
+
+(defn mapcatting [f]
+  (fn [f1]
+    (fn [result input]
+      (reduce f1 result (f input)))))
+----
+  
+There are a few things to note:
+
+* The functions consist only of the core logic of their operations
+* That logic does not include any notion of collection, nor order
+* filtering and kin can 'skip' inputs by simply returning the incoming result
+* mapcatting and kin can produce more than one result per input by simply operating on result more than once
+
+Using these directly is somewhat odd, because we are operating on the reducing operation rather than the collection:
+
+[source,clojure]
+----  
+(reduce + 0 (map inc [1 2 3 4]))
+;;becomes
+(reduce ((mapping inc) +) 0 [1 2 3 4])
+----
+  
+== Reducers
+
+We expect map/filter etc to take and return logical collections. The premise of the reducers library is that the minimum definition of collection is something that is reducible. reduce ends up using a protocol (CollReduce) to ask the collection to _reduce_ itself, so we can make reducible things by extending that protocol. Thus, given a collection and a reducing function transformer like those above, we can make a reducible with a function like this:
+
+[source,clojure]
+----
+(defn reducer
+  ([coll xf]
+   (reify
+    clojure.core.protocols/CollReduce
+    (coll-reduce [_ f1 init]
+      (clojure.core.protocols/coll-reduce coll (xf f1) init)))))
+----
+  
+Now:
+
+[source,clojure]
+----
+(reduce + 0 (map inc [1 2 3 4]))
+;;becomes
+(reduce + 0 (reducer [1 2 3 4] (mapping inc)))
+----
+  
+That's better. It feels as if we have transformed the collection itself. Note:
+
+* reducer ultimately asks the source collection to reduce _itself_
+* reducer will work with any reducing function transformer
+
+Another objective of the library is to support reducer-based code with the same shape as our current seq-based code. Getting there is easy:
+
+[source,clojure]
+----  
+(defn rmap [f coll]
+  (reducer coll (mapping f)))
+
+(defn rfilter [pred coll]
+  (reducer coll (filtering pred)))
+
+(defn rmapcat [f coll]
+  (reducer coll (mapcatting f)))
+
+(reduce + 0 (rmap inc [1 2 3 4]))
+;=> 14
+
+(reduce + 0 (rfilter even? [1 2 3 4]))
+;=> 6
+
+(reduce + 0 (rmapcat range [1 2 3 4 5]))
+;=> 20
+----
+  
+== From Reducible to (Parallel) Foldable
+
+While it is an interesting exercise to find another fundamental way to define the core collection operations, the end result is not much different, just faster, certainly something http://citeseer.ist.psu.edu/viewdoc/summary?doi=10.1.1.104.7401[a state-of-the-art compilation and type system] (had we one) might do for us given sequence code. To stop here would be to completely miss the point of the library. These operations have different, fundamentally simpler semantics than their sequence-based counterparts.
+
+How does one define parallel mapping/filtering/mapcatting etc? __We already did!__ As long as the transformation itself doesn't care about order (e.g. as _take_ does), then a reducer is as foldable as its source. As with _reduce_, _fold_ bottoms out on a protocol (CollFold), and our reducer can extend that:
+
+[source,clojure]
+----
+(defn folder
+  ([coll xf]
+     (reify
+      ;;extend CollReduce as before
+
+      CollFold
+      (coll-fold [_ n combinef reducef]
+        (coll-fold coll n combinef (xf reducef))))))
+----
+  
+Note that:
+
+* _folder_ has the same requirements as _reducer_ - collection + reducing function transformer
+* when _fold_ is applied to something that can't fold, it devolves to _reduce_
+
+Thus the real definitions of reducers/map et al use _folder_ (while take uses _reducer_):
+
+[source,clojure]
+----
+(defn rmap [f coll]
+  (folder coll (mapping f)))
+
+(defn rfilter [pred coll]
+  (folder coll (filtering pred)))
+
+(defn rmapcat [f coll]
+  (folder coll (mapcatting f)))
+----
+
+Thus a wide variety of collection transformations can instead be expressed as reducing function transformations, and applied in both sequential and parallel contexts, across a wide variety of data structures.
+
+The library deals with several other details, such as:
+
+* the transformers all need a nullary arity that just delegates to the transformed reducing function
+* the transformers support a ternary arity where 2 inputs are supplied per step, as occurs with reduce-kv and map sources
+* all of the reducers are curried
+
+These additions are all mechanical, and are handled by macros. It is my hope that the above will help illuminate the core logic underlying the library.
+
+== Background
+
+Much prior work highlights the value of fold as a primary mechanism for collection manipulation, superior to iteration, although most of that work was done in the context of recursively defined functions on lists or sequences - i.e. fold implies foldl/foldr, and the results remain inherently sequential.
+
+The two primary motivators for this library were the Haskell Iteratee library and Guy Steele's ICFP '09 talk.
+
+=== Haskell Iteratees
+
+The http://www.haskell.org/haskellwiki/Enumerator_and_iteratee[Haskell Enumerator/Iteratee library] and its antecedents are an inspiring effort to disentangle the source of data and the operations that might apply to it, and one of the first I think to reify the role of the 'iteratee'. An enumerator makes successive calls to the iteratee to supply it items, decoupling the iteratee from the data source. But the iteratee is still driving in some sense, as it is in charge of signaling Done, and, it returns on each step the next iteratee to use, effectively dictating a single thread of control. One benefit is that even operations like _take_ can be defined functionally, as they can encode their internal state in the 'next' iteratee returned. OTOH, and unlike reducers, the design wraps the result being built up in a new iteratee each step, with potential allocation overhead.
+
+Being an automaton in a state, an iteratee is like a reified left fold, and thus inherently serial. So, while they form quite a nice substrate for the design of, e.g. parsers, iteratees are unsuitable for defining things like map/filter etc if one intends to be able to parallelize them.
+
+=== Guy Steele's ICFP '09 talk
+
+http://vimeo.com/6624203[Organizing Functional Code for Parallel Execution or, foldl and foldr Considered Slightly Harmful]
+
+This talk boils down to - stop programming with streams, lists, generators etc if you intend to exploit parallelism, as does the reducers library.
+
+Where reducers diverges from that talk is in the structure of the fork/join parallel computation. Rather than map+reduce, reducers uses reduce+combine. This reflects 2 considerations:
+
+* It is accepted fork/join practice that at some point you stop splitting in half and handle the leaves 'sequentially'
+** if the best way to do that at the top is _reduce_, why not at the bottom as well?
+* _map_ forces a result per input
+
+You can see the awkwardness of the latter in the map/reduce-oriented definition of parallel _filter_ in the talk, which must 'listify' items or return empty lists, creating a bunch of concatenation busy-work for the reducing step. Many other collection algorithms suffer similarly in their map/reduce-oriented implementations, having greater internal complexity and wrapping the results in collection representations, with corresponding creation of more garbage and reduction busy-work etc vs the reducing function transformer versions of same.
+
+It is interesting that the accumulator style is not completely absent from the reducers design, in fact it is important to the characteristics just described. What has been abandoned are the __single initial value__ and __serial execution__ promises of foldl/r.
+
+== Summary
+
+I hope this makes reducers easier to understand, use and define.
+
+Rich

@@ -16,7 +16,7 @@ toc::[]
 
 Clojure is a practical language that recognizes the occasional need to maintain a persistent reference to a changing value and provides 4 distinct mechanisms for doing so in a controlled manner - Vars, <<refs#,Refs>>, <<agents#,Agents>> and <<atoms#,Atoms>>. Vars provide a mechanism to refer to a mutable storage location that can be dynamically rebound (to a new storage location) on a per-thread basis. Every Var can (but needn't) have a root binding, which is a binding that is shared by all threads that do not have a per-thread binding. Thus, the value of a Var is the value of its per-thread binding, or, if it is not bound in the thread requesting the value, the value of the root binding, if any.
 
-The special form _**def**_ creates (and <<vars#Interning,interns>>) a Var. If the Var did not already exist and no initial value is supplied, the var is unbound:
+The special form `def` creates (and <<vars#Interning,interns>>) a Var. If the Var did not already exist and no initial value is supplied, the var is unbound:
 
 [source,clojure]
 ----
@@ -54,9 +54,21 @@ user=> (+ x y)
 2
 ----
 
-Bindings created with _**binding**_ cannot be seen by any other thread. Likewise, bindings created with _**binding**_ can be assigned to, which provides a means for a nested context to communicate with code before it on the call stack. This capability is opt-in only by setting a metadata tag: _**dynamic**_ to true as in the code block above. There are scenarios that one might wish to redefine static Vars within a context and Clojure (since version 1.3) provides the functions https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/with-redefs[with-redefs] and https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/with-redefs-fn[with-redefs-fn] for such purposes.
+Bindings created with `binding` cannot be seen by any other thread. Likewise, bindings created with `binding` can be assigned to, which provides a means for a nested context to communicate with code before it on the call stack. This capability is opt-in only by setting a metadata tag: `^:dynamic` to true as in the code block above. There are scenarios that one might wish to redefine static Vars within a context and Clojure (since version 1.3) provides the functions https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/with-redefs[with-redefs] and https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/with-redefs-fn[with-redefs-fn] for such purposes.
 
 Functions defined with https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defn[defn] are stored in Vars, allowing for the re-definition of functions in a running program. This also enables many of the possibilities of aspect- or context-oriented programming. For instance, you could wrap a function with logging behavior only in certain call contexts or threads.
+
+[[conveyance]]
+== Binding conveyance
+
+Some Clojure concurrency functions (futures, <<agents#,agents>>) provide "binding conveyance", which allows the current set of dynamic bindings to be conveyed to another thread for the purpose of continuing work asynchronously with the same environment. This functionality is provided by https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/future[future], https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/send[send], https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/send-off[send-off], and https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/pmap[pmap].
+
+[source,clojure]
+----
+(def ^:dynamic *num* 1)
+(binding [*num* 2] (future (println *num*)))
+;; prints "2", not "1"
+----
 
 [[set]]
 == (*set!* var-symbol expr)
@@ -69,10 +81,10 @@ Note - _you cannot assign to function params or local bindings. Only Java fields
 
 Using <<java_interop#set,set>> for Java fields is documented in <<java_interop#set,Java Interop>>.
 
-[[Interning]]
+[[interning]]
 == Interning
 
-The Namespace system maintains global maps of symbols to Var objects _(see <<namespaces#,Namespaces>>)_. If a _**def**_ expression does not find an interned entry in the current namespace for the symbol being def-ed, it creates one, otherwise it uses the existing Var. This find-or-create process is called interning. This means that, unless they have been unmap-ed, Var objects are stable references and need not be looked up every time. It also means that namespaces constitute a global environment in which, as described in <<evaluation#,Evaluation>>, the compiler attempts to resolve all free symbols as Vars.
+The Namespace system maintains global maps of symbols to Var objects _(see <<namespaces#,Namespaces>>)_. If a `def` expression does not find an interned entry in the current namespace for the symbol being def-ed, it creates one, otherwise it uses the existing Var. This find-or-create process is called interning. This means that, unless they have been unmap-ed, Var objects are stable references and need not be looked up every time. It also means that namespaces constitute a global environment in which, as described in <<evaluation#,Evaluation>>, the compiler attempts to resolve all free symbols as Vars.
 
 The <<special_forms#var,var>> special form or the `pass:[#']` reader macro _(see <<reader#,Reader>>)_ can be used to get an interned Var object instead of its current value.
 
@@ -85,7 +97,7 @@ It is possible to create vars that are not interned by using https://clojure.git
 == Related functions
 
 [%hardbreaks]
-Variants of _**def**_: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defn[defn] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defn-[defn-] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/definline[definline] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defmacro[defmacro] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defmethod[defmethod] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defmulti[defmulti] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defonce[defonce] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defstruct[defstruct]
+Variants of `def`: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defn[defn] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defn-[defn-] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/definline[definline] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defmacro[defmacro] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defmethod[defmethod] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defmulti[defmulti] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defonce[defonce] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defstruct[defstruct]
 Working with interned Vars: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/declare[declare] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/intern[intern] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/binding[binding] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/find-var[find-var] <<special_forms#var,var>>
 Working with Var objects: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/with-local-vars[with-local-vars] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/var-get[var-get] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/var-set[var-set] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/alter-var-root[alter-var-root] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/var?[var?] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/with-redefs[with-redefs] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/with-redefs-fn[with-redefs-fn]
 Var validators: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/set-validator[set-validator] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/get-validator[get-validator]

@@ -83,7 +83,7 @@ And finally, there are some repositories in the Clojure GitHub organization that
 * https://github.com/clojure/brew-install/[brew-install] - `clj` installer builds
 * https://github.com/clojure/build.ci/[build.ci] - Jenkins project builder for contrib
 * https://github.com/clojure/build.poms/[build.poms] - Maven super pom for contrib libs
-* https://github.com/clojure/contrib-api-doc/[contrib-api-doc] - Clojure api doc builder
+* https://github.com/clojure/clojure-api-doc/[clojure-api-doc] - Clojure api doc builder
 * https://github.com/clojure/contrib-api-doc/[contrib-api-doc] - contrib lib api doc builder
 
 == History

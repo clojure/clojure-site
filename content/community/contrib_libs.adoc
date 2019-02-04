@@ -1,0 +1,83 @@
+= Contrib Libraries
+Alex Miller
+2019-02-04
+:type: community
+:toc: macro
+:icons: font
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Clojure is an umbrella level project that hosts many additional libraries called _Clojure contrib_, which all exist under the https://github.com/clojure[Clojure organization] on GitHub.
+
+These libraries use the same contribution model (<<contributing#,Contributor Agreement>>, license, and copyright) as Clojure itself, and a shared infrastructure maintained by the Clojure core team:
+
+* Source control - Git libraries on GitHub
+* Issues - https://dev.clojure.org/jira[JIRA]
+* Development model - patches in JIRA, no PRs
+* Continuous integration - https://build.clojure.org[Jenkins]
+* Doc generation and hosting - https://tomfaulhaber.github.io/autodoc/[Autodoc] and GitHub http://clojure.github.io/[pages]
+* Builds - Maven with deployment to Maven Central under the groupId `clojure.org`
+
+Every project has one or more owners (often community members) who determine the direction of their library, triage patches, etc. Project owners have full commit rights and authenticated access to their project on the build box for releases.
+
+Contrib libraries are open source libraries, like any other open source Clojure library. They vary widely in development activity and quality and may or may not be the best alternative for their functionality in the overall ecosystem. You should evaluate them before use as you would any open source library you intend to use as a dependency.
+
+If you find that active development for a library has ceased and you would like to take over as owner, please contact Alex Miller at alex.miller@cognitect.com. Good stewards for a library typically tend to be those actively using the library and knowledgable about the goals and alternatives of the functionality.
+
+== Contrib Libraries
+
+* https://clojure.github.io/algo.generic/[algo.generic] Generic versions of common functions
+* https://clojure.github.io/algo.monads/[algo.monads] Monad macros and Definitions 
+* https://clojure.github.io/core.async/[core.async] Facilities for asynchronous programming and communication
+* https://clojure.github.io/core.cache/[core.cache] A caching library implementing various cache strategies
+* https://clojure.github.io/core.contracts/[core.contracts] Contracts programming in Clojure
+* https://clojure.github.io/core.incubator/[core.incubator] Functions proposed for core inclusion
+* https://clojure.github.io/core.logic/[core.logic] A logic programming library based on miniKanren
+* https://clojure.github.io/core.match/[core.match] Pattern match and predicate dispatch
+* https://clojure.github.io/core.memoize/[core.memoize] A manipulable, pluggable, memoization framework
+* https://clojure.github.io/core.rrb-vector/[core.rrb-vector] RRB-Tree-based vectors
+* https://clojure.github.io/core.typed/[core.typed] Gradual typing
+* https://clojure.github.io/core.unify/[core.unify] Unification library
+* https://clojure.github.io/data.avl/[data.avl] AVL trees
+* https://clojure.github.io/data.codec/[data.codec] Native codec implementations
+* https://clojure.github.io/data.csv/[data.csv] Reading and writing CSV files
+* https://clojure.github.io/data.finger-tree/[data.finger-tree] Finger trees
+* https://clojure.github.io/data.fressian/[data.fressian] Extensible binary Data Notation
+* https://clojure.github.io/data.generators/[data.generators] Random data generators
+* https://clojure.github.io/data.json/[data.json] JSON encoding / decoding
+* https://clojure.github.io/data.priority-map/[data.priority-map] Priority maps
+* https://clojure.github.io/data.xml/[data.xml] Lazy XML parsing
+* https://clojure.github.io/data.zip/[data.zip] Manipulating zippers
+* https://clojure.github.io/java.classpath/[java.classpath] Classpath utilities
+* https://clojure.github.io/java.data/[java.data] Work with Java Beans
+* https://clojure.github.io/java.jdbc/[java.jdbc] JDBC-based SQL interface 
+* https://clojure.github.io/java.jmx/[java.jmx] JMX interface
+* https://clojure.github.io/math.combinatorics/[math.combinatorics] Lazy sequences for common combinatorial functions
+* https://clojure.github.io/math.numeric-tower/[math.numeric-tower] Math functions and numeric tower
+* https://clojure.github.io/test.generative/[test.generative] Test data generation and execution harness
+* https://clojure.github.io/tools.analyzer/[tools.analyzer] Analyzer framework for Clojure code 
+* https://clojure.github.io/tools.analyzer.jvm/[tools.analyzer.jvm] JVM-specific passes for tools.analyzer
+* https://clojure.github.io/tools.cli/[tools.cli] Command-line argument processor
+* https://clojure.github.io/tools.deps.alpha/[tools.deps.alpha] Tools for dependency management and classpath construction
+* https://clojure.github.io/tools.gitlibs/[tools.gitlibs] Tools for retrieving, caching, and using git-based projects
+* https://clojure.github.io/tools.emitter.jvm/[tools.emitter.jvm] JVM bytecode generator
+* https://clojure.github.io/tools.logging/[tools.logging] Logging tools 
+* https://clojure.github.io/tools.macro/[tools.macro] Tools for macro writers
+* https://clojure.github.io/tools.namespace/[tools.namespace] Tools for working with namespace declarations
+* https://clojure.github.io/tools.nrepl/[tools.nrepl] Network REPL
+* https://clojure.github.io/tools.reader/[tools.reader] Clojure reader
+* https://clojure.github.io/tools.trace/[tools.trace] Execution tracing
+
+== Core Libraries
+
+Additionally, the following libraries are dependencies of Clojure itself managed directly by the core team. These libraries use the same shared infrastructure as the Contrib libraries, so are largely the same in that regard. Development in these libraries is often linked to development in the core language itself.
+
+* https://clojure.github.io/core.specs.alpha/[core.specs.alpha] Specs for clojure.core
+* https://clojure.github.io/spec.alpha/[spec.alpha] Describing the structure of data and functions with specs
+* https://clojure.github.io/spec-alpha2/[spec-alpha2] In-development next version of spec
+
+== History
+
+Prior to Clojure 1.3, Clojure had a single "batteries included" library called clojure-contrib that consisted of many independent helper namespaces contributed by the community. In the Clojure 1.3 timeframe, this library was split into the independent libraries that exist today with independent owners. Some of the namespaces were seen as experimental and not promoted into any public library. Stuart Sierra recounts this in more detail in his <<xref/../../news/2012/02/17/clojure-governance#,post>>.
+
+At the time there was an idea that some of the contrib libraries could eventually be promoted into Clojure's core library itself. With time, there has been a desire to keep Clojure's core library small and to allow these independent libraries to stay independent and evolve at their own pace.

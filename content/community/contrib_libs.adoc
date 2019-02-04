@@ -76,6 +76,16 @@ Additionally, the following libraries are dependencies of Clojure itself managed
 * https://clojure.github.io/spec.alpha/[spec.alpha] Describing the structure of data and functions with specs
 * https://clojure.github.io/spec-alpha2/[spec-alpha2] In-development next version of spec
 
+And finally, there are some repositories in the Clojure GitHub organization that are not libraries at all:
+
+* https://github.com/clojure/clojure-site/[clojure-site] - this web site, see <<contributing_site#,Site Contributions>>
+* https://github.com/clojure/clojurescript-site/[clojurescript-site] - https://clojurescript.org web site
+* https://github.com/clojure/brew-install/[brew-install] - `clj` installer builds
+* https://github.com/clojure/build.ci/[build.ci] - Jenkins project builder for contrib
+* https://github.com/clojure/build.poms/[build.poms] - Maven super pom for contrib libs
+* https://github.com/clojure/contrib-api-doc/[contrib-api-doc] - Clojure api doc builder
+* https://github.com/clojure/contrib-api-doc/[contrib-api-doc] - contrib lib api doc builder
+
 == History
 
 Prior to Clojure 1.3, Clojure had a single "batteries included" library called clojure-contrib that consisted of many independent helper namespaces contributed by the community. In the Clojure 1.3 timeframe, this library was split into the independent libraries that exist today with independent owners. Some of the namespaces were seen as experimental and not promoted into any public library. Stuart Sierra recounts this in more detail in his <<xref/../../news/2012/02/17/clojure-governance#,post>>.

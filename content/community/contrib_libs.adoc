@@ -26,47 +26,57 @@ If you find that active development for a library has ceased and you would like 
 
 == Contrib Libraries
 
-* https://clojure.github.io/algo.generic/[algo.generic] Generic versions of common functions
-* https://clojure.github.io/algo.monads/[algo.monads] Monad macros and Definitions 
-* https://clojure.github.io/core.async/[core.async] Facilities for asynchronous programming and communication
-* https://clojure.github.io/core.cache/[core.cache] A caching library implementing various cache strategies
-* https://clojure.github.io/core.contracts/[core.contracts] Contracts programming in Clojure
-* https://clojure.github.io/core.incubator/[core.incubator] Functions proposed for core inclusion
-* https://clojure.github.io/core.logic/[core.logic] A logic programming library based on miniKanren
-* https://clojure.github.io/core.match/[core.match] Pattern match and predicate dispatch
-* https://clojure.github.io/core.memoize/[core.memoize] A manipulable, pluggable, memoization framework
-* https://clojure.github.io/core.rrb-vector/[core.rrb-vector] RRB-Tree-based vectors
-* https://clojure.github.io/core.typed/[core.typed] Gradual typing
-* https://clojure.github.io/core.unify/[core.unify] Unification library
-* https://clojure.github.io/data.avl/[data.avl] AVL trees
-* https://clojure.github.io/data.codec/[data.codec] Native codec implementations
-* https://clojure.github.io/data.csv/[data.csv] Reading and writing CSV files
-* https://clojure.github.io/data.finger-tree/[data.finger-tree] Finger trees
-* https://clojure.github.io/data.fressian/[data.fressian] Extensible binary Data Notation
-* https://clojure.github.io/data.generators/[data.generators] Random data generators
-* https://clojure.github.io/data.json/[data.json] JSON encoding / decoding
-* https://clojure.github.io/data.priority-map/[data.priority-map] Priority maps
-* https://clojure.github.io/data.xml/[data.xml] Lazy XML parsing
-* https://clojure.github.io/data.zip/[data.zip] Manipulating zippers
-* https://clojure.github.io/java.classpath/[java.classpath] Classpath utilities
-* https://clojure.github.io/java.data/[java.data] Work with Java Beans
-* https://clojure.github.io/java.jdbc/[java.jdbc] JDBC-based SQL interface 
-* https://clojure.github.io/java.jmx/[java.jmx] JMX interface
-* https://clojure.github.io/math.combinatorics/[math.combinatorics] Lazy sequences for common combinatorial functions
-* https://clojure.github.io/math.numeric-tower/[math.numeric-tower] Math functions and numeric tower
-* https://clojure.github.io/test.generative/[test.generative] Test data generation and execution harness
-* https://clojure.github.io/tools.analyzer/[tools.analyzer] Analyzer framework for Clojure code 
-* https://clojure.github.io/tools.analyzer.jvm/[tools.analyzer.jvm] JVM-specific passes for tools.analyzer
-* https://clojure.github.io/tools.cli/[tools.cli] Command-line argument processor
-* https://clojure.github.io/tools.deps.alpha/[tools.deps.alpha] Tools for dependency management and classpath construction
-* https://clojure.github.io/tools.gitlibs/[tools.gitlibs] Tools for retrieving, caching, and using git-based projects
-* https://clojure.github.io/tools.emitter.jvm/[tools.emitter.jvm] JVM bytecode generator
-* https://clojure.github.io/tools.logging/[tools.logging] Logging tools 
-* https://clojure.github.io/tools.macro/[tools.macro] Tools for macro writers
-* https://clojure.github.io/tools.namespace/[tools.namespace] Tools for working with namespace declarations
-* https://clojure.github.io/tools.nrepl/[tools.nrepl] Network REPL
-* https://clojure.github.io/tools.reader/[tools.reader] Clojure reader
-* https://clojure.github.io/tools.trace/[tools.trace] Execution tracing
+Status legend:
+
+* Active - under active regular development
+* Stable - working but development is irregular
+* Inactive - no longer in development, will not be worked on again
+
+[options="header", role="table"]
+|===
+| Lib | Description | Owner | Status
+| https://clojure.github.io/algo.generic/[algo.generic] | Generic versions of common functions | Konrad Hinsen | Stable
+| https://clojure.github.io/algo.monads/[algo.monads] | Monad macros and Definitions | Konrad Hinsen | Stable
+| https://clojure.github.io/core.async/[core.async] | Facilities for asynchronous programming and communication | Rich Hickey | Stable
+| https://clojure.github.io/core.cache/[core.cache] | A caching library implementing various cache strategies | Sean Corfield | Active
+| https://clojure.github.io/core.contracts/[core.contracts] | Contracts programming in Clojure | Fogus | Inactive
+| https://clojure.github.io/core.incubator/[core.incubator] | Functions proposed for core inclusion |  | Inactive 
+| https://clojure.github.io/core.logic/[core.logic] | A logic programming library based on miniKanren | David Nolen | Stable
+| https://clojure.github.io/core.match/[core.match] | Pattern match and predicate dispatch  | David Nolen | Stable
+| https://clojure.github.io/core.memoize/[core.memoize] | A manipulable, pluggable, memoization framework | Sean Corfield | Active
+| https://clojure.github.io/core.rrb-vector/[core.rrb-vector] | RRB-Tree-based vectors | Michał Marczyk | Stable
+| https://clojure.github.io/core.typed/[core.typed] | Gradual typing | Ambrose Bonnaire-Sargent | Active
+| https://clojure.github.io/core.unify/[core.unify] | Unification library | Fogus | Stable
+| https://clojure.github.io/data.avl/[data.avl] | AVL trees | Michał Marczyk | Stable
+| https://clojure.github.io/data.codec/[data.codec] | Native codec implementations | Alexander Taggart | Stable
+| https://clojure.github.io/data.csv/[data.csv] | Reading and writing CSV files | Jonas Enlund | Stable
+| https://clojure.github.io/data.finger-tree/[data.finger-tree] | Finger trees | Chouser | Stable
+| https://clojure.github.io/data.fressian/[data.fressian] | Extensible binary Data Notation | Stuart Halloway | Stable
+| https://clojure.github.io/data.generators/[data.generators] | Random data generators | Stuart Halloway | Inactive
+| https://clojure.github.io/data.json/[data.json] | JSON encoding / decoding | Stuart Sierra | Stable
+| https://clojure.github.io/data.priority-map/[data.priority-map] | Priority maps | Mark Engelberg | Stable
+| https://clojure.github.io/data.xml/[data.xml] | Lazy XML parsing | Ryan Senior, Herwig Hochleitner | Stable
+| https://clojure.github.io/data.zip/[data.zip] | Manipulating zippers | | Stable
+| https://clojure.github.io/java.classpath/[java.classpath] | Classpath utilities | Stuart Sierra | Stable
+| https://clojure.github.io/java.data/[java.data] | Work with Java Beans | Cosmin Stejerean | Stable
+| https://clojure.github.io/java.jdbc/[java.jdbc] | JDBC-based SQL interface | Sean Corfield | Active
+| https://clojure.github.io/java.jmx/[java.jmx] | JMX interface | Nick Bailey | Stable
+| https://clojure.github.io/math.combinatorics/[math.combinatorics] | Lazy sequences for common combinatorial functions | Mark Engelberg | Stable
+| https://clojure.github.io/math.numeric-tower/[math.numeric-tower] | Math functions and numeric tower | Mark Engelberg | Stable
+| https://clojure.github.io/test.generative/[test.generative] | Test data generation and execution harness | Stuart Halloway | Inactive
+| https://clojure.github.io/tools.analyzer/[tools.analyzer] | Analyzer framework for Clojure code | Nicola Mometto | Active
+| https://clojure.github.io/tools.analyzer.jvm/[tools.analyzer.jvm] | JVM-specific passes for tools.analyzer | Nicola Mometto | Active
+| https://clojure.github.io/tools.cli/[tools.cli] | Command-line argument processor | Sean Corfield | Active
+| https://clojure.github.io/tools.deps.alpha/[tools.deps.alpha] | Tools for dependency management and classpath construction | Alex Miller | Active
+| https://clojure.github.io/tools.gitlibs/[tools.gitlibs] | Tools for retrieving, caching, and using git-based projects | Alex Miller | Active
+| https://clojure.github.io/tools.emitter.jvm/[tools.emitter.jvm] | JVM bytecode generator | Nicola Mometto | Active
+| https://clojure.github.io/tools.logging/[tools.logging] | Logging tools | Alexander Taggart | Stable
+| https://clojure.github.io/tools.macro/[tools.macro] | Tools for macro writers | Konrad Hinsen | Stable
+| https://clojure.github.io/tools.namespace/[tools.namespace] | Tools for working with namespace declarations | Stuart Sierra | Stable
+| https://clojure.github.io/tools.nrepl/[tools.nrepl] | Network REPL | | Inactive
+| https://clojure.github.io/tools.reader/[tools.reader] | Clojure reader | Nicola Mometto | Active
+| https://clojure.github.io/tools.trace/[tools.trace] | Execution tracing | Luc Prefontaine | Stable
+|===
 
 == Core Libraries
 

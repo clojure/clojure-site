@@ -89,6 +89,6 @@ In addition to with-meta, there are a number of reader macros (<<reader#macrocha
 The `:tag` key is used to hint an objects type to the Clojure compiler. See <<java_interop#typehints,Java Interop: Type Hints>> for more information and a complete list of special type hints.
 
 It is possible to add multiple pieces of metadata by chaining the metadata reader macros together.
-For example: `^:dynamic ^ints obj` would apply both the :dynamic flag and ints type-hint to obj.
+For example: `^:dynamic ^ints obj` would apply both the :dynamic flag and ints type-hint to obj. Metadata chains from right to left (left takes precedence).
 
 Note that metadata reader macros are applied at read-time, not at evaluation-time, and can only be used with values that support metadata, like symbols, vars, collections, sequences, namespaces, refs, atoms, agents, etc. Some important exceptions that *don't* support metadata are strings, numbers, booleans, Java objects, keywords (these are cached and can be shared within the runtime), and deftypes (unless they explicitly implement clojure.lang.IMeta).

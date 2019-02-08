@@ -125,4 +125,4 @@ and couldn't find one. Here's an outline of some of the motivating ideas behind 
 * Locking is too hard to get right over and over again
 * Clojure's software transactional memory and agent systems do the hard part
 
-In short, I think Clojure occupies a unique niche as a functional Lisp for the JVM with strong concurrency support. Check out some of the <<features#,features>>.
+In short, I think Clojure occupies a unique niche as a functional Lisp for the JVM with strong concurrency support. Check out some of the <<features#,features>> or <<xref/../../guides/getting_started#,get started with Clojure>>.

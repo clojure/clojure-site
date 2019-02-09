@@ -9,13 +9,15 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 toc::[]
 
+== Strategy for Beginners
+
+Clojure is a hosted language; you will need the host platform, a library to translate Clojure code into a form the host understands, and a way of interacting with that library. The host platform for Clojure is the Java Virtual Machine (ClojureScript, a popular Clojure variant hosted in JavaScript, is not covered here) and it is assumed that you have already installed a recent version of Java. This guide will cover the remaining steps and after completing it you will have a viable environment for running Clojure code so you can experiment with the language.
+
+Check out <<learn/syntax#,Learn Clojure>>, <<xref/../../community/resources#,Resources>>, or <<xref/../../community/books#,Books>> for learning the syntax. You are encouraged to read up on the <<repl/introduction#,repl>> and <<deps_and_cli#,built in CLI tools>> for real-time ways of accessing the Clojure library, tools to run Clojure programs, and the official tools to handle dependency management. Clojure's built in tools are a recent development (introduced with Clojure 1.9.0), and as of the <<xref/../../news/2019/02/04/state-of-clojure-2019#,2019 State of Clojure survey>> they are still less popular than the community supported https://leiningen.org/[Leiningen] build tool for managing projects.
+
 Welcome to Clojure!
 
-Check out <<learn/syntax#,Learn Clojure>>, <<xref/../../community/resources#,Resources>>, or <<xref/../../community/books#,Books>> for learning the language!
-
 == Clojure installer and CLI tools
-
-Clojure provides <<deps_and_cli#,command line tools>> that can be used to start a Clojure repl, use Clojure and Java libraries, and start Clojure programs.
 
 === Installation on Mac via `brew`
 
@@ -71,10 +73,6 @@ Then start the REPL with the local jar:
 java -jar clojure.jar
 ----
 
-*Try Clojure online*
+== Try Clojure online
 
 https://repl.it/languages/clojure[repl.it] provides a browser-based Clojure repl for interactive exploration.
-
-*Build tools*
-
-Build tools provide a range of capabilities for building, running, and deploying Clojure libraries and applications. The two most popular Clojure build tools are https://leiningen.org/[Leiningen] and http://boot-clj.com/[Boot].

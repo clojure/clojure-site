@@ -44,7 +44,7 @@ Strings are contained in double quotes and may span multiple lines. Individual c
 
 Literal regular expressions are strings with a leading `#`. These are compiled to java.util.regex.Pattern objects.
 
-=== Symbols and identsd
+=== Symbols and idents
 
 [source,clojure]
 ----

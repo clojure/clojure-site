@@ -14,35 +14,58 @@ toc::[]
 
 == Literals
 
-Below are some examples of literal representations of common primitives in Clojure. 
+Below are some examples of literal representations of common primitives in Clojure.  All of these literals are valid Clojure expressions.
 
-The `;` creates a comment to the end of the line. Sometimes multiple semicolons are used to indicate header lines.
+The `;` creates a comment to the end of the line. Sometimes multiple semicolons are used to indicate header comment sections, but this is just a convention.
+
+=== Numeric types
 
 [source, clojure]
 ----
-;; Numeric types
-42              ; Long - 64-bit integer (from -2^63 to 2^63-1)
-6.022e23        ; Double - double-precision 64-bit floating point
-42N             ; BigInt - arbitrary precision integer
-1.0M            ; BigDecimal - arbitrary precision fixed-point decimal
+42              ; fixed precision integers - 64-bit integer (from -2^63 to 2^63-1)
+-1.5            ; fixed precision floating point - 64-bit float (IEEE 754)
 22/7            ; Ratio
+42N             ; arbitrary precision integer
+1.0M            ; arbitrary precision fixed-point decimal
+----
 
-;; Character types
+Integers are read as fixed precision when they are in range and arbitrary precision otherwise. A trailing `N` can be used to force arbitrary precision. Clojure also supports the Java syntax for octal (prefix `0`), hexadecimal (prefix `0x`) and arbitrary radix (prefix with base then `r`) integers. Ratios are provided as their own type combining a numerator and denominator.
+
+Floating point values are read as double-precision floats unless the `M` suffix is supplied. Exponential notation is also supported. The special symbolic values `##Inf`, `##-Inf`, and `##NaN` represent positive infinity, negative infinity, and "not a number" values respectively.
+
+=== Character types
+
+[source,clojure]
+----
 "hello"         ; String
 \e              ; Character
-
-;; Other types
-nil             ; null value
-true            ; Boolean (also, false)
 #"[0-9]+"       ; Regular expression
-:alpha          ; Keyword
-:release/alpha  ; Keyword with namespace
+----
+
+Strings are contained in double quotes and may span multiple lines. Individual characters are represented with a leading backslash. There are a few special named characters: `\newline` `\spec` `\tab`, etc. Unicode characters can be represented with `\uNNNN` or in octal with `\oNNN`.
+
+Literal regular expressions are strings with a leading `#`. These are compiled to java.util.regex.Pattern objects.
+
+=== Symbols and identsd
+
+[source,clojure]
+----
 map             ; Symbol
 +               ; Symbol - most punctuation allowed
 clojure.core/+  ; Namespaced symbol
+nil             ; null value
+true false      ; Booleans
+:alpha          ; Keyword
+:release/alpha  ; Keyword with namespace
 ----
 
-All of the literals above are valid Clojure expressions.
+Symbols are composed of letters, numbers, and other punctutation and are used to refer to something else, like a function, value, namespace, etc. Symbols may optionally have a namespace, separated with a forward slash from the name.
+
+There are three special symbols that are read as different types - `nil` is the null value, and `true` and `false` are the boolean values.
+
+Symbols that start with a leading colon are called keywords. Keywords always evaluate to themselves and are frequently used as enumerated values or attribute names in Clojure.
+
+=== Literal collections
 
 Clojure also includes literal syntax for four collection types:
 

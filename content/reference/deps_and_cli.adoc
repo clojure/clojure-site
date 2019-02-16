@@ -184,11 +184,11 @@ Coordinates can take several forms depending on the coordinate type:
 * Local project coordinate: `{:local/root "/path/to/project"}`
 ** Optional key `:deps/root`
 *** Specifies the relative path within the root to search for the manifest file
-* Local jar: `{:local/root "/path/to/file.jar"}`
-** Optional key `:deps/manifest
+** Optional key `:deps/manifest`
 *** Specifies the project manifest type
 *** Default is to auto-detect the project type (such as `:deps`, `:lein`, `:pom`)
 *** Currently only `:deps` and `:pom` are supported
+* Local jar: `{:local/root "/path/to/file.jar"}`
 ** If the jar has been packaged with a pom.xml file, the pom will be read and used to find transitive deps
 * Git coordinate: `{:git/url "https://github.com/user/project.git", :sha "sha", :tag "tag"}`
 ** The `:git/url` can be one of the following:

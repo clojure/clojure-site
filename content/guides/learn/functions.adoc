@@ -340,7 +340,7 @@ In Clojure, this is the `identity` function. By itself, identity is not very use
 (source identity)
 ----
 
-5) Define a function `always-thing` which takes any number of arguments, ignores all of them, and returns the keyword `:thing`.
+5) Define a function `always-thing` which takes any number of arguments, ignores all of them, and returns the number `100`.
 [source,clojure]
 ----
 (defn always-thing [__] ___)
@@ -355,8 +355,8 @@ In Clojure, this is the `identity` function. By itself, identity is not very use
 (let [n (rand-int Integer/MAX_VALUE)
       f (make-thingy n)]
   (assert (= n (f)))
-  (assert (= n (f :foo)))
-  (assert (= n (apply f :foo (range)))))
+  (assert (= n (f 123)))
+  (assert (= n (apply f 123 (range)))))
 ----
 In Clojure, this is the `constantly` function.
 [source,clojure]

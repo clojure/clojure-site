@@ -315,7 +315,7 @@ Declare a class with gen-class in `src/my_class.clj`:
   :name my_class.MyClass
   :methods [[hello [] String]])
 
-(defn -hello []
+(defn -hello [this]
   "Hello, World!")
 ----
 

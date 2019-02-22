@@ -46,49 +46,15 @@ suppresses the usual repl greeting message: "Clojure ~(clojure-version)".
 Paths may be absolute or relative in the filesystem or relative to
 classpath. Classpath-relative paths have prefix of @ or @/
 
-The same is also described in the usage message:
-
-[source,shell]
-----
-Usage: java -cp clojure.jar clojure.main [init-opt*] [main-opt] [arg*]
-
-With no options or args, runs an interactive Read-Eval-Print Loop
-
-init options:
--i, --init path Load a file or resource
--e, --eval string Evaluate expressions in string; print non-nil values
-
-main options:
--r, --repl Run a repl
-path Run a script from a file or resource
-- Run a script from standard input
--m, --main A namespace to find a -main function for execution
--h, -?, --help Print this help message and exit
-
-operation:
-
-- Establishes thread-local bindings for commonly set!-able vars
-- Enters the user namespace
-- Binds `pass:[*command-line-args*]` to a seq of strings containing command line
-args that appear after any main option
-- Runs all init options in order
-- Runs a repl or script if requested
-
-The init options may be repeated and mixed freely, but must appear before
-any main option. The appearance of any eval option before running a repl
-suppresses the usual repl greeting message: "Clojure ~(clojure-version)".
-
-Paths may be absolute or relative in the filesystem or relative to
-classpath. Classpath-relative paths have prefix of @ or @/
-----
-
 == Launching a REPL
 
-The simplest way to launch a Clojure _repl_ is to use the following command line from within Clojure's home directory:
+The simplest way to launch a Clojure _repl_ is to use the <<xref/../../guides/getting_started#,clj>> command tool, which invokes clojure.main:
 
 [source,shell]
 ----
-java -cp clojure.jar clojure.main
+$ clj
+Clojure 1.10.0
+user=>
 ----
 
 The REPL prompt shows the name of the current namespace (pass:[*ns*]), which defaults to _user_.
@@ -112,7 +78,7 @@ To run a file full of Clojure code as a script, pass the path to the script to `
 
 [source,shell]
 ----
-java -cp clojure.jar clojure.main /path/to/myscript.clj
+clj /path/to/myscript.clj
 ----
 
 == Passing arguments to a Script
@@ -121,7 +87,7 @@ To pass in arguments to a script, pass them in as further arguments when launchi
 
 [source,shell]
 ----
-java -cp clojure.jar clojure.main /path/to/myscript.clj arg1 arg2 arg3
+clj /path/to/myscript.clj arg1 arg2 arg3
 ----
 
 The arguments will be provided to your program as a seq of strings bound to the var `pass:[*command-line-args*]`:

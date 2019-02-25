@@ -638,7 +638,7 @@ See <<xref/../weird_characters#unquote_splicing,`~@`>> and <<xref/../weird_chara
 
 * http://www.braveclojure.com/writing-macros/[Clojure for the Brave and True - Writing Macros]
 * http://aphyr.com/posts/305-clojure-from-the-ground-up-macros[Clojure from the ground up: macros]
-* <<xref/../../macros#,Clojure Official Documentation>>
+* <<xref/../../reference/macros#,Clojure Official Documentation>>
 
 [[unqote]]
 == `~` - Unquote

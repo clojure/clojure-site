@@ -21,7 +21,7 @@ The special form `def` creates (and <<vars#Interning,interns>>) a Var. If the Va
 [source,clojure]
 ----
 user=> (def x)
-.'user/x
+#'user/x
 user=> x
 #object[clojure.lang.Var$Unbound 0x14008db3 "Unbound: #'user/x"]
 ----
@@ -31,7 +31,7 @@ Supplying an initial value binds the root (even if it was already bound).
 [source,clojure]
 ----
 user=> (def x 1)
-.'user/x
+#'user/x
 
 user=> x
 1

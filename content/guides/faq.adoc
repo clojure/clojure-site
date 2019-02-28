@@ -150,6 +150,13 @@ Design benefits of sequences:
 
 spec is in alpha to indicate that the API may still change. spec was broken out of Clojure core so that spec can be updated independently from the main Clojure version. At some point spec's API will be considered stable and at that point the alpha will be removed.
 
+[[spec_location]]
+**<<faq#spec_location,Where should I put my specs?>>**
+
+There is no single right answer to this question. For data specs, it is often useful to put them in their own namespace, which may or may not match the qualifier used in the data specs. Matching the qualifier to the namespace allows the use of auto-resolved keywords both within the specs and in aliases in other namespaces, but also entwines them, making refactoring more complicated.
+
+For function specs, most people either put them immediately before or after the function they apply to, or in a separate namespace that can optionally be required when needed (for testing or validation). In the latter case, Clojure core has followed the pattern of using foo.bar.specs to hold function specs for the functions in foo.bar.
+
 [[skip_macros]]
 **<<faq#skip_macros,Is there a way to skip checking macro specs?>>**
 

@@ -7,9 +7,9 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 Welcome to the annual State of Clojure survey results! Every year we survey Clojure and ClojureScript developers to evaluate the state of the language and its users. Thank you to everyone that took the time to complete the survey and provide your input. This year, we had 2461 respondents. Some highlights:
 
-* Clojure is used by many <<state-of-clojure-2019#work,companies>> for web development, commercial services, and enterprise apps in a broad set of domains including financial services, enterprise software, retail, advertising, health care, and more.
-* Clojure is <<state-of-clojure-2019#strengths,valued>> for its idiomatic support for functional programming, immutable data, interactive REPL, and ease of development.
-* Clojure and its <<state-of-clojure-2019#community,community>> are active and vibrant, as seen in the many thriving discussion forums, conferences, and user groups, with active involvement in community library development.
+* Clojure is used by many <<work,companies>> for web development, commercial services, and enterprise apps in a broad set of domains including financial services, enterprise software, retail, advertising, health care, and more.
+* Clojure is <<strengths,valued>> for its idiomatic support for functional programming, immutable data, interactive REPL, and ease of development.
+* Clojure and its <<community,community>> are active and vibrant, as seen in the many thriving discussion forums, conferences, and user groups, with active involvement in community library development.
 
 For more details and the https://www.surveymonkey.com/results/SM-S9JVNXNQV/[full results], see below.
 

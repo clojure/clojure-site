@@ -196,12 +196,14 @@ Clojure's reader supports a superset of https://github.com/edn-format/edn[extens
 Tagged literals are Clojure's implementation of edn https://github.com/edn-format/edn#tagged-elements[tagged elements].
 
 When Clojure starts, it searches for files named `data_readers.clj` at the root of the classpath. Each such file must contain a Clojure map of symbols, like this:
+
 [source,clojure]
 ----
 {foo/bar my.project.foo/bar
  foo/baz my.project/baz}
 ----
 The key in each pair is a tag that will be recognized by the Clojure reader. The value in the pair is the fully-qualified name of a <<vars#,Var>> which will be invoked by the reader to parse the form following the tag. For example, given the `data_readers.clj` file above, the Clojure reader would parse this form:
+
 [source,clojure]
 ----
 #foo/bar [1 2 3]
@@ -216,6 +218,7 @@ Clojure 1.4 introduced the _instant_ and _UUID_ tagged literals. Instants have t
 NOTE: Some of the elements of this format are optional. See the code for details.
 The default reader will parse the supplied string into a `java.util.Date` by default. For example:
 
+[source,clojure]
 ----
 (def instant #inst "2018-03-28T10:48:00.000")
 (= java.util.Date (class instant))
@@ -223,6 +226,8 @@ The default reader will parse the supplied string into a `java.util.Date` by def
 ----
 
 Since https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/%2Adata-readers%2A[pass:[*data-readers*]] is a dynamic var that can be bound, you can replace the default reader with a different one. For example, `clojure.instant/read-instant-calendar` will parse the literal into a `java.util.Calendar`, while `clojure.instant/read-instant-timestamp` will parse it into a `java.util.Timestamp`:
+
+[source,clojure]
 ----
 (binding [*data-readers* {'inst read-instant-calendar}]
   (= java.util.Calendar (class (read-string (pr-str instant)))))
@@ -235,9 +240,25 @@ Since https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/%2Ada
 
 The `#uuid` tagged literal will be parsed into a `java.util.UUID`:
 
+[source,clojure]
 ----
 (= java.util.UUID (class (read-string "#uuid \"3b8a31ed-fd89-4f1b-a00f-42e3d60cf5ce\"")))
 ;=> true
+----
+
+=== Default data reader function
+
+If no data reader is found when reading a tagged literal, the https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/%2Adefault-data-reader-fn%2A[pass:[*default-data-reader-fn*]] is invoked. You can set your own default data reader function and the provided http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/tagged-literal[tagged-literal] function can be used to build an object that can store an unhandled literal. The object returned by `tagged-literal` supports keyword lookup of the `:tag` and `:form`:
+
+[source,clojure]
+----
+(set! *default-data-reader-fn* tagged-literal)
+
+;; read #object as a generic TaggedLiteral object
+(def x #object[clojure.lang.Namespace 0x23bff419 "user"])
+
+[(:tag x) (:form x)]
+;=> [object [clojure.lang.Namespace 599782425 "user"]]
 ----
 
 == Reader Conditionals

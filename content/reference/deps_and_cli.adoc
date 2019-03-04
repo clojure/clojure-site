@@ -191,11 +191,13 @@ Coordinates can take several forms depending on the coordinate type:
 * Local jar: `{:local/root "/path/to/file.jar"}`
 ** If the jar has been packaged with a pom.xml file, the pom will be read and used to find transitive deps
 * Git coordinate: `{:git/url "https://github.com/user/project.git", :sha "sha", :tag "tag"}`
-** The `:git/url` can be one of the following:
+** Required key `:git/url` can be one of the following:
 *** https - secure anonymous access to public repos
 *** ssh or user@host form urls (including GitHub) - ssh-based access (see Git configuration section)
-** The `:sha` attribute should indicate the full commit sha
-** The `:tag` attribute is optional and used only to indicate the semantics of the sha
+** Required key `:sha` should indicate the full commit sha
+** Optional key `:tag` is used only to indicate the semantics of the sha
+** Optional key `:deps/root` - same as in `:local` deps
+** Optional key `:deps/manifest` - same as in `:local` deps
 
 [source,clojure]
 ----

@@ -137,9 +137,6 @@ http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/tap%3E[`pass
 
 == Launching a Socket Server
 
-[NOTE]
-This feature was added in 1.8.0.
-
 The Clojure runtime now has the ability to start a socket server at initialization based on system properties. One expected use for this is serving a socket-based REPL, but it also has many other potential uses for dynamically adding server capability to existing programs without code changes.
 
 A socket server will be started for each JVM system property like "clojure.server.<server-name>". The value for this property is an edn map representing the configuration of the socket server with the following properties:

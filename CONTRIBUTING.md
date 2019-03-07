@@ -8,5 +8,5 @@ You can find more info on the page [Contributing to the site].
 [Contributions]: https://clojure.org/community/contributing_site
 [issue]: https://github.com/clojure/clojure-site/issues
 [pull request]: https://github.com/clojure/clojure-site/pulls
-[contributor agreement]: https://secure.echosign.com/public/hostedForm?formid=95YMDL576B336E
+[contributor agreement]: https://secure.na1.echosign.com/public/hostedForm?formid=95YMDL576B336E
 [Contributing to the site]: https://clojure.org/community/contributing_site

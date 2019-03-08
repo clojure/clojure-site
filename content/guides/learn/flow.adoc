@@ -67,9 +67,9 @@ user=> (if [] :truthy :falsey) ; empty collections are true
 :truthy
 user=> (if 0 :truthy :falsey) ; zero is true
 :truthy
-(if false :truthy :falsey)
+user=> (if false :truthy :falsey)
 :falsey
-(if nil :truthy :falsey)
+user=> (if nil :truthy :falsey)
 :falsey
 ----
 

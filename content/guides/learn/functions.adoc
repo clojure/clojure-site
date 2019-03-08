@@ -410,7 +410,7 @@ Hint: Using the http://docs.oracle.com/javase/8/docs/api/java/net/URL.html[java.
 (defn http-get [url]
   ___)
 
-(assert (.contains (http-get "http://www.w3.org") "html"))
+(assert (.contains (http-get "https://www.w3.org") "html"))
 ----
 In fact, the Clojure `slurp` function interprets its argument as a URL first before trying it as a file name. Write a simplified http-get:
 [source,clojure]

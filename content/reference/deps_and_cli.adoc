@@ -182,12 +182,9 @@ Coordinates can take several forms depending on the coordinate type:
 ** Other optional keys: `:extension`, `:exclusions`
 ** Note: `:classifier` is no longer supported - add to lib name as specified above
 * Local project coordinate: `{:local/root "/path/to/project"}`
-** Optional key `:deps/root`
-*** Specifies the relative path within the root to search for the manifest file
 ** Optional key `:deps/manifest`
 *** Specifies the project manifest type
-*** Default is to auto-detect the project type (such as `:deps`, `:lein`, `:pom`)
-*** Currently only `:deps` and `:pom` are supported
+*** Default is to auto-detect the project type (currently either `:deps` or `:pom`)
 * Local jar: `{:local/root "/path/to/file.jar"}`
 ** If the jar has been packaged with a pom.xml file, the pom will be read and used to find transitive deps
 * Git coordinate: `{:git/url "https://github.com/user/project.git", :sha "sha", :tag "tag"}`
@@ -196,7 +193,8 @@ Coordinates can take several forms depending on the coordinate type:
 *** ssh or user@host form urls (including GitHub) - ssh-based access (see Git configuration section)
 ** Required key `:sha` should indicate the full commit sha
 ** Optional key `:tag` is used only to indicate the semantics of the sha
-** Optional key `:deps/root` - same as in `:local` deps
+** Optional key `:deps/root`
+*** Specifies the relative path within the root to search for the manifest file
 ** Optional key `:deps/manifest` - same as in `:local` deps
 
 [source,clojure]

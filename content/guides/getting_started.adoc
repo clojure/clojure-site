@@ -40,16 +40,15 @@ brew upgrade clojure
 
 [source,shell]
 ----
-curl -O https://download.clojure.org/install/linux-install-1.10.0.414.sh
-chmod +x linux-install-1.10.0.414.sh
-sudo ./linux-install-1.10.0.414.sh
+curl -O https://download.clojure.org/install/linux-install-1.10.0.442.sh
+chmod +x linux-install-1.10.0.442.sh
+sudo ./linux-install-1.10.0.442.sh
 ----
-
-Platform installers (apt-get, etc) will be available in the future.
 
 === Installation on Windows
 
-Not yet available - see https://leiningen.org/[Leiningen] or http://boot-clj.com/[Boot] instead.
+An early release version of clj on Windows is available at [clj on Windows](https://github.com/clojure/tools.deps.alpha/wiki/clj-on-Windows).
+Please provide feedback at https://dev.clojure.org/jira/browse/TDEPS.
 
 == Other ways to run Clojure
 

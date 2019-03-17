@@ -45,7 +45,7 @@ to respect back-pressure.
     (fn [response]
       (put! out-c response (fn [_] (load-urls (next urls) out-c))))))
 
-(load-urls urls)
+(load-urls urls response-chan)
 ----
 
 In this example we have some nice clean interop code that allows us to

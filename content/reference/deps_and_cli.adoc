@@ -357,6 +357,24 @@ AWS S3 credentials can be set in the environment using one of these mechanisms:
 
 For more information, most of the advice in http://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/credentials.html[this AWS document] describes how credentials are located. Note however that the Java system properties options will NOT work with the command line tools (but would work if using the tools.deps.alpha library directly).
 
+==== Maven proxies
+
+In environments where the internet is accessed via a proxy, existing Maven configuration in `~/.m2/settings.xml` is used to set up the proxy connection:
+
+[source,xml]
+----
+<proxies>
+  <proxy>
+    <id>my-proxy</id>
+    <host>proxy.my.org</host>
+    <port>3128</port>
+    <nonProxyHosts>localhost|*.my.org</nonProxyHosts>
+  </proxy>
+</proxies>
+----
+
+Refer to the Maven https://maven.apache.org/guides/mini/guide-proxies.html[Guide to using proxies] for further details.
+
 ==== Git configuration
 
 The supported git url protocols are https and ssh. https repos will be accessed anonymously and require no additional authentication information. This approach is recommended for public repos.

@@ -232,11 +232,9 @@ Primitive types can be found as the static TYPE field on the boxed class, for ex
 [[varargs]]
 **<<faq#varargs,How do you invoke a Java method with a vararg signature?>>**
 
-Java treats a trailing varargs parameter as an array and it can be invoked from Clojure. Example:
+Java treats a trailing varargs parameter as an array and it can be invoked from Clojure by passing an explicit array.
 
-pass:[`(.method object fixed-args (into-array type variable-args...))`]
-
-Example:
+Examples:
 
 [source,clojure]
 ----
@@ -245,14 +243,13 @@ Example:
 
 ;; Invoke static String.format(String format, Object... args)
 (String/format "%s %s, %s" (object-array ["March" 1 2016]))
-----
 
-If the type is a primitive type, like `double`, then you should instead use the approriate primitive array constructor, like `int-array`, `double-array`, etc. For example:
-
-[source,clojure]
-----
+;; For a primitive vararg, use the appropriate primitive array constructor
 ;; Invoke put(int row, int col, double... data)
 (.put o 1 1 (double-array [2.0]))
+
+;; Passing at least an empty array is required if there are no varargs
+(.put o 1 1 (double-array []))
 ----
 
 [[illegal_access]]

@@ -17,7 +17,9 @@ The official https://github.com/clojure/clojure/blob/master/changes.md[changelog
 
 Note: All dev releases are subject to breaking changes for new work since the prior release.
 
-== Release 1.10.1-beta1 (Mar 21, 2019)
+== Release 1.10.1
+
+=== 1.10.1-beta1 (Mar 21, 2019)
 
 * https://dev.clojure.org/jira/browse/CLJ-2484[CLJ-2484] Move user.clj initialization out of RT<clinit>
 * https://dev.clojure.org/jira/browse/CLJ-2463[CLJ-2463] clojure.main uncaught exception handling

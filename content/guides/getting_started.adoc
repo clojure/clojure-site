@@ -35,7 +35,7 @@ brew upgrade clojure
 
 === Installation on Linux
 
-1. Ensure that the following dependencies are installed: `bash`, `curl`, `rlwrap`, and Java (Java JDK 11, 9 and 8 should be acceptable but you may want to [choose between different vendors](https://purelyfunctional.tv/guide/clojure-jvm/#which-jdk) ).
+1. Ensure that the following dependencies are installed: `bash`, `curl`, `rlwrap`, and Java (Java JDK 11, 9 and 8 should be acceptable but you may want to https://purelyfunctional.tv/guide/clojure-jvm/#which-jdk[choose between different vendors] ).
 2. Use the `linux-install` script to download and run the install, which will by default create executables `/usr/local/bin/clj`,   `/usr/local/bin/clojure` and directory `/usr/local/lib/clojure`:
 
 [source,shell]
@@ -70,7 +70,8 @@ You can remove the `linux-install` script after installation.
 
 === Installation on Windows
 
-An early release version of clj on Windows is available at [clj on Windows](https://github.com/clojure/tools.deps.alpha/wiki/clj-on-Windows).
+An early release version of clj on Windows is available at https://github.com/clojure/tools.deps.alpha/wiki/clj-on-Windows[clj on Windows].
+
 Please provide feedback at https://dev.clojure.org/jira/browse/TDEPS.
 
 == Other ways to run Clojure

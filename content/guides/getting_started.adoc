@@ -35,15 +35,38 @@ brew upgrade clojure
 
 === Installation on Linux
 
-1. Ensure that the following dependencies are installed: bash, curl, rlwrap, and Java.
-2. Use the linux-install script to download and run the install, which will create /usr/local/bin/clj, /usr/local/bin/clojure, and /usr/local/lib/clojure:
+1. Ensure that the following dependencies are installed: `bash`, `curl`, `rlwrap`, and Java (Java JDK 11, 9 and 8 should be acceptable but you may want to [choose between different vendors](https://purelyfunctional.tv/guide/clojure-jvm/#which-jdk) ).
+2. Use the `linux-install` script to download and run the install, which will by default create executables `/usr/local/bin/clj`,   `/usr/local/bin/clojure` and directory `/usr/local/lib/clojure`:
 
 [source,shell]
 ----
-curl -O https://download.clojure.org/install/linux-install-1.10.0.442.sh
-chmod +x linux-install-1.10.0.442.sh
-sudo ./linux-install-1.10.0.442.sh
+VERSION=1.10.0.442
+curl -O https://download.clojure.org/install/linux-install-${VERSION}.sh
+chmod +x linux-install-${VERSION}.sh
+sudo ./linux-install-${VERSION}.sh
 ----
+
+If you want to put everything into a single location (for example `/opt/infrastructure/clojure`), use option `--prefix` instead:
+
+[source,shell]
+----
+VERSION=1.10.0.442
+curl -O https://download.clojure.org/install/linux-install-${VERSION}.sh
+chmod +x linux-install-${VERSION}.sh
+sudo ./linux-install-${VERSION}.sh --prefix /opt/infrastructure/clojure
+----
+
+If you select the "single location" approach you need to extend the MANPATH so that manual pages can be found.
+
+This is often done by extending `/etc/man_db.conf` adding a line like this:
+
+----
+MANPATH_MAP /opt/infrastructure/clojure/bin /opt/infrastructure/clojure/man
+----
+
+Note that the `VERSION` string is hardcoded in the `linux-install` script, which makes the script version-dependent!
+
+You can remove the `linux-install` script after installation.
 
 === Installation on Windows
 

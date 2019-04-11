@@ -19,6 +19,11 @@ Note: All dev releases are subject to breaking changes for new work since the pr
 
 == Release 1.10.1
 
+=== 1.10.1-beta2 (Apr 11, 2019)
+
+* https://dev.clojure.org/jira/browse/CLJ-2497[CLJ-2497] Put error report location on its own line
+* https://dev.clojure.org/jira/browse/CLJ-2499[CLJ-2499] Some compiler expr evals report as wrong phase
+
 === 1.10.1-beta1 (Mar 21, 2019)
 
 * https://dev.clojure.org/jira/browse/CLJ-2484[CLJ-2484] Move user.clj initialization out of RT<clinit>

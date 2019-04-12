@@ -41,7 +41,7 @@ user=> (greet "students")
 
 Functions can be defined to take different numbers of arguments (different "arity"). Different arities must all be defined in the same `defn` - using `defn` more than once will replace the previous function.
 
-Each arity is a list `([args*] body*)`. One arity can invoke another.
+Each arity is a list `([args*] body*)`. One arity can invoke another. The body can contain any number of expressions and the return value is the result of the last expression.
 
 [source,clojure]
 ----

@@ -1,0 +1,191 @@
+= Contrib How-To
+Alex Miller
+2019-04-23
+:type: community
+:toc: macro
+:icons: font
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+== Readmes
+
+Contrib library readmes should contain:
+
+* Instructions for including the library as a dependency in Maven / Leiningen
+* Links to the library's pages on Hudson and JIRA
+* Links to the available releases on Maven Central and oss.sonatype.org
+* Link to generated API documentation, if available
+* General usage instructions (should mention which namespace to use/require)
+* Developer Information: links to GitHub project, Bug Tracker, Continuous Integration, Compatibility Test Matrix
+* Change log of all releases (may also be in separate file)
+
+== Committer Guidelines
+
+Things you should do if you are a Clojure Contrib committer:
+
+* maintain your library and respond to questions/issues that arise
+* do your work on the master branch, or (if you are working on a significant chunk you want to keep temporarily separate) on a feature-specific branch that you create yourself
+* use the Maven Release option on build.clojure.org to make releases
+* coordinate with other committers before making changes to their libraries
+* accept contributions from others only if they have <<contributors#,signed the CA>>
+
+Things to avoid:
+
+* please do not push to the release branches (names like 1.2.x)
+* do not take non-contributor patches
+* please do not take pull requests from contributors. Patches only.
+* do not change the version number in pom.xml - use the Maven Release process mentioned above
+
+Here's the process outline for what it takes to become a committer:
+
+* Get your <<contributing#,CA>> on file
+* Join the http://groups.google.com/group/clojure-dev[clojure-dev] mailing list
+* Create a https://dev.clojure.org/jira/browse/CLJ[JIRA account]
+* Let Clojure core team know your github username and JIRA username so they can set up the correct permissions
+* Clojure core team need to create your account on build.clojure.org as well - see below
+
+Moving an existing project into contrib:
+
+* All past contributors must:
+** Submit a Clojure Contributor Agreement
+** Send an email to the clojure-dev mailing list granting permission, such as: "I, (NAME), give my permission to release my contributions to (PROJECT) under the Clojure Contributor Agreement."
+
+Setting up a new contrib project:
+
+* Email clojure-dev mailing list to get new project approved and admin privileges in GitHub, Jira, and Jenkins.
+* Ask for a new GitHub repo under the clojure https://github.com/clojure[organization]
+** Specify project name (must be approved by Clojure core)
+** Specify description
+** Collaborators - add Team: Contrib Commit which includes:
+*** clojure-build - for hudson to tag releases, build autodocs, etc
+** Disable Issues tab (we use JIRA instead)
+** Project structure (see existing projects for example)
+*** /README.md - readme, see above
+*** /CHANGES.md - changelog
+*** /CONTRIBUTING.md - example
+*** /epl.html - EPL license information
+*** /pom.xml - according to the https://github.com/clojure/build.poms[build.poms] instructions - used for build/deploy
+*** /src/main/clojure - Clojure sources
+*** /src/test/clojure - Clojure tests
+*** /src/main/cljs - ClojureScript sources
+*** /src/test/cljs - ClojureScript tests
+*** /src/main/java - Java sources, if needed
+* Create a new JIRA project (requires JIRA admin privileges):
+** Specify name (same as GitHub project name)
+** Specify key (approved by Clojure core, derived from project name) - should usually be first char of first part with up to 5 chars of second part - TBENCH, DJSON, etc.
+** Specify project lead's JIRA account
+** Edit project to add url and description (same as GitHub project)
+** Set notification scheme - usually "Default scheme plus notify project lead"
+* Setting up builds (requires Jenkins admin privileges, except step 2):
+** Create Jenkins user account for authors
+** Edit ci_data.clj in the https://github.com/clojure/build.ci[build.ci] repo add the new project / update authors (so they can run builds / cut releases)
+** Request on clojure-dev mailing list to run build.ci Hudson job - this will recreate all Hudson job definition files!
+** Force Jenkins to reload its configuration files
+* Autodoc
+** WIP
+* Performing releases
+** Snapshot releases are automatically created every time the job builds (triggered by any source change)
+*** To use snapshots, see Maven Settings and Repositories 
+** Perform a release according to How to Make Releases section below
+
+== How to Make Releases
+
+Prep
+
+* Your project must have a pom.xml file with a -SNAPSHOT version
+* The pom.xml file must specify a parent, the latest released version of pom.contrib in https://github.com/clojure/build.poms[build.poms]
+
+How to make a -SNAPSHOT release
+
+* Your project must have a pom.xml file with a -SNAPSHOT version
+* Push to "master" branch on GitHub
+* Jenkins polls GitHub and builds automatically
+* Or you can click "Build Now" on the project page
+* Jenkins builds and uploads a uniquely-numbered JAR file to the https://oss.sonatype.org/[Sonatype OSS Snapshot Repository]
+
+How to make a numbered release
+
+* The "master" branch in GitHub must have a pom.xml file with a -SNAPSHOT version, not a bare version number
+* Log in to https://build.clojure.org[Jenkins]
+* Navigate to your project's job
+* Click "Perform Maven Release" link on the left
+* On the "Perform Maven Release" page:
+** Select "Specify one version for all modules"
+** In the "Release Version" field, enter the version number for this release of your project
+*** This will normally be the current development version with the "-SNAPSHOT" suffix removed
+** In the "Development version" field, enter the version number for the subsequent development version of your project
+*** This will end with "-SNAPSHOT"
+** Click "Schedule Maven Release Build"
+* After the build completes successfully:
+** `git pull` on your development machine to get the new release tags
+** The release JAR file will be uploaded to the Sonatype OSS staging repository
+** The release will automatically be copied to the Maven Central repository within 24 hours (usually within 15 minutes)
+* Don't forget to update the project README if it recommends a version to users.
+
+Contrib Release Numbering Policy
+
+* major.minor.patch
+* Follow guidelines for accretion and fixation, not breakage, if at all possible
+
+== Coding Guidelines
+
+Disclaimer:
+
+* Rules are made to be broken. Know the standards, but do not treat them as absolutes.
+
+The Standards:
+
+* Get the name and signature right. Rich strongly respects Java's commitment to not break existing code. In practice, that means we can tweak the implementation forever, but once we publish a name and signature we need to stick with it. (In practice I think this means that we want many people to review the name and sig, even if they don't review the implementation details.)
+* Use type hints for functions that are likely to be on critical code; otherwise keep code simple and hint-free.
+** Only use type hints that matter. If you are not certain a type hint helps, don't add it.
+* Use good names, and don't be afraid to collide with names in other namespaces. That's what the flexible namespace support is there for.
+** OTOH, using the same name with a different signature or semantics begs the question as to whether one of them is less than ideal.
+* Be explicit and minimalist about dependencies on other packages. (Prefer :require :refer to :use)
+* Don't use a macro when a function can do the job. If a macro is important for ease-of-use, expose the function version as well.
+* If you are sure you have all the information at compile time, use a macro where it would improve performance sensitive code.
+* Provide a library-level docstring.
+* Provide automated tests.
+* Use '?' suffix for predicates, and return booleans.
+* Use '_' for destructuring targets and formal arguments names whose value will be ignored by the code at hand.
+* Include a docstring. 
+* When in doubt, expose the performant version. Clojure goes to great lengths to enable performance when you need it, and lib should too. (That's why we don't have multimethod + in core, for instance.) Users can always create more polymorphic APIs on their own, hijacking symbols if they want to.
+* If you take a good name that collides with core, make sure your semantics are parallel (possibly minus laziness). Good example of this is string functions that shadow core seq functions.
+* Use assert and pre- and post- conditions. 
+* Be lazy where possible.
+* Follow clojure.core's example for idiomatic names like pred and coll.
+** in fns
+*** f, g, h - function input
+*** n - integer input usually a size
+*** index - integer index
+*** x, y - numbers
+*** s - string input
+*** coll - a collection
+*** pred - a predicate closure
+*** & more - variadic input
+** in macros
+*** expr - an expression
+*** body - a macro body
+*** binding - a macro binding vector
+* Do NOT follow idioms from clojure.core's preamble code. That code runs in a limited environment because Clojure is not bootstrapped yet.
+* Decompose the pieces. If your name isn't Rich, don't write a form as long as, say, the definition of doseq.
+* Use keyword-first syntax to access properties on objects: `(:property object-like-map)`
+* Use collection-first syntax to extract values from a collection (or use get if the collection might be nil): `(collection-like-map key)` or `(get collection-like-map key)`. Note that not all collections are keyed by keyword.
+* Idiomatic code uses destructuring a lot. However, you should only destructure in the arg list if you want to communicate the substructure as part of the caller contract. Otherwise, destructure in a first-line let. 
+* Prefer updating over setting. Many reasons: the unified update model provides a simple standard way to do this. Helps you discover commutative operations. Reduces the surface area of assumptions you are making about the object you are updating.
+* Don't support operations on the wrong collection type. If your algorithm is only performant with random access, then require an arg that has random access.
+* Use pass:[*earmuffs*] only for things intended for rebinding. Don't use a special notation for constants; everything is assumed a constant unless specified otherwise.
+* Use the bang! only for things not safe in an STM transaction.
+* Prefer sequence-library composition over explicit loop/recur.
+* Rebindable vars should be paired with scoping macros, e.g. in and with-in-str.
+* Lazy seqs should be exposed as functions that hold only the minimum state needed, a.k.a. "let go of your head." Let the caller decide how much local memory they want to use.
+* Use Klass/staticField, (Klass/staticMethod), (Klass.) and (.method obj) interop styles with the only exception being in code-generating-code where the older (. obj method) style may be easier to produce.
+* If you present an interface that implicitly passes a parameter via dynamic binding (e.g. db in sql), also provide an identical interface but with the parameter passed explicitly.
+* When providing a default case for cond, use the keyword :else as a condition instead of true
+* To access a private var (e.g. for testing), use the @#'some.ns/var form
+* Protocols:
+** One should only extend a protocol to a type if they own either the type or the protocol.
+** If one breaks the previous rule, they should be prepared to withdraw, should the implementor of either provide a definition
+** If a protocol comes with Clojure itself, avoid extending it to types you don't own, especially e.g. java.lang.String and other core Java interfaces. Rest assured if a protocol should extend to it, it will, else lobby for it.
+*** The motive is, as stated by Rich Hickey, to prevent "people extend protocols to types for which they don't make sense, e.g. for which the protocol authors considered but rejected an implementation due to a semantic mismatch.". "No extension will be there (by design), and people without sufficient understanding/skills might fill the void with broken ideas."
+
+

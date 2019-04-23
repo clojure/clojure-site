@@ -21,11 +21,15 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 * <<devchangelog#,Dev changelog>>
 * Requirements: Java 8 or higher (recommended: Java 8 or Java 11)
 
+== <<downloads_older#,Older Releases>>
+
 == Clojure Source
 
 Clojure source code is hosted at https://github.com/clojure/clojure[github.com/clojure/clojure]. Builds of the very latest version of Clojure's master branch are available at https://oss.sonatype.org/content/repositories/snapshots/org/clojure/clojure/1.11.0-master-SNAPSHOT/[oss.sonatype.org].
 
-== Get Clojure via deps.edn
+== Get Clojure
+
+=== Via deps.edn
 
 Specify the version of Clojure that you want in your deps.edn:
 
@@ -35,7 +39,7 @@ Specify the version of Clojure that you want in your deps.edn:
  {org.clojure/clojure {:mvn/version "1.10.0"}}}
 ----
 
-== Get Clojure via Leiningen
+=== Via Leiningen
 
 Modify the dependencies and repositories sections of your https://leiningen.org/[Leiningen] project.clj file, specifying the version of Clojure that you want:
 [source,clojure]
@@ -44,4 +48,45 @@ Modify the dependencies and repositories sections of your https://leiningen.org/
 :dependencies [[org.clojure/clojure "1.10.0"]]
 ----
 
-== <<downloads_older#,Older Releases>>
+== Using Clojure and contrib SNAPSHOT releases
+
+Most tools do not automatically include the sonatype snapshot repositories. To use SNAPSHOT releases, you must add this to your configuration:
+
+=== In deps.edn
+
+Add an additional repository in deps.edn:
+
+[source,clojure]
+----
+{:mvn/repos
+ {"sonatype-oss-public" {:url "https://oss.sonatype.org/content/groups/public/"}}}
+----
+
+=== In Leiningen
+
+Add a snapshot repository in Leiningen in project.clj:
+
+[source,clojure]
+----
+:repositories {"sonatype-oss-public" "https://oss.sonatype.org/content/groups/public/"}
+----
+
+=== In Maven
+
+In pom.xml:
+
+[source,xml]
+----
+<repositories>
+  <repository>
+    <id>sonatype-oss-public</id>
+    <url>https://oss.sonatype.org/content/groups/public/</url>
+    <releases>
+      <enabled>true</enabled>
+    </releases>
+    <snapshots>
+      <enabled>true</enabled>
+    </snapshots>
+  </repository>
+</repositories>
+----

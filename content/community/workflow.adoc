@@ -180,3 +180,18 @@ image::/images/content/community/process.png[JIRA Workflow]
 * Actions:
 ** Set Fix Version from Backlog to current release 
 ** (or don't to leave in Backlog)
+
+== Ticket report summary
+
+* Clojure
+** Release-independent reports
+*** http://dev.clojure.org/jira/secure/IssueNavigator.jspa?mode=hide&requestId=10371[Open] | http://dev.clojure.org/jira/secure/IssueNavigator.jspa?mode=hide&requestId=10370[Triaged] | http://dev.clojure.org/jira/secure/IssueNavigator.jspa?mode=hide&requestId=10511[Prescreened] | http://dev.clojure.org/jira/secure/IssueNavigator.jspa?mode=hide&requestId=10376[Vetted] | http://dev.clojure.org/jira/secure/IssueNavigator.jspa?mode=hide&requestId=10378[Declined] | http://dev.clojure.org/jira/secure/IssueNavigator.jspa?mode=hide&requestId=10372[Backlog]
+** Next release work queues
+*** http://dev.clojure.org/jira/secure/IssueNavigator.jspa?mode=hide&requestId=10373[Needs Patch] | http://dev.clojure.org/jira/secure/IssueNavigator.jspa?mode=hide&requestId=10374[Screenable] | http://dev.clojure.org/jira/secure/IssueNavigator.jspa?mode=hide&requestId=10375[Incomplete] | http://dev.clojure.org/jira/secure/IssueNavigator.jspa?mode=hide&requestId=10383[Screened] | http://dev.clojure.org/jira/secure/IssueNavigator.jspa?mode=hide&requestId=10377[Ok] | http://dev.clojure.org/jira/secure/IssueNavigator.jspa?mode=hide&requestId=10379[Accepted] | http://dev.clojure.org/jira/secure/IssueNavigator.jspa?mode=hide&requestId=10380[Closed]
+** Other
+*** http://jafingerhut.github.io/clj-ticket-status/clojure-ticket-info.html[Tickets by Weighted Vote]
+* ClojureScript
+** http://dev.clojure.org/jira/secure/IssueNavigator.jspa?mode=hide&requestId=10706[Needs Patch] | http://dev.clojure.org/jira/secure/IssueNavigator.jspa?mode=hide&requestId=10707[Screenable]
+* core.async
+** http://dev.clojure.org/jira/secure/IssueNavigator.jspa?mode=hide&requestId=10605[Open] | http://dev.clojure.org/jira/secure/IssueNavigator.jspa?mode=hide&requestId=10606[Triaged] | http://dev.clojure.org/jira/secure/IssueNavigator.jspa?mode=hide&requestId=10607[Vetted] | https://dev.clojure.org/jira/secure/IssueNavigator.jspa?mode=hide&requestId=10608[Screenable] | http://dev.clojure.org/jira/secure/IssueNavigator.jspa?mode=hide&requestId=10609[Screened] | http://dev.clojure.org/jira/secure/IssueNavigator.jspa?mode=hide&requestId=10611[Incomplete] | http://dev.clojure.org/jira/secure/IssueNavigator.jspa?mode=hide&requestId=10610[Ok]
+

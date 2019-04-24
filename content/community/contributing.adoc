@@ -21,7 +21,11 @@ The CA does not change the rights or responsibilities of the Clojure community u
 
 Before you invest time working on a change, discuss what you're trying to do with others on the https://groups.google.com/group/clojure-dev[Clojure Dev Google group]. They're likely to be able to offer comments and suggestions that will result in a higher-quality change and a smoother submission process. Announcing that you're working on a particular item can also help to avoid wasted effort in case someone else is already working on it. Once you've submitted the CA, you can https://dev.clojure.org/jira/browse/CLJ[submit patches via JIRA]. Frequent and trusted contributors of more substantial libraries may be granted committer membership in the Clojure contrib projects.
 
-Please see the https://dev.clojure.org/display/community/Contributing[Contributing] wiki for a collection of resources on tickets, builds, patches, source, and more. If you'd like to submit a patch, please follow these guidelines on the https://dev.clojure.org/display/community/JIRA+workflow[preferred process for submitting].
+Please see the following pages for more info:
+
+* <<workflow#,Workflow>>
+* <<creating_tickets#,Creating Tickets>>
+* <<developing_patches#,Developing Patches>>
 
 [[contributors]]
 == Contributors

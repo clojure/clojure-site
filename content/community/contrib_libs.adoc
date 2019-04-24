@@ -102,6 +102,8 @@ Prior to Clojure 1.3, Clojure had a single "batteries included" library called c
 
 At the time there was an idea that some of the contrib libraries could eventually be promoted into Clojure's core library itself. With time, there has been a desire to keep Clojure's core library small and to allow these independent libraries to stay independent and evolve at their own pace.
 
+Also see <<contrib_history#,Contrib History>> for some legacy history of the contrib split.
+
 == Contrib How-To
 
 Some older content on participating or contributing to contrib can be found at <<contrib_howto#,Contrib How-To>>.

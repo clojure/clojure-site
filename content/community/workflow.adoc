@@ -133,7 +133,7 @@ image::/images/content/community/process.png[JIRA Workflow]
 ** http://dev.clojure.org/jira/secure/IssueNavigator.jspa?mode=hide&requestId=10374[Screenable] tickets (for new vetted tickets with patches)
 ** http://dev.clojure.org/jira/secure/IssueNavigator.jspa?mode=hide&requestId=10375[Incomplete] tickets that have changed recently - need to re-review if submitter has updated ticket since marked Incomplete.
 * Goal: verify that ticket and patch are ready for Rich to review.  The quality bar is HIGH - the ticket and patch should be perfect.
-* Checks (see <<creating_tickets#,Creating Tickets>> and <<developing_patches#,Developing Patches>>):
+* Checks (see <<creating_tickets#,Creating Tickets>> and <<developing_patches#,Developing Patches>> and <<screening_patches#,Screening Patches>>):
   . Is there a patch?
   . Is there a test?
   . Has author <<contributing#,signed the CA>>?

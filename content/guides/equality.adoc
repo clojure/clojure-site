@@ -632,7 +632,7 @@ bucket if the map uses the default Clojure implementation of a
 hash-map.
 
 The Clojure developers
-https://dev.clojure.org/display/design/Better+hashing[analyzed]
+https://archive.clojure.org/design-wiki/display/design/Better%2Bhashing.html[analyzed]
 several alternate hash functions, and chose one based on the Murmur3
 hash function, which has been in use since Clojure 1.6.0.  It also
 uses a different way than Java's `hashCode` does to combine the hashes

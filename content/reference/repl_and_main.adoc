@@ -181,7 +181,7 @@ Connection closed by foreign host.
 Also see:
 
 * https://dev.clojure.org/jira/browse/CLJ-1671[CLJ-1671]
-* https://dev.clojure.org/display/design/Socket+Server+REPL[Socket REPL design page]
+* https://archive.clojure.org/design-wiki/display/design/Socket%2BServer%2BREPL.html[Socket REPL design page]
 
 == Related functions
 

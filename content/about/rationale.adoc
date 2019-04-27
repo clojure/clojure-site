@@ -89,7 +89,7 @@ and couldn't find one. Here's an outline of some of the motivating ideas behind 
 *** Now also open source
 ** Interop with other code required
 *** C linkage insufficient these days
-* Java/JVM _is_language + platform
+* Java/JVM _is_ language + platform
 ** Not the original story, but other languages for JVM always existed, now embraced by Sun
 ** Java can be tedious, insufficiently expressive
 *** Lack of first-class functions, no type inference, etc

@@ -38,7 +38,15 @@ Clojure 1.9.0
 user=>
 ----
 
-Once in the REPL you can type Clojure expressions and press enter to evaluate them.
+Once in the REPL you can type Clojure expressions and press enter to evaluate them.  Type Control-D to exit the REPL:
+
+[source,shell]
+----
+user=> (+ 2 3)   # press the `enter` key after typing the expression to evaluate it
+5                # result of expression
+user=>           # type Ctrl-D here to exit the REPL (does not print)
+$ 
+----
 
 There are many Clojure and Java libraries available that provide access to practically any functionality you might need. For example, consider the commonly used Clojure library https://github.com/clj-time/clj-time[clj-time] for working with dates and times.
 

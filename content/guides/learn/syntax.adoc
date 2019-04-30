@@ -301,7 +301,7 @@ user=> (source dir)
 
 As you go through this workshop, please feel free to examine the docstring and source for the functions you are using. Exploring the implementation of the Clojure library itself is an excellent way to learn more about the language and how it is used.
 
-It is also an excellent idea to keep a copy of the [Clojure Cheatsheet](https://clojure.org/api/cheatsheet) open while you are learning Clojure. The cheatsheet categorizes the functions available in the standard library and is an invaluable reference.
+It is also an excellent idea to keep a copy of the <<xref/../../../api/cheatsheet#,Clojure Cheatsheet>> open while you are learning Clojure. The cheatsheet categorizes the functions available in the standard library and is an invaluable reference.
 
 Now let's consider some Clojure basics to get you going....
 

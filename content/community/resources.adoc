@@ -9,13 +9,13 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 == Clojure Discussion
 
-* https://groups.google.com/group/clojure[Clojure Google Group]
-* #clojure IRC channel on https://freenode.net[freenode.net]
+* https://groups.google.com/group/clojure[Clojure Google Group] (official)
 * http://clojurians.net[Clojurians Slack Chat]
 * https://clojurians.zulipchat.com[Clojurians Zulip Chat]
+* https://clojureverse.org[Clojureverse]
 * https://clojure.org/community/user_groups[Clojure User Groups]
 * http://planet.clojure.in/[Planet Clojure] blog aggregator
-* https://clojureverse.org[Clojureverse]
+* #clojure IRC channel on https://freenode.net[freenode.net]
 
 == Tutorials and Learning Materials
 
@@ -44,15 +44,13 @@ Community:
 * http://exercism.io/[exercism.io] - crowd-source code reviews (supports Clojure)
 * https://clojurecademy.com/[Clojurecademy] - interactive Clojure learning
 * https://github.com/bbatsov/clojure-style-guide[Clojure Style Guide]
-* http://planet.clojure.in/[Planet Clojure] - Clojure blog aggregator
 * http://www.clojure-toolbox.com/[Clojure Toolbox] - a categorized index of Clojure libraries
-* http://www.clojureatlas.com/[Clojure Atlas] - visualization of Clojure and the core library
 
 Newsletters
 
-* http://www.clojuregazette.com/[Clojure Gazette]
-* http://reborg.tumblr.com/[Clojure Weekly]
 * http://therepl.net[The REPL]
+* http://insideclojure.org[Inside Clojure] - weekly journals about development of Clojure
+* https://purelyfunctional.tv/newsletter[PurelyFunctional.tv Newsletter]
 
 Videos and presentations:
 
@@ -70,7 +68,6 @@ Video training (commercial):
 * http://www.infiniteskills.com/training/building-microservices-with-clojure.html[Building Microservices with Clojure] - Scott Rehorn (O'Reilly)
 * http://www.infiniteskills.com/training/learning-clojure.html[Learning Clojure] - Adam Bard
 * http://www.infiniteskills.com/training/learning-clojurescript.html[Learning ClojureScript] - David Eisenberg
-* http://www.lynda.com/Clojure-tutorials/Up-Running-Clojure/413127-2.html[Up and Running with Clojure] - Arthur Ulfeldt
 * https://www.pluralsight.com/courses/clojure-fundamentals-part-one[Clojure Fundamentals] - Alan Dipert (PluralSight)
 * https://www.pluralsight.com/courses/clojure-concurrency-tutorial[Clojure Concurrency] - Craig Andera (PluralSight)
 * https://www.packtpub.com/web-development/building-web-applications-clojure-video[Building Web Applications with Clojure] - Tomek Lipski (Packt)
@@ -84,21 +81,18 @@ Community volunteers maintain <<xref/../../guides/getting_started#,Getting Start
 * http://boot-clj.com/[Boot] - build tooling for Clojure: instead of a special-purpose DSL, Boot supplies abstractions and libraries you can use to automate nearly any build scenario with the full power of the Clojure language
 * http://www.gnu.org/software/emacs/[Emacs] with https://github.com/clojure-emacs/cider[CIDER]
 * http://www.vim.org/[Vim] with https://github.com/tpope/vim-fireplace[Fireplace]
-* http://doc.ccw-ide.org/[Eclipse Counterclockwise]
 * IntelliJ https://cursiveclojure.com/[Cursive]
 * https://sekao.net/nightcode/[Nightcode]
 * http://www.lighttable.com/[Light Table]
 * http://www.sublimetext.com/[Sublime Text] with https://github.com/wuub/SublimeREPL[SublimeREPL]
 * https://atom.io[Atom] with https://atom.io/packages/nrepl[nrepl]
 * https://code.visualstudio.com[Visual Studio Code] with https://github.com/avli/clojureVSCode[clojureVSCode]
+* http://doc.ccw-ide.org/[Eclipse Counterclockwise] (inactive)
 
 == Conferences
 
 * http://clojure-conj.org/[Clojure/conj] (usually in November)
-* http://www.clojurewest.org/[Clojure/west] (usually in March)
-* http://euroclojure.com[EuroClojure] (usually mid-year)
 * http://www.clojurebridge.org/[ClojureBridge] - beginner workshops for women
-* http://lanyrd.com/search/?context=future&q=clojure&type=conference[Clojure events]
 * https://clojutre.org[ClojuTRE] - A Clojure conference in Tampere/Helsinki, Finland
 * https://skillsmatter.com/conferences/10459-clojure-exchange-2018[Clojure eXchange] - A Clojure conference in London, UK
 * https://clojured.de/[clojureD] - A Clojure conference in Berlin, Germany

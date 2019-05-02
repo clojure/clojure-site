@@ -16,12 +16,13 @@ If you consider the following items before you begin coding, you will produce a 
 * Have you vetted your idea with the community?  Please discuss in Slack or mailing list with members of the core team if you can. (Not necessary for everything, like typos.)
 * Make a table of considered alternatives, and their tradeoffs. Describe why the chosen solution is the best choice.
 * How will you prove to others your patch works?  Plan to include tests. Example-based tests are ok, but generative tests are preferred.
-* Don't do too much!  Submit s mall patches that address specific problems, don't add anything extra, even (especially!) "cleanup" of nearby code.
+* Document the changes in the patch in the ticket. Anything that can help a screener understand what changes you made and why will make their job easier.
+* Don't do too much! Submit small patches that address specific problems, don't add anything extra, even (especially!) "cleanup" of nearby code. This only serves to confuse the intent of the patch.
 
 == While Your Patch is Being Considered
 
 * Keep the description up-to-date as comments come in. It is very time-consuming to reconstruct the current state of a ticket by reading the comment thread.
-* Rally support.  Votes are good, and precise comments from other users reviewing the ticket are even better.
+* Rally support. Votes are good, and comments from other users reviewing the ticket are even better.
 * As tickets grow, make sure you document clearly which patch(es) are active.  Don't do this by deleting old patches, just refer to patches by name in the comments.
 
 == Coding
@@ -104,6 +105,8 @@ Mark the ticket as having a patch ready for screening by editing the Patch field
 == Removing patches
 
 To remove a patch (e.g. because it is no longer relevant), go to the page for the ticket and look for the "Attachments" heading beneath the Description text.  Far to the right is a plus sign and a triangle.  Click on the triangle and select "Manage Attachments" from the menu.  Think carefully on which one you want to delete, and click the trash can icon next to it.  Note: most people have permission to remove their own attachments, but not those added by someone else.
+
+In general, you don't need to remove old patches. Just let them accumulate and track the most relevant in the ticket description.
 
 == Updating stale patches
 

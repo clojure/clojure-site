@@ -9,37 +9,38 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 == Creating Tickets
 
-The first step in the contribution process is to open a ticket. Please do so through https://dev.clojure.org/jira/browse/CLJ[JIRA] and not through GitHub. Tickets can be created by anyone, whether or not they have signed a <<contributing#,Clojure contributor agreement>>. It is OK to create a ticket and submit a patch at the same time, but please be aware, if the ticket is later rejected, the time spent developing the patch will be lost. Therefore it is recommended that coding on non-trivial patches should be postponed until after the vetting process.  One possible advantage to submitting a patch before the ticket is vetted, is that it might be vetted and screened all at once by the screener, if they choose to do that, saving some time.
+The first step in the contribution process is to open a ticket. Please do so through https://dev.clojure.org/jira/browse/CLJ[JIRA]. Tickets can be created by anyone, whether or not they have signed a <<contributing#,Clojure contributor agreement>>. It is OK to create a ticket and submit a patch at the same time, but often it's best to get some feedback in triage before making a patch. Most new tickets are reviewed within a day, but in some cases it may be as long as a week depending on the time of year.
 
-If you have questions about whether some behavior of Clojure is a bug, or submitting bug reports or enhancement requests, please ask on the https://groups.google.com/group/clojure[clojure Google group].
+If you have questions about whether some behavior of Clojure is a bug, or submitting bug reports or enhancement requests, please ask on the https://groups.google.com/group/clojure[clojure Google group] or in other discussion forums. If a ticket is a duplicate of an existing ticket, it will be marked as such during triage.
 
-You need a Clojure JIRA account to create a ticket.  Go to the https://dev.clojure.org/jira/browse/CLJ[Clojure JIRA page] and click the "Log In" link near the top right of the page, then on the next page click the "sign up" link.  If you see your name instead of a "Log in" link, you already have an account and are signed in.
+You need a Clojure JIRA account to create a ticket.  Go to the https://dev.clojure.org/jira/browse/CLJ[Clojure JIRA page] and click the "Log In" link near the top right of the page, then on the next page click the "sign up" link.  If you see your name instead of a "Log in" link, you already have an account and are signed in. Please note that due to spam control, you will be able to create a ticket but unable to comment or edit tickets. Please request elevated privileges on mailing lists or discussion forums or contact Alex Miller at alex.miller@cognitect.com.
 
 == Qualities of a Great Ticket
 
 All tickets should have:
 
-* Type: Correct categorization (Defect, Enhancement, or Feature)
-* Summary: concise title
+* Type: Correct categorization as Defect, Enhancement (extension of existing feature), or Feature (new)
+* Summary: concise summary of the problem
 * Description: 
-** Exactly one issue (if multiple, split across tickets and link)
+** Exactly one problem (if multiple, split across tickets and link)
 ** (If Defect) Reproducible demonstration of problem (commands that can be duplicated in a repl are preferred, particularly a plain Clojure repl, not a Leiningen repl), and a description of what you think should happen instead
-** (If Enhancement) Statement of the what should be improved 
-** Links to relevant prior discussion on clojure-dev, IRC, or email thread as appropriate
-* Priority: categorize based on impact and whether this is a theoretical issue or one actually encountered in real code
+** (If Enhancement) Statement of how this is encountered and why it is a problem worth solving.
+** Links to relevant prior discussion if relevant
+* Priority: categorize based on impact and whether this is a theoretical issue or one actually encountered in real code. This may be adjusted by the core team during triage.
 * Labels: (see section below)
 
 Tickets ready for screening should also have:
 
 * Description:
 ** The cause of the problem
-** An accurate description of the approach being pursued to solve the problem
+** List of alternatives to solving the problem
+** Which approach is being pursued
 ** Name of current patch to consider
-** Summary or reference to alternative approaches that were considered
+** A description of the changes in the patch - anything you can do to illuminate what the changes are and why you made them will help ticket screeners as they re-walk your steps.
+** Benchmark data (if performance related)
 * Patch attachment:
 ** Implementation that follows the approach specified in the description
 ** Tests as appropriate
-** Benchmark data (if performance related)
  
 Example:
  
@@ -67,7 +68,9 @@ Patch: add-odd-3.patch
 
 == Tend Your Ticket
 
-As work progresses on a ticket, it is common for it to accumulate discussion between submitter, screeners, and patch developers. As this occurs, it is essential to edit the ticket description to stay up to date as a summary of the essential problem, solution approach, and patch. It should not be necessary to read the the full ticket history to evaluate the patch.
+As work progresses on a ticket, it is common for it to accumulate discussion between submitter, screeners, and patch developers. As this occurs, it is essential to edit the ticket description to stay up to date as a summary of the essential problem, solution approach, and patch. It should not be necessary to read the the full ticket history to evaluate the patch. 
+
+Patches may, over time, no longer apply to master. Screeners often update patches so they stay relevant (retaining attribution to the author), but you can do this work as well if you like.
 
 == Labels
 

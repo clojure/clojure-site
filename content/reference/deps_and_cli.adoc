@@ -405,9 +405,11 @@ Usage:
 * `clojure [dep-opt*] [init-opt*] [main-opt] [arg*]`
 * `clj     [dep-opt*] [init-opt*] [main-opt] [arg*]`
 
-The clojure tool is a runner for Clojure. clj is a wrapper for interactive repl use. These tools ultimately construct and invoke a command-line of the form:
+The `clojure` tool is a shell script for invoking Clojure. 
+The `clj` tool is a wrapper script designed for interactive repl use. 
+These tools ultimately construct and invoke a command-line of the form:
 
-`java [java-opt*] -cp classpath clojure.main [init-opt*] [main-opt] [arg*]`
+`java [java-opt*] -cp <classpath> clojure.main [init-opt*] [main-opt] [arg*]`
 
 The dep-opts are used to build the java-opts and classpath:
 

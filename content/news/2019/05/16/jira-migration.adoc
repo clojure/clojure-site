@@ -9,7 +9,7 @@ Clojure has been very fortunate to receive infrastructure support from https://w
 
 == User migration
 
-Due to the large number of historical users, it is not feasible for us to move all users, and we've decided to prioritize users that have edited tickets in the past (changed a description, added a patch, etc), so those should all be migrated (user names and emails, not passwords). When the import happens, users of the old system will see an email invite for the new system. Initially these users will not have access to projects.
+Due to the large number of users, it is not feasible for us to move everyone, and we've decided to migrate all users that have edited tickets in the past (changed a description, added a patch, etc) - this will move user names and emails, not passwords. When the import happens, email invites will go out for users in the new system based on the email address in the old system. Initially these users will not have access to projects.
 
 Users that created or commented on tickets in the past (but did not edit) will not automatically be migrated. We are planning to leverage JIRA Service Desk to create a new path for language users to file tickets without needing an account. These incoming tickets can be triaged and turned into JIRA tickets as needed. We are also looking at a new process to obtain a contributor account and gain access to the system for commenting or other work. Stay tuned for more on that.
 

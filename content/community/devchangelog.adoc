@@ -19,6 +19,10 @@ Note: All dev releases are subject to breaking changes for new work since the pr
 
 == Release 1.10.1
 
+=== 1.10.1-beta3 (May 16, 2019)
+
+* https://dev.clojure.org/jira/browse/CLJ-2504[CLJ-2504] Provide more options for error reporting in clojure.main
+
 === 1.10.1-beta2 (Apr 11, 2019)
 
 * https://dev.clojure.org/jira/browse/CLJ-2497[CLJ-2497] Put error report location on its own line

@@ -274,7 +274,7 @@ WARNING: Use --illegal-access=warn to enable warnings of further illegal reflect
 WARNING: All illegal access operations will be denied in a future release
 ----
 
-The first thing to note here is that this is a warning. Java 9, 10, and 11 will all permit the call to be made and the code will continue to work.
+The first thing to note here is that this is a warning. Java 9 through Java 12 will all permit the call to be made and the code will continue to work.
 
 There are several potential workarounds:
 
@@ -285,6 +285,13 @@ There are several potential workarounds:
 ----
 * As of Clojure 1.10, turn off illegal access with `--illegal-access=deny`. The Java reflection system will then provide the necessary feedback to Clojure to detect that calling through the inaccessible class is not an option. Clojure will find the public invocation path instead and no warning will be issued.
 * Use JVM module system flags (`--add-exports` etc ) to forcibly export the internal packages to avoid the warning. This is not recommended.
+
+If it is difficult to tell from the warning where the reflection is occurring, it may help to add the flag:
+
+[source]
+----
+--illegal-access=debug
+----
 
 == Design and Use
 

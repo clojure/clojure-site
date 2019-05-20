@@ -47,6 +47,9 @@ data set, and determine which value should come first (or that they are equal).
 * Reverse the sort by reversing the order that you give the arguments to an existing comparator.
 * Compare equal-length Clojure vectors containing "sort keys" in order to do a multi-field comparison
 between values.
+* Remove or replace occurrences of "Not a Number" (`pass:[##NaN]`)
+from your data before sorting a collection, and avoid using them as
+parts of keys in a sorted collection.
 
 DO NOTs:
 
@@ -329,6 +332,51 @@ As explained later, it should not behave like `\<=` for numbers
 (see section "Comparators for sorted sets and maps are easy to get wrong").
 
 == Mistakes to avoid
+
+=== Be wary of "Not a Number" values as compared values in sorted collections
+
+Clojure's default comparator `compare` treats "Not a Number"
+(`pass:[##NaN]`) values as equal to all other numbers.  If you call
+https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/sort[sort]
+on sequences of numbers that contain occurrences of `pass:[##NaN]`, it
+might throw an exception.
+
+[source, clojure]
+----
+user> (sort [##NaN 5 13 ##NaN 3 7 12 ##NaN 8 4 2 20 6 9 ##NaN 50 83 19 -7 0 18 26 30 42 ##NaN 57 90 -8 -12 43 87 38])
+Execution error (IllegalArgumentException) at java.util.TimSort/mergeHi (TimSort.java:899).
+Comparison method violates its general contract!
+----
+
+Even if it does not throw an exception, it is likely that the returned
+sequence will not be sorted.  This is because `compare` does not put
+`pass:[##NaN]` into a total order with other numbers as a comparator
+should, in order for `sort` to work correctly:
+
+[source, clojure]
+----
+user> (sort [##NaN 10 5 13 ##NaN 3 7 12 ##NaN 8 4 2 20 6 9 ##NaN 50 83 19 -7])
+(##NaN -7 2 3 4 5 6 7 8 10 12 13 ##NaN ##NaN 9 19 20 ##NaN 50 83)
+----
+
+Because `pass:[##NaN]` is not equal to any other value, you cannot use
+code like this to remove values from a sequence of numbers:
+
+[source, clojure]
+----
+user> (remove #(= % ##NaN) [9 3 ##NaN 4])
+(9 3 ##NaN 4)
+----
+
+You may use the Java method `Double/isNaN` to indicate whether a value
+is `pass:[##NaN]`:
+
+[source, clojure]
+----
+user> (remove #(Double/isNaN %) [9 3 ##NaN 4])
+(9 3 4)
+----
+
 
 === Comparators for sorted sets and maps are easy to get wrong
 This is just as accurately stated as "comparators are easy to get wrong", but it is often more noticeable

@@ -12,7 +12,7 @@ Clojure is an umbrella level project that hosts many additional libraries called
 These libraries use the same contribution model (<<contributing#,Contributor Agreement>>, license, and copyright) as Clojure itself, and a shared infrastructure maintained by the Clojure core team:
 
 * Source control - Git libraries on GitHub
-* Issues - https://dev.clojure.org/jira[JIRA]
+* Issues - https://clojure.atlassian.net/projects/CLJ[JIRA]
 * Development model - patches in JIRA, no PRs
 * Continuous integration - https://build.clojure.org[Jenkins]
 * Doc generation and hosting - https://tomfaulhaber.github.io/autodoc/[Autodoc] and GitHub http://clojure.github.io/[pages]

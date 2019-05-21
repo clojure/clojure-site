@@ -74,7 +74,7 @@ Exceptions, or possible surprises:
   to a similar collection with Clojure counterparts, due to the
   difference in hashing behavior.  (see
   <<xref/../equality#equality_and_hash,Equality and hash>> and
-  http://dev.clojure.org/jira/browse/CLJ-1372[CLJ-1372])
+  https://clojure.atlassian.net/browse/CLJ-1372[CLJ-1372])
 * When comparing collections with `=`, numbers within the collections
   are also compared with `=`, so the three numeric categories above
   are significant.
@@ -95,16 +95,16 @@ Exceptions, or possible surprises:
   even if the regex instances are not identical objects.  If you feel
   the need to, consider converting them to strings first, e.g. `(str
   #"abc")` -> `"abc"` (see
-  http://dev.clojure.org/jira/browse/CLJ-1182[CLJ-1182])
+  https://clojure.atlassian.net/browse/CLJ-1182[CLJ-1182])
 * Clojure persistent queues are never `=` to Java collections
   implementing `java.util.List`, not even if they have `=` elements in
   the same order (see
-  http://dev.clojure.org/jira/browse/CLJ-1059[CLJ-1059])
+  https://clojure.atlassian.net/browse/CLJ-1059[CLJ-1059])
 * Using `=` to compare a sorted map with another map, where `compare`
   throws an exception when comparing their keys to each other because
   they have different types (e.g. keywords vs. numbers), will in some
   cases throw an exception (see
-  http://dev.clojure.org/jira/browse/CLJ-2325[CLJ-2325])
+  https://clojure.atlassian.net/browse/CLJ-2325[CLJ-2325])
 
 In most cases, `hash` is consistent with `=`, meaning: if `(= x y)`,
 then `(= (hash x) (hash y))`.  For any values or objects where this
@@ -123,7 +123,7 @@ items as elements, or hash-based maps with those items as keys.
   before including them in other Clojure data structures.
 * `hash` is not consistent with `=` for objects with class `VecSeq`,
   returned from calls like `(seq (vector-of :int 0 1 2))` (see
-  http://dev.clojure.org/jira/browse/CLJ-1364[CLJ-1364])
+  https://clojure.atlassian.net/browse/CLJ-1364[CLJ-1364])
 
 == Introduction
 
@@ -642,7 +642,7 @@ At that time, Clojure could have changed `hash` to use the new
 technique for non-Clojure collections as well, but it was judged that
 doing so would significantly slow down a Java method called `hasheq`,
 used to implement `hash`.  See
-http://dev.clojure.org/jira/browse/CLJ-1372[CLJ-1372] for approaches
+https://clojure.atlassian.net/browse/CLJ-1372[CLJ-1372] for approaches
 that have been considered so far, but as of this time no one has
 discovered a competitively fast way to do it.
 
@@ -669,8 +669,8 @@ the most convenient choice.
 Rich Hickey has decided that changing this inconsistency in hash
 values for types `Float` and `Double` is out of scope for Clojure
 (mentioned in a comment of
-http://dev.clojure.org/jira/browse/CLJ-1036[CLJ-1036]).  Ticket
-http://dev.clojure.org/jira/browse/CLJ-1649[CLJ-1649] has been filed
+https://clojure.atlassian.net/browse/CLJ-1036[CLJ-1036]).  Ticket
+https://clojure.atlassian.net/browse/CLJ-1649[CLJ-1649] has been filed
 suggesting a change that `=` always return false when comparing floats
 to doubles, which would make `hash` consistent with `=` by eliminating
 the restriction on `hash`, but there is no decision on that yet.

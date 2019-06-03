@@ -27,7 +27,7 @@ Things you should do if you are a Clojure Contrib committer:
 * do your work on the master branch, or (if you are working on a significant chunk you want to keep temporarily separate) on a feature-specific branch that you create yourself
 * use the Maven Release option on build.clojure.org to make releases
 * coordinate with other committers before making changes to their libraries
-* accept contributions from others only if they have <<contributors#,signed the CA>>
+* accept contributions from others only if they have <<xref/../../dev/contributors#,signed the CA>>
 
 Things to avoid:
 
@@ -38,7 +38,7 @@ Things to avoid:
 
 Here's the process outline for what it takes to become a committer:
 
-* Get your <<contributing#,CA>> on file
+* Get your <<xref/../../dev/contributor_agreement#,CA>> on file
 * Join the http://groups.google.com/group/clojure-dev[clojure-dev] mailing list
 * Create a https://clojure.atlassian.net/projects/CLJ[JIRA account]
 * Let Clojure core team know your github username and JIRA username so they can set up the correct permissions

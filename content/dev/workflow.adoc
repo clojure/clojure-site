@@ -1,7 +1,7 @@
 = Workflow
 Alex Miller
 2018-12-06
-:type: community
+:type: dev
 :toc: macro
 :icons: font
 
@@ -22,7 +22,7 @@ The overall process described here has several goals:
 There are several groups involved in this process with increasing levels of responsibility:
 
 * Anyone - anyone can submit a bug or enhancement request to Clojure once you have created a Clojure JIRA account
-* Contributors - anyone that has <<contributing#,signed the contributor agreement>> can supply patches or work on improving tickets
+* Contributors - anyone that has <<contributor_agreement#,signed the contributor agreement>> can supply patches or work on improving tickets
 * Screeners - a smaller group of trusted individuals have been granted the ability to move tickets through (some of) the stages of the process, in particular the Triage and Screening activities
 * BDFL - Rich Hickey is the creator and Benevolent Dictator for Life of what goes into Clojure. Stuart Halloway also has a special level of access and typically commits patches to Clojure.
 
@@ -136,7 +136,7 @@ image::/images/content/community/process.png[JIRA Workflow]
 * Checks (see <<creating_tickets#,Creating Tickets>> and <<developing_patches#,Developing Patches>> and <<screening_tickets#,Screening Tickets>>):
   . Is there a patch?
   . Is there a test?
-  . Has author <<contributing#,signed the CA>>?
+  . Has author <<contributor_agreement#,signed the CA>>?
   . Can you apply the patch to current source tree? 
   . Do all tests pass?
   . Is patch clean (no extraneous whitespace or changes outside the scope of the problem)?

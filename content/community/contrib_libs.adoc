@@ -9,7 +9,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 Clojure is an umbrella level project that hosts many additional libraries called _Clojure contrib_, which all exist under the https://github.com/clojure[Clojure organization] on GitHub.
 
-These libraries use the same contribution model (<<contributing#,Contributor Agreement>>, license, and copyright) as Clojure itself, and a shared infrastructure maintained by the Clojure core team:
+These libraries use the same contribution model (<<xref/../../dev/contributor_agreement#,Contributor Agreement>>, license, and copyright) as Clojure itself, and a shared infrastructure maintained by the Clojure core team:
 
 * Source control - Git libraries on GitHub
 * Issues - https://clojure.atlassian.net/projects/CLJ[JIRA]

@@ -358,7 +358,7 @@ This is a quirk of Adobe EchoSign specific to users whose email account is alrea
 [[prs]]
 **<<faq#prs,Other projects hosted on GitHub accept pull requests.  Why not Clojure?>>**
 
-Rich Hickey prefers to evaluate patches attached to JIRA tickets.  This is not to make it more difficult for contributors, or for legal reasons, but because of workflow preferences.  The process of <<xref/../../community/creating_tickets#,creating JIRA tickets>> and <<xref/../../community/developing_patches#,patches>> is documented and not terribly difficult.
+Rich Hickey prefers to evaluate patches attached to JIRA tickets.  This is not to make it more difficult for contributors, or for legal reasons, but because of workflow preferences. See <<xref/../../dev/dev#,the development page>> for more details.
 
 https://groups.google.com/forum/#!msg/clojure/jWMaop_eVaQ/3M4gddaXDZoJ[Link] to Oct 2012 Clojure Google group message from Rich Hickey on this topic.
 

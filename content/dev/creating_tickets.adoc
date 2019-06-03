@@ -1,7 +1,7 @@
 = Creating Tickets
 Alex Miller
 2018-12-05
-:type: community
+:type: dev
 :toc: macro
 :icons: font
 
@@ -9,7 +9,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 == Creating Tickets
 
-The first step in the contribution process is to open a ticket. Please do so through https://clojure.atlassian.net/projects/CLJ[JIRA]. Tickets can be created by anyone, whether or not they have signed a <<contributing#,Clojure contributor agreement>>. It is OK to create a ticket and submit a patch at the same time, but often it's best to get some feedback in triage before making a patch. Most new tickets are reviewed within a day, but in some cases it may be as long as a week depending on the time of year.
+The first step in the contribution process is to open a ticket. Please do so through https://clojure.atlassian.net/projects/CLJ[JIRA]. Tickets can be created by anyone, whether or not they have signed a <<contributor_agreement#,Clojure contributor agreement>>. It is OK to create a ticket and submit a patch at the same time, but often it's best to get some feedback in triage before making a patch. Most new tickets are reviewed within a day, but in some cases it may be as long as a week depending on the time of year.
 
 If you have questions about whether some behavior of Clojure is a bug, or submitting bug reports or enhancement requests, please ask on the https://groups.google.com/group/clojure[clojure Google group] or in other discussion forums. If a ticket is a duplicate of an existing ticket, it will be marked as such during triage.
 

@@ -1,4 +1,4 @@
-= Contributing to Clojure
+= Contributing
 Alex Miller
 2019-05-01
 :type: community
@@ -24,42 +24,16 @@ There are many ways to make a meaningful contribution to the Clojure community:
 * Write an article or book
 * Start a Clojure podcast
 * Start a Clojure conference or join the organization team for an existing one
-* Test new alpha or beta releases of Clojure on your code base and provide feedback
+* Test alpha or beta releases of Clojure on your code base and provide feedback
 
 If you are writing a guide, making an event, or creating a resource, please consider contributing to this web site, clojure.org. All of the content is https://github.com/clojure/clojure-site[stored in GitHub] and pull requests and issues are accepted. For more information on how to contribute, see the page on <<contributing_site#,contributing to the site>>. Every page has a link to the corresponding source file in the bottom right corner. If you have an idea for a new guide or updated documentation, please https://github.com/clojure/clojure-site/issues[file an issue] for discussion.
 
+== Filing Bugs or Enhancement Ideas
+
+If you have found a bug or have a suggestion for enhancement on Clojure, ClojureScript, or other Clojure projects, please first consider verifying your assumptions on the https://groups.google.com/forum/#!forum/clojure[mailing list], Clojurians Slack, or other places Clojurists can give you feedback.
+
+To file a bug or enhancement request, you can use the https://clojure.atlassian.net/servicedesk/customer/portal/1[Clojure support portal]. No account or contributor agreement is needed to file an issue. Someone on the core team will evaluate your request and either transfer it into a ticket, link it to an existing ticket, or resolve it in the appropriate way. We are evaluating other systems for collecting and evaluating enhancement requests in the future.
+
 == Clojure Development
 
-Clojure was created by Rich Hickey and is developed by a core team of developers at https://cognitect.com[Cognitect], which supports this work. The Clojure development team values a measured and thoughtful approach to language evolution with a strong emphasis on maintaining backward compatibility.
-
-The Clojure core team values those that engage with the current stream of ongoing work, doing the difficult work of triage, <<developing_patches#,patch development>>, <<screening_tickets#,screening>>, etc. The <<workflow#,workflow>> page highlights places to tap into those queues of work as jira reports. The core team tends to focus on tickets primarily in the late alpha / early beta period for a release cycle. During other parts of the release cycle, activity may seem dormant, but that is the perfect time to improve tickets so they are ready to evaluate. Tickets that are well-written with good patches can move quickly through the cycle at the appropriate time.
-
-Important development resources:
-
-* https://github.com/clojure/clojure[Clojure source repository]
-* <<contributor_agreement#,Clojure contributor agreement>> - required for all site and language contributions
-* https://clojure.atlassian.net/projects/CLJ[Clojure issue tracker]
-* <<workflow#,Clojure issue workflow>>
-* https://build.clojure.org[Clojure build box]
-* <<downloads#,Clojure releases>>
-* https://clojure.github.com/clojure[Clojure API docs] 
-
-=== Issues
-
-If you have found an issue with Clojure, please consider filing a ticket in the issue tracker. You might want to check what you are seeing with others on a Clojure discussion forum before filing. Please review the <<creating_tickets#,guide to creating useful tickets>>.
-
-Clojure accepts contributions as patches on issues. Before submitting a patch, please <<contributor_agreement#,sign the contributor agreement>>, and review <<developing_patches#,these guidelines>> on developing patches. Please note that tickets may be assessed over a long period of time, following the <<workflow#,workflow>>.
-
-=== Enhancements and Features
-
-Clojure's direction is determined by Rich Hickey and the core team. This process is open to input and visible in issues and commits, but not explicitly driven by the community. The core team pays attention to the needs of the community by monitoring and participating in many Clojure discussion forums, and by reviewing issues and votes in the issue tracker.
-
-If you have an idea for an enhancement or new feature for Clojure, it may be helpful to search the issue tracker for prior issues and/or raise this idea for discussion in one of the Clojure forums. In particular, the mailing lists or pass:[#clojure-dev] room on Clojurian slack are good places to discuss.
-
-Please follow the guidelines in <<creating_tickets#,Creating Tickets>> and <<developing_patches#,Developing Patches>> - enhancement/feature tickets should start with a compelling problem to solve and compare alternatives and their tradeoffs, rather than leap straight to a solution and a patch. Clojure is a small language and endeavors to remain so. In many cases, proposed features can instead be provided in functions or libraries outside the core.
-
-=== Roadmap
-
-Clojure is an open-ended project with no fixed release schedule. Major releases typically occur about once per year. While there are usually a few focused areas of work in a major release, it is common for those to change during the development of the release in response to either feedback or changing external needs. Because of this, a roadmap is typically not declared at the beginning of a release. Ongoing development is visible during alpha releases, often phased over multiple dev releases. The <<devchangelog#,Dev Changelog>> chronicles these changes during the release cycle.
-
-Additionally, the core team may be doing work in dependent projects or tools, rather than the language itself, such as spec, core.specs, tools.deps, clj, etc. This is still considered part of the broader "release" train.
+Clojure was created by Rich Hickey and is developed by a core team of developers at https://cognitect.com[Cognitect], which supports this work. The Clojure development team values a measured and thoughtful approach to language evolution with a strong emphasis on maintaining backward compatibility. See <<xref/../../dev/dev#,Development>> for more information on Clojure development.

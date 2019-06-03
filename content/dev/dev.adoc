@@ -38,7 +38,7 @@ Please follow the guidelines in <<creating_tickets#,Creating Tickets>> and <<dev
 
 == Roadmap
 
-Clojure is an open-ended project with no fixed release schedule. Major releases typically occur about once per year. While there are usually a few focused areas of work in a major release, it is common for those to change during the development of the release in response to either feedback or changing external needs. Because of this, a roadmap is typically not declared at the beginning of a release. Ongoing development is visible during alpha releases, often phased over multiple dev releases. The <<devchangelog#,Dev Changelog>> chronicles these changes during the release cycle.
+Clojure is an open-ended project with no fixed release schedule. Major releases typically occur about once per year. While there are usually a few focused areas of work in a major release, it is common for those to change during the development of the release in response to either feedback or changing external needs. Because of this, a roadmap is typically not declared at the beginning of a release. Ongoing development is visible during alpha releases, often phased over multiple dev releases. The <<xref/../../community/devchangelog#,Dev Changelog>> chronicles these changes during the release cycle.
 
 Additionally, the core team may be doing work in dependent projects or tools, rather than the language itself, such as spec, core.specs, tools.deps, clj, etc. This is still considered part of the broader "release" train.
 

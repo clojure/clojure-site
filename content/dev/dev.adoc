@@ -11,7 +11,7 @@ Clojure was created by Rich Hickey and is developed by a core team of developers
 
 == Becoming a Contributor
 
-First, please consider the <<xref/../../community/contributing#,many ways to contribute>> as a Clojure user. If you simply need to file a bug or enhancement request, you can do so without becoming a contributor. 
+First, please consider the <<xref/../../community/contributing#,many ways to contribute>> as a Clojure user. If you simply need to file a bug or enhancement request, https://clojure.atlassian.net/servicedesk/customer/portal/1[you can do so] without becoming a contributor. 
 
 The Clojure core team values those that engage with the current stream of ongoing work, doing the hard work of triage, <<developing_patches#,patch development>>, <<screening_tickets#,screening>>, etc. The <<workflow#,workflow>> page highlights places to tap into those queues of work as jira reports. The core team tends to focus on tickets primarily in the late alpha / early beta period for a release cycle. During other parts of the release cycle, activity may seem dormant, but that is the perfect time to improve tickets so they are ready to evaluate. Tickets that are well-written with good patches can move quickly through the cycle at the appropriate time.
 

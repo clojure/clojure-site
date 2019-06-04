@@ -11,7 +11,7 @@ Clojure was created by Rich Hickey and is developed by a core team of developers
 
 == Becoming a Contributor
 
-First, please consider the <<xref/../../community/contributing#,many ways to contribute>> as a Clojure user. If you simply need to file a bug or enhancement request, https://clojure.atlassian.net/servicedesk/customer/portal/1[you can do so] without becoming a contributor. 
+First, please consider the <<xref/../../community/contributing#,many ways to contribute>> as a Clojure user. If you simply need to file a bug, https://clojure.atlassian.net/servicedesk/customer/portal/1[you can do so] without becoming a contributor. 
 
 The Clojure core team values those that engage with the current stream of ongoing work, doing the hard work of triage, <<developing_patches#,patch development>>, <<screening_tickets#,screening>>, etc. The <<workflow#,workflow>> page highlights places to tap into those queues of work as jira reports. The core team tends to focus on tickets primarily in the late alpha / early beta period for a release cycle. During other parts of the release cycle, activity may seem dormant, but that is the perfect time to improve tickets so they are ready to evaluate. Tickets that are well-written with good patches can move quickly through the cycle at the appropriate time.
 
@@ -30,7 +30,7 @@ Clojure accepts contributions as patches on issues. Please review <<developing_p
 
 === Enhancements and Features
 
-Clojure's direction is determined by Rich Hickey and the core team. This process is open to input and visible in issues and commits, but not explicitly driven by the community. The core team pays attention to the needs of the community by monitoring and participating in many Clojure discussion forums, and by reviewing issues and votes in the issue tracker.
+Clojure's direction is determined by Rich Hickey and the core team. This process is open to input and visible in issues and commits, but not explicitly driven by the community. The core team pays attention to the needs of the community by monitoring and participating in many Clojure discussion forums, and by reviewing issues and votes in the issue tracker. We are currently evaluating better systems for collecting and prioritizing enhancement requests.
 
 If you have an idea for an enhancement or new feature for Clojure, it may be helpful to search the issue tracker for prior issues and/or raise this idea for discussion in one of the Clojure forums. In particular, the mailing lists or pass:[#clojure-dev] room on Clojurian slack are good places to discuss.
 

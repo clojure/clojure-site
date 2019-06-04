@@ -26,13 +26,17 @@ There are many ways to make a meaningful contribution to the Clojure community:
 * Start a Clojure conference or join the organization team for an existing one
 * Test alpha or beta releases of Clojure on your code base and provide feedback
 
+=== Editing this Site
+
 If you are writing a guide, making an event, or creating a resource, please consider contributing to this web site, clojure.org. All of the content is https://github.com/clojure/clojure-site[stored in GitHub] and pull requests and issues are accepted. For more information on how to contribute, see the page on <<contributing_site#,contributing to the site>>. Every page has a link to the corresponding source file in the bottom right corner. If you have an idea for a new guide or updated documentation, please https://github.com/clojure/clojure-site/issues[file an issue] for discussion.
 
-== Filing Bugs or Enhancement Ideas
+== Filing Bugs
 
-If you have found a bug or have a suggestion for enhancement on Clojure, ClojureScript, or other Clojure projects, please first consider verifying your assumptions on the https://groups.google.com/forum/#!forum/clojure[mailing list], Clojurians Slack, or other places Clojurists can give you feedback.
+If you have found a bug on Clojure, ClojureScript, or other Clojure projects, please first consider verifying your assumptions on the https://groups.google.com/forum/#!forum/clojure[mailing list], Clojurians Slack, or other places Clojurists can give you feedback.
 
-To file a bug or enhancement request, you can use the https://clojure.atlassian.net/servicedesk/customer/portal/1[Clojure support portal]. No account or contributor agreement is needed to file an issue. Someone on the core team will evaluate your request and either transfer it into a ticket, link it to an existing ticket, or resolve it in the appropriate way. We are evaluating other systems for collecting and evaluating enhancement requests in the future.
+To file a bug, you can use the https://clojure.atlassian.net/servicedesk/customer/portal/1[Clojure support portal]. No account or contributor agreement is needed to file an issue. Someone on the core team will evaluate your request and either transfer it into a ticket, link it to an existing ticket, or resolve it in the appropriate way. 
+
+We are currently evaluating other systems for collecting and prioritizing enhancement requests.
 
 == Clojure Development
 

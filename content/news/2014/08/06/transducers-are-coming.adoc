@@ -7,7 +7,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 Transducers are a powerful and composable way to build algorithmic transformations that you can reuse in many contexts, and they're coming to Clojure core and core.async.
 
-Two years ago, in a http://clojure.com/blog/2012/05/15/anatomy-of-reducer.html[blog post describing how reducers work], I described the reducing function transformers on which they were based, and provided explicit examples like `mapping`, `filtering` and `mapcatting`. Because the reducers library intends to deliver an API with the same 'shape' as existing sequence function APIs, these transformers were never exposed a la carte, instead being encapsulated by the macrology of reducers.
+Two years ago, in a https://clojure.org/news/2012/05/15/anatomy-of-reducer[blog post describing how reducers work], I described the reducing function transformers on which they were based, and provided explicit examples like `mapping`, `filtering` and `mapcatting`. Because the reducers library intends to deliver an API with the same 'shape' as existing sequence function APIs, these transformers were never exposed a la carte, instead being encapsulated by the macrology of reducers.
 
 In working recently on providing algorithmic combinators for core.async, I became more and more convinced of the superiority of reducing function transformers over channel->channel functions for algorithmic transformation. In fact, I think they are a better way to do many things for which we normally create bespoke replicas of map, filter etc.
 

@@ -26,6 +26,7 @@ The `clojure.main/main` entry point accepts a variety of arguments and flags.
 * init options:
 ** -i, --init path Load a file or resource
 ** -e, --eval string Evaluate expressions in string; print non-nil values
+** --report target Report uncaught exception to "file" (default), "stderr", or "none", overrides System property clojure.main.report (added in 1.10.1)
 * main options:
 ** -r, --repl Run a repl
 ** path Run a script from a file or resource
@@ -99,7 +100,9 @@ The arguments will be provided to your program as a seq of strings bound to the 
 
 == Error printing
 
-As of Clojure 1.10, Clojure errors at the REPL are categorized into one of several phases:
+=== At REPL
+
+As of Clojure 1.10, Clojure errors categorized into one of several phases:
 
 * `:read-source` - an error thrown while reading characters at the REPL or from a source file.
 * `:macro-syntax-check` - a syntax error found in the syntax of a macro call, either from spec or from a macro throwing IllegalArgumentException, IllegalStateException, or ExceptionInfo.
@@ -123,17 +126,33 @@ Exceptions thrown during all phases (exception `:execution`) will have ex-data a
 
 The clojure.main REPL includes the categorization and printing of errors by default, but the individual steps of this process are exposed as well for other REPLs to use, specifically the functions:
 
-* http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/Throwable-%3Emap[pass:[Throwable->map]] - converts an Exception chain into Clojure data
-* http://clojure.github.io/clojure/clojure.main-api.html#clojure.main/ex-triage[ex-triage] - analyzes Clojure exception data to pull relevant information from the top and bottom of the exception chain into a map describing just the set of data needed to format an exception string
-* http://clojure.github.io/clojure/clojure.main-api.html#clojure.main/ex-str[ex-str] - produces a phase-appropriate message given a set of exception data
+* https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/Throwable-%3Emap[pass:[Throwable->map]] - converts an Exception chain into Clojure data
+* https://clojure.github.io/clojure/clojure.main-api.html#clojure.main/ex-triage[ex-triage] - analyzes Clojure exception data to pull relevant information from the top and bottom of the exception chain into a map describing just the set of data needed to format an exception string
+* https://clojure.github.io/clojure/clojure.main-api.html#clojure.main/ex-str[ex-str] - produces a phase-appropriate message given a set of exception data
 
 The clojure.main REPL combines these functions in a pipeline to produce the printed exception message: `pass:[(-> ex Throwable->map clojure.main/ex-triage clojure.main/ex-str)]`. Other REPLs can use one or more pieces of this pipeline as necessary when building or customizing their exception printing.
+
+=== As launcher
+
+Up to Clojure 1.10.0, clojure.main when used as a program launcher (with -m, -e, or with a script), uncaught exceptions would be automatically printed along with the full nested stack trace. In this case, the error triage and printing process above was not applied.
+
+As of Clojure 1.10.1, uncaught exceptions will now be caught and printed according to the same error triage and printing functionality as the Clojure REPL. The full stack trace, ex-info, and other information will be printed to a target specified by the configuration.
+
+The three available error targets are:
+
+* `file` - write to a temp file (default, falls back to `stderr`)
+* `stderr` - write to stderr stream
+* `none` - don't write
+
+These error targets can be specified either as options to clojure.main, or as Java system properties (flags take precedence). When invoking clojure.main (or using the clj tool), use `--report <target>`. For Java system property, use `-Dclojure.main.report=<target>`.
+
+Other programs may wish to take advantage of this functionality, and it is available in https://clojure.github.io/clojure/branch-master/clojure.main-api.html#clojure.main/report-error[report-error], which takes a Throwable and optionally the :target.
 
 == tap
 
 tap is a shared, globally accessible system for distributing a series of informational or diagnostic values to a set of (presumably effectful) handler functions. It can be used as a better debug `prn`, or for facilities like logging etc.
 
-http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/tap%3E[`pass:[tap>]`] sends a value to the set of taps. Taps can be added with http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/add-tap[`add-tap`] and will be called with any value sent to tap>. The tap function may (briefly) block (e.g. for streams) and will never impede calls to tap>, but blocking indefinitely may cause tap values to be dropped. If no taps are registered, tap> discards. Remove taps with http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/remove-tap[`remove-tap`].
+https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/tap%3E[`pass:[tap>]`] sends a value to the set of taps. Taps can be added with https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/add-tap[`add-tap`] and will be called with any value sent to tap>. The tap function may (briefly) block (e.g. for streams) and will never impede calls to tap>, but blocking indefinitely may cause tap values to be dropped. If no taps are registered, tap> discards. Remove taps with https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/remove-tap[`remove-tap`].
 
 == Launching a Socket Server
 
@@ -189,7 +208,7 @@ Main entry point: `https://clojure.github.io/clojure/clojure.main-api.html#cloju
 
 Reusable REPL: `https://clojure.github.io/clojure/clojure.main-api.html#clojure.main/repl[clojure.main/repl]`
 
-Error handling: `http://clojure.github.io/clojure/clojure.main-api.html#clojure.main/ex-triage[clojure.main/ex-triage]` `http://clojure.github.io/clojure/clojure.main-api.html#clojure.main/ex-str[clojure.main/ex-str]`
+Error handling: `https://clojure.github.io/clojure/clojure.main-api.html#clojure.main/ex-triage[clojure.main/ex-triage]` `https://clojure.github.io/clojure/clojure.main-api.html#clojure.main/ex-str[clojure.main/ex-str]`
 
 Allowing set! for the customary REPL vars: `https://clojure.github.io/clojure/clojure.main-api.html#clojure.main/with-bindings[clojure.main/with-bindings]`
 

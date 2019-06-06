@@ -9,6 +9,8 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 == Older Clojure Releases
 
+* https://repo1.maven.org/maven2/org/clojure/clojure/1.10.1/[Clojure 1.10.1] (June, 2019)
+* https://repo1.maven.org/maven2/org/clojure/clojure/1.10.0/[Clojure 1.10.0] (December, 2018)
 * https://repo1.maven.org/maven2/org/clojure/clojure/1.9.0/[Clojure 1.9.0] (December, 2017)
 * https://repo1.maven.org/maven2/org/clojure/clojure/1.8.0/[Clojure 1.8.0] (January, 2016)
 * https://repo1.maven.org/maven2/org/clojure/clojure/1.7.0/[Clojure 1.7.0] (June, 2015)

@@ -209,7 +209,7 @@ Many of the Clojure library functions have defined semantics for objects of Java
 
 Clojure supports the dynamic creation of objects that implement one or more interfaces and/or extend a class with the https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/proxy[proxy] macro. The resulting objects are of an anonymous class. You can also generate statically-named classes and .class files with https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/gen-class[gen-class]. As of Clojure 1.2, https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/reify[reify] is also available for implementing interfaces.
 
-Java annotations may be attached to classes, constructors, and methods via https://clojure.org/reference/metadata[metadata] on `gen-class` and Clojure type constructs, see the https://clojure.org/reference/datatypes#_java_annotation_support[datatypes reference].
+Java annotations may be attached to classes, constructors, and methods via <<metadata#,metadata>> on `gen-class` and Clojure type constructs, see the <<datatypes#_java_annotation_support,datatypes reference>> for an example.
 
 ''''
 

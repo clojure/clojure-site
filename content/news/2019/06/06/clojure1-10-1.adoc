@@ -17,7 +17,7 @@ This issue may eventually be resolved in Java, but in Clojure we have modified r
 
 clojure.main is frequently used as a Clojure program launcher by external tools. Previously, uncaught exceptions would be automatically printed by the JVM, which would also print the stack trace.
 
-This release will now catch exceptions and use the same error triage and printing functionality as the Clojure repl. The full stack trace, ex-info, and other information will be printed to a target specified by the configuration. See <<xref/../../../../..reference/repl_and_main#_error_printing,clojure.main docs>> for configuration details.
+This release will now catch exceptions and use the same error triage and printing functionality as the Clojure repl. The full stack trace, ex-info, and other information will be printed to a target specified by the configuration. See <<xref/../../../../../reference/repl_and_main#_error_printing,clojure.main docs>> for configuration details.
 
 ## Changelog
 

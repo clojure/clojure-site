@@ -146,7 +146,7 @@ The three available error targets are:
 
 These error targets can be specified either as options to clojure.main, or as Java system properties (flags take precedence). When invoking clojure.main (or using the clj tool), use `--report <target>`. For Java system property, use `-Dclojure.main.report=<target>`.
 
-Other programs may wish to take advantage of this functionality, and it is available in https://clojure.github.io/clojure/branch-master/clojure.main-api.html#clojure.main/report-error[report-error], which takes a Throwable and optionally the :target.
+Other programs may wish to take advantage of this functionality, and it is available in https://clojure.github.io/clojure/clojure.main-api.html#clojure.main/report-error[report-error], which takes a Throwable and optionally the :target.
 
 == tap
 

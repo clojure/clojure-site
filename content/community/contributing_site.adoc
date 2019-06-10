@@ -97,7 +97,7 @@ Retrieve and install the current theme assets (these don't change very often so 
 
 Generate the pages:
 
-. `jbake` - this will create the static site in the output directory
+. `jbake -b` - this will create the static site in the output directory
 . To view the static files, open `output/index` in your browser
 . To view a live preview, run `jbake -s` and go to http://localhost:8820/index
 

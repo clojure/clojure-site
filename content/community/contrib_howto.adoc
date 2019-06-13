@@ -12,7 +12,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 Contrib library readmes should contain:
 
 * Instructions for including the library as a dependency in Maven / Leiningen
-* Links to the library's pages on Hudson and JIRA
+* Links to the library's pages on Jenkins and JIRA
 * Links to the available releases on Maven Central and oss.sonatype.org
 * Link to generated API documentation, if available
 * General usage instructions (should mention which namespace to use/require)
@@ -57,7 +57,7 @@ Setting up a new contrib project:
 ** Specify project name (must be approved by Clojure core)
 ** Specify description
 ** Collaborators - add Team: Contrib Commit which includes:
-*** clojure-build - for hudson to tag releases, build autodocs, etc
+*** clojure-build - for Jenkins to tag releases, build autodocs, etc
 ** Disable Issues tab (we use JIRA instead)
 ** Project structure (see existing projects for example)
 *** /README.md - readme, see above
@@ -79,13 +79,13 @@ Setting up a new contrib project:
 * Setting up builds (requires Jenkins admin privileges, except step 2):
 ** Create Jenkins user account for authors
 ** Edit ci_data.clj in the https://github.com/clojure/build.ci[build.ci] repo add the new project / update authors (so they can run builds / cut releases)
-** Request on clojure-dev mailing list to run build.ci Hudson job - this will recreate all Hudson job definition files!
+** Request on clojure-dev mailing list to run build.ci Jenkins job - this will recreate all Jenkins job definition files!
 ** Force Jenkins to reload its configuration files
 * Autodoc
 ** WIP
 * Performing releases
 ** Snapshot releases are automatically created every time the job builds (triggered by any source change)
-*** To use snapshots, see Maven Settings and Repositories 
+*** To use snapshots, see Maven Settings and Repositories
 ** Perform a release according to How to Make Releases section below
 
 == How to Make Releases
@@ -147,10 +147,10 @@ The Standards:
 * Provide automated tests.
 * Use '?' suffix for predicates, and return booleans.
 * Use '_' for destructuring targets and formal arguments names whose value will be ignored by the code at hand.
-* Include a docstring. 
+* Include a docstring.
 * When in doubt, expose the performant version. Clojure goes to great lengths to enable performance when you need it, and lib should too. (That's why we don't have multimethod + in core, for instance.) Users can always create more polymorphic APIs on their own, hijacking symbols if they want to.
 * If you take a good name that collides with core, make sure your semantics are parallel (possibly minus laziness). Good example of this is string functions that shadow core seq functions.
-* Use assert and pre- and post- conditions. 
+* Use assert and pre- and post- conditions.
 * Be lazy where possible.
 * Follow clojure.core's example for idiomatic names like pred and coll.
 ** in fns
@@ -170,7 +170,7 @@ The Standards:
 * Decompose the pieces. If your name isn't Rich, don't write a form as long as, say, the definition of doseq.
 * Use keyword-first syntax to access properties on objects: `(:property object-like-map)`
 * Use collection-first syntax to extract values from a collection (or use get if the collection might be nil): `(collection-like-map key)` or `(get collection-like-map key)`. Note that not all collections are keyed by keyword.
-* Idiomatic code uses destructuring a lot. However, you should only destructure in the arg list if you want to communicate the substructure as part of the caller contract. Otherwise, destructure in a first-line let. 
+* Idiomatic code uses destructuring a lot. However, you should only destructure in the arg list if you want to communicate the substructure as part of the caller contract. Otherwise, destructure in a first-line let.
 * Prefer updating over setting. Many reasons: the unified update model provides a simple standard way to do this. Helps you discover commutative operations. Reduces the surface area of assumptions you are making about the object you are updating.
 * Don't support operations on the wrong collection type. If your algorithm is only performant with random access, then require an arg that has random access.
 * Use pass:[*earmuffs*] only for things intended for rebinding. Don't use a special notation for constants; everything is assumed a constant unless specified otherwise.
@@ -187,5 +187,3 @@ The Standards:
 ** If one breaks the previous rule, they should be prepared to withdraw, should the implementor of either provide a definition
 ** If a protocol comes with Clojure itself, avoid extending it to types you don't own, especially e.g. java.lang.String and other core Java interfaces. Rest assured if a protocol should extend to it, it will, else lobby for it.
 *** The motive is, as stated by Rich Hickey, to prevent "people extend protocols to types for which they don't make sense, e.g. for which the protocol authors considered but rejected an implementation due to a semantic mismatch.". "No extension will be there (by design), and people without sufficient understanding/skills might fill the void with broken ideas."
-
-

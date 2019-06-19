@@ -84,7 +84,7 @@ For example, the following map literal with namespace syntax:
 ----
 #:person{:first "Han"
          :last "Solo"
-         :ship #:ship{:name "Millenium Falcon"
+         :ship #:ship{:name "Millennium Falcon"
                       :model "YT-1300f light freighter"}}
 ----
 
@@ -94,7 +94,7 @@ is read as:
 ----
 {:person/first "Han"
  :person/last "Solo"
- :person/ship {:ship/name "Millenium Falcon" 
+ :person/ship {:ship/name "Millennium Falcon"
                :ship/model "YT-1300f light freighter"}}
 ----
 
@@ -119,7 +119,7 @@ The behavior of the reader is driven by a combination of built-in constructs and
 
 === Character (\)
 
-As per above, yields a character literal. Example character literals are: `\a \b \c`. 
+As per above, yields a character literal. Example character literals are: `\a \b \c`.
 
 The following special character literals can be used for common characters: `\newline`, `\space`, `\tab`, `\formfeed`, `\backspace`, and `\return`.
 

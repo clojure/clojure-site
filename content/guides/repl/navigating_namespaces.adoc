@@ -92,7 +92,7 @@ myapp.foo.bar=> my-favorite-number
 42
 myapp.foo.bar=> (ns myapp.baz) ;; creating and switching to another namespace `myapp.baz`
 nil
-myapp.baz=> myapp.foo.bar/my-favorite-number ;; refering to `my-favorite-number`
+myapp.baz=> myapp.foo.bar/my-favorite-number ;; referring to `my-favorite-number`
 42
 myapp.baz=> (require '[myapp.foo.bar :as foobar]) ;; we can also use an alias to make it shorter
 nil
@@ -225,14 +225,14 @@ to switch to namespaces that have already been created, you won't have to deal w
 [#_working_with_libs]
 == Working with libs
 
-Most of the namespaces you will navigate at the REPL will already exist in source files or dependencies 
+Most of the namespaces you will navigate at the REPL will already exist in source files or dependencies
 of your project, i.e in <<xref/../../../reference/libs#,libs>> of your project.
 
 There is an important usage precaution for switching to namespaces defined in libs:
 
 [NOTE]
 ====
-**If a namespace is defined in a <<xref/../../../reference/libs#,lib>> of your project, 
+**If a namespace is defined in a <<xref/../../../reference/libs#,lib>> of your project,
 always make sure you have _loaded_ the lib in the REPL before switching to it.**
 ====
 
@@ -259,23 +259,23 @@ For example, assume a Clojure project with the following structure and content:
 ----
 
 [source,clojure]
----- 
+----
 ;; -----------------------------------------------
 ;; src/myproject/welcome.clj
-(ns myproject.welcome 
-  (:require [myproject.person-names :as pnames])) ;; NOTE: `myproject.welcome` requires `myproject.person-names` 
-  
+(ns myproject.welcome
+  (:require [myproject.person-names :as pnames])) ;; NOTE: `myproject.welcome` requires `myproject.person-names`
+
 (defn greet
   [first-name last-name]
-  (str "Hello, " (pnames/familiar-name first-name last-name)))  
+  (str "Hello, " (pnames/familiar-name first-name last-name)))
 
 
 ;; -----------------------------------------------
 ;; src/myproject/person_names.clj
-(ns myproject.person-names 
+(ns myproject.person-names
   (:require [clojure.string :as str]))
 
-(def nicknames 
+(def nicknames
   {"Robert"     "Bob"
    "Abigail"    "Abbie"
    "William"    "Bill"
@@ -286,7 +286,7 @@ For example, assume a Clojure project with the following structure and content:
   [first-name last-name]
   (let [fname (str/capitalize first-name)
         lname (str/capitalize last-name)]
-    (or 
+    (or
       (get nicknames fname)
       (str fname " " lname))))
 ----
@@ -294,7 +294,7 @@ For example, assume a Clojure project with the following structure and content:
 Here are 3 ways to make sure `myproject.person-names` is loaded:
 
 [source,clojure-repl]
----- 
+----
 $ clj ## APPROACH 1: requiring myproject.person-names directly
 Clojure 1.10.0
 user=> (require '[myproject.person-names])
@@ -304,8 +304,8 @@ user=> myproject.person-names/nicknames ;; checking that the myproject.person-na
 ----
 
 [source,clojure-repl]
----- 
-$ clj ## APPROACH 2: requiring myproject.welcome, which itself requires myproject.person-names 
+----
+$ clj ## APPROACH 2: requiring myproject.welcome, which itself requires myproject.person-names
 Clojure 1.10.0
 user=> (require '[myproject.welcome])
 nil
@@ -314,7 +314,7 @@ user=> myproject.person-names/nicknames ;; checking that the myproject.person-na
 ----
 
 [source,clojure-repl]
----- 
+----
 $ clj ## APPROACH 3: manually copying the code of myproject.person-names in the REPL.
 Clojure 1.10.0
 (ns myproject.person-names
@@ -364,7 +364,7 @@ nil
 
 === How things can go wrong
 
-Continuing with the above example project, here is a REPL session showing how things can go wrong 
+Continuing with the above example project, here is a REPL session showing how things can go wrong
 if you switch to a lib namespace without loading it first:
 
 [source,clojure-repl]

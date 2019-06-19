@@ -40,13 +40,13 @@ by rewriting it to use the thread-first macro `+++->+++`:
 
 Taking an initial value as its first argument, https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/+++->+++[`+++->+++`]
 threads it through one
-or more expressions. 
+or more expressions.
 
 _Note: The word "thread" in this context (meaning passing a value through a pipeline of functions) is unrelated to the concept of concurrent threads of execution._
 
 Starting with the second form, the macro inserts the first value as its first
 argument. This is repeated at each subsequent step with the result of the
-previous computation inserted as the first argument of the next form. 
+previous computation inserted as the first argument of the next form.
 What looks like a function call with two arguments is in fact a call with three
 arguments, as the threaded value is inserted just after the function name. It may
 be helpful to mark the insertion point with three commas for illustration:
@@ -64,7 +64,7 @@ as commas are whitespace in Clojure.
 
 Semantically, `transform*` is equivalent to `transform`: the arrow macro expands
 at compile time into the original code. In each case, the return value of the
-function is the result of the last computation, the call to `update`. The re-written 
+function is the result of the last computation, the call to `update`. The re-written
 function reads like a description of the transformation: "Take a person, increase their age,
 give them gray hair, and return the result". Of course in the context of immutable
 values, no actual mutation takes place. Instead, the function simply
@@ -182,7 +182,7 @@ a number of expressions. However, it also short-circuits execution when an
 expression evaluates as `nil` at any point in the chain. One common problem with
 arrow macros in the context of <<xref/../../reference/java_interop#,Java interop>> is that Java methods do not expect
 to be passed `nil` (`null`). One way to avoid a `NullPointerException` in these
-cases is to add an explict guard:
+cases is to add an explicit guard:
 
 [source,clojure]
 ----

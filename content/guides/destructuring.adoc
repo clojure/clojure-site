@@ -41,7 +41,7 @@ This is perfectly valid, but the code extracting and naming the values in the ve
 ;= "Line from ( 5 , 10 ) to ( 10 , 20 )"
 ----
 
-Rather than explictly binding each variable, we describe the bindings based on their sequential order. That's a pretty weird statement, "describe the bindings," so let's look at it again.
+Rather than explicitly binding each variable, we describe the bindings based on their sequential order. That's a pretty weird statement, "describe the bindings," so let's look at it again.
 
 We have a data structure `my-line` that looks like this, `[[5 10] [10 20]]`. In our destructuring form we will create a vector containing two elements, `p1` and `p2`, each of which are vectors themselves. This will bind the vector `[5 10]` to the symbol `p1` and the vector `[10 20]` to the symbol `p2`. Since we want to work with the elements of `p1` and `p2` rather than the structures themselves, we destructure `p1` and `p2` within the same let statement. The vector `p1` looks like this, `[5 10]`, so to destructure it, we create a vector containing two elements, `x1` and `y1`. This binds `5` to the symbol `x1` and `10` to the symbol `y1`. The same is repeated for `p2` binding `10` to `x2` and `20` to `y2`. At this point, we now have everything we need to work with our data.
 
@@ -245,7 +245,7 @@ Below is a first example of doing the same thing with associative destructuring:
 
 The destructuring form is now a map rather than a vector, and instead of a symbol on the left side of the let, we have a map. The keys of the map are the symbols we want to bind in the let. The values of the destructuring map are the keys we will look up in the associative value. Here they are keywords (the most common case), but they could be any key value - numbers, strings, symbols, etc.
 
-Similar to sequential destructuring, if you try to bind a key that is not present in the map, the binding value will be nil. 
+Similar to sequential destructuring, if you try to bind a key that is not present in the map, the binding value will be nil.
 
 [source,clojure]
 ----
@@ -254,7 +254,7 @@ Similar to sequential destructuring, if you try to bind a key that is not presen
 ;= nil
 ----
 
-Associative destructuring, however, also allows you to supply a default value if the key is not present in the associative value with the `:or` key. 
+Associative destructuring, however, also allows you to supply a default value if the key is not present in the associative value with the `:or` key.
 
 [source,clojure]
 ----
@@ -297,7 +297,7 @@ You might have noticed that our original example still contains redundant inform
 ;= Super Co. Philadelphia - The worldwide leader in plastic tableware.
 ----
 
-This example is exactly the same as the prior version - it binds `name` to `(:name client)`, `location` to `(:location client)`, and `description` to `(:description client)`. 
+This example is exactly the same as the prior version - it binds `name` to `(:name client)`, `location` to `(:location client)`, and `description` to `(:description client)`.
 
 The `:keys` key is for associative values with keyword keys, but there are also `:strs` and `:syms` for string and symbol keys respectively. In all of these cases the vector contains symbols which are the local binding names.
 
@@ -320,7 +320,7 @@ Associative destructuring can be nested and combined with sequential destructuri
 
 [source,clojure]
 ----
-(def multiplayer-game-state 
+(def multiplayer-game-state
   {:joe {:class "Ranger"
          :weapon "Longbow"
          :score 100}
@@ -472,7 +472,7 @@ When defining a function in clojure, destructuring can be applied on the incomin
   (println "x:" x ", y:" y ", z:" z))
 ----
 
-We have replaced several lines of code that pulled apart the incoming point data with a concise statement about the structure of that data that also binds the data to local values. 
+We have replaced several lines of code that pulled apart the incoming point data with a concise statement about the structure of that data that also binds the data to local values.
 
 For a more realistic example, let's create a map containing some basic contact information for the infamous John Smith.
 
@@ -520,7 +520,7 @@ We have an address in there now, but we needed to nest a map into our original s
 
 [source,clojure]
 ----
-(defn print-contact-info 
+(defn print-contact-info
   [{:keys [f-name l-name phone company title]
     {:keys [street city state zip]} :address
     [fav-hobby second-hobby] :hobbies}]
@@ -538,7 +538,7 @@ We have an address in there now, but we needed to nest a map into our original s
 
 == Macros
 
-Macro writers may find the need to write a macro that incorporates destructuring. The most common way to do so is to produce a call to something that already does destructuring (like `let`, `loop`, `fn`, etc). Some examples of this in `clojure.core` include `if-let`, `when-let`, `when-some`, etc. 
+Macro writers may find the need to write a macro that incorporates destructuring. The most common way to do so is to produce a call to something that already does destructuring (like `let`, `loop`, `fn`, etc). Some examples of this in `clojure.core` include `if-let`, `when-let`, `when-some`, etc.
 
 However, in rare cases you might want to instead resolve the destructuring yourself in a macro. In this case, use the (undocumented) `clojure.core/destructure` function, which implements the destructuring logic and is what `let` and `loop` actually invoke. The `destructure` function is designed to be invoked in a macro and expects to take a form and return a form:
 

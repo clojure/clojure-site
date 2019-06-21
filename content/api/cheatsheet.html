@@ -1,10 +1,10 @@
 title=Cheatsheet
-date=2019-06-14
+date=2019-06-20
 type=page
 status=published
 ~~~~~~
 
-<h2>Clojure 1.10 Cheat Sheet (v48)</h2>
+<h2>Clojure 1.10 Cheat Sheet (v49)</h2>
 
 <p><a href="https://github.com/jafingerhut/clojure-cheatsheets/blob/master/pdf/cheatsheet-usletter-color.pdf?raw=true">Download PDF version</a> / <a href="https://jafingerhut.github.io/">Source repo</a></p>
 
@@ -2822,6 +2822,23 @@ else return the value of silently.">delete-file</a> <a href="https://clojuredocs
   the tag and the value.  If *default-data-reader-fn* is nil (the
   default), an exception will be thrown for the unknown tag.">*default-data-reader-fn*</a></code></td>
               </tr>
+              <tr class="even">
+                <td>tap</td>
+                <td><code>(1.10) <a href="https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/tap>" title="clojure.core/tap&gt;
+([x])
+  sends x to any taps. Will not block. Returns true if there was room in the
+queue,
+  false if not (dropped).">tap&gt;</a> <a href="https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/add-tap" title="clojure.core/add-tap
+([f])
+  adds f, a fn of one argument, to the tap set. This function will be called
+with anything sent via tap&gt;.
+  This function may (briefly) block (e.g. for streams), and will never impede
+calls to tap&gt;,
+  but blocking indefinitely may cause tap values to be dropped.
+  Remember f in order to remove-tap">add-tap</a> <a href="https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/remove-tap" title="clojure.core/remove-tap
+([f])
+  Remove f from the tap set.">remove-tap</a></code></td>
+              </tr>
             </tbody>
           </table>
         </div><!-- /section -->
@@ -3416,6 +3433,30 @@ from
   relationships.">descendants</a> <a href="https://clojuredocs.org/clojure_core/clojure.core/make-hierarchy" title="clojure.core/make-hierarchy
 ([])
   Creates a hierarchy object for use with derive, isa? etc.">make-hierarchy</a></code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div><!-- /section -->
+        <div class="section">
+          <h2>Datafy (<a href="https://corfield.org/blog/2018/12/03/datafy-nav">article</a>)</h2>
+          <table>
+            <tbody>
+              <tr class="odd">
+                <td>Datafy</td>
+                <td><code>(clojure.datafy/) <a href="https://clojure.github.io/clojure/clojure.datafy-api.html#clojure.datafy/datafy" title="clojure.datafy/datafy
+([x])
+  Attempts to return x as data.
+  datafy will return the value of clojure.core.protocols/datafy. If
+  the value has been transformed and the result supports
+  metadata, :clojure.datafy/obj will be set on the metadata to the
+  original value of x, and :clojure.datafy/class to the name of the
+  class of x, as a symbol.">datafy</a> <a href="https://clojure.github.io/clojure/clojure.datafy-api.html#clojure.datafy/nav" title="clojure.datafy/nav
+([coll k v])
+  Returns (possibly transformed) v in the context of coll and k (a
+  key/index or nil). Callers should attempt to provide the key/index
+  context k for Indexed/Associative/ILookup colls if possible, but not
+  to fabricate one e.g. for sequences (pass nil). nav returns the
+  value of clojure.core.protocols/nav.">nav</a></code></td>
               </tr>
             </tbody>
           </table>
@@ -4682,7 +4723,7 @@ Spec
 ([x])
   If passed a namespace, returns it. Else, when passed a symbol,
   returns the namespace named by it, throwing an exception if not
-  found.">the-ns</a> (1.10) <a href="https://clojuredocs.org/clojure_core/clojure.core/requiring-resolve" title="clojure.core/requiring-resolve
+  found.">the-ns</a> (1.10) <a href="https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/requiring-resolve" title="clojure.core/requiring-resolve
 ([sym])
   Resolves namespace-qualified sym per 'resolve'. If initial resolve
 fails, attempts to require sym's namespace and retries.">requiring-resolve</a></code></td>
@@ -5494,21 +5535,26 @@ supplied, uses the root cause of the
    that carries a map of additional data.">ex-info</a> <a href="https://clojuredocs.org/clojure_core/clojure.core/ex-data" title="clojure.core/ex-data
 ([ex])
   Returns exception data (a map) if ex is an IExceptionInfo.
-   Otherwise returns nil.">ex-data</a> (1.9) <a href="https://clojuredocs.org/clojure_core/clojure.core/StackTraceElement-%3Evec" title="clojure.core/StackTraceElement-&gt;vec
+   Otherwise returns nil.">ex-data</a> <a href="https://clojuredocs.org/clojure_core/clojure.core/Throwable-%3Emap" title="clojure.core/Throwable-&gt;map
+([o])
+  Constructs a data representation for a Throwable with keys:
+    :cause - root cause message
+    :phase - error phase
+    :via - cause chain, with cause keys:
+             :type - exception class symbol
+             :message - exception message
+             :data - ex-data
+             :at - top stack element
+    :trace - root cause stack elements">Throwable-&gt;map</a> (1.9) <a href="https://clojuredocs.org/clojure_core/clojure.core/StackTraceElement-%3Evec" title="clojure.core/StackTraceElement-&gt;vec
 ([o])
   Constructs a data representation for a StackTraceElement: [class method file
-line]">StackTraceElement-&gt;vec</a> (1.10) <a href="https://clojuredocs.org/clojure_core/clojure.core/ex-cause" title="clojure.core/ex-cause
+line]">StackTraceElement-&gt;vec</a> (1.10) <a href="https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ex-cause" title="clojure.core/ex-cause
 ([ex])
   Returns the cause of ex if ex is a Throwable.
-  Otherwise returns nil.">ex-cause</a> <a href="https://clojuredocs.org/clojure_core/clojure.core/ex-message" title="clojure.core/ex-message
+  Otherwise returns nil.">ex-cause</a> <a href="https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ex-message" title="clojure.core/ex-message
 ([ex])
   Returns the message attached to ex if ex is a Throwable.
-  Otherwise returns nil.">ex-message</a> (clojure.main/) <a href="https://clojuredocs.org/clojure_core/clojure.main/ex-str" title="clojure.main/ex-str
-([{:clojure.error/keys [phase source path line column symbol class cause spec],
-:as triage-data}])
-  Returns a string from exception data, as produced by ex-triage.
-  The first line summarizes the exception phase and location.
-  The subsequent lines describe the cause.">clojure.main/ex-str</a> <a href="https://clojuredocs.org/clojure_core/clojure.main/ex-triage" title="clojure.main/ex-triage
+  Otherwise returns nil.">ex-message</a> (clojure.main/) <a href="https://clojure.github.io/clojure/clojure.main-api.html#clojure.main/ex-triage" title="clojure.main/ex-triage
 ([datafied-throwable])
   Returns an analysis of the phase, error, cause, and location of an error that
 occurred
@@ -5526,7 +5572,21 @@ than phase
     :clojure.error/symbol - symbol being expanded/compiled/invoked
     :clojure.error/class - cause exception class symbol
     :clojure.error/cause - cause exception message
-    :clojure.error/spec - explain-data for spec error">clojure.main/ex-triage</a></code></td>
+    :clojure.error/spec - explain-data for spec error">ex-triage</a> <a href="https://clojure.github.io/clojure/clojure.main-api.html#clojure.main/ex-str" title="clojure.main/ex-str
+([{:clojure.error/keys [phase source path line column symbol class cause spec],
+:as triage-data}])
+  Returns a string from exception data, as produced by ex-triage.
+  The first line summarizes the exception phase and location.
+  The subsequent lines describe the cause.">ex-str</a> <a href="https://clojure.github.io/clojure/clojure.main-api.html#clojure.main/err->msg" title="clojure.main/err-&gt;msg
+([e])
+  Helper to return an error message string from an exception.">err-&gt;msg</a> <a href="https://clojure.github.io/clojure/clojure.main-api.html#clojure.main/report-error" title="clojure.main/report-error
+([t &amp; {:keys [target], :or {target &quot;file&quot;}, :as opts}])
+  Create and output an exception report for a Throwable to target.
+
+  Options:
+    :target - &quot;file&quot; (default), &quot;stderr&quot;, &quot;none&quot;
+
+  If file is specified but cannot be written, falls back to stderr.">report-error</a></code></td>
               </tr>
             </tbody>
           </table>

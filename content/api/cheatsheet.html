@@ -1,10 +1,10 @@
 title=Cheatsheet
-date=2016-01-19
+date=2019-06-20
 type=page
 status=published
 ~~~~~~
 
-<h2>Clojure 1.9 Cheat Sheet (v43)</h2>
+<h2>Clojure 1.10 Cheat Sheet (v49)</h2>
 
 <p><a href="https://github.com/jafingerhut/clojure-cheatsheets/blob/master/pdf/cheatsheet-usletter-color.pdf?raw=true">Download PDF version</a> / <a href="https://jafingerhut.github.io/">Source repo</a></p>
 
@@ -217,7 +217,17 @@ supplied, uses the root cause of the
 ([n])
   Returns true if n is a BigDecimal">decimal?</a> <a href="https://clojuredocs.org/clojure_core/clojure.core/float_q" title="clojure.core/float?
 ([n])
-  Returns true if n is a floating point number">float?</a></code></td>
+  Returns true if n is a floating point number">float?</a> (1.9) <a href="https://clojuredocs.org/clojure_core/clojure.core/double_q" title="clojure.core/double?
+([x])
+  Return true if x is a Double">double?</a> <a href="https://clojuredocs.org/clojure_core/clojure.core/int_q" title="clojure.core/int?
+([x])
+  Return true if x is a fixed precision integer">int?</a> <a href="https://clojuredocs.org/clojure_core/clojure.core/nat-int_q" title="clojure.core/nat-int?
+([x])
+  Return true if x is a non-negative fixed precision integer">nat-int?</a> <a href="https://clojuredocs.org/clojure_core/clojure.core/neg-int_q" title="clojure.core/neg-int?
+([x])
+  Return true if x is a negative fixed precision integer">neg-int?</a> <a href="https://clojuredocs.org/clojure_core/clojure.core/pos-int_q" title="clojure.core/pos-int?
+([x])
+  Return true if x is a positive fixed precision integer">pos-int?</a></code></td>
               </tr>
               <tr class="odd">
                 <td>Random</td>
@@ -526,7 +536,8 @@ format
                 <td>Symbols</td>
                 <td><code><a href="https://clojuredocs.org/clojure_core/clojure.core/symbol" title="clojure.core/symbol
 ([name] [ns name])
-  Returns a Symbol with the given namespace and name.">symbol</a> <a href="https://clojuredocs.org/clojure_core/clojure.core/symbol_q" title="clojure.core/symbol?
+  Returns a Symbol with the given namespace and name. Arity-1 works
+  on strings, keywords, and vars.">symbol</a> <a href="https://clojuredocs.org/clojure_core/clojure.core/symbol_q" title="clojure.core/symbol?
 ([x])
   Return true if x is a Symbol">symbol?</a> <a href="https://clojuredocs.org/clojure_core/clojure.core/gensym" title="clojure.core/gensym
 ([] [prefix-string])
@@ -676,7 +687,7 @@ format
   in O(n) time, for sequences.">nth</a> <a href="https://clojuredocs.org/clojure_core/clojure.core/peek" title="clojure.core/peek
 ([coll])
   For a list or queue, same as first, for a vector, same as, but much
-  more efficient than, last. If the collection is empty, returns nil.">peek</a> <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Vector.html#indexOf-java.lang.Object-">.indexOf</a> <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Vector.html#lastIndexOf-java.lang.Object-">.lastIndexOf</a></code></td>
+  more efficient than, last. If the collection is empty, returns nil.">peek</a> <a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html#indexOf-java.lang.Object-">.indexOf</a> <a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html#lastIndexOf-java.lang.Object-">.lastIndexOf</a></code></td>
               </tr>
               <tr class="odd">
                 <td>'Change'</td>
@@ -752,7 +763,7 @@ format
   Returns the value mapped to key, not-found or nil if key not present.">get</a> <a href="https://clojuredocs.org/clojure_core/clojure.core/peek" title="clojure.core/peek
 ([coll])
   For a list or queue, same as first, for a vector, same as, but much
-  more efficient than, last. If the collection is empty, returns nil.">peek</a> <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Vector.html#indexOf-java.lang.Object-">.indexOf</a> <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Vector.html#lastIndexOf-java.lang.Object-">.lastIndexOf</a></code></td>
+  more efficient than, last. If the collection is empty, returns nil.">peek</a> <a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html#indexOf-java.lang.Object-">.indexOf</a> <a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html#lastIndexOf-java.lang.Object-">.lastIndexOf</a></code></td>
               </tr>
               <tr class="odd">
                 <td>'Change'</td>
@@ -788,18 +799,18 @@ format
     happen at different 'places' depending on the concrete type.">conj</a> <a href="https://clojuredocs.org/clojure_core/clojure.core/rseq" title="clojure.core/rseq
 ([rev])
   Returns, in constant time, a seq of the items in rev (which
-  can be a vector or sorted-map), in reverse order. If rev is empty returns nil">rseq</a> <a href="https://clojuredocs.org/clojure_core/clojure.core/update-in" title="clojure.core/update-in
+  can be a vector or sorted-map), in reverse order. If rev is empty returns nil">rseq</a> <a href="https://clojuredocs.org/clojure_core/clojure.core/update" title="clojure.core/update
+([m k f] [m k f x] [m k f x y] [m k f x y z] [m k f x y z &amp; more])
+  'Updates' a value in an associative structure, where k is a
+  key and f is a function that will take the old value
+  and any supplied args and return the new value, and returns a new
+  structure.  If the key does not exist, nil is passed as the old value.">update</a> <a href="https://clojuredocs.org/clojure_core/clojure.core/update-in" title="clojure.core/update-in
 ([m ks f &amp; args])
   'Updates' a value in a nested associative structure, where ks is a
   sequence of keys and f is a function that will take the old value
   and any supplied args and return the new value, and returns a new
   nested structure.  If any levels do not exist, hash-maps will be
-  created.">update-in</a> (1.7) <a href="https://clojuredocs.org/clojure_core/clojure.core/update" title="clojure.core/update
-([m k f] [m k f x] [m k f x y] [m k f x y z] [m k f x y z &amp; more])
-  'Updates' a value in an associative structure, where k is a
-  key and f is a function that will take the old value
-  and any supplied args and return the new value, and returns a new
-  structure.  If the key does not exist, nil is passed as the old value.">update</a></code></td>
+  created.">update-in</a></code></td>
               </tr>
               <tr class="even">
                 <td>Ops</td>
@@ -976,8 +987,8 @@ key and then later assoc'ing it puts it at the end, as if it were
 assoc'ed for the first time. Supports transient.">ordered-map</a> (clojure.data.priority-map/) <a href="https://github.com/clojure/data.priority-map" title="clojure.data.priority-map/priority-map
 ([&amp; keyvals])
   Usage: (priority-map key val key val ...)
-Returns a new priority map with optional supplied mappings.
-(priority-map) returns an empty priority map.">priority-map</a> (flatland.useful.map/) <a href="https://github.com/amalloy/useful/blob/master/src/flatland/useful/map.clj#L243-L245" title="flatland.useful.map/ordering-map
+  Returns a new priority map with optional supplied mappings.
+  (priority-map) returns an empty priority map.">priority-map</a> (flatland.useful.map/) <a href="https://github.com/amalloy/useful/blob/master/src/flatland/useful/map.clj#L243-L245" title="flatland.useful.map/ordering-map
 ([key-order] [key-order default-comparator])
   Create an empty map with a custom comparator that puts the given keys first,
 in the order
@@ -1035,18 +1046,18 @@ default-comparator.">ordering-map</a> (clojure.data.int-map/) <a href="https://g
   from the latter (left-to-right) will be combined with the mapping in
   the result by calling (f val-in-result val-in-latter).">merge-with</a> <a href="https://clojuredocs.org/clojure_core/clojure.core/select-keys" title="clojure.core/select-keys
 ([map keyseq])
-  Returns a map containing only those entries in map whose key is in keys">select-keys</a> <a href="https://clojuredocs.org/clojure_core/clojure.core/update-in" title="clojure.core/update-in
+  Returns a map containing only those entries in map whose key is in keys">select-keys</a> <a href="https://clojuredocs.org/clojure_core/clojure.core/update" title="clojure.core/update
+([m k f] [m k f x] [m k f x y] [m k f x y z] [m k f x y z &amp; more])
+  'Updates' a value in an associative structure, where k is a
+  key and f is a function that will take the old value
+  and any supplied args and return the new value, and returns a new
+  structure.  If the key does not exist, nil is passed as the old value.">update</a> <a href="https://clojuredocs.org/clojure_core/clojure.core/update-in" title="clojure.core/update-in
 ([m ks f &amp; args])
   'Updates' a value in a nested associative structure, where ks is a
   sequence of keys and f is a function that will take the old value
   and any supplied args and return the new value, and returns a new
   nested structure.  If any levels do not exist, hash-maps will be
-  created.">update-in</a> (1.7) <a href="https://clojuredocs.org/clojure_core/clojure.core/update" title="clojure.core/update
-([m k f] [m k f x] [m k f x y] [m k f x y z] [m k f x y z &amp; more])
-  'Updates' a value in an associative structure, where k is a
-  key and f is a function that will take the old value
-  and any supplied args and return the new value, and returns a new
-  structure.  If the key does not exist, nil is passed as the old value.">update</a> (clojure.set/) <a href="https://clojuredocs.org/clojure_core/clojure.set/rename-keys" title="clojure.set/rename-keys
+  created.">update-in</a> (clojure.set/) <a href="https://clojuredocs.org/clojure_core/clojure.set/rename-keys" title="clojure.set/rename-keys
 ([map kmap])
   Returns the map with the keys in kmap renamed to the vals in kmap">rename-keys</a> <a href="https://clojuredocs.org/clojure_core/clojure.set/map-invert" title="clojure.set/map-invert
 ([m])
@@ -1385,7 +1396,7 @@ Macro
    binding-forms.  Supported modifiers are: :let [binding-form expr ...],
    :while test, :when test.
 
-  (take 100 (for [x (range 100000000) y (range 1000000) :while (&lt; y x)] [x y]))">for</a> (1.7) <a href="https://clojuredocs.org/clojure_core/clojure.core/dedupe" title="clojure.core/dedupe
+  (take 100 (for [x (range 100000000) y (range 1000000) :while (&lt; y x)] [x y]))">for</a> <a href="https://clojuredocs.org/clojure_core/clojure.core/dedupe" title="clojure.core/dedupe
 ([] [coll])
   Returns a lazy sequence removing consecutive duplicates in coll.
   Returns a transducer when no collection is provided.">dedupe</a> <a href="https://clojuredocs.org/clojure_core/clojure.core/random-sample" title="clojure.core/random-sample
@@ -1504,7 +1515,7 @@ supplied colls.">concat</a> <a href="https://clojuredocs.org/clojure_core/clojur
   Returns a stateful transducer when no collection is provided.">distinct</a> <a href="https://clojuredocs.org/clojure_core/clojure.core/flatten" title="clojure.core/flatten
 ([x])
   Takes any nested combination of sequential things (lists, vectors,
-  etc.) and returns their contents as a single, flat sequence.
+  etc.) and returns their contents as a single, flat lazy sequence.
   (flatten nil) returns an empty sequence.">flatten</a> <a href="https://clojuredocs.org/clojure_core/clojure.core/group-by" title="clojure.core/group-by
 ([f coll])
   Returns a map of the elements of coll keyed by the result of
@@ -1760,7 +1771,7 @@ Macro
   element in the seq do not occur until the seq is consumed. doall can
   be used to force any effects. Walks through the successive nexts of
   the seq, retains the head and returns it, thus causing the entire
-  seq to reside in memory at one time.">doall</a> (1.7) <a href="https://clojuredocs.org/clojure_core/clojure.core/run%21" title="clojure.core/run!
+  seq to reside in memory at one time.">doall</a> <a href="https://clojuredocs.org/clojure_core/clojure.core/run%21" title="clojure.core/run!
 ([proc coll])
   Runs the supplied procedure (via reduce), for purposes of side
   effects, on successive items in the collection. Returns nil">run!</a></code></td>
@@ -1852,7 +1863,7 @@ sequence.">realized?</a></code></td>
   Returns a stateful transducer when no collection is provided.">distinct</a> <a href="https://clojuredocs.org/clojure_core/clojure.core/interpose" title="clojure.core/interpose
 ([sep] [sep coll])
   Returns a lazy seq of the elements of coll separated by sep.
-  Returns a stateful transducer when no collection is provided.">interpose</a> (1.7) <a href="https://clojuredocs.org/clojure_core/clojure.core/cat" title="clojure.core/cat
+  Returns a stateful transducer when no collection is provided.">interpose</a> <a href="https://clojuredocs.org/clojure_core/clojure.core/cat" title="clojure.core/cat
 ([rf])
   A transducer which concatenates the contents of each input, which must be a
   collection, into the reduction.">cat</a> <a href="https://clojuredocs.org/clojure_core/clojure.core/dedupe" title="clojure.core/dedupe
@@ -1874,7 +1885,7 @@ sequence.">realized?</a></code></td>
               </tr>
               <tr class="even">
                 <td>Create your own</td>
-                <td><code>(1.7) <a href="https://clojuredocs.org/clojure_core/clojure.core/completing" title="clojure.core/completing
+                <td><code><a href="https://clojuredocs.org/clojure_core/clojure.core/completing" title="clojure.core/completing
 ([f] [f cf])
   Takes a reducing function f of 2 args and returns a fn suitable for
   transduce by adding an arity-1 signature that calls cf (default -
@@ -1898,7 +1909,7 @@ sequence.">realized?</a></code></td>
   items of each coll, followed by the set of second
   items in each coll, until any one of the colls is exhausted.  Any
   remaining items in other colls are ignored. The transform should accept
-  number-of-colls arguments">sequence</a> (1.7) <a href="https://clojuredocs.org/clojure_core/clojure.core/transduce" title="clojure.core/transduce
+  number-of-colls arguments">sequence</a> <a href="https://clojuredocs.org/clojure_core/clojure.core/transduce" title="clojure.core/transduce
 ([xform f coll] [xform f init coll])
   reduce with a transformation of f (xf). If init is not
   supplied, (f) will be called to produce it. f should be a reducing
@@ -1943,37 +1954,37 @@ transaction,
             <tbody>
               <tr class="odd">
                 <td>Operations</td>
-                <td><code><a href="https://clojuredocs.org/clojure_core/clojure.spec/valid_q" title="clojure.spec.alpha/valid?
+                <td><code><a href="https://clojuredocs.org/clojure_core/clojure.spec.alpha/valid_q" title="clojure.spec.alpha/valid?
 ([spec x] [spec x form])
-  Helper function that returns true when x is valid for spec.">valid?</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/conform" title="clojure.spec.alpha/conform
+  Helper function that returns true when x is valid for spec.">valid?</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec.alpha/conform" title="clojure.spec.alpha/conform
 ([spec x])
   Given a spec and a value, returns :clojure.spec.alpha/invalid
-	if value does not match spec, else the (possibly destructured) value.">conform</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/unform" title="clojure.spec.alpha/unform
+	if value does not match spec, else the (possibly destructured) value.">conform</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec.alpha/unform" title="clojure.spec.alpha/unform
 ([spec x])
   Given a spec and a value created by or compliant with a call to
   'conform' with the same spec, returns a value with all conform
-  destructuring undone.">unform</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/explain" title="clojure.spec.alpha/explain
+  destructuring undone.">unform</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec.alpha/explain" title="clojure.spec.alpha/explain
 ([spec x])
   Given a spec and a value that fails to conform, prints an explanation to
-*out*.">explain</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/explain-data" title="clojure.spec.alpha/explain-data
+*out*.">explain</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec.alpha/explain-data" title="clojure.spec.alpha/explain-data
 ([spec x])
   Given a spec and a value x which ought to conform, returns nil if x
   conforms, else a map with at least the key ::problems whose value is
   a collection of problem-maps, where problem-map has at least :path :pred and
 :val
   keys describing the predicate and the value that failed at that
-  path.">explain-data</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/explain-str" title="clojure.spec.alpha/explain-str
+  path.">explain-data</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec.alpha/explain-str" title="clojure.spec.alpha/explain-str
 ([spec x])
   Given a spec and a value that fails to conform, returns an explanation as a
-string.">explain-str</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/explain-out" title="clojure.spec.alpha/explain-out
+string.">explain-str</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec.alpha/explain-out" title="clojure.spec.alpha/explain-out
 ([ed])
   Prints explanation data (per 'explain-data') to *out* using the printer in
 *explain-out*,
-   by default explain-printer.">explain-out</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/form" title="clojure.spec.alpha/form
+   by default explain-printer.">explain-out</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec.alpha/form" title="clojure.spec.alpha/form
 ([spec])
-  returns the spec as data">form</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/describe" title="clojure.spec.alpha/describe
+  returns the spec as data">form</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec.alpha/describe" title="clojure.spec.alpha/describe
 ([spec])
-  returns an abbreviated description of the spec as data">describe</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/assert" title="clojure.spec.alpha/assert
+  returns an abbreviated description of the spec as data">describe</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec.alpha/assert" title="clojure.spec.alpha/assert
 ([spec x])
 Macro
   spec-checking assert expression. Returns x if x is valid? according
@@ -1988,19 +1999,19 @@ not set.
 
 If (check-asserts?) is false at runtime, always returns x. Defaults to
 value of 'clojure.spec.check-asserts' system property, or false if not
-set. You can toggle check-asserts? with (check-asserts bool).">assert</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/check-asserts" title="clojure.spec.alpha/check-asserts
+set. You can toggle check-asserts? with (check-asserts bool).">assert</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec.alpha/check-asserts" title="clojure.spec.alpha/check-asserts
 ([flag])
   Enable or disable spec asserts that have been compiled
 with '*compile-asserts*' true.  See 'assert'.
 
 Initially set to boolean value of clojure.spec.check-asserts
-system property. Defaults to false.">check-asserts</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/check-asserts_q" title="clojure.spec.alpha/check-asserts?
+system property. Defaults to false.">check-asserts</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec.alpha/check-asserts_q" title="clojure.spec.alpha/check-asserts?
 ([])
   Returns the value set by check-asserts.">check-asserts?</a></code></td>
               </tr>
               <tr class="even">
                 <td>Generator ops</td>
-                <td><code><a href="https://clojuredocs.org/clojure_core/clojure.spec/gen" title="clojure.spec.alpha/gen
+                <td><code><a href="https://clojuredocs.org/clojure_core/clojure.spec.alpha/gen" title="clojure.spec.alpha/gen
 ([spec] [spec overrides])
   Given a spec, returns the generator for it, or throws if none can
   be constructed. Optionally an overrides map can be provided which
@@ -2010,12 +2021,12 @@ system property. Defaults to false.">check-asserts</a> <a href="https://clojured
   map) will supersede those of any subtrees. A generator for a regex
   op must always return a sequential collection (i.e. a generator for
   s/? should return either an empty sequence/vector or a
-  sequence/vector with one item in it)">gen</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/exercise" title="clojure.spec.alpha/exercise
+  sequence/vector with one item in it)">gen</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec.alpha/exercise" title="clojure.spec.alpha/exercise
 ([spec] [spec n] [spec n overrides])
   generates a number (default 10) of values compatible with spec and maps
 conform over them,
   returning a sequence of [val conformed-val] tuples. Optionally takes
-  a generator overrides map as per gen">exercise</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/exercise-fn" title="clojure.spec.alpha/exercise-fn
+  a generator overrides map as per gen">exercise</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec.alpha/exercise-fn" title="clojure.spec.alpha/exercise-fn
 ([sym] [sym n] [sym-or-f n fspec])
   exercises the fn named by sym (a symbol) by applying it to
   n (default 10) generated samples of its args spec. When fspec is
@@ -2024,12 +2035,13 @@ conform over them,
               </tr>
               <tr class="odd">
                 <td>Defn. &amp; registry</td>
-                <td><code><a href="https://clojuredocs.org/clojure_core/clojure.spec/def" title="clojure.spec.alpha/def
+                <td><code><a href="https://clojuredocs.org/clojure_core/clojure.spec.alpha/def" title="clojure.spec.alpha/def
 ([k spec-form])
 Macro
   Given a namespace-qualified keyword or resolvable symbol k, and a
   spec, spec-name, predicate or regex-op makes an entry in the
-  registry mapping k to the spec">def</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/fdef" title="clojure.spec.alpha/fdef
+  registry mapping k to the spec. Use nil to remove an entry in
+  the registry for k.">def</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec.alpha/fdef" title="clojure.spec.alpha/fdef
 ([fn-sym &amp; specs])
 Macro
   Takes a symbol naming a function, and one or more of the following:
@@ -2054,13 +2066,13 @@ Macro
   conform values, and so :fn specs will be ignored if :args or :ret
   are missing.
 
-[ documentation truncated.  Click link for the rest. ]">fdef</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/registry" title="clojure.spec.alpha/registry
+[ documentation truncated.  Click link for the rest. ]">fdef</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec.alpha/registry" title="clojure.spec.alpha/registry
 ([])
-  returns the registry map, prefer 'get-spec' to lookup a spec by name">registry</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/get-spec" title="clojure.spec.alpha/get-spec
+  returns the registry map, prefer 'get-spec' to lookup a spec by name">registry</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec.alpha/get-spec" title="clojure.spec.alpha/get-spec
 ([k])
-  Returns spec registered for keyword/symbol/var k, or nil.">get-spec</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/spec_q" title="clojure.spec.alpha/spec?
+  Returns spec registered for keyword/symbol/var k, or nil.">get-spec</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec.alpha/spec_q" title="clojure.spec.alpha/spec?
 ([x])
-  returns x if x is a spec object, else logical false">spec?</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/spec" title="clojure.spec.alpha/spec
+  returns x if x is a spec object, else logical false">spec?</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec.alpha/spec" title="clojure.spec.alpha/spec
 ([form &amp; {:keys [gen]}])
 Macro
   Takes a single predicate form, e.g. can be the name of a predicate,
@@ -2076,14 +2088,14 @@ Macro
   Optionally takes :gen generator-fn, which must be a fn of no args that
   returns a test.check generator.
 
-  Returns a spec.">spec</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/with-gen" title="clojure.spec.alpha/with-gen
+  Returns a spec.">spec</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec.alpha/with-gen" title="clojure.spec.alpha/with-gen
 ([spec gen-fn])
   Takes a spec and a no-arg, generator-returning fn and returns a version of
 that spec that uses that generator">with-gen</a></code></td>
               </tr>
               <tr class="even">
                 <td>Logical</td>
-                <td><code><a href="https://clojuredocs.org/clojure_core/clojure.spec/and" title="clojure.spec.alpha/and
+                <td><code><a href="https://clojuredocs.org/clojure_core/clojure.spec.alpha/and" title="clojure.spec.alpha/and
 ([&amp; pred-forms])
 Macro
   Takes predicate/spec-forms, e.g.
@@ -2091,7 +2103,7 @@ Macro
   (s/and even? #(&lt; % 42))
 
   Returns a spec that returns the conformed value. Successive
-  conformed values propagate through rest of predicates.">and</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/or" title="clojure.spec.alpha/or
+  conformed values propagate through rest of predicates.">and</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec.alpha/or" title="clojure.spec.alpha/or
 ([&amp; key-pred-forms])
 Macro
   Takes key+pred pairs, e.g.
@@ -2105,7 +2117,7 @@ Macro
               </tr>
               <tr class="odd">
                 <td>Collection</td>
-                <td><code><a href="https://clojuredocs.org/clojure_core/clojure.spec/coll-of" title="clojure.spec.alpha/coll-of
+                <td><code><a href="https://clojuredocs.org/clojure_core/clojure.spec.alpha/coll-of" title="clojure.spec.alpha/coll-of
 ([pred &amp; opts])
 Macro
   Returns a spec for a collection of items satisfying pred. Unlike
@@ -2115,7 +2127,7 @@ Macro
   corresponding to :into if supplied, else will match the input collection,
   avoiding rebuilding when possible.
 
-  See also - every, map-of">coll-of</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/map-of" title="clojure.spec.alpha/map-of
+  See also - every, map-of">coll-of</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec.alpha/map-of" title="clojure.spec.alpha/map-of
 ([kpred vpred &amp; opts])
 Macro
   Returns a spec for a map whose keys satisfy kpred and vals satisfy
@@ -2126,7 +2138,7 @@ Macro
 
   :conform-keys - conform keys as well as values (default false)
 
-  See also - every-kv">map-of</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/every" title="clojure.spec.alpha/every
+  See also - every-kv">map-of</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec.alpha/every" title="clojure.spec.alpha/every
 ([pred &amp; {:keys [into kind count max-count min-count distinct gen-max gen], :as
 opts}])
 Macro
@@ -2140,7 +2152,7 @@ Macro
 
   Takes several kwargs options that further constrain the collection:
 
-  :kind - a pred/spec that the collection type must satisfy, e.g. vector?
+  :kind - a pred that the collection type must satisfy, e.g. vector?
         (default nil) Note that if :kind is specified and :into is
         not, this pred must generate in order for every to generate.
   :count - specifies coll has exactly this count (default nil)
@@ -2152,7 +2164,7 @@ Macro
 
   :gen-max - the maximum coll size to generate (default 20)
 
-[ documentation truncated.  Click link for the rest. ]">every</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/every-kv" title="clojure.spec.alpha/every-kv
+[ documentation truncated.  Click link for the rest. ]">every</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec.alpha/every-kv" title="clojure.spec.alpha/every-kv
 ([kpred vpred &amp; opts])
 Macro
   like 'every' but takes separate key and val preds and works on associative
@@ -2160,7 +2172,7 @@ collections.
 
   Same options as 'every', :into defaults to {}
 
-  See also - map-of">every-kv</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/keys" title="clojure.spec.alpha/keys
+  See also - map-of">every-kv</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec.alpha/keys" title="clojure.spec.alpha/keys
 ([&amp; {:keys [req req-un opt opt-un gen]}])
 Macro
   Creates and returns a map validating spec. :req and :opt are both
@@ -2186,7 +2198,7 @@ Macro
 
   In addition, the values of *all* namespace-qualified keys will be validated
 
-[ documentation truncated.  Click link for the rest. ]">keys</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/merge" title="clojure.spec.alpha/merge
+[ documentation truncated.  Click link for the rest. ]">keys</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec.alpha/merge" title="clojure.spec.alpha/merge
 ([&amp; pred-forms])
 Macro
   Takes map-validating specs (e.g. 'keys' specs) and
@@ -2196,7 +2208,7 @@ Macro
               </tr>
               <tr class="even">
                 <td>Regex</td>
-                <td><code><a href="https://clojuredocs.org/clojure_core/clojure.spec/cat" title="clojure.spec.alpha/cat
+                <td><code><a href="https://clojuredocs.org/clojure_core/clojure.spec.alpha/cat" title="clojure.spec.alpha/cat
 ([&amp; key-pred-forms])
 Macro
   Takes key+pred pairs, e.g.
@@ -2204,7 +2216,7 @@ Macro
   (s/cat :e even? :o odd?)
 
   Returns a regex op that matches (all) values in sequence, returning a map
-  containing the keys of each pred and the corresponding value.">cat</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/alt" title="clojure.spec.alpha/alt
+  containing the keys of each pred and the corresponding value.">cat</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec.alpha/alt" title="clojure.spec.alpha/alt
 ([&amp; key-pred-forms])
 Macro
   Takes key+pred pairs, e.g.
@@ -2214,24 +2226,24 @@ Macro
   Returns a regex op that returns a map entry containing the key of the
   first matching pred and the corresponding value. Thus the
   'key' and 'val' functions can be used to refer generically to the
-  components of the tagged return">alt</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/*" title="clojure.spec.alpha/*
+  components of the tagged return">alt</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec.alpha/*" title="clojure.spec.alpha/*
 ([pred-form])
 Macro
   Returns a regex op that matches zero or more values matching
-  pred. Produces a vector of matches iff there is at least one match">*</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/%2B" title="clojure.spec.alpha/+
+  pred. Produces a vector of matches iff there is at least one match">*</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec.alpha/%2B" title="clojure.spec.alpha/+
 ([pred-form])
 Macro
   Returns a regex op that matches one or more values matching
-  pred. Produces a vector of matches">+</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/_q" title="clojure.spec.alpha/?
+  pred. Produces a vector of matches">+</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec.alpha/_q" title="clojure.spec.alpha/?
 ([pred-form])
 Macro
   Returns a regex op that matches zero or one value matching
-  pred. Produces a single value (not a collection) if matched.">?</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/%26" title="clojure.spec.alpha/&amp;
+  pred. Produces a single value (not a collection) if matched.">?</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec.alpha/%26" title="clojure.spec.alpha/&amp;
 ([re &amp; preds])
 Macro
   takes a regex op re, and predicates. Returns a regex-op that consumes
   input as per re but subjects the resulting value to the
-  conjunction of the predicates, and any conforming they might perform.">&amp;</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/keys*" title="clojure.spec.alpha/keys*
+  conjunction of the predicates, and any conforming they might perform.">&amp;</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec.alpha/keys*" title="clojure.spec.alpha/keys*
 ([&amp; kspecs])
 Macro
   takes the same arguments as spec/keys and returns a regex op that matches
@@ -2252,15 +2264,15 @@ integer?) [42 :a 1 :c 2 :d 4 99])
               </tr>
               <tr class="odd">
                 <td>Range</td>
-                <td><code><a href="https://clojuredocs.org/clojure_core/clojure.spec/int-in" title="clojure.spec.alpha/int-in
+                <td><code><a href="https://clojuredocs.org/clojure_core/clojure.spec.alpha/int-in" title="clojure.spec.alpha/int-in
 ([start end])
 Macro
   Returns a spec that validates fixed precision integers in the
-  range from start (inclusive) to end (exclusive).">int-in</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/inst-in" title="clojure.spec.alpha/inst-in
+  range from start (inclusive) to end (exclusive).">int-in</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec.alpha/inst-in" title="clojure.spec.alpha/inst-in
 ([start end])
 Macro
   Returns a spec that validates insts in the range from start
-(inclusive) to end (exclusive).">inst-in</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/double-in" title="clojure.spec.alpha/double-in
+(inclusive) to end (exclusive).">inst-in</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec.alpha/double-in" title="clojure.spec.alpha/double-in
 ([&amp; {:keys [infinite? NaN? min max], :or {infinite? true, NaN? true}, :as m}])
 Macro
   Specs a 64-bit floating point number. Options:
@@ -2268,19 +2280,19 @@ Macro
     :infinite? - whether +/- infinity allowed (default true)
     :NaN?      - whether NaN allowed (default true)
     :min       - minimum value (inclusive, default none)
-    :max       - maximum value (inclusive, default none)">double-in</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/int-in-range_q" title="clojure.spec.alpha/int-in-range?
+    :max       - maximum value (inclusive, default none)">double-in</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec.alpha/int-in-range_q" title="clojure.spec.alpha/int-in-range?
 ([start end val])
   Return true if start &lt;= val, val &lt; end and val is a fixed
-  precision integer.">int-in-range?</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/inst-in-range_q" title="clojure.spec.alpha/inst-in-range?
+  precision integer.">int-in-range?</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec.alpha/inst-in-range_q" title="clojure.spec.alpha/inst-in-range?
 ([start end inst])
   Return true if inst at or after start and before end">inst-in-range?</a></code></td>
               </tr>
               <tr class="even">
                 <td>Other</td>
-                <td><code><a href="https://clojuredocs.org/clojure_core/clojure.spec/nilable" title="clojure.spec.alpha/nilable
+                <td><code><a href="https://clojuredocs.org/clojure_core/clojure.spec.alpha/nilable" title="clojure.spec.alpha/nilable
 ([pred])
 Macro
-  returns a spec that accepts nil and values satisfying pred">nilable</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/multi-spec" title="clojure.spec.alpha/multi-spec
+  returns a spec that accepts nil and values satisfying pred">nilable</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec.alpha/multi-spec" title="clojure.spec.alpha/multi-spec
 ([mm retag])
 Macro
   Takes the name of a spec/predicate-returning multimethod and a
@@ -2306,7 +2318,7 @@ Macro
 
   Note also that the dispatch values of the multimethod will be
 
-[ documentation truncated.  Click link for the rest. ]">multi-spec</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/fspec" title="clojure.spec.alpha/fspec
+[ documentation truncated.  Click link for the rest. ]">multi-spec</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec.alpha/fspec" title="clojure.spec.alpha/fspec
 ([&amp; {:keys [args ret fn gen], :or {ret (quote clojure.core/any?)}}])
 Macro
   takes :args :ret and (optional) :fn kwargs whose values are preds
@@ -2321,7 +2333,7 @@ Macro
   the :fn spec if present.
 
   Optionally takes :gen generator-fn, which must be a fn of no args
-  that returns a test.check generator.">fspec</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/conformer" title="clojure.spec.alpha/conformer
+  that returns a test.check generator.">fspec</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec.alpha/conformer" title="clojure.spec.alpha/conformer
 ([f] [f unf])
 Macro
   takes a predicate function with the semantics of conform i.e. it should return
@@ -2332,9 +2344,9 @@ either a
               </tr>
               <tr class="odd">
                 <td>Custom explain</td>
-                <td><code><a href="https://clojuredocs.org/clojure_core/clojure.spec/explain-printer" title="clojure.spec.alpha/explain-printer
+                <td><code><a href="https://clojuredocs.org/clojure_core/clojure.spec.alpha/explain-printer" title="clojure.spec.alpha/explain-printer
 ([ed])
-  Default printer for explain-data. nil indicates a successful validation.">explain-printer</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec/*explain-out*" title="clojure.spec.alpha/*explain-out*">*explain-out*</a></code></td>
+  Default printer for explain-data. nil indicates a successful validation.">explain-printer</a> <a href="https://clojuredocs.org/clojure_core/clojure.spec.alpha/*explain-out*" title="clojure.spec.alpha/*explain-out*">*explain-out*</a></code></td>
               </tr>
             </tbody>
           </table>
@@ -2548,7 +2560,24 @@ Macro
                 <td>from *in*</td>
                 <td><code><a href="https://clojuredocs.org/clojure_core/clojure.core/read-line" title="clojure.core/read-line
 ([])
-  Reads the next line from stream that is the current value of *in* .">read-line</a> (clojure.tools.reader.edn/) <a href="https://github.com/clojure/tools.reader" title="clojure.tools.reader.edn/read
+  Reads the next line from stream that is the current value of *in* .">read-line</a> (clojure.edn/) <a href="https://clojuredocs.org/clojure_core/clojure.edn/read" title="clojure.edn/read
+([] [stream] [opts stream])
+  Reads the next object from stream, which must be an instance of
+  java.io.PushbackReader or some derivee.  stream defaults to the
+  current value of *in*.
+
+  Reads data in the edn format (subset of Clojure data):
+  http://edn-format.org
+
+  opts is a map that can include the following keys:
+  :eof - value to return on end-of-file. When not supplied, eof throws an
+exception.
+  :readers  - a map of tag symbols to data-reader functions to be considered
+before default-data-readers.
+              When not supplied, only the default-data-readers will be used.
+  :default - A function of two args, that will, if present and no reader is
+found for a tag,
+             be called with the tag and the value.">read</a> (clojure.tools.reader.edn/) <a href="https://github.com/clojure/tools.reader" title="clojure.tools.reader.edn/read
 ([] [reader] [{:keys [eof], :as opts} reader] [reader eof-error? eof opts])
   Reads the first object from an IPushbackReader or a java.io.PushbackReader.
    Returns the object read. If EOF, throws if eof-error? is true otherwise
@@ -2577,7 +2606,24 @@ found for a tag,
                 <td><code><a href="https://clojuredocs.org/clojure_core/clojure.core/line-seq" title="clojure.core/line-seq
 ([rdr])
   Returns the lines of text from rdr as a lazy sequence of strings.
-  rdr must implement java.io.BufferedReader.">line-seq</a> (clojure.tools.reader.edn/) <a href="https://github.com/clojure/tools.reader" title="clojure.tools.reader.edn/read
+  rdr must implement java.io.BufferedReader.">line-seq</a> (clojure.edn/) <a href="https://clojuredocs.org/clojure_core/clojure.edn/read" title="clojure.edn/read
+([] [stream] [opts stream])
+  Reads the next object from stream, which must be an instance of
+  java.io.PushbackReader or some derivee.  stream defaults to the
+  current value of *in*.
+
+  Reads data in the edn format (subset of Clojure data):
+  http://edn-format.org
+
+  opts is a map that can include the following keys:
+  :eof - value to return on end-of-file. When not supplied, eof throws an
+exception.
+  :readers  - a map of tag symbols to data-reader functions to be considered
+before default-data-readers.
+              When not supplied, only the default-data-readers will be used.
+  :default - A function of two args, that will, if present and no reader is
+found for a tag,
+             be called with the tag and the value.">read</a> (clojure.tools.reader.edn/) <a href="https://github.com/clojure/tools.reader" title="clojure.tools.reader.edn/read
 ([] [reader] [{:keys [eof], :as opts} reader] [reader eof-error? eof opts])
   Reads the first object from an IPushbackReader or a java.io.PushbackReader.
    Returns the object read. If EOF, throws if eof-error? is true otherwise
@@ -2607,7 +2653,14 @@ found for a tag,
 ([s &amp; body])
 Macro
   Evaluates body in a context in which *in* is bound to a fresh
-  StringReader initialized with the string s.">with-in-str</a> (clojure.tools.reader.edn/) <a href="https://github.com/clojure/tools.reader" title="clojure.tools.reader.edn/read-string
+  StringReader initialized with the string s.">with-in-str</a> (clojure.edn/) <a href="https://clojuredocs.org/clojure_core/clojure.edn/read-string" title="clojure.edn/read-string
+([s] [opts s])
+  Reads one object from the string s. Returns nil when s is nil or empty.
+
+  Reads data in the edn format (subset of Clojure data):
+  http://edn-format.org
+
+  opts is a map as per clojure.edn/read">read-string</a> (clojure.tools.reader.edn/) <a href="https://github.com/clojure/tools.reader" title="clojure.tools.reader.edn/read-string
 ([s] [opts s])
   Reads one object from the string s.
    Returns nil when s is nil or empty.
@@ -2769,6 +2822,23 @@ else return the value of silently.">delete-file</a> <a href="https://clojuredocs
   the tag and the value.  If *default-data-reader-fn* is nil (the
   default), an exception will be thrown for the unknown tag.">*default-data-reader-fn*</a></code></td>
               </tr>
+              <tr class="even">
+                <td>tap</td>
+                <td><code>(1.10) <a href="https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/tap>" title="clojure.core/tap&gt;
+([x])
+  sends x to any taps. Will not block. Returns true if there was room in the
+queue,
+  false if not (dropped).">tap&gt;</a> <a href="https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/add-tap" title="clojure.core/add-tap
+([f])
+  adds f, a fn of one argument, to the tap set. This function will be called
+with anything sent via tap&gt;.
+  This function may (briefly) block (e.g. for streams), and will never impede
+calls to tap&gt;,
+  but blocking indefinitely may cause tap values to be dropped.
+  Remember f in order to remove-tap">add-tap</a> <a href="https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/remove-tap" title="clojure.core/remove-tap
+([f])
+  Remove f from the tap set.">remove-tap</a></code></td>
+              </tr>
             </tbody>
           </table>
         </div><!-- /section -->
@@ -2802,9 +2872,9 @@ Special Form
 
   Defines a function
 Spec
-  args: (cat :name (? simple-symbol?) :bs (alt :arity-1
-:clojure.core.specs.alpha/args+body :arity-n (+ (spec
-:clojure.core.specs.alpha/args+body))))
+  args: (cat :fn-name (? simple-symbol?) :fn-tail (alt :arity-1
+:clojure.core.specs.alpha/params+body :arity-n (+ (spec
+:clojure.core.specs.alpha/params+body))))
   ret: any?">fn</a> <a href="https://clojuredocs.org/clojure_core/clojure.core/defn" title="clojure.core/defn
 ([name doc-string? attr-map? [params*] prepost-map? body] [name doc-string?
 attr-map? ([params*] prepost-map? body) + attr-map?])
@@ -2814,17 +2884,17 @@ Macro
     to the var metadata. prepost-map defines a map with optional keys
     :pre and :post that contain collections of pre or post conditions.
 Spec
-  args: (cat :name simple-symbol? :docstring (? string?) :meta (? map?) :bs (alt
-:arity-1 :clojure.core.specs.alpha/args+body :arity-n (cat :bodies (+ (spec
-:clojure.core.specs.alpha/args+body)) :attr (? map?))))
+  args: (cat :fn-name simple-symbol? :docstring (? string?) :meta (? map?)
+:fn-tail (alt :arity-1 :clojure.core.specs.alpha/params+body :arity-n (cat
+:bodies (+ (spec :clojure.core.specs.alpha/params+body)) :attr-map (? map?))))
   ret: any?">defn</a> <a href="https://clojuredocs.org/clojure_core/clojure.core/defn-" title="clojure.core/defn-
 ([name &amp; decls])
 Macro
   same as defn, yielding non-public def
 Spec
-  args: (cat :name simple-symbol? :docstring (? string?) :meta (? map?) :bs (alt
-:arity-1 :clojure.core.specs.alpha/args+body :arity-n (cat :bodies (+ (spec
-:clojure.core.specs.alpha/args+body)) :attr (? map?))))
+  args: (cat :fn-name simple-symbol? :docstring (? string?) :meta (? map?)
+:fn-tail (alt :arity-1 :clojure.core.specs.alpha/params+body :arity-n (cat
+:bodies (+ (spec :clojure.core.specs.alpha/params+body)) :attr-map (? map?))))
   ret: any?">defn-</a> <a href="https://clojuredocs.org/clojure_core/clojure.core/definline" title="clojure.core/definline
 ([name &amp; decl])
 Macro
@@ -2969,6 +3039,9 @@ Macro
     ;optional doc string
     &quot;A doc string for AProtocol abstraction&quot;
 
+   ;options
+   :extend-via-metadata true
+
   ;method signatures
     (bar [this a b] &quot;bar docs&quot;)
     (baz [this a] [this a b] [this a b c] &quot;baz docs&quot;))
@@ -2982,9 +3055,6 @@ Macro
   Java parlance). defprotocol is dynamic, has no special compile-time
   effect, and defines no new types or classes. Implementations of
   the protocol methods can be provided using extend.
-
-  defprotocol will automatically generate a corresponding interface,
-  with the same name as the protocol, i.e. given a protocol:
 
 [ documentation truncated.  Click link for the rest. ]">defprotocol</a> <code>Slicey (slice [at]))</code></code></td>
               </tr>
@@ -3363,6 +3433,30 @@ from
   relationships.">descendants</a> <a href="https://clojuredocs.org/clojure_core/clojure.core/make-hierarchy" title="clojure.core/make-hierarchy
 ([])
   Creates a hierarchy object for use with derive, isa? etc.">make-hierarchy</a></code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div><!-- /section -->
+        <div class="section">
+          <h2>Datafy (<a href="https://corfield.org/blog/2018/12/03/datafy-nav">article</a>)</h2>
+          <table>
+            <tbody>
+              <tr class="odd">
+                <td>Datafy</td>
+                <td><code>(clojure.datafy/) <a href="https://clojure.github.io/clojure/clojure.datafy-api.html#clojure.datafy/datafy" title="clojure.datafy/datafy
+([x])
+  Attempts to return x as data.
+  datafy will return the value of clojure.core.protocols/datafy. If
+  the value has been transformed and the result supports
+  metadata, :clojure.datafy/obj will be set on the metadata to the
+  original value of x, and :clojure.datafy/class to the name of the
+  class of x, as a symbol.">datafy</a> <a href="https://clojure.github.io/clojure/clojure.datafy-api.html#clojure.datafy/nav" title="clojure.datafy/nav
+([coll k v])
+  Returns (possibly transformed) v in the context of coll and k (a
+  key/index or nil). Callers should attempt to provide the key/index
+  context k for Indexed/Associative/ILookup colls if possible, but not
+  to fabricate one e.g. for sequences (pass nil). nav returns the
+  value of clojure.core.protocols/nav.">nav</a></code></td>
               </tr>
             </tbody>
           </table>
@@ -3871,15 +3965,23 @@ itself (not its value) is returned. The reader macro #'x expands to (var x).">va
               </tr>
               <tr class="odd">
                 <td><code>#?</code></td>
-                <td><code>(1.7) <a href="https://clojure.org/reference/reader#_reader_conditionals">Reader conditional</a>: <code>#?(:clj x :cljs y)</code> reads as <code>x</code> on JVM, <code>y</code> in ClojureScript, nothing elsewhere.  Other keys: <code>:cljr :default</code></code></td>
+                <td><code><a href="https://clojure.org/reference/reader#_reader_conditionals">Reader conditional</a>: <code>#?(:clj x :cljs y)</code> reads as <code>x</code> on JVM, <code>y</code> in ClojureScript, nothing elsewhere.  Other keys: <code>:cljr :default</code></code></td>
               </tr>
               <tr class="even">
                 <td><code>#?@</code></td>
-                <td><code>(1.7) <a href="https://clojure.org/reference/reader#_reader_conditionals">Splicing reader conditional</a>: <code>[1 #?@(:clj [x y] :cljs [w z]) 3]</code> reads as <code>[1 x y 3]</code> on JVM, <code>[1 w z 3]</code> in ClojureScript, <code>[1 3]</code> elsewhere.</code></td>
+                <td><code><a href="https://clojure.org/reference/reader#_reader_conditionals">Splicing reader conditional</a>: <code>[1 #?@(:clj [x y] :cljs [w z]) 3]</code> reads as <code>[1 x y 3]</code> on JVM, <code>[1 w z 3]</code> in ClojureScript, <code>[1 3]</code> elsewhere.</code></td>
               </tr>
               <tr class="odd">
                 <td><code>#foo</code></td>
                 <td><code><a href="https://clojure.org/reference/reader#tagged_literals">tagged literal</a> e.g. <code>#inst</code> <code>#uuid</code></code></td>
+              </tr>
+              <tr class="even">
+                <td><code>#:</code></td>
+                <td><code><a href="https://clojure.org/reference/reader#map_namespace_syntax">map namespace syntax</a> e.g. <code>#:foo{:a 1}</code> is equal to <code>{:foo/a 1}</code></code></td>
+              </tr>
+              <tr class="odd">
+                <td><code>##</code></td>
+                <td><code>(1.9) symbolic values: <code>##Inf ##-Inf ##NaN<code></code></td>
               </tr>
               <tr class="even">
                 <td><code>$</code></td>
@@ -4088,9 +4190,9 @@ Special Form
 
   Defines a function
 Spec
-  args: (cat :name (? simple-symbol?) :bs (alt :arity-1
-:clojure.core.specs.alpha/args+body :arity-n (+ (spec
-:clojure.core.specs.alpha/args+body))))
+  args: (cat :fn-name (? simple-symbol?) :fn-tail (alt :arity-1
+:clojure.core.specs.alpha/params+body :arity-n (+ (spec
+:clojure.core.specs.alpha/params+body))))
   ret: any?">fn</a> <a href="https://clojuredocs.org/clojure_core/clojure.core/loop" title="clojure.core/loop
   (loop [bindings*] exprs*)
 ([bindings &amp; body])
@@ -4202,9 +4304,9 @@ Special Form
 
   Defines a function
 Spec
-  args: (cat :name (? simple-symbol?) :bs (alt :arity-1
-:clojure.core.specs.alpha/args+body :arity-n (+ (spec
-:clojure.core.specs.alpha/args+body))))
+  args: (cat :fn-name (? simple-symbol?) :fn-tail (alt :arity-1
+:clojure.core.specs.alpha/params+body :arity-n (+ (spec
+:clojure.core.specs.alpha/params+body))))
   ret: any?">fn</a> <a href="https://clojuredocs.org/clojure_core/clojure.core/defn" title="clojure.core/defn
 ([name doc-string? attr-map? [params*] prepost-map? body] [name doc-string?
 attr-map? ([params*] prepost-map? body) + attr-map?])
@@ -4214,9 +4316,9 @@ Macro
     to the var metadata. prepost-map defines a map with optional keys
     :pre and :post that contain collections of pre or post conditions.
 Spec
-  args: (cat :name simple-symbol? :docstring (? string?) :meta (? map?) :bs (alt
-:arity-1 :clojure.core.specs.alpha/args+body :arity-n (cat :bodies (+ (spec
-:clojure.core.specs.alpha/args+body)) :attr (? map?))))
+  args: (cat :fn-name simple-symbol? :docstring (? string?) :meta (? map?)
+:fn-tail (alt :arity-1 :clojure.core.specs.alpha/params+body :arity-n (cat
+:bodies (+ (spec :clojure.core.specs.alpha/params+body)) :attr-map (? map?))))
   ret: any?">defn</a> <a href="https://clojuredocs.org/clojure_core/clojure.core/defmacro" title="clojure.core/defmacro
 ([name doc-string? attr-map? [params*] body] [name doc-string? attr-map?
 ([params*] body) + attr-map?])
@@ -4315,17 +4417,17 @@ Macro
     to the var metadata. prepost-map defines a map with optional keys
     :pre and :post that contain collections of pre or post conditions.
 Spec
-  args: (cat :name simple-symbol? :docstring (? string?) :meta (? map?) :bs (alt
-:arity-1 :clojure.core.specs.alpha/args+body :arity-n (cat :bodies (+ (spec
-:clojure.core.specs.alpha/args+body)) :attr (? map?))))
+  args: (cat :fn-name simple-symbol? :docstring (? string?) :meta (? map?)
+:fn-tail (alt :arity-1 :clojure.core.specs.alpha/params+body :arity-n (cat
+:bodies (+ (spec :clojure.core.specs.alpha/params+body)) :attr-map (? map?))))
   ret: any?">defn</a> <a href="https://clojuredocs.org/clojure_core/clojure.core/defn-" title="clojure.core/defn-
 ([name &amp; decls])
 Macro
   same as defn, yielding non-public def
 Spec
-  args: (cat :name simple-symbol? :docstring (? string?) :meta (? map?) :bs (alt
-:arity-1 :clojure.core.specs.alpha/args+body :arity-n (cat :bodies (+ (spec
-:clojure.core.specs.alpha/args+body)) :attr (? map?))))
+  args: (cat :fn-name simple-symbol? :docstring (? string?) :meta (? map?)
+:fn-tail (alt :arity-1 :clojure.core.specs.alpha/params+body :arity-n (cat
+:bodies (+ (spec :clojure.core.specs.alpha/params+body)) :attr-map (? map?))))
   ret: any?">defn-</a> <a href="https://clojuredocs.org/clojure_core/clojure.core/definline" title="clojure.core/definline
 ([name &amp; decl])
 Macro
@@ -4515,7 +4617,7 @@ Macro
     (:import (java.util Date Timer Random)
              (java.sql Connection Statement)))
 Spec
-  args: (cat :name simple-symbol? :docstring (? string?) :attr-map (? map?)
+  args: (cat :ns-name simple-symbol? :docstring (? string?) :attr-map (? map?)
 
 [ documentation truncated.  Click link for the rest. ]">ns</a> <a href="https://clojuredocs.org/clojure_core/clojure.core/in-ns" title="clojure.core/in-ns
 ([name])
@@ -4621,7 +4723,10 @@ Spec
 ([x])
   If passed a namespace, returns it. Else, when passed a symbol,
   returns the namespace named by it, throwing an exception if not
-  found.">the-ns</a></code></td>
+  found.">the-ns</a> (1.10) <a href="https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/requiring-resolve" title="clojure.core/requiring-resolve
+([sym])
+  Resolves namespace-qualified sym per 'resolve'. If initial resolve
+fails, attempts to require sym's namespace and retries.">requiring-resolve</a></code></td>
               </tr>
               <tr class="odd">
                 <td>Remove</td>
@@ -4837,7 +4942,7 @@ vars are provided.">thread-bound?</a></code></td>
               </tr>
               <tr class="even">
                 <td>Volatiles</td>
-                <td><code>(1.7) <a href="https://clojuredocs.org/clojure_core/clojure.core/volatile%21" title="clojure.core/volatile!
+                <td><code><a href="https://clojuredocs.org/clojure_core/clojure.core/volatile%21" title="clojure.core/volatile!
 ([val])
   Creates and returns a Volatile with an initial value of val.">volatile!</a> <a href="https://clojuredocs.org/clojure_core/clojure.core/vreset%21" title="clojure.core/vreset!
 ([vol newval])
@@ -5430,9 +5535,58 @@ supplied, uses the root cause of the
    that carries a map of additional data.">ex-info</a> <a href="https://clojuredocs.org/clojure_core/clojure.core/ex-data" title="clojure.core/ex-data
 ([ex])
   Returns exception data (a map) if ex is an IExceptionInfo.
-   Otherwise returns nil.">ex-data</a> (1.9) <a href="https://clojuredocs.org/clojure_core/clojure.core/StackTraceElement-%3Evec" title="clojure.core/StackTraceElement-&gt;vec
+   Otherwise returns nil.">ex-data</a> <a href="https://clojuredocs.org/clojure_core/clojure.core/Throwable-%3Emap" title="clojure.core/Throwable-&gt;map
 ([o])
-  Constructs a data representation for a StackTraceElement">StackTraceElement-&gt;vec</a></code></td>
+  Constructs a data representation for a Throwable with keys:
+    :cause - root cause message
+    :phase - error phase
+    :via - cause chain, with cause keys:
+             :type - exception class symbol
+             :message - exception message
+             :data - ex-data
+             :at - top stack element
+    :trace - root cause stack elements">Throwable-&gt;map</a> (1.9) <a href="https://clojuredocs.org/clojure_core/clojure.core/StackTraceElement-%3Evec" title="clojure.core/StackTraceElement-&gt;vec
+([o])
+  Constructs a data representation for a StackTraceElement: [class method file
+line]">StackTraceElement-&gt;vec</a> (1.10) <a href="https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ex-cause" title="clojure.core/ex-cause
+([ex])
+  Returns the cause of ex if ex is a Throwable.
+  Otherwise returns nil.">ex-cause</a> <a href="https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ex-message" title="clojure.core/ex-message
+([ex])
+  Returns the message attached to ex if ex is a Throwable.
+  Otherwise returns nil.">ex-message</a> (clojure.main/) <a href="https://clojure.github.io/clojure/clojure.main-api.html#clojure.main/ex-triage" title="clojure.main/ex-triage
+([datafied-throwable])
+  Returns an analysis of the phase, error, cause, and location of an error that
+occurred
+  based on Throwable data, as returned by Throwable-&gt;map. All attributes other
+than phase
+  are optional:
+    :clojure.error/phase - keyword phase indicator, one of:
+      :read-source :compile-syntax-check :compilation :macro-syntax-check
+:macroexpansion
+      :execution :read-eval-result :print-eval-result
+    :clojure.error/source - file name (no path)
+    :clojure.error/path - source path
+    :clojure.error/line - integer line number
+    :clojure.error/column - integer column number
+    :clojure.error/symbol - symbol being expanded/compiled/invoked
+    :clojure.error/class - cause exception class symbol
+    :clojure.error/cause - cause exception message
+    :clojure.error/spec - explain-data for spec error">ex-triage</a> <a href="https://clojure.github.io/clojure/clojure.main-api.html#clojure.main/ex-str" title="clojure.main/ex-str
+([{:clojure.error/keys [phase source path line column symbol class cause spec],
+:as triage-data}])
+  Returns a string from exception data, as produced by ex-triage.
+  The first line summarizes the exception phase and location.
+  The subsequent lines describe the cause.">ex-str</a> <a href="https://clojure.github.io/clojure/clojure.main-api.html#clojure.main/err->msg" title="clojure.main/err-&gt;msg
+([e])
+  Helper to return an error message string from an exception.">err-&gt;msg</a> <a href="https://clojure.github.io/clojure/clojure.main-api.html#clojure.main/report-error" title="clojure.main/report-error
+([t &amp; {:keys [target], :or {target &quot;file&quot;}, :as opts}])
+  Create and output an exception report for a Throwable to target.
+
+  Options:
+    :target - &quot;file&quot; (default), &quot;stderr&quot;, &quot;none&quot;
+
+  If file is specified but cannot be written, falls back to stderr.">report-error</a></code></td>
               </tr>
             </tbody>
           </table>
@@ -5567,7 +5721,7 @@ Macro
   defaults to Object.
 
   The interfaces names must be valid interface types. If a method fn
-  is not provided for a class method, the superclass methd will be
+  is not provided for a class method, the superclass method will be
   called. If a method fn is not provided for an interface method, an
   UnsupportedOperationException will be thrown should it be
   called. Method fns are closures and can capture the environment in

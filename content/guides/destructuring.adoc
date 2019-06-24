@@ -13,6 +13,8 @@ toc::[]
 
 Destructuring is a way to concisely bind names to the values inside a data structure. Destructuring allows us to write more concise and readable code.
 
+(See Also: <<xref/../../../about/spec#,Spec - Rationale and Overview>> - For a more modern take on specifying data structures, validating them, destructuring them, or even generating them.) 
+
 Consider the following example of extracting and naming values in a vector.
 
 [source,clojure]

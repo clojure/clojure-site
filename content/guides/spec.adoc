@@ -11,7 +11,7 @@ toc::[]
 
 == Getting started
 
-The <<xref/../../../about/spec#,spec>> library specifies the structure of data, validates or destructures it, and can generate data based on the spec. 
+The <<xref/../../../about/spec#,spec>> library specifies the structure of data, validates or conforms it, and can generate data based on the spec. 
 
 To use spec, declare a dependency on Clojure 1.9.0 or higher:
 
@@ -670,7 +670,7 @@ Another option is to use `s/assert` within your code to assert that a value sati
 ;; 100 - failed: map?
 ----
 
-A deeper level of integration is to call conform and use the return value to destructure the input. This will be particularly useful for complex inputs with alternate options.
+A deeper level of integration is to call conform and use the return value with destructuring to pull apart the input. This will be particularly useful for complex inputs with alternate options.
 
 Here we conform using the config specification defined above:
 
@@ -690,7 +690,7 @@ Here we conform using the config specification defined above:
 (configure ["-server" "foo" "-verbose" true "-user" "joe"])
 ----
 
-Here configure calls `conform` to destructure the config input. The result is either the special `::s/invalid` value or a destructured form of the result:
+Here configure calls `conform` to produce data good for destructuring the config input. The result is either the special `::s/invalid` value or an annotated form of the result:
 
 [source,clojure]
 ----

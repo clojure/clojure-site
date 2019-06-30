@@ -157,6 +157,20 @@ There is no single right answer to this question. For data specs, it is often us
 
 For function specs, most people either put them immediately before or after the function they apply to, or in a separate namespace that can optionally be required when needed (for testing or validation). In the latter case, Clojure core has followed the pattern of using foo.bar.specs to hold function specs for the functions in foo.bar.
 
+[[regex_nesting]]
+**<<faq#regex_nesting,How do nested regex ops work?>>**
+
+Regex ops (cat, alt, *, +, ?, etc) always describe the elements in a sequential collection. They are not, by themselves, specs. When used in a spec context they are coerced into specs. Nested regex ops combine to form a single regex spec over the same sequential collection.
+
+To validate a nested collection, use `s/spec` to wrap the inner regex, forcing a spec boundary between regex ops.
+
+[[instrument_ret]]
+**<<faq#instrument_ret,Why doesn't `instrument` check return values?>>**
+
+Instrument is intended to verify that a function is being invoked according to its args spec. That is, is the function being called correctly? This functionality should be used during development.
+
+Checking whether a function operates correctly is a test-time activity and this should be checked with the `check` function which will actually invoke the function with generated args and verify the ret and fn specs on each invocation.
+
 [[skip_macros]]
 **<<faq#skip_macros,Is there a way to skip checking macro specs?>>**
 

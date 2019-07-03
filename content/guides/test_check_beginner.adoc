@@ -1,4 +1,4 @@
-= `test.check` Beginner's Guide
+= test.check
 Gary Fredericks
 2019-06-29
 :type: guides
@@ -7,12 +7,6 @@ Gary Fredericks
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 toc::[]
-
-TODO: Formatting issues
-
-- the title formatting doesn't work
-- some of the #() inline code examples don't work (but not all???)
-- the backticked level-5 headers don't look like headers
 
 == Introduction
 
@@ -23,7 +17,7 @@ This guide, which is based on version `0.10.0`, will briefly introduce
 property-based testing using test.check examples, and then cover basic
 usage of the different parts of the API.
 
-== property-based testing
+== Property-based testing
 
 Property-based tests are often contrasted with "example-based tests",
 which are tests which test a function by enumerating specific inputs
@@ -121,13 +115,11 @@ The original failing example `[-3]` (given at the `:fail` key) has
 been shrunk to `[0]` (under `[:shrunk :smallest]`), and a variety of
 other data is provided as well.
 
-== `test.check` usage
+== Generators
 
 The different parts of test.check are cleanly separated by namespace.
 We will proceed from the bottom up, starting with generators, then
 properties, and then two methods for running tests.
-
-=== Generators
 
 Generators are supported by the `clojure.test.check.generators`
 namespace.
@@ -146,7 +138,7 @@ Additionally, there are several development functions for
 experimenting with generators. We'll introduce those first so we can
 use them to demonstrate the rest of the generator functionality.
 
-==== Development Tools
+=== Development Tools
 
 The `gen/sample` function takes a generator and returns a collection
 of small sample elements from that generator:
@@ -168,7 +160,7 @@ user=> (gen/generate gen/large-integer 50)
 -165175
 ----
 
-==== Scalar Generators
+=== Scalar Generators
 
 test.check comes with generators for booleans, numbers, characters,
 strings, keywords, symbols, and UUIDs. E.g.:
@@ -203,7 +195,7 @@ user=> (gen/sample gen/uuid)
  #uuid "c32b7788-70de-4bf5-b24f-1e7cb564a37d")
 ----
 
-==== Collection Generators
+=== Collection Generators
 
 The collection generators are generally functions with arguments
 for generators of their elements.
@@ -241,12 +233,12 @@ user=> (gen/generate (gen/vector-distinct (gen/vector gen/boolean 3)
  [false true  true]]
 ----
 
-==== Generator Combinators
+=== Generator Combinators
 
 The scalar and collection generators can generate a variety of structures,
 but creating nontrivial custom generators requires using the combinators.
 
-===== `gen/one-of`
+==== `gen/one-of`
 
 `gen/one-of` takes a collection of generators and returns a generator
 that can generate values from any of them:
@@ -260,7 +252,7 @@ user=> (gen/sample (gen/one-of [gen/boolean gen/double gen/large-integer]))
 There is also `gen/frequency`, which is similar but allows specifying
 a weight for each generator.
 
-===== `gen/such-that`
+==== `gen/such-that`
 
 `gen/such-that` restricts an existing generator to a subset of its
 values, using a predicate:
@@ -290,7 +282,7 @@ seeing ten even numbers in a row isn't extraordinarily unlikely.
 likely to succeed. In other cases, there is often an alternative way
 to build the generator, as we'll see with `gen/fmap`.
 
-===== `gen/fmap`
+==== `gen/fmap`
 
 `gen/fmap` allows you to modify any generator by supplying a function
 to modify the values it generates. You can use this to construct
@@ -311,9 +303,9 @@ user=> (gen/generate (gen/fmap (fn [[name age]]
 Another use of `gen/fmap` is to restrict or skew the distribution of
 another generator using targeted transformations. For example, to
 turn a general integer generator into a generator of odd numbers, you
-could either use the `gen/fmap` function `#(+ 1 (* 2 %))` (which also
+could either use the `gen/fmap` function `pass:[#(+ 1 (* 2 %))]` (which also
 has the effect of doubling the range of the distribution) or
-`#(cond-> % (even? %) (+ 1))` (which doesn't).
+`pass:[#(cond-> % (even? %) (+ 1))]` (which doesn't).
 
 Here's a generator that only generates upper-case strings:
 
@@ -323,7 +315,7 @@ user=> (gen/sample (gen/fmap #(.toUpperCase %) gen/string-ascii))
 ("" "" "JT" "" ">Y1@" "" "]-" "XCJ@C" "<ANF.\"|" "I@O\"M")
 ----
 
-===== `gen/bind`
+==== `gen/bind`
 
 The most advanced combinator allows generating things in multiple
 stages, with the generators in later stages constructed using values
@@ -385,7 +377,7 @@ user=> (gen/generate
 [[0 47] [0 47]]
 ----
 
-=== Properties
+== Properties
 
 A property is an actual test -- it combines a generator with a
 function you want to test, and checks that the function behaves as
@@ -452,7 +444,7 @@ Ran 1 tests containing 1 assertions.
 0 failures, 0 errors.
 ----
 
-=== Additional Documentation
+== Additional Documentation
 
 For additional documentation, see the
 https://github.com/clojure/test.check/blob/master/README.md[test.check README].

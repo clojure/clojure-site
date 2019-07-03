@@ -213,7 +213,7 @@ Instead you can simply write:
 
 === `let`
 
-`let` binds symbols to values in a "lexical scope". A lexical scope creates a new context for names, nested inside the surrounding context. Names defined in a let take precedence over the names in the outer context.
+`let` binds symbols to values in a "lexical scope". A lexical scope creates a new context for names, nested inside the surrounding context. Names defined in a `let` take precedence over the names in the outer context.
 
 [source,clojure]
 ----

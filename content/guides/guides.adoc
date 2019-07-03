@@ -25,6 +25,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 === Tools
 
 * <<deps_and_cli#,Deps and CLI>>
+* <<test_check/beginner#,test.check>>
 
 === Libraries
 

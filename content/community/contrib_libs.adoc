@@ -22,7 +22,7 @@ Every project has one or more owners (often community members) who determine the
 
 Contrib libraries are open source libraries, like any other open source Clojure library. They vary widely in development activity and quality and may or may not be the best alternative for their functionality in the overall ecosystem. You should evaluate them before use as you would any open source library you intend to use as a dependency.
 
-If you find that active development for a library has ceased and you would like to take over as owner, please contact Alex Miller at alex.miller@cognitect.com. Good stewards for a library typically tend to be those actively using the library and knowledgable about the goals and alternatives of the functionality.
+If you find that active development for a library has ceased and you would like to take over as owner, please contact clojure@cognitect.com. Good stewards for a library typically tend to be those actively using the library and knowledgable about the goals and alternatives of the functionality.
 
 == Contrib Libraries
 

@@ -30,14 +30,14 @@ There are many ways to make a meaningful contribution to the Clojure community:
 
 If you are writing a guide, making an event, or creating a resource, please consider contributing to this web site, clojure.org. All of the content is https://github.com/clojure/clojure-site[stored in GitHub] and pull requests and issues are accepted. For more information on how to contribute, see the page on <<contributing_site#,contributing to the site>>. Every page has a link to the corresponding source file in the bottom right corner. If you have an idea for a new guide or updated documentation, please https://github.com/clojure/clojure-site/issues[file an issue] for discussion.
 
-== Filing Bugs
+== Reporting Problems and Requesting Enhancements
 
-If you have found a bug on Clojure, ClojureScript, or other Clojure projects, please first consider verifying your assumptions on the https://groups.google.com/forum/#!forum/clojure[mailing list], Clojurians Slack, or other places Clojurists can give you feedback.
+The Clojure team provides a <<ask#,question forum>> where users can ask questions, submit potential problems, and request enhancements to Clojure, ClojureScript, or Clojure contrib libraries. For all of these cases, please ask a question on the <<ask#,forum>>. Mark the question with tag `problem` for potential problems and `request` for enhancements. The community and core team will assess the issue and determine whether to file an issue in the jira tracker. If an issue is filed, the link will be added to the question and it will be tagged with `jira`.
 
-To file a bug, you can use the https://clojure.atlassian.net/servicedesk/customer/portal/1[Clojure support portal]. No account or contributor agreement is needed to file an issue. Someone on the core team will evaluate your request and either transfer it into a ticket, link it to an existing ticket, or resolve it in the appropriate way. 
+The development teams for these languages and libs will use the question votes to prioritize their work in jira towards the next release.
 
-We are currently evaluating other systems for collecting and prioritizing enhancement requests.
-
-== Clojure Development
+== Development
 
 Clojure was created by Rich Hickey and is developed by a core team of developers at https://cognitect.com[Cognitect], which supports this work. The Clojure development team values a measured and thoughtful approach to language evolution with a strong emphasis on maintaining backward compatibility. See <<xref/../../dev/dev#,Development>> for more information on Clojure development.
+
+If you would like to provide a patch on a specific ticket in the jira tracker, please follow the <<xref/../../dev/dev#,process>> to become a contributor.

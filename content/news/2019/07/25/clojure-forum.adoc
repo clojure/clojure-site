@@ -1,0 +1,16 @@
+= Clojure Forum
+Alex Miller
+2019-07-25
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+We are pleased to announce today a new forum for Clojure and ClojureScript users: https://ask.clojure.org[https://ask.clojure.org]. You can ask questions, discuss possible problems, request enhancements, and vote on questions and answers. 
+
+The new forum was seeded with all of the open jira issues, one question per issue with jira comments turned into answers. Over time, we expect this site to serve as a persistent store of common questions, answers, etc - it is open for web indexing and has both search and "similar question" functionality to help you find previous related discussions. This addresses one of the biggest issues with current places to ask questions about Clojure - the ability to search and find similar prior discussions.
+
+For problems and enhancements, we have been using JIRA for years (and will continue to do so). However, there are naturally two audiences for issues, users and developers, who have different needs. The new forum will serve as the primary place for users to ask questions about potential problems or request possible enhancments. Authentication occurs via GitHub (other auth providers may be added in the future). No contributor agreement is needed.
+
+Developers on Clojure, ClojureScript, etc will monitor these forums and create jiras when necessary. Any user may vote on questions in the forum and the dev teams can use this information when prioritizing fixes and enhancements. This capability has been available in JIRA for many years, but it was too much of a barrier to receive feedback from casual users. The new forum greatly reduces this friction.
+
+For more information see the <<xref/../../../../../community/ask#,forum usage details>>.

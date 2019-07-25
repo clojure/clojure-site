@@ -1,0 +1,30 @@
+= Clojure Forum
+Alex Miller
+2019-07-24
+:type: community
+:toc: macro
+:icons: font
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+The https://ask.clojure.org[Clojure Q&A] site is maintained by the Clojure team as an official place to ask questions about Clojure, ClojureScript, ClojureCLR, Clojure contrib libraries, and any other Clojure topic.
+
+== Access
+
+Anyone may view the content on the site, but you must have an account to ask questions or provide answers. Authentication is currently done using your GitHub account. Other authentication providers may be added in the future. When you have logged in, please click your user name in the upper right corner and review your profile. If you wish to receive email notifications, please add an email address.
+
+== Categories and tags
+
+Questions have both *categories* and *tags*. Categories (on the right sidebar) are a fixed set of language or project topics for those projects. At least a top level category must be selected when asking a question.
+
+Tags are an open and extensible set of attributes that can be applied to questions. There are some special tags:
+
+* problem - describe a problem in the language or library
+* request - describe a request for enhancement in the language or library
+* jira - used when a problem or request has a matching jira for development - the link will be included in an answer
+
+When problems or requests are logged, developers can assess and, if needed, create a corresponding jira for development.
+
+== Voting
+
+Users may vote on both questions and answers. Highly voted problem or request questions will be more strongly considered for inclusion in future releases of Clojure, ClojureScript, libraries, etc.

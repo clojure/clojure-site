@@ -27,7 +27,7 @@ Clojure is a functional language. Functions are first-class and can be passed-to
 (defn greet  [name]  (str "Hello, " name) )
 ----
 
-This function has a single parameter `name`, however you may include any number of arguments in the params vector.
+This function has a single parameter `name`, however you may include any number of parameters in the params vector.
 
 Invoke a function with the name of the function in "function position" (the first element of a list):
 
@@ -39,9 +39,9 @@ user=> (greet "students")
 
 === Multi-arity functions
 
-Functions can be defined to take different numbers of arguments (different "arity"). Different arities must all be defined in the same `defn` - using `defn` more than once will replace the previous function.
+Functions can be defined to take different numbers of parameters (different "arity"). Different arities must all be defined in the same `defn` - using `defn` more than once will replace the previous function.
 
-Each arity is a list `([args*] body*)`. One arity can invoke another. The body can contain any number of expressions and the return value is the result of the last expression.
+Each arity is a list `([param*] body*)`. One arity can invoke another. The body can contain any number of expressions and the return value is the result of the last expression.
 
 [source,clojure]
 ----
@@ -50,7 +50,7 @@ Each arity is a list `([args*] body*)`. One arity can invoke another. The body c
   ([msg]  (println msg)))
 ----
 
-This function declares two arities (0 arguments and 1 argument). The 0-argument arity calls the 1-argument arity with a default value to print. We invoke these functions by passing the appropriate number of arguments:
+This function declares two arities (0 parameters and 1 parameter). The 0-parameter arity calls the 1-parameter arity with a default value to print. We invoke these functions by passing the appropriate number of arguments:
 
 [source,clojure-repl]
 ----
@@ -65,9 +65,9 @@ nil
 
 === Variadic functions
 
-Functions may also define a variable number of arguments - this is known as a "variadic" function. The variable arguments must occur at the end of the argument list. They will be collected in a sequence for use by the function. 
+Functions may also define a variable number of parameters - this is known as a "variadic" function. The variable parameters must occur at the end of the parameter list. They will be collected in a sequence for use by the function. 
 
-The beginning of the variable arguments is marked with `&`.
+The beginning of the variable parameters is marked with `&`.
 
 [source,clojure]
 ----
@@ -75,7 +75,7 @@ The beginning of the variable arguments is marked with `&`.
   (println greeting who))
 ----
 
-This function takes an argument `greeting` and a variable number of arguments (0 or more) that will be collected in a list named `who`. We can see this by invoking it with 3 arguments:
+This function takes an parameter `greeting` and a variable number of parameters (0 or more) that will be collected in a list named `who`. We can see this by invoking it with 3 arguments:
 
 [source,clojure-repl]
 ----
@@ -128,9 +128,9 @@ It might be useful to think of `defn` as a contraction of `def` and `fn`. The `f
 
 There is a shorter form for the `fn` anonymous function syntax implemented in the Clojure reader: `#()`. This syntax omits the parameter list and names parameters based on their position.
 
-* `%` is used for a single argument
-* `%1`, `%2`, `%3`, etc are used for multiple arguments
-* `%&` is used for any remaining (variadic) arguments
+* `%` is used for a single parameter
+* `%1`, `%2`, `%3`, etc are used for multiple parameters
+* `%&` is used for any remaining (variadic) parameters
 
 Nested anonymous functions would create an ambiguity as the parameters are not named, so nesting is not allowed.
 

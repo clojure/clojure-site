@@ -15,7 +15,7 @@ First, please consider the <<xref/../../community/contributing#,many ways to con
 
 The Clojure core team values those that engage with the current stream of ongoing work, doing the hard work of triage, <<developing_patches#,patch development>>, <<screening_tickets#,screening>>, etc. The <<workflow#,workflow>> page highlights places to tap into those queues of work as jira reports. The core team tends to focus on tickets primarily in the late alpha / early beta period for a release cycle. During other parts of the release cycle, activity may seem dormant, but that is the perfect time to improve tickets so they are ready to evaluate. Tickets that are well-written with good patches can move quickly through the cycle at the appropriate time.
 
-If you are interesting in becoming involved as an active contributor:
+If you are interested in becoming involved as an active contributor:
 
 1. Sign the <<contributor_agreement#,Clojure Contributor Agreement>>.
 2. File a https://clojure.atlassian.net/servicedesk/customer/portal/1[contributor support request] to get a contributor account - please include the email address you wish to use with your account.

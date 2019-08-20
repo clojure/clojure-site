@@ -298,6 +298,8 @@ Below is a summary of calling conventions for calling into Java from Clojure:
 
 == Test your knowledge
 
+__<<answers#,Check your answers>>__
+
 1) Define a function `greet` that takes no arguments and prints "Hello". Replace the ___ with the implementation:
 `(defn greet [] ___)`
 
@@ -440,4 +442,3 @@ That is, your function returns the composition of `f` and `g`.
 (defn two-fns [f g]
   ___)
 ----
-

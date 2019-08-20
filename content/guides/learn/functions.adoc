@@ -298,7 +298,7 @@ Below is a summary of calling conventions for calling into Java from Clojure:
 
 == Test your knowledge
 
-__<<answers#functions,Check your answers>>__
+__<<answers#_functions,Check your answers>>__
 
 1) Define a function `greet` that takes no arguments and prints "Hello". Replace the `___` with the implementation:
 `(defn greet [] ___)`

@@ -75,7 +75,7 @@ The beginning of the variable parameters is marked with `&`.
   (println greeting who))
 ----
 
-This function takes an parameter `greeting` and a variable number of parameters (0 or more) that will be collected in a list named `who`. We can see this by invoking it with 3 arguments:
+This function takes a parameter `greeting` and a variable number of parameters (0 or more) that will be collected in a list named `who`. We can see this by invoking it with 3 arguments:
 
 [source,clojure-repl]
 ----

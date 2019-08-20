@@ -367,4 +367,4 @@ Note that the printed result is a valid form that the Reader could read again. B
 . Using REPL documentation functions, find the documentation for the `rem` and `mod` functions. Compare the results of the provided expressions based on the documentation. 
 . Using `find-doc`, find the function that prints the stack trace of the most recent REPL exception.
 
-<<answers#,Check your answers>>
+<<answers#,Check your answers#syntax>>

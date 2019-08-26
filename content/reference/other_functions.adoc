@@ -47,7 +47,7 @@ Print to string: https://clojure.github.io/clojure/clojure.core-api.html#clojure
 [[regex]]
 == Regex Support
 
-Regex patterns can be compiled at read-time via the `#"pattern"` reader macro, or at run time with https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/re-pattern[re-pattern]. Both forms produce http://java.sun.com/j2se/1.5.0/docs/api/java/util/regex/Pattern.html[java.util.regex.Pattern] objects.
+Regex patterns can be compiled at read-time via the `#"pattern"` reader macro, or at run time with https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/re-pattern[re-pattern]. Both forms produce https://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html[java.util.regex.Pattern] objects.
 
 [source,clojure-repl]
 ----

@@ -355,7 +355,7 @@ AWS S3 credentials can be set in the environment using one of these mechanisms:
 3. Create a named profile in the AWS credentials file and set the environment variable `AWS_PROFILE` with its name.
 4. Amazon ECS container and instance profile credentials should also work, but have not been tested.
 
-For more information, most of the advice in http://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/credentials.html[this AWS document] describes how credentials are located. Note however that the Java system properties options will NOT work with the command line tools (but would work if using the tools.deps.alpha library directly).
+For more information, most of the advice in https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/credentials.html[this AWS document] describes how credentials are located. Note however that the Java system properties options will NOT work with the command line tools (but would work if using the tools.deps.alpha library directly).
 
 ==== Maven proxies
 

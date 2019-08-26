@@ -7,7 +7,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 Some of the new features for 1.8 are:
 
-* More string functions in http://clojure.github.io/clojure/clojure.string-api.html[clojure.string] (portable to ClojureScript): index-of, last-index-of, starts-with?, ends-with?, includes?
+* More string functions in https://clojure.github.io/clojure/clojure.string-api.html[clojure.string] (portable to ClojureScript): index-of, last-index-of, starts-with?, ends-with?, includes?
 * Compiler <<xref/../../../../../reference/compilation#directlinking,direct linking>> - improves performance and startup time
 * <<xref/../../../../../reference/repl_and_main#_launching_a_socket_server,Socket server>> and socket server REPL - adds the ability to allow remote Clojure REPL connections
 

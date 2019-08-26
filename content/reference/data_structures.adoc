@@ -119,7 +119,7 @@ https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/symbol[symb
 [[Collections]]
 == Collections
 
-All of the Clojure collections are immutable and http://en.wikipedia.org/wiki/Persistent_data_structure[persistent]. In particular, the Clojure collections support efficient creation of 'modified' versions, by utilizing structural sharing, and make all of their performance bound guarantees for persistent use. The collections are efficient and inherently thread-safe. Collections are represented by abstractions, and there may be one or more concrete realizations. In particular, since 'modification' operations yield new collections, the new collection might not have the same concrete type as the source collection, but will have the same logical (interface) type.
+All of the Clojure collections are immutable and https://en.wikipedia.org/wiki/Persistent_data_structure[persistent]. In particular, the Clojure collections support efficient creation of 'modified' versions, by utilizing structural sharing, and make all of their performance bound guarantees for persistent use. The collections are efficient and inherently thread-safe. Collections are represented by abstractions, and there may be one or more concrete realizations. In particular, since 'modification' operations yield new collections, the new collection might not have the same concrete type as the source collection, but will have the same logical (interface) type.
 
 All the collections support https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/count[count] for getting the size of the collection, https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/conj[conj] for 'adding' to the collection, and https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/seq[seq] to get a sequence that can walk the entire collection, though their specific behavior is slightly different for different types of collections.
 
@@ -127,7 +127,7 @@ Because collections support the https://clojure.github.io/clojure/clojure.core-a
 
 [[hash]]
 === Java collection hashes
-The Java collection interfaces specify algorithms for http://docs.oracle.com/javase/7/docs/api/java/util/List.html#hashCode()[Lists], http://docs.oracle.com/javase/7/docs/api/java/util/Set.html#hashCode()[Sets], and http://docs.oracle.com/javase/7/docs/api/java/util/Map.html#hashCode()[Maps] in calculating hashCode() values. All Clojure collections conform to these specifications in their hashCode() implementations.
+The Java collection interfaces specify algorithms for https://docs.oracle.com/javase/8/docs/api/java/util/List.html#hashCode()[Lists], https://docs.oracle.com/javase/8/docs/api/java/util/Set.html#hashCode()[Sets], and https://docs.oracle.com/javase/8/docs/api/java/util/Map.html#hashCode()[Maps] in calculating hashCode() values. All Clojure collections conform to these specifications in their hashCode() implementations.
 
 === Clojure collection hashes
 Clojure provides its own hash computations that provide better hash properties for collections (and other types), known as the _hasheq_ value.

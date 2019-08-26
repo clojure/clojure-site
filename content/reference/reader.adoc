@@ -11,7 +11,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 toc::[]
 
-Clojure is a http://en.wikipedia.org/wiki/Homoiconicity[homoiconic] language, which is a fancy term describing the fact that Clojure programs are represented by Clojure data structures. This is a very important difference between Clojure (and Common Lisp) and most other programming languages - Clojure is defined in terms of the evaluation of data structures and *not* in terms of the syntax of character streams/files. It is quite common, and easy, for Clojure programs to manipulate, transform and produce other Clojure programs.
+Clojure is a https://en.wikipedia.org/wiki/Homoiconicity[homoiconic] language, which is a fancy term describing the fact that Clojure programs are represented by Clojure data structures. This is a very important difference between Clojure (and Common Lisp) and most other programming languages - Clojure is defined in terms of the evaluation of data structures and *not* in terms of the syntax of character streams/files. It is quite common, and easy, for Clojure programs to manipulate, transform and produce other Clojure programs.
 
 That said, most Clojure programs begin life as text files, and it is the task of the _reader_ to parse the text and produce the data structure the compiler will see. This is not merely a phase of the compiler. The reader, and the Clojure data representations, have utility on their own in many of the same contexts one might use XML or JSON etc.
 
@@ -32,7 +32,7 @@ Since we have to start somewhere, this reference starts where evaluation starts,
 
 * Strings - Enclosed in "double quotes". May span multiple lines. Standard Java escape characters are supported.
 * Numbers - generally represented as per Java
-** Integers can be indefinitely long and will be read as Longs when in range and clojure.lang.BigInts otherwise. Integers with an N suffix are always read as BigInts. When possible, they can be specified in any base with radix from 2 to 36 (see http://docs.oracle.com/javase/7/docs/api/java/lang/Long.html#parseLong(java.lang.String,%20int)[Long.parseLong()]); for example `2r101010`, `8r52`, `36r16`, and `42` are all the same Long.
+** Integers can be indefinitely long and will be read as Longs when in range and clojure.lang.BigInts otherwise. Integers with an N suffix are always read as BigInts. When possible, they can be specified in any base with radix from 2 to 36 (see https://docs.oracle.com/javase/7/docs/api/java/lang/Long.html#parseLong(java.lang.String,%20int)[Long.parseLong()]); for example `2r101010`, `8r52`, `36r16`, and `42` are all the same Long.
 ** Floating point numbers are read as Doubles; with M suffix they are read as BigDecimals.
 ** Ratios are supported, e.g. `22/7`.
 * Characters - preceded by a backslash: `\c`. `\newline`, `\space`, `\tab`, `\formfeed`, `\backspace`, and `\return` yield the corresponding characters. Unicode characters are represented with `\uNNNN` as in Java. Octals are represented with `\oNNN`.
@@ -248,7 +248,7 @@ The `#uuid` tagged literal will be parsed into a `java.util.UUID`:
 
 === Default data reader function
 
-If no data reader is found when reading a tagged literal, the https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/%2Adefault-data-reader-fn%2A[pass:[*default-data-reader-fn*]] is invoked. You can set your own default data reader function and the provided http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/tagged-literal[tagged-literal] function can be used to build an object that can store an unhandled literal. The object returned by `tagged-literal` supports keyword lookup of the `:tag` and `:form`:
+If no data reader is found when reading a tagged literal, the https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/%2Adefault-data-reader-fn%2A[pass:[*default-data-reader-fn*]] is invoked. You can set your own default data reader function and the provided https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/tagged-literal[tagged-literal] function can be used to build an object that can store an unhandled literal. The object returned by `tagged-literal` supports keyword lookup of the `:tag` and `:form`:
 
 [source,clojure]
 ----

@@ -294,15 +294,18 @@ In your ~/.m2/settings.xml:
 
 [source,xml]
 ----
-<servers>
+<settings>
   ...
-  <server>
-    <id>my-auth-repo</id>
-    <username>zango</username>
-    <password>123</password>
-  </server>
+  <servers>
+    <server>
+      <id>my-auth-repo</id>
+      <username>zango</username>
+      <password>123</password>
+    </server>
+    ...
+  </servers>
   ...
-</servers>
+</settings>
 ----
 
 Then in your deps.edn include a repo with a name matching the server id (here `my-auth-repo`):
@@ -335,15 +338,18 @@ AWS credentials can be set in the ~/.m2/settings.xml on a per-server basis. The 
 
 [source,xml]
 ----
-<servers>
+<settings>
   ...
-  <server>
-    <id>my-private-repo</id>
-    <username>AWS_ACCESS_KEY_HERE</username>
-    <password>AWS_SECRET_ACCESS_KEY_HERE</password>
-  </server>
+  <servers>
+    <server>
+      <id>my-private-repo</id>
+      <username>AWS_ACCESS_KEY_HERE</username>
+      <password>AWS_SECRET_ACCESS_KEY_HERE</password>
+    </server>
+    ...
+  </servers>
   ...
-</servers>
+</settings>
 ----
 
 It is also possible to specify your AWS credentials using the AWS credential chain. This is NOT RECOMMENDED as the same AWS credentials will be used for all AWS repositories (unlike settings.xml, which lets you set these on a per-repository basis).
@@ -363,14 +369,18 @@ In environments where the internet is accessed via a proxy, existing Maven confi
 
 [source,xml]
 ----
-<proxies>
-  <proxy>
-    <id>my-proxy</id>
-    <host>proxy.my.org</host>
-    <port>3128</port>
-    <nonProxyHosts>localhost|*.my.org</nonProxyHosts>
-  </proxy>
-</proxies>
+<settings>
+  ...
+  <proxies>
+    <proxy>
+      <id>my-proxy</id>
+      <host>proxy.my.org</host>
+      <port>3128</port>
+      <nonProxyHosts>localhost|*.my.org</nonProxyHosts>
+    </proxy>
+  </proxies>
+  ...
+</settings>
 ----
 
 Refer to the Maven https://maven.apache.org/guides/mini/guide-proxies.html[Guide to using proxies] for further details.

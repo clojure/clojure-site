@@ -380,7 +380,7 @@ The use of keyword arguments has fallen in and out of fashion in the Clojure com
 
 === Namespaced keywords
 
-If the keys in your map are namespaced keywords, you can also use destructuring with it, even though local binding symbols are not allowed to have namespaces. Destructuring a namespaced key will bind a value to the local name part of the key and drop the namespace.
+If the keys in your map are namespaced keywords, you can also use destructuring with it, even though local binding symbols are not allowed to have namespaces. Destructuring a namespaced key will bind a value to the local name part of the key and drop the namespace. (Thus you can use `:or` as with a non-namespaced key.)
 
 [source,clojure]
 ----
@@ -388,7 +388,8 @@ If the keys in your map are namespaced keywords, you can also use destructuring 
             :person/age 25
             :hobby/hobbies "running"})
 (let [{:keys [hobby/hobbies]
-       :person/keys [name age]} human]
+       :person/keys [name age]
+       :or {age 0}} human]
   (println name "is" age "and likes" hobbies))
 ;= Franklin is 25 and likes running
 ----

@@ -59,7 +59,7 @@ Status legend:
 | https://clojure.github.io/data.zip/[data.zip] | Manipulating zippers | | Stable
 | https://clojure.github.io/java.classpath/[java.classpath] | Classpath utilities | Stuart Sierra | Stable
 | https://clojure.github.io/java.data/[java.data] | Work with Java Beans | Cosmin Stejerean | Stable
-| https://clojure.github.io/java.jdbc/[java.jdbc] | JDBC-based SQL interface | Sean Corfield | Active
+| https://clojure.github.io/java.jdbc/[java.jdbc] | JDBC-based SQL interface | Sean Corfield | Stable
 | https://clojure.github.io/java.jmx/[java.jmx] | JMX interface | Nick Bailey | Stable
 | https://clojure.github.io/math.combinatorics/[math.combinatorics] | Lazy sequences for common combinatorial functions | Mark Engelberg | Stable
 | https://clojure.github.io/math.numeric-tower/[math.numeric-tower] | Math functions and numeric tower | Mark Engelberg | Stable

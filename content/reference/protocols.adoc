@@ -135,9 +135,16 @@ Protocols are fully reified and support reflective capabilities via https://cloj
     :bar (fn [x y] ...)})
 ----
 
-=== Extend only things you control
+=== Guidelines for extension
 
-You should extend a protocol to a type only if you control the type, the protocol, or both. This is particularly important for the protocols included with Clojure itself. For more information see the https://groups.google.com/d/msg/clojure/vyX5-F3NiVg/Ti1apkxDFl0J[mailing list discussion].
+Protocols are an open system, extensible to any type. To minimize conflicts, consider these guidelines:
+
+* If you don’t own the protocol or the target type, you should only extend in app (not public lib) code, and expect to maybe be broken by either owner.
+* If you own the protocol you get to provide some base versions for common targets as part of the package, subject to the dictatorial nature of doing so.
+* If you are shipping a lib of potential targets you can provide implementations of common protocols for them, subject to the fact that you are dictating. You should take particular care when extending protocols included with Clojure itself.
+* If you are a library developer, you should not extend if you own neither the protocol nor the target
+
+Also see this https://groups.google.com/d/msg/clojure/vyX5-F3NiVg/Ti1apkxDFl0J[mailing list discussion].
 
 === Extend via metadata
 

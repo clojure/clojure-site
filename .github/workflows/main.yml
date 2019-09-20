@@ -1,0 +1,14 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Trigger publish
+      run: curl -XPOST -H "Accept: application/vnd.github.everest-preview+json" -H "Content-Type: application/json" -H "Authorization: token $TOKEN" https://api.github.com/repos/cognitect/clojure-org-style/dispatches --data '{"event_type": "publish"}'
+      env:
+        TOKEN: ${{ secrets.TRIGGER_TOKEN }}

@@ -446,7 +446,7 @@ For the special case of a homogenous collection of arbitrary size, you can use `
 
 Additionally, `coll-of` can be passed a number of keyword arg options:
 
-* `:kind` - a predicate or spec that the incoming collection must satisfy, such as `vector?`
+* `:kind` - a predicate that the incoming collection must satisfy, such as `vector?`
 * `:count` - specifies exact expected count
 * `:min-count`, `:max-count` - checks that collection has `(\<= min-count count max-count)`
 * `:distinct` - checks that all elements are distinct

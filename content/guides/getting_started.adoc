@@ -17,9 +17,9 @@ Check out <<learn/syntax#,Learn Clojure>>, <<xref/../../community/resources#,Res
 
 Clojure provides <<deps_and_cli#,command line tools>> that can be used to start a Clojure repl, use Clojure and Java libraries, and start Clojure programs.
 
-=== Installation on Mac via `brew`
+=== Installation on Mac via https://brew.sh[Homebrew]
 
-Install the command line tools with brew:
+Install the command line tools with `brew`:
 
 [source,shell]
 ----

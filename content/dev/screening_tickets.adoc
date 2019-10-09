@@ -7,6 +7,8 @@ Alex Miller
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
+If you're interested in supplying patches or contributing to Clojure, please see the <<dev#,development overview>>.
+
 The job of screening is to create a funnel, so that the highest importance, highest urgency items are brought to the BDFL's attention first, already vetted and tested.
 
 == Choosing Tickets to Screen

@@ -7,6 +7,8 @@ Alex Miller
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
+If you're interested in supplying patches or contributing to Clojure, please see the <<dev#,development overview>>.
+
 == Before You Code
 
 If you consider the following items before you begin coding, you will produce a patch that is easier to assess and more likely to be accepted:

@@ -290,7 +290,7 @@ Procurers may also have configuration attributes stored at the root of the confi
 
 For Maven deps in authenticated repositories, existing Maven infrastructure is used to convey credentials.
 
-In your ~/.m2/settings.xml:
+In your `~/.m2/settings.xml`:
 
 [source,xml]
 ----
@@ -308,7 +308,7 @@ In your ~/.m2/settings.xml:
 </settings>
 ----
 
-Then in your deps.edn include a repo with a name matching the server id (here `my-auth-repo`):
+Then in your `deps.edn` include a repo with a name matching the server id (here `my-auth-repo`):
 
 [source,clojure]
 ----
@@ -334,7 +334,7 @@ Add a `:mvn/repos` that includes the s3 repository root:
  {"my-private-repo" {:url "s3://my-bucket/maven/releases"}}}
 ----
 
-AWS credentials can be set in the ~/.m2/settings.xml on a per-server basis. The repository name in deps.edn must match the server id in settings.xml:
+AWS credentials can be set in the `~/.m2/settings.xml` on a per-server basis. The repository name in `deps.edn` must match the server id in `settings.xml`:
 
 [source,xml]
 ----
@@ -384,6 +384,42 @@ In environments where the internet is accessed via a proxy, existing Maven confi
 ----
 
 Refer to the Maven https://maven.apache.org/guides/mini/guide-proxies.html[Guide to using proxies] for further details.
+
+==== Maven HTTP headers
+
+For adding custom headers to outgoing HTTP requests, existing Maven configuration in `~/.m2/settings.xml` is used.
+
+[source,xml]
+----
+<settings>
+  ...
+  <servers>
+    <server>
+      <id>my-token-repo</id>
+      <configuration>
+        <httpHeaders>
+          <property>
+            <name>Private-Token</name>
+            <value>abc123</value>
+          </property>
+        </httpHeaders>
+      </configuration>
+    </server>
+    ...
+  </servers>
+  ...
+</settings>
+----
+
+The server id in `settings.xml` must match the repository name in `deps.edn`:
+
+[source,clojure]
+----
+{:mvn/repos
+ {"my-token-repo" {:url "https://my.auth.com/repo"}}}
+----
+
+This mechanism is used by repositories that authenticate using a token, rather than by username and password.
 
 ==== Git configuration
 

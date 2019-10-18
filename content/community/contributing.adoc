@@ -34,7 +34,7 @@ If you are writing a guide, making an event, or creating a resource, please cons
 
 The Clojure team provides a <<ask#,forum>> where users can ask questions, submit potential problems, and request enhancements to Clojure, ClojureScript, or Clojure contrib libraries. For all of these cases, please ask a question on the <<ask#,forum>>. Mark the question with tag `problem` for potential problems and `request` for enhancements. The community and core team will assess the issue and determine whether to file an issue in the jira tracker. If an issue is filed, the link will be added to the question and it will be tagged with `jira`.
 
-If you are looking to provide feedback on an issue in jira, please search the https://ask.clojure.org[forum] for the equivalent issue by title and add your "answer" there instead.
+If you are looking to provide feedback on an issue in jira, please search the https://ask.clojure.org[forum] for the equivalent issue by title and add your feedback there as an "answer" instead.
 
 The development teams for these languages and libs will use the question votes to prioritize their work in jira towards the next release.
 

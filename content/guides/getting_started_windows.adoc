@@ -11,11 +11,11 @@ While there are different approaches and tooling stacks that can be used with Cl
 
 * Leiningen (pronounced LINE-ing-en) - This is like a package manager, build tool, task manager, and more in one tool. Think npm or nuget, but with more capabilities. There is at least one other build tool for Clojure (boot), but Leiningen is the most widely used.
 
-* JDK - Clojure runs on Java. Throw out any qualms you may have about Java, we aren't coding in Java (though we can through Clojure, and sometimes that can be useful).
+* JDK - Clojure runs on the Java Virtual Machine (JVM). Throw out any qualms you may have about Java, we aren't coding in Java (though we can through Clojure, and sometimes that can be useful).
 
 * IDE - We'll be using Visual Studio Code for our editor, with the Calva extension for Clojure support.
 
-We can actually install those first two in one go with Chocolatey, a package manager for Windows. They can be installed othe ways of course, but this way is simple and easy.
+We can actually install those first two in one go with Chocolatey, a package manager for Windows. They can be installed other ways of course, but this way is simple and easy.
 
 == Install Lineingen and the JDK
 
@@ -33,7 +33,7 @@ You'll notice the Chocolatey package installs the OpenJDK and Leiningen. Let's s
 lein repl
 ----
 
-Note: If you see a message that 'java' is not recognized as a command, close your terminal and reopen it, then try again.
+NOTE: If you see a message that 'java' is not recognized as a command, close your terminal and reopen it, then try again.
 
 You should see something beautiful like the following:
 
@@ -82,7 +82,7 @@ code clojure-project
 
 Now that we have this fresh new Clojure project, let's install Calva. In VS Code, go to Extensions and search "Calva" - install it. Now open the `core.clj` file in the `src/clojure_project` directory of your project, and hit the shortcut keys `ctrl+alt+c, ctrl+alt+j` to run the Calva jack-in command, select `Leiningen` as the project type when prompted. This starts a project REPL and connects Calva to it, and gives you a sweet REPL window in VS Code to work in. This is a souped-up version of what you saw in your terminal.
 
-* Note: There's a convenient feature of Calva that you should turn on, at least for the rest of this tutorial. Go into your VS Code Settings, then go to Extensions -> Calva and check the box next to "Eval On Save." This will ensure your code is compiled as you save your file, so you can immediately try it out in your REPL.
+NOTE: There's a convenient feature of Calva that you should turn on, at least for the rest of this tutorial. Go into your VS Code Settings, then go to Extensions -> Calva and check the box next to "Eval On Save." This will ensure your code is compiled as you save your file, so you can immediately try it out in your REPL.
 
 Notice at the top of your `core.clj` file that you're in the `clojure-project.core` namespace (`ns` is the namespace function). All Clojure functions and vars live inside of namespaces, and usually code is organized as one namespace per file. The namespace your REPL started in is the `user` namespace. Let's switch it to the `clojure-project.core` namespace so we can run code from that namespace/file. Type the shortcut keys `ctrl+alt+c, ctrl+alt+n` to switch the the current namespace (of the opened file).
 
@@ -97,9 +97,9 @@ Then hit `alt+enter`. You can also just hit `enter` if your cursor is at the end
 
 == Using Comment Forms for Testing
 
-Another useful thing you can do is eval the current form (expression inside parentheses), or the top level form, which is another command, and have the result either printed inside your editor as an annotation or you can send the form to the REPL window to be evaluated. This is useful to quickly run a small bit of code from the editor as you're developing. 
+Another useful thing you can do is eval the current form (expression inside parentheses), or the top level form, which is another command, and have the result printed inside your editor as an annotation. You can also send the form to the REPL window to be evaluated. This is useful to quickly run a small bit of code from the editor as you're developing.
 
-Something you can also do when testing code, is use Clojure's `comment` function to create a comment block, then add all your test calls inside the comment block. This way the function calls won't occur on file save (if Eval On Save is turned on), and you can send them one by one to the REPL, or evaluate them in the editor. Then when you return later you have the sequence of calls saved in a file.
+Something you can also do when testing code is use Clojure's `comment` function to create a comment block, then add all your test calls inside the comment block. This way the function calls won't occur on file save (if Eval On Save is turned on), and you can send them one by one to the REPL, or evaluate them in the editor. Then when you return later you have the sequence of calls saved in a file.
 
 [source,clojure]
 ----
@@ -114,4 +114,3 @@ Something you can also do when testing code, is use Clojure's `comment` function
 ----
 
 You should try out Calva's many different commands. Hit `ctrl+shift+p` and type "calva" to see a list of all its commands.
-

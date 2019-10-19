@@ -1,0 +1,68 @@
+= Getting Started with Clojure on Windows
+Brandon Ringe
+2019-10-19
+:type: guides 
+:toc: macro
+:icons: font
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+While there are different approaches and tooling stacks that can be used with Clojure, this guide serves as a specific approach designed to reduce friction for beginners. The tools used in this guide are the following:
+
+* Leiningen (pronounced LINE-ing-en) - This is like a package manager, build tool, task manager, and more in one tool. Think npm or nuget, but with more capabilities. There is at least one other build tool for Clojure (boot), but Leiningen is the most widely used.
+
+* JDK - Clojure runs on Java. Throw out any qualms you may have about Java, we aren't coding in Java (though we can through Clojure, and sometimes that can be useful).
+
+* IDE - We'll be using Visual Studio Code for our editor, with the Calva extension for Clojure support.
+
+We can actually install those first two in one go with Chocolatey, a package manager for Windows. They can be installed othe ways of course, but this way is simple and easy.
+
+== Install Lineingen and the JDK
+
+First, if you don't already have Chocolatey installed, follow the installation instructions at https://chocolatey.org/[chocolatey.org]. Once it's installed, open a shell or CMD terminal with admin priviledges and run the following:
+
+[source,shell]
+----
+choco install lein
+----
+
+You'll notice the Chocolatey package installs the OpenJDK and Leiningen. Let's start a REPL (read, eval, print loop).
+
+[source,shell]
+----
+lein repl
+----
+
+Note: If you see a message that 'java' is not recognized as a command, close your terminal and reopen it, then try again.
+
+You should see something beautiful like the following:
+
+[source,shell]
+----
+λ lein repl
+nREPL server started on port 52599 on host 127.0.0.1 - nrepl://127.0.0.1:52599
+REPL-y 0.4.3, nREPL 0.6.0
+Clojure 1.10.0
+OpenJDK 64-Bit Server VM 12.0.2+10
+    Docs: (doc function-name-here)
+          (find-doc "part-of-name-here")
+  Source: (source function-name-here)
+ Javadoc: (javadoc java-object-or-class-here)
+    Exit: Control+D or (exit) or (quit)
+ Results: Stored in vars *1, *2, *3, an exception in *e
+
+user=>
+----
+
+Clojure awaits you. Let's try simple addition:
+
+[source,shell]
+----
+user=> (+ 1 2 3)
+6
+----
+
+Now we're in business! Hit ctrl+D to exit the REPL. Let's get our editor set up.
+
+== Calva and VS Code
+

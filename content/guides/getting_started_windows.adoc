@@ -94,3 +94,24 @@ You should see the prompt in your REPL window changed to `clojure-project.core=>
 ----
 
 Then hit `alt+enter`. You can also just hit `enter` if your cursor is at the end of the line. You should see that it printed the message from the function. Change the contents of the message, save the file, and run `foo` again in your REPL. You should see the changes. Pretty fast development cycle, right? It makes working in Clojure a pretty fun experience.
+
+== Using Comment Forms for Testing
+
+Another useful thing you can do is eval the current form (expression inside parentheses), or the top level form, which is another command, and have the result either printed inside your editor as an annotation or you can send the form to the REPL window to be evaluated. This is useful to quickly run a small bit of code from the editor as you're developing. 
+
+Something you can also do when testing code, is use Clojure's `comment` function to create a comment block, then add all your test calls inside the comment block. This way the function calls won't occur on file save (if Eval On Save is turned on), and you can send them one by one to the REPL, or evaluate them in the editor. Then when you return later you have the sequence of calls saved in a file.
+
+[source,clojure]
+----
+(comment
+   ;;;; These can be eval'd individually in the editor or in the REPL
+
+   (foo "test")
+
+   (println "hello Clojure")
+
+   (+ 1 2 3))
+----
+
+You should try out Calva's many different commands. Hit `ctrl+shift+p` and type "calva" to see a list of all its commands.
+

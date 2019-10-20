@@ -234,11 +234,9 @@ These are synchronization primitives that should be avoided in user code. Use th
 
 == Other Special Forms
 
-anchor:.[]
 anchor:new[]
 The special forms <<java_interop#dot,dot ('.')>>, <<java_interop#new,new>>, and <<java_interop#set,set!>> of fields are described in the <<java_interop#,Java Interop>> section of the reference.
 
-anchor:set![]
 <<vars#set%21,set!>> of vars is described in the <<vars#,Vars>> section of the reference.
 
 [[binding-forms]]

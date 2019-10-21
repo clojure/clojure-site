@@ -245,7 +245,7 @@ Aliases are defined in the `:aliases` section of the config file. The Clojure to
 * -A - applies across all alias types
 ** These aliases support ALL alias keys above and all will be applied
 ** Also, these keys are only supported with -A:
-*** `:deps` - a deps map from lib to coordinate of deps to REPLACE the project `:deps'
+*** `:deps` - a deps map from lib to coordinate of deps to REPLACE the project `:deps`
 *** `:paths` a collection of string paths to REPLACE project `:paths`
 
 So given a deps.edn like:

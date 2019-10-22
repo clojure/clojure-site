@@ -33,4 +33,4 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 == Where did Clojure Contrib go?
 
-If you are migrating from a pre-1.3 version of Clojure, please see <<contrib_history#,[this page]>> for migration help regarding old contrib libraries.
+If you are migrating from a pre-1.3 version of Clojure, please see <<contrib_history#,this page>> for migration help regarding old contrib libraries.

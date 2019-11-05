@@ -78,7 +78,7 @@ nil
 [source,clojure]
 ----
 (defn greeting
-  ([] (greeting "Hello" "World!")
+  ([] (greeting "Hello" "World")
   ([x] (greeting "Hello" x)
   ([x y] (str x ", " y "!")))
 ----
@@ -161,7 +161,7 @@ user=> (+ (Math/pow (Math/sin 0.2) 2)
 [source,clojure]
 ----
 (defn one-less-arg [f x]
-  (fn [& args (apply f x args)))
+  (fn [& args] (apply f x args)))
 ----
 +
 13. Define a function `two-fns`:

@@ -446,6 +446,23 @@ Here are just some of the public success stories from companies using Clojure.  
                     </cite>
                   </blockquote>
                 </li>
+                <li>
+                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/pisano.png" /></p>
+                  <p>
+                    <a target="pisano" href="https://www.pisano.co">Pisano’s</a> empowering & innovative customer experience platform uses Clojure, ClojureScript and Datomic.
+                  </p>
+                  <hr>
+                  <p>
+                    <span class='read-more'>Read why Pisano is so happy with using the Clojure platform.</span>
+                  </p>
+                  <blockquote style='margin-left: 0; padding: 0'>
+                    <p>Modelling our system state with data structure was a gratifying experience which seems organic, as it should be.</p>
+                    <cite>
+                      <strong>Ertuğrul Çetin</strong>
+                      Software Engineer & Team Lead
+                    </cite>
+                  </blockquote>
+                </li>
               </ul>
             </div>
 

@@ -23,12 +23,12 @@ String s;
 if (x > 10) {
     s = "greater";
 } else {
-    s = "greater or equal";
+    s = "less or equal";
 }
 obj.someMethod(s);
 
 // Ternary operator is an expression; it returns a value:
-obj.someMethod(x > 10 ? "greater" : "greater or equal");
+obj.someMethod(x > 10 ? "greater" : "less or equal");
 ----
 In Clojure, however, everything is an expression! _Everything_ returns a value, and a block of multiple expressions returns the last value. Expressions that exclusively perform side-effects return `nil`.
 

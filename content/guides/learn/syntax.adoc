@@ -57,7 +57,7 @@ true false      ; booleans
 :release/alpha  ; keyword with namespace
 ----
 
-Symbols are composed of letters, numbers, and other punctutation and are used to refer to something else, like a function, value, namespace, etc. Symbols may optionally have a namespace, separated with a forward slash from the name.
+Symbols are composed of letters, numbers, and other punctuation and are used to refer to something else, like a function, value, namespace, etc. Symbols may optionally have a namespace, separated with a forward slash from the name.
 
 There are three special symbols that are read as different types - `nil` is the null value, and `true` and `false` are the boolean values.
 

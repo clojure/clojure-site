@@ -52,8 +52,8 @@ Channels are closed with `https://clojure.github.io/core.async/#clojure.core.asy
 [%hardbreaks]
 Closing channels:  https://clojure.github.io/core.async/#clojure.core.async/close%21[close!]
 Buffers: https://clojure.github.io/core.async/#clojure.core.async/buffer[buffer] https://clojure.github.io/core.async/#clojure.core.async/dropping-buffer[dropping-buffer] https://clojure.github.io/core.async/#clojure.core.async/sliding-buffer[sliding-buffer] https://clojure.github.io/core.async/#clojure.core.async/unblocking-buffer%3F[unblocking-buffer?]
-Blocking ops: https://clojure.github.io/core.async/#clojure.core.async/%3C%21%21[<!!] https://clojure.github.io/core.async/#clojure.core.async/%3E%21%21[>!!]
-Parking ops: https://clojure.github.io/core.async/#clojure.core.async/%3C%21[<!] https://clojure.github.io/core.async/#clojure.core.async/%3E%21[>!]
+Blocking ops: https://clojure.github.io/core.async/#clojure.core.async/%3E%21%21[>!!] https://clojure.github.io/core.async/#clojure.core.async/%3C%21%21[<!!]
+Parking ops: https://clojure.github.io/core.async/#clojure.core.async/%3E%21[>!] https://clojure.github.io/core.async/#clojure.core.async/%3C%21[<!]
 Async ops: https://clojure.github.io/core.async/#clojure.core.async/put%21[put!] https://clojure.github.io/core.async/#clojure.core.async/take%21[take!]
 Non-blocking ops: https://clojure.github.io/core.async/#clojure.core.async/offer%21[offer!] https://clojure.github.io/core.async/#clojure.core.async/poll%21[poll!]
 
@@ -79,9 +79,8 @@ https://clojure.github.io/core.async/#clojure.core.async/thread-call[thread-call
 
 === Multi-threaded stages
 
-https://clojure.github.io/core.async/#clojure.core.async/pipeline[pipeline]
-https://clojure.github.io/core.async/#clojure.core.async/pipeline-blocking[pipeline-blocking]
-https://clojure.github.io/core.async/#clojure.core.async/pipeline-async[pipeline-async]
+[%hardbreaks]
+Pipeline ops: https://clojure.github.io/core.async/#clojure.core.async/pipeline[pipeline] https://clojure.github.io/core.async/#clojure.core.async/pipeline-blocking[pipeline-blocking] https://clojure.github.io/core.async/#clojure.core.async/pipeline-async[pipeline-async]
 
 == Working with channels
 
@@ -90,8 +89,7 @@ https://clojure.github.io/core.async/#clojure.core.async/pipeline-async[pipeline
 [%hardbreaks]
 Collections: https://clojure.github.io/core.async/#clojure.core.async/into[into] https://clojure.github.io/core.async/#clojure.core.async/onto-chan[onto-chan] https://clojure.github.io/core.async/#clojure.core.async/to-chan[to-chan]
 Functions: https://clojure.github.io/core.async/#clojure.core.async/map[map] https://clojure.github.io/core.async/#clojure.core.async/take[take]
-Reducing: https://clojure.github.io/core.async/#clojure.core.async/reduce[reduce]
-https://clojure.github.io/core.async/#clojure.core.async/transduce[transduce]
+Reducing: https://clojure.github.io/core.async/#clojure.core.async/reduce[reduce] https://clojure.github.io/core.async/#clojure.core.async/transduce[transduce]
 
 === Channel connectors
 

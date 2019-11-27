@@ -1,0 +1,131 @@
+= core.async
+Alex Miller
+2019-11-26
+:type: reference
+:toc: macro
+:icons: font
+:prevpagehref: deps_and_cli
+:prevpagetitle: Deps and CLI
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+toc::[]
+
+The core.async library adds support for asynchronous programming using channels.
+
+== Channels
+
+Channels are queues that carry values and support multiple writers and readers. Channels are created with `https://clojure.github.io/core.async/#clojure.core.async/chan[chan]`. Values in a channel are stored in a buffer. Buffers are never unbounded and there are several provided buffer types:
+
+* Unbuffered - `(chan)` - no buffer is used, and a rendezvous is required to pass a value through the channel from writer to reader
+* Fixed size - `(chan 10)`
+* Dropping - `(chan (dropping-buffer 10))` - fixed size, and when full drop newest value
+* Sliding - `(chan (sliding-buffer 10))` - fixed size, and when full drop oldest value
+
+Channels are first-class values that can be passed around like any other value.
+
+Channels may optionally be supplied with a <<transducers#,transducer>> and an exception handler. The transducer will be applied to values that pass through the channel. If a transducer is supplied, the channel *must* be buffered (transducers can create intermediate values that must be stored somewhere).
+
+The `ex-handler` is a function of one argument (a Throwable). If an exception occurs while applying the transducer, the `ex-handler` will be invoked, and any non-nil return value will be placed in the channel. If no `ex-handler` is supplied, exceptions will flow and be handled where they occur (note that this may in either the writer or reader thread depending on the operation and the state of the buffer).
+
+[%hardbreaks]
+Creating channels: https://clojure.github.io/core.async/#clojure.core.async/chan[chan]
+Buffers: https://clojure.github.io/core.async/#clojure.core.async/buffer[buffer] https://clojure.github.io/core.async/#clojure.core.async/dropping-buffer[dropping-buffer] https://clojure.github.io/core.async/#clojure.core.async/sliding-buffer[sliding-buffer] https://clojure.github.io/core.async/#clojure.core.async/unblocking-buffer%3F[unblocking-buffer?]
+
+==== Put and take
+
+Any value can be placed on a channel, except `nil`. The primary operations on channels are _put_ and _take_, which are provided in several variants:
+
+* Blocking: `https://clojure.github.io/core.async/#clojure.core.async/%3E%21%21[>!!]`, `https://clojure.github.io/core.async/#clojure.core.async/%3C%21%21[<!!]`
+* Parking: `https://clojure.github.io/core.async/#clojure.core.async/%3E%21[>!]`, `https://clojure.github.io/core.async/#clojure.core.async/%3C%21[<!]`
+* Async: `https://clojure.github.io/core.async/#clojure.core.async/put%21[put!]`, `https://clojure.github.io/core.async/#clojure.core.async/take%21[take!]`
+* Non-blocking: `https://clojure.github.io/core.async/#clojure.core.async/offer%21[offer!]`, `https://clojure.github.io/core.async/#clojure.core.async/poll%21[poll!]`
+
+NOTE: As a mnemonic, the < or > points in the direction the value travels in or out of the channel arg, so the `>` in `(>!! chan val)` points into the channel (_put_) and `(<!! chan)` points out of the channel (_take_).
+
+The use case dictates the variant to use. Parking operations are only valid in `go` blocks (see below for more) and never valid outside the lexical scope of a `go`. Conversely, blocking operations should only be used outside `go` blocks.
+
+The async and non-blocking forms are less common but may be used in either context. Use the async variants to specify a channel and a function that is called when the take or put succeeds. The `take!` and `put!` functions also take an optional flag `on-caller?` to indicate whether the fn can be called on the current thread. The non-blocking `offer!` and `poll!` will either complete or return immediately.
+
+Channels are closed with `https://clojure.github.io/core.async/#clojure.core.async/close%21[close!]`. When a channel is closed, no values may be added, but values already in the channel may be taken. When all values are drained from a closed channel, take operations will return `nil` (these are not valid values and serve as a marker).
+
+[%hardbreaks]
+Closing channels:  https://clojure.github.io/core.async/#clojure.core.async/close%21[close!]
+Buffers: https://clojure.github.io/core.async/#clojure.core.async/buffer[buffer] https://clojure.github.io/core.async/#clojure.core.async/dropping-buffer[dropping-buffer] https://clojure.github.io/core.async/#clojure.core.async/sliding-buffer[sliding-buffer] https://clojure.github.io/core.async/#clojure.core.async/unblocking-buffer%3F[unblocking-buffer?]
+Blocking ops: https://clojure.github.io/core.async/#clojure.core.async/%3C%21%21[<!!] https://clojure.github.io/core.async/#clojure.core.async/%3E%21%21[>!!]
+Parking ops: https://clojure.github.io/core.async/#clojure.core.async/%3C%21[<!] https://clojure.github.io/core.async/#clojure.core.async/%3E%21[>!]
+Async ops: https://clojure.github.io/core.async/#clojure.core.async/put%21[put!] https://clojure.github.io/core.async/#clojure.core.async/take%21[take!]
+Non-blocking ops: https://clojure.github.io/core.async/#clojure.core.async/offer%21[offer!] https://clojure.github.io/core.async/#clojure.core.async/poll%21[poll!]
+
+=== alts
+
+[%hardbreaks]
+Blocking: https://clojure.github.io/core.async/#clojure.core.async/alt%21%21[alt!!] https://clojure.github.io/core.async/#clojure.core.async/alts%21%21[alts!!]
+Parking: https://clojure.github.io/core.async/#clojure.core.async/alt%21[alt!] https://clojure.github.io/core.async/#clojure.core.async/alts%21[alts!]
+Timeouts: https://clojure.github.io/core.async/#clojure.core.async/timeout[timeout]
+
+=== Promise channels
+
+Promise channels: https://clojure.github.io/core.async/#clojure.core.async/promise-chan[promise-chan]
+
+== Managing processes
+
+=== go blocks and threads
+
+[%hardbreaks]
+Go blocks: https://clojure.github.io/core.async/#clojure.core.async/go[go] https://clojure.github.io/core.async/#clojure.core.async/go-loop[go-loop]
+Threads: https://clojure.github.io/core.async/#clojure.core.async/thread[thread]
+https://clojure.github.io/core.async/#clojure.core.async/thread-call[thread-call]
+
+=== Multi-threaded stages
+
+https://clojure.github.io/core.async/#clojure.core.async/pipeline[pipeline]
+https://clojure.github.io/core.async/#clojure.core.async/pipeline-blocking[pipeline-blocking]
+https://clojure.github.io/core.async/#clojure.core.async/pipeline-async[pipeline-async]
+
+== Working with channels
+
+=== Operations on channels
+
+[%hardbreaks]
+Collections: https://clojure.github.io/core.async/#clojure.core.async/into[into] https://clojure.github.io/core.async/#clojure.core.async/onto-chan[onto-chan] https://clojure.github.io/core.async/#clojure.core.async/to-chan[to-chan]
+Functions: https://clojure.github.io/core.async/#clojure.core.async/map[map] https://clojure.github.io/core.async/#clojure.core.async/take[take]
+Reducing: https://clojure.github.io/core.async/#clojure.core.async/reduce[reduce]
+https://clojure.github.io/core.async/#clojure.core.async/transduce[transduce]
+
+=== Channel connectors
+
+[%hardbreaks]
+Connecting channels: https://clojure.github.io/core.async/#clojure.core.async/pipe[pipe]
+Combining channels: https://clojure.github.io/core.async/#clojure.core.async/merge[merge]
+Splitting channels: https://clojure.github.io/core.async/#clojure.core.async/split[split]
+
+=== Mults
+
+[%hardbreaks]
+Mults: https://clojure.github.io/core.async/#clojure.core.async/mult[mult] https://clojure.github.io/core.async/#clojure.core.async/tap[tap] https://clojure.github.io/core.async/#clojure.core.async/untap[untap] https://clojure.github.io/core.async/#clojure.core.async/untap-all[untap-all]
+
+=== Pub/sub
+
+[%hardbreaks]
+Pub/sub: https://clojure.github.io/core.async/#clojure.core.async/pub[pub] https://clojure.github.io/core.async/#clojure.core.async/sub[sub] https://clojure.github.io/core.async/#clojure.core.async/unsub[unsub] https://clojure.github.io/core.async/#clojure.core.async/unsub-all[unsub-all]
+
+=== Mixes
+
+[%hardbreaks]
+Mixes: https://clojure.github.io/core.async/#clojure.core.async/mix[mix] https://clojure.github.io/core.async/#clojure.core.async/admix[admix] https://clojure.github.io/core.async/#clojure.core.async/toggle[toggle] https://clojure.github.io/core.async/#clojure.core.async/unmix[unmix] https://clojure.github.io/core.async/#clojure.core.async/unmix-all[unmix-all] https://clojure.github.io/core.async/#clojure.core.async/solo-mode[solo-mode]
+
+== Configuration
+
+`go` blocks are dispatched over an internal fixed size thread pool, which defaults to 8 threads. The size of this pool can be modified using the Java system property `clojure.core.async.pool-size`.
+
+Set the Java system property `clojure.core.async.go-checking` to true to validate `go` blocks do not invoke core.async blocking operations. Property is read once, at namespace load time. Recommended for use primarily during development. Invalid blocking calls will throw in go block threads - use `Thread.setDefaultUncaughtExceptionHandler()` to catch and handle such exceptions.
+
+== More information
+
+See the following for more information:
+
+* <<xref/../../../about/async#,core.async Rationale>>
+* <<xref/../../../guides/async-walkthrough#,core.async Walkthrough>>
+* https://clojure.github.io/core.async[API docs]
+* https://github.com/clojure/core.async[Source]

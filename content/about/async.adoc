@@ -1,0 +1,50 @@
+= core.async - Rationale
+Rich Hickey
+2019-11-27
+:type: about
+:toc: macro
+:icons: font
+:navlinktext: core.async
+:prevpagehref: spec
+:prevpagetitle: spec
+:nextpagehref: dynamic
+:nextpagetitle: Dynamic Development
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+toc::[]
+
+== Rationale
+
+There comes a time in all good programs when components or subsystems must stop communicating directly with one another. This is often achieved via the introduction of queues between the producers of data and the consumers/processors of that data. This architectural indirection ensures that important decisions can be made with some degree of independence, and leads to systems that are easier to understand, manage, monitor and change, and make better use of computational resources, etc.
+
+On the JVM, the https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/package-summary.html[java.util.concurrent] package provides some good concurrent blocking queues, and they are a viable and popular choice for Clojure programs. However, in order to use the queues one must dedicate one or more actual threads to their consumption. Per-thread stack allocation and task-switching overheads limit the number of threads that can be used in practice. Another limitation of j.u.c. queues is there is no way to block waiting on a set of alternatives.
+
+On JavaScript engines, there are no threads and no queues.
+
+Thread overheads or lack of threads often cause people to move to systems based upon events/callbacks, in the pursuit of greater efficiency (often under the misnomer 'scalability', which doesn’t apply since you can’t scale a single machine). Events complect communication and flow of control. While there are various mechanisms to make events/callbacks cleaner (FRP, Rx/Observables) they don’t change their fundamental nature, which is that upon an event an arbitrary amount of other code is run, possibly on the same thread, leading to admonitions such as "don’t do too much work in your handler", and phrases like "callback hell".
+
+The objectives of core.async are:
+
+* To provide facilities for independent threads of activity, communicating via queue-like channels
+* To support both real threads and shared use of thread pools (in any combination), as well as ClojureScript on JS engines
+* To build upon the work done on CSP and its derivatives
+
+It is our hope that async channels will greatly simplify efficient server-side Clojure programs, and offer simpler and more robust techniques for front-end programming in ClojureScript.
+
+== History
+
+The roots of this style go back at least as far as http://en.wikipedia.org/wiki/Communicating_sequential_processes[Hoare’s Communicating Sequential Processes (CSP)], followed by realizations and extensions in e.g. http://en.wikipedia.org/wiki/Occam_programming_language[occam], http://www.cs.kent.ac.uk/projects/ofa/jcsp/[Java CSP] and the http://golang.org/[Go programming language].
+
+In modern incarnations, the notion of a channel becomes first class, and in doing so provides us the indirection and independence we seek.
+
+A key characteristic of channels is that they are blocking. In the most primitive form, an unbuffered channel acts as a rendezvous, any reader will await a writer and vice-versa. Buffering can be introduced, but unbounded buffering is discouraged, as bounded buffering with blocking can be an important tool coordinating pacing and back pressure, ensuring a system doesn’t take on more work than it can achieve.
+
+== More information
+
+See the following for more information:
+
+* <<xref/../../../reference/async#,core.async Reference>>
+* <<xref/../../../guides/async-walkthrough#,core.async Walkthrough>>
+* https://clojure.github.io/core.async[API docs]
+* https://github.com/clojure/core.async[Source]

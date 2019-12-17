@@ -1345,3 +1345,9 @@ The first call here instruments and stubs `invoke-service`. The second and third
 == Wrapping Up
 
 In this guide we have covered most of the features for designing and using specs and generators. We expect to add some more advanced generator techniques and help on testing in a future update.
+
+== More information
+
+* <<xref/../../../about/spec#,Spec rationale>>
+* https://clojure.github.io/spec.alpha[API Docs]
+* https://github.com/clojure/spec.alpha[Project]

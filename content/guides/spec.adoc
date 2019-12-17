@@ -11,7 +11,7 @@ toc::[]
 
 == Getting started
 
-The <<xref/../../../about/spec#,spec>> library specifies the structure of data, validates or conforms it, and can generate data based on the spec. 
+The <<xref/../../../about/spec#,spec>> library (https://clojure.github.io/spec.alpha[API docs]) specifies the structure of data, validates or conforms it, and can generate data based on the spec.
 
 To use spec, declare a dependency on Clojure 1.9.0 or higher:
 

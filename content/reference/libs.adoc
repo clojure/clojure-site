@@ -63,11 +63,11 @@ It's common for a lib to depend on several other libs whose full names share a c
 
 == Related functions
 
-Creating a namespace: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ns[ns]
+Creating a namespace: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ns[ns]
 
-Ensuring a lib is loaded: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/require[require] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/use[use]
+Ensuring a lib is loaded: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/require[require] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/use[use]
 
-Listing loaded libs: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/loaded-libs[loaded-libs]
+Listing loaded libs: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/loaded-libs[loaded-libs]
 
 [[order]]
 == Lib load order

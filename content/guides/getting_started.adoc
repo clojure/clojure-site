@@ -1,5 +1,5 @@
 = Getting Started
-Rich Hickey
+Alex Miller
 2016-01-14
 :type: guides
 :toc: macro
@@ -7,37 +7,73 @@ Rich Hickey
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-== Minimal Install
+toc::[]
 
-Clojure requires only http://java.sun.com/javase/downloads/index.jsp[Java] 1.6 or greater, plus the Clojure JAR file itself.
+Welcome to Clojure!
 
-<<xref/../../community/downloads#,Download>> and unzip Clojure. In the directory in which you expanded clojure.zip, run:
-[source,clojure]
+Check out <<learn/syntax#,Learn Clojure>>, <<xref/../../community/resources#,Resources>>, or <<xref/../../community/books#,Books>> for learning the language!
+
+== Clojure installer and CLI tools
+
+Clojure provides <<deps_and_cli#,command line tools>> that can be used to start a Clojure repl, use Clojure and Java libraries, and start Clojure programs.
+
+=== Installation on Mac via https://brew.sh[Homebrew]
+
+Install the command line tools with `brew`:
+
+[source,shell]
 ----
-java -cp clojure-1.8.0.jar clojure.main
-----
-This will bring up a read-eval-print loop (REPL). From the REPL, try:
-[source,clojure]
-----
-user=> (+ 1 2 3)
-6
-user=> (javax.swing.JOptionPane/showMessageDialog nil "Hello World")
-----
-
-== Try Clojure Online
-
-* http://tryclj.com/[TryClojure] provides a browser-based Clojure REPL
-* http://himera.herokuapp.com/index.html[Himera] provides a browser-based ClojureScript REPL
-
-== Clojure with Leiningen
-
-http://leiningen.org/[Leiningen] is a build and project management tool written in Clojure and used pervasively throughout the Clojure community. Follow the instructions there to install Leiningen.
-
-Once it's installed you can start a REPL with:
-
-[source]
-----
-lein repl
+brew install clojure
 ----
 
-Check out the <<xref/../../community/resources#,Resources>> page for tutorials and other great resources!
+If you've already installed, you can upgrade to the latest release with:
+
+[source,shell]
+----
+brew upgrade clojure
+----
+
+=== Installation on Linux
+
+1. Ensure that the following dependencies are installed: bash, curl, rlwrap, and Java.
+2. Use the linux-install script to download and run the install, which will create /usr/local/bin/clj, /usr/local/bin/clojure, and /usr/local/lib/clojure:
+
+[source,shell]
+----
+curl -O https://download.clojure.org/install/linux-install-1.10.1.492.sh
+chmod +x linux-install-1.10.1.492.sh
+sudo ./linux-install-1.10.1.492.sh
+----
+
+=== Installation on Windows
+
+An early release version of clj on Windows is available at https://github.com/clojure/tools.deps.alpha/wiki/clj-on-Windows[clj on Windows].
+Please provide feedback at https://clojure.atlassian.net/projects/TDEPS.
+
+== Other ways to run Clojure
+
+*Local build*
+
+Download and build Clojure from source (requires Git, Java, and Maven):
+
+[source,shell]
+----
+git clone https://github.com/clojure/clojure.git
+cd clojure
+mvn -Plocal -Dmaven.test.skip=true package
+----
+
+Then start the REPL with the local jar:
+
+[source,shell]
+----
+java -jar clojure.jar
+----
+
+*Try Clojure online*
+
+https://repl.it/languages/clojure[repl.it] provides a browser-based Clojure repl for interactive exploration.
+
+*Build tools*
+
+Build tools provide a range of capabilities for building, running, and deploying Clojure libraries and applications. The two most popular Clojure build tools are https://leiningen.org/[Leiningen] and http://boot-clj.com/[Boot].

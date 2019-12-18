@@ -1,0 +1,572 @@
+= Programming at the REPL: Data Visualization
+Valentin Waeselynck
+2018-02-10
+:type: repl
+:toc: macro
+:icons: font
+:navlinktext: Data Visualization at the REPL
+:prevpagehref: basic_usage
+:prevpagetitle: Basic Usage
+:nextpagehref: navigating_namespaces
+:nextpagetitle: Navigating Namespaces
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+toc::[]
+
+Each time we evaluate an expression, the REPL shows us a textual representation of the result:
+ that's the _Print_ part of _Read-Eval-Print-Loop_. Most of the time, this textual representation
+ is clear enough for the programmer, but sometimes it becomes difficult to read -
+ especially when dealing with big or deeply nested data structures.
+
+Fortunately, the REPL provides sharper tools for data visualization, which we will describe in this chapter.
+
+== Pretty-printing using `clojure.pprint`
+
+As an example, consider the following code, which computes a summary of the arithmetic properties of some numbers:
+
+[source,clojure-repl]
+----
+user=> (defn number-summary
+  "Computes a summary of the arithmetic properties of a number, as a data structure."
+  [n]
+  (let [proper-divisors (into (sorted-set)
+                          (filter
+                            (fn [d]
+                              (zero? (rem n d)))
+                            (range 1 n)))
+        divisors-sum (apply + proper-divisors)]
+    {:n n
+     :proper-divisors proper-divisors
+     :even? (even? n)
+     :prime? (= proper-divisors #{1})
+     :perfect-number? (= divisors-sum n)}))
+#'user/number-summary
+user=> (mapv number-summary [5 6 7 12 28 42])
+[{:n 5, :proper-divisors #{1}, :even? false, :prime? true, :perfect-number? false} {:n 6, :proper-divisors #{1 2 3}, :even? true, :prime? false, :perfect-number? true} {:n 7, :proper-divisors #{1}, :even? false, :prime? true, :perfect-number? false} {:n 12, :proper-divisors #{1 2 3 4 6}, :even? true, :prime? false, :perfect-number? false} {:n 28, :proper-divisors #{1 2 4 7 14}, :even? true, :prime? false, :perfect-number? true} {:n 42, :proper-divisors #{1 2 3 6 7 14 21}, :even? true, :prime? false, :perfect-number? false}]
+user=>
+----
+
+[NOTE]
+====
+For now, you don't need to understand the code of the `number-summary` function defined above:
+ we're just using it as a pretext to synthetize some hairy data structures. Real-world Clojure programming
+ for a specific domain will provide you with many examples of such hairy data structures.
+====
+
+As we can see, the result of our last expression is condensed on a single line, which makes it hard to read:
+
+[source,clojure-repl]
+----
+user=> (mapv number-summary [5 6 7 12 28 42])
+[{:n 5, :proper-divisors #{1}, :even? false, :prime? true, :perfect-number? false} {:n 6, :proper-divisors #{1 2 3}, :even? true, :prime? false, :perfect-number? true} {:n 7, :proper-divisors #{1}, :even? false, :prime? true, :perfect-number? false} {:n 12, :proper-divisors #{1 2 3 4 6}, :even? true, :prime? false, :perfect-number? false} {:n 28, :proper-divisors #{1 2 4 7 14}, :even? true, :prime? false, :perfect-number? true} {:n 42, :proper-divisors #{1 2 3 6 7 14 21}, :even? true, :prime? false, :perfect-number? false}]
+----
+
+We can use the `https://clojure.github.io/clojure/clojure.pprint-api.html[clojure.pprint]` lib
+ to print the result in a more 'visual' format:
+
+[source,clojure-repl]
+----
+user=> (require '[clojure.pprint :as pp])
+nil
+user=> (pp/pprint (mapv number-summary [5 6 7 12 28 42]))
+[{:n 5,
+  :proper-divisors #{1},
+  :even? false,
+  :prime? true,
+  :perfect-number? false}
+ {:n 6,
+  :proper-divisors #{1 2 3},
+  :even? true,
+  :prime? false,
+  :perfect-number? true}
+ {:n 7,
+  :proper-divisors #{1},
+  :even? false,
+  :prime? true,
+  :perfect-number? false}
+ {:n 12,
+  :proper-divisors #{1 2 3 4 6},
+  :even? true,
+  :prime? false,
+  :perfect-number? false}
+ {:n 28,
+  :proper-divisors #{1 2 4 7 14},
+  :even? true,
+  :prime? false,
+  :perfect-number? true}
+ {:n 42,
+  :proper-divisors #{1 2 3 6 7 14 21},
+  :even? true,
+  :prime? false,
+  :perfect-number? false}]
+nil
+----
+
+[TIP]
+====
+**TIP: Using an editor for syntax-highlighting the results**
+
+If you want your pretty-printed result to be displayed with more visual contrast,
+ you can also copy it to your editor buffer (the editor used below is https://www.gnu.org/software/emacs/[Emacs]):
+
+image:/images/content/guides/repl/repl-copy-pprint-editor.gif["Copying pretty-printed result to editor"]
+====
+
+Needing to pretty-print the last REPL result is so common that `clojure.pprint` has a function for that:
+ https://clojure.github.io/clojure/clojure.pprint-api.html#clojure.pprint/pp[clojure.pprint/pp]
+
+[source,clojure-repl]
+----
+user=> (mapv number-summary [12 28])
+[{:n 12, :proper-divisors #{1 2 3 4 6}, :even? true, :prime? false, :perfect-number? false} {:n 28, :proper-divisors #{1 2 4 7 14}, :even? true, :prime? false, :perfect-number? true}]
+user=> (pp/pp)
+[{:n 12,
+  :proper-divisors #{1 2 3 4 6},
+  :even? true,
+  :prime? false,
+  :perfect-number? false}
+ {:n 28,
+  :proper-divisors #{1 2 4 7 14},
+  :even? true,
+  :prime? false,
+  :perfect-number? true}]
+nil
+----
+
+Finally, for a result which is a sequence of maps (like the above), you can use
+https://clojure.github.io/clojure/clojure.pprint-api.html#clojure.pprint/print-table[clojure.pprint/print-table]
+to print it as a table:
+
+[source,clojure-repl]
+----
+user=> (pp/print-table (mapv number-summary [6 12 28]))
+
+| :n | :proper-divisors | :even? | :prime? | :perfect-number? |
+|----+------------------+--------+---------+------------------|
+|  6 |         #{1 2 3} |   true |   false |             true |
+| 12 |     #{1 2 3 4 6} |   true |   false |            false |
+| 28 |    #{1 2 4 7 14} |   true |   false |             true |
+nil
+----
+
+== Truncating REPL output
+
+When an expression evaluates to a large or deeply nested data structure, 
+reading REPL output can become difficult. 
+
+When a structure is too deeply nested, you can truncate 
+the output by setting the `https://clojuredocs.org/clojure.core/\*print-level\*[\*print-level*]` Var:
+
+[source,clojure-repl]
+----
+user=> (set! *print-level* 3)
+3
+user=> {:a {:b [{:c {:d {:e 42}}}]}} ;; a deeply nested data structure
+{:a {:b [#]}}
+----
+
+You can undo this setting by evaluating `(set! https://clojuredocs.org/clojure.core/\*print-level\*[\*print-level*] nil)`.
+
+Likewise, when a data structure contains long collections, you can limit the number of displayed item by setting 
+the `https://clojuredocs.org/clojure.core/\*print-length\*[\*print-length*]` Var:
+
+[source,clojure-repl]
+----
+user=> (set! *print-length* 3)
+3
+user=> (repeat 100 (vec (range 100))) ;; a data structure containing looooong collections.
+([0 1 2 ...] [0 1 2 ...] [0 1 2 ...] ...)
+----
+
+Like the above, evaluate `(set! https://clojuredocs.org/clojure.core/\*print-length\*[\*print-length*] nil)`
+to undo this setting.
+
+`https://clojuredocs.org/clojure.core/\*print-level\*[\*print-level*]` and `https://clojuredocs.org/clojure.core/\*print-length\*[\*print-length*]`
+affect both ordinary REPL printing and pretty-pretting.
+
+== Accessing recent results: `*1`, `*2`, `*3`
+
+In the REPL, the last evaluated result can be retrieved by evaluating `*1`; the one
+ before that is saved in `*2`, and the one before that in `*3`:
+
+[source,clojure-repl]
+----
+user=> (mapv number-summary [6 12 28])
+[{:n 6, :proper-divisors #{1 2 3}, :even? true, :prime? false, :perfect-number? true} {:n 12, :proper-divisors #{1 2 3 4 6}, :even? true, :prime? false, :perfect-number? false} {:n 28, :proper-divisors #{1 2 4 7 14}, :even? true, :prime? false, :perfect-number? true}]
+user=> (pp/pprint *1) ;; using *1 instead of re-typing the pevious expression (or its result)
+[{:n 6,
+ :proper-divisors #{1 2 3},
+ :even? true,
+ :prime? false,
+ :perfect-number? true}
+{:n 12,
+ :proper-divisors #{1 2 3 4 6},
+ :even? true,
+ :prime? false,
+ :perfect-number? false}
+{:n 28,
+ :proper-divisors #{1 2 4 7 14},
+ :even? true,
+ :prime? false,
+ :perfect-number? true}]
+nil
+user=> *1 ;; now *1 has changed to become nil (because pp/pprint returns nil)
+nil
+user=> *3 ;; ... which now means that our initial result is in *3:
+[{:n 6, :proper-divisors #{1 2 3}, :even? true, :prime? false, :perfect-number? true} {:n 12, :proper-divisors #{1 2 3 4 6}, :even? true, :prime? false, :perfect-number? false} {:n 28, :proper-divisors #{1 2 4 7 14}, :even? true, :prime? false, :perfect-number? true}]
+user=>
+----
+
+[TIP]
+====
+**TIP: saving a result by `def`-ining it**
+
+If you want to keep a result around for longer than 3 evaluations, you can simply
+ evaluate
+ `(def <some-name> *1)`:
+
+[source,clojure-repl]
+----
+user=> (mapv number-summary [6 12 28])
+[{:n 6, :proper-divisors #{1 2 3}, :even? true, :prime? false ; ...
+user=> (def my-summarized-numbers *1) ;; saving the result
+#'user/my-summarized-numbers
+user=> my-summarized-numbers
+[{:n 6, :proper-divisors #{1 2 3}, :even? true, :prime? false ; ...
+user=> (count my-summarized-numbers)
+3
+user=> (first my-summarized-numbers)
+{:n 6, :proper-divisors #{1 2 3}, :even? true, :prime? false, ; ...
+user=> (pp/print-table my-summarized-numbers)
+
+| :n | :proper-divisors | :even? | :prime? | :perfect-number? |
+|----+------------------+--------+---------+------------------|
+|  6 |         #{1 2 3} |   true |   false |             true |
+| 12 |     #{1 2 3 4 6} |   true |   false |            false |
+| 28 |    #{1 2 4 7 14} |   true |   false |             true |
+nil
+user=>
+----
+
+====
+
+== Investigating Exceptions
+
+Some expressions won't return a result when you evaluate them, but throw an https://en.wikipedia.org/wiki/Exception_handling[Exception]
+ instead. Throwing an Exception is your program saying to you: "something went wrong
+ when evaluating the expression, and I don't know how to deal with it, so I gave up."
+
+For instance, an Exception will be thrown if you divide a number by zero:
+
+
+[source,clojure-repl]
+----
+user=> (/ 1 0)
+Execution error (ArithmeticException) at user/eval163 (REPL:1).
+Divide by zero
+----
+
+By default, the REPL prints a two-line summary of the Exception. The first line reports the error phase (execution, compilation, macroexpansion, etc) and its location. The second line reports the cause.
+
+This can be enough in many cases, but there is more information available.
+
+First, you can visualize the _stacktrace_ of the Exception - that is, the chain
+ of function calls which led to the faulty instruction. The stacktrace can be printed
+ using https://clojure.github.io/clojure/clojure.repl-api.html#clojure.repl/pst[clojure.repl/pst]:
+
+[source,clojure-repl]
+----
+user=> (pst *e)
+ArithmeticException Divide by zero
+	clojure.lang.Numbers.divide (Numbers.java:163)
+	clojure.lang.Numbers.divide (Numbers.java:3833)
+	user/eval15 (NO_SOURCE_FILE:3)
+	user/eval15 (NO_SOURCE_FILE:3)
+	clojure.lang.Compiler.eval (Compiler.java:7062)
+	clojure.lang.Compiler.eval (Compiler.java:7025)
+	clojure.core/eval (core.clj:3206)
+	clojure.core/eval (core.clj:3202)
+	clojure.main/repl/read-eval-print--8572/fn--8575 (main.clj:243)
+	clojure.main/repl/read-eval-print--8572 (main.clj:243)
+	clojure.main/repl/fn--8581 (main.clj:261)
+	clojure.main/repl (main.clj:261)
+nil
+----
+
+[TIP]
+====
+**TIP:** the last thrown Exception can be obtained by evaluating `*e`.
+====
+
+Finally, just evaluating the Exception at the REPL can provide a useful visualization:
+
+[source,clojure-repl]
+----
+user=> *e
+#error {
+ :cause "Divide by zero"
+ :via
+ [{:type java.lang.ArithmeticException
+   :message "Divide by zero"
+   :at [clojure.lang.Numbers divide "Numbers.java" 163]}]
+ :trace
+ [[clojure.lang.Numbers divide "Numbers.java" 163]
+  [clojure.lang.Numbers divide "Numbers.java" 3833]
+  [user$eval15 invokeStatic "NO_SOURCE_FILE" 3]
+  [user$eval15 invoke "NO_SOURCE_FILE" 3]
+  [clojure.lang.Compiler eval "Compiler.java" 7062]
+  [clojure.lang.Compiler eval "Compiler.java" 7025]
+  [clojure.core$eval invokeStatic "core.clj" 3206]
+  [clojure.core$eval invoke "core.clj" 3202]
+  [clojure.main$repl$read_eval_print__8572$fn__8575 invoke "main.clj" 243]
+  [clojure.main$repl$read_eval_print__8572 invoke "main.clj" 243]
+  [clojure.main$repl$fn__8581 invoke "main.clj" 261]
+  [clojure.main$repl invokeStatic "main.clj" 261]
+  [clojure.main$repl_opt invokeStatic "main.clj" 325]
+  [clojure.main$main invokeStatic "main.clj" 424]
+  [clojure.main$main doInvoke "main.clj" 387]
+  [clojure.lang.RestFn invoke "RestFn.java" 397]
+  [clojure.lang.AFn applyToHelper "AFn.java" 152]
+  [clojure.lang.RestFn applyTo "RestFn.java" 132]
+  [clojure.lang.Var applyTo "Var.java" 702]
+  [clojure.main main "main.java" 37]]}
+----
+
+In this simplistic example, displaying all this information may be more than what is
+ needed to diagnose the issue; but this visualization becomes more helpful for 'real-world'
+ Exceptions, which tend to have the following charateristics in Clojure programs:
+
+* **Exceptions convey data:** in Clojure programs, it's common to attach additional data
+ to an Exception (not just a human-readable error message): this is done by creating the Exception via
+ https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ex-info[clojure.core/ex-info].
+* **Exceptions are chained:** an Exception can be annotated with an optional _cause_, which is another
+ (lower-level) Exception.
+
+Here's an example program which demonstrates these sort of Exceptions.
+
+[source,clojure]
+----
+(defn divide-verbose
+  "Divides two numbers `x` and `y`, but throws more informative Exceptions when it goes wrong.
+  Returns a (double-precision) floating-point number."
+  [x y]
+  (try
+    (double (/ x y))
+    (catch Throwable cause
+      (throw
+        (ex-info
+          (str "Failed to divide " (pr-str x) " by " (pr-str y))
+          {:numerator x
+           :denominator y}
+          cause)))))
+
+(defn average
+  "Computes the average of a collection of numbers."
+  [numbers]
+  (try
+    (let [sum (apply + numbers)
+          cardinality (count numbers)]
+      (divide-verbose sum cardinality))
+    (catch Throwable cause
+      (throw
+        (ex-info
+          "Failed to compute the average of numbers"
+          {:numbers numbers}
+          cause)))))
+----
+
+We don't know it yet, but our `average` function fails when applied to an empty collection of numbers.
+However, visualizing the Exception makes it easy to diagnose. In the below REPL session, we can see 
+that we calling our function with an empty vector of numbers led to dividing zero by zero:
+
+[source,clojure-repl]
+----
+user=> (average [])
+Execution error (ArithmeticException) at user/divide-verbose (REPL:6).
+Divide by zero
+user=> *e  ;; notice the `:data` key inside the chain of Exceptions represented in `:via`
+#error {
+ :cause "Divide by zero"
+ :via
+ [{:type clojure.lang.ExceptionInfo
+   :message "Failed to compute the average of numbers"
+   :data {:numbers []}
+   :at [user$average invokeStatic "NO_SOURCE_FILE" 10]}
+  {:type clojure.lang.ExceptionInfo
+   :message "Failed to divide 0 by 0"
+   :data {:numerator 0, :denominator 0}
+   :at [user$divide_verbose invokeStatic "NO_SOURCE_FILE" 9]}
+  {:type java.lang.ArithmeticException
+   :message "Divide by zero"
+   :at [clojure.lang.Numbers divide "Numbers.java" 188]}]
+ :trace
+ [[clojure.lang.Numbers divide "Numbers.java" 188]
+  [user$divide_verbose invokeStatic "NO_SOURCE_FILE" 6]
+  [user$divide_verbose invoke "NO_SOURCE_FILE" 1]
+  [user$average invokeStatic "NO_SOURCE_FILE" 7]
+  [user$average invoke "NO_SOURCE_FILE" 1]
+  [user$eval173 invokeStatic "NO_SOURCE_FILE" 1]
+  [user$eval173 invoke "NO_SOURCE_FILE" 1]
+  [clojure.lang.Compiler eval "Compiler.java" 7176]
+  [clojure.lang.Compiler eval "Compiler.java" 7131]
+  [clojure.core$eval invokeStatic "core.clj" 3214]
+  [clojure.core$eval invoke "core.clj" 3210]
+  [clojure.main$repl$read_eval_print__9068$fn__9071 invoke "main.clj" 414]
+  [clojure.main$repl$read_eval_print__9068 invoke "main.clj" 414]
+  [clojure.main$repl$fn__9077 invoke "main.clj" 435]
+  [clojure.main$repl invokeStatic "main.clj" 435]
+  [clojure.main$repl_opt invokeStatic "main.clj" 499]
+  [clojure.main$main invokeStatic "main.clj" 598]
+  [clojure.main$main doInvoke "main.clj" 561]
+  [clojure.lang.RestFn invoke "RestFn.java" 397]
+  [clojure.lang.AFn applyToHelper "AFn.java" 152]
+  [clojure.lang.RestFn applyTo "RestFn.java" 132]
+  [clojure.lang.Var applyTo "Var.java" 705]
+  [clojure.main main "main.java" 37]]}
+----
+
+== Graphical and web-based visualizations
+
+Finally, the REPL being a full-featured programming environment, it is not limited
+ to text-based visualizations. Here are some handy "graphical" visualization tools bundled
+ Clojure:
+
+https://clojure.github.io/clojure/clojure.java.javadoc-api.html[clojure.java.javadoc] lets
+you view the https://en.wikipedia.org/wiki/Javadoc[Javadoc] of a class or object.
+Here is how to view the Javadoc for a Java https://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html[regex Pattern]:
+
+[source,clojure-repl]
+----
+user=> (require '[clojure.java.javadoc :as jdoc])
+nil
+user=> (jdoc/javadoc #"a+") ;; opens the Javadoc page for java.util.Pattern in a Web browser
+true
+user=> (jdoc/javadoc java.util.regex.Pattern) ;; equivalent to the above
+true
+----
+
+https://clojure.github.io/clojure/clojure.inspector-api.html[clojure.inspector] lets you open
+GUI-based visualizations of data, for instance:
+
+[source,clojure-repl]
+----
+user=> (require '[clojure.inspector :as insp])
+nil
+user=> (insp/inspect-table (mapv number-summary [2 5 6 28 42]))
+#object[javax.swing.JFrame 0x26425897 "javax.swing.JFrame[frame1,0,23,400x600,layout=java.awt.BorderLayout,title=Clojure Inspector,resizable,normal,defaultCloseOperation=HIDE_ON_CLOSE,rootPane=javax.swing.JRootPane[,0,22,400x578,layout=javax.swing.JRootPane$RootLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=16777673,maximumSize=,minimumSize=,preferredSize=],rootPaneCheckingEnabled=true]"]
+----
+
+image:/images/content/guides/repl/clj-inspect-table.png["clojure.inspector table viz"]
+
+Finally, https://clojure.github.io/clojure/clojure.java.browse-api.html#clojure.java.browse/browse-url[clojure.java.browse/browse-url]
+lets you open any URL in a Web browser, which can be handy for specific needs.
+
+== Dealing with mysterious values (advanced)
+
+Sometimes, the printed representation of a value in the REPL is not very informative; sometimes,
+it can even be misleading as to the nature of that value.footnote:[For instance, 
+https://docs.datomic.com/on-prem/entities.html[Datomic] and https://github.com/tonsky/datascript[DataScript] Entity objects are 
+printed like Clojure maps, even though they are significantly different from ordinary maps.] 
+This often happens with values which are obtained via Java interop.
+
+As an example, we'll create an InputStream object using the https://clojuredocs.org/clojure.java.io[`clojure.java.io`] lib. If you don't know 
+what an InputStream is, all the better - the point of this section is to teach you how to find your footing 
+in uncharted territory:
+
+[source,clojure-repl]
+----
+user=> (require '[clojure.java.io :as io])
+nil
+user=> (def v (io/input-stream "https://www.clojure.org")) ;; NOTE won't work if you're not connected to the Internet
+#'user/v
+user=> v
+#object[java.io.BufferedInputStream 0x4ee37ca3 "java.io.BufferedInputStream@4ee37ca3"]
+----
+
+The above code sample defined an InputStream named `v`.
+
+Now imagine you don't know where `v` comes from, and let's try to interact with it at the REPL 
+so as to gain more understanding of it.
+
+==== Viewing the type hierarchy using `type` and `ancestors`
+
+The printed representation of `v` tells us one thing about it: its _runtime type_, in this case `java.io.BufferedInputStream`.
+The _type_ of a value can help us know what operations we may call on it.
+We can evaluate `(https://clojuredocs.org/clojure.core/type[type] v)` to obtain the _concrete type_ of `v`, and 
+`(https://clojuredocs.org/clojure.core/ancestors[ancestors] (type v))` to obtain its entire _type hierarchy:_
+
+[source,clojure-repl]
+----
+user=> (type v) ;; what is the type of our obscure value?
+java.io.BufferedInputStream
+user=> (ancestors (type v))
+#{java.io.InputStream java.lang.AutoCloseable java.io.Closeable java.lang.Object java.io.FilterInputStream}
+----
+
+==== Using Javadoc
+
+As we saw in the previous section, we can use the https://clojure.github.io/clojure/clojure.java.javadoc-api.html[clojure.java.javadoc] lib 
+to view online documentation about a Java type:
+
+[source,clojure-repl]
+----
+user=> (require '[clojure.java.javadoc :as jdoc])
+nil
+user=> (jdoc/javadoc java.io.InputStream) ;; should open a web page about java.io.InputStream
+true
+----
+
+==== Inspecting Java types with `clojure.reflect`
+
+Javadoc is helpful, but sometimes Javadoc won't even be available. In such cases, we can use 
+the REPL itself to inspect types, via Java reflection.
+
+We can use the `https://clojure.github.io/clojure/clojure.reflect-api.html#clojure.reflect/reflect[clojure.reflect/reflect]`
+function to obtain information about a Java type as a plain Clojure data structure:
+
+[source,clojure-repl]
+----
+user=> (require '[clojure.reflect :as reflect])
+nil
+user=> (reflect/reflect java.io.InputStream)
+{:bases #{java.lang.Object java.io.Closeable}, :flags #{:public :abstract}, :members #{#clojure.reflect.Method{:name close, :return-type void, :declaring-class java.io.InputStream, :parameter-types [], :exception-types [java.io.IOException], :flags #{:public}} #clojure.reflect.Method{:name mark, :return-type void, :declaring-class java.io.InputStream, :parameter-types [int], :exception-types [], :flags #{:public :synchronized}} #clojure.reflect.Method{:name available, :return-type int, :declaring-class java.io.InputStream, :parameter-types [], :exception-types [java.io.IOException], :flags #{:public}} #clojure.reflect.Method{:name read, :return-type int, :declaring-class java.io.InputStream, :parameter-types [], :exception-types [java.io.IOException], :flags #{:public :abstract}} #clojure.reflect.Method{:name markSupported, :return-type boolean, :declaring-class java.io.InputStream, :parameter-types [], :exception-types [], :flags #{:public}} #clojure.reflect.Field{:name MAX_SKIP_BUFFER_SIZE, :type int, :declaring-class java.io.InputStream, :flags #{:private :static :final}} #clojure.reflect.Constructor{:name java.io.InputStream, :declaring-class java.io.InputStream, :parameter-types [], :exception-types [], :flags #{:public}} #clojure.reflect.Method{:name read, :return-type int, :declaring-class java.io.InputStream, :parameter-types [byte<>], :exception-types [java.io.IOException], :flags #{:public}} #clojure.reflect.Method{:name skip, :return-type long, :declaring-class java.io.InputStream, :parameter-types [long], :exception-types [java.io.IOException], :flags #{:public}} #clojure.reflect.Method{:name reset, :return-type void, :declaring-class java.io.InputStream, :parameter-types [], :exception-types [java.io.IOException], :flags #{:public :synchronized}} #clojure.reflect.Method{:name read, :return-type int, :declaring-class java.io.InputStream, :parameter-types [byte<> int int], :exception-types [java.io.IOException], :flags #{:public}}}}
+----
+
+Now, that is a _very_ hairy data structure. Fortunately, we have learned how to deal with hairy data structures in the 
+<<_pretty_printing_using_code_clojure_pprint_code,first section>> of this chapter: pretty-printing to the rescue!
+Let's use pretty-printing to display the methods exposed by `java.io.InputStream` in a table:
+
+[source,clojure-repl]
+----
+user=> (->> (reflect/reflect java.io.InputStream) :members (sort-by :name) (pp/print-table [:name :flags :parameter-types :return-type]))
+
+|                :name |                     :flags | :parameter-types | :return-type |
+|----------------------+----------------------------+------------------+--------------|
+| MAX_SKIP_BUFFER_SIZE | #{:private :static :final} |                  |              |
+|            available |                 #{:public} |               [] |          int |
+|                close |                 #{:public} |               [] |         void |
+|  java.io.InputStream |                 #{:public} |               [] |              |
+|                 mark |   #{:public :synchronized} |            [int] |         void |
+|        markSupported |                 #{:public} |               [] |      boolean |
+|                 read |       #{:public :abstract} |               [] |          int |
+|                 read |                 #{:public} |         [byte<>] |          int |
+|                 read |                 #{:public} | [byte<> int int] |          int |
+|                reset |   #{:public :synchronized} |               [] |         void |
+|                 skip |                 #{:public} |           [long] |         long |
+nil
+----
+
+For example, this tells us that we can call a `.read` method on `v` with no arguments, which will return an `int`:
+
+[source,clojure-repl]
+----
+user=> (.read v)
+60  
+user=> (.read v)
+33
+user=> (.read v)
+68
+----
+
+Without any prior knowledge, we have managed to learn that `v` is an InputStream, and read bytes from it.

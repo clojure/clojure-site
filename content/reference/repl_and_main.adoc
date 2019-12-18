@@ -20,33 +20,25 @@ The `clojure.main` namespace provides functions that allow Clojure programs and 
 
 == clojure.main --help
 
-The `clojure.main/main` entry point accepts a variety of arguments and flags as described in its usage message:
+The `clojure.main/main` entry point accepts a variety of arguments and flags.
 
-[source,clojure]
-----
-Usage: java -cp clojure.jar clojure.main [init-opt*] [main-opt] [arg*]
-
-With no options or args, runs an interactive Read-Eval-Print Loop
-
-init options:
--i, --init path Load a file or resource
--e, --eval string Evaluate expressions in string; print non-nil values
-
-main options:
--r, --repl Run a repl
-path Run a script from a file or resource
-- Run a script from standard input
--m, --main A namespace to find a -main function for execution
--h, -?, --help Print this help message and exit
-
-operation:
-
-- Establishes thread-local bindings for commonly set!-able vars
-- Enters the user namespace
-- Binds *command-line-args* to a seq of strings containing command line
-args that appear after any main option
-- Runs all init options in order
-- Runs a repl or script if requested
+* With no options or args, runs an interactive Read-Eval-Print Loop
+* init options:
+** -i, --init path Load a file or resource
+** -e, --eval string Evaluate expressions in string; print non-nil values
+** --report target Report uncaught exception to "file" (default), "stderr", or "none", overrides System property clojure.main.report (added in 1.10.1)
+* main options:
+** -r, --repl Run a repl
+** path Run a script from a file or resource
+** - Run a script from standard input
+** -m, --main A namespace to find a -main function for execution
+** -h, -?, --help Print this help message and exit
+* operation:
+** Establishes thread-local bindings for commonly set!-able vars
+** Enters the user namespace
+** Binds `pass:[*command-line-args*]` to a seq of strings containing command line args that appear after any main option
+** Runs all init options in order
+** Runs a repl or script if requested
 
 The init options may be repeated and mixed freely, but must appear before
 any main option. The appearance of any eval option before running a repl
@@ -54,15 +46,16 @@ suppresses the usual repl greeting message: "Clojure ~(clojure-version)".
 
 Paths may be absolute or relative in the filesystem or relative to
 classpath. Classpath-relative paths have prefix of @ or @/
-----
 
 == Launching a REPL
 
-The simplest way to launch a Clojure _repl_ is to use the following command line from within Clojure's home directory:
+The simplest way to launch a Clojure _repl_ is to use the <<xref/../../guides/getting_started#,clj>> command tool, which invokes clojure.main:
 
-[source,clojure]
+[source,shell]
 ----
-java -cp clojure.jar clojure.main
+$ clj
+Clojure 1.10.0
+user=>
 ----
 
 The REPL prompt shows the name of the current namespace (pass:[*ns*]), which defaults to _user_.
@@ -72,43 +65,96 @@ Several special vars are available when using the REPL:
 * *1, *2, *3 - hold the result of the last three expressions that were evaluated
 * *e - holds the result of the last exception.
 
-The http://clojure.github.io/clojure/clojure.repl-api.html[clojure.repl] namespace has a number of useful functions for inspecting the source and documentation of available functions:
+The https://clojure.github.io/clojure/clojure.repl-api.html[clojure.repl] namespace has a number of useful functions for inspecting the source and documentation of available functions:
 
-* http://clojure.github.io/clojure/clojure.repl-api.html#clojure.repl/doc[doc] - prints the docstring for a var given its name
-* http://clojure.github.io/clojure/clojure.repl-api.html#clojure.repl/find-doc[find-doc] - prints the docstring for any var whose doc or name matches the pattern
-* http://clojure.github.io/clojure/clojure.repl-api.html#clojure.repl/apropos[apropos] - returns a seq of definitions matching a regex
-* http://clojure.github.io/clojure/clojure.repl-api.html#clojure.repl/source[source] - prints the source for a symbol
-* http://clojure.github.io/clojure/clojure.repl-api.html#clojure.repl/pst[pst] - **p**rint **s**tack **t**race for a given exception or *e by default
+* https://clojure.github.io/clojure/clojure.repl-api.html#clojure.repl/doc[doc] - prints the docstring for a var given its name
+* https://clojure.github.io/clojure/clojure.repl-api.html#clojure.repl/find-doc[find-doc] - prints the docstring for any var whose doc or name matches the pattern
+* https://clojure.github.io/clojure/clojure.repl-api.html#clojure.repl/apropos[apropos] - returns a seq of definitions matching a regex
+* https://clojure.github.io/clojure/clojure.repl-api.html#clojure.repl/source[source] - prints the source for a symbol
+* https://clojure.github.io/clojure/clojure.repl-api.html#clojure.repl/pst[pst] - **p**rint **s**tack **t**race for a given exception or *e by default
 
 == Launching a Script
 
 To run a file full of Clojure code as a script, pass the path to the script to `clojure.main` as an argument:
 
-[source,clojure]
+[source,shell]
 ----
-java -cp clojure.jar clojure.main /path/to/myscript.clj
+clj /path/to/myscript.clj
 ----
 
 == Passing arguments to a Script
 
 To pass in arguments to a script, pass them in as further arguments when launching `clojure.main`:
 
-[source,clojure]
+[source,shell]
 ----
-java -cp clojure.jar clojure.main /path/to/myscript.clj arg1 arg2 arg3
+clj /path/to/myscript.clj arg1 arg2 arg3
 ----
 
 The arguments will be provided to your program as a seq of strings bound to the var `pass:[*command-line-args*]`:
 
-[source,clojure]
+[source,shell]
 ----
 *command-line-args* => ("arg1" "arg2" "arg3")
 ----
 
-== Launching a Socket Server
+== Error printing
 
-[NOTE]
-This feature was added in 1.8.0.
+=== At REPL
+
+As of Clojure 1.10, Clojure errors categorized into one of several phases:
+
+* `:read-source` - an error thrown while reading characters at the REPL or from a source file.
+* `:macro-syntax-check` - a syntax error found in the syntax of a macro call, either from spec or from a macro throwing IllegalArgumentException, IllegalStateException, or ExceptionInfo.
+* `:macroexpansion` - all other errors thrown during macro evaluation are categorized as macroexpansion errors.
+* `:compile-syntax-check` - a syntax error caught during compilation.
+* `:compilation` - non-syntax errors caught during compilation.
+* `:execution` - any errors thrown at execution time.
+* `:read-eval-result` - any error thrown while reading the result of execution (only applicable for REPLs that read the result).
+* `:print-eval-result` - any error thrown while printing the result of execution.
+
+Exceptions thrown during all phases (exception `:execution`) will have ex-data attached with one or more the following keys:
+
+* `:clojure.error/phase` - phase indicator
+* `:clojure.error/source` - file name (no path)
+* `:clojure.error/line` - integer line number
+* `:clojure.error/column` - integer column number
+* `:clojure.error/symbol` - symbol being expanded/compiled/invoked
+* `:clojure.error/class` - cause exception class symbol
+* `:clojure.error/cause` - cause exception message
+* `:clojure.error/spec` - explain-data for a spec error
+
+The clojure.main REPL includes the categorization and printing of errors by default, but the individual steps of this process are exposed as well for other REPLs to use, specifically the functions:
+
+* https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/Throwable-%3Emap[pass:[Throwable->map]] - converts an Exception chain into Clojure data
+* https://clojure.github.io/clojure/clojure.main-api.html#clojure.main/ex-triage[ex-triage] - analyzes Clojure exception data to pull relevant information from the top and bottom of the exception chain into a map describing just the set of data needed to format an exception string
+* https://clojure.github.io/clojure/clojure.main-api.html#clojure.main/ex-str[ex-str] - produces a phase-appropriate message given a set of exception data
+
+The clojure.main REPL combines these functions in a pipeline to produce the printed exception message: `pass:[(-> ex Throwable->map clojure.main/ex-triage clojure.main/ex-str)]`. Other REPLs can use one or more pieces of this pipeline as necessary when building or customizing their exception printing.
+
+=== As launcher
+
+Up to Clojure 1.10.0, clojure.main when used as a program launcher (with -m, -e, or with a script), uncaught exceptions would be automatically printed along with the full nested stack trace. In this case, the error triage and printing process above was not applied.
+
+As of Clojure 1.10.1, uncaught exceptions will now be caught and printed according to the same error triage and printing functionality as the Clojure REPL. The full stack trace, ex-info, and other information will be printed to a target specified by the configuration.
+
+The three available error targets are:
+
+* `file` - write to a temp file (default, falls back to `stderr`)
+* `stderr` - write to stderr stream
+* `none` - don't write
+
+These error targets can be specified either as options to clojure.main, or as Java system properties (flags take precedence). When invoking clojure.main (or using the clj tool), use `--report <target>`. For Java system property, use `-Dclojure.main.report=<target>`.
+
+Other programs may wish to take advantage of this functionality, and it is available in https://clojure.github.io/clojure/clojure.main-api.html#clojure.main/report-error[report-error], which takes a Throwable and optionally the :target.
+
+== tap
+
+tap is a shared, globally accessible system for distributing a series of informational or diagnostic values to a set of (presumably effectful) handler functions. It can be used as a better debug `prn`, or for facilities like logging etc.
+
+https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/tap%3E[`pass:[tap>]`] sends a value to the set of taps. Taps can be added with https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/add-tap[`add-tap`] and will be called with any value sent to tap>. The tap function may (briefly) block (e.g. for streams) and will never impede calls to tap>, but blocking indefinitely may cause tap values to be dropped. If no taps are registered, tap> discards. Remove taps with https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/remove-tap[`remove-tap`].
+
+== Launching a Socket Server
 
 The Clojure runtime now has the ability to start a socket server at initialization based on system properties. One expected use for this is serving a socket-based REPL, but it also has many other potential uses for dynamically adding server capability to existing programs without code changes.
 
@@ -122,18 +168,18 @@ A socket server will be started for each JVM system property like "clojure.serve
 * `bind-err` - defaults to true, binds `pass:[*err*]` to socket out stream
 * `client-daemon` - defaults to true, socket client thread doesn't block exit
 
-Additionally, there is a repl function provided that is slightly customized for use with the socket server in http://clojure.github.io/clojure/clojure.core-api.html#clojure.core.server/repl[clojure.core.server/repl].
+Additionally, there is a repl function provided that is slightly customized for use with the socket server in https://clojure.github.io/clojure/clojure.core-api.html#clojure.core.server/repl[clojure.core.server/repl].
 
 Following is an example of starting a socket server with a repl listener. This can be added to any existing Clojure program to allow it to accept external REPL clients via a local connection to port 5555.
 
-[source,clojure]
+[source,shell]
 ----
 -Dclojure.server.repl="{:port 5555 :accept clojure.core.server/repl}"
 ----
 
 An example client you can use to connect to this socket repl is telnet:
 
-[source,clojure]
+[source,shell]
 ----
 $ telnet 127.0.0.1 5555
 Trying 127.0.0.1...
@@ -145,7 +191,7 @@ hello
 
 You can instruct the server to close the client socket repl session by using the special command `:repl/quit`:
 
-[source,clojure]
+[source,clojure-repl]
 ----
 user=> :repl/quit
 Connection closed by foreign host.
@@ -153,17 +199,19 @@ Connection closed by foreign host.
 
 Also see:
 
-* http://dev.clojure.org/jira/browse/CLJ-1671[CLJ-1671]
-* http://dev.clojure.org/display/design/Socket+Server+REPL[Socket REPL design page]
+* https://clojure.atlassian.net/browse/CLJ-1671[CLJ-1671]
+* https://archive.clojure.org/design-wiki/display/design/Socket%2BServer%2BREPL.html[Socket REPL design page]
 
 == Related functions
 
-Main entry point: `http://clojure.github.io/clojure/clojure.main-api.html#clojure.main/main[clojure.main/main]`
+Main entry point: `https://clojure.github.io/clojure/clojure.main-api.html#clojure.main/main[clojure.main/main]`
 
-Reusable REPL: `http://clojure.github.io/clojure/clojure.main-api.html#clojure.main/repl[clojure.main/repl]`
+Reusable REPL: `https://clojure.github.io/clojure/clojure.main-api.html#clojure.main/repl[clojure.main/repl]`
 
-Allowing set! for the customary REPL vars: `http://clojure.github.io/clojure/clojure.main-api.html#clojure.main/with-bindings[clojure.main/with-bindings]`
+Error handling: `https://clojure.github.io/clojure/clojure.main-api.html#clojure.main/ex-triage[clojure.main/ex-triage]` `https://clojure.github.io/clojure/clojure.main-api.html#clojure.main/ex-str[clojure.main/ex-str]`
 
-Socket server control: `http://clojure.github.io/clojure/clojure.core-api.html#clojure.core.server/start-server[clojure.core.server/start-server]` `http://clojure.github.io/clojure/clojure.core-api.html#clojure.core.server/stop-server[clojure.core.server/stop-server]` `http://clojure.github.io/clojure/clojure.core-api.html#clojure.core.server/stop-servers[clojure.core.server/stop-servers]` 
+Allowing set! for the customary REPL vars: `https://clojure.github.io/clojure/clojure.main-api.html#clojure.main/with-bindings[clojure.main/with-bindings]`
 
-Socket repl: `http://clojure.github.io/clojure/clojure.core-api.html#clojure.core.server/repl[clojure.core.server/repl]`
+Socket server control: `https://clojure.github.io/clojure/clojure.core-api.html#clojure.core.server/start-server[clojure.core.server/start-server]` `https://clojure.github.io/clojure/clojure.core-api.html#clojure.core.server/stop-server[clojure.core.server/stop-server]` `https://clojure.github.io/clojure/clojure.core-api.html#clojure.core.server/stop-servers[clojure.core.server/stop-servers]`
+
+Socket repl: `https://clojure.github.io/clojure/clojure.core-api.html#clojure.core.server/repl[clojure.core.server/repl]`

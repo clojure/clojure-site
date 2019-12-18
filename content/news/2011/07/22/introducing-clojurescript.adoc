@@ -45,7 +45,7 @@ Some parts of the Clojure language have no direct analog in ClojureScript, in pa
 
 Obviously, any code making interop calls to Java, as most existing Clojure libraries do, will not work in ClojureScript. Code written in pure Clojure will **probably** work in ClojureScript with minor adjustments. For example, https://github.com/clojure/clojure/blob/master/src/clj/clojure/zip.clj[clojure.zip in Clojure] and https://github.com/clojure/clojurescript/blob/master/src/cljs/clojure/zip.cljs[clojure.zip in ClojureScript] are nearly identical. With a little effort, purely algorithmic code can be made portable between implementations. However, trying to abstract over all the differences among host platforms has never been a goal of Clojure, nor will it be a goal of ClojureScript.
 
-We have a http://dev.clojure.org/jira/browse/CLJS[ClojureScript JIRA instance] set up to track bugs. As with Clojure itself, submitting patches requires signing the <<xref/../../../../../community/contributing#,Clojure Contributor Agreement>>. We can only accept patches through JIRA, not GitHub pull requests.
+We have a https://clojure.atlassian.net/projects/CLJS[ClojureScript JIRA instance] set up to track bugs. As with Clojure itself, submitting patches requires signing the <<xref/../../../../../dev/contributor_agreement#,Clojure Contributor Agreement>>. We can only accept patches through JIRA, not GitHub pull requests.
 
 == The Relationship to Google Closure
 

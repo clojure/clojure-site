@@ -1,0 +1,173 @@
+= Learn Clojure - Answers
+Alex Miller
+2019-08-20
+:type: learn
+:toc: macro
+:icons: font
+:navlinktext: Answers
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+toc::[]
+
+This page contains solutions to the "Test your knowledge" sections of the <<syntax#,Learn Clojure>> guide.
+
+== <<syntax#_test_your_knowledge,Syntax>>
+
+1. Using the REPL, compute the sum of 7654 and 1234.
++
+[source,clojure]
+----
+user=> (+ 7654 1234)
+8888
+----
++
+2. Rewrite the following algebraic expression as a Clojure expression: `( 7 + 3 * 4 + 5 ) / 10`.
++
+[source,clojure]
+----
+(/ (+ 7 (* 3 4) 5) 10)
+----
++
+3. Using REPL documentation functions, find the documentation for the rem and mod functions. Compare the results of the provided expressions based on the documentation.
++
+[source,clojure]
+----
+user=> (doc rem)
+clojure.core/rem
+([num div])
+  remainder of dividing numerator by denominator.
+nil
+
+user=> (doc mod)
+clojure.core/mod
+([num div])
+  Modulus of num and div. Truncates toward negative infinity.
+nil
+----
++
+4. Using find-doc, find the function that prints the stack trace of the most recent REPL exception.
++
+`pst`
+
+== <<functions#_test_your_knowledge,Functions>>
+
+1. Define a function `greet` that takes no arguments and prints "Hello". 
++
+[source,clojure]
+----
+(defn greet []
+  (println "Hello"))
+----
++
+2. Redefine greet using `def` with `fn` and `#()`.
++
+[source,clojure]
+----
+;; using fn
+(def greet
+  (fn [] (println "Hello")))
+
+;; using #()
+(def greet
+  #(println "Hello"))
+----
++
+3. Define a function `greeting` ...
++
+[source,clojure]
+----
+(defn greeting
+  ([] (greeting "Hello" "World")
+  ([x] (greeting "Hello" x)
+  ([x y] (str x ", " y "!")))
+----
++
+4. Define a function `do-nothing` ...
++
+[source,clojure]
+----
+(defn do-nothing [x] x)
+----
++
+5. Define a function `always-thing` ...
++
+[source,clojure]
+----
+(defn always-thing [& xs] 100)
+----
++
+6. Define a function `make-thingy` ...
++
+[source,clojure]
+----
+(defn make-thingy [x]
+  (fn [& args] x))
+----
++
+7. Define a function `triplicate` ...
++
+[source,clojure]
+----
+(defn triplicate [f]
+  (f) (f) (f))
+----
++
+8. Define a function `opposite` ...
++
+[source,clojure]
+----
+(defn opposite [f]
+  (fn [& args] (not (apply f args))))
+----
++
+9. Define a function `triplicate2` ...
++
+[source,clojure]
+----
+(defn triplicate2 [f & args]
+  (triplicate (fn [] (apply f args))))
+----
++
+10. Using the `java.lang.Math` class ...
++
+[source,clojure]
+----
+user=> (Math/cos Math/PI)
+-1.0
+user=> (+ (Math/pow (Math/sin 0.2) 2)
+          (Math/pow (Math/cos 0.2) 2))
+1.0
+----
++
+11. Define a function that takes an HTTP URL as a string...
++
+[source,clojure]
+----
+(defn http-get [url]
+  (slurp
+    (.openStream
+      (java.net.URL. url))))
+----
++
+[source,clojure]
+----
+(defn http-get [url]
+  (slurp url))
+----
++
+12. Define a function `one-less-arg`:
++
+[source,clojure]
+----
+(defn one-less-arg [f x]
+  (fn [& args] (apply f x args)))
+----
++
+13. Define a function `two-fns`:
++
+[source,clojure]
+----
+(defn two-fns [f g]
+  (fn [x] (f (g x))))
+----

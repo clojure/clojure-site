@@ -21,7 +21,7 @@ Keywords are cached and interned. This means that a keyword is reused (reducing 
 [[unreadable_keywords]]
 **<<faq#unreadable_keywords,Why is it possible to create keywords that can't be read by the reader?>>**
 
-The http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/keyword[`keyword`] function can be used to programmatically create keywords based on user data or other sources of input. Similarly, the http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/namespace[`namespace`] and http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/name[`name`] functions can be used to pull a keyword back apart into components. It is common for programs to use this functionality to create keywords to be used as identifiers or map keys without ever printing and reading that data back.
+The https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/keyword[`keyword`] function can be used to programmatically create keywords based on user data or other sources of input. Similarly, the https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/namespace[`namespace`] and https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/name[`name`] functions can be used to pull a keyword back apart into components. It is common for programs to use this functionality to create keywords to be used as identifiers or map keys without ever printing and reading that data back.
 
 Because of this use case (and also for general performance), no validation check is performed on the inputs to `keyword` (or `symbol`), which makes it possible to create keywords that, when printed, cannot be read back into a keyword (due to spaces or other non-allowed characters). If this is important to you, you should validate the keyword inputs first, before creating the keyword.
 
@@ -35,13 +35,13 @@ However, unlike Lisp, Clojure does not allow the user to extend this set of read
 [[underscore]]
 **<<faq#underscore,What does an _ mean in a let binding or parameter?>>**
 
-_ has no special meaning in Clojure as a symbol. However, it is a convention to use _ (or a leading _) to denote a binding that will not be used in the expression.
+_ has no special meaning in Clojure as a symbol. However, it is a convention to use _ (or a leading _) to denote a binding that will not be used in the expression. A common case for this is skipping unneeded values in <<destructuring#_sequential_destructuring,sequential destructuring>>:
 
 [source,clojure]
 ----
-(defn get-x [point]
-  (let [[x _] point]   ;; y-value of point is unused, so mark it with _
-    x))
+(defn get-y [point]
+  (let [[_ y] point]   ;; x-value of point is unused, so mark it with _
+    y))
 ----
 
 [[anon_vector]]
@@ -74,6 +74,50 @@ It sounds like you are using the latter but expecting the semantics of the forme
 
 Note that all of these are eager transformations - they produce the output vector when you invoke them. The original sequence version `(map inc (filter odd? [1 2 3]))` is lazy and will only produce values as needed (with chunking under the hood for greater performance). Neither of these is right or wrong, but they are both useful in different circumstances.
 
+[[arg_order]]
+**<<faq#arg_order,What are the rules of thumb for arg order in core functions?>>**
+
+Primary collection operands come first. That way one can write `->` and 
+its ilk, and their position is independent of whether or not they have 
+variable arity parameters. There is a tradition of this in OO 
+languages and Common Lisp (`slot-value`, `aref`, `elt`). 
+
+One way to think about sequences is that they are read from the left, 
+and fed from the right: 
+
+[source]
+----
+<- [1 2 3 4] 
+----
+
+Most of the sequence functions consume and produce sequences. So one 
+way to visualize that is as a chain: 
+
+[source]
+----
+map <- filter <- [1 2 3 4] 
+----
+
+and one way to think about many of the seq functions is that they are 
+parameterized in some way: 
+
+[source]
+----
+(map f) <- (filter pred) <- [1 2 3 4] 
+----
+
+So, sequence functions take their source(s) last, and any other 
+parameters before them, and partial allows for direct parameterization 
+as above. There is a tradition of this in functional languages and 
+Lisps. 
+
+Note that this is not the same as taking the primary operand last. 
+Some sequence functions have more than one source (concat, 
+interleave). When sequence functions are variadic, it is usually in 
+their sources. 
+
+_Adapted from https://groups.google.com/d/msg/clojure/iyyNyWs53dc/Q_8BtjRthqgJ[comments by Rich Hickey]._
+
 [[transducers_vs_seqs]]
 **<<faq#transducers_vs_seqs,What are good use cases for transducers?>>**
 
@@ -82,7 +126,7 @@ When performing a series of transformations, sequences will create an intermedia
 Performance benefits of transducers:
 
 - Source collection iteration - when used on reducible inputs (collections and other things), avoid creating an unnecessary input collection sequence - helps memory and time.
-- Intermediate sequences and cached values - as the transformation happens in a single pass, you remove all intermediate sequence and cached value creation - again, helps memory and time. The combination of the the prior item and this one will start to win big as the size of the input collection or number of transformations goes up (but for small numbers of either, chunked sequences can be surprisingly fast and will compete).
+- Intermediate sequences and cached values - as the transformation happens in a single pass, you remove all intermediate sequence and cached value creation - again, helps memory and time. The combination of the prior item and this one will start to win big as the size of the input collection or number of transformations goes up (but for small numbers of either, chunked sequences can be surprisingly fast and will compete).
 
 Design / usage benefits of transducers:
 
@@ -99,6 +143,39 @@ Design benefits of sequences:
 
 - Consumer control - returning a seq from an API lets you combine input + transformation into something that gives the consumer control. Transducers don't work as well for this (but will work better for cases where input and transformation are separated).
 
+== Spec
+
+[[spec_alpha]]
+**<<faq#spec_alpha,Why is spec alpha?>>**
+
+spec is in alpha to indicate that the API may still change. spec was broken out of Clojure core so that spec can be updated independently from the main Clojure version. At some point spec's API will be considered stable and at that point the alpha will be removed.
+
+[[spec_location]]
+**<<faq#spec_location,Where should I put my specs?>>**
+
+There is no single right answer to this question. For data specs, it is often useful to put them in their own namespace, which may or may not match the qualifier used in the data specs. Matching the qualifier to the namespace allows the use of auto-resolved keywords both within the specs and in aliases in other namespaces, but also entwines them, making refactoring more complicated.
+
+For function specs, most people either put them immediately before or after the function they apply to, or in a separate namespace that can optionally be required when needed (for testing or validation). In the latter case, Clojure core has followed the pattern of using foo.bar.specs to hold function specs for the functions in foo.bar.
+
+[[regex_nesting]]
+**<<faq#regex_nesting,How do nested regex ops work?>>**
+
+Regex ops (cat, alt, *, +, ?, etc) always describe the elements in a sequential collection. They are not, by themselves, specs. When used in a spec context they are coerced into specs. Nested regex ops combine to form a single regex spec over the same sequential collection.
+
+To validate a nested collection, use `s/spec` to wrap the inner regex, forcing a spec boundary between regex ops.
+
+[[instrument_ret]]
+**<<faq#instrument_ret,Why doesn't `instrument` check return values?>>**
+
+Instrument is intended to verify that a function is being invoked according to its args spec. That is, is the function being called correctly? This functionality should be used during development.
+
+Checking whether a function operates correctly is a test-time activity and this should be checked with the `check` function which will actually invoke the function with generated args and verify the ret and fn specs on each invocation.
+
+[[skip_macros]]
+**<<faq#skip_macros,Is there a way to skip checking macro specs?>>**
+
+Yes, set the Java system property `-Dclojure.spec.skip-macros=true` and no macro specs will be checked during macroexpansion.
+
 == State and Concurrency
 
 [[concurrency_features]]
@@ -114,12 +191,12 @@ Each of these really addresses a different use case.
 [[agent_shutdown]]
 **<<faq#agent_shutdown,Why does Clojure "hang" for 1 minute when my program ends?>>**
 
-This is most commonly asked in the context of programs that use `future`, `pmap`, `agent-send`, or other functions that invoke those functions. When a program like this finishes, there will be a 60 second pause before exit. To fix this problem, call http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/shutdown-agents[shutdown-agents] as the program exits.
+This is most commonly asked in the context of programs that use `future`, `pmap`, `agent-send`, or other functions that invoke those functions. When a program like this finishes, there will be a 60 second pause before exit. To fix this problem, call https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/shutdown-agents[shutdown-agents] as the program exits.
 
 Clojure uses two internal thread pools to service futures and agent function executions. Both pools use non-daemon threads and the JVM will not exit while any non-daemon thread is alive. In particular, the pool that services futures and agent send-off calls uses an Executor cached thread pool with a 60 second timeout. In the scenario above, the program will wait until the background threads have completed their work and the threads expire before it can exit.
 
 [[write_skew]]
-**<<faq#write_skew,Why does the Clojure STM does not guarantee serializability but only snapshot isolation?>>**
+**<<faq#write_skew,Why the Clojure STM does not guarantee serializability but only snapshot isolation?>>**
 
 If reads were included by default, then STM would be slower (as more transactions would require serializability). However, in many cases, reads do not need to be included. Thus, users can choose to accept the performance penalty when it is necessary and get faster performance when it is not.
 
@@ -136,7 +213,7 @@ No (although that is typical). One namespace can be split across multiple files 
 ns is a macro that does a number of things:
 
 - creates a new internal Namespace object (if it does not yet exist)
-- makes that namespace the new current namespace (*ns*)
+- makes that namespace the new current namespace (`pass:[*ns*]`)
 - auto-refers all vars from clojure.core and imports all classes from java.lang
 - requires/refers other namespaces and vars as specified
 - (and other optional things)
@@ -169,19 +246,65 @@ Primitive types can be found as the static TYPE field on the boxed class, for ex
 [[varargs]]
 **<<faq#varargs,How do you invoke a Java method with a vararg signature?>>**
 
-Java treats a trailing varargs parameter as an array and it can be invoked from Clojure. Example:
+Java treats a trailing varargs parameter as an array and it can be invoked from Clojure by passing an explicit array.
 
-`(.method object fixed-args... (into-array type variable-args...))`
-
-Example:
+Examples:
 
 [source,clojure]
 ----
-;; asList takes an Object vararg parameter
+;; Invoke static Arrays.asList(T... a)
 (java.util.Arrays/asList (object-array [0 1 2]))
 
-;; format takes one fixed parameter and a varargs
+;; Invoke static String.format(String format, Object... args)
 (String/format "%s %s, %s" (object-array ["March" 1 2016]))
+
+;; For a primitive vararg, use the appropriate primitive array constructor
+;; Invoke put(int row, int col, double... data)
+(.put o 1 1 (double-array [2.0]))
+
+;; Passing at least an empty array is required if there are no varargs
+(.put o 1 1 (double-array []))
+----
+
+[[illegal_access]]
+**<<faq#illegal_access,Why do I get an illegal access warning?>>**
+
+Java 9 added a module system, allowing code to be partitioned into modules where code outside a module cannot invoke code inside the module unless it has been exported by the module. One of the areas affected by this change in Java is reflective access. Clojure uses reflection when it encounters a Java interop call without sufficient type information about the target object or the function arguments. For example:
+
+[source,clojure]
+----
+(def fac (javax.xml.stream.XMLInputFactory/newInstance))
+(.createXMLStreamReader fac (java.io.StringReader. ""))
+----
+
+Here `fac` is an instance of `com.sun.xml.internal.stream.XMLInputFactoryImpl`, which is an extension of `javax.xml.stream.XMLInputFactory`. In the java.xml module, javax.xml.stream is an exported package, but the XMLInputFactoryImpl is an internal implementation of the public abstract class in that package. The invocation of `createXMLStreamReader` here will be reflective and the Reflector will attempt to invoke the method based on the implementation class, which is not accessible outside the module, yielding:
+
+[source,shell]
+----
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by clojure.lang.Reflector (file:/.m2/repository/org/clojure/clojure/1.10.0/clojure-1.10.0.jar) to method com.sun.xml.internal.stream.XMLInputFactoryImpl.createXMLStreamReader(java.io.Reader)
+WARNING: Please consider reporting this to the maintainers of clojure.lang.Reflector
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+----
+
+The first thing to note here is that this is a warning. Java 9 through Java 12 will all permit the call to be made and the code will continue to work.
+
+There are several potential workarounds:
+
+* Perhaps the best is to provide type hints to the exported types so the call is no longer reflective: +
+[source,clojure]
+----
+(.createXMLStreamReader ^javax.xml.stream.XMLInputFactory fac (java.io.StringReader. ""))
+----
+* As of Clojure 1.10, turn off illegal access with `--illegal-access=deny`. The Java reflection system will then provide the necessary feedback to Clojure to detect that calling through the inaccessible class is not an option. Clojure will find the public invocation path instead and no warning will be issued.
+* Use JVM module system flags (`--add-exports` etc ) to forcibly export the internal packages to avoid the warning. This is not recommended.
+
+If it is difficult to tell from the warning where the reflection is occurring, it may help to add the flag:
+
+[source]
+----
+--illegal-access=debug
 ----
 
 == Design and Use
@@ -192,3 +315,73 @@ Example:
 Because of its focus on immutable data, there is generally not a high value placed on data encapsulation. Because data is immutable, there is no need to worry about someone else modifying a value. Likewise, because Clojure data is designed to be manipulated directly, there is significant value in providing direct access to data, rather than wrapping it in APIs.
 
 All Clojure vars are globally available so again there is not much in the way of encapsulation of functions within namespaces. However, the ability to mark vars private (either using `defn-` for functions or `def` with `^:private` for values) is a convenience for a developer to indicate which parts of an API should be considered public for use vs part of the implementation.
+
+== Deps and CLI
+
+[[clj_alpha]]
+**<<faq#clj_alpha,Are clj and tools.deps.alpha done?>>**
+
+No. There are lots of known gaps and ideas still to implement. But it is useful now. :)
+
+[[clj_replace]]
+**<<faq#clj_replace,Is clj a replacement for lein and boot?>>**
+
+No. The clojure tools are focused on a) building classpaths and b) launching clojure programs. They do not (and will not) create artifacts, deploy artifacts, etc.
+
+tools.deps.alpha aims to provide programmatic building blocks for dependency resolution and classpath construction. clj/clojure wraps these into a command-line form that can be used to run Clojure programs. You can compose these pieces to do many other things.
+
+[[clj_dynamic]]
+**<<faq#clj_dynamic,Do these tools allow you to dynamically add dependencies to a running repl?>>**
+
+No. Other tools exist to do this now or could be added on top of the existing functionality but this was not part of the initial goal.
+
+[[clj_standalone]]
+**<<faq#clj_standalone,How can I create a single-file Clojure script, ideally self-invokable via a https://en.wikipedia.org/wiki/Shebang_(Unix)[shebang line]?>>**
+
+If you don't need any extra dependencies, just put `#!/usr/bin/env clojure` as the first line. Note that `clojure` won't automatically call a `-main` function, so be sure your file does more than just define functions. You can find command-line arguments in `pass:[*command-line-args*]`.
+
+If you do need extra dependencies, try the following, courtesy Dominic Monroe, substituting whatever deps you need in place of `funcool/tubax`:
+
+....
+#!/bin/sh
+
+"exec" "clojure" "-Sdeps" '{:deps {funcool/tubax {:mvn/version "0.2.0"}}}' "$0" "$@"
+
+;; Clojure code goes here.
+....
+
+== Contributing
+
+[[ca]]
+**<<faq#ca,Why does Clojure require that contributors first sign a contributor agreement (CA)?>>**
+
+See http://clojure.org/contributing
+
+It boils down to two reasons:
+
+1. To protect Clojure from future legal challenges that might discourage businesses from adopting it.
+2. To enable Clojure to be relicensed under a different open-source license if that would be advantageous.
+
+Signing the Contributor Agreement grants Rich Hickey joint ownership of your contributions. In exchange, Rich Hickey guarantees that Clojure will always be available under an open-source license approved by either the http://www.fsf.org/[Free Software Foundation] or the http://opensource.org/[Open Source Initiative].
+
+[[echosign_bug]]
+**<<faq#echosign_bug,Why does my CA email confirmation say "Clojure CA (between <my-company> and Rich Hickey) is Signed and Filed!">>**
+
+This is a quirk of Adobe EchoSign specific to users whose email account is already associated with an Adobe EchoSign account. In those cases, EchoSign will use the company name from your existing profile in the subject line rather than the individual name that was signed on the form. Don't worry! This has no effect - the agreement is as signed and attached in the email.
+
+[[prs]]
+**<<faq#prs,Other projects hosted on GitHub accept pull requests.  Why not Clojure?>>**
+
+Rich Hickey prefers to evaluate patches attached to JIRA tickets.  This is not to make it more difficult for contributors, or for legal reasons, but because of workflow preferences. See <<xref/../../dev/dev#,the development page>> for more details.
+
+https://groups.google.com/forum/#!msg/clojure/jWMaop_eVaQ/3M4gddaXDZoJ[Link] to Oct 2012 Clojure Google group message from Rich Hickey on this topic.
+
+== Future ideas
+
+[[native]]
+**<<faq#native,Will there be a native version of Clojure in the future?>>**
+
+Frequently people ask for a "native" version of Clojure, ie one that does not rely on the JVM. ClojureScript self-hosting is one current path but probably only useful for a subset of use cases. The https://www.graalvm.org/[GraalVM] project includes standalone execution using the SubstrateVM. Native images produced with Graal start extremely fast but may have fewer opportunities to optimize performance than the full JVM.
+
+However, neither of these is likely what people are envisioning when they ask for a "native version of Clojure", which is a version of the language that is not JVM-hosted and compiles directly to a native executable, probably via something like LLVM. Clojure leverages an enormous amount of performance, portability, and functionality from the JVM and relies heavily on things like a world-class garbage collector. Building a "Clojure native" would require a large amount of work to make a version of Clojure that was slower (probably much slower), less portable, and with significantly less functionality (as the Clojure library relies heavily on the JDK). The Clojure core team has no plans to work on this but it would be an amazing learning project for anyone and we encourage you to go for it!
+

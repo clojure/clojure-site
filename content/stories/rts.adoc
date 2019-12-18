@@ -1,0 +1,64 @@
+= Radio Television Suisse
+Alex Miller
+2017-04-04
+:jbake-type: story
+:jbake-company: Radio Télévision Suisse
+:jbake-link: https://rts.ch/
+
+Welcome to the first in an ongoing series of interviews with companies using Clojure and ClojureScript!
+
+[.right]
+image:/images/content/stories/rts.jpeg["RTS",height="80"]
+
+This first interview is with Frédéric Vergez about his work at https://rts.ch/[RTS (Radio Télévision Suisse)], the Swiss national TV and radio broadcaster, and the https://www.rts.ch/info[national news website].
+
+*How long have you been working with Clojure and ClojureScript?*
+
+For the last 3 years with Clojure, a bit more than a year with ClojureScript.
+
+*How are you using Clojure and ClojureScript?*
+
+Mainly data processing and visualisation for news articles, maps, and web-services in the data-journalism domain. Some examples include a map of events during the 5 year period after the "Arab Spring" and https://www.rts.ch/sweethome/[$weethome], a "quality of life" simulator in Switzerland. 
+
+*What libraries have you enjoyed working with the most?*
+
+We use a lot of libraries, but the most important ones would be:
+
+* https://github.com/clojure/core.async[core.async]: everywhere, backend, front-end. It definitely changed the way we're addressing concurrency/parallelism concerns, especially with ClojureScript
+* http://reagent-project.github.io/[reagent]: absolute must on frontend for SPA
+* http://incanter.org/[incanter]: really useful for data processing (we confess, we're also using python)
+* http://cascalog.org/[cascalog]: sometimes we're not far from big data
+* https://github.com/weavejester/compojure[compojure], https://github.com/ring-clojure/ring[ring] & http://immutant.org/[immutant]: as core REST backend
+* https://github.com/cgrand/enlive/wiki[enlive]: we do scraping, a lot
+* http://www.http-kit.org/[clj(s)-http/http-kit]
+* https://github.com/plumatic/dommy[dommy]
+* https://github.com/weavejester/environ[environ]
+
+We're still evaluating https://clojure.org/about/spec[clojure.spec], and use it mainly on backends. Also considering http://www.datomic.com/[Datomic] (still in early phases / P.O.C).
+
+*What about working with Clojure gives you the most value?*
+
+* functional
+* pragmatism
+* readability
+* performance
+* one language/philosophy from backend to frontend
+
+*What is your favorite feature of Clojure/ClojureScript?*
+
+* LISP
+* JVM/Node/V8/CLR : omnipresence
+* REPL based
+* Good IDE support
+
+*What is your stack?*
+
+Mainly based on AWS (S3, EC2, Beanstalk, EMR, RDS...) for backend. We use PostgreSQL and PostGIS a lot but are considering Datalog on some projects. We're currently evaluating using AWS Lambda with Clojure, and seriously considering using it with ClojureScript + Node.
+
+*Why is using Clojure/ClojureScript valuable to your business?*
+
+* sustainability
+* relative simplicity
+* coherence of the language/stack/community
+* time to market
+* fun!

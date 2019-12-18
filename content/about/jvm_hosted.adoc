@@ -13,9 +13,27 @@ Rich Hickey
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-Clojure is designed to be a hosted language, sharing the JVM type system, GC, threads etc. It compiles all functions to JVM bytecode. Clojure is a great Java library consumer, offering the dot-target-member notation for calls to Java. Class names can be referenced in full, or as non-qualified names after being imported. Clojure supports the dynamic implementation of Java interfaces and classes using http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/reify[reify] and http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/proxy[proxy]:
+Clojure is designed to be a hosted language, sharing the JVM type system, GC, threads etc. It compiles all functions to JVM bytecode. Clojure is a great Java library consumer, offering the dot-target-member notation for calls to Java. Class names can be referenced in full, or as non-qualified names after being imported. Clojure supports the dynamic implementation of Java interfaces and classes using https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/reify[reify] and https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/proxy[proxy]:
 
-Here's a small Swing app:
+Tapping into a Java class is as easy as:
+[source,clojure]
+----
+(import '[java.time LocalDate])
+
+(defn add-week ^LocalDate [^LocalDate date] 
+  (.plusDays date 7))
+
+(defn day->str [^LocalDate date] 
+  (format "%s %s, %s" (.getMonth date) (.getDayOfMonth date) (.getYear date)))
+
+;; infinite sequence of weekly dates, starting from today
+(def future-weeks (iterate add-week (LocalDate/now)))
+
+(map day->str (take 4 future-weeks))
+;; ("JULY 24, 2017" "JULY 31, 2017" "AUGUST 7, 2017" "AUGUST 14, 2017")
+----
+
+Here's a small Swing app as a more involved example:
 [source,clojure]
 ----
 (import '(javax.swing JFrame JLabel JTextField JButton)
@@ -45,4 +63,5 @@ Here's a small Swing app:
       (.setVisible true))))
 (celsius)
 ----
-<<image:celsius.jpeg#,image:celsius.jpeg>>
+
+image:/images/content/about/celsius.png["celsius",height="80"]

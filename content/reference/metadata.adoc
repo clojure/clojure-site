@@ -21,26 +21,74 @@ That said, metadata and its relationship to an object is immutable - an object w
 
 ''''
 
-== (_meta_ obj)
+=== (_meta_ obj)
 
 Returns the metadata of obj, returns nil if there is no metadata.
 
-''''
+[source,clojure]
+----
+(pprint (meta #'+)) ;; #'+ is the + var
 
-== (_with-meta_ obj map)
+;; {:added "1.2",
+;;  :name +,
+;;  :file "clojure/core.clj",
+;;  :column 1,
+;;  :line 984,
+;;  :arglists ([] [x] [x y] [x y & more]),
+;;  ...
+----
+
+=== (_with-meta_ obj map)
+
 Returns an object of the same type and value as obj, with map as its metadata.
+
+[source,clojure]
+----
+(def m ^:hi [1 2 3])
+(meta (with-meta m {:bye true}))
+;; {:bye true}
+----
+
+=== _pass:[*print-meta*]_
+
+If set to logical true, when printing an object, its metadata will also be printed in a form that can be read back by the reader.
+
+[source,clojure]
+----
+(def m ^:hi [1 2 3])
+(binding [*print-meta* true]
+  (prn m))
+
+;; ^{:hi true} [1 2 3]
+----
+
+=== (_vary-meta_ obj map)
+
+Returns an object of the same type and value as obj, with `(apply f (meta obj) f & args)` as its metadata.
+
+[source,clojure]
+----
+(def m ^:hi [1 2 3])
+(meta (vary-meta m merge {:bye true}))
+;; {:hi true, :bye true}
+----
+
+=== (_alter-meta!_ ref f & args) and (_reset-meta!_ ref map)
+
+Modify or reset the metadata respectively for a namespace/var/ref/agent/atom.
 
 == Metadata Reader Macros
 
-In addition to with-meta, there are a number of reader macros (<<reader#macrochars,The Reader: Macro Characters>>) for applying metadata to the expression following it:
+In addition to with-meta, there are a number of reader macros (<<reader#macrochars,The Reader: Macro Characters>>) for applying metadata to the expression following it at read-time:
 
-* `^{:doc "How obj works!"} obj` - Sets the metadata of obj to the provided map.
-** Equivalent to `(with-meta obj {:doc "How obj works!"})`
-* `^:dynamic obj` - Sets the given keyword to true in the object's metadata.
-** Equivalent to `^{:dynamic true} obj`
-* `^String obj` - Sets the value of :tag key in the object's metadata.
-** Equivalent to `^{:tag java.lang.String} obj`
-** Used to hint an objects type to the Clojure compiler. See <<java_interop#typehints,Java Interop: Type Hints>> for more information and a complete list of special type hints.
+* `^{:doc "How it works!"}` - adds the metadata map to the metadata of the next value read
+* `^:dynamic` - like `^{:dynamic true}`
+* `^String` - like `^{:tag java.lang.String}`
+* `^"java.lang.String"` - like `^{:tag java.lang.String}`
+
+The `:tag` key is used to hint an objects type to the Clojure compiler. See <<java_interop#typehints,Java Interop: Type Hints>> for more information and a complete list of special type hints.
 
 It is possible to add multiple pieces of metadata by chaining the metadata reader macros together.
-For example: `^:dynamic ^ints obj` would apply both the :dynamic flag and ints type-hint to obj.
+For example: `^:dynamic ^ints obj` would apply both the :dynamic flag and ints type-hint to obj. Metadata chains from right to left (left takes precedence).
+
+Note that metadata reader macros are applied at read-time, not at evaluation-time, and can only be used with values that support metadata, like symbols, vars, collections, sequences, namespaces, refs, atoms, agents, etc. Some important exceptions that *don't* support metadata are strings, numbers, booleans, Java objects, keywords (these are cached and can be shared within the runtime), and deftypes (unless they explicitly implement clojure.lang.IMeta).

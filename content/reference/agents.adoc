@@ -16,25 +16,25 @@ toc::[]
 
 Like Refs, Agents provide shared access to mutable state. Where <<refs#,Refs>> support _coordinated_, _synchronous_ change of _multiple_ locations, Agents provide _independent_, _asynchronous_ change of _individual_ locations. Agents are bound to a single storage location for their lifetime, and only allow mutation of that location (to a new state) to occur as a result of an action. Actions are functions (with, optionally, additional arguments) that are asynchronously applied to an Agent's state and whose return value becomes the Agent's new state. Because actions are functions they can also be multimethods and therefore actions are potentially polymorphic. Also, because the set of functions is open, the set of actions supported by an Agent is also open, a sharp contrast to pattern matching message handling loops provided by some other languages.
 
-Clojure's Agents are _reactive_, not autonomous - there is no imperative message loop and no blocking receive. The state of an Agent should be itself immutable (preferably an instance of one of Clojure's persistent collections), and the state of an Agent is always immediately available for reading by any thread (using the http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/deref[deref] function or <<reader#,reader>> macro +@+) without any messages, i.e. observation does not require cooperation or coordination.
+Clojure's Agents are _reactive_, not autonomous - there is no imperative message loop and no blocking receive. The state of an Agent should be itself immutable (preferably an instance of one of Clojure's persistent collections), and the state of an Agent is always immediately available for reading by any thread (using the https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/deref[deref] function or <<reader#,reader>> macro +@+) without any messages, i.e. observation does not require cooperation or coordination.
 
-Agent action dispatches take the form +(send agent fn args*)+. http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/send[send] (and http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/send-off[send-off]) always returns immediately. At some point later, in another thread, the following will happen:
+Agent action dispatches take the form +(send agent fn args*)+. https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/send[send] (and https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/send-off[send-off]) always returns immediately. At some point later, in another thread, the following will happen:
 
 . The given +fn+ will be applied to the _state_ of the Agent and the args, if any were supplied.
-. The return value of +fn+ will be passed to the validator function, if one has been set on the Agent. See http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/set-validator![set-validator!] for details.
+. The return value of +fn+ will be passed to the validator function, if one has been set on the Agent. See https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/set-validator![set-validator!] for details.
 . If the validator succeeds or if no validator was given, the return value of the given +fn+ will become the new state of the Agent.
-. If any watchers were added to the Agent, they will be called. See http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/add-watch[add-watch] for details.
+. If any watchers were added to the Agent, they will be called. See https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/add-watch[add-watch] for details.
 . If during the function execution any other dispatches are made (directly or indirectly), they will be held until _after_ the state of the Agent has been changed.
 
-If any exceptions are thrown by an action function, no nested dispatches will occur, and the exception will be cached in the Agent itself. When an Agent has errors cached, any subsequent interactions will immediately throw an exception, until the agent's errors are cleared. Agent errors can be examined with http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/agent-error[agent-error] and the agent restarted with http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/restart-agent[restart-agent].
+If any exceptions are thrown by an action function, no nested dispatches will occur, and the exception will be cached in the Agent itself. When an Agent has errors cached, any subsequent interactions will immediately throw an exception, until the agent's errors are cleared. Agent errors can be examined with https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/agent-error[agent-error] and the agent restarted with https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/restart-agent[restart-agent].
 
-The actions of all Agents get interleaved amongst threads in a thread pool. At any point in time, at most one action for each Agent is being executed. Actions dispatched to an agent from another single agent or thread will occur in the order they were sent, potentially interleaved with actions dispatched to the same agent from other sources. http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/send[send] should be used for actions that are CPU limited, while http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/send-off[send-off] is appropriate for actions that may block on IO.
+The actions of all Agents get interleaved amongst threads in a thread pool. At any point in time, at most one action for each Agent is being executed. Actions dispatched to an agent from another single agent or thread will occur in the order they were sent, potentially interleaved with actions dispatched to the same agent from other sources. https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/send[send] should be used for actions that are CPU limited, while https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/send-off[send-off] is appropriate for actions that may block on IO.
 
 Agents are integrated with the STM - any dispatches made in a transaction are held until it commits, and are discarded if it is retried or aborted.
 
 As with all of Clojure's concurrency support, no user-code locking is involved.
 
-Note that use of Agents starts a pool of non-daemon background threads that will prevent shutdown of the JVM. Use http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/shutdown-agents[shutdown-agents] to terminate these threads and allow shutdown.
+Note that use of Agents starts a pool of non-daemon background threads that will prevent shutdown of the JVM. Use https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/shutdown-agents[shutdown-agents] to terminate these threads and allow shutdown.
 
 == Example
 
@@ -63,18 +63,18 @@ This example is an implementation of the send-a-message-around-a-ring test. A ch
 
 == Related functions
 
-Create an Agent: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/agent[agent]
+Create an Agent: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/agent[agent]
 
-Examine an Agent: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/deref[deref] _(see also the +@+ <<reader#,reader>> macro)_ http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/agent-error[agent-error] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/error-handler[error-handler] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/error-mode[error-mode]
+Examine an Agent: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/deref[deref] _(see also the +@+ <<reader#,reader>> macro)_ https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/agent-error[agent-error] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/error-handler[error-handler] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/error-mode[error-mode]
 
-Change Agent state: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/send[send] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/send-off[send-off] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/restart-agent[restart-agent]
+Change Agent state: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/send[send] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/send-off[send-off] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/restart-agent[restart-agent]
 
-Block waiting for an Agent: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/await[await] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/await-for[await-for]
+Block waiting for an Agent: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/await[await] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/await-for[await-for]
 
-Ref validators: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/set-validator![set-validator!] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/get-validator[get-validator]
+Ref validators: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/set-validator![set-validator!] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/get-validator[get-validator]
 
-Watchers: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/add-watch[add-watch] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/remove-watch[remove-watch]
+Watchers: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/add-watch[add-watch] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/remove-watch[remove-watch]
 
-Agent thread management: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/shutdown-agents[shutdown-agents]
+Agent thread management: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/shutdown-agents[shutdown-agents]
 
-Agent error management: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/agent-error[agent-error] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/restart-agent[restart-agent] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/set-error-handler![set-error-handler!] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/error-handler[error-handler] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/set-error-mode![set-error-mode!] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/error-mode[error-mode]
+Agent error management: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/agent-error[agent-error] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/restart-agent[restart-agent] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/set-error-handler![set-error-handler!] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/error-handler[error-handler] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/set-error-mode![set-error-mode!] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/error-mode[error-mode]

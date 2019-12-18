@@ -1,7 +1,7 @@
 = Editing
 Alex Miller
 2015-09-29
-:jbake-type: page
+:jbake-type: community
 :toc: macro
 :icons: font
 
@@ -45,7 +45,7 @@ The first lines indicate the title, author, and creation date. The last two line
 
 == Text markup
 
-[cols="<*,", options="header"]
+[cols="2*<", options="header", role="table"]
 |===
 | markup | effect
 | pass:[_italic_] | _italic_
@@ -132,10 +132,10 @@ Link to an anchor in an internal page:
 Link to an external page:
 
 ----
-http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defn[defn]
+https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defn[defn]
 ----
 
-http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defn[defn]
+https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defn[defn]
 
 == Images
 

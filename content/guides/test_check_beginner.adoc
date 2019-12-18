@@ -1,0 +1,450 @@
+= test.check
+Gary Fredericks
+2019-06-29
+:type: guides
+:toc: macro
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+toc::[]
+
+== Introduction
+
+test.check is a property-based testing library for clojure, inspired
+by http://hackage.haskell.org/package/QuickCheck[QuickCheck].
+
+This guide, which is based on version `0.10.0`, will briefly introduce
+property-based testing using test.check examples, and then cover basic
+usage of the different parts of the API.
+
+== Property-based testing
+
+Property-based tests are often contrasted with "example-based tests",
+which are tests which test a function by enumerating specific inputs
+and the expected outputs (i.e., "examples"). This guide is written in
+terms of testing pure functions, but for testing less pure systems you
+can imagine a function that wraps the test, which uses the arguments
+to set up the context for the system, runs the system, and then
+queries the environment to measure the effects, and returns the result
+of those queries.
+
+Property-based testing, in contrast, describes properties that should
+be true for all valid inputs. A property-based test consists of a
+method for generating valid inputs (a "generator"), and a function
+which takes a generated input and combines it with the function under
+test to decide whether the property holds for that particular input.
+
+A classic first example of a property is one that tests the `sort`
+function by checking that it's idempotent. In test.check, this could
+be written like this:
+
+[[quick-check-examples]]
+
+[source,clojure]
+----
+(require '[clojure.test.check :as tc])
+(require '[clojure.test.check.generators :as gen])
+(require '[clojure.test.check.properties :as prop])
+
+(def sort-idempotent-prop
+  (prop/for-all [v (gen/vector gen/int)]
+    (= (sort v) (sort (sort v)))))
+
+(tc/quick-check 100 sort-idempotent-prop)
+;; => {:result true,
+;; =>  :pass? true,
+;; =>  :num-tests 100,
+;; =>  :time-elapsed-ms 28,
+;; =>  :seed 1528580707376}
+----
+
+Here the `(gen/vector gen/int)` expression is the generator for inputs
+to the `sort` function; it specifies that an input is a vector of
+integers. In reality, `sort` can take any collection of compatibly
+`Comparable` objects; there's often a tradeoff between the simplicity
+of a generator and the completeness with which it describes the actual
+input space.
+
+The name `v` is bound to a particular generated vector of integers,
+and the expression in the body of the `prop/for-all` determines
+whether the trial passes or fails.
+
+The `tc/quick-check` call "runs the property" 100 times, meaning it
+generates one hundred vectors of integers and evaluates
+`(= (sort v) (sort (sort v)))` for each of them; it reports success
+only if each of those trials passes.
+
+If any of the trials fails, then test.check attempts to "shrink" the
+input to a minimal failing example, and then reports the original
+failing example and the shrunk one. For example, this faulty property
+claims that after sorting a vector of integers, the first element
+should be less than the last element:
+
+[source,clojure]
+----
+(def prop-sorted-first-less-than-last
+  (prop/for-all [v (gen/not-empty (gen/vector gen/int))]
+    (let [s (sort v)]
+      (< (first s) (last s)))))
+----
+
+If we run this property with `tc/quick-check`, it returns something
+like this:
+
+[source,clojure]
+----
+{:num-tests 5,
+ :seed 1528580863556,
+ :fail [[-3]],
+ :failed-after-ms 1,
+ :result false,
+ :result-data nil,
+ :failing-size 4,
+ :pass? false,
+ :shrunk
+ {:total-nodes-visited 5,
+  :depth 2,
+  :pass? false,
+  :result false,
+  :result-data nil,
+  :time-shrinking-ms 1,
+  :smallest [[0]]}}
+----
+
+The original failing example `[-3]` (given at the `:fail` key) has
+been shrunk to `[0]` (under `[:shrunk :smallest]`), and a variety of
+other data is provided as well.
+
+== Generators
+
+The different parts of test.check are cleanly separated by namespace.
+We will proceed from the bottom up, starting with generators, then
+properties, and then two methods for running tests.
+
+Generators are supported by the `clojure.test.check.generators`
+namespace.
+
+The built-in generators fall into three categories: scalars (basic
+data types), collections, and combinators.
+
+* scalars (basic data types: numbers, strings, etc.)
+* collections (lists, maps, sets, etc.)
+* combinators
+
+The combinators are general enough to support creating generators
+for arbitrary custom types.
+
+Additionally, there are several development functions for
+experimenting with generators. We'll introduce those first so we can
+use them to demonstrate the rest of the generator functionality.
+
+=== Development Tools
+
+The `gen/sample` function takes a generator and returns a collection
+of small sample elements from that generator:
+
+[source,clojure]
+----
+user=> (gen/sample gen/boolean)
+(true false true true true false true true false false)
+----
+
+The `gen/generate` function takes a generator and returns a single
+generated element, and additionally allows specifying the `size` of
+the element. `size` is an abstract parameter, that is generally an
+integer ranging from 0 to 200.
+
+[source,clojure]
+----
+user=> (gen/generate gen/large-integer 50)
+-165175
+----
+
+=== Scalar Generators
+
+test.check comes with generators for booleans, numbers, characters,
+strings, keywords, symbols, and UUIDs. E.g.:
+
+[source,clojure]
+----
+user=> (gen/sample gen/double)
+(-0.5 ##Inf -2.0 -2.0 0.5 -3.875 -0.5625 -1.75 5.0 -2.0)
+
+user=> (gen/sample gen/char-alphanumeric)
+(\G \w \i \1 \V \U \8 \U \t \M)
+
+user=> (gen/sample gen/string-alphanumeric)
+("" "" "e" "Fh" "w46H" "z" "Y" "7" "NF4e" "b0")
+
+user=> (gen/sample gen/keyword)
+(:. :Lx :x :W :DR :*- :j :g :G :_)
+
+user=> (gen/sample gen/symbol)
+(+ kI G uw jw M9E ?23 T3 * .q)
+
+user=> (gen/sample gen/uuid)
+(#uuid "c4342745-9f71-42cb-b89e-e99651b9dd5f"
+ #uuid "819c3d12-b45a-4373-a307-5943cf17d90b"
+ #uuid "c72b5d34-255f-408f-8d16-4828ed740904"
+ #uuid "d342d515-b297-4ed4-91cc-8cd55007e2c2"
+ #uuid "6d09c6f3-12d4-4e5e-9de5-0ed32c9fef20"
+ #uuid "a572178c-5460-44ee-b992-9d3d26daf8c0"
+ #uuid "572cc48e-b3a8-40ca-9449-48af08c617d3"
+ #uuid "5f6ed50b-adef-4e7f-90d0-44511900491e"
+ #uuid "ddbbfd07-d580-4638-9858-57a469d91727"
+ #uuid "c32b7788-70de-4bf5-b24f-1e7cb564a37d")
+----
+
+=== Collection Generators
+
+The collection generators are generally functions with arguments
+for generators of their elements.
+
+For example:
+
+[source,clojure]
+----
+user=> (gen/generate (gen/vector gen/boolean) 5)
+[false false false false]
+----
+
+(note that the second argument to `gen/generate` here is not specifying
+the size of the collection, but the abstract `size` parameter mentioned
+earlier; the default value for `gen/generate` is 30)
+
+There are also generators for heterogeneous collections, the most
+important of which is `gen/tuple`:
+
+[source,clojure]
+----
+user=> (gen/generate (gen/tuple gen/boolean gen/keyword gen/large-integer))
+[true :r -85718]
+----
+
+Some collection generators can also be customized further:
+
+[source,clojure]
+----
+user=> (gen/generate (gen/vector-distinct (gen/vector gen/boolean 3)
+                                          {:min-elements 3 :max-elements 5}))
+[[true  false false]
+ [true  true  false]
+ [false false true]
+ [false true  true]]
+----
+
+=== Generator Combinators
+
+The scalar and collection generators can generate a variety of structures,
+but creating nontrivial custom generators requires using the combinators.
+
+==== `gen/one-of`
+
+`gen/one-of` takes a collection of generators and returns a generator
+that can generate values from any of them:
+
+[source,clojure]
+----
+user=> (gen/sample (gen/one-of [gen/boolean gen/double gen/large-integer]))
+(-1.0 -1 true false 3 true true -24 -0.4296875 3)
+----
+
+There is also `gen/frequency`, which is similar but allows specifying
+a weight for each generator.
+
+==== `gen/such-that`
+
+`gen/such-that` restricts an existing generator to a subset of its
+values, using a predicate:
+
+[source,clojure]
+----
+user=> (gen/sample (gen/such-that odd? gen/large-integer))
+(3 -1 -1 -1 -3 5 -11 1 -1 -5)
+----
+
+However, there's no magic here: the only way to generate values that
+match the predicate is to generate values repeatedly until one happens
+to match. This means `gen/such-that` can randomly fail if the predicate
+doesn't match too many times in a row:
+
+[source,clojure]
+----
+user=> (count (gen/sample (gen/such-that odd? gen/large-integer) 10000))
+ExceptionInfo Couldn't satisfy such-that predicate after 10 tries.  clojure.core/ex-info (core.clj:4754)
+----
+
+This call to `gen/sample` (asking for 10000 odd numbers) fails because
+`gen/large-integer` returns even numbers about half the time, so
+seeing ten even numbers in a row isn't extraordinarily unlikely.
+
+`gen/such-that` should be avoided unless the predicate is highly
+likely to succeed. In other cases, there is often an alternative way
+to build the generator, as we'll see with `gen/fmap`.
+
+==== `gen/fmap`
+
+`gen/fmap` allows you to modify any generator by supplying a function
+to modify the values it generates. You can use this to construct
+arbitrary structures or custom objects by generating the pieces they
+need and then combining them in the `gen/fmap` function:
+
+[source,clojure]
+----
+user=> (gen/generate (gen/fmap (fn [[name age]]
+                                 {:type :humanoid
+                                  :name name
+                                  :age  age})
+                               (gen/tuple gen/string-ascii
+                                          (gen/large-integer* {:min 0}))))
+{:type :humanoid, :name ".o]=w2hZ", :age 14}
+----
+
+Another use of `gen/fmap` is to restrict or skew the distribution of
+another generator using targeted transformations. For example, to
+turn a general integer generator into a generator of odd numbers, you
+could either use the `gen/fmap` function `pass:[#(+ 1 (* 2 %))]` (which also
+has the effect of doubling the range of the distribution) or
+`pass:[#(cond-> % (even? %) (+ 1))]` (which doesn't).
+
+Here's a generator that only generates upper-case strings:
+
+[source,clojure]
+----
+user=> (gen/sample (gen/fmap #(.toUpperCase %) gen/string-ascii))
+("" "" "JT" "" ">Y1@" "" "]-" "XCJ@C" "<ANF.\"|" "I@O\"M")
+----
+
+==== `gen/bind`
+
+The most advanced combinator allows generating things in multiple
+stages, with the generators in later stages constructed using values
+generated in earlier stages.
+
+While this may sound complicated, the signature is hardly different
+from `gen/fmap`: the argument order is reversed, and the function
+is expected to return a generator instead of a value.
+
+As an example, suppose you want to generate a random list of numbers
+in two different orders (e.g., to test a function that should be
+agnostic to collection ordering). This is hard to do using `gen/fmap`
+or any other combinator, since generating two collections directly
+will generally give you collections with different elements, and if
+you just generate one you don't have the opportunity to use the
+generated list with another generator (e.g. `gen/shuffle`) that might
+be able to reorder it.
+
+`gen/bind` gives us exactly the two-phase structure we need:
+
+[source,clojure]
+----
+user=> (gen/generate (gen/bind (gen/vector gen/large-integer)
+                               (fn [xs]
+                                 (gen/fmap (fn [ys] [xs ys])
+                                           (gen/shuffle xs)))))
+[[-5967 -9114 -2 -4 68583042 223266 540 3 -100]
+ [223266 -9114 -2 -100 3 540 -5967 -4 68583042]]
+----
+
+The structure here is a bit obtuse, as the function we passed
+to `gen/bind` couldn't simply call `(gen/shuffle xs)` -- if it
+had, the whole generator would have simply returned the one
+collection generated by `(gen/shuffle xs)`; in order to both
+generate a second collection with `gen/shuffle` and also return
+the original collection, we use `gen/fmap` to combine the two
+into a vector.
+
+Here's another structure that's a bit simpler at the expense of doing
+an extra shuffle:
+
+[source,clojure]
+----
+user=> (gen/generate (gen/bind (gen/vector gen/large-integer)
+                               (fn [xs] (gen/vector (gen/shuffle xs) 2))))
+[[-4 254202577 -27512 1596863 0 6] [-4 6 254202577 1596863 -27512 0]]
+----
+
+However, an option with arguably even better readability is to use
+the `gen/let` macro, which uses a `let`-like syntax to describe
+uses of `gen/fmap` and `gen/bind`:
+
+[source,clojure]
+----
+user=> (gen/generate
+        (gen/let [xs (gen/vector gen/large-integer)
+                  ys (gen/shuffle xs)]
+          [xs ys]))
+[[0 47] [0 47]]
+----
+
+== Properties
+
+A property is an actual test -- it combines a generator with a
+function you want to test, and checks that the function behaves as
+expected given the generated values.
+
+Properties are created using the `clojure.test.check.properties/for-all`
+macro.
+
+The property in <<quick-check-examples,the first example>> generates a
+vector and then calls the function being tested (`sort`) three times.
+
+Properties can also combine several generators, for example:
+
+[source,clojure]
+----
+(def +-is-commutative
+  (prop/for-all [a gen/large-integer
+                 b gen/large-integer]
+    (= (+ a b) (+ b a))))
+----
+
+There are two ways to actually run properties, which is what the next
+two sections are about.
+
+=== `quick-check`
+
+The standalone and functional method of running tests is via the
+`quick-check` function in the `clojure.test.check` namespace.
+
+It takes a property and a number of trials, and runs the property
+up to that many times, returning a map describing success or
+failure.
+
+See <<quick-check-examples,the examples above>>.
+
+=== `defspec`
+
+`defspec` is a macro for writing property-based-tests that are
+recognized and run by `clojure.test`.
+
+The difference from `quick-check` is partly just syntactic, and
+partly that it _defines_ a test instead of running it.
+
+For example, the <<quick-check-examples,first `quick-check` example
+in this guide>> could also be written like this:
+
+[source,clojure]
+----
+(require '[clojure.test.check.clojure-test :refer [defspec]])
+
+(defspec sort-is-idempotent 100
+  (prop/for-all [v (gen/vector gen/int)]
+    (= (sort v) (sort (sort v)))))
+----
+
+Given this, calling `(clojure.test/run-tests)` in the same namespace
+produces the following output:
+
+----
+Testing my.test.ns
+{:result true, :num-tests 100, :seed 1536503193939, :test-var "sort-is-idempotent"}
+
+Ran 1 tests containing 1 assertions.
+0 failures, 0 errors.
+----
+
+== Additional Documentation
+
+For additional documentation, see the
+https://github.com/clojure/test.check/blob/master/README.md[test.check README].

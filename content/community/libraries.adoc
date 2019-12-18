@@ -7,26 +7,19 @@ Rich Hickey
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-== Clojure Contrib
+There are many Clojure libraries available. Additionally, Clojure can use any Java library via Java interop. Together, this provides a vast ecosystem of libraries at your disposal.
 
-Clojure Contrib is a collection of libraries managed with the same Contributor Agreement, license, and development workflow as Clojure itself. Code in Clojure Contrib can be considered for inclusion in newer versions of Clojure.
+== Library search
 
-Clojure Contrib library code is hosted on https://github.com/clojure[Github]. Design and issue tracking are via http://dev.clojure.org/display/doc/Clojure+Contrib[Confluence] and JIRA.
+* https://www.clojure-toolbox.com/[Clojure Toolbox] - categorized Clojure libs
+* https://clojars.org/[Clojars] - community repo for Clojure libs
+* https://search.maven.org[Maven Central] - searchable repo of Java and Clojure libs
+* https://github.com/search?language=Clojure[GitHub] - search by language
 
-Prior to Clojure 1.3, Contrib was packaged as a single monolithic JAR. If you are migrating from a pre-1.3 version of Clojure, please see http://dev.clojure.org/display/community/Where+Did+Clojure.Contrib+Go[this page] for migration help regarding old contrib libraries.
+== Library collections
 
-== Leiningen
+These are groups of open source libraries maintained with common infrastructure, people, or goals:
 
-The vast majority of Clojure developers use https://github.com/technomancy/leiningen[Leiningen] to create and manage Clojure projects.
-
-== IDEs and Developer Tools
-
-Community volunteers maintain http://dev.clojure.org/display/doc/getting+started[Getting Started] documentation for a number of different developer tools.
-
-== Finding Libraries
-
-http://search.maven.org/[Maven Central] is a searchable repository of open source JVM libraries.
-
-https://clojars.org/[Clojars] is a community repository for open source Clojure libraries.
-
-You can narrow Github search https://github.com/search?language=Clojure[by language] to find Clojure libraries.
+* <<contrib_libs#,Clojure contrib libs>> - open source libs under the Clojure umbrella project
+* https://clj-commons.org/[clj-commons]
+* http://clojurewerkz.org/[ClojureWerkz]

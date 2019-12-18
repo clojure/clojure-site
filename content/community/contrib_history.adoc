@@ -1,0 +1,162 @@
+= Contrib History
+Alex Miller
+2019-04-24
+:type: community
+:toc: macro
+:icons: font
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+This page is a historical document about the splitting of the old "monolithic" contrib in the Clojure 1.2 timeframe when many of the initial contrib libraries were created. This info is no longer maintained and may be out of date. See <<contrib_libs#,Contrib Libs>> for up to date info.
+
+If a clojure.contrib namespace is listed here but has no migration details, that means no one has volunteered to maintain that namespace. Part of the rationale for modular contrib is that there should be an active maintainer going forward so that the library can be kept compatible with new versions of Clojure. All the new modular contrib libraries are compatible with Clojure 1.2.0 thru 1.4.0 (and are also being automatically tested with Clojure 1.5 as it is being developed - as well as being tested with a number of different JDKs!).
+
+If a clojure.contrib namespace is not listed here, it is most likely an old namespace that was either migrated somewhere else or deprecated as part of Clojure 1.2 (e.g., clojure.contrib.duck-streams mostly migrated to clojure.java.io, clojure.contrib.pprint migrated to clojure.pprint, clojure.contrib.shell and clojure.contrib.shell-out migrated to clojure.java.shell, clojure.contrib.string migrated to clojure.string, clojure.contrib.http.agent was deprecated - https://github.com/dakrone/clj-http[clj-http].
+
+== Clojure.Contrib Namespaces
+
+This section aims to document how to migrate from "old" contrib to "new" contrib.
+
+* clojure.contrib.accumulators
+* clojure.contrib.agent-utils
+* clojure.contrib.base64
+** Replaced by https://github.com/clojure/data.codec/[clojure.data.codec] - lead Alex Taggart.
+* clojure.contrib.classpath
+** Migrated to https://github.com/clojure/java.classpath/[clojure.java.classpath] - lead Stuart Sierra.
+* clojure.contrib.combinatorics
+** Migrated to https://github.com/clojure/math.combinatorics/[clojure.math.combinatorics] - lead Mark Engelberg.
+* clojure.contrib.command-line
+** Replaced by https://github.com/clojure/tools.cli/[clojure.tools.cli] (based on the clargon library) - lead Gareth Jones.
+* clojure.contrib.complete
+* clojure.contrib.complex-numbers
+* clojure.contrib.cond
+* clojure.contrib.condition
+** Replaced by https://github.com/scgilardi/slingshot[Slingshot] - Lead Steve Gilardi
+* clojure.contrib.core
+** Partly migrated to https://github.com/clojure/core.incubator/[clojure.core.incubator] - lead Rich Hickey.
+* clojure.contrib.dataflow
+* clojure.contrib.datalog
+** Michael Fogus has a project https://github.com/fogus/bacwn[bacwn] on Github based on this library.
+* clojure.contrib.def
+** Partly migrated to https://github.com/clojure/core.incubator/[clojure.core.incubator] - lead Rich Hickey.
+** Notes:
+*** `defvar`: as of Clojure 1.3, you can specify a docstring in a `def` form: `(def my-var "This is my docstring" some-value)`
+* clojure.contrib.error-kit
+** Replaced by https://github.com/scgilardi/slingshot[Slingshot] - Lead Steve Gilardi
+* clojure.contrib.except
+* clojure.contrib.fcase
+** fcase replaced by Clojure 1.3 `clojure.core/condp`.  Other macros easily implemented using `condp` if desired.
+* clojure.contrib.find-namespaces
+** Migrated to https://github.com/clojure/tools.namespace/[clojure.tools.namespace] - lead Stuart Sierra.
+* clojure.contrib.fnmap
+* clojure.contrib.gen-html-docs
+* clojure.contrib.generic
+** Migrated to https://github.com/clojure/algo.generic/[clojure.algo.generic] - lead Konrad Hinsen.
+* clojure.contrib.graph
+** Migrated to https://github.com/clojure/algo.generic/[clojure.algo.graph] - lead Timothy Baldridge.
+* clojure.contrib.greatest-least
+* clojure.contrib.import-static
+* clojure.contrib.jar
+* clojure.contrib.java-utils
+* clojure.contrib.jmx
+** Migrated to https://github.com/clojure/java.jmx/[clojure.java.jmx] - lead Stuart Halloway.
+* clojure.contrib.json
+** Migrated to https://github.com/clojure/data.json/[clojure.data.json] - lead Stuart Sierra.
+* clojure.contrib.lazy-seqs
+* clojure.contrib.lazy-xml
+** Migrated to https://github.com/clojure/data.xml[clojure.data.xml] - lead Alan Malloy.
+* clojure.contrib.load-all
+* clojure.contrib.logging
+** Migrated to https://github.com/clojure/tools.logging[clojure.tools.logging] - lead Alex Taggart.
+* clojure.contrib.macro-utils
+** Migrated to https://github.com/clojure/tools.macro[clojure.tools.macro] - lead Konrad Hinsen.
+* clojure.contrib.macros
+** Migrated to https://github.com/clojure/tools.macro[clojure.tools.macro] - lead Konrad Hinsen.
+* clojure.contrib.map-utils
+* clojure.contrib.math
+** Migrated to https://github.com/clojure/math.numeric-tower[clojure.math.numeric-tower] - lead Mark Engelberg.
+* clojure.contrib.miglayout
+* clojure.contrib.mmap
+* clojure.contrib.mock
+* clojure.contrib.monadic-io-streams
+* clojure.contrib.monads
+** Migrated to https://github.com/clojure/algo.monads/[clojure.algo.monads] - lead Konrad Hinsen.
+* clojure.contrib.ns-utils
+* clojure.contrib.parent
+* clojure.contrib.priority-map
+** Migrated to https://github.com/clojure/data.priority-map/[clojure.data.priority-map] - lead Mark Engelberg.
+* clojure.contrib.probabilities
+* clojure.contrib.profile
+* clojure.contrib.prxml
+* clojure.contrib.reflect
+* clojure.contrib.repl-ln
+* clojure.contrib.repl-utils
+** Migrated to `clojure.repl` and `clojure.java.javadoc`. `show` functionality similar to `clojure.reflect/reflect`.  Any equivalents for these? `expression-info`, `run`, `run*`
+* clojure.contrib.seq
+* clojure.contrib.server-socket
+* clojure.contrib.set
+** Migrated to `clojure.set`, except `proper-subset?` and `proper-superset?`, which are easily implemented using `subset?` and `superset?`
+* clojure.contrib.singleton
+* clojure.contrib.sql
+** Migrated to https://github.com/clojure/java.jdbc/[clojure.java.jdbc] - lead Sean Corfield.
+* clojure.contrib.standalone
+* clojure.contrib.stream-utils
+* clojure.contrib.strint
+** Migrated to https://github.com/clojure/core.incubator/[clojure.core.incubator] - lead Rich Hickey.
+* clojure.contrib.swing-utils
+* clojure.contrib.trace
+** Migrating to https://github.com/clojure/tools.trace/[clojure.tools.trace] - lead Luc Prefontaine
+* clojure.contrib.types
+* clojure.contrib.with-ns
+* clojure.contrib.zip-filter
+** Migrated to https://github.com/clojure/data.zip/[clojure.data.zip] - lead Aaron Bedra.
+
+== New Contrib Namespaces
+
+This section lists new contrib namespaces that do not correspond to old contrib namespaces and is provided for completeness / documentation purposes.
+
+* https://github.com/clojure/core.async/[clojure.core.async]
+** A Clojure library designed to provide facilities for async programming and communication. - lead Rich Hickey.
+* https://github.com/clojure/core.cache/[clojure.core.cache]
+Extensible caching - lead Michael Fogus.
+* https://github.com/clojure/core.contracts/[clojure.core.contracts]
+** Contract programming - lead Michael Fogus.
+* https://github.com/clojure/core.rrb-vector/[clojure.core.rrb-vector]
+** An implementation of the confluently persistent vector data structure introduced in Bagwell, Rompf, "RRB-Trees: Efficient Immutable Vectors", EPFL-REPORT-169879, September, 2011. - lead Michał Marczyk
+* https://github.com/clojure/core.logic/[clojure.core.logic]
+** Logic programming - lead David Nolen.
+* https://github.com/clojure/core.match/[clojure.core.match]
+** Structural pattern matching - lead David Nolen.
+* https://github.com/clojure/core.memoize/[clojure.core.memoize]
+** Pluggable memoization, builds on core.cache - lead Michael Fogus.
+* https://github.com/clojure/core.typed/[clojure.core.typed]
+** Optional type checking for Clojure - lead Ambrose Bonnaire-Sergeant
+* https://github.com/clojure/core.unify/[clojure.core.unify]
+** Unification (like Prolog) - lead Michael Fogus.
+* https://github.com/clojure/data.csv/[clojure.data.csv]
+** Comma-Separated-Value file processing; formerly cljcsv - lead Jonas Enlund.
+* https://github.com/clojure/data.finger-tree/[clojure.data.finger-tree]
+** Finger tree persistent data structures - lead Chris Houser.
+* https://github.com/clojure/data.fressian/[clojure.data.fressian]
+** Read and write fressian data. See https://github.com/Datomic/fressian/wiki
+* https://github.com/clojure/data.generators/[clojure.data.generators]
+** Data generators (extracted from clojure.test.generative) - lead Stuart Halloway.
+* https://github.com/clojure/java.data/[clojure.java.data]
+** Java Beans and properties support - lead Cosmin Stejerean.
+* https://github.com/clojure/test.benchmark/[clojure.test.benchmark]
+** Benchmark (and regression) suite for Clojure - lead Stuart Halloway.
+* https://github.com/clojure/test.generative/[clojure.test.generative]
+** Testing library based on data generation (see clojure.data.generators) - lead Stuart Halloway.
+* https://github.com/clojure/tools.nrepl/[clojure.tools.nrepl]
+** REPL client and server - lead Chas Emerick.
+* https://github.com/clojure/tools.reader/[clojure.tools.reader]
+** Clojure reader in Clojure - lead Nicola Mometto.
+* https://github.com/clojure/tools.analyzer/[clojure.tools.analyzer]
+** An analyzer for Clojure code, host agnostic - lead Nicola Mometto
+* https://github.com/clojure/tools.analyzer.jvm/[clojure.tools.analyzer.jvm]
+** An analyzer for Clojure on the JVM code, written on top of tools.analyzer - lead Nicola Mometto
+* https://github.com/clojure/tools.analyzer.js/[clojure.tools.analyzer.js]  - DEAD
+** An analyzer for Clojurescript code, written on top of tools.analyzer - lead Nicola Mometto
+* https://github.com/clojure/tools.emitter.jvm/[clojure.tools.emitter.jvm]
+** A JVM bytecode generator, using tools.analyzer.jvm as frontend - lead Nicola Mometto
+

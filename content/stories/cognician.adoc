@@ -1,0 +1,86 @@
+= Cognician
+Alex Miller
+2018-12-20
+:jbake-type: story
+:jbake-company: Cognician
+
+[.right]
+image:/images/content/stories/cognician.jpg["Cognician",height="125"]
+
+**How long have you been working with Clojure or ClojureScript?**
+
+Since early 2012. 
+
+At that point, https://www.cognician.com/[Cognician] had spent a couple of years proving that we had something worth building a business around, and then we actually had to build that business. 
+
+Our previous stack was a Flash/AIR app (remember those?) with a PHP/SQL backend. I had built enough of those sorts of apps to know that I wasn’t smart enough or skilled enough to build large OO projects that scaled well. I knew I needed a fresh perspective.
+
+Thanks to http://www.clojurebook.com[clojurebook.com] and several great talks by Rich and the fantastic folks in the Clojure IRC channel and Google Groups, I had enough support to switch paradigms and learn to program all over again.
+
+It’s nearly seven years later, and I’m utterly convinced we wouldn’t still be in business if we had chosen something more traditional.
+
+**How big is the team you have using Clojure or ClojureScript?**
+
+10 people regularly commit Clojure/ClojureScript to git, but almost all 40 of us know EDN. :-)
+
+**What product or service are you building with Clojure or ClojureScript?**
+
+Cognician aims to provide delightful, life-changing learning experiences to people in the world of work all over the world.
+
+The platform and the learning experiences it enables are built on the idea that people are capable of great things when their behavior is inspired by powerful ideas and deeply felt emotions. 
+
+At its heart, Cognician is a digital coaching SaaS platform. You could think of it as ‘the Socratic method, at scale.’
+
+We’ve built a catalog of learning experiences, the components that make up these experiences, and a platform that allows us to configure these experiences to suit our clients’ learning needs.
+
+**What Clojure or ClojureScript library have you enjoyed working with the most?**
+
+https://www.datomic.com/[Datomic] has been tremendous fun to learn, to use, and to teach. It’s such a fitting design for the problems it solves for, and it’s a great pleasure to work with. 
+
+Thanks to Datomic’s architecture, we have been able to avoid two major headaches: 
+
+1. Concurrency – our web server instances only share browser cookies, and Datomic. Our backend services only share the Datomic database with the web servers. Programming with databases as values has made doing all of this a pleasure.
+2. View caching – we haven’t had to worry about this at all since every view on our system is rendered live from source data!
+
+There are so many other libraries that we use daily and have learned from!
+
+**What about working with Clojure or ClojureScript gives you the most value?**
+
+The data orientation of Clojure forces you to deal with naming things properly, which in turn forces you to deal with understanding your domain well. Its composable nature allows you to decide when to use the tools that support the definition of data vs. the implementation of behavior, rather than forcing you to use ‘The One True Way.’
+
+Being able to think in a single language everywhere – i.e., browser, server, network, and database – has tremendous value. It feels a little like getting to choose your own physics. Something interesting happens after you’ve worked like this for some time – you stop seeing the language and you see the domain directly. It’s a little like being able to understand The Matrix. :-)
+
+On the people side, Clojure has attracted some of the most amazing creators and problem solvers we have had – and continue to have – the honor to work with!
+
+**What is your favorite feature of Clojure or ClojureScript?**
+
+Programming with a REPL is life-changing. It’s so suited to the business of using software to solve real-world problems today.
+
+After that, Clojure has two ways of mitigating the downsides of its dynamic nature. There’s https://clojure.org/guides/destructuring[destructuring], which helps you to be explicit about how you’ll use the data at hand, and then there’s https://clojure.org/about/spec[spec], which has many different points of leverage to enjoy (all opt-in!) for a relatively minor up-front investment.
+
+**Why is using Clojure or ClojureScript valuable to your business?**
+
+It’s about our velocity when we use it. Using Clojure had allowed us to:
+
+Deal with a rapid rate of change – there have been many linchpin moments in our history where we had to be able to ‘turn on a dime’ and totally change our approach. Having less code to begin with helps, but also not having to fight assumptions in the language, the database, or some framework we’re using has helped us to ‘wipe the slate clean’ and begin again. 
+
+Get to a working system quickly – thanks to its dynamic, immutable, and Lispy nature, you don’t have to write a lot of Clojure to get something working. Once the needs are clear, building the system is quick to do.
+
+Here are two fun factoids: 
+
+- We have about 100k lines of code of production Clojure/ClojureScript. Given all the things this code is doing, that’s very little. 
+- Around 400 of the 1600 or so Datomic idents in our database are marked deprecated, which helps to illustrate how much we’ve built and since discarded.
+
+**What is your stack?**
+
+We develop regularly with Clojure, ClojureScript, Datomic, and Sass.
+
+We have a derived data SQL store for BI tooling to interact with.
+
+We host on AWS, using their ‘paved road’: Route 53, EC2, ALB, S3, CloudFront. Nothing surprising!
+
+We use Buildkite for CI, Datadog for monitoring, and Sentry for error logging.
+
+Probably the most interesting thing about our stack is our CI system – we have invested a lot of energy into making it easy to do the right thing. We have duplicate environments based on common configuration code, we can create test servers for git branches, and we can restore production data to a sandbox to test with – all available at the click of a button. 
+
+We can get new code live in under 15 minutes, sometimes in only 5 minutes. For situations that require a quicker turnaround, we have a remote REPL. :-)

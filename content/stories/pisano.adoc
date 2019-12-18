@@ -1,0 +1,41 @@
+= Pisano
+Alex Miller
+2019-11-06
+:jbake-type: story
+:jbake-company: Pisano
+
+image:/images/content/stories/pisano.png["Pisano",height="125"]
+
+**How long have you been working with Clojure or ClojureScript?**
+
+We’ve been using Clojure and ClojureScript at https://www.pisano.co[Pisano] in production for a year. It is now our main language and we are very happy to work with it. 
+
+**How big is the team you have using Clojure or ClojureScript?**
+
+We have 6 full-stack developers working on our frontend and backend services in Clojure/Script.
+
+**What product or service are you building with Clojure or ClojureScript?**
+
+At Pisano, we develop an elegant and innovative enterprise customer experience management platform where we enable businesses to better understand their customers and provide an exceptional experience with the art of collecting feedback from various channels, analyzing their behavior and engaging with them. Since our motto is speed and reliability, we choose robust, scalable and productive tools to build the platform, so we had to choose Clojure.
+
+**What Clojure or ClojureScript library have you enjoyed working with the most?**
+
+On ClojureScript side, we love https://github.com/day8/re-frame[re-frame] / http://reagent-project.github.io/[reagent] / http://shadow-cljs.org/[shadow.cljs] combination. It's really easy to work with. Frontend development never got easier before. We can rapidly develop features we want and whenever we want, it's a real pleasure.
+
+On Clojure side, we use http://clojure-liberator.github.io/liberator/[liberator], https://github.com/ring-clojure/ring[ring], https://github.com/weavejester/compojure[compojure], https://github.com/tolitius/mount[mount], etc. It's cool to see changes when you pass code to REPL. Also, https://github.com/redplanetlabs/specter[Specter] library (both Clojure and ClojureScript) saves our days when it comes to data manipulation.
+
+**What about working with Clojure or ClojureScript gives you the most value?**
+
+First of all: Clojure itself. There is no incidental complexity (language design) so we can focus on the main problem; business logic. REPL also very cool so interactive development helps us to go fast. Large library/framework ecosystem of JVM and JavaScript that we can not avoid, especially when developing an enterprise platform.
+
+**What is your favorite feature of Clojure or ClojureScript?**
+
+Modeling our system state with data structures is a delightful experience, it looks natural and this is how it is supposed to be. This approach allows us to understand/test our system better. Immutability, pure functions, REPL, host interop, and macros, etc. great things to have.
+
+**What is your stack?**
+
+We use http://www.http-kit.org/[http-kit] as our web servers. Postgres for RDS also using Redis for caching. We also have services written in Ruby (large Ruby codebase). In the frontend, reagent/re-frame/shadow.cljs combination for some of our apps.
+
+**Why is using Clojure or ClojureScript valuable to your business?**
+
+Clojure allows us to develop applications that are robust, simpler, smaller and easier to understand. We could not find any language besides Clojure to provide this kinda thing. It is valuable to us because we can do so much more with less. We have a very small team and we are usually able to add features within a short period (mostly hours). Clojure/Script allows us to develop code more quickly via REPL driven development. It makes our product better and development process much faster. Now enterprise software development a lot more fun with Clojure.

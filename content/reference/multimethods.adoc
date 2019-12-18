@@ -15,11 +15,11 @@ toc::[]
 
 Clojure eschews the traditional object-oriented approach of creating a new data type for each new situation, instead preferring to build a large library of functions on a small set of types. However, Clojure fully recognizes the value of runtime polymorphism in enabling flexible and extensible system architecture. Clojure supports sophisticated runtime polymorphism through a multimethod system that supports dispatching on types, values, attributes and metadata of, and relationships between, one or more arguments.
 
-A Clojure multimethod is a combination of a _dispatching_ _function_, and one or more _methods_. When a multimethod is defined, using _**defmulti**_, a dispatching function must be supplied. This function will be applied to the arguments to the multimethod in order to produce a _dispatching value_. The multimethod will then try to find the method associated with the dispatching value or a value from which the dispatching value is derived. If one has been defined (via http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defmethod[defmethod]), it will then be called with the arguments and that will be the value of the multimethod call. If no method is associated with the dispatching value, the multimethod will look for a method associated with the default dispatching value (which defaults to _**:default**_), and will use that if present. Otherwise the call is an error.
+A Clojure multimethod is a combination of a _dispatching_ _function_, and one or more _methods_. When a multimethod is defined, using _**defmulti**_, a dispatching function must be supplied. This function will be applied to the arguments to the multimethod in order to produce a _dispatching value_. The multimethod will then try to find the method associated with the dispatching value or a value from which the dispatching value is derived. If one has been defined (via https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defmethod[defmethod]), it will then be called with the arguments and that will be the value of the multimethod call. If no method is associated with the dispatching value, the multimethod will look for a method associated with the default dispatching value (which defaults to _**:default**_), and will use that if present. Otherwise the call is an error.
 
-The multimethod system exposes this API: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defmulti[defmulti] creates new multimethods, http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defmethod[defmethod] creates and installs a new method of multimethod associated with a dispatch-value, http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/remove-method[remove-method] removes the method associated with a dispatch-value and http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/prefer-method[prefer-method] creates an ordering between methods when they would otherwise be ambiguous.
+The multimethod system exposes this API: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defmulti[defmulti] creates new multimethods, https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defmethod[defmethod] creates and installs a new method of multimethod associated with a dispatch-value, https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/remove-method[remove-method] removes the method associated with a dispatch-value and https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/prefer-method[prefer-method] creates an ordering between methods when they would otherwise be ambiguous.
 
-Derivation is determined by a combination of either Java inheritance (for class values), or using Clojure's ad hoc hierarchy system. The hierarchy system supports derivation relationships between names (either symbols or keywords), and relationships between classes and names. The http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/derive[derive] function creates these relationships, and the http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/isa?[isa?] function tests for their existence. Note that http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/isa?[isa?] is not http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/instance?[instance?].
+Derivation is determined by a combination of either Java inheritance (for class values), or using Clojure's ad hoc hierarchy system. The hierarchy system supports derivation relationships between names (either symbols or keywords), and relationships between classes and names. The https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/derive[derive] function creates these relationships, and the https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/isa?[isa?] function tests for their existence. Note that https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/isa?[isa?] is not https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/instance?[instance?].
 
 You can define hierarchical relationships with +(derive child parent)+. Child and parent can be either symbols or keywords, and must be namespace-qualified:
 
@@ -30,13 +30,13 @@ _Note the pass:[::] reader syntax, ::keywords resolve namespaces._
 ::rect
 -> :user/rect
 ----
-http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/derive[derive] is the fundamental relationship-maker
+https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/derive[derive] is the fundamental relationship-maker
 [source,clojure]
 ----
 (derive ::rect ::shape)
 (derive ::square ::rect)
 ----
-http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/parents[parents] / http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ancestors[ancestors] / http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/descendants[descendants] and http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/isa%3F[isa?] let you query the hierarchy
+https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/parents[parents] / https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ancestors[ancestors] / https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/descendants[descendants] and https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/isa%3F[isa?] let you query the hierarchy
 
 [source,clojure]
 ----
@@ -79,7 +79,7 @@ This allows you to superimpose new taxonomies on the existing Java class hierarc
 -> true
 ----
 
-http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/isa%3F[isa?] also tests for class relationships:
+https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/isa%3F[isa?] also tests for class relationships:
 
 [source,clojure]
 ----
@@ -87,15 +87,7 @@ http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/isa%3F[isa?]
 -> true
 ----
 
-http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/isa%3F[isa?] works with vectors by calling http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/isa%3F[isa?] on their corresponding elements:
-
-[source,clojure]
-----
-(isa? [::square ::rect] [::shape ::shape])
--> true
-----
-
-as do http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/parents[parents] / http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ancestors[ancestors] (but not http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/descendants[descendants], since class descendants are an open set)
+as do https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/parents[parents] / https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ancestors[ancestors] (but not https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/descendants[descendants], since class descendants are an open set)
 
 [source,clojure]
 ----
@@ -106,9 +98,17 @@ as do http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/parent
     java.util.RandomAccess java.util.AbstractList}
 ----
 
+https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/isa%3F[isa?] works with vectors by calling https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/isa%3F[isa?] on their corresponding elements:
+
+[source,clojure]
+----
+(isa? [::square ::rect] [::shape ::shape])
+-> true
+----
+
 == isa? based dispatch
 
-Multimethods use http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/isa%3F[isa?] rather than = when testing for dispatch value matches. Note that the first test of http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/isa%3F[isa?] is =, so exact matches work.
+Multimethods use https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/isa%3F[isa?] rather than = when testing for dispatch value matches. Note that the first test of https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/isa%3F[isa?] is =, so exact matches work.
 
 [source,clojure]
 ----
@@ -126,7 +126,7 @@ Multimethods use http://clojure.github.io/clojure/clojure.core-api.html#clojure.
 :a-string
 ----
 
-http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/prefer-method[prefer-method] is used for disambiguating in case of multiple matches where neither dominates the other. You can just declare, per multimethod, that one dispatch value is preferred over another:
+https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/prefer-method[prefer-method] is used for disambiguating in case of multiple matches where neither dominates the other. You can just declare, per multimethod, that one dispatch value is preferred over another:
 
 [source,clojure]
 ----
@@ -137,18 +137,17 @@ http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/prefer-metho
 (defmethod bar [::shape ::rect] [x y] :shape-rect)
 
 (bar ::rect ::rect)
--> java.lang.IllegalArgumentException:
-   Multiple methods match dispatch value:
-   [:user/rect :user/rect] -> [:user/rect :user/shape]
-   and [:user/shape :user/rect],
-   and neither is preferred
+-> Execution error (IllegalArgumentException) at user/eval152 (REPL:1).
+   Multiple methods in multimethod 'bar' match dispatch value: 
+   [:user/rect :user/rect] -> [:user/shape :user/rect] 
+   and [:user/rect :user/shape], and neither is preferred
 
 (prefer-method bar [::rect ::shape] [::shape ::rect])
 (bar ::rect ::rect)
 -> :rect-shape
 ----
 
-All of the examples above use the global hierarchy used by the multimethod system, but entire independent hierarchies can also be created with http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/make-hierarchy[make-hierarchy], and all of the above functions can take an optional hierarchy as a first argument.
+All of the examples above use the global hierarchy used by the multimethod system, but entire independent hierarchies can also be created with https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/make-hierarchy[make-hierarchy], and all of the above functions can take an optional hierarchy as a first argument.
 
 This simple system is extremely powerful. One way to understand the relationship between Clojure multimethods and traditional Java-style single dispatch is that single dispatch is like a Clojure multimethod whose dispatch function calls getClass on the first argument, and whose methods are associated with those classes. Clojure multimethods are not hard-wired to class/type, they can be based on any attribute of the arguments, on multiple arguments, can do validation of arguments and route to error-handling methods etc.
 

@@ -1,0 +1,93 @@
+= Programming at the REPL: Troubleshooting
+Valentin Waeselynck
+2018-02-10
+:type: repl
+:toc: macro
+:icons: font
+:navlinktext: Troubleshooting
+:prevpagehref: annex_community_resources
+:prevpagetitle: Annex: Community resources about the REPL
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+toc::[]
+
+
+This section lists common issues when using the REPL, and how to diagnose them:
+
+== Calling a Var that has not been defined
+
+**Symptoms:**
+[source,clojure-repl]
+----
+user=> my-nonexistent-name
+Syntax error compiling at (REPL:0:0).
+Unable to resolve symbol: my-nonexistent-name in this context
+----
+
+**Explanations:**
+
+* Maybe you made a typo in the Var name, e.g you should have written `my-non-existent-name` instead of `my-nonexistent-name`.
+* Maybe you forgot to define `my-nonexistent-name` in the REPL (using e.g `def` or `defn`): 
+this could happen if you wrote a `(def my-nonexistent-name ...)` in your code file but forgot to evaluate it in the REPL.
+* Maybe you defined `my-non-existent-name`, but in another namespace. 
+You should either write `myapp.ns23/my-non-existent-name` or switch to namespace `myapp.ns23/my-non-existent-name`.
+
+== Using a missing namespace alias
+
+**Symptoms:**
+[source,clojure-repl]
+----
+user=> ns3/foo-bar
+Syntax error compiling at (REPL:0:0).
+No such namespace: ns3
+----
+
+**Explanations:**
+
+* Maybe you made a typo in the namespace alias, e.g you should have written `n3/foo-bar` instead of `ns3/foo-bar`
+* Maybe you have never defined the `ns3` alias in the current namespace:
+you can fix that by evaluating `(require '[myapp.ns3 :as ns3])`
+* Maybe you have defined the `ns3` alias, but in a different namespace that the one your REPL is in at the moment.
+
+== Referring to a namespace that has not been loaded
+
+**Symptoms:**
+[source,clojure-repl]
+----
+$ clj
+Clojure 1.10.0
+user=> clojure.set/union
+Syntax error (ClassNotFoundException) compiling at (REPL:0:0).
+clojure.set
+----
+
+**Explanations:**
+
+You are using a namespace that has yet not been created in the REPL. 
+Note that the error message ('`ClassNotFoundException`') is particularly confusing in this case:
+the reason is that the Clojure compiler, having found no loaded namespace named `clojure.set`, 
+is trying to interpret clojure.set as a Java class. The solution is to make sure the clojure.set 
+lib <<navigating_namespaces#how-to-make-sure-a-lib-is-loaded,has been loaded>>.
+
+== Trying to require a namespace that does not exist
+
+**Symptoms:**
+[source,clojure-repl]
+----
+user=> (require '[a.b.c])
+Execution error (FileNotFoundException) at user/eval161 (REPL:1).
+Could not locate a/b/c__init.class, a/b/c.clj or a/b/c.cljc on classpath.
+----
+
+**Explanations:** Clojure did not find any existing namespace named `a.b.c`, then searched the classpath 
+for a <<xref/../../../reference/libs#,lib>> that would define it, eventualling failing with the above Exception.
+The cause may vary:
+
+* maybe you just made a typo in the namespace name
+* maybe you forgot to add the lib to your classpath, which is usually done by adding it to 
+the configuration of your project's dependencies (e.g in the `deps.edn` or `project.clj` file),
+and sometimes (depending on the project management tool) running an installation command (e.g `lein deps`).
+* maybe you did add the library to the classpath, but that was after you started the REPL: in this case,
+you should re-start the REPL.
+

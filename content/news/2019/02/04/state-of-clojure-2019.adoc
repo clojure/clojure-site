@@ -1,0 +1,76 @@
+= State of Clojure 2019 Results
+Alex Miller
+2019-02-04
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the annual State of Clojure survey results! Every year we survey Clojure and ClojureScript developers to evaluate the state of the language and its users. Thank you to everyone that took the time to complete the survey and provide your input. This year, we had 2461 respondents. Some highlights:
+
+* Clojure is used by many <<#work,companies>> for web development, commercial services, and enterprise apps in a broad set of domains including financial services, enterprise software, retail, advertising, health care, and more.
+* Clojure is <<#strengths,valued>> for its idiomatic support for functional programming, immutable data, interactive REPL, and ease of development.
+* Clojure and its <<#community,community>> are active and vibrant, as seen in the many thriving discussion forums, conferences, and user groups, with active involvement in community library development.
+
+For more details and the https://www.surveymonkey.com/results/SM-S9JVNXNQV/[full results], see below.
+
+[[work]]
+== A Language for Work
+
+In the first Clojure survey in 2010, 27% of respondents reported using Clojure for work and 33% for serious hobby projects. This number has steadily grown over the years and we now see 66% using it at work and 54% using it for serious hobby projects.
+
+Clojure is being used in a wide variety of domains - web development (81%) and open source (48%) of course, but also building and delivering commercial services (31%) and enterprise apps (22%). This work occurs in a wide variety of industries - financial services, enterprise software, consumer software, retail, media/advertising, healthcare, education, and many more.
+
+For the last four years, the percentage of Clojure developers in 1-10 person companies has fallen, this year to 35% (compared to 44% 3 years ago). We saw increases in developers working at companies sized 1000+ and 11-100. We also saw the number of consumers of these Clojure projects as less "in team" and more "outside team" or "outside the organization".
+
+We added a new question this year to gauge the general experience level of Clojure developers. Almost half of Clojure users (49%) had 11 or more years of experience with 21% having 21 years or more. A recent https://snyk.io/blog/jvm-ecosystem-report-2018-processes-you/[JVM ecosystem survey] asked a similar question and for comparison saw 42% had 11 or more years of experience and only 3% had 21 or more years. Clojure developers tend to be more experienced on average than other JVM developers.
+
+Survey comments said:
+
+* "Thanks to Clojure and ClojureScript I can make a living building and maintaining large systems and delivering complex solutions on time. Thank you!"
+* "Clojure is thoughtfully designed and stable. It’s a dynamic, functional lisp that can actually be sold to the bosses. (A sentence I never thought I would write)."
+* "There is no way my team could pull all the rabbits out of hats that we do working in any other language. The only thing I ever seriously worry about, about Clojure, is how to ensure I get to work in Clojure and with Clojurists again should my current gig come to an end."
+
+Hundreds of <<xref/../../../../../community/companies#,companies>> and tens of thousands of Clojure developers are working in Clojure or ClojureScript every day, using it as the foundation of their business. The survey indicates that Clojure developers are increasingly using it more for work, at bigger companies, impacting ever larger groups of users.
+
+[[strengths]]
+== Strengths of Clojure
+
+For years we have asked people what aspects of Clojure were most important to them. These answers are remarkably consistent and this year was no different. However it is good to reexamine these strengths to see why developers value Clojure. The big four that are always at the top of the list are: functional programming, immutability, the REPL, and ease of development. These traits are interrelated. Language support for immutable persistent data structures makes functional programming idiomatic and effective. A REPL on a live, growing system, with data loaded, is a great way for developers to try their new code in context as it is written, improving quality.
+
+Other important features include host compatibility / interop (allowing us to take full advantage of the underlying platform and its libraries, whether that's the JVM or JavaScript), the community, runtime performance, expressive syntax, concurrency support, and a shared language across tiers.
+
+Some comments about the language:
+
+* "Quality permeates Clojure. Language design, library design, interactive development, community architecture experience, all top notch."
+* "Clojure/script is allowing me to create things that would be impossible in other languages."
+* "Clojure is beautiful, functional and concise. It really rejuvenated my love for programming."
+* "I really appreciate the well thought out design of Clojure. We feel that Clojure gives us distinct advantages while providing a language with minimum disruption."
+
+[[community]]
+== Vibrant Community
+
+The Clojure community is active, growing, and always helpful. Over the years, the primary communication mechanisms have changed along with the industry varying from IRC to the mailing lists to in recent years, Slack. We've been tracking this for a couple years now. Slack continues to be strong with 64% of respondents using it (note that this may be biased by where we advertised the survey!). The Clojure subreddit continued its strong rise to 55% use. ClojureTV on YouTube was a new answer this year but almost half are using it to watch Clojure videos. The official Clojure mailing lists had another drop this year as people shift away from "old school" mailing lists. And the original place where communication happened for Clojure is IRC which continued to fall out of use, now at only 7%.
+
+We also added a new question to gauge how users of Clojure interact with the ecosystem. 96% reported being happy users of the language and libraries, 65% were building services or products, 51% were advocating for Clojure in their organization. More than a quarter (28%) were active in helping new users (something very common to see on Slack, Reddit, or the mailing lists). And 25% reported creating or maintaining open source libraries, filing issues on libraries (17%), or providing pull requests for fixes (15%).
+
+Some quotes from users:
+
+* "It’s been great watching the ecosystem converge on excellence these past years, thanks so much for all the work and careful design!"
+* "I love how the community continues to improve, and people generally are friendly."
+* "Thanks for a great language, a steady hand at the wheel, and a passionate community!"
+
+== The Data
+
+If you'd like to dig into the full results, you can find the complete set of data from this and former years here:
+
+* https://www.surveymonkey.com/results/SM-S9JVNXNQV/[2019]
+* https://www.surveymonkey.com/results/SM-9BC5FNJ68/[2018]
+* https://www.surveymonkey.com/results/SM-7K6NXJY3/[2016]
+* http://blog.cognitect.com/blog/2016/1/28/state-of-clojure-2015-survey-results[2015]
+* http://blog.cognitect.com/blog/2014/10/20/results-of-2014-state-of-clojure-and-clojurescript-survey[2014]
+* http://cemerick.com/2013/11/18/results-of-the-2013-state-of-clojure-clojurescript-survey/[2013]
+* http://cemerick.com/2012/08/06/results-of-the-2012-state-of-clojure-survey/[2012]
+* http://cemerick.com/2011/07/11/results-of-the-2011-state-of-clojure-survey/[2011]
+* http://cemerick.com/2010/06/07/results-from-the-state-of-clojure-summer-2010-survey/[2010]
+
+Thanks again for using Clojure and ClojureScript and participating in the survey!

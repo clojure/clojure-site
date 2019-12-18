@@ -1,0 +1,40 @@
+= Etiquette
+Rich Hickey
+2011-10-15
+:jbake-type: community
+:toc: macro
+:icons: font
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Clojure and its communication forums are run by, and for, people who make things. Most messages should have one of these forms:
+
+* I made something - here is my contribution
+* I am trying to use the thing someone made and am having trouble, please help.
+* I can help you with that thing someone made.
+* I am trying to make something and am having trouble, please help.
+* I can help you make something.
+
+They are not the place for opinion pieces and diatribes.
+
+They are not the place for advocacy about what 'ought' to be made. If you think something ought to be made, then make it. Otherwise, respect others peoples' right to choose what they do with their time.
+
+Occasionally, there may be disagreements about how something has been, or will be, made. These disagreements should take the form of technical arguments. To make a technical argument that gets (and gives!) respect:
+
+* Keep it short
+* Stick to the facts
+* Use logic
+* Leave people out of it
+* Avoid rhetorical devices:
+** Superfluous or opinion-laden adjectives
+** Claims to speak for the community, or that everyone agrees with you.
+** Threats of what will happen unless things go your way
+** Any flavor of 'the sky is falling'
+
+If you are not the one making something, you should restrict your input to very short technical arguments supporting your position. If someone has already made your point, just +1 it.
+
+Please keep your posts short.
+
+Ignoring these guidelines fails to respect the time and effort of people who make things, which you should care about if you intend to be one.
+
+_Adapted from Rich's https://groups.google.com/forum/#!msg/clojure/t0pGIuoyB7I/RQtuuAOhes8J[post] to the Clojure mailing list._

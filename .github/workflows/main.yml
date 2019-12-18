@@ -1,0 +1,15 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v1
+    - name: Trigger publish
+      run: scripts/trigger
+      env:
+        TOKEN: ${{ secrets.TRIGGER_TOKEN }}

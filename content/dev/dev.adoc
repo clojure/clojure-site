@@ -1,0 +1,43 @@
+= Development
+Alex Miller
+2019-06-03
+:type: dev
+:toc: macro
+:icons: font
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Clojure was created by Rich Hickey and is developed by a core team of developers at https://cognitect.com[Cognitect], which supports this work. The Clojure development team values a measured and thoughtful approach to language evolution with a strong emphasis on maintaining backward compatibility.
+
+== Becoming a Contributor
+
+First, please consider the <<xref/../../community/contributing#,many ways to contribute>> as a Clojure user. If you wish to discuss a problem or enhancement, <<xref/../../community/ask#,you can do so on the forum>> without becoming a contributor.
+
+The Clojure core team values those that engage with the current stream of ongoing work, doing the hard work of triage, <<developing_patches#,patch development>>, <<screening_tickets#,screening>>, etc. The <<workflow#,workflow>> page highlights places to tap into those queues of work as jira reports. The core team tends to focus on tickets primarily in the late alpha / early beta period for a release cycle. During other parts of the release cycle, activity may seem dormant, but that is the perfect time to improve tickets so they are ready to evaluate. Tickets that are well-written with good patches can move quickly through the cycle at the appropriate time.
+
+If you are interested in becoming involved as an active contributor:
+
+1. Sign the <<contributor_agreement#,Clojure Contributor Agreement>>.
+2. File a https://clojure.atlassian.net/servicedesk/customer/portal/1[contributor support request] to get a contributor account - please include the email address you wish to use with your account.
+
+== Participating as a Contributor
+
+=== Issues
+
+Contributors can file tickets directly in the issue tracker. You might want to check what you are seeing with others on a Clojure discussion forum before filing. Please review the <<creating_tickets#,guide to creating useful tickets>>.
+
+Clojure accepts contributions as patches on issues. Please review <<developing_patches#,these guidelines>> on developing patches. Tickets may be assessed over a long period of time, following the <<workflow#,workflow>>.
+
+=== Enhancements and Features
+
+Clojure's direction is determined by Rich Hickey and the core team. This process is open to input and visible in issues and commits, but not explicitly driven by the community. The core team pays attention to the needs of the community by monitoring and participating in many Clojure discussion forums, and by reviewing issues and votes in the issue tracker. We are currently evaluating better systems for collecting and prioritizing enhancement requests.
+
+If you have an idea for an enhancement or new feature for Clojure, it may be helpful to search the issue tracker for prior issues and/or raise this idea for discussion in one of the Clojure forums. In particular, the mailing lists or pass:[#clojure-dev] room on Clojurian slack are good places to discuss.
+
+Please follow the guidelines in <<creating_tickets#,Creating Tickets>> and <<developing_patches#,Developing Patches>> - enhancement/feature tickets should start with a compelling problem to solve and compare alternatives and their tradeoffs, rather than leap straight to a solution and a patch. Clojure is a small language and endeavors to remain so. In many cases, proposed features can instead be provided in functions or libraries outside the core.
+
+== Roadmap
+
+Clojure is an open-ended project with no fixed release schedule. Major releases typically occur about once per year. While there are usually a few focused areas of work in a major release, it is common for those to change during the development of the release in response to either feedback or changing external needs. Because of this, a roadmap is typically not declared at the beginning of a release. Ongoing development is visible during alpha releases, often phased over multiple dev releases. The <<xref/../../community/devchangelog#,Dev Changelog>> chronicles these changes during the release cycle.
+
+Additionally, the core team may be doing work in dependent projects or tools, rather than the language itself, such as spec, core.specs, tools.deps, clj, etc. This is still considered part of the broader "release" train.

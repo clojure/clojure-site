@@ -1,0 +1,198 @@
+= Higher Order Functions
+Michael Zavarella
+2017-09-15
+:jbake-type: guides
+:toc: macro
+:icons: font
+
+ifdef::env-github,env-browser[:outfilesuffic: .adoc]
+
+toc::[]
+
+== First Class Functions
+
+In functional programming, functions are first class citizens.
+This means functions can be treated as values.
+They can be assigned as values, passed into functions, and returned from functions.
+
+It's common to see function definitions in Clojure using `defn` like `(defn foo ...)`.
+However, this is just syntactic sugar for `(def foo (fn ...))`
+`fn` returns a function object.
+`defn` returns a var which points to a function object.
+
+== Higher Order Functions
+
+A higher order function is a function that either:
+
+1. Takes one or more functions as arguments
+2. Returns a function as its result
+
+This is an important concept in functional programming in any language.
+
+Higher order functions allow us to _compose_ functions.
+This means we can write small functions and combine them to create larger functions.
+Like putting a bunch of small LEGO bricks together to build a house.
+
+Let's move away from theory a bit and look at an example.
+
+=== Functions as Arguments
+
+Let's look at two functions
+
+[source, clojure]
+----
+(defn double-+
+    [a b]
+    (* 2 (+ a b)))
+----
+
+[source, clojure]
+----
+(defn double-*
+    [a b]
+    (* 2 (* a b)))
+----
+
+These functions share a common pattern.
+They only differ in name and the function used in the computation of `a` and `b`.
+In general, the pattern looks like this.
+
+[source, clojure]
+----
+(defn double-<f>
+    [a b]
+    (* 2 (f a b)))
+----
+
+We can generalize our `double-` function by passing `f` in as an argument.
+
+[source, clojure]
+----
+(defn double-op
+    [f a b]
+    (* 2 (f a b)))
+----
+
+We can use this to express the concept of doubling the result of an operation rather than having to write functions that perform specific doubled operations individually.
+
+== Function Literals
+
+An anonymous function is a function without a name.
+In Clojure these can be defined in two ways, `fn` and the literal `#(...)`.
+Creating a function with `defn` immediately binds it to a name, `fn` just creates a function.
+
+Let's have an example with a few music bands:
+
+[source, clojure]
+----
+(def bands [
+    {:name "Brown Beaters"   :genre :rock}
+    {:name "Sunday Sunshine" :genre :blues}
+    {:name "Foolish Beaters" :genre :rock}
+    {:name "Monday Blues"    :genre :blues}
+    {:name "Friday Fewer"    :genre :blues}
+    {:name "Saturday Stars"  :genre :jazz}
+    {:name "Sunday Brunch"   :genre :jazz}
+])
+----
+
+We want to retrieve only rock bands. This is a one-off operation, we're not going to use it anywhere else in our code.
+We can save ourselves some keystrokes by using an anonymous function.
+
+[source, clojure]
+----
+(def rock-bands
+    (filter
+        (fn [band] (= :rock (:genre band)))
+        bands))
+----
+
+Even more concisely, using the function literal, we can define `rock-bands` like so.
+
+[source, clojure]
+----
+(def rock-bands (filter #(= :rock (:genre %)) bands))
+----
+
+The function literal supports multiple arguments via `%`, `%n`, and `%&`.
+
+[source, clojure]
+----
+#(println %1 %2 %3)
+----
+
+If you're writing an anonymous function, the literal syntax is nice because it's so compact.
+However, beyond a few arguments, the syntax can become difficult to read.
+In that case, using `fn` may be more appropriate.
+
+=== Functions Returning Functions and Closures
+
+Our first function will be called `adder`.
+It will take a number, `x`, as its only argument and return a function.
+The function returned by `adder` will also take a single number, `a`, as its argument and return `x + a`.
+
+[source, clojure]
+----
+(defn adder [x]
+  (fn [a] (+ x a)))
+
+(def add-five (adder 5))
+
+(add-five 100)
+;; => 105
+----
+
+The returned function form `adder` is a closure.
+This means, it can access all of the variables that were in scope when the function was created.
+`add-five` has access to `x` even though it is outside of the `adder` function definition.
+
+=== Filter
+
+Filtering is a common operation in computer programming.
+Take this set of animals
+
+[source, clojure]
+----
+(def pets [
+    {:name "Fluffykins" :type :cat}
+    {:name "Sparky" :type :dog}
+    {:name "Tibby" :type :dog}
+    {:name "Al" :type :fish}
+    {:name "Victor" :type :bear}
+])
+----
+
+We want to filter out the non-dog animals because we're writing enterprise grade software.
+First, let's look at a normal for loop.
+
+[source, clojure]
+----
+(defn loop-dogs [pets]
+    (loop [pets pets
+           dogs []]
+        (if (first pets)
+            (recur (rest pets)
+                   (if (= :dog (:type (first pets)))
+                       (conj dogs (first pets))
+                       dogs))
+            dogs)))
+----
+
+This code works fine, but it's bulky and confusing.
+We can simplify this using `filter`, a higher order function.
+
+[source, clojure]
+----
+(defn filter-dogs [pets]
+    (filter #(= :dog (:type %)) pets))
+----
+
+The solution using `filter` is much clearer and allows us to show intent rather than just give commands.
+We can break this into even smaller pieces by breaking the filtering function out into a separate `var`.
+
+[source, clojure]
+----
+(defn dog? [pet] (= :dog (:type pet)))
+
+(defn filter-dogs [pets] (filter dog? pets))
+----

@@ -1,0 +1,70 @@
+= Training
+Timothy Pratley
+2018-03-06
+:type: community
+:toc: macro
+:icons: font
+
+
+== For teams
+
+Adding Clojure to your company's capabilities? Give your employees a head start!
+Here is list of companies and individuals that offer Clojure training courses.
+
+[options="header", role="table"]
+|===
+| Company | Location | Courses | Link | contact
+| Cognitect | North America | All levels | https://cognitect.com/services.html | sales@cognitect.com +
++1 919.283.2748
+| BraveAndTrue | North America | All levels | https://www.braveclojure.com/training | daniel@braveclojure.com
+| Nilenso | India | Enterprise Clojure | https://nilenso.com | hello@nilenso.com +
+tel:+918040937123
+| Starweaver | Global | Clojure in a Nutshell | https://www.starweaver.com | USA: +1-646-883-1460 +
+UK: +44 20 3289 3277 +
+helpdesk@starweaver.com
+| Peter Taoussanis | Europe | Enterprise Clojure | https://www.taoensso.com | ptaoussanis@taoensso.com
+| Adam Bard | North America | Clojure Training | http://clojuretraining.ca | learnclojure@adambard.com
+| Mark Engelberg | North America (west coast) | Customized Training | https://www.linkedin.com/in/mark-engelberg-0a09a88a/ | mark.engelberg@gmail.com
+| Klipse Technologies| Worldwide | Clojure Training | https://www.getprogrammingwithclojure.com/workshop | viebel@gmail.com
+|===
+
+
+== For individuals
+
+Looking for a curated curriculum to jump start your learning?
+Several courses are offered.
+
+=== Online courses
+
+[options="header", role="table"]
+|===
+| Link | Short description
+| https://lambdaisland.com | A series of video tutorial about web development using ClojureScript and Clojure
+| https://purelyfunctional.tv | Our mission is to help people thrive with Functional Programming
+| https://www.udemy.com/learning-clojure | Will teach you how to write Clojure code and structure Clojure products
+| https://learnreframe.com | Learn ClojureScript and re-frame by building CHEFFY; AirBnB for chefs.
+| https://learnreagent.com | Learn ClojureScript and Reagent by building GIGGIN an app that showcase local gigs.
+|===
+
+=== ClojureBridge
+
+http://www.clojurebridge.org[ClojureBridge] aims to increase diversity within the Clojure community by offering free,
+beginner-friendly Clojure programming workshops for underrepresented groups in tech.
+ClojureBridge holds free training events for women and minorities.
+Typically these are 1 day events hosted by one or more sponsors.
+
+=== Conferences
+
+For conferences and upcoming events, check the upcoming <<events#,Events>> list.
+
+== Resources for trainers
+
+* https://github.com/cognitect/clojure-lab
+* https://github.com/braveclojure/training
+* https://github.com/timothypratley/enterprise-clojure-training
+
+== Maintenance
+
+If you would like to be added or removed from this list,
+please contact __clojure@cognitect.com__
+or submit a pull request.

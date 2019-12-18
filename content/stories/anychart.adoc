@@ -1,0 +1,44 @@
+= AnyChart
+Alex Miller
+2018-03-16
+:jbake-type: story
+:jbake-company: AnyChart
+
+[.right]
+image:/images/content/stories/anychart.png["AnyChart",height="125"]
+
+**How long have you been working with Clojure or ClojureScript?**
+
+https://www.anychart.com/[AnyChart] started in 2003 as a provider of Flash-based solutions for interactive data visualization. Then, in several years, we moved to JavaScript HTML5 as a more promising technology. Not having stopped further developing, AnyChart started working with Clojure in early 2014 and with ClojureScript in 2015, and we are glad to say they've been among the technologies fueling our global leadership in data visualization tools for all these years.
+
+**How big is the team you have using Clojure or ClojureScript?**
+
+Currently, two of our developers code in Clojure on a regular basis. Now that our team is growing, the number of Clojure programmers is expected to increase.
+
+**What product or service are you building with Clojure or ClojureScript?**
+
+AnyChart is a lightweight and robust https://www.anychart.com[JavaScript charting library] with great, detailed https://docs.anychart.com[chart documentation] and https://api.anychart.com[JS API reference], as well as enterprise-grade https://www.anychart.com/support[support]. Our component smoothly runs on any platform and finely works with any database. The source code of AnyChart is https://www.anychart.com/blog/2017/02/28/anychart-javascript-charting-libraries-7-13-0-released-source-code-opened/[open], so anyone can download and modify it, which gives a great flexibility. Thousands of out-of-the-box chart code samples in our https://playground.anychart.com[playground], https://www.anychart.com/technical-integrations/[plugins and integrations] for all major stacks, and ready-to-use https://www.anychart.com/solutions/[HTML5 dashboards as business solutions] allow industry-standard data visualizations to be deployed literally in minutes.
+
+Our goal has been to create a universal engine for data visualization in order to let anyone easily make any charts and dashboards from any data, and to ensure their great look and feel in any web projects regardless of the platform and the browser. And we are happy to be on the right track, currently being trusted to power data visualization for thousands of our https://www.anychart.com/company/customers/[customers], from startups to over 70% of the Fortune 1000 companies. By the way, we are proud to have been named the https://www.anychart.com/blog/2018/02/06/best-javascript-technology-anychart-js-charts-library-devies-award/[best in JavaScript technologies] and received a prestigious 2018 DEVIES award earlier this year.
+
+Clojure and ClojureScript are essential parts of our projects such as AnyChart JS API reference, documentation, playground, https://docs.anychart.com/Common_Settings/Server-side_Rendering[export server]. Without Clojure, they wouldn’t be as awesome as they are now.
+
+**What Clojure or ClojureScript library have you enjoyed working with the most?**
+
+We employ https://reagent-project.github.io/[Reagent] and https://github.com/Day8/re-frame[re-frame], and think that they are amazing ClojureScript libraries which make complex things easy and enjoyable. In addition to that, we use Component, Hiccup, Selmer, Enlive and Yesql on the server side.
+
+**What about working with Clojure or ClojureScript gives you the most value?**
+
+Clojure itself is a value for us. We take delight in its syntax, the ability to write HTML code by means of the language itself, work with streams, and write macros. Edn format and immutability in Clojure also should be noted here as they are good for data presentation and its better understanding.
+
+**What is your favorite feature of Clojure or ClojureScript?**
+
+Our favorite feature of Clojure is that it is thought-out to the smallest detail as a functional language. So we take great pleasure in using it. 
+
+**What is your stack?**
+
+We use a lot of different technologies. Our main product, the AnyChart library for interactive data visualization, is written in JavaScript. Most of our projects are built on Clojure on the backend and ClojureScript or JavaScript on the frontend. We also have services written in Python, PHP, and NodeJS.
+
+**Why is using Clojure or ClojureScript valuable to your business?**
+
+Clojure and ClojureScript together make our product better and its development process faster and more convenient. And the fact that we are dealing with the Java platform here allows us to use a large number of various libraries, which is very helpful. Clojure implementation definitely contributes to the continuing growth of our company and its leadership in the segment of cross-platform interactive data visualization solutions. And it is a great joy for us to be a part of the Clojure community.

@@ -1,0 +1,21 @@
+= State of Clojure 2019 Survey
+Alex Miller
+2019-01-07
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+It's time for the annual State of Clojure Community Survey!
+
+If you are a user of Clojure or ClojureScript, we are greatly interested in your responses to the following survey:
+
+* https://www.surveymonkey.com/r/clojure2019[State of Clojure 2019]
+
+The survey contains four pages:
+
+1. General questions applicable to any user of Clojure or ClojureScript
+2. Questions specific to JVM Clojure (skip if not applicable)
+3. Questions specific to ClojureScript (skip if not applicable)
+4. Final comments
+
+The survey will close January 22nd, after which all of the data will be released with some analysis. We greatly appreciate your input!

@@ -1,0 +1,629 @@
+= Dev Changelog
+Alex Miller
+2017-04-28
+:jbake-type: page
+:toc: macro
+:icons: font
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+The official https://github.com/clojure/clojure/blob/master/changes.md[changelog] tracks deltas between major stable versions. This page gathers the interim dev release announcements during development. 
+
+== Dev release naming guide
+
+* Alpha - new feature work and enhancements in development
+* Beta - bug fixing only, no new feature work is expected
+* RC - a release candidate, which will be released as a final release unless critical issues are found
+
+Note: All dev releases are subject to breaking changes for new work since the prior release.
+
+== Release 1.10.1
+
+=== 1.10.1-RC1 (May 21, 2019)
+
+* Updated changelog for 1.10.1
+
+=== 1.10.1-beta3 (May 16, 2019)
+
+* https://clojure.atlassian.net/browse/CLJ-2504[CLJ-2504] Provide more options for error reporting in clojure.main
+
+=== 1.10.1-beta2 (Apr 11, 2019)
+
+* https://clojure.atlassian.net/browse/CLJ-2497[CLJ-2497] Put error report location on its own line
+* https://clojure.atlassian.net/browse/CLJ-2499[CLJ-2499] Some compiler expr evals report as wrong phase
+
+=== 1.10.1-beta1 (Mar 21, 2019)
+
+* https://clojure.atlassian.net/browse/CLJ-2484[CLJ-2484] Move user.clj initialization out of RT<clinit>
+* https://clojure.atlassian.net/browse/CLJ-2463[CLJ-2463] clojure.main uncaught exception handling
+* https://clojure.atlassian.net/browse/CLJ-2491[CLJ-2491] Make fragile tests work under Java 12 and less fragile
+
+== Release 1.10
+
+=== 1.10.0-RC5 (Dec 11, 2018)
+
+* https://clojure.atlassian.net/browse/CLJ-2454[CLJ-2454] - fix IllegalAccessException from invoking matching reflective call
+
+=== 1.10.0-RC4 (Dec 7, 2018)
+
+* https://clojure.atlassian.net/browse/CLJ-2449[CLJ-2449] - make serialized-require private
+
+=== 1.10.0-RC3 (Dec 3, 2018)
+
+* https://clojure.atlassian.net/browse/CLJ-2447[CLJ-2447] - clojure.datafy docstring is missing
+* https://clojure.atlassian.net/browse/CLJ-2448[CLJ-2448] - change name of async-require to serialized-require
+
+=== 1.10.0-RC2 (Nov 26, 2018)
+
+No changes other than changelog updates.
+
+=== 1.10.0-beta8 (Nov 21, 2018)
+
+* https://clojure.atlassian.net/browse/CLJ-2438[CLJ-2438] - demunge source location in execution error messages
+* https://clojure.atlassian.net/browse/CLJ-2437[CLJ-2437] - add async-require and use it from requiring-resolve
+* https://clojure.atlassian.net/browse/CLJ-2436[CLJ-2436] - fix reflection warning in reflect.java
+
+=== 1.10.0-beta7 (Nov 19, 2018)
+
+* https://clojure.atlassian.net/browse/CLJ-2435[CLJ-2435] - include root cause class name in compilation and macroexpansion errors
+
+=== 1.10.0-beta6 (Nov 16, 2018)
+
+Changes in 1.10.0-beta6:
+
+* The metadata protocol extension added in 1.10.0-beta5 now requires opt-in when the protocol is defined, using :extend-via-metadata.
+* The JavaReflector under clojure.reflect has been datafied
+* https://clojure.atlassian.net/browse/CLJ-2432[CLJ-2432] - Added clojure.core/requiring-resolve which is like `resolve` but will `require` the symbol's namespace if needed.
+* https://clojure.atlassian.net/browse/CLJ-2427[CLJ-2427] - fix bug in CompilerException.toString() that could cause a secondary exception to be thrown while making the exception string, obscuring the original exception.
+* https://clojure.atlassian.net/browse/CLJ-2430[CLJ-2430] - more work on error phases, ex-triage, and allowing prepl to better use the new error reporting infrastructure
+
+=== 1.10.0-beta5 (Nov 6, 2018)
+
+Changes in 1.10.0-beta5:
+
+* In addition to prior methods of extension, values can now extend protocols by adding metadata where keys are fully-qualified symbols naming protocol functions and values are function implementations. Protocol implementations are checked first for direct definitions (defrecord, deftype, reify), then metadata definitions, then external extensions (extend, extend-type, extend-protocol). datafy has been updated to use this mechanism.
+* `symbol` can now be passed vars or keywords to obtain the corresponding symbol
+* https://clojure.atlassian.net/browse/CLJ-2420[CLJ-2420] - error reporting enhancements - more refined phase reporting, new clojure.main/ex-triage split out of clojure.main/ex-str, execution errors now report the top *user* line in the stack trace omitting frames from core, enhancements to providing file and line via meta on a form
+* https://clojure.atlassian.net/browse/CLJ-2425[CLJ-2425] add java 11 javadoc url
+* https://clojure.atlassian.net/browse/CLJ-2424[CLJ-2424] fix test bug from https://clojure.atlassian.net/browse/CLJ-2417[CLJ-2417]
+
+=== 1.10.0-beta4 (Oct 22, 2018)
+
+1.10.0-beta4 includes the following changes since 1.10.0-beta3:
+
+* https://clojure.atlassian.net/browse/CLJ-2417[CLJ-2417] sort and sort-by should retain meta
+
+=== 1.10.0-beta3 (Oct 12, 2018)
+
+1.10.0-beta3 includes the following changes since 1.10.0-RC1:
+
+* datafy - add :name to datafied classes and namespaces, :class to meta of all if datafied
+* https://clojure.atlassian.net/browse/CLJ-1079[CLJ-1079] - Reader should retain rather than overwrite :line :column meta on lists and seqs. Also make clojure.main bind pass:[*file*] based on :file meta.
+
+=== 1.10.0-RC1 (Oct 11, 2018)
+
+1.10.0-RC1 is the same code as 1.10.0-beta2 (just minor changelog updates).
+
+=== 1.10.0-beta2 (Oct 9, 2018)
+
+1.10.0-beta2 includes the following changes since 1.10.0-beta1:
+
+* https://clojure.atlassian.net/browse/CLJ-2414[CLJ-2414] - Regression in reflectively finding default methods
+* https://clojure.atlassian.net/browse/CLJ-2415[CLJ-2415] - Error cause should always be on 2nd line of error message
+* Added clojure.datafy:
+** clojure.datafy is a facility for object to data transformation. The `datafy` and `nav` functions can be used to transform and (lazily) navigate through object graphs. The data transformation process can be influenced by consumers using protocols or metadata. datafy is alpha and subject to change.
+
+=== 1.10.0-beta1 (Oct 5, 2018)
+
+1.10.0-beta1 includes the following changes since 1.10.0-alpha9:
+
+* Revert change for https://clojure.atlassian.net/browse/CLJ-1550[CLJ-1550] - Classes generated by deftype and defrecord don't play nice with .getPackage
+* Revert change for https://clojure.atlassian.net/browse/CLJ-1435[CLJ-1435] - 'numerator and 'denominator fail to handle integral values (i.e. N/1)
+* Add changelog since 1.9
+* Mark prepl as alpha
+
+=== 1.10.0-alpha9 (Oct 4, 2018)
+
+1.10.0-alpha9 includes the following changes since 1.10.0-alpha8:
+
+* https://clojure.atlassian.net/browse/CLJ-2374[CLJ-2374] - Add type hint to address reflection ambiguity in JDK 11
+* https://clojure.atlassian.net/browse/CLJ-1209[CLJ-1209] - Print ex-data in clojure.test error reports
+* https://clojure.atlassian.net/browse/CLJ-1120[CLJ-1120] - Add ex-cause and ex-message as in CLJS for portabile error handling
+* https://clojure.atlassian.net/browse/CLJ-2385[CLJ-2385] - Delay start of tap-loop thread (addresses graal native-image issue)
+* https://clojure.atlassian.net/browse/CLJ-2407[CLJ-2407] - Fix errors in unit tests
+* https://clojure.atlassian.net/browse/CLJ-2066[CLJ-2066] - Add reflection fallback for --illegal-access warnings in Java 9+
+* https://clojure.atlassian.net/browse/CLJ-2375[CLJ-2375] - Fix usage of deprecated JDK apis
+* https://clojure.atlassian.net/browse/CLJ-2358[CLJ-2358] - Fix invalid arity of read+string
+
+=== 1.10.0-alpha8 (Sept 14, 2018)
+
+1.10.0-alpha8 includes the following changes since 1.10.0-alpha7:
+
+* https://clojure.atlassian.net/browse/CLJ-2297[CLJ-2297] - PersistentHashMap leaks memory when keys are removed with `without`
+* https://clojure.atlassian.net/browse/CLJ-1587[CLJ-1587] - PersistentArrayMap's assoc doesn't respect HASHTABLE_THRESHOLD
+* https://clojure.atlassian.net/browse/CLJ-2050[CLJ-2050] - Remove redundant key comparisons in HashCollisionNode
+* https://clojure.atlassian.net/browse/CLJ-2349[CLJ-2349] - report correct line number for uncaught ExceptionInfo in clojure.test
+* https://clojure.atlassian.net/browse/CLJ-1403[CLJ-1403] - ns-resolve might throw ClassNotFoundException but should return nil
+* https://clojure.atlassian.net/browse/CLJ-1654[CLJ-1654] - Reuse seq in some
+* https://clojure.atlassian.net/browse/CLJ-1764[CLJ-1764] - partition-by runs infinite loop when one element of infinite partition is accessed
+* https://clojure.atlassian.net/browse/CLJ-2044[CLJ-2044] - add arglist meta for functions in clojure.instant
+* https://clojure.atlassian.net/browse/CLJ-1797[CLJ-1797] - Mention cljc in error when require fails
+* https://clojure.atlassian.net/browse/CLJ-1832[CLJ-1832] - unchecked-* functions have different behavior on primitive longs vs boxed Longs
+* https://clojure.atlassian.net/browse/CLJ-1366[CLJ-1366] - The empty map literal is read as a different map each time
+* https://clojure.atlassian.net/browse/CLJ-1550[CLJ-1550] - Classes generated by deftype and defrecord don't play nice with .getPackage
+* https://clojure.atlassian.net/browse/CLJ-2031[CLJ-2031] - clojure.walk/postwalk does not preserve MapEntry type objects
+* https://clojure.atlassian.net/browse/CLJ-1435[CLJ-1435] - 'numerator and 'denominator fail to handle integral values (i.e. N/1)
+* https://clojure.atlassian.net/browse/CLJ-2257[CLJ-2257] - docstring: fix typo in `proxy`
+* https://clojure.atlassian.net/browse/CLJ-2332[CLJ-2332] - docstring: fix repetition in `remove-tap`
+* https://clojure.atlassian.net/browse/CLJ-2122[CLJ-2122] - docstring: describe result of `flatten` as lazy
+
+=== 1.10.0-alpha7 (Sept 5, 2018)
+
+Clojure 1.10.0-alpha7 is now available.
+
+1.10.0-alpha7 includes the following changes since 1.10.0-alpha6:
+
+* Update deps to latest spec.alpha (0.2.176) and core.specs.alpha (0.2.44)
+* https://clojure.atlassian.net/browse/CLJ-2373[CLJ-2373] - categorize and overhaul printing of exception messages at REPL
+* https://clojure.atlassian.net/browse/CLJ-1279[CLJ-1279] - report correct arity count for function arity errors inside macros
+* https://clojure.atlassian.net/browse/CLJ-2386[CLJ-2386] - omit ex-info construction stack frames
+* https://clojure.atlassian.net/browse/CLJ-2394[CLJ-2394] - warn in pst that stack trace for syntax error failed before execution
+* https://clojure.atlassian.net/browse/CLJ-2396[CLJ-2396] - omit :in clauses when printing spec function errors if using default explain printer
+
+=== 1.10.0-alpha6 (July 4, 2018)
+
+Clojure 1.10.0-alpha6 is now available.
+
+1.10.0-alpha6 includes the following changes since 1.10.0-alpha5:
+
+* https://clojure.atlassian.net/browse/CLJ-2367[CLJ-2367] - Incorporate fix for ASM regression and add case tests - thanks Sean Corfield for the patch and Daniel Sutton and Ghadi Shayban for the help in tracking it down.
+
+=== 1.10.0-alpha5 (June 27, 2018)
+
+Clojure 1.10.0-alpha5 is now available.
+
+1.10.0-alpha5 includes the following changes since 1.10.0-alpha4:
+
+* https://clojure.atlassian.net/browse/CLJ-2363[CLJ-2363] - make Java 8 the minimum requirement for Clojure (also bumps embedded ASM to latest) - thanks Ghadi Shayban!
+* https://clojure.atlassian.net/browse/CLJ-2284[CLJ-2284] - fix invalid bytecode generation for static interface method calls in Java 9+ - thanks Ghadi Shayban!
+* https://clojure.atlassian.net/browse/CLJ-2330[CLJ-2330] - fix brittle test that fails on Java 10 build due to serialization drift
+* https://clojure.atlassian.net/browse/CLJ-2362[CLJ-2362] - withMeta() should return identity when new meta is identical to prior
+* https://clojure.atlassian.net/browse/CLJ-1130[CLJ-1130] - when unable to match static method, improve error messages
+* https://clojure.atlassian.net/browse/CLJ-2289[CLJ-2089] - sorted colls with default comparator don't check that first element is Comparable
+* https://clojure.atlassian.net/browse/CLJ-2163[CLJ-2163] - add test for var serialization
+* Bump dependency version for spec.alpha to latest, 0.2.168 (see https://github.com/clojure/spec.alpha/blob/master/CHANGES.md[changes])
+* Bump dependency version for core.specs.alpha to latest, 0.2.36 (see https://github.com/clojure/core.specs.alpha/blob/master/CHANGES.md[changes])
+
+NOTE: 1.10.0-alpha5 drops support for Java 6 and 7 and makes Java 8 the minimum requirement. Compilation will produce Java 8 level bytecode (which will not run on earlier versions of Java). This is the first change in bytecode version since Clojure 1.6. We would greatly appreciate it if you tried this release with your library or project and provided feedback about errors, performance differences (good or bad), compatibility, etc.
+
+When using the `clj` tool and deps.edn, we recommend adding an alias to your ~/.clojure/deps.edn:
+
+[source,clojure]
+----
+{:aliases
+ {:clj/next
+  {:override-deps
+   {org.clojure/clojure {:mvn/version "1.10.0-alpha5"}}}}}
+----
+
+You can then run any of your projects with the latest Clojure dev release by activating the alias with `clj`: 
+
+[source,shell]
+----
+clj -A:clj/next
+----
+
+=== 1.10.0-alpha4 (Feb 9, 2018)
+
+- Fix 0-arity bug for read+string
+
+=== 1.10.0-alpha3 (Feb 8, 2018)
+
+- prepl - programmatic REPL
+
+=== 1.10.0-alpha2 (Jan 19, 2018)
+
+- https://clojure.atlassian.net/browse/CLJ-2313[CLJ-2313] - Fix for string capture mode
+
+=== 1.10.0-alpha1 (Jan 18, 2018)
+
+- Add string capture mode to LineNumberingPushbackReader
+
+== Release 1.9
+
+=== https://groups.google.com/d/msg/clojure/Pz_Kzg-k2Ac/ACVoLkXYDwAJ[1.9.0-RC2] (Nov 27, 2017)
+
+- There is a new Maven profile and Ant target in the build to build an executable Clojure jar with deps included (and test.check). This can be useful for doing dev on Clojure itself or for just cloning the repo and doing a quick build to get something runnable.
+- The readme.txt has been updated to include information about how to create and run a local jar.
+- Stopped publishing the clojure-VERSION.zip file as part of the release.
+
+=== https://groups.google.com/d/msg/clojure/tWcLAhnEzIs/OnwSSXFsBAAJ[1.9.0-RC1] (Nov 7, 2017)
+
+- Same as 1.9.0-beta4
+
+=== https://groups.google.com/d/msg/clojure/X_A6B_LiGvQ/I-bDODILAgAJ[1.9.0-beta4] (Oct 31, 2017)
+
+- https://clojure.atlassian.net/browse/CLJ-2259[CLJ-2259] - Remove unnecessary bigdec? predicate added in 1.9
+- Bumped spec.alpha dependency to 0.1.143
+
+=== https://groups.google.com/d/msg/clojure/jKsa9asMFm4/Uqf1m6ENAQAJ[1.9.0-beta3] (Oct 25, 2017)
+
+- https://clojure.atlassian.net/browse/CLJ-2254[CLJ-2254] - add System property clojure.spec.skip-macros (default=false) that can be used to turn off spec checking in macros
+
+=== https://groups.google.com/d/msg/clojure/hJqYgzEOJ8s/IH0pogtQAgAJ[1.9.0-beta2] (Oct 6, 2017)
+
+1.9.0-beta2 includes the following changes since 1.9.0-beta1:
+
+- https://clojure.atlassian.net/browse/CLJ-700[CLJ-700] - (fix) `contains?`, `get`, and `find` broken for transient collections
+- https://clojure.atlassian.net/browse/CLJ-2247[CLJ-2247] - (regression) restore and doc last match semantics of {min,max}-key
+- https://clojure.atlassian.net/browse/CLJ-2239[CLJ-2239] - (regression) fix Guava javadoc location
+- Updated dep to spec.alpha 0.1.134 - see https://github.com/clojure/spec.alpha/blob/master/CHANGES.md[changes]
+
+=== https://groups.google.com/d/msg/clojure/UEtE1K9C7XE/5p5BJe2tAQAJ[1.9.0-beta1] (Sep 18, 2017)
+
+1.9.0-beta1 includes the following changes since 1.9.0-alpha20:
+
+- https://clojure.atlassian.net/browse/CLJ-2077[CLJ-2077] - Clojure can't be loaded from the boot classpath under java 9
+
+=== https://groups.google.com/d/msg/clojure/IB2CaORBMnM/a0f66eC1DAAJ[1.9.0-alpha20] (Sep 7, 2017)
+
+1.9.0-alpha20 includes the following changes since 1.9.0-alpha19:
+
+- https://clojure.atlassian.net/browse/CLJ-1074[CLJ-1074] - (new) add new pass:[##] reader macro for symbolic values, and read/print support for double vals pass:[##Inf], pass:[##-Inf], pass:[##NaN]
+- https://clojure.atlassian.net/browse/CLJ-1454[CLJ-1454] - (new) add swap-vals! and reset-vals! that return both old and new values
+- https://clojure.atlassian.net/browse/CLJ-2184[CLJ-2184] - (errors) propagate meta in doto forms to improve error reporting
+- https://clojure.atlassian.net/browse/CLJ-2210[CLJ-2210] - (perf) cache class derivation in compiler to improve compiler performance
+- https://clojure.atlassian.net/browse/CLJ-2070[CLJ-2070] - (perf) clojure.core/delay - improve performance
+- https://clojure.atlassian.net/browse/CLJ-1917[CLJ-1917] - (perf) reducing seq over string should call String/length outside of loop
+- https://clojure.atlassian.net/browse/CLJ-1901[CLJ-1901] - (perf) amap - should call alength only once
+- https://clojure.atlassian.net/browse/CLJ-99[CLJ-99]   - (perf) min-key and max-key - evaluate k on each arg at most once
+- https://clojure.atlassian.net/browse/CLJ-2188[CLJ-2188] - (perf) slurp - mark return type as String
+- https://clojure.atlassian.net/browse/CLJ-2108[CLJ-2108] - (startup time) delay loading of spec and core specs (still more to do on this)
+- https://clojure.atlassian.net/browse/CLJ-2204[CLJ-2204] - (security) disable serialization of proxy classes to avoid potential issue when deserializing
+- https://clojure.atlassian.net/browse/CLJ-2048[CLJ-2048] - (fix) specify type to avoid ClassCastException when stack trace is elided by JVM
+- https://clojure.atlassian.net/browse/CLJ-1887[CLJ-1887] - (fix) IPersistentVector.length() - implement missing method
+- https://clojure.atlassian.net/browse/CLJ-1841[CLJ-1841] - (fix) bean - iterator was broken
+- https://clojure.atlassian.net/browse/CLJ-1714[CLJ-1714] - (fix) using a class in a type hint shouldn't load the class
+- https://clojure.atlassian.net/browse/CLJ-1398[CLJ-1398] - (fix) clojure.java.javadoc/javadoc - update doc urls
+- https://clojure.atlassian.net/browse/CLJ-1371[CLJ-1371] - (fix) Numbers.divide(Object, Object) - add checks for NaN
+- https://clojure.atlassian.net/browse/CLJ-1358[CLJ-1358] - (fix) doc - does not expand special cases properly (try, catch)
+- https://clojure.atlassian.net/browse/CLJ-1705[CLJ-1705] - (fix) vector-of - fix NullPointerException if given unrecognized type
+- https://clojure.atlassian.net/browse/CLJ-2170[CLJ-2170] - (doc) fix improperly located docstrings
+- https://clojure.atlassian.net/browse/CLJ-2156[CLJ-2156] - (doc) clojure.java.io/copy - doc char[] support
+- https://clojure.atlassian.net/browse/CLJ-2051[CLJ-2051] - (doc) clojure.instant/validated docstring - fix typo
+- https://clojure.atlassian.net/browse/CLJ-2104[CLJ-2104] - (doc) clojure.pprint docstring - fix typo
+- https://clojure.atlassian.net/browse/CLJ-2028[CLJ-2028] - (doc) filter, filterv, remove, take-while - fix docstrings
+- https://clojure.atlassian.net/browse/CLJ-1873[CLJ-1873] - (doc) require, `pass:[*data-readers*]` - add .cljc files to docstrings
+- https://clojure.atlassian.net/browse/CLJ-1159[CLJ-1159] - (doc) clojure.java.io/delete-file - improve docstring
+- https://clojure.atlassian.net/browse/CLJ-2039[CLJ-2039] - (doc) deftype - fix typo in docstring
+- https://clojure.atlassian.net/browse/CLJ-1918[CLJ-1918] - (doc) await - improve docstring re shutdown-agents
+- https://clojure.atlassian.net/browse/CLJ-1837[CLJ-1837] - (doc) index-of, last-index-of - clarify docstrings
+- https://clojure.atlassian.net/browse/CLJ-1826[CLJ-1826] - (doc) drop-last - fix docstring
+- https://clojure.atlassian.net/browse/CLJ-1859[CLJ-1859] - (doc) zero?, pos?, neg? - fix docstrings
+
+=== https://groups.google.com/d/msg/clojure/oy2O_akFJ2U/w6-C0hPoAQAJ[1.9.0-alpha19] (Aug 24, 2017)
+
+- Make the default import set public in RT
+
+=== https://groups.google.com/d/msg/clojure/rb22V98rPLM/MFBBcz-gAQAJ[1.9.0-alpha18] (Aug 23, 2017)
+
+- Can now bind `pass:[*reader-resolver*]` to an impl of LispReader$Resolver to control the reader's use of namespace interactions when resolving autoresolved keywords and maps.
+- Tighten autoresolved keywords and autoresolved namespace map syntax to support *only* aliases, as originally intended
+- Updated to use core.specs.alpha 0.1.24
+
+=== https://groups.google.com/d/msg/clojure/iceDBL5q4CY/GM6LryxpAQAJ[1.9.0-alpha17] (May 26, 2017)
+
+- https://clojure.atlassian.net/browse/CLJ-1793[CLJ-1793] - Clear 'this' before calls in tail position
+- https://clojure.atlassian.net/browse/CLJ-2091[CLJ-2091] clojure.lang.APersistentVector#hashCode is not thread-safe
+- https://clojure.atlassian.net/browse/CLJ-1860[CLJ-1860] Make -0.0 hash consistent with 0.0
+- https://clojure.atlassian.net/browse/CLJ-2141[CLJ-2141] Return only true/false from qualified-* predicates
+- https://clojure.atlassian.net/browse/CLJ-2142[CLJ-2142] Fix check for duplicate keys with namespace map syntax
+- https://clojure.atlassian.net/browse/CLJ-2128[CLJ-2128] spec error during macroexpand no longer throws compiler exception with location
+- Updated to use spec.alpha 0.1.123
+
+=== https://groups.google.com/forum/#!topic/clojure/nB4qnDNGS2A[1.9.0-alpha16] (Apr 27, 2017)
+
+1.9.0-alpha16 includes the following changes since 1.9.0-alpha15:
+
+- The namespaces clojure.spec, clojure.spec.gen, clojure.spec.test have been moved to the external library spec.alpha which Clojure includes via dependency
+- These namespaces have been changed and now have an appended ".alpha": clojure.spec.alpha, clojure.spec.gen.alpha, clojure.spec.test.alpha
+- All keyword constants in clojure.spec (like :clojure.spec/invalid) follow the same namespace change (now :clojure.spec.alpha/invalid)
+- spec-related system properties related to assertions did NOT change
+
+- The specs for clojure.core itself in namespace clojure.core.specs have been moved to the external library core.specs.alpha which Clojure now depends on
+- The clojure.core.specs namespace has changed to clojure.core.specs.alpha. All qualified spec names in that namespace follow the same namespace change (most people were not using these directly)
+
+In most cases, you should be able to update your usage of Clojure 1.9.0-alphaX to Clojure 1.9.0-alpha16 by:
+
+1. Updating your Clojure dependency to [org.clojure/clojure "1.9.0-alpha16"]  - this will automatically pull in the 2 additional downstream libraries
+2. Changing your namespace declarations in namespaces that declare or use specs to:
+
+[source,clojure]
+----
+(:require [clojure.spec.alpha :as s]
+          [clojure.spec.gen.alpha :as gen]
+          [clojure.spec.test.alpha :as stest])
+----
+
+=== https://groups.google.com/d/msg/clojure/10dbF7w2IQo/ec37TzP5AQAJ[1.9/spec split] (Apr 26, 2017)
+
+We are moving spec out of the Clojure repo/artifact and into a library to make it easier to evolve spec independently from Clojure. While we consider spec to be an essential part of Clojure 1.9, there are a number of design concerns to resolve before it can be finalized. This allows us to move towards a production Clojure release (1.9) that depends on an alpha version of spec. Users can also pick up newer versions of the spec alpha library as desired. Additionally, this is a first step towards increased support for leveraging dependencies within Clojure.
+
+We will be creating two new contrib libraries that will contain the following (renamed) namespaces:
+
+----
+org.clojure/spec.alpha
+    clojure.spec.alpha          (previously clojure.spec)
+    clojure.spec.gen.alpha      (previously clojure.spec.gen)
+    clojure.spec.test.alpha     (previously clojure.spec.test)
+
+org.clojure/core.specs.alpha
+    clojure.core.specs.alpha    (previously clojure.core.specs)
+----
+
+In most cases, we expect that users have aliased their reference to the spec namespaces and updating to the changed namespaces will only require a single change at the point of the require.
+
+*How will ClojureScript's spec implementation change?*
+
+ClojureScript will also change namespace names to match Clojure. Eventually, the ClojureScript implementation may move out of ClojureScript and into the spec.alpha library - this is still under discussion.
+
+*Why do the libraries and namespaces end in alpha?*
+
+The "alpha" indicates that the spec API and implementation is still subject to change.
+
+*What will happen when the spec api is no longer considered alpha?*
+
+At that point we expect to release a non-alpha version of the spec library (with non-alpha namespaces). Users may immediately begin to use that version of spec along with whatever version of Clojure it depends on. Clojure itself will depend on it at some later point. Timing of all these actions is TBD.
+
+*Will the library support Clojure 1.8 or older versions?*
+
+No. spec uses new functions in Clojure 1.9 and it has never been a goal to provide spec for older versions. Rather, we are trying to accelerate the release of a stable Clojure 1.9 so that users can migrate forward to a stable production release with access to an alpha version of spec, and access to ongoing updated versions as they become available.
+
+=== https://groups.google.com/d/msg/clojure/7ZqGTjJoQEQ/RkUYCCbeAwAJ[1.9.0-alpha15] (Mar 14, 2017)
+
+1.9.0-alpha15 includes the following changes since 1.9.0-alpha14:
+
+- https://clojure.atlassian.net/browse/CLJ-2043[CLJ-2043] - s/form of conformer is broken
+- https://clojure.atlassian.net/browse/CLJ-2035[CLJ-2035] - s/form of collection specs are broken
+- https://clojure.atlassian.net/browse/CLJ-2100[CLJ-2100] - s/form of s/nilable should include the original spec, not the resolved spec
+
+Specs:
+
+- https://clojure.atlassian.net/browse/CLJ-2062[CLJ-2062] - added specs for `import` and `refer-clojure`
+- https://clojure.atlassian.net/browse/CLJ-2114[CLJ-2114] - ::defn-args spec incorrectly parses map body as a prepost rather than function body
+- https://clojure.atlassian.net/browse/CLJ-2055[CLJ-2055] - binding-form spec parses symbol-only maps incorrectly
+
+Infrastructure:
+
+- https://clojure.atlassian.net/browse/CLJ-2113[CLJ-2113] - Clojure maven build updated
+
+=== https://groups.google.com/d/msg/clojure/w-1h7_xO2R0/Lp_ks-BSAQAJ[1.9.0-alpha14] (Oct 28, 2016)
+
+1.9.0-alpha14 includes the following changes since 1.9.0-alpha13:
+
+- NEW `into` now has a 0-arity (returns []) and 1-arity (returns the coll you pass)
+- NEW `halt-when` is a transducer that ends transduction when pred is satisfied. It takes an optional fn that will be invoked with the completed result so far and the input that triggered the predicate.
+- https://clojure.atlassian.net/browse/CLJ-2042[CLJ-2042] - clojure.spec/form of clojure.spec/? now resolves pred
+- https://clojure.atlassian.net/browse/CLJ-2024[CLJ-2024] - clojure.spec.test/check now fully resolves aliased fspecs
+- https://clojure.atlassian.net/browse/CLJ-2032[CLJ-2032] - fixed confusing error if fspec is missing :args spec
+- https://clojure.atlassian.net/browse/CLJ-2027[CLJ-2027] - fixed 1.9 regression with printing of `bean` instances
+- https://clojure.atlassian.net/browse/CLJ-1790[CLJ-1790] - fixed error extending protocols to Java arrays
+- https://clojure.atlassian.net/browse/CLJ-1242[CLJ-1242] - = on sorted sets or maps with incompatible comparators now returns false rather than throws
+
+=== https://groups.google.com/d/msg/clojure/QWPUWG9BwbE/9a7ymJb9AQAJ[1.9.0-alpha13] (Sept 26, 2016)
+
+1.9.0-alpha13 includes the following changes since 1.9.0-alpha12:
+
+- s/conform of nilable was always returning the passed value, not the conformed value
+- s/nilable now creates a generator that returns nil 10% of the time (instead of 50% of the time)
+- s/nilable now delays realizing the predicate spec until first use (better for creating recursive specs)
+- clojure.spec.gen now provides a dynload version of clojure.test.check.generators/frequency
+
+=== https://groups.google.com/d/msg/clojure/lQ5beZB6QYE/ZLSPo023CgAJ[1.9.0-alpha12] (Sept 7, 2016)
+
+1.9.0-alpha12 includes the following changes since 1.9.0-alpha11:
+
+- spec performance has been improved for many use cases
+- spec explain printer is now pluggable via the dynamic var `pass:[clojure.spec/*explain-out*]`
+  which should be a function that takes an explain-data and prints to `pass:[*out*]`
+- when a macro spec fails during macroexpand, throw ex-info with explain-data payload
+  rather than IllegalArgumentException
+- pprint prints maps with namespace literal syntax when `pass:[*print-namespace-maps*]` is true
+- https://clojure.atlassian.net/browse/CLJ-1988[CLJ-1988] - coll-of, every extended to conform sequences properly
+- https://clojure.atlassian.net/browse/CLJ-2004[CLJ-2004] - multi-spec form was missing retag
+- https://clojure.atlassian.net/browse/CLJ-2006[CLJ-2006] - fix old function name in docstring
+- https://clojure.atlassian.net/browse/CLJ-2008[CLJ-2008] - omit macros from checkable-syms
+- https://clojure.atlassian.net/browse/CLJ-2012[CLJ-2012] - fix ns spec on gen-class signatures to allow class names
+- https://clojure.atlassian.net/browse/CLJ-1224[CLJ-1224] - record instances now cache hasheq and hashCode like maps
+- https://clojure.atlassian.net/browse/CLJ-1673[CLJ-1673] - clojure.repl/dir-fn now works on namespace aliases
+
+=== https://groups.google.com/d/msg/clojure/_slHTn-Ej1Y/M_IVRODtCQAJ[1.9.0-alpha11] (Aug 19, 2016)
+
+1.9.0-alpha11 includes the following changes since 1.9.0-alpha10:
+
+Clojure now has specs for the following clojure.core macros: let, if-let, when-let, defn, defn-, fn, and ns. Because macro specs are checked during macroexpansion invalid syntax in these macros will now fail at compile time whereas some errors were caught at runtime and some were not caught at all.
+
+- https://clojure.atlassian.net/browse/CLJ-1914[CLJ-1914] - Fixed race condition in concurrent range realization
+- https://clojure.atlassian.net/browse/CLJ-1870[CLJ-1870] - Fixed reloading a defmulti removes metadata on the var
+- https://clojure.atlassian.net/browse/CLJ-1744[CLJ-1744] - Clear unused locals, which can prevent memory leaks in some cases
+- https://clojure.atlassian.net/browse/CLJ-1423[CLJ-1423] - Allow vars to be invoked with infinite arglists (also, faster)
+- https://clojure.atlassian.net/browse/CLJ-1993[CLJ-1993] - Added `pass:[*print-namespace-maps*]` dynamic var that controls whether to use namespace map syntax for maps with keys from the same namespace. The default is false, but standard REPL bindings set this to true.
+- https://clojure.atlassian.net/browse/CLJ-1985[CLJ-1985] - Fixed with-gen of conformer losing unform fn
+- Fixed clojure.spec.test/check to skip spec'ed macros
+- Fixed regression from 1.9.0-alpha8 where type hints within destructuring were lost
+- Fixed clojure.spec/merge docstring to note merge doesn't flow conformed values
+- Fixed regex ops to use gen overrides if they are used
+
+=== https://groups.google.com/d/msg/clojure/MrwAx8DCjK8/rQSq8U5qCAAJ[1.9.0-alpha10] (Jul 11, 2016)
+
+1.9.0-alpha10 includes the following changes since 1.9.0-alpha9:
+
+- NEW clojure.core/any? - a predicate that matches anything. any? has built-in gen support. The :clojure.spec/any spec has been removed. Additionally, gen support has been added for some?.
+
+- keys* will now gen
+
+- gen overrides (see c.s/gen, c.s./exercise, c.s.t/check, c.s.t/instrument) now expect no-arg functions that return gens, rather than gens
+
+- https://clojure.atlassian.net/browse/CLJ-1977[CLJ-1977] - fix regression from alpha9 in data conversion of Throwable when stack trace is empty
+
+=== https://groups.google.com/d/msg/clojure/M-zC83YJl10/-zN-b2ekBgAJ[1.9.0-alpha9] (Jul 5, 2016)
+
+1.9.0-alpha9 includes the following changes since 1.9.0-alpha8:
+
+- NEW clojure.spec/assert - a facility for adding spec assertions to your code. See the docs for `pass:[*compile-asserts*]` and assert for more details.
+
+- clojure.spec/merge - now merges rather than flows in conform/unform
+
+- clojure.spec.test/instrument now reports the caller that caused an :args spec failure and ignores spec'ed macros
+
+- clojure.spec.test - `test`, `test-fn`, `testable-syms` renamed to `check`, `check-fn`, and `checkable-syms` to better reflect their purpose. Additionally, some of the return value structure of `check` has been further improved.
+
+- clojure.core/Throwable->map formerly returned StackTraceElements which were later handled by the printer. Now the StackTraceElements are converted to data such that the return value is pure Clojure data, as intended.
+
+=== https://groups.google.com/d/msg/clojure/vF3RuDWuX8I/pvn4IUuUAwAJ[1.9.0-alpha8] (Jun 28, 16)
+
+1.9.0-alpha8 includes the following changes since 1.9.0-alpha7:
+
+The collection spec support has been greatly enhanced, with new controls for conforming, generation, counts, distinct elements and collection kinds. See the docs for every, every-kv, coll-of and map-of for details.
+
+instrumenting and testing has been streamlined and made more composable, with powerful new features for spec and gen overrides, stubbing, and mocking. See the docs for these functions in clojure.spec.test: instrument, test, enumerate-ns and summarize-results.
+
+Namespaced keyword reader format, printing and destructuring have been enhanced for lifting namespaces up for keys, supporting more succinct use of fully-qualified keywords. Updated docs will be added to clojure.org soon.
+
+Many utilities have been added, for keys spec merging, fn exercising, Java 1.8 timestamps, bounded-count and more.
+
+Changelog:
+
+clojure.spec:
+
+- [changed] map-of - now conforms all values and optionally all keys, has additional kind, count, gen options
+- [changed] coll-of - now conforms all elements, has additional kind, count, gen options. No longer takes init-coll param.
+- [added] every - validates a collection by sampling, with many additional options
+- [added] every-kv - validates a map by sampling, with many additional options
+- [added] merge
+- [changed] gen overrides can now be specified by either name or path
+- [changed] fspec generator - creates a function that generates return values according to the :ret spec and ignores :fn spec
+- [added] explain-out - produces an explain output string from an explain-data result
+- [changed] explain-data - output is now a vector of problems with a :path element, not a map keyed by path
+- [added] get-spec - for looking up a spec in the registry by keyword or symbol
+- [removed] fn-spec - see get-spec
+- [added] exercise-fn - given a spec'ed function, returns generated args and the return value
+- All instrument functions moved to clojure.spec.test
+
+clojure.spec.test:
+
+- [changed] instrument - previously took a var, now takes either a symbol, namespace symbol, or a collection of symbols or namespaces, plus many new options for stubbing or mocking. Check the docstring for more info.
+- [removed] instrument-ns - see instrument
+- [removed] instrument-all - see instrument
+- [changed] unstrument - previously took a var, now takes a symbol, namespace symbol, or collection of symbol or namespaces
+- [removed] unstrument-ns - see unstrument
+- [removed] unstrument-all - see unstrument
+- [added] instrumentable-syms - syms that can be instrumented
+- [added] with-instrument-disabled - disable instrument's checking of calls within a scope
+- [changed] check-var renamed to test and has a different signature, check docs
+- [changed] run-tests - see test
+- [changed] run-all-tests - see test
+- [changed] check-fn - renamed to test-fn
+- [added] abbrev-result - returns a briefer description of a test
+- [added] summarize-result - returns a summary of many tests
+- [added] testable-syms - syms that can be tested
+- [added] enumerate-namespace - provides symbols for vars in namespaces
+
+clojure.core:
+
+- [changed] - inst-ms now works with java.time.Instant instances when Clojure is used with Java 8
+- [added] bounded-count - if coll is counted? returns its count, else counts at most first n elements of coll using its seq
+
+=== https://groups.google.com/d/msg/clojure/3wmGJ5B4b6c/YgCJCtN8CQAJ[1.9.0-alpha7] (Jun 15, 2016)
+
+1.9.0-alpha7 includes the following changes since 1.9.0-alpha6 (all BREAKING vs alpha5/6):
+
+clojure.core:
+- long? => int?  - now checks for all Java fixed precision integer types (byte,short,integer,long)
+- pos-long? => pos-int?
+- neg-long? => neg-int?
+- nat-long? => nat-int?
+
+clojure.spec:
+- long-in-range? => int-in-range?
+- long-in => int-in
+
+If you are interested in checking specifically for long?, please use #(instance? Long %).
+
+Sorry for the switcheroo and welcome to alphatown! 
+
+=== https://groups.google.com/d/msg/clojure/JIgmEFhAlq8/6UXO_rUpCQAJ[1.9.0-alpha6] (Jun 14, 2016)
+
+1.9.0-alpha6 includes the following changes since 1.9.0-alpha5:
+
+- & regex op now fails fast when regex passes but preds do not
+- returns from alt/or are now map entries (supporting key/val) rather than 2-element vector
+- [BREAKING] fn-specs was renamed to fn-spec and returns either the registered fspec or nil
+- fspec now accepts ifn?, not fn?
+- fspec impl supports keyword lookup of its :args, :ret, and :fn specs
+- fix fspec describe which was missing keys and improve describe of :args/ret/fn specs
+- instrument now checks *only* the :args spec of a var - use the clojure.spec.test functions to test :ret and :fn specs
+- Added generator support for bytes? and uri? which were accidentally left out in alpha5
+
+=== https://groups.google.com/d/msg/clojure/D_s9Drua6D4/CTWk12cXDQAJ[1.9.0-alpha5] (Jun 7, 2016)
+
+1.9.0-alpha5 includes the following changes since 1.9.0-alpha4:
+
+Fixes:
+- doc was printing "Spec" when none existed
+- fix ? explain
+
+New predicates in core (all also now have built-in generator support in spec):
+- seqable?
+- boolean?
+- long?, pos-long?, neg-long?, nat-long?
+- double?, bigdec?
+- ident?, simple-ident?, qualified-ident?
+- simple-symbol?, qualified-symbol?
+- simple-keyword?, qualified-keyword?
+- bytes? (for byte[])
+- indexed?
+- inst? (and new inst-ms)
+- uuid?
+- uri?
+
+New in spec:
+- unform - given a spec and a conformed value, returns the unconformed value
+- New preds: long-in-range?, inst-in-range?
+- New specs (with gen support): long-in, inst-in, double-in
+
+=== https://groups.google.com/d/msg/clojure/TR-qUFVJwj0/aZspfZ3XBAAJ[1.9.0-alpha4] (May 31, 2016)
+
+1.9.0-alpha4 includes the following changes since 1.9.0-alpha3:
+
+- fix describe empty cat
+- improve update-in perf
+- optimize seq (&) destructuring
+
+=== https://groups.google.com/d/msg/clojure/WxT9kPIwlYI/r5PJpAP_CwAJ[1.9.0-alpha3] (May 26, 2016)
+
+1.9.0-alpha3 includes the following changes since 1.9.0-alpha2:
+
+- Macro fdef specs should no longer spec the implicit &form or &env  [BREAKING CHANGE]
+- multi-spec includes dispatch values in path
+- multi-spec no longer requires special default method
+- fix for rep* bug
+- added explain-str (explain that returns a string)
+- improved s/+ explain
+- explain output tweaked
+- fix test reporting
+
+=== https://groups.google.com/d/msg/clojure/ZBD5-Nhruc4/dntP8iQDAwAJ[1.9.0-alpha2] (May 25, 2016)
+
+1.9.0-alpha2 includes the following changes since 1.9.0-alpha1:
+
+- Better describe for s/+
+- Capture *recursion-limit* on gen call
+- explain-data now contains :in key for the input path
+- https://clojure.atlassian.net/browse/CLJ-1931[CLJ-1931] - with-gen throws AbstractMethodError
+
+=== https://groups.google.com/d/msg/clojure/7jbL34IjNzw/dejSpHefAwAJ[1.9.0-alpha1] (May 24, 2016)
+
+1.9.0-alpha1 includes the first release of clojure.spec.
+
+A usage guide for spec is now available: https://clojure.org/guides/spec.

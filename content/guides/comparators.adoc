@@ -7,7 +7,7 @@ Andy Fingerhut
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-_Note: This document describes Clojure 1.7 and Java 6, but applies to most other versions as well._
+_Note: This document describes Clojure 1.10 and Java 8, but applies to most other versions as well._
 
 == Summary
 
@@ -18,23 +18,22 @@ See the DOs below for what the return values should be, depending upon the order
 
 In Clojure you need comparators for sorting a collection of values, or for maintaining a collection
 of values in a desired sorted order, e.g a
-http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/sorted-map[sorted-map],
-http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/sorted-set[sorted-set], or
-http://clojure.github.io/data.priority-map/#clojure.data.priority-map/priority-map[priority-map]
+https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/sorted-map[sorted-map],
+https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/sorted-set[sorted-set], or
+https://clojure.github.io/data.priority-map/#clojure.data.priority-map/priority-map[priority-map]
 (also known as a priority queue).
 
-The default comparator http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/compare[compare]
+The default comparator https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/compare[compare]
 works well for sorting numbers in increasing order, or strings, keywords, or symbols,
-in http://en.wikipedia.org/wiki/Lexicographical_order[lexicographic] (i.e dictionary) order,
-and a few other cases. See http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/compare[compare]
-for examples and more details.
+in https://en.wikipedia.org/wiki/Lexicographical_order[lexicographic] (i.e dictionary) order,
+and a few other cases. See below for examples and more details.
 
 If `compare` does not do what you want, you must provide your own comparator that does. Each of the
 recommendations below is explained in more detail later in this document.
 
 DOs:
 
-* Ensure that your comparators are based on a http://en.wikipedia.org/wiki/Total_order[total order] over
+* Ensure that your comparators are based on a https://en.wikipedia.org/wiki/Total_order[total order] over
 the values you want to compare. It should be able to compare any pair of values that can appear in your
 data set, and determine which value should come first (or that they are equal).
 * Write either a 3-way comparator or a boolean comparator:
@@ -48,6 +47,9 @@ data set, and determine which value should come first (or that they are equal).
 * Reverse the sort by reversing the order that you give the arguments to an existing comparator.
 * Compare equal-length Clojure vectors containing "sort keys" in order to do a multi-field comparison
 between values.
+* Remove or replace occurrences of "Not a Number" (`pass:[##NaN]`)
+from your data before sorting a collection, and avoid using them as
+parts of keys in a sorted collection.
 
 DO NOTs:
 
@@ -58,44 +60,105 @@ orders.
 at most one of those two values to appear in the sorted collection.
 * Do not use subtraction when writing a 3-way comparator, unless you really know what you are doing.
 
-See also: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/compare[compare],
-http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/sort[sort],
-http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/sort-by[sort-by],
-http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/sorted-set[sorted-set],
-http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/sorted-set-by[sorted-set-by],
-http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/sorted-map[sorted-map],
-http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/sorted-map-by[sorted-map-by],
-http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/subseq[subseq],
-http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/rsubseq[rsubseq]
+See also: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/compare[compare],
+https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/sort[sort],
+https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/sort-by[sort-by],
+https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/sorted-set[sorted-set],
+https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/sorted-set-by[sorted-set-by],
+https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/sorted-map[sorted-map],
+https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/sorted-map-by[sorted-map-by],
+https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/subseq[subseq],
+https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/rsubseq[rsubseq]
 
 == Introduction
 
-Here we briefly describe the default sorting order provided by the function `compare`.
+Here we describe the default sorting order provided by the function `compare`.
 After that we give examples of other comparators, with some guidelines to follow and
 mistakes to avoid when writing your own.
 
-If you do not specify your own comparator, sorting is done by a built-in function `compare`.
-`compare` works for many types of values, ordering them in one particular way: increasing
-numeric order for numbers; http://en.wikipedia.org/wiki/Lexicographical_order[lexicographic order]
-(aka dictionary order) for strings, symbols, and keywords; shortest-to-longest order by Clojure
-vectors, with lexicographic ordering among equal length vectors. All Java types implement
-the http://docs.oracle.com/javase/6/docs/api/java/lang/Comparable.html[Comparable]
-interface such as characters, booleans, File, URI, and UUID are compared via their
-`compareTo` methods. Finally, `nil` can be compared to all values described earlier, and
-is considered less than everything else.
-See http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/compare[compare]
-for examples and more details.
+== Clojure's default comparator
 
-If this built-in sorting order does not meet your needs, or does not work at all for values
-of type you wish to sort, you can write your own comparator and use that instead.
-There are a few rules to follow when writing a comparator that works correctly.
+If you do not specify your own comparator, sorting is done by a built-in function `compare`.
+`compare` works for many types of values, ordering them in one particular way:
+
+* numbers are sorted in increasing numeric order, returning 0 if two
+  numbers are numerically equal by `==`, even if `=` returns false.
+  Exception: Even though `pass:[(== ##NaN x)]` is false for all
+  numbers _x_, even `pass:[##NaN]`, `(compare ##NaN x)` is 0 for all
+  numbers _x_, including `pass:[##NaN]`.
+* strings are sorted in
+  http://en.wikipedia.org/wiki/Lexicographical_order[lexicographic
+  order] (aka dictionary order) by their representation as sequences
+  of UTF-16 code units.  This is alphabetical order (case-sensitive)
+  for strings restricted to the ASCII subset.
+* symbols are sorted first by their namespace, if they have one, and
+  if they have the same namespace, then by their name.  Both the
+  namespace and names are compared as their string representations
+  would be, lexicographically.  All symbols that do not have a
+  namespace are sorted before any symbol with a namespace.
+* keywords are sorted the same way as symbols, but an exception is
+  thrown if you attempt to compare a keyword to a symbol.
+* vectors are sorted from fewest elements to most elements, with
+  http://en.wikipedia.org/wiki/Lexicographical_order[lexicographic
+  ordering] among equal length vectors.
+* Clojure refs are sorted in the order that they were created.
+* All Java types implementing the
+  https://docs.oracle.com/javase/8/docs/api/java/lang/Comparable.html[Comparable]
+  interface such as characters, booleans, File, URI, and UUID are
+  compared via their `compareTo` methods.
+* `nil`: can be compared to all values above, and is considered less
+  than anything else.
+
+`compare` throws an exception if given two values whose types are "too
+different", e.g. it can compare integers, longs, and doubles to each
+other, but not strings to keywords or keywords to symbols.  It cannot
+compare lists, sequences, sets, or maps.
+
+The examples below with `sort`, `sorted-set`, and `sorted-map` all use
+the default comparator.
+
+[source,clojure]
+----
+user> (sort [22/7 2.71828 ##-Inf 1 55 3N])
+(##-Inf 1 2.71828 3N 22/7 55)
+
+user> (sorted-set "aardvark" "boo" "a" "Antelope" "bar")
+#{"Antelope" "a" "aardvark" "bar" "boo"}
+
+user> (sorted-set 'user/foo 'clojure.core/pprint 'bar 'clojure.core/apply 'user/zz)
+#{bar clojure.core/apply clojure.core/pprint user/foo user/zz}
+
+user> (sorted-map :map-key 10, :amp [3 2 1], :blammo "kaboom")
+{:amp [3 2 1], :blammo "kaboom", :map-key 10}
+
+user> (sort [[-8 2 5] [-5 -1 20] [1 2] [1 -5] [10000]])
+([10000] [1 -5] [1 2] [-8 2 5] [-5 -1 20])
+
+user> (import '(java.util UUID))
+java.util.UUID
+
+user> (sort [(UUID. 0xa 0) (UUID. 5 0x11) (UUID. 5 0xb)])
+(#uuid "00000000-0000-0005-0000-00000000000b"
+ #uuid "00000000-0000-0005-0000-000000000011"
+ #uuid "00000000-0000-000a-0000-000000000000")
+
+user> (sort [:ns2/kw1 :ns2/kw2 :ns1/kw2 :kw2 nil])
+(nil :kw2 :ns1/kw2 :ns2/kw1 :ns2/kw2)
+----
+
+An exception will be thrown if you call `compare` with different
+types.  Any numeric types above can be compared to each other, but not
+to a non-numeric type.  An exception will also be thrown if you use
+`compare` on a list, set, map, or any other type not mentioned above.
+You must implement your own comparator if you wish to sort such
+values.
 
 == Off-the-shelf comparators
 
 First consider using well-tested comparators developed by others, especially if they are complex.
 
 A perfect example of this would be sorting Unicode strings in different languages in orders
-specific to different locales. The Java http://docs.oracle.com/javase/6/docs/api/java/text/Collator.html[Collator]
+specific to different locales. The Java https://docs.oracle.com/javase/8/docs/api/java/text/Collator.html[Collator]
 class and http://site.icu-project.org/home#TOC-What-is-ICU-[ICU] (International Components for Unicode) provide
 libraries for this.
 
@@ -242,13 +305,13 @@ false
 
 
 See Clojure source file
-https://github.com/clojure/clojure/blob/clojure-1.7.0/src/jvm/clojure/lang/AFunction.java#L46[src/jvm/clojure/lang/AFunction.java]
+https://github.com/clojure/clojure/blob/clojure-1.10.0/src/jvm/clojure/lang/AFunction.java#L50[src/jvm/clojure/lang/AFunction.java]
 method `compare` if you want all the details.
 
 === General rules for comparators
 
 Any comparator, whether 3-way or boolean, should return answers consistent with a
-http://en.wikipedia.org/wiki/Total_order[total order] on the values
+https://en.wikipedia.org/wiki/Total_order[total order] on the values
 you want to compare.
 
 A total order is simply an ordering of all values from smallest to largest, where some groups of
@@ -269,6 +332,51 @@ As explained later, it should not behave like `\<=` for numbers
 (see section "Comparators for sorted sets and maps are easy to get wrong").
 
 == Mistakes to avoid
+
+=== Be wary of "Not a Number" values as compared values in sorted collections
+
+Clojure's default comparator `compare` treats "Not a Number"
+(`pass:[##NaN]`) values as equal to all other numbers.  If you call
+https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/sort[sort]
+on sequences of numbers that contain occurrences of `pass:[##NaN]`, it
+might throw an exception.
+
+[source, clojure]
+----
+user> (sort [##NaN 5 13 ##NaN 3 7 12 ##NaN 8 4 2 20 6 9 ##NaN 50 83 19 -7 0 18 26 30 42 ##NaN 57 90 -8 -12 43 87 38])
+Execution error (IllegalArgumentException) at java.util.TimSort/mergeHi (TimSort.java:899).
+Comparison method violates its general contract!
+----
+
+Even if it does not throw an exception, it is likely that the returned
+sequence will not be sorted.  This is because `compare` does not put
+`pass:[##NaN]` into a total order with other numbers as a comparator
+should, in order for `sort` to work correctly:
+
+[source, clojure]
+----
+user> (sort [##NaN 10 5 13 ##NaN 3 7 12 ##NaN 8 4 2 20 6 9 ##NaN 50 83 19 -7])
+(##NaN -7 2 3 4 5 6 7 8 10 12 13 ##NaN ##NaN 9 19 20 ##NaN 50 83)
+----
+
+Because `pass:[##NaN]` is not equal to any other value, you cannot use
+code like this to remove values from a sequence of numbers:
+
+[source, clojure]
+----
+user> (remove #(= % ##NaN) [9 3 ##NaN 4])
+(9 3 ##NaN 4)
+----
+
+You may use the Java method `Double/isNaN` to indicate whether a value
+is `pass:[##NaN]`:
+
+[source, clojure]
+----
+user> (remove #(Double/isNaN %) [9 3 ##NaN 4])
+(9 3 4)
+----
+
 
 === Comparators for sorted sets and maps are easy to get wrong
 This is just as accurately stated as "comparators are easy to get wrong", but it is often more noticeable
@@ -325,7 +433,7 @@ nil
 
 The problem here is that `by-2nd-\<=` gives inconsistent answers. If you ask it whether `["c" 1]` comes before `["b" 1]`,
 it returns true (which Clojure's boolean-to-int comparator conversion turns into -1).
-f you ask it whether `["b" 1]` comes before `["c" 1]`, again it returns true (again converted into -1 by Clojure).
+If you ask it whether `["b" 1]` comes before `["c" 1]`, again it returns true (again converted into -1 by Clojure).
 One cannot reasonably expect an implementation of a sorted data structure to provide any kind of guarantees on
 its behavior if you give it an inconsistent comparator.
 
@@ -365,9 +473,9 @@ It is less error-prone to use explicit conditional checks and return -1, 0, or 1
 
 Why? Java comparators must return a 32-bit _int_ type, so when a Clojure function is used as a comparator
 and it returns any type of number, that number is converted to an _int_ behind the scenes using the Java method
-http://docs.oracle.com/javase/6/docs/api/java/lang/Number.html#intValue%28%29[intValue].
+https://docs.oracle.com/javase/8/docs/api/java/lang/Number.html#intValue--[intValue].
 See Clojure source file
-https://github.com/clojure/clojure/blob/clojure-1.7.0/src/jvm/clojure/lang/AFunction.java#L46[src/jvm/clojure/lang/AFunction.java]
+https://github.com/clojure/clojure/blob/clojure-1.10.0/src/jvm/clojure/lang/AFunction.java#L50[src/jvm/clojure/lang/AFunction.java]
 method `compare` if you want the details.
 
 For comparing floating point numbers and ratios, this causes numbers differing by less than 1 to be treated as equal,
@@ -458,7 +566,8 @@ for `compare` to work on, and those vectors have the same second element:
 ;; compare throws exception if you try to compare a string and a
 ;; keyword
 user> (sort by-number-then-whatever [["a" 2] ["c" 3] [:b 2]])
-ClassCastException java.lang.String cannot be cast to clojure.lang.Keyword  clojure.lang.Keyword.compareTo (Keyword.java:109)
+Execution error (ClassCastException) at user/by-number-then-whatever (REPL:2).
+class java.lang.String cannot be cast to class clojure.lang.Keyword
 ----
 
 `cc-cmp` ("cross class compare") below may be useful in such cases.

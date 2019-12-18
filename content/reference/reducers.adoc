@@ -13,7 +13,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 toc::[]
 
-Reducers provide an alternative approach to using <<sequences#,sequences>> to manipulate standard Clojure collections. Sequence functions are typically applied lazily, in order, create intermediate results, and in a single thread. However, many sequence functions (like map and filter) could conceptually be applied in parallel, yielding code that will get faster automatically as machines get more cores. For more details on the rationale for reducers, see the original http://clojure.com/blog/2012/05/08/reducers-a-library-and-model-for-collection-processing.html[blog] http://clojure.com/blog/2012/05/15/anatomy-of-reducer.html[posts].
+Reducers provide an alternative approach to using <<sequences#,sequences>> to manipulate standard Clojure collections. Sequence functions are typically applied lazily, in order, create intermediate results, and in a single thread. However, many sequence functions (like map and filter) could conceptually be applied in parallel, yielding code that will get faster automatically as machines get more cores. For more details on the rationale for reducers, see the original https://clojure.org/news/2012/05/08/reducers[blog] https://clojure.org/news/2012/05/15/anatomy-of-reducer[posts].
 
 A _reducer_ is the combination of a _reducible collection_ (a collection that knows how to reduce itself) with a _reducing function_ (the "recipe" for what needs to be done during the reduction). The standard sequence operations are replaced with new versions that do not perform the operation but merely transform the reducing function. Execution of the operations is deferred until the final reduction is performed. This removes the intermediate results and lazy evaluation seen with sequences.
 
@@ -27,7 +27,7 @@ If a collection does not support folding, it will fall back to non-parallel redu
 
 == reduce and fold
 
-The *clojure.core.reducers* namespace (aliased here as *r*) provides an alternate http://clojure.github.io/clojure/clojure.core-api.html#clojure.core.reducers/reduce[r/reduce] function.
+The *clojure.core.reducers* namespace (aliased here as *r*) provides an alternate https://clojure.github.io/clojure/clojure.core-api.html#clojure.core.reducers/reduce[r/reduce] function.
 
 [%hardbreaks]
 *(r/reduce f coll)*
@@ -39,16 +39,16 @@ The reducers version differs in that:
 * When init is not provided, f is invoked with no arguments to produce an identity value
 ** _Note: f may be invoked multiple times to provide the identity value_
 
-In general most users will not call r/reduce directly and instead should prefer http://clojure.github.io/clojure/clojure.core-api.html#clojure.core.reducers/fold[r/fold], which implements parallel reduce and combine. However, it may be useful to execute an eager reduce with fewer intermediate results.
+In general most users will not call r/reduce directly and instead should prefer https://clojure.github.io/clojure/clojure.core-api.html#clojure.core.reducers/fold[r/fold], which implements parallel reduce and combine. However, it may be useful to execute an eager reduce with fewer intermediate results.
 
 [%hardbreaks]
 *(r/fold reducef coll)*
 *(r/fold combinef reducef coll)*
-*(r/fold n combinef reducef coll)**
+*(r/fold n combinef reducef coll)*
 
 r/fold takes a reducible collection and partitions it into groups of approximately n (default 512) elements. Each group is reduced using the reducef function. The reducef function will be called with no arguments to produce an identity value _in each partition_. The results of those reductions are then reduced with the combinef (defaults to reducef) function. When called with no arguments, (combinef) must produce its identity element - this will be called multiple times. Operations may be performed in parallel. Results will preserve order.
 
-The following functions (analagous to the sequence versions) create reducers from a reducible or foldable collection: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core.reducers/map[r/map] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core.reducers/mapcat[r/mapcat] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core.reducers/filter[r/filter] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core.reducers/remove[r/remove] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core.reducers/flatten[r/flatten] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core.reducers/take-while[r/take-while] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core.reducers/take[r/take] and http://clojure.github.io/clojure/clojure.core-api.html#clojure.core.reducers/drop[r/drop]. None of these functions actually transforms the source collection. To produce an accumulated result, you must use r/reduce or r/fold. To produce an output collection, use http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/into[clojure.core/into] to choose the collection type or the provided http://clojure.github.io/clojure/clojure.core-api.html#clojure.core.reducers/foldcat[r/foldcat] to produce a collection that is reducible, foldable, seqable, and counted.
+The following functions (analogous to the sequence versions) create reducers from a reducible or foldable collection: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core.reducers/map[r/map] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core.reducers/mapcat[r/mapcat] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core.reducers/filter[r/filter] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core.reducers/remove[r/remove] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core.reducers/flatten[r/flatten] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core.reducers/take-while[r/take-while] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core.reducers/take[r/take] and https://clojure.github.io/clojure/clojure.core-api.html#clojure.core.reducers/drop[r/drop]. None of these functions actually transforms the source collection. To produce an accumulated result, you must use r/reduce or r/fold. To produce an output collection, use https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/into[clojure.core/into] to choose the collection type or the provided https://clojure.github.io/clojure/clojure.core-api.html#clojure.core.reducers/foldcat[r/foldcat] to produce a collection that is reducible, foldable, seqable, and counted.
 
 == Using Reducers
 
@@ -59,12 +59,12 @@ Use fold to sum with +:
 (r/fold + (r/filter even? (r/map inc [1 1 1 2])))
 ;=> 6
 ----
-Use http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/into[into] to produce a final collection:
+Use https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/into[into] to produce a final collection:
 [source,clojure]
 ----
 (into [] (r/filter even? (r/map inc (range 100000))))
 ----
-Or http://clojure.github.io/clojure/clojure.core-api.html#clojure.core.reducers/foldcat[r/foldcat]:
+Or https://clojure.github.io/clojure/clojure.core-api.html#clojure.core.reducers/foldcat[r/foldcat]:
 [source,clojure]
 ----
 (r/foldcat (r/filter even? (r/map inc (range 100000))))

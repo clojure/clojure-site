@@ -17,7 +17,7 @@ Clojure is a functional programming language. It provides the tools to avoid mut
 
 == First-class functions
 
-<<xref/../../reference/special_forms#fn#,fn>> creates a function object. It yields a value like any other - you can store it in a var, pass it to functions etc.
+<<xref/../../reference/special_forms#fn,fn>> creates a function object. It yields a value like any other - you can store it in a var, pass it to functions etc.
 [source,clojure]
 ----
 (def hello (fn [] "Hello world"))
@@ -25,7 +25,7 @@ Clojure is a functional programming language. It provides the tools to avoid mut
 (hello)
 -> "Hello world"
 ----
-http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defn[defn] is a macro that makes defining functions a little simpler.
+https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defn[defn] is a macro that makes defining functions a little simpler.
 Clojure supports arity overloading in a _single_ function object, self-reference, and variable-arity functions using *&*:
 [source,clojure]
 ----
@@ -45,7 +45,7 @@ Clojure supports arity overloading in a _single_ function object, self-reference
 (argcount 1 2 3 4 5)
 -> 5
 ----
-You can create local names for values inside a function using http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/let[let]. The scope of any local names is lexical, so a function created in the scope of local names will close over their values:
+You can create local names for values inside a function using https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/let[let]. The scope of any local names is lexical, so a function created in the scope of local names will close over their values:
 [source,clojure]
 ----
 (defn make-adder [x]
@@ -55,7 +55,7 @@ You can create local names for values inside a function using http://clojure.git
 (add2 4)
 -> 6
 ----
-*Locals created with http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/let[let] are not variables. Once created their values never change!*
+*Locals created with https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/let[let] are not variables. Once created their values never change!*
 
 
 == Immutable Data Structures
@@ -75,7 +75,7 @@ The easiest way to avoid mutating state is to use immutable <<xref/../../referen
     my-list))
 -> ([1 2 3 4 5] {:ricky "lucy", :fred "ethel"} (5 4 3 2 1) [1 2 3 4] {:fred "ethel"} (4 3 2 1))
 ----
-Applications often need to associate attributes and other data about data that is orthogonal to the logical value of the data. Clojure provides direct support for this <<xref/../../reference/metadata#,metadata>>. Symbols, and all of the collections, support a metadata map. It can be accessed with the http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/meta[meta] function. Metadata does _not_ impact equality semantics, nor will metadata be seen in operations on the value of a collection. Metadata can be read, and can be printed.
+Applications often need to associate attributes and other data about data that is orthogonal to the logical value of the data. Clojure provides direct support for this <<xref/../../reference/metadata#,metadata>>. Symbols, and all of the collections, support a metadata map. It can be accessed with the https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/meta[meta] function. Metadata does _not_ impact equality semantics, nor will metadata be seen in operations on the value of a collection. Metadata can be read, and can be printed.
 [source,clojure]
 ----
 (def v [1 2 3])
@@ -111,7 +111,7 @@ Many of the Clojure library functions produce and consume seqs _lazily_:
 (take 15 (cycle [1 2 3 4]))
 -> (1 2 3 4 1 2 3 4 1 2 3 4 1 2 3)
 ----
-You can define your own lazy seq-producing functions using the http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/lazy-seq[lazy-seq] macro, which takes a body of expressions that will be called on demand to produce a list of 0 or more items. Here's a simplified http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/take[take]:
+You can define your own lazy seq-producing functions using the https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/lazy-seq[lazy-seq] macro, which takes a body of expressions that will be called on demand to produce a list of 0 or more items. Here's a simplified https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/take[take]:
 [source,clojure]
 ----
 (defn take [n coll]
@@ -138,4 +138,4 @@ In the absence of mutable local variables, looping and iteration must take a dif
 (my-zipmap [:a :b :c] [1 2 3])
 -> {:b 2, :c 3, :a 1}
 ----
-For situations where mutual recursion is called for, recur can't be used. Instead, http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/trampoline[trampoline] may be a good option.
+For situations where mutual recursion is called for, recur can't be used. Instead, https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/trampoline[trampoline] may be a good option.

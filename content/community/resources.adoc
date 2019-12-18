@@ -9,49 +9,48 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 == Clojure Discussion
 
-* http://groups.google.com/group/clojure[Clojure Google Group]
-* #clojure IRC channel on https://freenode.net[freenode.net]
+* https://ask.clojure.org[Q&A Forum] (official)
+* https://groups.google.com/group/clojure[Clojure Google Group] (official)
 * http://clojurians.net[Clojurians Slack Chat]
-* http://dev.clojure.org/display/community/Clojure+User+Groups[Clojure User Groups]
+* https://clojurians.zulipchat.com[Clojurians Zulip Chat]
+* https://clojureverse.org[Clojureverse]
+* https://clojure.org/community/user_groups[Clojure User Groups]
 * http://planet.clojure.in/[Planet Clojure] blog aggregator
-* http://dev.clojure.org/display/community/Home[Community Wiki]
-* http://dev.clojure.org/display/doc/Home[Documentation Wiki]
-* http://dev.clojure.org/display/design/Home[Design Wiki]
+* #clojure IRC channel on https://freenode.net[freenode.net]
 
 == Tutorials and Learning Materials
 
 Official:
 
-* http://clojure.github.io/clojure/[Clojure API Docs]
-* http://clojure.github.io/[Clojure Contrib Library API Docs]
+* https://clojure.github.io/clojure/[Clojure API Docs]
+* https://clojure.github.io/[Clojure Contrib Library API Docs]
 * <<xref/../../reference/documentation#,Clojure Reference Docs>> - official reference information
 * <<xref/../../api/cheatsheet#,Clojure Cheatsheet>> - helpful categorization of most core functions
 * Source - https://github.com/clojure/clojure[Clojure], https://github.com/clojure/clojurescript[ClojureScript], https://github.com/clojure/clojure-clr[ClojureCLR]
-* Issues - http://dev.clojure.org/jira/browse/CLJ[Clojure], http://dev.clojure.org/jira/browse/CLJS[ClojureScript], http://dev.clojure.org/jira/browse/CLJCLR[ClojureCLR]
+* Issues - https://clojure.atlassian.net/projects/CLJ[Clojure], https://clojure.atlassian.net/projects/CLJS[ClojureScript], https://clojure.atlassian.net/projects/CLJCLR[ClojureCLR]
+* https://archive.clojure.org/design-wiki/display/design/Home.html[Design wiki archive]
 
 Community:
 
-* <<xref/../../community/books#,Books>>
+* <<books#,Books>>
 * http://www.braveclojure.com/[Clojure for the Brave and True] - a beginner book by Daniel Higginbotham
 * http://aphyr.com/posts/301-clojure-from-the-ground-up-welcome[Clojure from the ground up] - a series of intro articles by Kyle Kingsbury
+* https://kimh.github.io/clojure-by-example[Clojure By Example]
 * https://github.com/ClojureBridge/curriculum[ClojureBridge Curriculum]
-* http://grimoire.arrdem.com/[Grimoire] - community combined cheatsheet + examples
-* http://clojuredocs.org[ClojureDocs] - community provided example repository
-* http://crossclj.info/[CrossClj] - library cross-reference
+* https://clojuredocs.org[ClojureDocs] - community provided example repository
 * http://clojure-doc.org/[Clojure Documentation] - community-driven documentation site
 * http://clojurekoans.com/[Clojure Koans] (http://clojurescriptkoans.com/[online])
 * http://www.4clojure.com/[4clojure] - Clojure practice problems
 * http://exercism.io/[exercism.io] - crowd-source code reviews (supports Clojure)
+* https://clojurecademy.com/[Clojurecademy] - interactive Clojure learning
 * https://github.com/bbatsov/clojure-style-guide[Clojure Style Guide]
-* http://planet.clojure.in/[Planet Clojure] - Clojure blog aggregator
 * http://www.clojure-toolbox.com/[Clojure Toolbox] - a categorized index of Clojure libraries
-* http://www.clojureatlas.com/[Clojure Atlas] - visualization of Clojure and the core library
 
 Newsletters
 
-* http://www.clojuregazette.com/[Clojure Gazette]
-* http://reborg.tumblr.com/[Clojure Weekly]
 * http://therepl.net[The REPL]
+* http://insideclojure.org[Inside Clojure] - weekly journals about development of Clojure
+* https://purelyfunctional.tv/newsletter[PurelyFunctional.tv Newsletter]
 
 Videos and presentations:
 
@@ -59,6 +58,16 @@ Videos and presentations:
 * http://www.infoq.com/Clojure/presentations/[InfoQ Clojure Presentations] - from a variety of conferences
 * https://github.com/matthiasn/talk-transcripts[Talk transcripts] - Rich Hickey, David Nolen, Stuart Sierra, and others
 * http://www.parens-of-the-dead.com/[Parens of the Dead] - a screencast series writing a game from scratch with Clojure and ClojureScript
+
+Podcasts:
+
+* https://soundcloud.com/defn-771544745[defn] - The world's greatest vegetarian Clojure podcast hosted by Vijay Kiran and Ray McDermott
+* https://www.therepl.net/episodes/[The REPL] - A podcast diving into Clojure programs and libraries by Daniel Compton
+* https://clojurescriptpodcast.com/[ClojureScript Podcast] - Join Jacek Schae and explore an unusually expressive programming language with Lisp roots
+* https://lispcast.com/category/podcast/[Thoughts on Functional Programming by Eric Normand] - An off-the-cuff stream of Functional Programming ideas, skills, patterns, and news from Functional Programming expert Eric Normand
+* https://clojuredesign.club/[Functional Design in Clojure] - Christoph and Nate discuss software design problems and how they might be solved using functional principles and the Clojure programming language.
+* http://blog.cognitect.com/cognicast[Audio - Cognitect Blog] - A podcast by Cognitect, Inc. about software and the people that create it
+* https://anchor.fm/dosync-radio[(dosync radio)] - A podcast to discuss Clojure matters in Japanese.
 
 Video training (commercial):
 
@@ -69,30 +78,36 @@ Video training (commercial):
 * http://www.infiniteskills.com/training/building-microservices-with-clojure.html[Building Microservices with Clojure] - Scott Rehorn (O'Reilly)
 * http://www.infiniteskills.com/training/learning-clojure.html[Learning Clojure] - Adam Bard
 * http://www.infiniteskills.com/training/learning-clojurescript.html[Learning ClojureScript] - David Eisenberg
-* http://www.lynda.com/Clojure-tutorials/Up-Running-Clojure/413127-2.html[Up and Running with Clojure] - Arthur Ulfeldt
 * https://www.pluralsight.com/courses/clojure-fundamentals-part-one[Clojure Fundamentals] - Alan Dipert (PluralSight)
 * https://www.pluralsight.com/courses/clojure-concurrency-tutorial[Clojure Concurrency] - Craig Andera (PluralSight)
 * https://www.packtpub.com/web-development/building-web-applications-clojure-video[Building Web Applications with Clojure] - Tomek Lipski (Packt)
+* https://lambdaisland.com/[Lambda Island] - Screencast series about ClojureScript and Clojure
+* https://www.learnreagent.com/[Learn Reagent] - Jacek Schae
+* https://www.learnreframe.com/[Learn re-frame] - Jacek Schae
 
 == Clojure Tools
 
-Community volunteers maintain http://dev.clojure.org/display/doc/getting+started[Getting Started] documentation for a number of different tools and approaches. Some of the most commonly used tools include:
+Community volunteers maintain <<xref/../../guides/getting_started#,Getting Started>> documentation for a number of different tools and approaches. Some of the most commonly used tools include:
 
-* http://leiningen.org/[Leiningen] - an extensible build tool that provides dependency management, REPL support, testing, packaging, deployment, and many other capabilities.
+* https://leiningen.org/[Leiningen] - an extensible build tool that provides dependency management, REPL support, testing, packaging, deployment, and many other capabilities.
 * http://boot-clj.com/[Boot] - build tooling for Clojure: instead of a special-purpose DSL, Boot supplies abstractions and libraries you can use to automate nearly any build scenario with the full power of the Clojure language
 * http://www.gnu.org/software/emacs/[Emacs] with https://github.com/clojure-emacs/cider[CIDER]
 * http://www.vim.org/[Vim] with https://github.com/tpope/vim-fireplace[Fireplace]
-* http://doc.ccw-ide.org/[Eclipse Counterclockwise]
 * IntelliJ https://cursiveclojure.com/[Cursive]
 * https://sekao.net/nightcode/[Nightcode]
 * http://www.lighttable.com/[Light Table]
 * http://www.sublimetext.com/[Sublime Text] with https://github.com/wuub/SublimeREPL[SublimeREPL]
 * https://atom.io[Atom] with https://atom.io/packages/nrepl[nrepl]
+* https://code.visualstudio.com[Visual Studio Code] with https://github.com/avli/clojureVSCode[clojureVSCode]
+* http://doc.ccw-ide.org/[Eclipse Counterclockwise] (inactive)
 
 == Conferences
 
 * http://clojure-conj.org/[Clojure/conj] (usually in November)
-* http://www.clojurewest.org/[Clojure/west] (usually in March)
-* http://euroclojure.com[EuroClojure] (usually mid-year)
 * http://www.clojurebridge.org/[ClojureBridge] - beginner workshops for women
-* http://lanyrd.com/search/?context=future&q=clojure&type=conference[Clojure events]
+* https://clojutre.org[ClojuTRE] - A Clojure conference in Tampere/Helsinki, Finland
+* https://skillsmatter.com/conferences/10459-clojure-exchange-2018[Clojure eXchange] - A Clojure conference in London, UK
+* https://clojured.de/[clojureD] - A Clojure conference in Berlin, Germany
+* https://heartofclojure.eu/[Heart of Clojure] - A Clojure conference in Leuven, Belgium
+* https://clojuredays.org/[Dutch Clojure Days] - A Clojure conference in Amsterdam, the Netherlands
+* https://clojure-south.com/[Clojure/South] - A Clojure conference in Sao Paulo, Brazil

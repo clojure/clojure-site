@@ -1,0 +1,172 @@
+= Reducers - A Library and Model for Collection Processing
+Rich Hickey
+2012-05-08
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+I'm happy to have https://github.com/clojure/clojure/commit/89e5dce0fdfec4bc09fa956512af08d8b14004f6[pushed] today the beginnings of a new Clojure library for higher-order manipulation of collections, based upon _reduce_ and _fold_. Of course, Clojure already has Lisp's _reduce_, which corresponds to the traditional _foldl_ of functional programming. _reduce_ is based upon sequences, as are many of the core functions of Clojure, like _map_, _filter_ etc. So, what could be better? It's a long story, so I'll give you the ending first:
+
+* There is a new namespace: clojure.core.reducers
+* It contains new versions of `map`, `filter` etc based upon transforming reducing functions - reducers
+* It contains a new function, `fold`, which is a parallel reduce+combine
+* `fold` uses fork/join when working with (the existing!) Clojure vectors and maps
+* Your new parallel code has exactly the same shape as your existing seq-based code
+* The reducers are composable
+* Reducer implementations are primarily functional - no iterators
+* The model uses regular data structures, not 'parallel collections' or other OO malarkey
+* It's fast, and can become faster still
+* This is work-in-progress
+
+== Basics
+
+The story starts best at the bottom.
+
+Clojure and other functional languages have a function called _map_ that takes a function and a collection/list.
+
+* What does it mean to map a function on a collection?
+* What are the common signatures?
+* Do they http://www.infoq.com/presentations/Simple-Made-Easy[complect] what to do with how to do it?
+
+The classic recursive functional definition of _map_ is to apply _f_ to the first thing in the collection, then _cons_ the result onto the result of mapping _f_ on the _rest_ of the collection. This definition includes plenty of 'how':
+
+* How: mechanism - recursion
+* How: order - sequentially
+* How: laziness - (often) lazily
+* How: representation - making a list/seq, or other concrete collection
+
+Newer OO frameworks will often remove some of these problems by having map be a function of `fn * Coll -> Coll` for any type of Coll, removing the sequentiality but also losing the laziness, and they still specify a concrete collection result.
+
+Semantically, and minimally, _map_ means "apply-to-all" e.g. `(map inc coll)` means give me a (logical) collection where every item is one greater than it was in _coll_. But, _map_ doesn't know how to navigate around every collection - the use of seqs/lists/iterators/streams etc forces a shared known representation. Nor does `inc` (or any function) know how to apply itself to every collection representation, else we could just say `(inc coll)`.
+
+The only thing that knows how to apply a function to a collection is the collection itself.
+
+What is the generic gateway to a collection applying things to itself? In Clojure, it is (internal) _reduce_.
+
+We now have a new super-generalized and minimal abstraction for collections - a collection is some set of things that, when given a function to apply to its contents, can do so and give you the result, i.e. __a collection is (at minimum) **reducible**__. In other words, you can call _reduce_ on it.
+
+Thus, `core.reducers/map` is a function of `fn * reducible -> reducible`. (Whereas `core/map` is a function of `fn * seqable -> seqable`.)
+
+Now, how? If someone is going to ask the result of `(map inc coll)` to reduce itself with some function _f_, _map_ must ultimately ask _coll_ to do the job. Rather than pass __coll f__, _map_ passes _coll_ a new, transformed, reducing function that takes what _coll_ supplies, calls `inc` on it, and then calls _f_ on that.
+
+[source,clojure]
+----
+(reduce + (r/map inc [1 2 3])) === (reduce (fn [ret x] (+ ret (inc x))) (+) [1 2 3])
+----
+  
+i.e. the core work of __map f__ looks like this:
+
+[source,clojure]
+----
+(fn [f1]
+  (fn [ret v]
+    (f1 ret (f v))))
+----
+  
+It takes a reducing function f1, and returns a new reducing function that calls f1 after applying f to its input.
+
+Thus you can define _map_ as a function of `fn * reducible -> reducible` by merely transforming the reducing function. Mapping is semantically a function of the function of __**one step**__ of a reduction. This transformation is decomplected from both representation and order. We call functions such as this _map_, that take a reducible, and in turn return something reducible via transformation of the reducing function, reducers.
+
+Now let's revisit the hows above...
+
+* How: mechanism - functional transformation of reducing function
+* How: order - doesn't know
+* How: laziness - doesn't know
+* How: representation - doesn't build anything
+
+It is important to note that now, when `(map f coll)` is called nothing happens except the creation of a recipe for a new collection, a recipe that is itself reducible. No work is done yet to the contained elements and no concrete collection is produced.
+
+The beautiful thing is that this 'transformation of reducing function' mechanism also works for many of the traditional seq functions, like _filter_, _take_, _flatten_ etc. Note the fact that _filter_ is (potentially) contractive, and _flatten_ is (potentially) expansive per step - the mechanism is general and not limited to 1:1 transformations. And other reducer definitions are as pretty as map's - none of the imperativeness of iterators, or generators with yield.
+
+== Ok, So Where's My Cake?
+
+If map doesn't do the work of mapping, but merely creates a recipe, when does the work get done? When you reduce its result:
+
+[source,clojure]
+----  
+(require '[clojure.core.reducers :as r])
+(reduce + (r/filter even? (r/map inc [1 1 1 2])))
+;=> 6
+----
+  
+That should look familiar - it's the same named functions, applied in the same order, with the same arguments, producing the same result as the Clojure's seq-based fns. The difference is that, reduce being eager, and these reducers fns being out of the seq game, there's no per-step allocation overhead, so it's faster. Laziness is great when you need it, but when you don't you shouldn't have to pay for it.
+
+The reducer fns are curried, and they can be easily composed:
+
+[source,clojure]
+----  
+;;red is a reducer awaiting a collection
+(def red (comp (r/filter even?) (r/map inc)))
+(reduce + (red [1 1 1 2]))
+;=> 6
+----
+  
+Thus reduction 'recipes' (reducers) are first class.
+
+What if we _want_ a collection result? It's good to know that into uses reduce:
+
+[source,clojure]
+---- 
+(into [] (r/filter even? (r/map inc [1 1 1 2])))
+;=> [2 2 2]
+----  
+
+Note there are no intermediate collections produced.
+
+And, of course, you don't always want a result of the same collection type:
+
+[source,clojure]
+----  
+(into #{} (r/filter even? (r/map inc [1 1 1 2])))
+;=> #{2}
+----
+  
+== Simplicity is Opportunity
+
+Decomplecting the core operations from representation and laziness has given us some speed, but what about the elimination of order? It should open the door to parallelism, but we are stuck with the semantics of _reduce_ being _foldl_, i.e. it uses an accumulator and is http://vimeo.com/6624203[fundamentally serial]. We can parallelize reduction by using independent sub-reductions and combining their results, and the library defines a function that does just that: __**fold**__.
+
+The primary signature of fold takes a combining function, a reducing function, and a collection and returns the result of combining the results of reducing subsegments of the collection, potentially in parallel. Obviously if the work is to occur in parallel, the functions must be associative, but they need not be commutative - _fold_ preserves order. Note that there is no initial 'seed' or 'accumulator' value, as there may be with reduce and foldl. But, since the subsegments are themselves reduced (with _reduce_), it raises the question as to what supplies the seed values for those reductions?
+
+The combining function (an associative binary fn) must have some 'identity' value, a value that, when combined with some X, yields X. 0 is an identity value for +, as is 1 for *. The combining fn must supply an identity value when called with no arguments (as do + and *). It will be called with no arguments to supply a seed for each leaf reduction. There is a fn (called _monoid_, shh!) to help you build such combining functions.
+
+If no combining fn is supplied, the reducing fn is used. Simple folds look like reduces:
+
+[source,clojure]
+----  
+(r/fold + [1 2 3 4])
+;=> 10
+----
+  
+But by promising less (i.e. not promising stepwise reduction from left or right) _fold_ can do more - run in parallel. It does this when the collection is amenable to parallel subdivision. Ideal candidates are data structures built from trees. Clojure vectors and maps are trees, and have parallel implementations of _fold_ based upon the https://docs.oracle.com/javase/tutorial/essential/concurrency/forkjoin.html[ForkJoin framework].
+
+What if the underlying collection is not amenable (e.g. is a sequence)? _fold_ just devolves into _reduce_, producing the same semantic, if not physical, result.
+
+There's a tremendous amount you can accomplish with this reduce+combine strategy, especially when you consider that the map, filter etc reducers will not constitute independent layers of parallel jobs - they just transform the reducing fn working on the leaves.
+
+You can have a look at the `cat` function included in the library for an interesting example of a combining fn. cat quickly gathers up the fold results, forming a binary tree with the reductions as leaves. It returns a highly abstract, yet now quite useful 'collection' that is just counted, reducible, foldable and seqable.
+
+Oh yeah, perf. Don't be surprised to see things become 2-3X faster, or more with more cores.
+
+== More Opportunity (i.e. Work)
+
+As much fun as this is, there's still more fun to be had by those so inclined:
+
+* There are more seq fns that could become reducer fns
+* Given multiple iterable sources, we should be able to build a multi-reducible, recovering the multi-input capabilities of map.
+* Arrays, arraylists, strings etc are all amenable to parallel fold.
+** fork/join-based vector fold is 14 lines, so these are not difficult.
+* Those IFn.LLL, DDD etc primitive-taking function interfaces can now spring to life.
+** We should be able to build primitive-transmitting reducer function pipelines.
+** We'd then need to look for and use them in the reductions of arrays and vectors of primitives
+* Internal reduce solves the lazily dangling open resource problem, a problem solved similarly by http://www.haskell.org/haskellwiki/Enumerator_and_iteratee[Haskell's enumerators and iteratees]. (Note that unlike iteratees, reducers do not allocate wrappers per step)
+** We need reducible I/O sources.
+
+== Summary
+
+By adopting an alternative view of collections as reducible, rather than seqable things, we can get a complementary set of fundamental operations that tradeoff laziness for parallelism, while retaining the same high-level, functional programming model. Because the two models retain the same shape, we can easily choose whichever is appropriate for the task at hand.
+
+== Follow Up
+
+See the follow up <<xref/../../../05/15/anatomy-of-reducer#,blog post>> for more details about what constitutes a reducer, as well as some background about the library.
+
+Rich

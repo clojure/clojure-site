@@ -33,9 +33,9 @@ There are several motivations for protocols:
 [NOTE]
 Protocols were introduced in Clojure 1.2.
 
-== Basics
+=== Basics
 
-A protocol is a named set of named methods and their signatures, defined using http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defprotocol[defprotocol]:
+A protocol is a named set of named methods and their signatures, defined using https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defprotocol[defprotocol]:
 
 [source,clojure]
 ----
@@ -52,9 +52,9 @@ A protocol is a named set of named methods and their signatures, defined using h
 * The resulting functions dispatch on the type of their first argument, and thus must have at least one argument
 * defprotocol is dynamic, and does not require AOT compilation
 
-http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defprotocol[defprotocol] will automatically generate a corresponding interface, with the same name as the protocol, i.e. given a protocol my.ns/Protocol, an interface my.ns.Protocol. The interface will have methods corresponding to the protocol functions, and the protocol will automatically work with instances of the interface.
+https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defprotocol[defprotocol] will automatically generate a corresponding interface, with the same name as the protocol, e.g. given a protocol my.ns/Protocol, an interface my.ns.Protocol. The interface will have methods corresponding to the protocol functions, and the protocol will automatically work with instances of the interface.
 
-Note that you do not need to use this interface with http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/deftype[deftype] , http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defrecord[defrecord] , or http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/reify[reify], as they support protocols directly:
+Note that you do not need to use this interface with https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/deftype[deftype] , https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defrecord[defrecord] , or https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/reify[reify], as they support protocols directly:
 
 [source,clojure]
 ----
@@ -83,7 +83,7 @@ Note that you do not need to use this interface with http://clojure.github.io/cl
 
 A Java client looking to participate in the protocol can do so most efficiently by implementing the protocol-generated interface.
 
-External implementations of the protocol (which are needed when you want a class or type not in your control to participate in the protocol) can be provided using the http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/extend[extend] construct:
+External implementations of the protocol (which are needed when you want a class or type not in your control to participate in the protocol) can be provided using the https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/extend[extend] construct:
 
 [source,clojure]
 ----
@@ -111,9 +111,9 @@ extend takes a type/class (or interface, see below), a one or more protocol + fu
 * You can implement a protocol on _**nil**_
 * To define a default implementation of protocol (for other than nil) just use Object
 
-Protocols are fully reified and support reflective capabilities via http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/extends%3F[extends?] , http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/extenders[extenders] , and http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/satisfies%3F[satisfies?] .
+Protocols are fully reified and support reflective capabilities via https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/extends%3F[extends?] , https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/extenders[extenders] , and https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/satisfies%3F[satisfies?] .
 
-* Note the convenience macros http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/extend-type[extend-type] , and http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/extend-protocol[extend-protocol]
+* Note the convenience macros https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/extend-type[extend-type] , and https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/extend-protocol[extend-protocol]
 * If you are providing external definitions inline, these will be more convenient than using *extend* directly
 
 [source,clojure]
@@ -133,4 +133,35 @@ Protocols are fully reified and support reflective capabilities via http://cloju
   Foo
    {:baz (fn ([x] ...) ([x y zs] ...))
     :bar (fn [x y] ...)})
+----
+
+=== Guidelines for extension
+
+Protocols are an open system, extensible to any type. To minimize conflicts, consider these guidelines:
+
+* If you don’t own the protocol or the target type, you should only extend in app (not public lib) code, and expect to maybe be broken by either owner.
+* If you own the protocol you get to provide some base versions for common targets as part of the package, subject to the dictatorial nature of doing so.
+* If you are shipping a lib of potential targets you can provide implementations of common protocols for them, subject to the fact that you are dictating. You should take particular care when extending protocols included with Clojure itself.
+* If you are a library developer, you should not extend if you own neither the protocol nor the target
+
+Also see this https://groups.google.com/d/msg/clojure/vyX5-F3NiVg/Ti1apkxDFl0J[mailing list discussion].
+
+=== Extend via metadata
+
+As of Clojure 1.10, protocols can optionally elect to be extended via per-value metadata:
+
+[source,clojure]
+----
+(defprotocol Component
+  :extend-via-metadata true
+  (start [component]))
+----
+
+When :extend-via-metadata is true, values can extend protocols by adding metadata where keys are fully-qualified protocol function symbols and values are function implementations. Protocol implementations are checked first for direct definitions (defrecord, deftype, reify), then metadata definitions, then external extensions (extend, extend-type, extend-protocol).
+
+[source,clojure]
+----
+(def component (with-meta {:name "db"} {`start (constantly "started")}))
+(start component)
+;;=> "started"
 ----

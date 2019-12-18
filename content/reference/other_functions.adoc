@@ -16,38 +16,38 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 toc::[]
 
 [%hardbreaks]
-Boolean and comparison functions: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/=[=] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/==[==] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/identical?[identical?] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/not=[not=] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/not[not] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/true?[true?] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/false?[false?] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/nil?[nil?]
-Miscellaneous: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/identity[identity] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/dotimes[dotimes] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/time[time] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/assert[assert] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/with-open[with-open]
+Boolean and comparison functions: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/=[=] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/==[==] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/identical?[identical?] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/not=[not=] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/not[not] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/true?[true?] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/false?[false?] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/nil?[nil?]
+Miscellaneous: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/identity[identity] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/dotimes[dotimes] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/time[time] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/assert[assert] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/with-open[with-open]
 
 [[creating-functions]]
 == Creating functions
 
-[cols="<*,", options="header", role="table"]
+[cols="<*", options="header", role="table"]
 |===
 | Function | Example expression | Return value |
-| <<special_forms#fn#,fn>> | `(map (fn [x] (+ 2 x)) [1 2 3])` | `(3 4 5)` |
+| <<special_forms#fn,fn>> | `(map (fn [x] (+ 2 x)) [1 2 3])` | `(3 4 5)` |
 | pass:[#()] <<reader#,reader>> macro | `(map #(+ 2 %) [1 2 3])` | `(3 4 5)` |
-| http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/partial[partial] | `(map (partial + 2) [1 2 3])` | `(3 4 5)` |
-| http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/comp[comp] | `(map (comp - *) [2 4 6] [1 2 3])` | `(-2 -8 -18)` |
-| http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/complement[complement] | `(map (complement zero?) [3 2 1 0])` | `(true true true false)` |
-| http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/constantly[constantly] | `(map (constantly 9) [1 2 3])` | `(9 9 9)` |
+| https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/partial[partial] | `(map (partial + 2) [1 2 3])` | `(3 4 5)` |
+| https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/comp[comp] | `(map (comp - *) [2 4 6] [1 2 3])` | `(-2 -8 -18)` |
+| https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/complement[complement] | `(map (complement zero?) [3 2 1 0])` | `(true true true false)` |
+| https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/constantly[constantly] | `(map (constantly 9) [1 2 3])` | `(9 9 9)` |
 |===
 
 [[printing]]
 == Printing
 
-Several functions are provided to print objects to the output stream that is the current value of `pass:[*out*]`. The -str versions bind `pass:[*out*]` to a StringWriter, print to that, and return the resulting string. http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/pr[pr] prints the object(s), separated by spaces if there is more than one. http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/prn[prn] does the same and follows it with a http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/newline[newline]. http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/print[print] and http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/println[println] call http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/pr[pr] and http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/prn[prn] respectively, with `pass:[*print-readably*]` (which defaults to true) bound to nil, which causes strings to print without surrounding quotes or any escape character encoding, and characters to print without the leading '\', or any escape character encoding. By default, http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/pr[pr] and http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/prn[prn] print in a way that objects can be read by the reader, while http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/print[print] and http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/println[println] produce output for human consumption. When `pass:[*print-readably*]` is non-nil, the printing of metadata is toggled by `pass:[*print-meta*]`, which defaults to nil.
+Several functions are provided to print objects to the output stream that is the current value of `pass:[*out*]`. The -str versions bind `pass:[*out*]` to a StringWriter, print to that, and return the resulting string. https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/pr[pr] prints the object(s), separated by spaces if there is more than one. https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/prn[prn] does the same and follows it with a https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/newline[newline]. https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/print[print] and https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/println[println] call https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/pr[pr] and https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/prn[prn] respectively, with `pass:[*print-readably*]` (which defaults to true) bound to nil, which causes strings to print without surrounding quotes or any escape character encoding, and characters to print without the leading '\', or any escape character encoding. By default, https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/pr[pr] and https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/prn[prn] print in a way that objects can be read by the reader, while https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/print[print] and https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/println[println] produce output for human consumption. When `pass:[*print-readably*]` is non-nil, the printing of metadata is toggled by `pass:[*print-meta*]`, which defaults to nil.
 
 === Related functions
 
 [%hardbreaks]
-Print to `pass:[*out*]`: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/pr[pr] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/prn[prn] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/print[print] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/println[println] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/newline[newline]
-Print to string: http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/pr-str[pr-str] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/prn-str[prn-str] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/print-str[print-str] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/println-str[println-str] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/with-out-str[with-out-str]
+Print to `pass:[*out*]`: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/pr[pr] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/prn[prn] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/print[print] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/println[println] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/newline[newline]
+Print to string: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/pr-str[pr-str] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/prn-str[prn-str] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/print-str[print-str] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/println-str[println-str] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/with-out-str[with-out-str]
 
 [[regex]]
 == Regex Support
 
-Regex patterns can be compiled at read-time via the `#"pattern"` reader macro, or at run time with http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/re-pattern[re-pattern]. Both forms produce http://java.sun.com/j2se/1.5.0/docs/api/java/util/regex/Pattern.html[java.util.regex.Pattern] objects.
+Regex patterns can be compiled at read-time via the `#"pattern"` reader macro, or at run time with https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/re-pattern[re-pattern]. Both forms produce https://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html[java.util.regex.Pattern] objects.
 
 [source,clojure-repl]
 ----
@@ -63,4 +63,4 @@ user=> (re-seq #"(?i)[fq].." "foo bar BAZ QUX quux")
 ----
 
 === Related functions
-http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/re-matcher[re-matcher] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/re-find[re-find] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/re-matches[re-matches] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/re-groups[re-groups] http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/re-seq[re-seq]
+https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/re-matcher[re-matcher] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/re-find[re-find] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/re-matches[re-matches] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/re-groups[re-groups] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/re-seq[re-seq]

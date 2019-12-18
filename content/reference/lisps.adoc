@@ -7,6 +7,8 @@ Rich Hickey
 :navlinktext: Differences with Lisps
 :prevpagehref: other_libraries
 :prevpagetitle: Other Libraries
+:nextpagehref: deps_and_cli
+:nextpagetitle: Deps and CLI
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
@@ -33,7 +35,7 @@ This information is provided for programmers familiar with Common Lisp or Scheme
 * lambda is _**fn**_, and supports overloading by arity
 * _**pass:[=]**_ is the equality predicate
 * Global Vars can be dynamically rebound (if declared dynamic) without interfering with lexical local bindings. No special declarations are necessary to distinguish between dynamic and lexical bindings. Since Clojure is a Lisp-1, (global) functions can be dynamically rebound (if they are marked as dynamic).
-* No letrec, labels or flet - use (fn name [args]...) for self-reference, http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/letfn[letfn] for mutual reference.
+* No letrec, labels or flet - use (fn name [args]...) for self-reference, https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/letfn[letfn] for mutual reference.
 * In Clojure _**nil**_ means 'nothing'. It signifies the absence of a value, of any type, and is not specific to lists or sequences.
 * Empty collections are distinct from _**nil**_. Clojure does not equate _**nil**_ and '().
 * _**false**_ means one of the two possible boolean values, the other being _**true**_
@@ -43,7 +45,7 @@ This information is provided for programmers familiar with Common Lisp or Scheme
 * Some of the sequence functions correspond to functions from Scheme and CL that there manipulated only pairs/conses ('lists') and returned sentinel values ('() and nil) that represented 'empty' lists. The Clojure return values differ in not returning specific empty collections, but rather another logical sequence. Some of the sequence functions have no counterpart in Scheme/CL, and map to Haskell/ML-like functions. Some of those functions return infinite or calculated sequences, where the analogy to concrete data-structures like Scheme/CL lists is tenuous at best.
 * It helps to distinguish collections/data-structures and seqs/iteration. In both CL and Scheme they are conflated, in Clojure they are separate.
 
-[cols="<*,", options="header", role="table"]
+[cols="<*", options="header", role="table"]
 |===
 |   | Clojure | Common Lisp | Scheme | Java |
 | Has nil? | nil - means 'nothing' | nil - means false or empty list | - | null |

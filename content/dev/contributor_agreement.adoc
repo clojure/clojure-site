@@ -1,0 +1,190 @@
+= Contributor Agreement
+Rich Hickey
+2016-01-15
+:type: dev
+:toc: macro
+:icons: font
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Following the lead of other open source projects, the Clojure project requires contributors to jointly assign their copyright on contributed code. The https://secure.na1.echosign.com/public/hostedForm?formid=95YMDL576B336E[Contributor Agreement] (CA) gives Rich Hickey and the contributor joint copyright interests in the code: the contributor retains copyrights while also granting those rights to Rich Hickey as the open source project sponsor.
+
+The CA is derived from the Oracle Contributor Agreement (OCA), used for OpenJDK, Netbeans and OpenSolaris projects and others. There is a good http://www.oracle.com/technetwork/oca-faq-405384.pdf[OCA FAQ] answering many questions.
+
+The CA does not change the rights or responsibilities of the Clojure community under the http://opensource.org/licenses/eclipse-1.0.php[Eclipse Public License (EPL)]. By executing the CA, contributors protect the Clojure code base, enable alternative licensing models, and protect the flexibility to adapt the project to the changing demands of the community. In order for the CA to be effective, the Clojure project must obtain an assignment for all contributions. Please review the CA for a complete understanding of its terms and conditions. By contributing source code or other material to Clojure, you represent that you have a CA with Rich Hickey for such contributions. In order to track contributors, you understand that your full name and username may be posted on a web page listing authorized contributors that is accessible via a public URL.
+
+== Instructions for submitting the agreement
+
+* Fill out and submit the https://secure.na1.echosign.com/public/hostedForm?formid=95YMDL576B336E[Contributor Agreement] (an online e-form)
+
+[[contributors]]
+== Contributors
+
+See the full <<contributors#,list of contributors>> that have signed the Clojure Contributor Agreement.
+
+[[patches]]
+== Contributed patches to Clojure:
+
+* Aaron Bedra
+* Aaron Cohen
+* Achim Passen
+* Adam Clements
+* Alan Dipert
+* Alan Malloy
+* Alexander Yakushev
+* Alex Miller
+* Alex Osborne
+* Alex Ott
+* Alex Redington
+* Alexander Kiel
+* Alexander Taggart
+* Alexander Yakushev
+* Alf Kristian Stoyle
+* Allen Rohner
+* Ambrose Bonnaire-Sergeant
+* Andrei Kleschinski
+* Andrew Rosa
+* Andy Fingerhut
+* Andy Sheldon
+* Anthony Grimes
+* Aspasia Beneti
+* Baishampayan Ghose
+* Ben Bader
+* Ben Smith-Mannschott
+* Benjamin Teuber
+* Blake West
+* Bozhidar Batsov
+* Brandon Bloom
+* Brenton Ashworth
+* Brian Hurt
+* Brian Taylor
+* Bruce Adams
+* Cameron Desautels
+* Cezary Kosko
+* Chad Taylor
+* Chas Emerick
+* Chris Gray
+* Chris Houser
+* Chris Perkins
+* Christoffer Sawicki
+* Christophe Grand
+* Christopher Redinger
+* Clinton R. Nixon
+* Colin Jones
+* Cosmin Stejerean
+* Daniel Compton
+* Daniel Solano Gómez
+* David Bürgin
+* David Liebke
+* David McNeil
+* David Miller
+* David Powell
+* David Rupp
+* David Santiago
+* Devender Gollapally
+* Devin Walters
+* Dimitry Gashinsky
+* Drew Raines
+* Ed Bowler
+* Eli Lindsey
+* Eric Schoonover
+* Erik Assum
+* Eugene Kostenko
+* Federico Brubacher
+* Frantisek Sodomka
+* Gabriel Horner
+* Gary Fredericks
+* George Jahad
+* Gerrit Jansen Van Vuuren
+* Ghadi Shayban
+* Gijs Stuurman
+* Gordon Syme
+* Greg Leppert
+* Herwig Hochleitner
+* Howard Lewis Ship
+* Hubert Iwaniuk
+* Hugo Duncan
+* Immo Heikkinen
+* James Reeves
+* Jarkko Oranen
+* Jason Wolfe
+* Jason Whitlark
+* Jean Niklas L'orange
+* Jeremy Heiler
+* Joe Gallo
+* Johan Mena
+* John Szakmeister
+* Jonas Enlund
+* Jozef Wagner
+* Juha Arpiainen
+* Justin Balthrop
+* Justin Kramer
+* Karsten Schmidt
+* Kevin Downey
+* Konrad Hinsen
+* Kurt Harriger
+* Kwang Yul Seo
+* Laurent Petit
+* Lauri Pesonen
+* Lee Yen-Chin
+* Luke VanderHart
+* Mark Simpson
+* Matt Revelle
+* Matthew Boston
+* Matthew Gilliard
+* Max Penet
+* Meikel Brandmeyer
+* Micah Martin
+* Michael Blume
+* Michael Fogus
+* Michał Marczyk
+* Michel Alexandre Salim
+* Mike Anderson
+* Mike Hinchey
+* Nahuel Greco
+* Nicola Mometto
+* Nicolas Buduroi
+* Nikita Prokopov
+* Nola Stowe
+* Paul M Bauer
+* Paul Stadig
+* Pepijn de Vos
+* Phil Hagelberg
+* Philip Aston
+* Philip Potter
+* Ragnar Dahlén
+* Ralf Schmitt
+* Rasmus Svensson
+* Rich Hickey
+* Richard Newman
+* Robert Lachlan
+* Ruslan Al-Fakikh
+* Russ Olsen
+* Scott Lowe
+* Sean Corfield
+* Sean Devlin
+* Sebastien Martel
+* Shogo Ohta
+* Stefan Kamphausen
+* Steffen Dienst
+* Stephen C. Gilardi
+* Steve Miner
+* Steven Yi
+* Stuart Halloway
+* Stuart Sierra
+* Tassilo Horn
+* Tim Dysinger
+* Tim McCormack
+* Timothy Baldridge
+* Timothy Pratley
+* Toby Crawley
+* Tom Faulhaber
+* Tomasz Nurkiewicz
+* Tsutomu Yano
+* Vipul Amler
+* Yanxiang Lou
+* Yegor Timoshenko
+* Zach Tellman
+* Zhuang XiaoDan
+
+_**Many thanks for your contributions to Clojure!**_

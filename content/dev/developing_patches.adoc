@@ -1,0 +1,268 @@
+= Developing Patches
+Alex Miller
+2018-12-05
+:type: dev
+:toc: macro
+:icons: font
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+If you're interested in supplying patches or contributing to Clojure, please see the <<dev#,development overview>>.
+
+== Before You Code
+
+If you consider the following items before you begin coding, you will produce a patch that is easier to assess and more likely to be accepted:
+
+* What problem are you trying to solve?  Prior to any patch you should have a problem statement, and it should be included in the description of the patch.
+* What is your solution approach?  Please make this clear in the description, so that it does not have to be inferred from the code.
+* Have you vetted your idea with the community?  Please discuss in Slack or mailing list with members of the core team if you can. (Not necessary for everything, like typos.)
+* Make a table of considered alternatives, and their tradeoffs. Describe why the chosen solution is the best choice.
+* How will you prove to others your patch works?  Plan to include tests. Example-based tests are ok, but generative tests are preferred.
+* Document the changes in the patch in the ticket. Anything that can help a screener understand what changes you made and why will make their job easier.
+* Don't do too much! Submit small patches that address specific problems, don't add anything extra, even (especially!) "cleanup" of nearby code. This only serves to confuse the intent of the patch.
+
+== While Your Patch is Being Considered
+
+* Keep the description up-to-date as comments come in. It is very time-consuming to reconstruct the current state of a ticket by reading the comment thread.
+* Rally support. Votes are good, and comments from other users reviewing the ticket are even better.
+* As tickets grow, make sure you document clearly which patch(es) are active.  Don't do this by deleting old patches, just refer to patches by name in the comments.
+
+== Coding
+
+Once you're ready to craft your code, the first thing you'll need is a clone of the Clojure or appropriate repository. The examples below are for the Clojure project -- for submissions to Clojure itself:
+
+[source,shell]
+----
+$ git clone git://github.com/clojure/clojure.git
+$ cd clojure
+----
+
+Next, create a new branch for yourself:
+
+[source,shell]
+----
+$ git checkout -b fixbug42
+Switched to a new branch "fixbug42"
+----
+
+Now you're ready to get hacking. Before you start working, make sure all existing regression tests still pass e.g. For Clojure, use Maven:
+
+[source,shell]
+----
+$ mvn clean test
+...lots of output...
+test:
+[INFO] Executed tasks
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 01:26 min
+[INFO] Finished at: 2018-12-05T14:36:54-06:00
+[INFO] ------------------------------------------------------------------------
+----
+
+Once you've finished making your changes you need to commit them. Please use a commit message that begins with the JIRA number (CLJ-xyz)!
+
+[source,shell]
+----
+$ git commit -a -m "CLJ-932 fixed annoying bug"
+Created commit 8f7c712: fixed annoying bug
+1 files changed, 0 insertions(+), 1 deletions(-)
+----
+
+Now that you've made your changes it's time to get them into a patch. You need to update the repo and fix any conflicts you had.
+
+[source,shell]
+----
+$ git checkout master
+Switched to branch "master"
+$ git pull
+...
+$ git checkout fixbug42
+Switched to branch "fixbug42"
+$ git rebase master
+----
+
+Once you've fixed any conflicts, you're ready to create a patch:
+
+[source,shell]
+----
+$ git format-patch master --stdout -U8 > clj-932-1.patch
+----
+
+== Adding patches
+
+Now you can attach that patch file to the JIRA ticket.  In the More Actions menu near the top of the page, select Attach Files.  Please read and follow the recommendations below when writing comments about your attached patch.  Screeners have limited time available for screening.  You are more likely to get your patch approved if you can be as clear as you can, and as efficient with their time as possible.
+
+* Please use .patch or .diff (not .txt) as a suffix for patch files.
+* Read your patch file before attaching it.  If you see things like white space changes unrelated to the portion of code you are modifying, please edit and remove those changes and regenerate the patch.  Also, while it is nice when developing to do multiple commits in a sequence, with explanations of each commit, patch reviewers usually prefer to have all changes squashed to a single commit for review.
+* Using 'git add --patch' to stage your changes will make it easier to avoid committing extraneous changes.
+* Please use a name different from all existing attachments on the ticket.  JIRA allows you to add multiple attachments with the same name, but later ones do not replace earlier ones.  This can lead to confusion when referring to patches by name.
+* Include the file name and date of the patch in any comments referring to it.  It is possible to match up comments with patches based on the date and time, but it is tedious and error prone.
+* To get email whenever the ticket is updated, click on the word "Watch" in the top right area of the page.  This can help you know when someone else comments on your patch or creates a new one, etc.  Click "Watching" if you want to stop the update emails for a ticket.  You may want to verify that the automated emails get through your spam filter.  Emails will be sent to the address associated with your JIRA account, and will come from the address jira@dev.clojure.org.
+* If you create a new patch that incorporates one or more earlier ones, please combine them all into one patch file, and indicate in your comments that you have done this (with file names and dates of the patches you are superseding). One exception to this is when there are significant largely independent contributions from multiple people (for example, one made a code change and the other wrote the tests) and both want credit. In that case, a single patch file with multiple commits is fine. However, we'd like to avoid multiple patches that repeatedly modify the same code.
+
+Mark the ticket as having a patch ready for screening by editing the Patch field.  Click the Edit button near the top left of the page for the ticket.  In the next page find the heading "Patch" with a popup menu next to it.  Select "Code" or "Code and Test" from that menu, then click the Update button at the bottom of the page.  If you do not see an Edit button on the page for the ticket, and you have signed a CA, ask on the developer's email list or on #clojure-dev in Clojurians Slack to be given permission to edit Jira tickets.
+
+== Removing patches
+
+To remove a patch (e.g. because it is no longer relevant), go to the page for the ticket and look for the "Attachments" heading beneath the Description text.  Far to the right is a plus sign and a triangle.  Click on the triangle and select "Manage Attachments" from the menu.  Think carefully on which one you want to delete, and click the trash can icon next to it.  Note: most people have permission to remove their own attachments, but not those added by someone else.
+
+In general, you don't need to remove old patches. Just let them accumulate and track the most relevant in the ticket description.
+
+== Updating stale patches
+
+A stale patch means one that used to apply cleanly to the latest Clojure master version, but due to commits made since the patch was created, it no longer does.  In particular, the output of this command:
+
+[source,shell]
+----
+$ git am --keep-cr -s --ignore-whitespace < patch_file.patch
+----
+
+includes 'Patch failed' and 'To restore the original branch and stop patching, run "git am --abort"'.  You should do the "git am --abort" to get rid of state of the failed patch attempt left behind by the command above.
+
+"git am" is very "fragile", meaning that if the patch_file was created with one version of the source code, all it takes for the command to fail is a change in any of the lines of context present in the patch file, even if it is not one of the lines being changed by the patch.  This is especially common for files containing unit tests, because people usually add new tests at the end of such a file, and so the lines of context before the new test change if two different patches add a new test to the end of the same file.
+
+To apply such a patch, use the --reject flag:
+
+[source,shell]
+----
+$ git apply --reject patch_file.patch
+----
+
+The output will give you some hints of whether each "hunk" of the patch file succeeded or failed.  If they all succeed, then likely the only thing wrong with the patch file is that a few context lines were changed.  If any hunks fail, patch creates files ending with ".rej" containing rejected hunks that it did not apply, and you can focus on those as places where the source code likely changed more significantly.  A command like this will find them all:
+
+[source,shell]
+----
+$ find . -name '*.rej'
+----
+
+You will need to look at those rejected hunks, perhaps think about them for a bit to see if and how they still apply, and apply them by hand-editing the source code yourself.
+
+When creating a new git patch with:
+
+[source,shell]
+----
+$ git format-patch master --stdout -U8 > patch_file.patch
+----
+
+it puts your name and the current date near the top of the file.  If the only changes that you have made are in the context lines, please keep the original author's credit intact by copying the name and date from the original patch that you started from, then upload that.
+
+If you write unit tests where there were none in the original patch, but didn't otherwise modify the original patch, and you would like your name in the commit log for your work, create a separate patch of test additions with your name on it, leaving the original author's name on the updated patch.
+
+== Screening a patch
+
+If you are a screener testing a patch, you can create a new branch and apply the patch to start working with it:
+
+[source,shell]
+----
+$ git checkout -b testxyz
+$ git am --keep-cr -s --ignore-whitespace < patch_file.patch
+----
+
+And you can throw that branch away when you're done with:
+
+[source,shell]
+----
+$ git checkout master
+$ git branch -D testxyz
+----
+
+== How To Run All Clojure Tests
+
+[source,shell]
+----
+$ mvn clean test
+----
+
+To reduce the duration of the pseudo-randomly generated generative tests from 60 sec down to 1 sec (for example), edit the file src/script/run_test_generative.clj and change the 60000 number.  Just be careful not to include such changes in any patches you submit.  (The file was called src/scripts/run_tests.clj in Clojure 1.6.0 and earlier)
+
+== Run An Individual Test
+
+First, build the latest Clojure without running any tests:
+
+[source,shell]
+----
+$ mvn -Dmaven.test.skip=true clean package
+# If no compilation errors, mvn command above creates target/clojure-VERSION-master-SNAPSHOT.jar
+----
+
+The commands above build a Clojure jar file, but neither compile nor run the tests.
+
+Create a deps.edn file describing dependencies you might need:
+
+[source,clojure]
+----
+{:paths ["test"]
+ :deps
+ {org.clojure/clojure {:mvn/version "RELEASE"}
+  org.clojure/test.check {:mvn/version "0.9.0"}
+  org.clojure/test.generative {:mvn/version "0.5.2"}}
+ :aliases
+ {:dbg {:classpath-overrides {org.clojure/clojure "target/classes"}
+        :extra-deps {criterium {:mvn/version "0.4.4"}}}}}
+----
+
+Start a repl using clj and run individual tests from it:
+
+[source,shell]
+----
+$ clj -A:dbg
+Clojure ...
+;; We're testing with clojure.test 
+=> (require 'clojure.test)
+nil
+;; Load a test file 
+user=> (require 'clojure.test-clojure.data)
+nil
+;; Run it 
+user=> (clojure.test/run-tests 'clojure.test-clojure.data)
+ 
+Testing clojure.test-clojure.data
+Ran 1 tests containing 17 assertions.
+0 failures, 0 errors.
+{:type :summary, :pass 17, :test 1, :error 0, :fail 0}
+----
+
+Start a repl and run a generative test from it:
+
+Generative tests use additional testing jars (installed when you run ./antsetup.sh). Thus, you'll need to have some additional classpath which antsetup.sh will leave in the maven-classpath file. If you are on *nix, the easiest way to leverage this file is:
+
+[source,shell]
+----
+$ clj -A:dbg
+Clojure ...
+;; Install some clojure.test extensions
+user=> (require 'clojure.test-helper)
+nil
+;; Load a test file that uses test.generative
+user=> (require 'clojure.test-clojure.reader)
+nil
+;; Load the test.generative runner ns 
+user=> (use 'clojure.test.generative.runner)
+nil
+;; Test a specification on 1 thread for 200 ms
+user=> (run 1 200 #'clojure.test-clojure.reader/types-that-should-roundtrip)
+{:iter 60, :seed 1255541066, :test clojure.test-clojure.reader/types-that-should-roundtrip}
+nil
+----
+
+== Other options for building Clojure
+
+=== Building Clojure without direct linking
+
+By default, Clojure is built with direct linking enabled.  While this improves performance, it means that if a function A calls a function B, both within Clojure, then using spec to instrument B will leave A still calling the original function B, not the instrumented version.  If you wish to instrument B and have other functions in Clojure call the instrumented version, one way is to build Clojure with direct linking disabled.
+
+Edit the file build.xml to replace "true" with "false" in the following line, which is inside of the section beginning with 'target name="compile-clojure"':
+
+[source,xml]
+----
+<sysproperty key="clojure.compiler.direct-linking" value="true"/>
+----
+
+Then use your preferred method of building Clojure from source, e.g.:
+
+[source,shell]
+----
+$ mvn -Dmaven.test.skip=true clean install
+----

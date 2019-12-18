@@ -1,0 +1,28 @@
+= Programming at the REPL: Community resources about the REPL
+Valentin Waeselynck
+2018-02-10
+:type: repl
+:toc: macro
+:icons: font
+:navlinktext: Enhancing your REPL environment
+:prevpagehref: guidelines_for_repl_aided_development
+:prevpagetitle: Guidelines for REPL-Aided Development
+:nextpagehref: annex_troubleshooting
+:nextpagetitle: Annex: Troubleshooting
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Here is a list of useful REPL-related resources by the Clojure community:
+
+* https://lambdaisland.com/guides/clojure-repls[The Ultimate Guide to Clojure REPLs] on Lambda Island:
+this tutorial notably explores the wide variety of Clojure REPLs and related technology.
+* https://vimeo.com/223309989[Stuart Halloway on REPL Driven Development]: a talk which reflects on the added value 
+of REPLs compared to shells, and provides guidelines for using the Clojure REPL.
+* https://clojureverse.org/t/share-the-nitty-gritty-details-of-your-clojure-workflow/1208[Share the nitty-gritty details of your Clojure workflow]:
+a ClojureVerse discussion where community members describe their development configurations and how they use it them in details.
+* https://vvvvalvalval.github.io/posts/what-makes-a-good-repl.html[What makes a good REPL?]: this blog post provides 
+a general reflection on the benefits of REPLs, and the programming language features which enable them.
+* https://vimeo.com/230220635[REPL-Based Development Demo]: a video showing how the REPL is used for development 
+on an example project.
+* The https://gist.github.com/daveray/1441520[Seesaw REPL Tutorial] teaches you to build Graphical User Interfaces 
+at the Clojure REPL.

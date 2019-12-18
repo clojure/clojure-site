@@ -191,7 +191,7 @@ production runtime dependency on ``test.check``.
 ==== Predicative specs
 The basic idea is that specs are nothing more than a logical composition of predicates. At the bottom we are talking
 about the simple boolean predicates you are used to like ``int?`` or `symbol?`, or expressions you build yourself
-like `#(< 42 % 66)`
+like `#(< 42 % 66)`.
 **spec** adds logical ops like ``spec/and`` and ``spec/or`` which combine specs in a logical way and offer deep reporting,
 generation and conform support and, in the case of ``spec/or``, tagged returns.
 
@@ -249,7 +249,7 @@ the keys corresponding to the matched components. In this way **spec** regexes a
 
 [source,clojure]
 ----
-user=> (require '[clojure.spec :as s])
+user=> (require '[clojure.spec.alpha :as s])
 (s/def ::even? (s/and integer? even?))
 (s/def ::odd? (s/and integer? odd?))
 (s/def ::a integer?)
@@ -270,7 +270,7 @@ user=> (s/conform s [42 11 13 15 {:a 1 :b 2 :c 3} 1 2 3 42 43 44 11])
 
 ==== conform/explain
 As you can see above, the basic operation for using specs is ``conform``, which takes a spec and a value and
-returns the conformed value or ``:clojure.spec/invalid`` if the value did not conform. When the value does not conform
+returns the conformed value or ``:clojure.spec.alpha/invalid`` if the value did not conform. When the value does not conform
 you can call ``explain`` or ``explain-data`` to find out why it didn't.
 
 === Defining specs
@@ -332,7 +332,7 @@ alternative generators for one or more subpaths of a spec.
 In addition to the destructuring use cases above, you can make calls to ``conform`` or ``valid?`` anywhere you want
 runtime checking, and can make lighter-weight internal-only specs for tests you intend to run in production.
 
-Please see the <<xref/../../../guides/spec#,spec Guide>> and http://clojure.github.io/clojure/branch-master/clojure.spec-api.html[API docs] for more examples and usage information.
+Please see the <<xref/../../../guides/spec#,spec Guide>> and https://clojure.github.io/spec.alpha/index.html[API docs] for more examples and usage information.
 
 == Glossary
 === predicates
@@ -356,7 +356,7 @@ The return values of ``cat``, ``alt``, ``*``, ``+``, ``?``, ``&``. When nested t
 === conform
 ``conform`` is the basic operation for consuming specs, and does both validation and conforming/destructuring.
 Note that conforming is 'deep' and flows through all of the spec and regex operations, map specs etc.
-Since ``nil`` and ``false`` are legitimate conformed values, conform returns the distinguished ``:clojure.spec/invalid``
+Since ``nil`` and ``false`` are legitimate conformed values, conform returns the distinguished ``:clojure.spec.alpha/invalid``
 when a value cannot be made to conform. ``valid``? can be used instead as a fully-boolean predicate.
 
 === explain
@@ -374,8 +374,14 @@ These paths are used in ``explain``, ``gen`` overrides and various error reporti
 == Prior Art
 Almost nothing about spec is novel. See all the libraries mentioned above, https://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/[RDF],
 as well as all the work done on various
-contract systems, such as http://docs.racket-lang.org/guide/contracts.html[Racket's contracts].
+contract systems, such as https://docs.racket-lang.org/guide/contracts.html[Racket's contracts].
 
 *I hope you find spec useful and powerful.*
 
 Rich Hickey
+
+== More information
+
+* <<xref/../../../guides/spec#,Spec guide>>
+* https://clojure.github.io/spec.alpha[API Docs]
+* https://github.com/clojure/spec.alpha[Project]

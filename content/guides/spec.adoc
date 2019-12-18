@@ -11,25 +11,35 @@ toc::[]
 
 == Getting started
 
-The <<xref/../../../about/spec#,spec>> library specifies the structure of data, validates or destructures it, and can generate data based on the spec. The http://clojure.github.io/clojure/branch-master/clojure.spec-api.html[clojure.spec] namespace is included in the Clojure core distribution, so no extra library is required to use it. You will need to declare a dependency on the latest alpha version of Clojure (or higher) however:
+The <<xref/../../../about/spec#,spec>> library (https://clojure.github.io/spec.alpha[API docs]) specifies the structure of data, validates or conforms it, and can generate data based on the spec.
+
+To use spec, declare a dependency on Clojure 1.9.0 or higher:
 
 [source, clojure]
 ----
-[org.clojure/clojure "1.9.0-alpha12"]
+[org.clojure/clojure "1.10.0"]
 ----
 
-To start working with spec, require the `clojure.spec` namespace or include in your namespace definition:
+To start working with spec, require the `clojure.spec.alpha` namespace at the REPL:
 
 [source,clojure]
 ----
-(require '[clojure.spec :as s])
+(require '[clojure.spec.alpha :as s])
+----
+
+Or include spec in your namespace:
+
+[source,clojure]
+----
+(ns my.ns
+  (:require [clojure.spec.alpha :as s]))
 ----
 
 == Predicates
 
 Each spec describes a set of allowed values. There are several ways to build specs and all of them can be composed to build more sophisticated specs.
 
-Any existing Clojure function that takes a single argument and returns a truthy value is a valid predicate spec. We can check whether a particular data value conforms to a spec using http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/conform[`conform`]:
+Any existing Clojure function that takes a single argument and returns a truthy value is a valid predicate spec. We can check whether a particular data value conforms to a spec using https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/conform[`conform`]:
 
 [source,clojure]
 ----
@@ -37,9 +47,9 @@ Any existing Clojure function that takes a single argument and returns a truthy 
 ;;=> 1000
 ----
 
-The `conform` function takes something that can be a spec and a data value. Here we are passing a predicate which is implicitly converted into a spec. The return value is "conformed". Here, the conformed value is the same as the original value - we'll see later where that starts to deviate. If the value does not conform to the spec, the special value `:clojure.spec/invalid` is returned.
+The `conform` function takes something that can be a spec and a data value. Here we are passing a predicate which is implicitly converted into a spec. The return value is "conformed". Here, the conformed value is the same as the original value - we'll see later where that starts to deviate. If the value does not conform to the spec, the special value `:clojure.spec.alpha/invalid` is returned.
 
-If you don't want to use the conformed value or check for `:clojure.spec/invalid`, the helper http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/valid?[`valid?`] can be used instead to return a boolean.
+If you don't want to use the conformed value or check for `:clojure.spec.alpha/invalid`, the helper https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/valid?[`valid?`] can be used instead to return a boolean.
 
 [source,clojure]
 ----
@@ -75,7 +85,7 @@ Sets can also be used as predicates that match one or more literal values:
 
 Until now, we've been using specs directly. However, spec provides a central registry for globally declaring reusable specs. The registry associates a namespaced keyword with a specification. The use of namespaces ensures that we can define reusable non-conflicting specs across libraries or applications.
 
-Specs are registered using http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/def[`def`]. It's up to you to register the specification in a namespace that makes sense (typically a namespace you control).
+Specs are registered using https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/def[`def`]. It's up to you to register the specification in a namespace that makes sense (typically a namespace you control).
 
 [source,clojure]
 ----
@@ -87,7 +97,7 @@ A registered spec identifier can be used in place of a spec definition in the op
 
 [source,clojure]
 ----
-(s/valid? ::date (Date.))
+(s/valid? ::date (java.util.Date.))
 ;;=> true
 (s/conform ::suit :club)
 ;;=> :club
@@ -95,9 +105,33 @@ A registered spec identifier can be used in place of a spec definition in the op
 
 You will see later that registered specs can (and should) be used anywhere we compose specs.
 
+.Spec Names
+****
+In this guide we will often use auto-resolved keywords like `::date`. The Clojure reader resolves these to a fully-qualified keyword using the current namespace. You may also see some cases where a fully-qualified keyword like `:animal/dog` is used to name a spec. 
+
+Generally, Clojure code should use keyword namespaces that are sufficiently unique such that they will not conflict with other spec users. If you are writing a library for public use, spec namespaces should include the project name, url, or organization such that you will not conflict. Within a private organization, you may be able to use shorter names - the important thing is that they are sufficiently unique to avoid conflicts.
+****
+
+Once a spec has been added to the registry, `doc` knows how to find it and print it as well:
+
+[source,clojure]
+----
+(doc ::date)
+-------------------------
+:user/date
+Spec
+  inst?
+
+(doc ::suit)
+-------------------------
+:user/suit
+Spec
+  #{:spade :heart :diamond :club}
+----
+
 == Composing predicates
 
-The simplest way to compose specs is with http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/and[`and`] and http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/or[`or`]. Let's create a spec that combines several predicates into a composite spec with `s/and`:
+The simplest way to compose specs is with https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/and[`and`] and https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/or[`or`]. Let's create a spec that combines several predicates into a composite spec with `s/and`:
 
 [source,clojure]
 ----
@@ -130,7 +164,7 @@ When an `or` is conformed, it returns a vector with the tag name and conformed v
 ;;=> [:id 100]
 ----
 
-Many predicates that check an instance's type do not allow `nil` as a valid value (`string?`, `number?`, `keyword?`, etc). To include `nil` as a valid value, use the provided function http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/nilable[`nilable`] to make a spec:
+Many predicates that check an instance's type do not allow `nil` as a valid value (`string?`, `number?`, `keyword?`, etc). To include `nil` as a valid value, use the provided function https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/nilable[`nilable`] to make a spec:
 
 [source,clojure]
 ----
@@ -142,17 +176,17 @@ Many predicates that check an instance's type do not allow `nil` as a valid valu
 
 == Explain
 
-http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/explain[`explain`] is another high-level operation in spec that can be used to report (to `pass:[*out*]`) why a value does not conform to a spec. Let's see what explain says about some non-conforming examples we've seen so far.
+https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/explain[`explain`] is another high-level operation in spec that can be used to report (to `pass:[*out*]`) why a value does not conform to a spec. Let's see what explain says about some non-conforming examples we've seen so far.
 
 [source,clojure]
 ----
 (s/explain ::suit 42)
-;; val: 42 fails spec: ::suit predicate: #{:spade :heart :diamond :club}
+;; 42 - failed: #{:spade :heart :diamond :club} spec: :user/suit
 (s/explain ::big-even 5)
-;; val: 5 fails spec: ::big-even predicate: even?
+;; 5 - failed: even? spec: :user/big-even
 (s/explain ::name-or-id :foo)
-;; val: :foo fails spec: ::name-or-id at: [:name] predicate: string?
-;; val: :foo fails spec: ::name-or-id at: [:id] predicate: int?
+;; :foo - failed: string? at: [:name] spec: :user/name-or-id
+;; :foo - failed: int? at: [:id] spec: :user/name-or-id
 ----
 
 Let's examine the output of the final example more closely. First note that there are two errors being reported - spec will evaluate all possible alternatives and report errors on every path. The parts of each error are:
@@ -160,17 +194,17 @@ Let's examine the output of the final example more closely. First note that ther
 * val - the value in the user's input that does not match
 * spec - the spec that was being evaluated
 * at - a path (a vector of keywords) indicating the location within the spec where the error occurred - the tags in the path correspond to any tagged part in a spec (the alternatives in an `or` or `alt`, the parts of a `cat`, the keys in a map, etc)
-* predicate - the actual predicate that was not satsified by val
+* predicate - the actual predicate that was not satisfied by val
 * in - the key path through a nested data val to the failing value. In this example, the top-level value is the one that is failing so this is essentially an empty path and is omitted.
 
 For the first reported error we can see that the value `:foo` did not satisfy the predicate `string?` at the path `:name` in the spec `::name-or-id`. The second reported error is similar but fails on the `:id` path instead. The actual value is a keyword so neither is a match.
 
-In addition to `explain`, you can use http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/explain-str[`explain-str`] to receive the error messages as a string or  http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/explain-data[`explain-data`] to receive the errors as data.
+In addition to `explain`, you can use https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/explain-str[`explain-str`] to receive the error messages as a string or  https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/explain-data[`explain-data`] to receive the errors as data.
 
 [source,clojure]
 ----
 (s/explain-data ::name-or-id :foo)
-;;=> #:clojure.spec{
+;;=> #:clojure.spec.alpha{
 ;;     :problems ({:path [:name], 
 ;;                 :pred string?,
 ;;                 :val :foo,
@@ -185,7 +219,7 @@ In addition to `explain`, you can use http://clojure.github.io/clojure/branch-ma
 
 [NOTE]
 ====
-This result also demonstrates the new namespace map literal syntax added in 1.9.0-alpha8. Maps may be prefixed with #: or #:: (for autoresolve) to specify a default namespace for all keys in the map. In this example, this is equivalent to `{:clojure.spec/problems ...}`
+This result also demonstrates the namespace map literal syntax added in Clojure 1.9. Maps may be prefixed with `\#:` or `#::` (for autoresolve) to specify a default namespace for all keys in the map. In this example, this is equivalent to `{:clojure.spec.alpha/problems ...}`
 ====
 
 == Entity Maps
@@ -196,10 +230,11 @@ semantics at the attribute level across our libraries and applications.
 
 For example, most Ring middleware functions modify the request or response map with unqualified keys. However, each middleware could instead use namespaced keys with registered semantics for those keys. The keys could then be checked for conformance, creating a system with greater opportunities for collaboration and consistency.
 
-Entity maps in spec are defined with http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/keys[`keys`]:
+Entity maps in spec are defined with https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/keys[`keys`]:
 
 [source,clojure]
 ----
+(ns my.domain (:require [clojure.spec.alpha :as s]))
 (def email-regex #"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,63}$")
 (s/def ::email-type (s/and string? #(re-matches email-regex %)))
 
@@ -219,31 +254,33 @@ When conformance is checked on a map, it does two things - checking that the req
 [source,clojure]
 ----
 (s/valid? ::person
-  {::first-name "Elon"
-   ::last-name "Musk"
-   ::email "elon@example.com"})
+  {::first-name "Bugs"
+   ::last-name "Bunny"
+   ::email "bugs@example.com"})
 ;;=> true
 
 ;; Fails required key check
 (s/explain ::person
-  {::first-name "Elon"})
-;; val: #:my.domain{:first-name "Elon"} fails spec: :my.domain/person
-;;  predicate: [(contains? % :my.domain/last-name) (contains? % :my.domain/email)]
+  {::first-name "Bugs"})
+;; #:my.domain{:first-name "Bugs"} - failed: (contains? % :my.domain/last-name) 
+;;   spec: :my.domain/person
+;; #:my.domain{:first-name "Bugs"} - failed: (contains? % :my.domain/email)
+;;   spec: :my.domain/person
 
 ;; Fails attribute conformance
 (s/explain ::person
-  {::first-name "Elon"
-   ::last-name "Musk"
+  {::first-name "Bugs"
+   ::last-name "Bunny"
    ::email "n/a"})
-;; In: [:my.domain/email] val: "n/a" fails spec: :my.domain/email 
-;;   at: [:my.domain/email] predicate: (re-matches email-regex %)
+;; "n/a" - failed: (re-matches email-regex %) in: [:my.domain/email]
+;;   at: [:my.domain/email] spec: :my.domain/email-type
 ----
 
 Let's take a moment to examine the explain error output on that final example:
 
 * in - the path within the data to the failing value (here, a key in the person instance)
 * val - the failing value, here `"n/a"`
-* spec - the spec that failed, here `:my.domain/email`
+* spec - the spec that failed, here `:my.domain/email-type`
 * at - the path in the spec where the failing value is located
 * predicate - the predicate that failed, here `(re-matches email-regex %)`
 
@@ -258,22 +295,22 @@ Let's consider a person map that uses unqualified keys but checks conformance ag
           :opt-un [::phone]))
 
 (s/conform :unq/person
-  {:first-name "Elon"
-   :last-name "Musk"
-   :email "elon@example.com"})
-;;=> {:first-name "Elon", :last-name "Musk", :email "elon@example.com"}
+  {:first-name "Bugs"
+   :last-name "Bunny"
+   :email "bugs@example.com"})
+;;=> {:first-name "Bugs", :last-name "Bunny", :email "bugs@example.com"}
 
 (s/explain :unq/person
-  {:first-name "Elon"
-   :last-name "Musk"
+  {:first-name "Bugs"
+   :last-name "Bunny"
    :email "n/a"})
-;; In: [:email] val: "n/a" fails spec: :my.domain/email at: [:email] 
-;;   predicate: (re-matches email-regex %)
+;; "n/a" - failed: (re-matches email-regex %) in: [:email] at: [:email] 
+;;   spec: :my.domain/email-type
 
 (s/explain :unq/person
-  {:first-name "Elon"})
-;; val: {:first-name "Elon"} fails spec: :unq/person
-;;   predicate: [(contains? % :last-name) (contains? % :email)]
+  {:first-name "Bugs"})
+;; {:first-name "Bugs"} - failed: (contains? % :last-name) spec: :unq/person
+;; {:first-name "Bugs"} - failed: (contains? % :email) spec: :unq/person
 ----
 
 Unqualified keys can also be used to validate record attributes:
@@ -283,17 +320,17 @@ Unqualified keys can also be used to validate record attributes:
 (defrecord Person [first-name last-name email phone])
 
 (s/explain :unq/person
-           (->Person "Elon" nil nil nil))
-;; In: [:last-name] val: nil fails spec: :my.domain/last-name at: [:last-name] predicate: string?
-;; In: [:email] val: nil fails spec: :my.domain/email at: [:email] predicate: string?
+           (->Person "Bugs" nil nil nil))
+;; nil - failed: string? in: [:last-name] at: [:last-name] spec: :my.domain/last-name
+;; nil - failed: string? in: [:email] at: [:email] spec: :my.domain/email-type
 
 (s/conform :unq/person
-  (->Person "Elon" "Musk" "elon@example.com" nil))
-;;=> #my.domain.Person{:first-name "Elon", :last-name "Musk", 
-;;=>                   :email "elon@example.com", :phone nil}
+  (->Person "Bugs" "Bunny" "bugs@example.com" nil))
+;;=> #my.domain.Person{:first-name "Bugs", :last-name "Bunny", 
+;;=>                   :email "bugs@example.com", :phone nil}
 ----
 
-One common occurrence in Clojure is the use of "keyword args" where keyword keys and values are passed in a sequential data structure as options. Spec provides special support for this pattern with the regex op http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/keys*[`keys*`]. `keys*` has the same syntax and semantics as `keys` but can be embedded inside a sequential regex structure.
+One common occurrence in Clojure is the use of "keyword args" where keyword keys and values are passed in a sequential data structure as options. Spec provides special support for this pattern with the regex op https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/keys*[`keys*`]. `keys*` has the same syntax and semantics as `keys` but can be embedded inside a sequential regex structure.
 
 [source,clojure]
 ----
@@ -327,7 +364,7 @@ Sometimes it will be convenient to declare entity maps in parts, either because 
 
 One common occurrence in Clojure is to use maps as tagged entities and a special field that indicates the "type" of the map where type indicates a potentially open set of types, often with shared attributes across the types. 
 
-As previously discussed, the attributes for all types are well-specified using attributes stored in the registry by namespaced keyword. Attributes shared across entity types automatically gain shared semantics. However, we also want to be able to specify the required keys per entity type and for that spec provides http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/multi-spec[`multi-spec`] which leverages a multimethod to provide for the specification of an open set of entity types based on a type tag.
+As previously discussed, the attributes for all types are well-specified using attributes stored in the registry by namespaced keyword. Attributes shared across entity types automatically gain shared semantics. However, we also want to be able to specify the required keys per entity type and for that spec provides https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/multi-spec[`multi-spec`] which leverages a multimethod to provide for the specification of an open set of entity types based on a type tag.
 
 For example, imagine an API that received event objects which shared some common fields but also had type-specific shapes. First we would register the event attributes:
 
@@ -362,7 +399,7 @@ And then finally we are ready to declare our `multi-spec` and try it out.
 (s/valid? :event/event
   {:event/type :event/search
    :event/timestamp 1463970123000
-   :search/url "http://clojure.org"})
+   :search/url "https://clojure.org"})
 ;=> true
 (s/valid? :event/event
   {:event/type :event/error
@@ -372,15 +409,15 @@ And then finally we are ready to declare our `multi-spec` and try it out.
 ;=> true
 (s/explain :event/event
   {:event/type :event/restart})
-;; val: #:event{:type :event/restart} fails spec: :event/event 
-;;   at: [:event/restart] predicate: my.domain/event-type,  no method
+;; #:event{:type :event/restart} - failed: no method at: [:event/restart] 
+;;   spec: :event/event
 (s/explain :event/event
   {:event/type :event/search
    :search/url 200})
-;; val: {:event/type :event/search, :search/url 200} fails spec: :event/event 
-;;   at: [:event/search] predicate: [(contains? % :event/timestamp)]
-;; In: [:search/url] val: 200 fails spec: :search/url 
-;;   at: [:event/search :search/url] predicate: string?
+;; 200 - failed: string? in: [:search/url] 
+;;   at: [:event/search :search/url] spec: :search/url
+;; {:event/type :event/search, :search/url 200} - failed: (contains? % :event/timestamp) 
+;;   at: [:event/search] spec: :event/event
 ----
 
 Let's take a moment to examine the explain error output on that final example. There were two different kinds of failures detected. The first failure is due to the missing required `:event/timestamp` key in the event. The second is from the invalid `:search/url` value (a number instead of a string). We see the same parts as prior explain errors:
@@ -395,7 +432,7 @@ The `multi-spec` approach allows us to create an *open* system for spec validati
 
 == Collections
 
-A few helpers are provided for other special collection cases - http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/coll-of[`coll-of`], http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/tuple[`tuple`], and  http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/map-of[`map-of`].
+A few helpers are provided for other special collection cases - https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/coll-of[`coll-of`], https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/tuple[`tuple`], and  https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/map-of[`map-of`].
 
 For the special case of a homogenous collection of arbitrary size, you can use `coll-of` to specify a collection of elements satisfying a predicate.
 
@@ -409,7 +446,7 @@ For the special case of a homogenous collection of arbitrary size, you can use `
 
 Additionally, `coll-of` can be passed a number of keyword arg options:
 
-* `:kind` - a predicate or spec that the incoming collection must satisfy, such as `vector?`
+* `:kind` - a predicate that the incoming collection must satisfy, such as `vector?`
 * `:count` - specifies exact expected count
 * `:min-count`, `:max-count` - checks that collection has `(\<= min-count count max-count)`
 * `:distinct` - checks that all elements are distinct
@@ -423,16 +460,16 @@ Following is an example utilizing some of these options to spec a vector contain
 (s/conform ::vnum3 [1 2 3])
 ;;=> #{1 2 3}
 (s/explain ::vnum3 #{1 2 3})   ;; not a vector
-;; val: #{1 3 2} fails spec: ::vnum3 predicate: clojure.core/vector?
+;; #{1 3 2} - failed: vector? spec: :user/vnum3
 (s/explain ::vnum3 [1 1 1])    ;; not distinct
-;; val: [1 1 1] fails spec: ::vnum3 predicate: distinct?
+;; [1 1 1] - failed: distinct? spec: :user/vnum3
 (s/explain ::vnum3 [1 2 :a])   ;; not a number
-;; In: [2] val: :a fails spec: ::vnum3 predicate: number?
+;; :a - failed: number? in: [2] spec: :user/vnum3
 ----
 
 [NOTE]
 ====
-Both `coll-of` and `map-of` will conform all of their elements, which may make them unsuitable for large collections. In that case, consider http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/every[`every`] or for maps  http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/every-kv[`every-kv`].
+Both `coll-of` and `map-of` will conform all of their elements, which may make them unsuitable for large collections. In that case, consider https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/every[`every`] or for maps  https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/every-kv[`every-kv`].
 ====
 
 While `coll-of` is good for homogenous collections of any size, another case is a fixed-size positional collection with fields of known type at different positions. For that we have `tuple`.
@@ -467,7 +504,7 @@ In addition to the support for information maps via `keys`, spec also provides `
 ;=> {"Sally" 1000, "Joe" 500}
 ----
 
-By default `map-of` will validate but not conform keys because conformed keys might create key duplicates that would cause entries in the map to be overridden. If conformed keys are desired, pass the option `:conform-keys true'.
+By default `map-of` will validate but not conform keys because conformed keys might create key duplicates that would cause entries in the map to be overridden. If conformed keys are desired, pass the option `:conform-keys true`.
 
 You can also use the various count-related options on `map-of` that you have with `coll-of`.
 
@@ -475,11 +512,11 @@ You can also use the various count-related options on `map-of` that you have wit
 
 Sometimes sequential data is used to encode additional structure (typically new syntax, often used in macros). spec provides the standard https://en.wikipedia.org/wiki/Regular_expression[regular expression] operators to describe the structure of a sequential data value:
 
-* http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/cat[`cat`] - concatenation of predicates/patterns
-* http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/alt[`alt`] - choice among alternative predicates/patterns
-* http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/*[`pass:[*]`] - 0 or more of a predicate/pattern
-* http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/%2B[`+`] - 1 or more of a predicate/pattern
-* http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/%3F[`?`] - 0 or 1 of a predicate/pattern
+* https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/cat[`cat`] - concatenation of predicates/patterns
+* https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/alt[`alt`] - choice among alternative predicates/patterns
+* https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/*[`pass:[*]`] - 0 or more of a predicate/pattern
+* https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/%2B[`+`] - 1 or more of a predicate/pattern
+* https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/%3F[`?`] - 0 or 1 of a predicate/pattern
 
 Like `or`, both `cat` and `alt` tag their "parts" - these tags are then used in the conformed value to identify what was matched, to report errors, and more.
 
@@ -498,14 +535,14 @@ The data is conformed as a map with the tags as keys. We can use `explain` to ex
 ----
 ;; pass string for unit instead of keyword
 (s/explain ::ingredient [11 "peaches"])
-;; In: [1] val: \"peaches\" fails spec: ::ingredient at: [:unit] predicate: keyword?
+;; "peaches" - failed: keyword? in: [1] at: [:unit] spec: :user/ingredient
 
 ;; leave out the unit
 (s/explain ::ingredient [2])
-;; val: () fails spec: ::ingredient at: [:unit] predicate: keyword?,  Insufficient input
+;; () - failed: Insufficient input at: [:unit] spec: :user/ingredient
 ----
 
-Let's now see the various occurence operators `*`, `+`, and `?`:
+Let's now see the various occurrence operators `*`, `+`, and `?`:
 
 [source,clojure]
 ----
@@ -513,7 +550,7 @@ Let's now see the various occurence operators `*`, `+`, and `?`:
 (s/conform ::seq-of-keywords [:a :b :c])
 ;;=> [:a :b :c]
 (s/explain ::seq-of-keywords [10 20])
-;; In: [0] val: 10 fails spec: :spec.examples.guide/seq-of-keywords predicate: keyword?
+;; 10 - failed: keyword? in: [0] spec: :user/seq-of-keywords
 
 (s/def ::odds-then-maybe-even (s/cat :odds (s/+ odd?)
                                      :even (s/? even?)))
@@ -522,7 +559,7 @@ Let's now see the various occurence operators `*`, `+`, and `?`:
 (s/conform ::odds-then-maybe-even [1])
 ;;=> {:odds [1]}
 (s/explain ::odds-then-maybe-even [100])
-;; In: [0] val: 100 fails spec: ::odds-then-maybe-even at: [:odds] predicate: odd?
+;; 100 - failed: odd? in: [0] at: [:odds] spec: :user/odds-then-maybe-even
 
 ;; opts are alternating keywords and booleans
 (s/def ::opts (s/* (s/cat :opt keyword? :val boolean?)))
@@ -555,7 +592,7 @@ If you need a description of a specification, use `describe` to retrieve one. Le
 ;;=> (* (cat :opt keyword? :val boolean?))
 ----
 
-Spec also defines one additional regex operator, http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/&[`&`], which takes a regex operator and constrains it with one or more additional predicates. This can be used to create regular expressions with additional constraints that would otherwise require custom predicates. For example, consider wanting to match only sequences with an even number of strings:
+Spec also defines one additional regex operator, https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/&[`&`], which takes a regex operator and constrains it with one or more additional predicates. This can be used to create regular expressions with additional constraints that would otherwise require custom predicates. For example, consider wanting to match only sequences with an even number of strings:
 
 [source,clojure]
 ----
@@ -567,7 +604,7 @@ Spec also defines one additional regex operator, http://clojure.github.io/clojur
 ----
 
 When regex ops are combined, they describe a single sequence. If you need to spec a nested sequential collection,
-you must use an explicit call to http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/spec[`spec`]
+you must use an explicit call to https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/spec[`spec`]
 to start a new nested regex context. For example to describe a sequence like `[:names ["a" "b"] :nums [1 2 3]]`,
 you need nested regular expressions to describe the inner sequential data:
 
@@ -612,8 +649,8 @@ One way to use spec is to explicitly call `valid?` to verify input data passed t
 (person-name 42)
 ;;=> java.lang.AssertionError: Assert failed: (s/valid? :my.domain/person person)
 
-(person-name {::first-name "Elon" ::last-name "Musk" ::email "elon@example.com"})
-;; Elon Musk
+(person-name {::first-name "Bugs" ::last-name "Bunny" ::email "bugs@example.com"})
+;; Bugs Bunny
 ----
 
 When the function is invoked with something that isn't valid `::person` data, the pre-condition fails. Similarly, if there was a bug in our code and the output was not a string, the post-condition would fail.
@@ -629,14 +666,11 @@ Another option is to use `s/assert` within your code to assert that a value sati
 
 (s/check-asserts true)
 (person-name 100)
-;; CompilerException clojure.lang.ExceptionInfo: Spec assertion failed
-;; val: 100 fails predicate: map?
-;; :clojure.spec/failure  :assertion-failed
-;; #:clojure.spec{:problems [{:path [], :pred map?, :val 100, :via [], :in []}], 
-;;                :failure :assertion-failed}
+;; Execution error - invalid arguments to my.domain/person-name at (REPL:3).
+;; 100 - failed: map?
 ----
 
-A deeper level of integration is to call conform and use the return value to destructure the input. This will be particularly useful for complex inputs with alternate options.
+A deeper level of integration is to call conform and use the return value with destructuring to pull apart the input. This will be particularly useful for complex inputs with alternate options.
 
 Here we conform using the config specification defined above:
 
@@ -656,7 +690,7 @@ Here we conform using the config specification defined above:
 (configure ["-server" "foo" "-verbose" true "-user" "joe"])
 ----
 
-Here configure calls `conform` to destructure the config input. The result is either the special `::s/invalid` value or a destructured form of the result:
+Here configure calls `conform` to produce data good for destructuring the config input. The result is either the special `::s/invalid` value or an annotated form of the result:
 
 [source,clojure]
 ----
@@ -671,7 +705,7 @@ In the success case, the parsed input is transformed into the desired shape for 
 
 The pre- and post-condition example in the previous section hinted at an interesting question - how do we define the input and output specifications for a function or macro?
 
-Spec has explicit support for this using http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/fdef[`fdef`], which defines specifications for a function - the arguments and/or the return value spec, and optionally a function that can specify a relationship between args and return.
+Spec has explicit support for this using https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/fdef[`fdef`], which defines specifications for a function - the arguments and/or the return value spec, and optionally a function that can specify a relationship between args and return.
 
 Let's consider a `ranged-rand` function that produces a random number in a range:
 
@@ -699,11 +733,26 @@ This function spec demonstrates a number of features. First the `:args` is a com
 
 The second `:args` predicate takes as input the conformed result of the first predicate and verifies that start < end. The `:ret` spec indicates the return is also an integer. Finally, the `:fn` spec checks that the return value is >= start and < end.
 
+Once a spec has been created for a function, the `doc` for the function will also include it:
+
+[source,clojure]
+----
+(doc ranged-rand)
+-------------------------
+user/ranged-rand
+([start end])
+  Returns random int in range start <= rand < end
+Spec
+  args: (and (cat :start int? :end int?) (< (:start %) (:end %)))
+  ret: int?
+  fn: (and (>= (:ret %) (-> % :args :start)) (< (:ret %) (-> % :args :end)))
+----
+
 We'll see later how we can use a function spec for development and testing.
 
 == Higher order functions
 
-Higher order functions are common in Clojure and spec provides http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/fspec[`fspec`] to support spec'ing them.
+Higher order functions are common in Clojure and spec provides https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/fspec[`fspec`] to support spec'ing them.
 
 For example, consider the `adder` function:
 
@@ -743,9 +792,8 @@ The Clojure macroexpander will look for and conform :args specs registered for m
 [source,clojure]
 ----
 (declare 100)
-;; ExceptionInfo: Call to clojure.core/declare did not conform to spec:
-;; In: [0] val: 100 fails at: [:args :names] predicate: simple-symbol?
-;; :clojure.spec/args  (100)
+;; Syntax error macroexpanding clojure.core/declare at (REPL:1:1).
+;; 100 - failed: simple-symbol? at: [:names]
 ----
 
 Because macros are always checked during macro expansion, you do not need to call instrument for macro specs.
@@ -793,7 +841,8 @@ Or look at the errors we'll get from some bad data:
    ::players [{::name "Kenny Rogers"
                ::score 100
                ::hand [[2 :banana]]}]})
-In: [::players 0 ::hand 0 1] val: :banana fails spec: ::card at: [::players ::hand 1] predicate: suit?
+;; :banana - failed: suit? in: [:user/players 0 :user/hand 0 1] 
+;;   at: [:user/players :user/hand 1] spec: :user/card
 ----
 
 The error indicates the key path in the data structure down to the invalid value, the non-matching value, the spec part it's trying to match, the path in that spec, and the predicate that failed.
@@ -857,18 +906,18 @@ In Maven, declare your dependency as a test scope dependency:
 </project>
 ----
 
-In your code you also need to include the `clojure.spec.gen` namespace:
+In your code you also need to include the `clojure.spec.gen.alpha` namespace:
 
 [source,clojure]
 ----
-(require '[clojure.spec.gen :as gen])
+(require '[clojure.spec.gen.alpha :as gen])
 ----
 
 === Sampling Generators
 
-The http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec/gen[`gen`] function can be used to obtain the generator for any spec.
+The https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/gen[`gen`] function can be used to obtain the generator for any spec.
 
-Once you have obtained a generator with `gen`, there are several ways to use it. You can generate a single sample value with http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec.gen/generate[`generate`] or a series of samples with http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec.gen/sample[`sample`]. Let's see some basic examples:
+Once you have obtained a generator with `gen`, there are several ways to use it. You can generate a single sample value with https://clojure.github.io/spec.alpha/clojure.spec.gen.alpha-api.html#clojure.spec.gen.alpha/generate[`generate`] or a series of samples with https://clojure.github.io/spec.alpha/clojure.spec.gen.alpha-api.html#clojure.spec.gen.alpha/sample[`sample`]. Let's see some basic examples:
 
 [source,clojure]
 ----
@@ -916,7 +965,7 @@ So we can now start with a spec, extract a generator, and generate some data. Al
 
 === Exercise
 
-For this we have http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec.gen/exercise[`exercise`], which returns pairs of generated and conformed values for a spec. `exercise` by default produces 10 samples (like `sample`) but you can pass both functions a number indicating the number of samples to produce.
+For this we have https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/exercise[`exercise`], which returns pairs of generated and conformed values for a spec. `exercise` by default produces 10 samples (like `sample`) but you can pass both functions a number indicating the number of samples to produce.
 
 [source,clojure]
 ----
@@ -936,7 +985,7 @@ For this we have http://clojure.github.io/clojure/branch-master/clojure.spec-api
 ;;    [-3.0 [:n -3.0]])
 ----
 
-For spec'ed functions we also have http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec.gen/exercise-fn[`exercise-fn`], which generates sample args, invokes the spec'ed function and returns the args and the return value.
+For spec'ed functions we also have https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/exercise-fn[`exercise-fn`], which generates sample args, invokes the spec'ed function and returns the args and the return value.
 
 [source,clojure]
 ----
@@ -961,7 +1010,8 @@ All of the generators we've seen worked fine but there are a number of cases whe
 [source,clojure]
 ----
 (gen/generate (s/gen even?))
-;; CompilerException java.lang.Exception: Unable to construct gen at: [] for: clojure.core$even_QMARK_@188fc6fd
+;; Execution error (ExceptionInfo) at user/eval1281 (REPL:1).
+;; Unable to construct gen at: [] for: clojure.core$even_QMARK_@73ab3aac
 ----
 
 In this case spec was not able to find a generator for the `even?` predicate. Most of the primitive generators in spec are mapped to the common type predicates (strings, numbers, keywords, etc).
@@ -988,13 +1038,14 @@ We can use many predicates to further refine the generated values. For example, 
 ;;=> (3 9 1524 3 1836 6 3 3 927 15027)
 ----
 
-However, it is possible to go too far with refinement and make something that fails to produce any values. The test.check http://clojure.github.io/test.check/clojure.test.check.generators.html#var-such-that[`such-that`] that implements the refinement will throw an error if the refinement predicate cannot be resolved within a relatively small number of attempts. For example, consider trying to generate strings that happen to contain the world "hello":
+However, it is possible to go too far with refinement and make something that fails to produce any values. The test.check https://clojure.github.io/test.check/clojure.test.check.generators.html#var-such-that[`such-that`] that implements the refinement will throw an error if the refinement predicate cannot be resolved within a relatively small number of attempts. For example, consider trying to generate strings that happen to contain the word "hello":
 
 [source,clojure]
 ----
 ;; hello, are you the one I'm looking for?
 (gen/sample (s/gen (s/and string? #(clojure.string/includes? % "hello"))))
-;; ExceptionInfo Couldn't satisfy such-that predicate after 100 tries.
+;; Error printing return value (ExceptionInfo) at clojure.test.check.generators/such-that-helper (generators.cljc:320).
+;; Couldn't satisfy such-that predicate after 100 tries.
 ----
 
 Given enough time (maybe a lot of time), the generator probably would come up with a string like this, but the underlying `such-that` will make only 100 attempts to generate a value that passes the filter. This is a case where you will need to step in and provide a custom generator.
@@ -1006,7 +1057,7 @@ Building your own generator gives you the freedom to be either narrower and/or b
 There are three ways to build up custom generators - in decreasing order of preference: 
 
 . Let spec create a generator based on a predicate/spec
-. Create your own generator from the tools in clojure.spec.gen
+. Create your own generator from the tools in clojure.spec.gen.alpha
 . Use test.check or other test.check compatible libraries (like https://github.com/gfredericks/test.chuck[test.chuck])
 
 [WARNING]
@@ -1032,7 +1083,7 @@ The simplest way to start generating values for this spec is to have spec create
 ;;=> (:my.domain/occupation :my.domain/occupation :my.domain/name :my.domain/id :my.domain/name)
 ----
 
-To redefine our spec using this custom generator, use http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec.gen/with-gen[`with-gen`] which takes a spec and a replacement generator:
+To redefine our spec using this custom generator, use https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/with-gen[`with-gen`] which takes a spec and a replacement generator:
 
 [source,clojure]
 ----
@@ -1047,14 +1098,14 @@ Note that `with-gen` (and other places that take a custom generator) take a no-a
 
 One downside to this approach is we are missing what property testing is really good at: automatically generating data across a wide search space to find unexpected problems. 
 
-The clojure.spec.gen namespace has a number of functions for generator "primitives" as well as "combinators" for combining them into more complicated generators. 
+The clojure.spec.gen.alpha namespace has a number of functions for generator "primitives" as well as "combinators" for combining them into more complicated generators. 
 
 [NOTE]
 ====
-Nearly all of the functions in the clojure.spec.gen namespace are merely wrappers that dynamically load functions of the same name in test.check. You should refer to the documentation for http://clojure.github.io/test.check/[test.check] for more details on how all of the clojure.spec.gen generator functions work.
+Nearly all of the functions in the clojure.spec.gen.alpha namespace are merely wrappers that dynamically load functions of the same name in test.check. You should refer to the documentation for https://clojure.github.io/test.check/[test.check] for more details on how all of the clojure.spec.gen.alpha generator functions work.
 ====
 
-In this case we want our keyword to have open names but fixed namespaces. There are many ways to accomplish this but one of the simplest is to use http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec.gen/fmap[`fmap`] to build up a keyword based on generated strings:
+In this case we want our keyword to have open names but fixed namespaces. There are many ways to accomplish this but one of the simplest is to use https://clojure.github.io/spec.alpha/clojure.spec.gen.alpha-api.html#clojure.spec.gen.alpha/fmap[`fmap`] to build up a keyword based on generated strings:
 
 [source,clojure]
 ----
@@ -1065,7 +1116,7 @@ In this case we want our keyword to have open names but fixed namespaces. There 
 
 `gen/fmap` takes a function to apply and a generator. The function will be applied to each sample produced by the generator allowing us to build one generator on another.
 
-However, we can spot a problem in the example above - generators are often designed to return "simpler" values first and any string-oriented generator will often return an empty string which is not a valid keyword. We can make a slight adjustment to omit that particular value using http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec.gen/such-that[`such-that`] which lets us specify a filtering condition:
+However, we can spot a problem in the example above - generators are often designed to return "simpler" values first and any string-oriented generator will often return an empty string which is not a valid keyword. We can make a slight adjustment to omit that particular value using https://clojure.github.io/spec.alpha/clojure.spec.gen.alpha-api.html#clojure.spec.gen.alpha/such-that[`such-that`] which lets us specify a filtering condition:
 
 [source,clojure]
 ----
@@ -1088,13 +1139,13 @@ Returning to our "hello" example, we now have the tools to make that generator:
 ;;=> ("hello" "ehello3" "eShelloO1" "vhello31p" "hello" "1Xhellow" "S5bhello" "aRejhellorAJ7Yj" "3hellowPMDOgv7" "UhelloIx9E")
 ----
 
-Here we generate a tuple of a random prefix and random suffix strings, then insert "hello" bewteen them.
+Here we generate a tuple of a random prefix and random suffix strings, then insert "hello" between them.
 
 === Range Specs and Generators
 
 There are several cases where it's useful to spec (and generate) values in a range and spec provides helpers for these cases.
 
-For example, in the case of a range of integer values (for example, a bowling roll), use http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec.gen/int-in[`int-in`] to spec a range (end is exclusive):
+For example, in the case of a range of integer values (for example, a bowling roll), use https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/int-in[`int-in`] to spec a range (end is exclusive):
 
 [source,clojure]
 ----
@@ -1103,7 +1154,7 @@ For example, in the case of a range of integer values (for example, a bowling ro
 ;;=> (1 0 0 3 1 7 10 1 5 0)
 ----
 
-spec also includes http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec.gen/inst-in[`inst-in`] for a range of instants:
+spec also includes https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/inst-in[`inst-in`] for a range of instants:
 
 [source,clojure]
 ----
@@ -1118,7 +1169,7 @@ spec also includes http://clojure.github.io/clojure/branch-master/clojure.spec-a
 
 Due to the generator implementation, it takes a few samples to get "interesting" so I skipped ahead a bit.
 
-Finally, http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec.gen/double-in[`double-in`] has support for double ranges and special options for checking special double values like `NaN` (not a number), `Infinity`, and `-Infinity`. 
+Finally, https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/double-in[`double-in`] has support for double ranges and special options for checking special double values like `NaN` (not a number), `Infinity`, and `-Infinity`. 
 
 [source,clojure]
 ----
@@ -1131,15 +1182,15 @@ Finally, http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#cl
 ;;=> (-1.0 -1.0 -1.5 1.25 -0.5 -1.0 -3.125 -1.5625 1.25 -0.390625)
 ----
 
-To learn more about generators, read the test.check http://clojure.github.io/test.check/intro.html[tutorial] or http://clojure.github.io/test.check/generator-examples.html[examples]. Do keep in mind that while clojure.spec.gen is a large subset of clojure.test.check.generators, not everything is included.
+To learn more about generators, read the test.check https://clojure.github.io/test.check/intro.html[tutorial] or https://clojure.github.io/test.check/generator-examples.html[examples]. Do keep in mind that while clojure.spec.gen.alpha is a large subset of clojure.test.check.generators, not everything is included.
 
 == Instrumentation and Testing
 
-spec provides a set of development and testing functionality in the `clojure.spec.test` namespace, which we can include with:
+spec provides a set of development and testing functionality in the `clojure.spec.test.alpha` namespace, which we can include with:
 
 [source,clojure]
 ----
-(require '[clojure.spec.test :as stest])
+(require '[clojure.spec.test.alpha :as stest])
 ----
 
 === Instrumentation
@@ -1156,11 +1207,8 @@ Instrument takes a fully-qualified symbol so we use `pass:[`]` here to resolve i
 [source,clojure]
 ----
 (ranged-rand 8 5)
-CompilerException clojure.lang.ExceptionInfo: Call to #'spec.examples.guide/ranged-rand did not conform to spec:
-val: {:start 8, :end 5} fails at: [:args] predicate: (< (:start %) (:end %))
-:clojure.spec/args  (8 5)
-:clojure.spec/failure  :instrument-check-failed
- #:clojure.spec{:problems [{:path [:args], :pred (< (:start %) (:end %)), :val {:start 8, :end 5}, :via [], :in []}], :args (8 5), :failure :instrument-check-failed}
+Execution error - invalid arguments to user/ranged-rand at (REPL:1).
+{:start 8, :end 5} - failed: (< (:start %) (:end %))
 ----
 
 The error fails in the second args predicate that checks `(< start end)`. Note that the `:ret` and `:fn` specs are not checked with instrumentation as validating the implementation should occur at testing time.
@@ -1169,21 +1217,28 @@ Instrumentation can be turned off using the complementary function `unstrument`.
 
 === Testing
 
-We mentioned earlier that `clojure.spec.test` provides tools for automatically testing functions. When functions have specs, we can use http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec.test/check[`check`], to automatically generate tests that check the function using the specs.
+We mentioned earlier that `clojure.spec.test.alpha` provides tools for automatically testing functions. When functions have specs, we can use https://clojure.github.io/spec.alpha/clojure.spec.test.alpha-api.html#clojure.spec.test.alpha/check[`check`], to automatically generate tests that check the function using the specs.
 
 `check` will generate arguments based on the `:args` spec for a function, invoke the function, and check that the `:ret` and `:fn` specs were satisfied.
 
 [source,clojure]
 ----
-(require '[clojure.spec.test :as stest])
+(require '[clojure.spec.test.alpha :as stest])
 
 (stest/check `ranged-rand)
-;;=> ({:spec #object[clojure.spec$fspec_impl$reify__13728 0x4a47e374 "clojure.spec$fspec_impl$reify__13728@4a47e374"],
-;;     :clojure.spec.test.check/ret {:result true, :num-tests 100, :seed 1466805740290},
+;;=> ({:spec #object[clojure.spec.alpha$fspec_impl$reify__13728 ...],
+;;     :clojure.spec.test.check/ret {:result true, :num-tests 1000, :seed 1466805740290},
 ;;     :sym spec.examples.guide/ranged-rand,
-;;     :result true,
-;;     :type :pass})
+;;     :result true})
 ----
+
+[NOTE]
+====
+A keen observer will notice that `ranged-rand` contains a subtle bug. If the difference between start
+and end is very large (larger than is representable by `Long/MAX_VALUE`), then `ranged-rand` will
+produce an IntegerOverflowException. If you run `check` several times you will eventually
+cause this case to occur.
+====
 
 `check` also takes a number of options that can be passed to test.check to influence the test run, as well as the option to override generators for parts of the spec, by either name or path.
 
@@ -1202,26 +1257,26 @@ This broken function will still create random integers, just not in the expected
 [source,clojure]
 ----
 (stest/abbrev-result (first (stest/check `ranged-rand)))
-;;=> ({:spec (fspec
+;;=> {:spec (fspec
 ;;            :args (and (cat :start int? :end int?) (fn* [p1__3468#] (< (:start p1__3468#) (:end p1__3468#))))
 ;;            :ret int?
 ;;            :fn (and
 ;;                  (fn* [p1__3469#] (>= (:ret p1__3469#) (-> p1__3469# :args :start)))
 ;;                  (fn* [p1__3470#] (< (:ret p1__3470#) (-> p1__3470# :args :end))))),
 ;;     :sym spec.examples.guide/ranged-rand,
-;;     :result {:clojure.spec/problems [{:path [:fn],
-;;                                       :pred (>= (:ret %) (-> % :args :start)),
-;;                                       :val {:args {:start -3, :end 0}, :ret -5},
-;;                                       :via [],
-;;                                      :in []}],
-;;              :clojure.spec.test/args (-3 0),
-;;              :clojure.spec.test/val {:args {:start -3, :end 0}, :ret -5},
-;;              :clojure.spec/failure :test-failed}}
+;;     :result {:clojure.spec.alpha/problems [{:path [:fn],
+;;                                             :pred (>= (:ret %) (-> % :args :start)),
+;;                                             :val {:args {:start -3, :end 0}, :ret -5},
+;;                                             :via [],
+;;                                             :in []}],
+;;              :clojure.spec.test.alpha/args (-3 0),
+;;              :clojure.spec.test.alpha/val {:args {:start -3, :end 0}, :ret -5},
+;;              :clojure.spec.alpha/failure :test-failed}}
 ----
 
 `check` has reported an error in the `:fn` spec. We can see the arguments passed were -3 and 0 and the return value was -5, which is out of the expected range.
 
-To test all of the spec'ed functions in a namespace (or multiple namespaces), use http://clojure.github.io/clojure/branch-master/clojure.spec-api.html#clojure.spec.test/enumerate-namespace[`enumerate-namespace`] to generate the set of symbols naming vars in the namespace:
+To test all of the spec'ed functions in a namespace (or multiple namespaces), use https://clojure.github.io/spec.alpha/clojure.spec.test.alpha-api.html#clojure.spec.test.alpha/enumerate-namespace[`enumerate-namespace`] to generate the set of symbols naming vars in the namespace:
 
 [source,clojure]
 ----
@@ -1290,3 +1345,9 @@ The first call here instruments and stubs `invoke-service`. The second and third
 == Wrapping Up
 
 In this guide we have covered most of the features for designing and using specs and generators. We expect to add some more advanced generator techniques and help on testing in a future update.
+
+== More information
+
+* <<xref/../../../about/spec#,Spec rationale>>
+* https://clojure.github.io/spec.alpha[API Docs]
+* https://github.com/clojure/spec.alpha[Project]

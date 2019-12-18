@@ -1,172 +1,45 @@
-= Contributing to Clojure
-Rich Hickey
-2016-01-15
+= Contributing
+Alex Miller
+2019-05-01
 :type: community
 :toc: macro
 :icons: font
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-Following the lead of other open source projects, the Clojure project requires contributors to jointly assign their copyright on contributed code. The https://secure.echosign.com/public/hostedForm?formid=95YMDL576B336E[Contributor Agreement] (CA) gives Rich Hickey and the contributor joint copyright interests in the code: the contributor retains copyrights while also granting those rights to Rich Hickey as the open source project sponsor.
+== Ways to Contribute
 
-The CA is derived from the Oracle Contributor Agreement (OCA), used for OpenJDK, Netbeans and OpenSolaris projects and others. There is a good http://www.oracle.com/technetwork/oca-faq-405384.pdf[OCA FAQ] answering many questions.
+There are many ways to make a meaningful contribution to the Clojure community:
 
-The CA does not change the rights or responsibilities of the Clojure community under the http://opensource.org/licenses/eclipse-1.0.php[Eclipse Public License (EPL)]. By executing the CA, contributors protect the Clojure code base, enable alternative licensing models, and protect the flexibility to adapt the project to the changing demands of the community. In order for the CA to be effective, the Clojure project must obtain an assignment for all contributions. Please review the CA for a complete understanding of its terms and conditions. By contributing source code or other material to Clojure, you represent that you have a CA with Rich Hickey for such contributions. In order to track contributors, you understand that your full name and username may be posted on a web page listing authorized contributors that is accessible via a public URL.
+* Advocate for the use of Clojure in your organization
+* Use Clojure and share your experience via talks, blogs, etc
+* Start or join a local meetup
+* Help new Clojure users in Slack or other forums
+* Create or provide patches to open source libraries
+* Create or improve Clojure tools
+* Write guides or reference documentation for libraries
+* Write intros or getting started guides for tools
+* Create Clojure podcasts, screencasts, or videos
+* Give a talk at a conference
+* Write an article or book
+* Start a Clojure podcast
+* Start a Clojure conference or join the organization team for an existing one
+* Test alpha or beta releases of Clojure on your code base and provide feedback
 
-== Instructions for submitting the agreement
+=== Editing this Site
 
-* Fill out and submit the https://secure.echosign.com/public/hostedForm?formid=95YMDL576B336E[Contributor Agreement] (an online e-form)
+If you are writing a guide, making an event, or creating a resource, please consider contributing to this web site, clojure.org. All of the content is https://github.com/clojure/clojure-site[stored in GitHub] and pull requests and issues are accepted. For more information on how to contribute, see the page on <<contributing_site#,contributing to the site>>. Every page has a link to the corresponding source file in the bottom right corner. If you have an idea for a new guide or updated documentation, please https://github.com/clojure/clojure-site/issues[file an issue] for discussion.
 
-== Making a contribution
+== Reporting Problems and Requesting Enhancements
 
-Before you invest time working on a change, discuss what you're trying to do with others on the http://groups.google.com/group/clojure-dev[Clojure Dev Google group]. They're likely to be able to offer comments and suggestions that will result in a higher-quality change and a smoother submission process. Announcing that you're working on a particular item can also help to avoid wasted effort in case someone else is already working on it. Once you've submitted the CA, you can http://dev.clojure.org/jira/browse/CLJ[submit patches via JIRA]. Frequent and trusted contributors of more substantial libraries may be granted committer membership in the Clojure contrib projects.
+The Clojure team provides a <<ask#,forum>> where users can ask questions, submit potential problems, and request enhancements to Clojure, ClojureScript, or Clojure contrib libraries. For all of these cases, please ask a question on the <<ask#,forum>>. Mark the question with tag `problem` for potential problems and `request` for enhancements. The community and core team will assess the issue and determine whether to file an issue in the jira tracker. If an issue is filed, the link will be added to the question and it will be tagged with `jira`.
 
-Please see the http://dev.clojure.org/display/community/Contributing[Contributing] wiki for a collection of resources on tickets, builds, patches, source, and more. If you'd like to submit a patch, please follow these guidelines on the http://dev.clojure.org/display/community/JIRA+workflow[preferred process for submitting].
+If you are looking to provide feedback on an issue in jira, please search the https://ask.clojure.org[forum] for the equivalent issue by title and add your feedback there as an "answer" instead.
 
-[[contributors]]
-== Contributors
+The development teams for these languages and libs will use the question votes to prioritize their work in jira towards the next release.
 
-See the full <<contributors#,list of contributors>> that have signed the Clojure Contributor Agreement.
+== Development
 
-[[patches]]
-== Contributed patches to Clojure:
+Clojure was created by Rich Hickey and is developed by a core team of developers at https://cognitect.com[Cognitect], which supports this work. The Clojure development team values a measured and thoughtful approach to language evolution with a strong emphasis on maintaining backward compatibility. See <<xref/../../dev/dev#,Development>> for more information on Clojure development.
 
-* Aaron Bedra
-* Aaron Cohen
-* Achim Passen
-* Alan Dipert
-* Alan Malloy
-* Alexander Yakushev
-* Alex Miller
-* Alex Osborne
-* Alex Ott
-* Alex Redington
-* Alexander Taggart
-* Alexander Yakushev
-* Alf Kristian Stoyle
-* Allen Rohner
-* Ambrose Bonnaire-Sergeant
-* Andrei Kleschinski
-* Andrew Rosa
-* Andy Fingerhut
-* Andy Sheldon
-* Anthony Grimes
-* Aspasia Beneti
-* Baishampayan Ghose
-* Ben Smith-Mannschott
-* Benjamin Teuber
-* Blake West
-* Bozhidar Batsov
-* Brandon Bloom
-* Brenton Ashworth
-* Brian Hurt
-* Brian Taylor
-* Bruce Adams
-* Chas Emerick
-* Chris Gray
-* Chris Houser
-* Chris Perkins
-* Christoffer Sawicki
-* Christophe Grand
-* Christopher Redinger
-* Clinton R. Nixon
-* Colin Jones
-* Cosmin Stejerean
-* Daniel Compton
-* Daniel Solano Gómez
-* David Liebke
-* David McNeil
-* David Miller
-* David Powell
-* David Rupp
-* David Santiago
-* Devender Gollapally
-* Devin Walters
-* Dimitry Gashinsky
-* Drew Raines
-* Ed Bowler
-* Eric Schoonover
-* Erik Assum
-* Federico Brubacher
-* Frantisek Sodomka
-* Gabriel Horner
-* Gary Fredericks
-* George Jahad
-* Ghadi Shayban
-* Gordon Syme
-* Herwig Hochleitner
-* Howard Lewis Ship
-* Hubert Iwaniuk
-* Hugo Duncan
-* Immo Heikkinen
-* James Reeves
-* Jarkko Oranen
-* Jason Wolfe
-* Jean Niklas L'orange
-* Jeremy Heiler
-* Joe Gallo
-* John Szakmeister
-* Jonas Enlund
-* Jozef Wagner
-* Juha Arpiainen
-* Justin Balthrop
-* Justin Kramer
-* Karsten Schmidt
-* Kevin Downey
-* Konrad Hinsen
-* Kurt Harriger
-* Laurent Petit
-* Lauri Pesonen
-* Luke VanderHart
-* Mark Simpson
-* Matt Revelle
-* Max Penet
-* Meikel Brandmeyer
-* Micah Martin
-* Michael Blume
-* Michael Fogus
-* Michał Marczyk
-* Michel Alexandre Salim
-* Mike Anderson
-* Mike Hinchey
-* Nahuel Greco
-* Nicola Mometto
-* Nicolas Buduroi
-* Nikita Prokopov
-* Nola Stowe
-* Paul M Bauer
-* Paul Stadig
-* Pepijn de Vos
-* Phil Hagelberg
-* Philip Aston
-* Philip Potter
-* Ragnar Dahlén
-* Ralf Schmitt
-* Rasmus Svensson
-* Rich Hickey
-* Richard Newman
-* Robert Lachlan
-* Russ Olsen
-* Scott Lowe
-* Sean Devlin
-* Shogo Ohta
-* Stefan Kamphausen
-* Stephen C. Gilardi
-* Steve Miner
-* Steven Yi
-* Stuart Halloway
-* Stuart Sierra
-* Tassilo Horn
-* Tim Dysinger
-* Tim McCormack
-* Timothy Baldridge
-* Timothy Pratley
-* Toby Crawley
-* Tom Faulhaber
-* Tomasz Nurkiewicz
-* Tsutomu Yano
-* Vipul Amler
-* Yanxiang Lou
-* Zach Tellman
-
-_**Many thanks for your contributions to Clojure!**_
+If you would like to provide a patch on a specific ticket in the jira tracker, please follow the <<xref/../../dev/dev#,process>> to become a contributor.

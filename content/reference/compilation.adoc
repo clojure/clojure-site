@@ -30,29 +30,29 @@ The Clojure compilation model preserves as much as possible the dynamic nature o
 * The static initializer for a loader class produces the same effects as does loading its source file
 ** You generally shouldn't need to use these classes directly, as use, require and load will choose between them and more recent source
 * The loader class is generated for each file referenced when a namespace is compiled, when its loader .class file is older than its source.
-* A stand-alone http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/gen-class[gen-class] facility is provided to create named classes for direct use as Java classes, with facilities for:
-* Naming the generated class
-* Selecting the superclass
-* Specifying any implemented interfaces
-* Specifying constructor signatures
-* Specifying state
-* Declaring additional methods
-* Generating static factory methods
-* Generating main
-* Controlling the mapping to an implementing namespace
-* Exposing inherited protected members
+* A stand-alone https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/gen-class[gen-class] facility is provided to create named classes for direct use as Java classes, with facilities for:
+** Naming the generated class
+** Selecting the superclass
+** Specifying any implemented interfaces
+** Specifying constructor signatures
+** Specifying state
+** Declaring additional methods
+** Generating static factory methods
+** Generating main
+** Controlling the mapping to an implementing namespace
+** Exposing inherited protected members
 ** Generating more than one named class from a single file, with implementations in one or more namespaces
-* An optional http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/gen-class[:gen-class] directive can be used in the http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ns[ns] declaration to generate a named class corresponding to a namespace. (:gen-class ...), when supplied, defaults to :name corresponding to the ns name, :main true, :impl-ns same as ns, and :init-impl-ns true. All options of gen-class are supported.
+* An optional https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/gen-class[:gen-class] directive can be used in the https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ns[ns] declaration to generate a named class corresponding to a namespace. (:gen-class ...), when supplied, defaults to :name corresponding to the ns name, :main true, :impl-ns same as ns, and :init-impl-ns true. All options of gen-class are supported.
 * gen-class and the :gen-class directive are ignored when not compiling.
-* A stand-alone http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/gen-interface[gen-interface] facility is provided for generating named interface classes for direct use as Java interfaces, with facilities for:
-* Naming the generated interface
-* Specifying any superintefaces
+* A stand-alone https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/gen-interface[gen-interface] facility is provided for generating named interface classes for direct use as Java interfaces, with facilities for:
+** Naming the generated interface
+** Specifying any superintefaces
 ** Declaring the signatures of interface methods
 
 == Compiling
-To compile a lib, use the http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/compile[compile] function, and supply the namespace name as a symbol. For some namespace my.domain.lib, defined in my/domain/lib.clj, in the classpath, the following should occur:
+To compile a lib, use the https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/compile[compile] function, and supply the namespace name as a symbol. For some namespace my.domain.lib, defined in my/domain/lib.clj, in the classpath, the following should occur:
 
-* A loader classfile will produced in ``my/domain/lib__init.class``, under *compile-path*, which must be in the classpath
+* A loader classfile will be produced in ``my/domain/lib__init.class``, under `pass:[*compile-path*]`, which must be in the classpath
 * A set of classfiles will be produced, one per fn in the namespace, with names such as ``my/domain/lib$fnname__1234.class``
 * For each gen-class:
 ** A stub classfile will be produced with the specified name
@@ -81,7 +81,7 @@ By default, the Clojure compiler produces code that eagerly clears GC references
 
 === Elide meta
 
-Var meta (docstrings, file and line info, etc) will be compiled into strings in the constant pool of the compiled classes. To descrease class size and make classloading faster, meta can be elided. This option takes a vector of meta keywords that should be removed - some common ones include `:doc`, `:file`, `:line`, and `:added`. Note that eliding meta may make certain features inoperable (for example, `doc` cannot return docstrings if they have been elided).
+Var meta (docstrings, file and line info, etc) will be compiled into strings in the constant pool of the compiled classes. To decrease class size and make classloading faster, meta can be elided. This option takes a vector of meta keywords that should be removed - some common ones include `:doc`, `:file`, `:line`, and `:added`. Note that eliding meta may make certain features inoperable (for example, `doc` cannot return docstrings if they have been elided).
 
 [[directlinking]]
 === Direct linking
@@ -98,7 +98,9 @@ As of Clojure 1.8, the Clojure core library itself is compiled with direct linki
 Classes generated by Clojure are highly dynamic. In particular, note that no method bodies or other implementation details are specified in gen-class - it specifies only a signature, and the class that it generates is only a stub. This stub class defers all implementation to functions defined in the implementing namespace. At runtime, a call to some method foo of the generated class will find the current value of the var implementing.namespace/prefixfoo and call it. If the var is not bound or nil, it will call the superclass method, or if an interface method, generate an UnsupportedOperationException.
 
 == gen-class Examples
-In the simplest case, an empty :gen-class is supplied, and the compiled class has only main, which is implemented by defining -main in the namespace:
+
+In the simplest case, an empty :gen-class is supplied, and the compiled class has only main, which is implemented by defining -main in the namespace. The file should be saved in src/clojure/examples/hello.clj:
+
 [source,clojure]
 ----
 (ns clojure.examples.hello
@@ -109,15 +111,36 @@ In the simplest case, an empty :gen-class is supplied, and the compiled class ha
   (println (str "Hello " greetee "!")))
 
 ----
-This gets compiled as follows:
+
+To compile, ensure the target output directory `classes` exists:
+
+[source,shell]
+----
+mkdir classes
+----
+
+And create a deps.edn file describing your classpath:
+
 [source,clojure]
 ----
-(compile 'clojure.examples.hello)
+{:paths ["src" "classes"]}
 ----
-And can be run like an ordinary Java app like so:
+
+Then compile to generate the classes as follows:
+
 [source,clojure]
 ----
-java -cp ./classes:clojure.jar clojure.examples.hello Fred
+$ clj
+Clojure 1.10.1
+user=> (compile 'clojure.examples.hello)
+clojure.examples.hello
+----
+
+And can be run like an ordinary Java app like so (be sure to include the output classes directory):
+
+[source,clojure]
+----
+java -cp `clj -Spath` clojure.examples.hello Fred
 Hello Fred!
 ----
 
@@ -183,15 +206,26 @@ Note in main how an instances of the classes can be created, and methods called,
     (println (.bar y))))
 
 ----
-Compile as above, and run like an ordinary Java app:
+
+Compile as above:
+
 [source,clojure]
 ----
-java -cp ./classes:clojure.jar clojure.examples.instance asdf
+$ clj
+Clojure 1.10.1
+user=> (compile 'clojure.examples.instance)
+clojure.examples.instance
+----
+
+And run like an ordinary Java app:
+
+[source,clojure]
+----
+java -cp `clj -Spath` clojure.examples.instance asdf
 a
 s
 d
 f
 class clojure.examples.impl
 I am an IBar
-
 ----

@@ -23,7 +23,7 @@ Error messages from macros are a perennial challenge for new (and experienced) u
 
 Clojure has always been about simplifying the development of robust software. In all languages, dynamic or not, tests are essential to quality - too many critical properties are not captured by common type systems. **spec** has been designed from the ground up to directly support generative testing via https://github.com/clojure/test.check[test.check]. When you use **spec** you get generative tests for free.
 
-Taken together, I think the features of **spec** demonstrate the ongoing advantages of a powerful dynamic language like Clojure for building robust software - superior expressivity, instrumentation-enhanced REPL-driven development, sophisticated testing and more flexible systems. I encourage you to read the **spec** http://clojure.org/about/spec[rationale and overview]. Look for spec's inclusion in the next alpha release of Clojure, within a day or so.
+Taken together, I think the features of **spec** demonstrate the ongoing advantages of a powerful dynamic language like Clojure for building robust software - superior expressivity, instrumentation-enhanced REPL-driven development, sophisticated testing and more flexible systems. I encourage you to read the **spec** https://clojure.org/about/spec[rationale and overview]. Look for spec's inclusion in the next alpha release of Clojure, within a day or so.
 
 I hope you find **spec** useful and powerful.
 

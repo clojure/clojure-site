@@ -1,0 +1,24 @@
+= JIRA Migration
+Alex Miller
+2019-05-16
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Clojure has been very fortunate to receive infrastructure support from https://www.atlassian.com[Atlassian] (for JIRA and Confluence) and https://www.contegix.com/[Contegix] (for hosting) for many years. The Confluence and JIRA instances were not kept up to date, and have grown increasingly hard to maintain. Recently, we decided to shut down Confluence (content was either moved to https://clojure.org[clojure.org] or https://archive.clojure.org/design-wiki/display/design/Home.html[archived]) and we are now preparing to migrate from our old JIRA instance into a new cloud-hosted instance. Many thanks to Atlassian again for supporting our efforts in this.
+
+== User migration
+
+Due to the large number of users, it is not feasible for us to move everyone, and we've decided to migrate all users that have edited tickets in the past (changed a description, added a patch, etc) - this will move user names and emails, not passwords. When the import happens, email invites will go out for users in the new system based on the email address in the old system. Initially these users will not have access to projects.
+
+Users that created or commented on tickets in the past (but did not edit) will not automatically be migrated. We are planning to leverage JIRA Service Desk to create a new path for language users to file tickets without needing an account. These incoming tickets can be triaged and turned into JIRA tickets as needed. We are also looking at a new process to obtain a contributor account and gain access to the system for commenting or other work. Stay tuned for more on that.
+
+== Backup and import
+
+After users have been loaded, a backup of the old system and import into the new system will occur. All projects, issues, attachments, comments, etc will be preserved. This will be done on a per-project basis until the migration is complete and might take a while to fully import and verify.
+
+After that, there will be some work to enable access for different project administrators and users before the system is fully available.
+
+We will put the old system into a read-only mode once the backup and import has started. Once the import is complete, the old system will be shut down. Redirect rules will be set up for the old Confluence and JIRA urls to point to the new Confluence archive and new JIRA system so that old links will continue to work.
+
+Please be patient as we make the transition. Thanks!

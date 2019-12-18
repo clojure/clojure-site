@@ -1,0 +1,126 @@
+= Swing Education
+Alex Miller
+2018-01-24
+:jbake-type: story
+:jbake-company: Swing Education
+
+[.right]
+image:/images/content/stories/swing-logo.png["Swing Education",height="55"]
+
+**How long have you been working with Clojure or ClojureScript?**
+
+http://www.swingeducation.com/[Swing Education] has been working with Clojure and Clojurescript since
+being founded in early 2015.  Personally I've been working with Clojure
+since late 2013.
+
+**How big is the team you have using Clojure or ClojureScript?**
+
+Our current engineering team currently consist of three full-time
+engineers.  Our codebase is essentially 100% Clojure.  We are actively
+hiring for Q1 2018 and hope to grow the team to five engineers and one
+person that is more designer/UI-UX-focused but will still likely end
+up working with Clojure.
+
+**What product or service are you building with Clojure or ClojureScript?**
+
+Our primary product is an online marketplace for schools to issue
+requests for subsitute teachers.  We help schools access more subs and
+try to automate via software tedious work associated with
+managing a pool of substitute teachers (recruiting, screening,
+payroll, etc.).  Our network provides subs with a wider range of work
+opportunities to gain experience and build their professional network.
+
+**What Clojure or ClojureScript library have you enjoyed working with the most?**
+
+Strictly speaking perhaps not a library, but regardless https://www.datomic.com/[Datomic] has
+been extremely enjoyable to work with. A small subset of the
+highlights:
+
+* Being able to treat the database as a value has made most of our code
+   extremely deterministic and removes many different classes of
+   potential errors due to "oh this value changed during execution"
+   since the db value is consistent.
+* d/transact returns the resulting db value after transacting which
+   removes issues that traditionally occur with reads after writes
+   with read-replicas.
+* tx-data being represented as simple vectors and maps allows us to
+   compose transactions elegantly and makes it much easier to
+   programatically generate code that either creates or modifies
+   multiple entities at once.
+* The transaction listener queue is an elegant way to listen for data
+   changes that require notifications to get triggered without tight
+   coupling to the point at which the transaction was executed.  If
+   our notification process needs to shut-down or restart, we can use
+   d/tx-log to walk through the log again (lazily no less!) from our
+   last known notification point.
+* d/as-of and d/since have been used to help time-travel to
+   understand what a user was seeing at a particular time or what the
+   system saw when it was executing.  Both bugs and correct behavior
+   have been confirmed this way in production when used in combination
+   with code that expects the database as an argument.
+* Transaction metadata allows us to easily record who did what when
+   how and why and then both query against as well as use the
+   corresponding tx-log entities as arguments for d/as-of and d/since
+   to understand what happened in the system.
+* Testing and developer setup is massively simplified with
+   speculative transactions via d/with and the in-memory database
+   allowing us to not have an external process to manage or setup.
+* Database filtering via d/filter provides an elegant way to re-use
+   queries. For instance, we have queries that report on total
+   activity on our system, and then re-use the exact same query but
+   with a database filter applied to a breakdown by geographical
+   region or scoped by time (requested created within past 7 days,
+   past month, etc). +
++
+Note that this is somewhat less efficient than writing a separate
+function to do the aggregation on a per-region level during a
+single pass, but for us the total dataset is still fairly small so
+the CPU processing time is irrelevant.  It is more important to us
+to be able to flexibly filter out data from the query and can't
+beat the ease of implementation ...
+* Lazy iteration via d/datoms and d/index-range based off of a db
+   value!  Most of our data processing operates on one small subset of
+   data at a time or merely requires minimial aggregation state. +
++
+Doing this via a traditional SQL based system is difficult since
+while you can write Clojure functions to generate a lazy sequence
+of LIMIT/OFFSET calls your view of the world isn't consistent.
+
+**What about working with Clojure or ClojureScript gives you the most value?**
+
+The most valuable property to us is that there is only one programming
+language that is used everywhere and allows us to share code between
+the database (either via jars loaded onto the transactor classpath or
+via transaction functions), web server, and client.
+
+**What is your favorite feature of Clojure or ClojureScript?**
+
+Probably host inter-op.  The ability to leverage existing libaries in
+both ecosystems via interop if necessary allows Clojure/Script to
+piggyback off of these huge ecosystems while providing additional
+value on top.
+
+**Why is using Clojure or ClojureScript valuable to your business?**
+
+Clojure allows us to develop code more quickly via REPL-driven
+development.  The resulting code is typically less bug-prone because
+everything is immutable and functions are re-entrant, and also makes
+testing much easier.  The facilities provided for reducing boilerplate
+via macros and emphasis on data allow for better re-use and results in
+less code duplication and higher order programming.
+
+Our code has been fairly easy to maintain because of the emphasis on
+simplicity and stability from both the core language and the wider
+Clojure open-source community.
+
+**What is your stack?**
+
+On the server side, we use Datomic with DynamoDB as the underlying
+storage.  Our web servers run http://www.http-kit.org/[http-kit].  
+We use https://github.com/weavejester/compojure[Compojure] for routing 
+and https://github.com/ptaoussanis/sente[Sente] for real-time communication.
+
+On the client side, we use https://github.com/tonsky/datascript[DataScript]
+and https://github.com/reagent-project/reagent[Reagent] for web clients, and
+also have a mobile app implemented in https://clojurescript.org[ClojureScript]
+on top of https://facebook.github.io/react-native/[React Native] for iOS.

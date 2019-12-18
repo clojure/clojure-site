@@ -1,0 +1,33 @@
+= CollBox
+Alex Miller
+2017-04-06
+:jbake-type: story
+:jbake-company: CollBox
+:jbake-link: https://collbox.co/
+
+We talked with Cameron Desautels about his use of Clojure and ClojureScript at https://collbox.co/[CollBox].
+
+[.right]
+image:/images/content/stories/collbox.png["CollBox",height="80"]
+
+*How long have you been working with Clojure and ClojureScript?*
+
+I've been using Clojure for about five years, and ClojureScript for one year. I discovered Lisps early in my programming career (probably via Emacs) and thus have been a Lisp fan for about 15 years, so Clojure felt like coming home.
+
+*What product or service are you building?*
+
+We're using Clojure and ClojureScript to build the next generation of debt collection services. We integrate with cloud accounting software to conveniently ingest and validate debt, manage a network of reputable debt collectors behind the scenes, and intelligently match debt with collectors to optimize for the best rates and odds of collection. At the same time, we're working to raise the bar on accountability and transparency in an industry that has historically not been known for those things.
+
+*How big is your team?*
+
+Just me! We're a small startup, and I comprise the engineering team (for now). But I consider it a testament to Clojure that a sole developer can build and maintain a production web application. In fact, the roots of our company trace back to winning the grand prize at the at 2015 QuickBooks Connect Hackathon, where we beat out teams with five professional engineers who work together every day—again, with Clojure and one engineer. A good tool is a force multiplier.
+
+*What about working with Clojure and ClojureScript gives you the most value?*
+
+The single most valuable aspect of working with Clojure, for me, is the language's commitment to reusing a small number of readable, immutable data structures. I configure my application with basic data structures; I wire my application's dependencies together with basic data structures; I write my database queries in them, I log metrics with them, and when I have to diagnose a web exception at 2am, I'm very fortunate that that request came in as a familiar data structure that I can print, log, inspect, or update with the same tools I've spent years getting comfortable with.
+
+I can't stress enough how superior this is to having a reference to an opaque Foo object and wondering "what can this thing do? What's inside of it? Can I serialize it? How do I create one? Is it going to change out from under me?"
+
+*What is your stack?*
+
+Our frontend is all ClojureScript using https://github.com/Day8/re-frame[re-frame]. The backend is Clojure running on AWS backed by http://www.datomic.com/[Datomic] (on DynamoDB). Our web framework is custom-built, but makes heavy use of https://github.com/ztellman/aleph[aleph], https://github.com/juxt/bidi[bidi], https://github.com/stuartsierra/component[component], and https://github.com/cognitect/transit-format[transit].

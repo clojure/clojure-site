@@ -264,6 +264,10 @@ Examples:
 
 ;; Passing at least an empty array is required if there are no varargs
 (.put o 1 1 (double-array []))
+
+;; into-array can be used to create an empty typed array
+;; Invoke getMethod(String name, Class... parameterTypes) on a Class instance
+(.getMethod String "getBytes" (into-array Class []))
 ----
 
 [[illegal_access]]

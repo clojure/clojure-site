@@ -176,6 +176,24 @@ Checking whether a function operates correctly is a test-time activity and this 
 
 Yes, set the Java system property `-Dclojure.spec.skip-macros=true` and no macro specs will be checked during macroexpansion.
 
+[[exclusive_keys]]
+**<<faq#exclusive_keys,How do I write a map that only allows certain keys?>>**
+
+Spec's general philosophy is one of "open" specs where maps can contain additional keys beyond what is specified as required or optional in an s/keys spec. One way to accomplish a contrained key set is to `s/and` an additional constraint:
+
+[source,clojure]
+----
+(s/def ::auth
+  (s/and
+    (s/keys :req [::user ::password])
+    #(every? #{::user ::password} (keys %))))
+----
+
+[[spec_doc]]
+**<<faq#spec_doc,Can I add docs or metadata for specs?>>**
+
+Currently, no. This is under consideration for the next version of spec.
+
 == State and Concurrency
 
 [[concurrency_features]]

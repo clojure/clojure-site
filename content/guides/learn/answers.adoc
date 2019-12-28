@@ -78,8 +78,8 @@ nil
 [source,clojure]
 ----
 (defn greeting
-  ([] (greeting "Hello" "World")
-  ([x] (greeting "Hello" x)
+  ([] (greeting "Hello" "World"))
+  ([x] (greeting "Hello" x))
   ([x y] (str x ", " y "!")))
 ----
 +

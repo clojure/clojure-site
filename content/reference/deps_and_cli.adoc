@@ -325,7 +325,7 @@ Then just refer to your dependencies as usual in the `:deps`.
 
 ==== Maven S3 repos
 
-The tools also provide support for connecting to private S3 Maven repositories (thanks to the https://github.com/s3-wagon-private/s3-wagon-private[s3-wagon-private] and https://github.com/spring-projects/aws-maven[aws-maven] projects).
+The tools also provide support for connecting to public and private S3 Maven repositories.
 
 Add a `:mvn/repos` that includes the s3 repository root:
 
@@ -337,7 +337,9 @@ Add a `:mvn/repos` that includes the s3 repository root:
  {"my-private-repo" {:url "s3://my-bucket/maven/releases"}}}
 ----
 
-AWS credentials can be set in the `~/.m2/settings.xml` on a per-server basis. The repository name in `deps.edn` must match the server id in `settings.xml`:
+S3 buckets are specific to the AWS region they were created in. The s3 transporter will attempt to determine the bucket's location. If that doesn't work, you can specify the bucket region in the url explicitly: `"s3://my-bucket/maven/releases?region-us-west-2"`.
+
+For authenticated repos, AWS credentials can be set in the `~/.m2/settings.xml` on a per-server basis or will be loaded ambiently from the AWS credential chain (env vars, etc). The repository name in `deps.edn` must match the server id in `settings.xml`:
 
 [source,xml]
 ----
@@ -354,8 +356,6 @@ AWS credentials can be set in the `~/.m2/settings.xml` on a per-server basis. Th
   ...
 </settings>
 ----
-
-It is also possible to specify your AWS credentials using the AWS credential chain. This is NOT RECOMMENDED as the same AWS credentials will be used for all AWS repositories (unlike settings.xml, which lets you set these on a per-repository basis).
 
 AWS S3 credentials can be set in the environment using one of these mechanisms:
 

@@ -60,7 +60,7 @@ $ brew list --versions clojure
 
 If the version you want is there, you can do:
 
-[source]
+[source,shell]
 ----
 $ brew switch clojure x.y.z.r
 ----
@@ -71,7 +71,7 @@ In this process, you will create your own "tap" (formula repository) and extract
 
 First, create the tap, substituting your own github id into the command:
 
-[source]
+[source,shell]
 ----
 $ brew tap-new GITHUBID/tap
 ----

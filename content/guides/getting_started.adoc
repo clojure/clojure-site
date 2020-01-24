@@ -33,7 +33,13 @@ If you've already installed, you can upgrade to the latest release with:
 brew upgrade clojure
 ----
 
+Also see: <<clj_brew#,clj on Homebrew>> for more information.
+
 === Installation on Linux
+
+Note: You can now use https://docs.brew.sh/Homebrew-on-Linux[Homebrew on Linux or Windows with WSL], similar to the Mac installation.
+
+To install with the Linux script installer:
 
 1. Ensure that the following dependencies are installed: bash, curl, rlwrap, and Java.
 2. Use the linux-install script to download and run the install, which will create /usr/local/bin/clj, /usr/local/bin/clojure, and /usr/local/lib/clojure:

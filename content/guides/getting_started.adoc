@@ -33,7 +33,7 @@ If you've already installed, you can upgrade to the latest release with:
 brew upgrade clojure
 ----
 
-Also see: <<clj_brew#,clj on Homebrew>> for more information.
+Also see: <<xref/../../reference/clj_brew#,clj on Homebrew>> for more information.
 
 === Installation on Linux
 

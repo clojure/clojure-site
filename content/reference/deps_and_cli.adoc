@@ -597,3 +597,7 @@ A repository of library artifacts - e.g. Maven central or Clojars
 **Requires and imports**
 
 Mentions in source code of library (sub)components that must be in the classpath in order to succeed. namespace and package/class names are transformed into path components.
+
+== Tools
+
+See the project's wiki for a https://github.com/clojure/tools.deps.alpha/wiki/Tools[list of tools that use or work with tools.deps.alpha (or the clojure tools)] - tools for project creation, packaging, and much more.

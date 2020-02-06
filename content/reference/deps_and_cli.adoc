@@ -219,34 +219,28 @@ While dependency sets are merged across all of the configuration files, only the
 
 === Aliases
 
-Aliases are defined in the `:aliases` section of the config file. The Clojure tool supports several kinds of aliases:
+Aliases give a name to a data structure that can be used either by the Clojure tool itself or other consumers of deps.edn. They are defined in the `:aliases` section of the config file. These Clojure tool flags use the following well-known alias keys:
 
-* -R - `resolve-deps` aliases are modifications applied during `resolve-deps`
-** Allowed keys in these aliases are:
-*** `:extra-deps` - a deps map from lib to coordinate of deps to add to the deps
-*** `:override-deps` - a deps map from lib to coordinate of override versions to use
-*** `:default-deps` - a deps map from lib to coordinate of versions to use if none is found
-** If multiple -R alias maps are activated, all of these are merge-with merged
-* -C - `make-classpath` aliases are modifications applied during `make-classpath`
-** Allowed keys in these aliases are:
-*** `:extra-paths` - a collection of string paths to add to `:paths`
-*** `:classpath-overrides` - a map of lib to string path to replace the location of the lib
-*** If multiple -C alias maps are activated, `:extra-paths` concatenate and `:classpath-overrides` merge-with merge
-* -O - JVM option aliases
-** Allowed keys in these aliases are:
-*** `:jvm-opts` - a collection of string JVM options
-** If multiple -O alias maps are activated, `:jvm-opts` concatenate
+* -R - uses these keys when expanding deps during `resolve-deps`:
+** `:extra-deps` - a deps map from lib to coordinate of deps to add to the deps
+** `:override-deps` - a deps map from lib to coordinate of override versions to use
+** `:default-deps` - a deps map from lib to coordinate of versions to use if none is found
+** If multiple alias maps with these keys are activated, all of them are merge-with merged
+* -C - uses these keys when creating the classpath during `make-classpath`:
+** `:extra-paths` - a collection of string paths to add to `:paths`
+** `:classpath-overrides` - a map of lib to string path to replace the location of the lib
+** If multiple maps with these keys are activated, `:extra-paths` concatenate and `:classpath-overrides` merge-with merge
+* -O - uses these keys when constructing the final command JVM options:
+** `:jvm-opts` - a collection of string JVM options
+** If multiple maps with these keys are activated, `:jvm-opts` concatenate
 ** If -J JVM options are also specified on the command line, they are concatenated after the alias options
-* -M - clojure.main option aliases
-** Allowed keys in these aliases are:
-*** `:main-opts` - a collection of clojure.main options
-** If multiple -M alias maps are activated, only the last one will be used
+* -M - uses these keys when constructing the final command clojure.main arguments:
+** `:main-opts` - a collection of clojure.main options
+** If multiple maps with these keys are activated, only the last one will be used
 ** If command line clojure.main arguments are supplied on the command line, they are concatenated after the last main alias map
-* -A - applies across all alias types
-** These aliases support ALL alias keys above and all will be applied
-** Also, these keys are only supported with -A:
-*** `:deps` - a deps map from lib to coordinate of deps to REPLACE the project `:deps`
-*** `:paths` a collection of string paths to REPLACE project `:paths`
+* -A - activates all of the keys above, also these keys are only supported with -A:
+** `:deps` - a deps map from lib to coordinate of deps to REPLACE the project `:deps`
+** `:paths` a collection of string paths to REPLACE project `:paths`
 
 So given a deps.edn like:
 

@@ -63,6 +63,7 @@ Status legend:
 | https://clojure.github.io/java.jmx/[java.jmx] | JMX interface | Nick Bailey | Stable
 | https://clojure.github.io/math.combinatorics/[math.combinatorics] | Lazy sequences for common combinatorial functions | Mark Engelberg | Stable
 | https://clojure.github.io/math.numeric-tower/[math.numeric-tower] | Math functions and numeric tower | Mark Engelberg | Stable
+| https://clojure.github.io/test.check/[test.check] | Property testing framework | Alex Miller| Active
 | https://clojure.github.io/test.generative/[test.generative] | Test data generation and execution harness | Stuart Halloway | Inactive
 | https://clojure.github.io/tools.analyzer/[tools.analyzer] | Analyzer framework for Clojure code | Nicola Mometto | Active
 | https://clojure.github.io/tools.analyzer.jvm/[tools.analyzer.jvm] | JVM-specific passes for tools.analyzer | Nicola Mometto | Active

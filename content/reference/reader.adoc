@@ -269,7 +269,7 @@ In cases where is not feasible to isolate the varying parts of the code, or wher
 
 Reader conditionals are a new reader dispatch form starting with `pass:[#?]` or `pass:[#?@]`. Both consist of a series of alternating features and expressions, similar to `cond`. Every Clojure platform has a well-known "platform feature" - `:clj`, `:cljs`, `:cljr`. Each condition in a reader conditional is checked in order until a feature matching the platform feature is found. The reader conditional will read and return that feature's expression. The expression on each non-selected branch will be read but skipped. A well-known `:default` feature will always match and can be used to provide a default. If no branches match, no form will be read (as if no reader conditional expression was present).
 
-NOTE: Implementors of non-official Clojure platforms should use a qualified keyword for their platform feature.
+NOTE: Implementors of non-official Clojure platforms should use a qualified keyword for their platform feature to avoid name collisions. Unqualified platform features are reserved for official platforms.
 
 The following example will read as Double/NaN in Clojure, js/NaN in ClojureScript, and nil in any other platform:
 

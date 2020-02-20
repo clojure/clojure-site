@@ -1,0 +1,127 @@
+= State of Clojure 2020 Results
+Alex Miller
+2020-02-20
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Ten years ago, Chas Emerick ran the first State of Clojure survey. In 2010, most users had been using Clojure for just weeks or months, and few were using it as a language for serious work. https://www.surveymonkey.com/results/SM-CDBF7CYT7/[This year], we see consistent and growing use for <<#work,work>>, steady interest in the key <<#values,value>> propositions of Clojure, and an ever-evolving <<#community,community>> of users.
+
+[[work]]
+== Clojure at Work
+
+One of the questions we have been asking since 2010 is whether respondents are using Clojure for work, hobby projects, tinkering, or studies. This year, we saw the highest percentage yet of Clojure use at work:
+
+image::/images/content/news/2020-02-20/use.png[Clojure uses,align="center"]
+
+Additionally, we saw a small shift in company size to bigger companies - an increase of 3% in companies of size 1000+ (and reduction in companies size 1-10).
+
+image::/images/content/news/2020-02-20/org-size.png[Clojure organization size,align="center"]
+
+We also asked respondents for the first time how many people were using Clojure at their organization. As expected, many Clojure teams are small. As a high-leverage tool, Clojure is a great fit for small highly-productive teams. However, it was also great to see many respondents at companies with 40 or even 100+ Clojure developers.
+
+image::/images/content/news/2020-02-20/at-org.png[Clojure devs at organization,align="center"]
+
+A question we've been asking since 2010 (with some variation in wording and choices), is in what domains Clojure is being used. The top results have not changed too much over the years but we did see a noticeable increase this year in "enterprise applications", to its highest level ever.
+
+image::/images/content/news/2020-02-20/domains.png[Clojure domains,align="center"]
+
+Feedback comments indicate Clojure is a tool yielding high leverage for both companies and teams:
+
+* "Clojure continues to be a force multiplier and a vital enabler for our production system."
+* "Clojure enables our small team to do more with less."
+* "Clojure is by far the best language I have to use at work, and it is a pleasure to solve problems using it. It is almost perfect."
+* "Clojure is powering our data driven insurance ERP. I cannot think of a better approach. Many thanks!"
+* "Hard to find too many complaints about Clojure: it's a wonderful language with a great community. I plan to stay with this language + community for a long time. We have basically bet the company's technical strategy on it."
+* "I love using Clojure and ClojureScript and have moved all our development projects using various different languages (PHP, Python, C#, Javascript) to only using Clojure and ClojureScript"
+* "Our startup is built solely on Clojure and Clojurescript and we are very happy with it."
+
+Clojure's use continues to grow at hundreds of <<xref/../../../../../community/companies#,companies>>, with an ever higher percentage of developers using it at work for their core business.
+
+[[values]]
+== Values
+
+Since 2015, we have asked a question about which aspects of Clojure users valued the most. The weighted ranking of those answers has remained virtually identical since 2015. The most important things to Clojure users are: functional programming, the REPL, immutable data, ease of development, and host interop. Indeed these are all things intrinsic to the Clojure experience and align strongly with the reasons Clojure exists.
+
+The open feedback comments often praised the steady arc of Clojure’s development and tradition for growing without breaking:
+
+* "Clojure is an awesome lisp, lovingly created with taste and refinement.  It is a pleasure to think and implement in the abstractions provided."
+* "Great work, team! This is the most stable technology I've used in my many years doing software development."
+* "I love what you are doing with the language and community. In the world of churn and constantly pumping changes just to create 'buzz' clojure is like a safe zone where my sanity is kept alive."
+* "I really like the simplicity of Clojure and the functional nature of it. I also like the fact that the team doesn't slap on a ton of features like every other language out there."
+* "Thanks for sticking to the principles: lean, conservative, essential, no frills, production grade software that brought back Lisp to the mainstream."
+
+
+[[community]]
+== Community
+
+Again this year we surveyed the most popular forums where Clojurists interact with each other. Some new and/or rising entries included in-person Clojure conferences (we saw many new ones this year!), the new https://ask.clojure.org[Ask Clojure] site, Telegram chats, and Discord.
+
+image::/images/content/news/2020-02-20/forums.png[Clojure forums,align="center"]
+
+We also collect information on how users are involved in the Clojure ecosystem. The response this year were very similar to last year but we did see mild upticks in helping new Clojure users, advocating for Clojure in their organization, and maintaining open source libraries, all great contributions!
+
+image::/images/content/news/2020-02-20/ecosystem.png[Clojure involvement,align="center"]
+
+In feedback comments, many people enjoyed the kind and responsive Clojure community:
+
+* "The Clojure community is absolutely fantastic. Being able to post a question and get thoughtful & insightful answers quickly is immensely valuable. Thank you for fostering such an incredible community."
+* "Clojure (Script) is a great, well-thought out language that has helped me tremendously in my work. However, it also exposed me to a wonderful community of thoughtful developers who have given me wonderful new insights, while remaining a friendly and welcoming community"
+* "Wonderful language and a uniquely insightful community. It has helped me rediscover my love for programming."
+
+== Deep Dives
+
+Clojure developers will be particularly interested in the version and tooling related questions in the survey.
+
+One new question we asked this year was about the primary developer operating system to give us better guidance about tool-related work. As expected, MacOS was the leader (55%), followed by Linux (35%) and Windows (9%):
+
+image::/images/content/news/2020-02-20/os.png[Clojure developer operating system,align="center"]
+
+For primary development tool, there were only minor updates this year. Emacs dropped slightly to 43%, IntelliJ/Cursive rose slightly to 32%, and VS Code with Calva had the biggest increase to 10%.
+
+image::/images/content/news/2020-02-20/tool.png[Clojure development environment,align="center"]
+
+Clojure users have a wealth of fine development environments, each suited to different communities and tastes, and we’re glad to see them all getting better day by day.
+
+For many years, the survey has included a question about "build tools", but this idea of a single monolithic tool has become increasingly less reflective of how people are managing Clojure projects, where they may use multiple tools for different parts of their process, particularly in mixed Clojure/ClojureScript projects. In response to this, we tailored this question more tightly to dependency management and made it multi-select this year:
+
+image::/images/content/news/2020-02-20/deps.png[Clojure dependency management,align="center"]
+
+Looking at previous years, we continue to see strong (but slightly reduced) use of Leiningen, and a steady increase in use of clj/deps.edn. For ClojureScript work, shadow-cljs has made big strides over the last couple years, with big support from Clojurists Together.
+
+In the greater world of Java and the JVM, Java has migrated to a new release strategy where releases come out every spring and fall, and every 3rd release is a "long term support" (LTS) release - 8, 11, and 14. Java 14 is just in the final ramp down stages now and is available only in early access builds right now. Java 9 introduced a major change with the module system and in all JVM communities this has caused a significant user base to remain on Java 8. Clojure reflects this as well (although probably shows more shift to Java 11 than other language communities):
+
+image::/images/content/news/2020-02-20/java.png[Java versions,align="center"]
+
+Releases like Java 9, 10, 12, and soon 13 are effectively dead when the next release comes out and we would recommend sticking primarily to the LTS releases and maybe the latest release, if it’s not an LTS release.
+
+One aspect of Java 11 that is underappreciated is significant work to make Java work better in containers like Docker. If you are deploying in containerized environments with Java 8, you should really be looking closely at the changes in Java 11 and considering an upgrade.
+
+Clojure itself has been using Java 8 as the baseline JVM for a couple years and will continue to do so (while also supporting newer versions of Java). When running Clojure, we recommend Java 8 or 11 right now.
+
+Since last year, we’ve seen strong uptake of Clojure 1.10.0 and 1.10.1. The latter was a maintenance release this year with error handling improvements building on the changes in Clojure 1.10.0 and mitigations for some Java performance regressions in their service releases after Java 8u201. Use of Clojure 1.8 and earlier continues to dwindle:
+
+image::/images/content/news/2020-02-20/clojure.png[Clojure versions,align="center"]
+
+In addition to the prior dependency management question, we also added a new question on how respondents are starting their apps in production. Based on feedback, it’s likely the wording and answer choices will need some fine-tuning next year, but there is some interesting feedback in the results:
+
+image::/images/content/news/2020-02-20/run-app.png[Running production apps,align="center"]
+
+The majority of users are using launchers like Leiningen or clj to start their production apps, more so than by building jars or uberjars and launching them directly with Java. We do see a small group also experimenting with Graal native images (particularly common with smaller scripting apps).
+
+== Full Results
+
+If you’d like to dig into the full results, you can find the complete set of data from this and former years here:
+
+* https://www.surveymonkey.com/results/SM-CDBF7CYT7/[2020]
+* https://www.surveymonkey.com/results/SM-S9JVNXNQV/[2019]
+* https://www.surveymonkey.com/results/SM-9BC5FNJ68/[2018]
+* https://www.surveymonkey.com/results/SM-7K6NXJY3/[2016]
+* http://blog.cognitect.com/blog/2016/1/28/state-of-clojure-2015-survey-results[2015]
+* http://blog.cognitect.com/blog/2014/10/20/results-of-2014-state-of-clojure-and-clojurescript-survey[2014]
+* http://cemerick.com/2013/11/18/results-of-the-2013-state-of-clojure-clojurescript-survey/[2013]
+* http://cemerick.com/2012/08/06/results-of-the-2012-state-of-clojure-survey/[2012]
+* http://cemerick.com/2011/07/11/results-of-the-2011-state-of-clojure-survey/[2011]
+* http://cemerick.com/2010/06/07/results-from-the-state-of-clojure-summer-2010-survey/[2010]
+
+Thanks again for using Clojure and ClojureScript and participating in the survey!

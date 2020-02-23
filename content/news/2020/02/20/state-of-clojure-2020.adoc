@@ -89,7 +89,7 @@ image::/images/content/news/2020-02-20/deps.png[Clojure dependency management,al
 
 Looking at previous years, we continue to see strong (but slightly reduced) use of Leiningen, and a steady increase in use of clj/deps.edn. For ClojureScript work, shadow-cljs has made big strides over the last couple years, with big support from Clojurists Together.
 
-In the greater world of Java and the JVM, Java has migrated to a new release strategy where releases come out every spring and fall, and every 3rd release is a "long term support" (LTS) release - 8, 11, and 14. Java 14 is just in the final ramp down stages now and is available only in early access builds right now. Java 9 introduced a major change with the module system and in all JVM communities this has caused a significant user base to remain on Java 8. Clojure reflects this as well (although probably shows more shift to Java 11 than other language communities):
+In the greater world of Java and the JVM, Java has migrated to a new release strategy where releases come out every spring and fall, and every 3 years there is a "long term support" (LTS) release - 8, 11, and (presumably) 17. Java 9 introduced a major change with the module system and in all JVM communities this has caused a significant user base to remain on Java 8. Clojure reflects this as well (although probably shows more shift to Java 11 than other language communities):
 
 image::/images/content/news/2020-02-20/java.png[Java versions,align="center"]
 

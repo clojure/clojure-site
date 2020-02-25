@@ -9,11 +9,11 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 == Stable Release: 1.10.1 (June 6, 2019)
 
-* See: <<xref/../../guides/getting_started#,Getting Started>>
-* https://repo1.maven.org/maven2/org/clojure/clojure/1.10.1/[Clojure 1.10.1]
+* For installation, see: <<xref/../../guides/getting_started#,Getting Started>>
+* Download at https://repo1.maven.org/maven2/org/clojure/clojure/1.10.1/[Clojure 1.10.1]
 * https://github.com/clojure/clojure/blob/master/changes.md[Changelog]
 
-=== Java dependency
+=== Java Dependency
 
 Clojure depends on Java and all Clojure code is compiled to Java 8 compatible bytecode.
 
@@ -23,7 +23,7 @@ Clojure depends on Java and all Clojure code is compiled to Java 8 compatible by
 
 == Older Releases
 
-* See <<downloads_older#,Older Releases>>
+* For older releases, see <<downloads_older#,Older Releases>>
 
 == Clojure Source
 
@@ -38,7 +38,7 @@ Specify the version of Clojure that you want in your deps.edn:
 [source,clojure]
 ----
 {:deps
- {org.clojure/clojure {:mvn/version "1.10.0"}}}
+ {org.clojure/clojure {:mvn/version "1.10.1"}}}
 ----
 
 === Via Leiningen
@@ -47,10 +47,10 @@ Modify the dependencies and repositories sections of your https://leiningen.org/
 [source,clojure]
 ----
 ; under dependencies, select the release of clojure that you want
-:dependencies [[org.clojure/clojure "1.10.0"]]
+:dependencies [[org.clojure/clojure "1.10.1"]]
 ----
 
-== Using Clojure and contrib SNAPSHOT releases
+== Using Clojure SNAPSHOT releases
 
 Most tools do not automatically include the sonatype snapshot repositories. To use SNAPSHOT releases, you must add this to your configuration:
 

@@ -13,13 +13,13 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 * https://repo1.maven.org/maven2/org/clojure/clojure/1.10.1/[Clojure 1.10.1]
 * https://github.com/clojure/clojure/blob/master/changes.md[Changelog]
 
-=== Java
+=== Java dependency
 
-Clojure depends on Java and all Clojure code is compiled to Java 8 compatible bytecode. At runtime, Clojure depends on the JVM (Java Virtual Machine):
+Clojure depends on Java and all Clojure code is compiled to Java 8 compatible bytecode.
 
-* Minimum: Java 8
+* Minimum runtime dependency: Java 8
 * Supported: LTS (long term support) releases, currently Java 8 and Java 11
-* Others: may work, not officially supported
+* Others: likely work, but not officially supported
 
 == Older Releases
 

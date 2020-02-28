@@ -19,21 +19,21 @@ Clojure provides <<deps_and_cli#,command line tools>> that can be used to start 
 
 === Installation on Mac via https://brew.sh[Homebrew]
 
-Install the command line tools with `brew`:
+Install the command line tools with `brew` from the clojure/tools tap:
 
 [source,shell]
 ----
-brew install clojure
+brew install clojure/tools/clojure
 ----
 
 If you've already installed, you can upgrade to the latest release with:
 
 [source,shell]
 ----
-brew upgrade clojure
+brew upgrade clojure/tools/clojure
 ----
 
-Also see: <<xref/../../reference/clj_brew#,clj on Homebrew>> for more information.
+Also see: https://github.com/clojure/homebrew-tools[Clojure's Homebrew tap] for more information.
 
 === Installation on Linux
 

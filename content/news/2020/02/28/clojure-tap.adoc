@@ -5,12 +5,18 @@ Alex Miller
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-For Mac or Linux users using Homebrew, Clojure now has its own https://github.com/clojure/homebrew-tools[Homebrew tap], `clojure/tools`. Creating our own tap is advantageous for several reasons:
+For Mac or Linux users using Homebrew, Clojure now has its own https://github.com/clojure/homebrew-tools[Homebrew tap], `clojure/tools`. Creating an official Clojure tap has the following advantages:
 
-1. Fully control formula contents
-2. Fully control release timing
-3. Keep an archive of older versioned releases that would be too much for the core tap
+1. Clojure team controls formula contents
+2. Clojure team controls release timing
+3. Freedom to keep an archive of older versioned releases that would be too much for the core tap
 4. Easier to automate releases
+
+== Dependencies
+
+Clojure requires Java. Clojure officially supports Java LTS releases (currently Java 8 and Java 11), but also tries to ensure interim versions work as well. You can use any Java installation, whether it's a commercial release from Oracle or an open source version based on OpenJDK (like adoptopenjdk).
+
+The Clojure tools require that either the `java` command is on the path or that the `JAVA_HOME` environment variable is set.
 
 == How do I use it?
 

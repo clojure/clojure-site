@@ -13,6 +13,12 @@ Welcome to Clojure!
 
 Check out <<learn/syntax#,Learn Clojure>>, <<xref/../../community/resources#,Resources>>, or <<xref/../../community/books#,Books>> for learning the language!
 
+== Dependencies
+
+Clojure requires Java. Clojure officially supports Java LTS releases (currently Java 8 and Java 11), but also tries to ensure interim versions work as well. You can use any Java installation, whether it's a commercial release from Oracle or an open source version based on OpenJDK (like adoptopenjdk).
+
+The Clojure tools require that either the `java` command is on the path or that the JAVA_HOME environment variable is set.
+
 == Clojure installer and CLI tools
 
 Clojure provides <<deps_and_cli#,command line tools>> that can be used to start a Clojure repl, use Clojure and Java libraries, and start Clojure programs.
@@ -46,9 +52,9 @@ To install with the Linux script installer:
 
 [source,shell]
 ----
-curl -O https://download.clojure.org/install/linux-install-1.10.1.510.sh
-chmod +x linux-install-1.10.1.510.sh
-sudo ./linux-install-1.10.1.510.sh
+curl -O https://download.clojure.org/install/linux-install-1.10.1.536.sh
+chmod +x linux-install-1.10.1.536.sh
+sudo ./linux-install-1.10.1.536.sh
 ----
 
 === Installation on Windows

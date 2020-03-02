@@ -10,9 +10,9 @@ toc::[]
 
 == Introduction
 
-Reader conditionals are a feature added in Clojure 1.7. They are designed to allow different dialects of Clojure to share common code that is mostly platform independent, but contains some platform dependent code. If you are writing code across multiple platforms that is mostly independent you should separate `.clj` and `.cljs` files instead.
+Reader conditionals were added in Clojure 1.7. They are designed to allow different dialects of Clojure to share common code that is mostly platform independent, but contains some platform dependent code. If you are writing code across multiple platforms that is mostly independent you should separate `.clj` and `.cljs` files instead.
 
-Reader conditionals are integrated into the Clojure reader, and don't require any extra tooling beyond Clojure 1.7 or greater. To use reader conditionals, all you need is for your file to have a `.cljc` extension and to use Clojure 1.7 or ClojureScript 0.0-3196 or higher. Reader conditionals are expressions, and can be manipulated like ordinary Clojure expressions. For more technical details, see the reference page on <<xref/../../reference/reader#,the reader>>.
+Reader conditionals are integrated into the Clojure reader, and don't require any extra tooling. To use reader conditionals, all you need is for your file to have a `.cljc` extension. Reader conditionals are expressions, and can be manipulated like ordinary Clojure expressions. For more technical details, see the reference page on <<xref/../../reference/reader#,the reader>>.
 
 There are two types of reader conditionals, standard and splicing. The standard reader conditional behaves similarly to a traditional `cond`. The syntax for usage is `#?` and looks like:
 
@@ -43,7 +43,7 @@ as this:
   (list 5 6 7 8))
 ----
 
-One important thing to note is that in Clojure 1.7 a splicing conditional reader cannot be used to splice in multiple top level forms. In concrete terms, this means you can't do this:
+One important thing to note is that in Clojure a splicing conditional reader cannot be used to splice in multiple top level forms. In concrete terms, this means you can't do this:
 
 [source,clojure]
 ----
@@ -200,7 +200,3 @@ Sente previously used cljx for sharing code between Clojure and ClojureScript. I
    [cljs.core.async.macros :as asyncm :refer (go go-loop)]
    [taoensso.encore        :as enc    :refer (have? have have-in)]))
 ----
-
-== Backwards compatibility
-
-At the time of writing, there is no way to use `.cljc` files in versions of Clojure less than 1.7, nor is there any porting mechanism to preprocess `.cljc` files to output `.clj` and `.cljs` files like cljx does. For that reason library maintainers may need to wait for a while until they can safely drop support for older versions of Clojure and adopt reader conditionals.

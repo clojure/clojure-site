@@ -23,7 +23,7 @@ Note: All dev releases are subject to breaking changes for new work since the pr
 
 * https://clojure.atlassian.net/browse/CLJ-1472[CLJ-1472] Ensure monitor object is on stack, for verifiers
 * https://clojure.atlassian.net/browse/CLJ-2502[CLJ-2502] Fix reflection warnings in clojure.stacktrace/print-stack-trace
-* https://clojure.atlassian.net/browse/CLJ-2517[CLJ-2517] More fixes for invocation of static interface methods with primitve args
+* https://clojure.atlassian.net/browse/CLJ-2517[CLJ-2517] More fixes for invocation of static interface methods with primitive args
 
 == Release 1.10.1
 

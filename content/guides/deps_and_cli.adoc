@@ -34,7 +34,7 @@ After you download and install the tools, you can start a REPL by running the `c
 [source,shell]
 ----
 $ clj
-Clojure 1.9.0
+Clojure 1.10.1
 user=>
 ----
 
@@ -65,7 +65,7 @@ Restart the REPL with the `clj` tool:
 $ clj
 Downloading: clj-time/clj-time/0.14.2/clj-time-0.14.2.pom from https://clojars.org/repo/
 Downloading: clj-time/clj-time/0.14.2/clj-time-0.14.2.jar from https://clojars.org/repo/
-Clojure 1.9.0
+Clojure 1.10.1
 user=> (require '[clj-time.core :as t])
 nil
 user=> (str (t/now))
@@ -243,7 +243,7 @@ Apply that classpath modification and examine the modified classpath by invoking
 $ clj -C:test -Spath
 src:
 test:
-/Users/me/.m2/repository/org/clojure/clojure/1.9.0/clojure-1.9.0.jar:
+/Users/me/.m2/repository/org/clojure/clojure/1.10.1/clojure-1.10.1.jar:
 /Users/me/.m2/repository/org/clojure/tools.analyzer/0.6.9/tools.analyzer-0.6.9.jar:
 ... same as before
 ----

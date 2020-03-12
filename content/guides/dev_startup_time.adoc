@@ -20,7 +20,7 @@ The `compile` function takes a namespace symbol and compiles that namespace and 
 
 [source,clojure]
 ----
-(compile ‘my.namespace)    ;; writes .class files to *compile-path*
+(compile 'my.namespace)    ;; writes .class files to *compile-path*
 ----
 
 Subsequently, when any of those compiled namespaces are required, the class file will be loaded, rather than the original `.clj` file. If a source file is updated (and thus newer), it will be loaded instead. Periodically, you will need to re-compile to account for new dependencies or changing code.
@@ -53,7 +53,7 @@ You can then start your REPL with the alias and `compile` to populate your `clas
 ----
 $ clj -A:dev
 Clojure 1.10.1
-user=> (compile ‘my.namespace)
+user=> (compile 'my.namespace)
 ----
 
 == Incorporating user.clj into your development alias

@@ -32,7 +32,7 @@ One special case is the `user.clj` file loaded automatically by the Clojure runt
 (binding [*compile-files* true] (require 'user :reload-all))
 ----
 
-That’s it! This technique can substantially reduce your startup time during development, particularly as the number of dependencies you load increases.
+That's it! This technique can substantially reduce your startup time during development, particularly as the number of dependencies you load increases.
 
 == Using an alias for development
 
@@ -40,7 +40,7 @@ In a deps.edn project, you should create a development alias (like `:dev`) that 
 
 [source,clojure]
 ----
-{:deps { … }
+{:deps { ... }
  :aliases
  {:dev {:extra-paths ["classes"]}}}
 ----
@@ -62,9 +62,9 @@ If you want to use an automatically loaded user.clj, you should incorporate that
 
 [source,clojure]
 ----
-{:deps { … }
+{:deps { ... }
  :aliases
- {:dev {:extra-paths [“dev” "classes"]}}}
+ {:dev {:extra-paths ["dev" "classes"]}}}
 ----
 
 And then create `dev/user.clj`:

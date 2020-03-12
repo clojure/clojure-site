@@ -14,7 +14,7 @@ Did you know:
 * Namespace compilation is transitive
 * `compile` writes these files to disk and `require` will use them
 * How user.clj works?
-* You can use `compile` on the namespace you load when you start development, or on your `user.clj`, or on the main class you run as a server to improve your startup time
+* You can use `compile` on the namespace you load when you start development, or on your `user.clj`, or on the main namespace you run as a server to improve your startup time
 
 The `compile` function takes a namespace symbol and compiles that namespace and all the namespaces it requires into https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/%2Acompile-path%2A[`\*compile-path*`] (which defaults to `classes`). That directory must exist and be on your classpath:
 
@@ -23,7 +23,7 @@ The `compile` function takes a namespace symbol and compiles that namespace and 
 (compile ‘my.namespace)    ;; writes .class files to *compile-path*
 ----
 
-Subsequently, when any of those compiled namespaces is required, the class file will be loaded, rather than the original `.clj` file. If a source file is updated (and thus newer), it will be loaded instead. Periodically, you will need to re-compile to account for new dependencies or changing code.
+Subsequently, when any of those compiled namespaces are required, the class file will be loaded, rather than the original `.clj` file. If a source file is updated (and thus newer), it will be loaded instead. Periodically, you will need to re-compile to account for new dependencies or changing code.
 
 One special case is the `user.clj` file loaded automatically by the Clojure runtime, before any other code is loaded. If you are using a `user.clj` in dev, you need to force a reload because it has already been loaded automatically:
 
@@ -34,9 +34,9 @@ One special case is the `user.clj` file loaded automatically by the Clojure runt
 
 That’s it! This technique can substantially reduce your startup time during development, particularly as the number of dependencies you load increases.
 
-== Using a :dev alias
+== Using an alias for development
 
-In a deps.edn project, you should create a `:dev` alias for use only during development that includes the `classes` directory:
+In a deps.edn project, you should create a development alias (like `:dev`) that includes the `classes` directory:
 
 [source,clojure]
 ----
@@ -56,8 +56,9 @@ Clojure 1.10.1
 user=> (compile ‘my.namespace)
 ----
 
-== Incorporating user.clj into your :dev alias
-If you want to use an automatically loaded user.clj, you should incorporate that into your `:dev` alias by adding a source path `dev`:
+== Incorporating user.clj into your development alias
+
+If you want to use an automatically loaded user.clj, you should incorporate that into your dev alias by adding a source path `dev`:
 
 [source,clojure]
 ----

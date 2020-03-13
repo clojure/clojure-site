@@ -143,12 +143,19 @@ Design benefits of sequences:
 
 - Consumer control - returning a seq from an API lets you combine input + transformation into something that gives the consumer control. Transducers don't work as well for this (but will work better for cases where input and transformation are separated).
 
+== Core functions
+
+[[def_minus]]
+**<<faq#def_minus,Why `defn-` but no `def-`?>>**
+
+At one point, metadata was more cumbersome to use than now (the syntax for a private defn was `#^{:private true}`), and `defn-` seemed worth creating as an "easy" version. The metadata support improved and became "stackable" which allowed easier composition of independent metadata. Rather than create private variants of all the def forms, it is simply preferred to use `^:private` metadata when needed on `def` or other def forms..
+
 == Spec
 
 [[spec_alpha]]
 **<<faq#spec_alpha,Why is spec alpha?>>**
 
-spec is in alpha to indicate that the API may still change. spec was broken out of Clojure core so that spec can be updated independently from the main Clojure version. At some point spec's API will be considered stable and at that point the alpha will be removed.
+spec is in alpha to indicate that the API may still change. spec was broken out of Clojure core so that spec can be updated independently from the main Clojure version. At some point spec's API will be considered stable and at that point the alpha will be removed. The next version of spec is being developed at https://github.com/clojure/alpha.spec[alpha.spec].
 
 [[spec_location]]
 **<<faq#spec_location,Where should I put my specs?>>**
@@ -175,6 +182,24 @@ Checking whether a function operates correctly is a test-time activity and this 
 **<<faq#skip_macros,Is there a way to skip checking macro specs?>>**
 
 Yes, set the Java system property `-Dclojure.spec.skip-macros=true` and no macro specs will be checked during macroexpansion.
+
+[[exclusive_keys]]
+**<<faq#exclusive_keys,How do I write a map that only allows certain keys?>>**
+
+Spec's general philosophy is one of "open" specs where maps can contain additional keys beyond what is specified as required or optional in an s/keys spec. One way to accomplish a contrained key set is to `s/and` an additional constraint:
+
+[source,clojure]
+----
+(s/def ::auth
+  (s/and
+    (s/keys :req [::user ::password])
+    #(every? #{::user ::password} (keys %))))
+----
+
+[[spec_doc]]
+**<<faq#spec_doc,Can I add docs or metadata for specs?>>**
+
+Currently, no. This is under consideration for the next version of spec.
 
 == State and Concurrency
 
@@ -264,6 +289,10 @@ Examples:
 
 ;; Passing at least an empty array is required if there are no varargs
 (.put o 1 1 (double-array []))
+
+;; into-array can be used to create an empty typed array
+;; Invoke getMethod(String name, Class... parameterTypes) on a Class instance
+(.getMethod String "getBytes" (into-array Class []))
 ----
 
 [[illegal_access]]

@@ -1,0 +1,50 @@
+= Clojure Homebrew Tap
+Alex Miller
+2020-02-28
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+For Mac or Linux users using Homebrew, Clojure now has its own https://github.com/clojure/homebrew-tools[Homebrew tap], `clojure/tools`. Creating an official Clojure tap has the following advantages:
+
+1. Clojure team controls formula contents
+2. Clojure team controls release timing
+3. Freedom to keep an archive of older versioned releases that would be too much for the core tap
+4. Easier to automate releases
+
+== Dependencies
+
+Clojure requires Java. Clojure officially supports Java LTS releases (currently Java 8 and Java 11), but also tries to ensure interim versions work as well. You can use any Java installation, whether it's a commercial release from Oracle or an open source version based on OpenJDK (like adoptopenjdk).
+
+The Clojure tools require that either the `java` command is on the path or that the `JAVA_HOME` environment variable is set.
+
+== How do I use it?
+
+Using an external homebrew tap just requires combining the tap location and the formula name:
+
+[source,shell]
+----
+brew install clojure/tools/clojure
+----
+
+for a new install or:
+
+[source,shell]
+----
+brew upgrade clojure/tools/clojure
+----
+
+to upgrade your current install. For more detailed information, see the https://github.com/clojure/homebrew-tools/blob/master/README.md[docs at the tap]. Other pages on the Clojure site have been updated appropriately.
+
+== Development, stable, and archived releases
+
+As those docs describe, there are now three flavors of release available:
+
+1. Stable releases (obtained with the commands above) - this is what most people should use and we expect to update these on the frequency of every 1-3 months.
+2. Development releases (using the --devel flag) - the latest bits, probably best for tools developers and those evaluating new bug fixes or functionality. New development releases may come out as frequently as multiple times per week during active periods.
+3. Archived version releases - occasionally, it may be useful to install a specific older release, and there will now be an archive of these release formulas available. See the tap docs for how to use.
+
+== What about the core tap?
+
+The Homebrew core tap still has a clojure formula for the Clojure tools. You should now consider that unofficial and likely to lag behind the Clojure tap, which should be preferred. Anyone can update it, or we may periodically bump it for big releases, but we will not be actively updating it as of now.
+

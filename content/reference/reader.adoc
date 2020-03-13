@@ -32,7 +32,7 @@ Since we have to start somewhere, this reference starts where evaluation starts,
 
 * Strings - Enclosed in "double quotes". May span multiple lines. Standard Java escape characters are supported.
 * Numbers - generally represented as per Java
-** Integers can be indefinitely long and will be read as Longs when in range and clojure.lang.BigInts otherwise. Integers with an N suffix are always read as BigInts. When possible, they can be specified in any base with radix from 2 to 36 (see https://docs.oracle.com/javase/7/docs/api/java/lang/Long.html#parseLong(java.lang.String,%20int)[Long.parseLong()]); for example `2r101010`, `8r52`, `36r16`, and `42` are all the same Long.
+** Integers can be indefinitely long and will be read as Longs when in range and clojure.lang.BigInts otherwise. Integers with an N suffix are always read as BigInts. Octal notation is allowed with a `0` prefix, and hexadecimal notation is allowed with a `0x` prefix. When possible, they can be specified in any base with radix from 2 to 36 (see https://docs.oracle.com/javase/7/docs/api/java/lang/Long.html#parseLong(java.lang.String,%20int)[Long.parseLong()]); for example `2r101010`, `052`, `8r52`, `0x2a`, `36r16`, and `42` are all the same Long.
 ** Floating point numbers are read as Doubles; with M suffix they are read as BigDecimals.
 ** Ratios are supported, e.g. `22/7`.
 * Characters - preceded by a backslash: `\c`. `\newline`, `\space`, `\tab`, `\formfeed`, `\backspace`, and `\return` yield the corresponding characters. Unicode characters are represented with `\uNNNN` as in Java. Octals are represented with `\oNNN`.
@@ -268,6 +268,8 @@ Clojure 1.7 introduced a new extension (.cljc) for portable files that can be lo
 In cases where is not feasible to isolate the varying parts of the code, or where the code is mostly portable with only small platform-specific parts, 1.7 also introduced _reader conditionals_, which are supported only in cljc files and at the default REPL. Reader conditionals should be used sparingly and only when necessary.
 
 Reader conditionals are a new reader dispatch form starting with `pass:[#?]` or `pass:[#?@]`. Both consist of a series of alternating features and expressions, similar to `cond`. Every Clojure platform has a well-known "platform feature" - `:clj`, `:cljs`, `:cljr`. Each condition in a reader conditional is checked in order until a feature matching the platform feature is found. The reader conditional will read and return that feature's expression. The expression on each non-selected branch will be read but skipped. A well-known `:default` feature will always match and can be used to provide a default. If no branches match, no form will be read (as if no reader conditional expression was present).
+
+NOTE: Implementors of non-official Clojure platforms should use a qualified keyword for their platform feature to avoid name collisions. Unqualified platform features are reserved for official platforms.
 
 The following example will read as Double/NaN in Clojure, js/NaN in ClojureScript, and nil in any other platform:
 

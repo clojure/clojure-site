@@ -645,8 +645,9 @@ See <<xref/../weird_characters#unquote_splicing,`~@`>> and <<xref/../weird_chara
 
 See <<xref/../weird_characters#syntax_quote,```>> for additional information.
 
-`~` is unquote. That is within a syntax quoted <<xref/../weird_characters#syntax_quote,```>> form `~` will _unquote_
-the associated symbol, i.e. evaluate it in the current context:
+`~` is unquote. Syntax quote, like quote, means that evaluation is not occurring within the syntax quoted form.
+Unquoting turns off quoting and evaluates an expression inside the syntax quoted expression.
+
 [source,clojure]
 ----
 user=> (def five 5) ; create a named var with the value 5
@@ -657,6 +658,8 @@ user=> `five ; syntax quoting five will avoid evaluating the symbol, and fully r
 user/five
 user=> `~five ; within a syntax quoted block, ~ will turn evaluation back on just for the next form
 5
+user=> `[inc ~(+ 1 five)]
+[clojure.core/inc 6]
 ----
 
 Syntax quoting and unquote are essential tools for writing macros, which are functions invoked during compilation that take code and return code.

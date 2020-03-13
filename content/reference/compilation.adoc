@@ -70,7 +70,7 @@ These compiler options can be changed in a dynamic binding around a call to the 
 Alternately, compiler options can also be set via the Java system properties at startup:
 
 * `-Dclojure.compiler.disable-locals-clearing=true`
-* `-Dclojure.compiler.elide-meta="[:doc :file :line :added]"`
+* `"-Dclojure.compiler.elide-meta=[:doc :file :line :added]"`
 * `-Dclojure.compiler.direct-linking=true`
 
 See below for more info on each of these options.

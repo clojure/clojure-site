@@ -219,34 +219,28 @@ While dependency sets are merged across all of the configuration files, only the
 
 === Aliases
 
-Aliases are defined in the `:aliases` section of the config file. The Clojure tool supports several kinds of aliases:
+Aliases give a name to a data structure that can be used either by the Clojure tool itself or other consumers of deps.edn. They are defined in the `:aliases` section of the config file. These Clojure tool flags use the following well-known alias keys:
 
-* -R - `resolve-deps` aliases are modifications applied during `resolve-deps`
-** Allowed keys in these aliases are:
-*** `:extra-deps` - a deps map from lib to coordinate of deps to add to the deps
-*** `:override-deps` - a deps map from lib to coordinate of override versions to use
-*** `:default-deps` - a deps map from lib to coordinate of versions to use if none is found
-** If multiple -R alias maps are activated, all of these are merge-with merged
-* -C - `make-classpath` aliases are modifications applied during `make-classpath`
-** Allowed keys in these aliases are:
-*** `:extra-paths` - a collection of string paths to add to `:paths`
-*** `:classpath-overrides` - a map of lib to string path to replace the location of the lib
-*** If multiple -C alias maps are activated, `:extra-paths` concatenate and `:classpath-overrides` merge-with merge
-* -O - JVM option aliases
-** Allowed keys in these aliases are:
-*** `:jvm-opts` - a collection of string JVM options
-** If multiple -O alias maps are activated, `:jvm-opts` concatenate
+* -R - uses these keys when expanding deps during `resolve-deps`:
+** `:extra-deps` - a deps map from lib to coordinate of deps to add to the deps
+** `:override-deps` - a deps map from lib to coordinate of override versions to use
+** `:default-deps` - a deps map from lib to coordinate of versions to use if none is found
+** If multiple alias maps with these keys are activated, all of them are merge-with merged
+* -C - uses these keys when creating the classpath during `make-classpath`:
+** `:extra-paths` - a collection of string paths to add to `:paths`
+** `:classpath-overrides` - a map of lib to string path to replace the location of the lib
+** If multiple maps with these keys are activated, `:extra-paths` concatenate and `:classpath-overrides` merge-with merge
+* -O - uses these keys when constructing the final command JVM options:
+** `:jvm-opts` - a collection of string JVM options
+** If multiple maps with these keys are activated, `:jvm-opts` concatenate
 ** If -J JVM options are also specified on the command line, they are concatenated after the alias options
-* -M - clojure.main option aliases
-** Allowed keys in these aliases are:
-*** `:main-opts` - a collection of clojure.main options
-** If multiple -M alias maps are activated, only the last one will be used
+* -M - uses these keys when constructing the final command clojure.main arguments:
+** `:main-opts` - a collection of clojure.main options
+** If multiple maps with these keys are activated, only the last one will be used
 ** If command line clojure.main arguments are supplied on the command line, they are concatenated after the last main alias map
-* -A - applies across all alias types
-** These aliases support ALL alias keys above and all will be applied
-** Also, these keys are only supported with -A:
-*** `:deps` - a deps map from lib to coordinate of deps to REPLACE the project `:deps`
-*** `:paths` a collection of string paths to REPLACE project `:paths`
+* -A - activates all of the keys above, also these keys are only supported with -A:
+** `:deps` - a deps map from lib to coordinate of deps to REPLACE the project `:deps`
+** `:paths` a collection of string paths to REPLACE project `:paths`
 
 So given a deps.edn like:
 
@@ -325,7 +319,7 @@ Then just refer to your dependencies as usual in the `:deps`.
 
 ==== Maven S3 repos
 
-The tools also provide support for connecting to private S3 Maven repositories (thanks to the https://github.com/s3-wagon-private/s3-wagon-private[s3-wagon-private] and https://github.com/spring-projects/aws-maven[aws-maven] projects).
+The tools also provide support for connecting to public and private S3 Maven repositories.
 
 Add a `:mvn/repos` that includes the s3 repository root:
 
@@ -337,7 +331,9 @@ Add a `:mvn/repos` that includes the s3 repository root:
  {"my-private-repo" {:url "s3://my-bucket/maven/releases"}}}
 ----
 
-AWS credentials can be set in the `~/.m2/settings.xml` on a per-server basis. The repository name in `deps.edn` must match the server id in `settings.xml`:
+S3 buckets are specific to the AWS region they were created in. The s3 transporter will attempt to determine the bucket's location. If that doesn't work, you can specify the bucket region in the url explicitly: `"s3://my-bucket/maven/releases?region-us-west-2"`.
+
+For authenticated repos, AWS credentials can be set in the `~/.m2/settings.xml` on a per-server basis or will be loaded ambiently from the AWS credential chain (env vars, etc). The repository name in `deps.edn` must match the server id in `settings.xml`:
 
 [source,xml]
 ----
@@ -354,8 +350,6 @@ AWS credentials can be set in the `~/.m2/settings.xml` on a per-server basis. Th
   ...
 </settings>
 ----
-
-It is also possible to specify your AWS credentials using the AWS credential chain. This is NOT RECOMMENDED as the same AWS credentials will be used for all AWS repositories (unlike settings.xml, which lets you set these on a per-repository basis).
 
 AWS S3 credentials can be set in the environment using one of these mechanisms:
 
@@ -597,3 +591,7 @@ A repository of library artifacts - e.g. Maven central or Clojars
 **Requires and imports**
 
 Mentions in source code of library (sub)components that must be in the classpath in order to succeed. namespace and package/class names are transformed into path components.
+
+== Tools
+
+See the project's wiki for a https://github.com/clojure/tools.deps.alpha/wiki/Tools[list of tools that use or work with tools.deps.alpha (or the clojure tools)] - tools for project creation, packaging, and much more.

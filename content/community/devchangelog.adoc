@@ -17,6 +17,14 @@ The official https://github.com/clojure/clojure/blob/master/changes.md[changelog
 
 Note: All dev releases are subject to breaking changes for new work since the prior release.
 
+== Release 1.10.2
+
+=== 1.10.2-alpha1 (Mar 5, 2020)
+
+* https://clojure.atlassian.net/browse/CLJ-1472[CLJ-1472] Ensure monitor object is on stack, for verifiers
+* https://clojure.atlassian.net/browse/CLJ-2502[CLJ-2502] Fix reflection warnings in clojure.stacktrace/print-stack-trace
+* https://clojure.atlassian.net/browse/CLJ-2517[CLJ-2517] More fixes for invocation of static interface methods with primitive args
+
 == Release 1.10.1
 
 === 1.10.1-RC1 (May 21, 2019)

@@ -7,6 +7,8 @@ Rich Hickey
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
+**Note: the information on this page is useful to more experienced developers. If you are new to the language please see the <<xref/../../guides/getting_started#,Getting Started>> guide instead.**
+
 == Stable Release: 1.10.1 (June 6, 2019)
 
 * For installation, see: <<xref/../../guides/getting_started#,Getting Started>>
@@ -20,6 +22,14 @@ Clojure depends on Java and all Clojure code is compiled to Java 8 compatible by
 * Minimum runtime dependency: Java 8
 * Supported: LTS (long term support) releases, currently Java 8 and Java 11
 * Others: likely work, but not officially supported
+* Clojure depends at runtime on the Clojure Spec packages listed below
+
+=== Spec Dependencies
+
+Clojure 1.10 itself depends on the following versions the Clojure Spec packages to run
+
+ * spec.alpha - 0.2.176
+ * core.specs.alpha - 0.2.44
 
 == Development Release: 1.10.2-alpha1 (March 5, 2020)
 

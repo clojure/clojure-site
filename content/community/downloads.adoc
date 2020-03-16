@@ -7,35 +7,58 @@ Rich Hickey
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-**Note: the information on this page is useful to more experienced developers. If you are new to the language please see the <<xref/../../guides/getting_started#,Getting Started>> guide instead.**
+[NOTE]
+====
+New to Clojure? Head to the <<xref/../../guides/getting_started#,Getting Started>> guide instead!
+====
 
 == Stable Release: 1.10.1 (June 6, 2019)
 
-* For installation, see: <<xref/../../guides/getting_started#,Getting Started>>
-* Download at https://repo1.maven.org/maven2/org/clojure/clojure/1.10.1/[Clojure 1.10.1]
-* https://github.com/clojure/clojure/blob/master/changes.md[Changelog]
+Include the release in your project using the following coordinates:
 
-=== Java Dependency
+deps.edn coordinate:
 
-Clojure depends on Java and all Clojure code is compiled to Java 8 compatible bytecode.
+[source,clojure]
+----
+org.clojure/clojure {:mvn/version "1.10.1"}
+----
+
+Leiningen dependency:
+
+[source,clojure]
+----
+[org.clojure/clojure "1.10.1"]
+----
+
+=== Dependencies
+
+Clojure 1.10.1 depends on the following libraries:
+
+ * `org.clojure/spec.alpha {:mvn/version "0.2.176"}`
+ * `org.clojure/core.specs.alpha {:mvn/version "0.2.44"}`
+
+Including Clojure with a tool like `clj` or `Leiningen` will automatically include these libraries as transitive dependencies.
+
+=== Java compatibility
+
+Clojure depends on Java and all Clojure code is compiled to Java 8 compatible bytecode (newer versions of Java can load this as well).
 
 * Minimum runtime dependency: Java 8
 * Supported: LTS (long term support) releases, currently Java 8 and Java 11
 * Others: likely work, but not officially supported
-* Clojure depends at runtime on the Clojure Spec packages listed below
 
-=== Spec Dependencies
+=== Changelog
 
-Clojure 1.10 itself depends on the following versions the Clojure Spec packages to run
-
- * spec.alpha - 0.2.176
- * core.specs.alpha - 0.2.44
+Read the https://github.com/clojure/clojure/blob/master/changes.md[Changelog] for detailed release information.
 
 == Development Release: 1.10.2-alpha1 (March 5, 2020)
 
-* https://repo1.maven.org/maven2/org/clojure/clojure/1.10.2-alpha1/[Clojure 1.10.2-alpha1]
+* Clojure 1.10.2-alpha1
 * https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.clojure%22%20AND%20a%3A%22clojure%22%20AND%20v%3A1.10.2*[Clojure 1.10.2 pre-release builds]
 * <<devchangelog#,Dev changelog>>
+* Dependencies:
+** `org.clojure/spec.alpha {:mvn/version "0.2.187"}`
+** `org.clojure/core.specs.alpha {:mvn/version "0.2.44"}`
 * Requirements: Java 8 or higher (recommended: Java 8 or Java 11)
 
 == Older Releases

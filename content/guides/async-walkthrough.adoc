@@ -26,7 +26,7 @@ To start working with core.async, require the `clojure.core.async` namespace at 
 
 [source,clojure]
 ----
-(require '[clojure.core.async :as async :refer [<!! >!! <! >!]])
+(require '[clojure.core.async :as a :refer [<!! >!! <! >!]])
 ----
 
 Or include it in your namespace:
@@ -45,7 +45,7 @@ Use `chan` to make an unbuffered channel:
 
 [source,clojure]
 ----
-(a//chan)
+(a/chan)
 ----
 
 Pass a number to create a channel with a fixed buffer size:
@@ -91,7 +91,7 @@ Because these are blocking calls, if we try to put on an unbuffered channel, we 
 [source,clojure]
 ----
 (let [c (a/chan)]
-  (thread (>!! c "hello"))
+  (a/thread (>!! c "hello"))
   (assert (= "hello" (<!! c)))
   (a/close! c))
 ----
@@ -105,7 +105,7 @@ Here we convert our prior channel example to use go blocks:
 [source,clojure]
 ----
 (let [c (a/chan)]
-  (go (>! c "hello"))
+  (a/go (>! c "hello"))
   (assert (= "hello" (<!! (a/go (<! c)))))
   (a/close! c))
 ----
@@ -122,9 +122,9 @@ We can create a background thread with alts that combines inputs on either of tw
 ----
 (let [c1 (a/chan)
       c2 (a/chan)]
-  (thread (while true
-            (let [[v ch] (a/alts!! [c1 c2])]
-              (println "Read" v "from" ch))))
+  (a/thread (while true
+              (let [[v ch] (a/alts!! [c1 c2])]
+                (println "Read" v "from" ch))))
   (>!! c1 "hi")
   (>!! c2 "there"))
 ----
@@ -133,8 +133,8 @@ Prints (on stdout, possibly not visible at your repl):
 
 [source]
 ----
-Read hi from #<ManyToManyChannel ...>
-Read there from #<ManyToManyChannel ...>
+Read hi from #object[clojure.core.async.impl.channels.ManyToManyChannel ...]
+Read there from #object[clojure.core.async.impl.channels.ManyToManyChannel ...]
 ----
 
 We can use alts! to do the same thing with go blocks:
@@ -143,9 +143,9 @@ We can use alts! to do the same thing with go blocks:
 ----
 (let [c1 (a/chan)
       c2 (a/chan)]
-  (go (while true
-        (let [[v ch] (a/alts! [c1 c2])]
-          (println "Read" v "from" ch))))
+  (a/go (while true
+          (let [[v ch] (a/alts! [c1 c2])]
+            (println "Read" v "from" ch))))
   (a/go (>! c1 "hi"))
   (a/go (>! c2 "there")))
 ----
@@ -155,9 +155,9 @@ Since go blocks are lightweight processes not bound to threads, we can have LOTS
 [source,clojure]
 ----
 (let [n 1000
-      cs (repeatedly n chan)
+      cs (repeatedly n a/chan)
       begin (System/currentTimeMillis)]
-  (doseq [c cs] (a//go (>! c "hi")))
+  (doseq [c cs] (a/go (>! c "hi")))
   (dotimes [i n]
     (let [[v c] (a/alts!! cs)]
       (assert (= "hi" v))))
@@ -180,7 +180,7 @@ We can combine timeout with `alts!` to do timed channel waits.  Here we wait for
 ----
 (let [c (a/chan)
       begin (System/currentTimeMillis)]
-  (alts!! [c (a/timeout 100)])
+  (a/alts!! [c (a/timeout 100)])
   (println "Gave up after" (- (System/currentTimeMillis) begin)))
 ----
 

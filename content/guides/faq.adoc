@@ -155,7 +155,7 @@ At one point, metadata was more cumbersome to use than now (the syntax for a pri
 [[spec_alpha]]
 **<<faq#spec_alpha,Why is spec alpha?>>**
 
-spec is in alpha to indicate that the API may still change. spec was broken out of Clojure core so that spec can be updated independently from the main Clojure version. At some point spec's API will be considered stable and at that point the alpha will be removed. The next version of spec is being developed at https://github.com/clojure/alpha.spec[alpha.spec].
+spec is in alpha to indicate that the API may still change. spec was broken out of Clojure core so that spec can be updated independently from the main Clojure version. At some point spec's API will be considered stable and at that point the alpha will be removed. The next version of spec is being developed at https://github.com/clojure/spec-alpha2[alpha.spec].
 
 [[spec_location]]
 **<<faq#spec_location,Where should I put my specs?>>**

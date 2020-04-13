@@ -213,7 +213,7 @@ Java annotations may be attached to classes, constructors, and methods via <<met
 
 ''''
 
-*( _proxy_ [class-and-interfaces] [args] fs+)*
+*(_proxy_ [class-and-interfaces] [args] fs+)*
 
 class-and-interfaces - a vector of class names +
 args - a (possibly empty) vector of arguments to the superclass constructor. +

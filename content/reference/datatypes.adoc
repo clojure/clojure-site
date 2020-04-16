@@ -90,7 +90,7 @@ If you use datatypes and protocols you will have a clean, interface-based API to
 
 == reify
 
-While deftype and defrecord define named types, https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/reify[reify] defines both an anonymous type and creates an instance of that type. The use case is where you need a one-off implementation of one or more protocols or interfaces and would like to take advantage of the local context. In this respect it is use case similar to proxy, or anonymous inner classes in Java.
+While deftype and defrecord define named types, https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/reify[reify] defines both an anonymous type and creates an instance of that type. The use case is where you need a one-off implementation of one or more protocols or interfaces and would like to take advantage of the local context. In this respect its use case is similar to proxy, or anonymous inner classes in Java.
 
 The method bodies of reify are lexical closures, and can refer to the surrounding local scope. *reify* differs from *proxy* in that:
 

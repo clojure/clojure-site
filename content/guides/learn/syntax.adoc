@@ -61,7 +61,7 @@ Symbols are composed of letters, numbers, and other punctuation and are used to 
 
 There are three special symbols that are read as different types - `nil` is the null value, and `true` and `false` are the boolean values.
 
-Symbols that start with a leading colon are called keywords. Keywords always evaluate to themselves and are frequently used as enumerated values or attribute names in Clojure.
+Keywords start with a leading colon and always evaluate to themselves. They are frequently used as enumerated values or attribute names in Clojure.
 
 === Literal collections
 

@@ -926,29 +926,6 @@ user=>(def m {:a 1, :b 2, :c 3}
 {:a 1, :b 2, :c 3}
 ----
 
-== `#=` Reader eval
-
-`#=` allows the reader to evaluate an arbitrary form during read time:
-
-[source,clojure]
-----
-user=> (read-string "#=(+ 3 4)")
-;;=> 7
-----
-
-Note that the read-time evaluation can also cause side-effects:
-[source,clojure]
-----
-user=> (read-string "#=(println :foo)")
-:foo
-nil
-----
-Consequently, `read-string` is not safe to call with unverified user input.
-For a safe alternative, see https://clojure.github.io/clojure/clojure.edn-api.html#clojure.edn/read-string[`clojure.edn/read-string`].
-
-Note that `#=` is not an officially supported feature of the reader, so you
-shouldn't rely on its presence in future versions of Clojure.
-
 ====
 Many thanks to everyone who has contributed ideas and [the copious amounts of]
 spelling corrections (crikey I'm bad at speelingz - so thanks Michael R. Mayne,

@@ -181,9 +181,13 @@ For example:
 [source,clojure]
 ----
 user=> (def x 5)
-user=> (def lst '(a b c))
+#'user/x
+user=> (def lst '(a b c)) ;; the same as "(def lst `(a b c))"
+#'user/lst
 user=> `(fred x ~x lst ~@lst 7 8 :nine)
 (user/fred user/x 5 user/lst a b c 7 8 :nine)
+user=> '(fred x ~x lst ~@lst 7 8 :nine)
+(fred x (clojure.core/unquote x) lst (clojure.core/unquote-splicing lst) 7 8 :nine)
 ----
 
 The read table is currently not accessible to user programs.

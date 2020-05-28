@@ -326,7 +326,7 @@ Add a `:mvn/repos` that includes the s3 repository root:
 [source,clojure]
 ----
 {:deps
- {my.library {:mvn/version "0.1.2"}}
+ {my/library {:mvn/version "0.1.2"}}
  :mvn/repos
  {"my-private-repo" {:url "s3://my-bucket/maven/releases"}}}
 ----

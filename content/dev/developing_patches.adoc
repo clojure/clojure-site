@@ -200,7 +200,7 @@ Create a deps.edn file describing dependencies you might need:
   org.clojure/test.generative {:mvn/version "0.5.2"}}
  :aliases
  {:dbg {:classpath-overrides {org.clojure/clojure "target/classes"}
-        :extra-deps {criterium {:mvn/version "0.4.4"}}}}}
+        :extra-deps {criterium/criterium {:mvn/version "0.4.4"}}}}}
 ----
 
 Start a repl using clj and run individual tests from it:

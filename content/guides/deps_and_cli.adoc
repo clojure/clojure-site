@@ -55,7 +55,7 @@ To work with this library, you need to declare it as a dependency so the tool ca
 [source,clojure]
 ----
 {:deps
- {clj-time {:mvn/version "0.14.2"}}}
+ {clj-time/clj-time {:mvn/version "0.14.2"}}}
 ----
 
 Restart the REPL with the `clj` tool:
@@ -157,7 +157,7 @@ Modify `hello-world/deps.edn` to use a local coordinate that refers to the root 
 [source,clojure]
 ----
 {:deps
- {time-lib {:local/root "/path/to/time-lib"}}}
+ {time-lib/time-lib {:local/root "/path/to/time-lib"}}}
 ----
 
 You can then test everything from the hello-world directory by running the application:
@@ -258,7 +258,7 @@ Aliases in the `deps.edn` file can also be used to add optional dependencies tha
 [source,clojure]
 ----
 {:aliases
- {:bench {:extra-deps {criterium {:mvn/version "0.4.4"}}}}}
+ {:bench {:extra-deps {criterium/criterium {:mvn/version "0.4.4"}}}}}
 ----
 
 Here the `:bench` alias is used to add an extra dependency, namely the criterium benchmarking library.
@@ -277,7 +277,7 @@ You can use multiple aliases in combination. For example this `deps.edn` file de
 
  :aliases
  {:old-async {:override-deps {org.clojure/core.async {:mvn/version "0.3.426"}}}
-  :bench {:extra-deps {criterium {:mvn/version "0.4.4"}}}}}
+  :bench {:extra-deps {criterium/criterium {:mvn/version "0.4.4"}}}}}
 ----
 
 Activate both aliases as follows: `clj -R:bench:old-async`.

@@ -4,8 +4,9 @@ Rich Hickey
 :type: about
 :toc: macro
 :icons: font
-:nextpagehref: state
-:nextpagetitle: State
+:navlinktext: Rationale
+:nextpagehref: history
+:nextpagetitle: History
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 

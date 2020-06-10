@@ -23,6 +23,8 @@ The Clojure tools require that either the `java` command is on the path or that 
 
 Clojure provides <<deps_and_cli#,command line tools>> that can be used to start a Clojure repl, use Clojure and Java libraries, and start Clojure programs. See the https://github.com/clojure/brew-install/blob/1.10.1/CHANGELOG.md[changelog] for version information.
 
+After following these installation instructions, you should be able to use the `clj` or `clojure` command to start a Clojure repl.
+
 === Installation on Mac via https://brew.sh[Homebrew]
 
 Install the command line tools with `brew` from the clojure/tools tap:

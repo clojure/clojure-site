@@ -62,9 +62,9 @@ If set to logical true, when printing an object, its metadata will also be print
 ;; ^{:hi true} [1 2 3]
 ----
 
-=== (_vary-meta_ obj map)
+=== (_vary-meta_ obj f & args)
 
-Returns an object of the same type and value as obj, with `(apply f (meta obj) f & args)` as its metadata.
+Returns an object of the same type and value as obj, with `(apply f (meta obj) args)` as its metadata.
 
 [source,clojure]
 ----

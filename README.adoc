@@ -18,7 +18,7 @@ The site is built using http://jbake.org/[JBake].
 
 To https://jbake.org/docs/2.6.3/#installation[install] JBake 2.6.3:
 
-. `curl -O https://dl.bintray.com/jbake/binary/jbake-2.6.3-bin.zip` (or download this file with your browser)
+. `curl -L -O https://dl.bintray.com/jbake/binary/jbake-2.6.3-bin.zip` (or download this file with your browser)
 . `unzip -o jbake-2.6.3-bin.zip`
 . Add jbake-2.6.3-bin/bin to your system PATH
 

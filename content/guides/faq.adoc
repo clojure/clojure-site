@@ -18,6 +18,16 @@ These questions and answers are adapted from mailing lists and other Clojure com
 
 Keywords are cached and interned. This means that a keyword is reused (reducing memory) everywhere in your program and that checks for equality really become checks for identity (which are fast). Additionally, keywords are invokable to look themselves up in a map and thus this enables the common pattern of extracting a particular field from a collection of maps possible.
 
+[[keyword_number]]
+
+**<<faq#keyword_number,Is :1 a valid keyword?>>**
+
+The <<xref/../../reference/reader#,reader>> page defines keywords as "like symbols" and symbols "begin with a non-numeric character" so the original intent was that `:1` would be invalid. In fact, the only reason it is readable at all is due to a https://clojure.atlassian.net/browse/CLJ-1252[bug] in the keyword regex. This bug was fixed in a 1.6 alpha but we quickly discovered that these keywords were in use in many actual projects. To avoid breaking existing working code, the change was rolled back and this form will continue to be supported. (There are still some https://clojure.atlassian.net/browse/CLJ-1286[open] https://clojure.atlassian.net/browse/CLJ-1527[issues] to clarify this in code and/or docs.)
+
+Note that namespaced keywords with names starting with numbers have never been readable or valid, ie `:foo/1`. However, auto-resolved keywords like `::1` can be read but not round-tripped from print to read.
+
+In general, it's best to avoid using keywords that start with a number unless it is in a narrow and controlled scope.
+
 [[unreadable_keywords]]
 **<<faq#unreadable_keywords,Why is it possible to create keywords that can't be read by the reader?>>**
 

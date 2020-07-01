@@ -113,7 +113,7 @@ extend takes a type/class (or interface, see below), a one or more protocol + fu
 
 Protocols are fully reified and support reflective capabilities via https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/extends%3F[extends?] , https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/extenders[extenders] , and https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/satisfies%3F[satisfies?] .
 
-* Note the convenience macros https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/extend-type[extend-type] , and https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/extend-protocol[extend-protocol]
+* Note the convenience macros https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/extend-type[extend-type] and https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/extend-protocol[extend-protocol]
 * If you are providing external definitions inline, these will be more convenient than using *extend* directly
 
 [source,clojure]

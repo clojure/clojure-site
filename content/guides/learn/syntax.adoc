@@ -335,12 +335,12 @@ One of the most common things you do when learning a language is to print out va
 
 [cols="<*", options="header", role="table"]
 |===
-| | Human-Readable | Machine-Readable |
+| | For humans | Readable as data |
 |With newline| println | prn | 
 |Without newline | print | pr |
 |===
 
-The human-readable forms will translate special print characters (like newlines and tabs) to their expected form and print strings without quotes. We often use `println` to debug functions or print a value at the REPL. `println` takes any number of arguments and interposes a space between each argument's printed value:
+The human-readable forms will translate special print characters (like newlines and tabs) to their printed form and omit quotes in strings. We often use `println` to debug functions or print a value at the REPL. `println` takes any number of arguments and interposes a space between each argument's printed value:
 
 [source,clojure]
 ----
@@ -350,7 +350,9 @@ What is this: 3
 
 The println function has side-effects (printing) and returns nil as a result.
 
-Note that "What is this:" above did not print the surrounding quotes and is not a string that the Reader could read again in the same way. For that purpose, use the machine-readable version prn:
+Note that "What is this:" above did not print the surrounding quotes and is not a string that the Reader could read again as data.
+
+For that purpose, use prn to print as data:
 
 [source,clojure-repl]
 ----
@@ -358,7 +360,7 @@ user=> (prn "one\n\ttwo")
 "one\n\ttwo"
 ----
 
-Note that the printed result is a valid form that the Reader could read again. Both human- and readable- printing functions are useful in different contexts.
+Now the printed result is a valid form that the Reader could read again. Depending on context, you may prefer either the human form or the data form.
 
 == Test your knowledge
 

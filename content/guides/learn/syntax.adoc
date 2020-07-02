@@ -358,7 +358,7 @@ user=> (prn "one\n\ttwo")
 "one\n\ttwo"
 ----
 
-Note that the printed result is a valid form that the Reader could read again. Both human- and readable- printing functions are useful in different contexts.
+Note that the printed result is a valid form that the Reader could read again. Both human- and machine-readable printing functions are useful in different contexts.
 
 == Test your knowledge
 

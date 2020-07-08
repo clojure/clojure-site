@@ -15,7 +15,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 The https://hopl4.sigplan.org/track/hopl-4-papers#History-of-HOPL[History of Programming Languages conference series] produces accurate historical records and descriptions of programming language design, development, and philosophy. It is infrequently held: the first three were in 1978, 1993, and 2007.
 
-2020 is the time for https://hopl4.sigplan.org[HOPL-IV], and I'm very excited and honored to have a paper on Clojure be accepted and https://hopl4.sigplan.org/track/hopl-4-papers#List-of-Accepted-Papers[included]. I want to thank Guy Steele and Richard Gabriel, co-chairs of HOPL IV, as well as the reviewers and shepherds for their support and guidance. Clojure is not the product of traditional research and (as may be evident) writing a paper for this setting was a different and challenging exercise. I hope the paper provides some insight into why Clojure is the way it is and the process and people behind its creation and development.
+2020 is the time for https://hopl4.sigplan.org[HOPL-IV], and I'm very excited and honored to have a paper on Clojure be https://dl.acm.org/toc/pacmpl/2020/4/HOPL[accepted]. I want to thank Guy Steele and Richard Gabriel, co-chairs of HOPL IV, as well as the reviewers and shepherds for their support and guidance. Clojure is not the product of traditional research and (as may be evident) writing a paper for this setting was a different and challenging exercise. I hope the paper provides some insight into why Clojure is the way it is and the process and people behind its creation and development.
 
 Rich
 

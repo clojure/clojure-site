@@ -42,6 +42,8 @@ The reader takes text (Clojure source) and returns Clojure data, which is subseq
 
 However, unlike Lisp, Clojure does not allow the user to extend this set of reader macros. This avoids the possibility of creating code that another user cannot read (because they do not have the proper reader macros). Clojure gives back some of the power of reader macros with tagged literals, allowing you to create generically readable _data_, that is still extensible.
 
+Also see the <<xref/../../about/history#,History of Clojure>> paper section about this (search for "reader macros").
+
 [[underscore]]
 **<<faq#underscore,What does an _ mean in a let binding or parameter?>>**
 

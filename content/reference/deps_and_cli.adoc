@@ -34,7 +34,7 @@ Using a deps.edn file (or files), you tell Clojure where your source code reside
 
 The internal steps of the Clojure tools, as well as the Clojure functions you intend to run, are parameterized by data structures, often maps. Shell command lines are not optimized for passing nested data, so instead you will put the data structures in your deps.edn file and refer to them on the command line via 'aliases' - keywords that name data structures.
 
-'clj' and 'clojure' differ in that 'clj' has extra support for use as a REPL in a terminal, and should be preferred unless you don't want that support, then use 'clojure'. The invocation structure is the same for both:
+`clj` and `clojure` differ in that `clj` has extra support for use as a REPL in a terminal, and should be preferred unless you don't want that support, then use `clojure`. The invocation structure is the same for both:
 
 [source]
 ----
@@ -59,6 +59,7 @@ If you have a function invocation you will frequently repeat, you can put a desc
 [source]
 ----
 clojure [clj-opt*] -X:an-alias [kpath v]*
+----
 
 -X is configured with a descriptor map with :fn and :args keys, and stored under an alias in deps.edn:
 

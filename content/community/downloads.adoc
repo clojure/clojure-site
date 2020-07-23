@@ -9,7 +9,9 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 [NOTE]
 ====
-New to Clojure? Head to the <<xref/../../guides/getting_started#,Getting Started>> guide instead!
+New to Clojure? Head to the <<xref/../../guides/getting_started#,Getting Started>> guide instead for information on how to install the Clojure tools!
+
+These tools allow you to start a REPL for interactive use, download Clojure libraries (including Clojure itself), and run Clojure programs.
 ====
 
 == Stable Release: 1.10.1 (June 6, 2019)

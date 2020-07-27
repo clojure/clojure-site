@@ -21,7 +21,7 @@ toc::[]
 
 Symbols representing class names are resolved to the Class instance. Inner or nested classes are separated from their outer class with a `$`. Fully-qualified class names are always valid. If a class is `import`ed in the namespace, it may be used without qualification. All classes in java.lang are automatically imported to every namespace.
 
-[source,clojure]
+[source,clojure-repl]
 ----
 String
 -> java.lang.String
@@ -40,7 +40,7 @@ String
 **(Classname/staticMethod args*)**
 **Classname/staticField**
 
-[source,clojure]
+[source,clojure-repl]
 ----
 (.toUpperCase "fred")
 -> "FRED"
@@ -441,26 +441,26 @@ The public Java API for Clojure consists of the following classes and interfaces
 All other Java classes should be treated as implementation details, and applications should avoid relying on them.
 
 To lookup and call a Clojure function:
-[source,clojure]
+[source,java]
 ----
 IFn plus = Clojure.var("clojure.core", "+");
 plus.invoke(1, 2);
 ----
 Functions in clojure.core are automatically loaded. Other namespaces can be loaded via require:
-[source,clojure]
+[source,java]
 ----
 IFn require = Clojure.var("clojure.core", "require");
 require.invoke(Clojure.read("clojure.set"));
 ----
 IFns can be passed to higher order functions, e.g. the example below passes plus to read:
-[source,clojure]
+[source,java]
 ----
 IFn map = Clojure.var("clojure.core", "map");
 IFn inc = Clojure.var("clojure.core", "inc");
 map.invoke(inc, Clojure.read("[1 2 3]"));
 ----
 Most IFns in Clojure refer to functions. A few, however, refer to non-function data values. To access these, use deref instead of fn:
-[source,clojure]
+[source,java]
 ----
 IFn printLength = Clojure.var("clojure.core", "*print-length*");
 IFn deref = Clojure.var("clojure.core", "deref");

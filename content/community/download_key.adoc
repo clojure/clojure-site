@@ -41,7 +41,6 @@ The Clojure key used to sign all jars is registered in the MIT key server (pgp.m
 
 You can check this by verifying the jar with the signature:
 
-[source]
 ----
 $ gpg --verify clojure-1.10.1.jar.asc ~/.m2/repository/org/clojure/clojure/1.10.1/clojure-1.10.1.jar
 gpg: Signature made Thu Jun  6 08:43:47 2019 CDT
@@ -52,7 +51,7 @@ gpg:          There is no indication that the signature belongs to the owner.
 Primary key fingerprint: 9356 B31F 638B 658F B4DD  F228 8D06 684A 958A E602
 ----
 
-This reports a good signature (the content is what was signed) but warns that this key is not trusted in your GPG configuration.  Marking the key is trusted is beyond the scope of this page but you can manually verify by comparing to the official key above.
+This reports a good signature (the content is what was signed) but warns that this key is not trusted in your GPG configuration.  Marking the key as trusted is beyond the scope of this page but you can manually verify by comparing to the official key above.
 
 [NOTE]
 ====

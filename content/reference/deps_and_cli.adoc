@@ -28,11 +28,11 @@ To this end Clojure provides:
 
 == Overview
 
-You use the Clojure tools ('clj' or 'clojure') to run Clojure programs on the JVM, e.g. to start a REPL or invoke a specific function with data. The Clojure tools will configure the JVM process by defining a classpath (of desired libraries), an execution environment (JVM options) and specifying a main class and args.
+You use the Clojure tools (`clj` or `clojure`) to run Clojure programs on the JVM, e.g. to start a REPL or invoke a specific function with data. The Clojure tools will configure the JVM process by defining a classpath (of desired libraries), an execution environment (JVM options) and specifying a main class and args.
 
 Using a deps.edn file (or files), you tell Clojure where your source code resides and what libraries you need. Clojure will then calculate the full set of required libraries and a classpath, caching expensive parts of this process for better performance.
 
-The internal steps of the Clojure tools, as well as the Clojure functions you intend to run, are parameterized by data structures, often maps. Shell command lines are not optimized for passing nested data, so instead you will put the data structures in your deps.edn file and refer to them on the command line via 'aliases' - keywords that name data structures.
+The internal steps of the Clojure tools, as well as the Clojure functions you intend to run, are parameterized by data structures, often maps. Shell command lines are not optimized for passing nested data, so instead you will put the data structures in your deps.edn file and refer to them on the command line via _aliases_ - keywords that name data structures.
 
 `clj` and `clojure` differ in that `clj` has extra support for use as a REPL in a terminal, and should be preferred unless you don't want that support, then use `clojure`. The invocation structure is the same for both:
 
@@ -68,7 +68,8 @@ clojure [clj-opt*] -X:an-alias [kpath v]*
 {:aliases
  {:my-fn
   {:fn my.qualified/fn
-   :args {:my 'data}}}}
+   :args {:my {:data 123}
+          :config 456"}}}}
 ----
 
 To invoke, pass the name of the alias:
@@ -78,7 +79,16 @@ To invoke, pass the name of the alias:
 clj -X:my-fn
 ----
 
-You can supply additional keys, or override values stored in the deps.edn file by passing  pairs of key-path and value. The key-path should either be a single key or a vector of keys to refer to a nested key (as with `assoc-in`). Each key-path will be used to `assoc-in` to the original `:args` map, overriding the value there.
+You can supply additional keys, or override values stored in the deps.edn file by passing pairs of key-path and value. The key-path should either be a single key or a vector of keys to refer to a nested key (as with `assoc-in`). Each key-path will be used to `assoc-in` to the original `:args` map, overriding the value there.
+
+[source]
+----
+# Top key override
+clj -X:my-fn :config 789
+
+# Nested key override
+clj -X:my-fn '[:my :data]' 789
+----
 
 Key/value pairs are read as edn strings, please see the tips about quoting below.
 
@@ -191,10 +201,10 @@ The tools rely on several directories and optionally on several environment vari
 ** Contents:
 *** `bin/clojure` - main tool
 *** `bin/clj` - wrapper for interactive repl use (uses `rlwrap`)
-*** `deps.edn` - install level deps.edn file, with some default deps (Clojure, etc) and provider config
+*** `deps.edn` - root level deps.edn file, with some default deps (Clojure, etc) and provider config
 *** `example-deps.edn` - commented example that gets copied to `<config_dir>/deps.edn`
 *** `libexec/clojure-tools-X.Y.Z.jar` - uberjar invoked by `clojure` to construct classpaths
-* Config directory
+* User config directory
 ** Holds a deps.edn file that persists across tool upgrades and affects all projects
 ** Locations used in this order:
 *** If `$CLJ_CONFIG` is set, then use `$CLJ_CONFIG` (explicit override)
@@ -219,11 +229,11 @@ The configuration file format (in "deps.edn" files) is an edn map with top-level
 
 After installation, deps.edn configuration files can be found in (up to) three locations:
 
-- installation directory - created only at install time
-- config directory (often ~/.clojure) - modified to change cross-project (or no-project) defaults
-- the local directory - per-project settings
+- root installation directory - created only at install time
+- user config directory (often ~/.clojure) - modify to change cross-project (or no-project) defaults
+- local project directory - per-project settings
 
-The `deps.edn` files in each of these locations (if they exist) are merged to form one combined dependency configuration. The merge is done in the order above install/config/local, last one wins. The operation is essentially `merge-with merge`, except for the `:paths` key, where only the last one found is used (they are not combined).
+The `deps.edn` files in each of these locations (if they exist) are merged to form one combined dependency configuration. The merge is done in the order above root/user/project, last one wins. The operation is essentially `merge-with merge`, except for the `:paths` key, where only the last one found is used (they are not combined).
 
 You can use the  `-Sverbose` option to see all of the actual directory locations.
 
@@ -274,28 +284,29 @@ While dependency sets are merged across all of the configuration files, only the
 
 === Aliases
 
-Aliases give a name to a data structure that can be used either by the Clojure tool itself or other consumers of deps.edn. They are defined in the `:aliases` section of the config file. These Clojure tool flags use the following well-known alias keys:
+Aliases give a name to a data structure that can be used either by the Clojure tool itself or other consumers of deps.edn. They are defined in the `:aliases` section of the config file. These Clojure tool subprocesses use data stored in aliases:
 
-* -R - uses these keys when expanding deps during `resolve-deps`:
+* `tool` args (specify with `-T`)
+** `:deps` - a deps map from lib to coordinate of deps to REPLACE the project `:deps`
+** `:paths` a collection of string paths to REPLACE project `:paths`
+* `resolve-deps` args (specify with `-R`)
 ** `:extra-deps` - a deps map from lib to coordinate of deps to add to the deps
 ** `:override-deps` - a deps map from lib to coordinate of override versions to use
 ** `:default-deps` - a deps map from lib to coordinate of versions to use if none is found
 ** If multiple alias maps with these keys are activated, all of them are merge-with merged
-* -C - uses these keys when creating the classpath during `make-classpath`:
+* `make-classpath` args (specify with `-C`)
 ** `:extra-paths` - a collection of string paths to add to `:paths`
 ** `:classpath-overrides` - a map of lib to string path to replace the location of the lib
 ** If multiple maps with these keys are activated, `:extra-paths` concatenate and `:classpath-overrides` merge-with merge
-* -O - uses these keys when constructing the final command JVM options:
+* JVM options (specify with `-O`)
 ** `:jvm-opts` - a collection of string JVM options
 ** If multiple maps with these keys are activated, `:jvm-opts` concatenate
 ** If -J JVM options are also specified on the command line, they are concatenated after the alias options
-* -M - uses these keys when constructing the final command clojure.main arguments:
+* Main arguments (specify with `-M`)
 ** `:main-opts` - a collection of clojure.main options
 ** If multiple maps with these keys are activated, only the last one will be used
 ** If command line clojure.main arguments are supplied on the command line, they are concatenated after the last main alias map
-* -A - activates all of the keys above, also these keys are only supported with -A:
-** `:deps` - a deps map from lib to coordinate of deps to REPLACE the project `:deps`
-** `:paths` a collection of string paths to REPLACE project `:paths`
+* `-A` can be used to provide data for any, or more than one of, the processes above
 
 So given a deps.edn like:
 

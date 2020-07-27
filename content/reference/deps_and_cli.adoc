@@ -90,7 +90,9 @@ clj -X:my-fn :config 789
 clj -X:my-fn '[:my :data]' 789
 ----
 
-Key/value pairs are read as edn strings, please see the tips about quoting below.
+Key/value pairs are read as edn strings. A general rule is that you can surround edn data with single quotes `'data'` to get a literal string (which exec will read as edn data). In some cases (particularly numbers and keywords), you can omit the single quotes as bash does not have any conflicting interpretation.
+
+Note that strings must be passed in double quotes, also surrounded by single quotes to escape correctly with bash: `clj -X:my-fn '"foo"'`.
 
 == Building classpaths with tools.deps.alpha
 
@@ -284,29 +286,28 @@ While dependency sets are merged across all of the configuration files, only the
 
 === Aliases
 
-Aliases give a name to a data structure that can be used either by the Clojure tool itself or other consumers of deps.edn. They are defined in the `:aliases` section of the config file. These Clojure tool subprocesses use data stored in aliases:
+Aliases give a name to a data structure that can be used either by the Clojure tool itself or other consumers of deps.edn. They are defined in the `:aliases` section of the config file. These Clojure tool subprocesses use data which can be read from aliases:
 
-* `tool` args (specify with `-T`)
+* `tool` args (use `-T` or `-A` to name alias)
 ** `:deps` - a deps map from lib to coordinate of deps to REPLACE the project `:deps`
 ** `:paths` a collection of string paths to REPLACE project `:paths`
-* `resolve-deps` args (specify with `-R`)
+* `resolve-deps` args (use `-R` or `-A` to name alias)
 ** `:extra-deps` - a deps map from lib to coordinate of deps to add to the deps
 ** `:override-deps` - a deps map from lib to coordinate of override versions to use
 ** `:default-deps` - a deps map from lib to coordinate of versions to use if none is found
 ** If multiple alias maps with these keys are activated, all of them are merge-with merged
-* `make-classpath` args (specify with `-C`)
+* `make-classpath` args (use `-C` or `-A` to name alias)
 ** `:extra-paths` - a collection of string paths to add to `:paths`
 ** `:classpath-overrides` - a map of lib to string path to replace the location of the lib
 ** If multiple maps with these keys are activated, `:extra-paths` concatenate and `:classpath-overrides` merge-with merge
-* JVM options (specify with `-O`)
+* JVM options (use `-O` or `-A` to name alias)
 ** `:jvm-opts` - a collection of string JVM options
 ** If multiple maps with these keys are activated, `:jvm-opts` concatenate
 ** If -J JVM options are also specified on the command line, they are concatenated after the alias options
-* Main arguments (specify with `-M`)
+* Main arguments (use `-M` or `-A` to name alias)
 ** `:main-opts` - a collection of clojure.main options
 ** If multiple maps with these keys are activated, only the last one will be used
 ** If command line clojure.main arguments are supplied on the command line, they are concatenated after the last main alias map
-* `-A` can be used to provide data for any, or more than one of, the processes above
 
 So given a deps.edn like:
 

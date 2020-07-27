@@ -134,3 +134,7 @@ In pom.xml:
   </repository>
 </repositories>
 ----
+
+== Download verification
+
+See the <<download_key#,download key>> page for more on verifying Maven downloads against the Clojure public key.

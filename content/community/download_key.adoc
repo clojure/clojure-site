@@ -1,0 +1,60 @@
+= Clojure Download Key
+Alex Miller
+2020-07-27
+:jbake-type: page
+:toc: macro
+:icons: font
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+== Signature files
+
+All Clojure and Clojure contrib jars are signed when they are uploaded to the Maven Central repo. 
+A typical url in Maven Central will look something like:
+
+[source]
+----
+https://repo1.maven.org/maven2/org/clojure/clojure/1.10.1/clojure-1.10.1.jar
+----
+
+Your dependency manager / build tool will download that file to your local Maven cache, usually:
+
+[source]
+----
+~/.m2/repository/org/clojure/clojure/1.10.1/clojure-1.10.1.jar
+----
+
+You can append .asc to any jar or pom url in Maven to obtain the signature for that file:
+
+[source]
+----
+curl -O https://repo1.maven.org/maven2/org/clojure/clojure/1.10.1/clojure-1.10.1.jar.asc
+----
+
+== Verification
+
+The Clojure key used to sign all jars is registered in the MIT key server (pgp.mit.edu):
+
+* ID: `8D06684A958AE602`
+* Fingerprint: `9356 B31F 638B 658F B4DD  F228 8D06 684A 958A E602`
+* Description: `Clojure/core (build.clojure.org Release Key version 2) <core@clojure.com>`
+
+You can check this by verifying the jar with the signature:
+
+[source]
+----
+$ gpg --verify clojure-1.10.1.jar.asc ~/.m2/repository/org/clojure/clojure/1.10.1/clojure-1.10.1.jar
+gpg: Signature made Thu Jun  6 08:43:47 2019 CDT
+gpg:                using RSA key 8D06684A958AE602
+gpg: Good signature from "Clojure/core (build.clojure.org Release Key version 2) <core@clojure.com>" [unknown]
+gpg: WARNING: This key is not certified with a trusted signature!
+gpg:          There is no indication that the signature belongs to the owner.
+Primary key fingerprint: 9356 B31F 638B 658F B4DD  F228 8D06 684A 958A E602
+----
+
+This reports a good signature (the content is what was signed) but warns that this key is not trusted in your GPG configuration.  Marking the key is trusted is beyond the scope of this page but you can manually verify by comparing to the official key above.
+
+[NOTE]
+====
+To run gpg --verify, you may need to update your version of GPG and use a DNS server that can find the MIT key server (pgp.mit.edu).
+====

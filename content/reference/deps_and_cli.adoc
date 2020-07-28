@@ -470,9 +470,10 @@ Add the tool configuration to your `deps.edn` under an alias:
 [source,clojure]
 ----
 {:aliases
- {:fn clojure.tools.deps.alpha.install/install
-  ;; :args map could be provided but can pass on command line instead
-  }}
+ {:install
+  {:fn clojure.tools.deps.alpha.install/install
+   ;; :args map could be provided but can pass on command line instead
+   }}}
 ----
 
 To execute use the built-in `:deps` alias to include tools.deps.alpha on the classpath, execute the install tool with -X and pass the args on the command line:

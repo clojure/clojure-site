@@ -429,15 +429,66 @@ One additional option for main execution is a map with key `:main-opts`:
 
 This map is stored in alias data and provided to the Clojure tools using either `-M:an-alias` or `-A:an-alias`. Multiple aliases can be provided by concatentating the alias names.
 
-== Other options
+=== Basis injection
 
-Other options that can be provided to `clj` (all of these effectively short circuit normal execution):
+The Clojure tools inject the computed runtime basis into the executed process using the Java system property `clojure.basis` which points to the cached basis file. Programs can read the basis file as edn and use it themselves if needed.
+
+Example code:
+
+[source,clojure]
+----
+(require '[clojure.java.io :as jio] '[clojure.edn :as edn])
+(def basis (-> (System/getProperty "clojure.basis") jio/file slurp edn/read-string))
+----
+
+The basis is a superset of the master deps edn and will also contain the additional keys: `:resolve-args`, `:classpath-args`, `:libs`, and `:classpath`.
+
+== Other programs
+
+There are some options that can be provided to `clj` that short circuit normal execution and run an alternate program instead:
 
 * `-Sdescribe` - print environment and command parsing info as data
 * `-Stree` - print dependency tree
 * `-Spath` - compute classpath and echo to stdout only
 * `-Spom` - generate (or update an existing) pom.xml with deps and paths
 * `-Sresolve-tags` - resolve git coordinate tags to shas and update deps.edn
+
+=== Local Maven install
+
+The `clojure.tools.deps.alpha.tools.install/install` program is provided with the Clojure tools for convenience and can be executed with `-X` to install a jar into your local Maven cache.
+
+The install argmap takes the following options:
+
+[source,plain-text]
+----
+:jar (required) - path to jar file
+:pom (optional) - path to pom file
+:lib (optional) - qualified symbol like my.org/lib
+:version (optional) - string
+:classifier (optional) - string
+:local-repo (optional) - path to local repo (default = ~/.m2/repository)
+----
+
+Add the tool configuration to your `deps.edn` under an alias:
+
+[source,clojure]
+----
+{:aliases
+ {:fn clojure.tools.deps.alpha.install/install
+  ;; :args map could be provided but can pass on command line instead
+  }}
+----
+
+To execute use the built-in `:deps` alias to include tools.deps.alpha on the classpath, execute the install tool with -X and pass the args on the command line:
+
+[source,shell]
+----
+clj -A:deps -X:install :jar '"/path/to.jar"'
+----
+
+As mentioned above, edn strings must be in double quotes, and then single-quoted for the shell.
+
+The install tool will find the pom inside the jar file (if it exists) and use that to determine the groupId, artifactId, and version coordinates to use when the jar is installed. Alternately, you can provide a pom file or specific coordinates via the other attributes.
 
 = Procurers
 

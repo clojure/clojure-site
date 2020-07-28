@@ -54,14 +54,14 @@ user=>
 
 == Executing a function that takes a map
 
-If you have a function invocation you will frequently repeat, you can put a descriptor for it under a deps.edn alias and execute it with -X:
+If you have a function invocation you will frequently repeat, you can put a descriptor for it under a `deps.edn` alias and execute it with `-X`:
 
 [source]
 ----
 clojure [clj-opt*] -X:an-alias [kpath v]*
 ----
 
--X is configured with a descriptor map with :fn and :args keys, and stored under an alias in deps.edn:
+`-X` is configured with a descriptor map with `:fn` and `:args` keys, and stored under an alias in `deps.edn`:
 
 [source,clojure]
 ----
@@ -102,7 +102,7 @@ See the <<repl_and_main#,clojure.main>> documentation for more details.
 
 = Operation
 
-When you execute the Clojure tool, there are a series of steps performed to prepare and execute your command. This section is an overview of those steps, see the next section for how to modify those steps in a variety of ways.
+When you execute the Clojure tool, there are a series of steps performed to prepare and execute your command. This section is an overview of those steps, see later sections for how to modify those steps in a variety of ways.
 
 == Locate deps.edn sources
 
@@ -134,7 +134,7 @@ When you execute a tool in the context of your project, the tool uses its own pa
 
 All deps.edn sources are merged into a single master edn file in the order listed above - root, user, project (possibly with tool replacements), config. This merged deps will be included in the runtime basis and used after this point.
 
-deps.edn sources is essentially `merge-with merge`, except for the `:paths` key, where only the last :paths found is used (they replace, not combine).
+deps.edn sources is essentially `merge-with merge`, except for the `:paths` key, where only the last `:paths` found is used (they replace, not combine).
 
 == Resolve dependencies
 
@@ -142,7 +142,7 @@ Starting from the master edn's merged :deps, the full transitive expansion of th
 
 == Make classpath
 
-JVM execution relies on computing the classpath for the execution. The classpath will consist of the :paths in the merged deps.edn and the locations of all resolved dependencies.
+JVM execution relies on computing the classpath for the execution. The classpath will consist of the `:paths` in the merged `deps.edn` and the locations of all resolved dependencies.
 
 == Prepare JVM environment
 
@@ -154,7 +154,7 @@ Finally the command is executed - see the Overview above for the execution optio
 
 = deps.edn
 
-The configuration file format (in "deps.edn" files) is an edn map with top-level keys for `:deps`, `:paths`, and `:aliases`, plus provider-specific keys for configuring dependency sources.
+The configuration file format (in `deps.edn` files) is an edn map with top-level keys `:deps`, `:paths`, and `:aliases`, plus provider-specific keys for configuring dependency sources.
 
 == Paths
 
@@ -382,11 +382,10 @@ The `deps.edn` files found from the source locations (with Clojure tool modifica
 
 The resolve-deps modifiers are provided in a map that was described in a prior section:
 
-* `resolve-deps` args
-** `:extra-deps` - a deps map from lib to coordinate of deps to add to the deps
-** `:override-deps` - a deps map from lib to coordinate of override versions to use
-** `:default-deps` - a deps map from lib to coordinate of versions to use if none is found
-** If multiple alias maps with these keys are activated, all of them are merge-with merged
+* `:extra-deps` - a deps map from lib to coordinate of deps to add to the deps
+* `:override-deps` - a deps map from lib to coordinate of override versions to use
+* `:default-deps` - a deps map from lib to coordinate of versions to use if none is found
+* If multiple alias maps with these keys are activated, all of them are merge-with merged
 
 The resolve-deps args should be provided as an alias in one of deps sources and provided to the Clojure tools using either `-R:an-alias` or `-A:an-alias`. Multiple aliases can be provided by concatentating the alias names.
 
@@ -394,10 +393,9 @@ The resolve-deps args should be provided as an alias in one of deps sources and 
 
 The make-classpath modifiers are provided in a map that was described in a prior section:
 
-* `make-classpath` args
-** `:extra-paths` - a collection of string paths to add to `:paths`
-** `:classpath-overrides` - a map of lib to string path to replace the location of the lib
-** If multiple maps with these keys are activated, `:extra-paths` concatenate and `:classpath-overrides` merge-with merge
+* `:extra-paths` - a collection of string paths to add to `:paths`
+* `:classpath-overrides` - a map of lib to string path to replace the location of the lib
+* If multiple maps with these keys are activated, `:extra-paths` concatenate and `:classpath-overrides` merge-with merge
 
 The resolve-deps args should be provided as an alias in one of deps sources and provided to the Clojure tools using either `-C:an-alias` or `-A:an-alias`. Multiple aliases can be provided by concatentating the alias names.
 
@@ -407,10 +405,9 @@ The JVM has many options and some programs also take configuration via Java syst
 
 Additionally, main execution can take a map with key `:jvm-opts`:
 
-* JVM options
-** `:jvm-opts` - a collection of string JVM options
-** If multiple maps with these keys are activated, `:jvm-opts` concatenate
-** If -J JVM options are also specified on the command line, they are concatenated after the alias options
+* `:jvm-opts` - a collection of string JVM options
+* If multiple maps with these keys are activated, `:jvm-opts` concatenate
+* If -J JVM options are also specified on the command line, they are concatenated after the alias options
 
 This map is stored in alias data and provided to the Clojure tools using either `-O:an-alias` or `-A:an-alias`.  Multiple aliases can be provided by concatentating the alias names.
 
@@ -422,10 +419,9 @@ Execution options were mostly covered in the earlier Overview section.
 
 One additional option for main execution is a map with key `:main-opts`:
 
-* Main arguments
-** `:main-opts` - a collection of clojure.main options
-** If multiple maps with these keys are activated, only the last one will be used
-** If command line clojure.main arguments are supplied on the command line, they are concatenated after the last main alias map
+* `:main-opts` - a collection of clojure.main options
+* If multiple maps with these keys are activated, only the last one will be used
+* If command line clojure.main arguments are supplied on the command line, they are concatenated after the last main alias map
 
 This map is stored in alias data and provided to the Clojure tools using either `-M:an-alias` or `-A:an-alias`. Multiple aliases can be provided by concatentating the alias names.
 

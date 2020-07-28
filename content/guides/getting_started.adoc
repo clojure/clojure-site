@@ -41,6 +41,11 @@ If you've already installed, you can upgrade to the latest release with:
 brew upgrade clojure/tools/clojure
 ----
 
+[NOTE]
+====
+Clojure brew formulas use "devel" blocks, which have been deprecated by brew. We will be updating these brew formulas to address the issue, but for now, it is only a warning and you can proceed! Everything will work despite the warning.
+====
+
 Also see: https://github.com/clojure/homebrew-tools[Clojure's Homebrew tap] for more information.
 
 === Installation on Linux

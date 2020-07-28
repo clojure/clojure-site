@@ -69,7 +69,7 @@ clojure [clj-opt*] -X:an-alias [kpath v]*
  {:my-fn
   {:fn my.qualified/fn
    :args {:my {:data 123}
-          :config 456"}}}}
+          :config 456}}}}
 ----
 
 To invoke, pass the name of the alias:

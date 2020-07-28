@@ -471,7 +471,7 @@ Add the tool configuration to your `deps.edn` under an alias:
 ----
 {:aliases
  {:install
-  {:fn clojure.tools.deps.alpha.install/install
+  {:fn clojure.tools.deps.alpha.tools.install/install
    ;; :args map could be provided but can pass on command line instead
    }}}
 ----

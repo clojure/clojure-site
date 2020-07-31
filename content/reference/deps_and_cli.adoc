@@ -92,9 +92,26 @@ clj -X:my-fn :config 789
 clj -X:my-fn '[:my :data]' 789
 ----
 
+If you want to execute an arbitrary function, you can do that with `-F`:
+
+[source]
+----
+clojure [clj-opt*] -Fmy/fn [kpath v]*
+----
+
+Pass the fully qualified function name with `-F` and then any number of key/value pairs for the invocation map:
+
+[source]
+----
+clj -Fclojure.core/pr :a 1 :b 2
+----
+
+=== Quoting keys and values
+
 Key/value pairs are read as edn strings. A general rule is that you can surround edn data with single quotes `'data'` to get a literal string (which exec will read as edn data). In some cases (particularly numbers and keywords), you can omit the single quotes as bash does not have any conflicting interpretation.
 
 Note that strings must be passed in double quotes, also surrounded by single quotes to escape correctly with bash: `clj -X:my-fn :config '"foo"'`.
+
 
 == Running a main or script
 

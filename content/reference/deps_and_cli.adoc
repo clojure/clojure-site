@@ -54,7 +54,7 @@ user=>
 
 == Executing a function that takes a map
 
-_Available in clj 1.10.1.590 or higher, currently a release candidate_
+_Available in clj 1.10.1.619 or higher, currently a release candidate_
 
 If you have a function invocation you will frequently repeat, you can put a descriptor for it under a `deps.edn` alias and execute it with `-X`:
 
@@ -236,7 +236,7 @@ Aliases give a name to a data structure that can be used either by the Clojure t
 
 = Basis and classpath
 
-_Available in clj 1.10.1.590 or higher, currently a release candidate_
+_Available in clj 1.10.1.619 or higher, currently a release candidate_
 
 The core of the tools.deps library is a process to take a merged deps.edn file, arg maps for the resolve-deps and make-classpath steps, and produce the "runtime basis", or "basis" for short. The basis is a superset of the deps.edn file also containing those args, the lib map, and the classpath map.
 
@@ -448,7 +448,7 @@ This map is stored in alias data and provided to the Clojure tools using either 
 
 === Basis injection
 
-_Available in clj 1.10.1.590 or higher, currently a release candidate_
+_Available in clj 1.10.1.619 or higher, currently a release candidate_
 
 The Clojure tools inject the computed runtime basis into the executed process using the Java system property `clojure.basis` which points to the cached basis file. Programs can read the basis file as edn and use it themselves if needed.
 
@@ -474,7 +474,7 @@ There are some options that can be provided to `clj` that short circuit normal e
 
 === Local Maven install
 
-_Available in clj 1.10.1.590 or higher, currently a release candidate_
+_Available in clj 1.10.1.619 or higher, currently a release candidate_
 
 The `clojure.tools.deps.alpha.tools.install/install` program is provided with the Clojure tools for convenience and can be executed with `-X` to install a jar into your local Maven cache.
 

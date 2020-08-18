@@ -579,7 +579,7 @@ Add a `:mvn/repos` that includes the s3 repository root:
  {"my-private-repo" {:url "s3://my-bucket/maven/releases"}}}
 ----
 
-S3 buckets are specific to the AWS region they were created in. The s3 transporter will attempt to determine the bucket's location. If that doesn't work, you can specify the bucket region in the url explicitly: `"s3://my-bucket/maven/releases?region-us-west-2"`.
+S3 buckets are specific to the AWS region they were created in. The s3 transporter will attempt to determine the bucket's location. If that doesn't work, you can specify the bucket region in the url explicitly: `"s3://my-bucket/maven/releases?region=us-west-2"`.
 
 For authenticated repos, AWS credentials can be set in the `~/.m2/settings.xml` on a per-server basis or will be loaded ambiently from the AWS credential chain (env vars, etc). The repository name in `deps.edn` must match the server id in `settings.xml`:
 

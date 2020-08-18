@@ -531,6 +531,12 @@ The `mvn` procurer will look for `:mvn/repos`. The installation deps.edn configu
   "clojars" {:url "https://clojars.org/repo"}}}
 ----
 
+=== Modifying the default repositories
+
+The `:mvn/repos` map is `merge-with` `merge` across the deps.edn sources, so you can modify the default repositories by specifying a new definition or remove it by specifying `nil`.
+
+tools.deps guarantees that the `"central"` and `"clojars"` repositories will be checked first for Maven libraries.
+
 === Maven authenticated repos
 
 For Maven deps in authenticated repositories, existing Maven infrastructure is used to convey credentials.

@@ -53,6 +53,7 @@ Status legend:
 | https://clojure.github.io/data.finger-tree/[data.finger-tree] | Finger trees | Chouser | Stable
 | https://clojure.github.io/data.fressian/[data.fressian] | Extensible binary Data Notation | Stuart Halloway | Stable
 | https://clojure.github.io/data.generators/[data.generators] | Random data generators | Stuart Halloway | Inactive
+| https://clojure.github.io/data.int-map/[data.int-map] | Maps and sets optimized for integer keys | Alex Miller | Inactive
 | https://clojure.github.io/data.json/[data.json] | JSON encoding / decoding | Stuart Sierra | Stable
 | https://clojure.github.io/data.priority-map/[data.priority-map] | Priority maps | Mark Engelberg | Stable
 | https://clojure.github.io/data.xml/[data.xml] | Lazy XML parsing | Ryan Senior, Herwig Hochleitner | Stable

@@ -233,9 +233,7 @@ Note that many other Clojure functions work with arrays such as via the <<sequen
 
 Java vararg methods treat the trailing varargs parameter as an array. They can be invoked from Clojure by passing an explicit array in place of the vargs.
 
-Depending on the varargs type, use the type-specific array constructors for primitives or `into-array` to make an array of a specific type.
-
-See the <<xref/../../guides/faq#varargs,FAQ>> for examples.
+Depending on the varargs type, use the type-specific array constructors for primitives or `into-array` to make an array of a specific type. See the <<xref/../../guides/faq#varargs,FAQ>> for examples.
 
 [%hardbreaks]
 Create array from existing collection: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/aclone[aclone] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/amap[amap] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/to-array[to-array] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/to-array-2d[to-array-2d] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/into-array[into-array]

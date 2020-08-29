@@ -98,6 +98,7 @@ Community volunteers maintain <<xref/../../guides/getting_started#,Getting Start
 * https://clojars.org/[Clojars] - Clojure-focused Maven repository
 * https://www.gnu.org/software/emacs/[Emacs] with https://github.com/clojure-emacs/cider[CIDER]
 * https://www.vim.org/[Vim] with https://github.com/tpope/vim-fireplace[Fireplace] or https://github.com/liquidz/vim-iced[Vim-Iced]
+* https://neovim.io/[Neovim] with https://github.com/Olical/conjure[Conjure]
 * https://www.jetbrains.com/idea/[IntelliJ] with https://cursiveclojure.com/[Cursive]
 * https://atom.io[Atom] with https://github.com/mauricioszabo/atom-chlorine[Chlorine]
 * https://code.visualstudio.com[Visual Studio Code] with https://github.com/BetterThanTomorrow/calva[Calva]

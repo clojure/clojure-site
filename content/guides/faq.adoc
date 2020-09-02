@@ -89,7 +89,7 @@ Note that all of these are eager transformations - they produce the output vecto
 [[arg_order]]
 **<<faq#arg_order,What are the rules of thumb for arg order in core functions?>>**
 
-Primary collection operands come first. That way one can write `->` and 
+Primary collection operands come first. That way one can write `pass:[->]` and
 its ilk, and their position is independent of whether or not they have 
 variable arity parameters. There is a tradition of this in OO 
 languages and Common Lisp (`slot-value`, `aref`, `elt`). 

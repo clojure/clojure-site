@@ -48,14 +48,14 @@ user=>           # type Ctrl-D here to exit the REPL (does not print)
 $ 
 ----
 
-There are many Clojure and Java libraries available that provide access to practically any functionality you might need. For example, consider the commonly used Clojure library https://github.com/clj-time/clj-time[clj-time] for working with dates and times.
+There are many Clojure and Java libraries available that provide access to practically any functionality you might need. For example, consider the commonly used Clojure library https://github.com/dm3/clojure.java-time[clojure.java-time] for working with dates and times.
 
-To work with this library, you need to declare it as a dependency so the tool can ensure it has been downloaded and add it to the classpath. The readme in most projects shows the name and version, such as `[clj-time "0.14.2"]`. Create a `deps.edn` file to declare the dependency:
+To work with this library, you need to declare it as a dependency so the tool can ensure it has been downloaded and add it to the classpath. The readme in most projects shows the name and version to use. Create a `deps.edn` file to declare the dependency:
 
 [source,clojure]
 ----
 {:deps
- {clj-time/clj-time {:mvn/version "0.14.2"}}}
+ {clojure.java-time/clojure.java-time {:mvn/version "0.3.2"}}}
 ----
 
 Restart the REPL with the `clj` tool:
@@ -63,13 +63,13 @@ Restart the REPL with the `clj` tool:
 [source,clojure]
 ----
 $ clj
-Downloading: clj-time/clj-time/0.14.2/clj-time-0.14.2.pom from https://clojars.org/repo/
-Downloading: clj-time/clj-time/0.14.2/clj-time-0.14.2.jar from https://clojars.org/repo/
+Downloading: clojure/java-time/clojure.java-time/0.3.2/clojure.java-time-0.3.2.pom from clojars
+Downloading: clojure/java-time/clojure.java-time/0.3.2/clojure.java-time-0.3.2.jar from clojars
 Clojure 1.10.1
-user=> (require '[clj-time.core :as t])
+user=> (require '[java-time :as t])
 nil
-user=> (str (t/now))
-"2017-12-06T19:36:56.159Z"
+user=> (str (t/instant))
+"2020-09-01T03:42:47.691119Z"
 ----
 
 You will see messages about a library being downloaded the first time you use a dependency. Once the file is downloaded, it will be reused in the future. You can use the same process to add other libraries to your `deps.edn` file and explore Clojure or Java libraries.
@@ -81,33 +81,32 @@ Soon you will want to build and save your own code that makes use of these libra
 [source,clojure]
 ----
 (ns hello
-  (:require [clj-time.core :as t]
-            [clj-time.format :as f]))
+  (:require [java-time :as t]))
 
 (defn time-str
   "Returns a string representation of a datetime in the local time zone."
-  [dt]
-  (f/unparse
-    (f/with-zone (f/formatter "hh:mm aa") (t/default-time-zone))
-    dt))
+  [instant]
+  (t/format
+    (t/with-zone (t/formatter "hh:mm a") (t/zone-id))
+    instant))
 
 (defn -main []
-  (println "Hello world, the time is" (time-str (t/now))))
+  (println "Hello world, the time is" (time-str (t/instant))))
 ----
 
-
+== Using a main
 
 This program has a static entry point named `-main` that is suitable for external invocation. The `clj` tool acts as a Clojure program launcher with the `-m` option, which specifies the namespace to run:
 
 [source,shell]
 ----
 $ clj -m hello
-Hello world, the time is 02:04 PM
+Hello world, the time is 10:53 PM
 ----
 
 == Using local libraries
 
-You might decide to move part of this application into a library. The `clj` tool uses local coordinates to support projects that exist only on your local disk. Let's extract the clj-time parts of this application out into a library in a parallel directory time-lib. The final structure will look something like this:
+You might decide to move part of this application into a library. The `clj` tool uses local coordinates to support projects that exist only on your local disk. Let's extract the java	-time parts of this application out into a library in a parallel directory time-lib. The final structure will look something like this:
 
 ----
 ├── time-lib
@@ -125,20 +124,19 @@ Under time-lib, use a copy of the deps.edn file you already have, and create a f
 [source,clojure]
 ----
 (ns hello-time
-  (:require [clj-time.core :as t]
-            [clj-time.format :as f]))
+  (:require [java-time :as t]))
 
 (defn now
   "Returns the current datetime"
   []
-  (t/now))
+  (t/instant))
 
 (defn time-str
   "Returns a string representation of a datetime in the local time zone."
-  [dt]
-  (f/unparse
-    (f/with-zone (f/formatter "hh:mm aa") (t/default-time-zone))
-    dt))
+  [instant]
+  (t/format
+    (t/with-zone (t/formatter "hh:mm a") (t/zone-id))
+    instant))
 ----
 
 Update the application at `hello-world/src/hello.clj` to use your library instead:
@@ -236,11 +234,11 @@ Typically, the project classpath includes only the project source, not its test 
  {:test {:extra-paths ["test"]}}}
 ----
 
-Apply that classpath modification and examine the modified classpath by invoking `clj -C:test -Spath`:
+Apply that classpath modification and examine the modified classpath by invoking `clj -A:test -Spath`:
 
 [source,shell]
 ----
-$ clj -C:test -Spath
+$ clj -A:test -Spath
 src:
 test:
 /Users/me/.m2/repository/org/clojure/clojure/1.10.1/clojure-1.10.1.jar:
@@ -263,7 +261,7 @@ Aliases in the `deps.edn` file can also be used to add optional dependencies tha
 
 Here the `:bench` alias is used to add an extra dependency, namely the criterium benchmarking library.
 
-You can add this dependency to your classpath by adding the `:bench` alias to modify the dependency resolution: `clj -R:bench`.
+You can add this dependency to your classpath by adding the `:bench` alias to modify the dependency resolution: `clj -A:bench`.
 
 [[override_deps]]
 === Override a dependency
@@ -280,7 +278,7 @@ You can use multiple aliases in combination. For example this `deps.edn` file de
   :bench {:extra-deps {criterium/criterium {:mvn/version "0.4.4"}}}}}
 ----
 
-Activate both aliases as follows: `clj -R:bench:old-async`.
+Activate both aliases as follows: `clj -A:bench:old-async`.
 
 [[local_jar]]
 === Include a local jar on disk

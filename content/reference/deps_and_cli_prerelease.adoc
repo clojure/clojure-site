@@ -9,7 +9,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 toc::[]
 
-**This doc is a reference for the latest prerelease version of `clj` (currently 1.10.1.672). Features listed here may differ from those for the current stable release. To install the prerelease, see the instructions on the https://github.com/clojure/homebrew-tools#version-archive-tool-releases[Clojure homebrew tap] or the Linux instructions at the <<xref/../../guides/getting_started#,Getting Started>>.**
+**This doc is a reference for the latest prerelease version of `clj` (currently 1.10.1.672). Features listed here may differ from those for the <<deps_and_cli#,current stable release>>. To install the prerelease, see the instructions on the https://github.com/clojure/homebrew-tools#version-archive-tool-releases[Clojure homebrew tap] or the Linux instructions at the <<xref/../../guides/getting_started#,Getting Started>>.**
 
 = Rationale
 

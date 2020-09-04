@@ -94,7 +94,7 @@ clj -X:my-fn '[:my :data]' 789
 
 [NOTE]
 ====
-See the later section on "Quoting keys and values" for more details on how to properly quote edn values on the command line.
+See the later section on <<#quoting,"Quoting keys and values">> for more details on how to properly quote edn values on the command line.
 ====
 
 If you want to execute an arbitrary function, you can pass it on the command instead, along with pairs of key-path and value:
@@ -106,7 +106,7 @@ clj -X my.qualified/fn :config 789
 
 [NOTE]
 ====
-Alias arg maps can also include a default namespace or namespace aliases for resolving the function (see "Namespace resolution" for more details).
+Alias arg maps can also include a default namespace or namespace aliases for resolving the function (see <<#namespaces,"Namespace resolution">> for more details).
 ====
 
 == Running a main or script
@@ -721,6 +721,7 @@ This section summarizes all of the available arg map keys that `clj` uses and th
 * main (-M only)
 ** `:main-opts` - vector of string args to pass to clojure.main
 
+[[namespaces]]
 == Namespace resolution
 
 Symbols in the exec-opts or argmaps (like `:exec-fn`) are resolved with the following rules:
@@ -742,6 +743,7 @@ clj -X:my-fn :val 789
 clj -X:my-fn '[:my :data]' 789
 ----
 
+[[quoting]]
 == Quoting keys and values
 
 Keys and values on the command line are read as edn. The following data can be used without quoting:

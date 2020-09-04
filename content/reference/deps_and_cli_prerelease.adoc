@@ -464,14 +464,17 @@ The basis is a superset of the master deps edn and will also contain the additio
 There are some options that can be provided to `clj` that short circuit normal execution and run an alternate program instead:
 
 * `-Sdescribe` - print environment and command parsing info as data
-* `-Stree` - print dependency tree
 * `-Spath` - compute classpath and echo to stdout only
-* `-Spom` - generate (or update an existing) pom.xml with deps and paths
-* `-Sresolve-tags` - resolve git coordinate tags to shas and update deps.edn
+
+The `:deps` alias is built into the root deps.edn and provides a default namespace with several additional programs:
+
+* `-X:deps tree` - print dependency tree
+* `-X:deps mvn-pom` - generate (or update an existing) pom.xml with deps and paths
+* `-X:deps git-resolve-tags` - resolve git coordinate tags to shas and update deps.edn
 
 === Local Maven install
 
-The `clojure.tools.deps.alpha.tools.install/install` program is provided with the Clojure tools for convenience and can be executed with `-X` to install a jar into your local Maven cache.
+The `-X:deps mvn-install` program is provided with the Clojure tools for convenience and can be executed with `-X` to install a jar into your local Maven cache.
 
 The install argmap takes the following options:
 
@@ -485,22 +488,11 @@ The install argmap takes the following options:
 :local-repo (optional) - path to local repo (default = ~/.m2/repository)
 ----
 
-Add the tool configuration to your `deps.edn` under an alias:
-
-[source,clojure]
-----
-{:aliases
- {:install
-  {:exec-fn clojure.tools.deps.alpha.tools.install/install
-   ;; :exec-args map could be provided but can pass on command line instead
-   }}}
-----
-
-To execute use the built-in `:deps` alias to include tools.deps.alpha on the classpath, execute the install tool with -X and pass the args on the command line:
+You can pass overrides on the command line for these as needed:
 
 [source,shell]
 ----
-clj -X:deps:install :jar '"/path/to.jar"'
+clj -X:deps mvn-install :jar '"/path/to.jar"'
 ----
 
 As mentioned above, edn strings must be in double quotes, and then single-quoted for the shell.

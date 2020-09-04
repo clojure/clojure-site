@@ -9,10 +9,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 toc::[]
 
-[NOTE]
-====
-This doc is a reference for the latest prerelease version of `clj` (currently 1.10.1.672). Features listed here may differ from those for the current stable release. To install the prerelease, see the instructions on the https://github.com/clojure/homebrew-tools#version-archive-tool-releases[Clojure homebrew tap] or the Linux instructions at the <<xref/../../guides/getting_started#,Getting Started>>.
-====
+**This doc is a reference for the latest prerelease version of `clj` (currently 1.10.1.672). Features listed here may differ from those for the current stable release. To install the prerelease, see the instructions on the https://github.com/clojure/homebrew-tools#version-archive-tool-releases[Clojure homebrew tap] or the Linux instructions at the <<xref/../../guides/getting_started#,Getting Started>>.**
 
 = Rationale
 
@@ -84,7 +81,7 @@ To invoke, pass the name of the alias to `-X`:
 clj -X:my-fn
 ----
 
-You can supply additional keys, or override values stored in the deps.edn file by passing pairs of key-path and value. The key-path should either be a single key or a vector of keys to refer to a nested key (as with `assoc-in`). Each key-path will be used to `assoc-in` to the original `:args` map, overriding the value there.
+You can supply additional keys, or override values stored in the deps.edn file by passing pairs of key-path and value. The key-path should either be a single key or a vector of keys to refer to a nested key (as with `assoc-in`). Each key-path will be used to `assoc-in` to the original `:exec-args` map, overriding the value there.
 
 [source]
 ----
@@ -734,7 +731,7 @@ Symbols in the exec-opts or argmaps (like `:exec-fn`) are resolved with the foll
 
 == Keys and key paths
 
-With the -X exec-opt you can supply key-path/value pairs on the command line. The key-path is either a single key or a vector of keys to refer to a nested key (as with `assoc-in`). Each key-path will be used to `assoc-in` to the original `:args` map, overriding the value there.
+With the -X exec-opt you can supply key-path/value pairs on the command line. The key-path is either a single key or a vector of keys to refer to a nested key (as with `assoc-in`). Each key-path will be used to `assoc-in` to the original `:exec-args` map, overriding the value there.
 
 [source]
 ----

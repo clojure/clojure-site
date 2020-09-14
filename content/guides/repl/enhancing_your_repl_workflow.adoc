@@ -224,7 +224,7 @@ lightweight syntax.
 
 ==== Going further: tracing libraries
 
-_Tracing_ libraries such as **https://github.com/clojure/tools.trace[tools.trace]** and **http://clojure-emacs.github.io/sayid/[Sayid]**
+_Tracing_ libraries such as **https://github.com/clojure/tools.trace[tools.trace]** and **https://github.com/clojure-emacs/sayid[Sayid]**
 can help you instrument larger portions of your code, for example by automatically printing all the function calls in a
 given namespace, or all intermediary values in a given expression.
 

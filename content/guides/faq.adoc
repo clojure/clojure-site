@@ -56,6 +56,13 @@ _ has no special meaning in Clojure as a symbol. However, it is a convention to 
     y))
 ----
 
+[[qmark_bang]]
+**<<faq#qmark_bang,What does an ? or ! mean in a function name?>>**
+
+? and ! have no special meaning in Clojure as part of a symbol. However, it is a convention to use a trailing ? to denote a predicate function and a trailing ! to denote a function with side-effects.
+More specifically, a trailing ? indicates that a predicate returns a strictly boolean result (`true` or `false`) rather than just truthy or falsey,
+and a trailing ! was originally intended to indicate that a function has side-effects that would make it unsafe to use inside a "transaction" (in the Software Transactional Memory sense). In the wild, the use of ! is less consistent and is sometimes used in a broader way to indicate any sort of side-effecting behavior.
+
 [[anon_vector]]
 **<<faq#anon_vector,Why doesn't the anonymous function `#([%1])` work to construct a vector?>>**
 

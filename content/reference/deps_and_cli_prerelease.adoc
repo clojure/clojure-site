@@ -380,7 +380,7 @@ Files cached (if needed):
 * `<hash>.cp` - a classpath string, the output of `make-classpath`
 * `<hash>.jvm` - jvm options for main execution
 * `<hash>.main` - main options for main execution
-* `<hash>.basis` - the runtime basis, for injection
+* `<hash>.basis` - the runtime basis, passed to the program
 
 Caching can be modified by the following options:
 
@@ -444,20 +444,6 @@ One additional option for main execution is a map with key `:main-opts`:
 * If command line clojure.main arguments are supplied on the command line, they are concatenated after the last main alias map
 
 This map is stored in alias data and provided to the Clojure tools using `-M:an-alias`. Multiple aliases can be provided by concatentating the alias names.
-
-=== Basis injection
-
-The Clojure tools inject the computed runtime basis into the executed process using the Java system property `clojure.basis` which points to the cached basis file. Programs can read the basis file as edn and use it themselves if needed.
-
-Example code:
-
-[source,clojure]
-----
-(require '[clojure.java.io :as jio] '[clojure.edn :as edn])
-(def basis (-> (System/getProperty "clojure.basis") jio/file slurp edn/read-string))
-----
-
-The basis is a superset of the master deps edn and will also contain the additional keys: `:resolve-args`, `:classpath-args`, `:libs`, and `:classpath`.
 
 == Other programs
 

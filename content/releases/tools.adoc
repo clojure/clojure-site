@@ -1,0 +1,73 @@
+= Clojure Downloads
+Alex Miller
+2020-09-25
+:jbake-type: releases
+:toc: macro
+:icons: font
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+The Clojure command line tools can be used to start a Clojure repl, use Clojure and Java libraries, and start Clojure programs.
+
+== Installation and Docs
+
+For more information see the following docs:
+
+* <<xref/../../guides/getting_started#,Getting Started>> guide installation instructions
+* <<xref/../../guides/deps_and_cli#,Deps and CLI guide>>
+* <<xref/../../reference/deps_and_cli#,Deps and CLI reference>>
+* https://github.com/clojure/homebrew-tools[Clojure Homebrew tap]
+
+== Releases
+
+Recent official releases are described here. Prereleases and older versions can be found in the https://github.com/clojure/brew-install/blob/1.10.1/CHANGELOG.md[repo changelog].
+
+[[1.10.1.697]]
+=== 1.10.1.697 (Sept 25, 2020)
+
+* Added https://clojure.org/reference/deps_and_cli#_executing_a_function[execution mode] (-X)
+* Added https://clojure.org/reference/deps_and_cli#_prepare_for_execution[prepare mode] (-P)
+* Expanded https://clojure.org/reference/deps_and_cli#_running_a_main_or_script[main execution] (-M) to support all argmap arguments
+* Added new argmap attributes for https://clojure.org/reference/deps_and_cli#namespaces[namespace resolution]:
+** :ns-aliases and :ns-default
+* Added new https://clojure.github.io/tools.deps.alpha/clojure.tools.cli.api-api.html[clojure.tools.cli.api] available via -X:deps alias:
+** clj -X:deps git-resolve-tags
+** clj -X:deps mvn-install
+** clj -X:deps mvn-pom
+** clj -X:deps tree
+* Deprecated -R, -C (use -X, -M, or -A instead)
+* Deprecated unqualified lib names in deps.edn (use fully qualified lib names)
+* Deprecated alias tool args :deps and :paths (use :replace-deps and :replace-paths)
+* Removed -O (use -X, -M, or -A)
+* Removed -Sresolve-tags (use -X:deps git-resolve-tags)
+* https://clojure.atlassian.net/browse/TDEPS-152[TDEPS-152] - Fixes to -Spom generation with srcDirectory
+* https://clojure.atlassian.net/browse/TDEPS-155[TDEPS-155] - Better error handling for bad coordinates
+* https://clojure.atlassian.net/browse/TDEPS-167[TDEPS-167] - Handle absolute resource paths in pom deps
+* Use https://github.com/clojure/tools.deps.alpha/blob/master/CHANGELOG.md[tools.deps.alpha] 0.9.810
+
+[[1.10.1.561]]
+=== 1.10.1.561 (July 17, 2020)
+
+* Rework exclusion handling when exclusion sets differ for same lib/version
+* Use https://github.com/clojure/tools.deps.alpha/blob/master/CHANGELOG.md[tools.deps.alpha] 0.8.709
+
+[[1.10.1.547]]
+=== 1.10.1.547 (June 11, 2020)
+
+* (Windows) Write -Spath to output, not to host
+* https://clojure.atlassian.net/browse/TDEPS-152[TDEPS-152] - Fix bad addition of srcDirectory in pom gen
+* https://clojure.atlassian.net/browse/TDEPS-155[TDEPS-155] - Add error checking for missing :mvn/version
+* Use https://github.com/clojure/tools.deps.alpha/blob/master/CHANGELOG.md[tools.deps.alpha] 0.8.695
+
+[[1.10.1.536]]
+=== 1.10.1.536 (Feb 28, 2020)
+
+* Release automation work, no tool changes
+
+[[1.10.1.510]]
+=== 1.10.1.510 (Feb 14, 2020)
+
+* https://clojure.atlassian.net/browse/TDEPS-150[TDEPS-150] - Fix regression in supporting -Scp flag (avoid resolving deps)
+* https://clojure.atlassian.net/browse/TDEPS-148[TDEPS-148] - Fix incorrect path resolution for git/local dep without deps.edn
+* Use https://github.com/clojure/tools.deps.alpha/blob/master/CHANGELOG.md[tools.deps.alpha] 0.8.677
+

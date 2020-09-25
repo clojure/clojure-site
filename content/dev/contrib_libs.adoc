@@ -1,7 +1,7 @@
 = Contrib Libraries
 Alex Miller
 2019-02-04
-:type: community
+:type: dev
 :toc: macro
 :icons: font
 
@@ -9,7 +9,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 Clojure is an umbrella level project that hosts many additional libraries called _Clojure contrib_, which all exist under the https://github.com/clojure[Clojure organization] on GitHub.
 
-These libraries use the same contribution model (<<xref/../../dev/contributor_agreement#,Contributor Agreement>>, license, and copyright) as Clojure itself, and a shared infrastructure maintained by the Clojure core team:
+These libraries use the same contribution model (<<contributor_agreement#,Contributor Agreement>>, license, and copyright) as Clojure itself, and a shared infrastructure maintained by the Clojure core team:
 
 * Source control - Git libraries on GitHub
 * Issues - https://clojure.atlassian.net/projects/CLJ[JIRA]
@@ -91,7 +91,7 @@ Additionally, the following libraries are dependencies of Clojure itself managed
 
 And finally, there are some repositories in the Clojure GitHub organization that are not libraries at all:
 
-* https://github.com/clojure/clojure-site/[clojure-site] - this web site, see <<contributing_site#,Site Contributions>>
+* https://github.com/clojure/clojure-site/[clojure-site] - this web site, see <<xref/../../community/contributing_site#,Site Contributions>>
 * https://github.com/clojure/clojurescript-site/[clojurescript-site] - https://clojurescript.org web site
 * https://github.com/clojure/brew-install/[brew-install] - `clj` installer builds
 * https://github.com/clojure/build.ci/[build.ci] - Jenkins project builder for contrib

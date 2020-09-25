@@ -19,7 +19,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 == Clojure Contrib Libraries
 
-Documentation for Clojure <<xref/../../community/contrib_libs#,contrib libraries>>:
+Documentation for Clojure <<xref/../../dev/contrib_libs#,contrib libraries>>:
 
 * https://clojure.github.io/[Contrib APIs]
 

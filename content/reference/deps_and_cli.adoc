@@ -445,7 +445,7 @@ This map is stored in alias data and provided to the Clojure tools using `-M:an-
 
 === Prepare for execution
 
-The `-P` flag can be used with any other execution mode to "prepare" but not execute. Importantly, this flag will cause the Clojure tool to resolve deps, download libraries, make and cache classpaths. This may be useful in containers, continuous integration systems, etc where an environment can be prepared to execute and do necessarily network activity first, and then later execute without that activity.
+The `-P` flag can be used with any other execution mode to "prepare" but not execute. Importantly, this flag will cause the Clojure tool to resolve deps, download libraries, make and cache classpaths. This may be useful in containers, continuous integration systems, etc where an environment can be prepared to execute and do necessary network activity first, and then later execute without that activity.
 
 == Other programs
 

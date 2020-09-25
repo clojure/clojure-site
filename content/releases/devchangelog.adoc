@@ -19,7 +19,16 @@ Note: All dev releases are subject to breaking changes for new work since the pr
 
 == Release 1.10.2
 
-=== 1.10.2-alpha1 (Mar 5, 2020)
+=== 1.10.2-alpha2 (Sep 25, 2020) [[v1.10.2-alpha2]]
+
+* https://clojure.atlassian.net/browse/CLJ-2571[CLJ-2571] Add Throwable return type hint to ex-cause
+* https://clojure.atlassian.net/browse/CLJ-2572[CLJ-2572] Avoid reflection in clojure.data
+* https://clojure.atlassian.net/browse/CLJ-2295[CLJ-2295] Eliminate duplicate doc string printing for special forms
+* https://clojure.atlassian.net/browse/CLJ-2564[CLJ-2564] Improve error message for `case`
+* https://clojure.atlassian.net/browse/CLJ-2580[CLJ-2580] Fix case expression branch analysis that resulted in compilation error
+* https://clojure.atlassian.net/browse/CLJ-2469[CLJ-2469] Fix errors in printing some maps with namespace syntax
+
+=== 1.10.2-alpha1 (Mar 5, 2020) [[v1.10.2-alpha1]]
 
 * https://clojure.atlassian.net/browse/CLJ-1472[CLJ-1472] Ensure monitor object is on stack, for verifiers
 * https://clojure.atlassian.net/browse/CLJ-2502[CLJ-2502] Fix reflection warnings in clojure.stacktrace/print-stack-trace

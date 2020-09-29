@@ -76,7 +76,17 @@ You will see messages about a library being downloaded the first time you use a 
 
 == Writing a program
 
-Soon you will want to build and save your own code that makes use of these libraries. Create a directory `hello-world` and change to that directory. Copy the `deps.edn` file into this directory. By default, the `clj` tool will look for source files in the `src` directory, so create the `src` directory and declare your program at `src/hello.clj`:
+Soon you will want to build and save your own code that makes use of these libraries. Create a new directory and copy this deps.edn into it:
+
+[source,shell]
+----
+$ mkdir hello-world
+$ cp deps.edn hello-world
+$ cd hello-world
+$ mkdir src
+----
+
+By default, the `clj` tool will look for source files in the `src` directory. Create `src/hello.clj`:
 
 [source,clojure]
 ----
@@ -90,23 +100,23 @@ Soon you will want to build and save your own code that makes use of these libra
     (t/with-zone (t/formatter "hh:mm a") (t/zone-id))
     instant))
 
-(defn -main []
+(defn run [opts]
   (println "Hello world, the time is" (time-str (t/instant))))
 ----
 
 == Using a main
 
-This program has a static entry point named `-main` that is suitable for external invocation. The `clj` tool acts as a Clojure program launcher with the `-m` option, which specifies the namespace to run:
+This program has an entry function `run` that can be executed by `clj` using `-X`:
 
 [source,shell]
 ----
-$ clj -m hello
+$ clj -X hello/run
 Hello world, the time is 10:53 PM
 ----
 
 == Using local libraries
 
-You might decide to move part of this application into a library. The `clj` tool uses local coordinates to support projects that exist only on your local disk. Let's extract the java	-time parts of this application out into a library in a parallel directory time-lib. The final structure will look something like this:
+You might decide to move part of this application into a library. The `clj` tool uses local coordinates to support projects that exist only on your local disk. Let's extract the java-time parts of this application out into a library in a parallel directory time-lib. The final structure will look something like this:
 
 ----
 ├── time-lib
@@ -146,7 +156,7 @@ Update the application at `hello-world/src/hello.clj` to use your library instea
 (ns hello
   (:require [hello-time :as ht]))
 
-(defn -main []
+(defn run [opts]
   (println "Hello world, the time is" (ht/time-str (ht/now))))
 ----
 
@@ -155,14 +165,14 @@ Modify `hello-world/deps.edn` to use a local coordinate that refers to the root 
 [source,clojure]
 ----
 {:deps
- {time-lib/time-lib {:local/root "/path/to/time-lib"}}}
+ {time-lib/time-lib {:local/root "../time-lib"}}}
 ----
 
 You can then test everything from the hello-world directory by running the application:
 
 [source,shell]
 ----
-$ clj -m hello
+$ clj -X hello/run
 Hello world, the time is 02:07 PM
 ----
 
@@ -174,7 +184,7 @@ First, create a git library for the time-lib:
 
 [source,shell]
 ----
-cd time-lib
+cd ../time-lib
 git init
 git add deps.edn src
 git commit -m 'init'
@@ -202,7 +212,7 @@ Now you can run the app again, making use of the (shared) git repository library
 
 [source,shell]
 ----
-$ clj -m hello
+$ clj -X hello/run
 Cloning: https://github.com/yourname/time-lib
 Checking out: https://github.com/yourname/time-lib at 04d2744
 Hello world, the time is 02:10 PM
@@ -228,7 +238,7 @@ Typically, the project classpath includes only the project source, not its test 
 [source,clojure]
 ----
 {:deps
- {org.clojure/core.async {:mvn/version "0.3.465"}}
+ {org.clojure/core.async {:mvn/version "1.3.610"}}
 
  :aliases
  {:test {:extra-paths ["test"]}}}
@@ -239,11 +249,10 @@ Apply that classpath modification and examine the modified classpath by invoking
 [source,shell]
 ----
 $ clj -A:test -Spath
-src:
 test:
+src:
 /Users/me/.m2/repository/org/clojure/clojure/1.10.1/clojure-1.10.1.jar:
-/Users/me/.m2/repository/org/clojure/tools.analyzer/0.6.9/tools.analyzer-0.6.9.jar:
-... same as before
+... same as before (split here for readability)
 ----
 
 Note that the test dir is now included in the classpath.
@@ -342,14 +351,14 @@ You can compile in the REPL or run a script to do the compilation:
 
 [source,shell]
 ----
-$ clj -e "(compile 'hello)"
+$ clj -M -e "(compile 'hello)"
 ----
 
 And then run the hello namespace:
 
 [source,shell]
 ----
-$ clj -m hello
+$ clj -M -m hello
 Hello, World!
 ----
 

@@ -363,3 +363,47 @@ Hello, World!
 ----
 
 See <<xref/../../reference/compilation#,Compilation and Class Generation>> for a complete reference.
+
+[[socket_repl]]
+=== Run a socket server remote repl
+
+Clojure provides built-in support for running https://clojure.github.io/clojure/clojure.core-api.html#clojure.core.server/start-server[socket servers], and in particular using them to host remote REPLs.
+
+To configure a socket server repl, add the following base configuration to your `deps.edn`:
+
+[source,clojure]
+----
+{:aliases
+ {:repl-server
+  {:exec-fn clojure.core.server/start-server
+   :exec-args {:name "repl-server"
+               :port 5555
+               :accept clojure.core.server/repl
+               :server-daemon false}}}}
+----
+
+And then start the server by invoking with the alias:
+
+[source,shell]
+----
+clojure -X:repl-server
+----
+
+If you like, you can also override the default parameters (or add additional options) on the command line:
+
+[source,shell]
+----
+clojure -X:repl-server :port 51234
+----
+
+You can use netcat to connect from another terminal:
+
+[source,shell]
+----
+nc localhost 51234
+user=> (+ 1 1)
+2
+----
+
+Use Ctrl-D to exit the repl and Ctrl-C to exit the server.
+

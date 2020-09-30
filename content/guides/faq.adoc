@@ -334,7 +334,7 @@ WARNING: Use --illegal-access=warn to enable warnings of further illegal reflect
 WARNING: All illegal access operations will be denied in a future release
 ----
 
-The first thing to note here is that this is a warning. Java 9 through Java 12 will all permit the call to be made and the code will continue to work.
+The first thing to note here is that this is a warning. Java 9 through all current releases will permit the call to be made and the code will continue to work.
 
 There are several potential workarounds:
 

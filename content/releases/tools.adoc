@@ -22,6 +22,12 @@ For more information see the following docs:
 
 Recent official releases are described here. Prereleases and older versions can be found in the https://github.com/clojure/brew-install/blob/1.10.1/CHANGELOG.md[repo changelog].
 
+=== 1.10.1.708 (Oct 7, 2020) [[v1.10.1.708]]
+
+* Fixes to handling transitive deps when newer versions of a dep are found in the dep expansion
+* https://clojure.atlassian.net/browse/TDEPS-168[TDEPS-168] - Improvements to -X error message handling
+* Use https://github.com/clojure/tools.deps.alpha/blob/master/CHANGELOG.md[tools.deps.alpha] 0.9.816
+
 === 1.10.1.697 (Sept 25, 2020) [[v1.10.1.697]]
 
 * Added https://clojure.org/reference/deps_and_cli#_executing_a_function[execution mode] (-X)
@@ -65,4 +71,3 @@ Recent official releases are described here. Prereleases and older versions can 
 * https://clojure.atlassian.net/browse/TDEPS-150[TDEPS-150] - Fix regression in supporting -Scp flag (avoid resolving deps)
 * https://clojure.atlassian.net/browse/TDEPS-148[TDEPS-148] - Fix incorrect path resolution for git/local dep without deps.edn
 * Use https://github.com/clojure/tools.deps.alpha/blob/master/CHANGELOG.md[tools.deps.alpha] 0.8.677
-

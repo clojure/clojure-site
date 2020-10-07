@@ -79,7 +79,7 @@ To run a file full of Clojure code as a script, pass the path to the script to `
 
 [source,shell]
 ----
-clj /path/to/myscript.clj
+clj -M /path/to/myscript.clj
 ----
 
 == Passing arguments to a Script
@@ -88,7 +88,7 @@ To pass in arguments to a script, pass them in as further arguments when launchi
 
 [source,shell]
 ----
-clj /path/to/myscript.clj arg1 arg2 arg3
+clj -M /path/to/myscript.clj arg1 arg2 arg3
 ----
 
 The arguments will be provided to your program as a seq of strings bound to the var `pass:[*command-line-args*]`:

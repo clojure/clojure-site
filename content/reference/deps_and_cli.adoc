@@ -30,7 +30,7 @@ You use the Clojure tools (`clj` or `clojure`) to run Clojure programs on the JV
 
 Using a deps.edn file (or files), you tell Clojure where your source code resides and what libraries you need. Clojure will then calculate the full set of required libraries and a classpath, caching expensive parts of this process for better performance.
 
-The internal steps of the Clojure tools, as well as the Clojure functions you intend to run, are parameterized by data structures, often maps. Shell command lines are not optimized for passing nested data, so instead you will put the data structures in your deps.edn file and refer to them on the command line via _aliases_ - keywords that name data structures.
+The internal steps of the Clojure tools, as well as the Clojure functions you intend to run, are parameterized by data structures, often maps. Shell command lines are not optimized for passing nested data, so instead you will put the data structures in your deps edn file and refer to them on the command line via _aliases_ - keywords that name data structures.
 
 `clj` and `clojure` differ in that `clj` has extra support for use as a REPL in a terminal, and should be preferred unless you don't want that support, then use `clojure`. The invocation structure is the same for both:
 
@@ -124,21 +124,21 @@ See the <<repl_and_main#,clojure.main>> documentation for more details on main o
 
 When you execute the Clojure tool, there are a series of steps performed to prepare and execute your command. This section is an overview of those steps, see later sections for how to modify those steps in a variety of ways.
 
-**Locate deps.edn sources**
+**Locate deps edn sources**
 
-Configuration is stored in one or more "deps.edn" maps. These are edn maps with the following top-level keys:
+Configuration is stored in one or more "deps edn" maps. These are edn maps with the following top-level keys:
 
 * `:deps` - map of lib (symbol) to coordinate
 * `:paths` - vector of paths
 * `:aliases` - map of alias name to alias data
 * provider-specific keys for configuring dependency sources
 
-The Clojure tools look for 4 potential deps.edn sources:
+The Clojure tools look for 4 potential deps edn sources:
 
-* Root - found in the installation of clj (or as a resource in tools.deps)
+* Root - part of the clj installation (a resource in the tools.deps library)
 * User - cross-project configuration (typically tools), usually found at `~/.clojure/deps.edn`
 * Project - the `deps.edn` in the current directory
-* Config data - a `deps.edn` map passed on the command line
+* Config data - a deps edn map passed on the command line
 
 **Check cache**
 
@@ -152,9 +152,9 @@ When you execute a tool in the context of your project, the tool can use its own
 
 **Merge sources**
 
-All deps.edn sources are merged into a single master edn file in the order listed above - root, user, project (possibly with tool replacements), config. This merged deps will be included in the runtime basis and used after this point.
+All deps edn sources are merged into a single master edn file in the order listed above - root, user, project (possibly with tool replacements), config. This merged deps will be included in the runtime basis and used after this point.
 
-deps.edn sources is essentially `merge-with merge`, except for the `:paths` key, where only the last `:paths` found is used (they replace, not combine).
+The merge is essentially `merge-with merge`, except for the `:paths` key, where only the last `:paths` found is used (they replace, not combine).
 
 **Resolve dependencies**
 

@@ -468,12 +468,19 @@ The install argmap takes the following options:
 
 [source,plain-text]
 ----
-:jar (required) - path to jar file
-:pom (optional) - path to pom file
-:lib (optional) - qualified symbol like my.org/lib
-:version (optional) - string
-:classifier (optional) - string
-:local-repo (optional) - path to local repo (default = ~/.m2/repository)
+Required:
+:jar - path to jar file, use pom inside jar by default
+
+To supply an explicit pom file:
+:pom - path to pom file (used instead of pom inside the jar)
+
+To generate a minimal pom file:
+:lib - qualified symbol like my.org/lib
+:version - string
+:classifier - string
+
+Other options:
+:local-repo - path to local repo (default = ~/.m2/repository)
 ----
 
 You can pass overrides on the command line for these as needed:
@@ -485,7 +492,7 @@ clj -X:deps mvn-install :jar '"/path/to.jar"'
 
 As mentioned above, edn strings must be in double quotes, and then single-quoted for the shell.
 
-The install tool will find the pom inside the jar file (if it exists) and use that to determine the groupId, artifactId, and version coordinates to use when the jar is installed. Alternately, you can provide a pom file or specific coordinates via the other attributes.
+A pom file must be either provided explicitly, generated from :lib/:version, or found inside the .jar file (the default).
 
 = Procurers
 

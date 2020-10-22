@@ -22,6 +22,14 @@ For more information see the following docs:
 
 Recent official releases are described here. Prereleases and older versions can be found in the https://github.com/clojure/brew-install/blob/1.10.1/CHANGELOG.md[repo changelog].
 
+=== 1.10.1.727 (Oct 21, 2020) [[v1.10.1.727]]
+
+* Fix clj -X:deps tree adding tools.deps.alpha to tree
+* Fix clj -X:deps mvn-pom adding tools.deps.alpha to pom deps
+* Fix clj -X:deps git-resolve-tags not working
+* https://clojure.atlassian.net/browse/TDEPS-152[TDEPS-169] - Fix clj -X:deps mvn-install on jar to also install embedded pom
+* Fix clj -Spom not respecting dep modifications from -A (regression)
+
 === 1.10.1.716 (Oct 10, 2020) [[v1.10.1.716]]
 
 * Make edn reading tolerant of unknown tagged literals

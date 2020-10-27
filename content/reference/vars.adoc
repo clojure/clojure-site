@@ -79,7 +79,7 @@ When the first operand is a symbol, it must resolve to a global var. The value o
 
 Note - _you cannot assign to function params or local bindings. Only Java fields, Vars, Refs and Agents are mutable in Clojure_.
 
-Using <<java_interop#_alternative_macro_syntax,set>> for Java fields is documented in <<java_interop#_alternative_macro_syntax,Java Interop>>.
+Using http://clojure.github.io/clojure/clojure.core-api.html#clojure.core/set![`set!`] for Java fields is documented in <<java_interop#set,Java Interop>>.
 
 [[interning]]
 == Interning

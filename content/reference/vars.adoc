@@ -79,7 +79,7 @@ When the first operand is a symbol, it must resolve to a global var. The value o
 
 Note - _you cannot assign to function params or local bindings. Only Java fields, Vars, Refs and Agents are mutable in Clojure_.
 
-Using <<java_interop#set,set>> for Java fields is documented in <<java_interop#set,Java Interop>>.
+Using <<java_interop#_alternative_macro_syntax,set>> for Java fields is documented in <<java_interop#_alternative_macro_syntax,Java Interop>>.
 
 [[interning]]
 == Interning
@@ -100,5 +100,5 @@ It is possible to create vars that are not interned by using https://clojure.git
 Variants of `def`: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defn[defn] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defn-[defn-] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/definline[definline] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defmacro[defmacro] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defmethod[defmethod] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defmulti[defmulti] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defonce[defonce] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defstruct[defstruct]
 Working with interned Vars: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/declare[declare] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/intern[intern] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/binding[binding] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/find-var[find-var] <<special_forms#var,var>>
 Working with Var objects: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/with-local-vars[with-local-vars] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/var-get[var-get] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/var-set[var-set] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/alter-var-root[alter-var-root] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/var?[var?] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/with-redefs[with-redefs] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/with-redefs-fn[with-redefs-fn]
-Var validators: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/set-validator[set-validator] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/get-validator[get-validator]
-Common Var metadata: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/doc[doc] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/find-doc[find-doc] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/test[test]
+Var validators: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/set-validator![set-validator!] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/get-validator[get-validator]
+Common Var metadata: https://clojure.github.io/clojure/clojure.repl-api.html#clojure.repl/doc[doc] https://clojure.github.io/clojure/clojure.repl-api.html#clojure.repl/find-doc[find-doc] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/test[test]

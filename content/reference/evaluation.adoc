@@ -53,7 +53,7 @@ Special forms are primitives built-in to Clojure that perform core operations. I
 
 <<macros#,Macros>> are functions that manipulate forms, allowing for syntactic abstraction. If the operator of a call is a symbol that names a global var that is a macro function, that macro function is called and is passed the _unevaluated_ operand forms. The return value of the macro is then evaluated in its place.
 
-If the operator is not a special form or macro, the call is considered a function call. Both the operator and the operands (if any) are evaluated, from left to right. The result of the evaluation of the operator is then cast to IFn (the interface representing Clojure functions), and invoke() is called on it, passing the evaluated arguments. The return value of invoke() is the value of the call expression. If the function call form has metadata, it may be used by the compiler, but will not be part of the resulting value.
+If the operator is not a special form or macro, the call is considered a function call. Both the operator and the operands (if any) are evaluated, from left to right. The result of the evaluation of the operator is cast to IFn (the interface representing Clojure functions), and invoke() is called on it, passing the evaluated arguments. The return value of invoke() is the value of the call expression. If the function call form has metadata, it may be used by the compiler, but will not be part of the resulting value.
 Note that special forms and macros might have other-than-normal evaluation of their arguments, as described in their entries under <<special_forms#,Special Forms>>.
 
 Any object other than those discussed above will evaluate to itself.

@@ -153,9 +153,9 @@ the latter expanding into the former at macro expansion time.
 
 Evaluates expr and tests if it is an instance of the class. Returns true or false
 
-[[set]]
 ''''
 
+[[set]]
 [%hardbreaks]
 *(_set!_ (. instance-expr instanceFieldName-symbol) expr)*
 *(_set!_ (. Classname-symbol staticFieldName-symbol) expr)*

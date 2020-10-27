@@ -45,8 +45,8 @@ brew upgrade clojure/tools/clojure
 
 To install with the Linux script installer:
 
-1. Ensure that the following dependencies are installed: bash, curl, rlwrap, and Java.
-2. Use the linux-install script to download and run the install, which will create /usr/local/bin/clj, /usr/local/bin/clojure, and /usr/local/lib/clojure:
+1. Ensure that the following dependencies are installed: `bash`, `curl`, `rlwrap`, and `Java`.
+2. Use the `linux-install` script to download and run the install, which will create the executales `/usr/local/bin/clj`, `/usr/local/bin/clojure`, and the directory `/usr/local/lib/clojure`:
 
 [source,shell]
 ----
@@ -54,6 +54,24 @@ curl -O https://download.clojure.org/install/linux-install-1.10.1.727.sh
 chmod +x linux-install-1.10.1.727.sh
 sudo ./linux-install-1.10.1.727.sh
 ----
+
+==== Custom location
+
+To install to a custom location (like `/opt/infrastructure/clojure`), use the option `--prefix`:
+
+[source,shell]
+----
+sudo ./linux-install-${VERSION}.sh --prefix /opt/infrastructure/clojure
+----
+
+Extend the MANPATH in `/etc/man_dev.conf` to include the manual pages:
+
+[source]
+----
+MANPATH_MAP /opt/infrastructure/clojure/bin /opt/infrastructure/clojure/man
+----
+
+The `linux-install` script can be removed after installation.
 
 === Installation on Windows
 

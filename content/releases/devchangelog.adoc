@@ -19,6 +19,14 @@ Note: All dev releases are subject to breaking changes for new work since the pr
 
 == Release 1.10.2
 
+=== 1.10.2-alpha3 (Oct 30, 2020) [[v1.10.2-alpha3]]
+
+* https://clojure.atlassian.net/browse/CLJ-2492[CLJ-2492] Remove uses of deprecated Class.newInstance()
+* https://clojure.atlassian.net/browse/CLJ-2534[CLJ-2534] Fix javadoc urls for JDK 11+
+* https://clojure.atlassian.net/browse/CLJ-1364[CLJ-1364] vector-of does not implement equals or hashing methods
+* https://clojure.atlassian.net/browse/CLJ-2549[CLJ-2549] vector-of does not implement IObj for metadata
+* https://clojure.atlassian.net/browse/CLJ-1187[CLJ-1187] quoted metadata on empty literal colls is lost
+
 === 1.10.2-alpha2 (Sep 25, 2020) [[v1.10.2-alpha2]]
 
 * https://clojure.atlassian.net/browse/CLJ-2571[CLJ-2571] Add Throwable return type hint to ex-cause

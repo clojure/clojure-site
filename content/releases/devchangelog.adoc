@@ -19,7 +19,7 @@ Note: All dev releases are subject to breaking changes for new work since the pr
 
 == Release 1.10.2
 
-=== 1.10.2-alpha3 (Oct 30, 2020) [[v1.10.2-alpha3]]
+=== 1.10.2-alpha3 (Nov 2, 2020) [[v1.10.2-alpha3]]
 
 * https://clojure.atlassian.net/browse/CLJ-2492[CLJ-2492] Remove uses of deprecated Class.newInstance()
 * https://clojure.atlassian.net/browse/CLJ-2534[CLJ-2534] Fix javadoc urls for JDK 11+

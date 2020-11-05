@@ -19,6 +19,10 @@ Note: All dev releases are subject to breaking changes for new work since the pr
 
 == Release 1.10.2
 
+=== 1.10.2-alpha4 (Nov 5, 2020) [[v1.10.2-alpha4]]
+
+* https://clojure.atlassian.net/browse/CLJ-2587[CLJ-2587] Fix reflection warning in gvec from CLJ-1364
+
 === 1.10.2-alpha3 (Nov 2, 2020) [[v1.10.2-alpha3]]
 
 * https://clojure.atlassian.net/browse/CLJ-2492[CLJ-2492] Remove uses of deprecated Class.newInstance()

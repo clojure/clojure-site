@@ -194,7 +194,7 @@ In the REPL, the last evaluated result can be retrieved by evaluating `*1`; the 
 ----
 user=> (mapv number-summary [6 12 28])
 [{:n 6, :proper-divisors #{1 2 3}, :even? true, :prime? false, :perfect-number? true} {:n 12, :proper-divisors #{1 2 3 4 6}, :even? true, :prime? false, :perfect-number? false} {:n 28, :proper-divisors #{1 2 4 7 14}, :even? true, :prime? false, :perfect-number? true}]
-user=> (pp/pprint *1) ;; using *1 instead of re-typing the pevious expression (or its result)
+user=> (pp/pprint *1) ;; using *1 instead of re-typing the previous expression (or its result)
 [{:n 6,
  :proper-divisors #{1 2 3},
  :even? true,

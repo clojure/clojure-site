@@ -13,7 +13,6 @@ Did you know:
 * You can compile namespaces explicitly using https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/compile[`compile`]
 * Namespace compilation is transitive
 * `compile` writes these files to disk and `require` will use them
-* How user.clj works?
 * You can use `compile` on the namespace you load when you start development, or on your `user.clj`, or on the main namespace you run as a server to improve your startup time
 
 The `compile` function takes a namespace symbol and compiles that namespace and all the namespaces it requires into https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/%2Acompile-path%2A[`\*compile-path*`] (which defaults to `classes`). That directory must exist and be on your classpath:

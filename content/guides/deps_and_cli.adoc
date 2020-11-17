@@ -229,6 +229,7 @@ As your program gets more involved you might need to create variations on the st
 * <<deps_and_cli#override_deps,Override a dependency version>>
 * <<deps_and_cli#local_jar,Use a local jar on disk>>
 * <<deps_and_cli#aot_compilation,Ahead-of-time (AOT) compilation>>
+* <<deps_and_cli#socket_repl,Run a socket server remote repl>>
 
 [[extra_paths]]
 === Include a test source directory

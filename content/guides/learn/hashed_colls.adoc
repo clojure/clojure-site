@@ -41,7 +41,7 @@ The `disj` ("disjoin") function is used to remove one or more elements from a se
 
 [source,clojure-repl]
 ----
-user=> (disj players "Bob" "Sal")
+user=> (disj players "Bob" "Fred")
 #{"Alice" "Kelly"}
 ----
 

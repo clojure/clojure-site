@@ -109,4 +109,4 @@ https://repl.it/languages/clojure[repl.it] provides a browser-based Clojure repl
 
 *Build tools*
 
-Build tools provide a range of capabilities for building, running, and deploying Clojure libraries and applications. The two most popular Clojure build tools are https://leiningen.org/[Leiningen] and http://boot-clj.com/[Boot].
+Build tools provide a range of capabilities for building, running, and deploying Clojure libraries and applications. The two most popular Clojure build tools are https://leiningen.org/[Leiningen] and https://boot-clj.github.io/[Boot].

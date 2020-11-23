@@ -94,7 +94,7 @@ Community volunteers maintain <<xref/../../guides/getting_started#,Getting Start
 
 * <<xref/../../guides/deps_and_cli#,Clojure tools>>
 * https://leiningen.org/[Leiningen] - an extensible build tool that provides dependency management, REPL support, testing, packaging, deployment, and many other capabilities.
-* https://boot-clj.com/[Boot] - build tooling for Clojure: instead of a special-purpose DSL, Boot supplies abstractions and libraries you can use to automate nearly any build scenario with the full power of the Clojure language
+* https://boot-clj.github.io/[Boot] - build tooling for Clojure: instead of a special-purpose DSL, Boot supplies abstractions and libraries you can use to automate nearly any build scenario with the full power of the Clojure language
 * https://clojars.org/[Clojars] - Clojure-focused Maven repository
 * https://www.gnu.org/software/emacs/[Emacs] with https://github.com/clojure-emacs/cider[CIDER]
 * https://www.vim.org/[Vim] with https://github.com/tpope/vim-fireplace[Fireplace] or https://github.com/liquidz/vim-iced[Vim-Iced]

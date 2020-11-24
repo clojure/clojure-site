@@ -22,7 +22,7 @@ For more information see the following docs:
 
 Recent official releases are described here. Prereleases and older versions can be found in the https://github.com/clojure/brew-install/blob/1.10.1/CHANGELOG.md[repo changelog].
 
-=== 1.10.1.739 (Nov 23, 2020) [[v1.10.1.735]]
+=== 1.10.1.739 (Nov 23, 2020) [[v1.10.1.739]]
 
 * Fix use of jdk profile activation in local deps with pom files
 * Fix error handling for -X to avoid double throw

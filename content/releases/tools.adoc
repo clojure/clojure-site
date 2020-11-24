@@ -22,6 +22,13 @@ For more information see the following docs:
 
 Recent official releases are described here. Prereleases and older versions can be found in the https://github.com/clojure/brew-install/blob/1.10.1/CHANGELOG.md[repo changelog].
 
+=== 1.10.1.735 (Nov 23, 2020) [[v1.10.1.735]]
+
+* Fix use of jdk profile activation in local deps with pom files
+* Fix error handling for -X to avoid double throw
+* Add error handling for -A used without an alias
+* Use https://github.com/clojure/tools.deps.alpha/blob/master/CHANGELOG.md[tools.deps.alpha] 0.9.840
+
 === 1.10.1.727 (Oct 21, 2020) [[v1.10.1.727]]
 
 * Fix clj -X:deps tree adding tools.deps.alpha to tree
@@ -29,6 +36,7 @@ Recent official releases are described here. Prereleases and older versions can 
 * Fix clj -X:deps git-resolve-tags not working
 * https://clojure.atlassian.net/browse/TDEPS-169[TDEPS-169] - Fix clj -X:deps mvn-install on jar to also install embedded pom
 * Fix clj -Spom not respecting dep modifications from -A (regression)
+* Use https://github.com/clojure/tools.deps.alpha/blob/master/CHANGELOG.md[tools.deps.alpha] 0.9.833
 
 === 1.10.1.716 (Oct 10, 2020) [[v1.10.1.716]]
 

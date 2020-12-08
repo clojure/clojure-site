@@ -57,7 +57,7 @@ Use the following exec-opt to invoke a function that takes a map:
 
 [source]
 ----
-clojure [clj-opt*] -X[:aliases] [a/fn] [kpath v]*
+clojure [clj-opt*] -X[aliases] [a/fn] [kpath v]*
 ----
 
 `-X` is configured with an arg map with `:exec-fn` and `:exec-args` keys, and stored under an alias in `deps.edn`:
@@ -113,7 +113,7 @@ You can use the `-M` exec-opt to invoke clojure.main, which supports calling a n
 
 [source]
 ----
-clojure [clj-opt*] -M[:aliases] [main-opts]
+clojure [clj-opt*] -M[aliases] [main-opts]
 ----
 
 The -M aliases are pulled from `deps.edn` and combined to form an arg map. The arg map can modify the classpath or supply main options.

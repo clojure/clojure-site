@@ -22,6 +22,12 @@ For more information see the following docs:
 
 Recent official releases are described here. Prereleases and older versions can be found in the https://github.com/clojure/brew-install/blob/1.10.1/CHANGELOG.md[repo changelog].
 
+=== 1.10.1.754 (Dec 7, 2020) [[v1.10.1.754]]
+
+* New, more informative tree format for `clj -Stree` / `clj -X:deps tree`
+* Added https://clojure.github.io/tools.deps.alpha/clojure.tools.cli.api-api.html#clojure.tools.cli.api/tree[options] for use with `clj -X:deps tree`
+* Use https://github.com/clojure/tools.deps.alpha/blob/master/CHANGELOG.md[tools.deps.alpha] 0.9.857
+
 === 1.10.1.739 (Nov 23, 2020) [[v1.10.1.739]]
 
 * Fix use of jdk profile activation in local deps with pom files

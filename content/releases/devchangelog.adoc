@@ -19,6 +19,15 @@ Note: All dev releases are subject to breaking changes for new work since the pr
 
 == Release 1.10.2
 
+=== 1.10.2-rc1 (Dec 11, 2020) [[v1.10.2-rc1]]
+
+* https://clojure.atlassian.net/browse/CLJ-1005[CLJ-1005] Use transient map in zipmap
+* https://clojure.atlassian.net/browse/CLJ-2585[CLJ-2585] nth with not-found on regex matcher returns not-found on last group index
+* https://clojure.atlassian.net/browse/CLJ-1445[CLJ-1445] pprint doesn't print collection metadata when `*print-meta*` is true
+* https://clojure.atlassian.net/browse/CLJ-2495[CLJ-2495] prepl docstring is incorrect
+* https://clojure.atlassian.net/browse/CLJ-2169[CLJ-2169] conj has out-of-date :arglists
+* https://clojure.atlassian.net/browse/CLJ-2459[CLJ-2459] ExceptionInInitializerError if jars executed with java -jar 
+
 === 1.10.2-alpha4 (Nov 5, 2020) [[v1.10.2-alpha4]]
 
 * https://clojure.atlassian.net/browse/CLJ-2587[CLJ-2587] Fix reflection warning in gvec from CLJ-1364

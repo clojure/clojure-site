@@ -459,8 +459,10 @@ user=> (insp/inspect-table (mapv number-summary [2 5 6 28 42]))
 
 image:/images/content/guides/repl/clj-inspect-table.png["clojure.inspector table viz"]
 
-Finally, https://clojure.github.io/clojure/clojure.java.browse-api.html#clojure.java.browse/browse-url[clojure.java.browse/browse-url]
+https://clojure.github.io/clojure/clojure.java.browse-api.html#clojure.java.browse/browse-url[clojure.java.browse/browse-url]
 lets you open any URL in a Web browser, which can be handy for specific needs.
+
+Finally, there also exist 3rd-party Clojure tools for data visualization; we will see a selection of them in chapter <<enhancing_your_repl_workflow#,Enhancing your REPL workflow>>.
 
 == Dealing with mysterious values (advanced)
 

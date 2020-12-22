@@ -135,6 +135,7 @@ Trees are built from the trace log and include all considered nodes. Included no
 * `:same-version` - excluded, same as currently selected dep (suppressed)
 * `:newer-version` - included, newer version than previously selected
 * `:use-top` - excluded, same as top lib but not at top
-* `:older-verison` - excluded, older version than previously selected
+* `:older-version` - excluded, older version than previously selected
+* `:excluded` - excluded, node in parent path excluded this lib
 * `:parent-omitted` - excluded, parent node deselected
 * `:superseded` - excluded, this version was deselected

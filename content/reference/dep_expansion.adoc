@@ -1,0 +1,140 @@
+= Dep Expansion
+Alex Miller
+2020-12-22
+:type: reference
+:toc: macro
+:icons: font
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+toc::[]
+
+This page is a deep dive into how the Clojure tools and tools.deps expand a set of root deps into a transitive set of dependencies. This algorithm is similar to Maven dep expansion (both are breadth-first tree expansions), they make different choices about version selection.
+
+== Expansion
+
+Expansion inputs:
+
+* initial dependencies - each dependency is defined as a lib (symbol) and coordinate (maven, git, local, etc)
+* default-deps - a map of lib to coord to use if no coordinate is supplied
+* override-deps - a map of lib to coord to use if lib is found
+
+The expansion process is a loop over a queue of paths in the tree. The initial queue consists of the single paths to the root deps.
+
+For each step of the loop we pull a path (ending in a dep) off of the queue for consideration. The default and override deps are used (if needed) to replace the coordinate to be used with the dep. We then consider this lib/coord and decide whether to include or exclude in the selection and record a reason code for later understanding. If the node has child nodes they are added to the queue.
+
+Throughout the loop, we track all libs, versions seen, and selection choices in the version map and exclusions in the exclusions map. If desired, each consideration and whether the node was included and why is recorded in an expansion trace.
+
+All choices are made during a single pass through the tree. The mainline expansion is single-threaded, however retrieving the child nodes of a dep may require fetching them from an external network source (like requesting the pom from a Maven repository). For improved performance, a thread pool is used to fetch metadata in parallel in advance of needing it.
+
+=== Dep selection
+
+When a node is being considered for selection, the lib will be included if:
+
+* It is a top dep (top dep versions always win) or it is a new lib or a newer version of a known lib (Maven keeps only the first found version regardless of new/old)
+* and it is not excluded in one of the parents of this node's path (see the following Exclusions section)
+* and all parent nodes in the path are selected (see the following Orphans section)
+
+If the lib/version is included, it will marked as selected in the version map.
+
+=== Exclusions
+
+Exclusions are marked on child nodes at nodes in the tree and apply to that child dependency and its sub nodes. Exclusions are recorded in the exclusions map and used when checking whether to include a lib below that point in the tree.
+
+One particularly thorny case occurs when the same lib and version occurs at different points in the tree with different exclusion sets. In these cases, the exclusions used for that lib will be the **intersection** of the two exclusion sets.
+
+For example, given a tree like:
+
+[source]
+----
+A
+  B
+    C (excl X, Y)
+      X
+      Y
+      Z
+  D
+    C (excl X)
+      X
+      Y
+      Z
+----
+
+then C will exclude only X (the intersection of #{X Y} and #{X}) because the A-D-C branch needs that dependency!
+
+Also of importance, when path A-B-C is considered it will enqueue only Z as a child dependency (because X and Y are excluded). When A-D-C is considered, it narrows the exclusion set for C and marks Y to be included as a new child of C to be expanded. Note that whether A-B-C or A-D-C is considered first, the expansion order may differ, but the same final choices will be made about inclusion.
+
+=== Orphans
+
+While expanding a large tree, we may enqueue the children of a particular lib version, then later find and select a newer version of the lib that has a different set of dependencies. In this case, the original lib version node is deselected, but its children may still be in the queue.
+
+When those children are encountered, they will only be included if all parent nodes are still selected.
+
+For example, given a tree like:
+
+[source]
+----
+A
+  B
+    C1
+      X
+  D	
+    C2
+      Y
+----
+
+A trace might show:
+
+* A - include A, top dep
+* A-B - include B, new lib
+* A-D - include D, new lib
+* A-B-C1 - include C1, new lib (enqueue X, Y)
+* A-D-C2 - include C2, newer version (+ deselect C1)
+* A-B-C1-X - exclude X, parent omitted
+* A-D-C2-Y - include Y
+
+In some cases, the child nodes may already have been selected in the version map before the parent node is deselected. To catch these cases, an orphan check is done after expansion to ensure all selected libs have included parent nodes. If that's not the case, the orphaned nodes are cut.
+
+[source]
+----
+A
+  B1
+    X
+  C
+    B2
+      Z
+----
+	
+Trace:
+
+* A - include A, top dep
+* A-B1 - include B1, new lib
+* A-C - include C, new lib
+* A-B1-X - include X, new lib
+* A-C-B2 - include B2, newer version (+ deselect B1)
+* A-C-B2-Z - include Z
+
+After expansion, we would have selected A, X, C, B2, and Z . However, upon checking each node we will find X's parent B1 was not included so X will be cut.
+
+== Trace data
+
+When using the command line tools, you can use the option `-Strace` to activate dep tracing, which will emit a trace data file `trace.edn` in the current directory. If you inspect that data you will find a map with the keys:
+
+* `:log` - a log of the lib nodes considered, whether they were included, and the reason for each. The log will be a vector of maps, one per considered node with the following keys: `:lib`, `:coord`, `:coord-id`, `:paths`, `:include`, `:reason`, and possibly other keys.
+* `:vmap` - the version map (format subject to change)
+* `:exclusions` - the exclusions map (format subject to change)
+
+== Tree printing
+
+A dependency can be printed using either `clj -Stree` or the program `clj -X:deps tree` which https://clojure.github.io/tools.deps.alpha/clojure.tools.cli.api-api.html#clojure.tools.cli.api/tree[has more options].
+
+Trees are built from the trace log and include all considered nodes. Included nodes are prefixed with `.`. Excluded nodes are prefixed with `X`. The end of the line will contain the reason code (some codes are suppressed). The current set of reason codes (subject to change) are:
+
+* `:new-top-dep` - included as top dep (suppressed)
+* `:new-dep` - included as new dep (suppressed)
+* `:same-version` - excluded, same as currently selected dep (suppressed)
+* `:newer-version` - included, newer version than previously selected
+* `:use-top` - excluded, same as top lib but not at top
+* `:older-verison` - excluded, older version than previously selected
+* `:parent-omitted` - excluded, parent node deselected
+* `:superseded` - excluded, this version was deselected

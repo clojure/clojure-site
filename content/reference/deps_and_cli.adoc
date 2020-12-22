@@ -160,6 +160,8 @@ The merge is essentially `merge-with merge`, except for the `:paths` key, where 
 
 Starting from the master edn's merged :deps, the full transitive expansion of the dependency tree is computed. Dependency sources (procurers) are used to obtain metadata and other dependency information. At the completion of this step, all libraries to use in the execution have been found and downloaded to local files if needed.
 
+See <<dep_expansion#,dep expansion>> for more details on the dep expansion algorithm.
+
 **Make classpath**
 
 JVM execution relies on computing the classpath for the execution. The classpath will consist of the `:paths` in the merged `deps.edn` and the locations of all resolved dependencies.
@@ -456,7 +458,7 @@ There are some options that can be provided to `clj` that short circuit normal e
 
 The `:deps` alias is built into the root deps.edn and provides a default namespace with several additional programs:
 
-* `-X:deps tree` - print dependency tree
+* `-X:deps tree` - print dependency tree (also see <<dep_expansion#_tree_printing,tree printing>>)
 * `-X:deps mvn-pom` - generate (or update an existing) pom.xml with deps and paths
 * `-X:deps git-resolve-tags` - resolve git coordinate tags to shas and update deps.edn
 

@@ -19,6 +19,11 @@ Note: All dev releases are subject to breaking changes for new work since the pr
 
 == Release 1.10.2
 
+=== 1.10.2-rc2 (Jan 6, 2021) [[v1.10.2-rc2]]
+
+* https://clojure.atlassian.net/browse/CLJ-2597[CLJ-2597] Proxy should emit Java 1.8 bytecode
+* https://clojure.atlassian.net/browse/CLJ-2599[CLJ-2599] Bump spec.alpha dep to 0.2.194 and core.specs.alpha dep to 0.2.56
+
 === 1.10.2-rc1 (Dec 11, 2020) [[v1.10.2-rc1]]
 
 * https://clojure.atlassian.net/browse/CLJ-1005[CLJ-1005] Use transient map in zipmap

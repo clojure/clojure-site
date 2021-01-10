@@ -110,7 +110,7 @@ user=> (clojure.string/upper-case "clojure")
 "CLOJURE"
 ----
 
-`https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/require[require]` also lets use
+`https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/require[require]` also lets us
  define an _alias_ for the `clojure.string` namespace, by adding an `:as` clause. This enables us to
  refer to names defined in the `clojure.string` namespace more concisely:
 

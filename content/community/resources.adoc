@@ -88,30 +88,6 @@ Video training (commercial):
 * https://www.learnreagent.com/[Learn Reagent] - Jacek Schae
 * https://www.learnreframe.com/[Learn re-frame] - Jacek Schae
 
-== Clojure Tools
-
-Community volunteers maintain <<xref/../../guides/getting_started#,Getting Started>> documentation for a number of different tools and approaches. Some of the most commonly used tools include:
-
-* <<xref/../../guides/deps_and_cli#,Clojure tools>>
-* https://leiningen.org/[Leiningen] - an extensible build tool that provides dependency management, REPL support, testing, packaging, deployment, and many other capabilities.
-* https://boot-clj.github.io/[Boot] - build tooling for Clojure: instead of a special-purpose DSL, Boot supplies abstractions and libraries you can use to automate nearly any build scenario with the full power of the Clojure language
-* https://clojars.org/[Clojars] - Clojure-focused Maven repository
-* https://www.gnu.org/software/emacs/[Emacs] with https://github.com/clojure-emacs/cider[CIDER]
-* https://www.vim.org/[Vim] with https://github.com/tpope/vim-fireplace[Fireplace] or https://github.com/liquidz/vim-iced[Vim-Iced]
-* https://neovim.io/[Neovim] with https://github.com/Olical/conjure[Conjure]
-* https://www.jetbrains.com/idea/[IntelliJ] with https://cursiveclojure.com/[Cursive]
-* https://atom.io[Atom] with https://github.com/mauricioszabo/atom-chlorine[Chlorine]
-* https://code.visualstudio.com[Visual Studio Code] with https://github.com/BetterThanTomorrow/calva[Calva]
-* https://sekao.net/nightcode/[Nightcode]
-* http://www.lighttable.com/[Light Table]
-* https://www.sublimetext.com/[Sublime Text] with https://github.com/wuub/SublimeREPL[SublimeREPL]
-* https://doc.ccw-ide.org/[Eclipse Counterclockwise] (inactive)
-
-Libraries:
-
-* https://clojars.org/[Clojars] - Clojure-focused Maven repository
-* http://www.clojure-toolbox.com/[Clojure Toolbox] - a categorized index of Clojure libraries
-
 == Conferences
 
 * http://clojure-conj.org/[Clojure/conj] (usually in November)

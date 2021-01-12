@@ -107,6 +107,11 @@ java -jar clojure.jar
 
 https://repl.it/languages/clojure[repl.it] provides a browser-based Clojure repl for interactive exploration.
 
-*Build tools*
+== Next steps
 
-Build tools provide a range of capabilities for building, running, and deploying Clojure libraries and applications. The two most popular Clojure build tools are https://leiningen.org/[Leiningen] and https://boot-clj.github.io/[Boot].
+* <<xref/../../community/tools#,Install editors and build tool>>
+* <<guides/learn/syntax#,Start learning the Clojure basics>>
+* <<xref/../../community/books#,Learn Clojure from a book>>
+* <<xref/../../community/resources#,Explore Clojure communities and resources>>
+* https://ask.clojure.org[Ask questions about Clojure]
+

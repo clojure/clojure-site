@@ -19,6 +19,10 @@ Note: All dev releases are subject to breaking changes for new work since the pr
 
 == Release 1.10.2
 
+=== 1.10.2-rc3 (Jan 15, 2021) [[v1.10.2-rc3]]
+
+* https://clojure.atlassian.net/browse/CLJ-2602[CLJ-2602] Make printing test changes platform-independent
+
 === 1.10.2-rc2 (Jan 6, 2021) [[v1.10.2-rc2]]
 
 * https://clojure.atlassian.net/browse/CLJ-2597[CLJ-2597] Proxy should emit Java 1.8 bytecode

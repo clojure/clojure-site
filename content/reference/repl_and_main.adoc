@@ -177,7 +177,7 @@ Following is an example of starting a socket server with a repl listener. This c
 -Dclojure.server.repl="{:port 5555 :accept clojure.core.server/repl}"
 ----
 
-An example client you can use to connect to this socket repl is telnet:
+An example client you can use to connect to this repl remotely is telnet:
 
 [source,shell]
 ----
@@ -189,7 +189,7 @@ user=> (println "hello")
 hello
 ----
 
-You can instruct the server to close the client socket repl session by using the special command `:repl/quit`:
+You can instruct the server to close the client repl session by using the special command `:repl/quit`:
 
 [source,clojure-repl]
 ----
@@ -200,7 +200,7 @@ Connection closed by foreign host.
 Also see:
 
 * https://clojure.atlassian.net/browse/CLJ-1671[CLJ-1671]
-* https://archive.clojure.org/design-wiki/display/design/Socket%2BServer%2BREPL.html[Socket REPL design page]
+* https://archive.clojure.org/design-wiki/display/design/Socket%2BServer%2BREPL.html[Socket Server and REPL design page]
 
 == Related functions
 

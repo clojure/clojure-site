@@ -679,7 +679,7 @@ For more information on creating keys and using the ssh-agent to manage your ssh
 
 _Note: user/password authentication is not supported for any protocol._
 
-Cloned git dirs and working trees are stored by default in `~/.gitlibs`.  This directory is a cache and can be safely removed if needed. The cache location can also be overridden with the environment variable $GITLIBS.
+Cloned git dirs and working trees are stored by default in `~/.gitlibs`.  This directory is a cache and can be safely removed if needed. The cache location can also be overridden with the environment variable `$GITLIBS`.
 
 == Installers
 

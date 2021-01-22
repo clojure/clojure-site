@@ -11,9 +11,9 @@ toc::[]
 
 == What tools do I need?
 
-=== Clojure REPL
+=== Clojure
 
-Clojure is a https://clojure.org/about/dynamic[dynamic development environment] where you interact with your Clojure program while you write it, growing and adding to it while it's running. The primary interface to this environment is the Read-Eval-Print-Loop (REPL). The REPL is a console interface that allows you to enter and execute commands and examine their results.
+Clojure is a https://clojure.org/about/dynamic[dynamic development environment] where you interact with your program while you write it, growing and adding to it while it's running. The primary interface to this environment is the Read-Eval-Print-Loop (REPL). The REPL is a console interface that allows you to enter and execute commands and examine their results.
 
 A typical REPL conversation might look like this:
 

@@ -679,6 +679,8 @@ For more information on creating keys and using the ssh-agent to manage your ssh
 
 _Note: user/password authentication is not supported for any protocol._
 
+The repositories are cloned into `~/.gitlibs`.
+
 == Installers
 
 For tools installation, see the instructions in the <<xref/../../guides/getting_started#,Getting Started>> guide.

@@ -11,62 +11,66 @@ toc::[]
 
 == What tools do I need?
 
-=== Clojure
+Clojure is a https://clojure.org/about/dynamic[dynamic development environment] where you interact with your program while you write it, growing and adding to it while it's running. To work with Clojure you need an editor that supports evaluation from source files and structural editing (working with nested forms in addition to character editing).
 
-Clojure is a https://clojure.org/about/dynamic[dynamic development environment] where you interact with your program while you write it, growing and adding to it while it's running. The primary interface to this environment is the Read-Eval-Print-Loop (REPL). The REPL is a console interface that allows you to enter and execute commands and examine their results.
+Install these first:
 
-A typical REPL conversation might look like this:
+* <<install_clojure#,Clojure>> - language, REPL (Read-Eval-Print-Loop), library support, and runner
+* Editor - choose one of:
+** <<aquamacs#,Aquamacs>> [Mac]
+** <<vscode#,VS Code with ...>> [Windows, Linux, Mac]
 
-[source,clojure-repl]
-----
-user=> (str "Hello " "world!")
-"Hello world!"
-user=> (+ 1 1)
-2
-----
+== How do I work with these tools?
 
-To get started:
+The details will depend on your operating system and editor but the essential flow is:
 
-* **<<install_clojure_cli#,Install the Clojure command-line tool>>** - this tool provides a basic REPL along with other functions for downloading libraries and running Clojure programs. The command-line tool will download Clojure automatically when you use it.
+* Start the editor
+* Create or open a file
+* Connect a REPL
+* Type Clojure code
+* Evaluate the code in the connected REPL
+* Repeat!
 
-Explore more:
+Follow one of these tutorials:
 
-* <<deps_and_cli#,Clojure CLI guide>>
-* <<repl/introduction#,REPL guide>>
+* Aquamacs [Mac]
+* VS Code
 
-=== Clojure Editor
+Learn more:
 
-While learning Clojure, it is strongly recommended to use an editor that supports these two key features:
-
-* REPL integration - evaluate code directly from your file editor in the runtime context of a connected REPL
-* Structural editing - Text editors allow you to edit text made of characters. Clojure code consists almost entirely of forms with arbitrary nesting and structural editing refers to manipulating the structure of that tree of forms
-
-These features will give you the best Clojure development experience.
-
-Start here for simple environments that provide this experience:
-
-* **<<aquamacs#,Install Aquamacs>>** [Mac]
-* **<<vscode#,Install VS Code>>** [Windows, Linux, Mac]
-
-Explore more:
-
-* <<xref/../../community/tools#,More Clojure editors>> - many Clojure editor options exist that add additional features
-* <<xref/../../community/tools#,Other tools>> - you will eventually want tools to build, deploy, and debug your programs
+* Structural editing - working with code as forms, not text
+* Other editors - many editors can be used and provide additional functionality
 
 == How do I learn the language?
 
-* <<learn/syntax#,Learn Clojure guide>>
-* <<xref/../../community/books#,Clojure books>>
-* ??
+There are many ways to learn the Clojure language. This tutorial covers the basics:
+
+<<learn/syntax#,Learn Clojure guide>>
+
+If you'd like to work from a <<xref/../../community/books#,book>>, these are some excellent starting points:
+
+image:https://images-na.ssl-images-amazon.com/images/I/51Bvd25CstL._SL160.jpg[Programming Clojure 3rd edition,link="https://a.co/bSxW6A6",width="130"] image:https://images-na.ssl-images-amazon.com/images/I/51dqOLcPL7L._SL160.jpg[Getting Clojure,link="https://pragprog.com/book/roclojure/getting-clojure",width="130"] image:https://images-na.ssl-images-amazon.com/images/I/6112vbQYDLL._SL160.jpg[Clojure for the Brave and True,link="https://a.co/bsviqV7",width="130"] image:https://images-na.ssl-images-amazon.com/images/I/5122uV93jfL._SL160.jpg[Living Clojure,link="https://a.co/1m2Zt4p",width="130"]
+
+If you'd like to try some practice problems:
+
+* https://www.4clojure.com/[4Clojure] - a large set of Clojure practice problems
+* https://exercism.io/tracks/clojure[exercism Clojure track] - larger problems with mentor support
+
+Or check out <<xref/../../community/resources#_tutorials_and_learning_materials,other learning resources>> for more options...
 
 == Where can I ask questions?
 
 There are many places to interact with other Clojure developers:
 
 * https://ask.clojure.org[Ask Clojure] [official] - Clojure Q&A and knowledgebase
-* https://clojurians.net[Clojurians Slack channel] - Clojure chat, check out #beginners, #jobs, etc
-* ...
+* https://clojurians.net[Clojurians Slack channel] - Clojure live chat, check out #beginners, #jobs, etc
+* https://clojureverse.org[Clojureverse] - Clojure forum
+* https://groups.google.com/group/clojure[Clojure mailing list] (official)
 
 == Other resources
 
-* ...
+* <<deps_and_cli#,Clojure CLI guide>>
+* <<repl/introduction#,REPL guide>>
+* <<xref/../../community/tools#,More Clojure editors>> - many Clojure editor options exist that add additional features
+* <<xref/../../community/tools#,Other tools>> - you will eventually want tools to build, deploy, and debug your programs
+

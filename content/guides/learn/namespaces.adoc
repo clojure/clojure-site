@@ -1,0 +1,104 @@
+= Learn Clojure - Namespaces
+Alex Miller
+2021-01-25
+:type: learn
+:toc: macro
+:icons: font
+:navlinktext: Namespaces
+:prevpagehref: flow
+:prevpagetitle: Flow Control
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+toc::[]
+
+== Namespaces and names
+
+Namespaces provide a means to organize our code and the names we use in our code. Specifically, they let us give new unambiguous names to functions or other values. These full names are naturally long because they include context. Thus namespaces also provide a means to unambiguously reference the names of other functions and values but using names that are shorter and easier to type.
+
+A namespace is both a name context and a container for vars. Namespace names are symbols where periods are used to separate namespace parts, such as `clojure.string`. By convention, namespace names are typically lower-case and use `-` to separate words, although this is not required.
+
+=== Vars
+
+Vars are associations between a name (a symbol) and a value. Vars in a namespace have a fully-qualified name that is the combination of the namespace name and the var name. For example, `clojure.string/join` is a fully-qualified var name where `clojure.string` refers to the namespace and `join` refers to the var inside the namespace. All vars are globally accessible via their fully-qualified name. By convention vars have lower case names with `-` separating words, although this is also not required. Var names may contain most non-whitespace characters.
+
+Vars are created using `def` and other special forms or macros that start with `def`, like `defn`. Vars are created in the "current" namespace. The Clojure runtime tracks the current namespace in the var `clojure.core\*ns*`. The current namespace can be changed using the `in-ns` function.
+
+=== Loading
+
+In addition to providing a naming context, namespace names also provide a convention for where a namespace's code should be found for loading. A path is created based on the namespace name:
+
+* Periods become directory separators
+* Hyphens become underscores
+* The file extension `.clj` is added
+
+Thus the namespace name `com.some-example.my-app` becomes the load path `com/some_example/my_app.clj`. Load paths are searched using the JVM classpath. The classpath is a series of directory locations or JAR files (JARs are essentially just zip files). 
+
+When a resource is needed, the JVM searches each classpath location in order for a file at the relative location of the load path. So if the classpath was "src:test", the load path would be checked at `src/com/some_example/my_app.clj` then `test/com/some_example/my_app.clj`.
+
+There are several ways to load code in Clojure, but most commonly loading is accomplished via `reqiure`.
+
+Due to this loading convention, most Clojure is structured with a 1-to-1 mapping of namespaces to files, stored in hierarchical fashion that maps to the namespace structure.
+
+== Declaring namespaces
+
+Most Clojure files represent a single namespace and declare the dependencies for that namespace at the top of the file using the `ns` macro, which often looks like this:
+
+[source,clojure]
+----
+(ns com.some-example.my-app
+  "My app example"
+  (:require
+    [clojure.set :as set]
+    [clojure.string :as str]))
+----
+
+The `ns` macro specifies the namespace name (this should match the file path location using the conventions above), an optional docstring, and then one or more clauses that declare things about the namespace.
+
+=== Refer
+
+By default, we can refer to or invoke vars in the current namespace without specifying the namespace (the current namespace is the "default").
+
+Additionally, you may have noticed that we can usually refer to `clojure.core` library functions without fully qualifying them either. The reason for that is that all of the `clojure.core` library vars have been `referred` into the current namespace. `refer` makes an entry in the current namespace's symbol table that refers to the var in the other namespace.
+
+The `clojure.core` referral is done by the `ns` macro. (There are ways to suppress this in part if you'd like to re-use names in core without warnings.)
+
+=== require
+
+The `:require` class corresponds to the `require` function which specifies one or more namespaces to load that this namespace depends on. For each namespace, `require` can do several things:
+
+* Load (or reload) the namespace
+* Optionally assign an *alias* that can be used to refer to vars from the loaded namespace only in the scope of this namespace
+* Optionally *refer* vars from the loaded namespace for use by unqualified name in this namespace
+
+The last two parts are all about making names easier to use. While vars can always be referred to by their fully-qualified name, we rarely want to type fully-qualified names in our code. Aliases let us use shorter versions of longer fully-qualified aliases. Refer allows us to use names without a namespace qualifier at all.
+
+In require, namespaces most commonly take one of three forms:
+
+* `clojure.set` - just loads `clojure.set` namespace (if not already loaded)
+* `[clojure.set :as set]` - load and create an alias `set` for the namespace `clojure.set`
+** This allows you to refer to vars in set with for example `set/union` instead of `clojure.set/union`
+* `[clojure.set :refer [union intersection]]` - load and refer specific vars into this namespace
+** This allows you to use just `union` instead of `clojure.set/union`
+
+=== Java classes and imports
+
+In addition to vars, Clojure also provides support for Java interop and access to Java classes, which live in packages. Java classes can always be referred to using their fully-qualified class name, such as `java.util.Date`.
+
+The `ns` macro also imports the classes in the java.lang package so that they can be used as just the class name, rather than the fully-qualified class name. For example, just `String` rather than `java.lang.String`.
+
+Similar to `:refer`, the `ns` macro has an `:import` clause (that is supported by the `import` macro) that lets you import other classes so they can be used with unqualified names:
+
+[source,clojure]
+----
+(ns com.some-example.my-app2
+  (:import
+    [java.util Date UUID]
+	[java.io File]))
+----
+
+This example imports the `Date` and `UUID` class from the `java.util` package and the `File` class from the `java.io` package.
+
+
+
+

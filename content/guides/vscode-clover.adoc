@@ -1,0 +1,70 @@
+= Install VS Code with Clover
+Alex Miller
+2021-01-25
+:type: guides
+:toc: macro
+:icons: font
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+toc::[]
+
+=== Install Visual Studio Code
+
+* Go to https://code.visualstudio.com/
+* Download the installer for your operating system 
+* Execute the installer or on Mac, drag the application to your Application folder
+* Open Visual Studio Code
+
+=== Install VS Code extensions
+
+Here you will install two extensions - Clover (basic Clojure support) and Strict Paredit (structural editing).
+
+* In VS Code, click the Extensions icon on the left toolbar
+* In the search bar, type "Clover" to find it, then click Install
+* Use search again to find the "Strict Paredit" extension, then click Install
+* Click the Extensions icon again to close it
+
+=== Open a file and connect to a REPL
+
+__Note: that this step assumes you have installed Clojure and it is on your path.__
+
+First start a REPL:
+
+* On the bottom tabs, click on Terminal
+* Execute this command: `clojure -J'-Dclojure.server.repl={:port,5555,:accept,clojure.core.server/repl}'`
+* You should now see a Clojure prompt in the Terminal tab
+
+Then connect to that REPL from VS Code:
+
+* Open the command palette with "View -> Command Palette" (or Cmd-Shift-P)
+* Start typing ">connect" to find the command "Clover: Connect Socket REPL" and invoke it
+* Enter "localhost:5555" (this port must match the port in the prior step)
+* A new Clojure REPL tab should open
+
+Next, create a file and evaluate code in it:
+
+* Create a new file with "File -> New File"
+* Type `(println "Hello")` in the File (the tab on the left, not the REPL tab)
+* Again open the command palette to find the command "Evaluate current top-block of code" and invoke
+* The evaluation invokes the `println` - this will both print the result in the REPL ("Hello") and also return the result of the form (nil).
+
+=== Rebind keys
+
+Some keys should be rebound to make it easier to work with.
+
+Copy these settings to `~/Library/Application Support/Code/User/keybindings.json`:
+
+[source,json]
+----
+[
+    {
+        "key": "",
+        "command": "clover.evaluate-top-block"
+    },
+    {
+        "key": "",
+        "command": "clover.evaluate-block"
+    }
+]
+----

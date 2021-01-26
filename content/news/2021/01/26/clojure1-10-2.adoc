@@ -1,0 +1,27 @@
+= Clojure 1.10.2 release
+Alex Miller
+2021-01-26
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Clojure 1.10.2 includes a number of improvements for Java interop/compatibility:
+
+* Fixes an issue in the `locking` macro to satisfy more stringent Java verifiers (particularly, Graal)
+* Fix for invocation of static interface methods with primitives
+* `proxy` was incorrectly emitting Java 5 bytecode, now will be Java 8 to match all other code gen
+* Spec now compiled to Java 8 bytecode instead of Java 5 bytecode
+* Many fixes for reflection, javadoc urls, Java deprecation warnings, etc
+
+Other important Clojure fixes:
+
+* Fix `case` expression branch analysis resulting in compilation error
+* Fix `nth` with not-found value on regex matcher
+* Improve `vector-of` impls with equals, hashing, metadata support to match other colls
+* Fix printing of some maps with namespace syntax
+* Various doc string and error message fixes
+* Perf improvement - use transients in `zipmap`
+
+## Detailed changelog
+
+See the https://github.com/clojure/clojure/blob/master/changes.md#changes-to-clojure-in-version-1102[change log] for a complete list of all changes in Clojure 1.10.2.

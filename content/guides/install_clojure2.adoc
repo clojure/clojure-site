@@ -11,7 +11,7 @@ toc::[]
 
 == Mac OS instructions
 
-Prerequisites: [#brew,brew], [#java,Java]
+Prerequisites: [install_clojure2#brew,brew], [install_clojure2#java,Java]
 
 This adds the commands `clojure` and `clj` to your system from the https://github.com/clojure/homebrew-tools[clojure/tools tap]:
 
@@ -22,9 +22,9 @@ brew install clojure/tools/clojure
 
 == Linux instructions
 
-Prerequisites: [#java,Java], `bash`, `curl`, `rlwrap`
+Prerequisites: [install_clojure2#java,Java], `bash`, `curl`, `rlwrap`
 
-To install with Linuxbrew (requires [#brew,brew]):
+To install with Linuxbrew (requires [install_clojure2#brew,brew]):
 
 [source,shell]
 ----
@@ -68,15 +68,15 @@ Please provide feedback on https://ask.clojure.org[Ask Clojure] or Clojurians sl
 
 == Prerequisite installation details
 
-[brew]
-=== Install brew (Mac or Linux)
+[[brew]]
+=== brew (Mac or Linux)
 
 `brew` is a package manager for Mac OS X. To install `brew`:
 
 * Go to https://brew.sh/ and follow the installation instructions
 
-[java]
-=== Install Java
+[[java]]
+=== Java
 
 Clojure requires Java. Clojure officially supports Java LTS releases (currently Java 8 and Java 11), but also tries to ensure interim versions work as well. If you don't already hava Java installed, we recommend installing adoptopenjdk 11.
 

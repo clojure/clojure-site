@@ -11,41 +11,25 @@ toc::[]
 
 == Mac OS instructions
 
-=== Install brew
-
-`brew` is a package manager for Mac OS X. To install `brew`:
-
-* Go to https://brew.sh/ and follow the installation instructions
-
-=== Install Java
-
-Clojure requires Java. Clojure officially supports Java LTS releases (currently Java 8 and Java 11), but also tries to ensure interim versions work as well. If you don't already hava Java installed, we recommend installing adoptopenjdk 11.
-
-* `brew tap adoptopenjdk/openjdk` - add the adoptopenjdk tap to brew
-* `brew install adoptopenjdk11` - install adoptopenjdk 11 (you may need to enter your user password)
-
-You then need to add `java` to your PATH:
-
-[source,shell]
-----
-echo 'export PATH="/Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home/bin:$PATH"' >> ~/.zshrc
-----
-
-=== Install Clojure <<deps_and_cli#,command line tools>>
+Prerequisites: <<install_clojure#brew,brew>>, <<install_clojure#java,Java>>
 
 This adds the commands `clojure` and `clj` to your system from the https://github.com/clojure/homebrew-tools[clojure/tools tap]:
 
-* `brew install clojure/tools/clojure`
+[source,shell]
+----
+brew install clojure/tools/clojure
+----
 
 == Linux instructions
 
-=== Install Java
+Prerequisites: <<install_clojure#java,Java>>, `bash`, `curl`, `rlwrap`
 
-* Go to https://adoptopenjdk.net/ and follow the instructions
-* OR use your package manager to install OpenJDK 11
-* Ensure that `java` is in your path
+To install with Linuxbrew (requires <<install_clojure#brew,brew>>):
 
-=== Install Clojure <<deps_and_cli#,command line tools>>
+[source,shell]
+----
+brew install clojure/tools/clojure
+----
 
 To install with the Linux script installer:
 
@@ -59,8 +43,6 @@ chmod +x linux-install-1.10.1.763.sh
 sudo ./linux-install-1.10.1.763.sh
 ----
 
-==== Custom location
-
 To install to a custom location (like `/opt/infrastructure/clojure`), use the option `--prefix`:
 
 [source,shell]
@@ -68,7 +50,7 @@ To install to a custom location (like `/opt/infrastructure/clojure`), use the op
 sudo ./linux-install-1.10.1.763.sh --prefix /opt/infrastructure/clojure
 ----
 
-Extend the MANPATH in `/etc/man_dev.conf` to include the manual pages:
+You may also want to extend the MANPATH in `/etc/man_dev.conf` to include the manual pages:
 
 [source]
 ----
@@ -79,16 +61,42 @@ The `linux-install` script can be removed after installation.
 
 == Windows instructions
 
-=== Install Java
-
-* Go to https://adoptopenjdk.net
-* Download and run the Windows installer
-* Ensure `java` is on the system PATH (see this option on the Custom Setup page)
-
-=== Install Clojure <<deps_and_cli#,command line tools>>
+Prerequisistes: <<install_clojure#java,Java>>
 
 An early release version of clj on Windows is available at https://github.com/clojure/tools.deps.alpha/wiki/clj-on-Windows[clj on Windows].
 Please provide feedback on https://ask.clojure.org[Ask Clojure] or Clojurians slack in #clj-on-windows.
+
+== Prerequisite installation details
+
+[[brew]]
+=== brew (Mac or Linux)
+
+`brew` is a package manager for Mac OS X. To install `brew`:
+
+* Go to https://brew.sh/ and follow the installation instructions
+
+[[java]]
+=== Java
+
+Clojure requires Java. Clojure officially supports Java LTS releases (currently Java 8 and Java 11), but also tries to ensure interim versions work as well. If you don't already hava Java installed, we recommend installing adoptopenjdk 11.
+
+To use the adoptopenjdk installers:
+
+* Go to https://adoptopenjdk.net
+* Download and run the installer appropriate to your platform
+* Ensure `java` is on the system PATH (see this option on the Custom Setup page)
+
+On Mac, it is also possible to install using brew:
+
+* `brew tap adoptopenjdk/openjdk` - add the adoptopenjdk tap to brew
+* `brew install adoptopenjdk11` - install adoptopenjdk 11 (you may need to enter your user password)
+
+You then need to add `java` to your PATH:
+
+[source,shell]
+----
+echo 'export PATH="/Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home/bin:$PATH"' >> ~/.zshrc
+----
 
 == More information
 

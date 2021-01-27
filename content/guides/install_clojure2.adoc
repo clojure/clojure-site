@@ -11,7 +11,7 @@ toc::[]
 
 == Mac OS instructions
 
-Prerequisites: [install_clojure2#brew,brew], [install_clojure2#java,Java]
+Prerequisites: <<install_clojure2#brew,brew>>, <<install_clojure2#java,Java>>
 
 This adds the commands `clojure` and `clj` to your system from the https://github.com/clojure/homebrew-tools[clojure/tools tap]:
 
@@ -22,9 +22,9 @@ brew install clojure/tools/clojure
 
 == Linux instructions
 
-Prerequisites: [install_clojure2#java,Java], `bash`, `curl`, `rlwrap`
+Prerequisites: <<install_clojure2#java,Java>>, `bash`, `curl`, `rlwrap`
 
-To install with Linuxbrew (requires [install_clojure2#brew,brew]):
+To install with Linuxbrew (requires <<install_clojure2#brew,brew>>):
 
 [source,shell]
 ----

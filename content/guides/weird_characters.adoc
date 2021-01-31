@@ -805,7 +805,7 @@ simple API.
 * `>!!` and `<!!` are _blocking put_ and _take_ respectively
 * `>!` and `<!` are, simply _put_ and _take_
 
-THe difference being the blocking version operate outside `go` blocks and block
+The difference being the blocking version operate outside `go` blocks and block
 the thread they operate on.
 [source,clojure]
 ----

@@ -64,7 +64,7 @@ To install to a custom location (like `/opt/infrastructure/clojure`), use the op
 sudo ./linux-install-1.10.2.774.sh --prefix /opt/infrastructure/clojure
 ----
 
-Extend the MANPATH in `/etc/man_dev.conf` to include the manual pages:
+Extend the MANPATH in `/etc/man_db.conf` to include the manual pages:
 
 [source]
 ----

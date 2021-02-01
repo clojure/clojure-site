@@ -22,6 +22,12 @@ For more information see the following docs:
 
 Recent official releases are described here. Prereleases and older versions can be found in the https://github.com/clojure/brew-install/blob/1.10.1/CHANGELOG.md[repo changelog].
 
+=== 1.10.2.774 (Jan 26, 2021) [[v1.10.2.774]]
+
+* Improve error when git dep version relationship can't be determined
+* Switch to 1.10.2 for default Clojure version
+* Use https://github.com/clojure/tools.deps.alpha/blob/master/CHANGELOG.md[tools.deps.alpha] 0.9.863
+
 === 1.10.1.763 (Dec 10, 2020) [[v1.10.1.763]]
 
 * Set exit code for -X ex-info error

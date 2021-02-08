@@ -129,7 +129,7 @@ When you execute the Clojure tool, there are a series of steps performed to prep
 Configuration is stored in one or more "deps edn" maps. These are edn maps with the following top-level keys:
 
 * `:deps` - map of lib (symbol) to coordinate
-* `:paths` - vector of paths
+* `:paths` - vector of project source paths
 * `:aliases` - map of alias name to alias data
 * provider-specific keys for configuring dependency sources
 
@@ -180,7 +180,7 @@ The configuration file format (in `deps.edn` files) is an edn map with top-level
 
 == Paths
 
-Paths are declared in a top level key `:paths` and are a vector of string paths or alias names. Relative paths are resolved in relation to the directory containing the deps.edn (the project root). These source paths will be added to the classpath.
+Paths are declared in a top level key `:paths` and are a vector of string paths or alias names. Relative paths are resolved in relation to the directory containing the deps.edn (the project root). These source paths will be added to the classpath. Source paths should be at or under the project root directory (where `deps.edn` is located).
 
 Example:
 
@@ -327,6 +327,8 @@ The args-map includes support for modifications to be applied while making the c
 {:extra-paths ["test" "resources"]}
 ----
 
+Note that external paths should be at or under the root directory of the project (location of the `deps.edn` file).
+
 `:classpath-overrides` specify a location to pull a dependency that overrides the path found during dependency resolution, for example to replace a dependency with a local debug version. Many of these use cases are ones where you would be tempted to prepend the classpath to "override" something else.
 
 [source,clojure]
@@ -392,7 +394,7 @@ Caching can be modified by the following options:
 The `tool` process is used when executing a tool that should not use the project classpath environment. This process takes the project deps.edn and the following modifier args and replaces them (if provided) before the project deps is merged:
 
 * `:replace-deps` - a deps map from lib to coordinate of deps to REPLACE the project `:deps`
-* `:replace-paths` a collection of string paths to REPLACE project `:paths`
+* `:replace-paths` a collection of string paths to REPLACE project `:paths` (note these should be under the project root)
 
 This tool map should be provided as an alias in one of the deps sources and provided to the Clojure tools using -A (for REPL invocation), -X (for function execution), or -M (for clojure.main execution). Multiple aliases can be provided by concatentating the alias names.
 
@@ -415,7 +417,7 @@ The resolve-deps args should be provided as an alias in one of the deps sources 
 
 The make-classpath modifiers are provided in a map that was described in a prior section:
 
-* `:extra-paths` - a collection of string paths to add to `:paths`
+* `:extra-paths` - a collection of string paths to add to `:paths` (should be in the project)
 * `:classpath-overrides` - a map of lib to string path to replace the location of the lib
 * If multiple maps with these keys are activated, `:extra-paths` concatenate and `:classpath-overrides` merge-with merge
 

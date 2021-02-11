@@ -146,7 +146,15 @@ Such tags can be used to convey type information to the compiler. +
 Another shorthand version allows the metadata to be a keyword, in which case it is treated as a single entry map with a key of the keyword and a value of true, e.g.: +
 `^:dynamic x` is the same as `^{:dynamic true} x` +
 
-Metadata can be chained in which case they are merged from right to left.
+Metadata can be chained in which case they are merged from right to left. Below example highlight the `:tag java.lang.Integer` type is mapped along with other meta data like `:debug true` & `:private true` by chaining.
+
+[source,clojure]
+----
+user=> (def ^Integer ^:debug ^:private five 5)
+#'user/five
+user=> (meta #'five)
+{:ns #<Namespace user>, :name five, :column 1, :private true, :debug true, :line 1, :file "NO_SOURCE_PATH", :tag java.lang.Integer}
+----
 
 === Dispatch (pass:[#])
 

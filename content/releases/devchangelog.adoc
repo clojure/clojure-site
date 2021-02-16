@@ -17,6 +17,13 @@ The official https://github.com/clojure/clojure/blob/master/changes.md[changelog
 
 Note: All dev releases are subject to breaking changes for new work since the prior release.
 
+== Release 1.10.3
+
+=== 1.10.3-rc1 (Feb 16, 2021) [[v1.10.3-rc1]]
+
+* https://clojure.atlassian.net/browse/CLJ-2564[CLJ-2564] Revert prior error message change
+* https://clojure.atlassian.net/browse/CLJ-2453[CLJ-2453] Allow reader conditionals in prepl
+
 == Release 1.10.2
 
 === 1.10.2-rc3 (Jan 15, 2021) [[v1.10.2-rc3]]

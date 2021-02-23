@@ -22,12 +22,19 @@ For more information see the following docs:
 
 Recent official releases are described here. Prereleases and older versions can be found in the https://github.com/clojure/brew-install/blob/1.10.1/CHANGELOG.md[repo changelog].
 
+=== 1.10.2.796 (Feb 23, 2021) [[v1.10.2.796]]
+
+* Fix `clj -X:deps git-resolve-tags` to update the sha to match the tag
+* Perf improvements for git or local deps using pom.xml
+* Use https://github.com/clojure/tools.deps.alpha/blob/master/CHANGELOG.md[tools.deps.alpha] 0.9.884
+
 === 1.10.2.790 (Feb 19, 2021) [[v1.10.2.790]]
 
 * Add -version and --version options
 * https://clojure.atlassian.net/browse/TDEPS-56[TDEPS-56] - Fix main-opts and jvm-opts word splitting on spaces
 * https://clojure.atlassian.net/browse/TDEPS-125[TDEPS-125] - Use JAVA_CMD if set (thanks Gregor Middell!)
 * Add warning if `:paths` or `:extra-paths` refers to a directory outside the project root (in the future will become an error)
+* Use https://github.com/clojure/tools.deps.alpha/blob/master/CHANGELOG.md[tools.deps.alpha] 0.9.871
 
 === 1.10.2.774 (Jan 26, 2021) [[v1.10.2.774]]
 

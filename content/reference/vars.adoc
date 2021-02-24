@@ -37,7 +37,7 @@ user=> x
 1
 ----
 
-By default Vars are static, but Vars can be marked as dynamic to allow per-thread bindings via the macro https://clojure.github.com/clojure/clojure.core-api.html#clojure.core/binding[binding]. Within each thread they obey a stack discipline:
+By default Vars are static, but Vars can be marked as dynamic to allow per-thread bindings via the macro https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/binding[binding]. Within each thread they obey a stack discipline:
 
 [source,clojure]
 ----

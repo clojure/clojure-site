@@ -113,7 +113,7 @@ As of Clojure 1.10, Clojure errors categorized into one of several phases:
 * `:read-eval-result` - any error thrown while reading the result of execution (only applicable for REPLs that read the result).
 * `:print-eval-result` - any error thrown while printing the result of execution.
 
-Exceptions thrown during all phases (exception `:execution`) will have ex-data attached with one or more the following keys:
+Exceptions thrown during all phases (exception `:execution`) will have ex-data attached with one or more of the following keys:
 
 * `:clojure.error/phase` - phase indicator
 * `:clojure.error/source` - file name (no path)

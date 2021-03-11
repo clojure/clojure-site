@@ -342,7 +342,7 @@ Clojure 1.9 adds support for directly destructuring many keys (or symbols) that 
 ----
 
 [[keyword-arguments]]
-==== Keyword Arguments
+=== Keyword Arguments
 
 Keyword arguments are optional trailing variadic arguments of the form `akey aval bkey bval...` that can be accessed in the function body via associative destructuring. To define a function that accepts keyword arguments you supply a map destructuring form in the __rest-param__ declaration position. For example, a function that takes a sequence and optional keyword arguments and returns a vector containing the values is defined as:
 

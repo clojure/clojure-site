@@ -132,7 +132,7 @@ _positional-param_ => _binding-form_ +
 _rest-param_ => _binding-form_ +
 _name_ => _symbol_
 
-Defines a function (fn). Fns are first-class objects that implement the https://clojure.github.io/clojure/javadoc/clojure/lang/IFn.html[IFn interface]. The `IFn` interface defines an `invoke()` function that is overloaded with arity ranging from 0-20. A single fn object can implement one or more invoke methods, and thus be overloaded on arity. One and only one overload can itself be variadic, by specifying the ampersand followed by a single _rest-param_. Such a variadic entry point, when called with arguments that exceed the positional params, will collect them in a seq and bind them to or destructure by the rest param. Should this binding form be a name then the value will be a seq, otherwise if destructuring form is found then binding are constructed accordingly. If the supplied args do not exceed the positional params, the rest param will be `nil`.
+Defines a function (fn). Fns are first-class objects that implement the https://clojure.github.io/clojure/javadoc/clojure/lang/IFn.html[IFn interface]. The `IFn` interface defines an `invoke()` function that is overloaded with arity ranging from 0-20. A single fn object can implement one or more invoke methods, and thus be overloaded on arity. One and only one overload can itself be variadic, by specifying the ampersand followed by a single _rest-param_. Such a variadic entry point, when called with arguments that exceed the positional params, collects them in a seq which is bound to, or destructure by, the rest param. If the supplied args do not exceed the positional params, the rest param will be `nil`.
 
 The first form defines a fn with a single invoke method. The second defines a fn with one or more overloaded invoke methods. The arities of the overloads must be distinct. In either case, the result of the expression is a single fn object.
 
@@ -344,7 +344,7 @@ Clojure 1.9 adds support for directly destructuring many keys (or symbols) that 
 [[keyword-arguments]]
 ==== Keyword Arguments
 
-Keyword arguments are optional trailing variadic arguments of the form `(fun key value key value)` that can be accessed in the function body via associative destructuring. To define a function that accepts keyword arguments you supply a map destructuring form in the __rest-param__ declaration position. For example, a function that takes a sequence and optional keyword arguments and returns a vector containing the values is defined as:
+Keyword arguments are optional trailing variadic arguments of the form `akey aval bkey bval...` that can be accessed in the function body via associative destructuring. To define a function that accepts keyword arguments you supply a map destructuring form in the __rest-param__ declaration position. For example, a function that takes a sequence and optional keyword arguments and returns a vector containing the values is defined as:
 
 [source,clojure]
 ----
@@ -357,16 +357,14 @@ Keyword arguments are optional trailing variadic arguments of the form `(fun key
 
 The map __binding-form__ to the right of the `&` in `destr` is an associative destructuring __binding-form__ <<special_forms#associative-destructuring,detailed above>>.
 
-In `destr` you may have noticed that the __binding-form__ `{:keys [b c] :as opts}` received the __rest-param__ sequence resulting in the map `opts`. While sequences are not associative structures, they are treated as such on the right-hand side of a map binding form where the components of the sequence are alternating key->value pairs. This is highlighted in the following definition of `destr2`:
+A keyword arguments declaration of the form shown for `foo` below is equivalent to `bar`, demonstrating associative destructuring’s interpretation of seqs:
 
 [source,clojure]
 ----
-(defn destr2 [a & opts]
-  (let [{:keys [b c]} opts]
-    [a b c opts]))
+(defn foo [& {:keys [quux]}] ...)
 
-(destr2 0 :b 1 :c 2)
-->[0 1 2 (:b 1 :c 2)]
+(defn bar [& opts]
+  (let [{:keys [quux]} opts] ...))
 ----
 
 [[nested-destructuring]]

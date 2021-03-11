@@ -357,7 +357,7 @@ Keyword arguments are optional trailing variadic arguments of the form `akey ava
 
 The map __binding-form__ to the right of the `&` in `destr` is an associative destructuring __binding-form__ <<special_forms#associative-destructuring,detailed above>>.
 
-A keyword arguments declaration of the form shown for `foo` below is equivalent to the same using `let`, demonstrating associative destructuring’s interpretation of seqs:
+A keyword arguments declaration of the form shown for `foo` below is equivalent to using a map destructuring form on the __rest-param__, demonstrating associative destructuring’s interpretation of seqs:
 
 [source,clojure]
 ----

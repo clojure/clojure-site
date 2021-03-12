@@ -132,7 +132,7 @@ _positional-param_ => _binding-form_ +
 _rest-param_ => _binding-form_ +
 _name_ => _symbol_
 
-Defines a function (fn). Fns are first-class objects that implement the https://clojure.github.io/clojure/javadoc/clojure/lang/IFn.html[IFn interface]. The `IFn` interface defines an `invoke()` function that is overloaded with arity ranging from 0-20. A single fn object can implement one or more invoke methods, and thus be overloaded on arity. One and only one overload can itself be variadic, by specifying the ampersand followed by a single _rest-param_. Such a variadic entry point, when called with arguments that exceed the positional params, will find them in a seq contained in the rest param. If the supplied args do not exceed the positional params, the rest param will be nil.
+Defines a function (fn). Fns are first-class objects that implement the https://clojure.github.io/clojure/javadoc/clojure/lang/IFn.html[IFn interface]. The `IFn` interface defines an `invoke()` function that is overloaded with arity ranging from 0-20. A single fn object can implement one or more invoke methods, and thus be overloaded on arity. One and only one overload can itself be variadic, by specifying the ampersand followed by a single _rest-param_. Such a variadic entry point, when called with arguments that exceed the positional params, collects them in a seq which is bound to, or destructure by, the rest param. If the supplied args do not exceed the positional params, the rest param will be `nil`.
 
 The first form defines a fn with a single invoke method. The second defines a fn with one or more overloaded invoke methods. The arities of the overloads must be distinct. In either case, the result of the expression is a single fn object.
 
@@ -241,15 +241,16 @@ These are synchronization primitives that should be avoided in user code. Use th
 [[binding-forms]]
 == Binding Forms (Destructuring)
 
-Clojure supports abstract structural binding, often called destructuring, in let binding lists, fn parameter lists, and any macro that expands into a `let` or `fn`. A _binding-form_ can be a data structure literal containing symbols that get bound to the respective parts of the __init-expr__. The binding is abstract in that a vector literal can bind to anything that is sequential, while a map literal can bind to anything that is associative.
+The simplest __binding-form__ in Clojure is a symbol. However, Clojure also supports abstract structural binding called destructuring in `let` binding lists, `fn` parameter lists, and by extension any macro that expands into a `let` or `fn`. Destructuring is a way to create a set of bindings to values within a collection by using an analogous collection as a binding form. A vector form specifies bindings by position in a sequential collection, a map form by key in an associative collection. Destructuring forms can appear anywhere __binding-form__s can, and thus nest, yielding code that is clearer than using collection accessors.
 
-All binding symbols that don't match their respective part due to an absence of data (too few elements in a sequential structure, no key in an associative structure, etc) are bound to nil.
+__Binding-form__s that don’t match their respective part due to an absence of data (i.e. too few elements in a sequential structure, no key in an associative structure, etc) bind to `nil`.
 
-=== Vector binding destructuring
+[[sequential-destructuring]]
+=== Sequential destructuring
 
-Vector __binding-expr__s allow you to bind names to parts of _sequential_ things (not just vectors), like vectors, lists, seqs, strings, arrays, and anything that supports https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/nth[`nth`]. The basic sequential form is a vector of __binding-form__s, which will be bound to successive elements from the __init-expr__, looked up via `nth`. In addition, and optionally, `&` followed by a __binding-form__ will cause that __binding-form__ to be bound to the remainder of the sequence, i.e. that part not yet bound, looked up via https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/nthnext[`nthnext`].
+Vector __binding_form__s sequentially bind values in collections like vectors, lists, seqs, strings, arrays, and anything that supports https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/nth[`nth`]. The sequential destructuring form is a vector of __binding-form__s, which will be bound to successive elements from the __init-expr__, looked up via `nth`. In addition, and optionally, a __binding-form__ following a `&` will be  bound to the remainder of the sequence, i.e. that part not yet bound, and looked up via https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/nthnext[`nthnext`].
 
-Finally, also optional, `:as` followed by a symbol will cause that symbol to be bound to the entire __init-expr__:
+Finally, also optionally, `:as` followed by a symbol binds that symbol to the entire __init-expr__:
 
 [source,clojure]
 ----
@@ -259,7 +260,7 @@ Finally, also optional, `:as` followed by a symbol will cause that symbol to be 
 ->[1 2 3 (4 5 6 7) [1 2 3 4 5 6 7]]
 ----
 
-These forms can be nested:
+These forms can nest:
 
 [source,clojure]
 ----
@@ -269,19 +270,12 @@ These forms can be nested:
 ->[1 2 3 4]
 ----
 
-Strings work too:
+In all of the sequential cases the __binding-form__s in the destructure binding will match the places in the target data structure where the desired values reside.
 
-[source,clojure]
-----
-(let [[a b & c :as str] "asdjhhfdas"]
-  [a b c str])
+[[associative-destructuring]]
+=== Associative destructuring
 
-->[\a \s (\d \j \h \h \f \d \a \s) "asdjhhfdas"]
-----
-
-=== Map binding destructuring
-
-Map __binding-form__s allow you to bind names to parts of associative things, like maps, vectors, strings, and arrays (the latter three have integer keys). It consists of a map of __binding-form-key__ pairs, each symbol being bound to the value in the _init-expr_ at the key. In addition, and optionally, an `:as` key in the binding form followed by a symbol will cause that symbol to be bound to the entire __init-expr__. Also optionally, an `:or` key in the binding form followed by another map may be used to supply default values for some or all of the keys if they are not found in the __init-expr__:
+Map __binding-form__s create bindings by looking up values in collections like maps, sets, vectors, strings, and arrays (the latter three have integer keys). It consists of a map of __binding-form->key__ pairs, each __binding-form__ bound to the value in the _init-expr_ at the key provided. In addition, and optionally, an `:as` key in the binding form followed by a symbol binds that symbol to the entire __init-expr__. Also optionally, an `:or` key in the binding form followed by another map may be used to supply default values for some or all of the keys if they are not found in the __init-expr__:
 
 [source,clojure]
 ----
@@ -291,7 +285,7 @@ Map __binding-form__s allow you to bind names to parts of associative things, li
 ->[5 3 6 {:c 6, :a 5}]
 ----
 
-It is often the case that you will want to bind same-named symbols to the map keys. The `:keys` directive allows you to avoid the redundancy:
+It is often the case that you will want to bind symbols with the same name as the corresponding map keys. The `:keys` directive addresses the redundancy often found in the binding __binding-form->key__ pairs:
 
 [source,clojure]
 ----
@@ -316,7 +310,7 @@ As of Clojure 1.6, you can also use prefixed map keys in the map destructuring f
 -> 3
 ----
 
-In the case of using prefixed keys, the bound symbol name will be the same as the right-hand side of the prefixed key. You can also use auto-resolved keyword forms in the `:keys` directive:
+In the case of using prefixed keys, the bound symbol name is the same as the right-hand side of the prefixed key. You can also use auto-resolved keyword forms in the `:keys` directive:
 
 [source,clojure]
 ----
@@ -347,7 +341,33 @@ Clojure 1.9 adds support for directly destructuring many keys (or symbols) that 
 -> [1 2]
 ----
 
+[[keyword-arguments]]
+=== Keyword Arguments
 
+Keyword arguments are optional trailing variadic arguments of the form `akey aval bkey bval...` that can be accessed in the function body via associative destructuring. To define a function that accepts keyword arguments you supply a map destructuring form in the __rest-param__ declaration position. For example, a function that takes a sequence and optional keyword arguments and returns a vector containing the values is defined as:
+
+[source,clojure]
+----
+(defn destr [a & {:keys [b c] :as opts}]
+  [a b c opts])
+
+(destr 1 :c 3)
+->[1 nil 3 {:c 3}]
+----
+
+The map __binding-form__ to the right of the `&` in `destr` is an associative destructuring __binding-form__ <<special_forms#associative-destructuring,detailed above>>.
+
+The two declarations of `foo` below are equivalent, demonstrating associative destructuring’s interpretation of seqs:
+
+[source,clojure]
+----
+(defn foo [& {:keys [quux]}] ...)
+
+(defn foo [& opts]
+  (let [{:keys [quux]} opts] ...))
+----
+
+[[nested-destructuring]]
 === Nested destructuring
 
 Since binding forms can be nested within one another arbitrarily, you can pull apart just about anything:

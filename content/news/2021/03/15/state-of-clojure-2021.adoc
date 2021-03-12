@@ -51,25 +51,25 @@ First, the *functional style of programming* fostered by Clojure is valued highl
 
 == The Clojure Ecosystem
 
-Finally, Clojure would have never grown to its current size without the help of countless developers, technical writers, and big thinkers along the way. The appreciation for the amazing Clojure community is palpable within Nubank and this appreciation is increasingly being expressed as https://github.com/orgs/nubank/sponsoring[open source project funding]. I'd like to close this year's post by highlighting a number of the community leaders mentioned in the survey responses.
+Finally, Clojure would have never grown to its current size without the help of countless developers, technical writers, and big thinkers along the way. The appreciation for the amazing Clojure community is palpable within Nubank and this appreciation is increasingly being expressed as https://github.com/orgs/nubank/sponsoring[open source project funding]. I'd like to close this year's post by highlighting a number of the community members mentioned in the survey responses.
 
-* https://github.com/bbatsov[Bozhidar Batsov] for continuing to improve clojure tooling ecosystem.
-* Arne Brasseur - https://github.com/lambdaisland/kaocha[Kaocha] is superb and his educational skills fantastic.
-* Everything https://github.com/borkdude[Michiel Borkent] aka borkdude touches is awesome!
-* https://github.com/seancorfield[Sean Corfield] because he is always helpful and polite, and writes excellent documentation for important libraries.
-* https://github.com/mfikes[Michael Fikes] for being enthusiastic, engaging, and inspirational, and approachable.
-* https://github.com/thheller[Thomas Heller] has made an amazing tool in https://github.com/thheller/shadow-cljs[shadow-cljs].
-* (Daniel) Higginbotham, because he made me laugh hundreds of times while https://www.braveclojure.com[introducing me to Clojure].
-* https://github.com/awkay[Tony Kay] and contributors of https://github.com/fulcrologic/fulcro[Fulcro] for providing a comprehensive solution to client-server state management. 
-* http://www.realgenekim.me[Gene Kim] for … unabashed love of the language, and for helping spread the good word.
-* https://www.londonclojurians.org[London Clojurians] - the online talks in the past year have been amazing.
-* Tiago Luchini, https://github.com/hodur-org[Hodur] creator. 
-* https://github.com/gigasquid[Carin Meier] for her progressiveness: for advancing the state of the art in machine learning, and her contributions to visibility and representation in the community.
-* https://github.com/swannodette[David Nolen] is generous with explanations, direct, genuine, and never condescending or judgmental.
-* https://lispcast.com[Eric Normand], as he provides great content for beginners.
-* https://www.michaelnygard.com[Michael Nygard] for architecture insights.
-* https://github.com/yogthos[Dmitri Sotnikov] for making web dev in Clojure accessible to the masses.
-* https://github.com/ptaoussanis[Peter Taoussanis] - Nice, simple and complete libraries.
+* https://github.com/bbatsov[Bozhidar Batsov] __for continuing to improve clojure tooling ecosystem.__
+* Arne Brasseur - __https://github.com/lambdaisland/kaocha[Kaocha] is superb and his educational skills fantastic.__
+* __Everything https://github.com/borkdude[Michiel Borkent] aka borkdude touches is awesome!__
+* https://github.com/seancorfield[Sean Corfield] __because he is always helpful and polite, and writes excellent documentation for important libraries.__
+* https://github.com/mfikes[Michael Fikes] __for being enthusiastic, engaging, and inspirational, and approachable.__
+* https://github.com/thheller[Thomas Heller] __has made an amazing tool in https://github.com/thheller/shadow-cljs[shadow-cljs].__
+* (Daniel) Higginbotham, __because he made me laugh hundreds of times while https://www.braveclojure.com[introducing me to Clojure].__
+* https://github.com/awkay[Tony Kay] __and contributors of https://github.com/fulcrologic/fulcro[Fulcro] for providing a comprehensive solution to client-server state management.__
+* http://www.realgenekim.me[Gene Kim] __for … unabashed love of the language, and for helping spread the good word.__
+* https://www.londonclojurians.org[London Clojurians] - __the online talks in the past year have been amazing.__
+* Tiago Luchini, __https://github.com/hodur-org[Hodur] creator.__
+* https://github.com/gigasquid[Carin Meier] __for her progressiveness: for advancing the state of the art in machine learning, and her contributions to visibility and representation in the community.__
+* https://github.com/swannodette[David Nolen] __is generous with explanations, direct, genuine, and never condescending or judgmental.__
+* https://lispcast.com[Eric Normand], __as he provides great content for beginners.__
+* https://www.michaelnygard.com[Michael Nygard] __for architecture insights.__
+* https://github.com/yogthos[Dmitri Sotnikov] __for making web dev in Clojure accessible to the masses.__
+* https://github.com/ptaoussanis[Peter Taoussanis] - __Nice, simple and complete libraries.__
 
 There are so many more who deserve praise and recognition so in the words of one of the survey respondents:
 

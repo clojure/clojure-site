@@ -132,7 +132,7 @@ _positional-param_ => _binding-form_ +
 _rest-param_ => _binding-form_ +
 _name_ => _symbol_
 
-Defines a function (fn). Fns are first-class objects that implement the https://clojure.github.io/clojure/javadoc/clojure/lang/IFn.html[IFn interface]. The `IFn` interface defines an `invoke()` function that is overloaded with arity ranging from 0-20. A single fn object can implement one or more invoke methods, and thus be overloaded on arity. One and only one overload can itself be variadic, by specifying the ampersand followed by a single _rest-param_. Such a variadic entry point, when called with arguments that exceed the positional params, collects them in a seq which is bound to, or destructure by, the rest param. If the supplied args do not exceed the positional params, the rest param will be `nil`.
+Defines a function (fn). Fns are first-class objects that implement the https://clojure.github.io/clojure/javadoc/clojure/lang/IFn.html[IFn interface]. The `IFn` interface defines an `invoke()` function that is overloaded with arity ranging from 0-20. A single fn object can implement one or more invoke methods, and thus be overloaded on arity. One and only one overload can itself be variadic, by specifying the ampersand followed by a single _rest-param_. Such a variadic entry point, when called with arguments that exceed the positional params, collects them in a seq which is bound to, or destructured by, the rest param. If the supplied args do not exceed the positional params, the rest param will be `nil`.
 
 The first form defines a fn with a single invoke method. The second defines a fn with one or more overloaded invoke methods. The arities of the overloads must be distinct. In either case, the result of the expression is a single fn object.
 

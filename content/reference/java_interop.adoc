@@ -330,7 +330,7 @@ Clojure has support for high-performance manipulation of, and arithmetic involvi
 
 * _**let**_/_**loop**_-bound locals can be of primitive types, having the inferred, possibly primitive type of their init-form.
 * _**recur**_ forms that rebind primitive locals do so without boxing, and do type-checking for same primitive type.
-* Arithmetic (+,-,*,/,inc,dec,<,<=,>,>= etc) is overloaded for primitive types where semantics are same.
+* Arithmetic (+,-,*,/,inc,dec,<,\<=,>,>= etc) is overloaded for primitive types where semantics are same.
 * https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/aget[aget] / https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/aset[aset] are overloaded for arrays of primitives
 * https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/aclone[aclone], https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/alength[alength] functions for arrays of primitives
 * constructor functions for primitive arrays: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/float-array[float-array], https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/int-array[int-array], etc.

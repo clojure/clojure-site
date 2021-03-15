@@ -353,6 +353,9 @@ Keyword arguments are optional trailing variadic arguments of the form `akey ava
 
 (destr 1 :c 3)
 ->[1 nil 3 {:c 3}]
+
+(destr 1 :b 2 {:c 3})
+->[1 2 3 {:b 2 :c 3}]
 ----
 
 The map __binding-form__ to the right of the `&` in `destr` is an associative destructuring __binding-form__ <<special_forms#associative-destructuring,detailed above>>.

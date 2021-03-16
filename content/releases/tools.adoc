@@ -25,9 +25,9 @@ Recent official releases are described here. Prereleases and older versions can 
 === 1.10.3.814 (Mar 16, 2021) [[v1.10.3.814]]
 
 * git deps: switch from using jgit to shelling out to git (must be git >= 2.5)
-  * New env vars for control:
-    * `GITLIBS_COMMAND` - command to invoke when shelling out to git, default = `git`
-    * `GITLIBS_DEBUG` - set to `true` to print git commands and output to stderr, default = `false`
+** New env vars for control:
+*** `GITLIBS_COMMAND` - command to invoke when shelling out to git, default = `git`
+*** `GITLIBS_DEBUG` - set to `true` to print git commands and output to stderr, default = `false`
 * Made git fetch only when shas can't be resolved to improve performance
 * Bump dep versions for tools.cli and aws api to latest
 * Use https://github.com/clojure/tools.deps.alpha/blob/master/CHANGELOG.md[tools.deps.alpha] 0.11.905

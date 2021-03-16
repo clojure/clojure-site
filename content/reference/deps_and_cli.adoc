@@ -660,28 +660,22 @@ This mechanism is used by repositories that authenticate using a token, rather t
 
 == Git
 
-The supported git url protocols are https and ssh. https repos will be accessed anonymously and require no additional authentication information. This approach is recommended for public repos.
+The supported git url protocols are https and ssh. https repos will be accessed anonymously and require no additional authentication information. This approach is recommended for public repos. ssh repos may be either public or private.
 
-ssh repos may be either public or private. Access to a git repo via ssh requires an ssh keypair. The private key of this keypair may or may not have a passphrase. ssh authentication works by connecting to the local ssh agent (ssh-agent on *nix or Pageant via PuTTY on Windows).
-The ssh-agent must have a registered identity for the key being used to access the Git repository.
-To check whether you have registered identities, use:
-
-[source,shell]
-----
-$ ssh-add -l
-2048 SHA256:S2SMY1YRTRFg3sqsMy1eTve4ag78XEzhbzzdVxZroDk /Users/me/.ssh/id_rsa (RSA)
-----
-
-which should return one or more registered identities, typically the one at `~/.ssh/id_rsa`.
+Support for git deps occurs via shelling out to command-line git (and ssh). git >= 2.5 is required. In general, if access works at the command line, it should work via `clj`. Git is expected to be installed and by default, `git` is expected to be on the path. For ssh access, refer to documentation for your system (typically you will register your ssh keys in `~/.ssh/id_rsa`).
 
 For more information on creating keys and using the ssh-agent to manage your ssh identities, GitHub provides excellent info:
 
 * https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/
 * https://help.github.com/articles/working-with-ssh-key-passphrases/
 
-_Note: user/password authentication is not supported for any protocol._
+=== Configuration and debugging
 
-Cloned git dirs and working trees are stored by default in `~/.gitlibs`.  This directory is a cache and can be safely removed if needed. The cache location can also be overridden with the environment variable `$GITLIBS`.
+The following environment variables can be set to control the git integration:
+
+* `GITLIBS` - the path to the gitlibs storage directory (default = `~/.gitlibs`)
+* `GITLIBS_COMMAND` - the command to run for git access (default = `git`)
+* `GITLIBS_DEBUG` - set `true` to see a log of the actual git commands being run and their output (default = `false`)
 
 == Installers
 

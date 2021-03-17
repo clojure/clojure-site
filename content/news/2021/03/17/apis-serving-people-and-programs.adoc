@@ -23,4 +23,4 @@ Introduced in Clojure 1.11, a function specified to take keyword arguments may b
 
 In Clojure 1.11 the call to `destr` accepts a mixture of key/value pairs and/or a lone (or trailing) map benefitting both programmer and program.
 
-Clojure 1.11.0-alpha1 includes this enhancement and is available in Maven Central and ready for use.
+This enhancement is available now in `org.clojure/clojure "1.11.0-alpha1"`.

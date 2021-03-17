@@ -5,7 +5,7 @@ Fogus
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-Clojure supports associative destructuring binding such that programmers must choose between APIs that support people __or__ APIs that support programs (e.g. generation via macros). This dichotomy presents in Clojure's support for keyword arguments for functions. That is, you can define a function to accept keyword arguments or a function to accept an options map corresponding to the same parameterized arguments, but not both. To gain flexibility in handling both modes, Clojure programmers have had to apply special processing logic to function variadic arguments.
+To date, Clojure’s support for keyword arguments forces programmers to choose between creating APIs that better support people (accepting keyword args) or APIs that better support programs (by taking a map of those args).
 
 Introduced in Clojure 1.11, a function specified to take keyword arguments may be passed a single map instead of or in addition to (and following) the key/value pairs. When a lone map is passed, it is used outright for destructuring, else a trailing map is added to the map built from the preceding key/values via `conj`. For example, a function that takes a sequence and optional keyword arguments and returns a vector containing the values is defined as:
 
@@ -21,6 +21,6 @@ Introduced in Clojure 1.11, a function specified to take keyword arguments may b
 ->[1 2 {:a 1 :b 2}]
 ----
 
-In Clojure 1.11 the call to `destr` accepts a mixture of key/value pairs and a trailing map benefitting both programmer and program.
+In Clojure 1.11 the call to `destr` accepts a mixture of key/value pairs and/or a lone (or trailing) map benefitting both programmer and program.
 
 Clojure 1.11.0-alpha1 includes this enhancement and is available in Maven Central and ready for use.

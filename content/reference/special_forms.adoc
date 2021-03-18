@@ -344,15 +344,18 @@ Clojure 1.9 adds support for directly destructuring many keys (or symbols) that 
 [[keyword-arguments]]
 === Keyword Arguments
 
-Keyword arguments are optional trailing variadic arguments of the form `akey aval bkey bval...` that can be accessed in the function body via associative destructuring. To define a function that accepts keyword arguments you supply a map destructuring form in the __rest-param__ declaration position. For example, a function that takes a sequence and optional keyword arguments and returns a vector containing the values is defined as:
+Keyword arguments are optional trailing variadic arguments of the form `akey aval bkey bval...` that can be accessed in the function body via associative destructuring. Also, introduced in Clojure 1.11, a function specified to take kwargs may be passed a single map instead of or in addition to (and following) the key/value pairs. When a lone map is passed, it is used outright for destructuring, else a trailing map is added to the map built from the preceding key/values via `conj`. To define a function that accepts keyword arguments you supply a map destructuring form in the __rest-param__ declaration position. For example, a function that takes a sequence and optional keyword arguments and returns a vector containing the values is defined as:
 
 [source,clojure]
 ----
-(defn destr [a & {:keys [b c] :as opts}]
-  [a b c opts])
+(defn destr [& {:keys [a b] :as opts}]
+  [a b opts])
 
-(destr 1 :c 3)
-->[1 nil 3 {:c 3}]
+(destr :a 1)
+->[1 nil {:a 1}]
+
+(destr {:a 1 :b 2})
+->[1 2 {:a 1 :b 2}]
 ----
 
 The map __binding-form__ to the right of the `&` in `destr` is an associative destructuring __binding-form__ <<special_forms#associative-destructuring,detailed above>>.

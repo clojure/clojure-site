@@ -1,0 +1,26 @@
+= Keyword argument functions now also accept maps
+Fogus
+2021-03-17
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+To date, Clojure’s support for keyword arguments forces programmers to choose between creating APIs that better support people (accepting keyword args) or APIs that better support programs (by taking a map of those args).
+
+Introduced in Clojure 1.11, a function specified to take keyword arguments may be passed a single map instead of or in addition to (and following) the key/value pairs. When a lone map is passed, it is used outright for destructuring, else a trailing map is added to the map built from the preceding key/values via `conj`. For example, a function that takes a sequence and optional keyword arguments and returns a vector containing the values is defined as:
+
+[source,clojure]
+----
+(defn destr [& {:keys [a b] :as opts}]
+  [a b opts])
+
+(destr :a 1)
+->[1 nil {:a 1}]
+
+(destr {:a 1 :b 2})
+->[1 2 {:a 1 :b 2}]
+----
+
+In Clojure 1.11 the call to `destr` accepts a mixture of key/value pairs and/or a lone (or trailing) map benefitting both programmer and program.
+
+This enhancement is available now in `org.clojure/clojure "1.11.0-alpha1"`.

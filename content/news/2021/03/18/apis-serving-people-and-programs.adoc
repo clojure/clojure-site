@@ -7,7 +7,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 To date, Clojure’s support for keyword arguments forces programmers to choose between creating APIs that better support people (accepting keyword args) or APIs that better support programs (by taking a map of those args).
 
-Introduced in Clojure 1.11, a function specified to take keyword arguments may be passed a single map instead of or in addition to (and following) the key/value pairs. When a lone map is passed, it is used outright for destructuring, else a trailing map is added to the map built from the preceding key/values via `conj`. For example, a function that takes a sequence and optional keyword arguments and returns a vector containing the values is defined as:
+Introduced in Clojure 1.11, a function specified to take keyword arguments may be passed a single map instead of or in addition to (and following) the key/value pairs. When a lone map is passed, it is used outright for destructuring, else a trailing map is added to the map built from the preceding key/values via `conj`. For example, a function that takes a sequence of optional keyword arguments and returns a vector containing the values is defined as:
 
 [source,clojure]
 ----

@@ -26,13 +26,13 @@ image::/images/content/news/2021-03-15/industries.png[Clojure finds adoption in 
 
 Having said all of that, just where are Clojure projects deployed in production systems? Interestingly, the survey shows some nice growth in the way of public cloud and serverless deployments. The https://www.investopedia.com/how-amazon-makes-money-4587523[trends for AWS] indicate that the cloud market is booming and so it's natural that the general increase for that segment would show specifically for Clojure deployments as well.
 
-== Clojure for (Still) Start-ups
+== Clojure (still) for Start-ups
 
 While more large companies are adopting Clojure than ever, the sweet spot is still the smaller companies of less than 100 employees.
 
 image::/images/content/news/2021-03-15/lgvssmall.png[Clojure is still a language of choice for small companies,align="center"]
 
-The reasons the start-ups choose Clojure are many and variegated:
+The reasons that start-ups choose Clojure are many and variegated:
 
 * Leverage - small effort, big result
 * Ready access to large existing ecosystems - Java, JavaScript, .NET
@@ -53,7 +53,7 @@ First, Clojure programmers value a *functional style of programming* facilitatin
 
 Finally, Clojure would have never grown to its current size without the help of countless developers, technical writers, and big thinkers along the way. The appreciation for the amazing Clojure community is palpable within Nubank and this appreciation is increasingly being expressed as https://github.com/orgs/nubank/sponsoring[open source project funding]. I'd like to close this year's post by highlighting a number of the community leaders mentioned in the survey responses.
 
-* https://github.com/bbatsov[Bozhidar Batsov] __for continuing to improve clojure tooling ecosystem.__
+* https://github.com/bbatsov[Bozhidar Batsov] __for continuing to improve Clojure tooling ecosystem.__
 * Arne Brasseur - __https://github.com/lambdaisland/kaocha[Kaocha] is superb and his educational skills fantastic.__
 * __Everything https://github.com/borkdude[Michiel Borkent] aka borkdude touches is awesome!__
 * https://github.com/seancorfield[Sean Corfield] __because he is always helpful and polite, and writes excellent documentation for important libraries.__

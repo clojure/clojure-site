@@ -17,6 +17,12 @@ The official https://github.com/clojure/clojure/blob/master/changes.md[changelog
 
 Note: All dev releases are subject to breaking changes for new work since the prior release.
 
+== Release 1.11.0
+
+=== 1.11.0-alpha1 (Mar 18, 2021) [[v1.11.0-alpha1]]
+
+* https://clojure.atlassian.net/browse/CLJ-2603[CLJ-2603] Clojure keyword argument functions now also accept a map, see <<xref/../../../news/2021/03/18/apis-serving-people-and-programs#,details>>
+
 == Release 1.10.3
 
 === 1.10.3-rc1 (Feb 16, 2021) [[v1.10.3-rc1]]

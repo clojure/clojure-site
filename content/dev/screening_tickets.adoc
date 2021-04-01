@@ -74,6 +74,7 @@ $ git am --keep-cr -s --ignore-whitespace < their-patch-file.diff
 Once you have a working copy, you should take note of the following kinds of things:
 
 * Review the code in a diff tool to make sure that nothing extraneous snuck in
+* Ensure that the commit message includes a statement about the problem or enhancement that the patch is in service to.
 * Make sure compile and tests pass
 * Test the functionality from the REPL
 * Does the patch accomplish the goals stated in the ticket

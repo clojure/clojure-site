@@ -61,7 +61,7 @@ test:
 [INFO] ------------------------------------------------------------------------
 ----
 
-Once you've finished making your changes you need to commit them. Please use a commit message that begins with the JIRA number (CLJ-xyz)!
+Once you've finished making your changes you need to commit them. Please use a commit message that begins with the JIRA number (CLJ-xyz) and includes a statement about the problem or enhancement the changes are in service to!
 
 [source,shell]
 ----

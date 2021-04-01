@@ -5,7 +5,7 @@ Fogus
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-While a challenging year overall, 2020 was another good year for Clojure and its ecosystem. One big newsworthy item was that https://building.nubank.com.br/nubank-acquires-cognitect-press-release[Cognitect joined Nubank], the world’s largest independent digital bank, to reinvent financial services across Latin America. The news was well received, and the general sentiment is summarized by a comment left by one of the survey respondents:
+While a challenging year overall, 2020 was another good year for Clojure and its ecosystem. One big newsworthy item was that https://building.nubank.com.br/nubank-acquires-cognitect-press-release[Cognitect joined Nubank], the world’s largest independent digital bank, to __reinvent financial services across Latin America__. The news was well received, and the general sentiment is summarized by a comment left by one of the survey respondents:
 
 [quote, anonymous survey respondent]
 Great to see the Nubank acquisition of Cognitect. I think this has done wonders to bolster confidence in Clojure and Datomic for the long term. Also the subsequent support of open source developers sends a very positive message, and directly supports a healthy and robust ecosystem.
@@ -16,7 +16,7 @@ In this post I'll outline a few of the more salient points shown in the https://
 
 == Clojure in Production
 
-Continuing the trend from last year, Clojure has seen growth in large companies (i.e. those having 100-1000 employees). This meshes with my own experience having seen consulting engagements steadily increase with larger and larger companies.
+Continuing the trend from last year, Clojure has seen growth in large companies (i.e. those having 100-1000 employees).
 
 image::/images/content/news/2021-03-15/sizes.png[A breakdown of the companies sizes using Clojure in production,align="center"]
 
@@ -24,7 +24,7 @@ Nubank currently employs approximately 700 (at the time of writing) Clojure prog
 
 image::/images/content/news/2021-03-15/industries.png[Clojure finds adoption in a wide range of industries,align="center"]
 
-Having said all of that, just where are Clojure projects deployed in production systems? Interestingly the survey shows some nice growth in the way of public cloud and serverless deployments. The https://www.investopedia.com/how-amazon-makes-money-4587523[trends for AWS] indicate that the cloud market is booming and so it's natural that the general increase for that segment would show specifically for Clojure deployments as well.
+Having said all of that, just where are Clojure projects deployed in production systems? Interestingly, the survey shows some nice growth in the way of public cloud and serverless deployments. The https://www.investopedia.com/how-amazon-makes-money-4587523[trends for AWS] indicate that the cloud market is booming and so it's natural that the general increase for that segment would show specifically for Clojure deployments as well.
 
 == Clojure for (Still) Start-ups
 
@@ -43,11 +43,11 @@ One exciting start-up of note in the Clojure ecosystem is https://roamresearch.c
 
 == Clojure for Moving Fast
 
-Most survey respondents reported that they came to Clojure from the Java programming language. Indeed, throughout the history of Clojure many of its adherents came from Java. The fact that both languages run on the same virtual machine certainly helps smooth the path from Java to Clojure. However, many other advantages allow Clojure programmers a greater flexibility and agility in their day to day work lives using Clojure.
+Most survey respondents reported that they came to Clojure from the Java programming language. The fact that both languages run on the same virtual machine certainly helps smooth the path from Java to Clojure. However, many other advantages allow Clojure programmers a greater flexibility and agility in their day to day work lives using Clojure.
 
 image::/images/content/news/2021-03-15/features.png[Functional Programming and Lispiness are great force-multipliers,align="center"]
 
-First, the *functional style of programming* fostered by Clojure is valued highly by Clojure programmers for facilitating a separation of data and process. Coupled with its suite of immutable data structures, Clojure applications are often built as pipelines of data transformation functions that can be composed to implement higher-level business concepts in software. As a *dialect of Lisp*, Clojure provides an interactive programming environment called the REPL (Read, Eval, Print, Loop). The REPL fosters exploratory programming, allowing Clojure programmers to interactively develop solutions to sticky programming problems in real-time. Indeed, the confluence of the REPL, immutable data structures, and functional programming allows for a development process light on ceremony, allowing programmers to focus on the problem at hand rather than the complexities foisted on them by their programming language.
+First, Clojure programmers value a *functional style of programming* facilitating a separation of data and process. Coupled with its suite of immutable data structures, Clojure applications are often built as pipelines of data transformation functions that can be composed to implement higher-level business concepts in software. As a *dialect of Lisp*, Clojure provides an interactive programming environment called the REPL (Read, Eval, Print, Loop). The REPL fosters exploratory programming, allowing Clojure programmers to interactively develop solutions to sticky programming problems using a tight feedback loop. Indeed, the confluence of the REPL, immutable data structures, and functional programming allows for a development process light on ceremony, allowing programmers to focus on the problem at hand rather than the complexities foisted on them by their programming language.
 
 == The Clojure Ecosystem
 

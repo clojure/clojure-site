@@ -371,6 +371,21 @@ Due to the fact that all __branching__ points in specs are labeled, i.e. map ``k
 (possibly elided) elements of ``cat``, every subexpression in a spec can be referred to via a __path__ (vector of keys) naming the parts.
 These paths are used in ``explain``, ``gen`` overrides and various error reporting.
 
+== Presentations and Podcasts
+
+* https://www.youtube.com/watch?v=YR5WdGrpoug[Maybe Not - Rich Hickey]
+* https://www.youtube.com/watch?v=oyLBGkS5ICk[Spec-ulation Keynote - Rich Hickey]
+* https://vimeo.com/195711510[Rich Hickey on Clojure Spec - LispNYC]
+* https://www.cognitect.com/cognicast/103[Clojure spec with Rich Hickey - Cognicast Episode 103]
+* https://www.youtube.com/watch?v=nqY4nUMfus8&list=PLZdCLR02grLrju9ntDh3RGPpWSWBvjwXg[Curated Clojure Spec Presentations Playlist]
+* https://www.youtube.com/user/ClojureTV/search?query=spec[Generic Presentations about Clojure Spec on ClojureTV]
+
+== Blog Posts
+
+* https://clojure.org/news/2016/05/23/introducing-clojure-spec[Introducing clojure.spec - Rich Hickey]
+* https://www.pixelated-noise.com/blog/2020/09/10/what-spec-is/[WHAT CLOJURE SPEC IS AND WHAT YOU CAN DO WITH IT (AN ILLUSTRATED GUIDE) - Stathis Sideris]
+* https://corfield.org/blog/2019/09/13/using-spec/[How do you use clojure.spec - Sean Corfield]
+
 == Prior Art
 Almost nothing about spec is novel. See all the libraries mentioned above, https://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/[RDF],
 as well as all the work done on various

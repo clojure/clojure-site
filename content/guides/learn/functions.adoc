@@ -300,7 +300,7 @@ Below is a summary of calling conventions for calling into Java from Clojure:
 
 __<<answers#_functions,Check your answers>>__
 
-1) Define a function `greet` that takes no arguments and prints "Hello". Replace the `___` with the implementation:
+1) Define a function `greet` that takes no arguments and prints "Hello". Replace the `pass:[___]` with the implementation:
 `(defn greet [] ___)`
 
 2) Redefine `greet` using `def`, first with the `fn` special form and then with the `#()` reader macro.
@@ -318,6 +318,7 @@ __<<answers#_functions,Check your answers>>__
 * Given no arguments, returns "Hello, World!"
 * Given one argument x, returns "Hello, *x*!"
 * Given two arguments x and y, returns "*x*, *y*!"
+
 [source,clojure]
 ----
 ;; Hint use the str function to concatenate strings

@@ -508,7 +508,12 @@ Procurers may also have configuration attributes stored at the root of the confi
 
 == Maven
 
-The `mvn` procurer will look for `:mvn/repos`. The installation deps.edn configures the default Maven repos:
+The `mvn` procurer will look for two keys at the root of the deps.edn:
+
+* `:mvn/repos` - map of repository name to repository descriptor, a map currently taking only the key `:url`
+* `:mvn/local-repo` - a path (string) to the local repo cache. If none supplied, Maven uses `~/.m2/repository`.
+
+The installation deps.edn configures these default Maven repos:
 
 [source,clojure]
 ----
@@ -521,7 +526,7 @@ The `mvn` procurer will look for `:mvn/repos`. The installation deps.edn configu
 
 The `:mvn/repos` map is `merge-with` `merge` across the deps.edn sources, so you can modify the default repositories by specifying a new definition or remove it by specifying `nil`.
 
-tools.deps guarantees that the `"central"` and `"clojars"` repositories will be checked first for Maven libraries.
+tools.deps guarantees that the `"central"` and `"clojars"` repositories will be checked first, in that order, for Maven libraries.
 
 === Maven authenticated repos
 

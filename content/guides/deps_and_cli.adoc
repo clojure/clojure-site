@@ -225,6 +225,7 @@ Now your friends can use `time-lib` too!
 As your program gets more involved you might need to create variations on the standard classpath. The Clojure tools supports classpath modifications using aliases, which are parts of the deps file that are only used when the corresponding alias is supplied. Some of the things you can do are:
 
 * <<deps_and_cli#extra_paths,Include a test source directory>>
+* <<deps_and_cli#test_runner,Use a test runner to run all tests>>
 * <<deps_and_cli#extra_deps,Add an optional dependency>>
 * <<deps_and_cli#override_deps,Override a dependency version>>
 * <<deps_and_cli#local_jar,Use a local jar on disk>>

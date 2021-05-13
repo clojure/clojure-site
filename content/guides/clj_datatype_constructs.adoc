@@ -159,6 +159,7 @@ nil
 == Take away
 To wrap up, here are some rules of thumb:
 
-* Prefer protocols and records over Java types; stay in Clojure
-* If you must extend a Java class, use proxy
+TODO: Add more rules of thumb. I find them very helpful.
+* Prefer protocols and records over Java types; Stay in Clojure
 * If you want an anonymous implementation of a protocol/interface, use reify
+* If you must extend a Java class, use proxy

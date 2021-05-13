@@ -14,62 +14,6 @@ and/or creating types for polymorphic dispatch. +
 Because these constructs have overlapping capabilities, it may be confusing to know which construct to use at a given situation. +
 This guide clarifies what each construct is good at, while presenting minimal usage examples.
 
-== Proxy a Java class and/or Interfaces
-
-The proxy macro can be used to create an adhoc object that extends a Java Class.
-The example below extends the good old java.util.ArrayList such that a Clojure vector
-wrapped in an atom is used internally to manage state.
-
-[source,clojure-repl]
-----
-(import 'java.util.ArrayList)
-
-(def px (let [atm (atom [])]
-          (proxy [ArrayList] []
-            (add [e]
-              (swap! atm #(conj % e))
-              true)
-            (get [idx]
-              (get @atm idx))
-            (size [] (count @atm)))))
-
-(dotimes [n 10]
-  (.add px n))
-;; => nil
-(.get px 0)
-;; => 0
-(.get px 6)
-;; => 6
-(.size px)
-;; => 10
-----
-The ad hoc object can also implement Java Interfaces:
-
-[source,clojure-repl]
-----
-(import 'java.io.Closeable)
-(import 'java.util.concurrent.Callable)
-
-(def px (let [atm (atom [])]
-          (proxy [ArrayList Closeable Callable] []
-            (add [e]
-              (swap! atm #(conj % e))
-              true)
-            (get [idx]
-              (get @atm idx))
-            (size [] (count @atm))
-            (call []
-              (prn "Someone called me!"))
-            (close []
-              (prn "closing!")))))
-
-(.close px)
-"closing!"
-nil
-(.call px)
-"Someone called me!"
-nil
-----
 
 == Leaving Java with defrecord
 
@@ -154,6 +98,61 @@ nil
 One might ask "Doesn't proxy achieve the same if you do not need to extend a concrete Type?" +
 The answer is reify has better performance.
 
+== Proxy a Java class and/or Interfaces
+
+The proxy macro can be used to create an adhoc object that extends a Java Class.
+The example below extends the good old java.util.ArrayList such that a Clojure vector
+wrapped in an atom is used internally to manage state.
+
+[source,clojure-repl]
+----
+(import 'java.util.ArrayList)
+
+(def px (let [atm (atom [])]
+          (proxy [ArrayList] []
+            (add [e]
+              (swap! atm #(conj % e))
+              true)
+            (get [idx]
+              (get @atm idx))
+            (size [] (count @atm)))))
+
+(dotimes [n 10]
+  (.add px n))
+;; => nil
+(.get px 0)
+;; => 0
+(.get px 6)
+;; => 6
+(.size px)
+;; => 10
+----
+The ad hoc object can also implement Java Interfaces:
+
+[source,clojure-repl]
+----
+(import 'java.io.Closeable)
+(import 'java.util.concurrent.Callable)
+
+(def px (let [atm (atom [])]
+          (proxy [ArrayList Closeable Callable] []
+            (add [e]
+              (swap! atm #(conj % e))
+              true)
+            (get [idx]
+              (get @atm idx))
+            (size [] (count @atm))
+            (call []
+              (prn "Someone called me!"))
+            (close []
+              (prn "closing!")))))
+
+(.close px)
+"closing!"
+nil
+(.call px)
+"Someone called me!"
+----
 == Take away
 To wrap up, here are some rules of thumb:
 

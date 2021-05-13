@@ -45,7 +45,7 @@ https://clojure.org/reference/protocols[Protocols] offer similar capabilities as
 * They are a cross platform construct
 * They allow third party types to participate in any protocols
 
-Let's make a protocol that handles Java ArrayList instances as well as Foo records:
+Let's make a protocol that handles Java `ArrayList` instances as well as `Foo` records:
 
 [source,clojure-repl]
 ----
@@ -66,17 +66,17 @@ user=> (baz (Foo. 1 1))
 "Foo Baz"
 ----
 
-The main thing to realize here is that protocols are more powerful than interfaces because we are able to create custom abstraction for types that we do not control (e.g. java.util.Date). +
-If we were to apply a custom abstraction for Java Dates with an Interface IBaz,
+The main thing to realize here is that protocols are more powerful than interfaces because we are able to create custom abstraction for types that we do not control (e.g. `java.util.Date`). +
+If we were to apply a custom abstraction for Java `Dates` with an interface `IBaz`,
 we must:
 
-* Go to the original source code of java.util.Date and say it implements IBaz
-* Also add IBaz to the official jdk release
+* Go to the original source code of `java.util.Date` and say it implements `IBaz`
+* Also add `IBaz` to the official jdk release
 
 Unlikely to happen, right?
 
 == Reify-ing Java Interfaces or Protocols
-Sometimes we want to create things that implement a Protocol/Interface but do not want to give it a name for each of them. link:https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/reify[reify] does exactly that:
+Sometimes we want to create things that implement a protocol/interface but do not want to give them a name for each of them. link:https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/reify[reify] does exactly that:
 
 [source,clojure-repl]
 ----
@@ -95,13 +95,13 @@ user=> (.close rf)
 nil
 ----
 
-One might ask "Doesn't proxy achieve the same if you do not need to extend a concrete Type?" +
+One might ask "Doesn't proxy achieve the same if you do not need to extend a concrete type?" +
 The answer is reify has better performance.
 
 == Proxy a Java class and/or Interfaces
 
-The proxy macro can be used to create an adhoc object that extends a Java Class.
-The example below extends the good old java.util.ArrayList such that a Clojure vector
+The proxy macro can be used to create an adhoc object that extends a Java class.
+The example below extends `java.util.ArrayList` such that a Clojure vector
 wrapped in an atom is used internally to manage state.
 
 [source,clojure-repl]
@@ -127,7 +127,7 @@ wrapped in an atom is used internally to manage state.
 (.size px)
 ;; => 10
 ----
-The ad hoc object can also implement Java Interfaces:
+The ad hoc object can also implement Java interfaces:
 
 [source,clojure-repl]
 ----
@@ -156,6 +156,6 @@ nil
 == Take away
 To wrap up, here are some rules of thumb:
 
-* Prefer protocols and records over Java Types; stay in Clojure
-* If you must extend a Java Class, use proxy
-* If you want an anonymous implementation of a Protocol/Interface, use reify
+* Prefer protocols and records over Java types; stay in Clojure
+* If you must extend a Java class, use proxy
+* If you want an anonymous implementation of a protocol/interface, use reify

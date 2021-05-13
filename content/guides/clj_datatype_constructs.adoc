@@ -28,7 +28,7 @@ link:https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defrec
 user=> (defrecord Person [first-name last-name age drunk])
 user.Person
 user=> (def piklrik (Person. "Pickle" "Rick" :unknown true))
-#'user.meeseeks
+#'user.piklrik
 ----
 
 Records are nicer than Java classes for a few reasons:
@@ -39,9 +39,9 @@ Records are nicer than Java classes for a few reasons:
 [source,clojure-repl]
 ----
 user=> (:first-name piklrik)
--> "Pickle"
+"Pickle"
 user=> (:last-name piklrik)
--> "Rick"
+"Rick"
 ----
 
 The https://clojure.org/reference/datatypes#_deftype_and_defrecord[reference] describes the features of records in more detail.
@@ -85,14 +85,14 @@ Sometimes we want to create things that implement a protocol/interface but do no
 
 [source,clojure-repl]
 ----
-user=> (defn make-meeseeks
+user=> (defn spawn-meeseeks
          [p]
          (reify Introduction
            (introduce [_]
              (str "I'm " (:first-name p) " " (:last-name p) ", look at me!"))))
-nil
+#'user/make-meeseeks
 user=> (def meeseeks
-         (make-meeseeks (Person. "Mr." "Meeseeks" 0 false)))
+         (spawn-meeseeks (Person. "Mr." "Meeseeks" 0 false)))
 #'user/meeseeks
 user=> (introduce meeseeks)
 "I'm Mr. Meeseeks, look at me!"

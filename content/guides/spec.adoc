@@ -17,7 +17,7 @@ To use spec, declare a dependency on Clojure 1.9.0 or higher:
 
 [source, clojure]
 ----
-[org.clojure/clojure "1.10.0"]
+[org.clojure/clojure "1.10.3"]
 ----
 
 To start working with spec, require the `clojure.spec.alpha` namespace at the REPL:
@@ -85,7 +85,7 @@ Sets can also be used as predicates that match one or more literal values:
 
 Until now, we've been using specs directly. However, spec provides a central registry for globally declaring reusable specs. The registry associates a namespaced keyword with a specification. The use of namespaces ensures that we can define reusable non-conflicting specs across libraries or applications.
 
-Specs are registered using https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/def[`def`]. It's up to you to register the specification in a namespace that makes sense (typically a namespace you control).
+Specs are registered using https://clojure.github.io/spec.alpha/clojure.spec.alpha-api.html#clojure.spec.alpha/def[`s/def`]. It's up to you to register the specification in a namespace that makes sense (typically a namespace you control).
 
 [source,clojure]
 ----
@@ -97,7 +97,7 @@ A registered spec identifier can be used in place of a spec definition in the op
 
 [source,clojure]
 ----
-(s/valid? :order/date (java.util.Date.))
+(s/valid? :order/date (Date.))
 ;;=> true
 (s/conform :deck/suit :club)
 ;;=> :club
@@ -108,7 +108,9 @@ You will see later that registered specs can (and should) be used anywhere we co
 .Spec Names
 [IMPORTANT]
 ====
-Spec names are always fully-qualified keywords. Generally, Clojure code should use keyword namespaces that are sufficiently unique such that they will not conflict with other spec users. If you are writing a library for public use, spec namespaces should include the project name, url, or organization such that you will not conflict. Within a private organization, you may be able to use shorter names - the important thing is that they are sufficiently unique to avoid conflicts.
+Spec names are always fully-qualified keywords. Generally, Clojure code should use keyword namespaces that are sufficiently unique such that they will not conflict with specs provided by other libraries. If you are writing a library for public use, spec namespaces should include the project name, url, or organization. Within a private organization, you may be able to use shorter names - the important thing is that they are sufficiently unique to avoid conflicts.
+
+In this guide we will often use shorter qualified names for example brevity.
 ====
 
 Once a spec has been added to the registry, `doc` knows how to find it and print it as well:
@@ -205,14 +207,14 @@ In addition to `explain`, you can use https://clojure.github.io/spec.alpha/cloju
 (s/explain-data :domain/name-or-id :foo)
 ;;=> #:clojure.spec.alpha{
 ;;     :problems ({:path [:name], 
-;;                 :pred string?,
+;;                 :pred clojure.core/string?,
 ;;                 :val :foo,
-;;                 :via [:spec.examples.guide/name-or-id],
+;;                 :via [:domain/name-or-id],
 ;;                 :in []}
 ;;                {:path [:id],
-;;                 :pred int?,
+;;                 :pred clojure.core/int?,
 ;;                 :val :foo,
-;;                 :via [:spec.examples.guide/name-or-id],
+;;                 :via [:domain/name-or-id],
 ;;                 :in []})}
 ----
 
@@ -302,7 +304,7 @@ Let's consider a person map that uses unqualified keys but checks conformance ag
   {:first-name "Bugs"
    :last-name "Bunny"
    :email "n/a"})
-;; "n/a" - failed: (re-matches email-regex %) in: [:email] at: [:email] 
+;; "n/a" - failed: (re-matches email-regex %) in: [:email] at: [:email]
 ;;   spec: :acct/email-type
 
 (s/explain :unq/person
@@ -324,7 +326,7 @@ Unqualified keys can also be used to validate record attributes:
 
 (s/conform :unq/person
   (->Person "Bugs" "Bunny" "bugs@example.com" nil))
-;;=> #acct.Person{:first-name "Bugs", :last-name "Bunny", 
+;;=> #user.Person{:first-name "Bugs", :last-name "Bunny",
 ;;=>              :email "bugs@example.com", :phone nil}
 ----
 
@@ -339,8 +341,8 @@ One common occurrence in Clojure is the use of "keyword args" where keyword keys
                                   :opt [:my.config/port]))
 (s/conform :my.config/server [:my.config/id :s1
                               :my.config/host "example.com"
-                              :my.config/gport 5555])
-;;=> {:my.config//id :s1, :my.config/host "example.com", :my.config/port 5555}
+                              :my.config/port 5555])
+;;=> #:my.config{:id :s1, :host "example.com", :port 5555}
 ----
 Sometimes it will be convenient to declare entity maps in parts, either because there are different sources for requirements on an entity map or because there is a common set of keys and variant-specific parts. The `s/merge` spec can be used to combine multiple `s/keys` specs into a single spec that combines their requirements. For example consider two `keys` specs that define common animal attributes and some dog-specific ones. The dog entity itself can be described as a `merge` of those two attribute sets:
 
@@ -648,12 +650,13 @@ One way to use spec is to explicitly call `valid?` to verify input data passed t
   (str (:acct/first-name person) " " (:acct/last-name person)))
 
 (person-name 42)
-;;=> java.lang.AssertionError: Assert failed: (s/valid? :acct/person person)
+;; Execution error (AssertionError) at user/person-name (REPL:1).
+;; Assert failed: (s/valid? :acct/person person)
 
 (person-name {:acct/first-name "Bugs" 
               :acct/last-name "Bunny" 
 			  :acct/email "bugs@example.com"})
-;; Bugs Bunny
+;;=> "Bugs Bunny"
 ----
 
 When the function is invoked with something that isn't valid `:acct/person` data, the pre-condition fails. Similarly, if there was a bug in our code and the output was not a string, the post-condition would fail.
@@ -669,7 +672,7 @@ Another option is to use `s/assert` within your code to assert that a value sati
 
 (s/check-asserts true)
 (person-name 100)
-;; Execution error - invalid arguments to my.domain/person-name at (REPL:3).
+;; Execution error - invalid arguments to user/person-name at (REPL:3).
 ;; 100 - failed: map?
 ----
 
@@ -685,7 +688,7 @@ Here we conform using the config specification defined above:
 
 (defn configure [input]
   (let [parsed (s/conform :ex/config input)]
-    (if (= parsed ::s/invalid)
+    (if (s/invalid? parsed)
       (throw (ex-info "Invalid input" (s/explain-data :ex/config input)))
       (for [{prop :prop [_ val] :val} parsed]
         (set-config (subs prop 1) val)))))
@@ -812,7 +815,7 @@ Here's a bigger set of specs to model a game of cards:
 (def deck (for [suit suit? rank rank?] [rank suit]))
 
 (s/def :game/card (s/tuple rank? suit?))
-(s/def :game/hand (s/* :deck/card))
+(s/def :game/hand (s/* :game/card))
 
 (s/def :game/name string?)
 (s/def :game/score int?)
@@ -875,6 +878,15 @@ A key design constraint of spec is that all specs are also designed to act as ge
 
 spec generators rely on the Clojure property testing library https://github.com/clojure/test.check[test.check]. However, this dependency is dynamically loaded and you can use the parts of spec other than `gen`, `exercise`, and testing without declaring test.check as a runtime dependency. When you wish to use these parts of spec (typically during testing), you will need to declare a dev dependency on test.check. 
 
+In a deps.edn project, create a dev alias:
+
+[source,clojure]
+----
+{...
+ :aliases {
+   :dev {:extra-deps {org.clojure/test.check {:mvn/version "0.9.0"}}}}}
+----
+
 In Leiningen add this to project.clj:
 
 [source,clojure]
@@ -883,14 +895,6 @@ In Leiningen add this to project.clj:
 ----
 
 In Leiningen the dev profile dependencies are included during testing but not published as a dependency or included in uber jars.
-
-In Boot, add your dependency with test scope in your build.boot file (this is also possible in Leiningen but the approach above is preferred):
-
-[source,clojure]
-----
-(set-env!
- :dependencies '[[org.clojure/test.check "0.9.0" :scope "test"]])
-----
 
 In Maven, declare your dependency as a test scope dependency:
 
@@ -1152,7 +1156,7 @@ For example, in the case of a range of integer values (for example, a bowling ro
 
 [source,clojure]
 ----
-(s/def :bolwing/roll (s/int-in 0 11))
+(s/def :bowling/roll (s/int-in 0 11))
 (gen/sample (s/gen :bowling/roll))
 ;;=> (1 0 0 3 1 7 10 1 5 0)
 ----
@@ -1334,12 +1338,12 @@ And then we want to test the behavior of `run-query` while stubbing out `invoke-
 [source,clojure]
 ----
 (stest/instrument `invoke-service {:stub #{`invoke-service}})
-;;=> [spec.examples.guide/invoke-service]
+;;=> [user/invoke-service]
 (invoke-service nil {:svc/query "test"})
-;;=> #:spec.examples.guide{:error -11}
+;;=> #:svc{:error -11}
 (invoke-service nil {:svc/query "test"})
-;;=> #:spec.examples.guide{:result ["kq0H4yv08pLl4QkVH8" "in6gH64gI0ARefv3k9Z5Fi23720gc"]}
-(stest/summarize-results (stest/check `run-query))
+;;=> #:svc{:result ["kq0H4yv08pLl4QkVH8" "in6gH64gI0ARefv3k9Z5Fi23720gc"]}
+(stest/summarize-results (stest/check `run-query))  ;; might take a bit
 ;;=> {:total 1, :check-passed 1}
 ----
 

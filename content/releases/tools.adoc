@@ -20,7 +20,19 @@ For more information see the following docs:
 
 == Releases
 
-Recent official releases are described here. Prereleases and older versions can be found in the https://github.com/clojure/brew-install/blob/1.10.2/CHANGELOG.md[repo changelog].
+Recent official releases are described here. Prereleases and older versions can be found in the https://github.com/clojure/brew-install/blob/1.10.3/CHANGELOG.md[repo changelog].
+
+=== 1.10.3.839 (May 12, 2021) [[v1.10.3.839]]
+
+* Fix Linux installer breakage in 1.10.3.833
+
+=== 1.10.3.833 (May 11, 2021) [[v1.10.3.833]]
+
+* https://clojure.atlassian.net/browse/TDEPS-177[TDEPS-177] - Fix Maven mirrors to look up by id, not name
+* Remove flag when fetching git deps so that older git versions work
+* Tweak some warning messages
+* Clean up scripts to simplify variable replacement
+* Use https://github.com/clojure/tools.deps.alpha/blob/master/CHANGELOG.md[tools.deps.alpha] 0.11.918
 
 === 1.10.3.822 (Apr 3, 2021) [[v1.10.3.822]]
 

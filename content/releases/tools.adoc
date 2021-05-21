@@ -24,7 +24,7 @@ Recent official releases are described here. Prereleases and older versions can 
 
 === 1.10.3.849 (May 21, 2021) [[v1.10.3.849]]
 
-* Adds support for a trailing map of kvs in -X calls (similar to Clojure 1.11 trailing map to vararg calls)
+* Adds support for a <<xref/../../reference//deps_and_cli#_trailing_map_argument,trailing map of kvs>> in -X calls (similar to Clojure 1.11 trailing map to vararg calls)
 * Updates all Maven deps to latest (maven-resolver 1.7.0, maven core 1.8.3) to address these https://maven.apache.org/docs/3.8.1/release-notes.html[security concerns]
 ** CVE-2020-13956 - bumps deps on Apache HttpClient used by Maven
 ** CVE-2021-26291 - potential security problems regarding Maven repositories:

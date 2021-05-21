@@ -735,6 +735,22 @@ clj -X:my-fn :val 789
 clj -X:my-fn '[:my :data]' 789
 ----
 
+== Trailing map argument
+
+In addition to passing key-path/value pairs and key paths in the command line, an optional map proving value mappings may be passed as the final argument. This map will augment and perhaps override the previously provided key-path/value mappings:
+
+[source]
+----
+# Augment the arguments to my-fn
+clj -X:my-fn :val 789 '{:val2 123}'
+
+# Override the arguments to my-fn
+clj -X:my-fn :val 789 '{:val 123}'
+
+# Single map provides arguments to my-fn
+clj -X:my-fn '{:val 789}'
+----
+
 [[quoting]]
 == Quoting keys and values
 

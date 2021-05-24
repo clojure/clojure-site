@@ -252,11 +252,11 @@ Aliases give a name to a data structure that can be used either by the Clojure t
 
 = Basis and classpath
 
-The core of the tools.deps library is a process to take a merged deps.edn file, arg maps for the resolve-deps and make-classpath steps, and produce the "runtime basis", or "basis" for short. The basis is a superset of the deps.edn file also containing those args, the lib map, and the classpath map.
+The core of the tools.deps library is a process to take a merged deps.edn file, arg maps for the resolve-deps and make-classpath-map steps, and produce the "runtime basis", or "basis" for short. The basis is a superset of the deps.edn file also containing those args, the lib map, and the classpath map.
 
 The JVM classpath consists of a series of roots, either directory paths or the path to a jar file. Classes (and Clojure files) map via package or namespace to a path relative to a classpath root. For example, the `java.lang.String` class can be found at path `java/lang/String.class` and the `clojure.set` Clojure namespace may be found at paths `clojure/set.class` (for AOT), `clojure/set.clj`, or `clojure/set.cljc`. When the JVM needs to load one of these files it searches each root for the relative path and loads it when found.
 
-We divide the process of building a classpath into two primary operations: `resolve-deps` and `make-classpath`.
+We divide the process of building a classpath into two primary operations: `resolve-deps` and `make-classpath-map`.
 
 == resolve-deps
 
@@ -319,11 +319,11 @@ The second `args-map` is a map of optional modifications to the standard expansi
 {:default-deps {org.clojure/core.cache {:mvn/version "0.6.4"}}}
 ----
 
-== make-classpath
+== make-classpath-map
 
-**`(make-classpath lib-map paths args-map)`**
+**`(make-classpath-map lib-map paths args-map)`**
 
-The `make-classpath` step takes the lib map (the result of `resolve-deps`), the internal source paths of the project `["src"]`, an args-map of optional modifications, and produces a classpath string for use in the JVM.
+The `make-classpath-map` step takes the lib map (the result of `resolve-deps`), the internal source paths of the project `["src"]`, an args-map of optional modifications, and produces a classpath string for use in the JVM.
 
 The args-map includes support for modifications to be applied while making the classpath: adding extra paths, and overriding the location of libraries specified in the lib map. These modifications can be used separately or together or not at all in a map like this:
 
@@ -392,7 +392,7 @@ A hash is computed based on the config file paths, the resolve-aliases, and the 
 Files cached (if needed):
 
 * `<hash>.libs` - a `::lib-map` in the https://github.com/clojure/tools.deps.alpha/blob/master/src/main/clojure/clojure/tools/deps/alpha/specs.clj[specs], the output of running `resolve-deps`
-* `<hash>.cp` - a classpath string, the output of `make-classpath`
+* `<hash>.cp` - a classpath string, the output of `make-classpath-map`
 * `<hash>.jvm` - jvm options for main execution
 * `<hash>.main` - main options for main execution
 * `<hash>.basis` - the runtime basis, passed to the program
@@ -428,7 +428,7 @@ The resolve-deps args should be provided as an alias in one of the deps sources 
 
 == Make classpath modifiers
 
-The make-classpath modifiers are provided in a map that was described in a prior section:
+The make-classpath-map modifiers are provided in a map that was described in a prior section:
 
 * `:extra-paths` - a collection of string paths to add to `:paths` (should be in the project)
 * `:classpath-overrides` - a map of lib to string path to replace the location of the lib
@@ -521,7 +521,12 @@ Procurers may also have configuration attributes stored at the root of the confi
 
 == Maven
 
-The `mvn` procurer will look for `:mvn/repos`. The installation deps.edn configures the default Maven repos:
+The `mvn` procurer will look for two keys at the root of the deps.edn:
+
+* `:mvn/repos` - map of repository name to repository descriptor, a map currently taking only the key `:url`
+* `:mvn/local-repo` - a path (string) to the local repo cache. If none supplied, Maven uses `~/.m2/repository`.
+
+The installation deps.edn configures these default Maven repos:
 
 [source,clojure]
 ----
@@ -534,7 +539,7 @@ The `mvn` procurer will look for `:mvn/repos`. The installation deps.edn configu
 
 The `:mvn/repos` map is `merge-with` `merge` across the deps.edn sources, so you can modify the default repositories by specifying a new definition or remove it by specifying `nil`.
 
-tools.deps guarantees that the `"central"` and `"clojars"` repositories will be checked first for Maven libraries.
+tools.deps guarantees that the `"central"` and `"clojars"` repositories will be checked first, in that order, for Maven libraries.
 
 === Maven authenticated repos
 
@@ -811,7 +816,7 @@ This section summarizes all of the available arg map keys that `clj` uses and th
 ** `:extra-deps` - map of lib to coords that should be added to the root deps
 ** `:override-deps` - map of lib to coords that should *replace* deps in the root deps
 ** `:default-deps` - map of lib to coords that should be used if the coord is nil in root or transitive deps
-* make-classpath
+* make-classpath-map
 ** `:extra-paths` - vector of string paths (or keyword aliases to same) to add to base paths
 ** `:classpath-overrides` - map of lib to string path to replace lib on classpath
 * jvm opts
@@ -845,6 +850,22 @@ clj -X:my-fn :val 789
 
 # Nested key override
 clj -X:my-fn '[:my :data]' 789
+----
+
+== Trailing map argument
+
+In addition to passing key-path/value pairs and key paths in the command line, an optional map providing value mappings may be passed as the final argument. This map will merge with and perhaps override the previously provided key-path/value mappings:
+
+[source]
+----
+# Augment the arguments to my-fn
+clj -X:a-tool my-fn :val 789 '{:val2 123}'
+
+# Override the arguments to my-fn
+clj -X:a-tool my-fn :val 789 '{:val 123}'
+
+# Single map (no kvs) provides arguments to my-fn
+clj -X:a-tool my-fn '{:val 789}'
 ----
 
 [[quoting]]

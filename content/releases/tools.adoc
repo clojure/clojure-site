@@ -22,6 +22,10 @@ For more information see the following docs:
 
 Recent official releases are described here. Prereleases and older versions can be found in the https://github.com/clojure/brew-install/blob/1.10.3/CHANGELOG.md[repo changelog].
 
+=== 1.10.3.855 (May 25, 2021) [[v1.10.3.855]]
+
+* Fix in applying :jvm-opts with -X execution on Windows
+
 === 1.10.3.849 (May 21, 2021) [[v1.10.3.849]]
 
 * Adds support for a <<xref/../../reference//deps_and_cli#_trailing_map_argument,trailing map of kvs>> in -X calls (similar to Clojure 1.11 trailing map to vararg calls)
@@ -30,6 +34,7 @@ Recent official releases are described here. Prereleases and older versions can 
 ** CVE-2021-26291 - potential security problems regarding Maven repositories:
 *** Due to the possibility of MITM (man in the middle) attacks, http repo access is now blocked by default. tools.deps/Clojure CLI has always used https repos in the default repository list (central and clojars), so this mostly impacts any explicit http repositories defined in deps.edn
 *** Concerns over the "hijacking" of repository urls by transitive pom deps (or their super poms) to download artifacts from malicious repos. Maven made no changes here, but did clarify how repos are resolved on https://maven.apache.org/guides/mini/guide-multiple-repositories.html#repository-order[this page]. From a deps perspective, we only use repositories declared in the top-level deps.edn (if transitive deps need a custom repo, you will need to add it at top-level too). For tools.deps use of pom dependencies, we are providing the repos of the top deps.edn file (which should always put Maven Central and Clojars first), then deferring to Maven for the rest.
+* Use https://github.com/clojure/tools.deps.alpha/blob/master/CHANGELOG.md[tools.deps.alpha] 0.11.922
 
 === 1.10.3.839 (May 12, 2021) [[v1.10.3.839]]
 

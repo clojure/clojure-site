@@ -131,7 +131,7 @@ clojure [clj-opt*] -T[name|aliases] a/fn [kpath v]*
 
 When running a tool, the project's `:deps` and `:paths` are not used. The function is invoked with a map in the same way as -X execution, built from :exec-args if found in aliases and key/vals provided on the command line.
 
-Tools can also be installed and referenced by a simpler local name, instead of via an alias. See <<deps_and_cli#tool_install,tool installation>> for more details.
+Tools are installed and referenced by a simpler local name, instead of via an alias. See <<deps_and_cli#tool_install,tool installation>> for more details.
 
 = Operation
 
@@ -702,7 +702,7 @@ For tools installation, see the instructions in the <<xref/../../guides/getting_
 [[tool_install]]
 = Tool installation and invocation
 
-The Clojure CLI supports the idea of running tools, which are programs that don't use the project classpath, with the -T exec option. Tools are often (but not exclusively) external, defined with their own dependencies. Tools are expected to be invoked similar to -X style functions, which take a map of key/val arguments, which can be provided on the CLI.
+The Clojure CLI supports the idea of running tools, which are programs that don't use the project classpath, with the -T exec option. Tools are often (but not exclusively) external, defined with their own dependencies. Tools are expected to be invoked similar to -X style functions, which take a map of key/val arguments which can be provided on the CLI.
 
 == Using named tools
 
@@ -714,24 +714,29 @@ To search for available versions of a git lib use the `find-versions` tool provi
 
 [source,shell]
 ----
-clj -T:deps find-versions ...
+clj -X:deps find-versions ...
 ----
 
 The args that can be provided are:
 
-* `:git/lib` - git lib name. The git url will be automatically constructed from the git library name. For example, a `:git/lib` of `io.github.clojure/tools.deps.graph` will construct the git url `https://github.com/clojure/tools.deps.graph.git`.
-* `:mvn/lib` - maven coordinate (groupId/artifactId), such as `org.clojure/tools.deps.graph`
+* `:lib` - git or Maven lib name. The git url will be automatically constructed from the git library name. For example, a `:git/lib` of `io.github.clojure/tools.deps.graph` will construct the git url `https://github.com/clojure/tools.deps.graph.git`. For Maven, use the Maven lib name like `org.clojure/tools.deps.graph`.
 * `:tool` - a tool name if the tool has already been installed
 
-`find-versions` will print the git or Maven versions, one per line, to the console.
+`find-versions` will print the git or Maven coordinates, one per line, to the console.
 
-=== Install tool
+=== Tool installation
 
-When you've determined which version of the tool to install, use the `install-tool` program to install the tool by name.
+A tool for managing tools is automatically installed by the Clojure CLI under the name "tools". There are several useful functions provided:
+
+* install - Installs or reinstalls a tool
+* list - Lists all installed tools
+* remove - Removes an installed tool
+
+When you've determined which version of a tool to install, use the `install` function to install the tool by name.
 
 [source,shell]
 ----
-clj -T:deps install-tool ...
+clj -Ttools install ...
 ---
 
 The args to `install-tool` are:
@@ -743,30 +748,43 @@ For example:
 
 [source,shell]
 ----
-clj -T:deps install-tool io.github.clojure/tools.deps.graph '{:git/tag "tools.deps.graph-1.0.56"}' :as deps-graph
+clj -Ttools install io.github.clojure/tools.deps.graph '{:git/tag "v1.0.56"}' :as deps-graph
 ----
+
+Note that git deps can be fully described at tool installation time by using only a git lib name (which will be used to form a git url by convention), and a git tag.
+
+To list all installed tools:
+
+[source,shell]
+----
+clj -Ttools list
+----
+
+To remove an installed tool:
+
+[source,shell]
+----
+clj -Ttools remove :tool name
+----
+
+Other functions will likely be added in the future.
 
 === Tool usage
 
-Tools can publish a `usage.edn` file that declares default configuration. The usage file will be obtained and cached as part of tool installation and used to resolve the function to be executed (and possibly other uses in the future).
+Tools may include a top-level key `:deps/usage` in their deps.edn file to publish how the tool can be used with respect to namespace context. The value is a map which may have the following keys that are the same as their usage in deps.edn aliases:
 
-The `usage.edn` file is an edn map with the following keys:
+* `:ns-default` - a lib symbol indicating the default namespace when resolving functions
+* `:ns-aliases` - a map of alias to lib symbol
 
-* `:exec` - the value is a subset of the alias arguments available in a deps.edn alias:
-** `:ns-default`
-** `:ns-aliases`
-
-For example, the tools.deps.graph tool might publish the following usage.edn:
+For example, the tools.deps.graph tool can publish the following usage in deps.edn:
 
 [source,clojure]
 ----
-{:exec
+{:deps/usage
  {:ns-default clojure.tools.deps.graph}}
 ----
 
-The usage.edn file is read from the `:paths` of a git lib project or from the root of the maven artifact jar.
-
-=== Invoke tool by name
+=== Invoke a tool by name
 
 Once you've installed a named tool, you can invoke it with `-T` using just the tool name.
 
@@ -775,7 +793,7 @@ Once you've installed a named tool, you can invoke it with `-T` using just the t
 clj -Ttool f args...
 ----
 
-The function will be resolved using the `:ns-default` and `:ns-aliases` found in the `usage.edn`.
+The function will be resolved using the `:ns-default` and `:ns-aliases` found in the tool's deps.edn.
 
 For example, for the tools.deps.graph tool declared above, it can be invoked as follows:
 
@@ -794,13 +812,13 @@ Best practices:
 
 * Provide your tool as a public git library
 * Define your tool api in one or more Clojure namespaces as functions that take a map
-* Create a `usage.edn` at the root of one of your `:paths` with either an `:ns-default` and/or an `:ns-aliases` key for your api namespaces
-* Tag your git repo to create a release, use a scheme that makes sequencing obvious to users
+* Create a `:deps/usage` key in the root of your deps.edn with either an `:ns-default` and/or an `:ns-aliases` key for your api namespaces
+* Tag your git repo to create a release, using a scheme that makes sequencing obvious to users. A common convention is to use versions strings like "v1.2.3".
 
-Instructions for users:
+Tools can provide these instructions for users:
 
-* Find tool versions: `clj -T:deps find-versions :git/lib io.github.USER/TOOL`
-* Install tool with `clj -T:deps install-tool io.github.MY/TOOL '{:git/tag "VERSION"}' :as NAME`
+* Find tool versions: `clj -X:deps find-versions :lib io.github.USER/TOOL`
+* Install tool with `clj -Ttools install io.github.USER/TOOL '{:git/tag "VERSION"}' :as NAME`
 * Invoke tool with `clj -TNAME f args...`
 
 = Command line reference

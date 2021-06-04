@@ -1,0 +1,39 @@
+= Clojure Deref (June 4, 2021)
+Alex Miller
+2021-06-04
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a new periodic (thinking bi-weekly) link/news roundup for the Clojure ecosystem. We'll be including links to Clojure articles, Clojure libraries, and when relevant, what's happening in the Clojure core team.
+
+## Highlights
+
+https://clojurescript.org/[ClojureScript] turns 10 this week! Happy birthday ClojureScript! :cake: We mark this from the https://github.com/clojure/clojurescript/commit/515900f9762102987bda7d53b919dafc0b6c0580[first commit] by Rich Hickey in the repo. Several thousand commits later things are still going strong and David Nolen and Mike Fikes continue to lead the project. ClojureScript recently released version https://github.com/clojure/clojurescript/blob/master/changes.md#110866[1.10.866].
+
+The https://stackoverflow.com/dev-survey/start[StackOverflow developer's survey] for 2021 just opened. Last year they removed Clojure from the survey because they were scared we were growing too powerful (I assume). But this year's survey includes Clojure as an option again, so let them know you're out there! (It also seems a lot shorter this year.)
+
+The https://clojured.de/[:clojureD Conference] is just hours away! Ticket sales have ended but presumably talks will be made available afterwards. If you're going, we'll see you there!
+
+## Experience reports
+
+This week we saw several interesting Clojure experience reports worth mentioning:
+
+* Red Planet Labs https://tech.redplanetlabs.com/2021/06/03/tour-of-our-250k-line-clojure-codebase/[gave an overview] of their codebase and some of the techniques they use pervasively - using Schema, monorepo, Specter for polymorphic data, Component, with-redefs for testing, macros and more.
+* Jakub Holý at Telia talked about the importance of https://engineering.telia.no/blog/slow-restarts-rescued-by-clojure[interactive development with Clojure].
+* Crossbeam did a talk at Philly Tech Week about https://technical.ly/philly/2021/06/04/crossbeam-clojure/[why they bet on Clojure] and their experience with hiring.
+* Shivek Khurana talked about https://shivekkhurana.medium.com/mysterious-clojure-jobs-and-where-to-find-them-f784ebab4dea[how to find a job using Clojure]. There are now many companies using and hiring for Clojure, although sometimes it's challenging to find a Clojure job that is a good match for your location and/or experience - these are some great tips!
+
+## Libraries
+
+Some interesting library updates and posts this week:
+
+* https://github.com/threatgrid/asami[Asami] - Paula Gearon wrote a https://github.com/threatgrid/asami/wiki/Introduction[nice overivew of querying graph dbs]
+* Joe Littlejohn at Juxt wrote an overview of the https://www.juxt.pro/blog/json-in-clojure[Clojure JSON ecosystem] covering many popular libraries and their tradeoffs
+* https://github.com/oakes/odoyle-rules[odoyle-rules] - Zach Oakes added a new section on https://github.com/oakes/odoyle-rules#defining-rules-dynamically[defining rules dynamically]
+* https://vlaaad.github.io/reveal/[Reveal] - Vlad wrote about viewing Vega charts in Reveal
+
+## Art
+
+* As always Jack Rusher has been up to making beautiful art with Clojure, in particular exploring 3D rendered attractors like the https://twitter.com/jackrusher/status/1398336040260231171[Golden Aizwa Attractor] (the https://twitter.com/jackrusher/status/1398368701058011141[Clojure code]) and https://twitter.com/jackrusher/status/1398573268894900227[Three-Scroll Uunified Attractor], and https://twitter.com/jackrusher/status/1398674759110561798[one made in bone]. Hit his https://twitter.com/jackrusher[feed] for lots more cool projects, often made with Clojure.
+

@@ -102,6 +102,13 @@ If you want to execute an arbitrary function, you can pass it on the command ins
 clj -X my.qualified/fn :config 789
 ----
 
+Additionally, you may execute mutliple functions as if by `->` where each receives the key-path and values map from the previous function:
+
+[source]
+----
+clj -X my.qualified/fn my.other/fn :config 789
+----
+
 [NOTE]
 ====
 Alias arg maps can also include a default namespace or namespace aliases for resolving the function (see <<#namespaces,"Namespace resolution">> for more details).

@@ -30,3 +30,10 @@ Finding what namespaces exist: https://clojure.github.io/clojure/clojure.core-ap
 Examining a namespace: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ns-name[ns-name] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ns-aliases[ns-aliases] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ns-imports[ns-imports] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ns-interns[ns-interns] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ns-map[ns-map] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ns-publics[ns-publics] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ns-refers[ns-refers]
 Getting a namespace from a symbol: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/resolve[resolve] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ns-resolve[ns-resolve] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/namespace[namespace]
 Removing things: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ns-unalias[ns-unalias] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ns-unmap[ns-unmap] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/remove-ns[remove-ns]
+
+== More information
+
+Also see:
+
+* <<xref/../../../guides/learn/namespaces#,Learn Clojure - Namespaces>>
+* <<vars#,Reference - vars>>

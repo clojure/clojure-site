@@ -22,6 +22,14 @@ For more information see the following docs:
 
 Recent official releases are described here. Prereleases and older versions can be found in the https://github.com/clojure/brew-install/blob/1.10.3/CHANGELOG.md[repo changelog].
 
+=== 1.10.3.875 (May 25, 2021) [[v1.10.3.875]]
+
+* New: support for specifying multiple functions with -X with -> semantics
+* https://clojure.atlassian.net/browse/TDEPS-182[TDEPS-182] - Improve deprecation message to be more accurate
+* https://clojure.atlassian.net/browse/TDEPS-183[TDEPS-183] - Fix -Sdescribe output to be valid edn on Windows
+* https://clojure.atlassian.net/browse/TDEPS-179[TDEPS-179] - Fix incorrect classpath when :classpath-overrides removes path
+* Use https://github.com/clojure/tools.deps.alpha/blob/master/CHANGELOG.md[tools.deps.alpha] 0.11.931
+
 === 1.10.3.855 (May 25, 2021) [[v1.10.3.855]]
 
 * Fix in applying :jvm-opts with -X execution on Windows

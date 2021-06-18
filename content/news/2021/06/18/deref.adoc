@@ -1,0 +1,58 @@
+= Clojure Deref (June 18, 2021)
+Alex Miller
+2021-06-18
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a periodic link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+## Highlights
+
+* https://hopl4.sigplan.org/[HOPL IV] (History of Programming Languages) at https://conf.researchr.org/home/pldi-2021[PLDI 2021] is happening on Monday and Tuesday and includes a talk from Rich Hickey about the https://clojure.org/about/history[History of Clojure] paper. Registration is still available and the conference is online and features many other fine language developers!
+* The results are out from the https://snyk.io/jvm-ecosystem-report-2021/[JVM Ecosystem Report 2021] and Clojure continues to make a strong showing as one of the most popular JVM languages (other than Java), rising from 2.9% last year to 8.4% this year. Lots of other interesting tidbits in there as well.
+
+## Podcasts and videos
+
+* https://lispcast.com/what-is-missing-from-stratified-design/[LispCast] - Eric Normand talks about stratified design
+* https://soundcloud.com/defn-771544745/73-paula-gearon[defn] - Vijay Kiran and Ray McDermott interview Paula Gearon
+* https://www.youtube.com/watch?v=oTy4JYY3CoQ[REPL-driven development] - demo from Jakub Holý
+* https://www.youtube.com/watch?v=hSqpJpowazg[FizzBuzz in Clojure]
+
+## Blogs, discussions, tutorials
+
+* https://joannecheng.me/2021/06/11/transducers.html[Clojure Transducers] - Joanne Cheng explains transducers
+* https://danielgregoire.dev/posts/2021-06-13-code-observation-clojure-destructuring/[Clojure's Destructuring] - Daniel Gregoire dives into destructuring
+* https://dawranliou.com/blog/better-performance-with-java-arrays-in-clojure/[Better performance with Java arrays in Clojure] - Daw-Ran Liou on using Java arrays in Clojure
+* https://tilton.medium.com/backpressure-99501f23881f[Backpressure] - Kenny Tilton talks about core.async and ETL
+* https://sidesteps.github.io/posts/fun-of-clojure.html[Fun of clojure - wrap some code around data] - https://twitter.com/Sharas_[@Sharas_] on the data ethos of Clojure
+* https://lambdaisland.com/blog/2021-06-17-lambdaisland-is-changing[Lambda Island is Changing] - Arne Brasseur and his merry band of Clojurists at Gaiwan are changing directions a bit
+
+## Libraries and Tools
+
+Some interesting library updates and posts this week:
+
+* https://github.com/nubank/ordnungsamt[ordnungsamt] - a tool for running ad-hoc migrations over a code repository
+* https://github.com/nubank/clj-github[clj-github] - a library for working with the GitHub developer API
+* https://github.com/nubank/umschreiben-clj[umschreiben-clj] - extensions to https://github.com/clj-commons/rewrite-clj[rewrite-clj]
+* https://www.fulcrologic.com/copilot[Copilot] - Tony Kay teased a new upcoming code analysis tool for Clojure and ClojureScript
+* https://github.com/borkdude/scittle[scittle] - Michiel Borkent did the https://github.com/borkdude/scittle/releases/tag/v0.0.1[first release] of the SCI interpreter for https://borkdude.github.io/scittle/[use in script tags]
+* https://github.com/clojure-lsp/clojure-lsp/[clojure-lsp] - Eric Dallo https://clojure-lsp.github.io/clojure-lsp/CHANGELOG/#20210614-170047[released] a new version with enhanced path support for deps.edn projects
+* https://github.com/FieryCod/holy-lambda[holy-lambda] - Karol Wójcik https://github.com/FieryCod/holy-lambda/blob/master/CHANGELOG.md#021-10-06-2021[released] a new version
+* https://github.com/seancorfield/honeysql[honeysql] - Sean Corfield https://cljdoc.org/d/com.github.seancorfield/honeysql/2.0.0-rc3/doc/readme[added] :distinct syntax and some other features and fixes
+* https://github.com/fulcrologic/fulcro[Fulcro] - Tony Kay released 3.5.0-RC1 with more support for non-React apps
+* https://github.com/seancorfield/next.jdbc[next.jdbc] - Sean Corfield https://cljdoc.org/d/com.github.seancorfield/next.jdbc/1.2.674/doc/readme[released] 1.2.674
+* https://github.com/borkdude/refl[refl] - Michiel Borkent released a new example project to clean up reflection configs for GraalVM for Clojure projects
+
+## Fun and Games
+
+* https://tylerxhobbs.com/fidenza - Tyler Hobbs has a long history of doing interesting generative art with Clojure and he has published a rundown of his newest generative algorithm. Not explicitly Clojure but fascinating to read.
+* https://ertugrulcetin.github.io/racing-game-cljs/[ClojureScript racing game] - Ertuğrul Çetin published this game this week
+
+## Throwback Friday (I know, I'm doing it wrong)
+
+In this recurring segment, we harken back to a talk from an older time to a favorite talk of yore. This week, we're featuring:
+
+* https://www.youtube.com/watch?v=xmCrMUhhg9c[Why is a Monad Like a Writing Desk?] by Carin Meier from Clojure/West 2012
+
+In this lovely story from 2012, Carin Meier talks about monads through the lens of Clojure and Alice in Wonderland.

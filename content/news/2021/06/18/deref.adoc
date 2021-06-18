@@ -12,6 +12,10 @@ Welcome to the Clojure Deref! This is a periodic link/news roundup for the Cloju
 * https://hopl4.sigplan.org/[HOPL IV] (History of Programming Languages) at https://conf.researchr.org/home/pldi-2021[PLDI 2021] is happening on Monday and Tuesday and includes a talk from Rich Hickey about the https://clojure.org/about/history[History of Clojure] paper. Registration is still available and the conference is online and features many other fine language developers!
 * The results are out from the https://snyk.io/jvm-ecosystem-report-2021/[JVM Ecosystem Report 2021] and Clojure continues to make a strong showing as one of the most popular JVM languages (other than Java), rising from 2.9% last year to 8.4% this year. Lots of other interesting tidbits in there as well.
 
+## Sponsorship Spotlight
+
+Lately https://twitter.com/cgrand[Christophe Grand] and Baptiste Dupuch[https://twitter.com/BaptisteDupuch] have been https://twitter.com/cgrand/status/1404446965778292736[teasing] their work on a new ClojureDart runtime with Flutter support. You can support their work on GitHub: https://github.com/sponsors/cgrand[cgrand] https://github.com/sponsors/dupuchba[dupuchba]. https://github.com/nubank[Nubank] (users of both Clojure and Flutter) are now supporting both!
+
 ## Podcasts and videos
 
 * https://lispcast.com/what-is-missing-from-stratified-design/[LispCast] - Eric Normand talks about stratified design
@@ -27,6 +31,7 @@ Welcome to the Clojure Deref! This is a periodic link/news roundup for the Cloju
 * https://tilton.medium.com/backpressure-99501f23881f[Backpressure] - Kenny Tilton talks about core.async and ETL
 * https://sidesteps.github.io/posts/fun-of-clojure.html[Fun of clojure - wrap some code around data] - https://twitter.com/Sharas_[@Sharas_] on the data ethos of Clojure
 * https://lambdaisland.com/blog/2021-06-17-lambdaisland-is-changing[Lambda Island is Changing] - Arne Brasseur and his merry band of Clojurists at Gaiwan are changing directions a bit
+* https://shivekkhurana.medium.com/should-you-adopt-clojure-at-your-company-6e10c92be154[Should you adopt Clojure at your company?] - Shivek Khurana, TLDR: yes! :)
 
 ## Libraries and Tools
 

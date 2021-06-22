@@ -180,7 +180,7 @@ Macro. Expands into code that creates a fn that expects to be passed an object a
 -> (\r \h \y)
 ----
 
-Note it almost always preferable to do this directly now, with syntax like:
+Note it is almost always preferable to do this directly now, with syntax like:
 
 [source,clojure]
 ----

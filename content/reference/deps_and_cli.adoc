@@ -57,7 +57,7 @@ Use the following exec-opt to invoke a function that takes a map:
 
 [source]
 ----
-clojure [clj-opt*] -X[aliases] [a/fn] [kpath v]*
+clojure [clj-opt*] -X[aliases] [a/fn*] [kpath v]*
 ----
 
 `-X` is configured with an arg map with `:exec-fn` and `:exec-args` keys, and stored under an alias in `deps.edn`:
@@ -100,6 +100,13 @@ If you want to execute an arbitrary function, you can pass it on the command ins
 [source]
 ----
 clj -X my.qualified/fn :config 789
+----
+
+Additionally, you may list multiple functions to execute as if by `->`. The first function will receive the :exec-args and command-line key-path / value map. Subsequent functions will receive the result of the previous function (which will only include those kvs if the first function passes them along).
+
+[source]
+----
+clj -X my.qualified/fn my.other/fn :config 789
 ----
 
 [NOTE]

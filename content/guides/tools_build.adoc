@@ -132,6 +132,48 @@ clj -T:build all
 
 == Parameterized builds
 
-== Writing custom tasks
+In the builds above we did not parameterize any aspect of the build, just chose which functions to call. You may find that it's useful to parameterize your builds to differentiate dev/qa/prod, or version, or some other factor. To account for function chaining at the command line, it is advisable to establish the common set of parameters to use across your build functions and have each function pass the parameters along.
 
+For example, consider a parameterization that includes an extra set of dev resources to set a local developer environment. We'll use a simple `:env :dev` kv pair to indicate this:
+
+[source,clojure]
+----
+(ns build
+  (:require [clojure.tools.build.api :as b]))
+
+(def lib 'my/lib1)
+(def version (format "1.2.%s" (b/git-count-revs nil)))
+(def class-dir "target/classes")
+(def basis (b/load-basis {:deps-file "deps.edn"}))
+(def jar-file (format "target/%s-%s.jar" (name lib) version))
+(def copy-srcs ["src" "resources"])
+
+(defn clean [params]
+  (b/delete {:path "target"})
+  params)
+
+(defn jar [{:keys [env] :as params}]
+  (let [srcs (if (= env :dev) (cons "dev-resources" copy-srcs) copy-srcs)]
+    (b/sync-pom {:class-dir class-dir
+                 :lib lib
+                 :version version
+                 :basis basis
+                 :src-dirs ["src"]})
+    (b/copy-dir {:src-dirs srcs
+                 :target-dir class-dir})
+    (b/jar {:class-dir class-dir
+            :jar-file jar-file})
+    params)
+----
+
+The other aspects of deps.edn and invocation remain the same. 
+
+Invocation that activates :dev environment will look like this:
+
+[source,shell]
+----
+clj -X:build clean jar :env :dev
+----
+
+The kv params are passed at the end and will be used to invoke the first function, `clean`, then the return of that will be passed to `jar`.
 

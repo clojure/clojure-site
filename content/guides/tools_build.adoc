@@ -59,5 +59,79 @@ The deps.edn file will look like this:
 
 [source,clojure]
 ----
-
+{:paths ["src"]
+ :aliases
+ {:build {:deps {io.github.clojure/tools.build {:tag "TAG" :sha "SHA"}}
+          :ns-default build}}}
 ----
+
+And then you can run this build with:
+
+[source,shell]
+----
+clj -T:build clean jar
+----
+
+== Compiled uberjar application build
+
+When preparing an application, it is common to compile the full app + libs and assemble the entire thing as a single uberjar. An example build for this might look like this:
+
+[source,clojure]
+----
+(ns build
+  (:require [clojure.tools.build.api :as b]))
+
+(def lib 'my/lib1)
+(def version (format "1.2.%s" (b/git-count-revs nil)))
+(def class-dir "target/classes")
+(def basis (b/load-basis {:deps-file "deps.edn"}))
+(def uber-file (format "target/%s-%s-standalone.jar" (name lib) version))
+
+(defn clean [_]
+  (b/delete {:path "target"}))
+
+(defn prep [_]
+  (b/sync-pom {:class-dir class-dir
+               :lib lib
+               :version version
+               :basis basis
+               :src-dirs ["src"]})
+  (b/copy-dir {:src-dirs ["src" "resources"]
+               :target-dir class-dir}))
+
+(defn uber [_]
+  (b/compile-clj {:basis basis
+                  :src-dirs ["src"]
+                  :class-dir class-dir})
+  (b/uber {:class-dir class-dir
+           :uber-file uber-file
+           :basis basis}))
+----
+
+The deps.edn and build execution will look the same as the prior example.
+
+Invocation now includes three functions:
+
+[source,clojure]
+----
+clj -T:build clean prep uber
+----
+
+Rather saying all of these each time, you might consider making a composite function in build.clj:
+
+[source,clojure]
+----
+(defn all [_]
+  (doto (clean nil) (prep nil) (uber nil)))
+----
+
+[source,clojure]
+----
+clj -T:build all
+----
+
+== Parameterized builds
+
+== Writing custom tasks
+
+

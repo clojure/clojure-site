@@ -1,0 +1,78 @@
+= Clojure Deref (June 25, 2021)
+Alex Miller
+2021-06-25
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+## Highlights
+
+It is common to see complaints that both Clojure jobs and Clojure developers are hard to find. The real truth is: both exist, but there is sometimes a mismatch in either experience or geographic distribution. We don't typically highlight jobs in the Deref but here are some great places to find Clojure jobs:
+
+* https://jobs.braveclojure.com/[Brave Clojure] - job board
+* https://functional.works-hub.com/functional-programming-jobs[Functional Works] - job board
+* http://clojurians.net[Clojurians slack] - #jobs and #remote-jobs channel
+* https://clojureverse.org/c/community-center/jobs/52[Clojureverse]
+* https://www.reddit.com/r/Clojure/comments/npeien/who_is_hiring_may_31_2021/[Clojure subreddit] - monthly thread
+* https://kennytilton.github.io/whoishiring/[Who is hiring] - search at HackerNews
+* https://twitter.com/search?q=clojure%20job&src=spelling_expansion_revert_click&f=live[Twitter search]
+
+Also, I want to highlight that https://www.youtube.com/playlist?list=PLaSn8eiZ631nON7le-wdZxTR0c5bxqPYi[clojureD 2021 conference] videos are coming out now, about one per day, check them out!
+
+## Sponsorship spotlight
+
+Over the last couple years, the https://calva.io/[Calva] team has been putting a ton of effort into making VS Code a great place to Clojure. If you enjoy the fruits of that effort, consider supporting one of these fine folks working in this area:
+
+* https://github.com/PEZ[Peter Strömberg] - https://github.com/sponsors/PEZ[sponsor] for Calva
+* https://github.com/bpringe[Brandon Ringe] - https://github.com/sponsors/bpringe[sponsor] for Calva
+* https://github.com/ericdallo[Eric Dallo] - https://www.patreon.com/ericdallo[sponsor] for clojure-lsp
+
+## Podcasts and videos
+
+* https://www.case-podcast.org/45-eric-normand-on-functional-thinking[CaSE] - Conversations about Software Engineering talks with Eric Normand
+* https://podcasts.apple.com/us/podcast/s4-e32-lacinia-with-howard-lewis-ship/id1461500416?i=1000526576095[ClojureScript podcast] - Jacek Schae interviews Howard Lewis Ship
+* https://www.youtube.com/watch?v=CR1faH3S1pA[Apropos] - Mia, Mike, Ray, Eric chat plus special guest Martin Kavalar
+
+## Blogs, discussions, tutorials
+
+* https://danielgregoire.dev/posts/2021-06-18-open-closed-systems-clojure/[Open and Closed Systems with Clojure] - Daniel Gregoire 
+* https://blog.jakubholy.net/2021/simplicity/[What is simplicity in programming and why does it matter?] - Jakub Holý
+* https://www.michaelnygard.com/blog/2021/06/counterfactuals-are-not-causality/[Counterfactuals are not Causality] - Michael Nygard - not about Clojure but worth a read!
+* https://robhaisfield.com/notes/how-i'm-learning-clojure[How I'm learning Clojure] - Rob Haisfield
+* https://ostash.dev/posts/2021-06-18-clojure-metadata/[Clojure metadata] - Roman Ostash
+* https://ostash.dev/posts/2021-06-24-edn-data-notation/[Data notation in Clojure] - Roman Ostash
+* https://blog.jakubholy.net/2021/specific-vs-general-cryogen/[Specific vs. general: Which is better?] - Jakub Holý
+
+## Libraries
+
+Some interesting library updates and posts this week:
+
+* https://github.com/mauricioszabo/spock/[spock] 0.1.1 - a Prolog in Clojure
+* https://github.com/pfeodrippe/recife[recife] 0.3.0 - model checker library in Clojure
+* https://github.com/tonsky/datascript[datascript] 1.2.1 - immutable in-memory database and Datalog query engine
+* https://github.com/ont-app/sparql-endpoint[sparql-endpoint] 0.1.2 - utilities for interfacing with SPARQL 1.1 endpoints
+* https://github.com/modern-energy/pulumi-cljs[pulumi-cljs] - ClojureScript wrapper for Pulumi's infrastructure as code Node API
+* https://gitlab.com/domaindrivenarchitecture/c4k-keycloak[c4k-keycloak] - k8s deployment for keycloak
+* https://github.com/lucywang000/clj-statecharts[clj-statecharts] 0.1.0 - State Machine and StateCharts for Clojure(Script)
+* https://github.com/clojure-lsp/clojure-lsp[clojure-lsp] 2021.06.24-14.24.11 - Language Server (LSP) for Clojure
+* https://github.com/juxt/tick[tick] 0.4.32 - Time as a value
+* https://github.com/cognitect-labs/aws-api[aws-api] 0.8.515 - programmatic access to AWS services from Clojure
+
+## Tools
+
+* https://www.libhunt.com/l/clojure[Clojure LibHunt] - find Clojure open source projects!
+* https://github.com/Tyruiop/syncretism[syncretism] - options search engine based on Yahoo! Finance market data
+* https://gitlab.com/yogthos/mastodon-bot[mastodon-bot] - bot for mirroring Twitter/Tumblr accounts and RSS feeds on Mastodon
+
+## Fun and Games
+
+Chris Ford did a https://www.youtube.com/watch?v=BRBR45k2Yw4[live coding performance] (on keytar!) - see the https://github.com/ctford/tin-ear[code]
+
+## Throwback Friday (I know, I'm doing it wrong)
+
+In this recurring segment, we harken back to talks from an older time of yore. This week, we're featuring:
+
+* https://www.youtube.com/watch?v=dPK6t7echuA[How to Think about Parallel Programming: Not!] by Guy L. Steele Jr from Strange Loop 2010 - it's a decade+ old but still worth watching for how we think about what languages should provide, and a particular inspiration to the later design of Clojure reducers
+* https://www.youtube.com/watch?v=lU3awBr5C7E[Advent of Code 2020, Day 17] by Zach Tellman - a wonderful example of how to work in Clojure. write code in your editor, eval small exprs to your REPL, building iteratively up to a final solution

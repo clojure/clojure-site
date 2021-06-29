@@ -13,24 +13,77 @@ Since the first release of Clojure the story around building artifacts has been 
 
 When designing a build solution for Clojure the temptation to build a bespoke declarative interface is strong. However, declarative solutions, unlike functions, are by their nature difficult to compose without adding complexity to bear on the problem. The ideal is to create a solution that can compose just as functions so why not simply use functions as the base build API. We’re using our build system to create Clojure applications so why shouldn’t we use Clojure as it’s spoken as the interface to that very build system? Therefore, at its base tools.build uses functions that take a single map containing the key/value mappings of its execution parameters. These “tasks” define a logically coherent portion of a build process. In the initial release, tools.build comes packaged with the following tasks:
 
+
 .build tasks
-[width="80%",cols="3,^2,^2,10",options="header"]
-|=========================================================
-| Domain  | function         | Description | Example Use |
-| File    | `delete`         |             |             |
-| File    | `copy-file`      |             |             |
-| File    | `copy`           |             |             |
-| File    | `write-file`     |             |             |
-| Compile | `javac`          |             |             |
-| Compile | `compile-clj`    |             |             |
-| Jar     | `jar`            |             |             |
-| Jar     | `uber`           |             |             |
-| Jar     | `zip`            |             |             |
-| Process | `process`        |             |             |
-| Maven   | `sync-pom`       |             |             |
-| Maven   | `install`        |             |             |
-| Git     | `git-count-revs` |             |             |
-|=========================================================
+|===
+| Domain  | function         | Description | Example Use
+
+| File
+| `delete`
+|
+|            
+
+| File
+| `copy-file`
+|
+|            
+
+| File
+| `copy`
+|
+|            
+
+| File
+| `write-file`
+|
+|            
+
+| Compililation
+| `javac`
+|
+|            
+
+| Compilation
+| `compile-clj`
+|
+|            
+
+| Artifact
+| `jar`
+|
+|            
+
+| Artifact
+| `uber`
+|
+|            
+
+| Artifact
+| `zip`
+|
+|            
+
+| Process
+| `process`
+|
+|            
+
+| Maven
+| `sync-pom`
+|
+|            
+
+| Maven
+| `install`
+|
+|            
+
+| Git
+| `git-count-revs`
+|
+|            
+|===
+
 
 For example, a simple `clean` task is defined as:
 

@@ -5,178 +5,162 @@ Fogus
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-=Rethinking the problem
+== Rethinking the problem
 
-Since the first release of Clojure the story around building artifacts has been left as an exercise for the community. However, over the years the evolving Clojure ecosystem has prompted a rethink of a “batteries-included” build story for Clojure. First, applications written in Clojure often do not strictly require build artifacts but we have adopted the Java host ecosystem’s artifact-focused practices. Instead, we’d prefer to release and use Clojure libraries as source, deferring compilation as late as possible. However, some libraries need some sort of preparation to create the resources needed on the classpath. The preparation needed ranges from compilation of Java or Clojure source to rote text replacement in project resources to other, project-specific tasks. The Clojure build story should facilitate the preparation and detection of the need for such tasks when necessary. Finally, while any batteries-included build support should provide a base set of capabilities, it should also facilitate the discovery, installation, and introspection of general-purpose tools to facilitate more complex needs. For the past year the Clojure core team has worked to create a build story for Clojure that facilitates the needs described above. The effort, released as tools.build, is described below.
+Clojure has evolved over the years and countless individuals and organizations have contributed to the growing success of its ecosystem. Contributing to that success have been various takes on build systems for Clojure but until now there has not been a build solution packaged with the language. Previously, applications written in Clojure often did not strictly require build artifacts, but the community has adopted the Java host ecosystem’s artifact-focused approach. Instead, we took the approach that by default source-based dependencies would be the baseline model.
+
+However, some libraries need some sort of preparation to create the resources needed on the classpath. The preparation needed ranges from compilation of Java or Clojure source to rote text replacement in project resources to other, project-specific tasks. The Clojure build story should facilitate the preparation and detection of the need for such tasks when necessary. For the past year the Clojure core team has worked to create a build story for Clojure that facilitates the needs described above. The effort, released as tools.build, is described herein.
+
 
 == Builds as programs
 
 When designing a build solution for Clojure the temptation to build a bespoke declarative interface is strong. However, declarative solutions, unlike functions, are by their nature difficult to compose without adding complexity to bear on the problem. The ideal is to create a solution that can compose just as functions so why not simply use functions as the base build API. We’re using our build system to create Clojure applications so why shouldn’t we use Clojure as it’s spoken as the interface to that very build system? Therefore, at its base tools.build uses functions that take a single map containing the key/value mappings of its execution parameters. These “tasks” define a logically coherent portion of a build process. In the initial release, tools.build comes packaged with the following tasks:
 
-
 .build tasks
 |===
-| Domain  | function         | Description | Example Use
+| Domain  | Function         | Description | Required Params | Optional Params
 
 | File
 | `delete`
+| Delete file or directory recursively, if it exists.
+| `:path`
 |
-|            
 
 | File
 | `copy-file`
+| Copy one file from source to target, creating target directories if needed.
+| `:src`, `:target`
 |
-|            
 
 | File
-| `copy`
-|
-|            
+| `copy-dir`
+| Copy the contents of the `:src-dirs` to the `:target-dir`, optionally perform text replacement.
+| `:src-dirs`, `:target-dir`
+| `:include`, `:replace`
 
 | File
 | `write-file`
-|
-|            
+| Like `clojure.core/spit`, but create directories if needed.
+| `:path`
+| `:content`, `:opts`
 
-| Compililation
+| Compilation
 | `javac`
-|
-|            
+| Compile Java source to classes.
+| `:src-dirs`, `:class-dir`
+| `:basis`, `:javac-opts`
 
 | Compilation
 | `compile-clj`
-|
-|            
+| Compile Clojure source to classes.
+| `:basis`, `:src-dirs`, `:class-dir`
+| `:compile-opts`, `:ns-compile`, `:filter-nses`
 
 | Artifact
 | `jar`
-|
-|            
+| Create a jar file.
+| `:class-dir`, `:jar-file`
+| `:main`
 
 | Artifact
 | `uber`
-|
-|            
+| Create an uberjar file.
+| `:class-dir`, `:uber-file`
+| `:basis`, `:main`
 
 | Artifact
 | `zip`
+| Create a zip file.
+| `:src-dirs`, `:zip-file`
 |
-|            
 
 | Process
 | `process`
-|
-|            
+| Execute an external command.
+| `:command-args`
+| `:dir`, `:out`, `:err`, `:out-file`, `:err-file`, `:env`
 
 | Maven
 | `sync-pom`
-|
-|            
+| Synchronize an existing POM or generate a new POM from deps.edn
+| `:basis`, `:class-dir`
+| `:src-pom`, `:lib`, `:version`, `:src-dirs`, `:resource-dirs`, `:repos`
 
 | Maven
 | `install`
-|
-|            
-
-| Git
-| `git-count-revs`
-|
-|            
+| Install Maven jar to local repo.
+| `:basis`, `:lib`
+| `:classifier`, `:jar-file`, `:class-dir`
 |===
 
+To learn more about the tasks supplied by tools.build you can https://clojure.org/reference/tools_build[read the tools.build reference].
 
-For example, a simple `clean` task is defined as:
+footnote:[You can also run the CLI command `clj -X:deps clojure.tools.cli.help/doc :ns clojure.tools.build.api` if tools.deps.alpha is a dependency in your deps.edn file in the `build` alias.]
 
-    TODO - clean
+These task functions are used to build build-specific _target functions_ in a build.clj file that describe the possible build functions. For example, a simple `clean` target is defined as:
 
-The `clean` task calls out to the tools.build core function `delete` to perform the sub-process that removes a `target` directory. Because tools.build uses tasks for its API, each are easily composable with other tasks. Indeed, to build higher-level build processes one need only define a function that calls its sub-processes in turn as shown below:
+ ```clojure
+(defn clean [_]
+  (b/delete {:path "target"}))
+```
 
-    TODO - jar
+The `clean` target calls out to the tools.build task function `delete` to perform the sub-process that removes a `target` directory. That tools.build uses functions to describe builds means that target functions may be composable as long as their expected keys do not clash. Indeed, to build higher-level build processes one need only define a function that calls its sub-processes in turn as shown below:
 
-The `jar` process uses both tools.build core functions (e.g. `copy`) and the previously defined `clean` task to perform the process of building a JAR file. While building aggregate tasks by defining functions in your build.clj file is convenient, there are times when you may want to execute ad-hoc sequences of tasks. To perform this, the Clojure CLI allows you to execute a pipeline of tasks on the command line as if by `->`, shown below:
+```clojure
+(defn jar [_]
+  (clean nil)
+  (b/sync-pom {:class-dir class-dir
+               :lib lib
+               :version version
+               :basis basis
+               :src-dirs ["src"]})
+  (b/copy-dir {:src-dirs ["src" "resources"]
+               :target-dir class-dir})
+  (b/jar {:class-dir class-dir
+          :jar-file jar-file}))
+```
+
+The `jar` process uses both tools.build core task functions (e.g. `copy`) and the previously defined `clean` target to perform the process of building a JAR file. While building aggregate targets by defining functions in your build.clj file is convenient, there are times when you may want to execute ad-hoc sequences of targets. To perform this, the Clojure CLI allows you to execute a pipeline of functions on the command line, as shown below:
 
 ```bash
-clj -T:build clean jar
+clj -X:build clean jar :env :dev
 ```
+The kv params are passed at the end and will be used to invoke the first function, `clean`, then the return of that will be passed to `jar`.
 
 == Improving Source Libs
 
 Clojure’s dynamic nature allows us to rethink the way that new libraries and applications are created. That is, we’d rather work directly with source code as our dependencies than static deployed artifacts. Clojure’s new tools.build feature leverages the tools.gitlib library to work with source repositories as dependencies. In addition to working with Git repositories on common hosting services (e.g. Github, Gitlab, etc.) application developers can depend on certain commit SHAs or tagged versions directly.
 
-	TODO - git url, sha, tag+short sha
-
-It’s likely that some of these source dependencies will require some kind of preparation before they’re applied to the application or development classpath. In those cases tools.build works with the notion of “unprepped” dependencies, or those that require some kind of preparation before they are usable as dependencies. A common type of “prepable” dependency would be a Java source library that requires compilation before it’s useable as a dependency. Such a dependency is declared as below:
-
-	TODO - prep decl
-
-The declaration that the library requires a `target` directory to signify that it was prepped. The tools.build library will check for the presence of that `target` directory and if it’s not found will execute the associated `javac` task thus compiling the Java source to the `target`.
-
-== Tools
-
-The set of tasks provided by tools.build out of the box are powerful and composable. That said, your builds may require tasks and tools provided by other libraries. In that case, tools.build allows the discovery, installation, and introspection of tools to augment the set of build tasks. For example, Sean Corfield’s clj-new tool allows you to create a project template given some configuration parameters. To see the available versions of clj-new you can use the following command:
-
-```bash
-clj -X:deps find-versions :lib io.github.seancorfield/clj-new
+```clojure
+{:paths ["src"]
+ :aliases
+ {:build {:deps {io.github.clojure/tools.build {:tag "TAG" :sha "SHA"}}
+          :ns-default build}}}
 ```
 
-You should see output (elided below) similar to:
-
-```bash
-{:git/tag "v0.1.0"}
-{:git/tag "v0.2.0"}
-...
-{:git/tag "v1.1.297"}
-{:git/tag "v1.1.309"}
-```
-
-To install the last tag in the list to our local suite of tools is as simple as running the following command.
-
-```bash
-clj -Ttools install io.github.seancorfield/clj-new '{:git/tag "v1.1.309"}' :as new
-```
-
-To explore how clj-new is used the following command will TODO:
-
-```bash
-:tools/usage {:ns-default clj-new}
-```
-
-showing something like the following:
-
-```bash
-TODO
-```
-
-Finally, to invoke the clj-new tool you can use the -T flag of the Clojure CLI as shown below:
-
-```bash
-clj -Tnew create :name myname/mylib
-```
-
-== Conclusion
-
-The complete source of the build.clj file under discussion in this post is shown below.
+It’s likely that some of these source dependencies will require some kind of preparation before they’re applied to the application or development classpath. In those cases tools.build works with the notion of “unprepped” dependencies, or those that require some kind of preparation before they are usable as dependencies. A common type of “prepable” dependency would be a Java source library that requires compilation before it’s usable as a dependency. Such a dependency is declared as below:
 
 ```clojure
-(ns build (:require [clojure.tools.build.api :as b]))
-
-(def lib       'my/lib)
-(def version   "1.2.3")
-(def basis     (b/load-basis {:deps-file "deps.edn"}))
-(def class-dir "target/classes")
-(def jar-file  (format "target/%s-%s.jar" (name lib) version))
-
-(defn clean [_]
-  (b/delete   {:path "target"}))
-
-(defn jar [_]
-  (b/sync-pom {:class-dir  class-dir
-               :lib        lib
-               :version    version
-               :basis      basis ;; for deps
-               :src-dirs   ["src"]})
-  (b/copy-dir     {:src-dirs   ["src" "resources"]
-               :target-dir class-dir})
-  (b/jar      {:class-dir  class-dir
-               :jar-file   jar-file}))
+{:paths ["src" "target/classes"]
+ :deps/prep-lib {:alias :build
+                         :fn compile
+	 	   :ensure "target/classes"}}
 ```
+
+The tools.build library will check for the presence of that `target/classes` directory and if it’s not found will execute the associated `compile` task, thus compiling the Java source to the `target`.
+
+== Getting Started
+
+If you’d like to start using tools.build then the following resources should help you along the path.
+
+**TODO: uninstall + install steps**
+
+???[tools.build reference]
+???[tools.build guide]
+???[tools.deps guide]
+
+???[Sample project]
+
+???[tools.build Github repository]
+
+A https://clojure.org/guides/tools_build[more comprehensive discussion of the build.clj] file under discussion in this post is available on the Clojure website. Issues and bugs can be reported on the ???[tools.build Jira project].

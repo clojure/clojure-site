@@ -1,0 +1,179 @@
+= tools.build Guide
+Alex Miller
+2021-06-22
+:type: guides
+:toc: macro
+:icons: font
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+toc::[]
+
+https://github.com/clojure/tools.build[tools.build] is a library of functions for building Clojure projects. They are intended to be used in a build program to create user-invokable target functions.
+
+== Source library jar build
+
+The most common Clojure build creates a jar file containing Clojure source code. To do this with tools.build we'll use the following tasks:
+
+* `load-basis` - to create a project basis
+* `copy-dir` - to copy Clojure source and resources into a working dir
+* `sync-pom` - to generate a pom file in the working dir
+* `jar` - to jar up the working dir into a jar file
+
+The build.clj will look like this:
+
+[source,clojure]
+----
+(ns build
+  (:require [clojure.tools.build.api :as b]))
+
+(def lib 'my/lib1)
+(def version (format "1.2.%s" (b/git-count-revs nil)))
+(def class-dir "target/classes")
+(def basis (b/load-basis {:deps-file "deps.edn"}))
+(def jar-file (format "target/%s-%s.jar" (name lib) version))
+
+(defn clean [_]
+  (b/delete {:path "target"}))
+
+(defn jar [_]
+  (b/sync-pom {:class-dir class-dir
+               :lib lib
+               :version version
+               :basis basis
+               :src-dirs ["src"]})
+  (b/copy-dir {:src-dirs ["src" "resources"]
+               :target-dir class-dir})
+  (b/jar {:class-dir class-dir
+          :jar-file jar-file}))
+----
+
+Some things to notice:
+
+* This is just normal Clojure code - you can load this namespace in your editor and develop it interactively at the REPL.
+* As a single-purpose program, it's fine to build shared data in the set of vars at the top.
+* We are choosing to build in the "target" directory and assemble the jar contents in "target/classes" but there is nothing special about these paths - it is fully in your control. Also, we've repeated those paths and others in multiple places here but you can remove that duplication to the extent that feels right.
+* We've used the tools.build task functions to assemble larger functions like `build/jar` for the user to invoke. These functions take a parameter map and we've chosen not to provide any configurable parameters here, but you could!
+
+The deps.edn file will look like this:
+
+[source,clojure]
+----
+{:paths ["src"]
+ :aliases
+ {:build {:deps {io.github.clojure/tools.build {:tag "TAG" :sha "SHA"}}
+          :ns-default build}}}
+----
+
+And then you can run this build with:
+
+[source,shell]
+----
+clj -T:build clean jar
+----
+
+== Compiled uberjar application build
+
+When preparing an application, it is common to compile the full app + libs and assemble the entire thing as a single uberjar. An example build for this might look like this:
+
+[source,clojure]
+----
+(ns build
+  (:require [clojure.tools.build.api :as b]))
+
+(def lib 'my/lib1)
+(def version (format "1.2.%s" (b/git-count-revs nil)))
+(def class-dir "target/classes")
+(def basis (b/load-basis {:deps-file "deps.edn"}))
+(def uber-file (format "target/%s-%s-standalone.jar" (name lib) version))
+
+(defn clean [_]
+  (b/delete {:path "target"}))
+
+(defn prep [_]
+  (b/sync-pom {:class-dir class-dir
+               :lib lib
+               :version version
+               :basis basis
+               :src-dirs ["src"]})
+  (b/copy-dir {:src-dirs ["src" "resources"]
+               :target-dir class-dir}))
+
+(defn uber [_]
+  (b/compile-clj {:basis basis
+                  :src-dirs ["src"]
+                  :class-dir class-dir})
+  (b/uber {:class-dir class-dir
+           :uber-file uber-file
+           :basis basis}))
+----
+
+The deps.edn and build execution will look the same as the prior example.
+
+Invocation now includes three functions:
+
+[source,clojure]
+----
+clj -T:build clean prep uber
+----
+
+Rather saying all of these each time, you might consider making a composite function in build.clj:
+
+[source,clojure]
+----
+(defn all [_]
+  (doto (clean nil) (prep nil) (uber nil)))
+----
+
+[source,clojure]
+----
+clj -T:build all
+----
+
+== Parameterized builds
+
+In the builds above we did not parameterize any aspect of the build, just chose which functions to call. You may find that it's useful to parameterize your builds to differentiate dev/qa/prod, or version, or some other factor. To account for function chaining at the command line, it is advisable to establish the common set of parameters to use across your build functions and have each function pass the parameters along.
+
+For example, consider a parameterization that includes an extra set of dev resources to set a local developer environment. We'll use a simple `:env :dev` kv pair to indicate this:
+
+[source,clojure]
+----
+(ns build
+  (:require [clojure.tools.build.api :as b]))
+
+(def lib 'my/lib1)
+(def version (format "1.2.%s" (b/git-count-revs nil)))
+(def class-dir "target/classes")
+(def basis (b/load-basis {:deps-file "deps.edn"}))
+(def jar-file (format "target/%s-%s.jar" (name lib) version))
+(def copy-srcs ["src" "resources"])
+
+(defn clean [params]
+  (b/delete {:path "target"})
+  params)
+
+(defn jar [{:keys [env] :as params}]
+  (let [srcs (if (= env :dev) (cons "dev-resources" copy-srcs) copy-srcs)]
+    (b/sync-pom {:class-dir class-dir
+                 :lib lib
+                 :version version
+                 :basis basis
+                 :src-dirs ["src"]})
+    (b/copy-dir {:src-dirs srcs
+                 :target-dir class-dir})
+    (b/jar {:class-dir class-dir
+            :jar-file jar-file})
+    params)
+----
+
+The other aspects of deps.edn and invocation remain the same. 
+
+Invocation that activates :dev environment will look like this:
+
+[source,shell]
+----
+clj -X:build clean jar :env :dev
+----
+
+The kv params are passed at the end and will be used to invoke the first function, `clean`, then the return of that will be passed to `jar`.
+

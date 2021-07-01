@@ -9,7 +9,84 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 toc::[]
 
-https://github.com/clojure/tools.build[tools.build] is a library of functions for building Clojure projects. They are intended to be used in a build program to create user-invokable target functions.
+https://github.com/clojure/tools.build[tools.build] is a library of functions for building Clojure projects. They are intended to be used in a build program to create user-invokable target functions. Currently, tools.build comes packaged with the following tasks:
+
+.build tasks
+|===
+| Domain  | Function         | Description | Required Params | Optional Params
+
+| File
+| `delete`
+| Delete file or directory recursively, if it exists.
+| `:path`
+|
+
+| File
+| `copy-file`
+| Copy one file from source to target, creating target directories if needed.
+| `:src`, `:target`
+|
+
+| File
+| `copy-dir`
+| Copy the contents of the `:src-dirs` to the `:target-dir`, optionally perform text replacement.
+| `:src-dirs`, `:target-dir`
+| `:include`, `:replace`
+
+| File
+| `write-file`
+| Like `clojure.core/spit`, but create directories if needed.
+| `:path`
+| `:content`, `:opts`
+
+| Compilation
+| `javac`
+| Compile Java source to classes.
+| `:src-dirs`, `:class-dir`
+| `:basis`, `:javac-opts`
+
+| Compilation
+| `compile-clj`
+| Compile Clojure source to classes.
+| `:basis`, `:src-dirs`, `:class-dir`
+| `:compile-opts`, `:ns-compile`, `:filter-nses`
+
+| Artifact
+| `jar`
+| Create a jar file.
+| `:class-dir`, `:jar-file`
+| `:main`
+
+| Artifact
+| `uber`
+| Create an uberjar file.
+| `:class-dir`, `:uber-file`
+| `:basis`, `:main`
+
+| Artifact
+| `zip`
+| Create a zip file.
+| `:src-dirs`, `:zip-file`
+|
+
+| Process
+| `process`
+| Execute an external command.
+| `:command-args`
+| `:dir`, `:out`, `:err`, `:out-file`, `:err-file`, `:env`
+
+| Maven
+| `sync-pom`
+| Synchronize an existing POM or generate a new POM from deps.edn
+| `:basis`, `:class-dir`
+| `:src-pom`, `:lib`, `:version`, `:src-dirs`, `:resource-dirs`, `:repos`
+
+| Maven
+| `install`
+| Install Maven jar to local repo.
+| `:basis`, `:lib`
+| `:classifier`, `:jar-file`, `:class-dir`
+|===
 
 == Source library jar build
 

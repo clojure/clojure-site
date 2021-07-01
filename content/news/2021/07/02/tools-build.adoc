@@ -7,9 +7,13 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 == Rethinking the problem
 
-Clojure has evolved over the years and countless individuals and organizations have contributed to the growing success of its ecosystem. Contributing to that success have been various takes on build systems for Clojure but until now there has not been a build solution packaged with the language. Previously, applications written in Clojure often did not strictly require build artifacts, but the community has adopted the Java host ecosystem’s artifact-focused approach. Instead, we took the approach that by default source-based dependencies would be the baseline model.
+Clojure has evolved over the years and countless individuals and organizations have contributed to the growing success of its ecosystem. Contributing to that success have been various takes on build systems for Clojure but until now there has not been a build solution packaged with the language. Previously, applications written in Clojure often did not strictly require build artifacts, but the community has adopted the Java host ecosystem’s artifact-focused approach. Instead, we took the approach that by default source-based dependencies would be the baseline model. To facilitate this model, significant work has gone into developing and releasing various capabilities and tools, starting with the release of Clojure 1.9, including the following:
 
-However, some libraries need some sort of preparation to create the resources needed on the classpath. The preparation needed ranges from compilation of Java or Clojure source to rote text replacement in project resources to other, project-specific tasks. The Clojure build story should facilitate the preparation and detection of the need for such tasks when necessary. For the past year the Clojure core team has worked to create a build story for Clojure that facilitates the needs described above. The effort, released as tools.build, is described herein.
+- deps.edn and https://github.com/clojure/tools.deps.alpha/[tools.deps] - a structure for declaring dependencies and tools for building classpaths from them
+- https://github.com/clojure/brew-install[CLI] - a command line Clojure program runner
+- https://github.com/clojure/tools.gitlibs[tools.gitlibs] - a library for dealing with Git repositories
+
+Herein we'll describe the latest effort to supply a "batteries-included" story for Clojure builds called https://github.com/clojure/tools.build[tools.build] and https://clojure.org/reference/deps_and_cli#tool_install[CLI support for tools].
 
 == Improving Source Libs
 
@@ -35,7 +39,7 @@ The tools.build library will check for the presence of that `target/classes` dir
 
 == Builds as programs
 
-When designing a build solution for Clojure the temptation to build a bespoke declarative interface is strong. However, declarative solutions, unlike functions, are by their nature difficult to compose without adding complexity to bear on the problem. The ideal is to create a solution that can compose just as functions so why not simply use functions as the base build API. We’re using our build system to create Clojure applications so why shouldn’t we use Clojure as it’s spoken as the interface to that very build system? Therefore, at its base tools.build uses functions that take a single map containing the key/value mappings of its execution parameters. These “tasks” define a logically coherent portion of a build process.
+At its base tools.build uses functions that take a single map containing the key/value mappings of its execution parameters. These “tasks” define a logically coherent portion of a build process.
 
 To learn more about the tasks supplied by tools.build you can https://clojure.org/reference/tools_build[read the tools.build reference].
 
@@ -73,13 +77,25 @@ The kv params are passed at the end and will be used to invoke the first functio
 
 == Tools
 
-In addition to the support for builds, the Clojure CLI was enhanced with the ability to explore, install, invoke, and introspect tools for the CLI. 
+In addition to the support for builds, the Clojure CLI was enhanced with the ability to explore, install, invoke, and introspect tools based on a set of conventions for tool creators. Installing a new CLI tool such as Sean Corfield's https://github.com/seancorfield/clj-new[clj-new] library is a simple as running the following command:
+
+```bash
+clj -Ttools install io.github.seancorfield/clj-new '{:git/tag "v1.1.309"}' :as new
+```
+
+The use of a Git library name `io.github.seancorfield/clj-new` and a coordinate tag `v1.1.309` allows the CLI to find, build, and install the tool as `new`, which is the name that is used for invocation, a la `clj -Tnew <function> <args>`.
+
+The CLI also provides a way to explore the available versions of tools with the `clj -X:deps find-versions` command that will list the tags available for that tool. There's more to the tools story including listing installed tools, uninstalling tools, and even exploring the available functions and their details for an installed tool using the https://clojure.org/reference/deps_and_cli#other-programs[help/doc and help/dir functions]. One additional feature added to the CLI is the ability to pass https://clojure.org/reference/deps_and_cli##trailing-map-argument[a trailing map] that represents new or augmenting key value pairs as the arguments to invoke functions.
+
+More information on the new https://clojure.org/reference/deps_and_cli#tool_install[tools support in the CLI is available in the reference docs on the Clojure site].
 
 == Getting Started
 
 If you’d like to start using tools.build then the following resources should help you along the path.
 
 **TODO: uninstall + install steps**
+
+???[Alex Miller's talk about tools.build and tool support in the CLI]
 
 ???[tools.build reference]
 ???[tools.build guide]

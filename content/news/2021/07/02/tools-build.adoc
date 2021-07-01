@@ -7,10 +7,10 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 == Rethinking the problem
 
-Clojure has evolved over the years and countless individuals and organizations have contributed to the growing success of its ecosystem. Contributing to that success have been various takes on build systems for Clojure but until now there has not been a build solution packaged with the language. Previously, applications written in Clojure often did not strictly require build artifacts, but the community has adopted the Java host ecosystem’s artifact-focused approach. Instead, we took the approach that by default source-based dependencies would be the baseline model. To facilitate this model, significant work has gone into developing and releasing various capabilities and tools, starting with the release of Clojure 1.9, including the following:
+Clojure has evolved over the years and countless individuals and organizations have contributed to the growing success of its ecosystem. Contributing to that success have been various takes on build systems for Clojure but until now there has not been a build solution packaged with the language. Previously, applications written in Clojure often did not strictly require build artifacts, but the community has adopted the Java host ecosystem’s artifact-focused approach. Instead, we took the approach that by default source-based dependencies would be the baseline model. To facilitate this model, significant work has gone into developing and releasing various capabilities and tools, starting with the release of Clojure 1.9.
 
 - deps.edn and https://github.com/clojure/tools.deps.alpha/[tools.deps] - a structure for declaring dependencies and tools for building classpaths from them
-- https://github.com/clojure/brew-install[CLI] - a command line Clojure program runner
+- https://clojure.org/reference/deps_and_cli[CLI] - a command line Clojure program runner
 - https://github.com/clojure/tools.gitlibs[tools.gitlibs] - a library for dealing with Git repositories
 
 Herein we'll describe the latest effort to supply a "batteries-included" story for Clojure builds called https://github.com/clojure/tools.build[tools.build] and https://clojure.org/reference/deps_and_cli#tool_install[CLI support for tools].
@@ -39,40 +39,16 @@ The tools.build library will check for the presence of that `target/classes` dir
 
 == Builds as programs
 
-At its base tools.build uses functions that take a single map containing the key/value mappings of its execution parameters. These “tasks” define a logically coherent portion of a build process.
+At its base tools.build uses functions that take a single map containing the key/value mappings of its execution parameters. These “tasks” define a logically coherent portion of a build process. To learn more about the tasks supplied by tools.build you can https://clojure.org/guides/tools_build[read the tools.build reference].footnote:[You can also run the CLI command `clj -X:deps help/doc :ns clojure.tools.build.api` if tools.build is a dependency in your deps.edn file under the `build` alias.]
 
-To learn more about the tasks supplied by tools.build you can https://clojure.org/reference/tools_build[read the tools.build reference].
+These task functions are used to build build-specific _target functions_ in a build.clj file that describe the possible build functions runnable at the REPL and aggregated in your personal build.clj files. An example of using tools.build task functions to build up project-specific target functions in a build.clj file is given in the https://clojure.org/guides/tools_build#source-library-jar-build[tools.build guide].
 
-footnote:[You can also run the CLI command `clj -X:deps clojure.tools.cli.help/doc :ns clojure.tools.build.api` if tools.deps.alpha is a dependency in your deps.edn file in the `build` alias.]
-
-These task functions are used to build build-specific _target functions_ in a build.clj file that describe the possible build functions. For example, a simple `clean` target is defined as:
-
- ```clojure
-(defn clean [_]
-  (b/delete {:path "target"}))
-```
-
-The `clean` target calls out to the tools.build task function `delete` to perform the sub-process that removes a `target` directory. That tools.build uses functions to describe builds means that target functions may be composable as long as their expected keys do not clash. Indeed, to build higher-level build processes one need only define a function that calls its sub-processes in turn as shown below:
-
-```clojure
-(defn jar [_]
-  (clean nil)
-  (b/sync-pom {:class-dir class-dir
-               :lib lib
-               :version version
-               :basis basis
-               :src-dirs ["src"]})
-  (b/copy-dir {:src-dirs ["src" "resources"]
-               :target-dir class-dir})
-  (b/jar {:class-dir class-dir
-          :jar-file jar-file}))
-```
-
-The `jar` process uses both tools.build core task functions (e.g. `copy`) and the previously defined `clean` target to perform the process of building a JAR file. While building aggregate targets by defining functions in your build.clj file is convenient, there are times when you may want to execute ad-hoc sequences of targets. To perform this, the Clojure CLI allows you to execute a pipeline of functions on the command line, as shown below:
+While building aggregate targets by defining functions in your build.clj file is convenient, there are times when you may want to execute ad-hoc pipelines of task and target functions. To perform this, the Clojure CLI allows you to describe and execute a pipeline of functions on the command line, as shown below:
 
 ```bash
 clj -X:build clean jar :env :dev
 ```
+
 The kv params are passed at the end and will be used to invoke the first function, `clean`, then the return of that will be passed to `jar`.
 
 == Tools

@@ -20,22 +20,20 @@ Herein we'll describe the latest effort to supply a "batteries-included" story f
 Clojure’s dynamic nature allows us to rethink the way that new libraries and applications are created. That is, we’d rather work directly with source code as our dependencies than static deployed artifacts. Clojure’s new tools.build feature leverages the tools.gitlib library to work with source repositories as dependencies. In addition to working with Git repositories on common hosting services (e.g. Github, Gitlab, etc.) application developers can depend on certain commit SHAs or tagged versions directly.
 
 ```clojure
-{:paths ["src"]
- :aliases
- {:build {:deps {io.github.clojure/tools.build {:tag "TAG" :sha "SHA"}}
-          :ns-default build}}}
+{:deps {GIT-LIB {:git-tag "TAG" :git-sha "SHA"}
 ```
 
-It’s likely that some of these source dependencies will require some kind of preparation before they’re applied to the application or development classpath. In those cases tools.build works with the notion of “unprepped” dependencies, or those that require some kind of preparation before they are usable as dependencies. A common type of “prepable” dependency would be a Java source library that requires compilation before it’s usable as a dependency. Such a dependency is declared as below:
+In the dependency above we've settled on a standard way to indicate source dependencies using a service-specific library name coupled with a Git tag and prefix SHA, used for verification. In the case of the tools.build library itself, the Github tag (indicated above by `GIT_LIB`)  becomes `io.github.clojure/tools.build`. More information on specifying Git source dependencies is found in the https://clojure.org/reference/deps_and_cli#using-git-libraries[CLI and deps guide].
+
+Occasionally, source dependencies will require preparation (e.g. compilation, text replacement, etc.) before they’re suitable for inclusion on the classpath. In those cases tools.build works with the notion of “unprepped” dependencies, or those that require some kind of preparation before they are usable as dependencies. A common type of “prepable” dependency would be a Java source library that requires compilation before it’s usable as a dependency. Such a dependency is declared as below:
 
 ```clojure
-{:paths ["src" "target/classes"]
- :deps/prep-lib {:alias :build
-                         :fn compile
-	 	   :ensure "target/classes"}}
+{:deps/prep-lib {:alias :build
+                :fn compile
+                :ensure "target/classes"}}
 ```
 
-The tools.build library will check for the presence of that `target/classes` directory and if it’s not found will execute the associated `compile` task, thus compiling the Java source to the `target`.
+The tools.build library will check for the presence of that `target/classes` directory and if it’s not found will execute the associated `compile` task, thus compiling the Java source to the `target`. More information on supporting unprepped dependencies is available on the https://clojure.org/reference/deps_and_cli##preparing-source-dependency-libs[Clojure deps guide detailing preparing source dependencies].
 
 == Builds as programs
 

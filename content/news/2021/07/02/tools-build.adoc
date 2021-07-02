@@ -29,7 +29,7 @@ If GIT-LIB uses the naming convention, no `:git/url` is required. For example:
 
 Here, the reversed url of a repository's GitHub pages is used to infer the git url `"https://github.com/clojure/tools.deps.graph.git"`. Similar conventions exist for GitLab, Bitbucket, etc. Rather than supply the full 40 character git sha, it is sufficient here to use a meaningful git tag name and a short sha that is used to verify the tag location. More information on specifying Git source dependencies is found in the https://clojure.org/reference/deps_and_cli#using-git-libraries[CLI and deps guide].
 
-Occasionally, source dependencies will require preparation (e.g. compilation, text replacement, etc.) before they’re suitable for inclusion on the classpath. A common type of “unprepped” dependency is a Clojure library with some Java source requiring compilation. A source-based lib can declare how it should be prepped in its deps.edn:
+Occasionally, source dependencies will require preparation (e.g. compilation, text replacement, etc.) before they’re suitable for inclusion on the classpath. A common type of “unprepped” is a Clojure library with some Java source requiring compilation. A source-based lib can declare how it should be prepped in its deps.edn:
 
 ```clojure
 {:deps/prep-lib {:alias :build
@@ -43,7 +43,7 @@ The Clojure CLI library will check for the presence of the `target/classes` dire
 clj -X:deps prep
 ```
 
-This command will find unprepped libs, and run the `compile` function using the `:build` alias, presumably filling the `target/classes` directory with necessary classes on the classpath. More information on supporting unprepped dependencies is available in the https://clojure.org/reference/deps_and_cli#preparing-source-dependency-libs[Clojure CLI reference]. In the next section we'll talk about the new tools.build library which can be used to do that compilation when needed.
+This command will find the unprepped lib (and any others), and run the `compile` function using the `:build` alias, presumably filling the `target/classes` directory with necessary classes to put on the classpath (`"target/classes"` should be in the project `:paths`). More information on supporting unprepped dependencies is available in the https://clojure.org/reference/deps_and_cli#preparing-source-dependency-libs[Clojure CLI reference]. In the next section we'll talk about the new tools.build library which can be used to do that compilation when needed.
 
 == Builds as programs
 
@@ -69,7 +69,7 @@ In addition to the support for builds, the Clojure CLI was enhanced with the abi
 clj -Ttools install io.github.seancorfield/clj-new '{:git/tag "v1.1.309"}' :as new
 ```
 
-The use of a Git library name `io.github.seancorfield/clj-new` and a coordinate tag `v1.1.309` allows the CLI to find, build, and install the tool as `new`, which is the name that is used for invocation, a la `clj -Tnew <function> <args>`.
+The use of a Git library name `io.github.seancorfield/clj-new` and a coordinate tag `v1.1.309` allows the CLI to find, build, and install the tool as `new`, which is the name that is used for invocation, a la `clj -Tnew <function> <args>`. In this one case, a `:sha` is not required (but it will be determined and rememembered to check for a match in the future).
 
 The CLI also provides a way to explore the available versions of tools with the `clj -X:deps find-versions` command that will list the tags available for that tool. There's more to the tools story including listing installed tools, uninstalling tools, and even exploring the available functions and their details for an installed tool using the https://clojure.org/reference/deps_and_cli#other-programs[help/doc and help/dir functions]. One additional feature added to the CLI is the ability to pass https://clojure.org/reference/deps_and_cli##trailing-map-argument[a trailing map] that represents new or augmenting key value pairs as the arguments to invoke functions.
 

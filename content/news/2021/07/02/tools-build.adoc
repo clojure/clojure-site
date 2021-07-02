@@ -63,20 +63,20 @@ The CLI also provides a way to explore the available versions of tools with the 
 
 More information on the new https://clojure.org/reference/deps_and_cli#tool_install[tools support in the CLI is available in the reference docs on the Clojure site].
 
-== Getting Started
+== In summary
 
-If you’d like to start using tools.build then the following resources should help you along the path.
+The Clojure core team has worked hard to provide a story for builds and tooling, including:
 
-**TODO: uninstall + install steps**
+- tools.build - a new library for writing build programs (???[reference], ???[guide], ???[source], ???[issues])
+- Support for running multiple functions at the CLI and passing trailing maps as arguments
+- Source deps support - inferred git urls, tags for versions, lib prep
+- Tool support - tool installation and use, better introspection
+
+If you’d like to start using tools.build then the following information should help you along the path.
+
+**TODO: uninstall/install/version/etc.**
 
 ???[Alex Miller's talk about tools.build and tool support in the CLI]
-
-???[tools.build reference]
-???[tools.build guide]
-???[tools.deps guide]
-
 ???[Sample project]
-
-???[tools.build Github repository]
 
 A https://clojure.org/guides/tools_build[more comprehensive discussion of the build.clj] file under discussion in this post is available on the Clojure website. Issues and bugs can be reported on the ???[tools.build Jira project].

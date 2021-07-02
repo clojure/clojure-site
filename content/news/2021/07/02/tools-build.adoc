@@ -79,7 +79,7 @@ More information on the new https://clojure.org/reference/deps_and_cli#tool_inst
 
 Clojure now has a built-in story for source deps, builds, and tools including:
 
-- Source deps support - better git deps (httsp://clojure.org/reference/deps_and_cli#_git[reference]), support for source libs requiring prep (https://clojure.org/reference/deps_and_cli#prep[reference])
+- Source deps support - better git deps (https://clojure.org/reference/deps_and_cli#_git[reference]), support for source libs requiring prep (https://clojure.org/reference/deps_and_cli#prep[reference])
 - tools.build - a new library for writing build programs (https://clojure.github.io/tools.build[API], https://clojure.org/guides/tools_build[guide], https://github.com/clojure/tools.build[source])
 - -X support for running multiple functions at the CLI (https://clojure.org/reference/deps_and_cli#_executing_a_function[reference]) and passing trailing maps as arguments (https://clojure.org/reference/deps_and_cli##trailing-map-argument[reference])
 - Tool support - tool installation and use (https://clojure.org/reference/deps_and_cli#tool_install[reference]), better introspection (https://clojure.org/reference/deps_and_cli#other-programs[reference])

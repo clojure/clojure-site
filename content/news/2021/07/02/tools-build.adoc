@@ -1,11 +1,9 @@
-= tools.build
+= Rethinking Source Libs and Builds
 Fogus
 2021-07-02
 :jbake-type: post
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
-
-== Rethinking Source Libs and Builds
 
 Clojure has evolved over the years and countless individuals and organizations have contributed to the growing success of its ecosystem. While there have been many build systems for Clojure, there has never been a build system available with the language. We have been laying the groundwork for this since the release of Clojure 1.9:
 

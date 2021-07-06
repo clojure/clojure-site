@@ -76,8 +76,8 @@ https://github.com/clojure/tools.build[tools.build] is a library of functions fo
 | `:dir`, `:out`, `:err`, `:out-file`, `:err-file`, `:env`
 
 | Maven
-| `sync-pom`
-| Synchronize an existing POM or generate a new POM from deps.edn
+| `write-pom`
+| Write a pom file to class-dir, either by updating an existing POM or generating a new one from deps.edn
 | `:basis`, `:class-dir`
 | `:src-pom`, `:lib`, `:version`, `:src-dirs`, `:resource-dirs`, `:repos`
 
@@ -92,9 +92,9 @@ https://github.com/clojure/tools.build[tools.build] is a library of functions fo
 
 The most common Clojure build creates a jar file containing Clojure source code. To do this with tools.build we'll use the following tasks:
 
-* `load-basis` - to create a project basis
+* `create-basis` - to create a project basis
 * `copy-dir` - to copy Clojure source and resources into a working dir
-* `sync-pom` - to generate a pom file in the working dir
+* `write-pom` - to write a pom file in the working dir
 * `jar` - to jar up the working dir into a jar file
 
 The build.clj will look like this:
@@ -107,18 +107,18 @@ The build.clj will look like this:
 (def lib 'my/lib1)
 (def version (format "1.2.%s" (b/git-count-revs nil)))
 (def class-dir "target/classes")
-(def basis (b/load-basis {:deps-file "deps.edn"}))
+(def basis (b/create-basis {:project "deps.edn"}))
 (def jar-file (format "target/%s-%s.jar" (name lib) version))
 
 (defn clean [_]
   (b/delete {:path "target"}))
 
 (defn jar [_]
-  (b/sync-pom {:class-dir class-dir
-               :lib lib
-               :version version
-               :basis basis
-               :src-dirs ["src"]})
+  (b/write-pom {:class-dir class-dir
+                :lib lib
+                :version version
+                :basis basis
+                :src-dirs ["src"]})
   (b/copy-dir {:src-dirs ["src" "resources"]
                :target-dir class-dir})
   (b/jar {:class-dir class-dir
@@ -161,18 +161,18 @@ When preparing an application, it is common to compile the full app + libs and a
 (def lib 'my/lib1)
 (def version (format "1.2.%s" (b/git-count-revs nil)))
 (def class-dir "target/classes")
-(def basis (b/load-basis {:deps-file "deps.edn"}))
+(def basis (b/create-basis {:project "deps.edn"}))
 (def uber-file (format "target/%s-%s-standalone.jar" (name lib) version))
 
 (defn clean [_]
   (b/delete {:path "target"}))
 
 (defn prep [_]
-  (b/sync-pom {:class-dir class-dir
-               :lib lib
-               :version version
-               :basis basis
-               :src-dirs ["src"]})
+  (b/write-pom {:class-dir class-dir
+                :lib lib
+                :version version
+                :basis basis
+                :src-dirs ["src"]})
   (b/copy-dir {:src-dirs ["src" "resources"]
                :target-dir class-dir}))
 
@@ -221,7 +221,7 @@ For example, consider a parameterization that includes an extra set of dev resou
 (def lib 'my/lib1)
 (def version (format "1.2.%s" (b/git-count-revs nil)))
 (def class-dir "target/classes")
-(def basis (b/load-basis {:deps-file "deps.edn"}))
+(def basis (b/create-basis {:project "deps.edn"}))
 (def jar-file (format "target/%s-%s.jar" (name lib) version))
 (def copy-srcs ["src" "resources"])
 
@@ -231,11 +231,11 @@ For example, consider a parameterization that includes an extra set of dev resou
 
 (defn jar [{:keys [env] :as params}]
   (let [srcs (if (= env :dev) (cons "dev-resources" copy-srcs) copy-srcs)]
-    (b/sync-pom {:class-dir class-dir
-                 :lib lib
-                 :version version
-                 :basis basis
-                 :src-dirs ["src"]})
+    (b/write-pom {:class-dir class-dir
+                  :lib lib
+                  :version version
+                  :basis basis
+                  :src-dirs ["src"]})
     (b/copy-dir {:src-dirs srcs
                  :target-dir class-dir})
     (b/jar {:class-dir class-dir

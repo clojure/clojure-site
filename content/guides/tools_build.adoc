@@ -70,6 +70,12 @@ https://github.com/clojure/tools.build[tools.build] is a library of functions fo
 |
 
 | Process
+| `java-command`
+| Create command line args for a Java process from a basis.
+| `:basis`, `:main`
+| `:java-cmd`, `:java-opts`, `:main-args`
+
+| Process
 | `process`
 | Execute an external command.
 | `:command-args`

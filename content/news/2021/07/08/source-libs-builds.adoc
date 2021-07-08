@@ -1,6 +1,6 @@
-= Rethinking Source Libs and Builds
+= Source Libs and Builds
 Fogus
-2021-07-02
+2021-07-08
 :jbake-type: post
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
@@ -11,7 +11,7 @@ Clojure has evolved over the years and countless individuals and organizations h
 - https://github.com/clojure/tools.deps.alpha/[tools.deps] - a library for building classpaths from deps.edn
 - https://clojure.org/reference/deps_and_cli[CLI] - a command line Clojure program runner
 
-Importantly, the facilities above embrace the idea of source-based libraries (as available from GitHub), as opposed to the more common artifact-centric approach of the Java host ecosystem (which we continue to support as well).  With today's release we are pushing that idea further with more support for source-based libs (particularly on git), a new "batteries-included" story for Clojure builds called https://github.com/clojure/tools.build[tools.build], and more CLI support for https://clojure.org/reference/deps_and_cli#tool_install[tools].
+Importantly, the facilities above embrace the idea of source-based libraries (as available from GitHub), in addition to the more common artifact-centric approach of the Java host ecosystem (which we continue to support as well).  With today's release we are pushing that idea further with more support for source-based libs (particularly on git), a new "batteries-included" story for Clojure builds called https://github.com/clojure/tools.build[tools.build], and more CLI support for https://clojure.org/reference/deps_and_cli#tool_install[tools].
 
 == Improving Source Libs
 

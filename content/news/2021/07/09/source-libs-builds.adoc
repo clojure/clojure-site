@@ -32,8 +32,6 @@ For more details and full examples, see the following:
 * https://clojure.github.io/tools.build[tools.build API]
 * <<xref/../../../../../guides/tools_build#_source_library_jar_build,tools.build guide>>
 
-Often, you may want to call multiple functions in your build program. The Clojure CLI has been extended to support the invocation of multiple functions in a row, and also to take a set of additional parameters as a <<xref/../../../../../reference/deps_and_cli#_trailing_map_argument,trailing map>> (similar to the <<xref/../../../../../news/2021/03/18/apis-serving-people-and-programs#,functionality>> added in Clojure 1.11 alphas). You can use this functionality to parameterize your build as needed - see the guide for an example.
-
 == Source Repos as Libs
 
 Due to Clojure’s dynamic nature, we can directly use source repositories as libraries without the overhead of making, distributing, and consuming artifacts. This release provides some <<xref/../../../../../reference/deps_and_cli#_git,updates for git libraries>>:
@@ -103,7 +101,6 @@ All items below are additive updates, there should be no changes required for ex
 ** A new `:tools/usage` top-level key is used to provide the `:ns-default` and `:ns-aliases` context for a tool
 * <<xref/../../../../../reference/deps_and_cli#,Clojure CLI>>
 ** New `-T` switch is like `-X` (invokes a function) but omits the project `:paths` and `:deps` and adds `:paths ["."]` to provide a clean tool classpath. `-T:aliases` is same as -X, `-Ttoolname` - resolves and uses tool context.
-** Execute <<xref/../../../../../reference/deps_and_cli#_execute_a_function,multiple functions>> with `-X` or `-T`
 ** New API <<xref/../../../../../reference/deps_and_cli#_other_programs,help functions>> available via the built-in `:deps` alias: `help/doc` and `help/dir`
 ** New API function `basis` that can be used to provide a custom basis to use, in combination with other tools that take a basis
 ** New API program `prep` that is used to <<xref/../../../../../reference/deps_and_cli#prep,prep>> source libs

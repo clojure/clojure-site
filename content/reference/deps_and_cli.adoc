@@ -786,7 +786,7 @@ For example:
 
 [source,shell]
 ----
-clj -Ttools install io.github.clojure/tools.deps.graph '{:git/tag "v1.0.56"}' :as deps-graph
+clj -Ttools install io.github.clojure/tools.deps.graph '{:git/tag "v1.0.63"}' :as deps-graph
 ----
 
 Note that git deps can be fully described at tool installation time by using only a git lib name (which will be used to form a git url by convention), and a git tag.

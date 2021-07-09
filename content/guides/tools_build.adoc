@@ -127,7 +127,7 @@ Rather saying all of these each time, you might consider making a composite func
 [source,clojure]
 ----
 (defn all [_]
-  (doto (clean nil) (prep nil) (uber nil)))
+  (do (clean nil) (prep nil) (uber nil)))
 ----
 
 [source,clojure]
@@ -168,7 +168,7 @@ For example, consider a parameterization that includes an extra set of dev resou
                  :target-dir class-dir})
     (b/jar {:class-dir class-dir
             :jar-file jar-file})
-    params)
+    params))
 ----
 
 The other aspects of deps.edn and invocation remain the same. 
@@ -177,7 +177,7 @@ Invocation that activates :dev environment will look like this:
 
 [source,shell]
 ----
-clj -X:build jar :env :dev
+clj -T:build jar :env :dev
 ----
 
 The kv params are passed to the `jar` function.

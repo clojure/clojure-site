@@ -57,7 +57,7 @@ Use the following exec-opt to invoke a function that takes a map:
 
 [source]
 ----
-clojure [clj-opt*] -X[aliases] [a/fn*] [kpath v]*
+clojure [clj-opt*] -X[aliases] [a/fn] [kpath v]* kv-map?
 ----
 
 `-X` is configured with an arg map with `:exec-fn` and `:exec-args` keys, and stored under an alias in `deps.edn`:
@@ -102,13 +102,6 @@ If you want to execute an arbitrary function, you can pass it on the command ins
 clj -X my.qualified/fn :config 789
 ----
 
-Additionally, you may list multiple functions to execute in order. The first function will receive the :exec-args and command-line key-path / value map. Subsequent functions will receive the result of the previous function (which will only include those kvs if the first function passes them along).
-
-[source]
-----
-clj -X my.qualified/fn my.other/fn :config 789
-----
-
 [NOTE]
 ====
 Alias arg maps can also include a default namespace or namespace aliases for resolving the function (see <<#namespaces,"Namespace resolution">> for more details).
@@ -133,7 +126,7 @@ Use the `-T` exec-opt to invoke a tool that does not use the project classpath:
 
 [source]
 ----
-clojure [clj-opt*] -T[name|aliases] a/fn+ [kpath v]*
+clojure [clj-opt*] -T[name|aliases] a/fn [kpath v]* kv-map?
 ----
 
 When running a tool, the project's `:deps` and `:paths` are not used. The function is invoked with a map in the same way as -X execution, built from :exec-args if found in aliases and key/vals provided on the command line.
@@ -767,7 +760,7 @@ The Clojure CLI comes with programs to search for available versions of a tool (
 
 === Find versions
 
-See <<deps_and_cli#find-versions for more on finding versions of a lib or tool (Maven or git).
+See <<deps_and_cli#find-versions,find-versions>> for more on finding versions of a lib or tool (Maven or git).
 
 === Tool installation
 

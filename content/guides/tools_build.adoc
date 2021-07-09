@@ -152,8 +152,11 @@ And then you can run this build with:
 
 [source,shell]
 ----
-clj -T:build clean jar
+clj -T:build clean
+clj -T:build jar
 ----
+
+We expect to be able to do these both together on the command line but that is a work in progress.
 
 == Compiled uberjar application build
 
@@ -193,11 +196,13 @@ When preparing an application, it is common to compile the full app + libs and a
 
 The deps.edn and build execution will look the same as the prior example.
 
-Invocation now includes three functions:
+Invocation now includes three functions (you may not need to call all 3):
 
 [source,clojure]
 ----
-clj -T:build clean prep uber
+clj -T:build clean
+clj -T:build prep
+clj -T:build uber
 ----
 
 Rather saying all of these each time, you might consider making a composite function in build.clj:
@@ -255,7 +260,7 @@ Invocation that activates :dev environment will look like this:
 
 [source,shell]
 ----
-clj -X:build clean jar :env :dev
+clj -X:build jar :env :dev
 ----
 
 The kv params are passed at the end and will be used to invoke the first function, `clean`, then the return of that will be passed to `jar`.

@@ -180,7 +180,7 @@ Invocation that activates :dev environment will look like this:
 clj -X:build jar :env :dev
 ----
 
-The kv params are passed at the end and will be used to invoke the first function, `clean`, then the return of that will be passed to `jar`.
+The kv params are passed to the `jar` function.
 
 == Build tasks
 

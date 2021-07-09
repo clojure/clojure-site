@@ -493,6 +493,22 @@ The `:deps` alias is built into the root deps.edn and provides a default namespa
 
 [[prep]]
 === Prep libs
+
+Source libs with Clojure source can immediately be added to the classpath of a project using it. However, some source libs require some preparation before they can be added, for example due to needing Java compilation, or copying / replacing resource files, etc. The Clojure CLI will now detect projects that need preparation and prevent the program from being run from source unless the prep step has been completed.
+
+If your library needs preparation, add the `:deps/prep-lib` key to your `deps.edn`:
+
+[source,clojure]
+----
+{:paths ["src" "target/classes"]
+ :deps/prep-lib
+ {:ensure "target/classes"
+  :alias :build
+  :fn compile-java}}
+----
+
+If you add this git library as a dependency and try to run a program, the Clojure CLI will download it, detect that it needs preparation, and that it has not been prepared, and exit.
+
 To find and "prepare" libs in the dependency tree you can use the `prep` tool provided with the built-in `:deps` alias:
 
 [source,shell]
@@ -500,15 +516,14 @@ To find and "prepare" libs in the dependency tree you can use the `prep` tool pr
 clj -X:deps prep
 ----
 
-The prep task will find all libs in the dependency expansion and look for libs that are source libs, need prep (based on their `:deps/prep-lib` key), and are not yet prepped (based on the `:ensure` dir in their `:deps/prep-lib` map). Those libs will run the comamnd specified there by alias and function.
+The prep task will find all libs in the dependency expansion and look for libs that are source libs, need prep (based on their `:deps/prep-lib` key), and are not yet prepped (based on the `:ensure` dir in their `:deps/prep-lib` map). Those libs will run the command specified there by alias and function.
 
-By default the prep command will use the root and project deps. However, a different basis can be chosen by using the following params:
+Once a library has been prepped, it does not need to be prepped again by other users of this git library version.
 
-* `:root` - one of `:standard` (the default root deps install), a string path, or a map
-* `:user` - one of `:standard` (usually `~/.clojure/deps.edn`), a string path, or a map
-* `:project` - one of `:standard` (`./deps.edn`), a string path, or a map
-* `:ext` - a string path or a map
-* `:argmaps` - a collection of either alias keywords or literal argmaps to be combined
+[NOTE]
+====
+Should you use a prep step that compiles your Clojure code? Generally, no. All users of this git library on a machine will share the prepared classpath created by the prep step. The choice of Clojure compiler and dependent libraries is better left to each application making using of this lib. For more on using dev-time compilation, see the <<xref/../../guides/dev_startup_time#,Dev Startup Time>> guide.
+====
 
 [[find-versions]]
 === Find versions

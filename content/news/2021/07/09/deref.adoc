@@ -1,0 +1,60 @@
+= Clojure Deref (July 9, 2021)
+Alex Miller
+2021-07-09
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+## Highlights
+
+Rich Hickey https://clojure.org/about/history[wrote a paper] "A History of Clojure" for the https://hopl4.sigplan.org/[HOPL IV] (History of Programming Languages) conference. This week the video for the conference was made available along with the Q&A hosted by Guy Steele. Certainly worth watching/reading if you want to know more about how and why Clojure came to be!
+
+We got the sad news this week that the beloved https://groups.google.com/g/clojure/c/ZWmDEzvn-Js/m/ad4gKdLEAgAJ[4Clojure site is shutting down]. For a long, long time https://github.com/4clojure/4clojure[4Clojure] has been an early stop for many developers learning Clojure, as a source of programming problems, and perhaps more importantly as a font for answer comparisons. Many hearty thanks to David Byrne, Alan Malloy, and everyone that https://github.com/4clojure/4clojure#contributors[contributed] to it over a https://github.com/4clojure/4clojure/commit/ff457d0b3b5f5e5a74316a1747809c25b84b3b5e[decade] of use. There are already a couple nascent efforts to bring it back to life in https://github.com/oxalorg/4ever-clojure[other] https://github.com/porkostomus/4bb[forms] if you want to help.
+
+## In the core
+
+Today we put out a pre-release of the Clojure CLI and a new tools.build library covering many enhancements and new features for working with source libraries (particularly those from git), project builds, and CLI tools. Check out https://clojure.org/news/2021/07/09/source-libs-builds[Source Libs and Builds] for an overview and links to new docs! Feedback is welcome at https://ask.clojure.org or in the #tools-deps channel on Clojurians slack.
+
+## Podcasts and videos
+
+* https://clojurescriptpodcast.com/[ClojureScript Podcast] - Jacek Schae has a new episode about Component with Stuart Sierra
+* https://www.youtube.com/watch?v=vE8d-tXOuXo[FSet] - Renzo Borgatti talked about a faster set library at London Clojurians
+
+## Blogs, discussions, tutorials
+
+* https://blog.davemartin.me/posts/debugging-in-clojure/[Debugging in Clojure] by Dave Martin
+* http://ingesolvoll.github.io/posts/2021-07-05-specced-re-frame/[A la carte specs for your re-frame subs and events] by Inge Solvoll
+* https://www.works-hub.com/learn/why-and-how-to-learn-clojure-developers-insights-de445[Functional Workplaces: Freshcode - Why and How to Learn Clojure] by Artem Barmin
+* https://ostash.dev/posts/2021-07-08-transient-data-structures/[Transient Data Structures in Clojure] by Roman Ostash
+* https://clj-br.github.io/ - also check out the new self-editable user group page for Clojure Brasil! Fascinante!
+
+## Libraries and tools
+
+Some interesting library and tool updates and posts this week:
+
+* https://github.com/clojure/tools.build[tools.build] 0.1.2	- first release, functions for writing build programs
+* https://github.com/wilkerlucio/transito[transito] 2021.07.04 - helpers for common Clojure transit operations 
+* https://github.com/borkdude/deps.clj[deps.clj] https://github.com/borkdude/deps.clj/releases/tag/v0.0.16[0.0.16] - port of the clojure CLI bash script to Clojure
+* https://github.com/wilkerlucio/pathom[Pathom]	2.4.0 - Pathom is a Clojure(script) engine for processing EQL requests
+* https://github.com/fulcrologic/fulcro[Fulcro] 3.5	- A library for development of single-page full-stack web applications in clj/cljs
+* https://github.com/oliyh/carmine-streams[carmine-streams] 0.1.3 - Utility functions for working with Redis streams in carmine
+* https://github.com/clojure-lsp/clojure-lsp[clojure-lsp] https://github.com/clojure-lsp/clojure-lsp/releases/tag/2021.07.05-15.12.14[2021.07.05-15.12.14] - Language Server (LSP) for Clojure
+* https://github.com/walmartlabs/lacinia-pedestal[lacinia-pedestal] 0.16.1 - Expose Lacinia GraphQL as Pedestal endpoints
+* https://github.com/henryw374/tools.jvm[tools.jvm] - new library for getting information about the JVM runtime	
+* https://github.com/alekcz/pcp[PCP] 0.0.1 - Clojure replacement for PHP
+* https://github.com/borkdude/sci[sci] https://github.com/borkdude/sci/blob/master/CHANGELOG.md#v026[0.2.6] - Clojure(Script) interpreter suitable for scripting and Clojure DSLs
+* https://github.com/prestancedesign/inertia-clojure[inertia-clojure] 0.2.3 - Clojure adapter for inertia.js (SPAs with no API)
+* https://github.com/vlaaad/remote-repl/[remote-repl] 1.2.9 - REPL client for remote REPLs, now with https://github.com/vlaaad/remote-repl/#reconnecting[automatic reconnect]
+* https://github.com/BrunoBonacci/mulog[μ/log] 0.8.0 - micro-logging library that logs events and data, not words
+* https://gitlab.com/yogthos/mastodon-bot[mastodon-bot] 1.13.6 - a bot for mirroring Twitter/Tumblr accounts and RSS feeds on Mastodon
+* https://github.com/helins/maestro.clj[maestro.clj] - a new tool for managing a monorepo with deps.edn and babashka
+* https://github.com/liquidz/vim-iced[vim-iced] 3.5.2 - Clojure Interactive Development Environment for Vim8/Neovim
+* https://github.com/borkdude/specter-cli[specter-cli] - A new native Specter CLI using GraalVM native-image and SCI
+* https://calva.io/[Calva] 2.0.203 - Clojure & ClojureScript in Visual Studio Code
+
+## Fun
+
+If you like Minecraft and Clojure, check out https://www.youtube.com/watch?v=qgQwhc_DDSY[Witchcraft] to do your crafting from a REPL!
+

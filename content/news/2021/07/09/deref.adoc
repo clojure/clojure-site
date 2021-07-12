@@ -9,7 +9,7 @@ Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure
 
 ## Highlights
 
-Rich Hickey https://clojure.org/about/history[wrote a paper] "A History of Clojure" for the https://hopl4.sigplan.org/[HOPL IV] (History of Programming Languages) conference. This week the video for the conference was made available along with the Q&A hosted by Guy Steele. Certainly worth watching/reading if you want to know more about how and why Clojure came to be!
+Rich Hickey https://clojure.org/about/history[wrote a paper] "A History of Clojure" for the https://hopl4.sigplan.org/[HOPL IV] (History of Programming Languages) conference. This week https://www.pldi21.org/prerecorded_hopl.11.html[the video] for the conference was made available along with the Q&A hosted by Guy Steele. Certainly worth watching/reading if you want to know more about how and why Clojure came to be!
 
 We got the sad news this week that the beloved https://groups.google.com/g/clojure/c/ZWmDEzvn-Js/m/ad4gKdLEAgAJ[4Clojure site is shutting down]. For a long, long time https://github.com/4clojure/4clojure[4Clojure] has been an early stop for many developers learning Clojure, as a source of programming problems, and perhaps more importantly as a font for answer comparisons. Many hearty thanks to David Byrne, Alan Malloy, and everyone that https://github.com/4clojure/4clojure#contributors[contributed] to it over a https://github.com/4clojure/4clojure/commit/ff457d0b3b5f5e5a74316a1747809c25b84b3b5e[decade] of use. There are already a couple nascent efforts to bring it back to life in https://github.com/oxalorg/4ever-clojure[other] https://github.com/porkostomus/4bb[forms] if you want to help.
 

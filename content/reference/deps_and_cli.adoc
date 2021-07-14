@@ -489,7 +489,7 @@ The `:deps` alias is built into the root deps.edn and provides a default namespa
 * `-X:deps mvn-pom` - generate (or update an existing) pom.xml with deps and paths
 * `-X:deps git-resolve-tags` - resolve git coordinate tags to shas and update deps.edn
 * `-X:deps help/doc` - show the doc strings and parameter lists of the functions given with key `:ns` or function specified by an additional key `:fn`; if neither given then `:ns-default` is used
-* `-X:deps help/dir` - prints the public vars in namespace provided with key `:ns` or `:ns-default` if not given
+* `-X:deps help/dir` - prints the public functions in namespace provided with key `:ns` or `:ns-default` if not given
 
 [[prep]]
 === Prep libs

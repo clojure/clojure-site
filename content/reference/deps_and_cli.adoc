@@ -743,16 +743,51 @@ This mechanism is used by repositories that authenticate using a token, rather t
 
 == Git
 
-The supported git url protocols are https and ssh. https repos will be accessed anonymously and require no additional authentication information. This approach is recommended for public repos. ssh repos may be either public or private.
+The Clojure CLI supports using source-based libs directly from Git repositories. Git libs are downloaded by default to the `~/.gitlibs` directory. The working tree is checked out and cached for each sha included as a dependency.
 
-Support for git deps occurs via shelling out to command-line git (and ssh). git >= 2.5 is required. In general, if access works at the command line, it should work via `clj`. Git is expected to be installed and by default, `git` is expected to be on the path. For ssh access, refer to documentation for your system (typically you will register your ssh keys in `~/.ssh/id_rsa`).
+=== Coord attributes
+
+Git deps are declared with the following info:
+
+* lib name - a qualified symbol
+* coordinate - a map of:
+** `:git/url` - Git url
+** `:git/sha` - a full 40-char sha or possibly a sha prefix if tag provided (`:sha` is also accepted for backwards compatibility)
+** `:git/tag` - git tag name
+
+To download a git lib, two pieces of information must be known - the Git repo url and the sha. These can be provided in several ways. If the lib name follows the conventions below, the Git repo URL will be inferred and does not need to be specified. Otherwise, it can be supplied with `:git/url` in the coordinate.
+
+Lib to url convention:
+
+[cols="<*", options="header", role="table"]
+|===
+|Lib format | Inferred `:git/url`
+|io.github.ORG/PROJECT | `"https://github.com/ORG/PROJECT.git"`
+|com.github.ORG/PROJECT | `"https://github.com/ORG/PROJECT.git"`
+|io.github.ORG/PROJECT | `"https://gitlab.com/ORG/PROJECT.git"`
+|com.github.ORG/PROJECT | `"https://gitlab.com/ORG/PROJECT.git"`
+|io.bitbucket.ORG/PROJECT | `"https://bitbucket.org/ORG/PROJECT.git"`
+|org.bitbucket.ORG/PROJECT | `"https://bitbucket.org/ORG/PROJECT.git"`
+|io.beanstalkapp.ORG/PROJECT | `"https://ORG.git.beanstalkapp.com/PROJECT.git"`
+|com.beanstalkapp.ORG/PROJECT | `"https://ORG.git.beanstalkapp.com/PROJECT.git"`
+|===
+
+The supported git url protocols are https and ssh. https repos will be accessed anonymously and require no additional authentication information. This approach is recommended for public repos. ssh repos may be either public or private.
 
 For more information on creating keys and using the ssh-agent to manage your ssh identities, GitHub provides excellent info:
 
 * https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/
 * https://help.github.com/articles/working-with-ssh-key-passphrases/
 
+Either a full `:git/sha` must be provided or a `:git/tag` with at least a prefix `:git/sha`. The latter is preferred as it provides both a meaningful version (via the tag) and the means to verify the tag has not been moved (via the sha). The CLI will verify that both the tag and prefix sha point to the same full sha commit, and error if not.
+
+=== Version selection
+
+When selecting a version from between sha A and sha B where B has A as an ancestor, then B will be preferred (the "most descendant" one). If A and B do not have an ancestor/descendant relationship (commits in parallel branches for example), this is an error and classpath construction will fail.
+
 === Configuration and debugging
+
+Support for git deps occurs via shelling out to command-line git (and ssh). git >= 2.5 is required. In general, if access works at the command line, it should work via `clj`. Git is expected to be installed and by default, `git` is expected to be on the path. For ssh access, refer to documentation for your system (typically you will register your ssh keys in `~/.ssh/id_rsa`).
 
 The following environment variables can be set to control the git integration:
 
@@ -1005,7 +1040,7 @@ A human numbering system whose interpretation is determined by convention. Often
 
 **Version difference**
 
-This occurs when the dependency expansion contains the same library with more than one "version" specified but where there is a relative ordering (either by number or by SHA etc). Version differences can be resolved by choosing the "later" or "newest" version when that relationship can be established.
+This occurs when the dependency expansion contains the same library with more than one "version" specified but where there is a relative ordering (either by number or by sha etc). Version differences can be resolved by choosing the "later" or "newest" version when that relationship can be established.
 
 **Version conflict**
 

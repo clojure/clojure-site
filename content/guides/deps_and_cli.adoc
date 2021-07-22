@@ -25,7 +25,7 @@ c. making it available on the JVM classpath so Clojure can find it while your RE
 
 Clojure tools specify a syntax and file (deps.edn) for (a), given which they'll handle (b) and (c) automatically.
 
-See <<getting_started#,Getting Started>> for details on how to install the tools. Here we will demonstrate how to get started. See <<xref/../../reference/deps_and_cli#,Deps and CLI>> for a complete reference. See the <<xref/../../releases/tools#changelog>> for version information.
+See <<getting_started#,Getting Started>> for details on how to install the tools. Here we will demonstrate how to get started. See <<xref/../../reference/deps_and_cli#,Deps and CLI>> for a complete reference. See the <<xref/../../releases/tools#,tools releases>> for version information.
 
 == Running a REPL and using libraries
 
@@ -45,7 +45,7 @@ Once in the REPL you can type Clojure expressions and press enter to evaluate th
 user=> (+ 2 3)   # press the `enter` key after typing the expression to evaluate it
 5                # result of expression
 user=>           # type Ctrl-D here to exit the REPL (does not print)
-$ 
+$
 ----
 
 There are many Clojure and Java libraries available that provide access to practically any functionality you might need. For example, consider the commonly used Clojure library https://github.com/dm3/clojure.java-time[clojure.java-time] for working with dates and times.
@@ -494,4 +494,3 @@ user=> (+ 1 1)
 ----
 
 Use Ctrl-D to exit the repl and Ctrl-C to exit the server.
-

@@ -188,7 +188,7 @@ JVM arguments may either be passed on the command line (with `-J`) or by using d
 
 **Execute command**
 
-Finally the command is executed - see the Overview above for the execution options. The already computed (or loaded from cache) classpath, JVM environment, and main arguments if relevant are used in the execution. 
+Finally the command is executed - see the Overview above for the execution options. The already computed (or loaded from cache) classpath, JVM environment, and main arguments if relevant are used in the execution.
 
 = deps.edn
 
@@ -295,7 +295,7 @@ For example, this deps map specifies a (Maven-based) dependency:
  org.clojure/data.priority-map {:mvn/version "0.0.7",
                                 :deps/manifest :mvn,
                                 :dependents [org.clojure/core.cache],
-                                :paths [".../data.priority-map-0.0.7.jar"]} 
+                                :paths [".../data.priority-map-0.0.7.jar"]}
  ... }
 ----
 
@@ -358,7 +358,7 @@ Note that external paths should be at or under the root directory of the project
 
 [source,clojure]
 ----
-{:classpath-overrides 
+{:classpath-overrides
  {org.clojure/clojure "/my/clojure/target"}}
 ----
 
@@ -578,20 +578,27 @@ A pom file must be either provided explicitly, generated from :lib/:version, or 
 
 = Procurers
 
-Coordinates are interpreted by procurers, which know how to determine dependencies for a library and download artifacts. tools.deps.alpha is designed to support an extensible set of procurers that can expand over time. Currently the available procurers are: `mvn`,  `local`, and `git`.
+<<Dependencies,Dependency coordinates>> are interpreted by procurers, which know how to determine dependencies for a library and download artifacts. `tools.deps.alpha` is designed to support an extensible set of procurers.
 
-The procurer to use is determined by examining the attributes of the coordinate and using the first attribute qualifier that's found (ignoring the reserved qualifier "deps"). For example, a Maven coordinate contains a `:mvn/version` attribute and a local coordinate contains a `:local/root` attribute.
+The coordinate is examined to decide what procurer to use. All officially supported procurers expect coordinates to be maps and a specific procurer will be chosen if a certain key is present. If the correct procurer to use is ambiguous an exception will be thrown.
 
-Procurers may also have configuration attributes stored at the root of the configuration map under the same qualifier. 
+.Supported Procurers
+[width="100%",options="header"]
+|====================================================================
+|Procurer         |Key           |Example Coordinate|
+|Git              |`:git/url`    |`{:git/url "https://github.com/sally/awesome.git", :sha "123abcd549214b5cba04002b6875bdf59f9d88b6"}`|
+|Local            |`:local/root` |`{:local/root "/path/to/file.jar"}`|
+|Maven            |`:mvn/version`|`{:mvn/version "1.2.3"}`|
+|====================================================================
 
 == Maven
 
-The `mvn` procurer will look for two keys at the root of the deps.edn:
+The Maven procurer (officially named `mvn`) searches a https://maven.apache.org/[Maven] repository for code or data. It looks for two keys at the root of the deps.edn:
 
-* `:mvn/repos` - map of repository name to repository descriptor, a map currently taking only the key `:url`
 * `:mvn/local-repo` - a path (string) to the local repo cache. If none supplied, Maven uses `~/.m2/repository`.
+* `:mvn/repos` - map of repository name to repository descriptor, currently taking only the key `:url`. The `:mvn/repos` value of different deps.edn files is aggregated using `merge-with`.
 
-The installation deps.edn configures these default Maven repos:
+If the tools have been installed normally then the default <<deps.edn sources,root deps.edn>> configures the Central and Clojars repositories. They can be overridden in another deps.edn by specifying a new definition or removed by specifying `nil`.
 
 [source,clojure]
 ----
@@ -600,11 +607,7 @@ The installation deps.edn configures these default Maven repos:
   "clojars" {:url "https://clojars.org/repo"}}}
 ----
 
-=== Modifying the default repositories
-
-The `:mvn/repos` map is `merge-with` `merge` across the deps.edn sources, so you can modify the default repositories by specifying a new definition or remove it by specifying `nil`.
-
-tools.deps guarantees that the `"central"` and `"clojars"` repositories will be checked first, in that order, for Maven libraries.
+Although a map does not imply any order, the `mvn` procurer treats the two default repositories specially. When searching for Maven libraries the "central" and "clojars" repositories will be searched first (in that order). If they have been overridden then the overriding repositories will be searched first.
 
 === Maven authenticated repos
 
@@ -642,7 +645,7 @@ Then just refer to your dependencies as usual in the `:deps`.
 
 === Maven S3 repos
 
-The tools also provide support for connecting to public and private S3 Maven repositories.
+The `mvn` procurer supports Maven repositories hosted in the https://aws.amazon.com/s3/[Amazon Simple Storage Service]. The tools provide support for connecting to public and private S3 Maven repositories.
 
 Add a `:mvn/repos` that includes the s3 repository root:
 
@@ -743,19 +746,9 @@ This mechanism is used by repositories that authenticate using a token, rather t
 
 == Git
 
-The Clojure CLI supports using source-based libs directly from Git repositories. Git libs are downloaded by default to the `~/.gitlibs` directory. The working tree is checked out and cached for each sha included as a dependency.
+The `git` procurer supports using source-based libs directly from Git repositories. Git libs are downloaded by default to the `~/.gitlibs` directory. The working tree is checked out and cached for each sha included as a dependency.
 
-=== Coord attributes
-
-Git deps are declared with the following info:
-
-* lib name - a qualified symbol
-* coordinate - a map of:
-** `:git/url` - Git url
-** `:git/sha` - a full 40-char sha or possibly a sha prefix if tag provided (`:sha` is also accepted for backwards compatibility)
-** `:git/tag` - git tag name
-
-To download a git lib, two pieces of information must be known - the Git repo url and the sha. These can be provided in several ways. If the lib name follows the conventions below, the Git repo URL will be inferred and does not need to be specified. Otherwise, it can be supplied with `:git/url` in the coordinate.
+To download a git lib, two pieces of information must be known - the Git repo url and the sha. These can be provided in several ways. If the library <<Dependencies,in the mapping of library to coordinate>> follows the conventions below, the Git repo URL will be inferred and does not need to be specified. Otherwise, it can be supplied with `:git/url` in the coordinate.
 
 Lib to url convention:
 
@@ -787,7 +780,7 @@ When selecting a version from between sha A and sha B where B has A as an ancest
 
 === Configuration and debugging
 
-Support for git deps occurs via shelling out to command-line git (and ssh). git >= 2.5 is required. In general, if access works at the command line, it should work via `clj`. Git is expected to be installed and by default, `git` is expected to be on the path. For ssh access, refer to documentation for your system (typically you will register your ssh keys in `~/.ssh/id_rsa`).
+The `git` procurer is implemented via running a shell and executing command-line git commands (and ssh). git >= 2.5 is required. In general, if access works at the command line, it should work via `clj`. Git is expected to be installed and by default, `git` is expected to be on the path. For ssh access, refer to documentation for your system (typically you will register your ssh keys in `~/.ssh/id_rsa`).
 
 The following environment variables can be set to control the git integration:
 
@@ -1009,7 +1002,7 @@ A particular version of a library chosen for use, with information sufficient to
 
 **Dependency**
 
-An expression, at the project/library level, that the declaring library needs the declared library in order to provide some of its functions. Must at least specify library name, might also specify version and other attrs. Actual (functional) dependencies are more fine-grained. 
+An expression, at the project/library level, that the declaring library needs the declared library in order to provide some of its functions. Must at least specify library name, might also specify version and other attrs. Actual (functional) dependencies are more fine-grained.
 
 Dependency types:
 

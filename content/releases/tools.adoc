@@ -37,8 +37,15 @@ Recent official releases are described here. Prereleases and older versions can 
 ** Run a tool with `clojure -T<toolname> fn` (also takes -X style args)
 * <<xref/../../reference/deps_and_cli#,Clojure CLI>>
 ** New `-T` option is like `-X` (executes a function) but omits the project `:deps`, replaces project paths with `["."]`. `-T:aliases` is otherwise same as `-X`. `-Ttoolname` resolves named tool by name and uses that tool lib.
-** Added new built-in -X:deps <<xref/../../reference/tools#_other_programs,help functions>> `help/doc` and `help/dir`
-** Added new API program `prep` that can be used to <<xref/../../reference/deps_and_cli#prep,prep>> source libs
+** TDEPS-198 - -X and -T will not wait to exit if futures/agents have been used
+** TDEPS-182 - Improve deprecation messages to be more accurate
+** TDEPS-183 - Fix -Sdescribe output to be valid EDN on Windows
+* Use https://github.com/clojure/tools.deps.alpha/blob/master/CHANGELOG.md[tools.deps.alpha] 0.12.1003
+* New -X:deps programs:
+** https://clojure.github.io/tools.deps.alpha/clojure.tools.cli.api-api.html#clojure.tools.cli.api/find-versions[`find-versions`] - to find versions of Maven or git libs or tools
+** https://clojure.github.io/tools.deps.alpha/clojure.tools.cli.api-api.html#clojure.tools.cli.api/prep[`prep`] - use to <<xref/../../reference/deps_and_cli#prep,prep>> source libs
+** https://clojure.github.io/tools.deps.alpha/clojure.tools.cli.help-api.html#clojure.tools.cli.help/dir[`help/dir`] - to list available functions in a tool namespace
+** https://clojure.github.io/tools.deps.alpha/clojure.tools.cli.help-api.html#clojure.tools.cli.help/doc[`help/doc`] - to list docs for a tool namespace or function
 
 Read more at <<xref/../../news/2021/07/09/source-libs-builds#,Source Libs and Builds>>.
 

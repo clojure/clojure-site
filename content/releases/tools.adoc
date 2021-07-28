@@ -36,10 +36,12 @@ Recent official releases are described here. Prereleases and older versions can 
 ** Install a tool with `clojure -Ttools install <lib> <coord> :as <toolname>`
 ** Run a tool with `clojure -T<toolname> fn` (also takes -X style args)
 * <<xref/../../reference/deps_and_cli#,Clojure CLI>>
-** New `-T` option is like `-X` (executes a function) but omits the project `:deps`, replaces project paths with `["."]`. `-T:aliases` is otherwise same as `-X`. `-Ttoolname` resolves named tool by name and uses that tool lib.
-** TDEPS-198 - -X and -T will not wait to exit if futures/agents have been used
-** TDEPS-182 - Improve deprecation messages to be more accurate
-** TDEPS-183 - Fix -Sdescribe output to be valid EDN on Windows
+** New `-T` option is like `-X` (executes a function) but does not use the project classpath, instead uses tool classpath (and adds `:paths ["."]` by default). `-T:aliases` is otherwise same as `-X`. `-Ttoolname` resolves named tool by name and uses that tool lib.
+** https://clojure.atlassian.net/browse/TDEPS-198[TDEPS-198] - -X and -T will not wait to exit if futures/agents have been used
+** https://clojure.atlassian.net/browse/TDEPS-182[TDEPS-182] - Improve deprecation messages to be more accurate
+** https://clojure.atlassian.net/browse/TDEPS-183[TDEPS-183] - Fix -Sdescribe output to be valid EDN on Windows
+** https://clojure.atlassian.net/browse/TDEPS-179[TDEPS-179] - Fix incorrect classpath when :classpath-overrides removes path
+** Delay computation of local-repo path (don't compute at load time)
 * Use https://github.com/clojure/tools.deps.alpha/blob/master/CHANGELOG.md[tools.deps.alpha] 0.12.1003
 * New -X:deps programs:
 ** https://clojure.github.io/tools.deps.alpha/clojure.tools.cli.api-api.html#clojure.tools.cli.api/find-versions[`find-versions`] - to find versions of Maven or git libs or tools

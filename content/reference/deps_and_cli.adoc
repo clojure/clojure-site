@@ -496,11 +496,11 @@ The `help/doc` and `help/dir` functions introspect how a tool can be used. Becau
 * `-X:deps help/doc` - show the doc strings and parameter lists of the functions given with key `:ns` or function specified by an additional key `:fn`; if neither given then `:ns-default` is used
 * `-X:deps help/dir` - prints the public functions in namespace provided with key `:ns` or `:ns-default` if not given
 
-Example for listing the set of functions in the `:ns-default` for a tool:
+Example for listing the set of functions in the `:ns-default` for the built in `tools` tool:
 
 [source,clojure]
 ----
-clojure -A:deps -Tnew help/dir
+clojure -A:deps -Ttools help/dir
 ----
 
 Example for listing the set of functions in an alias:
@@ -510,7 +510,7 @@ Example for listing the set of functions in an alias:
 clojure -X:deps:my-alias help/dir
 ----
 
-Print the docstrings for the help namespace itself:
+Print the docstrings for the help namespace itself (note that `help` is defined in the `:ns-aliases` map for `:deps`):
 
 [source,clojure]
 ----

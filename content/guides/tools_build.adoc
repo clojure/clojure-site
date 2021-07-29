@@ -9,7 +9,12 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 toc::[]
 
-https://github.com/clojure/tools.build[tools.build] is a library of functions for building Clojure projects. They are intended to be used in a build program to create user-invokable target functions. 
+https://github.com/clojure/tools.build[tools.build] is a library of functions for building Clojure projects. They are intended to be used in a build program to create user-invokable target functions.
+
+[NOTE]
+====
+The git dep and Clojure CLI examples in this guide assume the use of Clojure CLI 1.10.3.933 or higher. It is possible to use tools.build with earlier versions of deps.edn/Clojure CLI but the deps.edn git coordinates and Clojure CLI commands will vary.
+====
 
 == Source library jar build
 

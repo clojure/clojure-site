@@ -488,8 +488,34 @@ The `:deps` alias is built into the root deps.edn and provides a default namespa
 * `-X:deps tree` - print dependency tree (also see <<dep_expansion#_tree_printing,tree printing>>)
 * `-X:deps mvn-pom` - generate (or update an existing) pom.xml with deps and paths
 * `-X:deps git-resolve-tags` - resolve git coordinate tags to shas and update deps.edn
+
+=== Help functions
+
+The `help/doc` and `help/dir` functions introspect how a tool can be used. Because the `:deps` alias does not include the project classpath, these are not currently useful when executing functions in your own project.
+
 * `-X:deps help/doc` - show the doc strings and parameter lists of the functions given with key `:ns` or function specified by an additional key `:fn`; if neither given then `:ns-default` is used
 * `-X:deps help/dir` - prints the public functions in namespace provided with key `:ns` or `:ns-default` if not given
+
+Example for listing the set of functions in the `:ns-default` for a tool:
+
+[source,clojure]
+----
+clojure -A:deps -Tnew help/dir
+----
+
+Example for listing the set of functions in an alias:
+
+[source,clojure]
+----
+clojure -X:deps:my-alias help/dir
+----
+
+Print the docstrings for the help namespace itself:
+
+[source,clojure]
+----
+clojure -X:deps help/doc :ns help
+----
 
 [[prep]]
 === Prep libs

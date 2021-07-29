@@ -764,8 +764,8 @@ Lib to url convention:
 |Lib format | Inferred `:git/url`
 |io.github.ORG/PROJECT | `"https://github.com/ORG/PROJECT.git"`
 |com.github.ORG/PROJECT | `"https://github.com/ORG/PROJECT.git"`
-|io.github.ORG/PROJECT | `"https://gitlab.com/ORG/PROJECT.git"`
-|com.github.ORG/PROJECT | `"https://gitlab.com/ORG/PROJECT.git"`
+|io.gitlab.ORG/PROJECT | `"https://gitlab.com/ORG/PROJECT.git"`
+|com.gitlab.ORG/PROJECT | `"https://gitlab.com/ORG/PROJECT.git"`
 |io.bitbucket.ORG/PROJECT | `"https://bitbucket.org/ORG/PROJECT.git"`
 |org.bitbucket.ORG/PROJECT | `"https://bitbucket.org/ORG/PROJECT.git"`
 |io.beanstalkapp.ORG/PROJECT | `"https://ORG.git.beanstalkapp.com/PROJECT.git"`

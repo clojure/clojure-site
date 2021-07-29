@@ -517,6 +517,8 @@ Print the docstrings for the help namespace itself:
 clojure -X:deps help/doc :ns help
 ----
 
+* Also see: https://clojure.github.io/tools.deps.alpha/clojure.tools.cli.help-api.html[API docs]
+
 [[prep]]
 === Prep libs
 

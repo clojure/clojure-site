@@ -306,7 +306,7 @@ user=> (deref x)
 user=>
 ----
 `@` is used to get the current value of a reference. The above example uses
-`@` to get the current value of an <<xref/../../reference/atom#,atom>>, but `@` can
+`@` to get the current value of an <<xref/../../reference/atoms#,atom>>, but `@` can
 be applied to other things such as `future` s, `delay` s, `promises` s etc. to
 force computation and potentially block.
 

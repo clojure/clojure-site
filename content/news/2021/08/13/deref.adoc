@@ -11,13 +11,13 @@ Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure
 
 This seems like a good week to highlight some more Clojure unicorns (private companies with valuations of at least 1 billion USD). One of the largest unicorns in the world is of course Nubank($30B). A few weeks ago we highlighted Amperity ($1B), which reached this level with their latest round and back in January AppsFlyer ($1B) became a unicorn. This week we have two new Clojure-built/friendly companies joining the list - https://www.reifyhealth.com/[Reify Health] (https://blog.reifyhealth.com/reify-health-raises-millions-eliminate-waiting-clinical-trials[$2.2B]) and https://taxbit.com/[TaxBit] (https://techcrunch.com/2021/08/12/crypto-tax-software-provider-taxbit-raises-130m-at-a-1-33b-valuation/[$1.5B]). It's great to see people build growing and successful companies with Clojure. Are there other Clojure unicorns? Who is missing from this list?
 
-The Deref was on vacation last week but we saw the results of the 2021 Stackoverflow survey. In 2020, Stackoverflow failed to include Clojure as an option so we were glad to see its return this week. Notably, Clojure again topped the list as the https://insights.stackoverflow.com/survey/2021#section-top-paying-technologies-top-paying-technologies[Top paying technology] (as it did in 2019). Additionally, Clojure was the 2nd https://insights.stackoverflow.com/survey/2021#technology-most-loved-dreaded-and-wanted[most loved programming language]. For those that filled out the survey, thanks for sharing your info!
+The Deref was on vacation last week but we saw the results of the 2021 Stackoverflow survey. In 2020, Stackoverflow failed to include Clojure as an option so we were glad to see its return this week. Notably, Clojure again topped the list as the https://insights.stackoverflow.com/survey/2021#section-top-paying-technologies-top-paying-technologies[top paying technology] (as it did in 2019). Additionally, Clojure was the 2nd https://insights.stackoverflow.com/survey/2021#technology-most-loved-dreaded-and-wanted[most loved programming language]. For those that filled out the survey, thanks for sharing your info!
 
 Finally, shout out to Dmitri Sotnikov for the release of the 3rd edition of https://www.pragprog.com/titles/dswdcloj3/web-development-with-clojure-third-edition/[Web Development with Clojure]!
 
 == In the core
 
-This week, I've been working with Rich on exploring several different options for https://ask.clojure.org/index.php/2817/lighter-weight-aliasing-for-keywords]lightweight keyword aliases] (the most highly ranked request in https://ask.clojure.org). We've now explored several possible options for this - changing the semantics of alias, creating a new kind of symbolic only alias, adding a new clause to `ns`, and currently we are looking at modifying `:require` itself, which is currently looking the most promising. More to come as we make some more syntax decisions and hopefully move this towards the 1.11 stream!
+This week, I've been working with Rich on exploring several different options for https://ask.clojure.org/index.php/2817/lighter-weight-aliasing-for-keywords[lightweight keyword aliases] (the most highly ranked request in https://ask.clojure.org). We've now explored several possible options for this - changing the semantics of alias, creating a new kind of symbolic only alias, adding a new clause to `ns`, and currently we are looking at modifying `:require` itself, which is currently looking the most promising. More to come as we make some more syntax decisions and hopefully move this towards the 1.11 stream!
 
 Fogus has been working lately on new `update-keys` and `update-vals` functions, also one of the top rated https://ask.clojure.org/index.php/1926/adding-functions-map-vals-and-map-keys[requests] on Ask Clojure. He's been working with Rich to refine the docstrings and semantics, and also benchmarking a variety of implementation options.
 
@@ -37,7 +37,8 @@ Lots of great media in the last couple week:
 
 * https://corfield.org/blog/2021/08/02/tools-build/[tools.build] - Sean Corfield
 * https://opencrux.com/blog/dev-diary-aug-21.html[Crux Development Diary #6]
-* https://metaredux.com/posts/2021/08/01/meta-reduce-2021-1-summer-time.html[Meta Reduce 2021.1: Summer Time] - Bozhidar Batsov* https://javahippie.net/clojure/camunda/2021/08/07/calling-clojure-from-camunda.html[Calling Clojure code from Camunda]
+* https://metaredux.com/posts/2021/08/01/meta-reduce-2021-1-summer-time.html[Meta Reduce 2021.1: Summer Time] - Bozhidar Batsov 
+* https://javahippie.net/clojure/camunda/2021/08/07/calling-clojure-from-camunda.html[Calling Clojure code from Camunda]
 * https://otavio.dev/2021/08/12/clojure-journey-ix-destructuring[Clojure Journey IX - Destructuring] - O. Valadares
 * https://camdez.com/blog/2021/08/08/clojure-indentation-commas[Clojure Indentation Commas] - Cameron Desautels
 * https://functional.works-hub.com/learn/feature-of-app-development-in-clojure-55184[Feature of App Development in Clojure]

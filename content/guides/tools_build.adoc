@@ -187,6 +187,47 @@ clj -T:build jar :env :dev
 
 The kv params are passed to the `jar` function.
 
+== Mixed Java / Clojure build
+
+A common case that occurs is needing to introduce a Java implementation class or two into a mostly Clojure project. In this case, you need to compile the Java classes and include them with your Clojure source. In this setup, we'll assume that your Clojure source is in `src/` and Java source is in `java/` (where you actually put these is of course up to you).
+
+This build creates a jar with classes compiled from Java sources and your Clojure sources.
+
+[source,clojure]
+----
+(ns build
+  (:require [clojure.tools.build.api :as b]))
+
+(def lib 'my/lib1)
+(def version (format "1.2.%s" (b/git-count-revs nil)))
+(def class-dir "target/classes")
+(def basis (b/create-basis {:project "deps.edn"}))
+(def jar-file (format "target/%s-%s.jar" (name lib) version))
+
+(defn clean [_]
+  (b/delete {:path "target"}))
+
+(defn compile [_]
+  (b/javac {:src-dirs ["java"]
+            :class-dir class-dir
+			:basis basis
+			:javac-opts ["-source" "8" "-target" "8"]}))
+
+(defn jar [_]
+  (compile nil)
+  (b/write-pom {:class-dir class-dir
+                :lib lib
+                :version version
+                :basis basis
+                :src-dirs ["src"]})
+  (b/copy-dir {:src-dirs ["src" "resources"]
+               :target-dir class-dir})
+  (b/jar {:class-dir class-dir
+          :jar-file jar-file}))
+----
+
+The `compile` task here can also be used as the prep task for this lib.
+
 == Build tasks
 
 Currently, tools.build comes packaged with the following tasks (see the https://clojure.github.io/tools.build[API] for details):

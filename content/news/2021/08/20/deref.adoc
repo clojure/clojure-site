@@ -1,0 +1,61 @@
+= Clojure Deref (Aug 20, 2021)
+Alex Miller
+2021-08-20
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Highlights
+
+Peter Strömberg spent the week working on a very cool zero-install https://calva.io/get-started-with-clojure/["learn Clojure"] story using Gitpod and Calva. He's looking for feedback - check it out, particularly if you are early in your Clojure journey!
+
+In business news, Adam Renklint from Pitch https://pitch.com/blog/every-week[had a nice write up] about how they leverage Clojure as a tool for releasing every week. And congrats to Metabase for their https://techcrunch.com/2021/08/19/insight-partners-leads-30m-round-into-metabase-developing-enterprise-business-intelligence-tools/[$30M round] this week!  
+
+== In the core
+
+I mentioned last week that I was working on https://ask.clojure.org/index.php/2817/lighter-weight-aliasing-for-keywords[lightweight keyword aliases] and I've summarized what we've looked at, the final proposal, and patches at https://clojure.atlassian.net/browse/CLJ-2123[CLJ-2123]. I also spent some "quality" time this week updating all of the tools.deps dependencies. The latest Maven core release bumps some transitive deps with security reports and also fixes a number of concurrency issues we've been seeing through the Clojure CLI. Unfortunately, I also detected a regression in some of the Maven model building code and spent some time filing tickets and working with Maven folks on that (will probably lead to a new Maven release). For now I have worked around the regression so tools.deps/Clojure CLI users won't be impacted.
+
+Fogus has continued work on new https://ask.clojure.org/index.php/1926/adding-functions-map-vals-and-map-keys[`update-keys` and `update-vals` functions] and a related https://clojure.atlassian.net/browse/CLJ-1879[older problem] that affects the benchmarking of those. He's also been doing some work on the Cognitect aws-api.
+
+== Podcasts and videos
+
+* https://www.infoq.com/podcasts/lucas-cavalcanti-nubank-fintech-clojure/[Info interview] - Lucas Cavalcanti from Nubank
+* https://clojurescriptpodcast.com/[S4 E 36] - Jacek Schae on ClojureScript podcast with lvh (part 2)
+* https://www.youtube.com/watch?v=cGeWBJtOz2Y[Introduction to Protojure] - Greg Haskins at Boston Clojure Group
+* https://www.youtube.com/watch?v=Ufyqwzn1RDs[Scicloj status report: Notespace, 2021-08-19] - Daniel Slutsky 
+
+== Blogs
+
+* https://cuddly-octo-palm-tree.com/posts/2021-03-07-review-whyfp/[Review: Why FP Matters (Hughes)] - Carmen La
+* https://lambdaisland.com/blog/2021-08-18-a-tale-of-three-clojures[A Tale of Three Clojures] - Alys Brooks
+* https://www.juxt.pro/blog/radar-2021[JUXT Clojure Radar 2021]
+* http://allentiak.github.io/posts-output/2021-08-13-gsoc-partial-evaluation-report/[GSoC 2021 Partial Evaluation Report] - Leandro Doctors
+* https://camdez.com/blog/2021/08/14/regex-optimization-in-clojure/[Regex Optimization in Clojure] - Cameron Desautels 
+* https://widdindustries.com/clojurescript-datetime-lib-comparison/[Performance comparison of Clojurescript date/time libraries] - Henry Widd 
+* https://metaredux.com/posts/2021/08/17/introducing-incomplete-a-simple-clojure-code-completion-library.html[Introducing incomplete: A Simple Clojure Code Completion Library] - Bozhidar Batsov
+* https://freshcodeit.com/freshcode-post/how-javascript-developer-first-met-clojure[My story of how I first met Clojure] - Pavel from Freshcode 
+* https://martinklepsch.org/100/the-cljdoc-contributions-strategy.html[The cljdoc contributions strategy] - Martin Klepsch 
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* Clojure CLI https://clojure.org/releases/tools#v1.10.3.943[1.10.3.943] - many perf improvements
+* https://github.com/clojure/tools.build[tools.build] v0.1.8 - Library of functions for building Clojure projects 
+* https://github.com/seancorfield/deps-new[deps-new] - NEW - A new, simpler alternative to clj-new
+* https://github.com/javahippie/clj-test-containers[clj-test-containers] 0.5.0 - A lightweight, unofficial wrapper around the Testcontainers Java library 
+* https://github.com/clojure-lsp/clojure-lsp[clojure-lsp] https://github.com/clojure-lsp/clojure-lsp/releases/tag/2021.08.16-19.02.30[2021.08.16-19.02.30]
+* https://github.com/clojure-lsp/lein-clojure-lsp[lein-clojure-lsp] - NEW - Language Server (LSP) for Clojure 
+* https://github.com/fulcrologic/datomic-cloud-backup[datomic-cloud-backup] 0.0.5 - A library for creating and restoring backups of databases in Datomic Cloud
+* https://github.com/seancorfield/honeysql[honeysql] https://cljdoc.org/d/com.github.seancorfield/honeysql/2.0.783/doc/readme[2.0.783] - Turn Clojure data structures into SQL 
+* https://github.com/wilkerlucio/pathom3[pathom3] 2021.08.14-alpha - Logic programming via attribute relationships
+* https://github.com/babashka/pod-babashka-etaoin[pod-babashka-etaoin] - now available for windows - pure Clojure webdriver protocol implementation
+* https://github.com/liquidz/vim-iced[vim-iced] 3.6.0 - Clojure Interactive Development Environment for Vim8/Neovim
+* https://github.com/djblue/portal[portal] https://github.com/djblue/portal/blob/master/CHANGELOG.md#0140---2021-08-15[0.14.0] - A clojure tool to navigate through your data
+* https://github.com/athos/trenchman[trenchman] - NEW Trenchman is a standalone nREPL/prepl client written in Go and heavily inspired by Grenchman. It connects to a running nREPL/prepl server and starts up a REPL session instantly. 
+
+== Video Throwback
+
+The Calva getting started work reminded me of Felienne Hermans' excellent Strange Loop 2019 keynote https://www.youtube.com/watch?v=g1ib43q3uXQ["How to teach programming (and other things)?"]. If you're interested in this area, also check out her upcoming book (available in large part in early release now) https://www.manning.com/books/the-programmers-brain[The Programmer's Brain] based on her research. It's a great read and I think every programmer will learn some interesting things from it.

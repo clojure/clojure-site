@@ -1,0 +1,53 @@
+= Clojure Deref (Aug 27, 2021)
+Alex Miller
+2021-08-27
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Highlights
+
+I'd like to highlight the SciCloj community this week and point you to their https://scicloj.github.io/landing-page/[brand new web page]. So many people doing great work in this area and I appreciate the continued time and attention here. This is an area where Clojure can (and does!) shine but people are not as familiar with it as an option. Check it out and get involved if you're interested.
+
+== In the core
+
+This week I made another pass on the patch for https://ask.clojure.org/index.php/2817/lighter-weight-aliasing-for-keywords[lightweight keyword aliases] based on Rich's feedback and updated the patch on https://clojure.atlassian.net/browse/CLJ-2123[CLJ-2123]. I've also been looking at the idea of providing some wrapper functions in Clojure core for commonly used Java functions and we're investigating what would be most useful there - early leading candidates are number parsing, math functions, and uuid stuff. As always, this is investigative work that may or may not actually result in something.
+
+Fogus has continued to work on https://ask.clojure.org/index.php/1926/adding-functions-map-vals-and-map-keys[`update-keys` and `update-vals` functions], the protocol preference issue in https://clojure.atlassian.net/browse/CLJ-1879[CLJ-1879], and several things for the Cognitect https://github.com/cognitect-labs/aws-api[aws-api].
+
+== Blogs
+
+* https://www.clojuriststogether.org/news/long-term-funding-selections/[Long-term funding selections] - Daniel Compton
+* https://cuddly-octo-palm-tree.com/posts/2021-08-22-cwafi-10/[Cheap interpreter, part 10: fastest one yet, then a hundred times faster] - Carmen La
+* https://dev.to/hlship/down-the-rabbit-hole-with-clojure-defrecord-and-macros-3aal[Down the rabbit hole with Clojure, defrecord, and macros] - Howard Lewis Ship
+* https://lambdaisland.com/blog/2021-08-25-classpath-is-a-lie[The Classpath is a Lie] - Lambda Island
+* https://corfield.org/blog/2021/08/25/deps-edn-monorepo-5/[deps.edn and monorepos V (Polylith)] - Sean Corfield
+* https://otavio.dev/2021/08/26/clojure-journey-x-namespaces/[Clojure Journey X – Namespaces] - Otavio Valadares
+* https://flexiana.com/2021/08/on-the-nature-of-clojure-protocols[On the Nature of Clojure Protocols] - Rok Lenarčič
+* https://kaygun.tumblr.com/post/660171148494028800/multinomial-regression-in-clojure[Multinomial Regression in Clojure] - Atabey Kaygun
+* https://medium.com/helpshift-engineering/hacking-with-handlebars-in-java-and-clojure-part-ii-c4de51f49815[Hacking with Handlebars in Java and Clojure: Part II] - Pranav Gajjewar
+* https://consistent.fit/posts/founder-diaries/[Founder Diaries: Clojure Hackers and a Fitness Startup] - Stepan Parunashvili
+* https://clojureverse.org/t/clojureverse-report-august-22-downtime-planned-changes-to-infra/8083[ClojureVerse Report: August 22 downtime / Planned changes to infra]
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/clojure/tools.build[tools.build] v0.1.9 - Library of functions for building Clojure projects
+* https://github.com/lread/test-doc-blocks[test-doc-blocks] https://github.com/lread/test-doc-blocks/blob/main/CHANGELOG.adoc#v10137-alpha[v1.0.137-alpha] - Test AsciiDoc and CommonMark code blocks found in articles and docstrings
+* https://github.com/eerohele/Tutkain[Tutkain] https://github.com/eerohele/Tutkain/blob/fcfd3c10a064d8d164f8da6b9c25cd51cf2790c4/CHANGELOG.md[0.9.0 (alpha)] - Sublime Text 4 package for interactive Clojure development 
+* https://github.com/clj-commons/rewrite-clj[rewrite-clj] https://github.com/clj-commons/rewrite-clj/blob/main/CHANGELOG.adoc#v10682-alpha[v1.0.682-alpha] - Rewrite Clojure Code and EDN
+* https://github.com/athos/trenchman[trenchman] https://github.com/athos/trenchman/blob/main/CHANGELOG.md#v020---2021-08-24[v0.2.0] - A standalone nREPL/prepl client written in Go
+* https://calva.io[Calva] 2.0.210 - REPL powered environment for enjoyable and productive Clojure and ClojureScript development in Visual Studio Code 
+* https://github.com/clojure-lsp/clojure-lsp[clojure-lsp] https://github.com/clojure-lsp/clojure-lsp/releases/tag/2021.08.24-14.41.56[2021.08.24-14.41.56] - Language Server (LSP) for Clojure
+* https://github.com/IGJoshua/americano[americano] 1.2.0 - A simple tool for compiling Java from the Clojure CLI
+
+== Video Throwback
+
+Many, many years ago Aaron Bedra did a talk at Clojure/conj highlighting the (at the time) poor default state of web app security in Clojure. Because the Clojure community is awesome, that quickly resulted in a lot of changes to the defaults in Ring, Compojure, etc and fixed many of the problems.
+
+Several years later, Joy Clark did a talk called https://www.youtube.com/watch?v=lRHPZXKQVLk[Simple AND Secure?] at EuroClojure 2017. This talk goes through the OWASP Top 10 areas (for 2017) and looks at what Clojure provides for web apps in those areas. I think most of it is still relevant and worth watching (but keep in mind this is 4 years old).
+
+I think now is a good time for an update, both on the threats and the state of Clojure with respect to them. If you're pitching things to a Clojure conference in the next year, I think this would be a great topic!

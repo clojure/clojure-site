@@ -1,51 +1,128 @@
 = Privacy
 Rich Hickey
-2015-01-01
+2021-08-25
 :jbake-type: page
 :toc: macro
 :icons: font
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-== Privacy Policy
+=== PRIVACY POLICY ===
 
-This website is administered by Cognitect, Inc. and our Privacy Policy explains how we collect and use the personal information you provide to us and to assist you in making informed decisions when using our site and services. By visiting the site, you expressly consent to the use and disclosure of your information as described below. We will neither sell personal or anonymous data to any third party, nor distribute personal data to a third party for any reason other than as may be required by law.
+Cognitect, Inc. ("**Cognitect,**" "**we,**" or "**us**") provides the website located at www.clojure.org (the "**Website**").  We value and respect your privacy.  This "**Privacy Policy**" demonstrates our commitment to your right of privacy and explains how we use, disclose and protect the Personal Information (as defined below) of users ("**you,**" "**User,**" or "**your**") of the Website.
+By visiting the Website, you expressly consent to the use and disclosure of your Personal Information as described below.  If you do not agree with the terms set out in this Privacy Policy, please do not visit the Website.
 
-== Types of information we collect
+=== WHAT INFORMATION DO WE COLLECT? ===
 
-We may collect, store and use personal data about your visits to and use of this website. Additionally, we may collect, store, and use personal data such as your name, email address, and phone number that you submit to us. By submitting such information, you authorize Cognitect to contact you with more information about our business services.
+Personal information is data that can be used to identify or contact a single person ("**Personal Information**").  We generally collect or receive Personal Information when you visit the ask.clojure.org domain on the Website in the following ways:
+- when you voluntarily provide information to us, such as when you post questions, answers, or content on our forum or knowledgebase, or contact us; 
+- we collect information automatically through use of our Website; and
+- other parties, such as GitHub, may provide information to us or grant us access to information which can be reasonably linked to you.
 
-We may collect, store and use non-personal data about your visits to and use of this website. We may collect information about your computer and your visits to this website such as your IP address, geographical location, browser type, referral source, length of visit and number of page views. We may use this information in the administration of this website, to improve the website’s usability, and for marketing purposes regarding our business services.
+Each of these methods is described in more detail below:
+- Information You Voluntarily Choose to Provide
+  - The Personal Information we collect from you will vary depending on the services you are using, parts of the Website you are visiting, and how you access those services and/or Website.  The Personal Information you provide to us may include any information you submit to us through email and post on our knowledgebase and forum.
+  - You agree not to submit information that contain or reference, and understand and agree we have no obligations or liability with respect to: (i) information that can identify an individual in relation to any past, present, or future physical or mental health or condition, provision of health care, or payment for the provision of health care, including, but not limited to, diagnoses, treatment information, medical test results, and prescription information; and/or (ii) an individual’s race, ethnic origin, political opinions, religious or philosophical beliefs, genetic data, biometric data, sex life or sexual orientation.  Without limiting the generality of the foregoing, you acknowledge in no event will Cognitect be liable to you or any third party for any direct, indirect, incidental, lost profits, remote, cover, exemplary, consequential, special, or punitive damages, regardless of the foreseeability of such damages resulting from your submission of any such information.
+- Information Collected Automatically When You Use the Website
+Like most websites, we collect basic web traffic information (such as IP addresses) to monitor overall usage of our Website, understand Website traffic patterns, and identify if there are problems on the Website.  
+- Information We Receive from Others
+In some cases, other parties provide us with Personal Information about you, or allow us to collect Personal Information about you.  Although we cannot control your privacy settings at those websites or how those other parties protect your privacy, once we receive information about you through those websites, we will treat it in accordance with this Privacy Policy.
+  - You may also be able to link an account from third-party websites, such as GitHub, to our Website.  This may allow you to use your credentials from the other site or service to sign in to certain features on our Website.  If you link your account from a third-party site or service, we may collect information from those third-party accounts, and any information that we collect will be governed by this Privacy Policy.
 
-We use cookies on this website. A cookie is a text file sent by a web server to a web browser, and stored by the browser. The text file is then sent back to the server each time the browser requests a page from the server. This enables the web server to identify and track the web browser.
+=== HOW DO WE USE YOUR PERSONAL INFORMATION? ===
 
-We may send a cookie which may be stored on by your browser on your computer’s hard drive. We may use the information we obtain from the cookie in the administration of this website, to improve the website’s usability and for marketing purposes. We may also use that information to recognize your computer when you visit our website, and to personalize our website for you.
+We use your Personal Information:
+- to provide the services or information you request;
+- to develop, deliver, and improve our services, user experience and other offerings;
+- to communicate with you regarding your use of the Website and/or Product;
+- to measure the effectiveness of our content;
+- to monitor performance of the Websites;
+- to monitor and moderate online community interactions on the Website (for example, questions, answers and posts on our knowledgebase and forum);
+- to protect our rights and the rights of our Website visitors;
+- to protect the vital interests of the Company, you, or our other Website visitors (for example, in the event of an emergency); and
+- for internal auditing purposes.
+We also collect information in an aggregated form that does not, on its own, permit direct association with any specific individual.  We may collect, use, transfer, and disclose aggregated or otherwise non-personal information for any purpose.
 
-We may use anonymous cookies to record non-personal information such as website activity, date and time of visit, and domain type. We may use this information for retargeting purposes. Most browsers allow you to refuse to accept cookies. (For example, in Internet Explorer you can refuse all cookies by clicking “Tools”, “Internet Options”, “Privacy”, and selecting “Block all cookies” using the sliding selector.) This may have a negative impact upon the usability of many websites, including this one.
+=== HOW DO WE USE COOKIES?  ===
 
-== Using your personal data
+We do not use cookies on the Website.
 
-Personal data submitted on this website will be used for the purposes specified in this privacy policy. In addition to the uses identified elsewhere in this privacy policy, we may use your personal information to improve your browsing experience by personalizing the website or send you information (other than marketing communications) which we think may be of interest as well as marketing communications relating to our business. If you wish to opt-out of receiving such communications you may do so by contacting us at <<mailto:privacy@cognitect.com#,privacy@cognitect.com>>.
+=== WHEN MAY A THIRD PARTY RECEIVE ACCESS TO YOUR PERSONAL INFORMATION? ===
 
-We work with analytics providers such as Google Analytics, which use cookies and similar technologies to collect and analyze information about traffic to our websites and report on activities, trends, and demographics. You can learn about Google's practices by going to https://www.google.com/policies/privacy/, and opt out of them by downloading the Google Analytics opt-out browser add-on, available at https://tools.google.com/dlpage/gaoptout. You can install third party services to block sharing cookies while browsing websites.
+Cognitect will not disclose your Personal Information to any third parties except:
+- to our professional advisers, accountants, insurers, lawyers and auditors on a confidential basis;
+- if Cognitect or its assets are or may be acquired by a third party, the information may be provided to that third party and its advisors;
+- in exceptional circumstances, Cognitect may be required or permitted by law to disclose Personal Information, for example where such disclosure is necessary to meet any applicable law, regulation, legal process or other legal obligation; detect, investigate and help prevent security, fraud or technical issues; and/or protect the rights, property or safety of Cognitect, our employees or other users of the Website.; or
+- otherwise with your consent.
 
-== Using your non-personal data
+Cognitect does not sell your Personal Information.
 
-Non-personal data may be collected and shared with 3rd party services to provide relevant and targeted advertisements through retargeting. All data is anonymous and cannot be used to identify the visitor. Retargeting recognizes that the internet browser has visited the website in the last 90 days. If you would like to not participate in retargeting, you may opt-out by contacting us at <<mailto:privacy@cognitect.com#,privacy@cognitect.com>>.
+Cognitect may disclose your Personal Information to Cognitect’s parent company, affiliated legal entities, subsidiaries and any other businesses with whom we are under common corporate control (collectively the "**Affiliates**").  All of our Affiliates that receive your information from us will comply with the terms of this Privacy Policy with respect to their use and disclosure of such information.
 
-== Other disclosures
+=== HOW DOES COGNITECT KEEP YOUR INFORMATION SECURE? ===
 
-In addition to the disclosures reasonably necessary for the purposes identified elsewhere in this privacy policy, we may disclose information about you to the extent that we are required to do so by law in connection with any legal proceedings or prospective legal proceedings or in order to establish, exercise or defend our legal rights (including providing information to others for the purposes of fraud prevention and reducing credit risk).
+Cognitect is committed to keeping your information secure.  We endeavor to take all reasonable steps to keep secure any information that we hold about you, and to keep this information accurate and up to date.  Your information is stored on secure servers that are protected in controlled facilities.  Other than the sharing of information outlined in this Privacy Policy, personally identifiable information is not accessible by the public, and we require our employees and data processors to respect the confidentiality of any Personal Information.  Any personally identifiable information on user profiles is private.
 
-== Security of your personal data
+=== CHILDREN’S PRIVACY ===
 
-We will take reasonable precautions and follow industry standard security protocols to prevent the loss, misuse or alteration of your personal information. Of course, data transmission over the Internet is inherently insecure, and we cannot guarantee the security of data sent over the Internet.
+We do not direct our Website to children (usually considered to be under the age of 13, depending on the country where you reside).  We also do not intentionally collect Personal Information from children through our Website.  If you are the parent or guardian of a child and you believe that we have inadvertently received Personal Information about that child, please contact us as described in the Contact Us section of this Privacy Policy and we will take reasonable steps to remove the information from our records.
 
-== Policy updates
+=== GAINING ACCESS TO, UPDATING DELETING YOUR INFORMATION OR WITHDRAWING CONSENT ===
 
-We may update this privacy policy when appropriate by posting a new version on our website, and will update the "Last Updated" date to reflect the date the changes take effect. By continuing to use this site after we post any such changes, you are indicating acceptance of the current privacy policy.
+If at any time you want to request, update, correct or remove Personal Information, you are welcome to submit a request to mailto:support@cognitect.com[support@cognitect.com].  We may ask you to verify your identity before we can act on your request.  If you are aware of changes or inaccuracies in your Personal Information, you should inform us of such changes so that our records may be updated or corrected.
 
-== Contact
-If you have any questions about this privacy policy or our treatment of your personal data, or wish to opt-out of data collection by this site, please email us at <<mailto:privacy@cognitect.com#,privacy@cognitect.com>>, or send mail to Cognitect, Inc., 303 S. Roxboro St. Suite #20, Durham, NC 27701.
+We may reject requests that are unreasonably repetitive, require disproportionate technical effort (for example, developing a new system or fundamentally changing an existing practice), risk the privacy of others, or would be extremely impractical (for instance, requests concerning information residing on backup systems).
 
-_Last Updated: 7/07/2014_
+Where we can provide information access and correction, we will do so, except where it would require a disproportionate effort.  We aim to maintain our services in a manner that protects information from accidental or malicious destruction.  Because of this, after you delete information from our services, we may not immediately delete residual copies from our active servers and may not remove information from our backup systems.
+
+Where consent is required for our use of your Personal Information as described herein, you have the right to withdraw or decline your consent and cease your use of the Website.  If you decide to withdraw your consent, such withdrawal will not affect the lawfulness of processing based on consent before such withdrawal.
+
+=== CALIFORNIA PRIVACY RIGHTS ===
+
+California Civil Code Sec. 1798.100, et seq. (also known as the California Consumer Privacy Act of 2018) ("**CCPA**") provides certain rights to California residents regarding their Personal Information.  A California resident has the right to request that we disclose certain information, including: (1) the categories of Personal Information we have collected about that California resident, (2) the categories of sources from which the Personal Information is collected, (3) the business or commercial purpose for collecting or selling the Personal Information, (4) the categories of third parties with whom Cognitect shares Personal Information, and (5) the specific pieces of Personal Information we have collected about the resident.  A California resident has the right to request that we delete his/her Personal Information.  Finally, a California resident has the right not to be discriminated against for exercising his/her privacy rights under the CCPA.  You can request such Personal Information and change your Personal Information by emailing us at mailto:support@cognitect.com[support@cognitect.com].
+
+Pursuant to California Civil Code Section 1789.3, California users are entitled to the following consumer rights notice: California residents may reach the Compliant Assistance Unit of the Division of Consumer Services for the California Department of Consumer Affairs by mail at 1625 North Market Blvd., Sacramento, CA 95834, or by telephone at (916) 445-1254 or (800) 952-5210.
+
+=== LINKS TO OTHER WEBSITES ===
+
+The Website contains links to other websites.  These third-party websites have separate and independent privacy policies.  The privacy policies and applicable terms of use of the third-party websites will govern your interaction with such third-party websites.  We encourage you to review the privacy policy of linked sites, as  Cognitect is not responsible or liable for the practices, content, and/or privacy policies of those third-party websites.  Nonetheless, we seek to protect the integrity of our Website and welcome any feedback about these third-party websites.
+
+=== DATA RETENTION ===
+
+We will retain your Personal Information only for as long as reasonably necessary for the purposes set out above, considering criteria such as applicable rules on statute of limitations, legal requirements and the duration of your use of the Website and receipt of our services.
+
+=== INTERNATIONAL USERS & USERS FROM THE EUROPEAN UNION ===
+
+This section of the Privacy Policy applies only if you use the Website or services covered by this Privacy Policy from a country that is a Member State of the European Union and supplements the information in this Privacy Policy.
+
+We process information defined as personal data under applicable data protection law ("**Personal Data**") for the purposes set out in this Privacy Policy, as described above.
+- Legal Basis for Processing Personal Data: Our legal basis to process Personal Data, such as for the purposes listed above in the "How Do We Use Your Personal Information?" section, includes processing that is: 
+- necessary to comply with legal requirements (for example, to comply with applicable accounting rules and to make mandatory disclosures to law enforcement); 
+- protection of the vital interests of a natural person (for example, in the event of an emergency);
+- necessary for our legitimate interests (for example, to manage our relationship with you and to improve the Website and our services); and 
+- based on your consent (for example, to communicate with you about the Website and services), which may subsequently be withdrawn at any time (by contacting us at mailto:support@cognitect.com[support@cognitect.com]) without affecting the lawfulness of processing based on consent before its withdrawal.
+  - In some instances, you may be required to provide us with Personal Data for processing as described above, in order for us to be able to provide you all of our services, and for you to use all the features of the Website.
+- Please be aware your Personal Data may be collected, managed, transferred to, processed, and stored or accessed in a country different other than your country of residence.  In addition, we may make other disclosures of your Personal Data outside of your country of residence, for example, in the event we receive a legal or regulatory request from a foreign law enforcement body.  We will always take steps designed to ensure any transfer of such information outside your country of residence is carefully managed to protect your rights and interests by implementing appropriate safeguards to protect your Personal Data.  Data protection laws in any such country may be different from those laws of your country of residence.  By visiting the Website and accepting this Privacy Policy, you consent to the transfer of your information, including Personal Data, to such country(ies) as set forth in this Privacy Policy.
+
+  - From time to time, Personal Information we collect from data subjects in the European Economic Area or Switzerland ("EEA or Switzerland") may be transferred to, stored, processed or accessed by us outside of the EEA or Switzerland, for example, the United States.  We will always take steps to ensure any transfer of such information outside the EEA or Switzerland is carefully managed to protect your rights and interests by implementing appropriate safeguards to protect your Personal Data.  
+  - If you would like to find out more about these safeguards in respect of processing your Personal Data and the means by which you can obtain a copy of them, please contact us at mailto:support@cognitect.com[support@cognitect.com].
+- Your Rights: In addition to the rights to access, amend or delete your Personal Data as set out above, you may be entitled, in accordance with applicable law, to object to or request the restriction of processing of your Personal Data, and to request portability of your own Personal Data.  Requests should be submitted to mailto:support@cognitect.com[support@cognitect.com].
+  - If you consider that our processing of your Personal Data infringes applicable law, you may lodge a complaint with a competent supervisory authority, which may be the authority in your Member State of residence or work.
+
+=== FUTURE REVISIONS ===
+
+Cognitect’s Website and activities may continue to grow and change.  Because of this, from time to time, our Privacy Policy will be reviewed and revised.  You should check this page occasionally to ensure you are familiar with those changes.  Whenever we change our Privacy Policy we will post an updated version on our Website, including the last date of revision.
+
+This Privacy Policy was last revised on August 25, 2021.
+
+=== CONTACT US ===
+
+If you have any questions about how we handle your Personal Information and protect your privacy, please feel free to contact us at mailto:support@cognitect.com[support@cognitect.com] or call us at 919.283.2748.  You may also mail requests to:
+
+Cognitect
+
+101 W. Chapel Hill Street., Suite 300
+
+Durham, NC 27701
+
+USA

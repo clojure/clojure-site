@@ -1,0 +1,52 @@
+= Clojure Deref (Sept 10, 2021)
+Alex Miller
+2021-09-10
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Highlights
+
+The Call for Papers is now open for [re:Clojure](https://www.reclojure.org/), a virtual Clojure conference Dec 3-4, and the inimitable Professor Sussman will be doing the keynote! Looking forward to attending!
+
+https://exercism.org[Exercism] has a brand new https://exercism.org/tracks/clojure/concepts[Clojure course] (shoutout to Bobby Towers and everyone that contributed). They are interested in feedback, so give it a look!
+
+== In the core
+
+Fogus's work on update-keys, update-vals, and reduce-kv nondeterminism all went through a couple review cycles and is waiting for Rich, hopefully headed towards 1.11. He has also been looking at how the trailing map support added to Clojure 1.11.0-alpha1 affects specs using `keys*` and we're trying to decide on what needs to be done there.
+
+I've been looking at a variety of things this week related to ease of use around static methods in the JDK and whether any contrib libs should be more readily available to Clojure users. The focus of this conversation has moved all over the place as we analyze various things and I'm not sure where it's all going yet!
+
+== Videos and podcasts
+
+* https://www.therepl.net/episodes/39/[Clojure Goes Fast with Alexander Yakushev] - on The REPL with Daniel Compton
+* https://www.youtube.com/watch?v=6jvG3XbSeos[Wire up ClojureScript SPA to Clojure backend (part 1)] - Daniel Amber
+
+== Blogs
+
+* https://xtdb.com/blog/crux-to-xtdb-rename.html[Crux is evolving into XTDB] - Jeremy Taylor
+* https://tonsky.me/blog/clojure-ui/[Thoughts on Clojure UI framework] - Nikita Tonsky
+* https://www.jocas.lt/blog/post/deftype-unsynchronized-mutable/[Clojure deftype with `unsynchronized-mutable`] - Dainius Jocas
+* https://www.metosin.fi/blog/my-first-project-at-metosin/[My First Project at Metosin!] - Kari Marttila
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/cognitect-labs/test-runner[test-runner] v0.5.0 - Clojure test runner
+* https://github.com/liquidz/antq[antq] 1.0.0 - Point out your outdated dependencies.
+* https://github.com/DomainDrivenArchitecture/dda-k8s-crate[dda-k8s-crate] https://github.com/DomainDrivenArchitecture/dda-k8s-crate/releases/tag/1.2.0[1.2.0] - dda-k8s-crate installs & configures all in one server k8s on a ubuntu system
+* https://github.com/henryw374/js-literal[js-literal] - like inbuild cljs #js literal, but recursive
+* https://github.com/juji-io/datalevin[datalevin] 0.5.8 - A simple, fast and durable Datalog database
+* https://github.com/lambdaisland/fetch[fetch] 1.0.41 - ClojureScript wrapper for the JavaScript fetch API
+* https://github.com/lambdaisland/witchcraft-plugin[witchcraft-plugin] - Add Clojure support (and an nREPL) to any Bukkit-based Minecraft server
+* https://github.com/clj-commons/manifold[manifold] 0.1.9 - A compatibility layer for event-driven abstractions 
+
+== Art
+
+First, I wanted to point to some more https://twitter.com/jackrusher/status/1187703042143150081[art from Jack Rusher], who makes heavy use of Clojure in the making. Follow for a stream of cool stuff.
+
+And second I wanted to highlight the latest essay, https://tylerxhobbs.com/essays/2021/the-rise-of-long-form-generative-art["The Rise of Long-Form Generative Art"] by Tyler Hobbs. It is not about Clojure, but Tyler uses Clojure a lot and always has interesting thoughts in this area.
+

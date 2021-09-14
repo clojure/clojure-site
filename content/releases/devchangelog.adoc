@@ -19,6 +19,22 @@ Note: All dev releases are subject to breaking changes for new work since the pr
 
 == Release 1.11.0
 
+=== 1.11.0-alpha2 (Sep 14, 2021) [[v1.11.0-alpha2]]
+
+* https://clojure.atlassian.net/browse/CLJ-2123[CLJ-2123] Add :as-alias option to require like :as but does not load
+* https://clojure.atlassian.net/browse/CLJ-1959[CLJ-1959] Added implementation of update-keys and tests
+* https://clojure.atlassian.net/browse/CLJ-2651[CLJ-2651] Added implementation of update-vals and tests
+* https://clojure.atlassian.net/browse/CLJ-1098[CLJ-1098] Add clojure.test api to run single test with fixtures and report
+* https://clojure.atlassian.net/browse/CLJ-1879[CLJ-1879] IKVReduce - make old slow path (IPersistentMap) faster and extend to Object, detaching it from any fully enumerable set of types
+* https://clojure.atlassian.net/browse/CLJ-2600[CLJ-2600] Don't block realized? of delay on pending result
+* https://clojure.atlassian.net/browse/CLJ-2649[CLJ-2649] Fix order of checks in some-fn and every-pred for 3 predicate case to match other unrollings
+* https://clojure.atlassian.net/browse/CLJ-2636[CLJ-2636] Get rid of reflection on java.util.Properties when defining \*clojure-version*
+* https://clojure.atlassian.net/browse/CLJ-2350[CLJ-2350] Improve keyword arity exception message
+* https://clojure.atlassian.net/browse/CLJ-2444[CLJ-2444] Fix typo in test-vars docstring
+* https://clojure.atlassian.net/browse/CLJ-1509[CLJ-1509] AOT compile more Clojure namespaces
+* https://clojure.atlassian.net/browse/CLJ-2387[CLJ-2387] Fixed off-by-one in socket server port validation
+* Update dep to core.specs.alpha (0.2.62)
+
 === 1.11.0-alpha1 (Mar 18, 2021) [[v1.11.0-alpha1]]
 
 * https://clojure.atlassian.net/browse/CLJ-2603[CLJ-2603] Clojure keyword argument functions now also accept a map, see <<xref/../../../news/2021/03/18/apis-serving-people-and-programs#,details>>

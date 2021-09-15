@@ -98,16 +98,15 @@ When preparing an application, it is common to compile the full app + libs and a
 (defn clean [_]
   (b/delete {:path "target"}))
 
-(defn prep [_]
+(defn uber [_]
+  (clean nil)
   (b/write-pom {:class-dir class-dir
                 :lib lib
                 :version version
                 :basis basis
                 :src-dirs ["src"]})
   (b/copy-dir {:src-dirs ["src" "resources"]
-               :target-dir class-dir}))
-
-(defn uber [_]
+               :target-dir class-dir})
   (b/compile-clj {:basis basis
                   :src-dirs ["src"]
                   :class-dir class-dir})
@@ -118,26 +117,11 @@ When preparing an application, it is common to compile the full app + libs and a
 
 The deps.edn and build execution will look the same as the prior example.
 
-Invocation now includes three functions (you may not need to call all 3):
+You can create the uber jar build with:
 
 [source,clojure]
 ----
-clj -T:build clean
-clj -T:build prep
 clj -T:build uber
-----
-
-Rather saying all of these each time, you might consider making a composite function in build.clj:
-
-[source,clojure]
-----
-(defn all [_]
-  (do (clean nil) (prep nil) (uber nil)))
-----
-
-[source,clojure]
-----
-clj -T:build all
 ----
 
 == Parameterized builds

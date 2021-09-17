@@ -1,0 +1,95 @@
+= Clojure Deref (Sept 17, 2021)
+Alex Miller
+2021-09-17
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Highlights
+
+This week we released https://clojure.org/releases/devchangelog#v1.11.0-alpha2[Clojure 1.11.0-alpha2] which pulls together several things the core team has been working on plus a variety of older bug fixes. I wanted to expand a bit more on some of the items in the release. In general, it's worth digging into these jira tickets as we expend a fair amount of effort trying to making them good records of problem/alternatives/solution and I'm going to be heavily mining them here.
+
+**https://clojure.atlassian.net/browse/CLJ-2123[Add :as-alias option to require like :as but not load]**
+
+This was the https://ask.clojure.org/index.php/questions/clojure?sort=votes[most voted] open request on Ask Clojure and really stemmed from the big increase in qualified keyword usage from spec. In spec you might name a spec `:my.cool.domain/account` where "my.cool.domain" is not a "real" namespace that can be loaded, it's just a useful qualifier. You can of course use the full qualifier every time but that can be tedious.
+
+Clojure has long had namespace aliases, most commonly defined using the `:require` or `:use` clause of `ns`. However, both `require` and `use` bottom out in `load-file`, which loads the needed namespace before creating the alias. You can alternately use `create-ns` to create a runtime Namespace without loading, and then use `alias` to alias to it, and this has the most common workaround (sometimes with some macro goo around it to make it easier).
+
+We explored several different options for this, and they're enumerated in CLJ-2123. We looked at changing `alias` to automatically create a runtime namespace, but this would change `alias` semantics, possibly in ways that would impact existing users. We looked at creating a new kind of keyword-only alias (I prototyped this - it was a terrible mess to retain backward portability). We looked at expanding `ns` to include a variant of `alias`, but this one would have been a breaking change for the spec (this is kind of a tangent) and we think would have been a bit harder to cover for existing ns analyzers than where we ended up, which was to add a new `:as-alias` clause to `require`, that is essentially like :as, but does not require a loaded namespace.
+
+So you can then do:
+
+[source,clojure]
+----
+(ns foo
+  (:require [my.cool.domain :as-alias d])) ;; works! (doesn't load)
+  
+::d/account ;; valid
+----
+
+The core.specs.alpha spec has been updated to include `:as-alias` and a new version of that library was built and is depended on by 1.11.0-alpha2. Important to note is that this was an additive (via `keys*`), not breaking, change.
+
+**https://clojure.atlassian.net/browse/CLJ-1959[update-keys] and https://clojure.atlassian.net/browse/CLJ-2651[update-vals]**
+
+Also, a highly voted old request, `update-keys` and `update-vals` are functions that have been rewritten many, many times in Clojure code bases and utility libraries (also often called `map-keys`/`map-vals`). When we look at stuff like this, we try to be clear about what challenges we believe are in or out of scope, how generic to make the implementation, what promises we should make in the docstring, and how to achieve the best performance given that. Other impls may make different choices than we did here, which is fine. For example, should this work on all associative types (like vectors?) or just maps? We decided covering the map case well was more important. There was a lot of perf testing done on implementation choices - that's not all covered in the tickets.
+
+**https://clojure.atlassian.net/browse/CLJ-1879[IKVReduce - make old slow path (IPersistentMap) faster and extend to Object, removing impl ambiguity]**
+
+This is kind of an old ticket, but had a direct impact on testing for update-keys and update-vals, which rely on the IKVReduce protocol. Protocols are an open extension mechanism where choices are made based on type matching (including Java inheritance). The IKVReduce protocol also has an associated Java interface IKVReduce which can be used by Java implementation classes needing to hook into the protocol (similar pattern is used in other places as well inside Clojre's impl). To cover this, the IKVReduce protocol is extended to both the IKVReduce interface (fast impl) and to the IPersistentMap interface (slow impl). If a concrete impl (like PersistentHashMap) matches multiple types, the "closest" one will match. However, PHM implements both of these and it's essentially a "tie". What we've seen over the years is that based on the ordering of things returned from reflection, it's possible for PHM to route to either of the two protocol extensions, sometimes leading to much slower results for reduce-kv.
+
+We looked at a bunch of ways to resolve this - tweaks to reduce-kv, special cases for the built-in impls (PHM, PAM), adding a protocol preference system like multimethods have, etc. There are tradeoffs in all these approaches, some pretty significant. In the end we decided that another way to remove the ambiguity is to define the "slow fallback" implementation on Object, rather than on IPersistentMap. This widens the scope of what reduce-kv can be applied to, essentially changing it from "maps" to "colls that seq to map entries". The Object case is always a last resort case, so there is no longer any ambiguity - PHM will always take the "fast" through IKVReduce interface (self reduction). Also, this means that `reduce-kv` now works on java.util.Maps (another very old jira request) and potentially other useful things. Needless to say, there was a lot of perf testing done on this and several of the alternatives. Along the way, it seemed clear that the "slow" path fallback was a lot slower than it needed to be, so that was also rewritten for better performance. The major tradeoff in the solution we landed on is that `(satisfies? IKVReduce x)` is now true for everything. As an internal protocol rarely used directly, there is very little code in the wild doing anything like this (https://github.com/cgrand/xforms[xforms] is the most notable example we found and we've been consulting with Christophe about that one).
+
+The end result of all this is that `reduce-kv` is faster in the "slow" case, will predictably use the "fast" case when it can, and can be applied to more types of colls.
+
+**Other enhancements and bug fixes**
+
+* https://clojure.atlassian.net/browse/CLJ-1908[CLJ-1908] Add clojure.test api run-test and run-test-var to run single test with fixtures and report
+* https://clojure.atlassian.net/browse/CLJ-2600[CLJ-2600] Don’t block realized? of delay on pending result
+* https://clojure.atlassian.net/browse/CLJ-2649[CLJ-2649] Fix order of checks in some-fn and every-pred for 3 predicate case to match other unrollings
+* https://clojure.atlassian.net/browse/CLJ-2636[CLJ-2636] Get rid of reflection on java.util.Properties when defining *clojure-version*
+* https://clojure.atlassian.net/browse/CLJ-2350[CLJ-2350] Improve keyword arity exception message
+* https://clojure.atlassian.net/browse/CLJ-2444[CLJ-2444] Fix typo in test-vars docstring
+* https://clojure.atlassian.net/browse/CLJ-1509[CLJ-1509] AOT compile more Clojure namespaces
+* https://clojure.atlassian.net/browse/CLJ-2387[CLJ-2387] Fix off-by-one in socket server port validation
+
+We've been working on creating some new internal processes for working through jiras, and this is the first chunk of those. We're hoping to get a mixture of highly voted (important to the community), important from core team perspective, and low-hanging fruit into each 1.11 alpha/beta. I don't have a prediction for when we will "finish" 1.11 as it depends a lot on what we decide to include, and that is an ongoing discussion.
+
+As always, it's a huge help to us if you can swap it into your build and just run your test suite to see if anything breaks (or is faster!). We'd love to hear that feedback, even if it's "all good".
+
+== Videos and podcasts
+
+* https://www.youtube.com/watch?v=grL3DQyvneI[Turning your editor into a Clojure IDE with clojure-lsp] - Eric Dallo
+* https://www.therepl.net/episodes/40/[The REPL] - Daniel Compton interviews Paulus Esterhazy
+* https://clojurescriptpodcast.com/[ClojureScript Podcast] - Jacek Schae's final part of the interview with lvh	
+* https://soundcloud.com/defn-771544745/76-the-desi-episode-with-kartik-gupta-and-hariom-gaur[defnpodcast] - The Desi Episode with Kartik Gupta and HariOm Gaur
+
+== Blogs
+
+* https://davidvujic.blogspot.com/2021/09/clojurescript-amplified.html[ClojureScript. Amplified.] - David Vujic
+* https://slipset.github.io/posts/all-your-base[Dependency injection, perhaps? Part 3] - Erik Assum
+* https://arthurbarroso.github.io/testing-the-dom-using-shadow-and-reagent.html[Testing the DOM using shadow-cljs and Reagent] - Arthur Barroso
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://vlaaad.github.io/reveal-pro[Reveal Pro] - Read Eval Visualize Loop for Clojure, Supercharged
+* https://github.com/lk-geimfari/secrets.clj[secrets.clj] 1.0.0 - A Clojure library designed to generate cryptographically strong random numbers.
+* https://github.com/seancorfield/build-uber-log4j2-handler[build-uber-log4j2-handler] v0.1.0 - A conflict handler for log4j2 plugins cache files for the tools.build uber task.
+* https://github.com/seancorfield/build-clj[build-clj] v0.3.0 - Common build tasks abstracted into a library
+* https://github.com/clojure/tools.build[tools.build] v0.5.0 - Library of functions to make Clojure builds
+* https://github.com/oliyh/martian[martian] v0.1.18 - The HTTP abstraction library for Clojure/script, supporting Swagger, Schema, re-frame and more
+* https://github.com/clj-kondo/clj-kondo[clj-kondo] https://github.com/clj-kondo/clj-kondo/blob/master/CHANGELOG.md#20210914[2021.09.15] - A linter for Clojure code that sparks joy
+* https://github.com/johanthoren/julian[julian] 1.0.0 - A Clojure(Script) library to convert between Julian Day Number and common time
+* https://github.com/erp12/fijit[fijit] 1.0.7 - A Clojure library for Scala interop
+* https://github.com/FieryCod/holy-lambda[holy-lambda] 0.5.0 - The extraordinary simple, performant, and extensible custom AWS Lambda runtime for Clojure
+* https://github.com/PEZ/clojure-exercism-template[clojure-exercism-template]  - Learn more Clojure and Interactive Programming with Exercism in the browser
+* https://github.com/clojure-lsp/clojure-lsp[clojure-lsp] https://github.com/clojure-lsp/clojure-lsp/releases/tag/2021.09.13-19.32.00[2021.09.13-19.32.00] - Language Server (LSP) for Clojure
+* https://github.com/clj-easy/graal-build-time[graal-build-time] 0.0.11 - Library to initialize Clojure packages at build time with GraalVM native-image
+* https://convex.world/[https://convex.world/]  - Convex is an open, decentralised, and efficient technology platform built in the spirit of the original Internet
+* https://github.com/eerohele/Tutkain[Tutkain] https://github.com/eerohele/Tutkain/blob/3700db4e194aeb9cc1f5b74aafe4ccd1588353e6/CHANGELOG.md#0100-alpha---2021-09-15[0.10.0] - A Sublime Text package for interactive Clojure development
+* https://github.com/juji-io/datalevin[datalevin] 0.5.13 - A simple, fast and versatile Datalog database
+* https://github.com/babashka/babashka[babashka] https://github.com/babashka/babashka/blob/master/CHANGELOG.md#061[0.6.1] - Native, fast starting Clojure interpreter for scripting
+* https://github.com/athos/trenchman[trenchman] v0.3.0 - A standalone nREPL/prepl client written in Go and heavily inspired by Grenchman

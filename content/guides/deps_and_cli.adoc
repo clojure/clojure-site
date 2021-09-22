@@ -329,7 +329,7 @@ Some dependencies will require a preparation step before they can be used on the
 {:paths ["src" "target/classes"]
  :deps/prep-lib {:alias :build
                  :fn compile
-				 :ensure "target/classes"}}
+                 :ensure "target/classes"}}
 ----
 
 Including the top-level key `:deps/prep-lib` tells the tools.deps classpath construction that something extra is needed to prepare this lib and that can be performed by invoking the `compile` function in the `:build` alias. Once the prepare step has been done, it should create the path `"target/classes"` and that can be checked for completion.

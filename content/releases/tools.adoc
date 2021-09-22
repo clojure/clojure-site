@@ -22,12 +22,16 @@ For more information see the following docs:
 
 Recent official releases are described here. Prereleases and older versions can be found in the https://github.com/clojure/brew-install/blob/1.10.3/CHANGELOG.md[repo changelog].
 
-=== 1.10.3.981 (Sep 21, 2021) [[v1.10.3.981]]
+=== 1.10.3.986 (Sep 22, 2021) [[v1.10.3.986]]
 
 * Fix nested session cache computation for local pom model building
+* Use https://github.com/clojure/tools.deps.alpha/blob/master/CHANGELOG.md[tools.deps.alpha] 0.12.1048
+
+=== 1.10.3.981 (Sep 21, 2021) [[v1.10.3.981]]
+
 * Update to latest AWS API libs
 * Downgrade Maven resolver libs to better match Maven core libs
-* Use https://github.com/clojure/tools.deps.alpha/blob/master/CHANGELOG.md[tools.deps.alpha] 0.12.1048
+* Use https://github.com/clojure/tools.deps.alpha/blob/master/CHANGELOG.md[tools.deps.alpha] 0.12.1041
 
 === 1.10.3.967 (Sep 1, 2021) [[v1.10.3.967]]
 

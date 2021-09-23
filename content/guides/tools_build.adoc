@@ -100,11 +100,6 @@ When preparing an application, it is common to compile the full app + libs and a
 
 (defn uber [_]
   (clean nil)
-  (b/write-pom {:class-dir class-dir
-                :lib lib
-                :version version
-                :basis basis
-                :src-dirs ["src"]})
   (b/copy-dir {:src-dirs ["src" "resources"]
                :target-dir class-dir})
   (b/compile-clj {:basis basis

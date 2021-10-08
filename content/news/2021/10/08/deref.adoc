@@ -75,7 +75,7 @@ New releases and tools this week:
 * https://github.com/borkdude/deps.clj[deps.clj] v0.0.19 - A faithful port of the clojure CLI bash script to Clojure. 
 * https://github.com/clj-kondo/clj-kondo[clj-kondo] https://github.com/clj-kondo/clj-kondo/blob/master/CHANGELOG.md#20210925[2021.09.25] - A linter for Clojure code that sparks joy
 * https://github.com/babashka/babashka[babashka] https://github.com/babashka/babashka/blob/master/CHANGELOG.md#062[0.6.2] - Native, fast starting Clojure interpreter for scripting
-* https://gitlab.com/domaindrivenarchitecture/c4k-jira[https://gitlab.com/domaindrivenarchitecture/c4k-jira]  - c4k-jira provides a k8s deployment for jira
+* https://gitlab.com/domaindrivenarchitecture/c4k-jira[c4k-jira]  - c4k-jira provides a k8s deployment for jira
 * https://github.com/liquidz/vim-iced[vim-iced] 3.7.0 - Clojure Interactive Development Environment for Vim8/Neovim
 * https://github.com/seancorfield/next-jdbc[next-jdbc] 1.2.731 - A modern low-level Clojure wrapper for JDBC-based access to databases
 * https://github.com/seancorfield/honeysql[honeysql] 2.1.818 - Turn Clojure data structures into SQL

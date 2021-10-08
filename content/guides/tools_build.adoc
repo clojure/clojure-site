@@ -45,7 +45,7 @@ So executing `clj -T:build jar` will use an effective classpath here of:
 
 The `:ns-default` specifies the default Clojure namespace to find the function specified on the classpath. Because the only local path is the default `"."`, we should expect to find the build program at `build.clj` in the root of our project. Note that the path roots (via the `:build` alias `:paths`) and the namespace of the build program itself relative to those paths roots are fully under your control. You may wish to put them in a subdirectory of your project too.
 
-And then finally, on the command line we specify the function to run in the build, here `jar`. That function will be executed in the `build` namespace, and there may be more than one option, and those functions can take kwarg style options as well. More on that below.
+And then finally, on the command line we specify the function to run in the build, here `jar`. That function will be executed in the `build` namespace, and uses the same arg passing style as execution with -X - args are provided with alternating keys and values at the end.
 
 The remainder of this guide demonstrates individual common use cases and how to satisfy them with tools.build programs.
 

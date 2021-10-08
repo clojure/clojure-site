@@ -535,7 +535,15 @@ If your library needs preparation, add the `:deps/prep-lib` key to your `deps.ed
   :fn compile-java}}
 ----
 
-If you add this git library as a dependency and try to run a program, the Clojure CLI will download it, detect that it needs preparation, and that it has not been prepared, and exit.
+The keys under `:deps/prep-lib` are:
+
+* `:ensure` - directory existence determines whether prep is needed (if it exists, prep has been done)
+* `:alias` - alias to invoke with `-T` during prep
+* `:fn` - function to invoke with `-T` during prep
+
+Thus, the deps.edn should also have an alias that can execute the fn specified. See the <<xref/../../../guides/tools_build#,tools.build Guide>> for how to use tools.build to define a build script with an invokable function.
+
+If you add this git library as a dependency and try to run a program, the Clojure CLI will download it, detect that it needs preparation, and that it has not been prepared ("target/classes" path does not exist), and exit.
 
 To find and "prepare" libs in the dependency tree you can use the `prep` tool provided with the built-in `:deps` alias:
 
@@ -544,7 +552,7 @@ To find and "prepare" libs in the dependency tree you can use the `prep` tool pr
 clj -X:deps prep
 ----
 
-The prep task will find all libs in the dependency expansion and look for libs that are source libs, need prep (based on their `:deps/prep-lib` key), and are not yet prepped (based on the `:ensure` dir in their `:deps/prep-lib` map). Those libs will run the command specified there by alias and function.
+The prep task will find all libs in the dependency expansion and look for libs that are source libs, need prep (based on their `:deps/prep-lib` key), and are not yet prepped (based on the `:ensure` dir in their `:deps/prep-lib` map). Those libs will run the command specified there by alias and function, as if:  `clj -T:<alias> <fn>`.
 
 Once a library has been prepped, it does not need to be prepped again by other users of this git library version.
 

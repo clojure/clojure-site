@@ -34,9 +34,14 @@ As such, you will need an alias in your deps.edn that defines the build classpat
 The git dep and Clojure CLI examples in this guide assume the use of Clojure CLI 1.10.3.933 or higher. It is possible to use tools.build with earlier versions of deps.edn/Clojure CLI but the deps.edn git coordinates and Clojure CLI commands will vary.
 ====
 
-As mentinoed above, running a tool with -T removes the project :paths and :deps. Using `-T:build` will use only the `:paths` and `:deps` from the `:build` alias. The root deps.edn is still included, which will pull in Clojure as well (but it would also come in as a dependency of tools.build). The :paths are not specified here, so no additional paths are added, however, `-T` includes the project root `"."` as a path by default.
+As mentioned above, running a tool with -T removes the project :paths and :deps. Using `-T:build` will use only the `:paths` and `:deps` from the `:build` alias. The root deps.edn is still included, which will pull in Clojure as well (but it would also come in as a dependency of tools.build). The :paths are not specified here, so no additional paths are added, however, `-T` includes the project root `"."` as a path by default.
 
-So executing `clj -T:build jar` will use an effective classpath here of `"."`, clojure (from the root deps.edn), tools.build (from the `:build` alias `:deps`), and the transitive dependencies included by those deps.
+So executing `clj -T:build jar` will use an effective classpath here of:
+
+* `"."`
+* clojure (from the root deps.edn)
+* tools.build (from the `:build` alias `:deps`)
+* the transitive dependencies needed by clojure and tools.build
 
 The `:ns-default` specifies the default Clojure namespace to find the function specified on the classpath. Because the only local path is the default `"."`, we should expect to find the build program at `build.clj` in the root of our project. Note that the path roots (via the `:build` alias `:paths`) and the namespace of the build program itself relative to those paths roots are fully under your control. You may wish to put them in a subdirectory of your project too.
 

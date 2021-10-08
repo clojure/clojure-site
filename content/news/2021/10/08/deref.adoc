@@ -1,0 +1,82 @@
+= Clojure Deref (Oct 8, 2021)
+Alex Miller
+2021-10-08
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+Last week was a bit of a Deref holiday as your host was otherwise occupied running the Strange Loop conference (in-person)! It was really great to see so many familiar friends and (masked) faces at a conference again. As I said during the opener, turns out it actually is the people you meet along the way that make it all worthwhile. :) Can't wait to see you all at a Clojure conference in the future.
+
+== In the core
+
+Fogus has been working through the spec-related updates for the change in 1.11.0-alpha1 to support a trailing map in calls to kwarg functions (typically spec'ed with keys* specs). This was not something we were that worried about initially, but it has turned out to be a far more intricate puzzle than we imagined.
+
+For example, you might have a function and a spec:
+
+[source,clojure]
+----
+;; opts can be kwarg :a or :b 
+(defn config [name & opts] ...)
+;; (config "a-name" :a 100 :b 200)
+
+;; spec options with keys*
+(s/def ::a int?)
+(s/def ::b int?)
+(s/fdef config
+  :args (s/cat :name string? :opts (s/keys* :opt-un [::a ::b])))
+  
+;; now a valid call, but fails the spec when instrumented
+(stest/instrument `config)
+(config "a-name" {:a 100 :b 200})
+Execution error - invalid arguments to user/config at (REPL:1).
+{:a 100, :b 200} - failed: keyword? at: [:opts :clojure.spec.alpha/k]
+----
+
+The initial thought was just to make keys* spec smarter, but really on close examination this is problematic. keys* can be used in multiple contexts - in a custom data structure with its own syntax, in macro definitions, or in function definitions. In the first couple cases, this is effectively language created by a designer and adding newly allowed cases is probably wrong (some good examples can be built from the `ns` specs). On the other side, we could leave keys* alone and add a new spec that you could "opt into" when you want this (but then everyone has to update their function specs). But we're trying to find a middle path by hooking instrument for functions to transform the input before it is checked with keys*, so that particular case continues to work automatically in 1.11 with existing specs (and other uses are not affected). Anyhow, that work is getting close.
+
+I've been working on several things, but one ongoing thing we're exploring is some way to surface some of the static methods in java.lang.Math etc so that they are both fast and more "visible". At the moment I'm going down the path of generating a namespace by reflecting Math - originally as a dynamic thing, now looking more at code gen pre build. Still not sure exactly where this will end up. I also spent a lot of time in the last couple weeks diving into a new batch of jiras and each of those is its own little world and I will talk more about some of those as they move through the pipeline.
+
+== Videos and podcasts
+
+* https://www.cognitect.com/cognicast/162[Cognicast] - Craig Andera	
+* https://www.therepl.net/episodes/42/[The REPL] - Faster JSON parsing with Erik Assum	
+* https://anchor.fm/lostinlambduhhs/episodes/lambduhh--Jordan-Miller-I-e185vtp[:lambduhh (= Jordan Miller "I" )] - Jordan Miller
+* https://clojurescriptpodcast.com/[ClojureScript podcast] - Config with Alexander Yakushev	
+* https://lispcast.com/the-humble-programmer/[The Humble Programmer] - Eric Normand
+* https://lispcast.com/programmer-as-navigator/[Programmer as Navigator] - Eric Normand
+* https://www.youtube.com/watch?v=04NfYSLQfY8[Use RabbitMQ with Clojure] - Daniel Amber
+* https://www.youtube.com/watch?v=_8z1r8KV9uk[Spock - Prolog in Clojure, logically] - Mauricio Szabo from London Clojurians
+
+== Blogs
+
+* https://noahtheduke.github.io/posts/2021-10-02-from-elegance-to-speed-with-clojure/[From Elegance to Speed, with Clojure] - Noah Bogart
+* https://corfield.org/blog/2021/10/01/deps-edn-monorepo-6/[deps.edn and monorepos VI (Polylith)] - Sean Corfield
+* https://cuddly-octo-palm-tree.com/posts/2021-10-03-monads-clojure/[Monads for Clojure programmers] - Gary Verhaegen
+* https://nextjournal.com/mk/clerk-preview[Clerk - Local-First Notebooks for Clojure] - Martin Kavalar
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/lambdaisland/deja-fu[deja-fu]  - Lightweight ClojureScript local time/date library
+* https://github.com/babashka/neil[neil]  - A CLI which adds common features to your #clojure deps.edn projects.
+* https://github.com/yetanalytics/lrsql[lrsql]  - A SQL-based Learning Record Store 
+* https://github.com/yetanalytics/colossal-squuid[colossal-squuid]  - Library for generating sequential UUIDs, or SQUUIDs
+* https://github.com/rm-hull/nvd-clojure[nvd-clojure] https://github.com/rm-hull/nvd-clojure/blob/1.7.0/CHANGELOG.md[1.7.0] - National Vulnerability Database dependency-checker plugin for Leiningen
+* https://github.com/borkdude/sci[sci] https://github.com/borkdude/sci/blob/master/CHANGELOG.md#v027[0.2.7] - Configurable Clojure interpreter suitable for scripting and Clojure DSLs
+* https://clojure-lsp.io/[clojure-lsp] 2021.09.30-15.28.01 - A Language Server for Clojure(script)
+* https://calva.io[Calva] 2.0.214 - Calva is an integrated REPL powered environment for enjoyable and productive Clojure and ClojureScript development in Visual Studio Code.
+* https://github.com/sultanov-team/secret-keeper[secret-keeper] https://github.com/sultanov-team/secret-keeper/tree/0.3.61[0.3.61] - A Clojure(Script) library for keeping your secrets under control
+* https://github.com/borkdude/api-diff[api-diff]  - Compare two mvn libraries or two directories for breaking API changes and deprecations.
+* https://github.com/askonomm/ruuter[ruuter]  - A tiny, zero-dependency HTTP router
+* https://github.com/liquidz/vim-iced[vim-iced] 3.7.0 - Clojure Interactive Development Environment for Vim8/Neovim
+* https://github.com/borkdude/deps.clj[deps.clj] v0.0.19 - A faithful port of the clojure CLI bash script to Clojure. 
+* https://github.com/clj-kondo/clj-kondo[clj-kondo] https://github.com/clj-kondo/clj-kondo/blob/master/CHANGELOG.md#20210925[2021.09.25] - A linter for Clojure code that sparks joy
+* https://github.com/babashka/babashka[babashka] https://github.com/babashka/babashka/blob/master/CHANGELOG.md#062[0.6.2] - Native, fast starting Clojure interpreter for scripting
+* https://gitlab.com/domaindrivenarchitecture/c4k-jira[https://gitlab.com/domaindrivenarchitecture/c4k-jira]  - c4k-jira provides a k8s deployment for jira
+* https://github.com/liquidz/vim-iced[vim-iced] 3.7.0 - Clojure Interactive Development Environment for Vim8/Neovim
+* https://github.com/seancorfield/next-jdbc[next-jdbc] 1.2.731 - A modern low-level Clojure wrapper for JDBC-based access to databases
+* https://github.com/seancorfield/honeysql[honeysql] 2.1.818 - Turn Clojure data structures into SQL
+

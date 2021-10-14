@@ -1,0 +1,48 @@
+= Clojure Deref (Oct 14, 2021)
+Alex Miller
+2021-10-14
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Videos and podcasts
+
+* https://youtu.be/-XegX_K6w-o[Asami: Turn your JSON into a Graph in 2 Lines] - Paula Gearon, from Strange Loop 2021
+* https://www.youtube.com/watch?v=U-BzDXTTRCo[Compiling Probabilistic Programs with Daphne] - Christian Weilbach from London Clojurians
+* https://vimeo.com/343941372[Clojure Macros "No more copypasta! Use mac’roni!"] - Eric Loren	
+
+== Blogs
+
+* https://dev.solita.fi/2021/10/14/grokking-clojure-transducers.html[Grokking Clojure transducers] - Eero Helenius
+* https://bsless.github.io/fast-and-elegant-clojure/[Fast and Elegant Clojure] - Ben Sless
+* https://corfield.org/blog/2021/10/13/deps-edn-monorepo-7/[deps.edn and monorepos VII (Polylith)] - Sean Corfield
+* https://thomas-sojka.tech/real-life-use-cases-for-cljs-macros.html[Real-life use cases for CLJS macros] - Thomas Sojka
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/walmartlabs/lacinia[lacinia] 1.0 - https://twitter.com/jackrusher/status/1447879286262743040
+* https://github.com/walmartlabs/lacinia-pedestal[lacinia-pedestal] 1.0 - GraphQL implementation in pure Clojure
+* https://gitlab.com/glossa/weave[weave] 0.1.120 - Clojure data format and tools for weaving documents
+* https://github.com/paketo-buildpacks/clojure-tools[clojure-tools]  - A Cloud Native Buildpack that builds Clojure-based applications from source
+* https://github.com/askonomm/shh[shh]  - A CLI password manager designed for efficiency
+* https://github.com/polyfy/polylith[polylith] https://github.com/polyfy/polylith/releases/tag/v0.2.13-alpha[0.2.13-alpha] - A tool used to develop Polylith based architectures in Clojure
+* https://gitlab.com/mauricioszabo/clojuby[clojuby]  - Ruby on Clojure
+* https://github.com/ingesolvoll/glimt[glimt]  - HTTP FSM for re-frame
+* https://github.com/clj-commons/ordered[ordered] 1.15.10 - Ordered sets and maps, implemented in pure clojure
+* https://github.com/clojure/tools.build[tools.build] v0.6.2 - Library of functions for building Clojure projects
+* https://github.com/clojure/tools.deps.alpha[tools.deps.alpha] 0.12.1053 - Dependency resolution and classpaths
+* https://github.com/clj-commons/rewrite-clj[rewrite-clj] https://github.com/clj-commons/rewrite-clj/blob/main/CHANGELOG.adoc#v10699-alpha[1.0.699-alpha] - Rewrite Clojure code and edn
+* https://github.com/johanthoren/bibcal[bibcal] https://github.com/johanthoren/bibcal/releases/tag/1.0.0[1.0.0] - Calculate dates based on the Bible and the 1st Book of Enoch
+* https://calva.io[Calva] 2.0.16 - Calva is an integrated REPL powered environment for enjoyable and productive Clojure and ClojureScript development in Visual Studio Code.
+* https://github.com/ingesolvoll/kee-frame[kee-frame] 1.2.0 - re-frame with batteries included
+* https://github.com/seancorfield/build-clj[build-clj] 0.5.2 - Common build tasks abstracted into a library.
+* https://github.com/clj-commons/digest[digest] https://cljdoc.org/d/org.clj-commons/digest/1.4.93/api/clj-commons.digest[1.4.93] - Digest algorithms (md5, sha1 ...) for Clojure
+
+== Art
+
+Once again, some really nice work from Jack Rusher - https://twitter.com/jackrusher/status/1447950443137613828[this tweet] highlights a nice function and the Clojure code that made it, and [this tweet](https://twitter.com/jackrusher/status/1447879286262743040) credit's https://thi.ng[Karsten Schmidt's] excellent thi.ng geom libraries! We are fortunate to have such great tools to work with in Clojure.
+

@@ -317,8 +317,8 @@ Currently, tools.build comes packaged with the following tasks (see the https://
 | Maven
 | `write-pom`
 | Write a pom file to class-dir, either by updating an existing POM or generating a new one from deps.edn
-| `:basis`, `:class-dir`
-| `:src-pom`, `:lib`, `:version`, `:src-dirs`, `:resource-dirs`, `:repos`
+| `:basis`, `:class-dir`, `:lib`
+| `:src-pom`, `:version`, `:src-dirs`, `:resource-dirs`, `:repos`
 
 | Maven
 | `install`

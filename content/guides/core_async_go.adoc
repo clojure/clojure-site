@@ -52,10 +52,11 @@ In this example we have some nice clean interop code that allows us to
 start working with channels in our app, without creating tons of
 channels or gos only to dispose of them shortly after they're created.
 
-It is actually important to respect back-pressure and not execute tons of 
-``put!``s because core.async does not allow for more than 1024 pending
-puts. Alternatively, you can use a channel with a buffer that always 
-accepts puts immediately, such as `dropping-buffer` or `sliding-buffer`.
+Keep in mind that it is important to respect back-pressure. A general
+principle in core.async is that unbounded queues are bad and the
+number of pending puts is limited (currently to 1024). Another option
+is to use a channel with a buffer that always accepts puts immediately,
+such as `dropping-buffer` or `sliding-buffer`.
 
 == Unsupported constructs and other limitations in go blocks
 

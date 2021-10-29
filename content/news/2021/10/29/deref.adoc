@@ -1,0 +1,65 @@
+= Clojure Deref (Oct 29, 2021)
+Alex Miller
+2021-10-29
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Highlights
+
+Looks like https://www.reclojure.org/[re:Clojure] on Dec 3-4 is shaping up to be a great online event! Keynotes will be Gerald Sussman and Stephen Wolfram and other speakers being announced, so keep that on your calendar!
+
+== In the core
+
+Have you ever worked on one thing that highlighted another problem, and then you started working on that, and then that highlighted another problem? Well, it was that kind of week. I'm not ready to talk about all that stuff yet, maybe next week.
+
+In our overall ticket https://clojure.org/dev/workflow[workflow], "vetting" is the step where Rich agrees something is worth working on, "release assignment" is where we decide something is in scope for the current release, and "screening" is where someone on the core team (usually me or Fogus, occasionally others) believes a patch is ready for Rich's final review. We've been trying to surface a list of new tickets for Rich to vet about once a month, and that's pulled from what we are seeing out in the community, looking at votes on ask.clojure, and our own sense of what's important.
+
+One ticket that Rich reviewed and ok'ed from the https://clojure.atlassian.net/issues/?filter=10010[Screened] list this week was https://clojure.atlassian.net/browse/CLJ-2065[CLJ-2065] "reduce-kv fails on subvec", an old and annoying issue. Feel free to look at these various queues to see what's in process, but keep in mind that things move both forward AND backward through these queues based on review!
+
+== Videos and podcasts
+
+* https://www.youtube.com/watch?v=L0af0bc5Jec[RCF TDD usage]
+* https://thattech.show/episodes/episode-37-zombies-emacs-and-getting-clojure-with-magnar-sveen[That Tech Show] - Zombies, Emacs and Getting Clojure with Magnar Sveen
+* https://clojurescriptpodcast.com/[ClojureScript podcast] - Eric Dallo
+* https://open.spotify.com/episode/7xphsYemKzUfMihjcLleRR[re:Clojure Interviews 3] - Jakub Holy, Clojure(Script) developer
+* https://open.spotify.com/episode/3ALvdU4liAaoRP3DkTskPb[re:Clojure Interviews 4] - Kathi Fisler, Research Professor of Computer Science at Brown University
+* https://www.youtube.com/watch?v=YaHiff2vZ_o[Data Navigation with Pathom 3] - Wilker Lucio from London Clojurians
+* https://www.youtube.com/watch?v=fJpDztSR53E[Start 3D modeling in Clojure with scad-clj and Calva] - Peter Strömberg
+* https://www.youtube.com/watch?v=oXU17qZjtWM[Quick Demo: Calva for Clojure GUI app dev in the browser] - Peter Strömberg
+
+== Blogs
+
+* https://www.quantisan.com/orchestrating-pizza-making-a-tutorial-for-aws-step-functions-with-stepwise/[Orchestrating Pizza-Making: A Tutorial for AWS Step Functions with Stepwise] - Paul Lam
+* https://lambdaland.org/posts/2021-09-25_models_of_programming_draft2/[Models of Programming] - Ashton Wiersdorf
+* https://gist.github.com/didibus/6e5ff960b25fdc1a5f8f97acede614b0[When is Clojure "the right tool for the job"?] - didibus
+
+== Bork Watch
+
+Michiel Borkent, the man, the myth, the legend is getting his own section this week as he attempts to take over the Deref....
+
+* https://blog.michielborkent.nl/migrating-octopress-to-babashka.html[Replacing my Octopress blog with 200 lines of Babashka] - Michiel Borkent
+* https://github.com/babashka/babashka[babashka] https://github.com/babashka/babashka/blob/master/CHANGELOG.md#064[0.6.4] - Native, fast starting Clojure interpreter for scripting
+* https://github.com/borkdude/jet[jet] https://github.com/borkdude/jet/releases/tag/v0.1.0[0.1.0] - CLI to transform between JSON, EDN and Transit, powered with a minimal query language.
+* https://github.com/borkdude/deps.clj[deps.clj] https://github.com/borkdude/deps.clj/blob/master/CHANGELOG.md#v0020[0.0.20] - A faithful port of the clojure CLI bash script to Clojure. Used as native CLI, deps resolver in babashka and getting started REPL in Calva
+* https://github.com/borkdude/rewrite-edn[rewrite-edn] 0.1.0 - Utility lib on top of rewrite-clj with common operations to update EDN while preserving whitespace and comments
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/lucywang000/clj-statecharts[clj-statecharts] 0.1.1 - State Machine and StateCharts for Clojure(Script)
+* https://vlaaad.github.io/reveal-pro[Reveal Pro] 1.3.265 - Reveal is a Read Eval Visualize Loop for Clojure
+* https://clojure.org/reference/deps_and_cli[Clojure CLI] https://clojure.org/releases/tools#v1.10.3.998[1.10.3.998] - Clojure CLI
+* https://github.com/leafclick/pgmig[pgmig] https://github.com/leafclick/pgmig/releases/tag/v0.7.1[0.7.1] - Standalone PostgreSQL Migration Runner
+* https://github.com/magnetcoop/esignatures.docusign[esignatures.docusign]  - A Library for interacting with DocuSign eSignature API which optionally provides Integrant initialization keys for Duct framework.
+* https://github.com/clojure-emacs/clj-refactor.el[clj-refactor.el] https://metaredux.com/posts/2021/10/26/clj-refactor-3-0.html[3.0] - A collection of Clojure refactoring functions for Emacs
+* https://github.com/phronmophobic/membrane.term[membrane.term]  - A simple terminal emulator in clojure
+* https://github.com/tristanstraub/thecreeps-godotclj[Clojure implementation of Godot engine tutorial]
+* https://github.com/behrica/opencpu-clj[opencpu-clj] 0.3.0 - Clojure client for opencpu
+* https://github.com/AbhinavOmprakash/sisyphus[sisyphus] 0.1.1 - sisyphus can schedule multiple tasks and will do them happily for you
+* https://calva.io[Calva] 2.0.222 - Calva is an integrated REPL powered environment for enjoyable and productive Clojure and ClojureScript development in Visual Studio Code
+* https://github.com/clj-commons/byte-streams[byte-streams] 0.2.9 - a rosetta stone for jvm byte representations
+* https://github.com/IGJoshua/coffi[coffi] 0.2.277 - A Foreign Function Interface in Clojure for JDK 17

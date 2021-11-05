@@ -22,6 +22,14 @@ For more information see the following docs:
 
 Recent official releases are described here. Prereleases and older versions can be found in the https://github.com/clojure/brew-install/blob/1.10.3/CHANGELOG.md[repo changelog].
 
+=== 1.10.3.1020 (Nov 5, 2021) [[v1.10.3.1020]]
+
+* https://clojure.atlassian.net/browse/TDEPS-83[TDEPS-83] Invalidate classpath cache when local dep manifests change
+* Add new `clj -X:deps list` program to list the full lib set on the classpath, see https://clojure.github.io/tools.deps.alpha/clojure.tools.cli.api-api.html#clojure.tools.cli.api/list[API docs] for more info
+* Bump deps to more recent versions - aws-api, jetty-client, etc
+* Clean up exception handling for -X/-T
+* Use https://github.com/clojure/tools.deps.alpha/blob/master/CHANGELOG.md[tools.deps.alpha] 0.12.1067
+
 === 1.10.3.998 (Oct 26, 2021) [[v1.10.3.998]]
 
 * Remove `bottle :unneeded` from brew formulas (no longer needed)

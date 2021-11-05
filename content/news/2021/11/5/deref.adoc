@@ -1,0 +1,53 @@
+= Clojure Deref (Nov 5, 2021)
+Alex Miller
+2021-11-05
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Highlights
+
+This week brings a new version of https://github.com/clojure/clojurescript[ClojureScript]] - read the release notes for https://clojurescript.org/news/2021-11-04-release[ClojureScript 1.10.891]!
+
+== Videos and podcasts
+
+* https://anchor.fm/lostinlambduhhs/episodes/ericnormand-e19f4j7[Lost in Lambduhhs podcast] - Eric Normand
+* https://lispcast.com/what-is-domain-modeling/[What is domain modeling?] - Eric Normand
+* https://www.youtube.com/watch?v=a4sm_B_mqhs[ClojureDocs Rich Comments Surfing in Calva] - Peter Strömberg
+* https://www.youtube.com/watch?v=TaazvSJvBaw[Clojure Transducers from the ground up] - Fred Overflow
+
+== Blogs
+
+* https://blogit.michelin.io/clojure-programming/[Bringing Clojure programming to Enterprise] - Fabien Alberi
+* https://lambdaisland.com/blog/2021-11-03-making-nrepl-cider-more-dynamic-1[Making nREPL and CIDER More Dynamic (part 1)] - Arne Brasseur
+* https://metaredux.com/posts/2021/11/02/everything-is-wrong.html[Everything is Wrong] - Bozhidar Batsov
+* https://www.slideshare.net/pjschwarz/the-functional-programming-triad-of-map-filter-and-fold[The Functional Programming Triad of Map, Filter and Fold] - Philip Schwarz
+* https://blog.michielborkent.nl/better-clojure-highlighting.html[Better Clojure highlighting with nextjournal/clojure-mode] - Michiel Borkent
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/nextjournal/clerk[clerk]  - Local-First Notebooks for Clojure
+* https://github.com/clojure/core.async[core.async] 1.4.627 - Facilities for async programming and communication in Clojure
+* https://github.com/chr15m/sitefox[sitefox] 0.0.2 - Node + cljs backend web framework 
+* https://github.com/hyperfiddle/rcf[rcf]  - RCF – a REPL-first, async test macro for Clojure/Script
+* https://github.com/m1kal/charbel[charbel]  - Write synthesizable FPGA code with Clojure syntax
+* https://github.com/mcorbin/mirabelle[mirabelle] https://www.mirabelle.mcorbin.fr/changelog/#v070[0.7.0] - A stream processing engine for monitoring
+* https://github.com/IGJoshua/farolero[farolero] 1.4.0 - Thread-safe Common Lisp style conditions and restarts for Clojure(Script)
+* https://github.com/pfeodrippe/recife[recife] https://github.com/pfeodrippe/recife/commit/09e11f2f172b684af466c645208adf7f2ebc0654[0.4.0] - A Clojure model checker
+* https://github.com/scicloj/sklearn-clj[sklearn-clj] 0.3.6 - Use sklearn estimators from Clojure
+* https://github.com/exoscale/deps-modules[deps-modules]  - Multi-module projects with deps.edn
+* https://github.com/scicloj/scicloj.ml[scicloj.ml] 0.1.1 - A Clojure machine learning library
+* https://clojure-lsp.io/[clojure-lsp] https://github.com/clojure-lsp/clojure-lsp/releases/tag/2021.11.02-15.24.47[2021.11.02-15.24.47] - A Language Server for Clojure(script).
+* https://calva.io[Calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.223[2.0.223] - Calva is an integrated REPL powered environment for enjoyable and productive Clojure and ClojureScript development in Visual Studio Code
+* https://github.com/FieryCod/holy-lambda-ring-adapter[holy-lambda-ring-adapter] 0.1.0 - An adapter between Ring core request/response model and Holy Lambda
+* https://github.com/lispyclouds/contajners[contajners] 0.0.2 - An idiomatic, data-driven, REPL friendly clojure client for OCI container engines
+* https://github.com/weavejester/ragtime[ragtime] 0.9.0 - Database-independent migration library
+* https://github.com/vharmain/nbb-lambda-adapter[nbb-lambda-adapter]  - NPM package to enable running Clojurescript code on AWS Lambda NodeJS runtime
+* https://github.com/helins/binf.cljc[binf.cljc] 1.1.0 - Handling binary formats in all shapes and forms
+* https://github.com/FieryCod/holy-lambda[holy-lambda] 0.6.2 - The extraordinary simple, performant, and extensible custom AWS Lambda runtime for Clojure
+* https://github.com/clj-commons/aleph[aleph] 0.4.7-alpha10 - asynchronous communication for clojure
+* https://github.com/clj-commons/byte-streams[byte-streams] 0.2.10 - A Rosetta stone for JVM byte representations

@@ -140,16 +140,24 @@ When preparing an application, it is common to compile the full app + libs and a
                   :class-dir class-dir})
   (b/uber {:class-dir class-dir
            :uber-file uber-file
-           :basis basis}))
+           :basis basis
+           :main my.lib.main}))
 ----
 
 The deps.edn and build execution will look the same as the prior example.
 
 You can create the uber jar build with:
 
-[source,clojure]
+[source]
 ----
 clj -T:build uber
+----
+
+The output of this build will be an uberjar at `target/lib1-1.2.100-standalone.jar`. That jar contains both a compiled version of this project and all of its dependencies. The uberjar will have a manifest referring to the `my.lib.main` namespaces (which should have a `-main` method) and can be invoked like this:
+
+[source]
+----
+java -jar target/lib1-1.2.100-standalone.jar
 ----
 
 == Parameterized builds

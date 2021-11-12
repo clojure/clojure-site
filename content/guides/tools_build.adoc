@@ -153,7 +153,7 @@ You can create the uber jar build with:
 clj -T:build uber
 ----
 
-The output of this build will be an uberjar at `target/lib1-1.2.100-standalone.jar`. That jar contains both a compiled version of this project and all of its dependencies. The uberjar will have a manifest referring to the `my.lib.main` namespaces (which should have a `-main` method) and can be invoked like this:
+The output of this build will be an uberjar at `target/lib1-1.2.100-standalone.jar`. That jar contains both a compiled version of this project and all of its dependencies. The uberjar will have a manifest referring to the `my.lib.main` namespace (which should have a `-main` method) and can be invoked like this:
 
 [source]
 ----

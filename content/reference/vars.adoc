@@ -102,7 +102,7 @@ Common var metadata keys (all optional at var definition):
 
 * `:doc` - a string documenting the var, usually set by the docstring parameter
 * `:added` - a string documenting the version when this var was added
-* `:private` a boolean flag, often set by `defn-`, used by the author to state the intent that this var is an implementation detail. Private vars are globally accessible but will not be referred or listed in `ns-`... functions which filter to non-private vars.
+* `:private` - a boolean flag, often set by `defn-`, used by the author to state the intent that this var is an implementation detail. Private vars are globally accessible but will not be referred or listed in `ns-`... functions which filter to non-private vars.
 * `:arglists` - a coll of arglists, will be generated automatically if not supplied, most often used to document macro syntax
 * `:macro` - a boolean flag added by `defmacro` automatically (not typically used directly)
 * `:tag` - a type identifier (usually a class) for the type of the value in the var or the return type of a function held in the var. Note that var metadata is evaluated, so type hints like `^long` on the var will evaluate to the `long` function, not a `long` primitive type hint. Generally, it is preferred to use a type hint on the arglist for defn vars instead.

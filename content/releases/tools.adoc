@@ -22,6 +22,11 @@ For more information see the following docs:
 
 Recent official releases are described here. Prereleases and older versions can be found in the https://github.com/clojure/brew-install/blob/1.10.3/CHANGELOG.md[repo changelog].
 
+=== 1.10.3.1029 (Nov 8, 2021) [[v1.10.3.1029]]
+
+* https://clojure.atlassian.net/browse/TDEPS-212[TDEPS-212] Cover a much wider range of valid git dep urls, including git file urls
+* Use https://github.com/clojure/tools.deps.alpha/blob/master/CHANGELOG.md[tools.deps.alpha] 0.12.1071
+
 === 1.10.3.1020 (Nov 5, 2021) [[v1.10.3.1020]]
 
 * https://clojure.atlassian.net/browse/TDEPS-83[TDEPS-83] Invalidate classpath cache when local dep manifests change

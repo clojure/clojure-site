@@ -96,7 +96,7 @@ It is possible to create vars that are not interned by using https://clojure.git
 [[metadata]]
 == Var metadata
 
-The forms that create vars `def`, `defn`, `defmacro`, etc use a standard set of var <<metadata#,metadata>> to describe vars. Some of these forms provide explicit places in the syntax to provide values stored in the metadata, but generally you can also supply that metadata as a map on the var symbol.
+The forms that create vars `def`, `defn`, `defmacro`, etc use a standard set of var <<metadata#,metadata>> to describe vars. Some of these forms use explicit syntax to accept values stored in the metadata, but generally you can also supply that metadata as a map on the var symbol.
 
 Common var metadata keys (all optional at var definition):
 

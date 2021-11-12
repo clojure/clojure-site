@@ -40,7 +40,7 @@ New releases and tools this week:
 * https://github.com/babashka/pod-babashka-aws[pod-babashka-aws] https://github.com/babashka/pod-babashka-aws/blob/main/CHANGELOG.md#v010[0.1.0] - AWS pod wrapping the Cognitect aws-api library
 * https://github.com/clojure-expectations/clojure-test[clojure-test] 2.0.137 - A clojure.test-compatible version of the classic Expectations testing library
 * https://github.com/djblue/portal[portal] https://github.com/djblue/portal/releases/tag/0.17.0[0.17.0] - A clojure tool to navigate through your data
-* https://calva.io[https://calva.io] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.224[2.0.224] - Calva is an integrated REPL powered environment for enjoyable and productive Clojure and ClojureScript development in Visual Studio Code
+* https://calva.io[Calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.224[2.0.224] - Calva is an integrated REPL powered environment for enjoyable and productive Clojure and ClojureScript development in Visual Studio Code
 * https://github.com/borkdude/edamame[edamame] https://github.com/borkdude/edamame/blob/master/CHANGELOG.md#0013[0.0.13] - Configurable EDN/Clojure parser with location metadata
 * https://github.com/behrica/clj-py-r-template[clj-template] 1.6.0 - Template to quickly create clojure data sciene projects with R + python
 * https://github.com/cjsauer/joinery[joinery] - Enables traversal of in-memory graph-like data structures using Clojure(Script)'s map protocols

@@ -1,0 +1,47 @@
+= Reify Health
+Alex Miller
+2020-11-30
+:jbake-type: story
+:jbake-company: Reify Health
+
+image:/images/content/stories/reify.png["Reify Health",height="125"]
+
+**How long have you been working with Clojure or ClojureScript?**
+
+We've been using Clojure and ClojureScript at https://www.reifyhealth.com/[Reify Health] in production for four years. It is the primary language for existing capabilities and all new features development.
+
+**How big is the team you have using Clojure or ClojureScript?**
+
+We have over 20 developers working on our frontend and backend services in Clojure and ClojureScript.
+
+**What product or service are you building with Clojure or ClojureScript?**
+
+We provide cloud-based products to help accelerate the development of new, life-saving therapies. We serve the global drug development industry: hundreds of clinical research sites and many of the top 20 pharmaceutical companies.
+
+Our flagship solution StudyTeam™ was developed with the understanding that both sites and sponsors rely on one another to run clinical trials effectively. For sites, StudyTeam makes enrollment workflows simpler and more intuitive. For sponsors, StudyTeam delivers rich and actionable insights into recruitment and enrollment performance. For both, StudyTeam accelerates enrollment, improves site-sponsor relationships, and helps teams reach their enrollment goals quickly, predictably, and confidently. 
+
+**What Clojure or ClojureScript library have you enjoyed working with the most?**
+
+We’ve gotten a tremendous amount of leverage from Clojure https://clojure.org/about/spec[spec]. Aside from data validation and testing, we use custom generators to seed databases with sample data and to populate UIs with realistic information, enabling our design team to work on the user experience without standing up a backend.
+
+**What about working with Clojure or ClojureScript gives you the most value?**
+
+There’s a lot of expressive power in Clojure. It’s Lisp heritage means there’s a very narrow gap between an idea and its expression to begin with. The sequence abstraction with its expansive standard library, immutable data structures, first-rate host platform interop, and a dynamic, REPL-driven workflow all make Clojure incredibly productive. But all those productivity gains might easily be lost with language churn and breaking API changes, were it not for Clojure’s steadfast commitment to stability.
+
+**What is your favorite feature of Clojure or ClojureScript?**
+
+There is a lot to like in Clojure/Script that all boils down to good design. It was designed from the experience gained working in industry and being on the hook to deliver efficiently and reliably. There is a lot of interesting programming language research ongoing, but it's rare to find it so aware of the day to day of a software engineer. This shows up in immutability and concurrency as first class citizens, the sequence pattern of operations working intuitively across all data structures, the REPL for providing fast feedback loops, and the care taken to maintain backwards compatibility.
+
+**What is your stack?**
+
+We’ve tried a few configurations. On the front-end we’ve used both om.next and https://github.com/day8/re-frame[re-frame], eventually standardizing on the latter. We’ve used https://github.com/weavejester/compojure[Compojure], https://github.com/clojure-liberator/liberator[Liberator], and https://github.com/http-kit/http-kit[http-kit] on the back-end, though these days we prefer http://pedestal.io/[Pedestal]. We make pretty significant use of clojure.spec, and our databases are mostly Postgres. The role of Kafka is also growing within the organization.
+
+**Why is using Clojure or ClojureScript valuable to your business?**
+
+Clojure is expressive. As a Lisp, the language itself is small; there is very little syntax or boilerplate required to express ideas as code. We believe that difference matters. We appreciate the high signal-to-noise ratio and think that it makes for smaller programs and fewer defects.
+ 
+Clojure is practical. The first-class interop between the language and the hosting platform gives us access to literally thousands of high-quality libraries written for JavaScript or the JVM. The fact that essentially the same language runs in the browser as on the server means we can reap the benefits twice over.
+
+Clojure is functional. We mean not only to say that it encourages a particular style of programming with immutable values that is inherently easier to reason about, but also that it is well suited for building the kinds of software we need to write. We have yet to find a tool that is better suited to the processing of information.
+
+In summary, Clojure is a language for working programmers, and we've got work to do.

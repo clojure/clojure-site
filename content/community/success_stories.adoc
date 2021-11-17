@@ -446,6 +446,7 @@ Here are just some of the public success stories from companies using Clojure.  
                     </cite>
                   </blockquote>
                 </li>
+
                 <li>
                   <p><img style="border: 3px solid #ebebeb;" src="/images/logos/pisano.png" /></p>
                   <p>
@@ -463,6 +464,44 @@ Here are just some of the public success stories from companies using Clojure.  
                     </cite>
                   </blockquote>
                 </li>
+
+                <li>
+                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/freshcode.png" /></p>
+                  <p>
+                    <a target="freshcode" href="https://freshcodeit.com">Freshcode</a> provides Web solutions using Clojure as a core technology.
+                  </p>
+                  <hr>
+                  <p>
+                    <span class='read-more'><a target="testimonial" href="https://freshcodeit.com/freshcode-post/why-clojure-4-tech-reasons">Read</a> about why our developers choose Clojure and when Clojure development matters.</span>
+                  </p>
+                  <blockquote style='margin-left: 0; padding: 0'>
+                    <p>Why Clojure? Because: live reload, extreme development speed, metaprogramming, macros, DSL, map/filter/reduce</p>
+                    <cite>
+                      <strong>Artem Barmin</strong>
+                      Co-Founder at Freshcode
+                    </cite>
+                  </blockquote>
+                </li>
+
+                <li>
+                  <p><img style="border: 3px solid #ebebeb;" src="/images/logos/frenchdigital.png" /></p>
+                  <p>
+                    The <a target="french_digital" href="https://www.numerique.gouv.fr">French digital administration</a> provides digital infrastructure and resources for the ministries and public agencies.
+                  </p>
+                  <hr>
+                  <p>
+                    <span class='read-more'>Etalab, the department responsible for open data in France, is <a target="testimonial" href="https://www.etalab.gouv.fr/code-etalab-gouv-fr-les-codes-sources-de-logiciels-publies-par-des-organismes-publics">using Clojure</a> to publish the list of public source codes.</span>
+                  </p>
+                  <blockquote style='margin-left: 0; padding: 0'>
+                    <p>Clojure was used to develop a modest web site, and we appreciate how it allows us to quickly react to feature requests.</p>
+                    <cite>
+                      <strong>Bastien Guerry</strong>
+                      Free Software Officer at the French digital administration
+                    </cite>
+                  </blockquote>
+                </li>
+
+
               </ul>
             </div>
 

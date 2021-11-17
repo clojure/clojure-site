@@ -1,7 +1,7 @@
 = Older Downloads
 Rich Hickey
 2015-01-01
-:jbake-type: page
+:jbake-type: releases
 :toc: macro
 :icons: font
 
@@ -9,6 +9,8 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 == Older Clojure Releases
 
+* https://repo1.maven.org/maven2/org/clojure/clojure/1.10.2/[Clojure 1.10.3] (Mar, 2021)
+* https://repo1.maven.org/maven2/org/clojure/clojure/1.10.2/[Clojure 1.10.2] (Jan, 2021)
 * https://repo1.maven.org/maven2/org/clojure/clojure/1.10.1/[Clojure 1.10.1] (June, 2019)
 * https://repo1.maven.org/maven2/org/clojure/clojure/1.10.0/[Clojure 1.10.0] (December, 2018)
 * https://repo1.maven.org/maven2/org/clojure/clojure/1.9.0/[Clojure 1.9.0] (December, 2017)
@@ -33,4 +35,4 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 == Where did Clojure Contrib go?
 
-If you are migrating from a pre-1.3 version of Clojure, please see <<contrib_history#,this page>> for migration help regarding old contrib libraries.
+If you are migrating from a pre-1.3 version of Clojure, please see <<xref/../../dev/contrib_history#,this page>> for migration help regarding old contrib libraries.

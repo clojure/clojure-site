@@ -4,7 +4,7 @@ Alex Miller
 :jbake-type: page
 :toc: macro
 
-This web site is an open-source repository of content about the Clojure programming language and its greater ecosystem, hosted at http://clojure.org.
+This web site is an open-source repository of content about the Clojure programming language and its greater ecosystem, hosted at https://clojure.org.
 
 == Contributing
 
@@ -16,11 +16,11 @@ If you wish to make a contribution (typo, modification, or new content), you mus
 
 The site is built using http://jbake.org/[JBake].
 
-To https://jbake.org/docs/2.6.3/#installation[install] JBake 2.6.3:
+To https://jbake.org/docs/2.6.5/#installation[install] JBake 2.6.5:
 
-. `curl -O https://dl.bintray.com/jbake/binary/jbake-2.6.3-bin.zip` (or download this file with your browser)
-. `unzip -o jbake-2.6.3-bin.zip`
-. Add jbake-2.6.3-bin/bin to your system PATH
+. `curl -L -O https://dl.bintray.com/jbake/binary/jbake-2.6.5-bin.zip` (or download this file with your browser)
+. `unzip -o jbake-2.6.5-bin.zip`
+. Add jbake-2.6.5-bin/bin to your system PATH
 
 To build the site:
 
@@ -41,6 +41,6 @@ Generate the pages:
 
 ## Terms of Use
 
-Copyright © 2019 Rich Hickey and contributors
+Copyright © 2016-2020 Rich Hickey and contributors
 
 All documentation contained in this repository is licensed by Rich Hickey under the http://www.eclipse.org/legal/epl-v10.html[Eclipse Public License v1.0] unless otherwise noted. To submit a pull request or other contribution, you must sign the http://clojure.org/community/contributing[Clojure Contributor Agreement].

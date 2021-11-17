@@ -25,7 +25,7 @@ c. making it available on the JVM classpath so Clojure can find it while your RE
 
 Clojure tools specify a syntax and file (deps.edn) for (a), given which they'll handle (b) and (c) automatically.
 
-See <<getting_started#,Getting Started>> for details on how to install the tools. Here we will demonstrate how to get started. See <<xref/../../reference/deps_and_cli#,Deps and CLI>> for a complete reference. See the https://github.com/clojure/brew-install/blob/1.10.1/CHANGELOG.md[changelog] for version information.
+See <<getting_started#,Getting Started>> for details on how to install the tools. Here we will demonstrate how to get started. See <<xref/../../reference/deps_and_cli#,Deps and CLI>> for a complete reference. See the <<xref/../../releases/tools#,changelog>> for version information.
 
 == Running a REPL and using libraries
 
@@ -34,7 +34,7 @@ After you download and install the tools, you can start a REPL by running the `c
 [source,shell]
 ----
 $ clj
-Clojure 1.10.1
+Clojure 1.10.3
 user=>
 ----
 
@@ -48,14 +48,24 @@ user=>           # type Ctrl-D here to exit the REPL (does not print)
 $ 
 ----
 
-There are many Clojure and Java libraries available that provide access to practically any functionality you might need. For example, consider the commonly used Clojure library https://github.com/clj-time/clj-time[clj-time] for working with dates and times.
+There are many Clojure and Java libraries available that provide access to practically any functionality you might need. For example, consider the commonly used Clojure library https://github.com/dm3/clojure.java-time[clojure.java-time] for working with dates and times.
 
-To work with this library, you need to declare it as a dependency so the tool can ensure it has been downloaded and add it to the classpath. The readme in most projects shows the name and version, such as `[clj-time "0.14.2"]`. Create a `deps.edn` file to declare the dependency:
+To work with this library, you need to declare it as a dependency so the tool can ensure it has been downloaded and add it to the classpath. The readme in most projects shows the name and version to use. Create a `deps.edn` file to declare the dependency:
 
 [source,clojure]
 ----
 {:deps
- {clj-time {:mvn/version "0.14.2"}}}
+ {clojure.java-time/clojure.java-time {:mvn/version "0.3.2"}}}
+----
+
+Alternately, if you don't know the version, you can use the `find-versions` tool which will list all available coordinates in sorted order:
+
+[source,shell]
+----
+$ clj -X:deps find-versions :lib clojure.java-time/clojure.java-time
+...omitted
+{:mvn/version "0.3.1"}
+{:mvn/version "0.3.2"}
 ----
 
 Restart the REPL with the `clj` tool:
@@ -63,51 +73,60 @@ Restart the REPL with the `clj` tool:
 [source,clojure]
 ----
 $ clj
-Downloading: clj-time/clj-time/0.14.2/clj-time-0.14.2.pom from https://clojars.org/repo/
-Downloading: clj-time/clj-time/0.14.2/clj-time-0.14.2.jar from https://clojars.org/repo/
-Clojure 1.10.1
-user=> (require '[clj-time.core :as t])
+Downloading: clojure/java-time/clojure.java-time/0.3.2/clojure.java-time-0.3.2.pom from clojars
+Downloading: clojure/java-time/clojure.java-time/0.3.2/clojure.java-time-0.3.2.jar from clojars
+Clojure 1.10.3
+user=> (require '[java-time :as t])
 nil
-user=> (str (t/now))
-"2017-12-06T19:36:56.159Z"
+user=> (str (t/instant))
+"2020-09-01T03:42:47.691119Z"
 ----
 
-You will see messages about a library being downloaded the first time you use a dependency. Once the file is downloaded, it will be reused in the future. You can use the same process to add other libraries to your `deps.edn` file and explore Clojure or Java libraries.
+You will see messages about a library being downloaded the first time you use a dependency. Once the file is downloaded (usually to `~/.m2` or `/.gitlibs`), it will be reused in the future. You can use the same process to add other libraries to your `deps.edn` file and explore Clojure or Java libraries.
 
 == Writing a program
 
-Soon you will want to build and save your own code that makes use of these libraries. Create a directory `hello-world` and change to that directory. Copy the `deps.edn` file into this directory. By default, the `clj` tool will look for source files in the `src` directory, so create the `src` directory and declare your program at `src/hello.clj`:
+Soon you will want to build and save your own code that makes use of these libraries. Create a new directory and copy this deps.edn into it:
+
+[source,shell]
+----
+$ mkdir hello-world
+$ cp deps.edn hello-world
+$ cd hello-world
+$ mkdir src
+----
+
+By default, the `clj` tool will look for source files in the `src` directory. Create `src/hello.clj`:
 
 [source,clojure]
 ----
 (ns hello
-  (:require [clj-time.core :as t]
-            [clj-time.format :as f]))
+  (:require [java-time :as t]))
 
 (defn time-str
   "Returns a string representation of a datetime in the local time zone."
-  [dt]
-  (f/unparse
-    (f/with-zone (f/formatter "hh:mm aa") (t/default-time-zone))
-    dt))
+  [instant]
+  (t/format
+    (t/with-zone (t/formatter "hh:mm a") (t/zone-id))
+    instant))
 
-(defn -main []
-  (println "Hello world, the time is" (time-str (t/now))))
+(defn run [opts]
+  (println "Hello world, the time is" (time-str (t/instant))))
 ----
 
+== Using a main
 
-
-This program has a static entry point named `-main` that is suitable for external invocation. The `clj` tool acts as a Clojure program launcher with the `-m` option, which specifies the namespace to run:
+This program has an entry function `run` that can be executed by `clj` using `-X`:
 
 [source,shell]
 ----
-$ clj -m hello
-Hello world, the time is 02:04 PM
+$ clj -X hello/run
+Hello world, the time is 10:53 PM
 ----
 
 == Using local libraries
 
-You might decide to move part of this application into a library. The `clj` tool uses local coordinates to support projects that exist only on your local disk. Let's extract the clj-time parts of this application out into a library in a parallel directory time-lib. The final structure will look something like this:
+You might decide to move part of this application into a library. The `clj` tool uses local coordinates to support projects that exist only on your local disk. Let's extract the java-time parts of this application out into a library in a parallel directory time-lib. The final structure will look something like this:
 
 ----
 ├── time-lib
@@ -125,20 +144,19 @@ Under time-lib, use a copy of the deps.edn file you already have, and create a f
 [source,clojure]
 ----
 (ns hello-time
-  (:require [clj-time.core :as t]
-            [clj-time.format :as f]))
+  (:require [java-time :as t]))
 
 (defn now
   "Returns the current datetime"
   []
-  (t/now))
+  (t/instant))
 
 (defn time-str
   "Returns a string representation of a datetime in the local time zone."
-  [dt]
-  (f/unparse
-    (f/with-zone (f/formatter "hh:mm aa") (t/default-time-zone))
-    dt))
+  [instant]
+  (t/format
+    (t/with-zone (t/formatter "hh:mm a") (t/zone-id))
+    instant))
 ----
 
 Update the application at `hello-world/src/hello.clj` to use your library instead:
@@ -148,7 +166,7 @@ Update the application at `hello-world/src/hello.clj` to use your library instea
 (ns hello
   (:require [hello-time :as ht]))
 
-(defn -main []
+(defn run [opts]
   (println "Hello world, the time is" (ht/time-str (ht/now))))
 ----
 
@@ -157,14 +175,14 @@ Modify `hello-world/deps.edn` to use a local coordinate that refers to the root 
 [source,clojure]
 ----
 {:deps
- {time-lib {:local/root "/path/to/time-lib"}}}
+ {time-lib/time-lib {:local/root "../time-lib"}}}
 ----
 
 You can then test everything from the hello-world directory by running the application:
 
 [source,shell]
 ----
-$ clj -m hello
+$ clj -X hello/run
 Hello world, the time is 02:07 PM
 ----
 
@@ -176,7 +194,7 @@ First, create a git library for the time-lib:
 
 [source,shell]
 ----
-cd time-lib
+cd ../time-lib
 git init
 git add deps.edn src
 git commit -m 'init'
@@ -184,29 +202,35 @@ git commit -m 'init'
 
 Then go to a public git repository host (like GitHub) and follow the instructions for creating and publishing this git repository.
 
+We also want to tag this release so it has a meaningful version:
+
+[source,shell]
+----
+git tag -a 'v0.0.1' -m 'initial release'
+git push --tags
+----
+
 Finally, modify your app to use the git dependency instead. You'll need to gather the following information:
 
-* repository url - in GitHub, use the HTTPS url, like `https://github.com/yourname/time-lib.git`
-* sha - indicate which version of the git library you want to use. You can run `git rev-parse HEAD` to get the sha of the current repo
+* repository lib - the Clojure CLI uses a convention where the URL does not need to be specified if you use a library name like `io.github.yourname/time-lib` for the GitHub url `https://github.com/yourname/time-lib.git`.
+* tag - `v0.0.1` is what we created above
+* sha - the short sha at the tag, find it with `git rev-parse --short v0.0.1` if you have the repo locally, or `git ls-remote https://github.com/yourname/time-lib.git v0.0.1` if it's remote.
 
 Update the `hello-world/deps.edn` to use a git coordinate instead:
 
 [source,clojure]
 ----
 {:deps
- {github-yourname/time-lib
-  {:git/url "https://github.com/yourname/time-lib" :sha "04d2744549214b5cba04002b6875bdf59f9d88b6"}}}
+ {io.github.yourname/time-lib {:git/tag "v0.0.1" :git/sha "4c4a34d"}}}
 ----
-
-Note that we've altered the library name. When artifacts are deployed in a Maven repository, it's a best practice to use a groupId (the first part of the name) that is something you control (usually via DNS or trademark). In the case where you have neither, you can instead combine the name of a site that establishes identities (like GitHub) with your identity on that site, here `github-yourname`.
 
 Now you can run the app again, making use of the (shared) git repository library. The first time you run it you'll see extra messages on the console when `clj` downloads and caches the repository and the commit working tree:
 
 [source,shell]
 ----
-$ clj -m hello
+$ clj -X hello/run
 Cloning: https://github.com/yourname/time-lib
-Checking out: https://github.com/yourname/time-lib at 04d2744
+Checking out: https://github.com/yourname/time-lib at 4c4a34d
 Hello world, the time is 02:10 PM
 ----
 
@@ -217,10 +241,13 @@ Now your friends can use `time-lib` too!
 As your program gets more involved you might need to create variations on the standard classpath. The Clojure tools supports classpath modifications using aliases, which are parts of the deps file that are only used when the corresponding alias is supplied. Some of the things you can do are:
 
 * <<deps_and_cli#extra_paths,Include a test source directory>>
+* <<deps_and_cli#test_runner,Use a test runner to run all tests>>
+* <<deps_and_cli#prep_libs,Prep source dependency libs>>
 * <<deps_and_cli#extra_deps,Add an optional dependency>>
 * <<deps_and_cli#override_deps,Override a dependency version>>
 * <<deps_and_cli#local_jar,Use a local jar on disk>>
 * <<deps_and_cli#aot_compilation,Ahead-of-time (AOT) compilation>>
+* <<deps_and_cli#socket_repl,Run a socket server remote repl>>
 
 [[extra_paths]]
 === Include a test source directory
@@ -230,25 +257,52 @@ Typically, the project classpath includes only the project source, not its test 
 [source,clojure]
 ----
 {:deps
- {org.clojure/core.async {:mvn/version "0.3.465"}}
+ {org.clojure/core.async {:mvn/version "1.3.610"}}
 
  :aliases
  {:test {:extra-paths ["test"]}}}
 ----
 
-Apply that classpath modification and examine the modified classpath by invoking `clj -C:test -Spath`:
+Apply that classpath modification and examine the modified classpath by invoking `clj -A:test -Spath`:
 
 [source,shell]
 ----
-$ clj -C:test -Spath
-src:
+$ clj -A:test -Spath
 test:
-/Users/me/.m2/repository/org/clojure/clojure/1.10.1/clojure-1.10.1.jar:
-/Users/me/.m2/repository/org/clojure/tools.analyzer/0.6.9/tools.analyzer-0.6.9.jar:
-... same as before
+src:
+/Users/me/.m2/repository/org/clojure/clojure/1.10.3/clojure-1.10.3.jar:
+... same as before (split here for readability)
 ----
 
 Note that the test dir is now included in the classpath.
+
+[[test_runner]]
+=== Use a test runner to run all tests
+
+You can extend the `:test` alias in the previous section to include the cognitect-labs https://github.com/cognitect-labs/test-runner[test-runner] for running all clojure.test tests:
+
+Extend the `:test` alias:
+
+[source,clojure]
+----
+{:deps
+ {org.clojure/core.async {:mvn/version "1.3.610"}}
+
+ :aliases
+ {:test {:extra-paths ["test"]
+         :extra-deps {io.github.cognitect-labs/test-runner
+                      {:git/url "https://github.com/cognitect-labs/test-runner.git"
+                       :sha "9e35c979860c75555adaff7600070c60004a0f44"}}
+         :main-opts ["-m" "cognitect.test-runner"]
+         :exec-fn cognitect.test-runner.api/test}}}
+----
+
+And then execute the test runner using the default config (run all tests in -test namespaces under the test/ dir):
+
+[source,shell]
+----
+clj -X:test
+----
 
 [[extra_deps]]
 === Add an optional dependency
@@ -258,12 +312,53 @@ Aliases in the `deps.edn` file can also be used to add optional dependencies tha
 [source,clojure]
 ----
 {:aliases
- {:bench {:extra-deps {criterium {:mvn/version "0.4.4"}}}}}
+ {:bench {:extra-deps {criterium/criterium {:mvn/version "0.4.4"}}}}}
 ----
 
 Here the `:bench` alias is used to add an extra dependency, namely the criterium benchmarking library.
 
-You can add this dependency to your classpath by adding the `:bench` alias to modify the dependency resolution: `clj -R:bench`.
+You can add this dependency to your classpath by adding the `:bench` alias to modify the dependency resolution: `clj -A:bench`.
+
+[[prep_libs]]
+=== Preparing source dependency libs
+
+Some dependencies will require a preparation step before they can be used on the classpath. These libs should state this need in their deps.edn:
+
+[source,clojure]
+----
+{:paths ["src" "target/classes"]
+ :deps/prep-lib {:alias :build
+                 :fn compile
+                 :ensure "target/classes"}}
+----
+
+Including the top-level key `:deps/prep-lib` tells the tools.deps classpath construction that something extra is needed to prepare this lib and that can be performed by invoking the `compile` function in the `:build` alias. Once the prepare step has been done, it should create the path `"target/classes"` and that can be checked for completion.
+
+You depend on this library like any other source-based library (could be git or local):
+
+[source,clojure]
+----
+{:deps {my/lib {:local/root "../needs-prep"}}}
+----
+
+If you then try to include that library on your classpath you'll see an error:
+
+[source,shell]
+----
+$ clj
+Error building classpath. The following libs must be prepared before use: [my/lib]
+----
+
+You can then tell the CLI to prep using this command (this is a 1-time action for a particular lib version):
+
+[source,shell]
+----
+$ clj -X:deps prep
+Prepping io.github.puredanger/cool-lib in /Users/me/demo/needs-prep
+$ clj
+Clojure 1.10.3
+user=>
+----
 
 [[override_deps]]
 === Override a dependency
@@ -277,10 +372,10 @@ You can use multiple aliases in combination. For example this `deps.edn` file de
 
  :aliases
  {:old-async {:override-deps {org.clojure/core.async {:mvn/version "0.3.426"}}}
-  :bench {:extra-deps {criterium {:mvn/version "0.4.4"}}}}}
+  :bench {:extra-deps {criterium/criterium {:mvn/version "0.4.4"}}}}}
 ----
 
-Activate both aliases as follows: `clj -R:bench:old-async`.
+Activate both aliases as follows: `clj -A:bench:old-async`.
 
 [[local_jar]]
 === Include a local jar on disk
@@ -344,15 +439,59 @@ You can compile in the REPL or run a script to do the compilation:
 
 [source,shell]
 ----
-$ clj -e "(compile 'hello)"
+$ clj -M -e "(compile 'hello)"
 ----
 
 And then run the hello namespace:
 
 [source,shell]
 ----
-$ clj -m hello
+$ clj -M -m hello
 Hello, World!
 ----
 
 See <<xref/../../reference/compilation#,Compilation and Class Generation>> for a complete reference.
+
+[[socket_repl]]
+=== Run a socket server remote repl
+
+Clojure provides built-in support for running https://clojure.github.io/clojure/clojure.core-api.html#clojure.core.server/start-server[socket servers], and in particular using them to host remote REPLs.
+
+To configure a socket server repl, add the following base configuration to your `deps.edn`:
+
+[source,clojure]
+----
+{:aliases
+ {:repl-server
+  {:exec-fn clojure.core.server/start-server
+   :exec-args {:name "repl-server"
+               :port 5555
+               :accept clojure.core.server/repl
+               :server-daemon false}}}}
+----
+
+And then start the server by invoking with the alias:
+
+[source,shell]
+----
+clojure -X:repl-server
+----
+
+If you like, you can also override the default parameters (or add additional options) on the command line:
+
+[source,shell]
+----
+clojure -X:repl-server :port 51234
+----
+
+You can use netcat to connect from another terminal:
+
+[source,shell]
+----
+nc localhost 51234
+user=> (+ 1 1)
+2
+----
+
+Use Ctrl-D to exit the repl and Ctrl-C to exit the server.
+

@@ -88,6 +88,7 @@ Having said that, keep in mind that the REPL is a full-feature execution environ
 to launch special-purpose visualization tools (including ones that you develop yourself).
 For instance:
 
+* **https://vlaaad.github.io/reveal/[Reveal]** and **https://docs.datomic.com/cloud/other-tools/REBL.html[Cognitect REBL]** are graphical tools for navigating and visualizing Clojure data, supporting two-way interaction with Clojure REPLs.
 * **https://github.com/metasoarous/oz[oz]** is a Clojure library for displaying numerical charts
 * **https://github.com/eggsyntax/datawalk[datawalk]** is a Clojure library for interactively exploring complex
 Clojure data structures
@@ -224,7 +225,7 @@ lightweight syntax.
 
 ==== Going further: tracing libraries
 
-_Tracing_ libraries such as **https://github.com/clojure/tools.trace[tools.trace]** and **http://clojure-emacs.github.io/sayid/[Sayid]**
+_Tracing_ libraries such as **https://github.com/clojure/tools.trace[tools.trace]** and **https://github.com/clojure-emacs/sayid[Sayid]**
 can help you instrument larger portions of your code, for example by automatically printing all the function calls in a
 given namespace, or all intermediary values in a given expression.
 
@@ -413,6 +414,12 @@ then you will need to re-define `b` each time you re-define `a`; it may be bette
   []
   (count solar-system-planets))
 ----
+
+That being said, the problem of derived Vars becoming obsolete might be satisfactorily mitigated:
+
+. either by making sure that Vars are not derived across different files, and by taking care to reload entire files when changes are made;
+. or by using utilities like https://github.com/clojure/tools.namespace#clojuretoolsnamespace[clojure.tools.namespace], which let you keep track of changed files and reload them in order.
+
 
 **_REPL-friendly code can be reloaded._** Make sure that reloading a namespace will not alter the
 behaviour of the running program. If a Var needs to be defined exactly once (which should be very rare),

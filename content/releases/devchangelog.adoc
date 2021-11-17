@@ -1,7 +1,7 @@
 = Dev Changelog
 Alex Miller
 2017-04-28
-:jbake-type: page
+:jbake-type: releases
 :toc: macro
 :icons: font
 
@@ -17,9 +17,77 @@ The official https://github.com/clojure/clojure/blob/master/changes.md[changelog
 
 Note: All dev releases are subject to breaking changes for new work since the prior release.
 
+== Release 1.11.0
+
+=== 1.11.0-alpha2 (Sep 14, 2021) [[v1.11.0-alpha2]]
+
+* https://clojure.atlassian.net/browse/CLJ-2123[CLJ-2123] Add :as-alias option to require like :as but not load
+* https://clojure.atlassian.net/browse/CLJ-1959[CLJ-1959] Add implementation of update-keys
+* https://clojure.atlassian.net/browse/CLJ-2651[CLJ-2651] Add implementation of update-vals
+* https://clojure.atlassian.net/browse/CLJ-1908[CLJ-1908] Add clojure.test api run-test and run-test-var to run single test with fixtures and report
+* https://clojure.atlassian.net/browse/CLJ-1879[CLJ-1879] IKVReduce - make old slow path (IPersistentMap) faster and extend to Object, detaching it from any fully enumerable set of types
+* https://clojure.atlassian.net/browse/CLJ-2600[CLJ-2600] Don't block realized? of delay on pending result
+* https://clojure.atlassian.net/browse/CLJ-2649[CLJ-2649] Fix order of checks in some-fn and every-pred for 3 predicate case to match other unrollings
+* https://clojure.atlassian.net/browse/CLJ-2636[CLJ-2636] Get rid of reflection on java.util.Properties when defining \*clojure-version*
+* https://clojure.atlassian.net/browse/CLJ-2350[CLJ-2350] Improve keyword arity exception message
+* https://clojure.atlassian.net/browse/CLJ-2444[CLJ-2444] Fix typo in test-vars docstring
+* https://clojure.atlassian.net/browse/CLJ-1509[CLJ-1509] AOT compile more Clojure namespaces
+* https://clojure.atlassian.net/browse/CLJ-2387[CLJ-2387] Fix off-by-one in socket server port validation
+* Update dep to core.specs.alpha (0.2.62)
+
+=== 1.11.0-alpha1 (Mar 18, 2021) [[v1.11.0-alpha1]]
+
+* https://clojure.atlassian.net/browse/CLJ-2603[CLJ-2603] Clojure keyword argument functions now also accept a map, see <<xref/../../../news/2021/03/18/apis-serving-people-and-programs#,details>>
+
+== Release 1.10.3
+
+=== 1.10.3-rc1 (Feb 16, 2021) [[v1.10.3-rc1]]
+
+* https://clojure.atlassian.net/browse/CLJ-2564[CLJ-2564] Revert prior error message change
+* https://clojure.atlassian.net/browse/CLJ-2453[CLJ-2453] Allow reader conditionals in prepl
+
 == Release 1.10.2
 
-=== 1.10.2-alpha1 (Mar 5, 2020)
+=== 1.10.2-rc3 (Jan 15, 2021) [[v1.10.2-rc3]]
+
+* https://clojure.atlassian.net/browse/CLJ-2602[CLJ-2602] Make printing test changes platform-independent
+
+=== 1.10.2-rc2 (Jan 6, 2021) [[v1.10.2-rc2]]
+
+* https://clojure.atlassian.net/browse/CLJ-2597[CLJ-2597] Proxy should emit Java 1.8 bytecode
+* https://clojure.atlassian.net/browse/CLJ-2599[CLJ-2599] Bump spec.alpha dep to 0.2.194 and core.specs.alpha dep to 0.2.56
+
+=== 1.10.2-rc1 (Dec 11, 2020) [[v1.10.2-rc1]]
+
+* https://clojure.atlassian.net/browse/CLJ-1005[CLJ-1005] Use transient map in zipmap
+* https://clojure.atlassian.net/browse/CLJ-2585[CLJ-2585] nth with not-found on regex matcher returns not-found on last group index
+* https://clojure.atlassian.net/browse/CLJ-1445[CLJ-1445] pprint doesn't print collection metadata when `pass:[*print-meta*]` is true
+* https://clojure.atlassian.net/browse/CLJ-2495[CLJ-2495] prepl docstring is incorrect
+* https://clojure.atlassian.net/browse/CLJ-2169[CLJ-2169] conj has out-of-date :arglists
+* https://clojure.atlassian.net/browse/CLJ-2459[CLJ-2459] ExceptionInInitializerError if jars executed with java -jar 
+
+=== 1.10.2-alpha4 (Nov 5, 2020) [[v1.10.2-alpha4]]
+
+* https://clojure.atlassian.net/browse/CLJ-2587[CLJ-2587] Fix reflection warning in gvec from CLJ-1364
+
+=== 1.10.2-alpha3 (Nov 2, 2020) [[v1.10.2-alpha3]]
+
+* https://clojure.atlassian.net/browse/CLJ-2492[CLJ-2492] Remove uses of deprecated Class.newInstance()
+* https://clojure.atlassian.net/browse/CLJ-2534[CLJ-2534] Fix javadoc urls for JDK 11+
+* https://clojure.atlassian.net/browse/CLJ-1364[CLJ-1364] vector-of does not implement equals or hashing methods
+* https://clojure.atlassian.net/browse/CLJ-2549[CLJ-2549] vector-of does not implement IObj for metadata
+* https://clojure.atlassian.net/browse/CLJ-1187[CLJ-1187] quoted metadata on empty literal colls is lost
+
+=== 1.10.2-alpha2 (Sep 25, 2020) [[v1.10.2-alpha2]]
+
+* https://clojure.atlassian.net/browse/CLJ-2571[CLJ-2571] Add Throwable return type hint to ex-cause
+* https://clojure.atlassian.net/browse/CLJ-2572[CLJ-2572] Avoid reflection in clojure.data
+* https://clojure.atlassian.net/browse/CLJ-2295[CLJ-2295] Eliminate duplicate doc string printing for special forms
+* https://clojure.atlassian.net/browse/CLJ-2564[CLJ-2564] Improve error message for `case`
+* https://clojure.atlassian.net/browse/CLJ-2580[CLJ-2580] Fix case expression branch analysis that resulted in compilation error
+* https://clojure.atlassian.net/browse/CLJ-2469[CLJ-2469] Fix errors in printing some maps with namespace syntax
+
+=== 1.10.2-alpha1 (Mar 5, 2020) [[v1.10.2-alpha1]]
 
 * https://clojure.atlassian.net/browse/CLJ-1472[CLJ-1472] Ensure monitor object is on stack, for verifiers
 * https://clojure.atlassian.net/browse/CLJ-2502[CLJ-2502] Fix reflection warnings in clojure.stacktrace/print-stack-trace

@@ -69,7 +69,7 @@ The new ClojureScript does not take this approach. Instead, ClojureScript is wri
 
 **ClojureScript is not JavaScript with Clojure syntax.**
 
-Another approach sometimes used to overcome JavaScript's syntactic shortcomings is to layer another syntax on top of it while keeping all of the JavaScript language semantics. http://common-lisp.net/project/parenscript/[Parenscript] and http://jashkenas.github.com/coffee-script/[CoffeeScript] are examples of this approach.
+Another approach sometimes used to overcome JavaScript's syntactic shortcomings is to layer another syntax on top of it while keeping all of the JavaScript language semantics. http://common-lisp.net/project/parenscript/[Parenscript] and http://jashkenas.github.io/coffee-script/[CoffeeScript] are examples of this approach.
 
 ClojureScript has the same language semantics as Clojure, not JavaScript. The ClojureScript compiler emits JavaScript, similar to the way the Clojure compiler emits Java bytecode.
 

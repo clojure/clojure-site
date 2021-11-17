@@ -18,6 +18,16 @@ These questions and answers are adapted from mailing lists and other Clojure com
 
 Keywords are cached and interned. This means that a keyword is reused (reducing memory) everywhere in your program and that checks for equality really become checks for identity (which are fast). Additionally, keywords are invokable to look themselves up in a map and thus this enables the common pattern of extracting a particular field from a collection of maps possible.
 
+[[keyword_number]]
+
+**<<faq#keyword_number,Is :1 a valid keyword?>>**
+
+The <<xref/../../reference/reader#,reader>> page defines keywords as "like symbols" and symbols "begin with a non-numeric character" so the original intent was that `:1` would be invalid. In fact, the only reason it is readable at all is due to a https://clojure.atlassian.net/browse/CLJ-1252[bug] in the keyword regex. This bug was fixed in a 1.6 alpha but we quickly discovered that these keywords were in use in many actual projects. To avoid breaking existing working code, the change was rolled back and this form will continue to be supported. (There are still some https://clojure.atlassian.net/browse/CLJ-1286[open] https://clojure.atlassian.net/browse/CLJ-1527[issues] to clarify this in code and/or docs.)
+
+Note that namespaced keywords with names starting with numbers have never been readable or valid, ie `:foo/1`. However, auto-resolved keywords like `::1` can be read but not round-tripped from print to read.
+
+In general, it's best to avoid using keywords that start with a number unless it is in a narrow and controlled scope.
+
 [[unreadable_keywords]]
 **<<faq#unreadable_keywords,Why is it possible to create keywords that can't be read by the reader?>>**
 
@@ -32,6 +42,8 @@ The reader takes text (Clojure source) and returns Clojure data, which is subseq
 
 However, unlike Lisp, Clojure does not allow the user to extend this set of reader macros. This avoids the possibility of creating code that another user cannot read (because they do not have the proper reader macros). Clojure gives back some of the power of reader macros with tagged literals, allowing you to create generically readable _data_, that is still extensible.
 
+Also see the <<xref/../../about/history#,History of Clojure>> paper section about this (search for "reader macros").
+
 [[underscore]]
 **<<faq#underscore,What does an _ mean in a let binding or parameter?>>**
 
@@ -43,6 +55,11 @@ _ has no special meaning in Clojure as a symbol. However, it is a convention to 
   (let [[_ y] point]   ;; x-value of point is unused, so mark it with _
     y))
 ----
+
+[[qmark_bang]]
+**<<faq#qmark_bang,What does a ? or ! mean in a function name?>>**
+
+`?` and `!` have no special meaning in Clojure as part of a function name. However, it is a convention to use a trailing `?` to denote a predicate function and a trailing `!` to denote a function with side-effects. More specifically, a trailing `?` indicates that a predicate strictly returns a boolean result (`true` or `false`). A trailing `!` was originally intended to indicate that a function has side-effects that would make it unsafe to use inside a <<xref/../../reference/refs#,ref transaction>> (in the Software Transactional Memory sense). In the wild, the use of `!` is less consistent and is sometimes used in a broader way to indicate any sort of side-effecting behavior.
 
 [[anon_vector]]
 **<<faq#anon_vector,Why doesn't the anonymous function `#([%1])` work to construct a vector?>>**
@@ -77,7 +94,7 @@ Note that all of these are eager transformations - they produce the output vecto
 [[arg_order]]
 **<<faq#arg_order,What are the rules of thumb for arg order in core functions?>>**
 
-Primary collection operands come first. That way one can write `->` and 
+Primary collection operands come first. That way one can write `pass:[->]` and
 its ilk, and their position is independent of whether or not they have 
 variable arity parameters. There is a tradition of this in OO 
 languages and Common Lisp (`slot-value`, `aref`, `elt`). 
@@ -155,7 +172,7 @@ At one point, metadata was more cumbersome to use than now (the syntax for a pri
 [[spec_alpha]]
 **<<faq#spec_alpha,Why is spec alpha?>>**
 
-spec is in alpha to indicate that the API may still change. spec was broken out of Clojure core so that spec can be updated independently from the main Clojure version. At some point spec's API will be considered stable and at that point the alpha will be removed. The next version of spec is being developed at https://github.com/clojure/alpha.spec[alpha.spec].
+spec is in alpha to indicate that the API may still change. spec was broken out of Clojure core so that spec can be updated independently from the main Clojure version. At some point spec's API will be considered stable and at that point the alpha will be removed. The next version of spec is being developed at https://github.com/clojure/spec-alpha2[alpha.spec].
 
 [[spec_location]]
 **<<faq#spec_location,Where should I put my specs?>>**
@@ -186,7 +203,7 @@ Yes, set the Java system property `-Dclojure.spec.skip-macros=true` and no macro
 [[exclusive_keys]]
 **<<faq#exclusive_keys,How do I write a map that only allows certain keys?>>**
 
-Spec's general philosophy is one of "open" specs where maps can contain additional keys beyond what is specified as required or optional in an s/keys spec. One way to accomplish a contrained key set is to `s/and` an additional constraint:
+Spec's general philosophy is one of "open" specs where maps can contain additional keys beyond what is specified as required or optional in an s/keys spec. One way to accomplish a constrained key set is to `s/and` an additional constraint:
 
 [source,clojure]
 ----
@@ -317,7 +334,7 @@ WARNING: Use --illegal-access=warn to enable warnings of further illegal reflect
 WARNING: All illegal access operations will be denied in a future release
 ----
 
-The first thing to note here is that this is a warning. Java 9 through Java 12 will all permit the call to be made and the code will continue to work.
+The first thing to note here is that this is a warning. Java 9 through all current releases will permit the call to be made and the code will continue to work.
 
 There are several potential workarounds:
 

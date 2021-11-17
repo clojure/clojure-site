@@ -20,6 +20,6 @@ There are many Clojure libraries available. Additionally, Clojure can use any Ja
 
 These are groups of open source libraries maintained with common infrastructure, people, or goals:
 
-* <<contrib_libs#,Clojure contrib libs>> - open source libs under the Clojure umbrella project
+* <<xref/../../dev/contrib_libs#,Clojure contrib libs>> - open source libs under the Clojure umbrella project
 * https://clj-commons.org/[clj-commons]
 * http://clojurewerkz.org/[ClojureWerkz]

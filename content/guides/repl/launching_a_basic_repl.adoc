@@ -71,7 +71,7 @@ If you run `lein repl` from inside a Leiningen project directory, the library de
 
 === Boot
 
-If you have installed http://boot-clj.com/[Boot], you can use it to launch a REPL:
+If you have installed https://boot-clj.github.io/[Boot], you can use it to launch a REPL:
 
 [source,shell]
 ----

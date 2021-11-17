@@ -43,7 +43,7 @@ The first big issue Clojure/core had to confront was the distribution of clojure
 
 My attempts at https://github.com/clojure/clojure-contrib/commit/a6a92b9b3d2bfd9a56e1e5e9cfba706d1aeeaae5[modularizing clojure-contrib within a single Git repository] failed to improve the situation. Eventually, we settled on the solution of separate Git repositories for each library. This was a huge amount of work: dozens of repositories to create and hundreds of files to move. Many of the contrib libraries were stagnant, their original authors lacking time to continue working on them.
 
-Finally, almost a year later, the situation has stabilized: <<xref/../../../../../community/contrib_libs#,contrib libraries>>, each with its own Git repository, test suite, https://build.clojure.org/[continuous integration], and independent release cycle. The overall code quality is higher and development is moving forward again.
+Finally, almost a year later, the situation has stabilized: <<xref/../../../../../dev/contrib_libs#,contrib libraries>>, each with its own Git repository, test suite, https://build.clojure.org/[continuous integration], and independent release cycle. The overall code quality is higher and development is moving forward again.
 
 It was a painful transition for everyone, not least for those of us trying to manage it all and bear the brunt of the inevitable carping. On top of everything else, the whole process overlapped with the release of Clojure 1.3, the first release to break backwards-compatibility in noticeable ways (non-dynamic Vars as a default, long/double as default numeric types).
 

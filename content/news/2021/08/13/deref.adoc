@@ -1,0 +1,69 @@
+= Clojure Deref (Aug 13, 2021)
+Alex Miller
+2021-08-13
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Highlights
+
+This seems like a good week to highlight some more Clojure unicorns (private companies with valuations of at least 1 billion USD). One of the largest unicorns in the world is of course Nubank($30B). A few weeks ago we highlighted Amperity ($1B), which reached this level with their latest round and back in January AppsFlyer ($1B) became a unicorn. This week we have two new Clojure-built/friendly companies joining the list - https://www.reifyhealth.com/[Reify Health] (https://blog.reifyhealth.com/reify-health-raises-millions-eliminate-waiting-clinical-trials[$2.2B]) and https://taxbit.com/[TaxBit] (https://techcrunch.com/2021/08/12/crypto-tax-software-provider-taxbit-raises-130m-at-a-1-33b-valuation/[$1.5B]). It's great to see people build growing and successful companies with Clojure. Are there other Clojure unicorns? Who is missing from this list?
+
+The Deref was on vacation last week but we saw the results of the 2021 Stackoverflow survey. In 2020, Stackoverflow failed to include Clojure as an option so we were glad to see its return this week. Notably, Clojure again topped the list as the https://insights.stackoverflow.com/survey/2021#section-top-paying-technologies-top-paying-technologies[top paying technology] (as it did in 2019). Additionally, Clojure was the 2nd https://insights.stackoverflow.com/survey/2021#technology-most-loved-dreaded-and-wanted[most loved programming language]. For those that filled out the survey, thanks for sharing your info!
+
+Finally, shout out to Dmitri Sotnikov for the release of the 3rd edition of https://www.pragprog.com/titles/dswdcloj3/web-development-with-clojure-third-edition/[Web Development with Clojure]!
+
+== In the core
+
+This week, I've been working with Rich on exploring several different options for https://ask.clojure.org/index.php/2817/lighter-weight-aliasing-for-keywords[lightweight keyword aliases] (the most highly ranked request in https://ask.clojure.org). We've now explored several possible options for this - changing the semantics of alias, creating a new kind of symbolic only alias, adding a new clause to `ns`, and currently we are looking at modifying `:require` itself, which is currently looking the most promising. More to come as we make some more syntax decisions and hopefully move this towards the 1.11 stream!
+
+Fogus has been working lately on new `update-keys` and `update-vals` functions, also one of the top rated https://ask.clojure.org/index.php/1926/adding-functions-map-vals-and-map-keys[requests] on Ask Clojure. He's been working with Rich to refine the docstrings and semantics, and also benchmarking a variety of implementation options.
+
+== Videos and podcasts
+
+Lots of great media in the last couple week:
+
+* https://www.youtube.com/watch?v=3HxVMGaiZbc[ClojureScript in the Age of TypeScript] — David Nolen from the Emerging Tech for the Enterprise Conference
+* https://www.youtube.com/watch?v=85xtUwRQRy8[Atoms make up EVERYTHING] - from Jordan Miller looking at reactive atoms in CLJS
+* https://lispcast.com/the-humble-programmer/[The Humble Programmer] - Eric Normand on Dijkstra's 1972 Turing Award lecture
+* https://vimeo.com/585335551[Apropos 2021-07-24] - developing mobile native apps
+* https://soundcloud.com/defn-771544745/75-philippa-markovics[defn podcast] - with Philippa Markovics 
+* https://clojurescriptpodcast.com/[ClojureScript podcast] - lvh interviewed by Jacek Schae on security
+* https://www.cognitect.com/cognicast/161[Cognitect podcast] - Mike Fikes interviewed by Ghadi Shayban about maintaining ClojureScript using CLJS in web browsers and microcontrollers
+
+== Blogs
+
+* https://corfield.org/blog/2021/08/02/tools-build/[tools.build] - Sean Corfield
+* https://opencrux.com/blog/dev-diary-aug-21.html[Crux Development Diary #6]
+* https://metaredux.com/posts/2021/08/01/meta-reduce-2021-1-summer-time.html[Meta Reduce 2021.1: Summer Time] - Bozhidar Batsov 
+* https://javahippie.net/clojure/camunda/2021/08/07/calling-clojure-from-camunda.html[Calling Clojure code from Camunda]
+* https://otavio.dev/2021/08/12/clojure-journey-ix-destructuring[Clojure Journey IX - Destructuring] - O. Valadares
+* https://camdez.com/blog/2021/08/08/clojure-indentation-commas[Clojure Indentation Commas] - Cameron Desautels
+* https://functional.works-hub.com/learn/feature-of-app-development-in-clojure-55184[Feature of App Development in Clojure]
+
+== Libraries and Tools
+
+* https://github.com/polyfy/polylith[polylith] https://github.com/polyfy/polylith/releases/tag/v0.2.0-alpha10[v0.2.0-alpha10] - framework for building Clojure applications
+* https://github.com/clojure/core.cache[core.cache] https://github.com/clojure/core.cache/releases/tag/v1.0.217[1.0.217] - caching library for Clojure
+* https://github.com/clojure/core.memoize[memoize] 1.0.250 - memoization library for Clojure
+* https://github.com/kwladyka/consistency-clj[consistency-clj] - NEW - consistency helpers
+* https://github.com/viesti/nrepl-cljs-sci[nrepl-cljs-sci] 0.0.11 - nrepl server for nodejs
+* https://github.com/clojure-lsp/clojure-lsp[clojure-lsp] https://github.com/clojure-lsp/clojure-lsp/releases/tag/2021.08.03-13.33.03[2021.08.03-13.33.03] - Language Server (LSP) for Clojure - now supports babashka, can find public unused vars 
+* https://github.com/lispyclouds/contajners[contajners] - NEW idiomatic, data-driven, REPL friendly clojure client for OCI container engines
+* https://github.com/uncomplicate/neanderthal[neanderthal] 0.43.0 - fast Clojure matrix library
+* https://github.com/metosin/malli[malli] https://github.com/metosin/malli/blob/master/CHANGELOG.md#060-2021-08-08[0.6.0] - Data-Driven Schemas for Clojure/Script
+* https://github.com/cognitect-labs/aws-api[aws-api] - new services released: Route53 Recovery Cluster, AWS Route53 Recovery Control Config, AWS Route53 Recovery Readiness, Amazon Chime SDK Identity, and Amazon Chime SDK Messaging services
+* https://github.com/lambdaschmiede/camunda-clojure-plugin[camunda-clojure-plugin] - NEW Camunda Process Engine Plugin to execute Clojure Functions from Activities
+* https://github.com/fulcrologic/datomic-cloud-backup[datomic-cloud-backup] - NEW library for creating and restoring backups of databases in Datomic Cloud 
+* https://github.com/clj-commons/manifold[manifold] 0.1.9-alpha5 - a compatibility layer for event-driven abstractions 
+* https://github.com/clj-kondo/clj-kondo[clj-kondo] 2021.08.06 - a linter for Clojure code that sparks joy
+* https://github.com/lilactown/autonormal[autonormal] v2.0.0 - library for storing and querying graph data in a Clojure map 
+* https://github.com/babashka/babashka[babashka] 0.5.1 - Native, fast starting Clojure interpreter for scripting
+* https://github.com/seancorfield/clj-new[clj-new] 1.1.331 - generate new projects based on clj, Boot, or Leiningen Templates
+* https://github.com/ruedigergad/cli4clj[cli4clj] 1.7.9 - Create simple interactive CLIs for Clojure applications
+* https://calva.io[Calva] v2.0.206 - Calva is an integrated REPL powered environment for enjoyable and productive Clojure and ClojureScript development in Visual Studio Code - perf improvements
+* http://djblue.github.io/portal[portal] 0.13.0 - A clojure tool to navigate through your data - perf 
+* https://github.com/camsaul/whitespace-linter[whitespace-linter] - NEW extensible whitespace linter 
+* https://gitlab.com/yogthos/mastodon-bot[mastodon-bot] - a bot for mirroring Twitter/Tumblr accounts and RSS feeds on Mastodon, reimplementing on clojure/jvm 

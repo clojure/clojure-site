@@ -1,0 +1,52 @@
+= Freshcode
+Alex Miller
+2020-12-16
+:jbake-type: story
+:jbake-company: Freshcode
+
+[.right]
+image:/images/content/stories/freshcode.png["Freshcode",height="125"]
+
+**How long have you been working with Clojure or ClojureScript?**
+
+https://freshcodeit.com/[Freshcode] has been using Clojure since 2013 and we never were disappointed. We help SMBs to achieve Clojure's unique approaches which we sincerely appreciate.
+
+**How big is the team you have using Clojure or ClojureScript?**
+
+Over 10 Clojure developers and 6 successful projects.
+
+**What product or service are you building with Clojure or ClojureScript?**
+
+We started developing our own product in Clojure in January 2013. It was an eCommerce platform for smart buying — the choice was between Clojure and Ruby on Rails, and our founder decided to go with Clojure as it offered concise syntax, speed of development, and a new paradigm.
+
+One year later we won our first commercial client in Clojure from Australia. As early as January 2015, our Clojure team grew to 4 people and we integrated Clojure into 3 of our projects as it was fit to solve specific tasks and challenges.
+
+2016 — through the year we've worked with 3 clients for education, politics, and e-commerce. Next year we embarked on a project for a biotechnology company and have grown to have 6 team members.
+
+Nov 2019 — another product in finance in our portfolio and the team rises to 11 people and combined experience of more than 100 years in Clojure. In March 2020 we started a Clojure and functional programming community in our city and we keep growing it.
+
+**What Clojure or ClojureScript library have you enjoyed working with the most?**
+
+We talked to one of our Clojure developers, Vladimir Pavlyuk, about how he uses Clojure and ClojureScript at Freshcode.
+
+What Clojure or ClojureScript library have you enjoyed working with the most?
+
+There are a couple of them. I love https://github.com/reagent-project/reagent[Reagent], as it allows me to easily manage React state using native ClojureScript atom API. https://github.com/ingesolvoll/kee-frame[kee-frame] is another library I believe I would prefer to go, especially for route management.
+
+Love the https://clojure.org/guides/spec[clojure.spec] with its handy and functional interface to provide specifications.
+
+**What about working with Clojure or ClojureScript gives you the most value?**
+
+It's probably working with a highly skilled community, which acts like a small family of people loving what they're doing. Still it's much more to learn from them.
+
+**What is your favorite feature of Clojure or ClojureScript?**
+
+Macros, thread-safe binding, and laziness, in order of importance.
+
+**What is your stack?**
+
+As I got used to implement web-servers & clients, my stack mostly includes Clojurescript + https://github.com/reagent-project/reagent[reagent], https://github.com/day8/re-frame[re-frame], https://github.com/metosin/reitit[reitit] on the front end, and Clojure + https://github.com/http-kit/http-kit[http-kit], https://github.com/tolitius/mount[tolitius/mount], https://github.com/juxt/bidi[bidi] on the backend. Got used to work with https://github.com/seancorfield/honeysql[honeysql] and https://github.com/layerware/hugsql[HugSQL] libraries.
+
+**Why is using Clojure or ClojureScript valuable to your business?**
+
+It's quite easy to start an app using Clojure, as long as you are aware with its syntax. Clojure does not force you to stick to a certain paradigm, as Java tries to do; however you can use all JVM facilities. It is easier to code, but still is a powerful instrument. Besides, macros allow creating custom DSLs, to facilitate project interaction with your business partners.

@@ -188,10 +188,7 @@ image::/images/content/community/process.png[JIRA Workflow]
 *** https://clojure.atlassian.net/issues/?filter=10001[Open] | https://clojure.atlassian.net/issues/?filter=10002[Triaged] | https://clojure.atlassian.net/issues/?filter=10003[Prescreened] | https://clojure.atlassian.net/issues/?filter=10004[Vetted] | https://clojure.atlassian.net/issues/?filter=10005[Declined] | https://clojure.atlassian.net/issues/?filter=10006[Backlog]
 ** Next release work queues
 *** https://clojure.atlassian.net/issues/?filter=10007[Needs Patch] | https://clojure.atlassian.net/issues/?filter=10008[Screenable] | https://clojure.atlassian.net/issues/?filter=10009[Incomplete] | https://clojure.atlassian.net/issues/?filter=10010[Screened] | https://clojure.atlassian.net/issues/?filter=10011[Ok] | https://clojure.atlassian.net/issues/?filter=10012[Accepted] | https://clojure.atlassian.net/issues/?filter=10013[Closed]
-** Other
-*** http://jafingerhut.github.io/clj-ticket-status/clojure-ticket-info.html[Tickets by Weighted Vote]
 * ClojureScript
-** http://dev.clojure.org/jira/secure/IssueNavigator.jspa?mode=hide&requestId=10706[Needs Patch] | http://dev.clojure.org/jira/secure/IssueNavigator.jspa?mode=hide&requestId=10707[Screenable]
+** https://clojure.atlassian.net/issues/?filter=10028[Newbie] | https://clojure.atlassian.net/issues/?filter=10017[Screenable]
 * core.async
-** http://dev.clojure.org/jira/secure/IssueNavigator.jspa?mode=hide&requestId=10605[Open] | http://dev.clojure.org/jira/secure/IssueNavigator.jspa?mode=hide&requestId=10606[Triaged] | http://dev.clojure.org/jira/secure/IssueNavigator.jspa?mode=hide&requestId=10607[Vetted] | https://dev.clojure.org/jira/secure/IssueNavigator.jspa?mode=hide&requestId=10608[Screenable] | http://dev.clojure.org/jira/secure/IssueNavigator.jspa?mode=hide&requestId=10609[Screened] | http://dev.clojure.org/jira/secure/IssueNavigator.jspa?mode=hide&requestId=10611[Incomplete] | http://dev.clojure.org/jira/secure/IssueNavigator.jspa?mode=hide&requestId=10610[Ok]
-
+** https://clojure.atlassian.net/issues/?filter=10023[Open, no patch] | https://clojure.atlassian.net/issues/?filter=10024[Open, with patch] | https://clojure.atlassian.net/issues/?filter=10025[Open, CLJS-only]

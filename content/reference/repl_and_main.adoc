@@ -79,7 +79,7 @@ To run a file full of Clojure code as a script, pass the path to the script to `
 
 [source,shell]
 ----
-clj /path/to/myscript.clj
+clj -M /path/to/myscript.clj
 ----
 
 == Passing arguments to a Script
@@ -88,7 +88,7 @@ To pass in arguments to a script, pass them in as further arguments when launchi
 
 [source,shell]
 ----
-clj /path/to/myscript.clj arg1 arg2 arg3
+clj -M /path/to/myscript.clj arg1 arg2 arg3
 ----
 
 The arguments will be provided to your program as a seq of strings bound to the var `pass:[*command-line-args*]`:
@@ -113,7 +113,7 @@ As of Clojure 1.10, Clojure errors categorized into one of several phases:
 * `:read-eval-result` - any error thrown while reading the result of execution (only applicable for REPLs that read the result).
 * `:print-eval-result` - any error thrown while printing the result of execution.
 
-Exceptions thrown during all phases (exception `:execution`) will have ex-data attached with one or more the following keys:
+Exceptions thrown during all phases (exception `:execution`) will have ex-data attached with one or more of the following keys:
 
 * `:clojure.error/phase` - phase indicator
 * `:clojure.error/source` - file name (no path)
@@ -177,7 +177,7 @@ Following is an example of starting a socket server with a repl listener. This c
 -Dclojure.server.repl="{:port 5555 :accept clojure.core.server/repl}"
 ----
 
-An example client you can use to connect to this socket repl is telnet:
+An example client you can use to connect to this repl remotely is telnet:
 
 [source,shell]
 ----
@@ -189,7 +189,7 @@ user=> (println "hello")
 hello
 ----
 
-You can instruct the server to close the client socket repl session by using the special command `:repl/quit`:
+You can instruct the server to close the client repl session by using the special command `:repl/quit`:
 
 [source,clojure-repl]
 ----
@@ -200,7 +200,7 @@ Connection closed by foreign host.
 Also see:
 
 * https://clojure.atlassian.net/browse/CLJ-1671[CLJ-1671]
-* https://archive.clojure.org/design-wiki/display/design/Socket%2BServer%2BREPL.html[Socket REPL design page]
+* https://archive.clojure.org/design-wiki/display/design/Socket%2BServer%2BREPL.html[Socket Server and REPL design page]
 
 == Related functions
 

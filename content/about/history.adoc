@@ -1,0 +1,30 @@
+= History
+Rich Hickey
+2020-06-04
+:type: about
+:toc: macro
+:icons: font
+:navlinktext: History
+:prevpagehref: rationale
+:prevpagetitle: Rationale
+:nextpagehref: state
+:nextpagetitle: State
+:figure-caption!:
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+The https://hopl4.sigplan.org/track/hopl-4-papers#History-of-HOPL[History of Programming Languages conference series] produces accurate historical records and descriptions of programming language design, development, and philosophy. It is infrequently held: the first three were in 1978, 1993, and 2007.
+
+2020 is the time for https://hopl4.sigplan.org[HOPL-IV], and I'm very excited and honored to have a paper on Clojure be https://dl.acm.org/toc/pacmpl/2020/4/HOPL[accepted]. I want to thank Guy Steele and Richard Gabriel, co-chairs of HOPL IV, as well as the reviewers and shepherds for their support and guidance. Clojure is not the product of traditional research and (as may be evident) writing a paper for this setting was a different and challenging exercise. I hope the paper provides some insight into why Clojure is the way it is and the process and people behind its creation and development.
+
+Rich
+
+[#download]
+.A History of Clojure
+image::/images/content/about/preview.png["Download paper", link="https://download.clojure.org/papers/clojure-hopl-iv-final.pdf", width=400]
+
+From HOPL IV in June 2021:
+
+[#video]
+.HOPL IV conference talk and Q&A
+image::/images/content/about/hopl-video.png["Video", link="https://www.pldi21.org/prerecorded_hopl.11.html", width=400]

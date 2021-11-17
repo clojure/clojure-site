@@ -14,6 +14,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 Here is a list of useful REPL-related resources by the Clojure community:
 
+* In https://www.youtube.com/watch?v=Qx0-pViyIDU[Running with Scissors: Live Coding with Data] (slides https://github.com/stuarthalloway/presentations/wiki/Running-with-Scissors[here]), Stuart Halloway presents his workflow for solving problems with the REPL, including little-known opportunities offered by the Clojure REPL without 3rd-party tools (such as custom reading). _"You're living in your program invoking your tools, instead of living in your tools invoking your program"._
 * https://lambdaisland.com/guides/clojure-repls[The Ultimate Guide to Clojure REPLs] on Lambda Island:
 this tutorial notably explores the wide variety of Clojure REPLs and related technology.
 * https://vimeo.com/223309989[Stuart Halloway on REPL Driven Development]: a talk which reflects on the added value 
@@ -22,6 +23,7 @@ of REPLs compared to shells, and provides guidelines for using the Clojure REPL.
 a ClojureVerse discussion where community members describe their development configurations and how they use it them in details.
 * https://vvvvalvalval.github.io/posts/what-makes-a-good-repl.html[What makes a good REPL?]: this blog post provides 
 a general reflection on the benefits of REPLs, and the programming language features which enable them.
+* https://www.youtube.com/watch?v=gIoadGfm5T8[REPL-Driven Development: Clojure's Superpower]: Sean Corfield at the London Clojurians online meetup, talking about why Clojure's REPL is so powerful, including a live, 40 minute demo, building a simple web app via the REPL (starting at about 11 minutes in).
 * https://vimeo.com/230220635[REPL-Based Development Demo]: a video showing how the REPL is used for development 
 on an example project.
 * The https://gist.github.com/daveray/1441520[Seesaw REPL Tutorial] teaches you to build Graphical User Interfaces 

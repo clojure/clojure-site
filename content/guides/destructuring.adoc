@@ -372,11 +372,22 @@ To support this style of invocation, associative destructuring also works with l
 ;;val = 5  debug = true  verbose = false
 
 ;; Note that any order is ok for the kwargs
-(configure 12 :verbose true :debug true)
+ (configure 12 :verbose true :debug true)
 ;;val = 12  debug = true  verbose = true
 ----
 
-The use of keyword arguments has fallen in and out of fashion in the Clojure community over the years. They are now mostly used when presenting interfaces that people are expected to type at the REPL or the outermost layers of an API. In general, inner layers of the code find it easier to pass options as an explicit map.
+The use of keyword arguments had fallen in and out of fashion in the Clojure community over the years. They are now mostly used when presenting interfaces that people are expected to type at the REPL or the outermost layers of an API. In general, inner layers of the code found it easier to pass options as an explicit map. However, in Clojure 1.11 the capability was added to allow passing of alternating key->values, or a map of those same mappings, or even a map with key->values before it to functions expecting keyword arguments. Therefore, the call to `configure` above can take any of the following forms in addition to those shown above:
+
+[source,clojure]
+----
+ (configure 12 {:verbose true :debug true})
+;;val = 12  debug = true  verbose = true
+
+ (configure 12 :debug true {:verbose true})
+;;val = 12  debug = true  verbose = true
+----
+
+The trailing map to functions expecting keyword aguments is often useful in overriding the default keys provided as key->value pairs.
 
 === Namespaced keywords
 

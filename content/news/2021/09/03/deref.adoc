@@ -1,0 +1,65 @@
+= Clojure Deref (Sept 3, 2021)
+Alex Miller
+2021-09-03
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Highlights
+
+https://www.clojuriststogether.org[Clojurists Together] announced their https://www.clojuriststogether.org/news/q3-2021-funding-announcement/[Q3 funding projects] - congrats to all receiving funding and thanks to Clojurists Together for facilitating the funding of open source! I don't know of any other language community that does as much as the Clojure community to support sustainable open source.
+
+If you like learning things, two things to mention this week - Jacek Schae opened the https://learndatomic.com[Learn Datomic] course for enrollment and Deep Learning for Programmers by Dragan Djuric finally hit https://aiprobook.com/deep-learning-for-programmers/?release=1.0.0[1.0.0]! Dig in and learn something new!
+
+== In the core
+
+I think both Fogus and I continued working on the same things we've been working on the last couple weeks but moving asymptotically closer to "finished". We also did a lot of updates on various Clojure JIRA tickets, preparing things for Rich to look at. We are expecting to move some of this work (lightweight keyword aliasing, update-keys, update-vals, bunch of jiras) over the line and into a Clojure 1.11.0-alpha2 over the next week. Not sure yet exactly what that will include, depends what makes it through review, some may slip out of alpha2, but I think we will have enough to get an alpha2 out regardless. A lot of what we have been working on is really revising how we work so that we can more regularly deliver new Clojure goodness to you!
+
+This week also saw the release of a new Clojure CLI version, which is largely the same but bumps all of the transitive deps (importantly including some transitive dep security updates and Maven download concurrency improvements), and replaces our build process for the CLI itself with tools.build, so we are eating our dogfood there (and it tastes pretty good!). I did fix a few minor issues in tools.deps and tools.build through that process, but things went surprisingly smoothly.
+
+== Videos and podcasts
+
+* https://www.youtube.com/watch?v=asnh6KXoidA[Betting your company on Lisp: 5 years with Clojure in production] - Adam Tornhill
+* https://www.therepl.net/episodes/38/[Banking and Clojure with Allen Rohner] - Daniel Compton's The REPL podcast returns!
+* https://clojurescriptpodcast.com/[ClojureScript podcast] - Part 3 of Jacek Schae's talk with lvh
+
+== Blogs
+
+* https://slipset.github.io/posts/config[Dependency injection, perhaps? Part 2] - Erik Assum
+* https://slipset.github.io/posts/dependency-injection-perhaps[Dependency injection, perhaps? Part 1] - Erik Assum
+* https://www.git-tower.com/blog/developing-for-the-desktop-pitch/[Pitch — Developing a Collaborative Presentation Tool for Modern Teams] - Adam Renklint
+* https://davidvujic.blogspot.com/2021/09/material-design-in-a-functional-world.html[Material Design in a Functional World] - David Vujic
+* https://davidvujic.blogspot.com/2021/08/hey-webpack-hey-clojurescript.html[Hey Webpack, Hey ClojureScript ] - David Vujic
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/wilkerlucio/pathom3[Pathom 3] https://blog.wsscode.com/pathom-updates-11/[3 alpha] - Logic programming via attribute relationships
+* https://calva.io[Calva] 2.0.211 - Calva is an integrated REPL powered environment for enjoyable and productive Clojure and ClojureScript development in Visual Studio Code.
+* https://github.com/babashka/babashka[babashka] https://github.com/babashka/babashka/blob/master/CHANGELOG.md#060[0.6.0] - Fast-starting native scripting runtime for Clojure
+* https://github.com/clojure/tools.build[tools.build] v0.2.0 - Library of functions for building Clojure projects
+* https://github.com/IGJoshua/farolero[farolero] 1.3.0 - Thread-safe Common Lisp style conditions and restarts for Clojure(Script).
+* https://github.com/jonase/eastwood[eastwood] https://github.com/jonase/eastwood/blob/Release-0.9.9/changes.md#changes-from-097-to-098[0.9.9] - Clojure lint tool
+* https://github.com/lambdaisland/classpath[classpath]  - Classpath/classloader/deps.edn related utilities 
+* https://github.com/polyfy/polylith[polylith] https://github.com/polyfy/polylith/releases/tag/v0.2.12-alpha[0.2.12-alpha] - A tool used to develop Polylith based architectures in Clojure
+* https://github.com/seancorfield/build-clj[build-clj] v0.1.2 - Common build tasks abstracted into a library
+* https://github.com/tolitius/obiwan[obiwan] 0.1.472 - redis/search clojure client based on jedis
+* https://clojure.org/reference/deps_and_cli[Clojure CLI] https://clojure.org/releases/tools#v1.10.3.967[1.10.3.967] - Clojure CLI
+* https://github.com/PEZ/rn-rf-shadow[rn-rf-shadow]  - An example project to get you started with React Native using shadow-cljs
+* https://github.com/carocad/frechet[frechet] 0.13.0 - Discrete Fréchet distance
+* https://github.com/fulcrologic/fulcro[fulcro] 3.5.3 - A library for development of single-page full-stack web applications in clj/cljs
+* https://clojure-lsp.io/[clojure-lsp] https://github.com/clojure-lsp/clojure-lsp/releases/tag/2021.09.03-00.42.46[2021.09.03-00.42.46] - A Language Server for Clojure(script). 
+* https://github.com/borkdude/deps.clj[deps.clj] 0.0.17 - A faithful port of the clojure CLI bash script to Clojure.
+* https://github.com/IGJoshua/farolero[farolero] 1.3.0 - Thread-safe Common Lisp style conditions and restarts for Clojure(Script). 
+* https://github.com/seancorfield/next-jdbc[next-jdbc] https://github.com/seancorfield/next-jdbc/releases/tag/v1.2.709[1.2.709] - A modern low-level Clojure wrapper for JDBC-based access to databases
+* https://github.com/viesti/timbre-json-appender[timbre-json-appender] 0.2.3 - JSON appender for Timbre
+* https://github.com/schmee/java-http-clj[java-http-clj] 0.4.3 - Clojure wrapper for java.net.http with async, HTTP/2 and WebSockets
+* https://github.com/lread/test-doc-blocks[test-doc-blocks] https://github.com/lread/test-doc-blocks/blob/main/CHANGELOG.adoc#v10146-alpha[1.0.146-alpha] - Test AsciiDoc and CommonMark code blocks found in articles and docstrings
+* https://github.com/clj-commons/manifold[manifold] https://github.com/clj-commons/manifold[0.1.9-alpha6] - A compatibility layer for event-driven abstractions
+
+== Video Throwback
+
+I'm very happy this week to release a new edit of https://youtu.be/LKtk3HCgTa8["Simple Made Easy" by Rich Hickey], which was first given as the closing keynote at Strange Loop 2011, 10 years ago. To make this edit, I used the original HD video and Rich's original slides with all the bullet/slide transitions and animations, so this is as close as you'll get to how it was originally given in the room. Enjoy this classic!

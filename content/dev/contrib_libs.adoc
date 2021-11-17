@@ -1,7 +1,7 @@
 = Contrib Libraries
 Alex Miller
 2019-02-04
-:type: community
+:type: dev
 :toc: macro
 :icons: font
 
@@ -9,7 +9,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 Clojure is an umbrella level project that hosts many additional libraries called _Clojure contrib_, which all exist under the https://github.com/clojure[Clojure organization] on GitHub.
 
-These libraries use the same contribution model (<<xref/../../dev/contributor_agreement#,Contributor Agreement>>, license, and copyright) as Clojure itself, and a shared infrastructure maintained by the Clojure core team:
+These libraries use the same contribution model (<<contributor_agreement#,Contributor Agreement>>, license, and copyright) as Clojure itself, and a shared infrastructure maintained by the Clojure core team:
 
 * Source control - Git libraries on GitHub
 * Issues - https://clojure.atlassian.net/projects/CLJ[JIRA]
@@ -53,6 +53,7 @@ Status legend:
 | https://clojure.github.io/data.finger-tree/[data.finger-tree] | Finger trees | Chouser | Stable
 | https://clojure.github.io/data.fressian/[data.fressian] | Extensible binary Data Notation | Stuart Halloway | Stable
 | https://clojure.github.io/data.generators/[data.generators] | Random data generators | Stuart Halloway | Inactive
+| https://clojure.github.io/data.int-map/[data.int-map] | Maps and sets optimized for integer keys | Alex Miller | Stable
 | https://clojure.github.io/data.json/[data.json] | JSON encoding / decoding | Stuart Sierra | Stable
 | https://clojure.github.io/data.priority-map/[data.priority-map] | Priority maps | Mark Engelberg | Stable
 | https://clojure.github.io/data.xml/[data.xml] | Lazy XML parsing | Ryan Senior, Herwig Hochleitner | Stable
@@ -67,6 +68,7 @@ Status legend:
 | https://clojure.github.io/test.generative/[test.generative] | Test data generation and execution harness | Stuart Halloway | Inactive
 | https://clojure.github.io/tools.analyzer/[tools.analyzer] | Analyzer framework for Clojure code | Nicola Mometto | Active
 | https://clojure.github.io/tools.analyzer.jvm/[tools.analyzer.jvm] | JVM-specific passes for tools.analyzer | Nicola Mometto | Active
+| https://clojure.github.io/tools.build/[tools.build] | Functions for writing Clojure build programs | Alex Miller | Active
 | https://clojure.github.io/tools.cli/[tools.cli] | Command-line argument processor | Sean Corfield | Active
 | https://clojure.github.io/tools.deps.alpha/[tools.deps.alpha] | Tools for dependency management and classpath construction | Alex Miller | Active
 | https://clojure.github.io/tools.deps.graph/[tools.deps.graph] | Create dependency graphs for deps.edn projects | Alex Miller | Active
@@ -77,6 +79,7 @@ Status legend:
 | https://clojure.github.io/tools.namespace/[tools.namespace] | Tools for working with namespace declarations | Stuart Sierra | Stable
 | https://clojure.github.io/tools.nrepl/[tools.nrepl] | Network REPL | | Inactive
 | https://clojure.github.io/tools.reader/[tools.reader] | Clojure reader | Nicola Mometto | Active
+| https://clojure.github.io/tools.tools/[tools.tools] | A Clojure CLI tool for managing CLI tools | Alex Miller | Active
 | https://clojure.github.io/tools.trace/[tools.trace] | Execution tracing | Luc Prefontaine | Stable
 |===
 
@@ -90,7 +93,7 @@ Additionally, the following libraries are dependencies of Clojure itself managed
 
 And finally, there are some repositories in the Clojure GitHub organization that are not libraries at all:
 
-* https://github.com/clojure/clojure-site/[clojure-site] - this web site, see <<contributing_site#,Site Contributions>>
+* https://github.com/clojure/clojure-site/[clojure-site] - this web site, see <<xref/../../community/contributing_site#,Site Contributions>>
 * https://github.com/clojure/clojurescript-site/[clojurescript-site] - https://clojurescript.org web site
 * https://github.com/clojure/brew-install/[brew-install] - `clj` installer builds
 * https://github.com/clojure/build.ci/[build.ci] - Jenkins project builder for contrib

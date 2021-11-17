@@ -1,0 +1,244 @@
+= Tools Releases
+Alex Miller
+2020-09-25
+:jbake-type: releases
+:toc: macro
+:icons: font
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+The Clojure command line tools can be used to start a Clojure repl, use Clojure and Java libraries, and start Clojure programs.
+
+== Installation and Docs
+
+For more information see the following docs:
+
+* <<xref/../../guides/getting_started#,Getting Started>> guide installation instructions
+* <<xref/../../guides/deps_and_cli#,Deps and CLI guide>>
+* <<xref/../../reference/deps_and_cli#,Deps and CLI reference>>
+* https://github.com/clojure/homebrew-tools[Clojure Homebrew tap]
+
+== Releases
+
+Recent official releases are described here. Prereleases and older versions can be found in the https://github.com/clojure/brew-install/blob/1.10.3/CHANGELOG.md[repo changelog].
+
+=== 1.10.3.1029 (Nov 8, 2021) [[v1.10.3.1029]]
+
+* https://clojure.atlassian.net/browse/TDEPS-212[TDEPS-212] Cover a much wider range of valid git dep urls, including git file urls
+* Use https://github.com/clojure/tools.deps.alpha/blob/master/CHANGELOG.md[tools.deps.alpha] 0.12.1071
+
+=== 1.10.3.1020 (Nov 5, 2021) [[v1.10.3.1020]]
+
+* https://clojure.atlassian.net/browse/TDEPS-83[TDEPS-83] Invalidate classpath cache when local dep manifests change
+* Add new `clj -X:deps list` program to list the full lib set on the classpath, see https://clojure.github.io/tools.deps.alpha/clojure.tools.cli.api-api.html#clojure.tools.cli.api/list[API docs] for more info
+* Bump deps to more recent versions - aws-api, jetty-client, etc
+* Clean up exception handling for -X/-T
+* Use https://github.com/clojure/tools.deps.alpha/blob/master/CHANGELOG.md[tools.deps.alpha] 0.12.1067
+
+=== 1.10.3.998 (Oct 26, 2021) [[v1.10.3.998]]
+
+* Remove `bottle :unneeded` from brew formulas (no longer needed)
+* https://clojure.atlassian.net/browse/TDEPS-209[TDEPS-209] Include only jar files in classpath from Maven artifacts
+* Update to tools.tools v0.2.1 (minor improvements in `clj -Ttools list`)
+* Use https://github.com/clojure/tools.deps.alpha/blob/master/CHANGELOG.md[tools.deps.alpha] 0.12.1058
+
+=== 1.10.3.986 (Sep 22, 2021) [[v1.10.3.986]]
+
+* Fix nested session cache computation for local pom model building
+* Use https://github.com/clojure/tools.deps.alpha/blob/master/CHANGELOG.md[tools.deps.alpha] 0.12.1048
+
+=== 1.10.3.981 (Sep 21, 2021) [[v1.10.3.981]]
+
+* Update to latest AWS API libs
+* Downgrade Maven resolver libs to better match Maven core libs
+* Use https://github.com/clojure/tools.deps.alpha/blob/master/CHANGELOG.md[tools.deps.alpha] 0.12.1041
+
+=== 1.10.3.967 (Sep 1, 2021) [[v1.10.3.967]]
+
+* Refine exec exceptions for missing namespace vs missing function in namespace
+* Replace Maven-based build process with tools.build
+* Compile entry points in tools.deps used for building classpaths for performance
+* Use https://github.com/clojure/tools.deps.alpha/blob/master/CHANGELOG.md[tools.deps.alpha] 0.12.1036
+
+=== 1.10.3.943 (Aug 13, 2021) [[v1.10.3.943]]
+
+* https://clojure.atlassian.net/browse/TDEPS-199[TDEPS-199] Use default http-client in S3 transporter
+* Cache S3 transporter for a repo
+* Fixed session cache to work properly across threads / binding stacks for better perf
+* Replace specific maven version range requests with non-range request to reduce repo metadata lookups
+* Load and cache Maven settings once for perf
+* Cache version range resolution results for perf
+* Use https://github.com/clojure/tools.deps.alpha/blob/master/CHANGELOG.md[tools.deps.alpha] 0.12.1019
+
+=== 1.10.3.933 (July 28, 2021) [[v1.10.3.933]]
+
+* deps.edn
+** <<xref/../../reference/deps_and_cli#_git,git deps>>
+*** If a git library name follows the repo convention names, the `:git/url` can now be inferred (`:git/url` can also be specified explicitly and takes precedence)
+*** `:git/tag` and prefix `:git/sha` can now be specified instead of the full sha. Both must point to the same commit.
+*** `:sha` has been renamed to `:git/sha` but the original is still supported for backwards compatibility
+** `:deps/prep-lib` - a new top-level key can be used to say how a source lib should be prepared before being added to the classpath. This key's value is a map with `:alias`, `:fn`, and `:ensures`. See <<xref/../../reference/deps_and_cli#prep,prep docs>> for more info.
+** `:tools/usage` - a new top-level key can be used to provide the `:ns-default` and `:ns-aliases` context for a tool
+* <<xref/../../reference/deps_and_cli#tool_install,Tools>> - git-based programs that can be installed with a local name. Tools can provide their own usage context in deps.edn.
+** Added new auto-installed tool named `tools` with https://clojure.github.io/tools.tools[functions] `install`, `list`, `remove`. See <<xref/../../reference/deps_and_cli#tool_install#,reference>>.
+** Install a tool with `clojure -Ttools install <lib> <coord> :as <toolname>`
+** Run a tool with `clojure -T<toolname> fn` (also takes -X style args)
+* <<xref/../../reference/deps_and_cli#,Clojure CLI>>
+** New `-T` option is like `-X` (executes a function) but does not use the project classpath, instead uses tool classpath (and adds `:paths ["."]` by default). `-T:aliases` is otherwise same as `-X`. `-Ttoolname` resolves named tool by name and uses that tool lib.
+** https://clojure.atlassian.net/browse/TDEPS-198[TDEPS-198] - -X and -T will not wait to exit if futures/agents have been used
+** https://clojure.atlassian.net/browse/TDEPS-182[TDEPS-182] - Improve deprecation messages to be more accurate
+** https://clojure.atlassian.net/browse/TDEPS-183[TDEPS-183] - Fix -Sdescribe output to be valid EDN on Windows
+** https://clojure.atlassian.net/browse/TDEPS-179[TDEPS-179] - Fix incorrect classpath when :classpath-overrides removes path
+** Delay computation of local-repo path (don't compute at load time)
+** Use https://github.com/clojure/tools.deps.alpha/blob/master/CHANGELOG.md[tools.deps.alpha] 0.12.1003
+* New -X:deps programs:
+** https://clojure.github.io/tools.deps.alpha/clojure.tools.cli.api-api.html#clojure.tools.cli.api/find-versions[`find-versions`] - to find versions of Maven or git libs or tools
+** https://clojure.github.io/tools.deps.alpha/clojure.tools.cli.api-api.html#clojure.tools.cli.api/prep[`prep`] - use to <<xref/../../reference/deps_and_cli#prep,prep>> source libs
+** https://clojure.github.io/tools.deps.alpha/clojure.tools.cli.help-api.html#clojure.tools.cli.help/dir[`help/dir`] - to list available functions in a tool namespace
+** https://clojure.github.io/tools.deps.alpha/clojure.tools.cli.help-api.html#clojure.tools.cli.help/doc[`help/doc`] - to list docs for a tool namespace or function
+
+Read more at <<xref/../../news/2021/07/09/source-libs-builds#,Source Libs and Builds>>.
+
+=== 1.10.3.855 (May 25, 2021) [[v1.10.3.855]]
+
+* Fix in applying :jvm-opts with -X execution on Windows
+
+=== 1.10.3.849 (May 21, 2021) [[v1.10.3.849]]
+
+* Adds support for a <<xref/../../reference//deps_and_cli#_trailing_map_argument,trailing map of kvs>> in -X calls (similar to Clojure 1.11 trailing map to vararg calls)
+* Updates all Maven deps to latest (maven-resolver 1.7.0, maven core 1.8.3) to address these https://maven.apache.org/docs/3.8.1/release-notes.html[security concerns]
+** CVE-2020-13956 - bumps deps on Apache HttpClient used by Maven
+** CVE-2021-26291 - potential security problems regarding Maven repositories:
+*** Due to the possibility of MITM (man in the middle) attacks, http repo access is now blocked by default. tools.deps/Clojure CLI has always used https repos in the default repository list (central and clojars), so this mostly impacts any explicit http repositories defined in deps.edn
+*** Concerns over the "hijacking" of repository urls by transitive pom deps (or their super poms) to download artifacts from malicious repos. Maven made no changes here, but did clarify how repos are resolved on https://maven.apache.org/guides/mini/guide-multiple-repositories.html#repository-order[this page]. From a deps perspective, we only use repositories declared in the top-level deps.edn (if transitive deps need a custom repo, you will need to add it at top-level too). For tools.deps use of pom dependencies, we are providing the repos of the top deps.edn file (which should always put Maven Central and Clojars first), then deferring to Maven for the rest.
+* Use https://github.com/clojure/tools.deps.alpha/blob/master/CHANGELOG.md[tools.deps.alpha] 0.11.922
+
+=== 1.10.3.839 (May 12, 2021) [[v1.10.3.839]]
+
+* Fix Linux installer breakage in 1.10.3.833
+
+=== 1.10.3.833 (May 11, 2021) [[v1.10.3.833]]
+
+* https://clojure.atlassian.net/browse/TDEPS-177[TDEPS-177] - Fix Maven mirrors to look up by id, not name
+* Remove flag when fetching git deps so that older git versions work
+* Tweak some warning messages
+* Clean up scripts to simplify variable replacement
+* Use https://github.com/clojure/tools.deps.alpha/blob/master/CHANGELOG.md[tools.deps.alpha] 0.11.918
+
+=== 1.10.3.822 (Apr 3, 2021) [[v1.10.3.822]]
+
+* Fix issue with git deps where new commits on branches were not fetched
+
+=== 1.10.3.814 (Mar 16, 2021) [[v1.10.3.814]]
+
+* git deps: switch from using jgit to shelling out to git (must be git >= 2.5)
+** New env vars for control:
+*** `GITLIBS_COMMAND` - command to invoke when shelling out to git, default = `git`
+*** `GITLIBS_DEBUG` - set to `true` to print git commands and output to stderr, default = `false`
+* Made git fetch only when shas can't be resolved to improve performance
+* Bump dep versions for tools.cli and aws api to latest
+* Use https://github.com/clojure/tools.deps.alpha/blob/master/CHANGELOG.md[tools.deps.alpha] 0.11.905
+
+=== 1.10.2.796 (Feb 23, 2021) [[v1.10.2.796]]
+
+* Fix `clj -X:deps git-resolve-tags` to update the sha to match the tag
+* Perf improvements for git or local deps using pom.xml
+* Use https://github.com/clojure/tools.deps.alpha/blob/master/CHANGELOG.md[tools.deps.alpha] 0.9.884
+
+=== 1.10.2.790 (Feb 19, 2021) [[v1.10.2.790]]
+
+* Add -version and --version options
+* https://clojure.atlassian.net/browse/TDEPS-56[TDEPS-56] - Fix main-opts and jvm-opts word splitting on spaces
+* https://clojure.atlassian.net/browse/TDEPS-125[TDEPS-125] - Use JAVA_CMD if set (thanks Gregor Middell!)
+* Add warning if `:paths` or `:extra-paths` refers to a directory outside the project root (in the future will become an error)
+* Use https://github.com/clojure/tools.deps.alpha/blob/master/CHANGELOG.md[tools.deps.alpha] 0.9.871
+
+=== 1.10.2.774 (Jan 26, 2021) [[v1.10.2.774]]
+
+* Improve error when git dep version relationship can't be determined
+* Switch to 1.10.2 for default Clojure version
+* Use https://github.com/clojure/tools.deps.alpha/blob/master/CHANGELOG.md[tools.deps.alpha] 0.9.863
+
+=== 1.10.1.763 (Dec 10, 2020) [[v1.10.1.763]]
+
+* Set exit code for -X ex-info error
+* Sync up cli syntax for aliases in help
+* Use https://github.com/clojure/tools.deps.alpha/blob/master/CHANGELOG.md[tools.deps.alpha] 0.9.857
+
+=== 1.10.1.754 (Dec 7, 2020) [[v1.10.1.754]]
+
+* New, more informative tree format for `clj -Stree` / `clj -X:deps tree`
+* Added https://clojure.github.io/tools.deps.alpha/clojure.tools.cli.api-api.html#clojure.tools.cli.api/tree[options] for use with `clj -X:deps tree`
+* Use https://github.com/clojure/tools.deps.alpha/blob/master/CHANGELOG.md[tools.deps.alpha] 0.9.857
+
+=== 1.10.1.739 (Nov 23, 2020) [[v1.10.1.739]]
+
+* Fix use of jdk profile activation in local deps with pom files
+* Fix error handling for -X to avoid double throw
+* Add error handling for -A used without an alias
+* Use https://github.com/clojure/tools.deps.alpha/blob/master/CHANGELOG.md[tools.deps.alpha] 0.9.840
+
+=== 1.10.1.727 (Oct 21, 2020) [[v1.10.1.727]]
+
+* Fix clj -X:deps tree adding tools.deps.alpha to tree
+* Fix clj -X:deps mvn-pom adding tools.deps.alpha to pom deps
+* Fix clj -X:deps git-resolve-tags not working
+* https://clojure.atlassian.net/browse/TDEPS-169[TDEPS-169] - Fix clj -X:deps mvn-install on jar to also install embedded pom
+* Fix clj -Spom not respecting dep modifications from -A (regression)
+* Use https://github.com/clojure/tools.deps.alpha/blob/master/CHANGELOG.md[tools.deps.alpha] 0.9.833
+
+=== 1.10.1.716 (Oct 10, 2020) [[v1.10.1.716]]
+
+* Make edn reading tolerant of unknown tagged literals
+* Update to latest dependencies for maven-resolver and aws-api
+* Use https://github.com/clojure/tools.deps.alpha/blob/master/CHANGELOG.md[tools.deps.alpha] 0.9.821
+
+=== 1.10.1.708 (Oct 7, 2020) [[v1.10.1.708]]
+
+* Fixes to handling transitive deps when newer versions of a dep are found in the dep expansion
+* https://clojure.atlassian.net/browse/TDEPS-168[TDEPS-168] - Improvements to -X error message handling
+* Use https://github.com/clojure/tools.deps.alpha/blob/master/CHANGELOG.md[tools.deps.alpha] 0.9.816
+
+=== 1.10.1.697 (Sept 25, 2020) [[v1.10.1.697]]
+
+* Added https://clojure.org/reference/deps_and_cli#_executing_a_function[execution mode] (-X)
+* Added https://clojure.org/reference/deps_and_cli#_prepare_for_execution[prepare mode] (-P)
+* Expanded https://clojure.org/reference/deps_and_cli#_running_a_main_or_script[main execution] (-M) to support all argmap arguments
+* Added new argmap attributes for https://clojure.org/reference/deps_and_cli#namespaces[namespace resolution]:
+** :ns-aliases and :ns-default
+* Added new https://clojure.github.io/tools.deps.alpha/clojure.tools.cli.api-api.html[clojure.tools.cli.api] available via -X:deps alias:
+** clj -X:deps git-resolve-tags
+** clj -X:deps mvn-install
+** clj -X:deps mvn-pom
+** clj -X:deps tree
+* Deprecated -R, -C (use -X, -M, or -A instead)
+* Deprecated unqualified lib names in deps.edn (use fully qualified lib names)
+* Deprecated alias tool args :deps and :paths (use :replace-deps and :replace-paths)
+* Removed -O (use -X, -M, or -A)
+* Removed -Sresolve-tags (use -X:deps git-resolve-tags)
+* https://clojure.atlassian.net/browse/TDEPS-152[TDEPS-152] - Fixes to -Spom generation with srcDirectory
+* https://clojure.atlassian.net/browse/TDEPS-155[TDEPS-155] - Better error handling for bad coordinates
+* https://clojure.atlassian.net/browse/TDEPS-167[TDEPS-167] - Handle absolute resource paths in pom deps
+* Use https://github.com/clojure/tools.deps.alpha/blob/master/CHANGELOG.md[tools.deps.alpha] 0.9.810
+
+=== 1.10.1.561 (July 17, 2020) [[v1.10.1.561]]
+
+* Rework exclusion handling when exclusion sets differ for same lib/version
+* Use https://github.com/clojure/tools.deps.alpha/blob/master/CHANGELOG.md[tools.deps.alpha] 0.8.709
+
+=== 1.10.1.547 (June 11, 2020) [[v1.10.1.547]]
+
+* (Windows) Write -Spath to output, not to host
+* https://clojure.atlassian.net/browse/TDEPS-152[TDEPS-152] - Fix bad addition of srcDirectory in pom gen
+* https://clojure.atlassian.net/browse/TDEPS-155[TDEPS-155] - Add error checking for missing :mvn/version
+* Use https://github.com/clojure/tools.deps.alpha/blob/master/CHANGELOG.md[tools.deps.alpha] 0.8.695
+
+=== 1.10.1.536 (Feb 28, 2020) [[v1.10.1.536]]
+
+* Release automation work, no tool changes
+
+=== 1.10.1.510 (Feb 14, 2020) [[v1.10.1.510]]
+
+* https://clojure.atlassian.net/browse/TDEPS-150[TDEPS-150] - Fix regression in supporting -Scp flag (avoid resolving deps)
+* https://clojure.atlassian.net/browse/TDEPS-148[TDEPS-148] - Fix incorrect path resolution for git/local dep without deps.edn
+* Use https://github.com/clojure/tools.deps.alpha/blob/master/CHANGELOG.md[tools.deps.alpha] 0.8.677

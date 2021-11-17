@@ -21,7 +21,7 @@ toc::[]
 
 Symbols representing class names are resolved to the Class instance. Inner or nested classes are separated from their outer class with a `$`. Fully-qualified class names are always valid. If a class is `import`ed in the namespace, it may be used without qualification. All classes in java.lang are automatically imported to every namespace.
 
-[source,clojure]
+[source,clojure-repl]
 ----
 String
 -> java.lang.String
@@ -40,7 +40,7 @@ String
 **(Classname/staticMethod args*)**
 **Classname/staticField**
 
-[source,clojure]
+[source,clojure-repl]
 ----
 (.toUpperCase "fred")
 -> "FRED"
@@ -108,7 +108,7 @@ expands to:
 
 `(. (. System (getProperties)) (get "os.name"))`
 
-but is easier to write, read, and understand. See also the https://clojure.github.com/clojure/clojure.core-api.html#clojure.core/%2d%3e[pass:[->]] macro which can be used similarly:
+but is easier to write, read, and understand. See also the https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/%2d%3e[pass:[->]] macro which can be used similarly:
 
 `(pass:[->] (System/getProperties) (.get "os.name"))`
 
@@ -153,9 +153,9 @@ the latter expanding into the former at macro expansion time.
 
 Evaluates expr and tests if it is an instance of the class. Returns true or false
 
-[[set]]
 ''''
 
+[[set]]
 [%hardbreaks]
 *(_set!_ (. instance-expr instanceFieldName-symbol) expr)*
 *(_set!_ (. Classname-symbol staticFieldName-symbol) expr)*
@@ -180,7 +180,7 @@ Macro. Expands into code that creates a fn that expects to be passed an object a
 -> (\r \h \y)
 ----
 
-Note it almost always preferable to do this directly now, with syntax like:
+Note it is almost always preferable to do this directly now, with syntax like:
 
 [source,clojure]
 ----
@@ -213,7 +213,7 @@ Java annotations may be attached to classes, constructors, and methods via <<met
 
 ''''
 
-*( _proxy_ [class-and-interfaces] [args] fs+)*
+*(_proxy_ [class-and-interfaces] [args] fs+)*
 
 class-and-interfaces - a vector of class names +
 args - a (possibly empty) vector of arguments to the superclass constructor. +
@@ -228,6 +228,12 @@ Expands to code which creates a instance of a proxy class that implements the na
 Clojure supports the creation, reading and modification of Java arrays. It is recommended that you limit use of arrays to interop with Java libraries that require them as arguments or use them as return values.
 
 Note that many other Clojure functions work with arrays such as via the <<sequences#,seq library>>. The functions listed here exist for initial creation of arrays, or to support mutation or higher performance operations on arrays.
+
+=== Vararg methods
+
+Java vararg methods treat the trailing varargs parameter as an array. They can be invoked from Clojure by passing an explicit array in place of the vargs.
+
+Depending on the varargs type, use the type-specific array constructors for primitives or `into-array` to make an array of a specific type. See the <<xref/../../guides/faq#varargs,FAQ>> for examples.
 
 [%hardbreaks]
 Create array from existing collection: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/aclone[aclone] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/amap[amap] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/to-array[to-array] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/to-array-2d[to-array-2d] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/into-array[into-array]
@@ -324,7 +330,7 @@ Clojure has support for high-performance manipulation of, and arithmetic involvi
 
 * _**let**_/_**loop**_-bound locals can be of primitive types, having the inferred, possibly primitive type of their init-form.
 * _**recur**_ forms that rebind primitive locals do so without boxing, and do type-checking for same primitive type.
-* Arithmetic (+,-,*,/,inc,dec,<,<=,>,>= etc) is overloaded for primitive types where semantics are same.
+* Arithmetic (+,-,*,/,inc,dec,<,\<=,>,>= etc) is overloaded for primitive types where semantics are same.
 * https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/aget[aget] / https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/aset[aset] are overloaded for arrays of primitives
 * https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/aclone[aclone], https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/alength[alength] functions for arrays of primitives
 * constructor functions for primitive arrays: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/float-array[float-array], https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/int-array[int-array], etc.
@@ -441,26 +447,26 @@ The public Java API for Clojure consists of the following classes and interfaces
 All other Java classes should be treated as implementation details, and applications should avoid relying on them.
 
 To lookup and call a Clojure function:
-[source,clojure]
+[source,java]
 ----
 IFn plus = Clojure.var("clojure.core", "+");
 plus.invoke(1, 2);
 ----
 Functions in clojure.core are automatically loaded. Other namespaces can be loaded via require:
-[source,clojure]
+[source,java]
 ----
 IFn require = Clojure.var("clojure.core", "require");
 require.invoke(Clojure.read("clojure.set"));
 ----
 IFns can be passed to higher order functions, e.g. the example below passes plus to read:
-[source,clojure]
+[source,java]
 ----
 IFn map = Clojure.var("clojure.core", "map");
 IFn inc = Clojure.var("clojure.core", "inc");
 map.invoke(inc, Clojure.read("[1 2 3]"));
 ----
 Most IFns in Clojure refer to functions. A few, however, refer to non-function data values. To access these, use deref instead of fn:
-[source,clojure]
+[source,java]
 ----
 IFn printLength = Clojure.var("clojure.core", "*print-length*");
 IFn deref = Clojure.var("clojure.core", "deref");

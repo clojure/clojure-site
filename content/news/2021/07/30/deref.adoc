@@ -1,0 +1,47 @@
+= Clojure Deref (July 30, 2021)
+Fogus
+2021-07-30
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Highlights
+
+Erez Rabih wrote a good blog https://engineering.nanit.com/6-years-of-professional-clojure-2b61cb6c1983[post that covers a lot of the high and low points of working in the tech industry as a Clojure programmer]. It's a fair and balanced assessment.
+
+== In the core
+
+Last week https://twitter.com/fogus/status/1420478116481409029[I posed a question in a tweet] asking:
+
+[quote]
+As a Clojure programmer, what about JDK interop do you wish was cleaner, easier to express, and/or unnecessary altogether (e.g. reified in clojure.core)?
+
+We've been thinking about this question a lot lately and had an idea how the answers would fall and were not surprised when they all mostly fell into the following categories.
+
+* Cleaner Java variadic method calls (i.e. building an array explicitly)
+* Methods as first-class functions
+* Extending abstract base-class dynamically (i.e. `reify-class`)
+* Applicative functions do not work with Java Streams
+* Cleaner array type hints
+* String/parseTYPE use
+* Math/xxx use
+* Inner class auto-require
+
+Most of these items have related tickets and those that don't are quite well-known in the Clojure community. Now we're not entirely sure if all of these are worth pursuing but we are thinking about them all and trying to identify ways that we can smooth the sharp edges of JDK interop. Stay tuned.
+
+If we've missed anything from the list above then feel free to reach out to https://www.twitter.com/puredanger[Alex] or https://www.twitter.com/fogus[myself] on Twitter.
+
+== Libraries and tools
+
+Some interesting library and tool updates and posts this week:
+
+* https://github.com/clj-kondo/clj-kondo/blob/master/doc/hooks.md#macroexpand[clj-kondo] - adds macroexpand hooks in version 2021.07.28
+* https://github.com/cnuernber/tmdjs[tmdjs] - DataFrame and Numerics for ClojureScript version 1.000-beta-2
+* https://github.com/clojure/tools.build[tools.build] - version 0.1.7 fixes a problem where an unneeded resources file was overriding the tools.deps dependency
+* https://clojure.org/releases/tools#v1.10.3.933[Clojure Tools] - release notes for the Clojure command line tools version 1.10.3.933
+
+== Video Throwback
+
+Flashback to Lambda Days 2017 when https://www.kent.ac.uk/computing/people/3686/turner-david[David Turner] (SASL, KRC, Miranda, Haskell) gave a talk titled _https://www.youtube.com/watch?v=QVwm9jlBTik[Some History of Functional Programming Languages]_ from his fascinating and unique perspective.

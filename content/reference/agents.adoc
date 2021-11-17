@@ -38,7 +38,7 @@ Note that use of Agents starts a pool of non-daemon background threads that will
 
 == Example
 
-This example is an implementation of the send-a-message-around-a-ring test. A chain of n agents is created, then a sequence of m actions are dispatched to the head of the chain and relayed through it.
+This example is an implementation of the send-a-message-around-a-ring test. A chain of m agents is created, then a sequence of n actions are dispatched to the head of the chain and relayed through it.
 [source,clojure]
 ----
 (defn relay [x i]

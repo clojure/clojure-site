@@ -11,7 +11,7 @@ toc::[]
 
 Welcome to Clojure!
 
-Check out <<learn/syntax#,Learn Clojure>>, <<xref/../../community/resources#,Resources>>, or <<xref/../../community/books#,Books>> for learning the language!
+Check out <<learn/syntax#,Learn Clojure>>, <<xref/../../community/resources#,Resources>>, or <<xref/../../community/books#,Books>> to learn the language! If you have questions, you can search or ask at the official forum https://ask.clojure.org[Ask Clojure].
 
 == Dependencies
 
@@ -21,52 +21,73 @@ The Clojure tools require that either the `java` command is on the path or that 
 
 == Clojure installer and CLI tools
 
-Clojure provides <<deps_and_cli#,command line tools>> that can be used to start a Clojure repl, use Clojure and Java libraries, and start Clojure programs. See the https://github.com/clojure/brew-install/blob/1.10.1/CHANGELOG.md[changelog] for version information.
+Clojure provides <<deps_and_cli#,command line tools>> that can be used to start a Clojure repl, use Clojure and Java libraries, and start Clojure programs. 
+
+Follow these instructions to install the latest release of the `clj` and `clojure` tools:
 
 === Installation on Mac via https://brew.sh[Homebrew]
 
-Install the command line tools with `brew` from the clojure/tools tap:
+Install the command line tools with `brew` from the https://github.com/clojure/homebrew-tools[clojure/tools tap]:
 
 [source,shell]
 ----
 brew install clojure/tools/clojure
 ----
 
-If you've already installed, you can upgrade to the latest release with:
+If you've already installed this way in the past, you can upgrade to the latest release with:
 
 [source,shell]
 ----
 brew upgrade clojure/tools/clojure
 ----
 
-Also see: https://github.com/clojure/homebrew-tools[Clojure's Homebrew tap] for more information.
-
 === Installation on Linux
-
-Note: You can now use https://docs.brew.sh/Homebrew-on-Linux[Homebrew on Linux or Windows with WSL], similar to the Mac installation.
 
 To install with the Linux script installer:
 
-1. Ensure that the following dependencies are installed: bash, curl, rlwrap, and Java.
-2. Use the linux-install script to download and run the install, which will create /usr/local/bin/clj, /usr/local/bin/clojure, and /usr/local/lib/clojure:
+1. Ensure that the following dependencies are installed: `bash`, `curl`, `rlwrap`, and `Java`.
+2. Use the `linux-install` script to download and run the install, which will create the executables `/usr/local/bin/clj`, `/usr/local/bin/clojure`, and the directory `/usr/local/lib/clojure`:
 
 [source,shell]
 ----
-curl -O https://download.clojure.org/install/linux-install-1.10.1.536.sh
-chmod +x linux-install-1.10.1.536.sh
-sudo ./linux-install-1.10.1.536.sh
+curl -O https://download.clojure.org/install/linux-install-1.10.3.1029.sh
+chmod +x linux-install-1.10.3.1029.sh
+sudo ./linux-install-1.10.3.1029.sh
 ----
+
+==== Custom location
+
+To install to a custom location (like `/opt/infrastructure/clojure`), use the option `--prefix`:
+
+[source,shell]
+----
+sudo ./linux-install-1.10.3.1029.sh --prefix /opt/infrastructure/clojure
+----
+
+Extend the MANPATH in `/etc/man_db.conf` to include the manual pages:
+
+[source]
+----
+MANPATH_MAP /opt/infrastructure/clojure/bin /opt/infrastructure/clojure/man
+----
+
+The `linux-install` script can be removed after installation.
 
 === Installation on Windows
 
 An early release version of clj on Windows is available at https://github.com/clojure/tools.deps.alpha/wiki/clj-on-Windows[clj on Windows].
-Please provide feedback at https://clojure.atlassian.net/projects/TDEPS.
+Please provide feedback on https://ask.clojure.org[Ask Clojure] or Clojurians slack in #clj-on-windows.
+
+=== Other versions
+
+See the <<xref/../../releases/tools#,changelog>> for version history and the https://github.com/clojure/homebrew-tools[Clojure tap] for info on installing older versions or newer prereleases instead.
+
 
 == Other ways to run Clojure
 
 *Local build*
 
-Download and build Clojure from source (requires Git, Java, and Maven):
+Most Clojure users use Clojure jars downloaded from the Maven central repository (by the tools above or other Clojure build tools). However, you can also build Clojure from source with necessary dependent jars into a single executable jar (requires Git, Java, and Maven):
 
 [source,shell]
 ----
@@ -75,7 +96,7 @@ cd clojure
 mvn -Plocal -Dmaven.test.skip=true package
 ----
 
-Then start the REPL with the local jar:
+Then start the REPL with the local jar (note this will not work with the jars in Maven as they do not include dependencies):
 
 [source,shell]
 ----
@@ -86,6 +107,11 @@ java -jar clojure.jar
 
 https://repl.it/languages/clojure[repl.it] provides a browser-based Clojure repl for interactive exploration.
 
-*Build tools*
+== Next steps
 
-Build tools provide a range of capabilities for building, running, and deploying Clojure libraries and applications. The two most popular Clojure build tools are https://leiningen.org/[Leiningen] and http://boot-clj.com/[Boot].
+* <<xref/../../community/tools#,Install editors and build tools>>
+* <<learn/syntax#,Start learning the Clojure basics>>
+* <<xref/../../community/books#,Learn Clojure from a book>>
+* <<xref/../../community/resources#,Explore Clojure communities and resources>>
+* https://ask.clojure.org[Ask questions about Clojure]
+

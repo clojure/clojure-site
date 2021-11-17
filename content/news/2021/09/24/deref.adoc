@@ -1,0 +1,54 @@
+= Clojure Deref (Sept 24, 2021)
+Alex Miller
+2021-09-24
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Videos and podcasts
+
+* https://www.youtube.com/watch?v=zK9y1nvmft8[Changing to Clojure mid-flight] - Marcus Rydberg from Func Prog Sweden
+* https://www.youtube.com/watch?v=1OcAUhe3E1E[Vlojure - A New Way to Write ClojureScript] - Ella Hoeppner
+* https://www.therepl.net/episodes/41/[The REPL] - podcast with guest Chris Houser		
+* https://getsmarterandmakestuff.com/2021/09/18/podcast-episode-009-carin-meier/[Get Smarter and Make Stuff] - podcast with guest Carin Meier		
+* https://anchor.fm/recursive-house/episodes/Episode-2---Dmitri-Sotnikov---Engineering-for-Scale-in-Clojure-e17ka83[RH Podcast] - Dmitri Sotnikov - Engineering for Scale in Clojure
+
+== Blogs
+
+* https://convexhuman.com/graalvm-clojure.html[Native Clojure with GraalVM] - Mohammed Amarnah
+* https://jobs-blog.braveclojure.com/2021/09/20/a-better-clojure-job-board.html[A Better Clojure Job Board] - Daniel Higginbotham
+* https://hyperfiddle.notion.site/Reactive-Clojure-You-don-t-need-a-web-framework-you-need-a-web-language-44b5bfa526be4af282863f34fa1cfffc[Reactive Clojure: You don't need a web framework, you need a web language] - Dustin Getz
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/ivarref/yoltq[yoltq] 0.2.33 - An opinionated Datomic queue for building (more) reliable systems. Supports retries, backoff, ordering and more
+* https://github.com/clj-easy/graal-config[graal-config]  - GraalVM native-image configurations distribution for Clojure libraries 
+* https://github.com/pfeodrippe/pitoco[pitoco]  - Check your endpoint schemas (using spec-provider, Malli and Pathom)
+* https://github.com/clojure/brew-install[brew-install] https://clojure.org/releases/tools#v1.10.3.986[1.10.3.986] - Clojure CLI
+* https://github.com/oliyh/cljs-http-promise[cljs-http-promise] 0.1.47-SNAPSHOT - A ClojureScript HTTP library
+* https://github.com/behrica/clj-py-r-template[clj-py-r-template]  - Clojure polyglot clj-template
+* https://github.com/djblue/portal[portal] https://github.com/djblue/portal/releases/tag/0.15.1[0.15.1] - A clojure tool to navigate through your data
+* https://github.com/seancorfield/deps-new[deps-new] 0.3.1 - A new, simpler alternative to clj-new
+* https://github.com/bsless/stress-server[stress-server]  - Stress your Clojure servers until they sweat
+* https://github.com/ribelo/doxa[doxa]  - A simple in-memory database
+* https://github.com/seancorfield/clj-new[clj-new] v1.2.359 - Generate new projects based on clj, Boot, or Leiningen Templates
+* https://github.com/liquidz/antq[antq] 1.1.0 - Point out your outdated dependencies
+* https://github.com/cognitect-labs/aws-api[aws-api] 0.8.524 - AWS, data driven
+* https://github.com/borkdude/scittle[scittle] 0.0.4 - The Small Clojure Interpreter exposed for usage in script tags
+* https://github.com/borkdude/nbb[nbb] 0.0.76 - Ad-hoc CLJS scripting on Node.js
+* https://github.com/borkdude/deps.clj[deps.clj] https://github.com/borkdude/deps.clj/blob/master/CHANGELOG.md#v0018[0.0.18] - A faithful port of the clojure CLI bash script to Clojure
+* https://github.com/benedekfazekas/morpheus[morpheus]  - Generate dependency graphs for variables in Clojure(Script) namespaces
+* https://github.com/lilactown/helix[helix] 0.1.3 - A simple, easy to use library for React development in ClojureScript
+* https://github.com/skinkade/uniformity[uniformity]  - Clojure(Script) library for cryptographically random data with uniform behavior between JVM and JS usage
+
+== Art
+
+Lots of people using Clojure to make art these days, here's a few I saw go by on Twitter this week:
+
+* https://twitter.com/sakalli/status/1439926455249539075[@sakalli]
+* https://twitter.com/generateme_blog/status/1440578677574569986[@generateme_blog]
+* https://twitter.com/RustyVermeer/status/1441182689957085184[@RustyVermeer]

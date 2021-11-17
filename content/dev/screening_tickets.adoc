@@ -74,10 +74,11 @@ $ git am --keep-cr -s --ignore-whitespace < their-patch-file.diff
 Once you have a working copy, you should take note of the following kinds of things:
 
 * Review the code in a diff tool to make sure that nothing extraneous snuck in
+* Ensure that the commit message includes a statement about the problem or enhancement that the patch is in service to.
 * Make sure compile and tests pass
 * Test the functionality from the REPL
 * Does the patch accomplish the goals stated in the ticket
-* Is the code in proper style? But remember that <<xref/../../community/contrib_howto#_coding_guidelines,Coding Guidelines>> are guidelines, not fixed laws of the universe.
+* Is the code in proper style? But remember that <<xref/../../dev/contrib_howto#_coding_guidelines,Coding Guidelines>> are guidelines, not fixed laws of the universe.
 * If questions were raised in the discussion, are they answered in the ticket?
 * Are you happy with the tests, can you follow what they're testing, is there anything missing?
 * Are the tests excessive (introducing dependency on implementation detail)?

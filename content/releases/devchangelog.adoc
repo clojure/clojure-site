@@ -19,6 +19,20 @@ Note: All dev releases are subject to breaking changes for new work since the pr
 
 == Release 1.11.0
 
+=== 1.11.0-alpha3 (Nov 23, 2021) [[v1.11.0-alpha3]]
+
+* https://clojure.atlassian.net/browse/CLJ-2667[CLJ-2667] Add functions to parse a single long/double/uuid/boolean from a string
+* https://clojure.atlassian.net/browse/CLJ-2668[CLJ-2668] Add NaN? and infinite? predicates
+* https://clojure.atlassian.net/browse/CLJ-1925[CLJ-1925] Add random-uuid
+* https://clojure.atlassian.net/browse/CLJ-2664[CLJ-2664] Add clojure.java.math namespace, wrappers for java.lang.Math
+* https://clojure.atlassian.net/browse/CLJ-2666[CLJ-2666] Make Clojure Java API javadoc text match the example
+* https://clojure.atlassian.net/browse/CLJ-1360[CLJ-1360] Update clojure.string/split docstring regarding trailing empty parts
+* https://clojure.atlassian.net/browse/CLJ-2249[CLJ-2249] Clarify clojure.core/get docstring regarding sets, strings, arrays, ILookup
+* https://clojure.atlassian.net/browse/CLJ-2488[CLJ-2488] Add definition to reify docstring
+* https://clojure.atlassian.net/browse/CLJ-1808[CLJ-1808] map-invert should use reduce-kv and transient
+* https://clojure.atlassian.net/browse/CLJ-2065[CLJ-2065] Support IKVReduce on SubVector
+* Update dep to spec.alpha (0.3.214)
+
 === 1.11.0-alpha2 (Sep 14, 2021) [[v1.11.0-alpha2]]
 
 * https://clojure.atlassian.net/browse/CLJ-2123[CLJ-2123] Add :as-alias option to require like :as but not load

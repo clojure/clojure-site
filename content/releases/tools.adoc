@@ -22,6 +22,12 @@ For more information see the following docs:
 
 Recent official releases are described here. Prereleases and older versions can be found in the https://github.com/clojure/brew-install/blob/1.10.3/CHANGELOG.md[repo changelog].
 
+=== 1.10.3.1040 (Dec 1, 2021) [[v1.10.3.1040]]
+
+* Add `clj -X:deps list` for listing the full transitive set of deps and their license info - see https://clojure.github.io/tools.deps.alpha/clojure.tools.cli.api-api.html#clojure.tools.cli.api/list[docs]
+* Improved error handling for unknown tool with `-T` or `-X:deps find-versions`
+* Use https://github.com/clojure/tools.deps.alpha/blob/master/CHANGELOG.md[tools.deps.alpha] 0.12.1084
+
 === 1.10.3.1029 (Nov 8, 2021) [[v1.10.3.1029]]
 
 * https://clojure.atlassian.net/browse/TDEPS-212[TDEPS-212] Cover a much wider range of valid git dep urls, including git file urls

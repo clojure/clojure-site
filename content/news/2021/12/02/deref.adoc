@@ -1,0 +1,69 @@
+= Clojure Deref (Dec 2, 2021)
+Alex Miller
+2021-12-02
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Highlights
+
+We have had way too few Clojure conferences of late, but the next 2 days (Dec 3-4) is your chance to attend re:Clojure 2021 online! You can find the full schedule at https://www.reclojure.org and there will be keynotes from Stephen Wolfram, designer of the Wolfram Language and author of "A New Kind of Science", and from Gerald Jay Sussman, co-creator of the Scheme programming language, co-author of the legendary "Structure and Interpretation of Computer
+Programs" and most recently "Software Design for Flexibility". Be sure to check out the https://pod.link/1471141263[speaker interview series] too.
+
+Get your free ticket here: https://www.meetup.com/London-Clojurians/events/281970268
+
+Also, check out the Clojure Data Science Special on Sunday Dec 5th: https://www.meetup.com/London-Clojurians/events/282409187
+
+== In the core
+
+Post 1.11.0-alpha3, we've had several questions about clojure.java.math and have prepped some follow-ups, which include a https://clojure.atlassian.net/browse/CLJ-2672[docstring fix] and some https://clojure.atlassian.net/browse/CLJ-2673[reflective calls] when a few functions were used as higher-order functions (otherwise, they're inlined so this isn't an issue). For the latter, we'll be removing `min` and `max` as they are better served by the existing variadic and polymorphic impls in clojure.core. For `abs`, we're going to move that to clojure.core and include it into one of the core numeric functions with support across all the Clojure numeric types (long, double, bigint, bigdec, ratio) - those impls will use Math.abs() where appropriate for best performance.
+
+And finally, there were immediate questions about why clojure.java.math and not clojure.math with a portable impl in ClojureScript. Thanks to the work of Paula Gearon, that seems viable so we're also planning to make that change for the next alpha. Thanks for the feedback on this - that's why we do these alphas!
+
+Thanks to a suggestion from Ghadi Shayban, we also https://clojure.atlassian.net/browse/CLJ-2670[looked into] using the java.lang.Math.addExact() etc methods in lieu of the existing Clojure checked non-overflowing math ops (the default when you use +, -, *, inc, dec, etc). The benefit here is that these methods are "intrinsics" in Hotspot and the Java compiler will replace these calls with hand-crafted assembly or IR code. Still needs some more eval, but looks like a nice little boost in default Clojure math.
+
+Big picture, I think we'll do one more chunk of new feature / bug work and then start the rampdown into a 1.11 GA release, probably within a month.
+
+Fogus has been working on https://github.com/cognitect/transit-clj/issues/47[transit-clj issue #47] off and on and I think that's getting close to a fix, probably mostly in transit-java. Also, it's his birthday today - happy birthday Fogus!
+
+== Podcasts and videos
+
+* https://podcasts.apple.com/us/podcast/re-clojure-interviews-18-gerald-jay-sussman/id1471141263?i=1000543534534[re:Clojure Interviews 18] - Gerald Jay Sussman
+* https://www.youtube.com/watch?v=ZCq7zDSHbcM[Clojure Ireland - Science & engineering (How to improve as an engineer)] - Sameer Rahmani
+* https://www.youtube.com/watch?v=ZP4KEPziObA[Advent of Witchcraft - part 1 (Clojure + Minecraft)] - Arne Brasseur
+* https://www.youtube.com/watch?v=lUW-ljgieTE[Advent of Code 2021 Day 1] - Nikita Prokopov
+* https://www.youtube.com/watch?v=uICA2SDa-ws[Scicloj status report: Notespace, 2021-11-29] - 
+
+== Blogs
+
+* https://freeston.me/posts/2021-11-29-new-site-generator/[I wrote myself a static site generator] - Dominic Freeston
+* https://corfield.org/blog/2021/11/28/deps-edn-monorepo-8/[deps.edn and monorepos VIII (Polylith)] - Sean Corfield
+* https://www.arthurbrrs.me/my-clojure-script-journey.html[My Clojure(script) journey] - Arthur Barroso
+* https://cuddly-octo-palm-tree.com/posts/2021-11-28-clj-primes-2/[Primes in Clojure part 2: Interop] - Gary Verhaegen
+* https://stokoe.me/summary-hammock-driven-development/[What is Hammock Driven Development?] - Keagan Stokoe
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://calva.io[Calva] v2.0.228 - Calva is an integrated REPL powered environment for enjoyable and productive Clojure and ClojureScript development in Visual Studio Code. However... Peter requested that if you are interested in helping to debug the new Parinfer support, you can use version 2.0.227 - https://twitter.com/pappapez/status/1461018167002734592[read more here].
+* https://github.com/clj-kondo/clj-kondo[clj-kondo] 2021.12.01 - A linter for Clojure code that sparks joy
+* https://github.com/DeLaGuardo/setup-clojure[setup-clojure] 3.6 - GitHub Action to provision clojure's most popular build tools for Linux, Mac OS X and Windows
+* https://clojure.org/releases/tools[Clojure CLI] https://clojure.org/releases/tools#v1.10.3.1040[1.10.3.1040] - Command line tools for Clojure
+* https://clojure-lsp.io/[clojure-lsp] https://github.com/clojure-lsp/clojure-lsp/releases/tag/2021.12.01-12.28.16[2021.12.01-12.28.16] - A Language Server for Clojure(script)
+* https://github.com/lambdaisland/witchcraft[witchcraft] 0.6.150 - Clojure API for manipulating Minecraft, based on Bukkit
+* https://gitlab.com/domaindrivenarchitecture/c4k-nextcloud[c4k-nextcloud]  - c4k-nextcloud provides a k8s deployment for nextcloud
+* https://github.com/lread/test-doc-blocks[test-doc-blocks] v1.0.166-alpha - Test AsciiDoc and CommonMark code blocks found in articles and docstrings
+* https://github.com/juxt/clip[clip] 0.26.0 - Light structure and support for dependency injection
+* https://github.com/seancorfield/honeysql[honeysql] 2.1.829 - Turn Clojure data structures into SQL
+* https://github.com/babashka/tools-deps-native[tools-deps-native] https://github.com/babashka/tools-deps-native/releases/tag/v0.0.4[v0.0.4] - Run tools-deps-alpha as a native binary
+* https://github.com/babashka/fs[fs] v0.1.2 - File system utility library
+* https://github.com/babashka/babashka[babashka] 0.6.6 - Native, fast starting Clojure interpreter for scripting
+* https://github.com/Cyrik/omni-trace[omni-trace] 0.2.2 - Omnipotent/omniscient tracing core for debugging clojure(script)
+* https://github.com/fulcrologic/guardrails[guardrails] 1.1.9 - A middle ground between unguarded functions and enforced spec instrumentation
+* https://github.com/fulcrologic/fulcro-rad[fulcro-rad] 1.1.0-RC8 - Fulcro Rapid Application Development
+* https://github.com/seancorfield/deps-new[deps-new] https://github.com/seancorfield/deps-new/releases/tag/v0.4.3[0.4.3] - A new, simpler alternative to clj-new
+* https://github.com/tonyaldon/clojure-site-org-mode[clojure-site-org-mode]  - The documentation of https://clojure.org/ converted into a single org-mode file
+* https://github.com/tonyaldon/clojurescript-site-org-mode[clojurescript-site-org-mode]  - The documentation of https://clojurescript.org/ converted into a single org-mode file

@@ -62,3 +62,5 @@ New releases and tools this week:
 * https://github.com/msolli/proletarian[proletarian] 1.0.54-alpha - A durable job queuing and worker system for Clojure backed by PostgreSQL
 * https://github.com/babashka/babashka[babashka] 0.7.0 - Native, fast starting Clojure interpreter for scripting
 * https://github.com/FieryCod/holy-lambda[holy-lambda] https://github.com/FieryCod/holy-lambda/releases/tag/0.6.3[0.6.3] - The extraordinary simple, performant, and extensible custom AWS Lambda runtime for Clojure
+* https://github.com/Cyrik/omni-trace[omni-trace] v0.2.7 - Omnipotent/omniscient tracing core for debugging clojure(script)
+

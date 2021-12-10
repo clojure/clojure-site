@@ -84,7 +84,9 @@ Once you have a working copy, you should take note of the following kinds of thi
 * Are the tests excessive (introducing dependency on implementation detail)?
 * Does the documentation still seem right to you?
 * Is the implementation idiomatic (if not, explain why, link to examples...)
-* Is the patch performance-sensitive? If so, is the approach appropriate?
+* Is the patch performance-sensitive? If so, is the approach appropriate? Are there before/after perf tests?
+* Any Clojure namespace doing interop should `(set! *warn-on-reflection* true)` and fix all reflection warnings
+* Inlined functions that have type hints in the body will also require something in the inline function
 
 After review, if you are happy, you should
 

@@ -141,7 +141,7 @@ When preparing an application, it is common to compile the full app + libs and a
   (b/uber {:class-dir class-dir
            :uber-file uber-file
            :basis basis
-           :main my.lib.main}))
+           :main 'my.lib.main}))
 ----
 
 The deps.edn and build execution will look the same as the prior example.

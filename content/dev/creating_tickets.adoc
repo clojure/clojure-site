@@ -18,12 +18,12 @@ To create a ticket, you must already have a Clojure JIRA account. Issues for Clo
 All tickets should have:
 
 * Type: Correct categorization as Defect, Enhancement (extension of existing feature), or Feature (new)
-* Summary: concise summary of the problem
+* Summary: concise summary of the problem. This just enumerates the observations, symptoms, and desires that motivated the creation of a ticket.
 * Description: 
-** Exactly one problem (if multiple, split across tickets and link)
-** (If Defect) Reproducible demonstration of problem (commands that can be duplicated in a repl are preferred, particularly a plain Clojure repl, not a Leiningen repl), and a description of what you think should happen instead
-** (If Enhancement) Statement of how this is encountered and why it is a problem worth solving.
-** Links to relevant prior discussion if relevant
+** Exactly one problem statement (if multiple, split across tickets and link). This is the most important part of the ticket and what motivates any action on it.
+** (If Defect) Reproducible demonstration of problem (commands that can be duplicated in a repl are preferred, particularly a plain Clojure repl, not a Leiningen repl), and an enumeration of what you think should happen instead
+** (If Enhancement) Statement of how this is encountered in practice and why it is a problem worth solving.
+** Links to relevant prior discussion if available
 * Priority: categorize based on impact and whether this is a theoretical issue or one actually encountered in real code. This may be adjusted by the core team during triage.
 * Labels: (see section below)
 
@@ -32,7 +32,7 @@ Tickets ready for screening should also have:
 * Description:
 ** The cause of the problem
 ** List of alternatives to solving the problem
-** Which approach is being pursued
+** Which approach is being pursued. This should directly address the problem statement.
 ** Name of current patch to consider
 ** A description of the changes in the patch - anything you can do to illuminate what the changes are and why you made them will help ticket screeners as they re-walk your steps.
 ** Benchmark data (if performance related)

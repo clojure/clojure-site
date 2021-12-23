@@ -1,0 +1,52 @@
+= Clojure Deref (Dec 23, 2021)
+Alex Miller
+2021-12-23
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Highlights
+
+We wish you happy holidays - hope you get to take a break and stay safe. We will be back in the new year...
+
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=A1v1Y7Bxdto[Our new build process] - Max Weber
+* https://soundcloud.com/defn-771544745/79-eric-dallo[defn Podcast] - Eric Dallo
+* https://www.youtube.com/watch?v=2s8LujN1RfA[Extracting digits of a number in Clojure]
+
+== Blogs
+
+* https://www.clojuriststogether.org/news/october-2021-monthly-update/[Clojurists Together October 2021 Monthly Update] - Alyssa Parado
+* https://metaredux.com/posts/2021/12/22/cider-1-2-nice.html[CIDER 1.2 (Nice)] - Bozhidar Batsov
+* https://practical.li/blog/posts/clojure-which-execution-option-to-use/[Clojure CLI tools - which execution option to use] - Practicalli
+* https://practical.li/blog-staging/posts/clojure-cli-tools-understanding-aliases/[Clojure CLI tools - understanding aliases] - Practicalli
+* https://davidvujic.blogspot.com/2021/12/simple-component-driven-clojurescript.html[Simple Component Driven ClojureScript] - David Vujic
+* https://gamlor.info/posts-output/2021-12-19-extended-clojure-atoms/en/[Advanced Features of Clojure Atoms] - Roman Stoffel
+* https://freshcodeit.com/news/reclojure-freshcode-clojure-development[Freshcode at Re:Clojure 2021: How The Story Began]
+* https://medium.com/@rameshputalapattu/a-clojure-look-at-the-problem-9eb5779bc09d[A clojure look at the problem] - Ramesh Putalapattu
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/omkamra/cowbells[cowbells] 0.1.0 - A Clojure library for musical experiments and live coding
+* https://clojure-lsp.io/[clojure-lsp] 2021.12.20-00.36.56 - A Language Server for Clojure(script)
+* https://github.com/yetanalytics/colossal-squuid[colossal-squuid] 0.1.3 - Library for generating sequential UUIDs, or SQUUIDs
+* https://github.com/babashka/nbb[nbb] 0.1.0 - Ad-hoc CLJS scripting on Node.js using SCI
+* https://github.com/bsless/more.async[more.async] 0.0.8 - A small library to do more stuff with core.async
+* https://github.com/rm-hull/nvd-clojure[nvd-clojure] 2.0.0 - National Vulnerability Database dependency checker for Clojure projects
+* https://github.com/liquidz/antq[antq] 1.3.1 - Point out your outdated dependencies
+* https://github.com/clj-kondo/clj-kondo[clj-kondo] https://github.com/clj-kondo/clj-kondo/blob/master/CHANGELOG.md#20211219[2021.12.19] - A linter for Clojure code that sparks joy
+* https://github.com/fulcrologic/statecharts[statecharts] 1.0.0-alpha2 - A Statechart library for CLJ(S)
+* https://github.com/fulcrologic/fulcro-rad[fulcro-rad] 1.1.0-RC14 - Fulcro Rapid Application Development
+* https://github.com/clojure/tools.build[tools.build] v0.7.3 - Builds as programs
+* https://github.com/seancorfield/build-clj[build-clj] v0.6.4 - Common build tasks abstracted into a library
+* https://github.com/seancorfield/deps-new[deps-new] v0.4.7 - A new, simpler alternative to clj-new
+* https://github.com/seancorfield/clj-new[clj-new] v1.2.381 - Generate new projects based on clj, Boot, or Leiningen Templates
+
+== Art
+
+Check out some https://twitter.com/RustyVermeer/status/1473435046933504000[really cool plots made with Clojure]!

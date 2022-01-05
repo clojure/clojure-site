@@ -22,6 +22,14 @@ For more information see the following docs:
 
 Recent official releases are described here. Prereleases and older versions can be found in the https://github.com/clojure/brew-install/blob/1.10.3/CHANGELOG.md[repo changelog].
 
+=== 1.10.3.1058 (Jan 5, 2025) [[v1.10.3.1058]]
+
+* https://clojure.atlassian.net/browse/TDEPS-207[TDEPS-207] Fix deadlock in version range resolution
+* https://clojure.atlassian.net/browse/TDEPS-215[TDEPS-215] Fix race condition during parallel loading of s3 transporter
+* Don't track local deps.edn manifest for caching if deps project doesn't have one
+* Update maven-core to 3.8.4, aws libs, tools.build, tools.tools to latest
+* Use https://github.com/clojure/tools.deps.alpha/blob/master/CHANGELOG.md[tools.deps.alpha] 0.12.1109
+
 === 1.10.3.1040 (Dec 1, 2021) [[v1.10.3.1040]]
 
 * Add `clj -X:deps list` for listing the full transitive set of deps and their license info - see https://clojure.github.io/tools.deps.alpha/clojure.tools.cli.api-api.html#clojure.tools.cli.api/list[docs]

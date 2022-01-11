@@ -221,31 +221,37 @@ Dependencies are declared in deps.edn with a top level key `:deps` - a map from 
 
 Coordinates can take several forms depending on the coordinate type:
 
-* Maven coordinate: `{:mvn/version "1.2.3"}`
-** Other optional keys: `:exclusions`
-** Note: `:classifier` is not supported - add to lib name as specified above
-* Local project coordinate: `{:local/root "/path/to/project"}`
-** Optional key `:deps/manifest`
-*** Specifies the project manifest type
-*** Default is to auto-detect the project type (currently either `:deps` or `:pom`)
-* Local jar coordinate: `{:local/root "/path/to/file.jar"}`
+* Maven coordinate attributes:
+** `:mvn/version` (required) - string of Maven version
+** Note: `:classifier` is not supported - add as part of lib name as specified above in Maven docs
+* Local project attributes:
+** `:local/root` (required) - directory path (will auto detect whether a deps or pom project, also see `:deps/manifest`)
+* Local jar attributes:
+** `:local/root` (required) - path to jar file
 ** If the jar includes a pom.xml file, it will be used to find transitive deps
-* Git coordinate: `{:git/url "https://github.com/user/project.git", :git/sha "sha", :git/tag "tag"}`
-** Optional key `:git/url` will be inferred from lib, or can be one of the following:
-*** https - secure anonymous access to public repos
-*** ssh or user@host form urls (including GitHub) - ssh-based access (see Git configuration section)
-** Optional key `:git/tag` is used only to indicate the semantics of the sha (`:tag` still supported for backwards compatibility)
-** Optional key `:git/sha` if tag provided, can be prefix sha, otherwise should be full sha (`:sha` still supported for backwards compatibility)
-** Optional key `:deps/root`
-*** Specifies the relative path within the root to search for the manifest file
-** Optional key `:deps/manifest` - same as in `:local` deps
+* Git coordinate: 
+** `:git/url` (optional if inferred from lib name, otherwise required, see Git config section)
+** `:git/tag` (optional) indicates the semantics of the sha (`:tag` also supported for backwards compatibility), must refer to same `:git/sha`
+** `:git/sha` (required) if tag provided, can be prefix sha, otherwise should be full sha (`:sha` also supported for backwards compatibility)
+* Common coordinate attributes (all optional):
+** `:exclusions` - vector of lib symbols that are excluded as transitive deps from this coord
+** `:deps/manifest` - specifies the project manifest type and overrides auto detection, useful values are `:deps`, `:pom`. (Other values are `:mvn`, and `:jar` but these don't need to be specified.)
+** `:deps/root` - relative directory path within a file based dep to search for the manifest file
 
 [source,clojure]
 ----
 {:deps
- {org.clojure/tools.reader {:mvn/version "1.1.1"}
+ {;; example maven dep
+  org.clojure/tools.reader {:mvn/version "1.1.1"}
+  
+  ;; example git dep
   io.github.sally/awesome {:tag "v1.2.3" :sha "123abcd"}
-  ;; ... add more here
+  
+  ;; example local project
+  my.dev/project {:local/root "../project"}
+  
+  ;; example local jar
+  my.driver/jar {:local/root "../libs/driver.jar"}
  }}
 ----
 

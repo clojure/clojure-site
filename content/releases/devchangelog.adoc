@@ -19,6 +19,24 @@ Note: All dev releases are subject to breaking changes for new work since the pr
 
 == Release 1.11.0
 
+=== 1.11.0-alpha4 (Jan 13, 2022) [[v1.11.0-alpha4]]
+
+* https://clojure.atlassian.net/browse/CLJ-2673[CLJ-2673] Add `abs`, and update `min` and `max` to use Math impls when possible
+* https://clojure.atlassian.net/browse/CLJ-2555[CLJ-2555] Add `iterator` generator function
+* https://clojure.atlassian.net/browse/CLJ-2621[CLJ-2621] Fix unnecessary boxing of unused return in statement context for instance method expr
+* https://clojure.atlassian.net/browse/CLJ-2663[CLJ-2663] Fix vector `=` not terminating when called with infinite sequence
+* https://clojure.atlassian.net/browse/CLJ-2679[CLJ-2679] Fix hash collisions in `case` expressions on symbols
+* https://clojure.atlassian.net/browse/CLJ-2670[CLJ-2670] Use Math.exact... methods for checked long math ops for performance
+* https://clojure.atlassian.net/browse/CLJ-2680[CLJ-2680] Fix type hinting a primitive local with matching type hint to not error
+* https://clojure.atlassian.net/browse/CLJ-2234[CLJ-2234] Fix multimethod preferences using only global hierarchy
+* https://clojure.atlassian.net/browse/CLJ-2556[CLJ-2556] Fix `into` completion so `halt-when` works
+* https://clojure.atlassian.net/browse/CLJ-2665[CLJ-2665] Fix require with :as and :as-alias to load
+* https://clojure.atlassian.net/browse/CLJ-2677[CLJ-2677] clojure.math - fix method reflection in bodies and inlines, fix docstrings, renamed
+* https://clojure.atlassian.net/browse/CLJ-1379[CLJ-1379] clojure.test - Fix quoting of :actual form in :pass maps
+* https://clojure.atlassian.net/browse/CLJ-2493[CLJ-2493] clojure.java.browse - Fix `browse-url` hanging on call to xdg-open
+* https://clojure.atlassian.net/browse/CLJ-2611[CLJ-2611] clojure.xml - Stop processing XXE expansions by default
+* https://clojure.atlassian.net/browse/CLJ-2684[CLJ-2684] Update contrib deps to latest (spec.alpha, test.check, test.generative)
+
 === 1.11.0-alpha3 (Nov 23, 2021) [[v1.11.0-alpha3]]
 
 * https://clojure.atlassian.net/browse/CLJ-2667[CLJ-2667] Add functions to parse a single long/double/uuid/boolean from a string

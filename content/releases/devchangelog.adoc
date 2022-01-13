@@ -22,7 +22,7 @@ Note: All dev releases are subject to breaking changes for new work since the pr
 === 1.11.0-alpha4 (Jan 13, 2022) [[v1.11.0-alpha4]]
 
 * https://clojure.atlassian.net/browse/CLJ-2673[CLJ-2673] Add `abs`, and update `min` and `max` to use Math impls when possible
-* https://clojure.atlassian.net/browse/CLJ-2555[CLJ-2555] Add `iterator` generator function
+* https://clojure.atlassian.net/browse/CLJ-2555[CLJ-2555] Add `iteration` generator function
 * https://clojure.atlassian.net/browse/CLJ-2621[CLJ-2621] Fix unnecessary boxing of unused return in statement context for instance method expr
 * https://clojure.atlassian.net/browse/CLJ-2663[CLJ-2663] Fix vector `=` not terminating when called with infinite sequence
 * https://clojure.atlassian.net/browse/CLJ-2679[CLJ-2679] Fix hash collisions in `case` expressions on symbols

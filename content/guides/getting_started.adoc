@@ -15,7 +15,7 @@ Check out <<learn/syntax#,Learn Clojure>>, <<xref/../../community/resources#,Res
 
 == Dependencies
 
-Clojure requires Java. Clojure officially supports Java LTS releases (currently Java 8 and Java 11), but also tries to ensure interim versions work as well. You can use any Java installation, whether it's a commercial release from Oracle or an open source version based on OpenJDK (like adoptopenjdk).
+Clojure requires Java. Clojure officially supports Java LTS releases (currently Java 8, 11, and 17), but also tries to ensure interim versions work as well. You can use any Java installation, whether it's a commercial release from Oracle or an open source version based on OpenJDK (like Temurin).
 
 The Clojure tools require that either the `java` command is on the path or that the `JAVA_HOME` environment variable is set.
 

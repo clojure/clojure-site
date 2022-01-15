@@ -417,16 +417,16 @@ At times it is necessary to have a value of a particular primitive type. These c
 * So, the simplest route to fast math is to leave the operators alone and just make sure the source literals and locals are primitive. Arithmetic on primitives yields primitives. If you've got a loop (which you probably do if you need to optimize) make sure the loop locals are primitives first - then if you accidentally are producing a boxed intermediate result you'll get an error on recur. Don't solve that error by coercing your intermediate result, instead, figure out what argument or local is not primitive.
 
 == Simple XML Support
-Included with the distribution is simple XML support, found in the src/xml.clj file. All names from this file are in the xml namespace.
+Included with the distribution is simple XML support, found in the src/clj/clojure/xml.clj file. All names from this file are in the clojure.xml namespace.
 
 ''''
 *(_parse_ source)*
 
-Parses and loads the source, which can be a File, InputStream or String naming a URI. Returns a tree of the xml/element struct-map, which has the keys :tag, :attrs, and :content. and accessor fns tag, attrs, and content.
+Parses and loads the source, which can be a File, InputStream or String naming a URI. Returns a tree of the clojure.xml/element struct-map, which has the keys :tag, :attrs, and :content. and accessor fns tag, attrs, and content.
 
 [source,clojure]
 ----
-(xml/parse "/Users/rich/dev/clojure/build.xml")
+(clojure.xml/parse "/Users/rich/dev/clojure/build.xml")
 -> {:tag :project, :attrs {:name "clojure", :default "jar"}, :content [{:tag :description, ...
 ----
 

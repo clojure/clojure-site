@@ -881,7 +881,14 @@ For example:
 clj -Ttools install io.github.clojure/tools.deps.graph '{:git/tag "v1.0.63"}' :as deps-graph
 ----
 
-Note that git deps can be fully described at tool installation time by using only a git lib name (which will be used to form a git url by convention), and a git tag.
+On Windows, additional <<deps_and_cli#quoting,escape quoting>> is required in Powershell:
+
+[source,shell]
+----
+clj -Ttools install io.github.clojure/tools.deps.graph '{:git/tag """v1.0.63"""}' :as deps-graph
+----
+
+Note that git deps can be fully described at tool installation time with only a git lib name (used to form a git url by convention), and a git tag. Alternately, the coord may contain an explicit `:git/url` or `:git/sha` instead.
 
 To list all installed tools:
 
@@ -1034,6 +1041,24 @@ These data types need to be surrounded by single quotes:
 * Maps - `'{:a 1, :b 2}'`
 * Sets - `'#{:a :b}'`
 * Lists - `'(1 2 3)'`
+
+On Windows, WSL2 shells can follow the advice above, but on cmd.exe or Powershell, additional escape quoting is required for string values. Unfortunately the combination of quoting rules for converting command line Windows program arguments and Powershell quoting and word splitting are https://stackoverflow.com/a/59681993/7671[very complicated]. 
+
+To pass a string value at the top level, if the string value does not have spaces, you can use `'\"str\"'`. If the string value does have spaces (or not) you should use `'"""str value"""'`.
+
+[source]
+----
+PS D:> clj -X clojure.core/prn :string1 '\"no-spaces\"' :string2 '"""has spaces"""'
+{:string1 "no-spaces", :string2 "has spaces"}
+----
+
+For string values nested inside other collections, use double quotes if there are spaces and triple quotes if there are not:
+
+[source]
+----
+PS D:> clj -X clojure.core/prn :val '{:s1 """nospaces""" :s2 ""has spaces""}'
+{:val {:s1 "nospaces", :s2 "has spaces"}}
+----
 
 == Glossary
 

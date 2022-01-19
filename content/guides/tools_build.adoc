@@ -115,7 +115,26 @@ We expect to be able to do these both together on the command line but that is a
 
 == Compiled uberjar application build
 
-When preparing an application, it is common to compile the full app + libs and assemble the entire thing as a single uberjar. An example build for this might look like this:
+When preparing an application, it is common to compile the full app + libs and assemble the entire thing as a single uberjar.
+
+It is important that your main Clojure namespace should have `(:gen-class)`, for example:
+
+[source,clojure]
+----
+(ns my.lib.main
+  ;; any :require and/or :import clauses
+  (:gen-class))
+----
+
+And that namespace should have a function like:
+
+[source,clojure]
+----
+(defn -main [& args]
+  (do-stuff))
+----
+
+An example build for a compiled uberjar will look like this:
 
 [source,clojure]
 ----

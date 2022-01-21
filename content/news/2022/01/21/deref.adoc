@@ -15,7 +15,7 @@ In Clojure-related business news, https://www.businesswire.com/news/home/2022011
 
 Last week we did a https://www.youtube.com/watch?v=6vmTKoPzJUo[roundup of jiras in Clojure 1.11.0-alpha4] and I was surprised that so many people actually watched it, so thanks for the feedback and interest. We'll try to do a bit more of that kind of thing in the future. Since the alpha4 release we've been working several things that came out of the release and a few of those changes have started to hit master this week:
 
-* https://clojure.atlassian.net/browse/CLJ-2685[CLJ-2685] - fix to the generative tests for `iteration` which were occaasionally failing
+* https://clojure.atlassian.net/browse/CLJ-2685[CLJ-2685] - fix to the generative tests for `iteration` which were occasionally failing
 * https://clojure.atlassian.net/browse/CLJ-2689[CLJ-2689] - fix to the clojure.math tests to make them less strict so they pass on M1 builds (java.lang.Math methods mostly allow differences of ~1 ulp "unit in last place")
 * https://clojure.atlassian.net/browse/CLJ-2690[CLJ-2690] - updated the docstring and some arg names for http://clojure.github.io/clojure/branch-master/clojure.core-api.html#clojure.core/iteration[iteration]
 

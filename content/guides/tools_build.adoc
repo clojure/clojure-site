@@ -9,7 +9,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 toc::[]
 
-https://github.com/clojure/tools.build[tools.build] is a library of functions for building Clojure projects. They are intended to be used in a build program to create user-invokable target functions.
+https://github.com/clojure/tools.build[tools.build] is a library of functions for building Clojure projects. It is intended to be used in a build program to create user-invokable target functions. Also see the https://clojure.github.io/tools.build[API docs].
 
 == Builds are programs
 

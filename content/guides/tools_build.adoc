@@ -11,6 +11,13 @@ toc::[]
 
 https://github.com/clojure/tools.build[tools.build] is a library of functions for building Clojure projects. It is intended to be used in a build program to create user-invokable target functions. Also see the https://clojure.github.io/tools.build[API docs].
 
+As every tool, build must be installed first:
+
+[source,shell]
+----
+clj -Ttools install io.github.clojure/tools.build '{:git/tag "TAG"}' :as build
+----
+
 == Builds are programs
 
 The philosophy behind tools.build is that your project build is inherently a program - a series of instructions to create one or more project artifacts from your project source files. We want to write this program with our favorite programming language, Clojure, and tools.build is a library of functions commonly needed for builds that can be connected together in flexible ways. Writing a build program does take a bit more code than other declarative approaches, but can be easily extended or customized far into the future, creating a build that grows with your project.

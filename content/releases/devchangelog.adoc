@@ -19,6 +19,18 @@ Note: All dev releases are subject to breaking changes for new work since the pr
 
 == Release 1.11.0
 
+=== 1.11.0-beta1 (Feb 2, 2022) [[v1.11.0-beta1]]
+
+* https://clojure.atlassian.net/browse/CLJ-2690[CLJ-2690] Improve `iteration` docstring and arg names
+* https://clojure.atlassian.net/browse/CLJ-2689[CLJ-2689] Fix clojure.math tests to be more tolerant of floating point comparisons
+* https://clojure.atlassian.net/browse/CLJ-2685[CLJ-2685] Fix `iteration` generative test failure
+* https://clojure.atlassian.net/browse/CLJ-2529[CLJ-2529] Fix incorrect reporting of runtime errors as compiler errors in calls through `Compiler.load()`
+* https://clojure.atlassian.net/browse/CLJ-2620[CLJ-2620] Fix asymmetric handling of `:exception` `:val`s in prepl
+* https://clojure.atlassian.net/browse/CLJ-1180[CLJ-1180] Fix resolution of class type hints in `defprotocol`
+* https://clojure.atlassian.net/browse/CLJ-1973[CLJ-1973] Make order of emitted protocol methods in generated classes reproducible
+* Rolled back prior change for https://clojure.atlassian.net/browse/CLJ-2493[CLJ-2493]
+* https://clojure.atlassian.net/browse/CLJ-2493[CLJ-2493] clojure.java.browse - Fix `browse-url` hanging on call to xdg-open (new change is more targeted and addresses more cases)
+
 === 1.11.0-alpha4 (Jan 13, 2022) [[v1.11.0-alpha4]]
 
 * https://clojure.atlassian.net/browse/CLJ-2673[CLJ-2673] Add `abs`, and update `min` and `max` to use Math impls when possible

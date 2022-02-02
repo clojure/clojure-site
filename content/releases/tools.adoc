@@ -22,6 +22,14 @@ For more information see the following docs:
 
 Recent official releases are described here. Prereleases and older versions can be found in the https://github.com/clojure/brew-install/blob/1.10.3/CHANGELOG.md[repo changelog].
 
+=== 1.10.3.1075 (Feb 2, 2022) [[v1.10.3.1075]]
+
+* https://clojure.atlassian.net/browse/TDEPS-216[TDEPS-216] - Built-in :deps alias should remove project paths from classpath
+* Improve error if git sha is not found in git repo
+* Improve prep error if transtive dep's prep function is unresolvable
+* Bump AWS deps to latest versions
+* Use https://github.com/clojure/tools.deps.alpha/blob/master/CHANGELOG.md[tools.deps.alpha] 0.12.1135
+
 === 1.10.3.1069 (Jan 26, 2022) [[v1.10.3.1069]]
 
 * Update some Maven transitive deps to address some CVEs

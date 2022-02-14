@@ -1,0 +1,72 @@
+= Clojure Deref (Feb 4, 2022)
+Alex Miller
+2022-02-04
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Highlights
+
+This week I'd like to shout out the upcoming https://clojured.de/[clojureD conference] - check out the https://clojured.de/call-for-proposals-2022/[call for proposals] and https://clojured.de/registration/[registration] sites!
+
+== Podcasts and videos
+
+* https://www.cognitect.com/cognicast/166[Cognicast Ep 166 - Mariel Pettee]
+* https://www.youtube.com/watch?v=yQ-KjVNCe3g[Blog in Clojure Code Review] - Eric Normand
+* https://lispcast.com/the-christopher-alexander-effect/[The Christopher Alexander Effect] - Eric Normand
+* https://www.youtube.com/watch?v=H1An2edqiJk[Pitoco VSCode Extension] - Paulo Feodrippe
+* https://www.youtube.com/watch?v=7Ts9ny2JP4k[Clojure Syntax - The odd bits] - on the code again
+* https://www.youtube.com/watch?v=QrQtvtngwEk[Plan your code before writing anything] - OrgPad
+* https://www.youtube.com/watch?v=T_wuPrHIupU[Improving Prime Sieve Algo Performance with the Creator of Calva!] - on the code again
+* https://www.youtube.com/watch?v=QEEPXuR5wLk[Wordle clone in ClojureScript] - Mitesh
+* https://www.youtube.com/watch?v=B-l7tByEnkk[Linear Algebra with Neanderthal by David Pham] - re:Clojure 2021 workshop
+* https://www.youtube.com/watch?v=HgMu3djJPy0[Your namespace as a notebook by Daniel Slutsky] - re:Clojure 2021 workshop
+* https://www.youtube.com/watch?v=sn5wVIBa5JY[Touring Oz: Notebooks, Visualizations, and Webapps -- Christopher Small] - re:Clojure 2021 workshop
+* https://www.youtube.com/watch?v=yPGhH5p9n0M[Machine learning through pipelines - Daniel Slutsky, Carsten Behring] - re:Clojure 2021 workshop
+* https://www.youtube.com/watch?v=28os_84XA5w[A Data Science Walkthrough with Daniel Slutsky] - re:Clojure 2021 workshop
+* https://www.youtube.com/watch?v=RGMGyEY5RK4[Clojure Emerging Data Ecosystem - Sami Kallinen and Ethan Miller] - reClojure 2021
+
+== Blogs
+
+* https://clojureverse.org/t/visual-tools-meeting-1-summary-video/8617[Visual-tools meeting 1 – summary & video] - Daniel Slutsky
+* https://cuddly-octo-palm-tree.com/posts/2022-02-06-opt-clj-4/[Notes on Optimizing Clojure Code: Numerics] - Gary Verhaegen
+* https://cuddly-octo-palm-tree.com/posts/2022-02-13-opt-clj-5/[Notes on Optimizing Clojure Code: Data Structures] - Gary Verhaegen
+* https://blog.agical.se/posts/be-numa-aware-for-the-sake-of-performance/[Be aware of NUMA when your application needs to run very fast] - Peter Strömberg
+* https://functional.works-hub.com/learn/freshcode-path-clojure-js-and-self-development-3586a[Freshcode Path: Clojure, JS, and Self-Development] - Mihaela Popa
+* https://psithur.com/blog/building-psithur-connect/[Building Psithur Connect] - Felix Barbalet
+* https://marko.euptera.com/posts/ionic-clojure.html[Developing Ionic application with Clojurescript] - Marko Kocic
+* https://blog.jakubholy.net/2022/code-study-making-it-functional/[Code Study: Making code more functional] - Jakub Holý
+* https://fizzy.systems/post/kafka-connect-plugins-with-clojure/[Kafka Connect Plugins With Clojure] - Zach Thomas
+* https://www.loop-code-recur.io/rate-limiting-techniques-clojure-redis-lua/[Exploring rate limiting techniques in Clojure and Redis Lua] - Cyprien Pannier
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/nikvdp/bbb[bbb]  - A low friction, quick and easy way to develop CLI tools in Clojure that you can distribute as self-contained static binaries (babashka-bins)
+* https://github.com/cognitect/transit-java[transit-java] 1.0.362 - Transit format implementation for Java
+* https://github.com/cognitect/transit-clj[transit-clj] 1.0.329 - Transit format implementation for Clojure
+* https://github.com/lilactown/cascade[cascade] 1.2.0 - A library of continuation-passing, thunk-producing versions of many Clojure core functions
+* https://github.com/FieryCod/holy-lambda[holy-lambda] https://github.com/FieryCod/holy-lambda/releases/tag/0.6.6[0.6.6] - The extraordinary simple, performant, and extensible custom AWS Lambda runtime for Clojure
+* https://github.com/lambdaschmiede/maja[maja] 0.1.2 - A small helper library to help integration honeycomb.io into Clojure applications
+* https://github.com/uncomplicate/clojure-sound[clojure-sound]  - Clojure Sound is a library for transforming digital media and communicating with MIDI devices
+* https://github.com/babashka/nbb[nbb] https://github.com/babashka/nbb/blob/main/CHANGELOG.md#016[0.1.6] - Ad-hoc CLJS scripting on Node.js using SCI
+* https://github.com/rorokimdim/pp-grid[pp-grid]  - A clojure library to construct formatted text
+* https://github.com/magnars/optimus[optimus] 44605 - A Ring middleware for frontend performance optimization
+* https://calva.io[Calva] 2.0.243 - Calva is an integrated REPL powered environment for enjoyable and productive Clojure and ClojureScript development in Visual Studio Code
+* https://github.com/phronmophobic/snowball[snowball]  - View the sizes of your dependencies
+* https://github.com/funcool/promesa[promesa] 6.1.434 - A promise library for Clojure(Script)
+* https://github.com/liquidz/antq[antq] 1.5.0 - Point out your outdated dependencies
+* https://github.com/clj-holmes/clj-watson[clj-watson] 2.1.2 - clojure deps SCA
+* https://github.com/clj-kondo/clj-kondo[clj-kondo] 2022.02.09 - A linter for Clojure code that sparks joy
+* https://github.com/babashka/sci[sci] https://github.com/babashka/sci/blob/master/CHANGELOG.md#v029[0.2.9] - Configurable Clojure interpreter suitable for scripting and Clojure DSLs
+* https://github.com/wotbrew/relic[relic] 0.1.5 - Functional relational programming for Clojure(Script)
+* https://github.com/oliyh/re-graph[re-graph] 0.1.17 - A graphql client for clojurescript and clojure
+* https://github.com/redstarssystems/apptemplate[apptemplate]  - Application project template for Clojure
+* https://github.com/planck-repl/planck[planck] https://github.com/planck-repl/planck/blob/master/CHANGELOG.md#2260---2022-02-12[2.26.0] - Stand-alone ClojureScript REPL
+* https://github.com/clojure/core.memoize[core.memoize] 1.0.257 - A manipulable, pluggable, memoization framework for Clojure
+* https://github.com/oliyh/re-learn[re-learn] 0.1.4 - A library for integrating tutorials into your re-frame/reagent application
+* https://github.com/viesti/timbre-json-appender[timbre-json-appender] 0.2.6 - JSON appender for Timbre
+* https://plugins.jetbrains.com/plugin/18108-clojure-extras/[clojure-extras] 0.5.4 - Custom features added on top of Cursive for Clojure Lovers like inline code evaluation, clj-kondo linting and more!

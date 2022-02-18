@@ -1,0 +1,43 @@
+= Clojure Deref (Feb 18, 2022)
+Alex Miller
+2022-02-18
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Highlights
+
+The big news this week is the release of Clojure 1.11.0-rc1 - read the full https://github.com/clojure/clojure/blob/master/changes.md#changes-to-clojure-in-version-1110[1.11 changelog] for the details. This is a release candidate - no further work is planned, we are just looking for feedback for any issues before we get to a general availability release. So we would love to have you try this release with your code base so we can find any issues!
+
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=xGrCsIiiTUs[Datomic - a scalable, immutable database system] - Marek Lipert
+
+== Blogs
+
+* https://www.clojuriststogether.org/news/funding-development-on-custom-formatters-for-firefox/[Funding development on Custom Formatters for Firefox] - Clojurists Together
+* https://lambdaisland.com/blog/2022-02-17-the-fg-command[How to control the metacognition process of programming?] - Laurence Chen
+* https://grishaev.me/en/pact/[The Pact library for Clojure] - Ivan Grishaev
+* https://www.reitzen.com/post/aoc-2021-24/[Advent of Code Day 24: Computing with Sets] - Michael Reitzenstein
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/clojure/clojure[Clojure] https://clojure.org/releases/devchangelog#v1.11.0-rc1[1.11.0-rc1] - The Clojure language
+* https://github.com/phronmophobic/snowball[snowball] 1.1 - View the sizes of your dependencies
+* https://github.com/babashka/babashka[babashka] https://github.com/babashka/babashka/blob/master/CHANGELOG.md#075-2022-02-16[0.7.5] - Native, fast starting Clojure interpreter for scripting
+* https://github.com/wilkerlucio/pathom-viz[pathom-viz] https://github.com/wilkerlucio/pathom-viz/releases/tag/v2022.2.15[2022.2.15] - Visualization tools for Pathom
+* https://github.com/liquidz/vim-iced[vim-iced] 3.8.0 - Clojure Interactive Development Environment for Vim8/Neovim
+* https://github.com/sicmutils/sicmutils[sicmutils] https://github.com/sicmutils/sicmutils/releases/tag/v0.21.1[0.21.1] - A port of the scmutils computer algebra/mechanics system to Clojure
+* https://github.com/ivarref/clj-paginate[clj-paginate] 0.2.51 - Pagination of vectors and maps with Clojure
+* https://github.com/behrica/opencpu-clj[opencpu-clj] 0.3.1 - Clojure client for opencpu
+* https://github.com/yetanalytics/flint[flint] 0.1.0 - SPARQL DSL library for Clojure(Script)
+* https://github.com/wardle/hermes[hermes] https://github.com/wardle/hermes/releases/tag/v0.8.353[0.8.353] - Terminology tools to support SNOMED CT, cross-maps, inference, fast full-text search, autocompletion, compositional grammar and the expression constraint language
+* https://github.com/babashka/scittle[scittle] 0.1.0 - The Small Clojure Interpreter exposed for usage in browser script tags
+* https://plugins.jetbrains.com/plugin/18108-clojure-extras/[clojure-extras] 0.6.0 - Custom features added on top of Cursive for Clojure Lovers like inline code evaluation, clj-kondo linting and more!
+* https://github.com/babashka/pod-babashka-go-sqlite3[pod-babashka-go-sqlite3] 0.1.0 - A babashka pod for interacting with sqlite3
+* https://github.com/rorokimdim/pp-grid[pp-grid] 0.1.4 - A clojure library to construct formatted text
+* https://github.com/igrishaev/pact[pact] 0.1.0 - A small library for chaining values through forms

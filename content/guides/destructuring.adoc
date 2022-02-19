@@ -13,6 +13,8 @@ toc::[]
 
 Destructuring is a way to concisely bind names to the values inside a data structure. Destructuring allows us to write more concise and readable code.
 
+Destructuring can appear in explicit or implicit `let` expressions. No special syntax is needed. Standard Clojure collection syntax is used on the left-hand side to specify a structure onto which a right-hand value is to be mapped.
+
 Consider the following example of extracting and naming values in a vector.
 
 [source,clojure]
@@ -77,6 +79,15 @@ This type of destructuring can be used on any kind of data structure that can be
 
 The key to sequential destructuring is that you bind the values one-by-one to the symbols in the vector. For instance the vector `[x y z]` will match each element one-by-one with the list `'(1 2 3)`.
 
+If the same symbol appears several times in the left-hand destructuring form, the last binding for that symbol is retained:
+
+[source,clojure]
+----
+(let [[x y y] my-vector]
+  (println "y is now" y))
+;= y is now 3
+----
+
 In some cases, the collection you are destructuring isn't the exact same size as the destructuring bindings. If the vector is too small, the extra symbols will be bound to nil.
 
 [source,clojure]
@@ -117,7 +128,7 @@ Say you want to print the first element on one line and the remainder on another
 ;= Amber Aaron Nick Earl Joe
 ----
 
-This binding works but even using destructuring it's pretty clunky. Instead we can use `&` to combine the tail elements into a sequence.
+This binding works but even using destructuring it's pretty clunky. Instead we can use `&` to combine the tail elements into a `seq`.
 
 [source,clojure]
 ----
@@ -137,9 +148,18 @@ You can ignore bindings that you don't intend on using by binding them to any sy
 ;= Odd names: Michael Aaron Earl
 ----
 
-The convention for this is to use an underscore like above.
+The convention for this is to use an underscore as above. 
 
-You can use `:as all` to bind the entire vector to the symbol `all`.
+There is nothing special about the underscore. Being a symbol like any other, it retains value of its last binding:
+
+[source,clojure]
+----
+(let [[item1 _ item3 _ item5 _] names]
+  (println "'Underscore' is now:" _))
+;= 'Underscore' is now: Joe
+----
+
+You can use `:as` to bind the entire vector to a single symbol. `:as all` binds the vector to `all`.
 
 [source,clojure]
 ----
@@ -184,7 +204,7 @@ You can combine any or all of these techniques at the same time at your discreti
 ;= The fruits after them are (peach pear lemon)
 ----
 
-Destructuring can also be nested to get access to arbitrary levels of sequential structure. Let's go back to our vector from the very beginning, `my-line`.
+Destructuring can also be nested to get access to arbitrary levels of sequential structures. Let's go back to our vector from the very beginning, `my-line`.
 
 [source,clojure]
 ----
@@ -200,6 +220,34 @@ This vector is comprised of nested vectors that we can access directly.
 ;= "Line from ( 5 , 10 ) to ( 10 , 20 )"
 ----
 
+This can become arbitrarily complex:
+
+[source,clojure]
+----
+(def my-struct '[ 1 2 ( 3 4 ) 5 [ ( 6 7 ) [ ( 8 ) 9 ] ] 10 ])
+----
+
+[source,clojure]
+----
+(let [ [a b c d [ [ e f ] [ g h ] ] i ]  my-struct ]
+  (apply prn [a b c d e f g h i ] ))
+;= 1 2 (3 4) 5 6 7 (8) 9 10
+
+(let [ [a b c d [ e f [ g h ] ] i ]  my-struct ]
+  (apply prn [a b c d e f g h i ] ))
+;= 1 2 (3 4) 5 (6 7) [(8) 9] nil nil 10
+----
+
+Of ourse, if the left-hand expression does not match the structure of the value, the destructuring operation will fail:
+
+[source,clojure]
+----
+(let [ [[a b] c d [ [ e f ] [ g h ] ] i ]  my-struct ]
+  (apply prn [a b c d e f g h i ] ))
+;= Execution error (UnsupportedOperationException) at user/eval571 (REPL:1).
+;= nth not supported on this type: Long
+----
+
 When you have nested vectors, you can use `:as` or `&` at any level as well.
 
 [source,clojure]
@@ -211,9 +259,38 @@ When you have nested vectors, you can use `:as` or `&` at any level as well.
 ;= 10 20 [10 20]
 ----
 
+or even:
+
+[source,clojure]
+----
+(def my-multidimensional-line [[1 2 5 0 8] [6 4 3 1 9]])
+(let [[[x0 & coords0 :as orig] [x1 & coords1 :as dest] :as line ] my-multidimensional-line]
+  (println line)
+  (println orig)
+  (println dest)
+  (println x0 coords0)
+  (println x1 coords1))
+;= [[1 2 5 0 8] [6 4 3 1 9]]
+;= [1 2 5 0 8]
+;= [6 4 3 1 9]
+;= 1 (2 5 0 8)
+;= 6 (4 3 1 9)
+----
+
+In particular, one can further destructure whatever value has been bound using `&`:
+
+[source,clojure]
+----
+(let [[[x0 & [y0 & coords0]] [x1 & [y1 & coords1]]] my-multidimensional-line]
+  (println "(" x0 "," y0 ") followed by" coords0)
+  (println "(" x1 "," y1 ") followed by" coords1))
+( 1 , 2 ) followed by (5 0 8)
+( 6 , 4 ) followed by (3 1 9)
+----
+
 == Associative Destructuring
 
-Associative destructuring is similar to sequential destructuring, but applied instead to associative (key-value) structures (including maps, records, vectors, etc). The associative bindings are concerned with concisely extracting values of the map by key.
+Associative destructuring is similar to sequential destructuring, but applied instead to associative (key-value) structures (maps and records). The associative bindings are concerned with concisely extracting values of the map by key.
 
 Let's first consider an example that extracts values from a map without destructuring:
 
@@ -436,7 +513,9 @@ You can even destructure using auto-resolved keywords, which will again be bound
 
 Creating and destructuring maps with auto-resolved keywords allow us to write code using a namespace alias (here `p`) that is defined by a `require` in the current namespace, giving us a means of namespace indirection that can be changed at a single place in the code.
 
-All symbols bound in the context of destructuring can be further destructured - this allows destructuring to be used in a nested fashion for both sequential and associative destructuring. It is less obvious, but this also extends to the symbol defined after `&`.
+=== Destructuring the `&` seq
+
+Similarly to sequential destructuring, the value (a seq) captured using `&` can be further destructured. 
 
 This example destructures the `&` seq in place to decode the rest of the arguments as options (note that we are thus destructuring the two arguments sequentially and the rest associatively):
 

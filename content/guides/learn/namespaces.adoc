@@ -65,7 +65,7 @@ The `clojure.core` referral is done by the `ns` macro. (There are ways to suppre
 
 === require
 
-The `:require` class corresponds to the `require` function which specifies one or more namespaces to load that this namespace depends on. For each namespace, `require` can do several things:
+The `:require` clause corresponds to the `require` function which specifies one or more namespaces to load that this namespace depends on. For each namespace, `require` can do several things:
 
 * Load (or reload) the namespace
 * Optionally assign an _alias_ that can be used to refer to vars from the loaded namespace only in the scope of this namespace

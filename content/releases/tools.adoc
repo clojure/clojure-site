@@ -22,6 +22,18 @@ For more information see the following docs:
 
 Recent official releases are described here. Prereleases and older versions can be found in the https://github.com/clojure/brew-install/blob/1.10.3/CHANGELOG.md[repo changelog].
 
+=== 1.10.3.1087 (Feb 28, 2022) [[v1.10.3.1087]]
+
+* Fix error message when git url missing or not inferred
+* Pass :exec-fn and :exec-args to -X/-T even when using -Scp
+* https://clojure.atlassian.net/browse/TDEPS-222[TDEPS-222] Make Clojure dependency in pom a compile dependency, not provided
+* https://clojure.atlassian.net/browse/TDEPS-203[TDEPS-203] In `-X:deps prep` - now takes basis settings, including aliases
+* https://clojure.atlassian.net/browse/TDEPS-197[TDEPS-197] `-X:deps git-resolve-tags` - now resolves to :git/tag and :git/sha
+* `-X:deps tree` - now takes basis settings
+* `-X:deps mvn-pom` - now takes basis settings
+* `-X:deps list` - put license abbreviation list in a resource and load on demand
+* Use https://github.com/clojure/tools.deps.alpha/blob/master/CHANGELOG.md[tools.deps.alpha] 0.12.1158
+
 === 1.10.3.1075 (Feb 2, 2022) [[v1.10.3.1075]]
 
 * https://clojure.atlassian.net/browse/TDEPS-216[TDEPS-216] - Built-in :deps alias should remove project paths from classpath

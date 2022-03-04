@@ -1,0 +1,49 @@
+= Clojure Deref (Mar 4, 2022)
+Alex Miller
+2022-03-04
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Highlights
+
+The https://www.surveymonkey.com/r/clojure2022[State of Clojure 2022 Survey] is still open for one more week - if you're interested eough to read this Deref, you should definitely fill out the survey!
+	
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=uzy5ARQP3tA[Create a Clojure web app using nbb and the Express node framework] - Bobby Towers
+
+== Blogs
+
+* https://flexiana.com/2022/02/malli-and-html-forms-as-data[Malli and HTML forms as data] - Enyert Vinas
+* https://blog.michielborkent.nl/oss-updates-jan-feb-2022.html[OSS Updates of January - February 2022] - Michiel Borkent
+* https://dev.to/dvliman/building-a-live-streaming-app-in-clojure-329m[Building a Live Streaming app in Clojure] - David Liman
+* https://dev.to/crinklywrappr/recording-hikaricp-metrics-in-clojure-1baf[Recording HikariCP Metrics in Clojure] - Daniel Fitzpatrick
+* https://franz.hamburg/writing/clojure-first-impressions.html[Clojure - First Impressions] - Franz Neubert
+* https://www.reddit.com/r/Clojure/comments/t53hlt/some_thoughts_about_clojure_its_latent_potential/[Some thoughts about Clojure, its latent potential and adoption] - Leif Eric Fredheim
+* https://alefeans.medium.com/clojure-na-pr%C3%A1tica-parte-3-56115cf3ef0[Clojure na prática — parte 3 (in Portuguese)] - Álefe Silva
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://clojure.org/releases/tools[Clojure CLI] https://clojure.org/releases/tools#v1.10.3.1087[1.10.3.1087] - Clojure CLI and program runner
+* https://github.com/scicloj/scicloj.ml[scicloj.ml] 0.2.0 - A Clojure machine learning library
+* https://github.com/babashka/process[process] 0.1.1 - Clojure wrapper for java.lang.ProcessBuilder
+* https://github.com/babashka/babashka[babashka] 0.7.7 - Native, fast starting Clojure interpreter for scripting
+* https://github.com/babashka/sci-configs[sci-configs]  - A collection of ready to be used SCI configs
+* https://github.com/clj-kondo/clj-kondo[clj-kondo] v2022.03.04 - A linter for Clojure code that sparks joy
+* https://github.com/exoscale/coax[coax] 1.0.0-alpha15 - Clojure.spec coercion library for clj(s)
+* https://github.com/KingMob/TrueGrit[TrueGrit] 1.0.5 - A data-driven, functionally-oriented, idiomatic Clojure library for using Resilience4j
+* https://github.com/nextjournal/clerk[clerk] https://github.com/nextjournal/clerk/blob/main/CHANGELOG.md#06387-2022-03-03[0.6.387] - Local-first notebooks for Clojure
+* https://github.com/esuomi/lein-git-revisions[lein-git-revisions] 0.3.0 - Automatically control Leiningen project version based on Git metadata
+* https://github.com/lucywang000/clj-statecharts[clj-statecharts] 0.1.2 - State Machine and StateCharts for Clojure(Script)
+* https://vlaaad.github.io/reveal/[https://vlaaad.github.io/reveal/] Free 1.3.270 and Pro 1.3.339 - Read Eval Visualize Loop for Clojure
+* https://github.com/practicalli/clojure-deps-edn[clojure-deps-edn]  - User level aliases for Clojure CLI projects and community tools
+* https://github.com/behrica/scicloj.ml.clj-djl[scicloj.ml.clj-djl] 0.1.10 - clj-djl modles for metamorph.ml and scicloj.ml
+* https://github.com/BetterThanTomorrow/calva[Calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.245[2.0.427] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/eerohele/Tutkain[Tutkain] https://github.com/eerohele/Tutkain/blob/master/CHANGELOG.md#0140-alpha---2022-03-04[0.14.0 (alpha)] - A Sublime Text package for interactive Clojure development
+* https://github.com/NoahTheDuke/coc-clojure[coc-clojure]  - coc.nvim plugin for clojure-lsp
+* https://github.com/fulcrologic/statecharts[statecharts] 1.0.0-RC2 - A Statechart library for CLJ(S)

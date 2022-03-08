@@ -11,9 +11,9 @@ If you're interested in supplying patches or contributing to Clojure, please see
 
 The job of screening is to create a high quality stream of problems and proposed solutions so that the BDFL can efficiently review consider them for inclusion. While this page uses the generic term "screening", there are really several specific places in the steps in the <<workflow#,workflow>> where the community and Clojure core team can provide value:
 
-* Triage - evaluating incoming tickets (usually created in response to https://ask.clojure.org[Ask Clojure] questions)
-* Prescreening - making tickets that represent good **problems**
-* Screening - evaluating tickets and patches for the **solutions**
+* <<screening_tickets#triage,Triage>> - evaluating incoming tickets (usually created in response to https://ask.clojure.org[Ask Clojure] questions)
+* <<screening_tickets#vetting,Vetting>> - making tickets that represent good **problems**
+* <<screening_tickets#screening,Screening>> - evaluating tickets and patches for the **solutions**
 
 These different processses vary in their focus, but share the common goal of making a ticket that tells a good story about the problem encountered, the solutions considered, and the final chosen approach with a patch.
 
@@ -49,6 +49,7 @@ The more an improvement ticket can focus on a problem rather than "add a thing",
 
 If you intend to work on a ticket for Triage, Prescreening, or Screening, please set the Assignee field to yourself. If the Assignee is already set to someone, either ping them outside the ticket system, or comment and ask if they are still looking at it. If you don't see a response within a couple days, you can change the assignee. When you're done, make sure to unset the Assignee field.
 
+[[triage]]
 == Triage process
 
 **The big picture question here is: "Is this a valid bug/request?"**
@@ -72,6 +73,7 @@ Actions available:
 
 Tickets ready for triage: https://clojure.atlassian.net/issues/?filter=10001[CLJ Open]
 
+[[vetting]]
 == Vetting process
 
 **The big picture question here is: "Is this a well stated problem?"**
@@ -95,6 +97,7 @@ Tickets to look at:
 * https://clojure.atlassian.net/issues/?filter=10002[CLJ Triaged]
 * https://clojure.atlassian.net/issues/?filter=10032[CLJ 1.12 Candidates] - a hand-selected set of candidates for 1.12
 
+[[screening]]
 == Screening/prescreening process
 
 **The big picture question here is: "Is this a good solution to the issue?"**
@@ -109,7 +112,7 @@ Screening checklist:
 * Cause - once a problem is understood, try to state the cause of the problem as clearly as possible
 * Alternatives - you should try to come up with multiple alternative solutions for any problem (definitely for new features). Don't forget one alternative that always exists: do nothing. Use the problem to discover dimensions on which to compare the alternatives. Consider things like: performance, backwards compatibility, where the change occurs, etc.
 * Proposed solution - Restate the chosen alternative in detail and why it is the best across the considered dimensions. The Proposed solution section should cover aspect of the patch such that a reviewer is not surprised by the time they look at the code.
-* Patch - see "Patch evaluation" below
+* Patch - see <<screening_tickets#patches,Patch evaluation>> below
 * Performance - does the ticket include sufficient performance consideration? If a benchmark is needed, include benchmark and before/after timings. If that data is included, verify it on your own machine.
 * Does the Proposed section fully explain everything a subsequent reviewer would see in the patch?
 * Patch - is the name of the proposed patch listed? (this seems obvious ... until it isn't, so always explicitly list it, even if it's the only patch)
@@ -121,6 +124,7 @@ Tickets to look at:
 * https://clojure.atlassian.net/issues/?filter=10004[CLJ Vetted]
 * https://clojure.atlassian.net/issues/?filter=10008[CLJ Screenable] - please coordinate with the core team before changing the body of the ticket here (comments are always fine)
 
+[[patches]]
 == Patch evaluation
 
 To apply someone's changes, it's best to create a branch and apply the change there:

@@ -1,0 +1,50 @@
+= Clojure Deref (Mar 11, 2022)
+Alex Miller
+2022-03-11
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Highlights
+
+The https://www.surveymonkey.com/r/clojure2022[State of Clojure 2022 Survey] is closing today, so if you haven't filled it out yet, please do. We have some new questions this year and I think we'll get some interesting feedback, but only if you complete it!
+
+This week we added https://github.com/sponsors/behrica[Carsten Behring] to the Nubank/Cognitect sponsorship rolls - Carsten has been working on scicloj.ml and clj-py-r-template most lately, so consider sponsorship if you're using those!
+
+Also, a big congrats to Clojure users Ardoq[https://www.ardoq.com/] on their https://techcrunch.com/2022/03/09/ardoq-125m-enterprise-architecture/[$125M financing round]!
+
+== Podcasts and videos
+
+* https://cognitect.com/cognicast/167[Peter Strömberg - Cognicast Episode 167] - Cognicast
+* https://www.youtube.com/watch?v=HcScWnHRpsM[Clojure for React Developers - Build a Web-Based Graphics Editor like Canva with Senior Clojure Dev] - \newline
+* https://www.youtube.com/watch?v=lvuwxzONXbQ[donut.system: your new favourite component library? (by Daniel Higginbotham)] - London Clojurians
+
+== Blogs
+
+* https://cuddly-octo-palm-tree.com/posts/2022-03-06-opt-clj-8/[Notes on Optimizing Clojure Code: Arrays] - Gary Verhaegen
+* https://lambdaisland.com/blog/2022-03-10-mechanism-vs-policy[Improve your code by separating mechanism from policy] - Arne Brasseur
+* https://dev.to/crinklywrappr/playing-with-webdriver-3ek8[Playing with webdriver] - Daniel Fitzpatrick
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/lambdaisland/cljbox2d[cljbox2d] 0.4.19 - Idiomatic and cross-platform Clojure version of the Box2D physics engine API
+* https://github.com/uncomplicate/deep-diamond[deep-diamond] 0.22.0 - A fast Clojure Tensor & Deep Learning library
+* https://github.com/nginx-clojure/nginx-clojure[nginx-clojure] 0.5.3 - Nginx module for embedding Clojure or Java or Groovy programs, typically those Ring based handlers
+* https://github.com/juji-io/datalevin[datalevin] 0.6.0 - A simple, fast and versatile Datalog database
+* https://github.com/babashka/obb[obb] https://github.com/babashka/obb/blob/main/CHANGELOG.md#003---2022-03-09[0.0.3] - Ad-hoc ClojureScript scripting of Mac applications via Apple's Open Scripting Architecture
+* https://github.com/exoscale/ex[ex] 0.4.0 - In which we deal with exceptions the clojure way
+* https://github.com/cljdoc/cljdoc-check-action[cljdoc-check-action] 0.0.3 - GitHub Action for checking that CljDoc will be able to analyze the project successfully
+* https://github.com/clojure-emacs/cider[Cider] https://github.com/clojure-emacs/cider/releases/tag/v1.3.0[1.3] - The Clojure Interactive Development Environment that Rocks for Emacs
+* https://github.com/oliyh/fixa[fixa]  - Better test fixtures for clojure/script
+* https://github.com/wilkerlucio/pathom3[pathom3] 2022.03.07-alpha - A library for navigating data
+* https://github.com/liquidz/antq[antq] 1.6.0 - Point out your outdated dependencies
+* https://github.com/nextjournal/clerk[clerk] 0.6.387 - Local-First Notebooks for Clojure
+* https://github.com/BetterThanTomorrow/calva[Calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.245[2.0.253] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/clj-kondo/clj-kondo[clj-kondo] https://github.com/clj-kondo/clj-kondo/blob/master/CHANGELOG.md#20220309[v2022.03.09] - A linter for Clojure code that sparks joy
+* https://github.com/babashka/sci[sci] https://github.com/babashka/sci/blob/master/CHANGELOG.md#v032[0.3.2] - Configurable Clojure interpreter suitable for scripting and Clojure DSLs
+* https://github.com/wilkerlucio/pathom-viz[pathom-viz] 2022.3.7 - Visualization tools for Pathom
+* https://github.com/clj-commons/aleph[aleph] 0.4.7-rc1 - Asynchronous communication for Clojure

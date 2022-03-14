@@ -129,7 +129,7 @@ It's important to know that these options exist, but don't try to adopt all of t
 [#editor-integrations]
 == Editor integrations
 
-All <<xref/../../../community/resources#_clojure_tools,major Clojure editors>> support a way of evaluating code in the REPL without leaving
+All <<xref/../../../community/tools#_editors,major Clojure editors>> support a way of evaluating code in the REPL without leaving
 the current code buffer, which reduces the amount of context switching a programmer has to do.
 Here's what it looks like (the editor used in this example is https://cursive-ide.com/userguide/repl.html[Cursive]):
 

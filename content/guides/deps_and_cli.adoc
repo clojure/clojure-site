@@ -34,7 +34,7 @@ After you download and install the tools, you can start a REPL by running the `c
 [source,shell]
 ----
 $ clj
-Clojure 1.10.3
+Clojure 1.11.0
 user=>
 ----
 
@@ -75,7 +75,7 @@ Restart the REPL with the `clj` tool:
 $ clj
 Downloading: clojure/java-time/clojure.java-time/0.3.2/clojure.java-time-0.3.2.pom from clojars
 Downloading: clojure/java-time/clojure.java-time/0.3.2/clojure.java-time-0.3.2.jar from clojars
-Clojure 1.10.3
+Clojure 1.11.0
 user=> (require '[java-time :as t])
 nil
 user=> (str (t/instant))
@@ -270,7 +270,7 @@ Apply that classpath modification and examine the modified classpath by invoking
 $ clj -A:test -Spath
 test:
 src:
-/Users/me/.m2/repository/org/clojure/clojure/1.10.3/clojure-1.10.3.jar:
+/Users/me/.m2/repository/org/clojure/clojure/1.11.0/clojure-1.11.0.jar:
 ... same as before (split here for readability)
 ----
 
@@ -356,7 +356,7 @@ You can then tell the CLI to prep using this command (this is a 1-time action fo
 $ clj -X:deps prep
 Prepping io.github.puredanger/cool-lib in /Users/me/demo/needs-prep
 $ clj
-Clojure 1.10.3
+Clojure 1.11.0
 user=>
 ----
 

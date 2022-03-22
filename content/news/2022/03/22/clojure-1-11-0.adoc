@@ -7,7 +7,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 Clojure 1.11 provides new syntax for keyword argument invocation, namespace aliasing without loading, a new clojure.math namespace, and many additional bug fixes and enhancements.
 
-Keyword arguments are optional trailing variadic arguments of the form *(f akey aval bkey bval ...​)*. Invoking functions with keyword arguments is convenient for people to write, but keyword args are not collections so they are hard to flow between functions. In Clojure 1.11, functions taking keyword arguments can now be passed a trailing map instead of or in addition to and following the key/value pairs. When a lone map is passed, it is used for destructuring, else the trailing map is added to the key/value pair map by conj. This change makes keyword arg functions more convenient for programmatic use.
+Keyword arguments are optional trailing variadic arguments of the form _(f akey aval bkey bval ...​)_. Invoking functions with keyword arguments is convenient for people to write, but keyword args are not collections so they are hard to flow between functions. In Clojure 1.11, functions taking keyword arguments can now be passed a trailing map instead of or in addition to and following the key/value pairs. When a lone map is passed, it is used for destructuring, else the trailing map is added to the key/value pair map by conj. This change makes keyword arg functions more convenient for programmatic use.
 
 Spec (and other libs) rely on qualified keywords as spec names. Namespace aliasing in `ns` makes long names shorter but required namespaces to exist and be loaded. In Clojure 1.11, `require` adds a new option `:as-alias`, which is like `:as` but does not require the namespace to exist or load.
 

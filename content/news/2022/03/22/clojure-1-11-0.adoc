@@ -1,0 +1,38 @@
+= Clojure 1.11.0 release
+Alex Miller
+2022-03-22
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Clojure 1.11 provides new syntax for keyword argument invocation, namespace aliasing without loading, and a new clojure.math namespace.
+
+Keyword arguments are optional trailing variadic arguments of the form *(f akey aval bkey bval ...​)*. In Clojure 1.11, functions taking keyword arguments can now be passed a trailing map instead of or in addition to and following the key/value pairs. When a lone map is passed, it is used for destructuring, else the trailing map is added to the key/value pair map by conj. This change makes keyword argument api functions work for both interactive and programmatic use.
+
+Spec (and other libs) rely on qualified keywords as spec names. Namespace aliasing in `ns` makes long names shorter but required namespaces to be loadable. This change adds `:as-alias` to require, which is like `:as` but does not require the namespace to load.
+
+The new https://clojure.github.io/clojure/branch-master/index.html#clojure.math[clojure.math] namespace provides wrappers for the functions available in java.lang.Math. These functions are narrowed to only `long` and `double` overloads and provide primitive support without reflection. These functions also now serve as portable math functions in ClojureScript.
+
+Additionally, a number of functions have been added to clojure.core: https://clojure.github.io/clojure/branch-master/clojure.core-api.html#clojure.core/abs[`abs`] https://clojure.github.io/clojure/branch-master/clojure.core-api.html#clojure.core/NaN?[`NaN?`] https://clojure.github.io/clojure/branch-master/clojure.core-api.html#clojure.core/infinite?[`infinite?`] https://clojure.github.io/clojure/branch-master/clojure.core-api.html#clojure.core/parse-double[`parse-double`] https://clojure.github.io/clojure/branch-master/clojure.core-api.html#clojure.core/parse-long[`parse-long`] https://clojure.github.io/clojure/branch-master/clojure.core-api.html#clojure.core/parse-boolean[`parse-boolean`] https://clojure.github.io/clojure/branch-master/clojure.core-api.html#clojure.core/parse-uuid[`parse-uuid`] https://clojure.github.io/clojure/branch-master/clojure.core-api.html#clojure.core/random-uuid[`random-uuid`] https://clojure.github.io/clojure/branch-master/clojure.core-api.html#clojure.core/update-keys[`update-keys`] https://clojure.github.io/clojure/branch-master/clojure.core-api.html#clojure.core/update-vals[`update-vals`] and https://clojure.github.io/clojure/branch-master/clojure.core-api.html#clojure.core/iteration[`iteration`].
+
+## Detailed changelog
+
+See the https://github.com/clojure/clojure/blob/master/changes.md#changes-to-clojure-in-version-1110[change log] for a complete list of all changes in Clojure 1.11.0.
+
+## Contributors
+
+Thanks to all the community members who contributed patches to Clojure 1.11:
+
+* Alexander Yakushev
+* Ambrose Bonnaire-Sergeant
+* Arne Brasseur
+* Ghadi Shayban
+* Howard Lewis Ship
+* Hugo Duncan
+* Jonathan Johnston
+* Keyhan Vakil
+* Marc O'Morain
+* Michiel Borkent
+* Nikita Prokopov
+* Paula Gearon
+* Steve Miner

@@ -28,7 +28,7 @@ As such, you will need an alias in your deps.edn that defines the build classpat
 
  :aliases
  {;; Run with clj -T:build function-in-build
-  :build {:deps {io.github.clojure/tools.build {:tag "TAG" :sha "SHA"}}
+  :build {:deps {io.github.clojure/tools.build {:git/tag "TAG" :git/sha "SHA"}}
           :ns-default build}}}
 ----
 
@@ -103,7 +103,7 @@ The deps.edn file will look like this:
 ----
 {:paths ["src"]
  :aliases
- {:build {:deps {io.github.clojure/tools.build {:tag "TAG" :sha "SHA"}}
+ {:build {:deps {io.github.clojure/tools.build {:git/tag "TAG" :git/sha "SHA"}}
           :ns-default build}}}
 ----
 

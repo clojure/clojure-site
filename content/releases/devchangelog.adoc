@@ -17,6 +17,12 @@ The official https://github.com/clojure/clojure/blob/master/changes.md[changelog
 
 Note: All dev releases are subject to breaking changes for new work since the prior release.
 
+== Release 1.11.1
+
+=== 1.11.1-rc1 (Apr 1, 2022) [[v1.11.1-rc1]]
+
+* https://clojure.atlassian.net/browse/CLJ-2701[CLJ-2701] Pin serialVersionUID for Keyword and ArraySeq back to 1.10.3 values to retain binary serialization
+
 == Release 1.11.0
 
 === 1.11.0-rc1 (Feb 16, 2022) [[v1.11.0-rc1]]

@@ -40,7 +40,7 @@ I also wanted to highlight https://max-datom.com[Max Datom], a fun browser-based
 
 New releases and tools this week:
 
-* https://clojure.org/releases/tools#v1.11.1.1105[Clojure CLI] 1.11.1.105
+* https://clojure.org/releases/tools#v1.11.1.1105[Clojure CLI] 1.11.1.1105
 * https://www.datomic.com/[Datomic] https://forum.datomic.com/t/datomic-1-0-6397-now-available/2064[1.0.6397] - A transactional database with a flexible data model, elastic scaling, and rich queries
 * https://github.com/donut-power/system[system] 0.0.127 - donut.system is a dependency injection library for Clojure and ClojureScript that introduces system and component abstractions
 * https://github.com/l3nz/cli-matic[cli-matic] 0.5.3 - Compact, hands-free [sub]command line parsing library for Clojure

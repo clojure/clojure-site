@@ -9,7 +9,7 @@ Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure
 
 == Highlights
 
-As mentioned in https://clojure.org/news/2022/04/01/deref.adoc[last week's Deref], we've released a Clojure https://clojure.org/news/2022/04/05/clojure-1-11-1[1.11.1] version that reverts the serialVersionUID for the clojure.lang.Keyword and clojure.lang.ArraySeq classes, which were unnecessarily changed in 1.11.0. We'll be working on a broader change similar to this across all serializable Clojure implementation classes in 1.12.
+As mentioned in https://clojure.org/news/2022/04/01/deref[last week's Deref], we've released a Clojure https://clojure.org/news/2022/04/05/clojure-1-11-1[1.11.1] version that reverts the serialVersionUID for the clojure.lang.Keyword and clojure.lang.ArraySeq classes, which were unnecessarily changed in 1.11.0. We'll be working on a broader change similar to this across all serializable Clojure implementation classes in 1.12.
 
 I also wanted to highlight https://max-datom.com[Max Datom], a fun browser-based game for learning Datomic. This has been a long-running passion project from Jarrod Taylor on the Datomic team and it's great to finally see it out and available. Rumors abound of possible Max Datom swag to come in the future. ;)
 

@@ -1,0 +1,63 @@
+= Clojure Deref (Apr 8, 2022)
+Alex Miller
+2022-04-08
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Highlights
+
+As mentioned in https://clojure.org/news/2022/04/01/deref.adoc[last week's Deref], we've released a Clojure https://clojure.org/news/2022/04/05/clojure-1-11-1[1.11.1] version that reverts the serialVersionUID for the clojure.lang.Keyword and clojure.lang.ArraySeq classes, which were unnecessarily changed in 1.11.0. We'll be working on a broader change similar to this across all serializable Clojure implementation classes in 1.12.
+
+I also wanted to highlight https://max-datom.com[Max Datom], a fun browser-based game for learning Datomic. This has been a long-running passion project from Jarrod Taylor on the Datomic team and it's great to finally see it out and available. Rumors abound of possible Max Datom swag to come in the future. ;)
+
+== Podcasts and videos
+
+* https://cognitect.com/cognicast/168[Wilker Lucio - Episode 168 ] - Cognicast
+* https://soundcloud.com/defn-771544745/82-ben-sless[#82 - Ben Sless] - Defn Podcast
+* https://www.youtube.com/watch?v=2SFNbiurWhc[GoodGuesser: Sprinkle a little machine learning magic over your regular code!] - Conrad Barski
+* https://www.youtube.com/watch?v=8aCO_wNuScQ[Intro to Clojure CLI, deps.edn, aliases and tools.deps library. Build and Run Clojure app] - Volodymyr Kozieiev
+* https://www.youtube.com/watch?v=AbCWHZljhkM[Expert Talk: Functional Programming • Russ Olsen & Christian Romney] - GOTO 2022
+* https://www.youtube.com/watch?v=9c1wsvpjOos[Immutable Stack 2.0 building novus - 03 datomic transactions, schema & query] - Vishal Gautam
+* https://www.youtube.com/watch?v=Zc__sDUTnpI[Clerk: The Local-First Notebooks for Clojure - Faris] - Clojure Asia
+* https://www.youtube.com/watch?v=jt0w9gWNk64[Meetup #146: Clerk] - The Dutch Clojure Meetup
+
+== Blogs
+
+* https://kwill.dev/posts/hikari-rds-iam-auth/[HikariCP & RDS IAM Authentication in Clojure] - Kenny Williams
+* https://kozieiev.com/blog/clojure-cli-tools-deps-deps-edn-guide/[Build and run Clojure projects. CLI, tools.deps and deps.edn guide] - Volodymyr Kozieiev
+* https://www.pixelated-noise.com/blog/2022/03/01/hike/index.html[Hike - Deriving identity in mutable grids] - Aris Spathis
+* https://savo.rocks/posts/setting-up-vs-code-for-clojure-and-overtone-development/[Setting Up VS Code For Clojure And Overtone Development] - Savo Djuric
+* https://biffweb.com/p/new-release[New major release for Biff] - Jacob O'Bryant
+* https://quanttype.net/posts/2022-04-06-clojure-and-what-couldve-been.html[Clojure and what could've been] - Miikka Koskinen
+* https://lambdaisland.com/blog/2022-04-07-Clojure-Error-Messages[What Is Behind Clojure Error Messages?] - Ariel Alexi and Arne Brasseur
+* https://stackoverflow.blog/2022/04/07/you-should-be-reading-academic-computer-science-papers/[You should be reading academic computer science papers] - Ryan Donovan
+* https://scicloj.github.io/clay/#/notebooks/intro.clj[Clay] - SciCloj
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://clojure.org/releases/tools#v1.11.1.1105[Clojure CLI] 1.11.1.105
+* https://www.datomic.com/[Datomic] https://forum.datomic.com/t/datomic-1-0-6397-now-available/2064[1.0.6397] - A transactional database with a flexible data model, elastic scaling, and rich queries
+* https://github.com/donut-power/system[system] 0.0.127 - donut.system is a dependency injection library for Clojure and ClojureScript that introduces system and component abstractions
+* https://github.com/l3nz/cli-matic[cli-matic] 0.5.3 - Compact, hands-free [sub]command line parsing library for Clojure
+* https://github.com/Wilfred/difftastic[difftastic] 0.25.0 - A diff that understands syntax
+* https://github.com/pedrorgirardi/Pep[Pep] 0.4 - Elemental Clojure & ClojureScript code navigation, documentation, and usages analysis for Sublime Text
+* https://github.com/askonomm/clarktown[clarktown] 1.0.3 - A zero-dependency, pure-Clojure Markdown parser
+* https://github.com/hyperfiddle/rcf[rcf]  - RCF – a REPL-first, async test macro for Clojure/Script
+* https://github.com/clj-kondo/clj-kondo[clj-kondo] 2022.04.08 - Static analyzer and linter for Clojure code that sparks joy!
+* https://github.com/typedclojure/typedclojure[typedclojure] https://www.patreon.com/posts/64869793[1.0.26] - An optional type system for Clojure
+* https://github.com/nytimes/jsonlogic[jsonlogic] 1.0.0 - A jsonlogic implementation for Clojure
+* https://github.com/clj-commons/primitive-math[primitive-math] 1.0.0 - for the discerning arithmetician
+* https://github.com/djblue/portal[portal] https://github.com/djblue/portal/releases/tag/0.23.0[0.23.0] - A clojure tool to navigate through your data
+* https://github.com/yetanalytics/flint[flint] 0.1.2 - SPARQL DSL library for Clojure(Script)
+* https://github.com/babashka/babashka[babashka] https://github.com/babashka/babashka/blob/master/CHANGELOG.md#080-2022-04-04[0.8.0] - Native, fast starting Clojure interpreter for scripting
+* https://www.hugsql.org/[HugSQL] 0.5.3 - HugSQL is a Clojure library for embracing SQL
+* https://github.com/babashka/neil[neil] 0.0.23 - A CLI to add common aliases and features to deps.edn-based projects
+* https://calva.io[Calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.263[2.0.263] - Calva is an integrated, REPL powered, development environment for enjoyable and productive Clojure and ClojureScript programming in Visual Studio Code
+* https://github.com/liquidz/vim-iced[vim-iced] 3.8.5 - Clojure Interactive Development Environment for Vim8/Neovim
+* https://github.com/clj-commons/rewrite-clj[rewrite-clj] https://github.com/clj-commons/rewrite-clj/blob/main/CHANGELOG.adoc#v10767-alpha[1.0.767] - Rewrite Clojure Code and EDN
+* https://github.com/babashka/babashka.curl[babashka.curl] https://github.com/babashka/babashka.curl/blob/master/CHANGELOG.md#012[0.1.2] - A tiny curl wrapper via idiomatic Clojure, inspired by clj-http, Ring and friends

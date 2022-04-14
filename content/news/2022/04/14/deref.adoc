@@ -46,11 +46,11 @@ New releases and tools this week:
 * https://github.com/wardle/hermes[hermes] 0.10.533 - terminology tools to support SNOMED CT, cross-maps, inference, fast full-text search, autocompletion, compositional grammar and the expression constraint language
 * https://github.com/askonomm/clarktown[clarktown] 1.1 - An extensible and modular zero-dependency, pure-Clojure Markdown parser
 * https://github.com/clojure-lsp/lsp4clj[lsp4clj] 0.0.1 - LSP base support for any LSP that is implemented in Clojure
-* https://clojars.org/org.clj-commons/byte-streams[https://clojars.org/org.clj-commons/byte-streams] 0.3.0 - A simple way to handle the menagerie of Java byte representations
+* https://github.com/clj-commons/byte-streams[byte-streams] 0.3.0 - A simple way to handle the menagerie of Java byte representations
 * https://github.com/lazy-cat-io/tools.project[tools.project] 0.1.71 - A project management tool
 * https://github.com/HealthSamurai/macrocss[macrocss] 0.1.0 - Macro-driven atomic CSS library for Clojure(Script)
 * https://github.com/steffan-westcott/clj-otel[clj-otel] 0.1.2 - An idiomatic Clojure API for adding telemetry to your libraries and applications using OpenTelemetry
 * https://github.com/fulcrologic/fulcro[fulcro] 3.5.18 - A library for development of single-page full-stack web applications in clj/cljs
-* https://calva.io[https://calva.io] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.266[2.0.267] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://calva.io[Calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.266[2.0.267] - Clojure & ClojureScript Interactive Programming for VS Code
 * https://github.com/borkdude/jet[jet] https://github.com/borkdude/jet/blob/master/CHANGELOG.md#011[0.1.1] - CLI to transform between JSON, EDN and Transit, powered with a minimal query language
 * https://github.com/borkdude/rewrite-edn[rewrite-edn] 0.2.0 - Utility lib on top of rewrite-clj with common operations to update EDN while preserving whitespace and comments

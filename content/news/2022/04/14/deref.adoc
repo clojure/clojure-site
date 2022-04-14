@@ -1,0 +1,56 @@
+= Clojure Deref (Apr 14, 2022)
+Alex Miller
+2022-04-14
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== From the core
+
+I mentioned back in the https://clojure.org/news/2022/04/01/deref[April 1st Deref] that we'd had a couple reports with 1.11 where Clojure code compiled with a prior version of Clojure with functions overlapping newly added functions in 1.11 had failed when run without recompilation on 1.11. (Notably, this is not a new issue, just one we are seeing now by adding a function name `abs` in clojure.core that is relatively common.) Recompiling is sufficient to get past the issue, but we want to actually fix this problem for future releases. Fogus has spent a couple weeks now diving into the details and it mostly centers around `refer` and some subtle differences in ordering behavior between AOT compiled Clojure and loaded Clojure source. There have been several changes over the life of Clojure trying to address these differences, but I'm convinced we did not truly understand the problem in most of those cases and created workarounds instead of actual fixes. Anyhow, Fogus is continuing to work on this.
+
+Among other things, I've been most recently looking into the reducibility and iterability of seqs over persistent collections. In most cases, these (unnecessarily) lose the context of their original (immutable) source. I've done an exhaustive review of this and I'm working towards a tidy set of improvements that should benefit `reduce` (and things built on `reduce` like `into`, `transduce`, etc) in a lot of cases. Hope to have a public ticket and patch for this work soon.
+
+== Podcasts and videos
+
+* https://www.cognitect.com/cognicast/168[Wilker Lucio - Cognicast Episode 168] - Cognicast
+* https://anchor.fm/lostinlambduhhs/episodes/pez-Peter-Strmberg-distills-CIDER-to-make-Calva-e1h5i7f[:pez (Peter Strömberg distills CIDER to make Calva)] - Lost in Lambduhhs podcast
+* https://soundcloud.com/clojurestream/vouch-with-anthony-maley[E68 Vouch with Anthony Maley] - ClojureStream Podcast
+* https://www.youtube.com/watch?v=tse4gKFj45c[Clojure visual-tools meeting 5] - Sci Cloj
+* https://biffweb.com/p/demo-getting-started/[Biff demo: getting started, deployment, developing in prod] - Jacob O'Bryant
+* https://github.com/learnuidev/learn-lacinia[Getting Started with Clojure and GraphQL] - Vishal Gautam
+* https://www.youtube.com/watch?v=i7n0ZwVfRHc[Meetup: Collaborative Learning - Reveal] - Los Angeles Clojure User's Group
+* https://www.youtube.com/watch?v=kID0zo3VoCo[Meetup: Collaborative Learning - Portal] - Los Angeles Clojure User's Group
+
+== Blogs
+
+* https://www.patreon.com/posts/65065388[Typed Clojure 1.0.27 - Check your programs without depending on typedclojure!] - Ambrose Bonnaire-Sergeant
+* https://savo.rocks/posts/starting-your-computer-music-journey-with-clojure-and-overtone-in-emacs/[Starting your Computer Music Journey with Clojure and Overtone in Emacs] - Savo Djuric
+* https://www.clojuriststogether.org/news/march-2022-monthly-update/[Clojurists Together March 2022 Monthly Update] - Alyssa Parado
+* https://www.spapas.net/2022/04/14/clojure-windows/[Using clojure from Windows] - Serafeim Papastefanos
+* https://dev.to/crinklywrappr/using-ec2-to-enhance-k6-load-tests-57nj[Using EC2 to enhance k6 load tests] - Daniel Fitzpatrick
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/cnuernber/charred[charred] 1.002 - zero dependency efficient read/write of json and csv data
+* https://github.com/collbox/http-cron[http-cron] 0.2.1 - Service / Clojure library to POST to HTTP endpoints at regular intervals
+* https://github.com/vlaaad/plusinia[plusinia] 1.23 - Solution to N+1 problem in Lacinia
+* https://github.com/bsless/clj-fast[clj-fast] 0.0.11 - Unpredictably faster Clojure
+* https://github.com/practicalli/clojure-deps-edn[clojure-deps-edn]  - User level aliases and Clojure CLI configuration for deps.edn based projects
+* https://github.com/babashka/nbb[nbb] 0.3.5 - ad-hoc scripting for Clojure on Node.js
+* https://github.com/HealthSamurai/matcho[matcho] 0.1.1 - Simpliest pattern matching you've ever seen
+* https://github.com/wardle/hermes[hermes] 0.10.533 - terminology tools to support SNOMED CT, cross-maps, inference, fast full-text search, autocompletion, compositional grammar and the expression constraint language
+* https://github.com/askonomm/clarktown[clarktown] 1.1 - An extensible and modular zero-dependency, pure-Clojure Markdown parser
+* https://github.com/clojure-lsp/lsp4clj[lsp4clj] 0.0.1 - LSP base support for any LSP that is implemented in Clojure
+* https://clojars.org/org.clj-commons/byte-streams[https://clojars.org/org.clj-commons/byte-streams] 0.3.0 - A simple way to handle the menagerie of Java byte representations
+* https://github.com/lazy-cat-io/tools.project[tools.project] 0.1.71 - A project management tool
+* https://github.com/HealthSamurai/macrocss[macrocss] 0.1.0 - Macro-driven atomic CSS library for Clojure(Script)
+* https://github.com/steffan-westcott/clj-otel[clj-otel] 0.1.2 - An idiomatic Clojure API for adding telemetry to your libraries and applications using OpenTelemetry
+* https://github.com/fulcrologic/fulcro[fulcro] 3.5.18 - A library for development of single-page full-stack web applications in clj/cljs
+* https://calva.io[https://calva.io] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.266[2.0.267] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/borkdude/jet[jet] https://github.com/borkdude/jet/blob/master/CHANGELOG.md#011[0.1.1] - CLI to transform between JSON, EDN and Transit, powered with a minimal query language
+* https://github.com/borkdude/rewrite-edn[rewrite-edn] 0.2.0 - Utility lib on top of rewrite-clj with common operations to update EDN while preserving whitespace and comments

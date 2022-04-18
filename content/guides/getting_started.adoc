@@ -19,6 +19,28 @@ Clojure requires Java. Clojure officially supports Java LTS releases (currently 
 
 The Clojure tools require that either the `java` command is on the path or that the `JAVA_HOME` environment variable is set.
 
+=== Java: installation on Mac via https://brew.sh[Homebrew]
+
+OpenJDK is available to install via the `brew` command:
+
+[source,shell]
+----
+brew install openjdk
+----
+
+=== Java installation on Linux
+
+For Ubuntu users, OpenJDK is available to install via the `apt` command:
+
+[source,shell]
+----
+sudo apt install default-jdk
+----
+
+=== Java: installation on Windows using the https://docs.microsoft.com/en-us/java/openjdk/overview[Microsoft build of OpenJDK]
+
+OpenJDK for Windows is available as an `MSI` installer at the https://docs.microsoft.com/en-us/java/openjdk/download[Microsoft download page for OpenJDK].
+
 == Clojure installer and CLI tools
 
 Clojure provides <<deps_and_cli#,command line tools>> that can be used to start a Clojure repl, use Clojure and Java libraries, and start Clojure programs. 

@@ -458,14 +458,14 @@ Functions in clojure.core are automatically loaded. Other namespaces can be load
 IFn require = Clojure.var("clojure.core", "require");
 require.invoke(Clojure.read("clojure.set"));
 ----
-IFns can be passed to higher order functions, e.g. the example below passes plus to read:
+IFns can be passed to higher order functions, e.g. the example below passes `inc` to `map`:
 [source,java]
 ----
 IFn map = Clojure.var("clojure.core", "map");
 IFn inc = Clojure.var("clojure.core", "inc");
 map.invoke(inc, Clojure.read("[1 2 3]"));
 ----
-Most IFns in Clojure refer to functions. A few, however, refer to non-function data values. To access these, use deref instead of fn:
+Most IFns in Clojure refer to functions. A few, however, refer to non-function data values. To access these, use `deref` instead of invoking the function:
 [source,java]
 ----
 IFn printLength = Clojure.var("clojure.core", "*print-length*");

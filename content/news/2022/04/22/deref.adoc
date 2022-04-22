@@ -1,0 +1,47 @@
+= Clojure Deref (Apr 22, 2022)
+Alex Miller
+2022-04-22
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Highlights
+
+This week we saw the launch of https://github.com/Tensegritics/ClojureDart[ClojureDart]! Very excited to see people starting to explore it and to spread our Clojure tendrils ever farther. Big congrats to Christophe Grand and Baptiste Dupuch for getting it out the door.
+
+Also it was great to see the https://clojured.de/schedule/[clojureD 2022 schedule] posted and it's already sold out! It is really good to see the slow return to in-person conferences where we can meet other Clojurists.
+
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=ZvOs5Ele6VE[Babashka and Clojure] - NoVALUG
+* https://www.youtube.com/watch?v=OxMNEz6itrU[Season 1, Episode 2] - The Clouncil
+* https://www.youtube.com/watch?v=_-G9EKaAyuI[Write Node using Clojure and deploy to NPM! (With the creator of Babashka)] - On the Code Again
+
+== Blogs
+
+* https://www.infoworld.com/article/3657759/clojure-meets-dart-in-clojuredart.html[Clojure meets Dart in ClojureDart] - Paul Krill
+* https://typeshare.co/ovistoica/posts/clojure-my-journey-of-15-years[Clojure: My Journey of 1.5 Years] - Ovi Stovica
+* https://biffweb.com/p/platypub-plans/[Platypub: plans for building a blogging platform with Biff] - Jacob O'Bryant
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/uncomplicate/clojure-sound[clojure-sound] 0.1.0 - Clojure Sound
+* https://github.com/ertugrulcetin/herfi[herfi]  - 3D multiplayer game prototype/technical demo written in Clojure and ClojureScript
+* https://github.com/nextjournal/clerk[clerk] https://github.com/nextjournal/clerk/blob/dfe82af312b2aea91d1dc7d1cbbbadc4660be49c/CHANGELOG.md#07418-2022-04-20[0.7.418] - Local-First Notebooks for Clojure
+* https://github.com/wilkerlucio/pathom3[pathom3] 2022.04.20-alpha - A library for navigating data
+* https://github.com/timrichardt/hicgql[hicgql] 0.1.0 - GraphQL in Clojure data structures
+* https://github.com/athos/pogonos[pogonos] 0.2.0 - Another Clojure(Script) implementation of Mustache templating language
+* https://github.com/chr15m/sitefox[sitefox] 0.0.4 - Node + cljs backend web framework
+* https://plugins.jetbrains.com/plugin/18108-clojure-extras[clojure-extras] 0.7.0 - Custom features added on top of Cursive for Clojure Lovers like inline code evaluation, clj-kondo linting and more
+* https://github.com/juji-io/datalevin[datalevin] 0.6.7 - A simple, fast and versatile Datalog database
+* https://calva.io[Calva] 2.0.269 - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/jacobobryant/biff[biff] https://github.com/jacobobryant/biff/releases/tag/v0.4.2-beta[0.4.2-beta] - A simple and easy web framework for Clojure
+* https://github.com/clojure-lsp/clojure-lsp[clojure-lsp] 2022.04.18-00.59.32 - Clojure & ClojureScript Language Server (LSP) implementation
+* https://github.com/askonomm/clarktown[clarktown] 1.1.2 - A zero-dependency, pure-Clojure Markdown parser
+* https://github.com/babashka/babashka[babashka] 0.8.1 - Native, fast starting Clojure interpreter for scripting
+* https://cursive-ide.com/[Cursive] https://groups.google.com/g/cursive/c/klp6LQS7SOc/m/unymJD5MAgAJ[1.12.3-eap2] - Clojure IDE for IntelliJ
+* https://github.com/griffinbank/rules_clojure[rules_clojure]  - A library for building and testing using Bazel

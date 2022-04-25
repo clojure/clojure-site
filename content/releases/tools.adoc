@@ -22,6 +22,10 @@ For more information see the following docs:
 
 Recent official releases are described here. Prereleases and older versions can be found in the https://github.com/clojure/brew-install/blob/1.10.3/CHANGELOG.md[repo changelog].
 
+=== 1.11.1.1113 (Apr 25, 2022) [[v1.11.1.1113]]
+
+* https://clojure.atlassian.net/browse/TDEPS-153[TDEPS-153] - yet more fixes for errors during concurrent Maven downloads
+
 === 1.11.1.1105 (Apr 5, 2022) [[v1.11.1.1105]]
 
 * Default to Clojure 1.11.1 if no Clojure version specified
@@ -29,7 +33,7 @@ Recent official releases are described here. Prereleases and older versions can 
 === 1.11.0.1100 (Mar 28, 2022) [[v1.11.0.1100]]
 
 * Default to Clojure 1.11.0 if no Clojure version specified
-* https://clojure.atlassian.net/browse/TDEPS-135[TDEPS-135] Fix concurrency issues in Maven artifact downloads
+* https://clojure.atlassian.net/browse/TDEPS-153[TDEPS-153] Fix concurrency issues in Maven artifact downloads
 
 === 1.10.3.1087 (Feb 28, 2022) [[v1.10.3.1087]]
 

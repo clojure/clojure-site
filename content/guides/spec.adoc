@@ -1116,7 +1116,7 @@ In this case we want our keyword to have open names but fixed namespaces. There 
 
 [source,clojure]
 ----
-(def kw-gen-2 (gen/fmap #(keyword "my.domain" %) (gen/string-alphanumeric)))
+(def kw-gen-2 (gen/fmap #(keyword "my.domain" %) gen/string-alphanumeric))
 (gen/sample kw-gen-2 5)
 ;;=> (:my.domain/ :my.domain/ :my.domain/1 :my.domain/1O :my.domain/l9p2)
 ----
@@ -1129,7 +1129,7 @@ However, we can spot a problem in the example above - generators are often desig
 ----
 (def kw-gen-3 (gen/fmap #(keyword "my.domain" %)
                (gen/such-that #(not= % "")
-                 (gen/string-alphanumeric))))
+                 gen/string-alphanumeric)))
 (gen/sample kw-gen-3 5)
 ;;=> (:my.domain/O :my.domain/b :my.domain/ZH :my.domain/31 :my.domain/U)
 ----
@@ -1141,7 +1141,7 @@ Returning to our "hello" example, we now have the tools to make that generator:
 (s/def :ex/hello
   (s/with-gen #(clojure.string/includes? % "hello")
     #(gen/fmap (fn [[s1 s2]] (str s1 "hello" s2))
-      (gen/tuple (gen/string-alphanumeric) (gen/string-alphanumeric)))))
+      (gen/tuple gen/string-alphanumeric gen/string-alphanumeric))))
 (gen/sample (s/gen :ex/hello))
 ;;=> ("hello" "ehello3" "eShelloO1" "vhello31p" "hello" "1Xhellow" "S5bhello" "aRejhellorAJ7Yj" "3hellowPMDOgv7" "UhelloIx9E")
 ----

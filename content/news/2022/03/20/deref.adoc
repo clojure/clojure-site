@@ -1,0 +1,68 @@
+= Clojure Deref (Mar 20, 2022)
+Alex Miller
+2022-03-20
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Highlights
+
+Very excited this week to check out the new Clojure call-in show https://theclouncil.com/[The Clouncil] with Jordan Miller, Paula Gearon, Mike Fikes, Arne Brasseur, and Daniel Higginbottham! This should be a lot of fun and join in this Wednesday March 23rd at 16:30 UTC!
+
+== Podcasts and videos
+
+* https://soundcloud.com/clojurestream/graphs-with-paula-gearon[E66 Graphs with Paula Gearon] - ClojureStream Podcast
+* https://anchor.fm/lostinlambduhhs/episodes/daniel-higginbotham-The-Brave-and-True-Ale-e1fr6ce[:daniel-higginbotham (The Brave and True Ale)] - Lost in Lambduhhs
+* https://www.youtube.com/watch?v=uqKta5i7A9c[Clojure visual-tools meeting 3] - Clojure visual-tools group
+* https://www.youtube.com/watch?v=ViLr8AsKgIA[Orchestrating the cloud with Clojure (by Pierre-Yves Ritschard)] - London Clojurians
+* https://vimeo.com/689129571[Rich Hickey on Clojure Spec (remastered)] - LispNYC
+* https://www.youtube.com/watch?v=d4PGZNNsEjQ[The Calva Debugger] - CalvaTV
+* https://www.youtube.com/watch?v=fgOfYyTeBaQ[building novus - 01. Basic Clojure server + Integrant 101 + REPL workflow] - Vishal Gautam
+* https://www.youtube.com/watch?v=jm0RXmyjRJ8[Create a password manager with Clojure using Babashka, sqlite, honeysql and stash] - on the code again
+* https://www.youtube.com/watch?v=1yCPUrHfmPM[Humble UI - A Clojure desktop UI framework] - Vishal Gautam
+* https://www.loom.com/share/06d9d632bf3949d9a257bc5893d71975[Interactive Mathbox with Clerk] - Sam Ritchie
+
+== Blogs
+
+* https://scicloj.github.io/visual-tools-experiments/portal-clerk-kindly-nrepl-1/public/build/#/src/example.clj[Compatibility experiment: Portal-Clerk-Kindly-nREPL] - Daniel Slutsky
+* https://blog.kaleidos.net/penpot-chose-clojure-as-its-language-and-here-is-why/[Penpot chose Clojure as its language and here’s why] - Andrey Antukh
+* https://www.evalapply.org/posts/n-ways-to-fizzbuzz-in-clojure/[n ways to FizzBuzz in Clojure] - Aditya Athalye
+* https://javahippie.net/clojure/2022/03/17/testcontainers-in-the-repl.html[Testcontainers in the REPL] - Tim Zöller
+* https://flexiana.com/2022/03/monads-in-xiana-framework[Monads in Xiana framework] - Krisztián Gulyás
+* https://dev.to/crinklywrappr/saving-the-union-with-honeysql-4apm[Saving the UNION with HoneySQL] - Daniel Fitzpatrick
+* https://curiousprogrammer.net/posts/2022-03-08-figwheel-main-transition[On the not-so-easy transition from lein-figwheel to figwheel-main] - Juraj Martinka
+* https://ag91.github.io/blog/2022/03/13/datomic-a-little-snippet-to-analyze-what-attributes-your-transactions-change-most-often/[Datomic: a little snippet to analyze what attributes your transactions change most often] - Andrea
+* https://blog.wsscode.com/pathom-updates-12/[Pathom Updates 12] - Wilker Lucio
+* https://grishaev.me/en/bogus/[Bogus: a simple GUI debugger for Clojure] - Ivan Grishaev
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/behrica/clj-py-r-template[clj-py-r-template] 1.7.0 - Clojure polyglot clj-template
+* https://github.com/mainej/re-stated[re-stated] 0.2.25 - A small and powerful toolset that brings state machines to re-frame
+* https://github.com/redplanetlabs/specter[specter] https://github.com/redplanetlabs/specter/blob/master/CHANGES.md#114[1.1.4] - Clojure(Script)'s missing piece
+* https://github.com/babashka/nbb[nbb] 0.2.9 - Ad-hoc CLJS scripting on Node.js using SCI
+* https://github.com/atomisthq/jibbit[jibbit] https://github.com/atomisthq/jibbit/blob/main/CHANGELOG.md[0.1.13] - Dockerless Clojure Image builds using deps.edn
+* https://github.com/fmnoise/flow[flow] 4.2.1 - Functional (and opinionated) errors handling in Clojure
+* https://github.com/scicloj/wadogo[wadogo]  - scales for clojure
+* https://github.com/exoscale/coax[coax] 1.0.0-alpha16 - Clojure.spec coercion library for clj(s)
+* https://github.com/pfeodrippe/dinamico[dinamico] 0.0.14 - Flutter + Clojure
+* https://github.com/green-coder/html-to-hiccup[html-to-hiccup] 0.1.4 - A html->hiccup conversion function in pure CLJC
+* https://github.com/borkdude/grasp[grasp] 0.0.3 - Grep Clojure code using clojure.spec regexes
+* https://github.com/babashka/babashka[babashka] 0.7.8 - Native, fast starting Clojure interpreter for scripting
+* https://github.com/clojure/tools.build[tools.build] v0.8.1 - Clojure builds as Clojure programs
+* https://github.com/BetterThanTomorrow/calva[calva] 2.0.256 - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/juji-io/datalevin[datalevin] https://github.com/juji-io/datalevin/blob/master/CHANGELOG.md#061[0.6.1] - A simple, fast and versatile Datalog database
+* https://github.com/hlship/test-pipeline[test-pipeline] 0.3 - Break tests into reusable, composable steps
+* https://github.com/walmartlabs/test-reporting[test-reporting] 1.2 - Tiny library to assist with reporting some context when a test fails
+* https://github.com/eerohele/Tutkain[Tutkain] https://github.com/eerohele/Tutkain/blob/master/CHANGELOG.md#0141-alpha---2022-03-14[0.14.1 (alpha)] - A Sublime Text package for interactive Clojure development
+* https://github.com/fulcrologic/fulcro[fulcro] 3.5.15 - A library for development of single-page full-stack web applications in clj/cljs
+* https://github.com/borkdude/deps.clj[deps.clj] https://github.com/borkdude/deps.clj/releases/tag/v0.1.1087[0.1.1087] - A faithful port of the clojure CLI bash script to Clojure
+* https://github.com/steffan-westcott/clj-otel[clj-otel] 0.1.1 - An idiomatic Clojure API for adding telemetry to your libraries and applications using OpenTelemetry
+* https://github.com/sicmutils/sicmutils[sicmutils] https://github.com/sicmutils/sicmutils/releases/tag/v0.22.0[0.22.0] - Scmutils in Clojure
+* https://github.com/justin2004/may[may]  - Clojure -> Dyalog APL
+* https://github.com/kennytilton/matrix[matrix]  - Fine-grained, transparent data flow between generative objects
+* https://github.com/quoll/asami[asami] 2.3.0 - In memory graph store that implements the Naga storage protocol

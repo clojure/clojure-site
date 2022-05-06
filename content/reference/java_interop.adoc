@@ -108,7 +108,7 @@ expands to:
 
 `(. (. System (getProperties)) (get "os.name"))`
 
-but is easier to write, read, and understand. See also the https://clojure.github.com/clojure/clojure.core-api.html#clojure.core/%2d%3e[pass:[->]] macro which can be used similarly:
+but is easier to write, read, and understand. See also the https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/%2d%3e[pass:[->]] macro which can be used similarly:
 
 `(pass:[->] (System/getProperties) (.get "os.name"))`
 
@@ -180,7 +180,7 @@ Macro. Expands into code that creates a fn that expects to be passed an object a
 -> (\r \h \y)
 ----
 
-Note it almost always preferable to do this directly now, with syntax like:
+Note it is almost always preferable to do this directly now, with syntax like:
 
 [source,clojure]
 ----
@@ -330,7 +330,7 @@ Clojure has support for high-performance manipulation of, and arithmetic involvi
 
 * _**let**_/_**loop**_-bound locals can be of primitive types, having the inferred, possibly primitive type of their init-form.
 * _**recur**_ forms that rebind primitive locals do so without boxing, and do type-checking for same primitive type.
-* Arithmetic (+,-,*,/,inc,dec,<,<=,>,>= etc) is overloaded for primitive types where semantics are same.
+* Arithmetic (+,-,*,/,inc,dec,<,\<=,>,>= etc) is overloaded for primitive types where semantics are same.
 * https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/aget[aget] / https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/aset[aset] are overloaded for arrays of primitives
 * https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/aclone[aclone], https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/alength[alength] functions for arrays of primitives
 * constructor functions for primitive arrays: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/float-array[float-array], https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/int-array[int-array], etc.
@@ -417,16 +417,16 @@ At times it is necessary to have a value of a particular primitive type. These c
 * So, the simplest route to fast math is to leave the operators alone and just make sure the source literals and locals are primitive. Arithmetic on primitives yields primitives. If you've got a loop (which you probably do if you need to optimize) make sure the loop locals are primitives first - then if you accidentally are producing a boxed intermediate result you'll get an error on recur. Don't solve that error by coercing your intermediate result, instead, figure out what argument or local is not primitive.
 
 == Simple XML Support
-Included with the distribution is simple XML support, found in the src/xml.clj file. All names from this file are in the xml namespace.
+Included with the distribution is simple XML support, found in the src/clj/clojure/xml.clj file. All names from this file are in the clojure.xml namespace.
 
 ''''
 *(_parse_ source)*
 
-Parses and loads the source, which can be a File, InputStream or String naming a URI. Returns a tree of the xml/element struct-map, which has the keys :tag, :attrs, and :content. and accessor fns tag, attrs, and content.
+Parses and loads the source, which can be a File, InputStream or String naming a URI. Returns a tree of the clojure.xml/element struct-map, which has the keys :tag, :attrs, and :content. and accessor fns tag, attrs, and content.
 
 [source,clojure]
 ----
-(xml/parse "/Users/rich/dev/clojure/build.xml")
+(clojure.xml/parse "/Users/rich/dev/clojure/build.xml")
 -> {:tag :project, :attrs {:name "clojure", :default "jar"}, :content [{:tag :description, ...
 ----
 
@@ -458,14 +458,14 @@ Functions in clojure.core are automatically loaded. Other namespaces can be load
 IFn require = Clojure.var("clojure.core", "require");
 require.invoke(Clojure.read("clojure.set"));
 ----
-IFns can be passed to higher order functions, e.g. the example below passes plus to read:
+IFns can be passed to higher order functions, e.g. the example below passes `inc` to `map`:
 [source,java]
 ----
 IFn map = Clojure.var("clojure.core", "map");
 IFn inc = Clojure.var("clojure.core", "inc");
 map.invoke(inc, Clojure.read("[1 2 3]"));
 ----
-Most IFns in Clojure refer to functions. A few, however, refer to non-function data values. To access these, use deref instead of fn:
+Most IFns in Clojure refer to functions. A few, however, refer to non-function data values. To access these, use `deref` instead of invoking the function:
 [source,java]
 ----
 IFn printLength = Clojure.var("clojure.core", "*print-length*");

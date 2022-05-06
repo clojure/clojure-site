@@ -1,0 +1,42 @@
+= Clojure Deref (July 23, 2021)
+Fogus
+2021-07-23
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+## Highlights
+
+I started the week by writing a http://blog.fogus.me/2021/07/20/clojure-builds-as-an-amalgamation-of-orthogonal-parts/[post about the new Clojure library tools.build] and how to add support for building artifacts using this new tool in our collective Clojure utility belt. The discussion is framed around moving from a small Leiningen project.clj file to a build.clj that uses tools.build and the Clojure CLI to do its thing. 
+
+## Podcasts and videos
+
+* https://soundcloud.com/defn-771544745/74-will-acton-and-the-greatest-clojure-podcast-crossover[defn] - defn podcast with Will Acton under the microscope and https://anchor.fm/lostinlambduhhs/episodes/lilactown-Will-Acton-X-DEFN-e14olt3[Jordan Miller] as guest host. Good fun!
+* https://clojurescriptpodcast.com/[ClojureScript Podcast] - Anatoly talking about mount
+* https://www.youtube.com/watch?v=b6LHzZogIbA&t=5s[Fred Overflow] - State and Concurrency in Clojure vs Java
+* https://www.youtube.com/watch?v=481UBX-5eY4[Los Angeles Clojure Users Group] - Learning Crux Datalog
+* https://www.youtube.com/watch?v=u5ECoR7KT1Y[London Clojurians] - Babashka tasks
+
+## Blogs, discussions, tutorials
+
+* https://www.alexthinks.com/2021/07/making-a-mobile-app-with-clojurescript-in-2021[Making an app with Clojurescript] by Alex Davis
+* https://medium.com/@markcwoodworth/restructuring-destructuring-20f79ef41963[Restructuring Destructuring] by Mark Woodworth - A post that's right up my alley. A walk-through of how destructuring work by implementing your own along the way.
+
+## Libraries and tools
+
+Some interesting library and tool updates and posts this week:
+
+* https://twitter.com/bbatsov/status/1417072603458588674[Cider] 9 - Cider turned 9 years old! A fantastic tool from Bozhidar Batsov and his team of contributors. Thank you!
+* https://lambdaisland.com/blog/2021-06-29-lioss-update-june-2021[Lambda Island] - An overview of some of the great tools and libraries coming from Lambda Island in July.
+* https://github.com/cognitect-labs/test-runner[test-runner] 0.4.0 - Cognitect-Labs test-runner gets a bump.
+* https://github.com/clojure/tools.build[tools.build] 0.1.6 - Building artifacts in Clojure
+
+## Training and hiring
+
+* https://jobs-staging.braveclojure.com/[Brave Clojure Jobs] - A redesign is underway and in beta for this great jobs resource for the Clojure community and it looks great! 
+
+## Video throwback
+
+Rich Hickey's 2016 Clojure/conj keynote entitled https://www.youtube.com/watch?v=oyLBGkS5ICk[Spec-ulation] is a deep discussion on growth versus breakage in software and well worth another look.

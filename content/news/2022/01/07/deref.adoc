@@ -1,0 +1,80 @@
+= Clojure Deref (Jan 7, 2022)
+Alex Miller
+2022-01-07
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Highlights
+
+The Deref is back for 2022 with a bumper crop of new Clojure articles and libraries! We plan to keep the Deref going in 2022 and it won't be long before we are running the annual Clojure Survey again, stay tuned here for details.
+
+== From the core
+
+The core team took a nice break over the holidays but we're back and pushing hard on the next Clojure 1.11 alpha and on to an expected release. We'll also be looking ahead to what's after 1.11 and where our focus will turn.
+
+Fogus has mostly been focused on sheparding the last bits of 1.11 jira issues through with patches and screening and his weekly passes on the Cognitect aws API. This week I've continued to push on https://clojure.atlassian.net/browse/CLJ-2677[CLJ-2677], which has to do with avoiding reflection in the inlined implementations of the new clojure.math functions, which spun out several side investigations. I think that's likely collapsing back to a preferred solution focused on coercions and hopefully we can wrap up all of the outstanding math issues next week for the next alpha. Additionally, I spent some time in the late days of 2021 fixing some concurrency bugs in tools.deps and released a new Clojure CLI with those fixes this week - definitely recommended to upgrade!
+
+== Podcasts and videos
+
+* https://soundcloud.com/defn-771544745/defn-80[defn podcast] - Vedang
+* https://www.youtube.com/watch?v=cD5tCebAdUg[Macrobrew Clojure macros distilled by Abhinav Omprakash] - London Clojurians
+* https://www.youtube.com/watch?v=6Pxq434j2Yk[Building Re-frame | 02 - Starter Project] - Vishal Gautam
+* https://www.youtube.com/watch?v=dFaEUefIDJQ[Clojure Transducers by example: optimizing Advent of Code 2021 Day 1 Sonar Sweep in 15 steps] - Fred Overflow
+
+== Blogs
+
+* https://www.reddit.com/r/Clojure/comments/rv5kd7/java_bindings_for_libpythonclj/[Java Bindings for Libpython-clj] - Chris Nuernberger
+* https://blog.agical.se/posts/calva-quil-workflow/[A Calva workflow for quil drawing] - Peter Strömberg
+* https://stopa.io/post/290[Bel in Clojure] - Stepan Parunashvili
+* https://cuddly-octo-palm-tree.com/posts/2022-01-02-aoc-24/[AoC 24, part 1: Did I cheat?] - Gary Verhaegen
+* https://www.reddit.com/r/Clojure/comments/rradb0/dataoriented_programming_book_first_draft/[Data-Oriented Programming book: First draft] - Yehonathan Sharvit
+* https://cuddly-octo-palm-tree.com/posts/2021-12-26-graph-search/[Graph search: Dijkstra, A*] - Gary Verhaegen
+* https://lukas-domagala.de/blog/clojure-analysis-and-introspection.html[Clojure analysis and introspection] - Lukas Domagala
+* https://blog.michielborkent.nl/using-babashka-with-php.html[Using babashka with PHP: guestbook example] - Michiel Borkent
+* https://flexiana.com/2022/01/5-reasons-to-learn-clojure-in-2022[5 reasons to learn Clojure in 2022] - Ado Omerhodzic and Iain Wood
+* https://freshcodeit.com//blog/hr-in-world-of-clojure[HR+Clojure] - Julia Savchenko
+* https://blog.jakubholy.net/2021/2021-in-review/[My year 2021 in review] - Jakub Holý
+* https://blog.michielborkent.nl/oss-highlights-nov-dec-2021.html[OSS Highlights of November - December 2021] - Michiel Borkent
+* https://blog.agical.se/posts/mixed-clojure-and-java/[How to mix Clojure and Java code in the same tools-deps project] - Peter Strömberg
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://clojure.org/releases/tools[Clojure CLI] https://clojure.org/releases/tools#v1.10.3.1058[1.10.3.1058] - Clojure CLI
+* https://github.com/babashka/obb[obb]  - Ad-hoc ClojureScript scripting of Mac applications via Apple's Open Scripting Architecture
+* https://github.com/lilactown/cascade[cascade] 1.1.1 - A library of continuation-passing, thunk-producing versions of many Clojure core functions
+* https://plugins.jetbrains.com/plugin/18108-clojure-extras/[clojure-extras] 0.3.0 - Clojure Extras - IntelliJ Plugin
+* https://calva.io[Calva] 2.0.233 - Calva is an integrated REPL powered environment for enjoyable and productive Clojure and ClojureScript development in Visual Studio Code
+* https://clojure-lsp.io/[clojure-lsp] https://github.com/clojure-lsp/clojure-lsp/releases/tag/2022.01.03-15.41.19[2022.01.03-15.41.19] - A Language Server for Clojure(script)
+* https://github.com/atomisthq/jibbit[jibbit] v0.1.11 - Dockerless Clojure Image builds using deps.edn
+* https://github.com/simongray/datalinguist[datalinguist] 0.1.163 - Stanford CoreNLP in idiomatic Clojure
+* https://github.com/clojure/tools.build[tools.build] v0.7.5 - Clojure builds as Clojure programs
+* https://github.com/Olical/conjure[conjure] https://github.com/Olical/conjure/releases/tag/v4.28.0[v4.28.0] - Interactive evaluation for Neovim
+* https://github.com/sunng87/stavka[stavka] 0.7.0 - Stavka manages configuration from various sources, for your Clojure application
+* https://github.com/juji-io/editscript[editscript] 0.5.8 - A library designed to diff and patch Clojure data structures
+* https://github.com/lilactown/pyramid[pyramid] 3.2.0 - A library for storing and querying graph data in a Clojure map
+* https://github.com/marinacavalari/databricks-sdk-clojure[databricks-sdk-clojure] 0.1.3 - Databricks api
+* https://github.com/bowbahdoe/jproject[jproject]  - Java wrapper for tools.build
+* https://github.com/Swirrl/dogstatsd[dogstatsd] 0.1.39 - Clojure client for Datadog's agent statsd service
+* https://github.com/clj-python/libpython-clj[libpython-clj] 2.015 - Python bindings for Clojure 
+* https://github.com/fulcrologic/fulcro-rad[fulcro-rad] 1.1.0-RC15 - Fulcro Rapid Application Development
+* https://github.com/fulcrologic/statecharts[statecharts] 1.0.0-alpha5 - A Statechart library for CLJ(S)
+* https://github.com/lambdaisland/corgi[corgi]  - Corgi is an Emacs configuration for Clojure developers who like Vim-style modal editing
+* https://github.com/sinostudy/pinyin[pinyin] 1.0.3 - Convert between different representations of Hànyǔ Pīnyīn
+* https://github.com/yetanalytics/colossal-squuid[colossal-squuid] 0.1.4 - Library for generating sequential UUIDs, or SQUUIDs
+* https://github.com/babashka/babashka[babashka] https://github.com/babashka/babashka/blob/master/CHANGELOG.md#073-2021-12-30[0.7.3] - Native, fast starting Clojure interpreter for scripting
+* https://github.com/babashka/process[process] https://github.com/babashka/process/blob/master/CHANGELOG.md#010[0.1.0] - Clojure wrapper for java.lang.ProcessBuilder
+* https://github.com/seancorfield/honeysql[honeysql] 2.2.840 - Turn Clojure data structures into SQL
+* https://github.com/chr15m/sitefox[sitefox] 0.0.3 - Node + cljs backend web framework
+* https://github.com/seancorfield/build-clj[build-clj] v0.6.7 - Common build tasks abstracted into a library
+* https://github.com/liquidz/testdoc[testdoc] 1.5.0 - Yet another doctest implementation in Clojure
+* https://github.com/clojure/tools.logging[tools.logging] 1.2.4 - Clojure logging abstraction
+* https://github.com/bsless/clj-decompiler.el[clj-decompiler.el]  - Small wrapper for clj-java-decompiler in GNU Emacs on top of Cider
+* https://github.com/liquidz/vim-iced[vim-iced] 3.7.3 - Clojure Interactive Development Environment for Vim8/Neovim
+* https://github.com/ont-app/graph-log[graph-log] 0.1.6 - A logging utility built on the IGraph protocol
+* https://github.com/clojure/tools.deps.alpha[tools.deps.alpha] 0.12.1109 - A functional API for transitive dependency graph expansion and the creation of classpaths
+* https://github.com/Cyrik/omni-trace[omni-trace] 0.3.0 - Omnipotent/omniscient tracing and debugging for clojure(script)

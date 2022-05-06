@@ -1,0 +1,66 @@
+= Clojure Deref (Dec 17, 2021)
+Alex Miller
+2021-12-17
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Highlights
+
+In case you've somehow been off the Internet for the last week, some critical vulnerabilities have been identified in log4j (logback also has an update), and whatever you use for logging in your Clojure application should probably be updated, so go take a look at your deps.
+
+If you missed re:Clojure 2021, you can now find all of the https://www.youtube.com/playlist?list=PLtw0bWXdq7pNyb2NojSGBnCARRuvLxsAc[Data Science day] videos and many of the https://www.youtube.com/playlist?list=PLtw0bWXdq7pNzQE0wqvCSovFSNgrn4PLK[conference videos] are becoming available as well.
+
+== In the core
+
+Fogus has been crunching his way through screening a lot of CLJ jiras for the 1.11 release and working on a transit-java and transit-clojure update. I've been continuing to work on some of the Clojure math stuff, looking at different approaches for inlining to overloaded Math methods. I think that's on to a new approach but still in the middle of it. In all, the whole journey of this stuff is kind of a good case study in dev on the Clojure team so I might try to write something a bit longer about it later.
+
+I also released a new edit of Rich's https://www.youtube.com/watch?v=QCwqnjxqfmY[Design, Composition, and Performance] talk today from PhillyETE in 2013. The first incarnation of that talk was at Clojure/west in 2013 but unfortunately there were technical issues and we did not end up with a recording of it. But this is a very good version and I was able to snag the original source video from the videographer (Tim Ducharme at http://digitalplayhouse.ca/) and got the other resources from Philly ETE and InfoQ, so thanks to all of them.
+
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=E-ofhmwI85A[Why functional programming? HoneySQL, and REPL for SQL] - Tory Anderson
+* https://www.youtube.com/watch?v=JRV6R2lSenU[ASMR Coding - Building Reframe - Introduction] - Vishal Gautam
+
+== Blogs
+
+* https://tonsky.me/blog/sublime-clojure/[Sublime ❤︎ Clojure] - Nikita Prokopov
+* https://metaredux.com/posts/2021/12/12/nrepl-0-9.html[nREPL 0.9] - Bozhidar Batsov
+* https://lightpad.ai/w/blog/500625400[Log4Shell and its relation to Clojure] - Lightpad.ai
+* https://cuddly-octo-palm-tree.com/posts/2021-12-05-sieve/["The Genuine Sieve of Eratosthenes" in Clojure] - Gary Verhaegen
+* https://lukas-domagala.de/blog/cljs-to-jxa-for-automation.html[Cljs to jxa for automation] - Lukas Domagala
+* https://blog.klipse.tech/databook/2021/12/10/dop-link.html[Data-Oriented Programming: A link in the chain of programming paradigms] - Yehonathan Sharvit
+* https://auth0.com/blog/secure-a-clojure-web-api-with-auth0/[Secure a Clojure Web API with Auth0] - Vincenzo Chianese
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/djblue/portal[portal] https://github.com/djblue/portal/releases/tag/0.19.0[0.19.0] - A clojure tool to navigate through your data
+* https://github.com/nextjournal/clerk[clerk] 0.4.305 - Local-First Notebooks for Clojure
+* https://github.com/juji-io/symspell-clj[symspell-clj]  - SymSpell spell checker in Clojure
+* https://cambium-clojure.github.io/[Cambium]  - Structured logging (in other words 'Logs as data') for Clojure
+* https://github.com/fulcrologic/statecharts[statecharts]  - A Statechart library for CLJ(S)
+* https://github.com/ikappaki/devcards-loader[devcards-loader]  - A tiny library loader for bhauman/devcards
+* https://github.com/johnmn3/injest[injest]  - =>, +>>, x>>, =>>: Auto-transducifying, auto-parallelizing path thread macro
+* https://github.com/ont-app/vocabulary[vocabulary] 0.1.5 - Utilities to map between clojure namespaced keywords and RDF-style URIs
+* https://github.com/itarck/fancoil[fancoil]  - A clojurescript framework
+* https://github.com/clojure/tools.build[tools.build] v0.7.2 - Library of functions for building Clojure projects
+* https://github.com/babashka/sci[sci] https://github.com/babashka/sci/blob/master/CHANGELOG.md#v028[0.2.8] - Configurable Clojure interpreter suitable for scripting and Clojure DSLs
+* https://github.com/nrepl/nrepl[nrepl] https://github.com/nrepl/nrepl/releases/tag/0.9.0[0.9.0] - A Clojure network REPL that provides a server and client
+* https://github.com/clojure/tools.namespace[tools.namespace] 1.2.0 - Tools for managing namespaces in Clojure
+* https://github.com/clojure/tools.logging[tools.logging] 1.2.2 - Logging macros which delegate to a specific logging implementation
+* https://github.com/seancorfield/build-clj[build-clj] 0.6.3 - Common build tasks abstracted into a library
+* https://github.com/seancorfield/clj-new[clj-new] 1.2.380 - Generate new projects based on clj, Boot, or Leiningen Templates
+* https://github.com/seancorfield/deps-new[deps-new] 0.4.6 - A new, simpler alternative to clj-new
+* https://calva.io[Calva] 2.0.229 - Calva is an integrated REPL powered environment for enjoyable and productive Clojure and ClojureScript development in Visual Studio Code
+* https://github.com/FieryCod/holy-lambda[holy-lambda] 0.6.5 - The extraordinary simple, performant, and extensible custom AWS Lambda runtime for Clojure
+* https://github.com/clojure/tools.analyzer.jvm[tools.analyzer.jvm] 1.2.2 - Additional jvm-specific passes for tools.analyzer 
+* https://github.com/clojure/core.async[core.async] 1.5.648 - Facilities for async programming and communication in Clojure
+* https://github.com/babashka/babashka-sql-pods[babashka-sql-pods] v0.1.0 - Babashka pods for SQL databases
+* https://github.com/cognitect-labs/aws-api[aws-api] 0.8.539 - AWS, data driven
+* https://github.com/pyr/unilog[unilog] 0.7.29 - Easy logging setup in clojure
+* https://github.com/clj-kondo/clj-kondo[clj-kondo] https://github.com/clj-kondo/clj-kondo/releases/tag/v2021.12.16[2021.12.16] - A linter for Clojure code that sparks joy
+* https://github.com/fulcrologic/fulcro[fulcro] 3.5.9 - A library for development of single-page full-stack web applications in clj/cljs

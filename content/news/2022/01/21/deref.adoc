@@ -1,0 +1,72 @@
+= Clojure Deref (Jan 21, 2022)
+Alex Miller
+2022-01-21
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Highlights
+
+In Clojure-related business news, https://www.businesswire.com/news/home/20220119005830/en/Fifth-Third-Announces-Acquisition-of-Dividend-Finance[Dividend Finance] is being acquired by Fifth Third. Also, there was a https://techcrunch.com/2022/01/20/south-koreas-agtech-startup-greenlabs-raises-140m-series-c-to-accelerate-global-expansion/[round of funding for Green Labs]. Both are users of Clojure, congrats to all!
+
+== From the core
+
+Last week we did a https://www.youtube.com/watch?v=6vmTKoPzJUo[roundup of jiras in Clojure 1.11.0-alpha4] and I was surprised that so many people actually watched it, so thanks for the feedback and interest. We'll try to do a bit more of that kind of thing in the future. Since the alpha4 release we've been working several things that came out of the release and a few of those changes have started to hit master this week:
+
+* https://clojure.atlassian.net/browse/CLJ-2685[CLJ-2685] - fix to the generative tests for `iteration` which were occasionally failing
+* https://clojure.atlassian.net/browse/CLJ-2689[CLJ-2689] - fix to the clojure.math tests to make them less strict so they pass on M1 builds (java.lang.Math methods mostly allow differences of ~1 ulp "unit in last place")
+* https://clojure.atlassian.net/browse/CLJ-2690[CLJ-2690] - updated the docstring and some arg names for http://clojure.github.io/clojure/branch-master/clojure.core-api.html#clojure.core/iteration[iteration]
+
+No new release yet but I expect the next one will be 1.11.0-beta1. Big thanks to everyone who tried alpha4 and gave feedback.
+
+== Podcasts and videos
+
+* https://anchor.fm/lostinlambduhhs/episodes/paula-gearon-clojurista-to-the-clojure-core-e1d7v0t[Lost in Lambduhhs] - :paula-gearon (clojurista to the clojure.core)
+* https://soundcloud.com/defn-771544745/81-lojban-edition-with-joshua-suskalo[defn podcast] - #81 - Lojban edition with Joshua Suskalo
+* https://lispcast.com/computer-science-as-empirical-inquiry-symbols-and-search/[Computer Science as Empirical Inquiry: Symbols and Search] - Eric Normand
+* https://getsmarterandmakestuff.com/2022/01/20/podcast-episode-011-marshall-thompson/[Get Smarter and Make Stuff] - Episode 011 – Marshall Thompson
+* https://www.youtube.com/watch?v=chKc_YsvXKU[Functional Operating Systems (by Andrew Tropin)] - London Clojurians
+* https://www.youtube.com/watch?v=5q4UmX45ZlM[My emacs clojure journey Ep 1 - Corgi & evil-mode] - Mitesh
+* https://www.youtube.com/watch?v=8dajYZSIwcI[Clojure - Did I find out what REPL driven development is]
+
+== Blogs
+
+* https://flexiana.com/2022/01/getting-started-with-clojurescript-eduardos-journey[Getting Started with Clojure(Script) – Eduardo’s Journey]
+* https://otee.dev/2022/01/17/lazy-clojure.html[Who Moved My Cheese: Laziness in Clojure] - Oitihjya Sen
+* https://github.com/leonoel/missionary/wiki/Iterative-queries[Iterative queries] - Léo NOEL
+* https://curiousprogrammer.net/posts/2022-01-12-moving-to-cryogen[Moving My Blog to Cryogen and Cloudflare Pages] - Juraj Martinka
+* https://freshcodeit.com/blog/healthtech-companies-using-clojure[Top 7 Healthcare Companies Using Clojure] - Oleksandra Lozoviuk and Inna Kovalenko
+* https://cuddly-octo-palm-tree.com/posts/2022-01-16-opt-clj-1/[Notes on Optimizing Clojure Code: Overview] - Gary Verhaegen
+* https://www.metosin.fi/blog/missing-stacktraces/[Why Are My (Clojure) Stack Traces Missing? The Little-Known OmitStackTraceInFastThrow Flag] - Joel Kaasinen
+* https://flexiana.com/2022/01/wasm-part-ii-using-rust-and-clojurescript[WASM PART II: Using Rust and ClojureScript] - Enyert Vinas
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/erdos/uclj[uclj] 0.1.3 - Small, quick, native Clojure interpreter
+* https://github.com/wilkerlucio/pathom-viz[pathom-viz] https://github.com/wilkerlucio/pathom-viz/releases/tag/v2022.1.21[2022.1.21] - Visualization tools for Pathom
+* https://github.com/nberger/ring-logger[ring-logger] 1.1.1 - Log ring requests & responses using your favorite logging backend
+* https://github.com/walmartlabs/lacinia[lacinia] 1.1 - GraphQL implementation in pure Clojure
+* https://github.com/walmartlabs/lacinia-pedestal[lacinia-pedestal] 1.1 - Expose Lacinia GraphQL as Pedestal endpoints
+* https://github.com/wotbrew/relic[relic] 0.1.2 - Functional relational programming for Clojure/Script
+* https://github.com/abogoyavlensky/automigrate[automigrate] 0.1.0 - database auto-migration tool for Clojure
+* https://github.com/seancorfield/honeysql[honeysql] 2.2.858 - Turn Clojure data structures into SQL
+* https://github.com/quoll/remorse[remorse] 0.1.0 - Keyword to morse code conversion
+* https://clojure-lsp.io/[clojure-lsp] 2022.01.20-14.12.43 - A Language Server for Clojure(script)
+* https://github.com/fulcrologic/statecharts[statecharts] 1.0.0-alpha8 - A Statechart library for CLJ(S)
+* https://github.com/pfeodrippe/pitoco[pitoco]  - Create Malli (API) schemas from captured HTTP requests and responses or from recording inputs and outputs of instrumented functions
+* https://github.com/clojure-expectations/clojure-test[clojure-test] 2.0.156 - A clojure.test-compatible version of the classic Expectations testing library
+* https://github.com/mhjort/clj-gatling[clj-gatling] 0.17.0 - Load testing library for Clojure
+* https://github.com/kipz/alpine-version-clj[alpine-version-clj] 0.0.1 - Parse and compare Alpine/Gentoo package version strings in clojure
+* https://github.com/fulcrologic/fulcro[fulcro] 3.5.11 - A library for development of single-page full-stack web applications in clj/cljs
+* https://github.com/fulcrologic/fulcro-rad[fulcro-rad] 1.1.4 - Fulcro Rapid Application Development
+* https://github.com/fulcrologic/fulcro-rad-semantic-ui[fulcro-rad-semantic-ui] 1.2.5 - Semantic UI Rendering Plugin for RAD
+* https://plugins.jetbrains.com/plugin/18108-clojure-extras/[clojure-extras] 0.5.0 - Custom features added on top of Cursive for Clojure Lovers
+* https://github.com/juji-io/symspell-clj[symspell-clj] 0.3.0 - SymSpell spell checker in Clojure
+* https://github.com/clj-easy/stub[stub] 0.2.2 - Library to generate stubs for other Clojure libraries
+* https://github.com/babashka/pod-babashka-aws[pod-babashka-aws] https://github.com/babashka/pod-babashka-aws/blob/main/CHANGELOG.md#v012[0.1.2] - AWS pod wrapping the Cognitect aws-api library
+* https://github.com/clj-kondo/clj-kondo[clj-kondo] 2022.01.15 - A linter for Clojure code that sparks joy
+* https://www.npmjs.com/create-shadowfront[create-shadowfront] 0.0.13 - Get shadow-cljs + reagent up and running fast

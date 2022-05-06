@@ -368,11 +368,15 @@ user> (remove #(= % ##NaN) [9 3 ##NaN 4])
 (9 3 ##NaN 4)
 ----
 
-You may use the Java method `Double/isNaN` to indicate whether a value
-is `pass:[##NaN]`:
+You may use the function `NaN?` to determine whether a value is
+`pass:[##NaN]`.  The function `NaN?` was added in Clojure version
+1.11.0.  You may use the Java method `Double/isNaN` with any version
+of Clojure:
 
 [source, clojure]
 ----
+user> (remove NaN? [9 3 ##NaN 4])
+(9 3 4)
 user> (remove #(Double/isNaN %) [9 3 ##NaN 4])
 (9 3 4)
 ----
@@ -573,6 +577,7 @@ class java.lang.String cannot be cast to class clojure.lang.Keyword
 `cc-cmp` ("cross class compare") below may be useful in such cases.
 It can compare values of different types, which it orders based on a string that represents the type of the value.
 It is not simply `(class x)`, because then numbers like `Integer` and `Long` would not be sorted in numeric order.
+The library https://github.com/greglook/clj-arrangement[clj-arrangement] may also be useful to you.
 
 [source,clojure]
 ----

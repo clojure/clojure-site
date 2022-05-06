@@ -1,0 +1,53 @@
+= Clojure Deref (July 16, 2021)
+Alex Miller
+2021-07-16
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+## Highlights
+
+Big congrats to https://amperity.com/[Amperity] on their https://amperity.com/blog/amped-up-announcing-amperitys-usd100m-series-d-financing[Series D financing] and valuation of $1B, making them another "unicorn" built substantially on Clojure and ClojureScript, approaching 100 Clojure developers. It is great to see these Clojure success stories at scale! Amperity has also been a great contributor to the Clojure ecosystem, so many thanks to them.
+
+## Podcasts and videos
+
+* https://lispcast.com/why-is-data-so-powerful/[LispCast] - Eric Normand on the power of data
+* https://www.youtube.com/watch?v=DaVrEYIhRFA[clojure-lsp] - Eric Dallo showcases clojure-lsp
+* https://www.youtube.com/watch?v=KOzi-YBq3aI[sudoku solver] - Dutch Clojure Meetup #133 
+
+## Blogs, discussions, tutorials
+
+* https://tonsky.me/blog/icfpc-2021/[Zig, Skia, Clojure, Geometry and the Japanese TV Show: ICFP Contest 2021] by Nikita Prokopov
+* https://www.juxt.pro/blog/maven-central[How-to: Clojure libraries on Maven Central
+] by Juxt
+* https://www.notamonadtutorial.com/clojerl-an-implementation-of-the-clojure-language-that-runs-on-the-beam/[BEAM all the things! ClojErl, an implementation of Clojure on the Erlang Virtual Machine] - an interview with Juan Facorro, it's creator 
+* https://geokon-gh.github.io/literate-clojure.html[Projectless literate Clojure with embedded SVG] by George Kontsevich
+
+## Libraries and tools
+
+Some interesting library and tool updates and posts this week:
+
+* https://blog.datomic.com/2021/07/Datomic-Cloud-884-9095-New-tiers-and-internet-access.html[Datomic Cloud] 884-9095 - new lower pricing tiers, API Gateway automation, and simplified operation
+* https://github.com/clojure/data.json[data.json] 2.4.0 - no dependency JSON parser/writer in Clojure
+* https://github.com/clojure/tools.reader[tools.reader]	1.3.6 - Clojure reader in Clojure
+* https://github.com/clojure/tools.build[tools.build] 0.1.3	- Building artifacts in Clojure
+* https://github.com/FieryCod/holy-lambda[holy-lambda] 0.2.3 - micro-framework that integrates Clojure with AWS Lambda
+* https://github.com/hyperfiddle/rcf[rcf] - (NEW) turn your Rich Comment Forms into tests
+* https://github.com/juji-io/datalevin[datalevin] 0.4.40 - simple, fast and durable Datalog database
+* https://github.com/retrogradeorbit/bootleg[bootleg] 0.1.9 - simple template processing command line tool to help build static websites
+* https://github.com/seancorfield/depstar[depstar] 2.1.267 - builds JARs, uberjars, does AOT, manifest generation, etc for deps.edn projects
+* https://pathom3.wsscode.com/[pathom] 2021.07.10-alpha - logic programming through attribute relationships.
+* https://github.com/wilkerlucio/pathom-viz[pathom-viz] 2021.7.11 - visualization tools for Pathom 
+* https://github.com/wilkerlucio/pathom-viz-connector[pathom-viz-connector] 2021.07.15-1 - connect Pathom parsers with the Pathom Viz Electron standalone tool
+* https://www.mirabelle.mcorbin.fr/[mirabelle] 0.3.0 - stream processing engine for monitoring
+* https://github.com/clojure-lsp/clojure-lsp[clojure-lsp] 2021.07.12-12.30.59 - Language Server (LSP) for Clojure
+* https://calva.io/[Calva] 2.0.204 - Clojure for VS Code
+* https://github.com/babashka/babashka[babashka] 0.5.0 - native, fast starting Clojure interpreter for scripting 
+* https://github.com/jonase/eastwood[eastwood] 0.8.1 - Clojure lint tool 
+* https://github.com/liquidz/antq[antq] 0.16.0 - point out your outdated dependencies
+
+## Video throwback
+
+If you haven't seen it, the classic https://www.youtube.com/watch?v=jlPaby7suOc[Every Clojure Talk Ever] by Alex Engelberg and Derek Slager does a pretty good job of lovingly capturing the foibles and curiosities of the Clojure community. Enjoy! 

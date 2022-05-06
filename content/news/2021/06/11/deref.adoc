@@ -1,0 +1,55 @@
+= Clojure Deref (June 11, 2021)
+Alex Miller
+2021-06-11
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a periodic link/news roundup for the Clojure ecosystem. (https://clojure.org/feed.xml[RSS feed])
+
+## Highlights
+
+This week https://www.reuters.com/article/us-nubank-funding-berkshire-idUSKCN2DK1FI[Nubank announced] a new $750M investment, led by $500M from Berkshire Hathaway at a $30B valuation. Nubank is the largest user of Clojure and Datomic in the world and a great example of the benefits of Clojure's approach to managing complexity at scale.
+
+Chris Nuernberger https://www.youtube.com/watch?v=5mUGu4RlwKE[presented a great talk] this week for London Clojurians about his work on high performance data processing with the https://github.com/cnuernber/dtype-next[dtype-next] and https://github.com/techascent/tech.ml.dataset[tech.ml.dataset] libraries.
+
+The https://clojured.de/[ClojureD conference] last weekend was great with lots of interesting Clojure (and some non-Clojure) talks! Keep an eye out for videos soon.
+
+## Podcasts
+
+We have a bumper crop of Clojure-related podcast episodes this week, put these in your ears...
+
+* https://www.cognitect.com/cognicast/160[Cognicast] - Christian Romney interviews Jarrod Taylor from the Datomic team
+* https://getsmarterandmakestuff.com/2021/06/06/podcast-episode-005-michael-fogus/[Get Smarter and Make Stuff] - Craig Andera interviews Michael Fogus from the Clojure core team
+* https://anchor.fm/lostinlambduhhs/episodes/puredanger-Alex-Miller--Clojures-Cool-dad-e12botj[Lost in Lambduhhs] - Jordan Miller interviews Alex Miller from the Clojure core team
+* https://clojurescriptpodcast.com/[ClojureScript Podcast] - Jacek Schae interviews Tommi Reiman about Malli
+* https://soundcloud.com/defn-771544745/72-chris-badahdah-from-phoenix[defn] - Vijay Kiran and Ray McDermott interview Chris Badahdah about Portal  
+
+## Libraries and Databases
+
+Some interesting library updates and posts this week:
+
+* https://github.com/mcorbin/mirabelle[Mirabelle] - 0.1.0 of this stream processing tool inspired by Riemann - check out the https://www.mirabelle.mcorbin.fr/[docs] and a https://www.mcorbin.fr/posts/2021-06-07-mirabelle-cabourotte-blackbox/[use case]
+* https://github.com/sicmutils/sicmutils[sicmutils] - Sam Ritchie released version 0.19.0 of this math and physics based library (based on the books by Sussman and Wisdom)
+* https://github.com/kiranshila/cybermonday[Cybermonday] - Kiran Shila releases the first release of this Clojure data interface to Markdown (like Hiccup for Markdown)
+* https://github.com/graphqlize/honeyeql/[HoneyEQL] - Tamizhvendan S introduced https://cljdoc.org/d/org.graphqlize/honeyeql/0.1.0-alpha36/doc/readme[0.1.0-alpha36] for EQL queries to relational databases 
+* https://github.com/clojure-expectations/clojure-test[Expectations] - Sean Corfield released https://cljdoc.org/d/com.github.seancorfield/expectations/2.0.0-alpha2/doc/readme[2.0.0-alpha2] of this clojure.test-compatible implementation of Expectations
+* https://github.com/CrypticButter/snoop[Snoop] - Luis Thiam-Nye announced the initial release of a library for runtime function validation using Malli
+* https://clojurelog.github.io/[OSS Clojure DBs] - a summary and comparison of open-source Clojure databases (but don't forget https://www.datomic.com[Datomic]! :)
+
+## Blogs, discussions, tutorials
+
+* https://shaunlebron.github.io/t3tr0s-slides/#0[Tetris in ClojureScript] - by Shaun Lebron
+* http://hariomgaur.in/2021/06/06/consume-from-kafka.html[Apache Kafka & Ziggurat] - Ziggurat is an event stream processing tool written in Clojure and this article shows how to use it to consume events from Kafka
+* https://lambdaisland.com/blog/2021-06-04-clojure-beginners-just-like-vegans-searching-for-good-cheese[Why are Clojure beginners just like vegans searching for good cheese?] - on Lambda Island
+* https://github.com/prestancedesign/pingcrm-clojure[Ping CRM on Clojure] - a demo of implementing Ping CRM on Clojure+ClojureScript 
+* https://clojureverse.org/t/organizing-clojure-code-a-real-problem/7567[Organizing Clojure code] - a discussion from Clojureverse
+* https://markm208.github.io/cljbook/[An Animated Introduction to Clojure] - by Mark Mahoney
+
+## Throwback Friday (I know, I'm doing it wrong)
+
+In this recurring segment, we harken back to a talk from an older time to a favorite talk of yore. This week, we're featuring:
+
+* https://www.youtube.com/watch?v=ShEez0JkOFw[Clojure: Programming with Hand Tools] by Tim Ewald
+
+Is it about woodworking? Is it about Clojure? Is it about how to work? Yes.

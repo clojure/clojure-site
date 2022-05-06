@@ -1,0 +1,66 @@
+= Clojure Deref (Jan 28, 2022)
+Alex Miller
+2022-01-28
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Highlights
+
+It was great to see that https://twitter.com/clojuredconf/status/1487002519024721920[:clojureD 2022 - Summer Beach Camp] will be back in Berlin this summer on June 11!
+
+Cognitect and Nubank expanded our  https://cognitect.com/blog/2020/12/15/sponsoring-open-source-developers[Clojure open source support] and have recently started sponsoring https://github.com/sponsors/vlaaad[Vlad Protsenko], https://github.com/sponsors/mike-thompson-day8[Mike Thompson], https://github.com/sponsors/oakes[Zach Oakes], https://github.com/sponsors/danielcompton[Daniel Compton], https://opencollective.com/lambda-island[Lambda Island], https://github.com/sponsors/mk[Martin Kavalar], and https://github.com/sponsors/jacekschae[Jacek Schæ]. You can find a bigger (still partial) list at https://github.com/orgs/nubank/sponsoring.
+
+We encourage you to support those open source developers and projects doing great work in our community, particularly if they make a difference for you or your company!
+
+== From the core
+
+Just continuing to grind down the last few jiras in the 1.11 list on our way to beta1 and starting to think about what's next.
+
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=VD17eB6vVto[Wrangling datasets with Tablecloth by Mey Beisaron] - re:Clojure 2021 workshop
+* https://www.youtube.com/watch?v=QJNwYQfF804[Wrangling arrays with dtype-next by David Sletten] - re:Clojure 2021 workshop
+* https://www.youtube.com/watch?v=5u3_k_D5KSI[Wrangling arrays with dtype-next by Ethan Miller] - re:Clojure 2021 workshop
+* https://www.youtube.com/watch?v=jLJgqG3zJ04[Sieve of Eratosthenes - With the creator of Calva!]
+* https://www.youtube.com/watch?v=BnNC4iueGrY[Clojure REPL and Testing by Jacob Maine] - TechConfluence
+* https://www.youtube.com/watch?v=tuZuyZqwAjE[Tail Recursion by Kurt Harriger] - TechConfluence
+
+== Blogs
+
+* https://freshcodeit.com/app-development-in-clojure[Top 10 Clojure's Features That Benefit Your Business] - Freshcode
+* https://www.juxt.pro/blog/new-clojure-iteration[The new Clojure "iteration" function] - Renzo Borgatti
+* https://otee.dev/2022/01/25/clojure-backend-using-ring-jetty-compojure[My First Clojure Backend Using Ring, Jetty and Compojure] - Oitihjya Sen
+* https://kamilcodes.dev/post/2022-01-23-kit-rest/[REST methods in forms with Kit, Reitit, and Ring] - Kamil
+* https://github.com/kuhumcst/DanNet/blob/master/doc/web.md[A hydrated SPA architecture using Rum] - Simon Gray
+* https://lambdaisland.com/blog/2022-01-27-2022-01-27-unboxing-the-jdk[Unboxing the JDK] - Alys Brooks
+* Concurrencia en Clojure parts https://emanuelpeg.blogspot.com/2022/01/concurrencia-en-clojure-parte-2.html[2] https://emanuelpeg.blogspot.com/2022/01/concurrencia-en-clojure-parte-3.html[3] https://emanuelpeg.blogspot.com/2022/01/concurrencia-en-clojure-parte-4.html[4] https://emanuelpeg.blogspot.com/2022/01/concurrencia-en-clojure-parte-5.html[5] https://emanuelpeg.blogspot.com/2022/01/concurrencia-en-clojure-parte-6.html[6]- Emanuel Goette
+* https://www.arthurbrrs.me/pre-signed-s3-clojurescript.html[Pre-signed uploads to AWS S3 using Clojure(script)] - Arthur Barroso
+* https://www.loop-code-recur.io/live-clojure-cookbooks/[Writing Clojure living-cookbooks] - Cyprien Pannier
+* https://cuddly-octo-palm-tree.com/posts/2022-01-23-opt-clj-2/[Notes on Optimizing Clojure Code: Measurements] - Gary Verhaegen
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/nextjournal/clerk[clerk] https://github.com/nextjournal/clerk/blob/main/CHANGELOG.md#05346-2022-01-27[0.5.346] - Local-First Notebooks for Clojure
+* https://github.com/wilkerlucio/pathom3[pathom3] 2022.01.28-alpha - A library for navigating data
+* https://calva.io[Calva] 2.0.235 - Clojure & ClojureScript Interactive Programming for VS Code
+* https://viebel.github.io/klipse-embed/edit.html?src=&lang=clojure[Klipse embed]
+* https://github.com/markus-wa/cq[cq] 2022.01.26-15.35.00 - Clojure Command-line Data Processor for JSON, YAML, EDN, XML and more
+* https://github.com/babashka/babashka[babashka] 0.7.4 - Native, fast starting Clojure interpreter for scripting
+* https://github.com/metosin/malli[malli] 0.8.0 - Data-Driven Schemas for Clojure/Script
+* https://github.com/djblue/portal[portal] https://github.com/djblue/portal/releases/tag/0.20.0[0.20.0] - A clojure tool to navigate through your data.
+* https://github.com/lambdaisland/ornament[ornament] 0.3.30 - Clojure Styled Components
+* https://github.com/IGJoshua/coffi[coffi] 0.4.341 - A Foreign Function Interface in Clojure for JDK 17
+* https://clojure.org/releases/tools[Clojure CLI] https://clojure.org/releases/tools#v1.10.3.1069[1.10.3.1069] - Clojure CLI
+* https://github.com/borkdude/deps.clj[deps.clj] https://github.com/borkdude/deps.clj/blob/master/CHANGELOG.md#v0022[0.0.22] - A faithful port of the clojure CLI bash script to Clojure
+* https://github.com/hlship/test-pipeline[test-pipeline] 0.2 - Break tests into reusable, composable steps
+* https://github.com/behrica/pppmap[pppmap] 1.0.0 - Partitioned parallel maps with progress
+* https://github.com/liquidz/antq[antq] 1.4.0 - Point out your outdated dependencies
+* https://github.com/sicmutils/sicmutils[sicmutils] https://github.com/sicmutils/sicmutils/releases/tag/v0.21.0[0.21.0] - Scmutils in Clojure
+* https://github.com/seancorfield/expectations[expectations] 2.0.157 - A minimalist's unit testing framework
+* https://github.com/quoll/remorse[remorse] 0.2.0 - Keyword to morse code conversion
+* https://github.com/juji-io/datalevin[datalevin] 0.5.28 - A simple, fast and versatile Datalog database

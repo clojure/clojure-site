@@ -1,0 +1,50 @@
+= Clojure Deref (July 2, 2021)
+Alex Miller
+2021-07-02
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+## Highlights
+
+Clojurists Together https://www.clojuriststogether.org/news/the-next-phase-of-clojurists-together/[announced] a more varied set of funding models moving forward to better match what projects have been seeking.
+
+All of the http://clojured.de/[clojureD] https://www.youtube.com/playlist?list=PLaSn8eiZ631nON7le-wdZxTR0c5bxqPYi[2021 videos] are now available, including https://www.youtube.com/watch?v=BTAx-gFz6Ks[my video] discussing a set of new Clojure CLI features and the tools.build library. We have been hard at work polishing documentation and finalizing a last few bits of the source prep functionality and we expect it will be available soon for you to work with! For now, the video is a good overview of what's coming: expanded source for source-based libs, a new tools.build library, and some extensions to tool support in the Clojure CLI.
+
+## In the core
+
+We have mostly been working on Clojure CLI and tools.build lately but these items went by this week, maybe of interest:
+
+* https://clojureverse.org/t/do-clojure-still-have-rooms-to-improve-at-compiler-level[Does Clojure still have rooms to improve at compiler level?] - some discussion at ClojureVerse
+* https://clojure.atlassian.net/browse/CLJ-2637[CLJ-2637 - Automatic argument conversion to Functional Interface (Lambda) from Clojure fn] - this patch was proposed to do automatic SAM conversion for Clojure functions in the compiler.
+
+This is an area we've actually spent a lot of time thinking about for Clojure 1.11, (tracking under https://clojure.atlassian.net/browse/CLJ-2365[CLJ-2365] although most of the work has happened off ticket). In particular we have talked about a long list of possible use cases for functional interop and also a long list of ideas for making functional interop less cumbersome, both syntax and implementation. The examples given in CLJ-2637 are primarily about the Java Stream API but we don't think that's particularly high on the list of what's interesting (if you're in Clojure, just use Clojure's apis!). But there are cases where you have Java APIs in the JDK or elsewhere that now take one of the SAM-style interfaces, or a java.function interface and it would be nice to reduce the friction in passing a Clojure function without needing to reify - either by automatic detection and conversion, or helper fns, or even new syntax and compiler support. No conclusions yet.
+
+## Podcasts and videos
+
+* https://www.youtube.com/watch?v=URR6iu6l3fc[Apropos] - Mia, Mike, Ray, and Eric chat about Clojure
+
+## Blogs, discussions, tutorials
+
+* https://www.clojuremorsels.com/[Clojure Morsels] - a new biweekly mailing list for Clojure news starting soon
+* https://vlaaad.github.io/clj-vs-cli[REPL vs CLI: IDE wars] - Vlad thinks about REPLs vs the command line for dev
+* https://gustavosantos.dev/a/clojure-building-blocks[Clojure Building Blocks] - Gustavo Santos
+* https://gustavosantos.dev/a/getting-started-with-clojure[Getting Started with Clojure] - Gustavo Santos
+* https://betweentwoparens.com/blog/rich-comment-blocks/[Rich Comment Blocks] - Thomas Mattacchione
+
+## Training and hiring
+
+* https://learndatomic.com/[Learn Datomic] - is a new course for learning Datomic and Datalog by Jacek Schae, coming soon!
+* https://www.reddit.com/r/Clojure/comments/ob7nkk/who_is_hiring_june_30_2021/[Who's Hiring] - monthly hiring thread on Clojure subreddit
+
+## Libraries and tools
+
+Some interesting library and tool updates and posts this week:
+
+* https://github.com/alekcz/pcp[PCP] - Clojure replacement for PHP
+* https://github.com/FieryCod/holy-lambda[holy-lambda] https://github.com/FieryCod/holy-lambda/blob/master/CHANGELOG.md#022-01-07-2021[0.2.2] - A micro-framework that integrates Clojure with AWS Lambda on either Java, Clojure Native, or Babashka runtime
+* https://github.com/clojure-lsp/clojure-lsp[clojure-lsp] https://github.com/clojure-lsp/clojure-lsp/releases/tag/2021.07.01-13.46.18[2021.07.01-13.46.18] - Language Server (LSP) for Clojure, this release with new API/CLI support!
+* https://github.com/sauercrowd/clojureflare[clojureflare] - a new ClojureScript lib for using Cloudflare workers
+* https://github.com/BetterThanTomorrow/calva[Calva] 2.0.202 - Clojure & ClojureScript in Visual Studio Code 

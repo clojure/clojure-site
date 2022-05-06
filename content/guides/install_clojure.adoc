@@ -38,16 +38,16 @@ To install with the Linux script installer:
 
 [source,shell]
 ----
-curl -O https://download.clojure.org/install/linux-install-1.10.1.763.sh
-chmod +x linux-install-1.10.1.763.sh
-sudo ./linux-install-1.10.1.763.sh
+curl -O https://download.clojure.org/install/linux-install-1.11.1.1113.sh
+chmod +x linux-install-1.11.1.1113.sh
+sudo ./linux-install-1.11.1.1113.sh
 ----
 
 To install to a custom location (like `/opt/infrastructure/clojure`), use the option `--prefix`:
 
 [source,shell]
 ----
-sudo ./linux-install-1.10.1.763.sh --prefix /opt/infrastructure/clojure
+sudo ./linux-install-1.11.1.1113.sh --prefix /opt/infrastructure/clojure
 ----
 
 You may also want to extend the MANPATH in `/etc/man_db.conf` to include the manual pages:
@@ -78,24 +78,23 @@ Please provide feedback on https://ask.clojure.org[Ask Clojure] or Clojurians sl
 [[java]]
 === Java
 
-Clojure requires Java. Clojure officially supports Java LTS releases (currently Java 8 and Java 11), but also tries to ensure interim versions work as well. If you don't already hava Java installed, we recommend installing adoptopenjdk 11.
+Clojure requires Java. Clojure officially supports Java LTS releases (currently Java 8, 11, and 17), but also tries to ensure interim versions work as well. If you don't already hava Java installed, we recommend installing Adoptium Temurin 17.
 
-To use the adoptopenjdk installers:
+To use the Adoptium Temurin installers:
 
-* Go to https://adoptopenjdk.net
+* Go to https://adoptium.net/
 * Download and run the installer appropriate to your platform
 * Ensure `java` is on the system PATH (see this option on the Custom Setup page)
 
-On Mac, it is also possible to install using brew:
+On Mac, you can install using brew:
 
-* `brew tap adoptopenjdk/openjdk` - add the adoptopenjdk tap to brew
-* `brew install adoptopenjdk11` - install adoptopenjdk 11 (you may need to enter your user password)
+* `brew install --cask temurin` - install latest Temurin (formerly AdoptOpenJDK)
 
 You then need to add `java` to your PATH:
 
 [source,shell]
 ----
-echo 'export PATH="/Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home/bin:$PATH"' >> ~/.zshrc
+echo 'export PATH="/Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home/bin:$PATH"' >> ~/.zshrc
 ----
 
 == More information

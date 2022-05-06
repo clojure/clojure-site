@@ -1,0 +1,74 @@
+= Clojure Deref (Apr 1, 2022)
+Alex Miller
+2022-04-01
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== From the core
+
+This week we've been tracking feedback from the 1.11 release and starting to scope out 1.12 work.
+
+One thing that has bitten a couple people is that the Java serialization of Keyword changed in 1.11.0. This was an unintended effect and we expect to be rolling out a 1.11.1 shortly that addresses that (also fixes ArraySeq serialization which changed inadvertently as well). To explain more, Java serialization writes objects to a stream based on a class identifier (the serialVersionUID) and its private fields. By default, the class identifier is computed based on the public signatures and fields of a class and its parents. Due to internal changes in some bug fixes on Keyword, that signature changed in 1.11. Java has a feature that allows you to "pin" the serialVersionUID so that it is no longer computed - this is a good and recommended thing to do when classes are stable as it makes the serialization of these classes binary compatible even if the class changes in ways that don't affect serialization. Going way back, Clojure classes were made serializable with helpful patches in the very early days of Clojure, but unfortunately the serialVersionUIDs were never pinned. I reviewed all of the old versions and Clojure has changed these ids frequently for many classes in many releases. We intend in Clojure 1.12 to pin all of these and at least minimize the unintended drift of these ids in the future.
+
+Additionally, we've seen a couple reports from using AOT-compiled code from a prior release with a newer runtime where the compiled code used a function that is new (in particular `abs` in 1.11, but could be any new function that overlaps earlier compiled code). This is not an issue when source is loaded (you'll get a warning and you can use `refer-clojure :exclude` to address that warning), but only on previously compiled code. Our intent here is that new functions added to clojure.core (which is auto-referred by default) should never break existing code, so this is definitely something we intend to fix in 1.12 as well. Recompiling with 1.11 (and using `refer-clojure :exclude`) is sufficient to address the problem.
+
+Interestingly, neither of these are "new" problems with 1.11 (they have both existed for most of Clojure's life) yet this is the first time we've seen them reported to my memory. Various changes in 1.11 made us more likely to see each of them and I'm thankful that people have been rapidly adopting the new release and giving us this feedback in problem reports. So thanks!
+
+== Podcasts and videos
+
+* https://www.functionalgeekery.com/episode-137-renzo-borgatti/[Episode 137 – Renzo Borgatti] - Functional Geekery
+* https://soundcloud.com/clojurestream/sublimed-with-nikita-prokopov[E67 Sublimed with Nikita Prokopov] - ClojureStream Podcast
+* https://www.youtube.com/watch?v=2WsEy1hl5kE[Season 1, Episode 1] - The Clouncil
+* https://www.youtube.com/watch?v=f6KL0Kbq-5o[Multiplayer Online Game in Clojure: Attack of the Clones by Mey Beisaron] - FnConf 2022
+* https://www.youtube.com/watch?v=BTouODWov-A[n ways to FizzBuzz in Clojure by Aditya Athalye] - FnConf 2022
+* https://www.youtube.com/watch?v=J5G9Jz3lOg4[Clojure through the lens of music by Dave Yarwood] - FnConf 2022
+* https://www.youtube.com/watch?v=ySf9aQmNzqY[How I learned to stop worrying and ignore anomalies (by Svante von Erichsen)] - London Clojurians
+* https://www.youtube.com/watch?v=QYJeHyd47tM[building novus - 02 datomic dev-local 101] - Vishal Gautam
+* https://www.youtube.com/watch?v=1bdUfq-8XLM[Clojure visual-tools meeting 4] - Sci Cloj
+* https://www.youtube.com/watch?v=bf8KLKkCH2g[detecting inconsistent aliases in a clojure codebase] - Mitesh
+
+== Blogs
+
+* https://www.scattered-thoughts.net/writing/the-shape-of-data/[The shape of data] - Jamie Brandon
+* https://www.patreon.com/posts/static-type-64236939[Static type checking using Malli schemas] - Ambrose Bonnaire-Sergeant
+* https://www.patreon.com/posts/64321657[Static type checking using spec1 specs] - Ambrose Bonnaire-Sergeant
+* https://dev.to/crinklywrappr/reloaded-workflow-with-nbb-expressjs-31f3[Reloaded workflow with nbb & expressjs] - Daniel Fitzpatrick
+* https://ag91.github.io/blog/2022/03/25/moldable-emacs-how-many-namespaces-are-covered-by-my-clojurescript-tests/[Moldable Emacs: how many namespaces are covered by my ClojureScript tests?] - Andrea
+* https://savo.rocks/posts/overtone-basic-setup/[Overtone: Basic Setup] - Savo Djuric
+* https://philomates.github.io/articles/2022-03-24-contextualizing-clojure-in-the-small-and-large/[Contextualizing Clojure in the small and the large] - Phillip Mates
+* https://flexiana.com/2022/03/imposter-syndrome-and-the-importance-of-saying-i-dont-know[Imposter Syndrome and the importance of saying “I don’t know”] - Iain Wood
+* https://inside-out.matt.is/[Inside-Out: a Clojure forms library] - Matt Huebert
+* https://www.metosin.fi/blog/clojurescript-next-level/[Clojurescript Next Level] - Kari Marttila
+* https://www.karimarttila.fi/clojure/2022/03/29/4clojure-exercises-part-1.html[4Clojure Exercises Part 1] - Kari Marttila
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/clojure/brew-install[brew-install] https://clojure.org/releases/tools#v1.11.0.1100[1.11.0.1100] - Clojure CLI
+* https://github.com/esuomi/lein-git-revisions[lein-git-revisions] 1.0.0 - Automatically control, modify and adjust Leiningen project version based on metadata
+* https://github.com/phronmophobic/tryit[tryit]  - Create cli snippets for quickly trying clojure libraries
+* https://github.com/liquidz/dad[dad] 1.0.0 - Small configuration management tool for Clojure
+* https://github.com/rorokimdim/mindra-clj[mindra-clj] 0.0.1 - A 2D Graphics library for clojure using diagrams and gloss
+* https://github.com/oxalorg/4ever-clojure[4ever-clojure]  - Pure cljs version of 4clojure, meant to run forever!
+* https://clojure-lsp.io/[clojure-lsp] 2022.03.31-14.21.14 - Language Server Protocol for Clojure
+* https://calva.io[Calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.261[2.0.261] - Calva is an integrated, REPL powered, development environment for enjoyable and productive Clojure and ClojureScript programming in Visual Studio Code
+* https://github.com/javahippie/clj-test-containers[clj-test-containers] https://github.com/javahippie/clj-test-containers/releases/tag/0.6.0[0.6.0] - Control Docker containers from your test lifecycle for Clojure integration tests
+* https://github.com/oxalorg/clj-konmari[clj-konmari]  - The Life‑Changing Magic of Tidying Up Clojure Codebases
+* https://github.com/metosin/kekkonen[kekkonen] 0.5.2 - A remote (CQRS) API library for Clojure
+* https://github.com/exoscale/coax[coax] 1.0.0-alpha19 - Clojure.spec coercion library for clj(s)
+* https://github.com/polyfy/polylith[polylith] https://github.com/polyfy/polylith/releases/tag/v0.2.14-alpha[0.2.14-alpha] - A tool used to develop Polylith based architectures in Clojure
+* https://github.com/Liverm0r/robot[robot] 0.2 - Clojure wrapper to simplify writing desktop scripts with java.awt Robot and Clipboard
+* https://github.com/phronmophobic/dewey[dewey]  - Index of Clojure libraries available on github
+* https://github.com/ivarref/yoltq[yoltq] 0.2.55 - An opinionated Datomic queue for building (more) reliable systems
+* https://github.com/rm-hull/nvd-clojure[nvd-clojure] https://github.com/rm-hull/nvd-clojure/blob/v2.4.0/CHANGELOG.md#changes-from-230-to-240[2.4.0] - National Vulnerability Database dependency checker for Clojure projects
+* https://github.com/javahippie/clj-test-containers[clj-test-containers] https://github.com/javahippie/clj-test-containers/releases/tag/0.6.0[0.6.0] - Control Docker containers from your test lifecycle for Clojure integration tests
+* https://github.com/generateme/fastmath[fastmath] 2.1.8 - Fast primitive based math library
+* https://github.com/Clojure2D/clojure2d[clojure2d] 1.4.4 - Java2D wrapper + creative coding supporting functions (based on Processing and openFrameworks)
+* https://github.com/juji-io/datalevin[datalevin] 0.6.4 - A simple, fast and versatile Datalog database
+* https://github.com/phronmophobic/viscous[viscous] 1.2 - pprint that respects your space and time
+* https://github.com/borkdude/deps.clj[deps.clj] 0.1.1100 - A faithful port of the clojure CLI bash script to Clojure
+

@@ -1,0 +1,52 @@
+= Clojure Deref (Mar 25, 2022)
+Alex Miller
+2022-03-25
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Highlights
+
+The big news this week is of course the https://clojure.org/news/2022/03/22/clojure-1-11-0[Clojure 1.11 release]! We are really happy this is now out there and available. It seems like people are enjoying a lot of the new functions available. Please drop any questions or issues at https://ask.clojure.org[ask.clojure.org].
+
+We also saw the launch this week of https://theclouncil.com/[The Clouncil], a new interactive Clojure show for beginners - it was a lot of fun.
+
+Also I wanted to highlight Daniel Higginbotham's post https://jobs-blog.braveclojure.com/2022/03/24/long-term-clojure-benefits.html[Learning Clojure yields surprising long-term benefits. These companies are hiring and will train you.] which is does a great job highlighting some benefits of Clojure.
+
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=Qid4sm4il78[Clojure 1.11 - exploring some new stuff] - Mitesh
+* https://www.youtube.com/watch?v=QGUR-Zjqfz8[Grokking Clojure Macros - A Complete Guide] - Vishal Gautam
+* https://www.youtube.com/watch?v=7DQ0ymojfLg[nbb: ad-hoc scripting for Clojure on Node.js (by Michiel Borkent)] - London Clojurians
+* https://www.twitch.tv/videos/1432240926?t=01h55m03s[Lisp as Renaissance Workshop: A Lispy Tour through Mathematical Physics - Sam Ritchie] - European Lisp Symposium
+* https://www.twitch.tv/videos/1433198080?t=05h03m54s[Building SICMUtils, the Atelier of Abstractions - Sam Ritchie] - European Lisp Symposium
+* https://learnpedestal.com/[Learn Pedestal course] - Jacek Schae
+
+== Blogs
+
+* http://literateprogrammer.blogspot.com/2022/03/the-unreasonable-effectiveness-of-data.html[The unreasonable effectiveness of data-oriented programming] - Chris Ford
+* https://philomates.github.io/articles/2022-03-18-couplings-in-clojure-testing-tools/[Couplings in Clojure testing tools] - Phillip Mates
+* https://epiccastle.io/blog/hot-loading-wasm/[Hot loading C wasm with heap preservation] - Crispin Wellington
+* https://www.evalapply.org/posts/dismal-arithmetic-dyalog-apl-clojure/[Dismal Arithmetic in Dyalog APL and Clojure] - eval/apply
+* https://www.pixelated-noise.com/blog/2022/03/01/hike/index.html[Hike - Deriving identity in mutable grids] - Aris Spathis
+* https://savo.rocks/posts/pipewire-effortless-linux-audio/[Pipewire: Effortless Linux Audio] - Savo Djuric
+* https://github.com/frenchy64/dependabot-clojure-cli-via-mvn[Clojure CLI Dependabot support via Maven] - Ambrose Bonnaire-Sergeant
+* https://github.com/frenchy64/dependabot-lein-via-mvn[Leiningen Dependabot support via Maven] - Ambrose Bonnaire-Sergeant
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/BetterThanTomorrow/calva[calva] 2.0.257 - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/clj-commons/aleph[aleph] 0.4.7 - Asynchronous communication for Clojure
+* https://github.com/cognitect-labs/aws-api[aws-api]  - AWS, data driven
+* https://github.com/lambdaschmiede/kaocha-testcontainers-plugin[kaocha-testcontainers-plugin]  - This is a plugin for the kaocha testrunner. It manages the lifecylce of Testcontainers
+* https://github.com/practicalli/clojure-deps-edn[clojure-deps-edn]  - User level aliases and Clojure CLI configuration for deps.edn based projects
+* https://github.com/ribelo/fatum[fatum] 0.0.20 - Railway oriented programming for clojure & clojurescript
+* https://github.com/Zelex/jo_lisp[jo_lisp]  - Fast Embeddable Clojure in C
+* https://github.com/lucywang000/clj-statecharts[clj-statecharts] 0.1.3 - State Machine and StateCharts for Clojure(Script)
+* https://github.com/ivarref/healthy[healthy] 0.1.16 - A simple Clojure (JVM) library for doing health checks over a given duration
+* https://github.com/barracudanetworks/lighthouse[lighthouse]  - A data-driven Kubernetes pre-processor
+* https://github.com/cldwalker/logseq-query[logseq-query]  - lq is a commandline tool for querying your logseq knowledge graphs

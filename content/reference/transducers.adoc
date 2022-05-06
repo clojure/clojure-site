@@ -155,7 +155,7 @@ A process that uses transducers must check for and stop when the step function r
 
 === Transducers with reduction state
 
-Some transducers (such as *take*, *partition*, etc) require state during the reduction process. This state is created each time the transducible process applies the transducer. For example, consider the dedupe transducer that collapses a series of duplicate values into a single value. This transducer must remember the previous value to determine whether the current value should be passed on:
+Some transducers (such as *take*, *partition-all*, etc) require state during the reduction process. This state is created each time the transducible process applies the transducer. For example, consider the dedupe transducer that collapses a series of duplicate values into a single value. This transducer must remember the previous value to determine whether the current value should be passed on:
 [source,clojure]
 ----
 (defn dedupe []

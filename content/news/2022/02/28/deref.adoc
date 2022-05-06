@@ -1,0 +1,66 @@
+= Clojure Deref (Feb 28, 2022)
+Alex Miller
+2022-02-28
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Highlights
+
+The https://www.surveymonkey.com/r/clojure2022[State of Clojure 2022 Survey] is now open! We're getting a bit of a late start this year but now is the time to chip in and let us know how things are going. As always, we are are trying to get a good sampling of the community and it doesn't take long to complete, so your input is much appreciated.
+
+Cognitect and Nubank are now supporting https://github.com/sponsors/dmiller[David Miller], who has been the maintainer of ClojureCLR for many years. He has ambitious plans for a significant rewrite of the project - please check him out if you want to sponsor that work as well.
+	
+== Podcasts and videos
+
+* https://www.functionalgeekery.com/episode-135-jordan-miller/[Episode 135 - Jordan Miller] - Functional Geekery 
+* https://www.cognitect.com/cognicast/166[Episode 166 - Mariel Petee] - Cognicast
+* https://www.youtube.com/watch?v=zOoSxaqKdlo[Combining clojure.spec, Design Recipies, and Domain-Driven Design (by Leandro Doctors)] - London Clojurians
+* https://www.youtube.com/watch?v=HYv-gxDfRGo[Navigating Maps: Different Map Functions in Clojure - Paul S. Chun] - Clojure Asia Online Meetup
+
+== Blogs
+
+* https://dawranliou.com/blog/i-too-wrote-myself-a-static-site-generator/[I, too, Wrote Myself a Static Site Generator] - Daw-Ran Liou
+* https://cuddly-octo-palm-tree.com/posts/2022-02-20-opt-clj-6/[Notes on Optimizing Clojure Code: Reflection] - Gary Verhaegen
+* https://practical.li/blog/posts/practicalli-plans-for-spring-2022/[Practicalli content plans for Spring 2022] - Practicalli
+* https://marko.euptera.com/posts/ionic-clojure-todo-example.html[Developing Ionic application with Clojurescript - To-do App] - Marko Kocic
+* https://dawranliou.com/blog/advise-eglot-to-support-clojure-monorepo-setup/[Advise Eglot to Support Clojure Monorepo Setup] - Daw-Ran Liou
+* https://cuddly-octo-palm-tree.com/posts/2022-02-27-opt-clj-7/[Notes on Optimizing Clojure Code: Type Hints] - Gary Verhaegen
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://tryclojure.org/[Try Clojure]
+* https://github.com/bradb/fen[fen] 0.1.17 - Chess FEN parser written in Clojure
+* https://github.com/jpe90/emacs-clj-deps-new[emacs-clj-deps-new]  - Emacs interface to deps-new and clj-new
+* https://github.com/mainej/headlessui-reagent[headlessui-reagent]  - reagent wrappers for @headlessui/react components
+* https://github.com/wilkerlucio/pathom3[pathom3] 2022.02.25-alpha - A library for navigating data
+* https://github.com/wilkerlucio/pathom3-graphql[pathom3-graphql]  - GraphQL Integration for Pathom 3
+* https://github.com/wilkerlucio/pathom-viz[pathom-viz] https://github.com/wilkerlucio/pathom-viz/releases/tag/v2022.2.21[2022.2.21] - Visualization tools for Pathom
+* https://github.com/clj-commons/clj-yaml[clj-yaml] 0.7.108 - YAML encoding and decoding for Clojure
+* https://github.com/redstarssystems/gost[gost] 0.1.1 - Bouncycastle wrapper for Clojure to work with GOST
+* https://github.com/practicalli/clojure-deps-edn[clojure-deps-edn]  - User level aliases and Clojure CLI configuration for deps.edn based projects
+* https://github.com/clojure/tools.build[tools.build] v0.8.0 - Clojure builds as Clojure programs
+* https://github.com/clojure/core.logic[core.logic] 1.0.1 - A logic programming library for Clojure & ClojureScript
+* https://github.com/babashka/scittle[scittle] 0.1.2 - The Small Clojure Interpreter exposed for usage in browser script tags
+* https://github.com/stuartsierra/component[component] https://github.com/stuartsierra/component/blob/master/CHANGES.md#version-110-released-on-february-26-2022[1.1.0] - Managed lifecycle of stateful objects in Clojure
+* https://github.com/steffan-westcott/clj-otel[clj-otel] 0.1.0 - An idiomatic Clojure API for adding telemetry to your libraries and applications using OpenTelemetry
+* https://github.com/operatr-io/kpow-secure[kpow-secure]  - A library for encrypted Kafka configuration with Java AES encryption and PBKDF2 master key generation
+* https://github.com/fmnoise/coldbrew[coldbrew] 1.0.0 - Easy to use Clojure wrappers for Caffeine
+* https://github.com/oliyh/martian[martian] 0.1.21 - The HTTP abstraction library for Clojure/script, supporting OpenAPI, Swagger, Schema, re-frame and more
+* https://github.com/yetanalytics/pathetic[pathetic] 2.1 - Utility Library for handling JSONPath and navigating JSON structures
+* https://github.com/babashka/fs[fs] 0.1.3 - File system utility library
+* https://github.com/mediquest-nl/zorgrank[zorgrank]  - ZorgRank API
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.245[2.0.245] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://clojure-lsp.io/[clojure-lsp] 2022.02.23-12.12.12 - Clojure(script) Language Server (LSP) implementation
+* https://github.com/behrica/clj-py-r-template[clj-py-r-template] 1.6.0 - Clojure polyglot clj-template
+* https://github.com/juji-io/datalevin[datalevin] 0.5.31 - A simple, fast and versatile Datalog database
+* https://github.com/babashka/babashka[babashka] https://github.com/babashka/babashka/blob/master/CHANGELOG.md#076-2022-02-24[0.7.6] - Native, fast starting Clojure interpreter for scripting
+* https://github.com/epiccastle/spire[spire] 0.1.0-alpha.17 - pragmatic provisioning using clojure
+* https://github.com/threatgrid/asami[asami] 2.2.4 - A graph store for Clojure and ClojureScript
+* https://github.com/seancorfield/honeysql[honeysql] 2.2.868 - Turn Clojure data structures into SQL
+* https://github.com/eerohele/Tutkain[Tutkain] https://github.com/eerohele/Tutkain/blob/master/CHANGELOG.md#0130-alpha---2022-02-20[0.13.0 (alpha)] - A Sublime Text package for interactive Clojure development
+* https://github.com/clj-holmes/clj-watson[clj-watson] 3.0.1 - clojure deps SCA

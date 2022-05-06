@@ -1,0 +1,117 @@
+= Source Libs and Builds
+Fogus
+2021-07-09
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Several years ago, Clojure introduced <<xref/../../../../../reference/deps_and_cli#_deps_edn,deps.edn>> (a data definition for dependencies), https://github.com/clojure/tools.deps.alpha/[tools.deps] (a library for computing classpaths), and the
+<<xref/../../../../../reference/deps_and_cli#,Clojure CLI>> to run programs. The Clojure community has widely adopted these and we are excited today to provide a clear path for users looking to use these same tools to build their projects:
+
+* https://github.com/clojure/tools.build/[tools.build] - a library for building artifacts
+* CLI updates to make working with source repos as libs easier
+* CLI updates for installing, introspecting, and using custom tools
+
+Builds are processes and are best represented as programs. The tools.build library provides building blocks to write build programs - this is a modular and compositional approach to artifact building, making the best use of Clojure itself as the language.
+
+We take advantage of Clojure's dynamic nature to use source repositories directly as libraries, avoiding the overhead of building, deploying, and consuming artifacts. While most Clojure libraries can be consumed directly as source, sometimes they require a preparation step (like compiling Java in mixed source projects). We've added support for this as well.
+
+Finally, we've enhanced making, installing, and running custom tools that run independently of the project classpath. Tools embrace all of the ideas above and require only a git repository for others to install and run.
+
+== Builds are Programs
+
+The new https://github.com/clojure/tools.build[tools.build] library is a set of helper functions for writing build programs. To add a build for your deps.edn project, you will:
+
+* Write a Clojure program that uses tools.build to build your project
+* Provide function entry points in your program for whatever targets make sense (things like `clean`, `compile` or `jar`)
+* Add an alias to your deps.edn that invokes your build program and includes tools.build as a dependency
+* Invoke the build as a tool using `-T`. `-T` is similar to `-X` but omits the project classpath and includes the root of the project as one of the `:paths`.
+
+For more details and full examples, see the following:
+
+* https://clojure.github.io/tools.build[tools.build API]
+* <<xref/../../../../../guides/tools_build#_source_library_jar_build,tools.build guide>>
+
+== Source Repos as Libs
+
+Due to Clojure’s dynamic nature, we can directly use source repositories as libraries without the overhead of making, distributing, and consuming artifacts. This release provides some <<xref/../../../../../reference/deps_and_cli#_git,updates for git libraries>>:
+
+* Git repository urls are now optional and inferred if the library name follows a naming convention
+* Git tag and short git sha prefix are now sufficient to identify a git lib version. The prefix is included to verify that the tag has not moved (both must point to the same commit).
+
+Occasionally, source dependencies will require preparation (e.g. compilation, resource text replacement, code gen, etc.) to use them on the classpath. A common case is needing to compile Java source in a mixed source library. A source-based lib declares how it should be prepped in its deps.edn:
+
+```clojure
+{:deps/prep-lib {:alias :build
+                 :fn compile
+                 :ensure "target/classes"}}
+```
+
+The Clojure CLI library checks that the `:ensure` directory exists and if it’s not found, program execution will not proceed. To tell the CLI to prepare this (and any other libraries), you can run the command:
+
+```shell
+clj -X:deps prep
+```
+
+This command will find the unprepped libs, and run the `compile` function using the `:build` alias, presumably filling the `target/classes` directory with necessary classes to put on the classpath (`"target/classes"` should be in the project `:paths`). More information on supporting unprepped dependencies is available in the <<xref/../../../../../reference/deps_and_cli#prep,Clojure CLI reference>>.
+
+== Tools
+
+We have also enhanced the Clojure CLI to explore, install, invoke, and introspect tools based on a set of conventions for tool creators. Installing a new tool such as https://github.com/clojure/tools.deps.graph[tools.deps.graph] can be done as follows:
+
+```shell
+clj -Ttools install io.github.clojure/tools.deps.graph '{:git/tag "v1.0.63"}' :as graph
+```
+
+The use of a Git library name `io.github.clojure/tools.deps.graph` and the git tag `v1.0.63` allows the CLI to find and install the tool as `graph`, which is the name that used for invocation, a la `clj -Tgraph <function> <args>`. In this one case, a `:sha` is not required (but it will be resolved and recorded to check for a match in the future).
+
+The command above uses `-Ttools` which is invoking the `tools` tool, which is automatically installed by the Clojure CLI. 
+
+The CLI also provides a way to explore the available versions of tools with the `clj -X:deps find-versions` command to list the tags available for a tool (also works for Maven versions). 
+
+Finally, there are new `help/doc` and `help/dir` functions available in the `:deps` alias for introspecting what functions are available and how to use them. For example, you can run:
+
+```shell
+clj -X:deps help/doc :ns help
+```
+
+To look at the documentation for the `clojure.tools.cli.help` namespace.
+
+More information on the new <<xref/../../../../../reference/deps_and_cli#tool_install,tools support in the CLI>> is available in the reference docs.
+
+== Installation
+
+A prerelease version of the CLI is now available: 1.10.3.905.
+
+On Mac or Linux, you can install the prerelease https://github.com/clojure/homebrew-tools#version-archive-tool-releases[using brew]. On Linux or Windows you can use the installer per the instructions in <<xref/../../../../../guides/getting_started#,Getting Started>> to install the specific version above.
+
+== What's New
+
+All items below are additive updates, there should be no changes required for existing deps.edn projects or CLI usage.
+
+* https://github.com/clojure/tools.build[tools.build] - a new library for builds
+** https://clojure.github.io/tools.build[API] - what's available
+** <<xref/../../../../../guides/tools_build#,Guide>> - how to use it
+* deps.edn:
+** <<xref/../../../../../reference/deps_and_cli#_git,git deps>>
+*** If a git library name follows the repo convention names, the `:git/url` can now be inferred (`:git/url` can also be specified explicitly and takes precedence)
+*** `:git/tag` and short `:git/sha` can now be specified instead of the full sha. Both must point to the same commit.
+*** `:sha` has been renamed to `:git/sha` but the original is still supported for backwards compatibility
+** A new `:deps/prep-lib` top-level key is used to say how a lib is prepared with the following keys: `:alias`, `:fn`, and `:ensures`. See <<xref/../../../../../reference/deps_and_cli#prep,prep>> docs for more.
+** A new `:tools/usage` top-level key is used to provide the `:ns-default` and `:ns-aliases` context for a tool
+* <<xref/../../../../../reference/deps_and_cli#,Clojure CLI>>
+** New `-T` switch is like `-X` (invokes a function) but omits the project `:paths` and `:deps` and adds `:paths ["."]` to provide a clean tool classpath. `-T:aliases` is same as -X, `-Ttoolname` - resolves and uses tool context.
+** New API <<xref/../../../../../reference/deps_and_cli#_other_programs,help functions>> available via the built-in `:deps` alias: `help/doc` and `help/dir`
+** New API function `basis` that can be used to provide a custom basis to use, in combination with other tools that take a basis
+** New API program `prep` that is used to <<xref/../../../../../reference/deps_and_cli#prep,prep>> source libs
+* https://github.com/clojure/tools.deps.alpha[tools.deps.alpha]
+** New library API: `create-basis` (also available in tools.build - use that one if writing a build program)
+* https://github.com/clojure/tools.tools[tools.tools] - a tool library for managing tools
+** https://clojure.github.io/tools.tools[API]
+** <<xref/../../../../../reference/deps_and_cli#tool_install,Reference>>
+** tools.tools is auto-installed by the Clojure CLI as a tool named `tools` (invoke with `-Ttools`)
+
+You may also want to check out https://www.youtube.com/watch?v=BTAx-gFz6Ks[Alex Miller's talk] about this release at clojureD.
+
+Issues and bugs can be reported on https://ask.clojure.org or in Clojurians Slack in #tools-deps.
+

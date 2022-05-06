@@ -1,0 +1,67 @@
+= Clojure Deref (Nov 12, 2021)
+Alex Miller
+2021-11-12
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Highlights
+
+Congrats to Dragan Djuric on the 1.0.0 release of https://aiprobook.com/numerical-linear-algebra-for-programmers/[Numerical Linear Algebra for Programmers]!
+
+== Videos and podcasts
+
+* https://anchor.fm/lostinlambduhhs/episodes/ericnormand-e19f4j7[Lost in Lambduhhs] - Eric Normand
+* https://cognitect.com/cognicast/163[Cognicast] - Sean Corfield
+* https://lispcast.com/how-to-avoid-premature-optimization/[How to avoid premature optimization?] - Eric Normand
+* https://www.youtube.com/watch?v=auafRjne9SA[Dutch Clojure Meetup #139: Mirabelle] - Matthieu Corbin
+* https://www.youtube.com/watch?v=TkENblqzxcw[London Clojurians Meetup: Recife - Testing your code with the help of a model checker] - Paulo Feodrippe
+* https://www.youtube.com/watch?v=Be2cOSq-dmg[ClojureScript for React Developer - 19. Follow/Unfollow User + Reporting 🐛 on Github] - 
+
+Also, Jacek Schae mentioned that the ClojureScript Podcast will be taking a well deserved break for some hammock time. Kudos to all his hard work on putting out a long string of great content for the Clojure community! We look forward to whatever comes next!
+
+== Blogs
+
+* https://blog.michielborkent.nl/writing-clojure-highlighter.html[Writing a Clojure highlighter from scratch] - Michiel Borkent
+* https://tech.toryanderson.com/2021/11/06/uploading-files-and-handling-upload-requests-in-clojurescript/[Uploading Files and Handling Upload Requests in Clojure[script]] - Tory Anderson
+* https://cuddly-octo-palm-tree.com/posts/2021-11-07-clj-primes/[Computing prime numbers with Clojure] - Gary Verhaegen
+* https://blog.scrintal.com/on-clojure-polylith-and-software-development-an-interview-with-a-startup-cto-8a46bb049547[On Clojure, Polylith, and Software Development: An Interview with a Startup CTO] - Daiana Moyano
+* https://www.abhinavomprakash.com/posts/macrobrew/[Macrobrew: Clojure macros distilled] - Abhinav Omprakash
+* https://www.metosin.fi/blog/superorganism/[On Superorganisms] - Kari Marttila
+* https://ag91.github.io/blog/2021/11/05/moldable-emacs-a-clojure-playground-with-babashka/[Moldable Emacs: a Clojure Playground with Babashka] - Andrea
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://clojure.org/reference/deps_and_cli[Clojure CLI] https://clojure.org/releases/tools#v1.10.3.1029[1.10.3.1029] - Clojure CLI
+* https://github.com/babashka/pod-babashka-aws[pod-babashka-aws] https://github.com/babashka/pod-babashka-aws/blob/main/CHANGELOG.md#v010[0.1.0] - AWS pod wrapping the Cognitect aws-api library
+* https://github.com/clojure-expectations/clojure-test[clojure-test] 2.0.137 - A clojure.test-compatible version of the classic Expectations testing library
+* https://github.com/djblue/portal[portal] https://github.com/djblue/portal/releases/tag/0.17.0[0.17.0] - A clojure tool to navigate through your data
+* https://calva.io[Calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.224[2.0.224] - Calva is an integrated REPL powered environment for enjoyable and productive Clojure and ClojureScript development in Visual Studio Code
+* https://github.com/borkdude/edamame[edamame] https://github.com/borkdude/edamame/blob/master/CHANGELOG.md#0013[0.0.13] - Configurable EDN/Clojure parser with location metadata
+* https://github.com/behrica/clj-py-r-template[clj-template] 1.6.0 - Template to quickly create clojure data sciene projects with R + python
+* https://github.com/cjsauer/joinery[joinery] - Enables traversal of in-memory graph-like data structures using Clojure(Script)'s map protocols
+* https://github.com/rafaeldelboni/nota[nota] - Static Markdown Blog/Site using Fulcro & Pathom with no backend
+* https://github.com/lilactown/helix[helix] https://github.com/lilactown/helix/blob/master/CHANGELOG.md#014[0.1.4] - A simple, easy to use library for React development in ClojureScript
+* https://github.com/fulcrologic/fulcro[fulcro] 3.5.8 - A library for development of single-page full-stack web applications in clj/cljs
+* https://github.com/fulcrologic/fulcro-rad[fulcro-rad] 1.1.0-RC2 - Fulcro Rapid Application Development
+* https://github.com/fulcrologic/fulcro-rad-semantic-ui[fulcro-rad-semantic-ui] 1.2.0 - Semantic UI Rendering Plugin for RAD
+* https://github.com/fulcrologic/fulcro-rad-template[fulcro-rad-template]  - A template for starting new Fulcro projects, that includes RAD
+* https://github.com/ont-app/igraph-jena[igraph-jena] 0.1.2 - Porting Jena to the IGraph protocol
+* https://github.com/xfthhxk/unminify[unminify]  - unminifies JS stacktrace errors
+* https://github.com/clojure/tools.gitlibs[tools.gitlibs] 2.4.172 - An API for retrieving, caching, and programatically accessing git libraries
+* https://github.com/clojure/tools.deps.alpha[tools.deps.alpha] 0.12.1071 - A functional API for transitive dependency graph expansion and the creation of classpaths
+* https://github.com/clojure/tools.build[tools.build] v0.6.3 - Library of functions for building Clojure projects
+
+== Lagniappe
+
+You might find this https://www.synthtopia.com/content/2016/12/11/continuum-creator-lippold-haken-on-the-future-of-electronic-instruments/[interview with Continuum Creator Lippold Haken] to be of interest. Haken is the creator of the Continuum Fingerboard, an alternative keyboard controller. Lots of interesting thoughts about creating expressive musical interfaces. You might find some interesting analogies to expressive programming language design as well...
+
+> I go to the NAMM Show, and almost every piece of software, almost every instrument claims that you’ll do great new things with it, and there’s no learning curve. I didn’t take that route. That’s not important to me.
+> 
+> It’s not good as an engineer to make something needlessly difficult, but it’s also not necessary to de-skill musicians. I mean, I don’t want to make another instrument where the main purpose is to replace acoustic musicians with a single person who doesn’t have to learn.
+
+Recommended to me by Rich Hickey... :)

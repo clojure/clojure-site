@@ -1,0 +1,63 @@
+= Clojure Deref (May 6, 2022)
+Alex Miller
+2022-05-06
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Highlights
+
+Congrats to Clojure friends Logseq on their https://blog.logseq.com/logseq-raises-4-1m-to-accelerate-growth-of-the-new-world-knowledge-graph/[$4.1M raise] this week!
+
+== Podcasts and videos
+
+* https://corecursive.com/lisp-in-space-with-ron-garret/[LISP in Space With Ron Garret] - CoRecursive Podcast #076
+* https://anchor.fm/lostinlambduhhs/episodes/joe-smith-Nabraskas-Premier-Dinner-Party-Host-e1hovnr[:joe-smith (Nabraska's Premier Dinner Party Host)] - Lost in Lambduhhs
+* https://ericnormand.me/podcast/abstract-concrete-spectrum[Is the abstract stuff at the top or the bottom?] - Thoughts on Functional Programming by Eric Normand
+* https://soundcloud.com/defn-771544745/83-tim-zoller-aka-the-java-hippie[#83 Tim Zöller aka The Java Hippie] - defn podcast
+* https://www.hytradboi.com/2022/uis-are-streaming-dags[UIs are streaming DAGs] - Dustin Getz
+* https://youtu.be/YnpQMrkj4v8[FlowStorm - flows basics] - Juan Monetta
+* https://learnpedestal.com/[Learn Pedestal and Clojure] - Jacek Schae
+* https://www.youtube.com/watch?v=bihh8nPGixo[Clojure: sort by multiple keys with different orderings] - Fred Overflow
+* https://www.youtube.com/watch?v=Nyf2UzjJ8Uw[Clojure macros by example: recursive comparison chaining] - Fred Overflow
+* https://www.youtube.com/playlist?list=PLvEhqHVS-lc8FiHDUXSVnk-mbmyUtBbYV[Clojure Nails] - Ivana
+
+== Blogs
+
+* https://www.reddit.com/r/Clojure/comments/ufl4bg/who_is_hiring_april_30_2022/[Who is hiring? April 30, 2022] - r/clojure
+* https://blog.michielborkent.nl/oss-updates-mar-apr-2022.html[OSS Updates of March - April 2022] - Michiel Borkent
+* https://github.com/Liverm0r/HowToClojureDart/blob/main/README.md[How to ClojureDart] - Artur Dumchev
+* https://www.patreon.com/posts/65833609[Typed Clojure 1.0.28: New fn type syntax] - 
+* https://www.metosin.fi/blog/packaging-clojure/[Packaging Clojure for Production] - Joel Kaasinen
+* https://www.pixelated-noise.com/blog/2022/04/28/integrant-and-aero/index.html[Reaching config nirvana in Clojure with Integrant and Aero] - Kasper Gałkowski
+* https://distantjob.com/blog/why-use-clojure/[Why Use Clojure? Here’s How it Can Benefit Your Business] - Joana Almeida
+* https://blog.wsscode.com/clojure-gitlab-cache/[Caching Clojure deps on Gitlab] - Wilker Lucio
+* https://ano.ee/blog/the-niche-programmer[The Niche Programmer] - Asko Nõmm
+* https://codescene.com/engineering-blog/simple-ways-to-avoid-complexity[Code Health: simple ways to avoid complexity] - Joseph Fahey
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/clojure-emacs/cider[cider] https://github.com/clojure-emacs/cider/releases/tag/v1.4.0[1.4] - The Clojure Interactive Development Environment that Rocks for Emacs
+* https://github.com/jpmonettas/flow-storm-debugger[flow-storm-debugger] 2.0.38 - A debugger for Clojure with some unique features
+* https://calva.io[Calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.270[2.0.270] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/BetterThanTomorrow/joyride[joyride] https://github.com/BetterThanTomorrow/joyride/releases/tag/v0.0.4[0.0.4] - Joyride VS Code with Clojure
+* https://github.com/clojure-lsp/clojure-lsp[clojure-lsp] 2022.05.03-12.35.40 - Clojure & ClojureScript Language Server (LSP) implementation
+* https://github.com/borkdude/quickdoc[quickdoc]  - Quick and minimal API doc generation for Clojure
+* https://github.com/babashka/babashka[babashka] 0.8.2 - Native, fast starting Clojure interpreter for scripting
+* https://github.com/borkdude/edamame[edamame] 1.0.0 - Configurable EDN/Clojure parser with location metadata
+* https://github.com/babashka/sci[sci] 0.3.4 - Configurable Clojure interpreter suitable for scripting and Clojure DSLs
+* https://github.com/babashka/fs[fs] https://github.com/babashka/fs/releases/tag/v0.1.5[0.1.5] - File system utility library for Clojure
+* https://github.com/fabiodomingues/clj-depend[clj-depend] 0.2.0 - A Clojure namespace dependency analyzer
+* https://github.com/kuhumcst/tf-idf[tf-idf] 0.1.4 - A reasonably performant TF-IDF implementation
+* https://github.com/atomisthq/jibbit[jibbit]  - Dockerless Clojure Image builds using deps.edn
+* https://github.com/lambda-toolshed/papillon[papillon]  - Interceptor library for Clojure
+* https://github.com/lambdaisland/reitit-jaatya[reitit-jaatya]  - Freeze your reitit routes and create a static site out of it
+* https://github.com/darkleaf/di[di]  - Dependency injection framework for Clojure
+* https://github.com/grzm/awyeah-api[awyeah-api]  - Cognitect's aws-api for babashka
+* https://github.com/Ivana-/bb-inspect[bb-inspect]  - Clojure data GUI inspector
+* https://github.com/logseq/nbb-logseq[nbb-logseq]  - nbb with features enabled for logseq
+* https://github.com/clj-commons/byte-transforms[byte-transforms] 0.2.1 - Methods for hashing, compressing, and encoding bytes

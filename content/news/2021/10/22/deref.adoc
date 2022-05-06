@@ -1,0 +1,58 @@
+= Clojure Deref (Oct 22, 2021)
+Alex Miller
+2021-10-22
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Highlights
+
+The Clojure community has a long and friendly relationship with our cousins in the Racket/Scheme community and we've often had speakers at Clojure conference from that world. I wanted to call your attention to the recent Strange Loop keynote from Will Byrd, https://www.youtube.com/watch?v=AffW-7ika0E["Strange Dreams of Stranger Loops"] which takes his prior investigations into generating quines (programs that produce themselves) with miniKanren into further territories of twines (twin quines) and quine relays and many other interesting digressions.
+
+Near the end of the talk, Will announced two "competitions", each for $1000, the http://webyrd.net/quips.html[QuiPS Prize] for the best "small" strange loop along the order of quines and quine relays, self-reproducing behavior, and the http://webyrd.net/mant.html[Mant Prize] - for the best "large" strange loop, and you'll need to watch the video to get the full sense of the intent here. I've linked his pages for these prizes, which are as yet unpublished. Feel free to pester https://twitter.com/webyrd[Will] to fill those out more completely. :)
+
+I'm highlighting these here both to give them some more circulation and because I think there are many smart and curious minds in the Clojure community that would enjoy working on things like this to spur the Quine Industrial Complex.
+
+== In the core
+
+Lots of things in mid-flight right now, some getting near the "done" end. https://clojure.atlassian.net/browse/CLJ-2664[CLJ-2664] is a new Clojure namespace clojure.java.math wrapping java.lang.Math. There are a couple related pieces of work for adding numeric parsing functions and uuid constructors. All of those are coming out of a survey of which JDK static methods were in common use and trying to cover a bit more of that surface area in the Clojure API directly. All of that is 1.11 scope. Additionally, I think we're near the end of the spec updates for trailing map support, which is being done in https://clojure.atlassian.net/browse/CLJ-2606[CLJ-2606] and that will end up in new versions of spec (both old and new). You can also find a variety of other tickets ready for Rich's review in the https://clojure.atlassian.net/issues/?filter=10010[Screened] list (see  https://clojure.org/dev/workflow[workflow] page for more details).
+
+In addition to all that, we've been doing a lot of thinking and planning for future directions of the Clojure team, nothing I can share on that right now but it's been fun to talk about ways we can grow.
+
+== Videos and podcasts
+
+* https://clojurescriptpodcast.com/[ClojureScript podcast] - OSS with Michiel Borkent
+* https://soundcloud.com/defn-771544745/77-michelle-lim[defn podcast] - Michelle Lim (and some special guests!)
+* https://pod.link/1471141263/episode/10a363f4e62eb8ca37120468d752c99b[re:Clojure Interviews 1] - Jeremy Taylor, product lead XTDB
+* https://pod.link/1471141263/episode/6c1b3b75294f84291809fa01595dbcf4[re:Clojure Interviews 2] - Alex Oloo, Head of Design ABSA Bank
+* https://www.youtube.com/watch?v=Rdk5r1bjBoc[Clojure REPLs Deep Dive] - Nikita Prokopov
+* https://www.youtube.com/watch?v=4UvT0yqBDw8[How to hack on clojure-lsp the Clojure Way] - Peter Strömberg
+
+== Blogs
+
+* https://javahippie.net/clojure/2021/10/18/finding-my-inner-wes-anderson.html[Finding my inner Wes Anderson with Babashka] - Tim Zöller
+* https://www.juxt.pro/blog/clojurescript-app-performance[Speed up your ClojureScript Webapp] - Lucio D'Alessandro
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/IGJoshua/coffi[coffi] 0.2.259 - A Foreign Function Interface in Clojure for JDK 17
+* https://github.com/logicblocks/salutem[salutem]  - A health check library for sync / async health checks
+* https://github.com/clj-kondo/clj-kondo[clj-kondo] https://github.com/clj-kondo/clj-kondo/blob/master/CHANGELOG.md#20211019[2021.10.19] - A linter for Clojure code that sparks joy
+* https://github.com/phronmophobic/clj-media[clj-media]  - View or create videos and gifs with clojure
+* https://github.com/fluent-development/heroicons-clojure[heroicons-clojure]  - heroicons for Fulcro and Reagent
+* https://github.com/tatut/xtdb-inspector[xtdb-inspector]  - Web UI for inspecting XTDB database
+* https://github.com/askonomm/shh[shh] 2021.10.20 - A CLI password manager designed for efficiency
+* https://clojure-lsp.io/[clojure-lsp] https://clojure-lsp.io/CHANGELOG/#20211020-164947[20211020-164947] - A Language Server for Clojure(script)
+* https://github.com/borkdude/nbb[nbb] v0.0.107 - Ad-hoc CLJS scripting on Node.js
+* https://github.com/dainiusjocas/clj-jq[clj-jq] https://github.com/dainiusjocas/clj-jq/releases/tag/v1.1.3[1.1.3] - Clojure wrapper for jackson-jq
+* https://calva.io[Calva] 2.0.220 - Calva is an integrated REPL powered environment for enjoyable and productive Clojure and ClojureScript development in Visual Studio Code
+* https://github.com/wilkerlucio/pathom3[pathom3] 2021.07.10-alpha - A library for navigating data
+* https://github.com/AbhinavOmprakash/luna[luna] 0.1.0-SNAPSHOT - A Domain Specific Language (DSL) that translates to regex.Pattern
+* https://github.com/cognitect-labs/aws-api[aws-api]  - AWS, data driven
+* https://github.com/clojure/java.data[java.data] 1.0.92 - Functions for recursively converting Java beans to Clojure and vice versa
+* https://github.com/oliyh/re-graph[re-graph] 0.1.16 - A graphql client for clojurescript and clojure
+* https://github.com/ingesolvoll/glimt[glimt] 0.2.1 - HTTP FSM for re-frame

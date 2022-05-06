@@ -1,0 +1,66 @@
+= Clojure Deref (Dec 10, 2021)
+Alex Miller
+2021-12-10
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Highlights
+
+Several highlights to point out this week:
+
+* Thanks to the persistent efforts of Rob Stuttaford and the generosity of Slack, the Clojurians Slack channel now has a https://twitter.com/stewart/status/1466843623266283521[Pro account]!
+* https://twitter.com/NYSE/status/1468747415750598665[Nubank is now listed as NU on the NYSE] - fun to see Clojure devs at a bell ringing!
+* Clojure users https://www.wraltechwire.com/2021/12/09/durham-startup-kevel-raises-10m-plans-to-hire-more-workers-in-2022/[Kevel] (formerly Adzerk) raised $10M and are planning to do more hiring!
+* Daniel Slutsky https://clojureverse.org/t/rethinking-community-scope/[posted a request for discussion] on extending the great work the SciCloj folks have been doing around teaching and learning to the broader Clojure community
+
+== In the core
+
+This week has been a bit scattered, but we continue to work through some tickets related to the (soon to be) clojure.math. I want to especially thank Paula Gearon for all of the work she's done lately to create https://github.com/quoll/cljs-math[a CLJS port of the ns] so that we can have a great portable math library.
+
+== Podcasts and videos
+
+* https://www.cognitect.com/cognicast/164[Cognicast] with Will Byrd
+* https://www.youtube.com/watch?v=nt_cMdqqaPE[Banking on Clojure from Func Prog Sweden] - James Trunk
+* https://www.youtube.com/watch?v=u748t1CJQYE[Clojure: interop, reagent forms, and d3js]
+* https://www.youtube.com/watch?v=5qFsHy2pOLw[Advent of Witchcraft day 8 - Automated Tunneling, and some reflection] - Arne Brasseur
+* https://share.descript.com/view/axhrX0bjAb2[Building on Site: Episode 1 - Drawing app] - Alexander Davis
+
+== Blogs
+
+* https://www.metosin.fi/blog/high-performance-schemas-in-clojurescript-with-malli-1-2/[High-Performance Schemas in Clojure/Script with Malli 1/2] - Tommi Reiman
+* https://blog.michielborkent.nl/using-clojure-spec-alpha-with-babashka.html[Using clojure.spec.alpha with babashka] - Michiel Borkent
+* https://brettrowberry.hashnode.dev/an-f-devs-perspective-on-clojure[An F# Dev's Perspective on Clojure] - Brett Rowberry
+* https://cyrik.github.io/day1.html[An adventure in clojure tooling, debug story-time] - Lukas Domagala
+* https://blog.wsscode.com/babashka-and-alfred/[Scripting with Babashka on Alfred] - Wilker Lucio
+* https://vlaaad.github.io/reveal-stickers[Reveal stickers] - Vlad Protsenko
+* https://auth0.com/blog/create-an-api-server-with-clojure-and-pedestal/[Create an API server with Clojure and Pedestal] - Vincenzo Chianese
+* https://www.reddit.com/r/Clojure/comments/rbw8h0/clojure_high_performance_data_processing_updates/[Clojure High Performance Data Processing Updates] - Chris Nuernberger
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/metosin/jsonista[jsonista] 0.3.5 - Clojure library for fast JSON encoding and decoding
+* https://github.com/metosin/malli[malli] 0.7.0 - Data-Driven Schemas for Clojure/Script
+* https://github.com/clojure/tools.logging[tools.logging] 1.2.1 - Logging API for Clojure
+* https://github.com/clojure/tools.deps.graph[tools.deps.graph] 1.1.68 - Dependency graphs for deps.edn projects
+* https://github.com/clojure/tools.deps.alpha[tools.deps.alpha] 0.12.1090 - A functional API for transitive dependency graph expansion and the creation of classpaths
+* https://github.com/clojure/core.cache[core.cache] 1.0.225 - A caching library for Clojure
+* https://github.com/clojure/core.memoize[core.memoize] 1.0.253 - A manipulable, pluggable, memoization framework
+* https://github.com/clojure/tools.analyzer.jvm[tools.analyzer.jvm] 1.2.1 - Additional jvm-specific passes for tools.analyzer
+* https://github.com/clojure/core.async[core.async] 1.5.644 - Facilities for async programming and communication in Clojure
+* https://github.com/clojure/tools.namespace[tools.namespace] 1.2.0 - Tools for managing namespaces in Clojure
+* https://github.com/harryvederci/nsa[nsa]  - NSA (Namespace Agency) - Track your Clojure function calls/responses in a global state
+* https://github.com/clj-commons/manifold[manifold] 0.2.3 - A compatibility layer for event-driven abstractions
+* https://github.com/juxt/pack.alpha[pack.alpha]  - Package clojure projects
+* https://github.com/sultanov-team/xtdb-tarantool[xtdb-tarantool]  - XTDB module which allows you to use Tarantool 
+* https://vlaaad.github.io/reveal/[Reveal Free] 1.3.250 - Reveal Free
+* https://vlaaad.github.io/reveal-pro[Reveal Pro] 1.3.293 - Reveal Pro
+* https://github.com/msolli/proletarian[proletarian] 1.0.54-alpha - A durable job queuing and worker system for Clojure backed by PostgreSQL
+* https://github.com/babashka/babashka[babashka] 0.7.0 - Native, fast starting Clojure interpreter for scripting
+* https://github.com/FieryCod/holy-lambda[holy-lambda] https://github.com/FieryCod/holy-lambda/releases/tag/0.6.3[0.6.3] - The extraordinary simple, performant, and extensible custom AWS Lambda runtime for Clojure
+* https://github.com/Cyrik/omni-trace[omni-trace] v0.2.7 - Omnipotent/omniscient tracing core for debugging clojure(script)
+

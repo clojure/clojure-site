@@ -1,0 +1,15 @@
+= Clojure 1.10.3 release
+Alex Miller
+2021-03-04
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Clojure 1.10.3 is a small release with the following changes:
+
+* Reverted the case error message change from 1.10.2 due to backwards compatibility concerns
+* Added prepl support for reader conditionals
+
+## Detailed changelog
+
+See the https://github.com/clojure/clojure/blob/master/changes.md#changes-to-clojure-in-version-1103[change log] for a complete list of all changes in Clojure 1.10.3.

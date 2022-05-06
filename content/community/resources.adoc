@@ -16,7 +16,10 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 * https://clojureverse.org[Clojureverse]
 * https://clojure.org/community/user_groups[Clojure User Groups]
 * http://planet.clojure.in/[Planet Clojure] blog aggregator
-* #clojure IRC channel on https://freenode.net[freenode.net]
+* #clojure IRC channel on https://libera.chat[Libera.Chat]
+* https://discord.gg/discljord[Discljord Clojure Discord Server]
+* https://discord.gg/MsejPv9JNG[Clojurians Discord Server]
+* https://twitter.com/i/communities/1494013093059432451[Twitter Community]
 
 == Tutorials and Learning Materials
 
@@ -40,13 +43,25 @@ Community:
 * https://github.com/ClojureBridge/curriculum[ClojureBridge Curriculum]
 * https://clojuredocs.org[ClojureDocs] - community provided example repository
 * http://clojure-doc.org/[Clojure Documentation] - community-driven documentation site
+* https://cljdoc.org/[cljdoc] - a website building & hosting documentation for Clojure/Script libraries
 * http://clojurekoans.com/[Clojure Koans] (http://clojurescriptkoans.com/[online])
-* http://www.4clojure.com/[4clojure] - Clojure practice problems
 * http://exercism.io/[exercism.io] - crowd-source code reviews (supports Clojure)
 * https://guide.clojure.style/[Clojure Style Guide]
 * https://www.maria.cloud/[Maria] - a coding environment for beginners
 
-Newsletters
+[[spec]]
+Spec:
+
+* https://clojure.org/news/2016/05/23/introducing-clojure-spec[Introducing clojure.spec] - Rich Hickey
+* https://www.youtube.com/watch?v=YR5WdGrpoug["Maybe Not"] - Rich Hickey
+* https://www.youtube.com/watch?v=oyLBGkS5ICk["Spec-ulation"] - Rich Hickey
+* https://vimeo.com/195711510[Rich Hickey on Clojure Spec] - LispNYC
+* https://www.cognitect.com/cognicast/103[Clojure spec with Rich Hickey] - Cognicast Episode 103
+* https://www.youtube.com/playlist?list=PLZdCLR02grLrju9ntDh3RGPpWSWBvjwXg[Spec Screencasts]
+* https://corfield.org/blog/2019/09/13/using-spec/[How do you use clojure.spec] - Sean Corfield
+* https://www.pixelated-noise.com/blog/2020/09/10/what-spec-is/[What Clojure spec is and what you can do with it (an illustrated guide)] - Stathis Sideris
+
+Newsletters:
 
 * http://therepl.net[The REPL]
 * http://insideclojure.org[Inside Clojure] - weekly journals about development of Clojure
@@ -70,6 +85,7 @@ Podcasts:
 * https://clojuredesign.club/[Functional Design in Clojure] - Christoph and Nate discuss software design problems and how they might be solved using functional principles and the Clojure programming language.
 * http://blog.cognitect.com/cognicast[Audio - Cognitect Blog] - A podcast by Cognitect, Inc. about software and the people that create it
 * https://anchor.fm/dosync-radio[(dosync radio)] - A podcast to discuss Clojure matters in Japanese.
+* https://anchor.fm/lostinlambduhhs[Lost in Lambduhhs] - Jordan Miller interviews a myriad of guests from all sectors of tech with a special focus on Clojure and Clojurescript
 
 Video training (commercial):
 
@@ -92,7 +108,7 @@ Video training (commercial):
 * http://clojure-conj.org/[Clojure/conj] (usually in November)
 * http://www.clojurebridge.org/[ClojureBridge] - beginner workshops for women
 * https://clojutre.org[ClojuTRE] - A Clojure conference in Tampere/Helsinki, Finland
-* https://skillsmatter.com/conferences/10459-clojure-exchange-2018[Clojure eXchange] - A Clojure conference in London, UK
+* https://reclojure.org[re:Clojure] - A yearly community-driven Clojure conference, hosted online and with a worldwide attendance
 * https://clojured.de/[clojureD] - A Clojure conference in Berlin, Germany
 * https://heartofclojure.eu/[Heart of Clojure] - A Clojure conference in Leuven, Belgium
 * https://clojuredays.org/[Dutch Clojure Days] - A Clojure conference in Amsterdam, the Netherlands

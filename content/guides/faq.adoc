@@ -203,7 +203,7 @@ Yes, set the Java system property `-Dclojure.spec.skip-macros=true` and no macro
 [[exclusive_keys]]
 **<<faq#exclusive_keys,How do I write a map that only allows certain keys?>>**
 
-Spec's general philosophy is one of "open" specs where maps can contain additional keys beyond what is specified as required or optional in an s/keys spec. One way to accomplish a contrained key set is to `s/and` an additional constraint:
+Spec's general philosophy is one of "open" specs where maps can contain additional keys beyond what is specified as required or optional in an s/keys spec. One way to accomplish a constrained key set is to `s/and` an additional constraint:
 
 [source,clojure]
 ----

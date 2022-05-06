@@ -1,0 +1,68 @@
+= Clojure Deref (Jan 14, 2022)
+Alex Miller
+2022-01-14
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Highlights
+
+Yesterday we released Clojure https://clojure.org/releases/devchangelog#v1.11.0-alpha4[1.11.0-alpha4] as we continue on the path to a final 1.11 release. We are not planning to add new tickets to consideration at this point. We would encourage you to try 1.11.0-alpha4 on your own code base and provide any feedback now as we start the rampdown to GA. If you find issues, please log at https://ask.clojure.org.
+
+It was exciting this week to see https://twitter.com/OlexaLe/status/1480491464748679181[the first peek] at ClojureDart, coming soon!
+
+And Dmitri Sotnikov, long-time maintainer of Luminus announced a new Clojure web framework called https://yogthos.net/posts/2022-01-08-IntroducingKit.html[Kit] - take a look!
+
+== From the core
+
+Mostly just lots of jira work to wrap up alpha4 this week.
+
+== Podcasts and videos
+
+* https://cognitect.com/cognicast/165[Cognicast Episode 165] - Jordan Miller
+* https://www.youtube.com/watch?v=HmsC6ZCKSqE[Clojure Namespaces Tutorial] - on the code again
+* https://www.youtube.com/watch?v=UrpYLyGy4Lc[Minimalist introduction to Fulcro] - Jakub Holý
+
+== Blogs
+
+* https://vvvvalvalval.github.io/posts/some-re-frame-patterns-for-composability.html[Some re-frame patterns for composability] - Valentin Waeselynck
+* https://dev.to/aws-builders/how-to-use-amplify-studio-figma-connector-with-clojurescript-382d[How to Use Amplify Studio Figma Connector with Clojurescript] - Robert J. Berger
+* https://tonsky.me/blog/clojurefmt/[Better Clojure formatting] - Nikita Prokopov
+* https://vouch.io/a-simple-tool-for-load-testing-stateful-systems-using-clojure/[A simple tool for load testing stateful systems using Clojure] - Bernard Labno
+* https://lambdaisland.com/blog/2022-01-13-lioss-update[Lambda Island Open Source Update January 2022] - Alys Brooks
+* https://github.com/sicmutils/sicmutils/blob/main/src/sicmutils/polynomial.cljc[Neville’s algorithm for polynomial interpolation, written as a functional fold] - Sam Ritchie
+* https://blog.atomist.com/containerizing-a-clojure-project/[Containerizing a Clojure project] - Jim Clark
+* https://www.metosin.fi/blog/my-second-project-at-metosin/[My Second Project at Metosin!] - Kari Marttila
+* https://blog.michielborkent.nl/aws-lambda-nbb.html[Creating an AWS Lambda function with nbb] - Michiel Borkent
+* https://javahippie.net/clojure/2022/01/08/data-readers-lein.html[Data Readers and Leiningen] - Tim Zöller
+* https://lukas-domagala.de/blog/clojure-compiler-class-cache.html[Clojure compiler class cache and JVM soft references] - Lukas Domagala
+* https://cuddly-octo-palm-tree.com/posts/2022-01-09-aoc-24/[AoC 24, part 2: A proper solution] - Gary Verhaegen
+* https://blog.agical.se/en/posts/mixed-clojure-and-java/[How to mix Clojure and Java code in the same tools-deps project] - Peter Strömberg
+* https://joss.theoj.org/papers/10.21105/joss.03735[diman: A Clojure Package for Dimensional Analysis] - Lungsi Sharma
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/clojure/clojure[clojure] https://clojure.org/releases/devchangelog#v1.11.0-alpha4[1.11.0-alpha4] - Clojure programming language
+* https://github.com/clj-kondo/clj-kondo[clj-kondo] https://github.com/clj-kondo/clj-kondo/releases/tag/v2022.01.13[2022.01.13] - A linter for Clojure code that sparks joy
+* https://github.com/fulcrologic/fulcro-rad[fulcro-rad] 1.1.2 - Fulcro Rapid Application Development
+* https://github.com/scicloj/scicloj.ml[scicloj.ml] 0.1.3 - A Clojure machine learning library
+* https://github.com/CodeIntelligenceTesting/jazzer-clj[jazzer-clj] 0.1.0 - Clojure interface for Jazzer
+* https://github.com/kipz/deb-version-clj[deb-version-clj] 0.0.2 - Compare debian package versions in Clojure
+* https://github.com/babashka/pod-babashka-etaoin[pod-babashka-etaoin] 0.1.0 - Babashka pod wrapping Etaoin, a pure Clojure webdriver protocol implementation
+* https://github.com/exoscale/lingo[lingo] 1.0.0-alpha15 - spec explain improved
+* https://github.com/IGJoshua/coffi[coffi] 0.3.298 - A Foreign Function Interface in Clojure for JDK 17
+* https://github.com/jonase/eastwood[eastwood] 1.1.0 - Clojure lint tool
+* https://github.com/clojupedia/main[main]  - Community maintained hub for Clojure libraries and tools
+* https://github.com/ieugen/calcite-clj[calcite-clj]  - Calcite Clojure wrapper / integration
+* https://github.com/Flexiana/notion-to-md[notion-to-md] 0.1.11 - A tool for fetching Notion page trees, written in Clojure
+* https://plugins.jetbrains.com/plugin/18108-clojure-extras/[clojure-extras] 0.4.5 - Custom features added on top of Cursive for Clojure Lovers
+* https://github.com/fulcrologic/statecharts[statecharts] 1.0.0-alpha7 - A Statechart library for CLJ(S)
+* https://github.com/lambdaforge/datalog-parser[datalog-parser] 0.1.9 - Generic datalog parser compliant to datomic, datascript and datahike queries
+* https://github.com/quoll/cljs-math[cljs-math] 0.1.3 - A ClojureScript port of clojure.java.math
+* https://github.com/epiccastle/spire[spire] 0.1.0-alpha.16 - Pragmatic provisioning using clojure
+* https://github.com/EducatedAlmost/isogeny[isogeny]  - Isogeny makes static configuration dynamic
+* https://github.com/pedestal/pedestal[Pedestal] 0.5.10 - Pedestal server-side libraries

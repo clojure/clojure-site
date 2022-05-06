@@ -1,0 +1,70 @@
+= Clojure Deref (Feb 4, 2022)
+Alex Miller
+2022-02-04
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Highlights
+
+This week we released https://clojure.org/releases/devchangelog#v1.11.0-beta1[Clojure 1.11.0-beta1] which we consider feature complete for 1.11. From this point forward we are ramping down to a final release and if you have not yet tested any of the Clojure 1.11 alphas, we would greatly appreciate it if you tested your app/lib with beta1 and let us know if you find anything amiss at https://ask.clojure.org. Thanks!
+
+== Podcasts and videos
+
+* https://lispcast.com/my-feelings-about-static-vs-dynamic-typing/[My feelings about static vs dynamic typing] - Eric Normand
+* https://www.youtube.com/watch?v=lJxvKNjRdu8[Interactive Clojure tutorial] - OrgPad
+* https://www.youtube.com/watch?v=PTN_Ao4JQu0[Modelling with Probability by Daniel Slutsky] - re:Clojure 2021 workshop
+* https://www.youtube.com/watch?v=eL5xponczn8[Computing Derivatives and Automatic Differentiation by Tovieye Moses Ozi] - re:Clojure 2021 workshop
+* https://www.youtube.com/watch?v=xdXy2Rz5gKc[How to Talk with a Data Scientist by João Santiago] - re:Clojure 2021 workshop
+* https://www.youtube.com/watch?v=UUyDUljdfbo[The Devil's Interop by James J. Tolton] - re:Clojure 2021 workshop
+* https://www.youtube.com/watch?v=1sC71eb9Ox0[Structure and Interpretation of Clojure Transducers by Ben Sless] - re:Clojure 2021 workshop
+* https://www.youtube.com/watch?v=dmdJC2-8qy8[Wrangling Sequences with Injest by John Newman] - re:Clojure 2021 workshop
+* https://www.youtube.com/watch?v=X4FisyEg1zo[An Intro to Statistical Inference by Rohit Thadani] - re:Clojure 2021 workshop
+* https://www.youtube.com/watch?v=C3kwcAJWJmE[Visualizing Data with Hanami by Kira McLean] - re:Clojure 2021 workshop
+* https://www.youtube.com/watch?v=F7EEmM5M7co[LISP: The Ultimate Excel LAMBDA (by Bob Calco)] - London Clojurians
+* https://www.youtube.com/watch?v=sPP4LCpBic8[Want your Clojure code to go really Fast? Decompile it!] - CalvaTV
+* https://www.youtube.com/watch?v=tRPKSXullYs[Making a Prime Sieve (FROM SCRATCH) with the Creator of Calva!]
+
+== Blogs
+
+* https://vlaaad.github.io/reveal-vega-and-data-dsls[Reveal, Vega and data DSLs] - Vlad Protsenko
+* https://pfeodrippe.github.io/posts/pitoco.html[Pitoco] - Paulo Feodrippe
+* https://flexiana.com/2022/02/investigating-clojures-transducer-composition[Investigating Clojure’s transducer composition] - João Pedro
+* https://hippocanvas.com/posts/the%20isohomoiconic%20app.md[the isohomoiconic app]
+* https://www.loop-code-recur.io/simple-site-analytics-with-serverless-clojure/[Serverless site analytics with Clojure nbb and AWS] - Cyprien Pannier
+* https://mindaslab.github.io/programming/clojure/clojupyter/2022/02/04/getting-clojupyter-running.html[Getting Clojupyter running] - Karthikeyan A K
+* https://functional.works-hub.com/learn/debug-using-clojure-repl-98919[Debug Using Clojure Repl] - jaeyeon-jo-kr
+* https://cuddly-octo-palm-tree.com/posts/2022-01-30-opt-clj-3/[Notes on Optimizing Clojure Code: Example] - Gary Verhaegen
+* https://widdindustries.com/async-meet-laziness/[you Promise to be Lazy?] - Henry Widd
+* https://freshcodeit.com/blog/clojure-vs-python-developer-insights[Clojure vs Python: Differences and Perspectives] - Artem Barmin
+* https://practical.li/blog/posts/java-17-lts-for-clojure-development/[Java 17 JDK for Clojure development] - Practicalli
+* https://practical.li/blog/posts/code-snippets-for-clojure-lsp/[Code Snippets for Clojure LSP] - Practicalli
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/clojure/clojure[Clojure] https://clojure.org/releases/devchangelog#v1.11.0-beta1[1.11.0-beta1] - Clojure programming language
+* https://clojure.org/reference/deps_and_cli[Clojure CLI] https://clojure.org/releases/tools#v1.10.3.1075[1.10.3.1075]
+* https://github.com/cyppan/simple-site-analytics[simple-site-analytics]  - Simple site analytics with Clojure nbb running on AWS Lambda and API Gateway using the Serverless Framework
+* https://github.com/redstarssystems/libtemplate[libtemplate]  - Library project template for Clojure
+* https://github.com/nnichols/clojure-dependency-update-action[clojure-dependency-update-action] v4 - A simple GitHub Actions to create Pull Requests for outdated tools.deps dependencies
+* https://github.com/lambdaisland/uri[uri] 1.13.95 - A pure Clojure/ClojureScript URI library
+* https://github.com/holyjak/clj-tumblr-summarizer[clj-tumblr-summarizer]  - A tool / library that progressively backs up posts from a Tumblr.com micro-blog
+* https://github.com/babashka/nbb[nbb] 0.1.5 - Ad-hoc CLJS scripting on Node.js using SCI
+* https://github.com/eerohele/Tutkain[Tutkain] 0.12.0 - A Sublime Text package for interactive Clojure development
+* https://clojure-lsp.io/[clojure-lsp] 2022.02.01-16.53.14 - A Language Server for Clojure(script)
+* https://calva.io[Calva] 2.0.237 - Calva is an integrated REPL powered environment for enjoyable and productive Clojure and ClojureScript development in Visual Studio Code
+* https://github.com/IGJoshua/farolero[farolero] 1.4.1 - Thread-safe Common Lisp style conditions and restarts for Clojure(Script)
+* https://github.com/serefayar/ayatori[ayatori]  - Experimental LRA Coordinator written in Clojure
+* https://github.com/zikajk/bq2pg[bq2pg] 1.0.0 - Move data from Bigquery to Postgresql
+* https://github.com/lucywang000/shadow-test-utils[shadow-test-utils] 0.0.2 - Helpers for running shadow-cljs tests
+* https://github.com/lambdaisland/kaocha[kaocha] 1.62.993 - Full featured next gen Clojure test runner
+* https://github.com/phronmophobic/viscous[viscous]  - pprint that respects your space and time
+* https://github.com/yetanalytics/re-oidc[re-oidc] 0.0.1 - re-frame oidc-client-js wrapper
+* https://github.com/yetanalytics/pedestal-oidc[pedestal-oidc] 0.0.2 - Pedestal interceptor + utils for handling OIDC tokens & discovery
+* https://github.com/babashka/pod-babashka-buddy[pod-babashka-buddy] 0.1.0 - A pod around buddy core (Cryptographic Api for Clojure)
+* https://github.com/oliyh/martian[martian] 0.1.20 - The HTTP abstraction library for Clojure/script, supporting Swagger, Schema, re-frame and more
+* https://github.com/seancorfield/honeysql[honeysql] 2.2.861 - Turn Clojure data structures into SQL

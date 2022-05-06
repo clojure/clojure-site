@@ -1,0 +1,45 @@
+= Clojure Deref (Apr 29, 2022)
+Alex Miller
+2022-04-29
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Highlights
+
+Congrats to Clojure friends Reify Health on their https://blog.reifyhealth.com/reify-health-raises-millions-bridge-diversity-gap-clinical-trials[Series D funding] this week!
+
+== Podcasts and videos
+
+* https://cognitect.com/cognicast/169[Ed, Justin and Lindsey - Cognicast Episode 169] - Cognicast
+* https://www.youtube.com/watch?v=V1oTf-1EchU[Introducing Joyride - Use the Clojure REPL to script VS Code] - CalvaTV
+* https://soundcloud.com/clojurestream/tutkain-with-eero-helenius[E69 Tutkain with Eero Helenius] - ClojureStream Podcast
+* https://biffweb.com/p/demo-dev-in-prod/[Biff demo: developing in production] - Jacob O'Bryant
+* https://www.youtube.com/watch?v=DFzukK5-rpU[Clojure Web Development Evolved by Dmitri Sotnikov & Nik Peric] - London Clojurians
+
+== Blogs
+
+* https://blog.wsscode.com/clojure-gitlab-cache/[Caching Clojure deps on Gitlab] - Wilker Lucio
+* https://www.metosin.fi/blog/packaging-clojure/[Packaging Clojure for Production] - Joel Kaasinen
+* https://flexiana.com/2022/04/clojuredart-aim-your-darts-at-the-right-target[ClojureDart: Aim your darts at the right target!] - Enyert Vinas
+* https://ano.ee/blog/correcting-markdown-newlines[Correcting Markdown: Newlines] - Asko Nõmm
+* https://lambdaisland.com/blog/2022-04-25-making-lambda-island-free[Making Lambda Island Free] - Lambda Island
+* https://schmud.de/programs/2022-04-25-urls-into-meaningful-names.html[Turning URLs Into Meaningful Names Using Clojure] - David Schmudde
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/BetterThanTomorrow/joyride[joyride] 0.0.2 - Joyride VS Code with Clojure
+* https://clojure.org/reference/deps_and_cli[Clojure CLI] https://clojure.org/releases/tools#v1.11.1.1113[1.11.1.1113]
+* https://github.com/magnars/confair[confair]  - Confair is a configuration library for Clojure
+* https://github.com/scicloj/clay[clay] 1-alpha10 - A tiny Clojure tool for a dynamic workflow with some of the more serious visual tools
+* https://github.com/djblue/portal[portal] https://github.com/djblue/portal/releases/tag/0.24.0[0.24.0] - A clojure tool to navigate through your data
+* https://github.com/fulcrologic/fulcro[fulcro] 3.5.19 - A library for development of single-page full-stack web applications in clj/cljs
+* https://clojars.org/com.wsscode/pathom3-graphql[pathom3-graphql] 2022.04.24 - Pathom3 GraphQL
+* https://github.com/seancorfield/honeysql[honeysql] 2.2.891 - Turn Clojure data structures into SQL
+* https://github.com/KingMob/TrueGrit[TrueGrit] 1.0.7 - A data-driven, functionally-oriented, idiomatic Clojure library for using Resilience4j
+* https://github.com/fulcrologic/fulcro-rad-semantic-ui[fulcro-rad-semantic-ui] 1.2.9 - Semantic UI Rendering Plugin for RAD 
+* https://github.com/kevinmershon/copy-trader[copy-trader]  - An open-source framework to facilitate copy-trading

@@ -224,7 +224,7 @@ We can use Clojure's `read-string` to read a tagged literal (or use it directly)
 ----
 user=> (type #inst "2014-05-19T19:12:37.925-00:00")
 java.util.Date ;; this is host dependent
-(read-string "#inst \"2014-05-19T19:12:37.925-00:00\"")
+user=> (read-string "#inst \"2014-05-19T19:12:37.925-00:00\"")
 #inst "2014-05-19T19:12:37.925-00:00"
 ----
 
@@ -241,7 +241,7 @@ Note that while `#inst` and `#uuid` are available in edn, `#js` is not.
 
 == `%`, `%n`, `%&` - Anonymous function arguments
 
-`%` is an argument in an anonymous function `#(...)` as in `#(* % %)`.
+`%` is an argument in an anonymous function `pass:[#(...)]` as in `#(* % %)`.
 
 When an anonymous function is expanded, it becomes an `fn` form and `%` args are replaced with gensym'ed names
 (here we use arg1, etc for readability):
@@ -257,9 +257,13 @@ Anonymous function arity is determined based on the highest number `%` argument.
 
 [source,clojure]
 ----
+user=> (#(println %1 %2) "Hello " "Clojure")
+Hello Clojure ; takes 2 args
 user=> (macroexpand `#(println %1 %2))
 (fn* [arg1 arg2] (clojure.core/println arg1 arg2)) ; takes 2 args
 
+user=> (#(println %4) "Hello " "Clojure " ", Thank " "You!!")
+You!! ; takes 4 args, doesn't use first 3 args
 user=> (macroexpand `#(println %4))
 (fn* [arg1 arg2 arg3 arg4] (clojure.core/println arg4)) ; takes 4 args doesn't use 3
 ----
@@ -279,6 +283,8 @@ argument).
 
 [source,clojure]
 ----
+user=> (#(println %&) "Hello " "Clojure " ", Thank " "You!!")
+(Hello Clojure , Thank You!! ) ; takes n args
 user=> (macroexpand '#(println %&))
 (fn* [& rest__11#] (println rest__11#))
 ----
@@ -300,7 +306,7 @@ user=> (deref x)
 user=>
 ----
 `@` is used to get the current value of a reference. The above example uses
-`@` to get the current value of an <<xref/../../reference/atom#,atom>>, but `@` can
+`@` to get the current value of an <<xref/../../reference/atoms#,atom>>, but `@` can
 be applied to other things such as `future` s, `delay` s, `promises` s etc. to
 force computation and potentially block.
 

@@ -1,0 +1,74 @@
+= Clojure Deref (Nov 24, 2021)
+Alex Miller
+2021-11-24
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Highlights
+
+Welcome to a special mid-week Deref as we will be out in the US this week! But on that note, big thanks to the Clojure community for always be interesting, inventive, and caring. I'm thankful to be a part of it.
+
+Our big news this week is the release of Clojure https://clojure.org/releases/devchangelog#v1.11.0-alpha3[1.11.0-alpha3] which wraps up much of the work we've done in the last couple months. Probably the most interesting parts are the new things:
+
+* https://clojure.atlassian.net/browse/CLJ-2667[CLJ-2667] Add functions to parse a single long/double/uuid/boolean from a string
+** https://clojure.github.io/clojure/branch-master/clojure.core-api.html#clojure.core/parse-long[parse-long]
+** https://clojure.github.io/clojure/branch-master/clojure.core-api.html#clojure.core/parse-double[parse-double]
+** https://clojure.github.io/clojure/branch-master/clojure.core-api.html#clojure.core/parse-boolean[parse-boolean]
+** https://clojure.github.io/clojure/branch-master/clojure.core-api.html#clojure.core/parse-uuid[parse-uuid]
+* https://clojure.atlassian.net/browse/CLJ-2668[CLJ-2668] Add NaN? and infinite? predicates
+** https://clojure.github.io/clojure/branch-master/clojure.core-api.html#clojure.core/NaN?[NaN?]
+** https://clojure.github.io/clojure/branch-master/clojure.core-api.html#clojure.core/infinite?[infinite?]
+* https://clojure.atlassian.net/browse/CLJ-1925[CLJ-1925] Add random-uuid
+** https://clojure.github.io/clojure/branch-master/clojure.core-api.html#clojure.core/random-uuid[random-uuid]
+* https://clojure.atlassian.net/browse/CLJ-2664[CLJ-2664] Add clojure.java.math namespace, wrappers for java.lang.Math
+** https://clojure.github.io/clojure/branch-master/clojure.java.math-api.html[clojure.java.math] namespace
+
+If you have questions about these, I would request that you read the ticket first - we're trying to get thinking and background into the ticket descriptions and it's important context. We've already had a lot of feedback about clojure.java.math re cljs portability and higher-order use so probably more to come on that. If you want to discuss on Clojurians Slack, the #clojure-dev room is the best place.
+
+Docstring updates:
+
+* https://clojure.atlassian.net/browse/CLJ-2666[CLJ-2666] Make Clojure Java API javadoc text match the example
+* https://clojure.atlassian.net/browse/CLJ-1360[CLJ-1360] Update clojure.string/split docstring regarding trailing empty parts
+* https://clojure.atlassian.net/browse/CLJ-2249[CLJ-2249] Clarify clojure.core/get docstring regarding sets, strings, arrays, ILookup
+* https://clojure.atlassian.net/browse/CLJ-2488[CLJ-2488] Add definition to reify docstring
+
+Perf:
+
+* https://clojure.atlassian.net/browse/CLJ-1808[CLJ-1808] map-invert should use reduce-kv and transient
+
+Bug fix:
+
+* https://clojure.atlassian.net/browse/CLJ-2065[CLJ-2065] Support IKVReduce on SubVector
+
+And last but not least, we added support for optional trailing maps to kwarg functions in Clojure 1.11.0-alpha1 but had not yet worked through what this meant for spec. We've now released an update to spec.alpha (0.3.214) that is included as a dependency in this release. For the background on this, see https://clojure.atlassian.net/browse/CLJ-2606[CLJ-2606].
+
+Not to be be outshined, we also released an updated version of https://github.com/clojure/core.async[core.async] 1.5.640, which has several important bug fixes, particularly if you are using any of the alt variants, or something that uses alt indirectly like https://clojure.github.io/core.async/#clojure.core.async/mix[mix] or https://clojure.github.io/core.async/#clojure.core.async/merge[merge]. 
+
+== Blogs
+
+* https://simonelnahas.com/posts/clojure-startup[Clojure as a Competitive Advantage] - Simon El Nahas
+* http://blog.fogus.me/2021/11/19/thunks-a-place-to-think-through-ideas-still-forming/[Thunks — a place to think through ideas still forming] - Fogus
+* https://cuddly-octo-palm-tree.com/posts/2021-11-21-circular-clojure/[Circular Programming in Clojure] - Gary Verhaegen
+* https://ingesolvoll.github.io/posts/2021-11-21-deploying-to-clojars/[Deploying to clojars] - Inge Solvoll
+* http://hugoduncan.org/post/versions_in_the_time_of_git_dependencies.html[Versions in the Time of Git Dependencies] - Hugo Duncan
+* https://medium.com/geekculture/scraping-web-product-data-with-clojure-6594a86c2f00[Scraping web product data with Clojure] - Duane Bester
+* https://metaredux.com/posts/2021/11/24/an-update-on-cider-1-2.html[An Update on CIDER 1.2] - Bozhidar Batsov
+* https://lambdaisland.com/blog/2021-11-24-making-nrepl-cider-more-dynamic-2[Making nREPL and CIDER More Dynamic (part 2)] - Arne Brasseur
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/clj-easy/stub[stub] 0.1.1 - Library to generate stubs for other Clojure libraries
+* https://github.com/sicmutils/sicmutils[sicmutils] https://github.com/sicmutils/sicmutils/releases/tag/v0.20.0[0.20.0] - A port of the Scmutils computer algebra/mechanics system to Clojure
+* https://github.com/vlaaad/tweet-def[tweet-def]  - Tweet as a dependency
+* https://github.com/athos/sweet-array[sweet-array] 0.1.0 - Array manipulation library for Clojure with "sweet" array type notation and more safety by static types
+* https://github.com/clojure/spec.alpha[spec.alpha] 0.3.214 - Describe the structure of data and functions
+* https://github.com/Cyrik/cljs-macroexpand[cljs-macroexpand]  - clojurescript macroexpand-all macro with meta support
+* https://github.com/sultanov-team/secret-keeper[secret-keeper] https://github.com/sultanov-team/secret-keeper/tree/1.0.75[1.0.75] - A Clojure(Script) library for keeping your secrets under control
+* https://github.com/replikativ/datahike[datahike] https://github.com/replikativ/datahike/releases/tag/v.0.4.0[0.4.0] - A durable Datalog implementation adaptable for distribution
+* https://github.com/eerohele/Tutkain[Tutkain] https://github.com/eerohele/Tutkain/blob/6919e340a767c0b54bb8fe3629cdb205da9351f7/CHANGELOG.md#0110-alpha---2021-11-23[0.11.0 (alpha)] - A Sublime Text package for interactive Clojure development
+* https://github.com/xfthhxk/unminify[unminify]  - unminifies JS stacktrace errors

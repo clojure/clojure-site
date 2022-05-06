@@ -121,8 +121,8 @@ items as elements, or hash-based maps with those items as keys.
   section for more details.  _Recommendation:_ Convert
   non-Clojure collections to their Clojure immutable counterparts
   before including them in other Clojure data structures.
-* `hash` is not consistent with `=` for objects with class `VecSeq`,
-  returned from calls like `(seq (vector-of :int 0 1 2))` (see
+* Historical: `hash` was not consistent with `=` for objects with class `VecSeq`,
+  returned from calls like `(seq (vector-of :int 0 1 2))` until fixed in Clojure 1.10.2 (see
   https://clojure.atlassian.net/browse/CLJ-1364[CLJ-1364])
 
 == Introduction
@@ -686,7 +686,7 @@ the most relevant for how `=` and `hash` behave.
 * https://github.com/clj-commons/ordered[org.flatland/ordered] but note
   that it needs a change so that its custom ordered map data structure
   is not `=` to any Clojure record:
-  https://github.com/clj-commons/ordered/pull/34[PR #34]
+  https://github.com/clj-commons/ordered/pull/42[PR #42]
 
 == References
 

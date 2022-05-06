@@ -12,7 +12,6 @@ toc::[]
 == What tools do I need?
 
 Clojure is a https://clojure.org/about/dynamic[dynamic development environment] where you interact with your program while you write it, growing and adding to it while it's running. To work with Clojure you need an editor that supports evaluation from source files and structural editing (working with nested forms in addition to character editing).
-
 Install these first:
 
 * <<install_clojure#,Clojure>> - language, REPL (Read-Eval-Print-Loop), library support, and runner
@@ -68,6 +67,18 @@ There are many places to interact with other Clojure developers:
 * https://groups.google.com/group/clojure[Clojure mailing list] (official)
 
 == Other resources
+
+
+The `linux-install` script can be removed after installation.
+
+=== Installation on Windows
+
+An early release version of clj on Windows is available at https://github.com/clojure/tools.deps.alpha/wiki/clj-on-Windows[clj on Windows].
+Please provide feedback on https://ask.clojure.org[Ask Clojure] or Clojurians slack in #clj-on-windows.
+
+=== Other versions
+
+See the <<xref/../../releases/tools#,changelog>> for version history and the https://github.com/clojure/homebrew-tools[Clojure tap] for info on installing older versions or newer prereleases instead.
 
 * <<deps_and_cli#,Clojure CLI guide>>
 * <<repl/introduction#,REPL guide>>

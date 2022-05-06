@@ -14,7 +14,7 @@ New to Clojure? Head to the <<xref/../../guides/getting_started#,Getting Started
 These tools allow you to start a REPL for interactive use, download Clojure libraries (including Clojure itself), and run Clojure programs.
 ====
 
-== Stable Release: 1.10.2 (Jan 26, 2021)
+== Stable Release: 1.11.1 (Apr 5, 2022)
 
 Include the release in your project using the following coordinates:
 
@@ -22,22 +22,22 @@ deps.edn coordinate:
 
 [source,clojure]
 ----
-org.clojure/clojure {:mvn/version "1.10.2"}
+org.clojure/clojure {:mvn/version "1.11.1"}
 ----
 
 Leiningen dependency:
 
 [source,clojure]
 ----
-[org.clojure/clojure "1.10.2"]
+[org.clojure/clojure "1.11.1"]
 ----
 
 === Dependencies
 
-Clojure 1.10.2 depends on the following core libraries:
+Clojure 1.11.1 depends on the following core libraries:
 
- * `org.clojure/spec.alpha {:mvn/version "0.2.194"}`
- * `org.clojure/core.specs.alpha {:mvn/version "0.2.56"}`
+ * `org.clojure/spec.alpha {:mvn/version "0.3.218"}`
+ * `org.clojure/core.specs.alpha {:mvn/version "0.2.62"}`
 
 Including Clojure with a tool like `clj` or `Leiningen` will automatically include these libraries as transitive dependencies.
 
@@ -46,14 +46,12 @@ Including Clojure with a tool like `clj` or `Leiningen` will automatically inclu
 Clojure depends on Java and all Clojure code is compiled to Java 8 compatible bytecode (newer versions of Java can load this as well).
 
 * Minimum runtime dependency: Java 8
-* Supported: LTS (long term support) releases, currently Java 8 and Java 11
+* Supported: LTS (long term support) releases, currently Java 8, Java 11, Java 17
 * Others: likely work, but not officially supported
 
 === Changelog
 
 Read the https://github.com/clojure/clojure/blob/master/changes.md[Changelog] for detailed release information.
-
-== Development Release: currently none
 
 == Older Releases
 
@@ -61,7 +59,7 @@ Read the https://github.com/clojure/clojure/blob/master/changes.md[Changelog] fo
 
 == Clojure Source
 
-Clojure source code is hosted at https://github.com/clojure/clojure[github.com/clojure/clojure]. Builds of the very latest version of Clojure's master branch are available at https://oss.sonatype.org/content/repositories/snapshots/org/clojure/clojure/1.11.0-master-SNAPSHOT/[oss.sonatype.org].
+Clojure source code is hosted at https://github.com/clojure/clojure[github.com/clojure/clojure]. Builds of the very latest version of Clojure's master branch are available at https://oss.sonatype.org/content/repositories/snapshots/org/clojure/clojure/1.12.0-master-SNAPSHOT/[oss.sonatype.org].
 
 == Get Clojure
 
@@ -72,7 +70,7 @@ Specify the version of Clojure that you want in your deps.edn:
 [source,clojure]
 ----
 {:deps
- {org.clojure/clojure {:mvn/version "1.10.2"}}}
+ {org.clojure/clojure {:mvn/version "1.11.1"}}}
 ----
 
 === Via Leiningen
@@ -81,7 +79,7 @@ Modify the dependencies and repositories sections of your https://leiningen.org/
 [source,clojure]
 ----
 ; under dependencies, select the release of clojure that you want
-:dependencies [[org.clojure/clojure "1.10.2"]]
+:dependencies [[org.clojure/clojure "1.11.1"]]
 ----
 
 == Using Clojure SNAPSHOT releases

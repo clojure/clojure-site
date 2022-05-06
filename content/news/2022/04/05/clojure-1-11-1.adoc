@@ -1,0 +1,8 @@
+= Clojure 1.11.1 release
+Alex Miller
+2022-04-05
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Clojure 1.11.1 is a minor update to Clojure 1.11.0 and rolls back an unintended change in binary serialization of Clojure objects of type `clojure.lang.Keyword` and `clojure.lang.ArraySeq`. This issue was reported by early adopters of Clojure 1.11.0 - thanks to them! In Clojure 1.12 we will address this issue in a broader way for all serializable types in Clojure.

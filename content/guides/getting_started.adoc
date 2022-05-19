@@ -15,36 +15,29 @@ Clojure is a https://clojure.org/about/dynamic[dynamic development environment] 
 Install these first:
 
 * <<install_clojure#,Clojure>> - language, REPL (Read-Eval-Print-Loop), library support, and runner
-* Editor - choose one of:
-** <<aquamacs#,Aquamacs>> [Mac]
-** <<vscode-clover#,VS Code>> [Windows, Linux, Mac]
+* <<editors#,Editor>> - editor with interactive development support
 
 == How do I work with these tools?
 
-The details will depend on your operating system and editor but the essential flow is:
+The details will depend on your operating system and editor but the essential flow for all of them is the same:
 
 * Start the editor
 * Create or open a file
-* Connect a REPL
+* Connect a Clojure environment (often called a REPL, the Read Eval Print Loop)
 * Type Clojure code
-* Evaluate the code in the connected REPL
+* Evaluate the code in the connected environment
 * Repeat!
-
-Follow one of these tutorials:
-
-* Aquamacs [Mac]
-* VS Code
 
 Learn more:
 
-* Structural editing - working with code as forms, not text
-* Other editors - many editors can be used and provide additional functionality
+* <<repl/introduction,REPL>> - learn more about the REPL and how to use it interactively
+* Structural editing - working with code as forms, not text. The two most popular forms of this are Paredit and Parinfer, which relies more strongly on indentation.
 
 == How do I learn the language?
 
 There are many ways to learn the Clojure language. This tutorial covers the basics:
 
-<<learn/syntax#,Learn Clojure guide>>
+<<learn/clojure#,Learn Clojure guide>>
 
 If you'd like to work from a <<xref/../../community/books#,book>>, these are some excellent starting points:
 
@@ -52,7 +45,7 @@ image:https://images-na.ssl-images-amazon.com/images/I/51Bvd25CstL._SL160.jpg[Pr
 
 If you'd like to try some practice problems:
 
-* https://www.4clojure.com/[4Clojure] - a large set of Clojure practice problems
+* https://4clojure.oxal.org/[4Clojure] - a large set of Clojure practice problems
 * https://exercism.io/tracks/clojure[exercism Clojure track] - larger problems with mentor support
 
 Or check out <<xref/../../community/resources#_tutorials_and_learning_materials,other learning resources>> for more options...
@@ -64,22 +57,4 @@ There are many places to interact with other Clojure developers:
 * https://ask.clojure.org[Ask Clojure] [official] - Clojure Q&A and knowledgebase
 * https://clojurians.net[Clojurians Slack channel] - Clojure live chat, check out #beginners, #jobs, etc
 * https://clojureverse.org[Clojureverse] - Clojure forum
-* https://groups.google.com/group/clojure[Clojure mailing list] (official)
-
-== Other resources
-
-
-The `linux-install` script can be removed after installation.
-
-=== Installation on Windows
-
-An early release version of clj on Windows is available at https://github.com/clojure/tools.deps.alpha/wiki/clj-on-Windows[clj on Windows].
-Please provide feedback on https://ask.clojure.org[Ask Clojure] or Clojurians slack in #clj-on-windows.
-
-=== Other versions
-
-See the <<xref/../../releases/tools#,changelog>> for version history and the https://github.com/clojure/homebrew-tools[Clojure tap] for info on installing older versions or newer prereleases instead.
-
-* <<deps_and_cli#,Clojure CLI guide>>
-* <<repl/introduction#,REPL guide>>
-* <<xref/../../community/tools#,More Clojure editors>> - many Clojure editor options exist that add additional features
+* https://groups.google.com/group/clojure[Clojure mailing list] (official) - no longer very active

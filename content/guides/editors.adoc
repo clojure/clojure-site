@@ -1,0 +1,63 @@
+= Clojure Editors
+Alex Miller
+2022-05-19
+:type: guides
+:toc: macro
+:icons: font
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+toc::[]
+
+Clojure is an interactive language and you will only get the best Clojure experience by using an editor that supports code evaluation (via a connected REPL) and structural editing (manipulating code forms as if they are data, not text). Fortunately, there are many excellent Clojure editors that provide these features and many other programmer conveniences.
+
+Note that many of the editors described below are in active development. Links and resources here might become stale. We welcome https://ask.clojure.org[questions] and https://github.com/clojure/clojure-site/issues[issues]!
+
+== Emacs - most popular, most customizable
+
+https://www.gnu.org/software/emacs/[Emacs] is one of the oldest editors still in active use. As a platform extensible in its own variant of Lisp, options exist for almost anything you might want to do. As you may expect, great extensibility means configuring this tool to your liking can be a job in itself and for some Emacs is more of a lifestyle than an editor. That said, there are friendly starting points just for Clojure developers and you choose the rate at which you absorb the Emacs ecosystem.
+
+The main Emacs modes to be aware of are:
+* https://github.com/clojure-emacs/clojure-mode[clojure-mode], an Emacs major mode that provides font-lock (syntax highlighting), indentation, navigation and refactoring support for Clojure(Script)
+* https://cider.mx/[CIDER] extends Emacs with support for interactive programming in Clojure via cider-mode, an Emacs minor-mode that complements clojure-mode to provide interactive support.
+* https://github.com/clojure-emacs/inf-clojure[inf-clojure] - provides basic interaction with a Clojure subprocess (REPL), based on ideas from the popular inferior-lisp package
+
+Some places to start:
+
+* https://clojure-doc.org/articles/tutorials/emacs/[Emacs installation guide] - includes clojure-mode and CIDER
+* https://practical.li/spacemacs/install-spacemacs/[Practicalli guide to Spacemacs], a community driven Emacs configuration for Clojure - includes clojure-mode and CIDER
+* https://prelude.emacsredux.com/en/latest/[Prelude] - an Emacs configuration for Emacs beginners, not specific to Clojure, but includes Clojure support (clojure-mode, CIDER)
+* https://aquamacs.org/[Aquamacs] - Aquamacs is Emacs designed for the Mac native user in mind and is sufficient for a minimalist Clojure environment when paired with inf-clojure mode
+
+== IntelliJ - Clojure with a Java tilt
+
+https://www.jetbrains.com/idea/[IntelliJ IDEA] is one of the premiere "modern" IDEs with support for a wide variety of languages and tools. IntelliJ made its name as a sophisticated Java editor, leveraging a static analysis platform to provide great explorability and refactoring for large Java codebases. The IntelliJ IDEA Community Edition for JVM development is available as a https://www.jetbrains.com/idea/download/#section=mac[free download].
+
+Two important plugins are available to enable Clojure development on IntelliJ:
+* https://cursive-ide.com/[Cursive] - a full featured Clojure development environment
+* https://plugins.jetbrains.com/plugin/18108-clojure-extras/[clojure-extras] - integrates extras like inline evaluation results and linting via https://github.com/clj-kondo/clj-kondo[clj-kondo]
+
+Cursive is a good fit if you are already familiar with Java or expect to work with mixed Clojure/Java projects.
+
+== VS Code - rapidly evolving, beginner friendly
+
+https://code.visualstudio.com/[Visual Studio Code] is rapidly growing in use for a variety of languages, and Clojure is no exception. 
+
+The https://calva.io/[Calva] environment for interactive Clojure development uses a mix of static and dynamic analysis to provide a wide range of language support. Additionally, Calva has made extra efforts to be approachable to beginners with their https://calva.io/get-started-with-clojure/[Getting Started] experience, which is a zero-install version that runs in the browser. 
+
+== Vim - highly efficient text editing
+
+https://www.vim.org/[Vim] (or vi) is also an editor with a deep history, known for its ability to edit text quickly and efficiently. Clojure support exists with:
+
+* https://github.com/tpope/vim-fireplace[Fireplace] - Clojure REPL support 
+
+https://neovim.io/[Neovim] is an extension of Vim and has Clojure support with the following plugins:
+
+* https://liquidz.github.io/vim-iced/[vim-iced] - CIDER inspired
+* https://github.com/Olical/conjure[Conjure] - focus on interactive development
+
+Additionally, you may find that many of the environments above can use a subset of the Vim keybindings if desired.
+
+== Others
+
+Other environments exist but are less active and/or less used. See the <<xref/../../../community/tools#,Tools>> page for other ideas.

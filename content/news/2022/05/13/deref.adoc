@@ -1,0 +1,55 @@
+= Clojure Deref (May 13, 2022)
+Alex Miller
+2022-05-13
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Highlights
+
+The https://stackoverflow.blog/2022/05/11/stack-overflow-2022-developer-survey-is-open/[Stack Overflow 2022 Developer Survey] is open now. If you have a few minutes, completing this is really important to maintain's Clojure visibility. In the past Clojure has been noted in this survey for its comparatively high pay and experience levels compared to other languages. If you use one of the Clojure datalog databases, make sure to write that in in the Databases section too!
+
+== Podcasts and videos
+
+* https://clojurescriptpodcast.com/[E70 Scrintal with Furkan] - ClojureStream Podcast
+* https://anchor.fm/lostinlambduhhs/episodes/djblue-Open-the-Portal-with-Chris-B-e1ic0a7[:djblue (Open the Portal with Chris B)] - Lost in Lambduhhs
+* https://www.youtube.com/watch?v=CwpV_TNn-3s[The Clouncil Season 1, Episode 4]
+* https://www.youtube.com/watch?v=Ajg9mfYcaDs[STT e46: Learn Lisp!] - Steve Yegge
+* https://www.youtube.com/watch?v=PR4g-gPFSOw[Crossbeam digs in on Clojure]
+* https://www.youtube.com/watch?v=_0ho_8pg3Wk[Common Beginner Problems - Clojure] - Attila EGRI-NAGY
+* https://www.youtube.com/watch?v=SgV0o8MjZ_c[Zero code based metadata-driven data pipeline automation (by A. Mamun & A. Hossen)] - London Clojurians
+* https://www.youtube.com/watch?v=n5oIKh63iQo[Fizz-buzz (condp) Implementations in Clojure] - Coding Tech
+* https://www.youtube.com/watch?v=LqpJpVwtWKY[Clojure visual-tools meeting 6] - Sci Cloj
+
+== Blogs
+
+* https://ales.rocks/notes-on-virtual-threads-and-clojure[Notes on Virtual Threads and Clojure] - Aleš Najmann
+* https://andreyorst.gitlab.io/posts/2022-05-10-wave-function-collapse-algorithm-in-clojurescript/[Wave Function Collapse Algorithm in ClojureScript] - Andrey Listopadov
+* https://savo.rocks/posts/lets-make-overtone-sing-like-sonic-pi/[Let's Make Overtone Sing Like Sonic-Pi] - Savo Djuric
+* https://lambdaisland.com/blog/2022-05-09-clojure-setup-m1-mac-arm[Setting up M1 Mac for Clojure development] - Mitesh Shah
+* https://forms.gle/eDCpoGQCTcwU2chu6[Your Path in Clojure (survey)] - Freshcode
+* https://kozieiev.com/blog/packaging-clojure-into-jar-uberjar-with-tools-build/[Packaging Clojure projects into jars and uberjars with tools.build] - Volodymyr Kozieiev
+* https://blog.michielborkent.nl/babashka-survey-q1-2022.html[Babashka survey Q1 2022 results!] - Michiel Borkent
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://calva.io[Calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.273[2.0.273] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/BetterThanTomorrow/joyride[joyride] https://github.com/BetterThanTomorrow/joyride/releases/tag/v0.0.9[0.0.9] - Joyride VS Code with Clojure
+* https://github.com/uncomplicate/neanderthal[neanderthal] 0.44.0 - Fast Clojure Matrix Library
+* https://github.com/uncomplicate/clojurecuda[clojurecuda] 0.15.0 - Clojure library for CUDA development
+* https://github.com/fulcrologic/fulcro[fulcro] 3.5.20 - A library for development of single-page full-stack web applications in clj/cljs
+* https://github.com/fulcrologic/fulcro-rad[fulcro-rad] 1.1.11 - Fulcro Rapid Application Development
+* https://github.com/fulcrologic/fulcro-rad-datomic[fulcro-rad-datomic] 1.2.0-RC1 - Datomic database support plugin for Fulcro RAD
+* https://github.com/gethop-dev/user-manager.cognito[user-manager.cognito] 0.1.0 - A library for interacting with AWS Cognito User Pools API which optionally provides Integrant initialization keys for Duct Framework
+* https://github.com/clojure/tools.namespace[tools.namespace] 1.3.0 - Tools for managing namespaces in Clojure
+* https://github.com/cognitect-labs/test-runner[test-runner] 0.5.1 - A small library for discovering and running tests in projects
+* https://github.com/clojure/tools.build[tools.build] 0.8.2 - Clojure builds as Clojure programs
+* https://github.com/wardle/hermes[hermes] 0.12.640 - Hermes - terminology tools to support SNOMED CT, cross-maps, inference, fast full-text search, autocompletion, compositional grammar and the expression constraint language
+* https://github.com/ilevd/compile-time[compile-time]  - Run Clojure function or forms in compile time
+* https://github.com/practicalli/spacemacs.d[spacemacs.d]  - My configuration for spacemacs
+* https://github.com/fulcrologic/semantic-ui-wrapper[semantic-ui-wrapper] 2.0.2 - Fulcro 3 wrappers of React Semantic UI Controls
+* https://github.com/juji-io/datalevin[datalevin] 0.6.9 - A simple, fast and versatile Datalog database

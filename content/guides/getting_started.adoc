@@ -21,10 +21,9 @@ Install these first:
 
 The details will depend on your operating system and editor but the essential flow for all of them is the same:
 
-* Start the editor
 * Create or open a file
 * Connect a Clojure environment (often called a REPL, the Read Eval Print Loop)
-* Type Clojure code
+* Write Clojure code
 * Evaluate the code in the connected environment
 * Repeat!
 

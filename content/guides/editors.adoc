@@ -18,6 +18,7 @@ Note that many of the editors described below are in active development. Links a
 https://www.gnu.org/software/emacs/[Emacs] is one of the oldest editors still in active use. As a platform extensible in its own variant of Lisp, options exist for almost anything you might want to do. As you may expect, great extensibility means configuring this tool to your liking can be a job in itself and for some Emacs is more of a lifestyle than an editor. That said, there are friendly starting points just for Clojure developers and you choose the rate at which you absorb the Emacs ecosystem.
 
 The main Emacs modes to be aware of are:
+
 * https://github.com/clojure-emacs/clojure-mode[clojure-mode], an Emacs major mode that provides font-lock (syntax highlighting), indentation, navigation and refactoring support for Clojure(Script)
 * https://cider.mx/[CIDER] extends Emacs with support for interactive programming in Clojure via cider-mode, an Emacs minor-mode that complements clojure-mode to provide interactive support.
 * https://github.com/clojure-emacs/inf-clojure[inf-clojure] - provides basic interaction with a Clojure subprocess (REPL), based on ideas from the popular inferior-lisp package
@@ -34,6 +35,7 @@ Some places to start:
 https://www.jetbrains.com/idea/[IntelliJ IDEA] is one of the premiere "modern" IDEs with support for a wide variety of languages and tools. IntelliJ made its name as a sophisticated Java editor, leveraging a static analysis platform to provide great explorability and refactoring for large Java codebases. The IntelliJ IDEA Community Edition for JVM development is available as a https://www.jetbrains.com/idea/download/#section=mac[free download].
 
 Two important plugins are available to enable Clojure development on IntelliJ:
+
 * https://cursive-ide.com/[Cursive] - a full featured Clojure development environment
 * https://plugins.jetbrains.com/plugin/18108-clojure-extras/[clojure-extras] - integrates extras like inline evaluation results and linting via https://github.com/clj-kondo/clj-kondo[clj-kondo]
 

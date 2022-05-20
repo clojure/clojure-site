@@ -11,20 +11,21 @@ toc::[]
 
 == What tools do I need?
 
-Clojure is a https://clojure.org/about/dynamic[dynamic development environment] where you interact with your program while you write it, growing and adding to it while it's running. To work with Clojure you need an editor that supports evaluation from source files and structural editing (working with nested forms in addition to character editing).
+Clojure is a https://clojure.org/about/dynamic[dynamic development environment] where you interact with your program while you write it, growing and adding to it while it's running. To work with Clojure you need an editor that supports evaluation in source files and structural editing (working with nested forms in addition to character editing).
+
 Install these first:
 
-* <<install_clojure#,Clojure>> - language, REPL (Read-Eval-Print-Loop), library support, and runner
-* <<editors#,Editor>> - editor with interactive development support
+* <<install_clojure#,Clojure CLI>> provides the language, a REPL (Read Eval Print Loop), library support, and program runner
+* <<editors#,Editor>> with interactive development support
 
 == How do I work with these tools?
 
 The details will depend on your operating system and editor but the essential flow for all of them is the same:
 
 * Create or open a file
-* Connect a Clojure environment (often called a REPL, the Read Eval Print Loop)
-* Write Clojure code
-* Evaluate the code in the connected environment
+* Connect a Clojure environment (aka the REPL)
+* Write Clojure code in your editor
+* Evaluate the code in your editor using the connected environment
 * Repeat!
 
 Learn more:
@@ -53,7 +54,6 @@ Or check out <<xref/../../community/resources#_tutorials_and_learning_materials,
 
 There are many places to interact with other Clojure developers:
 
-* https://ask.clojure.org[Ask Clojure] [official] - Clojure Q&A and knowledgebase
+* https://ask.clojure.org[Ask Clojure] [official] - Clojure Q&A and knowledge base
 * https://clojurians.net[Clojurians Slack channel] - Clojure live chat, check out #beginners, #jobs, etc
 * https://clojureverse.org[Clojureverse] - Clojure forum
-* https://groups.google.com/group/clojure[Clojure mailing list] (official) - no longer very active

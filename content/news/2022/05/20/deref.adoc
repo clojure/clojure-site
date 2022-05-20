@@ -32,6 +32,7 @@ New releases and tools this week:
 * https://github.com/juji-io/symspell-clj[symspell-clj] 0.4.3 - SymSpell spell checker in Clojure
 * https://github.com/chr15m/create-sitefox-nbb[create-sitefox-nbb] 0.0.7 - Get a ClojureScript + sitefox + nbb server with one command
 * https://github.com/strojure/integrant-async[integrant-async]  - Utility library for the integrant to init/halt system keys in parallel
+* https://calva.io[Calva] 2.0.275 - Clojure & ClojureScript Interactive Programming for VS Code
 * https://github.com/BetterThanTomorrow/joyride[joyride] 0.0.12 - Joyride VS Code with Clojure
 * https://github.com/wilkerlucio/pathom3[pathom3] 2022.05.19-alpha - Logic programming via semantic attributes
 * https://github.com/lazy-cat-io/tenet[tenet] 1.0.67 - A Clojure(Script) library, which helps to create explicit and understandable results to unify and simplify the data flow
@@ -39,6 +40,5 @@ New releases and tools this week:
 * https://github.com/chr15m/sitefox-payments[sitefox-payments]  - Stripe subscriptions for Sitefox sites
 * https://github.com/babashka/scittle[scittle] 0.2.8 - The Small Clojure Interpreter exposed for usage in browser script tags
 * https://github.com/xtdb/xtdb[xtdb] https://github.com/xtdb/xtdb/releases/tag/1.21.0[1.21.0] - General-purpose bitemporal database for SQL, Datalog & graph queries
-* http://gitlab.com/mauricioszabo/spock[http://gitlab.com/mauricioszabo/spock]  - Wrappers of SWI and TuProlog in Clojure
-* https://calva.io[https://calva.io] 2.0.275 - Clojure & ClojureScript Interactive Programming for VS Code
+* https://gitlab.com/mauricioszabo/spock[spock]  - Wrappers of SWI and TuProlog in Clojure
 * https://github.com/imrekoszo/polylith-kaocha[polylith-kaocha]  - Kaocha-based test runner for Polylith

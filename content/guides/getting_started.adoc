@@ -30,7 +30,7 @@ The details will depend on your operating system and editor but the essential fl
 Learn more:
 
 * <<repl/introduction,REPL>> - learn more about the REPL and how to use it interactively
-* Structural editing - working with code as forms, not text. The two most popular forms of this are Paredit and Parinfer, which relies more strongly on indentation.
+* <<structural_editing,Structural editing>> - working with code as forms, not text
 
 == How do I learn the language?
 

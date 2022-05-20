@@ -1,0 +1,44 @@
+= Clojure Deref (May 20, 2022)
+Alex Miller
+2022-05-20
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Highlights
+
+ClojureScript had a https://clojurescript.org/news/2022-05-13-release[major release] this week, now version 1.11.54, which updates ClojureScript to match parity with Clojure 1.11 support (new math namespace and other new functions, etc), and also resolves a long-standing issue with how ClojureScript vendored dependencies that could cause dependency conflicts.
+
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=utmrSswhhn0[Meetup: Collaborative Learning - Kit Framework] - Los Angeles Clojure Users Group
+* https://www.youtube.com/watch?v=mDDQ7UTnpto[Building Re-frame | 03 - re-frame v0.2.0] - Engineering with V
+
+== Blogs
+
+* https://practical.li/blog/posts/adopt-FreeDesktop.org-XDG-standard-for-configuration-files/[Adopting FreeDesktop.org XDG standard for development tools] - Practicalli
+* https://tonsky.me/blog/network-eval/[Ideas for Clojure Network Eval API] - Nikita Prokopov
+* https://blog.janetacarr.com/clojure-inline-explained/[wtf is Clojure inlining anyway] - Janet A. Carr
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/strojure/fitter[fitter]  - System component management library for Clojure
+* https://github.com/HealthSamurai/prometheus.clj[prometheus.clj]  - Pure clojure prometheus library
+* https://github.com/bowbahdoe/microhttp-ring-adapter[microhttp-ring-adapter] 0.0.1 - Ring Adapter for microhttp
+* https://github.com/juji-io/symspell-clj[symspell-clj] 0.4.3 - SymSpell spell checker in Clojure
+* https://github.com/chr15m/create-sitefox-nbb[create-sitefox-nbb] 0.0.7 - Get a ClojureScript + sitefox + nbb server with one command
+* https://github.com/strojure/integrant-async[integrant-async]  - Utility library for the integrant to init/halt system keys in parallel
+* https://github.com/BetterThanTomorrow/joyride[joyride] 0.0.12 - Joyride VS Code with Clojure
+* https://github.com/wilkerlucio/pathom3[pathom3] 2022.05.19-alpha - Logic programming via semantic attributes
+* https://github.com/lazy-cat-io/tenet[tenet] 1.0.67 - A Clojure(Script) library, which helps to create explicit and understandable results to unify and simplify the data flow
+* https://github.com/fulcrologic/fulcro-rad[fulcro-rad] 1.2.0 - Fulcro Rapid Application Development
+* https://github.com/chr15m/sitefox-payments[sitefox-payments]  - Stripe subscriptions for Sitefox sites
+* https://github.com/babashka/scittle[scittle] 0.2.8 - The Small Clojure Interpreter exposed for usage in browser script tags
+* https://github.com/xtdb/xtdb[xtdb] https://github.com/xtdb/xtdb/releases/tag/1.21.0[1.21.0] - General-purpose bitemporal database for SQL, Datalog & graph queries
+* http://gitlab.com/mauricioszabo/spock[http://gitlab.com/mauricioszabo/spock]  - Wrappers of SWI and TuProlog in Clojure
+* https://calva.io[https://calva.io] 2.0.275 - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/imrekoszo/polylith-kaocha[polylith-kaocha]  - Kaocha-based test runner for Polylith

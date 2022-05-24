@@ -1,4 +1,4 @@
-= Welcome to Clojure!
+= Getting Started
 Alex Miller
 2016-01-14
 :type: guides
@@ -8,6 +8,8 @@ Alex Miller
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 toc::[]
+
+Welcome to Clojure!
 
 == What tools do I need?
 
@@ -30,14 +32,14 @@ The details will depend on your operating system and editor but the essential fl
 
 Learn more:
 
-* <<repl/introduction,REPL>> - learn more about the REPL and how to use it interactively
-* <<structural_editing,Structural editing>> - working with code as forms, not text
+* <<repl/introduction#,REPL>> - learn more about the REPL and how to use it interactively
+* <<structural_editing#,Structural editing>> - working with code as forms, not text
 
 == How do I learn the language?
 
 There are many ways to learn the Clojure language. This tutorial covers the basics:
 
-<<learn/clojure#,Learn Clojure guide>>
+* <<learn/clojure#,Learn Clojure guide>>
 
 If you'd like to work from a <<xref/../../community/books#,book>>, these are some excellent starting points:
 
@@ -48,7 +50,9 @@ If you'd like to try some practice problems:
 * https://4clojure.oxal.org/[4Clojure] - a large set of Clojure practice problems
 * https://exercism.io/tracks/clojure[exercism Clojure track] - larger problems with mentor support
 
-Or check out <<xref/../../community/resources#_tutorials_and_learning_materials,other learning resources>> for more options...
+Also check out:
+
+* <<xref/../../community/resources#_tutorials_and_learning_materials,Other learning resources>> for more options...
 
 == Where can I ask questions?
 

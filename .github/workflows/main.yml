@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-  worfklow_dispatch:
+  workflow_dispatch:
 
 jobs:
   build:

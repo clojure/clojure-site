@@ -10,6 +10,5 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@v3
     - name: Trigger publish
-        run: curl -X POST -H "Authorization:${{ secrets.TRIGGER_TOKEN }}" -H "Accept:application/vnd.github.v3+json" https://api.github.com/repos/clojure/clojure-org-style/dispatches --data '{"event_type": "publish"}'
+      run: curl -X POST -H "Authorization:${{ secrets.TRIGGER_TOKEN }}" -H "Accept:application/vnd.github.v3+json" --data '{"event_type": "publish"}' https://api.github.com/repos/clojure/clojure-org-style/dispatches

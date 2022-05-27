@@ -10,4 +10,4 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Trigger publish
-      run: curl -XPOST -u "${{ secrets.GIT_CREDENTIALS }}" -H "Accept:application/vnd.github" -H "Content-Type:application/json" https://api.github.com/repos/clojure/clojure-org-style/dispatches
+      run: curl -XPOST -u "${{ secrets.TRIGGER_TOKEN }}" -H "Accept:application/vnd.github.v3+json" -H "Content-Type:application/json" https://api.github.com/repos/clojure/clojure-org-style/dispatches

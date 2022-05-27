@@ -1,0 +1,53 @@
+= Clojure Deref (May 27, 2022)
+Alex Miller
+2022-05-27
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Podcasts and videos
+
+* https://soundcloud.com/defn-771544745/84-debbie-and-wilker-lucio[#84 - Debbie and Wilker Lúcio] - defn podcast
+* https://soundcloud.com/clojurestream/nbb-with-michiel-borkent[E71 nbb with Michiel Borkent] - ClojureStream Podcast
+* https://www.youtube.com/watch?v=AvtSFWT5rHs[Clojure Transducers: optimizing my submission to Steve Yegge's farmer/dog/chicken/grain challenge] - Fred Overflow
+* https://anchor.fm/lostinlambduhhs/episodes/ray-mcdermott-Has-birthed--a-repl-acement-e1iuoom[:ray-mcdermott (Has birthed, a repl-acement??)] - Lost in Lambduhhs
+
+== Blogs
+
+* https://thenewstack.io/nasa-programmer-remembers-debugging-lisp-in-deep-space/[NASA Programmer Remembers Debugging Lisp in Deep Space] - David Cassel
+* https://journal.artfuldev.com/implementing-a-custom-collection-type-in-clojure-the-leftist-heap-a-persistent-priority-queue-2917b20a069[Implementing a custom collection type in clojure — the leftist heap, a persistent priority queue] - Sudarsan Balaji
+* https://clojure-diary.gitlab.io/2022/05/22/why-clojure.html[Why Clojure?] - Karthikeyan A K
+* https://blog.janetacarr.com/thoughts-on-clojurescript-and-bigdecimal/[Thoughts on Clojurescipt and BigDecimal] - Janet A. Carr
+* https://clojure-diary.gitlab.io/2022/05/27/the-books-i-am-reading-to-learn-clojure.html[The books I am reading to learn Clojure] - Karthikeyan A K
+* https://getclojure.org/[https://getclojure.org]
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/ivarref/gen-fn[gen-fn]  - Generate Datomic function literals from regular Clojure namespaces. On-prem.
+* https://github.com/msolli/proletarian[proletarian] 1.0.68-alpha - A durable job queuing and worker system for Clojure backed by PostgreSQL
+* https://github.com/matterandvoid-space/subscriptions[subscriptions]  - A subscriptions library over a source of data (forked + extracted from re-frame)
+* https://calva.io[Calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.277[2.0.277] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://clojure-lsp.io/[clojure-lsp] 2022.05.23-13.18.11 - A Language Server for Clojure(script)
+* https://github.com/clj-kondo/clj-kondo[clj-kondo] https://github.com/clj-kondo/clj-kondo/blob/master/CHANGELOG.md[2022.05.27] - A Clojure linter that sparks joy!
+* https://github.com/clojure-emacs/cider[cider] https://github.com/clojure-emacs/cider/releases/tag/v1.4.1[1.4.1] - The Clojure Interactive Development Environment that Rocks for Emacs
+* https://github.com/liquidz/build.edn[build.edn]  - Make your Clojure library build process easy
+* https://github.com/babashka/process[process] 0.1.2 - Shell out in Clojure with simplicity and ease
+* https://github.com/eighttrigrams/defn-over-http[defn-over-http]  - Allows for Clojure backend functions to be called by ClojureScript frontend code
+* https://github.com/re-path/studio[studio]  - Scalable Vector Graphics Manipulation
+* https://github.com/RokLenarcic/memento[memento] 1.0.37 - Clojure Memoization project
+* https://github.com/KingMob/manifold[manifold] 0.2.4 - A compatibility layer for event-driven abstractions
+* https://github.com/fulcrologic/fulcro-rad-datomic[fulcro-rad-datomic] 1.2.0 - Datomic database support plugin for Fulcro RAD
+* https://github.com/fulcrologic/fulcro-rad[fulcro-rad] 1.2.1 - Fulcro Rapid Application Development
+* https://github.com/fulcrologic/fulcro-rad-semantic-ui[fulcro-rad-semantic-ui] 1.2.10 - Semantic UI Rendering Plugin for RAD
+* https://github.com/steffan-westcott/clj-otel[clj-otel] 0.1.3 - An idiomatic Clojure API for adding telemetry to your libraries and applications using OpenTelemetry
+* https://github.com/juji-io/datalevin[datalevin] 0.6.13 - A simple, fast and versatile Datalog database
+* https://github.com/ertugrulcetin/herfi[herfi]  - 3D multiplayer game prototype written in Clojure and ClojureScript
+* https://github.com/clj-commons/byte-streams[byte-streams] https://github.com/clj-commons/byte-streams/blob/master/CHANGELOG.adoc[0.3.1] - A Rosetta stone for JVM byte representations
+* https://github.com/seancorfield/usermanager-example[usermanager-example]  - A little demo web app in Clojure, using Component, Ring, Compojure, Selmer (and a database)
+* https://github.com/NoahTheDuke/coc-clojure[coc-clojure] 0.0.6 - coc.nvim plugin for clojure-lsp
+* https://github.com/seancorfield/vscode-calva-setup[vscode-calva-setup]  - My VS Code / Calva / Portal setup
+* https://github.com/lazy-cat-io/tenet[tenet] 1.0.67 - A Clojure(Script) library, which helps to create explicit and understandable results to unify and simplify the data flow

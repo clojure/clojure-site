@@ -1,3 +1,0 @@
-#!/bin/bash
-
-curl -XPOST -H "Accept: application/vnd.github.everest-preview+json" -H "Content-Type: application/json" -H "Authorization: token $TOKEN" https://api.github.com/repos/cognitect/clojure-org-style/dispatches --data '{"event_type": "publish"}'

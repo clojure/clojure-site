@@ -11,7 +11,5 @@ jobs:
     
     steps:
     - uses: actions/checkout@v3
-    - name: Auth
-      run: gh auth login --with-token ${{ secrets.TRIGGER_TOKEN }}
     - name: Trigger publish
-      run: gh workflow run main.yml -R clojure/clojure-org-style --ref master
+      run: curl -X POST -H "Authorization:${{ secrets.TRIGGER_TOKEN }}" -H "Accept:application/vnd.github.v3+json" https://api.github.com/repos/clojure/clojure-org-style/dispatches --data '{"event_type": "publish"}'

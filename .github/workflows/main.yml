@@ -11,5 +11,7 @@ jobs:
     
     steps:
     - uses: actions/checkout@v3
+    - name: Auth
+      run: gh auth login --with-token ${{ secrets.TRIGGER_TOKEN }}
     - name: Trigger publish
       run: gh workflow run main.yml -R clojure/clojure-org-style --ref master

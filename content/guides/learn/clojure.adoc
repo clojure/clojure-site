@@ -14,6 +14,35 @@ Welcome to Clojure!
 
 This guide is a gentle introduction to the basics of Clojure and links out to other references and resources if you want more detail. These pages are intended to be read in order and may build upon material from prior pages. Each page has a few exercises provided at the bottom of the page.
 
+As you work through this guide, we recommend that you test the concepts presented in a REPL. One of the best ways to learn a new programming language is to just try things out. You can use an link:https://tryclojure.org/[online version of the Clojure REPL,role=external,window=_blank] or, if you have Clojure installed, start a REPL in your terminal using the `clj` command.
+
+Before you start exploring Clojure's <<syntax#,Syntax>> let's create two simple versions of the traditional "Hello World" program. For our first version, we'll use the `println` function with one argument: "Hello World".
+
+[source,clojure-repl]
+----
+user=> (println "Hello World")
+Hello World
+nil
+----
+
+Let's make our second version print a custom message. You can use `<<functions#_defn_vs_fn,defn>>` to define a function. Below we define a function called "hello-world" that takes one argument called "name".
+
+[source,clojure]
+----
+(defn hello-world [name]
+  "Says Hello, Name"
+  (println "Hello" name))
+----
+
+Now that our function is defined, we can call it.
+
+[source,clojure-repl]
+----
+user=> (hello-world "Clojure")
+Hello Clojure
+nil
+----
+
 == Contents
 
 * <<syntax#,Syntax>>

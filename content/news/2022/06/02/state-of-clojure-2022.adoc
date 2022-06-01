@@ -1,0 +1,122 @@
+= State of Clojure 2022 Results
+Robert Randolph
+2022-06-02
+:jbake-type: post
+Notes
+
+
+With the introduction of https://clojure.org/news/2021/06/04/deref[Deref (the Clojure weekly news blog)] almost 1 year ago, the growth of the Clojure community has become readily evident in the periods between State of Clojure Surveys. The State of Clojure Survey highlights the effect of that growth:
+
+* Clojure continues to strengthen its position as a language for link:#_clojure_for_work[established companies and young companies] alike.
+* Clojure users link:#_clojure_with_others[support each other] and work to strengthen the community
+* The Clojure ecosystem continues to link:#_working_with_clojure[increase the leverage] of Clojure users.
+
+To highlight the growth of Clojure, this year’s results summary will review this years results, and changes that have taken place in the Clojure ecosystem for the last 5 years 
+
+== Clojure for Work
+
+2021 extended the global challenges of the previous year, yet Clojure and its ecosystem moves ever forward. Nubank continues to increase its https://github.com/orgs/nubank/sponsoring[sponsorship of the Clojure community], and the number of people transitioning to using Clojure at work grows.
+
+image::/images/content/news/2022-06-02/place-of-use.svg[Where Clojure users are using clojure over the last 5 years]
+
+As the number of people using Clojure at work continues to grow, the enterprise and commercial domains of use also increase: 
+
+image::/images/content/news/2022-06-02/work-domains.svg[Work domains where Clojure has been used over the last 5 year]
+
+The size of organizations employing Clojure users is also increasing year by year:
+
+image::/images/content/news/2022-06-02/organization-size.svg[Size of organization where Clojure has been used over the last 5 years]
+
+The effect of Nubank's scale of Clojure employment is in effect for the largest of org sizes, however organizations with between 101-1000 Clojure developers has grown since 2020.
+
+== Clojure with others
+
+While the opportunities for in-person contact have continued to be rare, Clojure users have taken to the internet to create online conferences and meetups:
+
+- https://www.reclojure.org[re:clojure]
+- https://clojured.de[clojureD]
+- https://www.meetup.com/London-Clojurians/?_cookie-check=T1FKEp4fLPF_PuP4[London Clojurians]
+- https://scicloj.github.io[SciCloj]
+- https://theclouncil.com[clouncil]
+
+The increase in online interactions has led Clojure users to spend more time helping others, https://clojure.org/dev/creating_tickets[contributing to tickets], documentation, participating on https://ask.clojure.org[ask.clojure.org] among other forms of interaction.
+
+
+image::/images/content/news/2022-06-02/ecosystem-involvement.svg[Where in the ecosystem are Clojure users contributing]
+
+=== Quotes
+
+* "Everyone I've noticed just seems so damn nice."
+* "Very nice and well behaved. Usually made of experienced developper with background / interest in software craftsmanship and developing robust and quality software"
+* "Everyone is ALWAYS nice to you. ALWAYS, no matter how dumb your question or mistake might seem."
+* "It's very active (on Slack and Lambda Island discord), and people are always helpful."
+* "People are helpful, friendly. They respect each other. They love the language."
+
+== Working with Clojure
+
+The stability of Clojure and the Java ecosystem continues to lead users to adopt newer versions of Clojure and the JVM. The latest version of Clojure (1.11) has a 41% adoption rate and Java 17+ shows a 49% adoption rate among Clojure users.
+
+image::/images/content/news/2022-06-02/java-version.svg[Java version used with Clojure over the last 5 years]
+
+The https://clojure.org/reference/deps_and_cli[Clojure CLI and deps.edn] ecosystem continues to be extended by the community:
+
+image::/images/content/news/2022-06-02/what-tool.svg[What tool do Clojure users use to download their dependencies over the last 5 years]
+
+https://babashka.org[Babashka], a Clojure scripting runtime (the dark blue pentagon on the right), is new to the list this year with 12% of the respondents starting their app using babashka.
+
+image::/images/content/news/2022-06-02/start-app.svg[How do Clojure users start their production app over the last 5 years]
+
+https://code.visualstudio.com[VS Code] use with https://calva.io[Calva] has continued to grow with its integration of https://clojure-lsp.io[clojure-lsp] and https://github.com/BetterThanTomorrow/joyride[joyride]. Editors which support https://microsoft.github.io/language-server-protocol/[LSP], or have an LSP package, are continuing to see improvements in static analysis due to improvements in clojure-lsp.
+
+image::/images/content/news/2022-06-02/primary-environment.svg[Primary Clojure development environment over the last 5 years]
+
+https://github.com/thheller/shadow-cljs[shadow-cljs] continues to rise among CLJS users:
+
+image::/images/content/news/2022-06-02/build-tools.svg[CLJS build tools over the last 5 years]
+
+The programming language which users have come from has been relatively stable. Javascript and Python continue to leapfrog each other for the second spot. (see full results here)
+
+== The Clojure Ecosystem
+
+Clojure would not be what it is without the contributions of its community. Here’s a small selection of the shoutouts the community gave to the community.
+
+* “Daniel Slutsky. He reached out to me when I tried to get my foot in the Clojure door and is a wonderful person.”
+* “The Functional Programming with Clojure podcast. Those guys are awesome. Also Sean Corfield - I've learned so much from his discussions.”
+* “olical (conjure), jeaye (orchestra), metosin (malli), day8 (re-frame), technomancy (lein)“
+* “ I really appreciate Jacek Schae's courses for learning Reitit, Reagent, and Re-frame. If these had been available when I was first learning Clojure, I'm sure I would have stuck with it longer.”
+* “... Sam Aaron - work on Overtone + tutorials”
+* “All the people out there who write/vlog about their experience with Clojure. LVH, Tyler Hobbs, Stuart Sierra, Rich Hickey.”
+* “... Daniel Compton, the NuBank team (go Cavalcanti), and the guys on Zulip doing all the machine learning stuff, Dragan Djuric”
+* “... All contributors to editor tooling (personally using Calva).”
+* “I really like the work of James Reeve and the way he maintains his libraries.”
+* “That dude who wrote magit and many others is a clojurian.”
+* “I appreciate borkdude (Michiel Borkent) for his prolific contribution to Clojure, Bozhidar Batsov (bbatsov) for CIDER and Martin Kavalar for his work on Clojure notebook just to name a few”
+* “The Clojure community inside my company.”
+* “David Chelimsky because always is trying to help to any nubanker”
+* “... Tony Kay for Fulcro - Wilker Lucio for Pathom - Thomas Heller for shadow-cljs”
+* “Alan Dipert, for his videos on hoplon.“
+* “Eric Normand for his podcast and talks”
+* “Kyle Kingsbury ("Aphyr")'s Clojure from the Ground Up is a resource I revisit and learn new, subtle things…”
+* “Chris Houser (Chouser) - He does a great job with leading internal learning at our company. “
+* “Daniel Higginbothan, for his wit and insight Joshua Suskalo, for his stewardship of the community Elena Machkasova, for introducing me to the language...”
+
+The 15th anniversary of Clojure’s introduction to the world is October 17th this year. Clojure’s growth has been greater than the sum of the effort of the many who’ve contributed to the language and ecosystem. Here’s looking forward to another 15 years!
+
+== Full Results
+
+If you’d like to dig into the full results, you can find the complete set of data from this and former years here:
+
+* https://???[2022]
+* https://www.surveymonkey.com/results/SM-S2L8NR6K9[2021]
+* https://www.surveymonkey.com/results/SM-CDBF7CYT7/[2020]
+* https://www.surveymonkey.com/results/SM-S9JVNXNQV/[2019]
+* https://www.surveymonkey.com/results/SM-9BC5FNJ68/[2018]
+* https://www.surveymonkey.com/results/SM-7K6NXJY3/[2016]
+* http://blog.cognitect.com/blog/2016/1/28/state-of-clojure-2015-survey-results[2015]
+* http://blog.cognitect.com/blog/2014/10/20/results-of-2014-state-of-clojure-and-clojurescript-survey[2014]
+* https://cemerick.com/blog/2013/11/18/results-of-the-2013-state-of-clojure-clojurescript-survey.html[2013]
+* https://cemerick.com/blog/2012/08/06/results-of-the-2012-state-of-clojure-survey.html[2012]
+* https://cemerick.com/blog/2011/07/11/results-of-the-2011-state-of-clojure-survey.html[2011]
+* https://cemerick.com/blog/2010/06/07/results-from-the-state-of-clojure-summer-2010-survey.html[2010]
+
+Thanks again for using Clojure and ClojureScript and participating in the survey!

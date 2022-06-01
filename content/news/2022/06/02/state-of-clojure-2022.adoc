@@ -60,10 +60,6 @@ The https://clojure.org/reference/deps_and_cli[Clojure CLI and deps.edn] ecosyst
 
 image::/images/content/news/2022-06-02/what-tool.svg[What tool do Clojure users use to download their dependencies over the last 5 years]
 
-https://babashka.org[Babashka], a Clojure scripting runtime (the dark blue pentagon on the right), is new to the list this year with 12% of the respondents starting their app using babashka.
-
-image::/images/content/news/2022-06-02/start-app.svg[How do Clojure users start their production app over the last 5 years]
-
 https://code.visualstudio.com[VS Code] use with https://calva.io[Calva] has continued to grow with its integration of https://clojure-lsp.io[clojure-lsp] and https://github.com/BetterThanTomorrow/joyride[joyride]. Editors which support https://microsoft.github.io/language-server-protocol/[LSP], or have an LSP package, are continuing to see improvements in static analysis due to improvements in clojure-lsp.
 
 image::/images/content/news/2022-06-02/primary-environment.svg[Primary Clojure development environment over the last 5 years]

@@ -80,25 +80,25 @@ The programming language which users have come from has been relatively stable. 
 
 Clojure would not be what it is without the contributions of its community. Here’s a small selection of the shoutouts the community gave to the community.
 
-* “Daniel Slutsky. He reached out to me when I tried to get my foot in the Clojure door and is a wonderful person.”
-* “The Functional Programming with Clojure podcast. Those guys are awesome. Also Sean Corfield - I've learned so much from his discussions.”
-* “olical (conjure), jeaye (orchestra), metosin (malli), day8 (re-frame), technomancy (lein)“
-* “ I really appreciate Jacek Schae's courses for learning Reitit, Reagent, and Re-frame. If these had been available when I was first learning Clojure, I'm sure I would have stuck with it longer.”
-* “... Sam Aaron - work on Overtone + tutorials”
-* “All the people out there who write/vlog about their experience with Clojure. LVH, Tyler Hobbs, Stuart Sierra, Rich Hickey.”
-* “... Daniel Compton, the NuBank team (go Cavalcanti), and the guys on Zulip doing all the machine learning stuff, Dragan Djuric”
-* “... All contributors to editor tooling (personally using Calva).”
-* “I really like the work of James Reeve and the way he maintains his libraries.”
-* “That dude who wrote magit and many others is a clojurian.”
-* “I appreciate borkdude (Michiel Borkent) for his prolific contribution to Clojure, Bozhidar Batsov (bbatsov) for CIDER and Martin Kavalar for his work on Clojure notebook just to name a few”
+* “link:https://github.com/daslu[Daniel Slutsky]. He reached out to me when I tried to get my foot in the Clojure door and is a wonderful person.”
+* “The Functional Programming with Clojure podcast. Those guys are awesome. Also https://github.com/seancorfield[Sean Corfield] - I've learned so much from his discussions.”
+* “link:https://github.com/Olical/[olical] (conjure), https://jeaye.com[jeaye] (orchestra), https://github.com/metosin[metosin] (malli), https://github.com/day8[day8] (re-frame), https://github.com/technomancy[technomancy] (lein)“
+* “ I really appreciate https://github.com/jacekschae[Jacek Schae]'s courses for learning Reitit, Reagent, and Re-frame. If these had been available when I was first learning Clojure, I'm sure I would have stuck with it longer.”
+* “... http://sam.aaron.name[Sam Aaron] - work on Overtone + tutorials”
+* “All the people out there who write/vlog about their experience with Clojure. https://www.lvh.io[LVH], https://github.com/thobbs[Tyler Hobbs], https://github.com/lambdasierra[Stuart Sierra], Rich Hickey.”
+* “... https://danielcompton.net[Daniel Compton], the NuBank team (go Cavalcanti), and the guys on Zulip doing all the machine learning stuff, https://dragan.rocks[Dragan Djuric]”
+* “... All contributors to editor tooling (personally using https://calva.io[Calva]).”
+* “I really like the work of https://github.com/weavejester[James Reeve] and the way he maintains his libraries.”
+* “That dude who wrote https://magit.vc[magit] and many others is a clojurian.”
+* “I appreciate https://github.com/borkdude[borkdude (Michiel Borkent)] for his prolific contribution to Clojure, https://github.com/bbatsov[Bozhidar Batsov (bbatsov)] for CIDER and https://github.com/mk[Martin Kavalar] for his work on Clojure notebook just to name a few”
 * “The Clojure community inside my company.”
-* “David Chelimsky because always is trying to help to any nubanker”
-* “... Tony Kay for Fulcro - Wilker Lucio for Pathom - Thomas Heller for shadow-cljs”
-* “Alan Dipert, for his videos on hoplon.“
-* “Eric Normand for his podcast and talks”
-* “Kyle Kingsbury ("Aphyr")'s Clojure from the Ground Up is a resource I revisit and learn new, subtle things…”
-* “Chris Houser (Chouser) - He does a great job with leading internal learning at our company. “
-* “Daniel Higginbothan, for his wit and insight Joshua Suskalo, for his stewardship of the community Elena Machkasova, for introducing me to the language...”
+* “link:https://github.com/dchelimsky[David Chelimsky] because always is trying to help to any nubanker”
+* “... https://github.com/awkay[Tony Kay] for https://github.com/fulcrologic/fulcro[Fulcro] - https://github.com/wilkerlucio[Wilker Lucio] for https://github.com/wilkerlucio/pathom[Pathom] - https://github.com/thheller[Thomas Heller] for https://github.com/thheller/shadow-cljs[shadow-cljs]”
+* “link:https://github.com/alandipert[Alan Dipert], for his videos on hoplon.“
+* “link:https://ericnormand.me[Eric Normand] for his podcast and talks”
+* “link:https://aphyr.com[Kyle Kingsbury ("Aphyr")]'s Clojure from the Ground Up is a resource I revisit and learn new, subtle things…”
+* “link:https://github.com/chouser/[Chris Houser (Chouser)] - He does a great job with leading internal learning at our company. “
+* “link:https://github.com/flyingmachine[Daniel Higginbothan], for his wit and insight https://github.com/IGJoshua[Joshua Suskalo], for his stewardship of the community https://github.com/elenam[Elena Machkasova], for introducing me to the language...”
 
 The 15th anniversary of Clojure’s introduction to the world is October 17th this year. Clojure’s growth has been greater than the sum of the effort of the many who’ve contributed to the language and ecosystem. Here’s looking forward to another 15 years!
 
@@ -106,7 +106,7 @@ The 15th anniversary of Clojure’s introduction to the world is October 17th th
 
 If you’d like to dig into the full results, you can find the complete set of data from this and former years here:
 
-* https://???[2022]
+* https://www.surveymonkey.com/results/SM-QRiy0fSu3bmDK_2FSNMplVJw_3D_3D/[2022]
 * https://www.surveymonkey.com/results/SM-S2L8NR6K9[2021]
 * https://www.surveymonkey.com/results/SM-CDBF7CYT7/[2020]
 * https://www.surveymonkey.com/results/SM-S9JVNXNQV/[2019]

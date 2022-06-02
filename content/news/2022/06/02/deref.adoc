@@ -1,0 +1,42 @@
+= Clojure Deref (June 2, 2022)
+Alex Miller
+2022-06-02
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Podcasts and videos
+
+* https://soundcloud.com/defn-771544745/85-clojure-dart-duo-christophe-and-baptiste[#85 Clojure Dart Duo: Christophe and Baptiste] - defn podcast
+* https://www.youtube.com/watch?v=yTIhSNCWzXE[The Future of Software - Introducing REPL-acement | S3E4] - JUXT Cast
+* https://www.youtube.com/watch?v=LOT7l6ILV40[Clojure visual-tools meeting 7] - Sci Cloj
+
+== Blogs
+
+* https://www.linkedin.com/pulse/breakneck-babashka-k8s-heow-goodman/[Breakneck Babashka on K8s] - Heow Goodman
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/nextjournal/clerk-slideshow[clerk-slideshow]  - Build your slideshows using Clerk notebooks!
+* https://github.com/nextjournal/clerk[clerk] 0.8.445 - Local-First Notebooks for Clojure
+* https://github.com/babashka/cli[cli]  - Easy command line parsing for Clojure
+* https://github.com/ribelo/praxis[praxis] 0.0.5 - A repl friendly missionary based incremental computation framework for clojure & clojurescript
+* https://github.com/liquidz/antq[antq] 1.7.798 - Point out your outdated dependencies
+* https://github.com/BetterThanTomorrow/joyride[joyride] 0.0.15 - Making VS Code Hackable since 2022
+* https://github.com/strojure/memoize-one[memoize-one]  - Clojure library for memoization of the single value
+* https://github.com/strojure/caffeine-memoize[caffeine-memoize]  - Clojure function memoization using Caffeine java library
+* https://github.com/strojure/fitter[fitter] 1.0.68 - System component management library for Clojure
+* https://github.com/uncomplicate/deep-diamond[deep-diamond] 0.23.0 - Deep Learning for Programmers: An Interactive Tutorial with CUDA
+* https://clojure-initializer.herokuapp.com/[clojure-initializer]  - Initializer for Luminus Projects
+* https://github.com/Liverm0r/DartClojure[DartClojure] 0.1.2 - Opinionated Dart->Clojure translater
+* https://github.com/liquidz/build.edn[build.edn] 0.3.90 - Make your Clojure library build process easy
+* https://github.com/eighttrigrams/cljc-minimals[cljc-minimals]  - Example setups of selected Clojure libraries
+* https://github.com/spacegangster/space-ui[space-ui]  - A collection of styled cljs/cljc components and inputs
+* https://gitlab.com/clj-editors/clover[clover] 0.3.0 - Visual Studio code implementation of REPL-Tooling
+* https://github.com/wilkerlucio/pathom3[pathom3] 2022.06.01-alpha - A library for navigating data
+* https://github.com/fulcrologic/fulcro[fulcro] 3.5.21 - A library for development of single-page full-stack web applications in clj/cljs
+* https://github.com/borkdude/quickdoc[quickdoc]  - Quick and minimal API doc generation for Clojure

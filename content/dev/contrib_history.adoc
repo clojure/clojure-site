@@ -22,7 +22,7 @@ This section aims to document how to migrate from "old" contrib to "new" contrib
 * clojure.contrib.base64
 ** Replaced by https://github.com/clojure/data.codec/[clojure.data.codec] - lead Alex Taggart.
 * clojure.contrib.classpath
-** Migrated to https://github.com/clojure/java.classpath/[clojure.java.classpath] - lead Stuart Sierra.
+** Migrated to https://github.com/clojure/java.classpath/[clojure.java.classpath] - lead Alessandra Sierra.
 * clojure.contrib.combinatorics
 ** Migrated to https://github.com/clojure/math.combinatorics/[clojure.math.combinatorics] - lead Mark Engelberg.
 * clojure.contrib.command-line
@@ -47,7 +47,7 @@ This section aims to document how to migrate from "old" contrib to "new" contrib
 * clojure.contrib.fcase
 ** fcase replaced by Clojure 1.3 `clojure.core/condp`.  Other macros easily implemented using `condp` if desired.
 * clojure.contrib.find-namespaces
-** Migrated to https://github.com/clojure/tools.namespace/[clojure.tools.namespace] - lead Stuart Sierra.
+** Migrated to https://github.com/clojure/tools.namespace/[clojure.tools.namespace] - lead Alessandra Sierra.
 * clojure.contrib.fnmap
 * clojure.contrib.gen-html-docs
 * clojure.contrib.generic
@@ -61,7 +61,7 @@ This section aims to document how to migrate from "old" contrib to "new" contrib
 * clojure.contrib.jmx
 ** Migrated to https://github.com/clojure/java.jmx/[clojure.java.jmx] - lead Stuart Halloway.
 * clojure.contrib.json
-** Migrated to https://github.com/clojure/data.json/[clojure.data.json] - lead Stuart Sierra.
+** Migrated to https://github.com/clojure/data.json/[clojure.data.json] - lead Alessandra Sierra.
 * clojure.contrib.lazy-seqs
 * clojure.contrib.lazy-xml
 ** Migrated to https://github.com/clojure/data.xml[clojure.data.xml] - lead Alan Malloy.

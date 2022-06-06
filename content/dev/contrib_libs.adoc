@@ -54,11 +54,11 @@ Status legend:
 | https://clojure.github.io/data.fressian/[data.fressian] | Extensible binary Data Notation | Stuart Halloway | Stable
 | https://clojure.github.io/data.generators/[data.generators] | Random data generators | Stuart Halloway | Inactive
 | https://clojure.github.io/data.int-map/[data.int-map] | Maps and sets optimized for integer keys | Alex Miller | Stable
-| https://clojure.github.io/data.json/[data.json] | JSON encoding / decoding | Stuart Sierra | Stable
+| https://clojure.github.io/data.json/[data.json] | JSON encoding / decoding | Alessandra Sierra | Stable
 | https://clojure.github.io/data.priority-map/[data.priority-map] | Priority maps | Mark Engelberg | Stable
 | https://clojure.github.io/data.xml/[data.xml] | Lazy XML parsing | Ryan Senior, Herwig Hochleitner | Stable
 | https://clojure.github.io/data.zip/[data.zip] | Manipulating zippers | | Stable
-| https://clojure.github.io/java.classpath/[java.classpath] | Classpath utilities | Stuart Sierra | Stable
+| https://clojure.github.io/java.classpath/[java.classpath] | Classpath utilities | Alessandra Sierra | Stable
 | https://clojure.github.io/java.data/[java.data] | Work with Java Beans | Sean Corfield | Active
 | https://clojure.github.io/java.jdbc/[java.jdbc] | JDBC-based SQL interface | Sean Corfield | Stable
 | https://clojure.github.io/java.jmx/[java.jmx] | JMX interface | Nick Bailey | Stable
@@ -76,7 +76,7 @@ Status legend:
 | https://clojure.github.io/tools.emitter.jvm/[tools.emitter.jvm] | JVM bytecode generator | Nicola Mometto | Active
 | https://clojure.github.io/tools.logging/[tools.logging] | Logging tools | Alexander Taggart | Active
 | https://clojure.github.io/tools.macro/[tools.macro] | Tools for macro writers | Konrad Hinsen | Stable
-| https://clojure.github.io/tools.namespace/[tools.namespace] | Tools for working with namespace declarations | Stuart Sierra | Stable
+| https://clojure.github.io/tools.namespace/[tools.namespace] | Tools for working with namespace declarations | Alessandra Sierra | Stable
 | https://clojure.github.io/tools.nrepl/[tools.nrepl] | Network REPL | | Inactive
 | https://clojure.github.io/tools.reader/[tools.reader] | Clojure reader | Nicola Mometto | Active
 | https://clojure.github.io/tools.tools/[tools.tools] | A Clojure CLI tool for managing CLI tools | Alex Miller | Active
@@ -103,7 +103,7 @@ And finally, there are some repositories in the Clojure GitHub organization that
 
 == History
 
-Prior to Clojure 1.3, Clojure had a single "batteries included" library called clojure-contrib that consisted of many independent helper namespaces contributed by the community. In the Clojure 1.3 timeframe, this library was split into the independent libraries that exist today with independent owners. Some of the namespaces were seen as experimental and not promoted into any public library. Stuart Sierra recounts this in more detail in his <<xref/../../news/2012/02/17/clojure-governance#,post>>.
+Prior to Clojure 1.3, Clojure had a single "batteries included" library called clojure-contrib that consisted of many independent helper namespaces contributed by the community. In the Clojure 1.3 timeframe, this library was split into the independent libraries that exist today with independent owners. Some of the namespaces were seen as experimental and not promoted into any public library. Alessandra Sierra recounts this in more detail in his <<xref/../../news/2012/02/17/clojure-governance#,post>>.
 
 At the time there was an idea that some of the contrib libraries could eventually be promoted into Clojure's core library itself. With time, there has been a desire to keep Clojure's core library small and to allow these independent libraries to stay independent and evolve at their own pace.
 

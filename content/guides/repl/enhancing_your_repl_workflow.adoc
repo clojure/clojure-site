@@ -432,8 +432,8 @@ was made to assist the programmer in this task.
 **_Program state and source code should be kept in sync._** You usually want to make sure
 that your program state reflects your source code and vice-versa, but this is not automatic.
 Reloading the code is often not enough: you also need to transform the program state accordingly.
-Stuart Sierra has expounded on this problem in his article http://thinkrelevance.com/blog/2013/06/04/clojure-workflow-reloaded[My Clojure Workflow, Reloaded]
-and his talk https://www.youtube.com/watch?v=13cmHf_kt-Q[Components Just Enough Structure].
+Alessandra Sierra has expounded on this problem in her article http://thinkrelevance.com/blog/2013/06/04/clojure-workflow-reloaded[My Clojure Workflow, Reloaded]
+and her talk https://www.youtube.com/watch?v=13cmHf_kt-Q[Components Just Enough Structure].
 
 This has motivated the creation of **_state management libraries:_**
 

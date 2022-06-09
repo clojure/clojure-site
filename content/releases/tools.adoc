@@ -22,9 +22,17 @@ For more information see the following docs:
 
 Recent official releases are described here. Prereleases and older versions can be found in the https://github.com/clojure/brew-install/blob/1.10.3/CHANGELOG.md[repo changelog].
 
+=== 1.11.1.1119 (Jun 9, 2022) [[v1.11.1.1119]]
+
+* https://clojure.atlassian.net/browse/TDEPS-213[TDEPS-213] - Add `-X:deps aliases` to list available aliases
+* https://clojure.atlassian.net/browse/TDEPS-226[TDEPS-226] - More nunanced error handling for s3 downloads
+* Better error message when git url can't be inferred
+* Use https://github.com/clojure/tools.deps.alpha/blob/master/CHANGELOG.md[tools.deps.alpha] 0.14.1185
+
 === 1.11.1.1113 (Apr 25, 2022) [[v1.11.1.1113]]
 
 * https://clojure.atlassian.net/browse/TDEPS-153[TDEPS-153] - yet more fixes for errors during concurrent Maven downloads
+* Use https://github.com/clojure/tools.deps.alpha/blob/master/CHANGELOG.md[tools.deps.alpha] 0.14.1178
 
 === 1.11.1.1105 (Apr 5, 2022) [[v1.11.1.1105]]
 

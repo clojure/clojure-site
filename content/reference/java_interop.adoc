@@ -264,7 +264,7 @@ user=> (time (reduce + (map len2 (repeat 1000000 "asdf"))))
 4000000
 ----
 
-Once a type hint has been placed on an identifier or expression, the compiler will try to resolve any calls to methods thereupon at compile time. In addition, the compiler will track the use of any return values and infer types for their use and so on, so very few hints are needed to get a fully compile-time resolved series of calls. Note that type hints are not needed for static members (or their return values!) as the compiler always has the type for statics.
+Once a type hint has been placed on an identifier or expression, the compiler will try to resolve any calls to methods thereupon at compile time. In addition, the compiler will track the use of any return values and infer types for their use and so on, so very few hints are needed to get a fully compile-time resolved series of calls. Note that type hints are not needed for static fields or the return values of static methods as the compiler always has that type information.
 
 There is a pass:[*warn-on-reflection*] flag (defaults to false) which will cause the compiler to warn you when it can't resolve to a direct call:
 

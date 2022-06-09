@@ -921,6 +921,11 @@ For example, the tools.deps.graph tool can publish the following usage in deps.e
  {:ns-default clojure.tools.deps.graph}}
 ----
 
+[NOTE]
+====
+Currently, only tools that are deps.edn-based and available as either a git or local repository can provide a `:tools/usage` configuration.
+====
+
 === Invoke a tool by name
 
 Once you've installed a named tool, you can invoke it with `-T` using just the tool name.

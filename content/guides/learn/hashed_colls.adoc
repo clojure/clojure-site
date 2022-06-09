@@ -41,9 +41,13 @@ The `disj` ("disjoin") function is used to remove one or more elements from a se
 
 [source,clojure-repl]
 ----
+user=> players
+#{"Alice" "Kelly" "Bob"}
 user=> (disj players "Bob" "Sal")
 #{"Alice" "Kelly"}
 ----
+
+As you can see, it's fine to `disj` elements that don't exist in the set.
 
 === Checking containment
 

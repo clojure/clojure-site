@@ -1,0 +1,51 @@
+= Clojure Deref (June 10, 2022)
+Alex Miller
+2022-06-10
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Highlights
+
+It's so great to see an in-person Clojure conference happening again - wishing the best to everyone at https://clojured.de/[:clojureD] today!
+
+== Podcasts and videos
+
+* https://cognitect.com/cognicast/170[Michiel Borkent - Cognicast Episode 170] - Cognicast
+* https://soundcloud.com/clojurestream/e72-data-processing-with-chris-nuernberger-part-1[E72 Data Processing with Chris Nuernberger (part 1)] - ClojureStream podcast
+* https://www.youtube.com/watch?v=m2mzyf2YS_8[A Tale of Lisp (by Renzo Borgatti)] - London Clojurians
+* https://www.youtube.com/watch?v=OgV-ALpmXUI[Creating jars and uberjars with tools.build for Clojure projects] - Volodymyr Kozieiev
+* https://www.youtube.com/watch?v=dfmRNTmfYVg[4 things to know about ClojureDart] - Adina Cazalens
+* https://youtu.be/5TnC0DKCQ9A?t=419[HTTAY 07: Monkeypox, Learn to Lisp 3, Wordpress, Electron, Mobile Gnome Shell, NY Right to Repair] - How the Tech Are You
+
+== Blogs
+
+* https://www.abhinavomprakash.com/posts/writing-transducer-friendly-code/[Writing Transducer Friendly Code] - Abhinav Omprakash
+* https://ag91.github.io/blog/2022/06/09/make-adding-a-clojure-require-more-interactive-with-cider-and-cljr/[Make adding a Clojure require more interactive with Cider and Cljr]
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://clojure.org/releases/tools[Clojure CLI] https://clojure.org/releases/tools#v1.11.1.1119[1.11.1.1119]
+* https://github.com/exoscale/tools.project[tools.project]  - Helpers to work with our tools.deps projects
+* https://github.com/babashka/babashka[babashka] https://github.com/babashka/babashka/blob/master/CHANGELOG.md#08156-2022-06-08[0.8.156] - Native, fast starting Clojure interpreter for scripting
+* https://github.com/babashka/cli[cli] 0.2.16 - Turn Clojure functions into CLIs!
+* https://calva.io[Calva]  - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/jpmonettas/flow-storm-debugger[flow-storm-debugger] 2.2.59 - A debugger for Clojure and ClojureScript with some unique features
+* https://github.com/exoscale/lingo[lingo]  - spec explain improved
+* https://github.com/jlesquembre/clj-nix[clj-nix] 0.1.0 - Nix helpers for Clojure projects
+* https://github.com/ferdinand-beyer/init[init] 0.1.77 - Dependency injection a la carte
+* https://github.com/Liverm0r/DartClojure[DartClojure] 0.1.7 - Opinionated Dart->Clojure translater
+* https://github.com/green-coder/girouette[girouette] 0.0.8 - Grammar-based, generative approach to CSS
+* https://github.com/clj-commons/gloss[gloss] 0.3.0 - speaks in bytes, so you don't have to
+* https://github.com/clojure-finance/clojask[clojask] 1.2.2 - Clojure data frame with parallel computing on larger-than-memory datasets
+* https://github.com/ribelo/doxa[doxa] 0.1.159 - A simple in-memory database
+* https://github.com/NoahTheDuke/coc-clojure[coc-clojure] 0.0.7 - coc.nvim plugin for clojure-lsp
+* https://github.com/scicloj/scicloj.ml[scicloj.ml] 0.2.1 - A Clojure machine learning library
+* https://github.com/practicalli/clojure-deps-edn[clojure-deps-edn]  - User level aliases and Clojure CLI configuration for deps.edn based projects
+* https://github.com/joshuamiller/react-native-template-cljs-krell-storybook[react-native-template-cljs-krell-storybook]  - A React Native Template for installing a working ClojureScript, Krell, and Storybook environment
+* https://github.com/Wilfred/difftastic[difftastic] https://github.com/Wilfred/difftastic/releases/tag/0.29.0[0.29.0] - a structural diff that understands syntax
+* https://github.com/clj-commons/rewrite-clj[rewrite-clj] https://github.com/clj-commons/rewrite-clj/blob/main/CHANGELOG.adoc#v1145[1.1.45] - Rewrite Clojure code and edn

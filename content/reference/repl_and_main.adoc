@@ -148,6 +148,20 @@ These error targets can be specified either as options to clojure.main, or as Ja
 
 Other programs may wish to take advantage of this functionality, and it is available in https://clojure.github.io/clojure/clojure.main-api.html#clojure.main/report-error[report-error], which takes a Throwable and optionally the :target.
 
+== The `user` namespace
+
+By default, the Clojure REPL starts in the `user` namespace and this namespace is typically used for exploratory work.
+
+The Clojure REPL automatically loads the following namespaces and refers the following functions:
+
+* `clojure.repl` - https://clojure.github.io/clojure/clojure.repl-api.html#clojure.repl/source[`source`] https://clojure.github.io/clojure/clojure.repl-api.html#clojure.repl/apropos[`apropos`] https://clojure.github.io/clojure/clojure.repl-api.html#clojure.repl/dir[`dir`] https://clojure.github.io/clojure/clojure.repl-api.html#clojure.repl/pst[`pst`] https://clojure.github.io/clojure/clojure.repl-api.html#clojure.repl/doc[`doc`] https://clojure.github.io/clojure/clojure.repl-api.html#clojure.repl/find-doc[`find-doc`]
+* `clojure.java.javadoc` - https://clojure.github.io/clojure/clojure.java.javadoc-api.html#clojure.java.javadoc/javadoc[`javadoc`]
+* `clojure.pprint` - https://clojure.github.io/clojure/clojure.pprint-api.html#clojure.pprint/pp[`pp`] https://clojure.github.io/clojure/clojure.pprint-api.html#clojure.pprint/pprint[`pprint`]
+
+If you switch to a different namespace (with `in-ns` or `ns`), these functions will not be available unless referred there explicitly.
+
+Also, the Clojure runtime will look for and load the `user` namespace on startup if it is found. Generally, this should only be used to provide development-time faciliities, and not in a production scenario.
+
 == tap
 
 tap is a shared, globally accessible system for distributing a series of informational or diagnostic values to a set of (presumably effectful) handler functions. It can be used as a better debug `prn`, or for facilities like logging etc.

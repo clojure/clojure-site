@@ -22,6 +22,10 @@ For more information see the following docs:
 
 Recent official releases are described here. Prereleases and older versions can be found in the https://github.com/clojure/brew-install/blob/1.10.3/CHANGELOG.md[repo changelog].
 
+=== 1.11.1.1124 (Jun 11, 2022) [[v1.11.1.1124]]
+
+* Fix bug in TDEPS-213 change
+
 === 1.11.1.1119 (Jun 9, 2022) [[v1.11.1.1119]]
 
 * https://clojure.atlassian.net/browse/TDEPS-213[TDEPS-213] - Add `-X:deps aliases` to list available aliases

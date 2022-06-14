@@ -620,20 +620,45 @@ A pom file must be either provided explicitly, generated from :lib/:version, or 
 
 = Procurers
 
-Coordinates are interpreted by procurers, which know how to determine dependencies for a library and download artifacts. tools.deps.alpha is designed to support an extensible set of procurers that can expand over time. Currently the available procurers are: `mvn`,  `local`, and `git`.
+Dependency coordinates are interpreted by procurers, which understand a particular coordinate type and know how to find dependencies and download artifacts for a library. The Clojure CLI currently suports the folllowing procurers: `mvn`,  `local`, and `git`. The underlying tools.deps.alpha library supports procurer extensions when used as a library.
 
-The procurer to use is determined by examining the attributes of the coordinate and using the first attribute qualifier that's found (ignoring the reserved qualifier "deps"). For example, a Maven coordinate contains a `:mvn/version` attribute and a local coordinate contains a `:local/root` attribute.
+The coordinate attributes determine which procurer is used. In general, most procurer attributes are qualified per procurer type (there are some historical exceptions). Procurer-independent attributes use the `deps` qualifier.
 
-Procurers may also have configuration attributes stored at the root of the configuration map under the same qualifier. 
+Some procurers may also look for configuration attributes at the root of the deps.edn configuration map using the the same qualifier.
 
 == Maven
 
-The `mvn` procurer will look for two keys at the root of the deps.edn:
+The Maven procurer uses the qualifier `mvn` and is used to retrieve library artifacts from https://maven.apache.org/[Maven repositories], the standard repository manager in the Java ecosystem. Libraries are downloaded as .jar files and stored in the Maven local repository cache (located in ~/.m2/repository by default). Other JVM-based tools may also use this cache.
+
+Maven coordinates have the following attributes:
+
+* `:mvn/version` (required) - Maven version string
+
+Maven libraries are located in Maven repositories using "Maven coordinates", typically the groupId, artifactId, and version (sometimes also abbreivated as GAV). In deps.edn, the library name is parsed as `groupId/artifactId` and the version is taken from `:mvn/version`. 
+
+For example, this deps.edn file:
+
+[source,clojure]
+----
+{:deps {org.clojure/clojure {:mvn/version "1.11.1"}}}
+----
+
+declares a dependency on a Maven artifact with:
+
+* groupId = org.clojure
+* artifactId = clojure
+* version = 1.11.1
+
+Some Maven artifacts also have a "classifier", which is a variant of a particular artifact. In the Maven procurer, classifiers are included at the end of the lib name, separated by a `$` in this format: `groupId/artifactId$classifier`.
+
+Currently, only `jar` artifacts are supported. Support for other artifact types (particularly Bill of Materials poms) may be added in the future.
+
+The `mvn` procurer will look for two configuration keys at the root of the deps.edn:
 
 * `:mvn/repos` - map of repository name to repository descriptor, a map currently taking only the key `:url`
 * `:mvn/local-repo` - a path (string) to the local repo cache. If none supplied, Maven uses `~/.m2/repository`.
 
-The installation deps.edn configures these default Maven repos:
+The root deps.edn configures these default Maven repos:
 
 [source,clojure]
 ----
@@ -646,7 +671,7 @@ The installation deps.edn configures these default Maven repos:
 
 The `:mvn/repos` map is `merge-with` `merge` across the deps.edn sources, so you can modify the default repositories by specifying a new definition or remove it by specifying `nil`.
 
-tools.deps guarantees that the `"central"` and `"clojars"` repositories will be checked first, in that order, for Maven libraries.
+tools.deps guarantees that the `"central"` and `"clojars"` repositories will be checked first, in that order, for Maven libraries. The lookup order of other repositories is undefined.
 
 === Maven authenticated repos
 
@@ -684,7 +709,7 @@ Then just refer to your dependencies as usual in the `:deps`.
 
 === Maven S3 repos
 
-The tools also provide support for connecting to public and private S3 Maven repositories.
+The `mvn` procurer also supports connecting to public and private Maven repositories hosted in https://aws.amazon.com/s3/[AWS S3]. This is particularly useful when accessing private Maven repositories from within an application hosted on AWS.
 
 Add a `:mvn/repos` that includes the s3 repository root:
 
@@ -785,21 +810,18 @@ This mechanism is used by repositories that authenticate using a token, rather t
 
 == Git
 
-The Clojure CLI supports using source-based libs directly from Git repositories. Git libs are downloaded by default to the `~/.gitlibs` directory. The working tree is checked out and cached for each sha included as a dependency.
+The `git` procurer supports direct use of source-based libs hosted in Git repositories. Git libs are downloaded by default to the `~/.gitlibs` directory. The working tree is checked out and cached for each sha included as a dependency.
 
 === Coord attributes
 
-Git deps are declared with the following info:
+To specify a git lib as a dependency, two pieces of information must be known - the Git repo url and a specific sha. Using movable references like branch names is not supported.
 
-* lib name - a qualified symbol
-* coordinate - a map of:
-** `:git/url` - Git url
-** `:git/sha` - a full 40-char sha or possibly a sha prefix if tag provided (`:sha` is also accepted for backwards compatibility)
-** `:git/tag` - git tag name
+Git coordinates have the following attributes:
+* `:git/url` - optional, Git url (may be inferred from lib name, see below)
+* `:git/sha` - required, either a full 40-char sha or a sha prefix can be provided in combination with a tag (`:sha` is also accepted for backwards compatibility)
+* `:git/tag` - optional, git tag name (may be used only in combination with a `:git/sha`)
 
-To download a git lib, two pieces of information must be known - the Git repo url and the sha. These can be provided in several ways. If the lib name follows the conventions below, the Git repo URL will be inferred and does not need to be specified. Otherwise, it can be supplied with `:git/url` in the coordinate.
-
-Lib to url convention:
+The git url must either be provided or inferred from the lib name. If provided, the `:git/url` takes precedence. Lib to url convention is as follows:
 
 [cols="<*", options="header", role="table"]
 |===
@@ -813,6 +835,21 @@ Lib to url convention:
 |io.beanstalkapp.ORG/PROJECT | `"https://ORG.git.beanstalkapp.com/PROJECT.git"`
 |com.beanstalkapp.ORG/PROJECT | `"https://ORG.git.beanstalkapp.com/PROJECT.git"`
 |===
+
+The git sha is either provided as a full sha in `:git/sha` or as a full or prefix `:git/sha` in combination with a `:git/tag` (to provide semantic version context). If a `:git/tag` is provided, the full sha it refers to must match the full sha included or implied by `:git/sha`.
+
+This is an example deps.edn including two valid git deps, the first with inferred git url, git tag, and sha prefix, and the second with explicit git url and full sha:
+
+[source,clojure]
+----
+{:deps
+ {;; implied git url, tag + sha prefix
+  io.github.clojure/tools.deps.graph {:git/tag "v1.1.68" :git/sha "6971bb4"}
+ 
+  ;; explicit git url, full sha
+  org.clojure/tools.build {:git/url "https://github.com/clojure/tools.build.git"
+                           :git/sha "ba1a2bf421838802e7bdefc541b41f57582e53b6"}}}
+----
 
 The supported git url protocols are https and ssh. https repos will be accessed anonymously and require no additional authentication information. This approach is recommended for public repos. ssh repos may be either public or private.
 
@@ -829,9 +866,9 @@ When selecting a version from between sha A and sha B where B has A as an ancest
 
 === Configuration and debugging
 
-Support for git deps occurs via shelling out to command-line git (and ssh). git >= 2.5 is required. In general, if access works at the command line, it should work via `clj`. Git is expected to be installed and by default, `git` is expected to be on the path. For ssh access, refer to documentation for your system (typically you will register your ssh keys in `~/.ssh/id_rsa`).
+The `git` procurer shells out to command-line git (and ssh). git >= 2.5 is required. In general, if access works at the command line, it should work via the Clojure CLI. Git is expected to be installed and by default, `git` is expected to be on the path. For ssh access, refer to documentation for your system (typically you will register your ssh keys in `~/.ssh/id_rsa`).
 
-The following environment variables can be set to control the git integration:
+The following environment variables can be set to control git usage:
 
 * `GITLIBS` - the path to the gitlibs storage directory (default = `~/.gitlibs`)
 * `GITLIBS_COMMAND` - the command to run for git access (default = `git`)

@@ -570,7 +570,7 @@ Should you use a prep step that compiles your Clojure code? Generally, no. All u
 [[find-versions]]
 === Find versions
 
-To search for available versions of a git lib use the `find-versions` tool provided with the built-in `:deps` alias:
+To search for available versions of a Maven or git lib use the `find-versions` tool provided with the built-in `:deps` alias:
 
 [source,shell]
 ----

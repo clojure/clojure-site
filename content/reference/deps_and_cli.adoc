@@ -492,6 +492,8 @@ There are some options that can be provided to `clj` that short circuit normal e
 The `:deps` alias is built into the root deps.edn and provides a default namespace with several additional programs:
 
 * `-X:deps tree` - print dependency tree (also see <<dep_expansion#_tree_printing,tree printing>>)
+* `-X:deps list` - print dependency list and license information
+* `-X:deps aliases` - print all aliases available in the current deps environment
 * `-X:deps mvn-pom` - generate (or update an existing) pom.xml with deps and paths
 * `-X:deps git-resolve-tags` - resolve git coordinate tags to shas and update deps.edn
 

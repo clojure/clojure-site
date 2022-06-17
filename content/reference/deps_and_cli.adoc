@@ -895,9 +895,13 @@ See <<deps_and_cli#find-versions,find-versions>> for more on finding versions of
 
 A tool for managing tools is automatically installed by the Clojure CLI under the name "tools". There are several useful functions provided:
 
-* install - Installs or reinstalls a tool
-* list - Lists all installed tools
-* remove - Removes an installed tool
+* https://clojure.github.io/tools.tools/clojure.tools.tools.api.html#var-install[`install`] - Installs or reinstalls a tool
+* https://clojure.github.io/tools.tools/clojure.tools.tools.api.html#var-install-latest[`install-latest`] - Installs or reinstalls the latest version of a tool
+* https://clojure.github.io/tools.tools/clojure.tools.tools.api.html#var-list[`list`] - Lists all installed tools
+* https://clojure.github.io/tools.tools/clojure.tools.tools.api.html#var-remove[`remove`] - Removes an installed tool
+* https://clojure.github.io/tools.tools/clojure.tools.tools.api.html#var-show[`show`] - Prints info and usage for a tool
+
+==== Install
 
 When you've determined which version of a tool to install, use the `install` function to install the tool by name.
 
@@ -926,6 +930,24 @@ clj -Ttools install io.github.clojure/tools.deps.graph '{:git/tag """v1.0.63"""}
 ----
 
 Note that git deps can be fully described at tool installation time with only a git lib name (used to form a git url by convention), and a git tag. Alternately, the coord may contain an explicit `:git/url` or `:git/sha` instead.
+
+==== Install latest
+
+To find and install the latest version of a tool in one step:
+
+[source,shell]
+----
+clj -Ttools install-latest :lib io.github.clojure/tools.deps.graph :as deps-graph
+----
+
+To update an existing tool to the latest version you can also just specify the tool by name:
+
+[source,shell]
+----
+clj -Ttools install-latest :tool deps-graph
+----
+
+==== List
 
 To list all installed tools:
 

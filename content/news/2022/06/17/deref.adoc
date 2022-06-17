@@ -1,0 +1,66 @@
+= Clojure Deref (June 17, 2022)
+Alex Miller
+2022-06-17
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Highlights
+
+The Deref started in June 2021 so this month marks the first full year of this weekly newsletter! I hope people continue to find it useful. Originally I had expected it would be biweekly but the volume of items every week was easily big enough to justify a weekly release. Thanks to everyone that continues to make podcasts, videos, blogs, libraries, and tools for the Clojure community.
+
+== From the core
+
+We've been working on several things in the Clojure 1.12 stream and we are moving towards a 1.12.0-alpha1 release soon. I wrote up some of the stuff I've been working on in the https://insideclojure.org/2022/06/15/partitioning/[Efficient partitioning] post so I'll just point there. 
+
+Fogus has finished his work on cleaning up the policies around var interning and replacement and that should also be included (making I can coax him into writing that up in more detail, but see https://clojure.atlassian.net/browse/CLJ-2711[CLJ-2711] for now). This area was brought to light with the addition of `abs` in Clojure 1.11, which created a conflict in some existing *compiled* code - a scenario uncommon enough that we had not previously seen issues. This led to a lot of code archaeology, review of old "fixes" (one of which we are rolling back), and finally clarification of when vars can be replaced, and when warnings will happen. This took a long time but I think was really fruitful for all of us in defining the principles. While we have cast a pretty wide net in testing these changes, we rely on the community to really help us get broader coverage and find any issues when this is out in an alpha.
+
+I've also been doing a lot of web site cleanup on old issues and PRs and working on the getting started area (still a work in progress). More on that in the future. And big thanks to Dan De Aguiar for finding a way through some Github billing issues so that the web site auto builds work again. Some portion of our time every week goes to maintaining the Clojure infrastructure (web sites, JIRA, Jenkins, contributor agreements, etc) and we're trying to improve our efficiency there so we have more time for the good stuff!
+
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=cnLwRzxrKDk[FlowStorm Clojure debugger 2.2 new features] - Juan Monetta
+* https://www.youtube.com/watch?v=oDiZxi5FRRc[Clojure visual-tools meeting 8: data cookbook, goldly studio, re-frame state management] - Sci Cloj
+* https://www.reddit.com/r/Clojure/comments/v9bg9l/worley_noise_rendered_with_multiple_forward/[Worley noise rendered with multiple forward scattering] - Jan Wedekind
+* https://www.youtube.com/watch?v=BdSoNmWksuk[(Clojure) 2022 meetup+ greenlabs] - Songpa Clojure (Korea)
+
+== Blogs
+
+* https://insideclojure.org/2022/06/15/partitioning/[Efficient partitioning] - Alex Miller
+* https://j19sch.github.io/blog/clojure/2022/clj-9-how-to-figure-out-what-a-function-does/[(clj 9) How to figure out what a function does] - Joep Schuurkes
+* https://quanttype.net/posts/2022-06-15-what-does-identical-do.html[What does `identical?` do?] - Miikka Koskinen
+* https://blog.jetbrains.com/fleet/2022/06/fleet-below-deck-part-iii-state-management/[Fleet Below Deck, Part III — State Management] - Vitaly Bragilevsky
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://clojure.org/releases/tools[Clojure CLI] https://clojure.org/releases/tools#v1.11.1.1139[1.11.1.1139]
+* https://github.com/babashka/nbb[nbb] 0.5.115 - Scripting in Clojure on Node.js using SCI
+* https://github.com/babashka/sci[sci] https://github.com/babashka/sci/blob/master/CHANGELOG.md#v0330[0.3.30] - Configurable Clojure interpreter suitable for scripting and Clojure DSLs
+* https://github.com/borkdude/jet[jet] 0.2.20 - CLI to transform between JSON, EDN and Transit, powered with a minimal query language
+* https://github.com/javahippie/clj-test-containers[clj-test-containers] https://github.com/javahippie/clj-test-containers/releases/tag/0.7.1[0.7.1] - Control Docker containers from your test lifecycle for Clojure integration tests
+* https://github.com/typedclojure/typedclojure[typedclojure] https://github.com/typedclojure/typedclojure/blob/main/CHANGELOG.md#1031-20220611[1.0.31] - An optional type system for Clojure
+* https://github.com/plumatic/schema[schema] 1.3.0 - Clojure(Script) library for declarative data description and validation
+* https://github.com/Liverm0r/DartClojure[DartClojure] 0.2.0 - Opinionated Dart->Clojure translater
+* https://github.com/ivarref/double-trouble[double-trouble]  - Handle duplicate Datomic transactions with ease (on-prem)
+* https://github.com/Swirrl/nvd-clojure-gh-action[nvd-clojure-gh-action]  - Automated Github Action to automate scanning of Clojure projects for known vulnerabilities in the National Vulnerability Database
+* https://github.com/rm-hull/nvd-clojure[nvd-clojure] https://github.com/rm-hull/nvd-clojure/blob/v2.7.0/CHANGELOG.md#changes-from-260-to-270[2.7.0] - National Vulnerability Database dependency checker for Clojure projects
+* https://github.com/Liverm0r/DartClojure[DartClojure] https://github.com/Liverm0r/DartClojure/releases/tag/0.2.2[0.2.2] - Opinionated Dart->Clojure translater
+* https://github.com/exoscale/tools.project[tools.project]  - Helpers to work with our tools.deps projects
+* https://github.com/exoscale/coax[coax]  - Clojure.spec coercion library for clj(s)
+* https://github.com/esuomi/git-revisions[git-revisions] 1.2.0 - Generate software revision strings based on Git and system context data
+* https://github.com/esuomi/git-revisions-lein[git-revisions-lein] 1.1.0 - Automatically control Leiningen project version based on Git and system metadata
+* https://github.com/esuomi/git-revisions-buildtools[git-revisions-buildtools] 0.1.0 - Automatically control tools.build based project version based on Git and system metadata
+* https://github.com/ivarref/mikkmokk-proxy[mikkmokk-proxy]  - Fault injection for the HTTP layer. A HTTP chaos proxy.
+* https://github.com/scicloj/tablecloth[tablecloth] 6.088 - Dataset manipulation library built on the top of tech.ml.dataset
+* https://github.com/fulcrologic/fulcro[fulcro] 3.5.22 - A library for development of single-page full-stack web applications in clj/cljs
+* https://github.com/fulcrologic/fulcro-rad[fulcro-rad] 1.2.2 - Fulcro Rapid Application Development
+* https://github.com/juji-io/datalevin[datalevin] 0.6.14 - A simple, fast and versatile Datalog database
+* https://github.com/ivarref/gen-fn[gen-fn] 0.1.35 - Generate Datomic function literals from regular Clojure namespaces. On-prem
+* https://github.com/clojure/tools.gitlibs[tools.gitlibs] 2.4.176 - An API for retrieving, caching, and programatically accessing git libraries
+* https://github.com/clojure/tools.deps.alpha[tools.deps.alpha] 0.14.1205 - A functional API for transitive dependency graph expansion and the creation of classpaths
+* https://github.com/clojure/tools.tools[tools.tools] 0.2.6 - Clojure CLI tool for managing Clojure CLI tools
+* https://github.com/temochka/enclojure[enclojure]  - A Clojure-like scripting language for Elm apps

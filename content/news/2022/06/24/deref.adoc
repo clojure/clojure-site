@@ -1,0 +1,60 @@
+= Clojure Deref (June 24, 2022)
+Alex Miller
+2022-06-24
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Highlights
+
+The https://survey.stackoverflow.co/2022/[Stackoverflow Developer survey] results are available and it was good to see Clojure listed as #3 on the "most loved" list and #1 in highest paid (matching similar results in previous years). Have fun AND get paid, sign me up! 
+
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=xw-kmp14u0M[Conway's Game of Life in Clojure - TDD MOOC] - Esko Luontola
+* https://www.youtube.com/watch?v=8Kc55qOgGps[Rafal Dittwald, “Data Oriented Programming”] - Houston FPUG
+* https://www.youtube.com/watch?v=A-qmwFMuSPk[Core.logic with Sudoku - Zachary Teo] - Clojure Asia
+* https://www.youtube.com/watch?v=xbikBoA3Oik[The Secret Art of Storytelling in Programming by Yehonathan Sharvit] - London Clojurians
+* https://soundcloud.com/clojurestream/e73-data-processing-with-chris-nuernberger-part-2[E73 Data Processing with Chris Nuernberger (part 2)] - ClojureStream podcast
+
+== Blogs
+
+* https://dev.to/quoll/immutable-vars-and-clojure-3nh8[Immutable Vars and Clojure] - Paula Gearon
+* https://dev.to/quoll/more-immutability-and-clojure-4cdk[More Immutability and Clojure] - Paula Gearon
+* https://respatialized.net/not-a-tree.html[This Website Is Not A Tree] - respatialized
+* https://medium.com/@rawad_56687/why-clojure-a-recruitment-perspective-a77a86d0e94f[Why Clojure? Part1: A recruitment perspective] - Rawad Assaf
+* https://metaredux.com/posts/2022/06/20/compliment-0-3-13.html[Compliment 0.3.13] - Bozhidar Batsov
+* https://quanttype.net/posts/2022-06-20-sql-clojure-editor-support.html[SQL, Clojure, and editor support] - Miikka Koskinen
+* https://www.alexandercarls.de/markdoc-nbb-clojure/[Create a blog with Clojure, nbb, and MarkDoc] - Alexander Carls
+* https://xtdb.com/blog/trucks-tubes-truth/[Trucks, Tubes, and Truth] - Steven Deobald
+* https://lambdaisland.com/blog/2022-06-23-the-repl-is-not-enough[The REPL is Not Enough] - Alys Brooks
+* https://hyperfiddle.notion.site/Demo-Photon-a-full-stack-Clojure-Script-dialect-with-compiler-managed-client-server-data-sync-57aee367c20e45b3b80366d1abe4fbc3[Demo: Photon, a full-stack Clojure/Script dialect with compiler-managed client/server data sync] - Dustin Getz
+* https://blog.klipse.tech/dop/2022/06/22/principles-of-dop.html[Principles of Data-Oriented Programming] - Yehonathan Sharvit
+* https://modulolotus.net/posts/2022-06-22-tidd/[Test-induced design damage in Clojure] - Matthew Davidson
+* https://blog.michielborkent.nl/babashka-cli.html[Babashka CLI: turn Clojure functions into CLIs] - Michiel Borkent
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/clojure/clojurescript[ClojureScript] 1.11.60 - Clojure to JS compiler
+* https://github.com/metosin/malli[malli] 0.8.8 - Data-Driven Schemas for Clojure/Script
+* https://clojure.org/releases/tools[Clojure CLI] 1.11.1.1149
+* https://github.com/alexander-yakushev/compliment[compliment] https://github.com/alexander-yakushev/compliment/blob/master/CHANGELOG.md#0313-2022-06-18[0.3.13] - The Clojure completion library you deserve
+* https://github.com/marketplace/actions/clojure-dependency-update-action[clojure-dependency-update-action] v4 - Clojure Dependency Update Action
+* https://github.com/souenzzo/atemoia[atemoia]  - A simple full-stack clojure app
+* https://github.com/scicloj/metamorph.ml[metamorph.ml] 0.6.2 - Machine learning functions for metamorph based machine learning pipelines
+* https://github.com/athos/Postmortem[Postmortem] 0.5.1 - A tiny data-oriented debugging tool for Clojure(Script), powered by transducers
+* https://github.com/cognitect/transit-cljs[transit-cljs]  - Transit for ClojureScript
+* https://git.sr.ht/~jomco/proof-specs[proof-specs] 0.1.3 - Automates testing clojure.spec data generators
+* https://wielder.victor.earth/Tutorials/01-Introduction[https://wielder.victor.earth/Tutorials/01-Introduction]  - Wielder enables you to write Clojure code directly in Obsidian
+* https://clojure-lsp.io/[clojure-lsp] 2022.06.22-14.09.50 - A Language Server for Clojure(script)
+* https://github.com/cljfx/flowless[flowless]  - Cljfx wrapper of Flowless
+* https://github.com/clj-kondo/clj-kondo[clj-kondo] 2022.06.22 - A linter for Clojure code that sparks joy
+* https://github.com/jacobobryant/platypub[platypub]  - Blogging + newsletter tool
+* https://plugins.jetbrains.com/plugin/18108-clojure-extras/[clojure-extras] 0.7.3 - Custom features added on top of Cursive for Clojure Lovers
+* https://clojureverse.org/t/latest-cardigan-bay-release-for-publishing-running-snippets-of-clojure/9041[Cardigan Bay] 0.7.1 - A wiki engine, which is intended to be run as a personal notebook / knowledge management system / “Digital Gardening” system
+* https://git.sr.ht/~jomco/ring-openapi-validator[ring-openapi-validator] 0.1.3 - Clojure library with middleware for validating Ring requests and responses
+* https://github.com/babashka/http-server[http-server] 0.1.3 - Serve static assets

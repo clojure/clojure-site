@@ -17,6 +17,16 @@ The official https://github.com/clojure/clojure/blob/master/changes.md[changelog
 
 Note: All dev releases are subject to breaking changes for new work since the prior release.
 
+== Release 1.12.0
+
+=== 1.12.0-alpha1 (Jun 30, 2022) [[v1.12.0-alpha1]]
+
+* https://clojure.atlassian.net/browse/CLJ-2713[CLJ-2713] Efficient drop and partition for persistent or algorithmic collections
+* https://clojure.atlassian.net/browse/CLJ-1327[CLJ-1327] Pin serialVersionUID for Clojure types to 1.10.3 values
+* https://clojure.atlassian.net/browse/CLJ-2712[CLJ-2712] Revert CLJ-1604 fix AOT bug preventing overriding of clojure.core functions
+* https://clojure.atlassian.net/browse/CLJ-2711[CLJ-2711] Implements namespace interning policy such that interned vars in own ns cannot be replaced by refer or intern
+* https://clojure.atlassian.net/browse/CLJ-1872[CLJ-1872] Extend `empty?` to `counted?` colls that aren't seqable, such as transients
+
 == Release 1.11.1
 
 === 1.11.1-rc1 (Apr 1, 2022) [[v1.11.1-rc1]]

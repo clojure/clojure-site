@@ -5,19 +5,21 @@ Alex Miller
 
 Today we are releasing Clojure 1.12.0-alpha1 and we would encourage you to try it and give us your feedback!
 
-== Var interning policy
+=== Var interning policy
 
 https://clojure.org/reference/vars#interning[Interning] a var in a namespace (vs aliasing) must create a stable reference that is never displaced, so that all references to an interned var get the same object. There were some cases where interned vars could get displaced and those have been tightened up in 1.12.0-alpha1. If you encounter this situation, you'll see a warning like "REJECTED: attempt to replace interned var #'some-ns/foo with #'other-ns/foo in some-ns, you must ns-unmap first".
 
 This addressses the root cause of an issue encountered with Clojure 1.11.0, which added new functions to clojure.core (particularly `abs`). Compiled code from an earlier version of Clojure with var names that matched the newly added functions in clojure.core would be unbound when loaded in a 1.11.0 runtime (more details in a future blog post). In addition to https://clojure.atlassian.net/browse/CLJ-2711[CLJ-2711], we rolled back a previous fix in this area (https://clojure.atlassian.net/browse/CLJ-1604[CLJ-1604]).
 
-== Efficient drop and partition for persistent or algorithmic collections
+=== Efficient drop and partition for persistent or algorithmic collections
 
 Partitioning of a collection uses a series of takes (to build a partition) and drops (to skip past that partition). https://clojure.atlassian.net/browse/CLJ-2713[CLJ-2713] adds a new internal interface (IDrop) indicating that a collection can drop more efficiently than sequential traversal, and implements that for persistent collections and algorithmic collections like `range` and `repeat`. These optimizations are used in `drop`, `nthrest`, and `nthnext`.
 
 Additionally, there are new functions `partitionv`, `partitionv-all`, and `splitv-at` that are more efficient than their existing counterparts and produce vector partitions instead of realized seq partitions.
 
-== Serialization changes
+You can read more detail in the https://insideclojure.org/2022/06/15/partitioning/[Efficient Partitioning] blog post.
+
+=== Serialization changes
 
 https://clojure.atlassian.net/browse/CLJ-1327[CLJ-1327] explicitly sets the Java serialization identifier for the classes in Clojure that implement Java serialization. In Clojure 1.11.0 this changed for two classes unnecessarily and we reverted those changes in Clojure 1.11.1 - this completes that work for the rest of the classes.
 
@@ -25,6 +27,6 @@ Clojure data types have implemented the Java serialization interfaces since Cloj
 
 Clojure has never provided a guarantee of serialization consistency across Clojure versions, but we do not wish to break compatibility any more than necessary and these changes will give us more control over that in the future.
 
-== Extend `empty?` to `counted?` colls that aren't seqable, such as transients
+=== Extend `empty?` to `counted?` colls that aren't seqable, such as transients
 
 https://clojure.atlassian.net/browse/CLJ-1872[CLJ-1872] adds support for `counted?` collections to `empty?`, which previously required colletions to be seqable. This is both more efficient for counted collections, and `empty?` will now work on counted but non-seqable collections (like transient collections).

@@ -1,0 +1,60 @@
+= Clojure Deref (July 1, 2022)
+Alex Miller
+2022-07-01
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Highlights
+
+This week we released https://clojure.org/news/2022/06/30/clojure1-12-alpha1[Clojure 1.12.0-alpha1] with several fixes and enhancements we've been working on over the last couple months. We are particularly interested in feedback on the var interning changes - we expect it to be no impact for most people, but if you find otherwise, please https://ask.clojure.org[drop us a note].
+
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=m1tZEn_NAqg[Clojure (the first talk) - Rich Hickey (2007)] - Lisp NYC
+* https://www.youtube.com/watch?v=geF_u502MIE[Clojure: Episode 1 (What You Need To Know To Get Started)] - Paradigm Conf
+* https://www.youtube.com/watch?v=giPlacLrC5g[Confuzion - Rob Hubbard (Mario Paint cover)] - Bobby Towers
+
+== Blogs
+
+* https://aphyr.com/posts/360-loopr-a-loop-reduction-macro-for-clojure[Loopr: A Loop/Reduction Macro for Clojure] - Kyle Kingsbury
+* https://blog.michielborkent.nl/oss-updates-may-jun-2022.html[OSS Updates of May - June 2022] - Michiel Borkent
+* https://dragan.rocks/articles/22/My-experience-with-Clojurists-Together-open-source-funding[My experience with Clojurists Together open source funding] - Dragan Djuric
+* https://dragan.rocks/articles/22/Maple-Leaf-Rag-Clojure-Sound[Maple Leaf Rag with Clojure Sound] - Dragan Djuric
+* https://dragan.rocks/articles/22/Clojure-Sound-2-A-better-piano[Clojure Sound 2 - A better piano] - Dragan Djuric
+* https://dragan.rocks/articles/22/Clojure-Sound-3-Hello-MIDI-Controller[Clojure Sound 3 - Hello MIDI Controller] - Dragan Djuric
+* https://clojure-diary.gitlab.io/2022/06/29/i-kind-of-understand-clojure-macros.html[I kind of understand Clojure macros] - Karthikeyan A K
+* https://jmglov.net/blog/2022-06-26-loose-ends.html[Tying off loose ends] - Josh Glover
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/russellwhitaker/uap-clj[uap-clj] 1.4.1 - Clojure language implementation of ua-parser
+* https://git.sr.ht/~jomco/ring-openapi-validator[ring-openapi-validator] 0.1.4 - Clojure library with middleware for validating Ring requests and responses
+* https://github.com/strojure/jmustache[jmustache] 1.0.0 - Clojure adapter to jmustache library
+* https://github.com/henryw374/tiado-cljs2[tiado-cljs2]  - clojurescript build setup
+* https://github.com/dpassen/malapropism[malapropism]  - Malli-backed configuration library
+* https://github.com/Liverm0r/DartClojure[DartClojure] https://github.com/Liverm0r/DartClojure/releases/tag/0.2.9[0.2.9] - Opinionated Dart->Clojure translater
+* https://github.com/babashka/cli[cli] https://github.com/babashka/cli/blob/main/CHANGELOG.md#v0326[0.3.26] - Turn Clojure functions into CLIs
+* https://github.com/liquidz/build.edn[build.edn] 0.4.107 - Make your Clojure library build process easy
+* https://github.com/babashka/process[process] 0.1.4 - Shell out in Clojure with simplicity and ease
+* https://github.com/BetterThanTomorrow/calvaa[calvaa] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.287[2.0.287] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/viesti/timbre-json-appender[timbre-json-appender] 0.2.7 - JSON appender for Timbre
+* https://github.com/clojure/tools.build[tools.build] 0.8.3 - Clojure builds as Clojure programs
+* https://github.com/seancorfield/build-clj[build-clj] 0.8.3 - Common build tasks abstracted into a library
+* https://github.com/jpmonettas/flow-storm-debugger[flow-storm-debugger] 2.2.99 - A debugger for Clojure and ClojureScript with some unique features
+* https://github.com/pitch-io/uix[uix] 0.3.0 - Idiomatic ClojureScript interface to modern React.js
+* https://clojurecuda.uncomplicate.org[clojurecuda] 0.15.1 - Parallel computations on the GPU with CUDA in Clojure
+* https://neanderthal.uncomplicate.org[neanderthal] 0.44.1 - Data-Driven Schemas for Clojure/Script
+* https://github.com/uncomplicate/deep-diamond[deep-diamond] 0.23.1 - A fast Clojure Tensor & Deep Learning library
+* https://github.com/athos/trenchman[trenchman] 0.4.0 - A standalone nREPL/prepl client written in Go and heavily inspired by Grenchman
+* https://github.com/ivarref/yoltq[yoltq] 0.2.58 - An opinionated Datomic queue for building (more) reliable systems. Supports retries, backoff, ordering and more.
+* https://git.sr.ht/~jomco/proof-specs[proof-specs] 0.1.4 - Automates testing clojure.spec data generators
+* https://github.com/borkdude/dynaload[dynaload] 0.3.4 - The dynaload logic from clojure.spec.alpha as a library
+* https://github.com/tgk/plait[plait]  - Redeclareable let-style bindings for Clojure
+* https://github.com/metosin/malli[malli] 0.8.9 - Data-Driven Schemas for Clojure/Script
+* https://github.com/babashka/babashka[babashka] 0.8.157 - Native, fast starting Clojure interpreter for scripting
+* https://github.com/vvvvalvalval/scope-capture[scope-capture] 0.3.3 - Project your Clojure(Script) REPL into the same context as your code when it ran

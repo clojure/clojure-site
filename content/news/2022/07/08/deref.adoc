@@ -1,0 +1,49 @@
+= Clojure Deref (July 8, 2022)
+Alex Miller
+2022-07-08
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=gezm8KRLF3Y[EZBitmap.com: Create beautiful images in javascript, directly from ASCII art] - Conrad Barski
+* https://soundcloud.com/clojurestream/e74-linear-algebra-with-david-pham[E74 Linear Algebra with David Pham] - ClojureStream podcast
+* https://www.youtube.com/watch?v=m1HbWpWiTk4[Visual-tools meeting 9: clj-tiles, Obsidian Wielder, Cardigan Bay, Platypub] - Sci Cloj
+* https://www.youtube.com/watch?v=Ua_LORWwFc4[Clojure REPL in VSCodium] - Karthikeyan A K
+
+== Blogs
+
+* https://humanscode.com/columns-for-tablecloth-i[Columns For Tablecloth] - Ethan Miller
+* https://jmglov.net/blog/2022-07-03-blambda.html[Blambda!] - Josh Glover
+* https://blog.janetacarr.com/how-clojure-works-for-you/[How Clojure works for you] - Janet A. Carr
+* https://ag91.github.io/blog/2022/07/03/moldable-emacs-showing-clojure-dependencies-for-the-files-you-just-modified/[Moldable Emacs: showing Clojure dependencies for the files you just modified] - Andrea
+* https://ag91.github.io/blog/2022/07/07/moldable-emacs-from-a-picture-to-a-clojurescript-react-native-svg/[Moldable Emacs: from a picture to a ClojureScript React-Native SVG] - Andrea
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/pitch-io/uix[uix] 0.5.0 - Idiomatic ClojureScript interface to modern React.js
+* https://github.com/ykskb/phrag[phrag] 0.4.6 - GraphQL API created from an RDBMS connection for instant, flexible and customizable CRUD operations
+* https://github.com/borkdude/bebo[bebo]  - Run Clojure scripts on deno
+* https://github.com/ashwinbhaskar/kafka-util[kafka-util] 0.1.1 - A Clojure library designed to provide a simple interface to consume from Kafka for debugging purposes
+* https://github.com/wilkerlucio/pathom3[pathom3] 2022.07.08-alpha - A library for navigating data
+* https://github.com/babashka/nbb[nbb] 0.6.122 - Scripting in Clojure on Node.js using SCI
+* https://github.com/IGJoshua/coffi[coffi] 0.5.357 - A Foreign Function Interface in Clojure for JDK 18
+* https://github.com/exoscale/coax[coax]  - Clojure.spec coercion library for clj(s)
+* https://github.com/exoscale/interceptor[interceptor]  - Small Interceptor lib for clojure
+* https://github.com/nnichols/clojure-dependency-update-action[clojure-dependency-update-action] v4 - A simple GitHub Actions job to create Pull Requests for outdated dependencies in clojure projects
+* https://github.com/nnichols/clojure-lint-action[clojure-lint-action] v2 - A simple GitHub Action to lint clojure files with clj-kondo and reviewdog on pull requests to improve the code review experience
+* https://github.com/babashka/pod-babashka-buddy[pod-babashka-buddy] https://github.com/babashka/pod-babashka-buddy/releases/tag/v0.2.0[0.2.0] - A pod around buddy core (Cryptographic Api for Clojure)
+* https://github.com/FieryCod/holy-lambda-ring-adapter[holy-lambda-ring-adapter]  - An adapter between Ring core request/response model and Holy Lambda. Run Ring applications on AWS Lambda
+* https://github.com/fabricate-site/fabricate[fabricate]  - Next-generation static website generation for Clojure
+* https://github.com/ivarref/double-trouble[double-trouble] 0.1.96 - Handle duplicate Datomic transactions with ease (on-prem)
+* https://github.com/simongray/datalinguist[datalinguist] 0.2.171 - Stanford CoreNLP in idiomatic Clojure
+* https://github.com/clojure-finance/clojure-heap[clojure-heap] 1.0.2 - Pure Clojure implementation of a heap, i.e. priority queue
+* https://github.com/liquidz/antq[antq] 1.8.847 - Point out your outdated dependencies
+* https://github.com/clj-commons/aleph[aleph] 0.5.0-rc3 - Asynchronous communication for Clojure
+* https://github.com/BetterThanTomorrow/calva[calva] 2.0.289 - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/steffan-westcott/clj-otel[clj-otel] 0.1.4 - An idiomatic Clojure API for adding telemetry to your libraries and applications using OpenTelemetry

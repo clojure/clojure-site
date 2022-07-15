@@ -1,0 +1,47 @@
+= Clojure Deref (July 15, 2022)
+Alex Miller
+2022-07-15
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Highlights
+
+The https://clojuredays.org/[Dutch Clojure Day] will return on Oct 29th in Amsterdam - check out the https://sessionize.com/dutch-clojure-days-2022/[CFP] and https://www.eventbrite.nl/e/dutch-clojure-day-2022-tickets-380638669507[registration].
+
+We've seen a number of questions about the Clojure/conj and a group has been working on developing a plan. It looks like we probably will not have an event this year but are looking at dates in spring 2023, mostly likely in the Durham, NC area. We hope to have a firm date in the near future.
+
+Clojurists Together has opened https://www.clojuriststogether.org/open-source/[funding applications] for the next round of funding. Get your projects in!
+
+The Sci Cloj has been hard at work starting some new courses and groups - check out  https://scicloj.github.io/docs/community/groups/ds4clj/[ds4clj: a data science course for Clojure devs] and https://scicloj.github.io/docs/community/groups/jointprob/[jointprob: a probabilistic modelling and Bayesian statistics study group].
+
+== Podcasts and videos
+
+* https://biffweb.com/p/bpp-1/[Biff Pair Programming #1] - Jacob O'Bryant
+
+== Blogs
+
+* https://metaredux.com/posts/2022/07/10/cider-turns-10.html[CIDER Turns 10] - Bozhidar Batsov
+* https://www.juxt.pro/blog/nbb-lambda[AWS Lambda, now with first class parentheses] - Ray McDermott
+* https://github.com/readme/featured/functional-programming[Functional programming is finally going mainstream] - Klint Finley
+* https://dragan.rocks/articles/22/Clojure-Sound-4-Ctrl-Left-Pedal[Clojure Sound - 4 - Ctrl-Left-Pedal] - Dragan Djuric
+* https://medium.com/@rawad_56687/why-clojure-part-2-a-developer-on-boarding-perspective-56c209288072[Why Clojure? Part 2: A developer on-boarding perspective] - Rawad Assaf
+* https://smallsheds.garden/blog/clojure/2022/clj-10-the-mapify-function-of-clj-9-revisited/[(clj 10) The mapify function of (clj 9) revisited] - Joep Schuurkes
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/quoll/asami[asami] 2.3.2 - A flexible graph store, written in Clojure
+* https://babashka.org/toolbox/[The Babashka Toolbox]
+* https://github.com/clj-commons/aleph[aleph] 0.5.0 - Asynchronous communication for Clojure
+* https://github.com/imrekoszo/polylith-kaocha[polylith-kaocha] https://github.com/imrekoszo/polylith-kaocha/releases/tag/v0.8.1[0.8.1] - Kaocha-based test runner for Polylith
+* https://github.com/uncomplicate/clojure-sound[clojure-sound] 0.3.0 - Clojure Sound
+* https://github.com/jpmonettas/flow-storm-debugger[flow-storm-debugger] 2.2.114 - A debugger for Clojure and ClojureScript with some unique features
+* https://github.com/oliyh/carmine-streams[carmine-streams] 0.1.5 - Utility functions for working with Redis streams in carmine
+* https://github.com/BrunoBonacci/mulog[mulog] 0.9.0 - μ/log is a micro-logging library that logs events and data, not words! 
+* https://github.com/Liverm0r/DartClojure[DartClojure] 0.2.11 - Opinionated Dart->Clojure translater
+* https://github.com/borkdude/quickblog[quickblog]  - Light-weight static blog engine for Clojure and babashka
+* https://github.com/clojure-emacs/inf-clojure[inf-clojure] https://github.com/clojure-emacs/inf-clojure/releases/tag/v3.2.0[3.2.0] - Basic interaction with a Clojure subprocess

@@ -1,0 +1,26 @@
+= London Clojurians - July
+London Clojurians - July
+2022-07-19
+:jbake-type: event
+:jbake-edition: 2022
+:jbake-link: https://www.meetup.com/london-clojurians/events/285940432/
+:jbake-location: Online
+:jbake-start: 2022-07-19
+:jbake-end: 2022-07-19
+
+The London Clojurians are happy to present:
+
+== Debugging and exploring Clojure applications with FlowStorm
+
+Juan Monetta (https://github.com/jpmonettas) will be presenting:
+"Debugging and exploring Clojure applications with FlowStorm"
+
+FlowStorm (https://github.com/jpmonettas/flow-storm-debugger) allows
+you to instrument and run any Clojure codebase so it traces everything
+it is doing. See how these traces can be used to debug and understand
+Clojure code.
+
+Juan has been working as a programmer since late 90s, and working
+professionally as a Clojure developer since 2011 over many domains.
+He has a passion for dev tooling and anything that makes writing
+software more fun.

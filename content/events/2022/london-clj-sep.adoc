@@ -1,0 +1,38 @@
+= London Clojurians - Sept
+London Clojurians - Sept
+2022-09-20
+:jbake-type: event
+:jbake-edition: 2022
+:jbake-link: https://www.meetup.com/london-clojurians/events/286468872/
+:jbake-location: Online
+:jbake-start: 2022-09-20
+:jbake-end: 2022-09-20
+
+The London Clojurians are happy to present:
+
+== Joyride VS Code using a Clojure REPL
+
+Peter Strömberg and Michiel Borkent will be presenting:
+"Joyride VS Code using a Clojure REPL"
+
+Peter Strömberg (https://github.com/PEZ) and Michiel Borkent (https://github.com/borkdude) will be presenting:
+"Joyride VS Code using a Clojure REPL"
+
+What if you could script and control VS Code with a REPL, like you can
+do with Emacs? What if it is a Clojure REPL? Leveraging SCI, this is
+what Joyride (https://github.com/BetterThanTomorrow/joyride) lets you
+do. We'll take a look at what possibilities this opens, what the
+limitations are, and what people have done with Joyride so far, four
+months since the first release.
+
+Peter is a former product manager turned developer by Clojure. He uses
+VS Code, and lacked a lot of the awesome Clojure support that Emacs
+users enjoy through CIDER. He decided to try to bring some of that to
+his editor of choice, resulting in Calva. Peter also feels strongly
+for the Clojure "Getting Started" experience and is always thinking
+about ways to contribute to improving it.
+
+Michiel Borkent doesn't really need introductions in our community. He
+is the main author of clj-kondo, babashka, jet and so many other
+Clojure tools. He can be found as @borkdude in various places on the
+web.

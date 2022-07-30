@@ -1,0 +1,60 @@
+= Clojure Deref (July 30, 2022)
+Alex Miller
+2022-07-30
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Highlights
+
+The Deref has been on summer vacation but we are back!
+
+It was great to see the announcement that https://www.reclojure.org/[reClojure] is returning as an online event from Dec 2-3 with a focus on Clojure Growth. I like the sound of that!
+
+As mentined a couple weeks back, we are close to finalizing the dates for the next Clojure/conj so watch this space but currently we are looking at late April 2023.
+
+== Podcasts, videos, and books
+
+* https://soundcloud.com/clojurestream/e75-sitefox-with-chris-mccormic[E75 Sitefox with Chris McCormick] - ClojureStream Podcast
+* https://www.youtube.com/watch?v=A3AzlqNwUXc[Debugging and exploring Clojure applications with FlowStorm (by Juan Monetta)] - London Clojurians
+* https://www.youtube.com/watch?v=mDr1Tlo0-5c[Alex Kehayias on Functional Game Engine Design] - LispNYC
+* https://www.manning.com/books/data-oriented-programming[Data-Oriented Programming] - Yehonathan Sharvit
+
+== Blogs
+
+* https://jmglov.net/blog/2022-07-15-hacking-blog-actually-caching.html[Hacking the blog: actually caching] - Josh Glover
+* https://www.abhinavomprakash.com/posts/running-cljs-tests/[How to run tests in clojurescript] - Abhinav Omprakash
+* https://marko.euptera.com/posts/htmx-kit.html[htmx in Clojure using kit framework] - Marko Kocic
+* https://play.teod.eu/document-transform-pandoc-clojure/[Recursive document transformations with Pandoc and Clojure] - Teodor Heggelund
+* https://blog.michielborkent.nl/babashka-tasks-meets-babashka-cli.html[Babashka tasks meets babashka CLI] - Michiel Borkent
+* https://freshcodeit.com/whitepapers/clojure-popularity-research[Clojure Popularity: Preconceptions and Solutions] - Freshcode
+* https://metaredux.com/posts/2022/07/25/leiningen-adds-support-for-nrepl-s-unix-sockets.html[Leiningen Adds Support for nREPL's Unix Sockets] - Bozhidar Batsov
+* https://javahippie.net/clojure/2022/07/23/deleting-aws-glacier-vaults-with-babashka.html[Deleting AWS Glacier vaults with babashka] - Tim Zöller
+* http://clojure-goes-fast.com/blog/clj-async-profiler-100/[clj-async-profiler 1.0.0: fast HTML rendering and dynamic transforms] - Clojure Goes Fast
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/nextjournal/clerk[clerk] https://github.com/nextjournal/clerk/blob/main/CHANGELOG.md#09513-2022-07-18[0.9.513] - Local-First Notebooks for Clojure
+* https://github.com/seancorfield/honeysql[honeysql] 2.3.911 - Turn Clojure data structures into SQL
+* https://github.com/seancorfield/next-jdbc[next-jdbc] 1.2.790 - A modern low-level Clojure wrapper for JDBC-based access to databases
+* https://github.com/prestancedesign/inertia-clojure[inertia-clojure] 0.2.5 - A Clojure adapter for Inertia.js 
+* https://github.com/babashka/babashka[babashka] 0.9.160 - Native, fast starting Clojure interpreter for scripting
+* https://github.com/conductor-sdk/conductor-clojure[conductor-clojure] 0.2.0 - Software Development Kit for Netflix Conductor
+* https://github.com/clojure-lsp/clojure-lsp[clojure-lsp] 2022.07.24-18.25.43 - Clojure & ClojureScript Language Server (LSP) implementation
+* https://github.com/bortexz/graphcom[graphcom]  - Dependency graph computations for Clojure
+* https://github.com/bsless/tools.jvm[tools.jvm] 0.0.15 - Tools for introspecting the current JVM process in Clojure
+* https://github.com/bsless/tools.jcmd.jfr[tools.jcmd.jfr] 0.0.3 - Invoke JFR from inside the JVM using Clojure
+* https://github.com/liquidz/merr[merr] 0.4.169 - Minimal and good enough error handling library for Clojure/ClojureScript
+* https://github.com/clojure-goes-fast/clj-async-profiler[clj-async-profiler] 1.0.0 - Embedded high-precision Clojure profiler
+* https://github.com/babashka/cli[cli] 0.3.33 - Turn Clojure functions into CLIs
+* https://github.com/jmayaalv/graffito[graffito]  - Graphql Interface for Pathom3
+* https://github.com/oliyh/re-graph[re-graph] 0.2.0 - A graphql client for clojurescript and clojure
+* https://github.com/yogthos/migratus[migratus] 1.3.8 - MIGRATE ALL THE THINGS!
+* https://github.com/clojure-emacs/clojure-mode[clojure-mode] https://github.com/clojure-emacs/clojure-mode/releases/tag/v5.15.0[5.15.0] - Emacs support for the Clojure(Script) programming language
+* https://github.com/liquidz/build.edn[build.edn] 0.6.131 - Make your Clojure library build process easy
+* https://github.com/Liverm0r/DartClojure[DartClojure] 0.1.12 - Opinionated Dart->Clojure translater
+* https://github.com/NickCellino/clj-browser-eval[clj-browser-eval]  - Turn any HTML input field into a Clojure interpreter

@@ -836,6 +836,7 @@ The git url must either be provided or inferred from the lib name. If provided, 
 |org.bitbucket.ORG/PROJECT | `"https://bitbucket.org/ORG/PROJECT.git"`
 |io.beanstalkapp.ORG/PROJECT | `"https://ORG.git.beanstalkapp.com/PROJECT.git"`
 |com.beanstalkapp.ORG/PROJECT | `"https://ORG.git.beanstalkapp.com/PROJECT.git"`
+|ht.sr.ORG/PROJECT | `"https://git.sr.ht/~ORG/PROJECT"`
 |===
 
 The git sha is either provided as a full sha in `:git/sha` or as a full or prefix `:git/sha` in combination with a `:git/tag` (to provide semantic version context). If a `:git/tag` is provided, the full sha it refers to must match the full sha included or implied by `:git/sha`.

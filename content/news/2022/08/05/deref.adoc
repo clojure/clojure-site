@@ -7,6 +7,10 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
 
+== Highlights
+
+Save the date! The Clojure/conj will return Apr 27-28, 2023 in Durham, NC! CFP will likely be in December/January timeframe.
+
 == Podcasts and videos
 
 * https://www.youtube.com/watch?v=63-KGa3Flac[What is going on in the Clojure data science scene? - Aug. 2022 sync - Kira McLean] - Sci Cloj
@@ -49,3 +53,4 @@ New releases and tools this week:
 * https://github.com/clj-kondo/clj-kondo[clj-kondo] 2022.08.03 - A linter for Clojure code that sparks joy
 * https://github.com/jlesquembre/clj-nix[clj-nix] https://github.com/jlesquembre/clj-nix/blob/0.3.0/CHANGELOG.md[0.3.0] - Nix helpers for Clojure projects
 * https://github.com/clj-commons/etaoin[etaoin] 1.0.38 - Pure Clojure Webdriver protocol implementation
+* https://github.com/cgrand/xforms[xforms] https://github.com/cgrand/xforms/releases/tag/v0.19.3[0.19.3] - Extra transducers and reducing fns for Clojure(script)

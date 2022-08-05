@@ -1,0 +1,51 @@
+= Clojure Deref (Aug 5, 2022)
+Alex Miller
+2022-08-05
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=63-KGa3Flac[What is going on in the Clojure data science scene? - Aug. 2022 sync - Kira McLean] - Sci Cloj
+* https://soundcloud.com/clojurestream/e76-sql-with-sean-corfield[E76 SQL with Sean Corfield] - ClojureStream Podcast
+* https://www.youtube.com/watch?v=GjRGnVEVO7Y[defpure: My latest macro invention] - Fred Overflow
+* https://www.youtube.com/watch?v=_M9CSPQEXZ8[Clojure data-recur meeting 1: clojure.walk, community updates] - Sci Cloj
+* https://www.youtube.com/watch?v=cZy7SfLAjXA[Hyperfiddle: Compiler Managed Network Connections (S03 E06)] - The Technium
+
+== Blogs
+
+* https://blog.michielborkent.nl/new-clojure-project-quickstart.html[New Clojure project quickstart] - Michiel Borkent
+* https://medium.swirrl.com/exploring-data-with-clojure-and-clerk-7010ee4e9346[Exploring Data with Clojure and Clerk] - Kira McLean
+* https://flexiana.com/2022/08/five-amazing-opportunities-that-clojure-brings[Five amazing opportunities that Clojure brings] - Flexiana
+* https://blog.janetacarr.com/clojure-needs-a-rails/[Clojure needs a Rails, but not for the reason you think] - Janet A. Carr
+* https://dragan.rocks/articles/22/Clojure-Sound-5-Double-Click-with-Foot-Control[Clojure Sound - 5 - Double Click with Foot Control] - Dragan Djuric
+* https://batsov.com/articles/2022/07/31/clojure-tricks-replace-in-string/[Clojure Tricks: Replace in String] - Bozhidar Batsov
+* https://biffweb.com/p/updates-2022-07/[Biff updates for July] - Jacob O'Bryant
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/uncomplicate/neanderthal[neanderthal] 0.1.0-alpha.1 - inmesh makes using webworkers take less... work
+* https://github.com/nathell/skyscraper[skyscraper] 0.3.2 - Structural scraping for the rest of us
+* https://github.com/babashka/neil[neil] 0.1.36 - A CLI to add common aliases and features to deps.edn-based projects
+* https://github.com/thheller/shadow-css[shadow-css] 0.3.0 - CSS-in-CLJ(S)
+* https://github.com/yogthos/migratus[migratus] 1.4.0 - MIGRATE ALL THE THINGS!
+* https://github.com/lilactown/pyramid[pyramid] 3.3.0 - A library for storing and querying graph data in a Clojure map
+* https://github.com/prestancedesign/usermanager-reitit-example[usermanager-reitit-example]  - A little demo web app in Clojure, using Integrant, Ring, Reitit, Selmer (and a database)
+* https://github.com/BetterThanTomorrow/calva[calva] 2.0.291 - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/uncomplicate/neanderthal[neanderthal] 0.45.0 - Fast Clojure Matrix Library
+* https://github.com/uncomplicate/clojurecuda[clojurecuda] 0.16.0 - Clojure library for CUDA development
+* https://github.com/uncomplicate/deep-diamond[deep-diamond] 0.25.0 - A fast Clojure Tensor & Deep Learning library
+* https://github.com/nilenso/goose[goose] 0.2 - The sidekick for Clojure
+* https://github.com/holyjak/fulcro-rad-asami[fulcro-rad-asami]  - Asami database support plugin for Fulcro RAD
+* https://github.com/borkdude/cherry[cherry]  - Experimental ClojureScript to ES6 module compiler
+* https://github.com/seancorfield/next-jdbc[next-jdbc] 1.2.796 - A modern low-level Clojure wrapper for JDBC-based access to databases
+* https://github.com/jherrlin/guitar-theory-training[guitar-theory-training]  - Guitar and music theory
+* https://github.com/juji-io/datalevin[datalevin] 0.6.16 - A simple, fast and versatile Datalog database
+* https://github.com/clj-kondo/clj-kondo[clj-kondo] 2022.08.03 - A linter for Clojure code that sparks joy
+* https://github.com/jlesquembre/clj-nix[clj-nix] https://github.com/jlesquembre/clj-nix/blob/0.3.0/CHANGELOG.md[0.3.0] - Nix helpers for Clojure projects
+* https://github.com/clj-commons/etaoin[etaoin] 1.0.38 - Pure Clojure Webdriver protocol implementation

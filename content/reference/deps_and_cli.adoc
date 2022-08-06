@@ -819,6 +819,7 @@ The `git` procurer supports direct use of source-based libs hosted in Git reposi
 To specify a git lib as a dependency, two pieces of information must be known - the Git repo url and a specific sha. Using movable references like branch names is not supported.
 
 Git coordinates have the following attributes:
+
 * `:git/url` - optional, Git url (may be inferred from lib name, see below)
 * `:git/sha` - required, either a full 40-char sha or a sha prefix can be provided in combination with a tag (`:sha` is also accepted for backwards compatibility)
 * `:git/tag` - optional, git tag name (may be used only in combination with a `:git/sha`)

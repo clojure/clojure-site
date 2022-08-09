@@ -403,13 +403,13 @@ And then finally we are ready to declare our `multi-spec` and try it out.
   {:event/type :event/search
    :event/timestamp 1463970123000
    :search/url "https://clojure.org"})
-;=> true
+;;=> true
 (s/valid? :event/event
   {:event/type :event/error
    :event/timestamp 1463970123000
    :error/message "Invalid host"
    :error/code 500})
-;=> true
+;;=> true
 (s/explain :event/event
   {:event/type :event/restart})
 ;; #:event{:type :event/restart} - failed: no method at: [:event/restart] 
@@ -481,7 +481,7 @@ While `coll-of` is good for homogenous collections of any size, another case is 
 ----
 (s/def :geom/point (s/tuple double? double? double?))
 (s/conform :geom/point [1.5 2.5 -0.5])
-=> [1.5 2.5 -0.5]
+;;=> [1.5 2.5 -0.5]
 ----
 
 Note that in this case of a "point" structure with x/y/z values we actually had a choice of three possible specs:
@@ -504,7 +504,7 @@ In addition to the support for information maps via `keys`, spec also provides `
 ----
 (s/def :game/scores (s/map-of string? int?))
 (s/conform :game/scores {"Sally" 1000, "Joe" 500})
-;=> {"Sally" 1000, "Joe" 500}
+;;=> {"Sally" 1000, "Joe" 500}
 ----
 
 By default `map-of` will validate but not conform keys because conformed keys might create key duplicates that would cause entries in the map to be overridden. If conformed keys are desired, pass the option `:conform-keys true`.
@@ -653,9 +653,9 @@ One way to use spec is to explicitly call `valid?` to verify input data passed t
 ;; Execution error (AssertionError) at user/person-name (REPL:1).
 ;; Assert failed: (s/valid? :acct/person person)
 
-(person-name {:acct/first-name "Bugs" 
-              :acct/last-name "Bunny" 
-			  :acct/email "bugs@example.com"})
+(person-name {:acct/first-name "Bugs"
+              :acct/last-name "Bunny"
+              :acct/email "bugs@example.com"})
 ;;=> "Bugs Bunny"
 ----
 
@@ -997,17 +997,17 @@ For spec'ed functions we also have https://clojure.github.io/spec.alpha/clojure.
 [source,clojure]
 ----
 (s/exercise-fn `ranged-rand)
-=>
-([(-2 -1)   -2]
- [(-3 3)     0]
- [(0 1)      0]
- [(-8 -7)   -8]
- [(3 13)     7]
- [(-1 0)    -1]
- [(-69 99) -41]
- [(-19 -1)  -5]
- [(-1 1)    -1]
- [(0 65)     7])
+;;=>
+;;([(-2 -1)   -2]
+;; [(-3 3)     0]
+;; [(0 1)      0]
+;; [(-8 -7)   -8]
+;; [(3 13)     7]
+;; [(-1 0)    -1]
+;; [(-69 99) -41]
+;; [(-19 -1)  -5]
+;; [(-1 1)    -1]
+;; [(0 65)     7])
 ----
 
 === Using `s/and` Generators
@@ -1214,8 +1214,8 @@ Instrument takes a fully-qualified symbol so we use `pass:[`]` here to resolve i
 [source,clojure]
 ----
 (ranged-rand 8 5)
-Execution error - invalid arguments to user/ranged-rand at (REPL:1).
-{:start 8, :end 5} - failed: (< (:start %) (:end %))
+;; Execution error - invalid arguments to user/ranged-rand at (REPL:1).
+;; {:start 8, :end 5} - failed: (< (:start %) (:end %))
 ----
 
 The error fails in the second args predicate that checks `(< start end)`. Note that the `:ret` and `:fn` specs are not checked with instrumentation as validating the implementation should occur at testing time.

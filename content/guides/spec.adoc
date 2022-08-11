@@ -423,7 +423,7 @@ And then finally we are ready to declare our `multi-spec` and try it out.
 ;;   at: [:event/search] spec: :event/event
 ----
 
-Let's take a moment to examine the explain error output on that final example. There were two different kinds of failures detected. The first failure is due to the missing required `:event/timestamp` key in the event. The second is from the invalid `:search/url` value (a number instead of a string). We see the same parts as prior explain errors:
+Let's take a moment to examine the explain error output on that final example. There were two different kinds of failures detected. The first failure is due to a missing dispatch method for `:event/restart`. The second is from the invalid `:search/url` value (a number instead of a string) and a missing required `:event/timestamp` key. We see the same parts as prior explain errors:
 
 * in - the path within the data to the failing value. This is omitted on the first error as it's at the root value but is the key in the map on the second error.
 * val - the failing value, either the full map or the individual key in the map

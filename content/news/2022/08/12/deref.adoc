@@ -1,0 +1,42 @@
+= Clojure Deref (Aug 12, 2022)
+Alex Miller
+2022-08-12
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=OG_MYSGzSHo[How to create and use Clojure library. Publishing to git and Clojars.] - Volodymyr Kozieiev
+* https://www.youtube.com/watch?v=vQH6xAK42-U[Clojure visual-tools meeting 10: Oz] - Sci Cloj
+* https://www.youtube.com/watch?v=rbkZmh_DbPw[JUXT Safari - Portal, Developing with Data with Chris Williams] - JUXT
+* https://www.youtube.com/watch?v=Hx6bZdDYD9Y[S1:05 Clojure classpath concerns and namespaced keywords] - The Clojure Clouncil
+
+== Blogs
+
+* https://opensource.com/article/22/7/why-we-chose-clojure-penpot[Why we chose the Clojure programming language for Penpot] - Andrey Antukh
+* https://dev.to/dpsutton/logging-in-clojure-jar-tidiness-4jka[Logging in Clojure: jar tidiness] - Dan Sutton
+* https://blog.nickcellino.com/blog/2022-08-07-clojure-bandits.html[Multi-armed bandits & Clojure] - Nick Cellino
+* https://dawranliou.com/blog/vanilla-cljs/[Vanilla ClojureScript] - Daw-Ran Liou
+* https://www.juxt.pro/blog/the-big-acquisition[The Big Acquisition] - Jamie Walkerdine
+* https://clojureverse.org/t/tooling-for-data-science-community-projects-short-term-plans/9212[Tooling for data-science community projects - short-term plans] - Daniel Slutsky
+* https://www.emcken.dk/programming/2022/08/11/becoming-friends-with-clojure-protocols/[Becoming friends with Clojure protocols] - Jacob Emcken
+* https://jmglov.net/blog/2022-08-11-dogfooding-blambda-cli-ier.html[Dogfooding Blambda 4: CLI, CLIier, CLIiest] - Josh Glover
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://clojure.org/releases/tools[Clojure CLI] https://clojure.org/releases/tools#v1.11.1.1155[1.11.1.1155]
+* https://github.com/tiagodalloca/city-weather-clj[city-weather-clj]  - Small web application which consumes the Open Weather API and makes use of Clojure's atom construct as cache
+* https://github.com/jpmonettas/flow-storm-debugger[flow-storm-debugger] 2.3.131 - A debugger for Clojure and ClojureScript with some unique features
+* https://github.com/polyfy/polylith[polylith] https://github.com/polyfy/polylith/releases/tag/v0.2.15-alpha[0.2.15] - A tool used to develop Polylith based architectures in Clojure
+* https://github.com/clojure-lsp/lsp4clj[lsp4clj] 1.0.0 - LSP base support for any LSP that is implemented in Clojure
+* https://github.com/lilactown/eql-cli[eql-cli]  - A CLI for executing EQL queries on EDN dataA CLI for executing EQL queries on EDN data
+* https://github.com/nytimes/querqy-clj[querqy-clj]  - Querqy for Clojure
+* https://github.com/eerohele/Tutkain[Tutkain] https://github.com/eerohele/Tutkain/blob/master/CHANGELOG.md#0160-alpha---2022-08-08[0.16.0] - A Sublime Text package for interactive Clojure development
+* https://github.com/jacobobryant/biff[biff] https://github.com/jacobobryant/biff/releases/tag/v0.4.3-beta[0.4.3-beta] - A simple and easy web framework for Clojure
+* https://github.com/oliyh/fixa[fixa] 0.1.0 - Better test fixtures for clojure
+* https://github.com/yetanalytics/flint[flint] 0.2.0 - SPARQL DSL library for Clojure(Script)

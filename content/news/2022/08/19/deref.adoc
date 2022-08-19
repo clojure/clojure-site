@@ -1,0 +1,38 @@
+= Clojure Deref (Aug 19, 2022)
+Alex Miller
+2022-08-19
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=0mrguRPgCzI[Create a URL shortner with Clojure and MySQL] - on the code again
+* https://www.youtube.com/watch?v=24GRiOCa1Vo[Data Rabbit - Alpha 1, Quick Intro / Overview (cljs-only version)] - Ryan Robitaille
+* https://www.youtube.com/watch?v=PwzucD5qoD4[Data Rabbit - nREPLs, SQL, JDBC, Viz (Nivo, Vega-lite), Sub-flows] - Ryan Robitaille
+* https://www.youtube.com/watch?v=H0h9BRqHLe0[Custom Clojure tooling: prepared for your taste - Ivana] - Clojure Asia
+
+== Blogs
+
+* https://blog.janetacarr.com/software-design-patterns-in-clojure/[Fix your Clojure code: Clojure comes with design patterns (Part 1)] - Janet A. Carr
+* https://tonsky.me/blog/datascript-2/[Ideas for DataScript 2] - Nikita Prokopov
+* https://blog.adrianistan.eu/usando-lenguaje-mejor-pagado-clojure[Usando el lenguaje mejor pagado del mundo: Clojure] - Adrián Arroyo Calle
+* https://frankapiyo.github.io/CCDDE0/posts-output/2022-08-15-adding-hexbin-layer-to-mapbox-map/[Adding a hexbin layer to a mapbox map] - Frankline Apiyo
+* https://andreyorst.gitlab.io/posts/2022-08-13-understanding-transducers/[Understanding transducers] - Andrey Listopadov
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://jank-lang.org/[jank]  - The jank programming language
+* https://github.com/clavascript/clavascript[clavascript]  - ClojureScript syntax to JavaScript compiler
+* https://github.com/liquidz/antq[antq] 2.0.889 - Point out your outdated dependencies
+* https://github.com/grzm/uri-template[uri-template] 0.7.1 - Clojure implementation of URI Template (RFC 6570)
+* https://github.com/babashka/cli[cli] 0.3.35 - Turn Clojure functions into CLIs!
+* https://github.com/ivarref/yoltq[yoltq] 0.2.60 - An opinionated Datomic queue for building (more) reliable systems
+* https://github.com/wardle/hermes[hermes] https://github.com/wardle/hermes/releases/tag/v1.0.712[1.0.712] - A library and microservice implementing the health and care terminology SNOMED CT
+* https://github.com/BetterThanTomorrow/joyride[joyride] https://github.com/BetterThanTomorrow/joyride/releases/tag/v0.0.17[0.0.17] - Making VS Code Hackable since 2022
+* https://github.com/lilactown/helix[helix] 0.1.0 - A simple, easy to use library for React development in ClojureScript
+* https://github.com/fulcrologic/fulcro[fulcro] 3.5.24 - A library for development of single-page full-stack web applications in clj/cljs

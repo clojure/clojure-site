@@ -1,0 +1,32 @@
+= Clojure Deref (Aug 26, 2022)
+Alex Miller
+2022-08-26
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Podcasts and videos
+
+* https://ericnormand.me/podcast/what-is-a-domain-model[What is a domain model?] - Eric Normand
+* https://clojure.stream/podcast/[E77 Whimsical with Kaspars Dancis] - ClojureStream Podcast
+* https://www.youtube.com/watch?v=KVWxr9dvGZ8[How to create a library that works with Clojure and ClojureScript] - Volodymyr Kozieiev
+* https://www.youtube.com/watch?v=mkLYfUIsp2g[S01:06 Clojure Threading Macros: Sew cool you can doto! + Reppin Clojure] - The Clouncil
+
+== Blogs
+
+* https://metaredux.com/posts/2022/08/25/nrepl-1-0.html[nREPL 1.0] - Bozhidar Batsov
+* https://levelup.gitconnected.com/demystifying-clojure-enough-to-get-started-on-most-projects-a45f63890622[Demystifying Clojure: Enough to Get Started on Most Projects] - Dev INTJ Code
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/AbhinavOmprakash/snitch[snitch] 0.0.12 - Inline defs on steroids
+* https://github.com/clojure-emacs/cider[cider] https://github.com/clojure-emacs/cider/releases/tag/v1.5.0[1.5.0] - The Clojure Interactive Development Environment that Rocks for Emacs
+* https://github.com/nrepl/nrepl[nrepl] https://github.com/nrepl/nrepl/releases/tag/1.0.0[1.0.0] - A Clojure network REPL that provides a server and client
+* https://github.com/lambdaisland/classpath[classpath] 0.1.33 - Classpath/classloader/deps.edn related utilities
+* https://github.com/juji-io/editscript[editscript] 0.6.1 - A library designed to diff and patch Clojure data structures
+* https://github.com/wilkerlucio/pathom3[pathom3] 2022.08.26-alpha - A library for navigating data
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.294[2.0.294] - Clojure & ClojureScript Interactive Programming for VS Code

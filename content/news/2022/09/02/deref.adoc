@@ -23,6 +23,8 @@ Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure
 * https://blog.ambrosebs.com/2022/08/29/developing-clojure-patches-with-pull-requests.html[Developing Clojure patches with Pull Requests] - Ambrose Bonnaire-Sergeant
 * https://dragan.rocks/articles/22/Recurrent-networks-hello-world-sequence-prediction-in-Clojure-with-new-Deep-Diamond[Recurrent Networks Hello World in Clojure with new Deep Diamond RNN support on CPU and GPU] - Dragan Djuric
 * https://markm208.github.io/cljbook/[An Animated Introduction to Clojure] - Mark Mahoney
+* https://azure.github.io/AppService/2022/08/24/Clojure-on-AppService.html[Clojure on App Service] - Denis Fuenzalida
+* https://nextjournal.com/dustingetz/datafynav-implementations-for-javaiofile[Datafy/nav implementations for java.io.File] - Dustin Getz
 
 == Libraries and Tools
 
@@ -46,3 +48,4 @@ New releases and tools this week:
 * https://github.com/KingMob/TrueGrit[TrueGrit] https://cljdoc.org/d/net.modulolotus/truegrit/1.0.12/doc/readme[1.0.12] - A data-driven, functionally-oriented, idiomatic Clojure library for circuit breakers, bulkheads, retries, rate limiters, timeouts, etc
 * https://github.com/camsaul/humane-are[humane-are] 1.0.2 - Drop-in replacement for clojure.test/are with better error output and better arg validation
 * https://github.com/clj-commons/clj-yaml[clj-yaml] 0.7.109 - YAML encoding and decoding for Clojure
+* https://gitlab.com/nonseldiha/values[values] - Return multiple values from a single function call

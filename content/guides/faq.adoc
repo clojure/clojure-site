@@ -167,6 +167,15 @@ Design benefits of sequences:
 
 At one point, metadata was more cumbersome to use than now (the syntax for a private defn was `#^{:private true}`), and `defn-` seemed worth creating as an "easy" version. The metadata support improved and became "stackable" which allowed easier composition of independent metadata. Rather than create private variants of all the def forms, it is simply preferred to use `^:private` metadata when needed on `def` or other def forms..
 
+[[partial]]
+**<<faq#partial,Why does `partial` not see updates to vars or protocols?>>**
+
+When `partial` (or other higher-order function combinators like `comp`, `juxt`, etc) is used, it captures the value of any function vars referenced. For example: `(partial my-fn 100)` captures the current value of `my-fn`. If `my-fn` is rebound in the REPL, the prior `partial` will not "see" those changes, because the var has already been dereferenced to a function value there.
+
+If you are finding this to be a problem in interactive development, you can insert a layer of indirection. One option is to use the var reference `#'myfn` instead or you can use a separate `fn` or `defn` to re-include var dereferencing.
+
+In general, this is not an issue in a running app (because vars are not getting re-bound), but more commonly in interactive REPL development.
+
 == Spec
 
 [[spec_alpha]]

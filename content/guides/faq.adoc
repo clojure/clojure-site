@@ -170,11 +170,11 @@ At one point, metadata was more cumbersome to use than now (the syntax for a pri
 [[partial]]
 **<<faq#partial,Why does `partial` not see updates to vars or protocols?>>**
 
-When `partial` (or other higher-order function combinators like `comp`, `juxt`, etc) is used, it captures the value of any function vars referenced. For example: `(partial my-fn 100)` captures the current value of `my-fn`. If `my-fn` is rebound in the REPL, the prior `partial` will not "see" those changes, because the var has already been dereferenced to a function value there.
+When `partial` (or other higher-order function combinators like `comp`, `juxt`, etc) is used, any vars referenced are evaluated to function objects before `partial` is invoked, and thus it captures the value of any function vars referenced, not the var itself. For example: `(partial my-fn 100)` evaluates `my-fn` to the current function value of `#'my-fn`, then invokes `partial` with it. If the `my-fn` var is rebound in the REPL, the prior `partial` function will not "see" those changes, because it only has the function, not the var.
 
-If you are finding this to be a problem in interactive development, you can insert a layer of indirection. One option is to use the var reference `#'myfn` instead or you can use a separate `fn` or `defn` to re-include var dereferencing.
+If you are finding this to be a problem in interactive development, you can insert a layer of indirection. One option is to use the var reference `#'myfn` instead or you can use a separate `fn` or `defn` to re-include var dereferencing. Alternately, you can use a `fn` or anonymous function literal in place of the partial.
 
-In general, this is not an issue in a running app (because vars are not getting re-bound), but more commonly in interactive REPL development.
+In general, this is not an issue in a running app (because vars are not typically getting re-bound), but can occur in interactive REPL development.
 
 == Spec
 

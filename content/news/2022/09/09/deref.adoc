@@ -1,0 +1,62 @@
+= Clojure Deref (Sep 9, 2022)
+Alex Miller
+2022-09-09
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Highlights
+
+So many cool things happening this week in the Clojure Deref! I would encourage you to dive into some of the links below in every section - there are really interesting podcasts, videos, blogs, articles, and new libraries this week and I feel like repeating them all here just takes time away from you looking below, so do that!
+
+I will mention the Clojurists Together https://www.clojuriststogether.org/news/q3-2022-funding-announcement/[Q3 2022 Funding Announcement] though - it so cool to see the community collectively funding such a wide variety of projects. Many thanks to all the project developers doing the work, the community supporting them, and Clojurists Together for being the glue that brings them all together.
+
+== Podcasts and videos
+
+* https://anchor.fm/lostinlambduhhs/episodes/janet-a-carr-Ms--Free-lance-a-lot-frees-her-SaaSy-thoughts-e1niuf3[:janet-a-carr (Ms. Free-lance-a-lot frees her SaaSy thoughts)] - Lost in Lambduhhs by Jordan Miller
+* https://www.youtube.com/watch?v=ARqU40IHiwo[Starting a fresh Clojure project with Neovim REPL driven development] - Oliver Caldwell
+* https://www.youtube.com/watch?v=QTgdoZ1LSzk[Clojure visual-tools meeting 11: tooling for learning resources, a peek into Data Rabbit] - Sci Cloj
+* https://www.youtube.com/watch?v=pImaXoTPWWA[Transform MS Office into Cloud-savvy Linked Data Microservices With Clojure on .NET (by Bob Calco)] - London Clojurians
+
+== Blogs and articles
+
+* https://blog.phronemophobic.com/dewey-analysis.html[Analyzing Every Clojure Project on Github] - Adrian Smith
+* https://jmglov.net/blog/2022-09-02-dogfooding-blambda-logs.html[Dogfooding Blambda 5: To parse—perchance to dream] - Josh Glover
+* https://grishaev.me/en/zippo/[Zippo: additions to the standard clojure.zip package] - Ivan Grishaev
+* https://biffweb.com/p/updates-2022-08/[Biff updates for August] - Jacob O'Bryant
+* https://nickcellino.com/blog/2022-09-03-nbb-comments.html[Implementing a comments feature for my blog with nbb, htmx, Serverless Framework, and DynamoDB] - Nick Cellino
+* https://practical.li/blog/posts/clojurescript-workflow-with-clojure-cli-tools-and-figwheel-main/[ClojureScript workflow with Clojure CLI tools and Figwheel-main] - Practicalli
+* https://blog.ambrosebs.com/2022/09/08/schema-defprotocol.html[Instrumenting Clojure protocols] - Ambrose Bonnaire-Sergeant
+* https://blog.ambrosebs.com/2022/09/08/break-your-macros.html[Fun ways to break your Macros] - Ambrose Bonnaire-Sergeant
+* https://blog.ambrosebs.com/2022/09/08/clojure-test-uncaught.html[A Significant clojure.test Enhancement] - Ambrose Bonnaire-Sergeant
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/cnuernber/ham-fisted[ham-fisted] 1.000-beta-1 - High performance HAMT
+* https://github.com/igrishaev/zippo[zippo] 0.1.0 - Additions to the standard clojure.zip package
+* https://github.com/philipperolet/clj-qp[clj-qp] 0.5 - Lib to solve quadratic programs in clojure, wrapping FICO xpress solver
+* https://github.com/justone/brisk[brisk] 0.2.1 - Freeze and thaw with Nippy at the command line
+* https://github.com/scicloj/sklearn-clj[sklearn-clj] 0.4.0 - This library gives easy access in Clojure to all estimators and models from python scikit-learn, using internally libpython-clj
+* https://github.com/exoscale/interceptor[interceptor] 0.1.14 - Small Interceptor lib for clojure
+* https://github.com/babashka/babashka[babashka] 0.9.162 - Native, fast starting Clojure interpreter for scripting
+* https://github.com/nathell/cartestian[cartestian]  - Test all the combinations
+* https://github.com/seancorfield/honeysql[honeysql] 2.3.928 - Turn Clojure data structures into SQL
+* https://github.com/nathell/skyscraper[skyscraper] 0.3.3 - Structural scraping for the rest of us
+* https://github.com/BetterThanTomorrow/calva[calva] 2.0.299 - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/strojure/vectops[vectops]  - Basic operations with Clojure vectors
+* https://github.com/steffan-westcott/clj-otel[clj-otel] 0.1.5 - An idiomatic Clojure API for adding telemetry to your libraries and applications using OpenTelemetry
+* https://github.com/juji-io/datalevin[datalevin] 0.6.17 - A simple, fast and versatile Datalog database
+* https://github.com/practicalli/clojure-deps-edn[clojure-deps-edn]  - User level aliases and Clojure CLI configuration for deps.edn based projects
+* https://github.com/ivarref/healthy[healthy] 0.1.17 - A simple Clojure (JVM) library for doing health checks over a given duration
+* https://github.com/nextjournal/clerk[clerk] 0.10.550 - Moldable Live Programming for Clojure
+* https://github.com/ivarref/yoltq[yoltq] https://github.com/ivarref/yoltq#2022-09-07-v0261-diff[0.2.61] - An opinionated Datomic queue for building (more) reliable systems
+* https://github.com/chr15m/sitefox[sitefox] 0.0.8 - Node + cljs backend web framework
+* https://github.com/borkdude/carve[carve] 0.2.0 - Carve out the essentials of your Clojure app
+* https://github.com/clj-kondo/clj-kondo[clj-kondo] 2022.09.08 - Static analyzer and linter for Clojure code that sparks joy
+* https://github.com/camsaul/methodical[methodical] 0.13.2 - Functional and flexible multimethods for Clojure
+* https://github.com/lambdaisland/launchpad[launchpad]  - Clojure/nREPL launcher build kit
+* https://github.com/babashka/nbb[nbb] 0.7.133 - Scripting in Clojure on Node.js using SCI

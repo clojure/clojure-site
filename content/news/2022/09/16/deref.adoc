@@ -1,0 +1,57 @@
+= Clojure Deref (Sep 16, 2022)
+Alex Miller
+2022-09-16
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Highlights
+
+Looking to the future, the https://sessionize.com/reclojure-2022/[reClojure Call for Speakers] is happening now until Oct 9th! Get those talks in. Also, the keynotes will be James Gosling, who designed and implemented the first version of Java, and Alex Miller (hey, that's me) from the Clojure core team. I am looking forward to this event in December.
+
+Looking to the past, check out the https://clojured.de/media/videos/videos-2022/[:clojureD Videos 2022] from earlier this year.
+
+And in the almost present, the Deref will be on "conference vacation" next week due to Strange Loop.
+
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=islMjv55cN8[How Clojure (and ClojureScript) REPL connections work - feat the creator of Calva!] - on the code again
+* https://anchor.fm/lostinlambduhhs/episodes/reclojure-org-squad-CALLIN-CLOJURIANS-4-PROPOSALS-e1nqe19/a-a8ha74o[:reclojure-org-squad (CALLIN CLOJURIANS 4 PROPOSALS)] - Lost in Lambduhhs by Jordan Miller
+* https://clojure.stream/podcast/[E79 Eugene Pakhomov a.k.a. p-himik] - ClojureStream Podcast by Jacek Schae
+* https://www.youtube.com/watch?v=MW-1Ov8ynWw[Mallireika – Using Calva Custom REPL Commands to infer schemas] - CalvaTV
+* https://www.youtube.com/watch?v=X3Ilr74o6KQ[NLP in Clojure Session 1] - Sci Cloj
+* https://www.youtube.com/watch?v=VBXA7Fnj3HE[Clojure visual-tools meeting 12: Data Rabbit] - Sci Cloj
+* https://www.youtube.com/watch?v=Ufppjwgfnm0[Betting our Startup on Clojure by Nick McAvoy] - Func Prog Sweden
+
+== Blogs and articles
+
+* https://blog.janetacarr.com/fix-your-clojure-code-clojure-comes-with-design-patterns-part-2/[Fix your Clojure code: Clojure comes with design patterns (Part 2)] - Janet A. Carr
+* https://blog.agical.se/en/posts/shadow-cljs-clojure-cljurescript-calva-nrepl-basics/[shadow-cljs + Clojure with Calva: The basics] - Peter Strömberg
+* https://scicloj.github.io/blog/predict-real-vs.-fake-disaster-tweets/[Predict real vs. fake disaster tweets] - Carsten Behring
+* https://fbeyer.com/posts/refx-origins/[Refx: Origins] - Ferdinand Beyer
+* https://blog.stephcrown.com/how-to-set-up-a-clojure-script-and-phoenix-project[How to Set up A Clojure Script and Phoenix Project] - Stephen Emmanuel
+* https://radsmith.com/bbin[bbin: Install any Babashka script or project with one command] - 
+* https://benjamin-asdf.github.io/faster-than-light-memes/binaural-beats-using-scittle.html[Binaural beats using scittle] - Benjamin
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/babashka/sci[sci] https://github.com/babashka/sci/blob/master/CHANGELOG.md#v0433[0.4.33] - Configurable Clojure interpreter suitable for scripting and Clojure DSLs
+* https://github.com/clj-commons/clj-yaml[clj-yaml] 0.7.110 - YAML encoding and decoding for Clojure
+* https://github.com/cognitect-labs/aws-api[aws-api] 0.8.589 - AWS, data driven
+* https://github.com/liquidz/vim-iced[vim-iced] 3.12.3144 - Clojure Interactive Development Environment for Vim8/Neovim
+* https://github.com/babashka/nbb[nbb] 0.7.135 - Scripting in Clojure on Node.js using SCI 
+* https://github.com/fulcrologic/fulcro[fulcro] 3.5.25 - A library for development of single-page full-stack web applications in clj/cljs
+* https://github.com/epiccastle/spire[spire] https://github.com/epiccastle/spire/releases/tag/v0.1.1[0.1.1] - pragmatic provisioning using clojure
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.301[2.0.301] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/seancorfield/next-jdbc[next-jdbc] 1.3.828 - A modern low-level Clojure wrapper for JDBC-based access to databases
+* https://github.com/borkdude/quickdoc[quickdoc] 0.1.1 - Quick and minimal API doc generation for Clojure
+* https://github.com/felipereigosa/mock-mechanics[mock-mechanics]  - Mechanical/visual programming language
+* https://github.com/lambdaisland/nrepl-proxy[nrepl-proxy]  - Proxy for debugging nREPL interactions
+* https://github.com/babashka/bbin[bbin]  - Install any Babashka script or project with one command
+* https://github.com/babashka/sci[sci]  - Configurable Clojure interpreter suitable for scripting and Clojure DSLs
+* https://github.com/oliyh/oxbow[oxbow] 0.1.4 - A Server Sent Events (SSE) client for Clojurescript based on js/fetch
+* https://gitlab.com/metagrowing/grow[https://gitlab.com/metagrowing/grow]  - A generator for complex geometry

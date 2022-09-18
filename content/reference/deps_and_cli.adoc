@@ -466,6 +466,8 @@ Additionally, main execution can take a map with key `:jvm-opts`:
 
 This map is stored in alias data and provided to the Clojure tools using -A (for REPL invocation), -X (for function execution), or -M (for clojure.main execution).  Multiple aliases can be provided by concatentating the alias names.
 
+If JVM options are provided in the `JAVA_OPTS` environment variable, these will be included first on the command line (note: these options are not part of the command cache and may vary between executions).
+
 == Execution
 
 === Main execution
@@ -1127,6 +1129,23 @@ For string values nested inside other collections, use double quotes if there ar
 PS D:> clj -X clojure.core/prn :val '{:s1 """nospaces""" :s2 ""has spaces""}'
 {:val {:s1 "nospaces", :s2 "has spaces"}}
 ----
+
+== Environment variables
+
+The following environment variables can influence CLI execution (many are described in more detail elsewhere on this page):
+
+* `CLJ_CONFIG` - user config directory, used to store user deps.edn, tool config, and cpcache for commands without a project deps.edn (default = `~/.clojure`)
+* `XDG_CONFIG_HOME` - if this standard var is set, will use `$XDG_CONFIG_HOME/clojure` as the user config directory
+* `CLJ_CACHE` - user cache directory, (defaults = `<config-dir>/.cpcache`)
+* `XDG_CACHE_HOME` - if this standard var is set, will use `$XDG_CACHE_HOME/clojure` as the user cache directory
+* `CLJ_JVM_OPTS` - JVM options to be included in internal calls to the classpath building process, which can be useful to provide things like a truststore with a self-signed certifate using to download internal artifacts
+* `JAVA_CMD` - path to Java executable to use
+* `JAVA_HOME` - if no `$JAVA_CMD` and no `java` on path, will try to use `$JAVA_HOME/bin/java`
+* `JAVA_OPTS` - JVM options to be included in the user command being executed - not cached. Included before any `-J` command line parameters and any `:jvm-opts`
+* `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, and other AWS env vars are used when accessing S3-based Maven repos
+* `GITLIBS` - the path to the gitlibs storage directory (default = `~/.gitlibs`)
+* `GITLIBS_COMMAND` - the git command to run (default = `git`)
+* `GITLIBS_DEBUG` - set to true to print all git commands being run
 
 == Glossary
 

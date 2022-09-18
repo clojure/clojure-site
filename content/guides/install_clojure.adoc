@@ -38,16 +38,16 @@ To install with the Linux script installer:
 
 [source,shell]
 ----
-curl -O https://download.clojure.org/install/linux-install-1.11.1.1155.sh
-chmod +x linux-install-1.11.1.1155.sh
-sudo ./linux-install-1.11.1.1155.sh
+curl -O https://download.clojure.org/install/linux-install-1.11.1.1165.sh
+chmod +x linux-install-1.11.1.1165.sh
+sudo ./linux-install-1.11.1.1165.sh
 ----
 
 To install to a custom location (like `/opt/infrastructure/clojure`), use the option `--prefix`:
 
 [source,shell]
 ----
-sudo ./linux-install-1.11.1.1155.sh --prefix /opt/infrastructure/clojure
+sudo ./linux-install-1.11.1.1165.sh --prefix /opt/infrastructure/clojure
 ----
 
 You may also want to extend the MANPATH in `/etc/man_db.conf` to include the manual pages:

@@ -30,7 +30,7 @@ Other macros re-arrange forms in useful ways, like the `pass:[->]` macro, which 
 user=> (-> {} (assoc :a 1) (assoc :b 2))
 {:b 2, :a 1}
 user=> (macroexpand '(-> {} (assoc :a 1) (assoc :b 2)))
-(assoc (clojure.core/-> {} (assoc :a 1)) :b 2)
+(assoc (assoc {} :a 1) :b 2)
 ----
 
 == Special variables

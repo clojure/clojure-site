@@ -1,0 +1,60 @@
+= Clojure Deref (Sep 26, 2022)
+Alex Miller
+2022-09-26
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Podcasts and videos
+
+* https://www.therepl.net/episodes/44/[44: Jank with Jeaye Wilkerson] - The REPL podcast
+* https://cognitect.com/cognicast/171[Howard Lewis Ship - Cognicast Episode 171] - Cognicast podcast
+
+== Blogs and articles
+
+* https://biffweb.com/p/bc-6/[Biff coding #6: Babashka tasks] - Jacob O'Bryant
+* https://blog.ambrosebs.com/2022/09/25/growing-macros.html[Growing macros] - Ambrose Bonnaire-Sergeant
+* https://mccue.dev/pages/9-25-22-better-java-logging[Better Java logging, inspired by Clojure and Rust] - Ethan McCue
+* https://www.abhinavomprakash.com/posts/clojure-iteration/[ELI5: Clojure's Iteration function] - Abhinav Omprakash
+* https://blog.stephcrown.com/building-an-application-with-clojurescript[Building an Application with ClojureScript] - Stephen Emmanuel
+* https://gist.github.com/malcolmsparks/bcfdcd9ae51e69aa3018c04d48f8749b[Thoughts on yada] - Malcolm Sparks
+* https://benjamin-asdf.github.io/faster-than-light-memes/scittle-prints-itself.html[scittle-prints-itself] - Benjamin Scherdtner
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/cognitect-labs/aws-api[aws-api] 0.8.596 - AWS, data driven
+* https://github.com/typedclojure/typedclojure[typedclojure] https://github.com/typedclojure/typedclojure/blob/main/CHANGELOG.md#1032-20220917[1.0.32] - An optional type system for Clojure
+* https://github.com/babashka/cli[cli] 0.4.36 - Turn Clojure functions into CLIs!
+* https://github.com/fulcrologic/fulcro[fulcro] 3.5.26 - A library for development of single-page full-stack web applications in clj/cljs
+* https://github.com/fulcrologic/fulcro-rad-semantic-ui[fulcro-rad-semantic-ui] 1.2.13 - Semantic UI Rendering Plugin for RAD
+* https://github.com/fulcrologic/fulcro-rad[fulcro-rad] 1.3.1 - Fulcro Rapid Application Development
+* https://clojure.org/releases/tools[https://clojure.org/releases/tools] https://clojure.org/releases/tools#v1.11.1.1165[1.11.1.1165] - Clojure CLI
+* https://github.com/liquidz/antq[antq] 2.1.920 - Point out your outdated dependencies
+* https://github.com/cljfx/dev[dev]  - Dev tools for cljfx
+* https://github.com/dm3/clojure.java-time[clojure.java-time] 1.0.0 - Clojure wrapper for Java 8 Time API
+* https://github.com/ericdallo/deps-bin[deps-bin] 0.2.0 - A Clojure library that builds an embedded executable jar
+* https://github.com/bsless/datalog-parser.spec[datalog-parser.spec] 0.0.4 - 1-1 translation of datalog query spec based on the official Datomic documentation
+* https://github.com/bsless/datalog-parser.malli[datalog-parser.malli] 0.0.6 - Datomic Datalog parser in Clojure with malli 
+* https://github.com/frenchy64/fully-satisfies[fully-satisfies] 1.7.1 - Utility functions for Clojure
+* https://github.com/babashka/cli[cli] 0.3.33-0.4.37 - Turn Clojure functions into CLIs!
+* https://github.com/borkdude/grasp[grasp] 0.1.4 - Grep Clojure code using clojure.spec regexes
+* https://github.com/jpmonettas/flow-storm-debugger[flow-storm-debugger] 3.0 - A debugger for Clojure and ClojureScript with some unique features
+* https://github.com/ivarref/clj-paginate[clj-paginate] 0.2.53 - Fast pagination of vectors and maps with Clojure for GraphQL
+* https://github.com/quoll/clormat[clormat] 0.0.1 - Reimplementation of Java string formatting
+* https://github.com/babashka/process[process] 0.1.8 - Clojure library for shelling out / spawning subprocesses
+* https://github.com/lambdaisland/kaocha[kaocha] 1.70.1086 - Full featured next gen Clojure test runner
+* https://github.com/clj-commons/clj-yaml[clj-yaml] https://github.com/clj-commons/clj-yaml/blob/master/CHANGELOG.adoc#v07169---2022-09-26[0.7.169] - YAML encoding and decoding for Clojure
+* https://github.com/justone/brisk[brisk] https://github.com/justone/brisk/releases/tag/v0.3.0[0.3.0] - Freeze and thaw with Nippy at the command line
+* https://github.com/babashka/babashka[babashka] https://github.com/babashka/babashka/blob/master/CHANGELOG.md#010163-2022-09-24[0.10.163] - Native, fast starting Clojure interpreter for scripting
+* https://github.com/seancorfield/next-jdbc[next-jdbc] 1.3.834 - A modern low-level Clojure wrapper for JDBC-based access to databases
+* https://github.com/babashka/bbin[bbin] 0.1.2 - Install any Babashka script or project with one command
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.304[2.0.304] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/viesti/timbre-json-appender[timbre-json-appender] 0.2.8 - JSON appender for Timbre
+* https://github.com/lilactown/pyramid[pyramid] 3.4.0 - A library for storing and querying graph data in a Clojure map
+* https://github.com/borkdude/deps.clj[deps.clj] 0.1.1165 - A faithful port of the clojure CLI bash script to Clojure
+* https://github.com/nivekuil/nexus[nexus]  - Ergonomic dependency injection via logic programming
+* https://github.com/roman01la/cljs-worklet[cljs-worklet] 0.1.0 - Run ClojureScript functions on a worklet thread in React Native

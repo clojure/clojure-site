@@ -46,7 +46,7 @@ The Clojure compilation model preserves as much as possible the dynamic nature o
 * gen-class and the :gen-class directive are ignored when not compiling.
 * A stand-alone https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/gen-interface[gen-interface] facility is provided for generating named interface classes for direct use as Java interfaces, with facilities for:
 ** Naming the generated interface
-** Specifying any superintefaces
+** Specifying any superinterfaces
 ** Declaring the signatures of interface methods
 
 == Compiling

@@ -144,7 +144,7 @@ user=> (get scores "Angela")
 1024
 ----
 
-When the map in question is being treated as a constant lookup table, its common to invoke the map itself, treating it as a function:
+When the map in question is being treated as a constant lookup table, it's common to invoke the map itself, treating it as a function:
 
 [source,clojure-repl]
 ----

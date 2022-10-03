@@ -15,8 +15,8 @@ Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure
 * https://youtu.be/-bfGCNEuSsQ[Season 1 Episode 7] - The Clouncil
 * https://www.youtube.com/watch?v=nTyPMxDlw0w[Clojure data-recur meeting 2: Clojask, columns for Tablecloth] - Sci Cloj
 * https://www.youtube.com/watch?v=t8C5Uv1abc4[Clojure data-recur meeting 3: Meander] - Sci Cloj
-"* https://www.parens-of-the-dead.com/[Parens of the Dead - A screencast series of zombie-themed games
-written with Clojure and ClojureScript] - Magnar Sveen and Christian Johansen"
+* https://www.parens-of-the-dead.com/[Parens of the Dead - A screencast series of zombie-themed games
+written with Clojure and ClojureScript] - Magnar Sveen and Christian Johansen
 
 == Blogs and articles
 
@@ -30,7 +30,7 @@ New releases and tools this week:
 
 * https://github.com/clj-commons/clj-http-lite[clj-http-lite] https://github.com/clj-commons/clj-http-lite/blob/master/CHANGELOG.adoc#v1.0.13[1.0.13] - A JVM and babashka compatible lite version of clj-http
 * https://github.com/borkdude/rewrite-edn[rewrite-edn] 0.3.4 - Utility lib on top of rewrite-clj with common operations to update EDN while preserving whitespace and comments
-* https://gitlab.com/clojurians-zulip/feeds[https://gitlab.com/clojurians-zulip/feeds]  - Announce Clojure events with the CLI
+* https://gitlab.com/clojurians-zulip/feeds[feeds]  - Announce Clojure events with the CLI
 * https://github.com/epiccastle/bbssh[bbssh]  - Babashka pod for SSH support
 * https://github.com/frenchy64/fully-satisfies[fully-satisfies] 1.9.0 - Utility functions for Clojure
 * https://github.com/esuomi/muotti[muotti] 0.2.0 - Muotti is a graph based value transformer library

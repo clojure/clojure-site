@@ -101,7 +101,7 @@ By default, the `clj` tool will look for source files in the `src` directory. Cr
 [source,clojure]
 ----
 (ns hello
-  (:require [java-time :as t]))
+  (:require [java-time.api :as t]))
 
 (defn time-str
   "Returns a string representation of a datetime in the local time zone."
@@ -144,7 +144,7 @@ Under time-lib, use a copy of the deps.edn file you already have, and create a f
 [source,clojure]
 ----
 (ns hello-time
-  (:require [java-time :as t]))
+  (:require [java-time.api :as t]))
 
 (defn now
   "Returns the current datetime"

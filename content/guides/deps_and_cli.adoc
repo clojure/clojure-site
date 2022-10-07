@@ -55,7 +55,7 @@ To work with this library, you need to declare it as a dependency so the tool ca
 [source,clojure]
 ----
 {:deps
- {clojure.java-time/clojure.java-time {:mvn/version "0.3.2"}}}
+ {clojure.java-time/clojure.java-time {:mvn/version "1.1.0"}}}
 ----
 
 Alternately, if you don't know the version, you can use the `find-versions` tool which will list all available coordinates in sorted order:
@@ -64,8 +64,8 @@ Alternately, if you don't know the version, you can use the `find-versions` tool
 ----
 $ clj -X:deps find-versions :lib clojure.java-time/clojure.java-time
 ...omitted
-{:mvn/version "0.3.1"}
-{:mvn/version "0.3.2"}
+{:mvn/version "1.0.0"}
+{:mvn/version "1.1.0"}
 ----
 
 Restart the REPL with the `clj` tool:
@@ -73,13 +73,13 @@ Restart the REPL with the `clj` tool:
 [source,clojure]
 ----
 $ clj
-Downloading: clojure/java-time/clojure.java-time/0.3.2/clojure.java-time-0.3.2.pom from clojars
-Downloading: clojure/java-time/clojure.java-time/0.3.2/clojure.java-time-0.3.2.jar from clojars
+Downloading: clojure/java-time/clojure.java-time/1.1.0/clojure.java-time-1.1.0.pom from clojars
+Downloading: clojure/java-time/clojure.java-time/1.1.0/clojure.java-time-1.1.0.jar from clojars
 Clojure 1.11.1
-user=> (require '[java-time :as t])
+user=> (require '[java-time.api :as t])
 nil
 user=> (str (t/instant))
-"2020-09-01T03:42:47.691119Z"
+"2022-10-07T16:06:50.067221Z"
 ----
 
 You will see messages about a library being downloaded the first time you use a dependency. Once the file is downloaded (usually to `~/.m2` or `/.gitlibs`), it will be reused in the future. You can use the same process to add other libraries to your `deps.edn` file and explore Clojure or Java libraries.

@@ -183,7 +183,7 @@ You can then test everything from the hello-world directory by running the appli
 [source,shell]
 ----
 $ clj -X hello/run
-Hello world, the time is 02:07 PM
+Hello world, the time is 12:22 PM
 ----
 
 == Using git libraries

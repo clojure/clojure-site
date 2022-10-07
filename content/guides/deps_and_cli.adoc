@@ -121,7 +121,7 @@ This program has an entry function `run` that can be executed by `clj` using `-X
 [source,shell]
 ----
 $ clj -X hello/run
-Hello world, the time is 10:53 PM
+Hello world, the time is 12:19 PM
 ----
 
 == Using local libraries

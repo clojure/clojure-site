@@ -23,7 +23,7 @@ a. specifying which library you want to use, providing its name and other aspect
 b. getting it (once) from the git or maven repositories to your local machine
 c. making it available on the JVM classpath so Clojure can find it while your REPL or program is running
 
-Clojure tools specify a syntax and file (deps.edn) for (a), given which they'll handle (b) and (c) automatically.
+Clojure tools specify a syntax and file (`deps.edn`) for (a), given which they'll handle (b) and (c) automatically.
 
 See <<getting_started#,Getting Started>> for details on how to install the tools. Here we will demonstrate how to get started. See <<xref/../../reference/deps_and_cli#,Deps and CLI>> for a complete reference. See the <<xref/../../releases/tools#,changelog>> for version information.
 
@@ -86,7 +86,7 @@ You will see messages about a library being downloaded the first time you use a 
 
 == Writing a program
 
-Soon you will want to build and save your own code that makes use of these libraries. Create a new directory and copy this deps.edn into it:
+Soon you will want to build and save your own code that makes use of these libraries. Create a new directory and copy this `deps.edn` into it:
 
 [source,shell]
 ----
@@ -139,7 +139,7 @@ You might decide to move part of this application into a library. The `clj` tool
         └── hello.clj
 ----
 
-Under time-lib, use a copy of the deps.edn file you already have, and create a file `src/hello_time.clj`:
+Under time-lib, use a copy of the `deps.edn` file you already have, and create a file `src/hello_time.clj`:
 
 [source,clojure]
 ----
@@ -322,7 +322,7 @@ You can add this dependency to your classpath by adding the `:bench` alias to mo
 [[prep_libs]]
 === Preparing source dependency libs
 
-Some dependencies will require a preparation step before they can be used on the classpath. These libs should state this need in their deps.edn:
+Some dependencies will require a preparation step before they can be used on the classpath. These libs should state this need in their `deps.edn`:
 
 [source,clojure]
 ----

@@ -23,7 +23,7 @@ a. specifying which library you want to use, providing its name and other aspect
 b. getting it (once) from the git or maven repositories to your local machine
 c. making it available on the JVM classpath so Clojure can find it while your REPL or program is running
 
-Clojure tools specify a syntax and file (deps.edn) for (a), given which they'll handle (b) and (c) automatically.
+Clojure tools specify a syntax and file (`deps.edn`) for (a), given which they'll handle (b) and (c) automatically.
 
 See <<getting_started#,Getting Started>> for details on how to install the tools. Here we will demonstrate how to get started. See <<xref/../../reference/deps_and_cli#,Deps and CLI>> for a complete reference. See the <<xref/../../releases/tools#,changelog>> for version information.
 
@@ -55,7 +55,7 @@ To work with this library, you need to declare it as a dependency so the tool ca
 [source,clojure]
 ----
 {:deps
- {clojure.java-time/clojure.java-time {:mvn/version "0.3.2"}}}
+ {clojure.java-time/clojure.java-time {:mvn/version "1.1.0"}}}
 ----
 
 Alternately, if you don't know the version, you can use the `find-versions` tool which will list all available coordinates in sorted order:
@@ -64,8 +64,8 @@ Alternately, if you don't know the version, you can use the `find-versions` tool
 ----
 $ clj -X:deps find-versions :lib clojure.java-time/clojure.java-time
 ...omitted
-{:mvn/version "0.3.1"}
-{:mvn/version "0.3.2"}
+{:mvn/version "1.0.0"}
+{:mvn/version "1.1.0"}
 ----
 
 Restart the REPL with the `clj` tool:
@@ -73,20 +73,20 @@ Restart the REPL with the `clj` tool:
 [source,clojure]
 ----
 $ clj
-Downloading: clojure/java-time/clojure.java-time/0.3.2/clojure.java-time-0.3.2.pom from clojars
-Downloading: clojure/java-time/clojure.java-time/0.3.2/clojure.java-time-0.3.2.jar from clojars
+Downloading: clojure/java-time/clojure.java-time/1.1.0/clojure.java-time-1.1.0.pom from clojars
+Downloading: clojure/java-time/clojure.java-time/1.1.0/clojure.java-time-1.1.0.jar from clojars
 Clojure 1.11.1
-user=> (require '[java-time :as t])
+user=> (require '[java-time.api :as t])
 nil
 user=> (str (t/instant))
-"2020-09-01T03:42:47.691119Z"
+"2022-10-07T16:06:50.067221Z"
 ----
 
 You will see messages about a library being downloaded the first time you use a dependency. Once the file is downloaded (usually to `~/.m2` or `/.gitlibs`), it will be reused in the future. You can use the same process to add other libraries to your `deps.edn` file and explore Clojure or Java libraries.
 
 == Writing a program
 
-Soon you will want to build and save your own code that makes use of these libraries. Create a new directory and copy this deps.edn into it:
+Soon you will want to build and save your own code that makes use of these libraries. Create a new directory and copy this `deps.edn` into it:
 
 [source,shell]
 ----
@@ -101,7 +101,7 @@ By default, the `clj` tool will look for source files in the `src` directory. Cr
 [source,clojure]
 ----
 (ns hello
-  (:require [java-time :as t]))
+  (:require [java-time.api :as t]))
 
 (defn time-str
   "Returns a string representation of a datetime in the local time zone."
@@ -121,7 +121,7 @@ This program has an entry function `run` that can be executed by `clj` using `-X
 [source,shell]
 ----
 $ clj -X hello/run
-Hello world, the time is 10:53 PM
+Hello world, the time is 12:19 PM
 ----
 
 == Using local libraries
@@ -139,12 +139,12 @@ You might decide to move part of this application into a library. The `clj` tool
         └── hello.clj
 ----
 
-Under time-lib, use a copy of the deps.edn file you already have, and create a file `src/hello_time.clj`:
+Under time-lib, use a copy of the `deps.edn` file you already have, and create a file `src/hello_time.clj`:
 
 [source,clojure]
 ----
 (ns hello-time
-  (:require [java-time :as t]))
+  (:require [java-time.api :as t]))
 
 (defn now
   "Returns the current datetime"
@@ -183,7 +183,7 @@ You can then test everything from the hello-world directory by running the appli
 [source,shell]
 ----
 $ clj -X hello/run
-Hello world, the time is 02:07 PM
+Hello world, the time is 12:22 PM
 ----
 
 == Using git libraries
@@ -322,7 +322,7 @@ You can add this dependency to your classpath by adding the `:bench` alias to mo
 [[prep_libs]]
 === Preparing source dependency libs
 
-Some dependencies will require a preparation step before they can be used on the classpath. These libs should state this need in their deps.edn:
+Some dependencies will require a preparation step before they can be used on the classpath. These libs should state this need in their `deps.edn`:
 
 [source,clojure]
 ----

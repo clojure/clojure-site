@@ -1,0 +1,72 @@
+= Clojure Deref (Oct 10, 2022)
+Alex Miller
+2022-10-10
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Highlights
+
+This week seemed like an opportune time to mention two neat projects. First, Jacek Schae has completed the work on the http://learnpedestal.com/[Learn Pedestal] course so you should check that out. And second, the http://parens-of-the-dead.com/[Parens of the Dead] project is back, a fun video series showing you how to code zombie-themed games in Clojure and ClojureScript. 
+
+== Podcasts and videos
+
+* https://ericnormand.me/podcast/collections-in-domain-models[Collections in domain models] - Eric Normand
+* https://www.therepl.net/episodes/45/[Data Rabbit with Ryan Robitaille] - The REPL podcast
+* https://www.youtube.com/watch?v=WqilQulsJQc[How to spy on your data with Snitch - Abhinav] - Clojure Asia
+* https://www.youtube.com/watch?v=j4vhDqXaWRM[Build and deploy a full stack Clojure and ClojureScript Web Application] - on the code again
+* https://www.youtube.com/watch?v=mSK1_lKxXlc[Clojure? That's a terrible idea! (by Ewa Trzemżalska)] - London Clojurians
+* https://www.youtube.com/watch?v=Px-7TlceM5A["Light and Adaptive Indexing for Immutable Databases" by Håkan Råberg] - Strange Loop 2022
+* https://www.youtube.com/watch?v=PbGVTVs1yiU[Debugging Clojure programs with FlowStorm] - Juan Monetta
+* https://www.youtube.com/watch?v=jMYl32lnMhI[Debugging ClojureScript applications with FlowStorm] - Juan Monetta
+* https://www.youtube.com/watch?v=bi2Zd4ZmIsw[Tim Baldridge presents Heliotrope – Collapsing Towers of Interpreters] - Dustin Getz
+* https://www.youtube.com/watch?v=g3V87GxDvH0[Debugging in Clojure using VSCodium and Calva] - Clojure Diary
+* https://www.youtube.com/watch?v=9iB8_RL8p6k[Unsafe Python, safe Clojure] - Clojure Diary
+* https://www.youtube.com/watch?v=F_BS5sbDY9Q[Fibonacci properly memoized in Clojure] - Clojure Diary
+
+== Blogs and articles
+
+* https://wobaka.com/blog/building-a-startup-on-clojure/[Building a startup on Clojure] - Fredrik
+* https://luisthiamnye.substack.com/p/adventures-in-dynamic-software-visualisations[Adventures in Dynamic Software, Visualisations, Creating a JVM Language, UI, and More] - Luis Thiam-Nye
+* https://biffweb.com/p/september-updates/[Biff September updates: Clojurists Together, documentation, in-memory queues] - Jacob O'Bryant
+* https://jmglov.net/blog/2022-10-02-page-2.html[Page 2] - Josh Glover
+* https://clojure-diary.gitlab.io/2022/10/02/making-foo-bar-more-readable-in-clojure.html[Making foo bar more readable in Clojure] - Karthikeyan A K
+* https://clojure-diary.gitlab.io/2022/10/03/letter-pyramid-in-clojure.html[Letter pyramid in Clojure ] - Karthikeyan A K
+* https://jdt.me/strange-reflections.html[Strange Reflections ] - Jeremy Taylor
+* https://hackerstations.com/setups/borkdude/[Michiel Borkent's simple setup made easy in Amersfoort, The Netherlands] - Hacker Stations
+* https://www.karimarttila.fi/clojure/2022/10/08/clojure-calva.html[Configuring VSCode/Calva for Clojure programming] - Kari Marttila
+* https://www.abhinavomprakash.com/posts/clojure-walk/[Learning to walk with Clojure] - Abhinav
+* https://isaak.dev/2022/10/generating-secrets-in-clojure[Generating secrets in Clojure] - Isaak Uchakaev
+
+== Libraries and tools
+
+New releases and tools this week:
+
+* https://github.com/jacobobryant/biff[biff] https://github.com/jacobobryant/biff/releases/tag/v0.5.0[0.5.0] - A simple and easy web framework for Clojure
+* https://github.com/jeff303/kc-repl[kc-repl]  - An interactive, command line tool for exploring Kafka clusters
+* https://github.com/squint-cljs/squint[squint] 0.0.0-alpha.48 - ClojureScript syntax to JavaScript compiler
+* https://github.com/clj-commons/clj-yaml[clj-yaml] https://github.com/clj-commons/clj-yaml/blob/master/CHANGELOG.adoc#v1.0.26[1.0.26] - YAML encoding and decoding for Clojure
+* https://github.com/askonomm/ruuter[ruuter] 1.3 - A zero-dependency HTTP router
+* https://github.com/clojure-lsp/clojure-lsp[clojure-lsp] https://github.com/clojure-lsp/clojure-lsp/releases/tag/2022.10.05-16.39.51[2022.10.05-16.39.51] - Clojure & ClojureScript Language Server (LSP) implementation
+* https://github.com/clj-kondo/clj-kondo[clj-kondo] https://github.com/clj-kondo/clj-kondo/blob/master/CHANGELOG.md#20221005[2022.10.05] - Static analyzer and linter for Clojure code that sparks joy
+* https://github.com/brettwooldridge/HikariCP[HikariCP] 3.0.0 - A Clojure wrapper to HikariCP JDBC connection pool
+* https://github.com/fulcrologic/fulcro[fulcro] 3.5.28 - A library for development of single-page full-stack web applications in clj/cljs
+* https://github.com/camsaul/methodical[methodical] https://github.com/camsaul/methodical/releases/tag/0.15.0.1[0.15.0.1] - Functional and flexible multimethods for Clojure
+* https://github.com/borkdude/gh-release-artifact[gh-release-artifact] 0.1.0 - Upload artifacts to Github releases idempotently
+* https://github.com/ivarref/clj-paginate[clj-paginate] 0.3.54 - Fast pagination of vectors and maps with Clojure for GraphQL
+* https://github.com/clj-commons/potemkin[potemkin] 0.4.6 - Some ideas which are almost good
+* https://marketplace.visualstudio.com/items?itemName=fbeyer.babashka-tasks[babashka-tasks]  - Run Babashka Tasks from VS-Code
+* https://github.com/grzm/awyeah-api[awyeah-api] 0.8.35 - Cognitect's aws-api for babashka
+* https://github.com/babashka/nbb[nbb] 1.0.136 - Scripting in Clojure on Node.js using SCI
+* https://github.com/strojure/parsesso[parsesso]  - Parser combinators for Clojure(Script)
+* https://github.com/valerauko/hoge[hoge]  - Server-side rendering example with re-frame, shadow-cljs and Deno
+* https://github.com/babashka/process[process] 0.3.11 - Clojure library for shelling out / spawning subprocesses
+* https://github.com/esuomi/git-revisions[git-revisions]  - Generate software revision strings based on Git and system context data
+* https://github.com/juji-io/datalevin[datalevin] 0.6.22 - A simple, fast and versatile Datalog database
+* https://github.com/hlship/cli-tools[cli-tools] 0.6 - CLIs and subcommands for Clojure or Babashka
+* https://github.com/clojure/tools.cli[tools.cli] 1.0.214 - Command-line processing
+* https://github.com/fulcrologic/statecharts[statecharts] 1.0.1 - A Statechart library for CLJ(S)
+* https://github.com/fulcrologic/fulcro-rad[fulcro-rad] 1.3.2 - Fulcro Rapid Application Development
+* https://github.com/BetterThanTomorrow/calva[Calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.306[2.0.306] - Clojure & ClojureScript Interactive Programming for VS Code

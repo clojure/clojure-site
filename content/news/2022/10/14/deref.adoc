@@ -1,0 +1,41 @@
+= Clojure Deref (Oct 14, 2022)
+Alex Miller
+2022-10-14
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Podcasts and videos
+
+* https://clojure.stream/podcast/[E81 Concurrency and parallelism with Paul Butcher] - ClojureStream Podcast
+* https://www.youtube.com/watch?v=oguZnsrUQBo[Can you use Clojure for mobile, backend, frontend, scripts, desktop and embedded development?] - Volodymyr Kozieiev – Clojure(Script) tutorials
+* https://www.youtube.com/watch?v=_tpNKAv4fro[Meetup: Collaborative Learning - Polylith] - Los Angeles Clojure User Group
+* https://www.youtube.com/watch?v=Dr8wBGPXxng[Meetup: Collaborative Learning - Flow-storm debugger] - Los Angeles Clojure User Group
+* https://www.youtube.com/watch?v=8Ab3ArE8W3s["Stop Writing Dead Programs" by Jack Rusher] - Strange Loop 2022
+* https://www.youtube.com/watch?v=1vu6ZvCHMTY[Arrow Thing] - Clojure Diary
+* https://www.youtube.com/watch?v=sbNeyaIgwG4[Debugging Clojure with Leningen, Calva and nRepl] - Clojure Diary
+
+== Blogs and articles
+
+* https://www.clojuriststogether.org/news/clojurists-together-long-term-funding-for-2022-2023/[Clojurists Together Long-Term Funding for 2022-2023] - Daniel Compton
+
+== Libraries and tools
+
+New releases and tools this week:
+
+* https://github.com/borkdude/quickdoc[quickdoc] 0.2.2 - Quick and minimal API doc generation for Clojure
+* https://github.com/BetterThanTomorrow/joyride[joyride] https://github.com/BetterThanTomorrow/joyride/releases/tag/v0.0.18[0.0.18] - Making VS Code Hackable since 2022
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.307[2.0.307] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/lambdaisland/launchpad[launchpad] 0.9.49-alpha - Clojure/nREPL launcher build kit
+* https://github.com/babashka/cli[cli] 0.5.40 - Turn Clojure functions into CLIs!
+* https://github.com/epiccastle/bbssh[bbssh] https://github.com/epiccastle/bbssh/releases/tag/v0.2.0[0.2.0] - ssh pod for babashka
+* https://github.com/ivarref/double-trouble[double-trouble] 0.1.101 - Handle duplicate Datomic transactions with ease (on-prem)
+* https://github.com/jacobobryant/biff[biff] https://github.com/jacobobryant/biff/releases/tag/v0.5.2[0.5.2] - A Clojure web framework for solo developers
+* https://github.com/babashka/neil[neil] 0.1.46 - A CLI to add common aliases and features to deps.edn-based projects
+* https://github.com/griffinbank/rules_clojure[rules_clojure]  - Clojure rules for Bazel
+* https://github.com/strojure/parsesso[parsesso] 1.0.225-RC2 - Parser combinators for Clojure(Script)
+* https://github.com/grzm/awyeah-api[awyeah-api] 0.8.41 - Cognitect's aws-api for babashka
+* https://github.com/borkdude/lein2deps[lein2deps]  - Lein to deps.edn converter 
+* https://github.com/oakes/odoyle-rules[odoyle-rules] https://github.com/oakes/odoyle-rules/releases/tag/1.0.0[1.0.0] - A rules engine for Clojure(Script)

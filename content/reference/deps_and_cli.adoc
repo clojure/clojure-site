@@ -389,6 +389,44 @@ The deps.edn sources can be modified or inspected by the following options:
 * `-Sdeps` - pass the config data on the command line
 * `-Srepro` - omit the user deps source (other sources will be used if found)
 
+Examples of the options:
+
+[source,bash]
+----
+$ clojure -Sverbose
+version      = 1.11.1.1165
+install_dir  = /usr/local/Cellar/clojure/1.11.1.1165
+config_dir   = /Users/alex/.clojure
+config_paths = /usr/local/Cellar/clojure/1.11.1.1165/deps.edn /Users/alex/.clojure/deps.edn deps.edn
+cache_dir    = /Users/alex/.clojure/.cpcache
+cp_file      = /Users/alex/.clojure/.cpcache/304695339.cp
+
+Refreshing classpath
+Clojure 1.11.1
+user=>
+----
+
+[source,bash]
+----
+$ cat ~/.clojure/deps.edn
+{:deps {org.clojure/core.async {:mvn/version "1.5.648"}}}
+$ clojure -Srepro
+Clojure 1.11.1
+user=> (require '[clojure.core.async :as a])
+Execution error (FileNotFoundException) at user/eval1 (REPL:1).
+Could not locate clojure/core/async__init.class, clojure/core/async.clj or clojure/core/async.cljc on classpath.
+----
+
+`-Sdeps` is useful when experimenting with libraries without creating a concrete `deps.edn` file. Note that due to escaping rules, it's best to wrap the config data in single quotes.
+
+[source,bash]
+----
+$ clojure -Sdeps '{:deps {org.clojure/core.async {:mvn/version "1.5.648"}}}'
+Clojure 1.11.1
+user=> (require '[clojure.core.async :as a])
+nil
+----
+
 == Classpath caching
 
 The cached classpath file is used for execution when:

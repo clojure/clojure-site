@@ -242,8 +242,9 @@ As your program gets more involved you might need to create variations on the st
 
 * <<deps_and_cli#extra_paths,Include a test source directory>>
 * <<deps_and_cli#test_runner,Use a test runner to run all tests>>
-* <<deps_and_cli#prep_libs,Prep source dependency libs>>
 * <<deps_and_cli#extra_deps,Add an optional dependency>>
+* <<deps_and_cli#command_line_deps,Add a dependency from the command line>>
+* <<deps_and_cli#prep_libs,Prep source dependency libs>>
 * <<deps_and_cli#override_deps,Override a dependency version>>
 * <<deps_and_cli#local_jar,Use a local jar on disk>>
 * <<deps_and_cli#aot_compilation,Ahead-of-time (AOT) compilation>>
@@ -318,6 +319,21 @@ Aliases in the `deps.edn` file can also be used to add optional dependencies tha
 Here the `:bench` alias is used to add an extra dependency, namely the criterium benchmarking library.
 
 You can add this dependency to your classpath by adding the `:bench` alias to modify the dependency resolution: `clj -A:bench`.
+
+[[command_line_deps]]
+=== Add a dependency from the command line
+
+It can be helpful to experiment with a library without adding it to an existing `deps.edn` file or creating one.
+
+[source,bash]
+----
+$ clojure -Sdeps '{:deps {org.clojure/core.async {:mvn/version "1.5.648"}}}'
+Clojure 1.11.1
+user=> (require '[clojure.core.async :as a])
+nil
+----
+
+Note that due to escaping rules, it's best to wrap the config data in single quotes.
 
 [[prep_libs]]
 === Preparing source dependency libs

@@ -22,6 +22,20 @@ For more information see the following docs:
 
 Recent official releases are described here. Prereleases and older versions can be found in the https://github.com/clojure/brew-install/blob/1.10.3/CHANGELOG.md[repo changelog].
 
+=== 1.11.1.1182 (Oct 26, 2022) [[v1.11.1.1182]]
+
+* https://clojure.atlassian.net/browse/TDEPS-70[TDEPS-70] - Detect missing jar in classpath and download automatically
+* https://clojure.atlassian.net/browse/TDEPS-232[TDEPS-232] - Add generic posix installer
+* https://clojure.atlassian.net/browse/TDEPS-200[TDEPS-200] - Clean up default user deps.edn
+* https://clojure.atlassian.net/browse/TDEPS-219[TDEPS-219] Fixed `-X:deps find-versions` doesn't find Maven versions that start with a letter
+* Add :n option to `-X:deps find-versions` and default to 8
+* During `-X:deps prep`, use :exec-args of alias being prepped, if present
+* During `-X:deps prep`, also prep current project if needed add :current flag to prep current project, default=false
+* Fix bad invocation of deps/prep-libs! in clojure.tools.cli.api/prep
+* Improve error message when local dep directory is missing
+* For downstream tools, added new https://download.clojure.org/install/stable.properties[well-known location] to look up latest stable tools release
+* Use https://github.com/clojure/tools.deps.alpha/blob/master/CHANGELOG.md[tools.deps.alpha] 0.15.1244
+
 === 1.11.1.1165 (Sep 18, 2022) [[v1.11.1.1165]]
 
 * https://clojure.atlassian.net/browse/TDEPS-165[TDEPS-165] Use the env var CLJ_JVM_OPTS to pass JVM properties to the internal classpath building process

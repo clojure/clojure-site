@@ -38,16 +38,16 @@ To install with the Linux script installer:
 
 [source,shell]
 ----
-curl -O https://download.clojure.org/install/linux-install-1.11.1.1165.sh
-chmod +x linux-install-1.11.1.1165.sh
-sudo ./linux-install-1.11.1.1165.sh
+curl -O https://download.clojure.org/install/linux-install-1.11.1.1182.sh
+chmod +x linux-install-1.11.1.1182.sh
+sudo ./linux-install-1.11.1.1182.sh
 ----
 
 To install to a custom location (like `/opt/infrastructure/clojure`), use the option `--prefix`:
 
 [source,shell]
 ----
-sudo ./linux-install-1.11.1.1165.sh --prefix /opt/infrastructure/clojure
+sudo ./linux-install-1.11.1.1182.sh --prefix /opt/infrastructure/clojure
 ----
 
 You may also want to extend the MANPATH in `/etc/man_db.conf` to include the manual pages:
@@ -58,6 +58,38 @@ MANPATH_MAP /opt/infrastructure/clojure/bin /opt/infrastructure/clojure/man
 ----
 
 The `linux-install` script can be removed after installation.
+
+== Posix instructions
+
+A POSIX version of the linux installer is now available as well. This installer should work on Linux, BSD, and even Mac (but will conflict with brew!)
+
+To install with the POSIX script installer:
+
+1. Ensure that the following dependencies are installed: `bash`, `curl`, `rlwrap`, and `Java`.
+2. Use the `posix-install` script to download and run the install, which will create the executables `/usr/local/bin/clj`, `/usr/local/bin/clojure`, and the directory `/usr/local/lib/clojure`:
+
+[source,shell]
+----
+curl -O https://download.clojure.org/install/posix-install-1.11.1.1182.sh
+chmod +x posix-install-1.11.1.1182.sh
+sudo ./posix-install-1.11.1.1182.sh
+----
+
+To install to a custom location (like `/opt/infrastructure/clojure`), use the option `--prefix`:
+
+[source,shell]
+----
+sudo ./posix-install-1.11.1.1182.sh --prefix /opt/infrastructure/clojure
+----
+
+You may also want to extend the MANPATH in `/etc/man_db.conf` to include the manual pages:
+
+[source]
+----
+MANPATH_MAP /opt/infrastructure/clojure/bin /opt/infrastructure/clojure/man
+----
+
+The `posix-install` script can be removed after installation.
 
 == Windows instructions
 

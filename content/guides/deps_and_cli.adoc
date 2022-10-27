@@ -291,9 +291,7 @@ Extend the `:test` alias:
 
  :aliases
  {:test {:extra-paths ["test"]
-         :extra-deps {io.github.cognitect-labs/test-runner
-                      {:git/url "https://github.com/cognitect-labs/test-runner.git"
-                       :sha "9e35c979860c75555adaff7600070c60004a0f44"}}
+         :extra-deps {io.github.cognitect-labs/test-runner {:git/tag "v0.5.1" :git/sha "dfb30dd"}}
          :main-opts ["-m" "cognitect.test-runner"]
          :exec-fn cognitect.test-runner.api/test}}}
 ----

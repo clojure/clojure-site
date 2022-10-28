@@ -1,0 +1,43 @@
+= Clojure Deref (Oct 28, 2022)
+Alex Miller
+2022-10-28
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Podcasts and videos
+
+* https://soundcloud.com/clojurestream/e82-rewrites-with-orestis-markou-part-1[E82 Rewrites with Orestis Markou (part 1)] - ClojureStream podcast
+* https://www.youtube.com/watch?v=0ucSNPVKVyc[Clojure visual-tools meeting 13 - interactive datavis: Shiny, Clojurescript Bayesian animations] - Sci Cloj
+* https://www.parens-of-the-dead.com/s2e6.html[666: Episode of the Beast] - Parens of the Dead
+* https://www.youtube.com/watch?v=R7egMTdUAp0[Type conversion and generating big Fibonacci numbers in Clojure] - Clojure Diary
+
+== Blogs and articles
+
+* https://practical.li/blog/posts/make-clojure-tasks-simple-and-consistent/[Make Clojure development tasks simple and consistent] - Practicalli
+* https://blog.michielborkent.nl/deploy-clojure-neil.html[Deploying a Clojure project with neil and tools.build] - Michiel Borkent
+* https://www.nextdoc.io/blog/automating-salesforce-dx-using-babashka.html[Automating Salesforce DX using Babashka] - NextDoc
+* https://pitch.com/v/they-joy-of-static-analysis-eexkhu[The Joy of Static Analysis] - Pitch
+
+== Libraries and tools
+
+New releases and tools this week:
+
+* https://clojure.org/releases/tools[Clojure CLI] https://clojure.org/releases/tools#v1.11.1.1182[1.11.1.1182]
+* https://github.com/borkdude/deps.clj[deps.clj] https://github.com/borkdude/deps.clj/blob/master/CHANGELOG.md#v11111182[1.11.1.1182] - A faithful port of the clojure CLI bash script to Clojure
+* https://github.com/clojure/core.async[core.async] 1.6.673 - Facilities for async programming and communication in Clojure
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.311[2.0.311] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/BetterThanTomorrow/joyride[joyride] 0.0.21 - Making VS Code Hackable since 2022
+* https://github.com/lambdaisland/kaocha[kaocha] https://github.com/lambdaisland/kaocha/releases/tag/v1.71.1119[1.7.1119] - Full featured next gen Clojure test runner 
+* https://github.com/justone/bb-pod-racer[bb-pod-racer] 0.1.9 - Speed up development of Babashka pods
+* https://github.com/behrica/casegamas[casegamas]  - Collection of clerk viewers supporting rendering-hints via Clojure metadata
+* https://github.com/clj-kondo/configs[configs]  - A repository with clj-kondo configurations for libraries, as dependencies
+* https://github.com/babashka/nbb[nbb] 1.0.139 - Scripting in Clojure on Node.js using SCI
+* https://github.com/green-coder/mate[mate] https://github.com/green-coder/mate/blob/made-in-taiwan/CHANGELOG.md[0.0.7] - Useful functions, some of which I wish were in the Clojure standard library
+* https://clojars.org/scicloj/scicloj.ml.smile[https://clojars.org/scicloj/scicloj.ml.smile]  - A Smile plugin for scicloj.ml 
+* https://github.com/borkdude/jet[jet] 0.3.31 - CLI to transform between JSON, EDN and Transit, powered with a minimal query language
+* https://github.com/borkdude/respeced[respeced] 0.1.2 - testing library for clojure.spec fdefs
+* https://github.com/ferdinand-beyer/reitit-ring-defaults[reitit-ring-defaults] 0.1.0 - Sensible data-driven Ring middleware defaults
+* https://github.com/ferdinand-beyer/init[init] 0.2.90 - Dependency injection a la carte

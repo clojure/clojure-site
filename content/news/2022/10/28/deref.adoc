@@ -36,7 +36,7 @@ New releases and tools this week:
 * https://github.com/clj-kondo/configs[configs]  - A repository with clj-kondo configurations for libraries, as dependencies
 * https://github.com/babashka/nbb[nbb] 1.0.139 - Scripting in Clojure on Node.js using SCI
 * https://github.com/green-coder/mate[mate] https://github.com/green-coder/mate/blob/made-in-taiwan/CHANGELOG.md[0.0.7] - Useful functions, some of which I wish were in the Clojure standard library
-* https://clojars.org/scicloj/scicloj.ml.smile[https://clojars.org/scicloj/scicloj.ml.smile]  - A Smile plugin for scicloj.ml 
+* https://clojars.org/scicloj/scicloj.ml.smile[scicloj.ml.smile]  - A Smile plugin for scicloj.ml 
 * https://github.com/borkdude/jet[jet] 0.3.31 - CLI to transform between JSON, EDN and Transit, powered with a minimal query language
 * https://github.com/borkdude/respeced[respeced] 0.1.2 - testing library for clojure.spec fdefs
 * https://github.com/ferdinand-beyer/reitit-ring-defaults[reitit-ring-defaults] 0.1.0 - Sensible data-driven Ring middleware defaults

@@ -93,7 +93,7 @@ The `posix-install` script can be removed after installation.
 
 == Windows instructions
 
-Prerequisistes: <<install_clojure#java,Java>>
+Prerequisites: <<install_clojure#java,Java>>
 
 An early release version of clj on Windows is available at https://github.com/clojure/tools.deps.alpha/wiki/clj-on-Windows[clj on Windows].
 Please provide feedback on https://ask.clojure.org[Ask Clojure] or Clojurians slack in #clj-on-windows.

@@ -49,7 +49,7 @@ We have a data structure `my-line` that looks like this, `[[5 10] [10 20]]`. In 
 
 Clojure destructuring is broken up into two categories, sequential destructuring and associative destructuring. Sequential destructuring represents a sequential data structure as a Clojure vector within a let binding.
 
-This type of destructuring can be used on any kind of data structure that can be traversed in linear time, including lists, vectors, and anything that can produce a sequence.
+This type of destructuring can be used on any kind of data structure that can be traversed in linear time, including lists, vectors, seqs, strings, arrays, and anything that supports `nth`.
 
 [source,clojure]
 ----

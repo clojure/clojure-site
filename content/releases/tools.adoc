@@ -22,6 +22,11 @@ For more information see the following docs:
 
 Recent official releases are described here. Prereleases and older versions can be found in the https://github.com/clojure/brew-install/blob/1.10.3/CHANGELOG.md[repo changelog].
 
+=== 1.11.1.1189 (Nov 2, 2022) [[v1.11.1.1189]]
+
+* https://clojure.atlassian.net/browse/TDEPS-233[TDEPS-233] bash script fixes from stale jar check changes
+* Add some missing items on help and man page
+
 === 1.11.1.1182 (Oct 26, 2022) [[v1.11.1.1182]]
 
 * https://clojure.atlassian.net/browse/TDEPS-70[TDEPS-70] - Detect missing jar in classpath and download automatically

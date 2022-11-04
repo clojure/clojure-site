@@ -1,0 +1,56 @@
+= Clojure Deref (Nov 4, 2022)
+Alex Miller
+2022-11-04
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Highlights
+
+Last week the Clojure team gathered for a round table discussion celebrating the https://www.youtube.com/watch?v=exSRG-iL74Q[15th anniversary of Clojure] - check it out and have a piece of cake at home! Thanks for being part of the community. It is amazing to me that every single week when I go to make this Deref there are dozens of new blogs, videos, and library releases to share!
+
+I also wanted to highlight Jacek Schae's latest effort, the https://clojure.stream/workshops[ClojureStream workshops]. Looks like some great ideas there and an excellent way to learn some new Clojure skills.
+
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=1V0VNBgWokA[Transform anything with Pattern (by Darrick Wiebe)] - London Clojurians
+* https://www.youtube.com/watch?v=zMWkLr56vR0[Meetup: Collaborative Learning - Quickblog] - Los Angeles Clojure User Group
+* https://www.parens-of-the-dead.com/s2e7.html[Episode 7: Iacta alea est] - Parens of the Dead
+* https://www.youtube.com/watch?v=bbVImS9B8Xs[Calculating compression gain - File compression in Clojure (1)] - Clojure Diary
+* https://www.youtube.com/watch?v=JZV9GqiVgFQ[for and doseq in Clojure] - Clojure Diary
+
+== Blogs and articles
+
+* https://www.devcycle.co.uk/Clojure-the-devil-2/[Clojure the Devil…Revisited ] - Chris Howe-Jones
+* https://blog.jdriven.com/2022/11/clojure-goodness-writing-text-file-content-with-spit/[Clojure Goodness: Writing Text File Content With spit] - Hubert Klein Ikkink
+* https://georg.berky.dev/blog/2022-11-01-clojure-fiddlings-1/[Clojure Fiddlings 1] - Georg Berky
+* https://dev.to/trikitrok/spying-and-stubbing-in-clojure-and-clojurescript-with-test-doubles-21nh[Spying and stubbing in Clojure and ClojureScript with test-doubles] - Manuel Rivero
+* https://blog.michielborkent.nl/oss-updates-sep-oct-2022.html[OSS updates of September - October 2022] - Michiel Borkent
+* https://practical.li/blog/posts/build-and-run-clojure-with-multistage-dockerfile/[Build and run Clojure with Multi-stage Dockerfile] - Practicalli
+* https://scicloj.github.io/blog/predict-real-vs.-fake-disaster-tweets/[Predict real vs. fake disaster tweets] - Carsten Behring
+* http://clojure-goes-fast.com/kb/[Knowledge Base] - Clojure Goes Fast
+
+== Libraries and tools
+
+New releases and tools this week:
+
+* https://github.com/eerohele/Tutkain[Tutkain] https://github.com/eerohele/Tutkain/blob/master/CHANGELOG.md#0170-alpha---2022-10-31[0.17.0 (alpha)] - A Sublime Text package for interactive Clojure development
+* https://github.com/Motiva-AI/stepwise[stepwise] 0.8.0 - Clojure AWS Step Functions library
+* https://github.com/matterandvoid-space/subscriptions[subscriptions] 2022.10.29 - A subscriptions library over a source of data (forked + extracted from re-frame)
+* https://github.com/cljfx/dev[dev] 1.0.36 - Dev tools for cljfx
+* https://github.com/liquidz/thrempl[thrempl]  - A proof of concept for simple template engine using threading macros
+* https://github.com/yetanalytics/flint-jena[flint-jena] 0.1.1 - Library to compile Flint queries and updates into Apache Jena objects
+* https://github.com/strojure/zizzmap[zizzmap]  - Persistent map with lazily evaluated values for Clojure(Script)
+* https://github.com/babashka/babashka[babashka] 1.0.165 - Native, fast starting Clojure interpreter for scripting
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.315[2.0.315] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/fulcrologic/fulcro[fulcro] 3.5.29 - A library for development of single-page full-stack web applications in clj/cljs
+* https://codeberg.org/michail/javaparser-clj[javaparser-clj] 0.1.0 - Clojure wrapper over javaparser library
+* https://github.com/babashka/nbb[nbb] 1.0.141 - Scripting in Clojure on Node.js using SCI
+* https://github.com/clj-kondo/clj-kondo[clj-kondo] 2022.11.02 - Static analyzer and linter for Clojure code that sparks joy
+* https://clojure.org/releases/tools[Clojure CLI] https://clojure.org/releases/tools#v1.11.1.1189[1.11.1.1189] - Clojure program runner
+* https://github.com/clojure/tools.build[tools.build] 0.8.4 - Clojure builds as Clojure programs
+* https://github.com/clojure-lsp/clojure-lsp[clojure-lsp] https://github.com/clojure-lsp/clojure-lsp/releases/tag/2022.11.03-00.14.57[2022.11.03-00.14.57] - Clojure & ClojureScript Language Server (LSP) implementation
+* https://github.com/RokLenarcic/datalevin-pathom[datalevin-pathom] 0.2.11-alpha - Datalevin Pathom 3 integration
+* https://github.com/donut-party/dbxray[dbxray] 0.0.63 - Provides metadata for JDBC dbs and uses that to generate specs or schemas

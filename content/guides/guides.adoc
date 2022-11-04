@@ -29,4 +29,5 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 === Libraries
 
+* <<async_walkthrough#,core.async Walkthrough>>
 * <<core_async_go#,Go Block Best Practices>>

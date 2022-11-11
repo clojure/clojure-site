@@ -1,0 +1,62 @@
+= Clojure Deref (Nov 11, 2022)
+Alex Miller
+2022-11-11
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Highlights
+
+On the heels of the successful https://clojuredays.org/[Dutch Clojure Days] event, this week we saw the release of the speakers for https://www.reclojure.org/#speakers[reClojure 2022]. Can't wait to see you there, so https://www.meetup.com/london-clojurians/events/289598000/[get your ticket now]!
+
+I also wanted to highlight https://seqfind.com[SeqFind] this week - it's a first release of a Clojure(script) code explorer designed to "help the community learn by example". Reminds me of the old (and now defunct) CrossClj site and happy to see it.
+
+== Podcasts and videos
+
+* https://clojure.stream/podcast[E83 Rewrites with Orestis Markou (part 2)] - ClojureStream Podcast
+* https://pnc.st/s/juxt-cast/fd171efe/strange-loop-edition-a-chat-with-baptiste-dupuch-and-christophe-grand[Strange Loop Edition: A chat with Baptiste Dupuch and Christophe Grand] - JUXT Cast
+* https://www.youtube.com/watch?v=p3Rb7uxtQs4[OOP and FP: Reducing Complexity Together] - Yehonathan Sharvit and Eric Normand
+* https://www.youtube.com/watch?v=ETI_knLfMtY[Streamline common annoying database tasks with datapotato and dbxray (by Daniel Higginbotham)] - London Clojurians
+* https://www.youtube.com/watch?v=eubg-fjRh9E[NLP in Clojure Session 2 - Clojure, Python, DVC, Metamorph] - Sci Cloj
+* https://www.youtube.com/watch?v=JSMcK5strRo[Clojure visual-tools meeting 16 - play.teod.eu, Kindly] - Sci Cloj
+* https://www.youtube.com/watch?v=kME868FvT2A[Clojure data-recur meeting 4: Tablecloth] - Sci Cloj
+
+== Blogs and articles
+
+* http://blog.fogus.me/2022/11/10/the-one-about-lisp-interactivity/[The one about Lisp interactivity] - Fogus
+* https://medium.swirrl.com/visualising-data-in-clojure-with-hanami-2fe90b4280c[Visualising Data in Clojure with Hanami] - Kira McLean
+* https://www.metosin.fi/blog/reagent-towards-react-18/[Reagent - Towards React 18] - Juho Teperi
+* https://blog.danieljanus.pl/2022/11/07/dcd-22/[Dutch Clojure Days 2022] - Daniel Janus
+* https://www.evalapply.org/posts/clojure-mars-rover/index.html[A Clojure view of "Mars Rover"] - Aditya Athalye
+* https://flexiana.com/2022/11/xiana-monads-removed[Xiana – Monads removed] - Krisztián Gulyás
+* https://corfield.org/blog/2022/11/05/deps-edn-monorepo-9/[deps.edn and monorepos IX (Polylith)] - Sean Corfield
+* https://georg.berky.dev/blog/2022-11-09-clojure-fiddlings-2/[Clojure Fiddlings 2] - Georg Berky
+
+== Libraries and tools
+
+New releases and tools this week:
+
+* https://github.com/donut-party/datapotato[datapotato] 1.0.448 - Better database fixtures for tests
+* https://github.com/PEZ/prettier-plugin-clojure[prettier-plugin-clojure]  - An (almost) indentation-only, non-configurable, Prettier Plugin for Clojure and ClojureScript (and any sufficiently similar implementations)
+* https://github.com/phronmophobic/clong[clong] 0.9.0 - A wrapper for libclang and a generator that can turn c header files into clojure apis
+* https://github.com/kennytilton/flutter-mx[flutter-mx]  - Flutter + ClojureDart, with Matrix Inside(tm)
+* https://github.com/exoscale/lingo[lingo] 1.0.0-alpha24 - spec explain improved 
+* https://github.com/funcool/promesa[promesa] 9.0.507 - A promise library for Clojure(Script)
+* https://github.com/strojure/assertie[assertie] 1.0.0 - Macros for runtime assertion in Clojure(Script)
+* https://github.com/seancorfield/honeysql[honeysql] 2.4.947 - Turn Clojure data structures into SQL
+* https://github.com/athos/Postmortem[Postmortem] https://github.com/athos/Postmortem/releases/tag/0.5.2[0.5.2] - A simple debug library for Clojure(Script) that features data-oriented logging and tracing
+* https://github.com/fulcrologic/fulcro-rad[fulcro-rad] 1.3.3 - Fulcro Rapid Application Development
+* https://github.com/BetterThanTomorrow/calva[Calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.319[2.0.319] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/seancorfield/next-jdbc[next-jdbc] 1.3.847 - A modern low-level Clojure wrapper for JDBC-based access to databases
+* https://github.com/damn/engine[engine] 1.0 - Clojure 2D game engine
+* https://github.com/chr15m/sitefox[sitefox] 0.0.14 - Node + cljs backend web framework
+* https://github.com/squint-cljs/cherry[cherry] 0.0.0-alpha.58 - Experimental ClojureScript to ES6 module compiler
+* https://github.com/squint-cljs/squint[squint] 0.0.0-alpha.52 - ClojureScript syntax to JavaScript compiler
+* https://github.com/suprematic/globus[globus] 0.2.11 - Bash-like globbing patterns for Clojure(Script)
+* https://github.com/amperity/ken[ken] 1.1.0 - Observability library to instrument Clojure code
+* https://github.com/PEZ/prettier-plugin-clojure[prettier-plugin-clojure]  - An (almost) indentation-only, non-configurable, Prettier Plugin for Clojure and ClojureScript
+* https://github.com/liquidz/build.edn[build.edn] 0.8.174 - Make your Clojure library build process easy
+* https://github.com/wardle/hermes[hermes] 1.0.776 - A library and microservice implementing the health and care terminology SNOMED CT
+

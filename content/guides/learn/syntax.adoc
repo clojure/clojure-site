@@ -42,7 +42,7 @@ Floating point values are read as double-precision 64-bit floats, or arbitrary p
 #"[0-9]+"       ; regular expression
 ----
 
-Strings are contained in double quotes and may span multiple lines. Individual characters are represented with a leading backslash. There are a few special named characters: `\newline` `\spec` `\tab`, etc. Unicode characters can be represented with `\uNNNN` or in octal with `\oNNN`.
+Strings are contained in double quotes and may span multiple lines. Individual characters are represented with a leading backslash. There are a few special named characters: `\newline` `\space` `\tab`, etc. Unicode characters can be represented with `\uNNNN` or in octal with `\oNNN`.
 
 Literal regular expressions are strings with a leading `#`. These are compiled to java.util.regex.Pattern objects.
 

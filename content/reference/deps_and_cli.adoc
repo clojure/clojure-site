@@ -660,12 +660,12 @@ Currently, only `jar` artifacts are supported. Support for other artifact types 
 The `mvn` procurer will look for two configuration keys at the root of the deps.edn:
 
 * `:mvn/repos` - map of repository name to repository descriptor, a map of:
-  * `:url` - required, url string
-  * `:releases` - a https://maven.apache.org/pom.html#repositories[repository policy] map for releases:
-    * `:enabled` - boolean, default=true
-	* `:update` - a flag for how often to check the repo for updates, one of `:daily` (default), `:always`, `:never`, or an interval in minutes (integer)
-	* `:checksum` - a flag for checksum validation, one of `:warn` (default), `:fail`, `:ignore`
-  * `:snapshots` - repository policy map for snapshots (same structure as `:releases`)
+** `:url` - required, url string
+** `:releases` - a https://maven.apache.org/pom.html#repositories[repository policy] map for releases:
+*** `:enabled` - boolean, default=true
+*** `:update` - a flag for how often to check the repo for updates, one of `:daily` (default), `:always`, `:never`, or an interval in minutes (integer)
+*** `:checksum` - a flag for checksum validation, one of `:warn` (default), `:fail`, `:ignore`
+** `:snapshots` - repository policy map for snapshots (same structure as `:releases`)
 * `:mvn/local-repo` - a path (string) to the local repo cache. If none supplied, Maven uses `~/.m2/repository`.
 
 The root deps.edn configures these default Maven repos:

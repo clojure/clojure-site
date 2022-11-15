@@ -684,11 +684,10 @@ While specifying repository name and url is typically all that is required, full
 {:mvn/repos
  {"my-releases" {:url "https://example.com/releases"
                  :snapshots {:enabled false}
-				 :releases {:enabled true
-				            :update :daily
-							:checksum :fail}}}}
+                 :releases {:enabled true
+                            :update :daily
+                            :checksum :fail}}}}
 ----
-
 
 === Modifying the default repositories
 

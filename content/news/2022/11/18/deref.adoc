@@ -1,0 +1,56 @@
+= Clojure Deref (Nov 18, 2022)
+Alex Miller
+2022-11-18
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Podcasts and videos
+
+* https://soundcloud.com/defn-771544745/86-kira-mclean[#86 Kira McLean] - defn podcast
+* https://www.listennotes.com/podcasts/software-unscripted/software-rituals-with-david-aneDXKg0Mlp/[Software Rituals with David Nolen] - Software Unscripted podcast
+* https://www.youtube.com/watch?v=fifbMZliHjI[Chris Keathley - SOLID code isn't flexible] - ElixirConf
+* https://www.parens-of-the-dead.com/s2e9.html[Episode 9: The Abomination] - Parens of the Dead 
+* https://www.youtube.com/watch?v=lZtxc66zU5s[Reveal: lessons learned by Vlad Protsenko] - London Clojurians
+* https://www.youtube.com/watch?v=fMtvtAfdr90[Interactive Programming - VS Code Extension Development using ClojureScript] - Calva TV
+* https://www.youtube.com/watch?v=44b1RBIwH4M[Vlog: job status update + Clojure future] - Protesilaos Stavrou
+
+== Blogs and articles
+
+* https://clojureverse.org/t/the-clojure-events-calendar-feed-turns-2/9527[The Clojure events calendar feed turns 2] - Gert Goet
+* https://medium.com/magnetcoop/technology-competitive-advantage-or-liability-7fea722b3665[Technology: competitive advantage or liability?] - Asier Galdos
+* https://www.metosin.fi/blog/transforming-data-with-malli-and-meander/[Transforming Data With Malli and Meander] - Tommi Reiman
+* https://blog.janetacarr.com/clojure-typing-problem/[Clojure's typing "problem"] - Janet A. Carr
+* https://www.devcycle.co.uk/Clojure-Adoption/[Clojure Adoption - The Usual Suspects] - Chris Howe-Jones
+* https://blog.exupero.org/mapping-elliptical-orbits/[Mapping elliptical orbits] - Eric Shull
+* https://clj.social/public/local[Clojure Community on Fediverse]
+
+== Libraries and tools
+
+New releases and tools this week:
+
+* https://git.sr.ht/~jomco/proof-specs[proof-specs] 0.1.7 - Automatic testing of clojure.spec data generators
+* https://github.com/babashka/nbb[nbb] 1.0.144 - Scripting in Clojure on Node.js using SCI
+* https://github.com/dpassen/malapropism[malapropism] 0.3.93 - Malli-backed configuration library
+* https://github.com/babashka/sci[sci] 0.5.35 - Configurable Clojure/Script interpreter suitable for scripting and Clojure DSLs
+* https://github.com/askonomm/sember[sember] 0.0.12 - A single-file landing page generator for the individual self
+* https://github.com/funcool/promesa[promesa] 9.1.536 - A promise library for Clojure(Script)
+* https://github.com/borgeby/clj-json-pointer[clj-json-pointer] 1.0.0 - Simple Clojure(Script) library for working with JSON Pointer and JSON Patch
+* https://github.com/greglook/clj-hiera[clj-hiera] 2.0.0 - Generate Clojure namespace hierarchy graphs
+* https://cursive-ide.com/[Cursive] 1.12.5-eap3 - The Clojure(Script) IDE that understands your code
+* https://clojure.org/releases/tools[Clojure CLI] https://clojure.org/releases/tools#v1.11.1.1200[1.11.1.1200]
+* https://github.com/clojure/tools.build[tools.build] 0.8.5 - Clojure builds as Clojure programs
+* https://github.com/ivarref/yoltq[yoltq] 0.2.62 - An opinionated Datomic queue for building (more) reliable systems
+* https://github.com/cohesic/cohesic-xtdb[cohesic-xtdb]  - Helper functions for the XTDB bitemporal database
+* https://github.com/dvingo/cljs-emotion[cljs-emotion] 2022-11-17.0.0 - ClojureScript wrapper of the emotion css-in-js library
+* https://github.com/athos/pogonos[pogonos] 0.3.0 - Yet another Clojure(Script) implementation of the Mustache templating language
+* https://github.com/javahippie/clj-test-containers[clj-test-containers] 0.7.4 - Control Docker containers from your test lifecycle for Clojure integration tests
+* https://github.com/jpmonettas/flow-storm-debugger[flow-storm-debugger] 3.2.271 - A debugger for Clojure and ClojureScript with some unique features
+* https://github.com/jpmonettas/hansel[hansel] 0.1.17 - Instrument Clojure[Script] forms to trace it 
+* https://github.com/babashka/fs[fs] 0.2.12 - File system utility library for Clojure 
+* https://github.com/cjohansen/m1p[m1p] 2022.11.15 - Map interpolation and DIY i18n/theming toolkit
+* https://github.com/fulcrologic/fulcro-rad[fulcro-rad] 1.3.8 - Fulcro Rapid Application Development
+* https://github.com/fulcrologic/fulcro-rad-semantic-ui[fulcro-rad-semantic-ui]  - Semantic UI Rendering Plugin for RAD
+* https://github.com/mauricioszabo/generic-lsp[generic-lsp] 0.1.3 - LSP capabilities for Atom/Pulsar

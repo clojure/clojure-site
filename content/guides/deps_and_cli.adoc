@@ -214,7 +214,7 @@ Finally, modify your app to use the git dependency instead. You'll need to gathe
 
 * repository lib - the Clojure CLI uses a convention where the URL does not need to be specified if you use a library name like `io.github.yourname/time-lib` for the GitHub url `https://github.com/yourname/time-lib.git`.
 * tag - `v0.0.1` is what we created above
-* sha - the short sha at the tag, find it with `git rev-parse --short v0.0.1` if you have the repo locally, or `git ls-remote https://github.com/yourname/time-lib.git v0.0.1` if it's remote.
+* sha - the short sha at the tag, find it with `git rev-parse --short v0.0.1^{commit}` if you have the repo locally, or `git ls-remote https://github.com/yourname/time-lib.git v0.0.1` if it's remote. You can also find it by using the GitHub repo to look at tags and their backing commit.
 
 Update the `hello-world/deps.edn` to use a git coordinate instead:
 

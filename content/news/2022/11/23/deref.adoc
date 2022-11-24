@@ -1,0 +1,44 @@
+= Clojure Deref (Nov 23, 2022)
+Alex Miller
+2022-11-23
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Highlights
+
+In this week of thanks, thank you to the Clojure community! It is a pleasure to present your work every week here and always a surprise how much the community does every single week.
+
+== Podcasts and videos
+
+* https://cognitect.com/cognicast/172[Janet A Carr - Cognicast Episode 172] - Cognicast
+* https://www.youtube.com/watch?v=AYKIR1oh62Y[#1: Michiel Borkent @borkdude] - Show Me Your REPL
+* https://clojure.stream/podcast[E84 Exoscale with Pierre-Yves Ritschard] - ClojureStream Podcast with Jacek Schae
+* https://www.youtube.com/watch?v=B7_3hVF8zSc[Clojure defpure news 📰 filter-stack-trace for test errors] - Fred Overflow
+* https://www.youtube.com/watch?v=2hBl31QP9Pc[Clojure and the Functional Paradigm] - Codurance
+
+== Blogs and articles
+
+* https://building.nubank.com.br/talk-james-gosling-java-at-nubank/[A mind-blowing conversation with James Gosling, Java’s father] - Building Nubank
+* https://andreyorst.gitlab.io/posts/2022-11-21-clojures-coreasync-pipeline-async-off-by-two-error-explained/[Clojure's core.async pipeline-async off-by-two error explained] - Andrey Listopadov
+* https://clojure.stream/workshops/babashka[Babashka Workshop] - ClojureStream
+
+== Libraries and tools
+
+New releases and tools this week:
+
+* https://github.com/Datomic/dev.datafy[dev.datafy] 0.1 - Dev-time datafy and nav
+* https://github.com/pedestal/pedestal[pedestal] 0.5.11-beta-1 - The Pedestal Server-side Libraries
+* https://github.com/liquidz/antq[antq] 2.2.962 - Point out your outdated dependencies
+* https://github.com/borkdude/edamame[edamame] 1.0.16 - Configurable EDN/Clojure parser with location metadata
+* https://github.com/babashka/nbb[nbb] 1.0.136 - Scripting in Clojure on Node.js using SCI
+* https://github.com/clj-commons/hickory[hickory] 0.7.2 - HTML as data
+* https://github.com/liquidz/antq[antq] 2.2.962 - Point out your outdated dependencies
+* https://github.com/fulcrologic/fulcro-rad[fulcro-rad] 1.3.9 - Fulcro Rapid Application Development
+* https://github.com/fulcrologic/fulcro-rad-semantic-ui[fulcro-rad-semantic-ui] 1.2.18 - Semantic UI Rendering Plugin for RAD
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.320[2.0.320] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/BetterThanTomorrow/joyride[joyride] 0.0.23 - Making VS Code Hackable since 2022
+* https://github.com/babashka/scittle[scittle] 0.4.11 - Execute Clojure(Script) directly from browser script tags via SCI
+* https://git.sr.ht/~jomco/select-tree[select-tree] 0.1.0 - Clojure library to recursively select subtrees of collections

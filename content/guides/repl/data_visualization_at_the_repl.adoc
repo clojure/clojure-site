@@ -63,7 +63,7 @@ user=> (mapv number-summary [5 6 7 12 28 42])
 ----
 
 We can use the `https://clojure.github.io/clojure/clojure.pprint-api.html[clojure.pprint]` lib
- to print the result in a more 'visual' format:
+ to print the result in a more "visual" format:
 
 [source,clojure-repl]
 ----
@@ -152,10 +152,10 @@ nil
 
 == Truncating REPL output
 
-When an expression evaluates to a large or deeply nested data structure, 
-reading REPL output can become difficult. 
+When an expression evaluates to a large or deeply nested data structure,
+reading REPL output can become difficult.
 
-When a structure is too deeply nested, you can truncate 
+When a structure is too deeply nested, you can truncate
 the output by setting the `https://clojuredocs.org/clojure.core/\*print-level\*[\*print-level*]` Var:
 
 [source,clojure-repl]
@@ -168,7 +168,7 @@ user=> {:a {:b [{:c {:d {:e 42}}}]}} ;; a deeply nested data structure
 
 You can undo this setting by evaluating `(set! https://clojuredocs.org/clojure.core/\*print-level\*[\*print-level*] nil)`.
 
-Likewise, when a data structure contains long collections, you can limit the number of displayed item by setting 
+Likewise, when a data structure contains long collections, you can limit the number of displayed items by setting
 the `https://clojuredocs.org/clojure.core/\*print-length\*[\*print-length*]` Var:
 
 [source,clojure-repl]
@@ -183,7 +183,7 @@ Like the above, evaluate `(set! https://clojuredocs.org/clojure.core/\*print-len
 to undo this setting.
 
 `https://clojuredocs.org/clojure.core/\*print-level\*[\*print-level*]` and `https://clojuredocs.org/clojure.core/\*print-length\*[\*print-length*]`
-affect both ordinary REPL printing and pretty-pretting.
+affect both ordinary REPL printing and pretty-printing.
 
 == Accessing recent results: `*1`, `*2`, `*3`
 
@@ -334,7 +334,7 @@ user=> *e
 ----
 
 In this simplistic example, displaying all this information may be more than what is
- needed to diagnose the issue; but this visualization becomes more helpful for 'real-world'
+ needed to diagnose the issue; but this visualization becomes more helpful for "real-world"
  Exceptions, which tend to have the following charateristics in Clojure programs:
 
 * **Exceptions convey data:** in Clojure programs, it's common to attach additional data
@@ -343,7 +343,7 @@ In this simplistic example, displaying all this information may be more than wha
 * **Exceptions are chained:** an Exception can be annotated with an optional _cause_, which is another
  (lower-level) Exception.
 
-Here's an example program which demonstrates these sort of Exceptions.
+Here's an example program which demonstrates these sorts of Exceptions.
 
 [source,clojure]
 ----
@@ -377,8 +377,8 @@ Here's an example program which demonstrates these sort of Exceptions.
 ----
 
 We don't know it yet, but our `average` function fails when applied to an empty collection of numbers.
-However, visualizing the Exception makes it easy to diagnose. In the below REPL session, we can see 
-that we calling our function with an empty vector of numbers led to dividing zero by zero:
+However, visualizing the Exception makes it easy to diagnose. In the REPL session below, we can see
+that calling our function with an empty vector of numbers led to dividing zero by zero:
 
 [source,clojure-repl]
 ----
@@ -467,13 +467,13 @@ Finally, there also exist 3rd-party Clojure tools for data visualization; we wil
 == Dealing with mysterious values (advanced)
 
 Sometimes, the printed representation of a value in the REPL is not very informative; sometimes,
-it can even be misleading as to the nature of that value.footnote:[For instance, 
-https://docs.datomic.com/on-prem/entities.html[Datomic] and https://github.com/tonsky/datascript[DataScript] Entity objects are 
-printed like Clojure maps, even though they are significantly different from ordinary maps.] 
+it can even be misleading as to the nature of that value.footnote:[For instance,
+https://docs.datomic.com/on-prem/entities.html[Datomic] and https://github.com/tonsky/datascript[DataScript] Entity objects are
+printed like Clojure maps, even though they are significantly different from ordinary maps.]
 This often happens with values which are obtained via Java interop.
 
-As an example, we'll create an InputStream object using the https://clojuredocs.org/clojure.java.io[`clojure.java.io`] lib. If you don't know 
-what an InputStream is, all the better - the point of this section is to teach you how to find your footing 
+As an example, we'll create an InputStream object using the https://clojuredocs.org/clojure.java.io[`clojure.java.io`] lib. If you don't know
+what an InputStream is, all the better - the point of this section is to teach you how to find your footing
 in uncharted territory:
 
 [source,clojure-repl]
@@ -488,14 +488,14 @@ user=> v
 
 The above code sample defined an InputStream named `v`.
 
-Now imagine you don't know where `v` comes from, and let's try to interact with it at the REPL 
+Now imagine you don't know where `v` comes from, and let's try to interact with it at the REPL
 so as to gain more understanding of it.
 
 ==== Viewing the type hierarchy using `type` and `ancestors`
 
 The printed representation of `v` tells us one thing about it: its _runtime type_, in this case `java.io.BufferedInputStream`.
 The _type_ of a value can help us know what operations we may call on it.
-We can evaluate `(https://clojuredocs.org/clojure.core/type[type] v)` to obtain the _concrete type_ of `v`, and 
+We can evaluate `(https://clojuredocs.org/clojure.core/type[type] v)` to obtain the _concrete type_ of `v`, and
 `(https://clojuredocs.org/clojure.core/ancestors[ancestors] (type v))` to obtain its entire _type hierarchy:_
 
 [source,clojure-repl]
@@ -508,7 +508,7 @@ user=> (ancestors (type v))
 
 ==== Using Javadoc
 
-As we saw in the previous section, we can use the https://clojure.github.io/clojure/clojure.java.javadoc-api.html[clojure.java.javadoc] lib 
+As we saw in the previous section, we can use the https://clojure.github.io/clojure/clojure.java.javadoc-api.html[clojure.java.javadoc] lib
 to view online documentation about a Java type:
 
 [source,clojure-repl]
@@ -521,7 +521,7 @@ true
 
 ==== Inspecting Java types with `clojure.reflect`
 
-Javadoc is helpful, but sometimes Javadoc won't even be available. In such cases, we can use 
+Javadoc is helpful, but sometimes Javadoc won't even be available. In such cases, we can use
 the REPL itself to inspect types, via Java reflection.
 
 We can use the `https://clojure.github.io/clojure/clojure.reflect-api.html#clojure.reflect/reflect[clojure.reflect/reflect]`
@@ -535,7 +535,7 @@ user=> (reflect/reflect java.io.InputStream)
 {:bases #{java.lang.Object java.io.Closeable}, :flags #{:public :abstract}, :members #{#clojure.reflect.Method{:name close, :return-type void, :declaring-class java.io.InputStream, :parameter-types [], :exception-types [java.io.IOException], :flags #{:public}} #clojure.reflect.Method{:name mark, :return-type void, :declaring-class java.io.InputStream, :parameter-types [int], :exception-types [], :flags #{:public :synchronized}} #clojure.reflect.Method{:name available, :return-type int, :declaring-class java.io.InputStream, :parameter-types [], :exception-types [java.io.IOException], :flags #{:public}} #clojure.reflect.Method{:name read, :return-type int, :declaring-class java.io.InputStream, :parameter-types [], :exception-types [java.io.IOException], :flags #{:public :abstract}} #clojure.reflect.Method{:name markSupported, :return-type boolean, :declaring-class java.io.InputStream, :parameter-types [], :exception-types [], :flags #{:public}} #clojure.reflect.Field{:name MAX_SKIP_BUFFER_SIZE, :type int, :declaring-class java.io.InputStream, :flags #{:private :static :final}} #clojure.reflect.Constructor{:name java.io.InputStream, :declaring-class java.io.InputStream, :parameter-types [], :exception-types [], :flags #{:public}} #clojure.reflect.Method{:name read, :return-type int, :declaring-class java.io.InputStream, :parameter-types [byte<>], :exception-types [java.io.IOException], :flags #{:public}} #clojure.reflect.Method{:name skip, :return-type long, :declaring-class java.io.InputStream, :parameter-types [long], :exception-types [java.io.IOException], :flags #{:public}} #clojure.reflect.Method{:name reset, :return-type void, :declaring-class java.io.InputStream, :parameter-types [], :exception-types [java.io.IOException], :flags #{:public :synchronized}} #clojure.reflect.Method{:name read, :return-type int, :declaring-class java.io.InputStream, :parameter-types [byte<> int int], :exception-types [java.io.IOException], :flags #{:public}}}}
 ----
 
-Now, that is a _very_ hairy data structure. Fortunately, we have learned how to deal with hairy data structures in the 
+Now, that is a _very_ hairy data structure. Fortunately, we have learned how to deal with hairy data structures in the
 <<_pretty_printing_using_code_clojure_pprint_code,first section>> of this chapter: pretty-printing to the rescue!
 Let's use pretty-printing to display the methods exposed by `java.io.InputStream` in a table:
 
@@ -564,7 +564,7 @@ For example, this tells us that we can call a `.read` method on `v` with no argu
 [source,clojure-repl]
 ----
 user=> (.read v)
-60  
+60
 user=> (.read v)
 33
 user=> (.read v)

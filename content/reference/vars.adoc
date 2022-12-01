@@ -43,14 +43,16 @@ By default Vars are static, but Vars can be marked as dynamic to allow per-threa
 ----
 user=> (def ^:dynamic x 1)
 user=> (def ^:dynamic y 1)
-user=> (+ x y)
+user=> (defn sum [] (+ x y)
+#'user/sum
+user=> (sum)
 2
 
 user=> (binding [x 2 y 3]
-         (+ x y))
+         (sum))
 5
 
-user=> (+ x y)
+user=> (sum)
 2
 ----
 

@@ -42,12 +42,10 @@ By default Vars are static, but Vars can be marked as dynamic to allow per-threa
 [source,clojure]
 ----
 user=> (def ^:dynamic *now* (java.time.LocalDateTime/now))
-#'user/*now*
 user=> *now*
 #object[java.time.LocalDateTime 0x74075134 "2022-12-02T12:19:45.396452"]
 
 user=> (defn next-week [] (.plusDays *now* 7))
-#'user/next-week
 user=> (next-week)
 #object[java.time.LocalDateTime 0x6d9fb2d1 "2022-12-09T12:19:45.396452"]
 

@@ -1,0 +1,77 @@
+= Clojure Deref (Dec 12, 2022)
+Alex Miller
+2022-12-02
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Highlights
+
+If you need something to watch in addition to the list below, the https://www.youtube.com/playlist?list=PLjzcwcP9P2Lc_0HMb4NcR-NiDIVcuYZB_[Dutch Clojure Days 2022 videos] are now available! I link here the playlist rather than listing all of the videos below.
+
+And if you feel the need for Clojure connection, why not check out https://www.reclojure.org/[reClojure], which is happening right now! It's not too late to join Dec 2 or 3rd.
+
+One of the cool announcements at reClojure today was a new Clerk notebook showcase, https://github.clerk.garden/[Clerk Garden]!
+
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=d_e7vwJ7HLM[#2: Andrey Orst @andreyorst] - Show Me Your REPL 
+* https://www.youtube.com/watch?v=ObjIR08t3lg[Joyride VS Code using a Clojure REPL (by Peter Strömberg and Michiel Borkent)] - London Clojurians
+* https://www.youtube.com/watch?v=aNhZI146NOo[Clojure Advent of Code 2022 Day 1: Calorie Counting] - Fred Overflow
+* https://www.youtube.com/watch?v=5x6SQGGWap8[Clojure visual-tools meeting 16 - Calva Notebooks & Portal] - Sci Cloj
+* https://parens-of-the-dead.com/s2e10.html[Episode 10: Wired together] - Parens of the Dead
+* https://www.parens-of-the-dead.com/s2e11.html[Episode 11: Systems of the Apocalypse] - Parens of the Dead
+* https://www.youtube.com/watch?v=c8Gc4hIfSwc[ActivityPub in Clojure] - Lambda Island
+
+== Blogs and articles
+
+* https://biffweb.com/p/tutorial/[Biff tutorial: build a chat app step-by-step] - Jacob O'Bryant
+* https://www.juxt.pro/blog/clojure-ds/[Building persistent data structures in Clojure] - Finn Völkel
+* https://blog.michielborkent.nl/babashka-test-runner.html[Testing babashka scripts] - Michiel Borkent
+* https://yogthos.net/posts/2022-11-26-nREPL-system-interaction.html[Using nREPL as System Interface] - Dmitri Sotnikov
+* https://jake-windle.gitlab.io/post/router-pattern-cljs-re-frame/[Re-Frame + Reagent CLJS Router Pattern] - Jake Windle
+* https://srasu.srht.site/var-evaluation.html[Why your REPL experience sucks] - Joshua Suskalo
+* https://discourse.standyck.com/t/clojure-case-study-using-datafy-and-nav-protocols-to-enhance-a-fhir-library/1987[Clojure Case Study: Using datafy and nav protocols to enhance a FHIR Library] - Stan Dyck
+* https://blaster.ai/blog/posts/manage-git-hooks-w-babashka.html[Manage git hooks with babashka tasks] - Mykhaylo Bilyanskyy
+* https://ian-muge.medium.com/messing-around-with-babashka-f181a9003faa[Messing around with Babashka] - Ian Muge
+* https://mbezjak.github.io/posts/clojure-core-extensions/[Clojure Core Extensions] - Miro Bezjak
+* https://mbezjak.github.io/posts/what-is-a-validation/[What Is a Validation?] - Miro Bezjak
+* https://respatialized.net/boxed_types_libpython_clj.html[Working with large integers in libpython-clj] - respatialized
+* https://gist.github.com/ssrihari/0bf159afb781eef7cc552a1a0b17786f[An opinionated list of excellent Clojure learning materials] - Srihari Sriraman 
+
+== Libraries and tools
+
+New releases and tools this week:
+
+* https://github.com/mpenet/mina[mina] 0.1.6 - Helidon Nima ring adapter for clojure
+* https://github.com/nilenso/goose[goose] https://github.com/nilenso/goose/releases/tag/0.3.0[0.3.0] - A Reliable, Pluggable & Scalable background job processing library for Clojure
+* https://github.com/lambdaisland/clj-diff[clj-diff] 1.4.78 - Diff for Clojure Sequences
+* https://github.com/lambdaisland/deep-diff2[deep-diff2] 2.7.169 - Deep diff Clojure data structures and pretty print the result
+* https://github.com/babashka/babashka[babashka] 1.0.166 - Native, fast starting Clojure interpreter for scripting
+* https://github.com/borkdude/rewrite-edn[rewrite-edn] 0.4.6 - Utility lib on top of rewrite-clj with common operations to update EDN while preserving whitespace and comments
+* https://github.com/clojure/tools.analyzer[tools.analyzer] 1.1.1 - An analyzer for Clojure code, written in Clojure and producing AST in EDN
+* https://github.com/clojure/tools.analyzer.jvm[tools.analyzer.jvm] 1.2.3 - Additional jvm-specific passes for tools.analyzer
+* https://github.com/babashka/bbin[bbin] 0.1.5 - Install any Babashka script or project with one command
+* https://github.com/oliyh/martian[martian] 0.1.22 - The HTTP abstraction library for Clojure/script, supporting OpenAPI, Swagger, Schema, re-frame and more
+* https://github.com/BetterThanTomorrow/joyride[joyride] 0.0.26 - Making VS Code Hackable since 2022
+* https://github.com/KingMob/TrueGrit[TrueGrit] 2.0.21 - A data-driven, functionally-oriented, idiomatic Clojure library for circuit breakers, bulkheads, retries, rate limiters, timeouts, etc
+* https://github.com/lilactown/helix-spec-alpha[helix-spec-alpha]  - clojure.spec.alpha support for React components defined using helix
+* https://github.com/practicalli/clojure-deps-edn[clojure-deps-edn]  - User level aliases and Clojure CLI configuration for deps.edn based projects
+* https://github.com/replikativ/datalog-parser[datalog-parser] https://github.com/replikativ/datalog-parser/releases/tag/0.2.25[0.2.25] - Generic datalog parser compliant to datomic, datascript and datahike queries
+* https://www.datomic.com[Datomic Cloud] https://forum.datomic.com/t/datomic-cloud-981-9188/2163[981-9188]
+* https://github.com/seancorfield/build-clj[build-clj] 0.8.5 - Common build tasks abstracted into a library
+* https://github.com/ont-app/vocabulary[vocabulary] 0.2.0 - Utilities to map between clojure namespaced keywords and RDF-style URIs
+* https://github.com/juji-io/datalevin[datalevin] 0.6.26 - A simple, fast and versatile Datalog database
+* https://github.com/oliyh/sanakone[sanakone]  - Learn Finnish
+* https://github.com/scrintal/heroicons-reagent[heroicons-reagent]  - A library containing all the SVGs from heroicons converted into reagent components
+* https://github.com/babashka/babashka[babashka] 1.0.167 - Native, fast starting Clojure interpreter for scripting
+* https://cursive-ide.com/[Cursive] https://groups.google.com/g/cursive/c/z90USyolKKQ/m/TRz9jEo4BgAJ[1.12.5] - The Clojure(Script) IDE that understands your code
+* https://github.com/Pyons/aoc-util[aoc-util]  - Read the puzzle description, solve and submit it without leaving the repl or editor
+* https://github.com/borkdude/advent-of-babashka-template[advent-of-babashka-template]  - Advent of Code using babashka and nbb
+* https://github.com/nextjournal/advent-of-clerk[advent-of-clerk]  - A template repo for folks wanting to do Advent of Code with Clerk
+* https://github.com/scicloj/scicloj.ml.clj-djl[scicloj.ml.clj-djl] 0.1.2 - clj-djl models for metamorph.ml and scicloj.ml 
+* https://github.com/kennytilton/flutter-mx[flutter-mx]  - Flutter + ClojureDart, with Matrix Inside(tm)
+* https://github.com/scicloj/scicloj.ml.smile[scicloj.ml.smile] 7.0.642 - A Smile plugin for scicloj.ml
+* https://github.com/scicloj/metamorph.ml[metamorph.ml] 0.6.4 - Machine learning model evaluations using context based pipelines

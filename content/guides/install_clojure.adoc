@@ -118,7 +118,7 @@ To use the Adoptium Temurin installers:
 
 * Go to https://adoptium.net/
 * Download and run the installer appropriate to your platform
-* Ensure `java` is on the system PATH (see this option on the Custom Setup page)
+* Ensure `java` is on the system PATH
 
 On Mac, you can also install Temurin using brew:
 

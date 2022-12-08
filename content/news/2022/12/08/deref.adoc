@@ -1,0 +1,49 @@
+= Clojure Deref (Dec 8, 2022)
+Alex Miller
+2022-12-08
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Podcasts, videos, and courses
+
+* https://clojure.stream/podcast[E85 Stylitics with Jeremy Raines] - ClojureStream podcast
+* https://www.youtube.com/watch?v=0rJvOtbJDyI[Using VS Code for Solving Advent of Code, demo @ Agical] - Calva TV
+* https://www.youtube.com/watch?v=KMWLIgG986I[Emacs: introduction to Clojure (CIDER and clojure-mode)] - Protesilaos Stavrou
+* https://www.youtube.com/watch?v=A-QvUw5LLVU[Tapping into one of Clojure's superpowers with Portal by James Trunk] - Func Prog Sweden
+* https://www.youtube.com/watch?v=X4fD-GhW0e4[Clojure Day 8 Advent of Code 2022 Treetop Tree House] - Fred Overflow
+* https://clojure.stream/workshops/clojuredart[ClojureDart Workshop] - Baptiste Dupuch and Christophe Grand
+* https://clojure.stream/workshops/intro-data-science[Intro to Data Science Workshop] - Daniel Slutsky
+
+== Blogs and articles
+
+* https://blog.janetacarr.com/clojure-frameworks-opinions-are-features-not-bugs/[Clojure Frameworks: opinions are features, not bugs] - Janet A. Carr
+* https://grishaev.me/en/clojure-guide/[Clojure Coding Guide] - Ivan Grishaev
+* https://clojure-diary.gitlab.io/2022/12/05/get-every-nth-element-from-a-sequence-in-clojure.html[Get every nth element from a sequence in Clojure] - Clojure Diary
+* https://corfield.org/blog/2022/12/07/deps-edn-monorepo-10/[deps.edn and monorepos X (Polylith)] - Sean Corfield
+* https://www.karimarttila.fi/clojure/2022/12/04/using-babashka-to-get-electricity-prices.html[Using Babashka to Get Electricity Prices] - Kari Marttila
+* https://medium.com/graalvm/babashka-how-graalvm-helped-create-a-fast-starting-scripting-environment-for-clojure-b0fcc38b0746[Babashka: How GraalVM Helped Create a Fast-Starting Scripting Environment for Clojure] - Michiel Borkent
+* https://mccue.dev/pages/12-7-22-clojure-web-primer[How to Structure a Clojure App 101] - Ethan McCue
+
+== Libraries and tools
+
+New releases and tools this week:
+
+* https://github.com/clj-commons/etaoin[etaoin] https://github.com/clj-commons/etaoin/blob/master/CHANGELOG.adoc#v1039[1.0.39] - A pure Clojure Webdriver protocol implementation
+* https://github.com/mentat-collective/mathlive.cljs[mathlive.cljs] 0.1.0 - Clojurescript / React wrapper around the MathLive equation editor
+* https://github.com/funcool/promesa[promesa] 10.0.570 - A promise library for Clojure(Script)
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.321[2.0.321] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/tomekw/hikari-cp[hikari-cp] 3.0.1 - A Clojure wrapper to HikariCP JDBC connection pool
+* https://github.com/clj-commons/manifold[manifold] 0.3.0 - A compatibility layer for event-driven abstractions
+* https://github.com/cognitect-labs/aws-api[aws-api] https://groups.google.com/g/clojure/c/3fXGjfLNOik/m/VV901_9FAQAJ[0.8.630] - AWS, data driven
+* https://github.com/clj-commons/aleph[aleph] 0.6.0-rc2 - Asynchronous communication for Clojure
+* https://github.com/dpassen/malapropism[malapropism] 0.4.104 - Malli-backed configuration library
+* https://github.com/clj-kondo/clj-kondo[clj-kondo] 2022.12.08 - Static analyzer and linter for Clojure code that sparks joy
+* https://github.com/BetterThanTomorrow/joyride[joyride] 0.0.27 - Making VS Code Hackable like Emacs since 2022
+* https://github.com/andreyorst/pipeline-extras[pipeline-extras]  - pipeline extras for clojure.core.async library
+* https://github.com/clojure-emacs/haystack[haystack]  - Let's make the most of Clojure's infamous stacktraces!
+* https://github.com/babashka/babashka[babashka] 1.0.168 - Native, fast starting Clojure interpreter for scripting
+* https://github.com/polyfy/polylith[polylith] https://github.com/polyfy/polylith/releases/tag/v0.2.16-alpha[0.2.16-alpha] - A tool used to develop Polylith based architectures in Clojure
+* https://github.com/mentat-collective/jsxgraph.cljs[jsxgraph.cljs] 0.1.0 - CLJS wrapper around JSXGraph

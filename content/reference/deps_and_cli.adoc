@@ -20,7 +20,7 @@ Clojure build tools have traditionally taken the approach of wrapping the Maven 
 
 To this end Clojure provides:
 
-* https://github.com/clojure/tools.deps.alpha[tools.deps.alpha] - a library providing an API for resolving dependency graphs and building classpaths that can utilize both Maven and other providers of code or artifacts
+* https://github.com/clojure/tools.deps[tools.deps] - a library providing an API for resolving dependency graphs and building classpaths that can utilize both Maven and other providers of code or artifacts
 * Command line tools (`clojure` and `clj`) that enable users to make use of this capability at the terminal to declare dependencies, assemble classpaths, and launch Clojure programs with data
 * System-specific installers for downloading the tools, improving the "Getting Started" experience
 
@@ -409,7 +409,7 @@ A hash is computed based on the config file paths, the resolve-aliases, and the 
 
 Files cached (if needed):
 
-* `<hash>.libs` - a `::lib-map` in the https://github.com/clojure/tools.deps.alpha/blob/master/src/main/clojure/clojure/tools/deps/alpha/specs.clj[specs], the output of running `resolve-deps`
+* `<hash>.libs` - a `::lib-map` in the https://github.com/clojure/tools.deps/blob/master/src/main/clojure/clojure/tools/deps/specs.clj[specs], the output of running `resolve-deps`
 * `<hash>.cp` - a classpath string, the output of `make-classpath-map`
 * `<hash>.jvm` - jvm options for main execution
 * `<hash>.main` - main options for main execution
@@ -527,7 +527,7 @@ Print the docstrings for the help namespace itself (note that `help` is defined 
 clojure -X:deps help/doc :ns help
 ----
 
-* Also see: https://clojure.github.io/tools.deps.alpha/clojure.tools.cli.help-api.html[API docs]
+* Also see: https://clojure.github.io/tools.deps.cli/clojure.tools.deps.cli.help-api.html[API docs]
 
 [[prep]]
 === Prep libs

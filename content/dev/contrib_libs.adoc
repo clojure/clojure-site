@@ -70,7 +70,8 @@ Status legend:
 | https://clojure.github.io/tools.analyzer.jvm/[tools.analyzer.jvm] | JVM-specific passes for tools.analyzer | Nicola Mometto | Active
 | https://clojure.github.io/tools.build/[tools.build] | Functions for writing Clojure build programs | Alex Miller | Active
 | https://clojure.github.io/tools.cli/[tools.cli] | Command-line argument processor | Sean Corfield | Active
-| https://clojure.github.io/tools.deps.alpha/[tools.deps.alpha] | Tools for dependency management and classpath construction | Alex Miller | Active
+| https://clojure.github.io/tools.deps/[tools.deps] | Deps as data and classpath construction | Alex Miller | Active
+| https://clojure.github.io/tools.deps.cli/[tools.deps.cli] | Deps functions for use with Clojure CLI | Alex Miller | Active
 | https://clojure.github.io/tools.deps.graph/[tools.deps.graph] | Create dependency graphs for deps.edn projects | Alex Miller | Active
 | https://clojure.github.io/tools.gitlibs/[tools.gitlibs] | Tools for retrieving, caching, and using git-based projects | Alex Miller | Active
 | https://clojure.github.io/tools.emitter.jvm/[tools.emitter.jvm] | JVM bytecode generator | Nicola Mometto | Active

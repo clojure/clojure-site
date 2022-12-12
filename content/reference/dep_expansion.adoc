@@ -126,7 +126,7 @@ When using the command line tools, you can use the option `-Strace` to activate 
 
 == Tree printing
 
-A dependency can be printed using either `clj -Stree` or the program `clj -X:deps tree` which https://clojure.github.io/tools.deps.alpha/clojure.tools.cli.api-api.html#clojure.tools.cli.api/tree[has more options].
+A dependency can be printed using either `clj -Stree` or the program `clj -X:deps tree` which https://clojure.github.io/tools.deps.cli/clojure.tools.deps.cli.api-api.html#clojure.tools.deps.cli.api/tree[has more options].
 
 Trees are built from the trace log and include all considered nodes. Included nodes are prefixed with `.`. Excluded nodes are prefixed with `X`. The end of the line will contain the reason code (some codes are suppressed). The current set of reason codes (subject to change) are:
 

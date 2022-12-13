@@ -22,6 +22,12 @@ For more information see the following docs:
 
 Recent official releases are described here. Prereleases and older versions can be found in the https://github.com/clojure/brew-install/blob/1.11.1/CHANGELOG.md[repo changelog].
 
+=== 1.11.1.1208 (Dec 11, 2022) [[v1.11.1.1208]]
+
+* Always include -XX:-OmitStackTraceInFastThrow by default
+* Switch to using tools.deps
+* Use https://github.com/clojure/tools.deps/blob/master/CHANGELOG.md[tools.deps] 0.16.1264
+
 === 1.11.1.1200 (Nov 14, 2022) [[v1.11.1.1200]]
 
 * Added support in :mvn/repos map to set release and snapshot policies

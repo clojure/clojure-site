@@ -1,0 +1,76 @@
+= Clojure Deref (Dec 16, 2022)
+Alex Miller
+2022-12-16
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Highlights
+
+In these final days of the year, we are happy to look forward to 2023 and let you know about the plans for https://2023.clojure-conj.org/[Clojure/conj 2023], which will take place Apr 27-28 in Durham, North Carolina! A limited number of early bird tickets are available at the https://ti.to/cognitect/clojureconj-2023[registration site] for $350 and we also have streaming-only tickets available for $20 so everyone can join!
+
+The https://sessionize.com/clojureconj-2023/[CFP is open NOW] until January 15th and we welcome your talk submissions. Speakers receive ticket, hotel, and travel (see details on the site).
+
+The sponsor prospectus is also available if you would like to have a booth or visibility. If you have any questions, you can contact us at mailto:events@cognitect.com[events@cognitect.com]. Can't wait to see you all in person again!
+
+== Podcasts, videos, and courses
+
+* https://www.youtube.com/watch?v=lIQCQKPRNCI[Comparing the Actor model & CSP concurrency with Elixir & Clojure | Xiang Ji | ElixirConf EU 2022] - Code Sync
+* https://www.youtube.com/watch?v=cru7E96pLAM[ActivityPub in Clojure — Episode 3 — Factories and WebFinger] - Lambda Island
+* https://www.parens-of-the-dead.com/s2e12.html[Erpisode 12: A peaceful moment] - Parens of the Dead
+* https://www.parens-of-the-dead.com/s2e13.html[Derpisode 13: Exception handling] - Parens of the Dead
+
+== Blogs and articles
+
+* https://blog.valerauko.net/2022/12/09/structured-logging-in-clojure/[Structured logging in Clojure] - valerauko
+* https://blog.valerauko.net/2022/12/10/clojure-multimethods-and-derivation/[Clojure multimethods and derivation] - valerauko
+* https://mbezjak.github.io/posts/error-model/[Error Model (part 2)] - Miro Bezjak
+* https://blog.jakubholy.net/2022/trinity-of-clojure/[Clojure is in fact a trinity - of language, interactive development, and structural editing] - Jakub Holý
+* https://jank-lang.org/blog/2022-12-08-progress-update/[Development update - lots of new changes] - Jeaye Wilkerson
+* https://github.clerk.garden/tommy-mor/datalog-blog/commit/487005befd3c3c77e475254146f912f3e3dadc14/[Datalog for json munging] - Tommy Mor
+* https://blog.valerauko.net/2022/12/14/dealing-with-circular-dependencies-in-clojure/[Dealing with circular dependencies in Clojure] - valerauko
+* https://www.pixelated-noise.com/blog/2022/12/09/dialog-and-babashka/index.html[Adding prompts to your Babashka scripts with dialog] - A.C. Danvers
+* https://www.abhinavomprakash.com/posts/how-i-became-a-clojure-engineer/[Petri Plates to Parentheses: How I Became a Clojure Engineer] - Abhinav Omprakash
+* https://functional.works-hub.com/learn/why-flutter-needs-clojure-45b93[Why Flutter needs Clojure] - Artur Dumchev
+
+== Libraries and tools
+
+New releases and tools this week:
+
+* https://clojure.org/releases/tools[Clojure CLI] 1.11.1.1208
+* https://github.com/clojure/tools.deps[tools.deps] 0.16.1264 - Deps as data and classpath generation
+* https://github.com/clojure/tools.deps.cli[tools.deps.cli] 0.9.10 - Deps functions
+* https://github.com/clojure/tools.tools[tools.tools] 0.3.0 - Clojure CLI tool for managing Clojure CLI tools
+* https://github.com/polyfy/polylith[polylith] https://github.com/polyfy/polylith/releases/tag/v0.2.17-alpha[0.2.17-alpha] - A tool used to develop Polylith based architectures in Clojure
+* https://github.com/borkdude/quickblog[quickblog] 0.1.0 - Light-weight static blog engine for Clojure and babashka
+* https://github.com/babashka/cli[cli] 0.6.41 - Turn Clojure functions into CLIs
+* https://clojure-lsp.io/[clojure-lsp] https://github.com/clojure-lsp/clojure-lsp/releases/tag/2022.12.09-15.51.10[2022.12.09-15.51.10] - A Language Server for Clojure(script)
+* https://github.com/polyfy/polylith[polylith] 0.2.17-alpha - A tool used to develop Polylith based architectures in Clojure
+* https://github.com/seancorfield/polylith-external-test-runner[polylith-external-test-runner] 0.1.0 - An external (subprocess) test runner for Polylith
+* https://github.com/nextjournal/clerk[clerk] 0.12.707 - Moldable Live Programming for Clojure
+* https://github.com/ont-app/igraph[igraph] 0.2.0 - Defines a protocol for viewing data as Subject-Predicate-Object graphs, with a simple typedef implementing same
+* https://github.com/ont-app/vocabulary[vocabulary] 0.2.1 - Utilities to map between clojure namespaced keywords and RDF-style URIs
+* https://github.com/clj-kondo/clj-kondo[clj-kondo] 2022.12.10 - Static analyzer and linter for Clojure code that sparks joy
+* https://github.com/jacobobryant/biff[biff] https://github.com/jacobobryant/biff/releases/tag/v0.5.5[0.5.5] - A Clojure web framework for solo developers
+* https://github.com/strojure/zizzmap[zizzmap] 1.1.26 - Persistent map with lazily evaluated values for Clojure(Script)
+* https://github.com/hkupty/carbon.html[carbon.html]  - Clojure static HTML generator
+* https://github.com/fulcrologic/fulcro[fulcro] 3.5.32 - A library for development of single-page full-stack web applications in clj/cljs
+* https://github.com/fulcrologic/fulcro-rad[fulcro-rad] 1.3.10 - Fulcro Rapid Application Development
+* https://github.com/fulcrologic/fulcro-rad-datomic[fulcro-rad-datomic] 1.3.6 - Datomic database support plugin for Fulcro RAD
+* https://github.com/fulcrologic/fulcro-rad-semantic-ui[fulcro-rad-semantic-ui] 1.2.21 - Semantic UI Rendering Plugin for RAD
+* https://github.com/clojure/tools.deps.graph[tools.deps.graph] 1.1.76 - Dependency graphs for deps.edn projects
+* https://github.com/quoll/raphael[raphael] 0.1.0 - A Clojure/ClojureScript RDF Turtle parser
+* https://github.com/clj-commons/aleph[aleph] 0.6.0 - A framework for asynchronous communication
+* https://github.com/clojure-emacs/clojure-mode[clojure-mode] https://github.com/clojure-emacs/clojure-mode/releases/tag/v5.16.0[5.16] - Emacs support for the Clojure(Script) programming language
+* https://github.com/mentat-collective/clerk-utils[clerk-utils] 0.1.0 - Utilities for writing with Clerk
+* https://github.com/jpmonettas/flow-storm-debugger[flow-storm-debugger] 3.3-alpha-290 - A debugger for Clojure and ClojureScript with some unique features
+* https://github.com/RokLenarcic/cljc-shuffle[cljc-shuffle] 1.0.1 - Shuffle items in cljc
+* https://github.com/PEZ/shadow-portal[shadow-portal]  - A template project for using shadow-cljs and Portal together
+* https://github.com/BetterThanTomorrow/calva[calva] 2.0.322 - Clojure & ClojureScript Interactive Programming for VS Code
+* https://cursive-ide.com/[Cursive] https://groups.google.com/g/cursive/c/-wanMv5Abfo/m/VJmoYRDLCQAJ[1.12.6] - The Clojure(Script) IDE that understands your code
+* https://github.com/KingMob/TrueGrit[TrueGrit] 2.0.23 - A data-driven, functionally-oriented, idiomatic Clojure library for circuit breakers, bulkheads, retries, rate limiters, timeouts, etc.
+* https://github.com/sikt-no/datomic-testcontainers[datomic-testcontainers] 0.1.1 - Run a Datomic on-premise Pro transactor as a container in your tests/REPL
+* https://github.com/ivarref/gen-fn[gen-fn] 0.2.46 - Generate Datomic function literals from regular Clojure namespaces. On-prem.
+* https://github.com/ivarref/double-trouble[double-trouble] 0.1.105 - Handle duplicate Datomic transactions with ease (on-prem)

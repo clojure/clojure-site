@@ -324,10 +324,6 @@ For example, byte arrays (byte-array []) have a type of "[B".
 * chars - A character array
 * objects - An object array
 
-For example, to mark a var with a particular type alias, one can do `^long
-age` or `^objects messages`. This would be equivalent of saying that `age` is
-of type `long` and `messages` is of type `Object[]`.
-
 [[primitives]]
 == Support for Java Primitives
 

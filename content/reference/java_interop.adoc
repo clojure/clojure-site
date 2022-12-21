@@ -322,6 +322,7 @@ For example, byte arrays (byte-array []) have a type of "[B".
 * bytes - A byte array
 * char - A primitive character
 * chars - A character array
+* objects - An object array
 
 [[primitives]]
 == Support for Java Primitives

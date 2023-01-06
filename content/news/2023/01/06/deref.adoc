@@ -1,0 +1,92 @@
+= Clojure Deref (Jan 6, 2023)
+Alex Miller
+2023-01-23
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Clojure/conj 2023
+
+https://2023.clojure-conj.org/[Clojure/conj] is the oldest gathering of the Clojure community and the next edition will be April 27-28, 2023 in Durham, NC. This is a great place to learn about the most interesting developments in the Clojure ecosystem and talk to a wide range of Clojure users. Additionally, for the first time this year we will have streaming access so the broader community can participate even if they are not able to attend in person. Rich Hickey, the creator of Clojure, will present a talk as well. https://2023.clojure-conj.org/tickets/[Register now for early bird or streaming tickets!]
+
+The https://2023.clojure-conj.org/call-for-proposals/[Call for Proposals] is open NOW until January 15th! We invite members of the community to submit proposals for talks that explore the latest trends and techniques in the world of Clojure or Clojure-adjacent technologies. Speakers receive a free ticket, travel, and hotel.
+
+The https://2023.clojure-conj.org/call-for-proposals/[Sponsorship Prospectus] is also available - if you're looking to hire or connect to Clojure developers, this is for you! Thanks for supporting the conference and the Clojure community.
+
+== Podcasts, videos, and courses
+
+* https://clojure.stream/podcast[E86 2022 In Review - Datomic And Clojure with Jaret Binford And Alex Miller] - ClojureStream podcast
+* https://ericnormand.me/podcast/why-do-you-need-to-model-time[Why do we need to model time?] - Eric Normand
+* https://ericnormand.me/podcast/how-do-you-make-a-function-total[How do you make a function total?] - Eric Normand
+* https://www.youtube.com/watch?v=i-Q1dr8_FyE[Show Me Your REPL #3: Dmitri Sotnikov @yogthos] - Show me your REPL
+* https://www.youtube.com/watch?v=2nH59edD5Uo[Show me your REPL #4: Juan Monetta @jpmonettas] - Show me your REPL
+* https://www.youtube.com/watch?v=Ynu9QEJSGX8[James Gosling Keynote "Thoughts on language evolution"] - reClojure 2022
+* https://www.youtube.com/watch?v=VRfaAhlkF0Q[Alex Miller Keynote "The Amazing Clojure"] - reClojure 2022
+* https://www.youtube.com/watch?v=3bs3QX92kYA[Moldable Live Programming with Clerk (by Philippa Markovics)] - reClojure 2022
+* https://www.youtube.com/watch?v=bXRDfxp_4H0[Through the looking glass w Data Rabbit: "A System built for Seeing" (by Ryan Robitaille)] - reClojure 2022
+* https://www.youtube.com/watch?v=PMat9Wdt-pk[Donut, a Sweet New Clojure Framework for Building Your Online Business (by Daniel Higginbotham)] - reClojure 2022
+* https://www.youtube.com/watch?v=ydNUUC4BqJ0[Navigating Clojure: A Fresh Look From a Data Analysis Background (by Adham Omran)] - reClojure 2022
+* https://www.youtube.com/watch?v=CeSo8oax4f4[Betting the company on Clojure - Erik Assum] - NDC Conferences
+
+== Blogs and articles
+
+* https://www.clojuriststogether.org/news/clojurists-together-2023-long-term-funding-announcement/[Clojurists Together 2023 Long-Term Funding Announcement] - Daniel Compton
+* https://blog.exupero.org/scraping-an-html-dictionary-with-babashka-and-bootleg/[Scraping an HTML dictionary with Babashka and Bootleg] - exupero
+* https://www.juxt.pro/blog/new-medley-partition-fns/[Two new medley partition functions] - Tom Dalziel
+* https://smallsheds.garden/blog/clojure/2022/clj-11-moving-on-from-some-unsolved-exercises/[(clj 11) Moving on from some unsolved exercises] - Joep Schuurkes
+* https://mbezjak.github.io/posts/using-the-error-model/[Using the Error Model (part 3)] - Miro Bezjak
+* https://tech.toryanderson.com/2022/12/28/clojure-libraries-in-odh/[Clojure Libraries in ODH] - Tory Anderson
+* http://gigasquidsoftware.com/blog/2022/12/31/vector-symbolic-architectures-in-clojure/[Vector Symbolic Architectures in Clojure] - Carin Meier
+* https://scicloj.github.io/blog/jointprob-in-2023-bayesian-modeling-and-computation-meeting-ravin-kumar/[Jointprob in 2023, Bayesian Modeling and Computation, meeting Ravin Kumar] - Daniel Slutsky
+* https://mccormick.cx/news/entries/post-an-image-to-mastodon-using-nbb[Post An Image To Mastodon Using Nbb] - Chris McCormick
+* https://blog.fogus.me/2023/01/06/code-riffs/[Code Riffs] - Michael Fogus
+* https://blog.michielborkent.nl/babashka-news-2022.html[Babashka news in 2022] - Michiel Borkent
+* https://blog.michielborkent.nl/oss-updates-nov-dec-2022.html[OSS updates of November - December 2022] - Michiel Borkent
+* https://www.braveclojure.com/quests/babooka/[Babashka Babooka] - Daniel Higginbotham
+* https://functional.works-hub.com/learn/writing-a-clojure-script-to-open-docker-and-two-terminal-windows-2befc[Writing a Clojure Script to Open Docker and Two Terminal Windows] - Artur Dumchev
+* https://www.juxt.pro/blog/using-clerk-for-aoc/[Using Clerk for Advent of Code] - Ellis Kenyő
+* https://jmglov.net/blog/2023-01-04-blambda-analyses-sites.html[Blambda analyses sites] - Josh Glover
+
+== Libraries and tools
+
+New releases and tools this week:
+
+* https://github.com/clojure/tools.build[tools.build] 0.9.0 - Clojure builds as Clojure programs
+* https://github.com/babashka/scittle[scittle] 0.5.14 - Execute Clojure(Script) directly from browser script tags via SCI
+* https://github.com/cognitect-labs/aws-api[aws-api] https://groups.google.com/g/clojure/c/uT7MawAr9pg/m/dg6VPknlBAAJ[0.8.635] - AWS, data driven
+* https://github.com/timonkot131/clojurescript-screeps-webpack[clojurescript-screeps-webpack]  - A tool that bundles your screeps code into a single file
+* https://github.com/licht1stein/clj-telegram-bot[clj-telegram-bot]  - Data driven Clojure bot library
+* https://github.com/weavejester/medley[medley] https://github.com/weavejester/medley/releases/tag/1.5.0[1.5.0] - A lightweight library of useful Clojure functions
+* https://github.com/babashka/scittle[scittle] 0.5.13 - Execute Clojure(Script) directly from browser script tags via SCI
+* https://github.com/clj-commons/byte-streams[byte-streams] 0.3.2 - A Rosetta stone for JVM byte representations
+* https://github.com/babashka/process[process] 0.4.14 - Clojure library for shelling out / spawning sub-processes
+* https://github.com/squint-cljs/squint[squint] 0.0.7 - ClojureScript syntax to JavaScript compiler
+* https://github.com/liquidz/vim-iced[vim-iced] 3.14.3192 - Clojure Interactive Development Environment for Vim8/Neovim
+* https://github.com/babashka/nbb[nbb] 1.1.157 - Scripting in Clojure on Node.js using SCI
+* https://moea.github.io/cromulator/[cromulator]  - Morphing SVG Superformula Visualization in CLJS
+* https://github.com/practicalli/doom-emacs-config[doom-emacs-config]  - Practicalli customisations to the Doom Emacs configuration
+* https://github.com/fulcrologic/fulcro[fulcro] 3.6.0-RC2 - A library for development of single-page full-stack web applications in clj/cljs
+* https://github.com/fulcrologic/fulcro-rad[fulcro-rad] 1.4.0 - Fulcro Rapid Application Development
+* https://github.com/fulcrologic/fulcro-rad-semantic-ui[fulcro-rad-semantic-ui] 1.3.1 - Semantic UI Rendering Plugin for RAD
+* https://github.com/fulcrologic/fulcro-rad-datomic[fulcro-rad-datomic] 1.4.0 - Datomic database support plugin for Fulcro RAD
+* https://github.com/fulcrologic/fulcro-i18n[fulcro-i18n] 1.0 - Internationalization Support For Fulcro
+* https://github.com/fulcrologic/semantic-ui-wrapper[semantic-ui-wrapper] 2.1.4 - Fulcro 3 wrappers of React Semantic UI Controls
+* https://github.com/babashka/http-client[http-client]  - HTTP client for Clojure and Babashka built on java.net.http
+* https://phronmophobic.github.io/dewey/search.html[Dewey search]  - Index of Clojure libraries available on github
+* https://github.com/mentat-collective/clerk-utils[clerk-utils] 0.2.0 - Utilities for writing with Clerk
+* https://github.com/BetterThanTomorrow/joyride[joyride] 0.0.29 - Making VS Code Hackable like Emacs since 2022
+* https://github.com/clj-kondo/lein-clj-kondo[lein-clj-kondo] 0.2.4 - Leiningen plugin to run clj-kondo
+* https://github.com/jacobobryant/biff[biff] 0.5.6 - A Clojure web framework for solo developers
+* https://github.com/babashka/pods[pods] 0.2.0 - Pods support for JVM and babashka
+* https://github.com/AbhinavOmprakash/snitch[snitch] 0.1.13 - Snitch injects inline defs in your functions and multimethods
+* https://github.com/matthewdowney/rich-comment-tests[rich-comment-tests]  - RCT turns rich comment forms into tests
+* https://github.com/babashka/babashka[babashka] 1.0.169 - Native, fast starting Clojure interpreter for scripting
+* https://github.com/sogaiu/tree-sitter-clojure[tree-sitter-clojure] 0.0.10 - Clojure(Script) grammar for tree-sitter
+* https://github.com/babashka/tools.bbuild[tools.bbuild]  - Library of functions for building Clojure projects
+* https://github.com/babashka/tools-deps-native[tools-deps-native] 0.1.0 - Run tools.deps as a native binary
+* https://github.com/juji-io/datalevin[datalevin] 0.7.8 - A simple, fast and versatile Datalog database
+* https://github.com/fulcrologic/fulcro-rad-sql[fulcro-rad-sql] 0.0.8-alpha - SQL Plugin for Fulcro RAD
+* https://cursive-ide.com/[Cursive] https://groups.google.com/g/cursive/c/y6tRzacTUVc/m/TO4Etq73AAAJ[1.12.7] - The Clojure(Script) IDE that understands your code
+* https://git.sr.ht/~conses/tau[tau]  - A front-end alternative to various streaming sites

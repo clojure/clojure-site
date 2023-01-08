@@ -9,6 +9,12 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 toc::[]
 
+[example]
+____
+There's the <<xref/../../guides/deps_and_cli#,Deps and CLI **Guide**>> and a Deps and CLI **Reference**. You are looking at the reference.
+____
+
+
 = Rationale
 
 Clojure "endeavors to be a general-purpose language suitable in those areas where Java is suitable" (from <<xref/../../about/rationale#,Rationale>>). To effectively target the JVM platform, Clojure needs to provide ready access to Java libraries, ideally in a way suited for dynamic development. In practice, this means meeting the JVM platform in two places:

@@ -9,6 +9,11 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 toc::[]
 
+[example]
+____
+There's the Deps and CLI **Guide** and a <<xref/../../reference/deps_and_cli#,Deps and CLI **Reference**>>. You are looking at the guide.
+____
+
 Clojure provides command line tools for:
 
 * Running an interactive REPL (Read-Eval-Print Loop)

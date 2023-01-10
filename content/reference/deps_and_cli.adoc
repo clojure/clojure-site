@@ -24,6 +24,12 @@ To this end Clojure provides:
 * Command line tools (`clojure` and `clj`) that enable users to make use of this capability at the terminal to declare dependencies, assemble classpaths, and launch Clojure programs with data
 * System-specific installers for downloading the tools, improving the "Getting Started" experience
 
+In addition to this reference, also see:
+
+* <<xref/../../../guides/install_clojure#, Clojure CLI installation guide>>
+* <<xref/../../../releases/tools#, CLI release info>>
+* <<xref/../../../guides/deps_and_cli#, Deps and CLI guide>>
+
 = Overview
 
 You use the Clojure tools (`clj` or `clojure`) to run Clojure programs on the JVM, e.g. to start a REPL or invoke a specific function with data. The Clojure tools will configure the JVM process by defining a classpath (with desired libraries), an execution environment (JVM options), the main class, and args.

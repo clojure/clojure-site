@@ -145,7 +145,7 @@ Configuration is stored in one or more "deps edn" maps. These are edn maps with 
 * `:paths` - vector of project source paths
 * `:aliases` - map of alias name to alias data
 
-The Clojure tools look for 4 potential deps edn sources:
+The Clojure tools look for 4 potential <<deps_and_cli#deps_sources,deps edn sources>>:
 
 * Root - part of the clj installation (a resource in the tools.deps library)
 * User - cross-project configuration (typically tools), usually found at `~/.clojure/deps.edn`
@@ -380,6 +380,7 @@ Classpaths will be created in the following order, which is intended to be repro
 
 = Clojure tools usage
 
+[[deps_sources]]
 == deps.edn sources
 
 The Clojure tools will use the following deps.edn map sources, in this order:

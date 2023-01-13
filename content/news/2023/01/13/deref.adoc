@@ -1,0 +1,46 @@
+= Clojure Deref (Jan 13, 2023)
+Alex Miller
+2023-01-13
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Clojure/conj 2023
+
+https://2023.clojure-conj.org/[Clojure/conj] is the oldest gathering of the Clojure community and the next edition will be April 27-28, 2023 in Durham, NC. This is a great place to learn about the most interesting developments in the Clojure ecosystem and talk to a wide range of Clojure users. Additionally, for the first time this year we will have streaming access so the broader community can participate even if they are not able to attend in person. Rich Hickey, the creator of Clojure, will present a talk as well. https://2023.clojure-conj.org/tickets/[Register now for early bird or streaming tickets!]
+
+The https://2023.clojure-conj.org/call-for-proposals/[Call for Proposals] is open NOW until January 17th! We invite members of the community to submit proposals for talks that explore the latest trends and techniques in the world of Clojure or Clojure-adjacent technologies. Speakers receive a free ticket, travel, and hotel.
+
+The https://2023.clojure-conj.org/call-for-proposals/[Sponsorship Prospectus] is also available - if you're looking to hire or connect to Clojure developers, this is for you! Thanks for supporting the conference and the Clojure community.
+
+== Podcasts, videos, and courses
+
+* https://ericnormand.me/podcast/all-about-level-three-algebraic-modeling[All about level three, algebraic modeling] - Eric Normand
+* https://www.youtube.com/watch?v=FgHAlEzvkwA[Lisp curse vs Lisp envy (by Mauricio Szabo)] - London Clojurians
+
+== Blogs and articles
+
+* https://www.gethop.dev/post/the-wizard-of-hop-how-we-built-the-web-based-hop-cli-settings-editor-using-babashka-and-scittle[The wizard of HOP - How we built the web based HOP CLI Settings Editor using Babashka and Scittle] - Bingen Galartza
+* https://flexiana.com/2023/01/heres-why-startups-should-develop-in-clojure-in-2023[Here’s why startups should develop in Clojure in 2023] - Flexiana
+* https://andreyorst.gitlab.io/posts/2023-01-09-comparison-of-manifold-and-clojurecoreasync/[Comparison of manifold and clojure.core.async] - Andrey Listopadov
+
+== Libraries and tools
+
+New releases and tools this week:
+
+* https://github.com/metosin/malli[malli] 0.10.0 - Data-Driven Schemas for Clojure/Script
+* https://github.com/clj-kondo/clj-kondo[clj-kondo] 2023.01.12 - Static analyzer and linter for Clojure code that sparks joy
+* https://github.com/mentat-collective/leva.cljs[leva.cljs] 0.1.0 - Clojurescript / Reagent bindings for the Leva GUI library.
+* https://github.com/LouDnl/at-at[at-at] 1.4.0 - Ahead-of-time function scheduler
+* https://github.com/primeteach/specomatic[specomatic] 0.1.0 - A Clojure(script) library to define entities and their relationships via clojure.spec, and to ask questions about them
+* https://github.com/primeteach/specomatic-db[specomatic-db] 0.1.0 - Define your entities and relationships using clojure.spec and / or specomatic, get an immutable SQL database that understands seql and supports access control
+* https://github.com/amperity/dialog[dialog] 1.1.104 - Simple just-enough logging library for Clojure
+* https://github.com/BetterThanTomorrow/calva[Calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.323[2.0.323] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/BetterThanTomorrow/joyride[Joyride] https://github.com/BetterThanTomorrow/joyride/releases/tag/v0.0.30[0.0.30] - Making VS Code Hackable like Emacs since 2022
+* https://github.com/babashka/nbb[nbb] 1.1.159 - Scripting in Clojure on Node.js using SCI
+* https://github.com/babashka/http-client[http-client] 0.0.2 - HTTP client for Clojure and Babashka built on java.net.http
+* https://github.com/fulcrologic/fulcro[fulcro] 3.6.0-RC3 - A library for development of single-page full-stack web applications in clj/cljs
+* https://github.com/babashka/cli[cli] 0.6.43 - Turn Clojure functions into CLIs!
+* https://github.com/squint-cljs/squint[squint] 0.0.9 - ClojureScript syntax to JavaScript compiler

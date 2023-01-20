@@ -1,0 +1,62 @@
+= Clojure Deref (Jan 20, 2023)
+Alex Miller
+2023-01-20
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Podcasts, videos, and courses
+
+* https://changelog.com/podcast/522[Episode #522: The principles of data-oriented programming] - The Changelog
+* https://clojure.stream/podcast[E87 ClojureDart with Christophe Grand and Baptiste Dupuch] - ClojureStream podcast
+* https://www.therepl.net/episodes/47/[47: Executable textbooks with Sam Ritchie] - The REPL podcast
+* https://www.youtube.com/watch?v=FgHAlEzvkwA[Lisp curse vs Lisp envy (by Mauricio Szabo)] - London Clojurians
+
+== Blogs and articles
+
+* https://mbezjak.github.io/posts/errors-from-libraries/[Errors From Libraries (part 4/4)] - Miro Bezjak
+* https://jank-lang.org/blog/2023-01-13-optimizing-sequences/[jank development update - Optimizing sequences] - Jeaye Wilkerson
+* https://dmiller.github.io/clojure-clr-next/general/2023/01/16/circular-reasoning-part-1.html[Circular reasoning (part 1)] - David Miller
+* https://dmiller.github.io/clojure-clr-next/general/2023/01/17/circular-reasoning-part-2.html[Circular reasoning (part 2)] - David Miller
+* https://dmiller.github.io/clojure-clr-next/general/2023/01/18/making-a-hash-of-it.html[Making a hash of it] - David Miller
+* https://dmiller.github.io/clojure-clr-next/general/2023/01/19/a-numbers-game.html[A numbers game] - David Miller
+* https://dmiller.github.io/clojure-clr-next/general/2023/01/19/con-sequential-objector.html[con-Sequential objector] - David Miller
+* https://rattlin.blog/bbgum.html[Simple TUIs with Babashka and Gum ] - The Rattlin' Blog
+* https://biffweb.com/p/roadmap-2023/[A year of Biff, and the roadmap for 2023] - Jacob O'Bryant
+* https://muthuishere.medium.com/simplifying-javascript-class-extension-in-clojurescript-for-shadowcljs-projects-bca56ef56837[Simplifying Javascript Class Extension in Clojurescript for ShadowCljs Projects] - Muthukumaran Navaneethakrishnan
+* https://www.pixelated-noise.com/blog/2023/01/20/bb-dialog-announcement/index.html[Babashka and dialog part II: Announcing the bb-dialog library] - A.C. Danvers
+* https://blog.cleancoder.com/uncle-bob/2023/01/19/functional-classes-clojure.html[Functional Classes in Clojure] - Robert C. Martin
+* https://narimiran.github.io/2023/01/17/advent-of-clojure.html[Advent of Clojure: Need for Speed] - Miran
+* https://blog.davemartin.me/posts/the-web-before-teatime/[The Web Before Teatime] - Dave Martin
+
+== Libraries and tools
+
+New releases and tools this week:
+
+* https://github.com/pixelated-noise/bb-dialog[bb-dialog] 0.2 - A simple wrapper library for working with dialog from Babashka
+* https://github.com/babashka/neil[neil] 0.1.48 - A CLI to add common aliases and features to deps.edn-based projects
+* https://github.com/oliyh/carve.el[carve.el]  - Emacs plugin for borkdude/carve
+* https://github.com/juji-io/datalevin[datalevin] 0.8.0 - A simple, fast and versatile Datalog database
+* https://github.com/mpenet/mina[mina] 0.1.11 - Helidon Nima ring adapter for clojure
+* https://github.com/kushidesign/kushi[kushi]  - Styling in ClojureScript
+* https://github.com/eerohele/tab[tab]  - A tool for tabulating Clojure collections
+* https://github.com/babashka/pod-babashka-buddy[pod-babashka-buddy] 0.3.3 - A pod around buddy core (Cryptographic Api for Clojure)
+* https://github.com/clojure/tools.build[tools.build] 0.9.2 - Clojure builds as Clojure programs
+* https://github.com/babashka/fs[fs] 0.2.14 - File system utility library for Clojure
+* https://github.com/robertluo/waterfall[waterfall] 0.1.33 - Apache Kafka clients in idiomatic Clojure
+* https://github.com/babashka/instaparse.bb[instaparse.bb]  - Wrapper library aroud pod-babashka-instaparse 
+* https://github.com/esuomi/muotti[muotti] https://github.com/esuomi/muotti/releases/tag/v1.0.0[1.0.0] - Muotti is a graph based value transformer library
+* https://github.com/babashka/babashka[babashka] 1.0.170 - Native, fast starting Clojure interpreter for scripting
+* https://github.com/babashka/bbin[bbin] 0.1.8 - Install any Babashka script or project with one command
+* https://github.com/clj-kondo/clj-kondo[clj-kondo] 2023.01.20 - Static analyzer and linter for Clojure code that sparks joy
+* https://github.com/lambdaisland/kaocha[kaocha] https://github.com/lambdaisland/kaocha/releases/tag/v1.73.1175[1.73.1175] - Full featured next gen Clojure test runner
+* https://github.com/lambdaisland/deja-fu[deja-fu] https://github.com/lambdaisland/deja-fu/releases/tag/v1.4.58[1.4.58] - ClojureScript local time/date library with a delightful API
+* https://github.com/BetterThanTomorrow/joyride[joyride] https://github.com/BetterThanTomorrow/joyride/releases/tag/v0.0.32[0.0.32] - Making VS Code Hackable like Emacs
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.324[2.0.324] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/fulcrologic/fulcro[fulcro] 3.6.0-RC4 - A library for development of single-page full-stack web applications in clj/cljs
+* https://github.com/seancorfield/honeysql[honeysql] 2.4.969 - Turn Clojure data structures into SQL
+* https://github.com/clojure/data.int-map[data.int-map] 1.2.0 - A map optimized for integer keys
+* https://github.com/metabase/hawk[hawk]  - It watches your code like a hawk! You like tests, right? Then run them with our state-of-the-art Clojure test runner.
+* https://github.com/tuh8888/pre-commit-clojure[pre-commit-clojure]  - pre-commit hooks for Clojure

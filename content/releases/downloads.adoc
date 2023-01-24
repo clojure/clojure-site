@@ -32,12 +32,14 @@ Leiningen dependency:
 [org.clojure/clojure "1.11.1"]
 ----
 
+Download: https://repo1.maven.org/maven2/org/clojure/clojure/1.11.1/clojure-1.11.1.jar[jar]
+
 === Dependencies
 
 Clojure 1.11.1 depends on the following core libraries:
 
- * `org.clojure/spec.alpha {:mvn/version "0.3.218"}`
- * `org.clojure/core.specs.alpha {:mvn/version "0.2.62"}`
+ * `org.clojure/spec.alpha {:mvn/version "0.3.218"}` (https://repo1.maven.org/maven2/org/clojure/spec.alpha/0.3.218/spec.alpha-0.3.218.jar[jar])
+ * `org.clojure/core.specs.alpha {:mvn/version "0.2.62"}` (https://repo1.maven.org/maven2/org/clojure/core.specs.alpha/0.2.62/core.specs.alpha-0.2.62.jar[jar])
 
 Including Clojure with a tool like `clj` or `Leiningen` will automatically include these libraries as transitive dependencies.
 

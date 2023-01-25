@@ -163,7 +163,7 @@ in the namespace of the current file. Useful for experimenting in the context of
 * **Send top-level form to REPL:** evaluate the biggest expression in which the cursor is currently contained
 -typically a `(defn ...)` or `(def ...)` expression-in the namespace of the current file.
 Useful for defining or re-defining Vars in a namespace.
-* **Load the current file in the REPL.** Useful to avoid <<_working_with_libs,loading libs manually>>.
+* **Load the current file in the REPL.** Useful to avoid <<navigating_namespaces#_working_with_libs,loading libs manually>>.
 * **Switch the REPL's namespace to current file:** useful to avoid typing `(in-ns '...)`.
 * **Show evaluation inline:** displays the evaluation of the current expression next to it.
 * **Replace expression with its evaluation:** replaces the current expression in the editor with its evaluation (as printed by the REPL).

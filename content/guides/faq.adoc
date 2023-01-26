@@ -362,6 +362,13 @@ If it is difficult to tell from the warning where the reflection is occurring, i
 --illegal-access=debug
 ----
 
+For example, via the Clojure CLI, using the `-J` option (or as part of `:jvm-opts` under an alias in `deps.edn`):
+
+[source]
+----
+clj -J--illegal-access=debug
+----
+
 == Design and Use
 
 [[encapsulation]]

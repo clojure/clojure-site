@@ -362,7 +362,7 @@ If it is difficult to tell from the warning where the reflection is occurring, i
 --illegal-access=debug
 ----
 
-If you are using the <<deps_and_cli,Clojure CLI>>, JVM arguments are passed with a leading `-J` at the command line: `-J--illegal-access=debug`.
+If you are using the <<deps_and_cli#,Clojure CLI>>, JVM arguments are passed with a leading `-J` at the command line: `-J--illegal-access=debug`.
 
 == Design and Use
 

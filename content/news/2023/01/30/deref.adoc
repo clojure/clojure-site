@@ -1,0 +1,72 @@
+= Clojure Deref (Jan 30, 2023)
+Alex Miller
+2023-01-30
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Podcasts, videos, and courses
+
+* https://ericnormand.me/podcast/what-is-the-closure-property[What is the closure property?] - Eric Normand
+* https://ericnormand.me/podcast/process-for-conceptual-modeling[What is the process for coming up with a good conceptual model?] - Eric Normand
+* https://www.youtube.com/watch?v=MZy-SNswH2E[How startups can move fast with Clojure (by Bradford Cross)] - reClojure
+* https://www.youtube.com/watch?v=2HQSAtmVbAU[Unbundling the electronic health record using Clojure (by Mark Wardle)] - reClojure
+* https://www.youtube.com/watch?v=xz-G5hi26gw[:clojureU 2022: Lightning Talks] - :clojureD
+* https://www.youtube.com/watch?v=GM9s_d4AkhI[The Carp Language - If Rust And Clojure Had A Baby] - Gavin Freeborn
+* https://www.youtube.com/watch?v=m478BHGR3XU[Open Source Licenses for Developers (by Martin Clausen)] - London Clojurians
+* https://mtngs.io/sci-cloj/clojure-visual-tools-group/5x6SQGGWap8.html[Sci Cloj / Clojure visual-tools group / 27 Nov 2022] - Sci Cloj
+* https://www.youtube.com/watch?v=2q6k63yc9tQ[Meetup Clojure en español: El REPL lleva el desarrollo] - Flexiana
+* https://www.parens-of-the-dead.com/s2e14.html[Episode 14: Back from the Void] - Parens of the Dead
+* https://www.parens-of-the-dead.com/s2e15.html[Episode 15: Bad Texan Accents] - Parens of the Dead
+
+== Blogs and articles
+
+* https://faster-than-light-memes.xyz/the-joy-of-clojure.html[the-joy-of-clojure] - Benjamin Schwerdtner
+* https://danielgregoire.dev/posts/2023-01-27-clojure-function-arity/[Code Observation: Function Arity in Clojure] - Daniel Gregoire
+* https://www.juxt.pro/blog/site-safari/[JUXT Blog: API development, quickly and securely] - Malcolm Sparks
+* https://emil0r.com/posts/2023-01-26-protocols-are-nice/[Protocols are nice] - Emil Bengtsson
+* https://blog.janetacarr.com/a-primer-on-clojure-macros/[A Primer on Clojure Macros] - Janet A. Carr
+* https://dmiller.github.io/clojure-clr-next/general/2023/01/27/doing-a-number.html[Doing a number on Numbers] - David Miller
+* https://dmiller.github.io/clojure-clr-next/general/2023/01/27/first-code.html[First code] - David Miller
+
+== Libraries and tools
+
+New releases and tools this week:
+
+* https://github.com/borkdude/jet[jet] 0.4.23 - CLI to transform between JSON, EDN, YAML and Transit using Clojure
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.327[2.0.327] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/mentat-collective/mafs.cljs[mafs.cljs] 0.1.0 - Reagent interface to the Mafs interactive 2d math visualization library
+* https://gitlab.com/hissyfit/lein-gitlab-cart[lein-gitlab-cart] 1.0.0 - A plugin that enables Leiningen projects to access and deploy to GitLab package registries
+* https://github.com/clojure-lsp/clojure-lsp[clojure-lsp] https://github.com/clojure-lsp/clojure-lsp/releases/tag/2023.01.26-11.08.16[2023.01.26-11.08.16] - Clojure & ClojureScript Language Server (LSP) implementation
+* https://github.com/borkdude/carve[carve] 0.3.5 - Remove unused Clojure vars
+* https://github.com/pfeodrippe/recife[recife] 0.9.0 - A Clojure model checker
+* https://www.datomic.com/on-prem.html[Datomic] https://forum.datomic.com/t/datomic-1-0-6610-now-available/2176[1.0.6610] - On-Prem
+* https://github.com/mentat-collective/mathbox.cljs[mathbox.cljs] 0.1.0 - Clojurescript extensions and utilities for Mathbox
+* https://github.com/seancorfield/build-uber-log4j2-handler[build-uber-log4j2-handler] 2.19.0 - A conflict handler for log4j2 plugins cache files for the tools.build uber task
+* https://github.com/clj-kondo/clj-kondo-bb[clj-kondo-bb]  - Invoke clj-kondo from babashka scripts!
+* https://github.com/borkdude/edamame[edamame] 1.1.17 - Configurable EDN/Clojure parser with location metadata
+* https://github.com/wilkerlucio/pathom3[pathom3] 2023.01.24-alpha - A library for navigating data
+* https://github.com/wardle/hermes[hermes] 1.0.914 - A library and microservice implementing the health and care terminology SNOMED CT
+* https://github.com/DotFox/jsonista.jcs[jsonista.jcs] 1.0.9 - RFC 8785 JSON Canonicalization Scheme (JCS) for metosin/jsonista
+* https://github.com/thi-ng/geom[geom] 1.0.0 - 2D/3D geometry toolkit for Clojure/Clojurescript
+* https://github.com/anderseknert/ring-clr[ring-clr]  - ClojureCLR HTTP server abstraction
+* https://github.com/lispyclouds/bblgum[bblgum]  - An extremely tiny and simple wrapper around charmbracelet/gum
+* https://github.com/matthewdowney/rich-comment-tests[rich-comment-tests] 1.0.0 - RCT turns rich comment forms into tests
+* https://github.com/babashka/cli[cli] 0.6.45 - Turn Clojure functions into CLIs!
+* https://github.com/babashka/process[process] 0.4.16 - Clojure library for shelling out / spawning sub-processes
+* https://github.com/babashka/nbb[nbb] 1.2.161 - Scripting in Clojure on Node.js using SCI
+* https://github.com/LouDnl/at-at[at-at] 1.5.1 - Ahead-of-time function scheduler
+* https://github.com/liquidz/antq[antq] 2.2.983 - Point out your outdated dependencies
+* https://github.com/babashka/babashka[babashka] 1.1.171 - Native, fast starting Clojure interpreter for scripting
+* https://github.com/fulcrologic/fulcro[fulcro] 3.6.0-RC5 - A library for development of single-page full-stack web applications in clj/cljs
+* https://github.com/fulcrologic/fulcro-rad[fulcro-rad] 1.4.4 - Fulcro Rapid Application Development 
+* https://biffweb.com/[biff] https://github.com/jacobobryant/biff/releases/tag/v0.6.0[0.6.0] - A Clojure web framework for solo developers
+* https://github.com/mentat-collective/emmy[emmy]  - The Emmy Computer Algebra System
+* https://github.com/borkdude/quickblog[quickblog] 0.2.3 - light-weight static blog engine for Clojure and babashka
+* https://github.com/babashka/neil[neil] 0.1.51 - a CLI to add common aliases and features to deps.edn-based projects
+* https://github.com/babashka/fs[fs] 0.2.15 - file system utility library for Clojure
+* https://github.com/quoll/asami[asami] 2.3.3 - a flexible graph database for both JVM and JS platforms
+* https://github.com/PEZ/shadow-bare-bones[shadow-bare-bones]  - A mini-project to quickly get started with ClojureScript for hacking on a browser app
+* https://github.com/lotuc/xnfun[xnfun]  - RPC over MQTT (and maybe NOT JUST MQTT)

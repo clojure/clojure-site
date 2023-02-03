@@ -1,0 +1,58 @@
+= Clojure Deref (Feb 3, 2023)
+Alex Miller
+2023-02-03
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Highlights
+
+Today we finalized the Clojure/conj 2023 program and notified speakers. We had 100 talks submitted and accepted 23, but we easily could have accepted 70 or 80 of those talks - there were so many interesting experience reports, libraries, and ideas included that we wish we could have included more of them. Please keep submitting these talks to other Clojure and non-Clojure confs in the future! We will start to release the program and more info in the next week or two.
+
+== Podcasts and videos
+
+* https://overcast.fm/+2tVm5MjaA[Haskell and Clojure in Production with Eric Normand] - Software Unscripted
+* https://ericnormand.me/podcast/process-for-conceptual-modeling[What is the process for coming up with a good conceptual model?] - Eric Normand
+* https://www.parens-of-the-dead.com/s2e16.html[Episode 16: On a roll] - Parens of the Dead
+
+== Blogs
+
+* https://www.gethop.dev/post/hop-on-premises[HOP On-premises] - Lucas Sousa
+* https://practical.li/blog-staging/posts/london-clojurians-community-a-brief-history/[London Clojurians Community - a relatively brief history] - John Stevenson
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/ClojureHaxe/ClojureHaxe[Clojure port written in Haxe targeting multiple platforms] - 
+* https://github.com/zalky/dart-sass-clj[dart-sass-clj]  - An embedded dart-sass compiler and watch task for Clojure
+* https://github.com/PEZ/shadow-bare-bones[shadow-bare-bones]  - A mini-project to quickly get started with ClojureScript for hacking on a browser app
+* https://github.com/practicalli/clojure-deps-edn[clojure-deps-edn]  - User level aliases and Clojure CLI configuration for deps.edn based projects
+* https://github.com/lispyclouds/contajners[contajners] 1.0.0 - An idiomatic, data-driven, REPL friendly clojure client for OCI container engines
+* https://github.com/mpenet/mina[mina]  - Helidon Nima ring adapter for clojure 
+* https://github.com/robertluo/fun-map[fun-map] 0.5.114 - a map blurs the line between identity, state and function
+* https://github.com/dvliman/cnn-chrome-extension[cnn-chrome-extension]  - Read CNN news in Chrome Extension
+* https://github.com/nenadalm/backgammon[backgammon]  - Backgammon for 2 players on 1 device
+* https://github.com/clojure-expectations/clojure-test[clojure-test] 2.0.165 - A clojure.test-compatible version of the classic Expectations testing library
+* https://github.com/nubank/matcher-combinators[matcher-combinators] 3.8.0 - Library for creating matcher combinator to compare nested data structures
+* https://github.com/wilkerlucio/pathom3[pathom3] 2023.01.31-alpha - A library for navigating data
+* https://github.com/zalky/runway[runway]  - Coding on the fly, from take-off to landing, with a tool.deps reloadable build library
+* https://github.com/borkdude/lein2deps[lein2deps] 0.1.0 - Lein project.clj to deps.edn converter
+* https://github.com/darkleaf/di[di] 2.0.0 - DI is a dependency injection framework
+* https://github.com/zmedelis/bosquet[bosquet]  - LLMOps tools to build, chain, test, evaluate and deploy prompts for GPT and other
+* https://github.com/fulcrologic/fulcro[fulcro] 3.6.0 - A library for development of single-page full-stack web applications in clj/cljs
+* https://github.com/clj-commons/rewrite-clj[rewrite-clj] https://github.com/clj-commons/rewrite-clj/blob/main/CHANGELOG.adoc#v1146[1.1.46] - Rewrite Clojure code and edn
+* https://github.com/babashka/bbin[bbin] 0.1.9 - Install any Babashka script or project with one command
+* https://github.com/seancorfield/honeysql[honeysql] 2.4.972 - Turn Clojure data structures into SQL 
+* https://github.com/robertluo/waterfall[waterfall] 0.1.34 - Apache Kafka clients in idiomatic Clojure
+* https://github.com/clojure/tools.build[tools.build] 0.9.3 - Clojure builds as Clojure programs
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.329[2.0.329] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/squint-cljs/squint[squint] 0.0.10 - ClojureScript syntax to JavaScript compiler
+* https://github.com/fulcrologic/fulcro-rad-semantic-ui[fulcro-rad-semantic-ui] 1.3.4 - Semantic UI Rendering Plugin for RAD
+* https://github.com/fulcrologic/fulcro-rad] 1.4.5 - Fulcro Rapid Application Development
+* https://github.com/babashka/http-client[http-client] 0.0.3 - HTTP client for Clojure and babashka built on java.net.http
+* https://github.com/babashka/neil[neil] 0.1.52 - A CLI to add common aliases and features to deps.edn-based projects
+* https://cursive-ide.com/[Cursive] 1.12.8-eap1  - The Clojure(Script) IDE that understands your code
+* https://github.com/pitch-io/uix[uix] 0.8.1 - Idiomatic ClojureScript interface to modern React.js

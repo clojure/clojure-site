@@ -16,7 +16,6 @@ Community volunteers maintain <<xref/../../guides/getting_started#,Getting Start
 ** https://github.com/clojure-emacs/clojure-mode[clojure-mode] - an Emacs major mode that provides font-lock (syntax highlighting), indentation, navigation and refactoring support for the Clojure(Script)
 ** https://github.com/clojure-emacs/inf-clojure[inf-clojure] - provides basic interaction with a Clojure subprocess (REPL), based on ideas from the popular inferior-lisp package
 ** Installation and configuration guides
-*** http://clojure-doc.org/articles/tutorials/emacs.html[clojure-doc installation guide]
 *** https://www.braveclojure.com/basic-emacs/[Clojure for the Brave and True installation guide]
 *** https://practicalli.github.io/spacemacs/[Practicalli guide to Spacemacs]
 ** Distributions and Clojure-friendly configuration setups

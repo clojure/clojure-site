@@ -25,7 +25,7 @@ The main Emacs modes to be aware of are:
 
 Some places to start:
 
-* https://clojure-doc.org/articles/tutorials/emacs/[Emacs installation guide] - includes clojure-mode and CIDER
+* https://www.gnu.org/software/emacs/download.html[GNU Emacs - download and install] - the official GNU Emacs page
 * https://practical.li/spacemacs/install-spacemacs/[Practicalli guide to Spacemacs], a community driven Emacs configuration for Clojure - includes clojure-mode and CIDER
 * https://prelude.emacsredux.com/en/latest/[Prelude] - an Emacs configuration for Emacs beginners, not specific to Clojure, but includes Clojure support (clojure-mode, CIDER)
 * https://aquamacs.org/[Aquamacs] - Aquamacs is Emacs designed for the Mac native user in mind and is sufficient for a minimalist Clojure environment when paired with inf-clojure mode

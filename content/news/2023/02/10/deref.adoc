@@ -1,0 +1,59 @@
+= Clojure Deref (Feb 10, 2023)
+Alex Miller
+2023-02-10
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=Mjn92fODdaA[Simpler User Interfaces with Membrane (by Adrian Smith)] - London Clojurians
+* https://www.youtube.com/watch?v=H9JNIb-_VZ0[RESTing with Emacs] - iLemming
+
+== Blogs
+
+* https://blog.jakubholy.net/2023/pathom-viz-for-fulcro-pathom3/[Get insight into Pathom 3 in Fulcro with Pathom Viz] - Jakub Holý
+* https://blog.michielborkent.nl/babashka-news-jan-2023.html[Babashka news of January 2023 ] - Michiel Borkent
+* https://faster-than-light-memes.xyz/small-and-friendly-errors-with-cider.html[Small and Friendly Errors with Cider] - Benjamin Schwerdtner
+* https://eli.thegreenplace.net/2023/building-abstractions-using-higher-order-functions/[Building abstractions using higher-order functions] - Eli Bendersky
+* https://dmiller.github.io/clojure-clr-next/general/2023/02/05/reductionism.html[Reductionism] - David Miller
+* https://dmiller.github.io/clojure-clr-next/general/2023/02/03/laziness-and-chunking.html[Laziness and chunking] - David Miller
+* https://kaygun.tumblr.com/post/708354546139791360/clojurepython-interop-examples[Clojure/Python Interop Examples] - Atabey Kaygun
+* https://blog.michielborkent.nl/oss-updates-jan-2023.html[OSS updates of January 2023] - Michiel Borkent
+* https://mbezjak.github.io/posts/exception-translation/[Exception Translation] - Miro Bezjak
+* https://www.pixelated-noise.com/blog/2023/02/09/flatten-routes/index.html[These routes don't look flat enough to me] - Stathis Sideris and Aris Spathis
+* https://rebrand.ly/query-stats-slack-clj-84af75[Leveraging Datomic query-stats to Optimize Clause Ordering] - Keith Harper
+* https://vlaaad.github.io/illegal-booleans[Reveal now highlights illegal booleans in Clojure] - Vlad Protsenko
+* https://www.scattered-thoughts.net/writing/the-program-is-the-database-is-the-interface[The program is the database is the interface] - Jamie Brandon
+* https://blog.exupero.org/dogbunny-puzzle-solver/[DogBunny puzzle solver] - exupero
+* https://widdindustries.com/blog/logging-data.html[Log data, not strings - with SLF4J] - Henry Widd
+* https://blog.cofx.nl/dependency-injection-and-loggers-clojure.html[Dependency injection and loggers in Clojure] - cofx
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/zalky/axle[axle] 0.2.1 - An efficient cross-platform DirectoryWatcher based service for Clojure
+* https://vlaaad.github.io/reveal/[Reveal Free] 1.3.280
+* https://vlaaad.github.io/reveal/[Reveal Pro] 1.3.359
+* https://github.com/matthewdowney/rich-comment-tests[rich-comment-tests] 1.0.2 - RCT turns rich comment forms into tests
+* https://github.com/ont-app/igraph-jena[igraph-jena] 0.2.2 - Porting Jena to the IGraph protocol
+* https://github.com/ont-app/rdf[rdf] 0.2.7 - A backstop for shared logic between rdf-based implementations of IGraph
+* https://github.com/eval/deps-try[deps-try] 0.3.5 - Try out Clojure libraries via rebel-readline
+* https://github.com/mentat-collective/mafs.cljs[mafs.cljs] 0.2.0 - Reagent interface to the Mafs interactive 2d math visualization library
+* https://github.com/clj-commons/aleph[aleph] 0.6.1 - Asynchronous communication for Clojure
+* https://github.com/clj-commons/dirigiste[dirigiste] 1.0.3 - centrally-planned object and thread pools
+* https://github.com/babashka/sci[sci] 0.7.38 - Configurable Clojure/Script interpreter suitable for scripting and Clojure DSLs
+* https://github.com/zalky/reflet[reflet] 0.2.0 - Tools for building Re-frame + React based web apps with graph and non-graph data models
+* https://github.com/quoll/donatello[donatello] 0.1.0 - TTL Writing Library
+* https://github.com/mentat-collective/clerk-utils[clerk-utils] 0.3.0 - Utilities for writing with Clerk
+* https://github.com/walmartlabs/lacinia[lacinia] 1.2 - GraphQL implementation in pure Clojure
+* https://github.com/zalky/dbscan-clj[dbscan-clj] 0.1.0 - Simple DBSCAN clustering implementation for Clojure/Clojurescript
+* https://github.com/ericdallo/jet.el[jet.el]  - Emacs integration for the jet Clojure tool
+* https://github.com/babashka/babashka[babashka] 1.1.173 - Native, fast starting Clojure interpreter for scripting
+* https://github.com/babashka/fs[fs] 0.2.16 - File system utility library for Clojure
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.331[2.0.331] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/babashka/neil[neil] 0.1.54 - A CLI to add common aliases and features to deps.edn-based projects
+* https://github.com/pixelated-noise/bb-dialog[bb-dialog] 0.3 - A simple wrapper library for working with dialog from Babashka

@@ -22,6 +22,12 @@ For more information see the following docs:
 
 Recent official releases are described here. Prereleases and older versions can be found in the https://github.com/clojure/brew-install/blob/1.11.1/CHANGELOG.md[repo changelog].
 
+=== 1.11.1.1224 (Feb 12, 2023) [[v1.11.1.1224]]
+
+* Fix issue with git tag verification for repos with a large number of tags
+* https://clojure.atlassian.net/browse/TDEPS-235[TDEPS-235] - Disallow http :mvn/repos
+* https://clojure.atlassian.net/browse/TDEPS-236[TDEPS-236] - TDEPS-236 Add rlwrap -m to clj for multiline editing
+
 === 1.11.1.1208 (Dec 11, 2022) [[v1.11.1.1208]]
 
 * https://clojure.atlassian.net/browse/TDEPS-234[TDEPS-234] - Always include -XX:-OmitStackTraceInFastThrow by default

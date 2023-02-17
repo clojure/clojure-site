@@ -1,0 +1,55 @@
+= Clojure Deref (Feb 17, 2023)
+Alex Miller
+2023-02-17
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Podcasts and videos
+
+* https://clojure.stream/podcast[E88 CLJ Commons With Erik Assum] - ClojureStream podcast
+* https://github.com/readme/podcast/comaintaining-openness[Co-maintaining openness] - The ReadME podcast
+* https://ericnormand.me/podcast/why-is-the-associative-property-important[Why is the associative property important?] - Eric Normand
+* https://www.parens-of-the-dead.com/s2e17.html[Episode 17 - Clamps!] - Parens of the Dead
+* https://www.youtube.com/watch?v=BCI-4kWKj7g[Scanning for Pythagorean Triplets in Clojure] - Clojure Diary
+* https://clojure-diary.gitlab.io/2023/02/17/histogram-from-sum-of-throw-of-dice-pair-using-clojure.html[Histogram from sum of throw of dice pair using Clojure] - Clojure Diary
+
+== Blogs
+
+* https://hyperfiddle.notion.site/Hyperfiddle-progress-report-2023-Feb-8cc45f9da47c4719bb16851d129e3a3d[Hyperfiddle progress report – 2023 Feb] - Dustin Getz
+* https://practical.li/clojure/clojure-editors/[Editors for Clojure development] - Practicalli
+* https://dmiller.github.io/clojure-clr-next/general/2023/02/12/PersistentVector-part-1.html[Persistent vectors, Part 1 -- The landscape] - David Miller
+* https://dmiller.github.io/clojure-clr-next/general/2023/02/12/PersistentVector-part-2.html[Persistent vectors, Part 2 -- Immutability and persistence] - David Miller
+* https://hyperfiddle.notion.site/Hyperfiddle-progress-report-2023-Feb-8cc45f9da47c4719bb16851d129e3a3d[Hyperfiddle progress report – 2023 Feb] - Dustin Getz
+* https://blogit.michelin.io/clojure-programming/[Bringing Clojure programming to Enterprise] - Fabien Alberi
+* https://codescene.com/engineering-blog/example-of-a-functional-programming-refactoring-pattern[Example of a functional programming refactoring pattern] - Joseph Fahey
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/PEZ/clojure-get-started-mini[clojure-get-started-mini]  - A minimal Clojure project for web based development
+* https://github.com/clj-kondo/clj-kondo[clj-kondo] 2023.02.17 - Static analyzer and linter for Clojure code that sparks joy
+* https://github.com/hyperfiddle/electric[electric]  - a reactive signals DSL for fullstack web UI, with compiler-managed network sync
+* https://github.com/NoahTheDuke/spat[spat] 0.1 - Next-Generation kibit-style linter
+* https://github.com/jpmonettas/flow-storm-debugger[flow-storm-debugger] 3.3.320 - A debugger for Clojure and ClojureScript with some unique features
+* https://github.com/babashka/http-client[http-client] 0.1.4 - HTTP client for Clojure and Babashka built on java.net.http
+* https://github.com/wkok/openai-clojure[openai-clojure]  - Clojure functions to drive the OpenAI API
+* https://github.com/clj-commons/pomegranate[pomegranate] https://github.com/clj-commons/pomegranate/blob/master/CHANGELOG.adoc#v1.2.23[1.2.23] - A sane Clojure API for Maven Artifact Resolver + dynamic runtime modification of the classpath
+* https://github.com/matthewdowney/excel-clj[excel-clj] 2.2.0 - Write Excel docs & PDFs with Clojure data, from higher level abstractions (tree, table) or via a manual grid specification
+* https://clojure.org/guides/deps_and_cli[Clojure CLI] https://clojure.org/releases/tools#v1.11.1.1224[1.11.1.1224]
+* https://github.com/clojure/tools.deps[tools.deps] 0.16.1281 - Deps as data and classpath generation
+* https://github.com/clojure/tools.gitlibs[tools.gitlibs] 2.5.190 - An API for retrieving, caching, and programatically accessing git libraries
+* https://github.com/BetterThanTomorrow/joyride[joyride] https://github.com/BetterThanTomorrow/joyride/releases/tag/v0.0.33[0.0.33] - Making VS Code Hackable like Emacs since 2022
+* https://github.com/seancorfield/honeysql[honeysql] 2.4.980 - Turn Clojure data structures into SQL
+* https://github.com/babashka/neil[neil] 0.1.56 - A CLI to add common aliases and features to deps.edn-based projects
+* https://github.com/replikativ/superv.async[superv.async] https://github.com/replikativ/superv.async/releases/tag/0.3.44[0.3.44] - This is a Clojure(Script) library that extends core.async with error handling and includes a number of convenience functions and macros
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.332[2.0.332] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/juji-io/datalevin[datalevin] 0.8.5 - A simple, fast and versatile Datalog database
+* https://github.com/chr15m/sitefox[sitefox] 0.0.15 - Node + cljs backend web framework
+* https://github.com/borkdude/deps.clj[deps.clj] 1.11.1.1224 - A faithful port of the clojure CLI bash script to Clojure
+* https://github.com/ont-app/sparql-endpoint[sparql-endpoint] 0.2.0 - Utilities to interact with a SPARQL endpoint in clojure
+* https://github.com/babashka/nbb[nbb]  - Scripting in Clojure on Node.js using SCI 
+* https://github.com/wkok/openai-clojure[openai-clojure]  - Clojure functions to drive the OpenAI API

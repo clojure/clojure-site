@@ -55,8 +55,6 @@ Its unique, powerful UI is popular enough that most other editors mentioned abov
 
 https://neovim.io/[Neovim] is a fork of Vim.  While it maintains a high degree of compatibility, there are some significant differences between the two editors.
 
-=== Vim plugins
-
 Both Vim and Neovim are highly extensible and a vast array of plugins are available for them.  Most, but not all, plugins will work with both editors.
 
 The following plugins provide Clojure support for both Vim and Neovim:

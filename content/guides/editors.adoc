@@ -61,7 +61,7 @@ The following plugins provide Clojure support for both Vim and Neovim:
 
 * https://github.com/tpope/vim-fireplace[Fireplace] - Clojure support and REPL integration
 * https://liquidz.github.io/vim-iced/[vim-iced] - CIDER inspired
-* https://github.com/guns/vim-slamhound - Automated namespace rewriting
+* https://github.com/guns/vim-slamhound[vim-slamhound] - Automated namespace rewriting
 
 The following plugins only provide Clojure support to Neovim:
 

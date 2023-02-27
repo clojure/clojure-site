@@ -22,6 +22,13 @@ For more information see the following docs:
 
 Recent official releases are described here. Prereleases and older versions can be found in the https://github.com/clojure/brew-install/blob/1.11.1/CHANGELOG.md[repo changelog].
 
+=== 1.11.1.1237 (Feb 27, 2023) [[v1.11.1.1237]]
+
+* Added env var that can be set to temporarily allow support for http repos: CLOJURE_CLI_ALLOW_HTTP_REPO
+* Remove deprecated support for -R and -C
+* Clean up help text around repl supporting init-opts
+* Use https://github.com/clojure/tools.deps/blob/master/CHANGELOG.md[tools.deps] 0.16.1285
+
 === 1.11.1.1224 (Feb 12, 2023) [[v1.11.1.1224]]
 
 * Fix issue with git tag verification for repos with a large number of tags

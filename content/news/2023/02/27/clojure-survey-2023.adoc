@@ -1,0 +1,24 @@
+= State of Clojure 2023 Survey
+Alex Miller
+2023-02-27
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+It's time for the annual State of Clojure Community Survey!
+
+If you are a user of Clojure or ClojureScript, we are greatly interested in your responses to the following survey:
+
+* https://www.surveymonkey.com/r/clojure2023[State of Clojure 2023]
+
+The survey contains five pages:
+
+1. Your background and use of Clojure
+2. Your tools
+2. Clojure JVM Questions
+3. ClojureScript Questions
+4. Final thoughts
+
+Most questions are not required, so please skip any questions that are not applicable.
+
+The survey will close March 13th, after which all of the data will be released with some analysis. We greatly appreciate your input!

@@ -69,9 +69,9 @@ The following plugins only provide Clojure support to Neovim:
 
 In addition to the Clojure plugins, it is also worth extending Vim to improve the editing of s-expressions. The plugins below can be used with both Vim and Neovim:
 
-* https://github.com/guns/vim-sexp - precision editing of S-expressions
-* https://github.com/tpope/vim-sexp-mappings-for-regular-people - alternative keybindings that some users may prefer
-* https://github.com/tpope/vim-surround - makes it easier to wrap expressions in brackets, quotes, and other tokens.
+* https://github.com/guns/vim-sexp[vim-sexp] - precision editing of S-expressions
+* https://github.com/tpope/vim-sexp-mappings-for-regular-people[vim-sexp-mappings-for-regular-people] - alternative keybindings that some users may prefer
+* https://github.com/tpope/vim-surround[vim-surround] - makes it easier to wrap expressions in brackets, quotes, and other tokens.
 
 There are also numerous plugins that provide color-matching of parentheses.
 

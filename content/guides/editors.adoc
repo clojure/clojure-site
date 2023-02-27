@@ -49,16 +49,33 @@ The https://calva.io/[Calva] environment for interactive Clojure development use
 
 == Vim - highly efficient text editing
 
-https://www.vim.org/[Vim] (or vi) is also an editor with a deep history, known for its ability to edit text quickly and efficiently. Clojure support exists with:
+https://www.vim.org/[Vim] (or vi) is also an editor with a long history, known for its ability to edit text quickly and efficiently.  It has become the de-facto replacement for vi, the original Unix visual editor on which it was based.
 
-* https://github.com/tpope/vim-fireplace[Fireplace] - Clojure REPL support 
+Its unique, powerful UI is popular enough that most other editors mentioned above include vi-modes that reproduce Vim's core UI functionality.
 
-https://neovim.io/[Neovim] is an extension of Vim and has Clojure support with the following plugins:
+https://neovim.io/[Neovim] is a fork of Vim.  While it maintains a high degree of compatibility, there are some significant differences between the two editors.
 
+=== Vim plugins
+
+Both Vim and Neovim are highly extensible and a vast array of plugins are available for them.  Most, but not all, plugins will work with both editors.
+
+The following plugins provide Clojure support for both Vim and Neovim:
+
+* https://github.com/tpope/vim-fireplace[Fireplace] - Clojure support and REPL integration
 * https://liquidz.github.io/vim-iced/[vim-iced] - CIDER inspired
+* https://github.com/guns/vim-slamhound - Automated namespace rewriting
+
+The following plugins only provide Clojure support to Neovim:
+
 * https://github.com/Olical/conjure[Conjure] - focus on interactive development
 
-Additionally, you may find that many of the environments above can use a subset of the Vim keybindings if desired.
+In addition to the Clojure plugins, it is also worth extending Vim to improve the editing of s-expressions. The plugins below can be used with both Vim and Neovim:
+
+* https://github.com/guns/vim-sexp - precision editing of S-expressions
+* https://github.com/tpope/vim-sexp-mappings-for-regular-people - alternative keybindings that some users may prefer
+* https://github.com/tpope/vim-surround - makes it easier to wrap expressions in brackets, quotes, and other tokens.
+
+There are also numerous plugins that provide color-matching of parentheses.
 
 == Others
 

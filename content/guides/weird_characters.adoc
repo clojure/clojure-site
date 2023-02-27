@@ -233,7 +233,7 @@ uses include `#uuid` for expressing UUIDs and in the ClojureScript world an
 extremely common use of tagged literals is `#js` which can be used to convert
 ClojureScript data structures into JavaScript structures directly. Note that
 `#js` doesn't convert recursively, so if you have a nested data-structure, use
-https://cljs.github.io/api/cljs.core/js-GTclj[`pass:[js->clj]`].
+https://cljs.github.io/api/cljs.core/clj-GTjs[`pass:[clj->js]`].
 
 Note that while `#inst` and `#uuid` are available in edn, `#js` is not.
 

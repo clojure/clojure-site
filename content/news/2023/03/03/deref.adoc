@@ -52,3 +52,5 @@ New releases and tools this week:
 * https://github.com/beoliver/wiretap[wiretap]  - A Clojure library for adding generic trace support without having to modify code
 * https://github.com/juxt/tick[tick] 0.6.0 - Time as a value
 * https://github.com/borkdude/deps.clj[deps.clj] 1.11.1.1237 - A faithful port of the clojure CLI bash script to Clojure
+* https://github.com/borkdude/deflet[deflet] 0.1.0 - Make let-expressions REPL-friendly!
+

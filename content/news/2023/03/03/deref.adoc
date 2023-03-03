@@ -1,0 +1,54 @@
+= Clojure Deref (Mar 3, 2023)
+Alex Miller
+2023-03-03
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Highlights
+
+The https://www.surveymonkey.com/r/clojure2023[State of Clojure 2023 Survey] is now open - please share your thoughts with us! We've been doing this survey every year since 2010 and it's been very important for tracking trends in the community.
+
+Rich Hickey will be presenting "Design in Practice" at https://2023.clojure-conj.org[Clojure/conj 2023]. We hope you can join us either in person in Durham, NC on Apr 27-28th. https://ti.to/cognitect/clojureconj-2023[Tickets for in-person and streaming] are now available.
+
+== Podcasts and videos
+
+* https://www.parens-of-the-dead.com/s2e20.html[Episode 20: 20th Episodiversary] - Parens of the Dead
+* https://www.youtube.com/watch?v=69MDk8IwmtE[A simple timer in Clojure] - Clojure Diary
+
+== Blogs, articles, and projects
+
+* https://asko.sh/blog/routing-with-ruuter-in-reagent-reframe-project/[Routing with Ruuter in a Reagent / Re-frame project] - Asko Nōmm
+* https://www.karimarttila.fi/clojurescript/2023/02/28/clojurescript-javascript-interop-with-react-component.html[Clojurescript / Javascript Interop with React Components] - Kari Marttila
+* https://corfield.org/blog/2023/02/28/long-term-funding-1/[Long-Term Funding, Update #1] - Sean Corfield
+* https://clojureverse.org/t/data-modelling-with-vectors/9826[Data modelling with vectors ] - Linus Ericsson
+* https://blog.michielborkent.nl/oss-updates-feb-2023.html[OSS updates February 2023] - Michiel Borkent
+* https://pitch.com/public/03fa9c7e-2b0e-45fb-8a22-d4a4d4d79d24[Blambda! The sound of Babashka and Lambda collding] - Josh Glover
+* https://nondv.wtf/blog/posts/coding-alove-vs-coding-in-a-team.html[Coding alone vs coding in a team] - Dmitry Non
+* https://clojure-diary.gitlab.io/2023/02/26/clojure-book-beta-release-0.html[Clojure book beta release 0] - Karthikeyan A K
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/ferdinand-beyer/refx[refx] 0.0.49 - re-frame without Reagent
+* https://github.com/clojure-lsp/clojure-lsp[clojure-lsp] https://github.com/clojure-lsp/clojure-lsp/releases/tag/2023.02.27-13.12.12[2023.02.27-13.12.12] - Clojure & ClojureScript Language Server (LSP) implementation
+* https://github.com/mpenet/mina[mina] 0.1.13 - Helidon/Nima (loom/j19+) ring adapter for clojure
+* https://clojure.org/reference/deps_and_cli[Clojure CLI] https://clojure.org/releases/tools#v1.11.1.1237[1.11.1.1237]
+* https://github.com/lambdaisland/kaocha[kaocha] 1.79.1270 - Full featured next gen Clojure test runner
+* https://github.com/clojure/tools.namespace[tools.namespace] 1.4.2 - Tools for managing namespaces in Clojure
+* https://www.datomic.com/index.html[Datomic Cloud] https://forum.datomic.com/t/datomic-cloud-990-9202/2183[990-9202]
+* https://github.com/cognitect-labs/aws-api[aws-api] https://groups.google.com/g/clojure/c/1XWFUT78ZCs/m/e8PrS3B1AQAJ[0.8.652] - AWS, data driven
+* https://github.com/fulcrologic/statecharts[statecharts]  - A Statechart library for CLJ(S)
+* https://github.com/babashka/fs[fs] 0.3.17 - file system utility library for Clojure
+* https://github.com/babashka/babashka[babashka] 1.2.174 - Native, fast starting Clojure interpreter for scripting
+* https://github.com/lambdaisland/cljbox2d[cljbox2d] 0.8.46 - cljbox2d is a wrapper around the jBox2D (JVM) or Planck.js (JS) physics engines
+* https://github.com/logseq/nbb-logseq[nbb-logseq] 1.2.168 - nbb with features enabled for logseq
+* https://github.com/babashka/neil[neil] 0.1.57 - A CLI to add common aliases and features to deps.edn-based projects
+* https://github.com/strojure/undertow[undertow] 1.0.88 - Clojure API to Undertow web server
+* https://github.com/strojure/ring-undertow[ring-undertow] 1.0.86 - Clojure ring adapter to Undertow web server
+* https://github.com/beoliver/wiretap[wiretap]  - A Clojure library for adding generic trace support without having to modify code
+* https://github.com/juxt/tick[tick] 0.6.0 - Time as a value
+* https://github.com/borkdude/deps.clj[deps.clj] 1.11.1.1237 - A faithful port of the clojure CLI bash script to Clojure

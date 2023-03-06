@@ -22,6 +22,12 @@ For more information see the following docs:
 
 Recent official releases are described here. Prereleases and older versions can be found in the https://github.com/clojure/brew-install/blob/1.11.1/CHANGELOG.md[repo changelog].
 
+=== 1.11.1.1252 (Mar 6, 2023) [[v1.11.1.1252]]
+
+* Switch to passing exec args via the basis :argmap
+* Function execution protocol support for -X/-T
+* Use https://github.com/clojure/tools.deps/blob/master/CHANGELOG.md[tools.deps] 0.17.1297
+
 === 1.11.1.1237 (Feb 27, 2023) [[v1.11.1.1237]]
 
 * Added env var that can be set to temporarily allow support for http repos: CLOJURE_CLI_ALLOW_HTTP_REPO

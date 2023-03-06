@@ -208,9 +208,9 @@ The key in each pair is a tag that will be recognized by the Clojure reader. The
 ----
 #foo/bar [1 2 3]
 ----
-by invoking the Var `#'my.project.foo/bar` on the vector `[1 2 3]`. The data reader function is invoked on the form AFTER it has been read as a normal Clojure data structure by the reader.
+by invoking the Var `#'my.project.foo/bar` on the vector `[1 2 3]`. The data reader function is invoked on the form AFTER it has been read as a normal Clojure data structure by the reader. For your own data reader functions, you should report errors by throwing instances of RuntimeException with messages providing error information.
 
-Reader tags without namespace qualifiers are reserved for Clojure. Default reader tags are defined in https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/default-data-readers[default-data-readers] but may be overridden in `data_readers.clj` / `data_readers.cljc` or by rebinding https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/%2Adata-readers%2A[pass:[*data-readers*]]. If no data reader is found for a tag, the function bound in https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/%2Adefault-data-reader-fn%2A[pass:[*default-data-reader-fn*]] will be invoked with the tag and value to produce a value. If pass:[*default-data-reader-fn*] is nil (the default), a RuntimeException will be thrown.
+Reader tags without namespace qualifiers are reserved for Clojure. Default reader tags are defined in https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/default-data-readers[default-data-readers] but may be overridden in `data_readers.clj` / `data_readers.cljc` or by rebinding https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/%2Adata-readers%2A[pass:[*data-readers*]]. If no data reader is found for a tag, the function bound in https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/%2Adefault-data-reader-fn%2A[pass:[*default-data-reader-fn*]] will be invoked with the tag and value to produce a value. If pass:[*default-data-reader-fn*] is nil (the default), a RuntimeException will be thrown. 
 
 If a `data_readers.cljc` is provided, it is read with the same semantics as any other cljc source file with reader conditionals.
 

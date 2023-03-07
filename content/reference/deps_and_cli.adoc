@@ -426,7 +426,6 @@ A hash is computed based on the config file paths, the resolve-aliases, and the 
 
 Files cached (if needed):
 
-* `<hash>.libs` - a `::lib-map` in the https://github.com/clojure/tools.deps/blob/master/src/main/clojure/clojure/tools/deps/specs.clj[specs], the output of running `resolve-deps`
 * `<hash>.cp` - a classpath string, the output of `make-classpath-map`
 * `<hash>.jvm` - jvm options for main execution
 * `<hash>.main` - main options for main execution

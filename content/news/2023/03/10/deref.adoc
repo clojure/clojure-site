@@ -1,0 +1,68 @@
+= Clojure Deref (Mar 10, 2023)
+Alex Miller
+2023-03-10
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Highlights
+
+The https://www.surveymonkey.com/r/clojure2023[State of Clojure 2023 Survey] is still open and we would very much like to hear your opinions! We've been doing this survey every year since 2010 and it's been very important for tracking trends in the community.
+
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=b7_u2T8bs5o[Where did Clojure come from? How is it related to Nubank?] - Building Nubank
+* https://www.youtube.com/watch?v=W7mGtnQv7vA[Music, Brackets, and Database? Rich Hickey and why create Clojure?] - Building Nubank
+* https://www.youtube.com/watch?v=iI4AtHkN9RQ[What is it like to WORK in a programming LANGUAGE? The team behind Clojure] - Building Nubank
+* https://www.youtube.com/watch?v=qIdrT6r77gA[A database that doesn't "change"? Go behind the scenes of Datomic, the immutable database!] - Building Nubank
+* https://www.youtube.com/watch?v=wSlZtYtmiVs[I Built the World's Most Customizable News Feed] - togglz
+* https://www.youtube.com/watch?v=O07wbuuSIN0[frequencies in Clojure] - Clojure Diary
+* https://clojure.stream/workshops/babashka[BabashkaWorkshop] - ClojureStream
+
+
+== Blogs, articles, and projects
+
+* https://www.dustingetz.com/#/page/signals%20vs%20streams%2C%20in%20terms%20of%20backpressure%20(2023)[Signals vs Streams, in terms of backpressure] - Dustin Getz
+* https://biffweb.com/p/thinking-about-system-composition/[Thinking about system composition] - Jacob O'Bryant
+* https://play.teod.eu/lisp-narrow-waist/[Why Lisp? Because it forces the s-expression narrow waist down everyone’s throats] - Teodor Heggelund
+* https://thegeez.net/2023/03/01/pinball_scittle.html[Pinball with Scittle/ClojureScript] - Gijs Stuurman
+* https://leanpub.com/clojureai[Practical Artificial Intelligence Programming With Clojure] - Mark Watson
+* https://tonsky.me/blog/clojure-sublimed-3/[Adventures in REPL implementation] - Nikita Prokopov
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/phronmophobic/clj-graphviz[clj-graphviz]  - A clojure wrapper for the libgraphviz c libraries
+* https://github.com/kuhumcst/pedestal-sp[pedestal-sp] 0.1.2 - Turn a Pedestal web service into a SAML Service Provider
+* https://github.com/kuhumcst/xml-hiccup[xml-hiccup] 0.1.2 - Convert XML into Hiccup in Clojure and ClojureScript
+* https://github.com/clj-commons/etaoin[etaoin] https://github.com/clj-commons/etaoin/blob/master/CHANGELOG.adoc#v1040[1.0.40] - Pure Clojure Webdriver protocol implementation
+* https://github.com/practicalli/spacemacs-config[spacemacs-config]  - rich Clojure & LSP config for Spacemacs
+* https://github.com/clojure/tools.build[tools.build] 0.9.4 - Clojure builds as Clojure programs
+* https://clojure.org/releases/tools[Clojure CLI] 1.11.1.1152 - Clojure program runner and dependency manager
+* https://github.com/clojure/tools.deps[tools.deps] 0.17.1297 - Deps as data and classpath generation
+* https://github.com/nextjournal/clerk[clerk] 0.13.842 - Moldable Live Programming for Clojure
+* https://github.com/babashka/sci[sci] 0.7.39 - Configurable Clojure/Script interpreter suitable for scripting and Clojure DSLs
+* https://github.com/burinc/viip.git[viip.git]  - Vim Interactive Printer
+* https://github.com/strojure/ring-lib[ring-lib] 1.1.0-39 - Opinionated implementations for Clojure ring handler
+* https://github.com/metosin/malli[malli] https://github.com/metosin/malli/blob/master/CHANGELOG.md#0102-2023-03-05[0.10.2] - Data-Driven Schemas for Clojure/Script
+* https://github.com/babashka/json[json] 0.1.1 - JSON abstraction library
+* https://github.com/strojure/ring-control[ring-control]  - More controllable composition of Ring middlewares
+* https://github.com/strojure/parsesso[parsesso] 1.1.1-274 - Parser combinators for Clojure(Script)
+* https://github.com/seancorfield/honeysql[honeysql] 2.4.1002 - Turn Clojure data structures into SQL
+* https://github.com/babashka/pod-babashka-buddy[pod-babashka-buddy] 0.3.4 - A pod around buddy core
+* https://github.com/replikativ/datahike-s3[datahike-s3] https://github.com/replikativ/datahike-s3/releases/tag/0.1.4[0.1.4] - Datahike backend for S3
+* https://github.com/borkdude/gh-release-artifact[gh-release-artifact] 0.2.0 - Upload artifacts to Github releases idempotently
+* https://github.com/babashka/neil[neil] 0.1.59 - A CLI to add common aliases and features to deps.edn-based projects
+* https://github.com/babashka/bbin[bbin] 0.1.11 - Install any Babashka script or project with one command
+* https://github.com/babashka/nbb[nbb] 1.2.171 - Scripting in Clojure on Node.js using SCI
+* https://github.com/babashka/cli[cli] 0.6.49 - turn Clojure functions into CLIs
+* https://github.com/borkdude/deps.clj[deps.clj] 1.11.1.1252 - A faithful port of the clojure CLI bash script to Clojure
+* https://github.com/squint-cljs/squint[squint] 0.0.12 - ClojureScript syntax to JavaScript compiler
+* https://github.com/seancorfield/next-jdbc[next-jdbc] 1.3.858 - A modern low-level Clojure wrapper for JDBC-based access to databases
+* https://github.com/liquidz/build.edn[build.edn] 0.9.203 - Make your Clojure library build process easy
+* https://github.com/babashka/http-client[http-client] 0.1.6 - HTTP client for Clojure and babashka built on java.net.http
+* https://github.com/cjohansen/portfolio[portfolio]  - Develop ClojureScript UI components in isolation in a "visual REPL"
+* https://github.com/igrishaev/mask[mask]  - A small library to prevent secrets from being logged, printed or leaked in any similar way

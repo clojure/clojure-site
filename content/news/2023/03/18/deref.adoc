@@ -1,0 +1,59 @@
+= Clojure Deref (Mar 18, 2023)
+Alex Miller
+2023-03-18
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Highlights
+
+Two cool new projects you should check out this week - the https://twitter.com/v1aaad/status/1634530613926526977[Clojure Spring Challenge 23] provides fun puzzles you can solve. And my colleague Jarrod Taylor released the first game in the https://clojure-arcade.com/[Clojure Arcade]!
+
+== Podcasts and videos
+
+* https://clojure.stream/podcast[E89 SRE With Rahul De] - ClojureStream podcast
+* https://www.youtube.com/watch?v=WoSvzl8rWj0[Clojure Arcade: Mac Man Quick Start] - Jarrod Taylor
+* https://www.youtube.com/watch?v=6E8WQfj19Y4[Building Re-frame 06: Evolution of Re-frame Subscription] - Engineering with V
+* https://www.youtube.com/watch?v=DHT5fxrJc78[Digging into deeply nested sequence in Clojure] - Clojure Diary
+
+== Blogs, articles, and projects
+
+* https://www.karimarttila.fi/clojure/2023/03/10/comparing-clojure-and-javascript.html[Comparing Clojure and Javascript] - Kari Marttila
+* https://www.pixelated-noise.com/blog/2023/03/16/pg-large-objects/index.html[Streaming PostgreSQL Large Objects using Clojure] - Konstantinos Tzanidakis
+* https://marko.euptera.com/posts/ionic-clojure-helix.html[Developing Ionic application using Clojurescript and Helix - To-do App] - Marko Kocic
+* https://www.karimarttila.fi/clojure/2023/03/14/creating-uberjar-for-clojure-fullstack-app.html[Creating an Uberjar for a Clojure Full Stack Application] - Kari Marttila
+* https://recife.pfeodrippe.com/notebooks/recife/notebook/temporal.html[Recife Temporal Properties] - Paulo Rafael Feodrippe
+* https://metaredux.com/posts/2023/03/12/clojure-mode-meets-tree-sitter.html[clojure-mode meets tree-sitter] - Bozhidar Batsov
+* https://practical.li/blog/posts/london-clojurians-community-a-brief-history/[London Clojurians Community - a relatively brief history] - John Stevenson
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/clj-kondo/clj-kondo[clj-kondo] 2023.03.17 - Static analyzer and linter for Clojure code that sparks joy
+* https://github.com/keychera/panas.reload[panas.reload]  - a hot reload for babashka serving html+css (or htmx)
+* https://github.com/noahtheduke/splint[splint] 0.1.119 - Splint is a Clojure static code analyzer and linter
+* https://github.com/borkdude/edamame[edamame] 1.3.20 - Configurable EDN/Clojure parser with location metadata
+* https://github.com/strojure/web-security[web-security] 1.0.0-28 - Decoupled web security implementations for Clojure
+* https://github.com/practicalli/spacemacs-config[spacemacs-config]  - rich Clojure & LSP config for Spacemacs
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.336[2.0.340] - Clojure IDE extension for VS Code
+* https://github.com/robertluo/clerk-doc[clerk-doc]  - Turn clojure files into markdown
+* https://github.com/wkok/openai-clojure[openai-clojure] 0.4.0 - Clojure functions to drive the OpenAI API 
+* https://github.com/borkdude/gh-release-artifact[gh-release-artifact] 0.2.1 - Upload artifacts to Github releases idempotently
+* https://github.com/babashka/http-client[http-client] 0.1.8 - HTTP client for Clojure and Babashka built on java.net.http
+* https://github.com/babashka/cli[cli] 0.6.50 - Turn Clojure functions into CLIs!
+* https://github.com/babashka/babashka[babashka] 1.3.175 - Native, fast starting Clojure interpreter for scripting
+* https://github.com/tatut/specql[specql] https://github.com/tatut/specql#20230316[20230316] - Automatic PostgreSQL CRUD queries
+* https://github.com/seancorfield/honeysql[honeysql] 2.4.1006 - Turn Clojure data structures into SQL
+* https://github.com/strojure/ring-lib[ring-lib] 1.2.1-55 - Opinionated implementations for Clojure ring handler
+* https://github.com/borkdude/deps.clj[deps.clj] 2.4.1006 - A faithful port of the clojure CLI bash script to Clojure
+* https://github.com/clojure/tools.deps[tools.deps] 0.18.1308 - Deps as data and classpath generation
+* https://clojure.org/releases/tools[Clojure CLI] 1.11.1.1257
+* https://github.com/replikativ/datahike[datahike] https://github.com/replikativ/datahike/releases/tag/0.6.1539[0.6.1539] - A durable Datalog implementation adaptable for distribution
+* https://github.com/clj-commons/vizdeps[vizdeps] 1.0 - Visualize Leiningen dependencies using Graphviz
+* https://github.com/seancorfield/next-jdbc[next-jdbc] 1.3.862 - A modern low-level Clojure wrapper for JDBC-based access to databases
+* https://github.com/xtdb/xtdb[xtdb] https://github.com/xtdb/xtdb/releases/tag/1.23.1[1.23.1] - General-purpose bitemporal database for SQL, Datalog & graph queries
+* https://github.com/nginx-clojure/nginx-clojure[nginx-clojure] 0.6.0 - Nginx module for embedding Clojure or Java or Groovy programs, typically those Ring based handlers
+* https://github.com/clojure/math.combinatorics[math.combinatorics] 0.2.0 - Efficient, functional algorithms for generating lazy sequences for common combinatorial functions

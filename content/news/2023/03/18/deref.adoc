@@ -48,7 +48,7 @@ New releases and tools this week:
 * https://github.com/tatut/specql[specql] https://github.com/tatut/specql#20230316[20230316] - Automatic PostgreSQL CRUD queries
 * https://github.com/seancorfield/honeysql[honeysql] 2.4.1006 - Turn Clojure data structures into SQL
 * https://github.com/strojure/ring-lib[ring-lib] 1.2.1-55 - Opinionated implementations for Clojure ring handler
-* https://github.com/borkdude/deps.clj[deps.clj] 2.4.1006 - A faithful port of the clojure CLI bash script to Clojure
+* https://github.com/borkdude/deps.clj[deps.clj] 1.11.1.1257 - A faithful port of the clojure CLI bash script to Clojure
 * https://github.com/clojure/tools.deps[tools.deps] 0.18.1308 - Deps as data and classpath generation
 * https://clojure.org/releases/tools[Clojure CLI] 1.11.1.1257
 * https://github.com/replikativ/datahike[datahike] https://github.com/replikativ/datahike/releases/tag/0.6.1539[0.6.1539] - A durable Datalog implementation adaptable for distribution

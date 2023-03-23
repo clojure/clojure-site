@@ -381,8 +381,8 @@ Classpaths will be created in the following order, which is intended to be repro
 * The `:extra-paths` in the order specified once classpath modifiers are merged and applied
 * The `:paths` in the order specified once classpath modifiers are merged and applied
 * All dependency and transitive dependency libs, sorted by:
-  * Depth from root
-  * Alphabetical by group/artifact
+** Depth from root
+** Alphabetical by group/artifact
 
 = Clojure tools usage
 

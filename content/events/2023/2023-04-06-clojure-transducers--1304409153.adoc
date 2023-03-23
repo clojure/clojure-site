@@ -1,0 +1,26 @@
+= 2023-04-06 Clojure Transducers
+2023-04-06
+:jbake-type: event
+:jbake-edition: 
+:jbake-link: https://www.meetup.com/boston-clojure-group/events/bzspbtyfcgbrb/
+:jbake-location: 
+:jbake-start: 2023-04-06
+:jbake-end: 2023-04-07
+
+== 2023-04-06 Clojure Transducers: Sequence Processing on ...
+
+Clojure Transducers: Sequence Processing on Steroids +
+ +
+Speaker: Mayank Prakash +
+Topic: Clojure Transducers: Sequence Processing on Steroids +
+Transducers in Clojure harness the power of higher-order functions to implement separation of concerns in sequence processing. They allow the same standard sequence processing functions like map, filter, take, partition, etc. to work with any source of sequential data, whether in-memory data structures, event streams, core.async channels, queues, etc. and to produce output in any of these formats. Additionally, as a side effect, they also allow us to eliminate intermediate data structures when chaining multiple operations. +
+In this talk, we will introduce the concept using a step-by-step approach to explain transducers, and show how we can leverage them in our own code. +
+Agenda: +
+6:30 Pre-presentation hellos +
+6:45 Presentation, Q&amp;A +
+7:45 Post-presentation discussions, breakouts as warranted +
+About our Speaker: +
+Mayank Prakash is an Application Architect and a software veteran of more than 4 decades. His first introduction to Lisp was in the early 80's and he was floored by the power and flexibility of the language. Since then he has dabbled in multiple Lisp dialects, including Interlisp, Common Lisp, Elisp, Scheme, and most recently, Clojure. Clojure in particular has become his first choice for functional programming. +
+ +
+Zulip: https://clojurians.zulipchat.com/#narrow/stream/262224-events/near/342261008 +
+

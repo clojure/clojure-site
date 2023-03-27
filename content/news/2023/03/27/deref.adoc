@@ -1,0 +1,68 @@
+= Clojure Deref (Mar 27, 2023)
+Alex Miller
+2023-03-27
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== From the core
+
+As I've mentioned a few times in various places, I've been working on bringing the long awaited `add-libs` functionality for dynamically adding libs at runtime to Clojure proper in the context of the next Clojure 1.12 alpha. Working through one last (I hope) round of feedback on that but that should be coming soon. As support work for that, we will also be adding some new APIs for accessing the tools.deps runtime basis (basically what libs you're using), a Java Process API, and an api for invoking tools via the Clojure CLI. There is some expanded support for function execution already in the current CLI that I will be documenting as well.
+
+Fogus has been mostly focusing on some new tooling derived from REBL and we are hopefully nearing a point of release on that and some additional supporting libs soon as well.
+
+The Clojure survey closed recently and as soon as we can get a writeup done and reviewed we will publish those results.
+
+https://2023.clojure-conj.org/[Clojure/conj 2023] is coming in one month! Get your https://ti.to/cognitect/clojureconj-2023[in-person or streaming tickets] and join us for a couple days packed with Clojure goodness. Can't wait to see you all.
+
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=a0T_d_N7wbg[Catch 'em All: Efficient Massive Tabular Data Handling with Tablecloth by Mey Beisaron] - Func Prog Sweden
+* https://www.youtube.com/watch?v=8LXoBiccxhc[HOP on and jump-start the development and deployment of your Clojure web apps (by Lucas Sousa)] - London Clojurians
+* https://www.youtube.com/watch?v=hg6Zbmziq8A[Building an online Word Game _from scratch_ in Lisp (Clojure and Clojurescript w/Reagent/Compojure)] - Sammy Talks
+* https://www.youtube.com/watch?v=GVyoCh2chEs[The Rise & Fall of LISP - Too Good For The Rest Of the World] - Gavin Freeborn
+* https://www.youtube.com/watch?v=zc2ozP-e0cg[Strategy pattern in Clojure] - Clojure Diary
+
+== Blogs, articles, and projects
+
+* https://mccormick.cx/news/entries/clojurescript-uis-in-500-bytes[ClojureScript UIs in 500 Bytes] - Chris McCormick
+* https://blog.janetacarr.com/model-view-controller-a-classic-architectural-pattern-in-clojure/[Model-View-Controller, a classic architectural pattern in Clojure] - Janet A. Carr
+* https://www.pixelated-noise.com/blog/2022/03/01/hike/index.html[Hike - Deriving identity in mutable grids] - Aris Spathis
+* https://rattlin.blog/finding-clj-new-beginnings.html[Finding Clojure: New Beginnings] - rattlin.blog
+* https://metaredux.com/posts/2023/03/26/bad-nrepl.html[Bad nREPL: 10 Things You Hate About nREPL] - Bozhidar Batsov
+* https://clojure-diary.gitlab.io/2023/03/23/first-edition-of-my-clojure-book-is-launched.html[First edition of my Clojure book is launched ] - Karthikeyan A K
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/clojure-emacs/cider[cider] https://github.com/clojure-emacs/cider/releases/tag/v1.7.0[1.7.0] - The Clojure Interactive Development Environment that Rocks for Emacs
+* https://github.com/BetterThanTomorrow/calva[calva] 2.0.342 - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/kennytilton/web-mx[web-mx] 2.0.0-SNAPSHOT - A Web Un-Framework, with fine-grained, transparent reactivity all the way down
+* https://github.com/apexdatasolutions/cljr[cljr]  - Tooling for the CLR flavor of Clojure that plays nice with .NET tooling while remaining familiar to mainline Clojurians
+* https://github.com/majorcluster/clj-state-machine[clj-state-machine]  - An open source clojure state machine API with datomic DB
+* https://github.com/jackrusher/scimacs[scimacs]  - The Small Clojure Interpreter (SCI) integrated with emacs as a loadable module
+* https://github.com/zalky/cues[cues] 0.2.0 - Queues on cue: low-latency persistent blocking queues, processors, and graphs via ChronicleQueue
+* https://github.com/clj-commons/rewrite-clj[rewrite-clj] https://github.com/clj-commons/rewrite-clj/blob/main/CHANGELOG.adoc#v1147---2023-03-25[1.1.47] - Rewrite Clojure code and edn
+* https://github.com/practicalli/clojure-cli-config[clojure-cli-config]  - User level aliases and Clojure CLI configuration for deps.edn based projects
+* https://github.com/kennytilton/matrix[matrix] 5.0.0-SNAPSHOT - Fine-grained, transparent data flow between generative objects
+* https://github.com/clojure/data.int-map[data.int-map] 1.2.1 - A map optimized for integer keys
+* https://github.com/wardle/hermes[hermes] 1.1.1000 - A library and microservice implementing the health and care terminology SNOMED CT
+* https://github.com/oliyh/superlifter[superlifter] 0.1.4 - A DataLoader for Clojure/script
+* https://github.com/lilactown/flex[flex]  - flex is a reactive signal library for Clojure(Script)
+* https://github.com/borkdude/clj2el[clj2el]  - Transpile Clojure to Emacs Lisp!
+* https://github.com/cjohansen/portfolio[portfolio]  - Develop ClojureScript UI components in isolation in a "visual REPL".
+* https://github.com/behrica/clojure-datascience-devcontainer[clojure-datascience-devcontainer]  - Clojure + python + R included
+* https://github.com/viesti/clj-lambda-sideloader[clj-lambda-sideloader]  - JVM/Clojure AWS Lambda Sideloader
+* https://github.com/clj-commons/ordered[ordered] 1.15.11 - Ordered sets and maps
+* https://github.com/babashka/bbin[bbin] 0.1.12 - Install any Babashka script or project with one command
+* https://github.com/babashka/neil[neil] 0.1.60 - A CLI to add common aliases and features to deps.edn-based projects
+* https://github.com/strojure/undertow[undertow] 1.3.0-116 - Clojure API to Undertow web server
+* https://github.com/strojure/ring-undertow[ring-undertow] 1.1.0-102 - Clojure ring adapter to Undertow web server
+* https://github.com/noahtheduke/splint[splint] 1.0 - Rubocop and Kibit inspired linter focused on style and code shape
+* https://github.com/juji-io/datalevin[datalevin] 0.8.7 - A simple, fast and versatile Datalog database
+* https://github.com/phronmophobic/dewey[dewey] 2023-03-20 -  Index of Clojure libraries available on github
+* https://github.com/strojure/web-security[web-security] 1.1.0-32 - Decoupled web security implementations for Clojure
+* https://github.com/lambdaisland/hiccup[hiccup]  - Enlive-backed Hiccup implementation (clj-only)

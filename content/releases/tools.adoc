@@ -22,6 +22,11 @@ For more information see the following docs:
 
 Recent official releases are described here. Prereleases and older versions can be found in the https://github.com/clojure/brew-install/blob/1.11.1/CHANGELOG.md[repo changelog].
 
+=== 1.11.1.1267 (Mar 31, 2023) [[v1.11.1.1267]]
+
+* https://clojure.atlassian.net/browse/TDEPS-245[TDEPS-245] - Fix error in -X:deps find-versions with an uncanonicalized lib name
+* Use https://github.com/clojure/tools.deps/blob/master/CHANGELOG.md[tools.deps] 0.18.1331
+
 === 1.11.1.1262 (Mar 27, 2023) [[v1.11.1.1262]]
 
 * Make local deps version comparable based on path

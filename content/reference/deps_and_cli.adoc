@@ -1062,6 +1062,33 @@ Tools can provide these instructions for users:
 * Install tool with `clj -Ttools install io.github.USER/TOOL '{:git/tag "VERSION"}' :as NAME`
 * Invoke tool with `clj -TNAME f args...`
 
+[[function_protocol]]
+== Function execution protocol
+
+Some tools provide functions designed to be used for programmatic execution from another process, with the following constraints and expectations:
+
+* The function should take a single map argument
+* Results are returned from the function (as usual)
+* Exceptions thrown by the function will cause a failure and the exception data (ala `Throwable->map` will be conveyed to the external process, which will re-throw it in an `ex-info`)
+* Printing output will (by default) not be captured
+* Any result or exception data should be safe to print and read back to data in another process
+
+There are several argument map keys that have special significance to the Clojure CLI during -X or -T. All of these keys will be removed from the argument map before the function is invoked:
+
+* `:clojure.exec/invoke` - `true` to use this protocol
+* `:clojure.exec/out` - `true` to capture and return stdout during function execution
+* `:clojure.exec/err` - `true` to capture and return stderr during function execution
+
+The result is wrapped into a printed envelope map with the following keys and returned via the CLI stdout:
+
+* `:tag` - either `:ret` or `:err` based on whether the function returned a result or threw an exception
+* `:val` - either return value or exception data, prn to a string
+* `:out` - if requested, the captured stdout return
+* `:err` - if requested, the captured stderr return
+* `:ms` - function execution time in ms
+
+A consumer API for this protocol will be provided as of Clojure 1.12.0-alpha2.
+
 = Command line reference
 
 == Arg map keys

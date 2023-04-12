@@ -1,0 +1,27 @@
+= Clojure 1.12.0-alpha2
+Alex Miller
+2023-04-12
+:jbake-type: post
+
+Clojure 1.12.0-alpha2 is now available and we would encourage you to try it and give us your feedback!
+
+== Add libraries from the REPL
+
+Libraries are added to the classpath only at JVM startup time, so adding a library requires restarting the JVM, which loses the current state of the REPL. There are many use cases for adding a library - speculative evaluation of a library, adding a known dependency and continuing your work, adding a library to accomplish a specific task (possibly on a remote system).
+
+New in this release is a namespace `clojure.repl.deps` with functions `add-lib`, `add-libs`, and `sync-deps`. `add-lib` will take a lib that is not available on the classpath, and make it available by downloading (if necessary) and add to the classloader. Libs already on the classpath are not updated. If the coordinate is not provided, the newest Maven or git (if the library has an inferred git repo name) version or tag will be used. `add-libs` is like `add-lib`, but resolves a set of libraries and versions together. `sync-deps` will call `add-libs` with any libs present in deps.edn, but not yet present on the classpath.
+
+In a clojure.main REPL (as you get with the Clojure CLI), these new functions are automatically referred in the `user` namespace. In other repls, you may need to `(use 'clojure.repl.deps)` before use. Note that this functionality is backed by calls to the Clojure CLI, which must be installed and available on your path.
+
+== Start and control external processes
+
+Clojure has an existing `clojure.java.shell` namespace that was created in the early days of Clojure. Since then, Java has greatly expanded their APIs for process control and particularly I/O streams of those processes. This release adds a new namespace `clojure.java.process` that utilizes these APIs, in particular the `start` base function with full control, and the `exec` function which covers the common case of executing an external process and returning its stdout on completion.
+
+== Invoke external functions via the Clojure CLI
+
+The Clojure CLI provides infrastructure to invoke functions in a tool (separate from the project classpath) by supplying either a local tool name or a tool alias, the function, and args. This release contains a new namespace `clojure.tools.deps.interop` that encapsulates execution of an external tool function. You can find more about the function execution protocol on the <<xref/../../../../../reference/deps_and_cli#function_protocol,deps reference>>.
+
+== Full list of changes
+
+See the <<xref/../../../../../releases/devchangelog#v1.12.0-alpha2,dev changelog>> for a full list of changes in 1.12.0-alpha2.
+

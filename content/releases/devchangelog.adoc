@@ -19,12 +19,43 @@ Note: All dev releases are subject to breaking changes for new work since the pr
 
 == Release 1.12.0
 
+=== 1.12.0-alpha2 (Jun 30, 2022) [[v1.12.0-alpha2]]
+
+New:
+
+* https://clojure.atlassian.net/browse/CLJ-2757[CLJ-2757] Basis api
+* https://clojure.atlassian.net/browse/CLJ-2759[CLJ-2759] Java process api
+* https://clojure.atlassian.net/browse/CLJ-2760[CLJ-2760] External function invocation api
+* https://clojure.atlassian.net/browse/CLJ-2761[CLJ-2761] Repl add-lib, add-libs, sync-deps apis
+
+Fixes in 1.12.0-alpha1 work:
+
+* https://clojure.atlassian.net/browse/CLJ-2742[CLJ-2742] range - Revert to use chunking as before IDrop changes
+* https://clojure.atlassian.net/browse/CLJ-2740[CLJ-2740] PersistentVector seq drop - remove unneeded call
+* https://clojure.atlassian.net/browse/CLJ-2715[CLJ-2715] partitionv - Fix error in last padded partition
+* https://clojure.atlassian.net/browse/CLJ-2718[CLJ-2718] repeat - Fix bug in drop that goes to or past end of seq
+
+Bug fixes and enhancements:
+
+* https://clojure.atlassian.net/browse/CLJ-2709[CLJ-2709] range - Use optimized range for int args
+* https://clojure.atlassian.net/browse/CLJ-2721[CLJ-2721] range - Fix invalid arg order when adding meta to non-optimized range
+* https://clojure.atlassian.net/browse/CLJ-2521[CLJ-2521] Compiler - Fix invalid class when nesting try/loop/try
+* https://clojure.atlassian.net/browse/CLJ-2739[CLJ-2739] ArityException - Fix message when function incorrectly called with >20 args
+* https://clojure.atlassian.net/browse/CLJ-2726[CLJ-2726] #uuid data reader - Fix exception on invalid input so it flows through reader
+* https://clojure.atlassian.net/browse/CLJ-2724[CLJ-2724] c.java.io/do-copy - Fix incorrect type hint
+* https://clojure.atlassian.net/browse/CLJ-2683[CLJ-2683] with-open - Fix to not qualify .close method on expansion
+
 === 1.12.0-alpha1 (Jun 30, 2022) [[v1.12.0-alpha1]]
+
+New:
 
 * https://clojure.atlassian.net/browse/CLJ-2713[CLJ-2713] Efficient drop and partition for persistent or algorithmic collections
 * https://clojure.atlassian.net/browse/CLJ-1327[CLJ-1327] Pin serialVersionUID for Clojure types to 1.10.3 values
-* https://clojure.atlassian.net/browse/CLJ-2712[CLJ-2712] Revert CLJ-1604 fix AOT bug preventing overriding of clojure.core functions
 * https://clojure.atlassian.net/browse/CLJ-2711[CLJ-2711] Implements namespace interning policy such that interned vars in own ns cannot be replaced by refer or intern
+* https://clojure.atlassian.net/browse/CLJ-2712[CLJ-2712] Revert CLJ-1604 fix AOT bug preventing overriding of clojure.core functions
+
+Enhancements:
+
 * https://clojure.atlassian.net/browse/CLJ-1872[CLJ-1872] Extend `empty?` to `counted?` colls that aren't seqable, such as transients
 
 == Release 1.11.1

@@ -7,13 +7,13 @@ Clojure 1.12.0-alpha2 is now available and we encourage you to try it and give u
 
 == Add libraries for interactive use
 
+There are many cases where it would be useful to add a library interactively or to patch a live system without restarting the JVM - speculative evaluation, adding a known dependency to your project, or adding a library to accomplish a specific task.
+
 Clojure 1.12.0-alpha2 provides new functions to add libraries interactively, without restarting the JVM or losing the state of your work:
 
 * https://clojure.github.io/clojure/branch-master/clojure.repl.deps.html#clojure.repl.deps/add-lib[add-lib] takes a lib that is not available on the classpath, and makes it available by downloading (if necessary) and adding to the classloader. Libs already on the classpath are not updated. If the coordinate is not provided, the newest Maven or git (if the library has an inferred git repo name) version or tag are used.
 * https://clojure.github.io/clojure/branch-master/clojure.repl.deps.html#clojure.repl.deps/add-libs[add-libs] is like `add-lib`, but resolves a set of new libraries and versions together. 
 * https://clojure.github.io/clojure/branch-master/clojure.repl.deps.html#clojure.repl.deps/sync-deps[sync-deps] calls `add-libs` with any libs present in deps.edn, but not yet present on the classpath.
-
-These functions can be used interactively during development or to patch a live system. Use cases involve speculative evaluation of a library, adding a known dependency and continuing your work, or adding a library to accomplish a specific task.
 
 These new functions are intended only for interactive use at the repl - using a deps.edn etc is still the proper way to build and maintain your code. To this end, these functions all check that https://clojure.github.io/clojure/branch-master/clojure.core-api.html#clojure.core/%2Arepl%2A[pass:[*repl*]] is bound to true (that flag is set automatically by `clojure.main/repl`). In a clojure.main REPL, these new functions are automatically referred in the `user` namespace. In other repls, you may need to `(require '[clojure.repl.deps :refer :all])` before use.
 
@@ -21,13 +21,20 @@ Library resolution and download are provided by https://github.com/clojure/tools
 
 == Invoke tool functions out of process
 
-Clojure 1.12.0-alpha2 includes  https://clojure.github.io/clojure/branch-master/clojure.tools.deps.interop-api.html[clojure.tools.deps.interop] with https://clojure.github.io/clojure/branch-master/clojure.tools.deps.interop-api.html#clojure.tools.deps.interop/invoke-tool[invoke-tool] to invoke a tool function out of process. <<xref/../../../../../reference/deps_and_cli#tool_install,Clojure CLI tools>> are collections of functions delivered in a library. Tool functions are invoked in their own process with a classpath independent from the project classpath.
+There are many useful tools you can use at development time, but which are not part of your project's actual dependencies. The Clojure CLI provides explicit support for  <<xref/../../../../../reference/deps_and_cli#tool_install,tools>> with their own classpath, but there was not previously a way to invoke these interactively.
 
-The `add-lib` functionality is built using `invoke-tool` but you can also use it to build or invoke your own tools for interactive use. Find more about the function execution protocol on the <<xref/../../../../../reference/deps_and_cli#function_protocol,deps reference>>.
+Now Clojure includes https://clojure.github.io/clojure/branch-master/clojure.tools.deps.interop-api.html#clojure.tools.deps.interop/invoke-tool[clojure.tools.deps.interop/invoke-tool] to invoke a tool function out of process. The classpath for the tool is defined in your deps.edn so you do not need to add the tool's dependencies to your project classpath.
+
+`add-lib` functionality is built using `invoke-tool` but you can also use it to build or invoke your own tools for interactive use. Find more about the function execution protocol on the <<xref/../../../../../reference/deps_and_cli#function_protocol,deps reference>>.
 
 == Start and control external processes
 
-This release adds https://clojure.github.io/clojure/branch-master/clojure.java.process.html[clojure.java.process] that utilizes new Java APIs for process control and process I/O. In particular, the https://clojure.github.io/clojure/branch-master/clojure.java.process.html#clojure.java.process/start[start] function provides full control over streams with access to the underlying Java objects for advanced usage, and the https://clojure.github.io/clojure/branch-master/clojure.java.process.html#clojure.java.process/exec[exec] function covers the common case of executing an external process and returning its stdout on completion.
+For a long time, we've had the `clojure.java.shell` namespace, but over time Java has provided new APIs for process info, process control, I/O redirection.
+
+This release adds a new namespace https://clojure.github.io/clojure/branch-master/clojure.java.process.html[clojure.java.process] that takes advantage of these APIs and is easier to use. See:
+
+* https://clojure.github.io/clojure/branch-master/clojure.java.process.html#clojure.java.process/start[start] -  full control over streams with access to the underlying Java objects for advanced usage
+* https://clojure.github.io/clojure/branch-master/clojure.java.process.html#clojure.java.process/exec[exec] -  covers the common case of executing an external process and returning its stdout on completion
 
 == Full list of changes
 

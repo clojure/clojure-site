@@ -15,9 +15,7 @@ Clojure 1.12.0-alph2 adds https://clojure.github.io/clojure/branch-master/clojur
 * https://clojure.github.io/clojure/branch-master/clojure.repl.deps.html#clojure.repl.deps/add-libs[add-libs] is like `add-lib`, but resolves a set of libraries and versions together. 
 * https://clojure.github.io/clojure/branch-master/clojure.repl.deps.html#clojure.repl.deps/sync-deps[sync-deps] calls `add-libs` with any libs present in deps.edn, but not yet present on the classpath.
 
-This namespace is intended only for interactive use at the repl - using a deps.edn etc is still the proper way to build and maintain your code. To this end, these functions all check that https://clojure.github.io/clojure/branch-master/clojure.core-api.html#clojure.core/%2Arepl%2A[pass:[*repl*]] is set to true (that flag is bound automatically by `clojure.main/repl`).
-
-In a clojure.main REPL, these new functions are automatically referred in the `user` namespace. In other repls, you may need to `(require '[clojure.repl.deps :refer :all])` before use.
+This namespace is intended only for interactive use at the repl - using a deps.edn etc is still the proper way to build and maintain your code. To this end, these functions all check that https://clojure.github.io/clojure/branch-master/clojure.core-api.html#clojure.core/%2Arepl%2A[pass:[*repl*]] is bound to true (that flag is set automatically by `clojure.main/repl`). In a clojure.main REPL, these new functions are automatically referred in the `user` namespace. In other repls, you may need to `(require '[clojure.repl.deps :refer :all])` before use.
 
 Library resolution and download are provided by tools.deps. However, you do not want to add tools.deps and its many dependencies to your project classpath during development and thus we have also added a new api for invoking functions out of process via the Clojure CLI.
 
@@ -25,9 +23,9 @@ Library resolution and download are provided by tools.deps. However, you do not 
 
 <<xref/../../../../../reference/deps_and_cli#tool_install,Clojure CLI tools>> are collections of functions delivered in a library. Tool functions are invoked in their own process with a classpath independent from the project classpath.
 
-Clojure 1.12.0-alph2 includes  https://clojure.github.io/clojure/branch-master/clojure.tools.deps.interop-api.html[clojure.tools.deps.interop] with https://clojure.github.io/clojure/branch-master/clojure.tools.deps.interop-api.html#clojure.tools.deps.interop/invoke-tool[invoke-tool] to invoke a tool function out of process. Because the tool function runs out of process, its dependencies do not affect your REPL classpath.
+Clojure 1.12.0-alpha2 includes  https://clojure.github.io/clojure/branch-master/clojure.tools.deps.interop-api.html[clojure.tools.deps.interop] with https://clojure.github.io/clojure/branch-master/clojure.tools.deps.interop-api.html#clojure.tools.deps.interop/invoke-tool[invoke-tool] to invoke a tool function out of process. Because the tool function runs out of process, its dependencies do not affect your REPL classpath.
 
-To invoke a tool function, the tool must be defined as an alias in one of your deps.edn, or installed with local name. Find more about the function execution protocol on the <<xref/../../../../../reference/deps_and_cli#function_protocol,deps reference>>.
+The `add-lib` functionality is built using `invoke-tool` and you can use it to build or invoke your own tools for interactive use. Find more about the function execution protocol on the <<xref/../../../../../reference/deps_and_cli#function_protocol,deps reference>>.
 
 == Start and control external processes
 

@@ -916,16 +916,42 @@ The following environment variables can be set to control git usage:
 
 == Clojure CLI installers
 
-For tools installation, see the instructions in the <<xref/../../guides/getting_started#,Getting Started>> guide.
+For CLI installation, see the instructions in the <<xref/../../guides/install_clojure#,Install Clojure>> guide.
 
 [[tool_install]]
 = Tool installation and invocation
 
-The Clojure CLI supports the idea of running tools, which are programs that don't use the project classpath, with the -T exec option. Tools are often (but not exclusively) external, defined with their own dependencies. Tools are expected to be invoked similar to -X style functions, which take a map of key/val arguments which can be provided on the CLI.
+Tools provide functions (often used during dev) that run in a separate process with their own classpath, independent of the project classpath. Tool functions take a single map argument and are invoked with -T (same key value arg syntax as -X style execution).
+
+Tools are specified either via an alias (which can be shared by others using the project), or by a local tool name installed on your machine (which can be shared on your machine across projects).
+
+== Using tool aliases
+
+Tools declared with an alias can be executed with -T, just as they can be executed with -X. The only difference is that -T implies `{:replace-deps {}, :replace-paths ["."]}`, so the project deps and paths are not included in your classpath.
+
+Define an alias in your deps.edn:
+
+[source,clojure]
+----
+{...
+ :aliases {
+   :linter {:deps {cool/lint-tool {:git/tag "..." :git/sha "..."}}
+            :ns-default cool.lint.tool}
+ }}
+----
+
+This example invocation invokes the linter in a classpath that includes only the linter dependency (and its  transitive dependencies). The function invoked will be `cool.lint.tool/linter` formed by combining the `:ns-default` in the alias and the function name `lint` on the command line:
+
+[source,shell]
+----
+clj -T:linter lint
+----
+
+Additional key / value argument may be passed on the command line after that, with same syntax as -X args.
 
 == Using named tools
 
-The Clojure CLI comes with programs to search for available versions of a tool (either maven or git), and to install a tool under a local name for subsequent execution. Tools additionally may provide their usage configuration as part of the tool, rather than every user needing to define that as an alias.
+The Clojure CLI comes with programs to search for available versions of a tool (either maven or git), and to install a tool under a local name for subsequent execution. Tools additionally may provide their usage configuration (like `:ns-default`) as part of the tool, rather than every user needing to define that in an alias.
 
 === Find versions
 
@@ -1042,10 +1068,6 @@ For example, for the tools.deps.graph tool declared above, it can be invoked as 
 ----
 clj -Tdeps-graph graph :output '"graph.png"'
 ----
-
-== Aliased tool execution
-
-Tools declared with an alias can also be executed with -T, just as they can be executed with -X. The only difference is that -T implies `{:replace-deps {}, :replace-paths ["."]}`, so the project deps/paths will not be included, by default.
 
 == Best practices for tool authors
 

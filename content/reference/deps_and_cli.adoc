@@ -21,8 +21,8 @@ Clojure build tools have traditionally taken the approach of wrapping the Maven 
 To this end Clojure provides:
 
 * https://github.com/clojure/tools.deps[tools.deps] - a library providing an API for resolving dependency graphs and building classpaths that can utilize both Maven and other providers of code or artifacts
-* Command line tools (`clojure` and `clj`) that enable users to make use of this capability at the terminal to declare dependencies, assemble classpaths, and launch Clojure programs with data
-* System-specific installers for downloading the tools, improving the "Getting Started" experience
+* Clojure CLI (Command Line Interface) - `clojure` and `clj` allow users at the terminal to declare dependencies, assemble classpaths, and launch Clojure programs with data
+* System-specific installers for downloading the Clojure CLI, improving the "Getting Started" experience
 
 In addition to this reference, also see:
 
@@ -32,11 +32,11 @@ In addition to this reference, also see:
 
 = Overview
 
-You use the Clojure tools (`clj` or `clojure`) to run Clojure programs on the JVM, e.g. to start a REPL or invoke a specific function with data. The Clojure tools will configure the JVM process by defining a classpath (with desired libraries), an execution environment (JVM options), the main class, and args.
+You use the Clojure CLI (`clj` or `clojure`) to run Clojure programs on the JVM, e.g. to start a REPL or invoke a specific function with data. The Clojure CLI will configure the JVM process by defining a classpath (with desired libraries), an execution environment (JVM options), the main class, and args.
 
 Using a deps.edn file (or files), you tell Clojure where your source code resides and what libraries you need. Clojure will then calculate the full set of required libraries and a classpath, caching expensive parts of this process for better performance.
 
-The internal steps of the Clojure tools, as well as the Clojure functions you intend to run, are parameterized by data structures, often maps. Shell command lines are not optimized for passing nested data, so instead you will put the data structures in your deps edn file and refer to them on the command line via _aliases_ - keywords that name data structures.
+The internal steps of the Clojure CLI, as well as the Clojure functions you intend to run, are parameterized by data structures, often maps. Shell command lines are not optimized for passing nested data, so instead you will put the data structures in your deps edn file and refer to them on the command line via _aliases_ - keywords that name data structures.
 
 `clj` and `clojure` differ in that `clj` has extra support for use as a REPL in a terminal, and should be preferred unless you don't want that support, then use `clojure`. The invocation structure is the same for both:
 
@@ -141,7 +141,7 @@ Tools are installed and referenced by a simpler local name, instead of via an al
 
 = Operation
 
-When you execute the Clojure tool, there are a series of steps performed to prepare and execute your command. This section is an overview of those steps, see later sections for how to modify those steps in a variety of ways.
+When you execute the Clojure CLI, there are a series of steps performed to prepare and execute your command. This section is an overview of those steps, see later sections for how to modify those steps in a variety of ways.
 
 **Locate deps edn sources**
 
@@ -151,7 +151,7 @@ Configuration is stored in one or more "deps edn" maps. These are edn maps with 
 * `:paths` - vector of project source paths
 * `:aliases` - map of alias name to alias data
 
-The Clojure tools look for 4 potential <<deps_and_cli#deps_sources,deps edn sources>>:
+The Clojure CLI looks for 4 potential <<deps_and_cli#deps_sources,deps edn sources>>:
 
 * Root - part of the clj installation (a resource in the tools.deps library)
 * User - cross-project configuration (typically tools), usually found at `~/.clojure/deps.edn`
@@ -263,7 +263,7 @@ Coordinates can take several forms depending on the coordinate type:
 
 == Aliases
 
-Aliases give a name to a data structure that can be used either by the Clojure tool itself or other consumers of deps.edn. They are defined in the `:aliases` section of the config file. These Clojure tool subprocesses use data which can be read from aliases:
+Aliases give a name to a data structure that can be used either by the Clojure CLI itself or other consumers of deps.edn. They are defined in the `:aliases` section of the config file. These Clojure CLI subprocesses use data which can be read from aliases:
 
 == Other keys
 
@@ -384,12 +384,12 @@ Classpaths will be created in the following order, which is intended to be repro
 ** Depth from root
 ** Alphabetical by group/artifact
 
-= Clojure tools usage
+= Clojure CLI usage
 
 [[deps_sources]]
 == deps.edn sources
 
-The Clojure tools will use the following deps.edn map sources, in this order:
+The Clojure CLI will use the following deps.edn map sources, in this order:
 
 * Root - found in the installation of clj (or as a resource in tools.deps)
 * User - cross-project configuration (typically tools)
@@ -443,11 +443,11 @@ The `tool` process is used when executing a tool that should not use the project
 * `:replace-deps` - a deps map from lib to coordinate of deps to REPLACE the project `:deps`
 * `:replace-paths` a collection of string paths to REPLACE project `:paths` (note these should be under the project root)
 
-This tool map should be provided as an alias in one of the deps sources and provided to the Clojure tools using -A (for REPL invocation), -X (for function execution), or -M (for clojure.main execution). Multiple aliases can be provided by concatentating the alias names.
+This tool map should be provided as an alias in one of the deps sources and provided to the Clojure CLI using -A (for REPL invocation), -X (for function execution), or -M (for clojure.main execution). Multiple aliases can be provided by concatentating the alias names.
 
 == Merging deps.edn
 
-The `deps.edn` files found from the source locations (with Clojure tool modifications by any options) are merged to form one master deps map. The merge is done in the order above root/user/project/config, last one wins. The operation is essentially `merge-with merge`, except for the `:paths` key, where only the last one found is used (they are not combined).
+The `deps.edn` files found from the source locations (with modifications from any options) are merged to form one master deps map. The merge is done in the order above root/user/project/config, last one wins. The operation is essentially `merge-with merge`, except for the `:paths` key, where only the last one found is used (they are not combined).
 
 == Resolve deps modifiers
 
@@ -458,7 +458,7 @@ The resolve-deps modifiers are provided in a map that was described in a prior s
 * `:default-deps` - a deps map from lib to coordinate of versions to use if none is found
 * If multiple alias maps with these keys are activated, all of them are merge-with merged
 
-The resolve-deps args should be provided as an alias in one of the deps sources and provided to the Clojure tools using -A (for REPL invocation), -X (for function execution), or -M (for clojure.main execution). Multiple aliases can be provided by concatentating the alias names.
+The resolve-deps args should be provided as an alias in one of the deps sources and provided to the Clojure CLI using -A (for REPL invocation), -X (for function execution), or -M (for clojure.main execution). Multiple aliases can be provided by concatentating the alias names.
 
 == Make classpath modifiers
 
@@ -468,7 +468,7 @@ The make-classpath-map modifiers are provided in a map that was described in a p
 * `:classpath-overrides` - a map of lib to string path to replace the location of the lib
 * If multiple maps with these keys are activated, `:extra-paths` concatenate and `:classpath-overrides` merge-with merge
 
-The resolve-deps args should be provided as an alias in one of deps sources and provided to the Clojure tools using -A (for REPL invocation), -X (for function execution), or -M (for clojure.main execution). Multiple aliases can be provided by concatentating the alias names.
+The resolve-deps args should be provided as an alias in one of deps sources and provided to the Clojure CLI using -A (for REPL invocation), -X (for function execution), or -M (for clojure.main execution). Multiple aliases can be provided by concatentating the alias names.
 
 == Prepare JVM environment
 
@@ -480,7 +480,7 @@ Additionally, main execution can take a map with key `:jvm-opts`:
 * If multiple maps with these keys are activated, `:jvm-opts` concatenate
 * If -J JVM options are also specified on the command line, they are concatenated after the alias options
 
-This map is stored in alias data and provided to the Clojure tools using -A (for REPL invocation), -X (for function execution), or -M (for clojure.main execution).  Multiple aliases can be provided by concatentating the alias names.
+This map is stored in alias data and provided to the Clojure CLI using -A (for REPL invocation), -X (for function execution), or -M (for clojure.main execution).  Multiple aliases can be provided by concatentating the alias names.
 
 If JVM options are provided in the `JAVA_OPTS` environment variable, these will be included first on the command line (note: these options are not part of the command cache and may vary between executions).
 
@@ -494,11 +494,11 @@ One additional option for main execution is a map with key `:main-opts`:
 * If multiple maps with these keys are activated, only the last one will be used
 * If command line clojure.main arguments are supplied on the command line, they are concatenated after the last main alias map
 
-This map is stored in alias data and provided to the Clojure tools using `-M:an-alias`. Multiple aliases can be provided by concatentating the alias names.
+This map is stored in alias data and provided to the Clojure CLI using `-M:an-alias`. Multiple aliases can be provided by concatentating the alias names.
 
 === Prepare for execution
 
-The `-P` flag can be used with any other execution mode to "prepare" but not execute. Importantly, this flag will cause the Clojure tool to resolve deps, download libraries, make and cache classpaths. This may be useful in containers, continuous integration systems, etc where an environment can be prepared to execute and do necessary network activity first, and then later execute without that activity.
+The `-P` flag can be used with any other execution mode to "prepare" but not execute. Importantly, this flag will cause the Clojure CLI to resolve deps, download libraries, make and cache classpaths. This may be useful in containers, continuous integration systems, etc where an environment can be prepared to execute and do necessary network activity first, and then later execute without that activity.
 
 == Other programs
 
@@ -606,7 +606,7 @@ The params that can be provided are:
 
 === Local Maven install
 
-The `-X:deps mvn-install` program is provided with the Clojure tools for convenience and can be executed with `-X` to install a jar into your local Maven cache.
+The `-X:deps mvn-install` program is provided with the Clojure CLI for convenience and can be executed with `-X` to install a jar into your local Maven cache.
 
 The install params include the following options:
 
@@ -640,7 +640,7 @@ A pom file must be either provided explicitly, generated from :lib/:version, or 
 
 = Procurers
 
-Dependency coordinates are interpreted by procurers, which understand a particular coordinate type and know how to find dependencies and download artifacts for a library. The Clojure CLI currently suports the folllowing procurers: `mvn`,  `local`, and `git`. The underlying tools.deps.alpha library supports procurer extensions when used as a library.
+Dependency coordinates are interpreted by procurers, which understand a particular coordinate type and know how to find dependencies and download artifacts for a library. The Clojure CLI currently suports the folllowing procurers: `mvn`,  `local`, and `git`. The underlying tools.deps library supports procurer extensions when used as a library.
 
 The coordinate attributes determine which procurer is used. In general, most procurer attributes are qualified per procurer type (there are some historical exceptions). Procurer-independent attributes use the `deps` qualifier.
 
@@ -786,7 +786,7 @@ AWS S3 credentials can be set in the environment using one of these mechanisms:
 3. Create a named profile in the AWS credentials file and set the environment variable `AWS_PROFILE` with its name.
 4. Amazon ECS container and instance profile credentials should also work, but have not been tested.
 
-For more information, most of the advice in https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/credentials.html[this AWS document] describes how credentials are located. Note however that the Java system properties options will NOT work with the command line tools (but would work if using the tools.deps.alpha library directly).
+For more information, most of the advice in https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/credentials.html[this AWS document] describes how credentials are located. Note however that the Java system properties options will NOT work with the Clojure CLI (but would work if using the tools.deps library directly).
 
 === Maven proxies
 
@@ -921,19 +921,19 @@ For CLI installation, see the instructions in the <<xref/../../guides/install_cl
 [[tool_install]]
 = Tool installation and invocation
 
-Tools provide functions (often used during dev) that run in a separate process with their own classpath, independent of the project classpath. Tool functions take a single map argument and are invoked with -T (same key value arg syntax as -X style execution).
+A tool is a collection of functions delivered in a lib. Tool functions are run in a separate process with their own classpath, independent of the project classpath. Tool functions take a single map argument and are invoked with -T (same key value arg syntax as -X style execution).
 
-Tools are specified either via an alias (which can be shared by others using the project), or by a local tool name installed on your machine (which can be shared on your machine across projects).
+Tools are described either via an alias (which can be shared by others using the project), or by a local tool name installed on your machine (which can be shared across projects).
 
 == Using tool aliases
 
-Tools declared with an alias can be executed with -T, just as they can be executed with -X. The only difference is that -T implies `{:replace-deps {}, :replace-paths ["."]}`, so the project deps and paths are not included in your classpath.
+Tools declared with an alias are executed with -T, in the same manner as -X. However, -T will remove the project deps and paths and add `"."` as a path.
 
-Define an alias in your deps.edn:
+Declare an alias in a deps.edn (could be project or user):
 
 [source,clojure]
 ----
-{...
+{;; ...
  :aliases {
    :linter {:deps {cool/lint-tool {:git/tag "..." :git/sha "..."}}
             :ns-default cool.lint.tool}
@@ -1293,4 +1293,4 @@ A repository of library artifacts - e.g. Maven central or Clojars
 
 = Tools
 
-See the project's wiki for a https://github.com/clojure/tools.deps.alpha/wiki/Tools[list of tools that use or work with tools.deps.alpha (or the clojure tools)] - tools for project creation, packaging, and much more.
+See the project's wiki for a https://github.com/clojure/tools.deps.alpha/wiki/Tools[list of tools that use or work with tools.deps (or the clojure tools)] - tools for project creation, packaging, and much more.

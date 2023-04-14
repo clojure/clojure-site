@@ -23,7 +23,7 @@ Library resolution and download are provided by https://github.com/clojure/tools
 
 There are many useful tools you can use at development time, but which are not part of your project's actual dependencies. The Clojure CLI provides explicit support for  <<xref/../../../../../reference/deps_and_cli#tool_install,tools>> with their own classpath, but there was not previously a way to invoke these interactively.
 
-Now Clojure includes https://clojure.github.io/clojure/branch-master/index.html#clojure.tools.deps.interop[clojure.tools.deps.interop/invoke-tool] to invoke a tool function out of process. The classpath for the tool is defined in your deps.edn so you do not need to add the tool's dependencies to your project classpath.
+Now Clojure includes https://clojure.github.io/clojure/branch-master/clojure.tools.deps.interop-api.html#clojure.tools.deps.interop/invoke-tool[clojure.tools.deps.interop/invoke-tool] to invoke a tool function out of process. The classpath for the tool is defined in your deps.edn so you do not need to add the tool's dependencies to your project classpath.
 
 `add-lib` functionality is built using `invoke-tool` but you can also use it to build or invoke your own tools for interactive use. Find more about the function execution protocol on the <<xref/../../../../../reference/deps_and_cli#function_protocol,deps reference>>.
 

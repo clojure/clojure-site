@@ -1,0 +1,50 @@
+= Clojure Deref (Apr 14, 2023)
+Alex Miller
+2023-04-14
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Highlights
+
+The big highlight today is the release of https://clojure.org/news/2023/04/14/clojure-1-12-alpha2[Clojure 1.12.0-alpha2] which focuses on the new `add-lib` functions. This has been work in progress on top of tools.deps for several years, and it's gone through many different approaches before we ended here. We are interested in your feedback on this and I expect there will be some further updates before we reach the final 1.12 release. Also check the full list of https://clojure.org/releases/devchangelog#v1.12.0-alpha2[changes] in alpha2.
+
+We are also working on some additional Java interop features and bug fixes which are still targeted for 1.12.
+
+== Podcasts and videos
+
+* https://clojure.stream/podcast[E90 Data Structures with Paula Gearon] - ClojureStream podcast
+* https://youtu.be/-1RI7aWWyaU[Maps, MIDI, Melodies - Cameron Desautels] - Clojure Asia
+* https://www.youtube.com/watch?v=uBTRLBU-83A[learning clojure w/ @lispyclouds] - teej_dv VODs
+* https://www.parens-of-the-dead.com/s2e22.html[The Re-Deceased] - Parens of the Dead
+
+== Blogs, articles, and projects
+
+* https://www.juxt.pro/blog/clojure-in-vouch/[Clojure in Identity: Vouch, Vouching for Clojure] - JUXT
+* https://recife.pfeodrippe.com/notebooks/recife/notebook/webdriver.html[Recife Webdriver] - Paulo Rafael Feodrippe
+* https://blog.logrocket.com/build-clojurescript-web-app-react-reagent/[How to build a ClojureScript web app with React and Reagent] - Oliver Hine
+* https://electric-examples-app.fly.dev/[Electric tutorial] - Hyperfiddle
+* https://nextjournal.com/xtdb-tutorial[XTDB Tutorial] - Nextjournal
+* https://www.abhinavomprakash.com/posts/clojure-walk/[Learning to walk with Clojure] - Abhinav Omprakash
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/clj-kondo/clj-kondo[clj-kondo] 2023.04.14 - Static analyzer and linter for Clojure code that sparks joy
+* https://github.com/scarletcomply/license-finder[license-finder]  - Finds licenses of your Clojure(Script) dependencies
+* https://github.com/eerohele/tab[tab] https://github.com/eerohele/tab/blob/main/CHANGELOG.md#2023-04-14[2023-04-14.209] - A tool for tabulating Clojure collections
+* https://github.com/ont-app/sparql-client[sparql-client] 0.2.1 - Provides an IGraph-compliant view onto an arbitrary SPARQL endpoint, informed by ont-app/vocabulary
+* https://github.com/pitch-io/uix[uix] 0.9.0 - Idiomatic ClojureScript interface to modern React.js
+* https://github.com/metosin/malli[malli] https://github.com/metosin/malli/blob/master/CHANGELOG.md#0110-2023-04-12[0.11.0] - Malli is a high-performance data-driven data specification library for Clojure/Script
+* https://github.com/matthewdowney/rich-comment-tests[rich-comment-tests] 1.0.3 - RCT turns rich comment forms into tests
+* https://github.com/clj-commons/gloss[gloss] 0.3.5 - speaks in bytes, so you don't have to
+* https://github.com/darkleaf/di[di] 2.2.0 - DI is a dependency injection framework that allows you to define dependencies as cheaply as defining function arguments
+* https://github.com/zalky/cues[cues] 0.2.1 - Queues on cue: low-latency persistent blocking queues, processors, and graphs via Chronicle Queue
+* https://enion.io/[Enion]  - New release of Enion Online: a 3D multiplayer PvP battle game written in Clojure and ClojureScript
+* https://github.com/borkdude/edamame[edamame] 1.3.22 - Configurable EDN/Clojure parser with location metadata
+* https://github.com/NoahTheDuke/splint[splint] 1.2.2 - A Rubocop and Kibit inspired Clojure linter focused on style and code shape
+* https://github.com/jacobobryant/biff[biff] https://github.com/jacobobryant/biff/releases/tag/v0.7.4[0.7.4] - A Clojure web framework for solo developers
+* https://github.com/BetterThanTomorrow/calva[calva] 2.0.351 - Clojure & ClojureScript Interactive Programming for VS Code

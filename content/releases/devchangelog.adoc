@@ -37,13 +37,13 @@ Fixes in 1.12.0-alpha1 work:
 
 Bug fixes and enhancements:
 
-* https://clojure.atlassian.net/browse/CLJ-2709[CLJ-2709] range - Use optimized range for int args
-* https://clojure.atlassian.net/browse/CLJ-2721[CLJ-2721] range - Fix invalid arg order when adding meta to non-optimized range
 * https://clojure.atlassian.net/browse/CLJ-2521[CLJ-2521] Compiler - Fix invalid class when nesting try/loop/try
 * https://clojure.atlassian.net/browse/CLJ-2739[CLJ-2739] ArityException - Fix message when function incorrectly called with >20 args
 * https://clojure.atlassian.net/browse/CLJ-2726[CLJ-2726] #uuid data reader - Fix exception on invalid input so it flows through reader
-* https://clojure.atlassian.net/browse/CLJ-2724[CLJ-2724] c.java.io/do-copy - Fix incorrect type hint
+* https://clojure.atlassian.net/browse/CLJ-2709[CLJ-2709] range - Use optimized range for int args
+* https://clojure.atlassian.net/browse/CLJ-2721[CLJ-2721] range - Fix invalid arg order when adding meta to non-optimized range
 * https://clojure.atlassian.net/browse/CLJ-2683[CLJ-2683] with-open - Fix to not qualify .close method on expansion
+* https://clojure.atlassian.net/browse/CLJ-2724[CLJ-2724] clojure.java.io/do-copy - Fix incorrect type hint
 
 === 1.12.0-alpha1 (Jun 30, 2022) [[v1.12.0-alpha1]]
 

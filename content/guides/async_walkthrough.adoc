@@ -11,7 +11,7 @@ toc::[]
 
 == Getting started
 
-The <<xref/../../../about/async#,core.async>> library supports asynchronous programming through the use of channels.
+The https://github.com/clojure/core.async[core.async] library supports asynchronous programming through the use of channels.
 
 To use core.async, declare a dependency on Clojure 1.10.0 or higher and the latest core.async library:
 

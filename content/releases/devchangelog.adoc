@@ -19,6 +19,10 @@ Note: All dev releases are subject to breaking changes for new work since the pr
 
 == Release 1.12.0
 
+=== 1.12.0-alpha3 (Apr 19, 2023) [[v1.12.0-alpha3]]
+
+* https://clojure.atlassian.net/browse/CLJ-2521[CLJ-2521] Reverted this fix from alpha2 as it seems to change where another bug (CLJ-2743) is seen, will revisit these in tandem
+
 === 1.12.0-alpha2 (Apr 12, 2023) [[v1.12.0-alpha2]]
 
 New:

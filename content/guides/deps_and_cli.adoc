@@ -82,7 +82,7 @@ user=> (str (t/instant))
 "2022-10-07T16:06:50.067221Z"
 ----
 
-You will see messages about a library being downloaded the first time you use a dependency. Once the file is downloaded (usually to `~/.m2` or `/.gitlibs`), it will be reused in the future. You can use the same process to add other libraries to your `deps.edn` file and explore Clojure or Java libraries.
+You will see messages about a library being downloaded the first time you use a dependency. Once the file is downloaded (usually to `~/.m2` or `~/.gitlibs`), it will be reused in the future. You can use the same process to add other libraries to your `deps.edn` file and explore Clojure or Java libraries.
 
 == Writing a program
 

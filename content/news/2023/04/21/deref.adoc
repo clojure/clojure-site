@@ -1,0 +1,70 @@
+= Clojure Deref (Apr 21, 2023)
+Alex Miller
+2023-04-21
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Highlights
+
+What a week! I'm not sure if it seems busier because are we in the pre-Conj release crush or if I'm imagining it, but lots of stuff is happening (and I sense we aren't done with big announcements before Conj yet).
+
+Speaking of the https://2023.clojure-conj/org[Conj], it's next week! If you want to be there in person Apr 27-28 in Durham, NC or streaming online, tickets are still available. I can't wait to see all of you again for the first time in too long. Plus, a new Rich Hickey talk, wonder what that will include?
+
+And if you like in-person conferences but are in Europe, https://babashka.org/conf/[Babashka Conf] was announced this week for June 10th in Berlin! Maybe you'll bb there?
+
+Lots of other announcements and cool links below, too many to highlight here, check them all out....
+
+== Podcasts and videos
+
+* https://clojure.stream/workshops/clerk[Clerk workshop] - ClojureStream
+* https://soundcloud.com/defn-771544745/88-matthew-davidson-aka-kingmob[#88 Matthew Davidson a.k.a kingmob] - defn podcast
+* https://clojuredesign.club/[Functional Design in Clojure] - Christoph Neumann and Nate Jones
+* https://www.youtube.com/watch?v=25JDQRFoQ_U[Portfolio: A "visual REPL" for UI Component development (by Christian Johansen)] - London Clojurians
+* https://www.youtube.com/watch?v=r6t6jsNBZDo[Clojure Transducers: Sequence Processing on Steroids] - Boston Clojure Group
+* https://www.youtube.com/watch?v=siGnHJaC1Z0[Find out why people live longer using Clojure] - Clojure Diary
+
+== Blogs, articles, and projects
+
+* https://www.clojuriststogether.org/news/q2-2023-call-for-proposals-plus-april-survey-results/[Q2 2023 Call for Proposals plus April Survey Results] - Clojurists Together
+* https://clojure-arcade.com/mac-man/[Clojure-Arcade] - three new levels!
+* https://kwill.dev/posts/datomic-cloud-multi-tenancy/[Datomic Cloud multi-tenancy] - Kenny Williams
+* https://blog.datomic.com/2023/04/implicit-partitions.html[Implicit Partitions] - Datomic team
+* https://favila.github.io/2023-04-18/datomic-choosing-ref-direction/[Choosing a Direction for Datomic Ref Types] - Francis Avila
+* https://practical.li/blog/posts/create-deps-new-template-for-clojure-cli-projects/[Create deps-new templates for Clojure CLI projects] - Practicalli
+* https://biffweb.com/docs/essays/why-i-like-clojure/[Why I like Clojure as a solo developer] - Jacob O'Bryant
+* https://corfield.org/blog/2023/04/16/calva-joyride-portal/[Calva, Joyride, and Portal] - Sean Corfield
+* https://www.reddit.com/r/Clojure/comments/12par0e/ann_clojurestorm_omniscient_time_travel_debugging/[ANN ClojureStorm: Omniscient time travel debugging for Clojure] - Juan Monetta
+* https://blog.exupero.org/logging-macros/[Logging macros] - exupero
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://forum.datomic.com/t/datomic-1-0-6711-on-prem-now-available/2207[Datomic On-prem] 1.0.6711
+* https://clojure.org/releases/downloads#_development_release_1_12_0_alpha3_apr_19_2023[Clojure 1.12.0-alpha3] - small release rolling back one patch for now
+* https://github.com/mentat-collective/emmy[emmy] https://github.com/mentat-collective/emmy/releases/tag/v0.30.0[0.30.0] - The Emmy Computer Algebra System
+* https://github.com/jpmonettas/flow-storm-debugger[flow-storm-debugger] 3.4 - A debugger for Clojure and ClojureScript with some unique features
+* https://github.com/cjohansen/portfolio[portfolio] 2023.04.20 - Develop ClojureScript UI components in isolation in a "visual REPL"
+* https://github.com/clojure-lsp/clojure-lsp[clojure-lsp] https://github.com/clojure-lsp/clojure-lsp/releases/tag/2023.04.19-12.43.29[2023.04;19-12.42.29] - Clojure & ClojureScript Language Server (LSP) implementation
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.352[2.0.352] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/babashka/babashka[babashka] 1.3.178 - Native, fast starting Clojure interpreter for scripting
+* https://github.com/cjohansen/phosphor-clj[phosphor-clj] 2023.04.21 - Phosphor Icons as hiccup for Clojure and ClojureScript
+* https://github.com/practicalli/project-templates[project-templates] 2023.04.19 - Practicalli project templates
+* https://github.com/dainiusjocas/clj-jq[clj-jq] 2.0.0 - Clojure wrapper for the `jackson-jq`
+* https://github.com/yapsterapp/promisespromises[promisespromises] 3.0.359-alpha1 - A Clojure+Script asynchronous streams API
+* https://github.com/mccraigmccraig/deepstate[deepstate]  - A ClojureScript micro-library for managing state in a Helix / React app
+* https://github.com/oliyh/martian[martian] 0.1.23 - The HTTP abstraction library for Clojure/script, supporting OpenAPI, Swagger, Schema, re-frame and more
+* https://github.com/babashka/cli[cli] 0.7.51 - Turn Clojure functions into CLIs! 
+* https://github.com/mpenet/mina[mina] 0.1.17 - Helidon/Nima ring adapter - using loom/java20+
+* https://github.com/seancorfield/honeysql[honeysql] 2.4.1026 - Turn Clojure data structures into SQL
+* https://github.com/babashka/pod-babashka-go-sqlite3[pod-babashka-go-sqlite3] 0.1.2 - A babashka pod for interacting with sqlite3
+* https://github.com/hlship/test-pipeline[test-pipeline] 0.6 - Break tests into reusable, composable steps
+* https://github.com/babashka/http-client[http-client] 0.1.8 - HTTP client for Clojure and Babashka built on java.net.http
+* https://github.com/lambdaisland/kaocha-cljs[kaocha-cljs] https://github.com/lambdaisland/kaocha-cljs/releases/tag/v1.5.154[1.5.156] - ClojureScript support for Kaocha
+* https://github.com/eval/deps-try[deps-try] 0.4.0 - Try out Clojure libraries via rebel-readline
+* https://github.com/lambdaisland/kaocha-cucumber[kaocha-cucumber] 0.10.94 - Cucumber support for Kaocha 
+* https://github.com/borkdude/deps.clj[deps.clj] 1.11.1.1273 - A faithful port of the clojure CLI bash script to Clojure
+* https://github.com/nbardy/magichat[magichat]  - A lisp dialogue for talking to multimodal LLMs

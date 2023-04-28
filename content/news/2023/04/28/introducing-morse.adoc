@@ -1,0 +1,25 @@
+= Introducing Morse
+The Clojure Team
+2023-04-24
+:jbake-type: post
+
+:fn-replicant: pass:c,q[footnote:replicant[Using Clojure 1.12.0-alpha2 or later and the link:https://clojure.org/guides/deps_and_cli[Clojure CLI] version 1.11.1.1267 or later, Clojure programmers can interactively load a new library named link:https://github.com/clojure/data.alpha.replicant-server[replicant-server] that provides a remote data API developed as part of Morse to support out-of-process data access.]]
+
+
+The Clojure team is proud to introduce Morse, a graphical, interactive tool for browsing and inspecting Clojure data, evolved from link:https://docs.datomic.com/cloud/other-tools/REBL.html[REBL]. Morse is open source, licensed under the Apache license.
+
+== Why Morse?
+
+One of the prime value propositions in using a Lisp language is that you should be able to interact with your live program. The typical access mechanism for Clojure programs is the REPL, but its print-oriented streaming nature limits interactive and graphical data exploration.
+
+Morse, like REBL before it, is a library that provides a graphical browser for Clojure data that allows active traversal into and back out of nested structures. REBL was intended to sit in the middle of your editor⇔process REPL streams and automatically render and cache all REPL results. This made it difficult to integrate with dev environments that used REPLS without raw streaming capabilities. In Morse the emphasis is now on inspecting on demand via the `inspect` API, and REPL interception is strictly optional. This should make Morse easy to integrate with all dev setups.
+
+It's not always feasible to execute a graphical browser process inside of the program process, e.g. when the inspected program is running remotely. Morse can be configured to connect to and inspect a remote program, a facility built on the new Replicant{fn-replicant} libraries. Morse uses Replicant to efficiently and incrementally traverse remote data, extending its power to a variety of new use cases.
+
+== Clojure, Morse and the Lisp Value Proposition
+
+Clojure lets programmers solve problems by staying connected to their running programs and live data, incrementally building up both the program and their understanding of the problem they are trying to solve. Morse, Replicant, and the new add-libs features of Clojure version 1.12.0-alpha3 all work together to amplify the power of the programmer during interactive development.
+
+== Where to find Morse
+
+Morse is open source and available on Github at https://github.com/nubank/morse. Additionally, we've written a link:https://github.com/nubank/morse/blob/main/docs/guide.adoc[Morse Guide] that endeavors to get you up and running. Give it a try and let us know about your experiences on Slack or via the link:https://github.com/nubank/morse/issues[Morse Github issues system].

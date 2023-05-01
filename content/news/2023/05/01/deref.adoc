@@ -1,0 +1,50 @@
+= Clojure Deref (May 1, 2023)
+Alex Miller
+2023-05-01
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Highlights
+
+We had a blast last week at https://2023.clojure-conj/org[Conj]! It was so good to see everyone in person and online. We hope to have videos edited and released to YouTube soon and you'll hear about it here of course.
+
+Some of our team's big announcements last week are: https://blog.datomic.com/2023/04/datomic-is-free.html[Datomic is Free] and https://clojure.org/news/2023/04/28/introducing-morse[Introducing Morse]. More to come on both of these soon!
+
+== Podcasts and videos
+
+* https://soundcloud.com/defn-771544745/88-matthew-davidson-aka-kingmob[#88 Matthew Davidson a.k.a kingmob] - defn podcast
+* https://soundcloud.com/clojurestream/e91-clerk-with-martin-kavalar[E91 Clerk with Martin Kavalar] - ClojureStream Podcast
+* https://www.parens-of-the-dead.com/s2e23.html[Episode 23: Dicey Visuals] - Parens of the Dead
+* https://www.youtube.com/watch?v=uJrD4Dynh20[Using reduce to dig into Clojure sequences] - Clojure Diary
+
+== Blogs, articles, and projects
+
+* https://www.xtdb.com/blog/2x-early-access[Announcing XTDB 2.x Early Access] - Jeremy Taylor
+* https://tonsky.me/blog/humble-state/[Humble Chronicles: State Management] - Nikita Prokopov
+* https://aphyr.com/posts/363-fast-multi-accumulator-reducers[Fast Multi-Accumulator Reducers] - Kyle Kingsbury
+* https://corfield.org/blog/2023/04/30/long-term-funding-2/[Long-Term Funding, Update #2] - Sean Corfield
+* https://blog.michielborkent.nl/oss-updates-apr-2023.html[OSS updates April 2023] - Michiel Borkent
+* https://practical.li/blog/posts/practicalli-plans-2023/[Practicalli plans for 2023] - practical.li 
+* https://vlaaad.github.io/replicant[First impressions of Morse and Replicant] - Vlad
+* https://faster-than-light-memes.xyz/emacs-clojure-lispy-mind-meld.html[emacs-clojure-lispy-mind-meld] - Benjamin Scherdtner
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/zalky/reflet[reflet] 0.3.0-rc1 - Tools for building Re-frame + React based web apps with graph and non-graph data models
+* https://github.com/seancorfield/next.jdbc.xt[next.jdbc.xt]  - Experimental extension of next.jdbc to work with XTDB 2.0 (snapshots)
+* https://github.com/noahtheduke/splint[splint] 1.3.2 - A Clojure linter focused on style and code shape
+* https://github.com/scicloj/wadogo[wadogo] 1.0.0 - scales for clojure
+* https://github.com/generateme/fitdistr[fitdistr] 1.0.5 - Fit distributions with mle, mge, mme and qme methods (+ bootstrap)
+* https://github.com/cognitect-labs/aws-api[aws-api] 0.8.666 - AWS, data driven
+* https://github.com/practicalli/clojure-cli-config[clojure-cli-config] 2023.04.26 - User aliases and Clojure CLI configuration for deps.edn based projects
+* https://github.com/pitch-io/cljest[cljest] 1.0.0 - A preset for Jest which allows for running CLJS tests in Jest
+* https://github.com/eerohele/Tutkain[Tutkain] 0.18.0 (alpha) - A Sublime Text package for interactive Clojure development
+* https://github.com/Clojure2D/clojure2d[clojure2d] 1.1.0 - Java2D wrapper + creative coding supporting functions
+* https://github.com/mjhika/babashka-dl[babashka-dl]  - simple install script for babashka on windows
+* https://github.com/cjbarre/multi-gpt[multi-gpt]  - A Clojure interface into the GPT API with advanced tools like conversational memory, task management, and more
+* https://github.com/generateme/fastmath[fastmath] 1.2.0 - Fast primitive based math library

@@ -1,0 +1,50 @@
+= Clojure Deref (May 5, 2023)
+Alex Miller
+2023-05-05
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Highlights
+
+All of the https://www.youtube.com/playlist?list=PLZdCLR02grLpIQQkyGLgIyt0eHE56aJqd[Clojure/conj 2023 videos] are now available.
+
+And if you want more conferencing, the https://babashka.org/conf/schedule.html[babashak-conf keynotes and schedule overview] is now available.
+
+
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=_g_Kyl4_TSA&ab_channel=LondonClojurians[Software Development Leverage (by Tony Kay)] - Londong Clojurians
+* https://www.youtube.com/live/d-sjGfQRyHY?feature=share[Palestra: Clojure-lsp: um ferramenta de linter para tudo] - clojure-br
+* https://www.youtube.com/watch?v=LrqyNnNG478[edn files in Clojure] - Clojure Diary
+* https://www.youtube.com/watch?v=hYGvmtIa6sY[I built an EMACS Package to SAVE Clojure Commands] - Sammy Talks
+* https://clojure.stream/workshops/clerk[ClerkWorkshop] - Clojure Stream
+* https://www.youtube.com/watch?v=1QA5imZMdSI[Cardigan Bay Release 0.8.0 Update] - Future Office Labs
+
+== Blogs, articles, and projects
+
+* https://metosin.fi/blog/openapi3/[OpenAPI 3 Support for Reitit] - Joel Kaasinen
+* https://blog.janetacarr.com/ports-and-adapters-architecture-for-the-functional-programmer/[Ports and Adapters Architecture for Functional Programmers (with Clojure)] - Janet A. Carr
+* https://medium.com/@fapiyo/polymorphism-in-clojure-with-multi-methods-f83e39be917[Polymorphism in Clojure with multi-methods] - Frankline Apiyo
+* https://timothypratley.blogspot.com/2023/05/the-hallway-track-clojureconj-2023-in.html[The Hallway Track: Clojure/Conj 2023 in Durham] - Timothy Pratley
+* https://fpsd.codes/clojure-bites---clojuretestare.html[Clojure bites - clojure.test/are] - FPSD
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/mhjort/clj-gatling[clj-gatling] 0.18.0 - Load testing library for testing stateful apps with Clojure
+* https://github.com/babashka/scittle[scittle] 0.6.15 - Execute Clojure(Script) directly from browser script tags via SCI
+* https://github.com/practicalli/clojure-cli-config[clojure-cli-config]  - User aliases and Clojure CLI configuration for deps.edn based projects
+* https://github.com/metosin/reitit[reitit] 0.7.0-alpha1 - A fast data-driven routing library for Clojure/Script
+* https://github.com/jpmonettas/flow-storm-debugger[flow-storm-debugger] 3.5.1 - A debugger for Clojure and ClojureScript with some unique features
+* https://github.com/liquidz/antq[antq] 2.4.1070 - Point out your outdated dependencies
+* https://github.com/clojure-lsp/clojure-lsp[clojure-lsp] 2023.05.04-19.38.01 - Clojure & ClojureScript Language Server (LSP) implementation
+* https://github.com/babashka/process[process] 0.5.17 - Clojure library for shelling out / spawning sub-processes
+* https://github.com/eerohele/tab[tab] 2023-05-03.217 - A tool for tabulating Clojure collections
+* https://github.com/ericdallo/jet.el[jet.el]  - Emacs integration for the jet Clojure tool 
+* https://github.com/clj-commons/primitive-math[primitive-math] 1.0.1-rc1 - for the discerning arithmetician
+* https://github.com/simplemono/world[world]  - This library provides tools to work with the world-state approach by David Nolen
+* https://github.com/interstar/cardigan-bay[cardigan-bay] https://github.com/interstar/cardigan-bay/releases/tag/0.8.0[0.8.0] - A new wiki engine in Clojure

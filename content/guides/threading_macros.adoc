@@ -65,8 +65,8 @@ as commas are whitespace in Clojure.
 Semantically, `transform*` is equivalent to `transform`: the arrow macro expands
 at compile time into the original code. In each case, the return value of the
 function is the result of the last computation, the call to `update`. The re-written
-function reads like a description of the transformation: "Take a person, increase their age,
-give them gray hair, and return the result". Of course in the context of immutable
+function reads like a description of the transformation: "Take a person, give them gray
+hair, increase their age, and return the result". Of course in the context of immutable
 values, no actual mutation takes place. Instead, the function simply
 returns a new value with updated attributes.
 

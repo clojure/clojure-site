@@ -1,0 +1,63 @@
+= Clojure Deref (May 12, 2023)
+Alex Miller
+2023-05-12
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Highlights
+
+All of the https://www.youtube.com/playlist?list=PLZdCLR02grLpIQQkyGLgIyt0eHE56aJqd[Clojure/conj 2023 videos] have been re-posted with an intro screen that includes our wonderful platinum and streaming sponsors! Apologies those were missing.  Also, you can now find the slides for Rich Hickey's talk https://download.clojure.org/presentations/DesignInPractice.pdf[Design in Practice], which many people have requested. Happy designing!
+
+This week Stack Overflow opened their https://stackoverflow.az1.qualtrics.com/jfe/form/SV_czLVsbnGnF4Q04e[2023 Developer Survey] - it is very important that our community continues to show up in these results, so I would beseech you to take a few minutes and fill it out (a lot of it is optional). This year, in addition to Clojure being included in the languages section, Datomic was included for the first time in the Databases section, and Shortcut (written in Clojure) showed up in the developer tools. 
+
+== From the core
+
+Fogus and I have come up out of fog of Conj and diving back into the Clojure 1.12 work. Sean Corfield has been very helpful in tracking down a very subtle regression in the IDrop changes in 1.12.0-alpha1 (https://clojure.atlassian.net/browse/CLJ-2772[CLJ-2772]) and we should have that fixed for the next alpha. Additionally, I've been working through feedback on add-libs and Fogus on Morse feedback and we are taking care of those.
+
+On new feature work, I've been working on our approach to Java functional interface interop, and Fogus has been working on some Java stream integration and a possibly new piece of syntax for using Java static methods as functions. We are hoping to land most or all of that in 1.12.
+
+
+== Podcasts and videos
+
+* https://clojure.stream/podcast[E92 Atomic Architecture with Malcolm Sparks] - ClojureStream Podcast
+* https://ericnormand.me/podcast/what-is-reify-to-interpreter-refactoring[What is the "reify to an interpreter" refactoring?] - Eric Normand
+* https://www.reddit.com/r/Clojure/comments/13ffjpp/the_meyvn_repl_and_hot_reloading_of_java_and/[The Meyvn REPL and hot reloading of Java and Kotlin code] - Daniel Szmulewicz
+* https://www.youtube.com/watch?v=fQ4avjER1m4[println vs prn-str in Clojure] - Clojure Diary
+
+== Blogs, articles, and projects
+
+* https://www.juxt.pro/blog/clojure-in-docker/[Clojure in Security: Docker] - JUXT
+* https://recife.pfeodrippe.com/notebooks/recife/notebook/logic_and_provenance.html[Recife, Logic (Programming) and Provenance] - Paulo Feodrippe
+* https://quii.dev/HTMX_is_the_Future[HTMX is the Future] - Chris James
+* https://www.quantisan.com/simplifying-step-functions-and-stepwise-lessons-learned-and-a-new-approach/[Simplifying Step Functions and Stepwise: Lessons Learned and a New Approach] - Paul Lam
+* https://camdez.com/blog/2023/05/07/notes-on-upgrading-datomic-on-prem-to-v1.0.6726/[Notes on Upgrading Datomic On-Prem to v1.0.6726] - Cameron Desautels
+* https://grishaev.me/en/pg-lib/[PG: Postgres-related libraries for Clojure] - Ivan Grishaev
+* https://oss.toyokumo.co.jp/[Thanks OSS Award (in Japanese)] - Toyokumo
+* https://dev.to/afucher/executando-funcoes-no-clojure-p4p[(Executando funções no Clojure)] - Arthur Fücher
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/borkdude/deps.clj[deps.clj] 1.11.1.1273-3 - A faithful port of the clojure CLI bash script to Clojure
+* https://github.com/darkleaf/di[di] 2.3.0 - DI is a dependency injection framework that allows you to define dependencies as cheaply as defining function arguments
+* https://github.com/babashka/process[process] 0.5.19 - Clojure library for shelling out / spawning sub-processes
+* https://github.com/babashka/fs[fs] 0.4.18 - File system utility library for Clojure
+* https://github.com/ont-app/vocabulary[vocabulary] 0.3.0 - Utilities to map between clojure namespaced keywords and RDF-style URIs
+* https://github.com/nathell/skyscraper[skyscraper] 0.3.5 - Structural scraping for the rest of us
+* https://github.com/clojure/tools.cli[tools.cli] 1.0.219 - Command-line processing
+* https://github.com/wkok/openai-clojure[openai-clojure] 0.6.0 - Clojure functions to drive the OpenAI API
+* https://github.com/BetterThanTomorrow/calva[calva] 2.0.358 - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/IGJoshua/farolero[farolero] 1.5.0 - Thread-safe Common Lisp style conditions and restarts for Clojure(Script) and Babashka
+* https://github.com/generateme/fitdistr[fitdistr] 1.0.6 - Fit distributions with mle, mge, mme and qme methods (+ bootstrap)
+* https://github.com/generateme/fastmath[fastmath] 2.2.1 - Fast primitive based math library
+* https://github.com/practicalli/clojure-cli-config[clojure-cli-config] https://github.com/practicalli/clojure-cli-config/releases/tag/2023-05-09[2023-05-09] - User aliases and Clojure CLI configuration for deps.edn based projects
+* https://github.com/juji-io/datalevin[datalevin] 0.8.15 - A simple, fast and versatile Datalog database
+* https://github.com/steffan-westcott/clj-otel[clj-otel] 0.2.1 - An idiomatic Clojure API for adding telemetry to your libraries and applications using OpenTelemetry
+* https://github.com/noahtheduke/splint[splint] 1.4.1 - A Clojure linter focused on style and code shape
+* https://github.com/lambdaisland/kaocha[kaocha] https://github.com/lambdaisland/kaocha/releases/tag/v1.83.1314[1.83.1314] - Full featured next gen Clojure test runner
+* https://github.com/AvisoNovate/pretty[pretty] 1.4.2 - Library for helping print things prettily, in Clojure - ANSI fonts, formatted exceptions
+* https://github.com/NikolaySuslov/krestianstvo-electric[krestianstvo-electric]  - Krestianstvo | Electric - Clojure. Implementing a scalable Croquet VM

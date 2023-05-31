@@ -22,6 +22,16 @@ For more information see the following docs:
 
 Recent official releases are described here. Prereleases and older versions can be found in the https://github.com/clojure/brew-install/blob/1.11.1/CHANGELOG.md[repo changelog].
 
+=== 1.11.1.1347 (May 31, 2023) [[v1.11.1.1347]]
+
+* With -X or -T accept `-` as a trailing argument to read the remainder of args from stdin
+* On windows installer, hide progress bar on download
+* https://clojure.atlassian.net/browse/TDEPS-247[TDEPS-247] - Fix StackOverflow on deps with big fan-out
+* https://clojure.atlassian.net/browse/TDEPS-249[TDEPS-249] - Properly push/pop thread bindings during dep expansion
+* https://clojure.atlassian.net/browse/TDEPS-227[TDEPS-227] - Shut down dep expansion threads at end of resolve-deps
+* https://clojure.atlassian.net/browse/TDEPS-248[TDEPS-248] - Make `tags` return known tags when offline
+* Use https://github.com/clojure/tools.deps/blob/master/CHANGELOG.md[tools.deps] 0.18.1354
+
 === 1.11.1.1273 (Apr 3, 2023) [[v1.11.1.1273]]
 
 * Fix regression in -Spom

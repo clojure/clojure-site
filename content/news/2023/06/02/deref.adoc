@@ -1,0 +1,56 @@
+= Clojure Deref (June 2, 2023)
+Alex Miller
+2023-06-02
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== From the core
+
+Over the course of the last few weeks, I've been moving all of the Clojure and contrib library continuous integration and release builds from the Clojure build box over to https://github.com/clojure/build.ci/tree/master/.github/workflows[GitHub actions], which has been somewhat tedious, but has opened up some new opportunities for testing and automation. Ultimately I would like to move a lot of this towards tools.build and out of Maven, but one step at a time.
+
+We did a Clojure CLI build this week that includes several important fixes that came in from the community via https://ask.clojure.org[Ask Clojure], so thank you to everyone that is adding and voting on things there, it really does help as a central place. This release also contains some important changes to accept -X and -T args over stdin, which is groundwork for fixing some add-libs issues. We have a batch of things in the queue for another alpha soon.
+
+I have also been working on our approach to improving functional interface Java interop. The crux of this is that when calling a Java API that accepts a functional interface argument (not just the java.util.function interfaces, but any "single abstract method" interface), wouldn't it be nice if IFn's could just be passed directly without needing to reify the functional interface and adapt? Sure would. We've looked at many possible approaches to this and are starting to prototype some primary contenders. This has also fed a lot of learning that might feed some other things we're looking at.
+
+Fogus has continued work on stream integration - https://clojure.atlassian.net/browse/CLJ-2775[CLJ-2775] is the first part of that, but there may be some additional work as well.
+
+Thanks to Anton Fonarev for all the assistance on link aggregation! With me spending less time on that, I can spend more time writing status like above, so it really helps.
+
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=s3mjVAMNVrA[Clojure Goes Brrr: a quest for performance (by Oleksandr Yakushev)] - London Clojurians
+* https://www.youtube.com/watch?v=dUtJ2C4UYqo[Clojure visual-tools meeting 18 - Mosaic and other updates] - Sci Cloj
+* https://www.youtube.com/watch?v=55vk3FwPoSw[Creating static website with Clojure] - Clojure Diary
+
+== Blogs, articles, and projects
+
+* https://www.clojuriststogether.org/news/q2-2023-funding-announcement/[Q2 2023 Funding Announcement] - Clojurists Together
+* https://www.wedesoft.de/software/2023/05/26/lwjgl3-clojure/[OpenGL example in Clojure using LWJGL version 3] - Jan Wedekind
+* https://clojure-doc.org/articles/cookbooks/cli_build_projects/[Building Projects: tools.build and the Clojure CLI] - Sean Corfield
+* https://www.etiennetheodore.com/use-extension-in-clojuredart/[Using extensions in ClojureDart] - Etienne Théodore 
+* https://endot.org/2023/05/27/vim-clojure-dev-2023/[Developing Clojure in Vim (2023 edition)] - Nate Jones
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://clojure.org/guides/deps_and_cli[Clojure CLI] https://clojure.org/releases/tools#v1.11.1.1347[1.11.1.1347]
+* https://github.com/quoll/tiara[tiara] 0.2.1 - A small data structure library
+* https://github.com/babashka/babashka[babashka] 1.3.180 - Native, fast starting Clojure interpreter for scripting
+* https://github.com/NoahTheDuke/splint[splint] https://github.com/NoahTheDuke/splint/releases/tag/v1.7.0[1.7.0] - A Clojure linter focused on style and code shape
+* https://github.com/fulcrologic/fulcro-radd[fulcro-radd] 1.5.0 - Fulcro Rapid Application Development
+* https://github.com/hlship/cli-tools[cli-tools] 0.7 - CLIs and subcommands for Clojure or Babashka
+* https://github.com/clj-kondo/clj-kondo[clj-kondo] 2023.05.26 - Static analyzer and linter for Clojure code that sparks joy
+* https://github.com/clojure-emacs/clojure-ts-mode[clojure-ts-mode] 0.1.0 - The next generation Clojure major mode for Emacs, powered by TreeSitter
+* https://github.com/joakimen/fzf.clj[fzf.clj]  - A small, data-driven and babashka-compatible wrapper around fzf
+* https://github.com/NoahTheDuke/splint[splint] https://github.com/NoahTheDuke/splint/releases/tag/v1.8.0[1.8.0] - Linter focused on style and code shape
+* https://github.com/fulcrologic/statecharts[statecharts] 1.1.0 - A Statechart library for CLJ(S)
+* https://github.com/yapsterapp/slip[slip] 0.0.58 - A Clojure+Script micro-library for building systems of objects (IOC)
+* https://github.com/clojure/tools.gitlibs[tools.gitlibs] 2.5.197 - API for retrieving, caching, and programatically accessing git libraries
+* https://github.com/clojure/tools.deps[tools.deps] 0.18.1354 - Deps as data and classpath generation
+* https://github.com/quoll/michelangelo[michelangelo] 0.1.0 - Turtle transforming library
+* https://github.com/eval/deps-try[deps-try] 0.5.0 - Try out Clojure libraries via rebel-readline
+* https://github.com/BetterThanTomorrow/calva[calva] 2.0.367 - Clojure & ClojureScript Interactive Programming for VS Code

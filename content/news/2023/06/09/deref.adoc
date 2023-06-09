@@ -1,0 +1,55 @@
+= Clojure Deref (June 9, 2023)
+Alex Miller
+2023-06-09
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== From the core
+
+Some work this week continuing to migrate everything from the old build server into GitHub actions, just a few tidbits left to handle. The next Clojure alpha will be built using this process so we'll give that some extra scrutiny.
+
+Speaking of a next alpha, Rich has [ok'ed](https://clojure.atlassian.net/issues/?filter=10011) a slew of tickets, mostly fixes to things we did in prior alphas. There are a couple more add-libs things and I think we will wait for those to get through the pipeline before we release, but that's coming soon.
+
+Feature work continues on Java functional interface integration, Java stream support, and method thunks (using Java methods as Clojure functions).
+
+A few people have asked recently about the Clojure survey results and I have been working on it periodically, hope to have a write up for that soonish, sorry for the delay.
+
+As always, thanks to Anton Fonarev for all the assistance on link aggregation!
+
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=sap3Z-LpNjY[Scicloj LLM Meetup 1: Introduction] - Sci Cloj
+* https://www.twitch.tv/videos/1837830191[Exercism Live Stream — Solving Robot Name] - Bobbi Codes
+* https://www.twitch.tv/videos/1839094343[Exercism Live Stream — Solving RNA Transciption, Nucleotide Count, Space Age and Bank Account] - John Practicalli
+* https://www.youtube.com/watch?v=ntRCK_2eP3U[Desenvolvimento interativo com o REPL] - clojure-br
+* https://www.youtube.com/watch?v=4yQw8aaA_DQ[Load testing stateful applications in Clojure (by Markus Hjort)] - London Clojurians
+* https://www.youtube.com/watch?v=3sRKQg9-In8[Bitemporal Databases: What They Are and Why They Matter, with James Henderson of XTDB] - Developer Voices
+* https://www.youtube.com/watch?v=Mmr1nO6uMzc[Debugging Clojure with FlowStorm 3.6] - Juan Monetta
+* https://www.youtube.com/watch?v=cE8oAyCjF_s[Porting single argument function to accept multiple arguments in Clojure] - Clojure Diary
+
+== Blogs, articles, and projects
+
+* https://blog.michielborkent.nl/oss-updates-may-2023.html[OSS updates May 2023] - Michiel Borkent
+* https://github.com/babashka/babashka/blob/master/doc/news.md#2023-05-twitter-mastodon[Babashka news of May 2023] - Michiel Borkent
+* https://matthewdowney.github.io/clojure-neural-networks-from-scratch-mnist.html[Notes on neural networks from scratch in Clojure] - Matthew Downey
+* https://www.etiennetheodore.com/state-management-in-clojuredart/[State management in ClojureDart] - Etienne Théodore 
+* https://techascent.com/blog/clojure-csv-parquet.html[Converting CSV to parquet in Clojure] - TechAscent 
+* https://fpsd.codes/clojure-bites---rendering-html.html[Clojure bites - Rendering HTML] - Francesco Pischedda
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/nx-clj/nx-clj[nx-clj] 0.1.0-alpha.5 - Nx plugin for Clojure monorepos
+* https://github.com/PEZ/rn-rf-shadow[rn-rf-shadow]  - An example project to get you started with React Native using shadow-cljs in 3 minutes
+* https://github.com/AbhinavOmprakash/snitch[snitch] 0.1.14 - Snitch is inline-defs on steroids
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.369[2.0.369] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/pedestal/pedestal[pedestal] 0.6.0-beta-2 - The Pedestal Server-side Libraries
+* https://github.com/squint-cljs/cherry[cherry] 0.0.4 - Experimental ClojureScript to ES6 module compiler
+* https://github.com/steffan-westcott/clj-otel[clj-otel] 0.2.2 - An idiomatic Clojure API for adding telemetry to your libraries and applications using OpenTelemetry
+* https://github.com/mhjort/trombi[trombi] 1.0 - Load testing library for testing stateful apps with Clojure
+* https://github.com/fulcrologic/fulcro-rad[fulcro-rad] 1.5.1 - Fulcro Rapid Application Development
+* https://github.com/borkdude/deps.clj[deps.clj] 1.11.1.1347 - A faithful port of the clojure CLI bash script to Clojure

@@ -11,7 +11,7 @@ Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure
 
 Some work this week continuing to migrate everything from the old build server into GitHub actions, just a few tidbits left to handle. The next Clojure alpha will be built using this process so we'll give that some extra scrutiny.
 
-Speaking of a next alpha, Rich has [ok'ed](https://clojure.atlassian.net/issues/?filter=10011) a slew of tickets, mostly fixes to things we did in prior alphas. There are a couple more add-libs things and I think we will wait for those to get through the pipeline before we release, but that's coming soon.
+Speaking of a next alpha, Rich has https://clojure.atlassian.net/issues/?filter=10011[ok'ed] a slew of tickets, mostly fixes to things we did in prior alphas. There are a couple more add-libs things and I think we will wait for those to get through the pipeline before we release, but that's coming soon.
 
 Feature work continues on Java functional interface integration, Java stream support, and method thunks (using Java methods as Clojure functions).
 

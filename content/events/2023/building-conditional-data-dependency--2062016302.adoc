@@ -1,0 +1,64 @@
+= Building conditional data dependency
+2023-06-20
+:jbake-type: event
+:jbake-edition: 
+:jbake-link: https://www.meetup.com/london-clojurians/events/294043904/
+:jbake-location: online
+:jbake-start: 2023-06-20
+:jbake-end: 2023-06-20
+
+== Building conditional data dependency graphs wi...
+
+Building conditional data dependency graphs with Nodely (by Sophia Velten) +
+ +
+THIS IS AN ONLINE EVENT +
+[Connection details will be shared 1h before the start time] +
+The London Clojurians are happy to present: +
+Title: Building conditional data dependency graphs with Nodely +
+Speaker: Sophia Velten +
+Time: 2023-06-20 @ 18:30 (London time) +
+Local time: https://time.is/1830_20_June_2023_in_London/ (click here for local time) +
+Sophia Velten ( https://twitter.com/sophiavelten ) will be presenting: +
+&quot;Building conditional data dependency graphs with Nodely&quot; +
+There are many libraries out there for declaring and running data +
+dependency pipelines expressed by directed acyclic graphs, but to our +
+knowledge none of them have built-in support for expressing +
+conditional dependencies. With Nodely it is possible to express +
+conditional dependencies declaratively and decouple declaration from +
+execution. We are able to run the same dependency definition with +
+multiple engines such as: lazy synchronous, async with core-async, +
+async with promesa and potentially many others, unlocking the power of +
+async and avoiding execution of unneeded dependencies. +
+Sophia Velten is a Computer Engineer currently working at Nubank as a +
+Senior Staff Software Engineer, where she designed State Flow, an open +
+source Clojure library which is the standard integration testing +
+framework at Nubank. Her main interest in tech is the interface +
+between humans and machines, which usually means language. She enjoys +
+a bunch of esoteric languages ranging from Ancient Greek to Haskell, +
+Lisps (Clojure) and Smalltalk and tends to apply category theory in +
+more places than it is advisable. Beyond tech she is also interested +
+in philosophy and (karaoke) singing. +
+If you missed this event, you can watch the recording on our YouTube channel: +
+https://www.youtube.com/@LondonClojurians +
+(The recording will be uploaded a couple of days after the event.) +
+Please, consider supporting the London Clojurians with a small donation: +
+https://opencollective.com/london-clojurians/ +
+Your contributions will enable the sustainability of the London +
+Clojurians community and support our varied set of online and +
+in-person events: +
+- ClojureBridge London: supports under-represented groups discover Clojure +
+- re:Clojure: our **free** to attend annual community conference +
+- monthly meetup events with speakers from all over the world +
+- subscription and admin costs such as domain name &amp; Zoom plan for +
+larger online meetups +
+Thank you to our sponsors: +
+- https://juxt.pro/ +
+- https://flexiana.com/ +
+- https://gaiwan.co/ +
+- https://freshcodeit.com/ +
+- https://nette.io/ +
+- https://nilenso.com/ +
+- And many individual sponsors +
+ +
+Zulip: https://clojurians.zulipchat.com/#narrow/stream/262224-events/near/366108262 +
+

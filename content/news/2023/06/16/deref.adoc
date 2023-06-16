@@ -13,36 +13,31 @@ The annual Stack Overflow https://survey.stackoverflow.co/2023/[Developer's Surv
 
 == Podcasts and videos
 
-* https://on.soundcloud.com/RKi8L[#89 Kimmo Koskinen aka viesti] - defn podcast
-* https://www.youtube.com/watch?v=sap3Z-LpNjY[Scicloj LLM Meetup 1: Introduction] - Sci Cloj
-* https://www.twitch.tv/videos/1837830191[Exercism Live Stream — Solving Robot Name] - Bobbi Codes
-* https://www.twitch.tv/videos/1839094343[Exercism Live Stream — Solving RNA Transciption, Nucleotide Count, Space Age and Bank Account] - John Practicalli
-* https://www.youtube.com/watch?v=ntRCK_2eP3U[Desenvolvimento interativo com o REPL] - clojure-br
-* https://www.youtube.com/watch?v=4yQw8aaA_DQ[Load testing stateful applications in Clojure (by Markus Hjort)] - London Clojurians
-* https://www.youtube.com/watch?v=3sRKQg9-In8[Bitemporal Databases: What They Are and Why They Matter, with James Henderson of XTDB] - Developer Voices
-* https://www.youtube.com/watch?v=Mmr1nO6uMzc[Debugging Clojure with FlowStorm 3.6] - Juan Monetta
-* https://www.youtube.com/watch?v=cE8oAyCjF_s[Porting single argument function to accept multiple arguments in Clojure] - Clojure Diary
+* https://soundcloud.com/defn-771544745/89-kimmo-koskinen-aka-viesti?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing[#89 Kimmo Koskinen aka viesti] - defn
+* https://www.youtube.com/watch?v=ncYlHfK25i0[The jank programming language (by Jeaye Wilkerson)] - London Clojurians
+* https://www.youtube.com/watch?v=4NdcrkWiGrw[Vector distances in Clojure] - Clojure Diary
 
 == Blogs, articles, and projects
 
-* https://blog.michielborkent.nl/oss-updates-may-2023.html[OSS updates May 2023] - Michiel Borkent
-* https://github.com/babashka/babashka/blob/master/doc/news.md#2023-05-twitter-mastodon[Babashka news of May 2023] - Michiel Borkent
-* https://matthewdowney.github.io/clojure-neural-networks-from-scratch-mnist.html[Notes on neural networks from scratch in Clojure] - Matthew Downey
-* https://www.etiennetheodore.com/state-management-in-clojuredart/[State management in ClojureDart] - Etienne Théodore
-* https://techascent.com/blog/clojure-csv-parquet.html[Converting CSV to parquet in Clojure] - TechAscent 
-* https://fpsd.codes/clojure-bites---rendering-html.html[Clojure bites - Rendering HTML] - Francesco Pischedda
+* https://github.com/matthiasn/talk-transcripts/blob/master/Hickey_Rich/AreasOfInterestForClojuresCore.md[Transcript for Rich Hickey's 2011 Clojure Conj Keynote] - Lee Read
+* https://widdindustries.com/blog/what-is-inst.html[What is #inst ?] - Henry Widd
+* https://flexiana.com/2023/06/clojure-corner-with-pez[Clojure Corner with Peter Stromberg] - Flexiana
+* https://biffweb.com/p/how-to-use-electric/[How to use Electric in a Biff project] - Jacob O'Bryant
 
 == Libraries and Tools
 
 New releases and tools this week:
 
-* https://github.com/nx-clj/nx-clj[nx-clj] 0.1.0-alpha.5 - Nx plugin for Clojure monorepos
-* https://github.com/PEZ/rn-rf-shadow[rn-rf-shadow]  - An example project to get you started with React Native using shadow-cljs in 3 minutes
-* https://github.com/AbhinavOmprakash/snitch[snitch] 0.1.14 - Snitch is inline-defs on steroids
-* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.369[2.0.369] - Clojure & ClojureScript Interactive Programming for VS Code
-* https://github.com/pedestal/pedestal[pedestal] 0.6.0-beta-2 - The Pedestal Server-side Libraries
-* https://github.com/squint-cljs/cherry[cherry] 0.0.4 - Experimental ClojureScript to ES6 module compiler
-* https://github.com/steffan-westcott/clj-otel[clj-otel] 0.2.2 - An idiomatic Clojure API for adding telemetry to your libraries and applications using OpenTelemetry
-* https://github.com/mhjort/trombi[trombi] 1.0 - Load testing library for testing stateful apps with Clojure
-* https://github.com/fulcrologic/fulcro-rad[fulcro-rad] 1.5.1 - Fulcro Rapid Application Development
-* https://github.com/borkdude/deps.clj[deps.clj] 1.11.1.1347 - A faithful port of the clojure CLI bash script to Clojure
+* https://github.com/pitch-io/cljest[cljest] https://github.com/pitch-io/cljest/releases/tag/1.1.0[1.1.0] - A preset for Jest which allows for running CLJS tests in Jest
+* https://github.com/pedestal/pedestal[pedestal] https://github.com/pedestal/pedestal/releases/tag/0.6.0[0.6.0] - The Pedestal Server-side Libraries
+* https://github.com/epiccastle/bbssh[bbssh] 0.5.0 - Babashka pod for SSH support.
+* https://github.com/nextjournal/clerk[clerk] 0.14.919 - Moldable Live Programming for Clojure
+* https://github.com/pesterhazy/bash2bb[bash2bb] 0.1.119 - A converter of bash scripts into babashka programs
+* https://github.com/htihospitality/re-dash[re-dash] https://github.com/htihospitality/re-dash/releases/tag/0.2.0[0.2.0] - A ClojureDart (re)framework for building user interfaces, leveraging Flutter
+* https://github.com/lambdaisland/deep-diff2[deep-diff2] https://github.com/lambdaisland/deep-diff2/releases/tag/v2.9.202[2.9.202] - Deep diff Clojure data structures and pretty print the result
+* https://github.com/lambdaisland/kaocha[kaocha] https://github.com/lambdaisland/kaocha/releases/tag/v1.85.1342[1.85.1342] - Full featured next gen Clojure test runner
+* https://github.com/babashka/babashka[babashka] 1.3.181 - Native, fast starting Clojure interpreter for scripting
+* https://github.com/clj-commons/gloss[gloss] 0.3.6 - Gloss is a byte-format DSL
+* https://github.com/babashka/babashka-sql-pods[babashka-sql-pods] 0.1.2 - Babashka pods for SQL databases
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.370[2.0.370] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/walmartlabs/lacinia-pedestal[lacinia-pedestal] 1.2-beta-1 - Expose Lacinia GraphQL as Pedestal endpoints

@@ -1,0 +1,54 @@
+= Clojure Deref (June 23, 2023)
+Alex Miller
+2023-06-23
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== From the core
+
+This week, I continued to make steady progress on integration support for Java functional interfaces. The gist of this is when you call a Java method that takes a functional interface, you should be able to pass a Clojure IFn without making an explicit adapter from IFn to the target interface. So calling `(.filter stream even?)` should "just work", without needing to reify a java.util.function.Predicate to call your IFn.
+
+We've looked at a lot of approaches for this, but the path we are pretty far down at this point is to detect when this mismatch ocurs and invoke an adapter for you. We are mimicking what the Java compiler does to create this as if it were a lambda expression in Java - this avoids creating more classes at compile time and is fully inlineable at runtime. There are a lot of corner cases around primitives, avoiding the creation of the adapter when one isn't needed, etc, but that is getting close.
+
+Fogus has been working on kind of the opposite problem - being able to refer to a Java method in Clojure code and have it work like an IFn, so you could (for example), map a static method directly over a Clojure collection without creating an anonymous function. The concerns are different than the prior case and I think we will probably end up handling this in the compiler with a generated reified class that implements IFn. There are interesting tensions between syntax, allowed capabilities (multiple arities, type overloading, primitive support, varargs, etc), and the implementation approach, so we've kind of bounced around the design space several times here.
+
+Additionally, I think we've pretty much finalized a set of new stream helper functions to allow Java streams to be used more directly in Clojure.
+
+All of these features are on track for 1.12, plus maybe a couple more (in particular I want to look at better varargs support in combination with the features above). Combining all of these will really make interop with newer Java libs that make use of functions and streams much much better.
+
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=uhRnCfWSA9Y[Scicloj LLM Meetup 2: Prompt engineering, managing embeddings] - Sci Cloj
+* https://www.youtube.com/watch?v=NNDThiZqe70[Scicloj LLM Meetup 3: LLMOps with Bosquet] - Sci Cloj
+* https://www.youtube.com/watch?v=PtVW9Fm4Ra8[Code Review: Clojure Lexer - The Clojure way!] - Juan Monetta
+* https://www.youtube.com/watch?v=y4w0_T2R1dY[K Nearest Neighbors (KNN) Iris classification using Clojure] - Clojure Diary
+
+== Blogs, articles, and projects
+
+* https://blog.datomic.com/2023/06/datomic-cloud-is-free.html[Datomic Cloud is Free] - Cognitect
+* https://faster-than-light-memes.xyz/meta-the-meta.html[Meta The Meta (Use JVM repl for bb script development)] - Benjamin Schwerdtner
+* https://blog.janetacarr.com/how-to-hire-clojure-developers/[How to Hire Clojure Developers] - Janet A. Carr
+* https://www.juxt.pro/blog/clojure-in-gresham/[Clojure in Finance: Gresham] - JUXT
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/cognitect-labs/aws-api[aws-api] https://github.com/cognitect-labs/aws-api/blob/main/CHANGES.md[0.8.681] - AWS, data driven
+* https://github.com/liquidz/antq[antq] https://github.com/liquidz/antq/releases/tag/2.5.1095[2.5.1095] - Point out your outdated dependencies
+* https://github.com/zmedelis/bosquet[bosquet] https://github.com/zmedelis/bosquet/releases/tag/v0.3.0[0.3.0] - LLMOps tools
+* https://github.com/wkok/openai-clojure[openai-clojure] https://github.com/wkok/openai-clojure/releases/tag/0.8.0[0.8.0] - Clojure functions to drive the OpenAI API
+* https://github.com/licht1stein/babashka.el[babashka.el] 1.0.3 - Babashka Tasks for Emacs
+* https://github.com/ont-app/vocabulary[vocabulary] https://github.com/ont-app/vocabulary/releases/tag/v0.4.0[0.4.0] - Utilities to map between clojure namespaced keywords and RDF-style URIs
+* https://github.com/scarletcomply/license-finder[license-finder] 0.2.0 - Finds licenses of your Clojure(Script) dependencies
+* https://github.com/eval/deps-try[deps-try] 0.7.0 - Try out Clojure libraries via rebel-readline
+* https://github.com/lambdaisland/hiccup[hiccup] https://github.com/lambdaisland/hiccup/releases/tag/v0.0.25[0.0.25] - Enlive-backed Hiccup implementation (clj-only)
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.371[2.0.371] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/steffan-westcott/clj-otel[clj-otel] 0.2.3 - Clojure API for adding telemetry to your libraries and applications using OpenTelemetry
+* https://github.com/babashka/bbin[bbin] 0.2.0-beta1 - Install any Babashka script or project with one command
+* https://github.com/babashka/cli[cli] 0.7.52 - Turn Clojure functions into CLIs
+* https://github.com/AvisoNovate/pretty[pretty] 1.4.4 - Library for helping print things prettily
+* https://github.com/mpenet/auspex[auspex] 1.0.0 - Mini wrapper over java CompletableFuture with a manifold deferred after-taste

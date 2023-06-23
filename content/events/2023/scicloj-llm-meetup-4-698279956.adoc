@@ -1,0 +1,62 @@
+= Scicloj LLM meetup 4
+2023-07-14
+:jbake-type: event
+:jbake-edition: 
+:jbake-link: https://clojureverse.org/t/scicloj-llm-meetup-4-architectures-and-ideas-behind-transformer-based-generative-llms/10137
+:jbake-location: online
+:jbake-start: 2023-07-14
+:jbake-end: 2023-07-14
+
+== Scicloj LLM meetup 4: Architectures and ideas ...
+
+Scicloj LLM meetup 4: Architectures and ideas behind transformer-based generative LLMs +
+ +
+This 4th meetup in the LLM meetup series will offer an overview of the core ideas behind transformer-based generative LLMs. +
+Unlike many of our meetups, this one is not specifically about Clojure. +
+ +
+Joining +
+It would be nice to Reply below and mention that you plan to attend. You can also inform me by a private message. +
+You can use the Add to Calendar button to add the event to your calendar. +
+ +
+Agenda +
+ +
+Dimid Duchovny will explain some of the concepts behind LLM services: +
+ +
+self-attention as a mechanism to capture dependencies and relationships within data +
+training processes - from unsupervised pre-training to RLHF +
+the inference process +
+ +
+ +
+Dimid will then cover additional practical topics: +
+ +
+using LLMs locally from Python +
+a detailed look into the OpenAI API and its various parameters +
+ +
+ +
+ +
+@daslu will briefly demonstrate performing such tasks from Clojure. +
+ +
+ +
+Assumed background +
+Prior knowledge about LLMs would be excellent but is not required. +
+Some familiarity with Python will be assumed. +
+ +
+Abstract +
+Join us for an engaging meetup session that delves into the captivating world of GenAI, where we will embark on an exciting journey through the architecture and ideas behind transformer-based generative Large Language Models (LLMs). +
+In this meetup, we will begin by unraveling the fundamental concepts that underpin services such as ChatGPT, highlighting their ability to generate coherent and contextually rich text. We will explore how these models leverage self-attention mechanisms to effectively capture dependencies and relationships within vast amounts of data, resulting in remarkable generative capabilities. We&rsquo;ll go over their training process from unsupervised pre-training to RLHF and also discuss inference. +
+Next, we will dive into the OpenAI API. We will discuss how to access the API, and explore its various params. Discover how you can leverage this interface to generate creative and contextually relevant text, and gain insights into best practices and trade-offs. +
+Whether you are a seasoned data scientist, an AI enthusiast, or simply curious about the latest advancements in natural language processing, this meetup is designed to provide an introduction to Generative AI and its practical uses. +
+ +
+Length +
+The official part will be 90 minutes long. +
+Sometimes, some of us like to stay longer and chat. +
+ +
+Video Call +
+Zoom link: Launch Meeting - Zoom +
+ +
+Recording +
+The meeting will be recorded and shared publicly. +
+Some parts will be unrecorded. +
+ +
+Zulip: https://clojurians.zulipchat.com/#narrow/stream/262224-events/near/368045489 +
+

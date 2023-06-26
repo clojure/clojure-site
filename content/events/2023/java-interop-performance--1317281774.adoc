@@ -1,0 +1,53 @@
+= Java Interop Performance
+2023-08-08
+:jbake-type: event
+:jbake-edition: 
+:jbake-link: https://www.meetup.com/london-clojurians/events/294389328/
+:jbake-location: online
+:jbake-start: 2023-08-08
+:jbake-end: 2023-08-08
+
+== Java Interop Performance (by Alex Miller)
+
+THIS IS AN ONLINE EVENT +
+[Connection details will be shared 1h before the start time] +
+The London Clojurians are happy to present: +
+Title: Java Interop Performance +
+Speaker: Alex Miller +
+Time: 2023-08-08 @ 18:30 (London time) +
+Local time: https://time.is/1830_08_August_2023_in_London/ (click here for local time) +
+Alex Miller ( https://insideclojure.org ) will be presenting: +
+&quot;Java Interop Performance&quot; +
+Java interop is a common area of Clojure performance issues. In this +
+talk we'll look at the two most important issues - reflection and +
+boxed math. You will learn how to detect these problems (and develop +
+an intuition for when they will happen), and how to fix them with type +
+hints. +
+Alex Miller is part of the Clojure core team working at Nubank and +
+coauthor of Programming Clojure and Clojure Applied. He is also the +
+creator of the Strange Loop, Clojure/west, and Lambda Jam conferences +
+and one of the organizers of the Clojure/conj conference. +
+If you missed this event, you can watch the recording on our YouTube channel: +
+https://www.youtube.com/@LondonClojurians +
+(The recording will be uploaded a couple of days after the event.) +
+Please, consider supporting the London Clojurians with a small donation: +
+https://opencollective.com/london-clojurians/ +
+Your contributions will enable the sustainability of the London +
+Clojurians community and support our varied set of online and +
+in-person events: +
+- ClojureBridge London: supports under-represented groups discover Clojure +
+- re:Clojure: our **free** to attend annual community conference +
+- monthly meetup events with speakers from all over the world +
+- subscription and admin costs such as domain name &amp; Zoom plan for +
+larger online meetups +
+Thank you to our sponsors: +
+- https://juxt.pro/ +
+- https://flexiana.com/ +
+- https://gaiwan.co/ +
+- https://freshcodeit.com/ +
+- https://nette.io/ +
+- https://nilenso.com/ +
+- And many individual sponsors +
+ +
+Zulip: https://clojurians.zulipchat.com/#narrow/stream/262224-events/near/369141902 +
+

@@ -19,6 +19,25 @@ Note: All dev releases are subject to breaking changes for new work since the pr
 
 == Release 1.12.0
 
+=== 1.12.0-alpha4 (Jun 28, 2023) [[v1.12.0-alpha4]]
+
+Bug fixes:
+
+* https://clojure.atlassian.net/browse/CLJ-2686[CLJ-2686] clojure.core.server/parse-props - Fix exception if system properties concurrently modified during initialization
+* https://clojure.atlassian.net/browse/CLJ-2694[CLJ-2694] Fix ratio invariants violated when using Long/MIN_VALUE
+
+Fixes from work in prior 1.12.0 alpha releases:
+
+* https://clojure.atlassian.net/browse/CLJ-2772[CLJ-2772] drop, nthrest, nthnext - Fix regression in behavior when n != positive integer
+* https://clojure.atlassian.net/browse/CLJ-2741[CLJ-2741] drop - fix meta inappropriately retained for StringSeq
+* https://clojure.atlassian.net/browse/CLJ-2767[CLJ-2767] add-libs - Fix repl check always allows use
+* https://clojure.atlassian.net/browse/CLJ-2769[CLJ-2769] add-libs - Fix line limit issues by using stdin
+* https://clojure.atlassian.net/browse/CLJ-2773[CLJ-2773] c.j.process/[from,to]-file - fix mismatch in param and docstring
+* https://clojure.atlassian.net/browse/CLJ-2776[CLJ-2776] c.j.process/exec - fix incorrect use of redirectErrorStream
+* https://clojure.atlassian.net/browse/CLJ-2774[CLJ-2774] c.j.process/exec - fix merge order of options to allow overriding
+* https://clojure.atlassian.net/browse/CLJ-2778[CLJ-2778] c.j.process/capture - fix typo in docstring
+* https://clojure.atlassian.net/browse/CLJ-2779[CLJ-2779] c.j.process/start - remove validation checks covered by defaults
+
 === 1.12.0-alpha3 (Apr 19, 2023) [[v1.12.0-alpha3]]
 
 * https://clojure.atlassian.net/browse/CLJ-2521[CLJ-2521] Reverted this fix from alpha2 as it seems to change where another bug (CLJ-2743) is seen, will revisit these in tandem

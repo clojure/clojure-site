@@ -1,0 +1,58 @@
+= Clojure Deref (June 30, 2023)
+Alex Miller
+2023-06-30
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== From the core
+
+This week we released Clojure 1.12.0-alpha4 which is mostly bug fixes to previously released 1.12.0-alpha features (mainly IDrop, add-lib, and clojure.java.process). We really appreciate all the feedback and bug reports on those things. In particular, one of the IDrop fixes this week was the result of tracking down a somewhat obscure crash with Sean Corfield - he patiently ran a lot of stuff and provided some key insight near the end as we tracked down the difference, which had to do with `partition` on non-integers! Anyways, that's fixed. The add-libs and related changes cover some important ground too, but make sure that you are using the latest Clojure CLI - that is required for `add-lib` to work.
+
+Work continues this week on functional interface adapters. We ran into a bit of a corner and took a step back to think a bit more broadly about what would be useful which redirect us slightly, still puzzling through that. I also did a bit more exploratory work on varargs support, and Fogus continues to work on the ability to use Java methods as IFns - we are trying to be careful there in combination with the functional interface adapter work so we don't end up taking a Java functional interface, wrapping it as an IFn, and then adapting it back to the functional interface - we think we have a strategy to do that.
+
+And as always, big thanks to Anton Fonarev for all the assistance on link aggregation!
+
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=VuO0gcOHvKU[Webinar: The Xiana Framework for Clojure] - Flexiana
+* https://www.youtube.com/watch?v=Iel4vVYgExA[Betting your company on Lisp: 5 years with Clojure in production by Adam Tornhill] - London Clojurians
+* https://youtube.com/playlist?list=PLaN-rC-CjQqDu1AVhGdGOoEqsSAhd2W6t[Babashka Conf 2023] - Babashka-tv
+* https://www.youtube.com/watch?v=fT28NeZtaAg[The State of Frontend by Alexander Davis] - JUXT
+* https://biffweb.com/p/how-to-deploy/[How to deploy a Biff app] - Biff
+* https://www.youtube.com/watch?v=zSHvEAKLFJw[Reduce System Complexity with Data-Oriented Programming • Yehonathan Sharvit • GOTO 2023] - GOTO Conferences
+* https://www.youtube.com/watch?v=7-PB1Og_aLA[Creating a Clojure library for map operations] - Clojure Diary
+
+== Blogs, articles, and projects
+
+* https://fpsd.codes/clojure-digressions---setting-up-a-playground.html[Clojure digressions - Setting up a playground] - Francesco Pischedda
+* https://blog.phronemophobic.com/mairio.html[Clojure Plays Mario] - Phronemophobic's Blog
+* https://clojure-doc.org/articles/cookbooks/cli_build_projects/[Building Projects: tools.build and the Clojure CLI] - clojure-doc
+* https://flexiana.com/2023/06/clojure-corner-with-sean-corfield-part-1[Clojure Corner with Sean Corfield (part 1)] - Flexiana
+* https://blog.agical.se/en/posts/my-open-source-work-may-june-2023/[Calva Maintenance is Exciting!] - Peter Strömberg
+* https://tonsky.me/blog/clojurescript-2/[A case for ClojureScript 2.0] - Nikita Prokopov
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/oliyh/martian[martian] https://github.com/oliyh/martian/releases/tag/0.1.24[0.1.24] - The HTTP abstraction library for Clojure/script, supporting OpenAPI, Swagger, Schema, re-frame and more
+* https://github.com/htihospitality/re-dash[re-dash] https://github.com/htihospitality/re-dash/releases/tag/0.3.0[0.3.0] - A ClojureDart (re)framework for building user interfaces, leveraging Flutter
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.374[2.0.374] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/walmartlabs/lacinia-pedestal[lacinia-pedestal] 1.2 - Expose Lacinia GraphQL as Pedestal endpoints
+* https://github.com/bobbicodes/lang-clojure-eval[lang-clojure-eval] 0.0.17 - Clojure plugin for Codemirror 6 with live inline evaluation
+* https://github.com/D00mch/robot[robot] 0.3.1 - Clojure wrapper to simplify writing desktop scripts with java.awt Robot and Clipboard
+* https://github.com/mentat-collective/emmy-viewers[emmy-viewers] https://github.com/mentat-collective/emmy-viewers/releases/tag/v0.1.0[0.1.0] - High-performance symbolic, 2D and 3D visual extensions to the Emmy computer algebra system
+* https://github.com/nextjournal/simple-http-server[simple-http-server]  - A simple http server implemented as thin Clojure wrapper around `SimpleWebServer` from JEP 408 for JDK 18+
+* https://github.com/babashka/sci[sci] 0.8.40 - Configurable Clojure/Script interpreter suitable for scripting and Clojure DSLs
+* https://github.com/tatut/REPLey[REPLey]  - A web REPL made with Ripley
+* https://github.com/phronmophobic/clong[clong] 1.0 - A wrapper for libclang and a generator that can turn c header files into clojure apis
+* https://github.com/clj-commons/pretty[pretty] 2.0-beta-1 - Library for helping print things prettily, in Clojure - ANSI fonts, formatted exceptions
+* https://github.com/clj-commons/aleph[aleph] 0.6.3 - Asynchronous communication for Clojure
+* https://github.com/seancorfield/next-jdbc[next-jdbc] https://github.com/seancorfield/next-jdbc/releases/tag/v1.3.883[1.3.883] - A modern low-level Clojure wrapper for JDBC-based access to databases
+* https://github.com/seancorfield/honeysql[honeysql] https://github.com/seancorfield/honeysql/releases/tag/v2.4.1045[2.4.1045] - Turn Clojure data structures into SQL
+* https://github.com/fulcrologic/fulcro[fulcro] 3.6.6 - A library for development of single-page full-stack web applications in clj/cljs
+* https://github.com/fulcrologic/fulcro-rad[fulcro-rad] 1.5.2 - Fulcro Rapid Application Development
+* https://github.com/phronmophobic/clj-graphviz[clj-graphviz] 0.5.1 - A clojure wrapper for the libgraphviz c libraries

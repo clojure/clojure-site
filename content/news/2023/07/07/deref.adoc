@@ -1,0 +1,42 @@
+= Clojure Deref (July 7, 2023)
+Fogus
+2023-07-07
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. (https://twitter.com/ClojureDeref[@ClojureDeref] https://clojure.org/feed.xml[RSS])
+
+== Podcasts and videos
+
+* https://www.loom.com/share/a458fac5af034bdeb03e971130f8f2c1[Live-editable Physics Simulation] - Sam Ritchie
+* https://www.youtube.com/watch?v=CwXhy-QsZHww[FlowStorm searching and following values] - Juan Monetta
+* https://www.youtube.com/watch?v=E15C-5eufKw[BrickSort in Java and Kotlin with Clojure interop] - Daniel Szmulewicz
+* https://soundcloud.com/clojurestream/e93-frontends-in-2023-with-alex-davis[E93 Frontends In 2023 with Alex Davis] - ClojureStream Podcast
+
+== Blogs, articles, and projects
+
+* https://corfield.org/blog/2023/06/30/long-term-funding-3/[Long-Term Funding, Update #3] - Sean Corfield
+* https://blog.michielborkent.nl/oss-updates-june-2023.html[OSS updates June 2023] - Michiel Borkent
+* https://www.surveymonkey.com/stories/SM-_2BH3b49f_2FXEkUlrb_2BJSThxg_3D_3D/[State of Clojure 2023 Results] - Clojure team
+* http://gigasquidsoftware.com/blog/2023/07/02/ciphers-with-vector-symbolic-architectures//[Ciphers With Vector Symbolic Architectures] - Carin Meier
+* https://clojure-goes-fast.com/blog/valhalla-vs-ray-tracer/[Project Valhalla vs. ray tracer: will it go faster?] - Oleksandr Yakushev
+* https://www.juxt.pro/blog/sequence-mapcat/[Adventures with inadvertently eager Clojure, via `sequence` and `mapcat`] - James Henderson (JUXT)
+* https://fpsd.codes/clojure-bites---ring-basic-auth.html[Clojure Bites - Ring basic auth] - Francesco Pischedda
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/yetanalytics/pathetic[pathetic] 0.5.0 - Utility Library for handling JSONPath and navigating JSON structures
+* https://github.com/clj-commons/aleph[aleph] 0.7.0-alpha1 - Asynchronous communication for Clojure
+* https://github.com/clojure-lsp/clojure-lsp[clojure-lsp] https://github.com/clojure-lsp/clojure-lsp/releases/tag/2023.07.01-22.35.41[2023.07.01-22.35.41] - Clojure & ClojureScript Language Server (LSP) implementation
+* https://github.com/eval/deps-try[deps-try]  - Try out Clojure libraries via rebel-readline
+* https://github.com/galuque/datomic-jmx-metrics[datomic-jmx-metrics] https://github.com/galuque/datomic-jmx-metrics/releases/tag/v0.1.5[0.1.5] - Handler function to expose Datomic's metrics via JMX
+* https://github.com/escherize/huff[huff] 0.0.7 - Juicy hiccup in pure Clojure
+* https://github.com/babashka/http-client[http-client] 0.4.12 - HTTP client for Clojure and Babashka built on java.net.http
+* https://github.com/practicalli/clojure-cli-config[clojure-cli-config] https://github.com/practicalli/clojure-cli-config/releases/tag/2023-07-01[2023-07-01] - User aliases and Clojure CLI configuration for deps.edn based projects
+* https://github.com/ont-app/vocabulary[vocabulary] https://github.com/ont-app/vocabulary/releases/tag/v0.4.1[0.4.1] - Utilities to map between clojure namespaced keywords and RDF-style URIs
+* https://github.com/borkdude/jet[jet] 0.6.26 - CLI to transform between JSON, EDN, YAML and Transit using Clojure
+* https://github.com/juji-io/datalevin[datalevin] 0.8.18 - A simple, fast and versatile Datalog database
+* https://github.com/clj-commons/pretty[pretty] 2.0-beta-2 - Library for helping print things prettily, in Clojure - ANSI fonts, formatted exceptions

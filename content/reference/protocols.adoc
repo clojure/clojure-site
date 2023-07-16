@@ -41,8 +41,8 @@ A protocol is a named set of named methods and their signatures, defined using h
 ----
 (defprotocol AProtocol
   "A doc string for AProtocol abstraction"
-  (bar [this a b] "bar docs")
-  (baz [this a] [this a b] [this a b c] "baz docs"))
+  (bar [this a] "bar docs")
+  (baz [this] [this a] [this a b] "baz docs"))
 ----
 
 * No implementations are provided
@@ -122,8 +122,8 @@ Protocols are fully reified and support reflective capabilities via https://cloj
   Countable
     (cnt [this c] ...)
   Foo
-    (bar [this x y] ...)
-    (baz ([this x] ...) ([this x y zs] ...)))
+    (bar [this x] ...)
+    (baz ([this x] ...) ([this x y] ...)))
 
   ;expands into:
 
@@ -131,8 +131,8 @@ Protocols are fully reified and support reflective capabilities via https://cloj
   Countable
    {:cnt (fn [this c] ...)}
   Foo
-   {:baz (fn ([this x] ...) ([this x y zs] ...))
-    :bar (fn [this x y] ...)})
+   {:baz (fn ([this x] ...) ([this x y] ...))
+    :bar (fn [this x] ...)})
 ----
 
 === Guidelines for extension

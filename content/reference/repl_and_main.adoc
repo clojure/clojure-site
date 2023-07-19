@@ -191,6 +191,13 @@ Following is an example of starting a socket server with a repl listener. This c
 -Dclojure.server.repl="{:port 5555 :accept clojure.core.server/repl}"
 ----
 
+With the Clojure CLI this could be done with the `-J` flag to pass the option to the JVM, as:
+
+[source,shell]
+----
+clj -J-Dclojure.server.repl="{:port 5555 :accept clojure.core.server/repl}"
+----
+
 An example client you can use to connect to this repl remotely is telnet:
 
 [source,shell]

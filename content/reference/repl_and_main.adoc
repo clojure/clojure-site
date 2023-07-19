@@ -54,7 +54,7 @@ The simplest way to launch a Clojure _repl_ is to use the <<xref/../../guides/ge
 [source,shell]
 ----
 $ clj
-Clojure 1.10.0
+Clojure 1.11.1
 user=>
 ----
 
@@ -191,14 +191,14 @@ Following is an example of starting a socket server with a repl listener. This c
 -Dclojure.server.repl="{:port 5555 :accept clojure.core.server/repl}"
 ----
 
-With the Clojure CLI this could be done with the `-J` flag to pass the option to the JVM, as:
+With the Clojure CLI, use `-J` flag to pass the option to the JVM (note that this will also start a local REPL in addition to the scoket REPL):
 
 [source,shell]
 ----
 clj -J-Dclojure.server.repl="{:port 5555 :accept clojure.core.server/repl}"
 ----
 
-An example client you can use to connect to this repl remotely is telnet:
+An example client you can use to connect to this repl remotely is telnet (could also use `netcat`):
 
 [source,shell]
 ----

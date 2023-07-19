@@ -184,14 +184,19 @@ A socket server will be started for each JVM system property like "clojure.serve
 
 Additionally, there is a repl function provided that is slightly customized for use with the socket server in https://clojure.github.io/clojure/clojure.core-api.html#clojure.core.server/repl[clojure.core.server/repl].
 
-For example, to just launch a repl and also start a socket server with a repl listener:
+Following is an example of starting a socket server with a repl listener. This can be added to any existing Clojure program to allow it to accept external REPL clients via a local connection to port 5555.
+
+[source,shell]
+----
+-Dclojure.server.repl="{:port 5555 :accept clojure.core.server/repl}"
+----
+
+With the Clojure CLI this could be done with the `-J` flag to pass the option to the JVM, as:
 
 [source,shell]
 ----
 clj -J-Dclojure.server.repl="{:port 5555 :accept clojure.core.server/repl}"
 ----
-
-where the `-J` is used to pass the "-D..." option to the JVM. The `-Dclojure.server.repl="{:port 5555 :accept clojure.core.server/repl}"` can be added to any existing Clojure program in the `:jvm-opts` of its `deps.edn` file, which will allow it to accept external REPL clients via a local connection to port 5555.
 
 An example client you can use to connect to this repl remotely is telnet:
 

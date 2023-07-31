@@ -44,3 +44,7 @@ Community volunteers maintain <<xref/../../guides/getting_started#,Getting Start
 
 * https://clojars.org/[Clojars] - Clojure-focused Maven repository
 * http://www.clojure-toolbox.com/[Clojure Toolbox] - a categorized index of Clojure libraries
+
+== Debuggers
+
+* https://github.com/jpmonettas/flow-storm-debugger[FlowStorm] - A Clojure and ClojureScript debugger with many features

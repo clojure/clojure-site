@@ -17,7 +17,7 @@ Community volunteers maintain <<xref/../../guides/getting_started#,Getting Start
 ** https://github.com/clojure-emacs/inf-clojure[inf-clojure] - provides basic interaction with a Clojure subprocess (REPL), based on ideas from the popular inferior-lisp package
 ** Installation and configuration guides
 *** https://www.braveclojure.com/basic-emacs/[Clojure for the Brave and True installation guide]
-*** https://practicalli.github.io/spacemacs/[Practicalli guide to Spacemacs]
+*** https://practical.li/spacemacs/[Practicalli guide to Spacemacs]
 ** Distributions and Clojure-friendly configuration setups
 *** https://www.spacemacs.org/[Spacemacs]
 *** https://prelude.emacsredux.com/en/latest/[Prelude]
@@ -26,6 +26,8 @@ Community volunteers maintain <<xref/../../guides/getting_started#,Getting Start
 * https://www.jetbrains.com/idea/[IntelliJ] with https://cursiveclojure.com/[Cursive]
 * https://www.vim.org/[Vim] with https://github.com/tpope/vim-fireplace[Fireplace] or https://liquidz.github.io/vim-iced/[Vim-Iced]
 * https://neovim.io/[Neovim] with https://github.com/Olical/conjure[Conjure]
+** Installation and configuration guides
+*** https://practical.li/neovim/[Practicalli guide to Neovim and Conjure]
 * https://atom.io[Atom] with https://atom.io/packages/chlorine[Chlorine] - https://github.com/mauricioszabo/atom-chlorine[project]
 * http://www.lighttable.com/[Light Table]
 * https://www.sublimetext.com/[Sublime Text] with https://github.com/tonsky/Clojure-Sublimed[Clojure Sublimed] or https://tutkain.flowthing.me/[Tutkain]

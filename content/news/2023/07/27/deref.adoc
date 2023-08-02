@@ -1,0 +1,66 @@
+= Clojure Deref (July 27, 2023)
+Alex Miller
+2023-07-27
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem. https://clojure.org/feed.xml[RSS])
+
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=f2wzLP4Wbpg[Why you need Fulcro, the web framework to build apps better, faster (by Jakub Holý)] - London Clojurians
+* https://www.youtube.com/watch?v=9OcFh-HaCyI[Lingy & YAMLScript - New Ways to Program Perl - Ingy döt؜؜ Net­] - The Perl and Raku Conference
+* https://www.youtube.com/watch?v=HtVAxHvk8kA[Getting Superpowers with Clojure and ClojureScript - DevConf.CZ 2023] - DevConf
+* https://www.youtube.com/watch?v=4VXT-RHHuvI[Smashing a real ClojureScript compiler bug with FlowStorm] - Juan Monetta
+* https://www.youtube.com/watch?v=hN0HTJXDBfI[Lisp Tutorial for Beginners (Clojure)] - Sammy Talks
+* https://www.youtube.com/watch?v=2aHx_cOzbLM[Find out text similarities using Clojure] - Clojure Diary
+
+== Blogs, articles, and projects
+
+* https://hackernoon.com/why-my-brain-is-wired-for-clojure[Why My Brain Is Wired for Clojure] - Adam Schmideg
+* https://faster-than-light-memes.xyz/conversation-1.html[No Iterations] - Benjamin Scherdtner
+* https://jank-lang.org/blog/2023-07-08-object-model/[jank development update - A faster object model] - Jeaye Wilkerson
+* https://medium.com/@nnnsadeh/how-to-integrate-tailwind-into-your-react-native-clojurescript-expo-app-61bf97afd6b9[How to integrate Tailwind into your React Native/ClojureScript/Expo App] - Nimrod Sadeh
+* https://code.thheller.com/blog/shadow-cljs/2023/07/13/the-lost-arts-of-cljs-frontend.html[The Lost Arts of CLJS Frontend] - Thomas Heller
+* https://code.thheller.com/blog/shadow-cljs/2023/07/16/applying-the-art-of-cljs-frontend.html[Applying the Art of CLJS Frontend] - Thomas Heller
+* https://code.thheller.com/blog/shadow-cljs/2023/07/18/mastering-the-art-of-cljs-frontend.html[Mastering the Art of CLJS Frontend] - Thomas Heller
+* https://redefine.io/blog/mulog-hidden-superpower/[µ/log hidden superpower] - Bruno Bonacci (Redefine Technologies)
+* https://blog.janetacarr.com/building-an-event-driven-architecture-in-clojure-part-1/[Building an Event-Driven Architecture in Clojure (Part 1)] - Janet A. Carr
+* https://corfield.org/blog/2023/07/15/deps-edn-monorepo-11/[deps.edn and monorepos XI (Polylith)] - Sean Corfield
+* https://andersmurphy.com/2023/07/16/clojure-sqlite-application-defined-sql-functions-with-jdbc.html[Clojure: SQLite application defined SQL functions with JDBC] - Anders Murphy
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/clj-commons/byte-streams[byte-streams] 0.3.3 - A Rosetta stone for JVM byte representations
+* https://github.com/oliyh/superlifter[superlifter] 0.1.5 - A DataLoader for Clojure/script
+* https://github.com/KingMob/TrueGrit[TrueGrit] 2.1.30 - A data-driven, functionally-oriented, idiomatic Clojure library for circuit breakers, bulkheads, retries, rate limiters, timeouts, etc.
+* https://github.com/clj-commons/primitive-math[primitive-math] 1.0.1 - For the discerning arithmetician
+* https://github.com/soulspace-org/overarch[overarch] 0.1.0 - A data driven description of software architecture based on the C4 model
+* https://github.com/BetterThanTomorrow/calva[calva] 2.0.377 - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/xtdb/xtdb[xtdb] https://github.com/xtdb/xtdb/releases/tag/1.24.0[1.24.0] - General-purpose bitemporal database for SQL, Datalog & graph queries. Developed by @juxt
+* https://github.com/clj-kondo/clj-kondo[clj-kondo] 2023.07.13 - Static analyzer and linter for Clojure code that sparks joy
+* https://github.com/clj-commons/humanize[humanize] 1.0-beta-1 - Produce human readable strings in clojure
+* https://github.com/cognitect-labs/aws-api[aws-api] 0.8.686 - AWS, data driven
+* https://github.com/ont-app/rdf[rdf] https://github.com/ont-app/rdf/releases/tag/v0.3.0[0.3.0] - A backstop for shared logic between rdf-based implementations of IGraph
+* https://github.com/jacobobryant/biff[biff] https://github.com/jacobobryant/biff/releases/tag/v0.7.9[0.7.9] - A Clojure web framework for solo developers
+* https://github.com/babashka/pod-babashka-fswatcher[pod-babashka-fswatcher] https://github.com/babashka/pod-babashka-fswatcher/releases/tag/v0.0.5[0.0.5] - Babashka filewatcher pod
+* https://github.com/practicalli/astronvim-config[astronvim-config] https://github.com/practicalli/astronvim-config/releases/tag/2023-07-08[2023-07-08] - Practicalli AstroNvim user configuration with AstroNvim Community Packages, written in Lua
+* https://github.com/ont-app/igraph-jena[igraph-jena] https://github.com/ont-app/igraph-jena/releases/tag/v0.3.0[0.3.0] - Porting Jena to the IGraph protocol
+* https://github.com/borkdude/edamame[edamame] 1.3.23 - Configurable EDN/Clojure parser with location metadata
+* https://github.com/clj-commons/pretty[pretty] https://cljdoc.org/d/org.clj-commons/pretty/2.0/doc/changelog[2.0] - Library for helping print things prettily, in Clojure
+* https://github.com/clj-commons/humanize[humanize] https://cljdoc.org/d/org.clj-commons/humanize/1.0/doc/changelog[1.0] - Produce human readable strings in clojure
+* https://github.com/seancorfield/clj-new[clj-new] https://github.com/seancorfield/clj-new/releases/tag/v1.2.404[1.2.404] - Generate new projects based on clj, Boot, or Leiningen Templates!
+* https://github.com/bobschrag/clolog[clolog]  - Full-featured logic programming (AKA "Prolog") embedded in/callable from and supporting calls to Clojure
+* https://github.com/babashka/babashka[babashka] 1.3.182 - Native, fast starting Clojure interpreter for scripting
+* https://github.com/gnl/playback[playback] 0.3.9 - Interactive Programming and Print Debugging Reimagined
+* https://github.com/practicalli/project-templates[project-templates] 2023-07-17-2 - Clojure CLI Production level templates for seancorfield/deps-new
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.381[2.0.381] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/tatut/repley[repley]  - A web REPL made with Ripley
+* https://github.com/borkdude/lein2deps[lein2deps] https://github.com/borkdude/lein2deps/releases/tag/v0.1.1[0.1.1] - Lein project.clj to deps.edn converter
+* https://github.com/chr15m/sitefox[sitefox] 0.0.17 - Node + cljs backend web framework
+* https://github.com/scarletcomply/license-finder[license-finder] 0.2.1 - Finds licenses of your Clojure(Script) dependencies
+* https://github.com/fulcrologic/fulcro-rad[fulcro-rad] 1.5.3 - Fulcro Rapid Application Development
+* https://github.com/vivid-inc/ash-ra-template[ash-ra-template] 0.7.0 - Expressive & customizable template system featuring Clojure language processing

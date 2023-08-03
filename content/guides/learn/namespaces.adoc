@@ -73,13 +73,16 @@ The `:require` clause corresponds to the `require` function which specifies one 
 
 The last two parts are all about making names easier to use. While vars can always be referred to by their fully-qualified name, we rarely want to type fully-qualified names in our code. Aliases let us use shorter versions of longer fully-qualified aliases. Refer allows us to use names without a namespace qualifier at all.
 
-In require, namespaces most commonly take one of three forms:
+In require, namespaces most commonly take one of four forms:
 
 * `clojure.set` - just loads `clojure.set` namespace (if not already loaded)
 * `[clojure.set :as set]` - load and create an alias `set` for the namespace `clojure.set`
 ** This allows you to refer to vars in `set` with for example `set/union` instead of `clojure.set/union`
 * `[clojure.set :refer [union intersection]]` - load and refer specific vars into this namespace
 ** This allows you to use just `union` instead of `clojure.set/union`
+* `[company.application.component.user :as-alias user]` - create an alias `user` for the namespace `company.application.component.user` without loading it
+** Typically, when using `:as-alias`, the namespace is not a loadable namespace
+** This allows you to use a shorthand for a namespace qualifier, e.g. when creating entity maps: `{::user/id 1}`, registering specs: `(s/def ::user/id int?)` or when destructing: `(defn find-by-id [{::user/keys [id]}] ,,,)`
 
 === Java classes and imports
 

@@ -1,0 +1,35 @@
+= Bitemporality and the Art of
+2023-08-10
+:jbake-type: event
+:jbake-edition: 
+:jbake-link: https://register.gotowebinar.com/register/2960607012900067930?source=clojure-calendar
+:jbake-location: online
+:jbake-start: 2023-08-10
+:jbake-end: 2023-08-10
+
+== Bitemporality and the Art of Maintaining Accur...
+
+Bitemporality and the Art of Maintaining Accurate Databases +
+ +
+Bitemporality and the Art of Maintaining Accurate Databases. +
+How often have you had to add a `modified_at` or `effective_from` column to a database table?  +
+Have you ever had to keep old versions of data around and make it visible to end users? +
+ +
+Time is a fundamental aspect of data modeling — and yet application developers are frequently reduced to rolling their own half-baked ‘bitemporal’ SQL schemas on top of popular database systems.  +
+ +
+This ad hoc approach to handling time has been the status quo for decades, but it's a complicated, risky business — and new systems can do better. +
+ +
+Bitemporal modeling equips developers with a rigorous abstraction for working with immutable data and versioned records. +
+ +
+Join this webinar to discover the most common use cases for bitemporal modeling, and learn how it impacts the design and maintenance of applications. +
+ +
+Key takeaways: +
+ +
+* Familiarize yourself with the SQL:2011 standard temporal features +
+* Understand the landscape of existing approaches and tools for implementing bitemporality to ensure successful projects  +
+* Discover how you can visualize your own bitemporal data using an open source interactive tool +
+ +
+At the end of the session, after Q&A, our speakers will share a quick demo of XTDB: a modern database that incorporates a bitemporal index at its core.  +
+ +
+Zulip: https://clojurians.zulipchat.com/#narrow/stream/262224-events/near/381459265 +
+

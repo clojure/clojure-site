@@ -98,21 +98,3 @@ Find by Name: (find-name "part-of-name-here")
               (user/clojuredocs "ns-here" "name-here")
 boot.user=>
 ----
-
-== Using Java and the Clojure JAR
-
-If you have <<xref/../../getting_started#_other_ways_to_run_clojure,downloaded and built Clojure>>,
- you can use Java to launch a Clojure REPL:
-
-[source,shell]
-----
-java -jar clojure.jar
-----
-
-You should see output like the following:
-
-[source,clojure-repl]
-----
-Clojure 1.9.0
-user=>
-----

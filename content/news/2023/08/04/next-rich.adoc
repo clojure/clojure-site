@@ -1,0 +1,22 @@
+= (next Rich)
+Rich Hickey
+2023-08-04
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+It is with a mixture of heartache and optimism that I announce today my (long planned) retirement from commercial software development, and my employment at Nubank. It's been thrilling to see Clojure and Datomic successfully applied at scale.
+
+I look forward to continuing to lead ongoing work maintaining and enhancing Clojure with Alex, Stu, Fogus and many others, as an independent developer once again. We have many useful things planned for 1.12 and beyond. The community remains friendly, mature and productive, and is taking Clojure into many interesting new domains.
+
+I want to highlight and thank Nubank for their ongoing sponsorship of Alex, Fogus and the core team, as well as the Clojure community at large.
+
+Stu will continue to lead the development of Datomic at Nubank, where the Datomic team grows and thrives. I'm particularly excited to see where the new free availability of Datomic will lead.
+
+My time with Cognitect remains the highlight of my career. I have learned from absolutely everyone on our team, and am forever grateful to all for our interactions. There are too many people to thank here, but I must extend my sincerest appreciation and love to Stu and Justin for (repeatedly) taking a risk on me and my ideas, and for being the best of partners and friends, at all times fully embodying the notion of integrity. And of course to Alex Miller - who possesses in abundance many skills I lack, and without whose indomitable spirit, positivity and friendship Clojure would not have become what it did.
+
+I have made many friends through Clojure and Cognitect, and I hope to nurture those friendships moving forward.
+
+Retirement returns me to the freedom and independence I had when originally developing Clojure. The journey continues!
+
+Rich

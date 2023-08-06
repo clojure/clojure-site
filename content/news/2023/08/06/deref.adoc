@@ -1,0 +1,43 @@
+= Clojure Deref (Aug 6, 2023)
+Alex Miller
+2023-08-06
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== From the core
+
+As https://clojure.org/news/2023/08/04/next-rich[posted on Friday], Rich has retired from Nubank but continues to set the direction and work on Clojure. We are very happy to see Rich get the retirement he deserves after many years of creating so many amazing projects - Clojure, Datomic, edn, transit, Codeq, REBL, and more. There are no end of ideas we've talked about and some of them may be more possible now than ever.
+
+Things will be a little different for us in how we work but we expect to continue to regularly develop and release new versions of Clojure much as we have for many years. We are hard at work trying to complete the remaining dev work for Clojure 1.12 and I expect we will have a feature complete alpha pretty soon, and then start the rampdown to release.
+
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=bpKAQgcJRao[Lisp for Lattice Technology (by Mike Anderson)] - London Clojurians
+
+== Blogs, articles, and projects
+
+* https://flexiana.com/2023/07/clojure-corner-with-michiel-borkent[Clojure Corner with Michiel Borkent] - Jacobo Cordova (FLEXIANA)
+* https://blog.jakubholy.net/2023/when-not-to-use-fulcro/[When not to use Fulcro?] - Jakub Holý
+* https://blog.michielborkent.nl/oss-updates-jul-2023.html[OSS updates July 2023] - Michiel Borkent
+* https://ag91.github.io/blog/2023/08/03/an-easier-way-to-try-out-clojure-libraries-with-ob-clojure-and-cider/[An easier way to try out Clojure libraries with ob-clojure and cider] - Andrea Guigliano
+* https://fpsd.codes/blog/clojure-bites-sse/[Clojure bites - SSE with Aleph and Reitit] - Francesco Pischedda
+* https://yizhepku.github.io/clojure-crac/[Fast Starting JVM Clojure with Checkpoint/Restore (Part 1)] - Yizhe
+* https://favila.github.io/2023-07-28/unique-composite-attribute-footguns/[Unique Composite Attribute Footguns] - Francis Avila
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/bobschrag/token-matcher[token-matcher] 1.1.2 - Rich token-based pattern matching for Clojure
+* https://github.com/julienvincent/nvim-paredit[nvim-paredit] 0.5.2 - A Paredit implementation for Neovim, built using Treesitter and written in Lua
+* https://github.com/donut-party/email[email] 0.0.9 - This library provides a helper for constructing emails independent of whatever email service you use
+* https://github.com/squint-cljs/squint[squint] 0.1.15 - ClojureScript syntax to JavaScript compiler
+* https://github.com/borkdude/jet[jet] 0.7.27 - CLI to transform between JSON, EDN, YAML and Transit using Clojure
+* https://github.com/clj-easy/graal-build-time[graal-build-time] 1.0.5 - Initialize Clojure classes at build time with GraalVM native-image
+* https://github.com/quoll/donatello[donatello] 1.2.8 - A small library for writing TTL files
+* https://github.com/quoll/michelangelo[michelangelo] 0.1.4 - Turtle transforming library
+* https://github.com/fulcrologic/fulcro[fulcro] 3.6.8 - A library for development of single-page full-stack web applications in clj/cljs
+* https://github.com/khmelevskii/emotion-cljs[emotion-cljs] 0.2.2 - ClojureScript wrapper for Emotion

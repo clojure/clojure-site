@@ -1,0 +1,49 @@
+= Clojure Deref (Aug 11, 2023)
+Alex Miller
+2023-08-11
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== From the core
+
+With Rich <<xref/../../08/04/next-rich,retiring from Nubank>>, we have been changing how we work to accommodate this new phase, which I expect will be a learning process for a while. Have no fear though, he is continuing to give us lots of input. We've also been migrating some infrastructure to different places, hopefully in ways that are largely transparent to you. Work continues on the remaining things for Clojure 1.12. 
+
+Jarrod Taylor (long-time member of the Datomic team) has recently moved over to the Clojure team at Nubank and has been a great help as we continue various automation efforts. This past week Jarrod automated the Clojure doc generation in github, and is in the process of doing the same for the contrib libraries. The doc generation process using autodoc was created by Tom Faulhaber over a decade ago and for a long time ran in a machine tucked in Tom's closet. :) A number of years ago I updated it and partially moved it to Github (for Clojure itself) but had never had time to complete the work for the contrib libraries, which I've been doing ad hoc on my own machine as needed ever since. It's good to see all of that get fully onto GitHub, so thanks to Jarrod for that!
+
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=s_xjnXB994w[Java Interop Performance (by Alex Miller)] - London Clojurians
+
+== Blogs, articles, and projects
+
+* https://building.nubank.com.br/clojures-journey-at-nubank-a-look-into-the-future/[Clojure’s journey at Nubank: a look into the future] - Nubank
+* https://www.clojuriststogether.org/news/firefox-116.0-release/[Custom Formatters for Firefox] - Sebastian Zartner
+* https://omma.ee/shape-cms-content-shapes/[Shape CMS: Content Shapes] - Asko Nõmm
+* https://endot.org/2023/08/07/highlight/[Highlight: a script for coloring important text] - Nate Jones
+* https://www.xtdb.com/blog/but-bitemporality-always-introduces-complexity["But bitemporality always introduces complexity!"] - James Henderson (JUXT)
+* https://scicloj.github.io/blog/the-jointprob-community-changes-on-the-agenda-and-an-upcoming-talk-about-bayesian-hierarchical-models/[The Jointprob community: changes on the agenda, and an upcoming talk about Bayesian Hierarchical Models] - Daniel Slutsky
+* https://yizhepku.github.io/clojure-crac-part2/[Fast Starting JVM Clojure with Checkpoint/Restore (Part 2)] - Yizhe
+* https://emanuelpeg.blogspot.com/2023/08/veamos-pedestal-y-clojure.html[Veamos Pedestal y Clojure] - Emanuel Goette
+* https://flexiana.com/2023/08/side-by-side-datomic-and-postgresql-part-1-2[Side by side: Datomic and PostgreSQL, Part 1] - Giga Chokheli (Flexiana)
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/kbosompem/bb-excel[bb-excel] 0.0.5 - Read Excel Files in babashka scripts
+* https://github.com/s-doti/ginfer[ginfer] 1.0.1 - Graph inference library
+* https://github.com/soulspace-org/overarch[overarch] 0.3.0 - A data driven description of software architecture based on UML and the C4 model
+* https://github.com/sikt-no/clj-jwt[clj-jwt] 0.5.81 - A Clojure library to handle validation of JWTs and signing claims using JSON Web Keys
+* https://github.com/clojure-lsp/clojure-lsp[clojure-lsp] https://github.com/clojure-lsp/clojure-lsp/releases/tag/2023.08.06-00.28.06[2023.08.06-00.28.06] - Clojure & ClojureScript Language Server (LSP) implementation
+* https://github.com/holyjak/fulcro-rad-asami[fulcro-rad-asami] 1.0.4 - Asami database support plugin for Fulcro RAD
+* https://github.com/clj-commons/clj-ssh[clj-ssh] 0.6.2 - SSH commands via jsch
+* https://github.com/squint-cljs/squint[squint] 0.1.16 - ClojureScript syntax to JavaScript compiler
+* https://github.com/ferdinand-beyer/init[init] 0.2.96 - Dependency injection a la carte
+* https://github.com/esuomi/muotti[muotti] https://github.com/esuomi/muotti/releases/tag/v1.1.0[1.1.0] - Muotti is a graph based value transformer library
+* https://github.com/clj-commons/pretty[pretty] 2.0.2 - Library for helping print things prettily, in Clojure
+* https://github.com/babashka/http-client[http-client] 0.4.13 - HTTP client for Clojure and Babashka built on java.net.http
+* https://github.com/tatut/ripley[ripley]  - Server rendered UIs over WebSockets
+* https://github.com/clojure/core.async[core.async] 1.6.681 - Facilities for async programming and communication in Clojure

@@ -9,7 +9,7 @@ Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure
 
 == From the core
 
-With Rich <<xref/../../08/04/next-rich,retiring from Nubank>>, we have been changing how we work to accommodate this new phase, which I expect will be a learning process for a while. Have no fear though, he is continuing to give us lots of input. We've also been migrating some infrastructure to different places, hopefully in ways that are largely transparent to you. Work continues on the remaining things for Clojure 1.12. 
+With Rich <<xref/../../08/04/next-rich#,retiring from Nubank>>, we have been changing how we work to accommodate this new phase, which I expect will be a learning process for a while. Have no fear though, he is continuing to give us lots of input. We've also been migrating some infrastructure to different places, hopefully in ways that are largely transparent to you. Work continues on the remaining things for Clojure 1.12. 
 
 Jarrod Taylor (long-time member of the Datomic team) has recently moved over to the Clojure team at Nubank and has been a great help as we continue various automation efforts. This past week Jarrod automated the Clojure doc generation in github, and is in the process of doing the same for the contrib libraries. The doc generation process using autodoc was created by Tom Faulhaber over a decade ago and for a long time ran in a machine tucked in Tom's closet. :) A number of years ago I updated it and partially moved it to Github (for Clojure itself) but had never had time to complete the work for the contrib libraries, which I've been doing ad hoc on my own machine as needed ever since. It's good to see all of that get fully onto GitHub, so thanks to Jarrod for that!
 

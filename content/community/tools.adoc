@@ -11,16 +11,17 @@ toc::[]
 
 Community volunteers maintain <<xref/../../guides/getting_started#,Getting Started>> documentation for a number of different tools and approaches. Some of the most commonly used tools include:
 
-== Editors
+== Editors/IDEs
 
-Common editors provide Clojure support via packages and extensions.  Choose the editor most familiar when starting with Clojure.
+Editors provide Clojure support via packages and extensions. While these vary in features, all of them are sufficient for Clojure development, so choose the editor that works best for you.
 
 === https://www.gnu.org/software/emacs/[Emacs]
-https://cider.mx/[CIDER] - Emacs packages for interactive programming in Clojure (REPL), including https://github.com/clojure-emacs/clojure-mode[clojure-mode]  major mode providing syntax highlighting, indentation, navigation and refactor support.
 
-https://github.com/clojure-emacs/inf-clojure[inf-clojure] - basic interaction with a Clojure subprocess (REPL), based on the popular inferior-lisp
+==== Packages and modes
 
-https://github.com/clojure-emacs/clojure-ts-mode[clojure-ts-mode] treesitter implementation of clojure-mode (in development)
+* https://cider.mx/[CIDER] - Emacs packages for interactive programming in Clojure (REPL), including https://github.com/clojure-emacs/clojure-mode[clojure-mode]  major mode providing syntax highlighting, indentation, navigation and refactor support.
+* https://github.com/clojure-emacs/inf-clojure[inf-clojure] - basic interaction with a Clojure subprocess (REPL), based on the popular inferior-lisp
+* https://github.com/clojure-emacs/clojure-ts-mode[clojure-ts-mode] treesitter implementation of clojure-mode (in development)
 
 ==== Installation guides
 
@@ -28,7 +29,7 @@ https://github.com/clojure-emacs/clojure-ts-mode[clojure-ts-mode] treesitter imp
 * https://practical.li/spacemacs/[Practicalli guide to Spacemacs & CIDER]
 * https://www.braveclojure.com/basic-emacs/[Clojure for the Brave and True installation guide]
 
-==== Clojure supporting Distributions
+==== Distributions with Clojure support
 
 * https://www.spacemacs.org/[Spacemacs]
 * https://prelude.emacsredux.com/en/latest/[Prelude]
@@ -36,28 +37,32 @@ https://github.com/clojure-emacs/clojure-ts-mode[clojure-ts-mode] treesitter imp
 * https://github.com/corgi-emacs/corgi[Corgi]
 
 === https://code.visualstudio.com[Visual Studio Code]
-https://marketplace.visualstudio.com/items?itemName=betterthantomorrow.calva[Calva] extension for interactive Clojure(script) development - https://calva.io[docs], https://github.com/BetterThanTomorrow/calva[project]
+
+==== Extensions
+
+* https://marketplace.visualstudio.com/items?itemName=betterthantomorrow.calva[Calva] extension for interactive Clojure(script) development - https://calva.io[docs], https://github.com/BetterThanTomorrow/calva[project]
+* https://vspacecode.github.io/[VSpaceCode] Spacemacs like keybindings with Calva support
 
 ==== Installation guides
 
 * https://calva.io/get-started-with-clojure/[Calva Get Started with Clojure]
 * https://practical.li/vspacecode/[Practicalli VSpaceCode guide]
 
-==== Clojure supporting Distributions
-
-* https://vspacecode.github.io/[VSpaceCode] Spacemacs like keybindings with Calva support
-
 === https://www.jetbrains.com/idea/[IntelliJ]
-https://cursiveclojure.com/[Cursive] Clojure(Script) IDE that understands code, advanced structural editing & refactor support (licenced software)
+
+* https://cursiveclojure.com/[Cursive] Clojure(Script) IDE that understands code, advanced structural editing & refactor support (licenced software)
+* https://plugins.jetbrains.com/plugin/18108-clojure-extras/[Clojure Extras plugin] - plugin with additional features for Clojure development
+* https://github.com/clojure-lsp/clojure-lsp-intellij[clojure-lsp-intellij] - plugin for static analysis via clojure-lsp
 
 === https://neovim.io/[Neovim]
-https://github.com/Olical/conjure[Conjure] interactive environment to evaluate Clojure (and other languages)
+
+* https://github.com/Olical/conjure[Conjure] interactive environment to evaluate Clojure (and other languages)
 
 ==== Installation guides
 
 * https://practical.li/neovim/[Practicalli guide to Neovim and Conjure]
 
-==== Clojure supporting Distributions
+==== Distributions with Clojure Support
 
 * https://astronvim.com/[AstroNvim] and the https://github.com/AstroNvim/astrocommunity/tree/main/lua/astrocommunity/pack/clojure[AstroCommunity Clojure pack] (lua)
 * https://github.com/Olical/magic-kit[Magic-kit] (fennel) by Conjure maintainer
@@ -65,18 +70,19 @@ https://github.com/Olical/conjure[Conjure] interactive environment to evaluate C
 
 === https://www.vim.org/[Vim]
 
-https://github.com/tpope/vim-fireplace[Fireplace] or https://liquidz.github.io/vim-iced/[Vim-Iced]
+* https://github.com/tpope/vim-fireplace[Fireplace]
+* https://liquidz.github.io/vim-iced/[Vim-Iced]
 
 === https://www.sublimetext.com/[Sublime Text]
 
-https://github.com/tonsky/Clojure-Sublimed[Clojure Sublimed] or https://tutkain.flowthing.me/[Tutkain]
+* https://github.com/tonsky/Clojure-Sublimed[Clojure Sublimed]
+* https://tutkain.flowthing.me/[Tutkain]
 
 === https://pulsar-edit.dev/[Pulsar]
 
 Community led hyper-hackable text editor, a project created after the sunset of the Atom.io editor.
 
-https://gitlab.com/clj-editors/atom-chlorine[Chlorine] plugin for interactive Clojure(Script) development via Socket-REPL
-
+* https://gitlab.com/clj-editors/atom-chlorine[Chlorine] plugin for interactive Clojure(Script) development via Socket-REPL
 
 === Inactive Editor projects
 

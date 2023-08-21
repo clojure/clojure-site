@@ -1,0 +1,35 @@
+= Clojure Deref (Aug 18, 2023)
+Alex Miller
+2023-08-18
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Blogs, articles, and projects
+
+* https://www.tamizhvendan.in/blog/announcing-honeyeql-1.0/[Announcing HoneyEQL 1.0] - Tamizhvendan S
+* https://blog.datomic.com/2023/08/datomic-local-is-released.html[Datomic Local is Released] - Cognitect
+* https://blog.redplanetlabs.com/2023/08/15/how-we-reduced-the-cost-of-building-twitter-at-twitter-scale-by-100x/[How we reduced the cost of building Twitter at Twitter-scale by 100x] - Nathan Marz (Red Planet Labs)
+* https://widdindustries.com/blog/taming-a-clojurescript-megabuild-with-shadow-and-kaocha.html[Taming a Clojurescript mega-project with Shadow and Kaocha] - Henry Widd
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/clj-commons/clj-yaml[clj-yaml] https://github.com/clj-commons/clj-yaml/blob/master/CHANGELOG.adoc#v1027---2023-08-11[1.0.27] - YAML encoding and decoding for Clojure
+* https://github.com/clojure/tools.build[tools.build] 0.9.5 - Clojure builds as Clojure programs
+* https://github.com/clojure/brew-install[brew-install] https://clojure.org/releases/tools#v1.11.1.1386[1.11.1.1386] - Clojure CLI installer
+* https://github.com/tamizhvendan/honeyeql[honeyeql] 1.0.0 - HoneyEQL is a Clojure library enables you to query database using the EDN Query Language
+* https://github.com/typedclojure/typedclojure[typedclojure] 1.1.1 - An optional type system for Clojure
+* https://github.com/clj-commons/pretty[pretty] 2.1 - Library for helping print things prettily, in Clojure
+* https://github.com/liquidz/antq[antq] https://github.com/liquidz/antq/releases/tag/2.5.1109[2.5.1109] - Point out your outdated dependencies
+* https://github.com/borkdude/deps.clj[deps.clj] 1.11.1.1403 - A faithful port of the clojure CLI bash script to Clojure
+* https://github.com/babashka/nbb[nbb] 1.2.176 - Scripting in Clojure on Node.js using SCI
+* https://github.com/squint-cljs/cherry[cherry] 0.1.5 - Experimental ClojureScript to ES6 module compiler
+* https://github.com/sikt-no/clj-jwt[clj-jwt] 0.5.92 - A Clojure library to handle validation of JWTs and signing claims using JSON Web Keys
+* https://github.com/babashka/nbb[nbb] 1.2.178 - Scripting in Clojure on Node.js using SCI
+* https://github.com/juji-io/datalevin[datalevin] 0.8.19 - A simple, fast and versatile Datalog database
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.386[2.0.386] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/babashka/http-client[http-client] 0.4.14 - HTTP client for Clojure and Babashka built on java.net.http

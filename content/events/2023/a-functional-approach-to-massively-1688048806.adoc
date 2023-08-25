@@ -1,0 +1,69 @@
+= A functional approach to massively
+2023-10-31
+:jbake-type: event
+:jbake-edition: 
+:jbake-link: https://www.meetup.com/london-clojurians/events/295524353/
+:jbake-location: online
+:jbake-start: 2023-10-31
+:jbake-end: 2023-10-31
+
+== A functional approach to massively concurrent ...
+
+A functional approach to massively concurrent application design (by L&eacute;o Noel) +
+ +
+THIS IS AN ONLINE EVENT +
+[Connection details will be shared 1h before the start time] +
+The London Clojurians are happy to present: +
+Title: A functional approach to massively concurrent application design +
+Speaker: L&eacute;o Noel +
+Time: 2023-10-31 @ 18:30 (London time) +
+Local time: click here for local time +
+L&eacute;o Noel (https://github.com/leonoel) will be presenting: +
+&quot;A functional approach to massively concurrent application design&quot; +
+In this talk, L&eacute;o will present the latest features of Missionary, a functional effect system for clojure/script. He will focus on the supervision problem, explain what it is about, show how pervasive it is in our craft, and describe a functional solution scalable to arbitrarily complex problems in many domains, from UIs to databases. You will learn how functional effect systems fit in the reactive programming landscape and how they address common concurrency concerns such as memoization, asynchronous effects, backpressured streaming, glitch-free propagation of changes and fine-grained updates. +
+L&eacute;o is the creator of Missionary and the architect of Electric Clojure. As an independent software researcher, he is interested in concurrency, reactive user interfaces and language design. +
+If you missed this event, you can watch the recording on our YouTube channel: +
+https://www.youtube.com/@LondonClojurians +
+(The recording will be uploaded a couple of days after the event.) +
+Please, consider supporting the London Clojurians with a small donation: +
+https://opencollective.com/london-clojurians/ +
+Your contributions will enable the sustainability of the London Clojurians community and support our varied set of online and in-person events: +
+ +
+ +
+ClojureBridge London: supports under-represented groups discover Clojure +
+ +
+ +
+re:Clojure: our free to attend annual community conference +
+ +
+ +
+monthly meetup events with speakers from all over the world +
+ +
+ +
+subscription and admin costs such as domain name &amp; Zoom plan for larger online meetups +
+ +
+ +
+Thank you to our sponsors: +
+ +
+ +
+https://juxt.pro/ +
+ +
+ +
+https://flexiana.com/ +
+ +
+ +
+https://gaiwan.co/ +
+ +
+ +
+https://freshcodeit.com/ +
+ +
+ +
+https://nette.io/ +
+ +
+ +
+https://nilenso.com/ +
+ +
+ +
+And many individual sponsors +
+ +
+Zulip: https://clojurians.zulipchat.com/#narrow/stream/262224-events/near/386801882 +
+

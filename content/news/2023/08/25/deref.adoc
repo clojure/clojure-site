@@ -1,0 +1,43 @@
+= Clojure Deref (Aug 25, 2023)
+Alex Miller
+2023-08-25
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts and videos
+
+* https://soundcloud.com/defn-771544745/90-jacob-obryant[# 90 Jacob O'Bryant] - defn podcast
+* https://www.youtube.com/watch?v=D3KUMBEapyw[On-Demand Webinar: Bitemporality and the Art of Maintaining Accurate Databases] - JUXT
+* https://www.youtube.com/watch?v=NccnidiRknA["(Modern) Java for Clojure Programmers" by James Henderson] - JUXT
+* https://www.youtube.com/watch?v=GcJgGy-dfvE[Uncle Bob LOVES Functional Programming | Prime Reacts] - ThePrimeTime
+* https://www.youtube.com/watch?v=ttY-lZd67l8[Pedestal 1 — Starting with Pedestal] - Clojure Diary
+* https://www.youtube.com/watch?v=gWruuKxGAIA[Pedestal 2 - Query parameters in Pedestal] - Clojure Diary
+
+== Blogs, articles, and projects
+
+* https://www.clojuriststogether.org/news/q3-2023-funding-announcement/[Q3 2023 Funding Announcement] - Kathy Davis (Clojurists Together)
+* https://dawranliou.com/blog/default-transducers/[Defaulting to Transducers] - Daw-Ran Liou
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/ring-clojure/ring[ring] 1.11.0-alpha1 - Clojure HTTP server abstraction
+* https://github.com/clojure-lsp/clojure-lsp-intellij[clojure-lsp-intellij] 0.1.4 alpha - Intellij Plugin for Clojure & ClojureScript development via Language Server (LSP) made in Clojure
+* https://github.com/phronmophobic/llama.clj[llama.clj] 0.6 - Run LLMs locally. A clojure wrapper for llama.cpp
+* https://github.com/wardle/nhs-number[nhs-number] 1.0.50 - A Clojure/Script library providing validation, formatting and generation of UK NHS Numbers
+* https://github.com/rm-hull/nvd-clojure[nvd-clojure] https://github.com/rm-hull/lein-nvd/blob/v3.4.0/CHANGELOG.md[3.4.0] - National Vulnerability Database dependency checker for Clojure projects
+* https://github.com/danielsz/cohere-clojure[cohere-clojure] 1.0.0 - Unofficial port of the Cohere SDK
+* https://github.com/babashka/babashka[babashka] 1.3.184 - Native, fast starting Clojure interpreter for scripting
+* https://github.com/wilkerlucio/pathom3[pathom3] https://github.com/wilkerlucio/pathom3/blob/main/CHANGELOG.md[2023.08.22-alpha] - A library for navigating data
+* https://github.com/techascent/tech.ml.dataset[tech.ml.dataset] 7.000 - A Clojure high performance data processing system
+* https://github.com/recbus/caribou[caribou]  - The caribou migration tool for Datomic
+* https://github.com/squint-cljs/cherry[cherry] https://github.com/squint-cljs/cherry/blob/main/CHANGELOG.md[0.1.7] - Experimental ClojureScript to ES6 module compiler
+* https://github.com/clj-commons/pretty[pretty] https://github.com/clj-commons/pretty/blob/main/CHANGES.md[2.1.1] - Library for helping print things prettily, in Clojure
+* https://github.com/soulspace-org/overarch[overarch] https://github.com/soulspace-org/overarch/releases/tag/v0.6.0[0.6.0] - A data driven description of software architecture based on UML and the C4 model
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.387[2.0.387] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/squint-cljs/squint[squint] https://github.com/squint-cljs/squint/blob/main/CHANGELOG.md[0.1.17] - ClojureScript syntax to JavaScript compiler
+* https://github.com/babashka/pod-babashka-go-sqlite3[pod-babashka-go-sqlite3] https://github.com/babashka/pod-babashka-go-sqlite3/blob/main/CHANGELOG.md[0.2.3] - A babashka pod for interacting with sqlite3

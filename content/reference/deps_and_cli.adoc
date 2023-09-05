@@ -263,7 +263,11 @@ Coordinates can take several forms depending on the coordinate type:
 
 == Aliases
 
-Aliases give a name to a data structure that can be used either by the Clojure CLI itself or other consumers of deps.edn. They are defined in the `:aliases` section of the config file. These Clojure CLI subprocesses use data which can be read from aliases:
+Aliases give a name to a data structure that can be used either by the Clojure CLI itself or other consumers of deps.edn. They are defined in the `:aliases` section of the config file. Clojure CLI subprocesses such as <<deps_and_cli#_basis_and_classpath,Basis and classpath>> operations use data which can be read from aliases.
+
+Some aliases, like `:test` and `:deps` are built into the root deps.edn file. Others may be defined across various <<deps_and_cli#deps_sources,deps.edn souces>>. Note that the _alias_ `:deps` is different from the _top level key_ `:deps`, which is used to define external <<deps_and_cli#_dependencies,dependencies>>.
+
+The `:deps` alias provides <<deps_and_cli#_other_programs,additional programs>> we can run in the current deps.edn environment; e.g. `clj -X:deps aliases` to print all aliases available.
 
 == Other keys
 

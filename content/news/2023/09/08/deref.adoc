@@ -9,7 +9,7 @@ Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure
 
 == From the core
 
-Our singular goal at the moment is moving towards a Clojure 1.12 beta that includes all of the new feature work. The two remaining long poles are definitely [method thunks](https://clojure.atlassian.net/browse/CLJ-2793) and [functional interface support](https://clojure.atlassian.net/browse/CLJ-2799). This [report](https://clojure.atlassian.net/issues/?filter=10037) tracks everything still "in scope", but some of this will fall out before the end. We've found some new ideas in the method thunk work that will not only support the new interop features but enhance existing interop support as well and I think this is increasingly becoming a very exciting enhancement for Clojure.
+Our singular goal at the moment is moving towards a Clojure 1.12 beta that includes all of the new feature work. The two remaining long poles are definitely https://clojure.atlassian.net/browse/CLJ-2793[method thunks] and https://clojure.atlassian.net/browse/CLJ-2799[functional interface support]. This https://clojure.atlassian.net/issues/?filter=10037[report] tracks everything still "in scope", but some of this will fall out before the end. We've found some new ideas in the method thunk work that will not only support the new interop features but enhance existing interop support as well and I think this is increasingly becoming a very exciting enhancement for Clojure.
 
 == Podcasts and videos
 

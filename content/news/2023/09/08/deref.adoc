@@ -1,0 +1,45 @@
+= Clojure Deref (Sept 8, 2023)
+Alex Miller
+2023-09-08
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== From the core
+
+Our singular goal at the moment is moving towards a Clojure 1.12 beta that includes all of the new feature work. The two remaining long poles are definitely [method thunks](https://clojure.atlassian.net/browse/CLJ-2793) and [functional interface support](https://clojure.atlassian.net/browse/CLJ-2799). This [report](https://clojure.atlassian.net/issues/?filter=10037) tracks everything still "in scope", but some of this will fall out before the end. We've found some new ideas in the method thunk work that will not only support the new interop features but enhance existing interop support as well and I think this is increasingly becoming a very exciting enhancement for Clojure.
+
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=smzc8XlvlSQ[Talking to Martians by Oliver Hine] - London Clojurians
+* https://www.youtube.com/watch?v=06-MA4HSS24[FlowStorm printer demo] - Juan Monetta
+* https://vimeo.com/861600197[Stateless, Data-driven UIs - Christian Johansen] - JavaZone
+* https://www.youtube.com/watch?v=9aN6GOaNoTM[Developing15 puzzle game with #ClojureScript - Part 1] - learn-clojure
+
+== Blogs, articles, and projects
+
+* https://www.clojuriststogether.org/news/august-2023-short-term-project-updates/[August 2023 Short Term Project Updates] - Kathy Davis (Clojurists Together)
+* https://fpsd.codes/blog/clojure-bites-profiling/[Clojure bites - Profiling with Tufte] - Francesco Pischedda
+* https://www.evalapply.org/posts/emerging-from-dotemacs-bankruptcy-ide-experience/[Emerging from dotemacs bankruptcy the hard way: integrating the IDE (feat. Clojure(Script))] - Aditya Athalye
+* https://medium.com/@lukaszkorecki/tolkien-clojure-library-for-accurate-token-counting-for-openai-apis-cd03b618232[Tolkien: Clojure library for accurate* token counting for OpenAI APIs] - Łukasz Korecki
+* https://biffweb.com/p/summer-updates/[Summer Biff updates] - Jacob O'Bryant
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/metosin/malli[malli] https://github.com/metosin/malli/blob/master/CHANGELOG.md[0.12.0] - High-performance Data-Driven Data Specification Library for Clojure/Script
+* https://github.com/mypulse-uk/awaitility-clj[awaitility-clj] 0.0.2 - Clojure wrapper for the Awaitility Java library
+* https://github.com/AdamFrey/clojure-html-server-live-reload-template[clojure-html-server-live-reload-template]  - Template for setting up automatic reload for Clojure server-rendered HTML
+* https://github.com/zmedelis/bosquet[bosquet] 0.3.6 - LLMOps for Large Language Model-based applications
+* https://github.com/fabiodomingues/clj-depend[clj-depend] https://github.com/fabiodomingues/clj-depend/blob/main/CHANGELOG.md[0.8.1] - A Clojure namespace dependency analyzer
+* https://github.com/athos/sweet-array[sweet-array] https://github.com/athos/sweet-array/releases/tag/0.2.0[0.2.0] - Array manipulation library for Clojure with "sweet" array type notation and more safety by static types
+* https://github.com/clj-kondo/clj-kondo[clj-kondo] https://github.com/clj-kondo/clj-kondo/blob/master/CHANGELOG.md[2023.09.07] - Static analyzer and linter for Clojure code that sparks joy
+* https://github.com/clj-commons/pretty[pretty] 2.2 - Library for helping print things prettily, in Clojure
+* https://github.com/replikativ/konserve-jdbc[konserve-jdbc] https://github.com/replikativ/konserve-jdbc/releases/tag/0.2.80[0.2.80] - A JDBC backend for konserve
+* https://github.com/babashka/http-client[http-client] https://github.com/babashka/http-client/blob/main/CHANGELOG.md[0.4.15] - HTTP client for Clojure and Babashka built on java.net.http
+* https://github.com/squint-cljs/squint[squint] https://github.com/squint-cljs/squint/blob/main/CHANGELOG.md[0.1.18] - ClojureScript syntax to JavaScript compiler
+* https://github.com/oliyh/carve.el[carve.el]  - Emacs plugin for borkdude/carve
+* https://github.com/lukaszkorecki/tolkien[tolkien] 0.1.4 - GPT model token counter, with extra support for OpenAI's completion API

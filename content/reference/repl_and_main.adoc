@@ -191,7 +191,7 @@ Following is an example of starting a socket server with a repl listener. This c
 -Dclojure.server.repl="{:port 5555 :accept clojure.core.server/repl}"
 ----
 
-With the Clojure CLI, use `-J` flag to pass the option to the JVM (note that this will also start a local REPL in addition to the scoket REPL):
+With the Clojure CLI, use `-J` flag to pass the option to the JVM (note that this will also start a local REPL in addition to the socket REPL):
 
 [source,shell]
 ----

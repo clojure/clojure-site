@@ -1,0 +1,41 @@
+= Clojure Deref (Sept 15, 2023)
+Alex Miller
+2023-09-15
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=JNdRAsne1Y8[Pedestal 6 - htmx] - Clojure Diary
+
+== Blogs, articles, and projects
+
+* https://www.clojuriststogether.org/news/2023-board-nominations-and-our-annual-meeting/[2023 Board Nominations and Our Annual Meeting] - Kathy Davis (Clojurists Together)
+* https://blog.danieljanus.pl/2023/09/09/transducers/[My mental model of transducers] - Daniel Janus
+* https://metaredux.com/posts/2023/09/09/clojure-support-in-emacs-one-unnecessary-drama.html[Clojure Support in Emacs: One Unnecessary Drama] - Bozhidar Batsov
+* https://mccormick.cx/news/entries/replacing-react-with-preact-in-clojurescript[Replacing React With Preact in ClojureScript] - Chris McCormick
+* https://jbullers.github.io/posts/2023-09-10-why-clojure[Why Clojure?] - Jason Bullers
+* https://techascent.com/blog/just-ducking-around.html[DuckDB - Data power tools for your laptop, now in Clojure] - TechAscent
+* https://rynkowski.pl/en/posts/clojure.spec-gotchas/[clojure.spec Gotchas] - Greg Rynkowski
+* https://nextjournal.com/cdeln/reference-counting-in-clojure[Reference Counting in Clojure] - Carl Dehlin
+* https://sunng.info/blog/the-jetty-12-adapter-for-clojure-ring-and-a-decade-of-a-custom-ring-adapter.html[The Jetty 12 Adapter for Clojure Ring, and A Decade of A Custom Ring Adapter] - Ning Sun
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/ericdallo/clj4intellij[clj4intellij] https://github.com/ericdallo/clj4intellij/blob/master/CHANGELOG.md[0.3.1] - Library for develop IntelliJ plugins in Clojure
+* https://github.com/ring-clojure/ring-defaults[ring-defaults] https://github.com/ring-clojure/ring-defaults/blob/master/CHANGELOG.md[0.4.0] - A library to provide sensible Ring middleware defaults
+* https://github.com/dundalek/parpar.nvim[parpar.nvim]  - Plugin for Neovim that seamlessly integrates Parinfer and Paredit for editing lisp code
+* https://github.com/bowbahdoe/microhttp-ring-adapter[microhttp-ring-adapter] https://github.com/bowbahdoe/microhttp-ring-adapter/releases/tag/v0.0.4[0.0.4] - Ring Adapter for microhttp
+* https://github.com/squint-cljs/squint[squint] https://github.com/squint-cljs/squint/blob/main/CHANGELOG.md[0.2.24] - ClojureScript syntax to JavaScript compiler
+* https://github.com/phronmophobic/clj-media[clj-media] 2.0 - Read, write, and transform audio and video with Clojure
+* https://github.com/monkey-projects/oci-sign[oci-sign] 0.1.1 - Generates signature headers to send requests to Oracle Cloud Infrastructure (OCI)
+* https://github.com/jacobobryant/biff[biff] https://github.com/jacobobryant/biff/releases/tag/v0.7.11[0.7.11] - A Clojure web framework for solo developers
+* https://github.com/quoll/tiara[tiara] 0.3.0 - A small data structure library
+* https://github.com/liquidz/antq[antq] 2.6.1121 - Point out your outdated dependencies
+* https://github.com/hlship/cli-tools[cli-tools] https://github.com/hlship/cli-tools/blob/main/CHANGES.md[0.9] - CLIs and subcommands for Clojure or Babashka
+* https://github.com/donut-party/hooked[hooked] 0.0.9 - Clojure's missing hook library

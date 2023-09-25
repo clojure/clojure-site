@@ -1,0 +1,55 @@
+= Clojure Deref (Sept 22, 2023)
+Alex Miller
+2023-09-22
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts and videos
+
+* https://www.therepl.net/episodes/48/[48: Biff with Jacob O'Bryant] - The REPL
+* https://www.youtube.com/watch?v=pkw_0I6iTYE[Joyful Mobile Development with ClojureDart (by Baptiste & Christophe)] - London Clojurians
+* https://www.youtube.com/watch?v=ve1030AaAfg[Creating a User Sign-In/Sign-Up Flow in Clojure (Ring, Compojure, Hiccup, HTMX, PostgreSQL)] - Andrey Fadeev
+
+== Blogs, articles, and projects
+
+* https://www.clojuriststogether.org/news/july-and-august-2023-long-term-project-updates/[July and August 2023 Long Term Project Updates] - Kathy Davis (Clojurists Together)
+* https://blog.jakubholy.net/2023/accessing-google-api-from-clojure/[Accessing Google API with OAuth2 and a service account from Clojure] - Jakub Holý
+* https://www.abhinavomprakash.com/posts/what-makes-frontend-development-tricky/[What makes frontend development tricky] - Abhinav Omprakash
+* https://cjohansen.no/stateless-data-driven-uis/[Stateless, data-driven UIs] - Christian Johansen
+* https://www.lambdaschmiede.com/en/blog/2023-09-10/invoking-javascript-from-graal-vm-using-java[Invoking Javascript from GraalVM using Java] - Tim Zöller
+* https://flexiana.com/2023/09/clojure-corner-with-christophe-grand[Clojure Corner with Christophe Grand] - Flexiana
+* https://andersmurphy.com/2023/09/15/clojure-virtual-threads-with-ring-and-http-kit.html[Clojure: virtual threads with ring and http-kit] - Anders Murphy
+* https://andersmurphy.com/2023/09/16/clojure-virtual-threads-with-ring-and-jetty.html[Clojure: virtual threads with ring and jetty] - Anders Murphy
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/mpenet/spandex[spandex] 0.8.1 - Elasticsearch client for Clojure (built on new ES 8.x java client)
+* https://github.com/metosin/oksa[oksa] 0.0.1 - Generate GraphQL queries using Clojure data structures
+* https://github.com/mpenet/mina[mina] 0.1.19 - Helidon/Nima ring adapter - using loom/java21+
+* https://github.com/mentat-collective/emmy-viewers[emmy-viewers] 0.3.1 - High-performance symbolic, 2D and 3D visual extensions to the Emmy computer algebra system
+* https://github.com/eval/deps-try[deps-try] 0.9.0 - Try out Clojure libraries via rebel-readline
+* https://github.com/Ivana-/bb-clj[bb-clj] 0.1.2 - Bare-bones VS Code plugin for Clojure
+* https://github.com/s-expresso/clojobuf-codec[clojobuf-codec] 0.1.2 - Low level clojure(script) encoding and decoding library for google's protobuf binary format
+* https://github.com/s-expresso/rubberbuf[rubberbuf] 0.1.5 - rubberbuf is a clojure(script) library to parse protobuf definition (.proto) into abstract syntax tree (AST)
+* https://github.com/s-expresso/clojobuf[clojobuf] 0.1.0 - dynamically interpret protobuf files (.proto) and encode/decode plain clojure(script) map into/from protobuf binaries
+* https://github.com/borkdude/rewrite-edn[rewrite-edn] 0.4.7 - Utility lib on top of rewrite-clj with common operations to update EDN while preserving whitespace and comments
+* https://github.com/tatut/ripley[ripley] https://github.com/tatut/ripley#changes[2023-09-21] - Server rendered UIs over WebSockets
+* https://github.com/scicloj/tablecloth[tablecloth] 7.007 - Dataset manipulation library built on the top of tech.ml.dataset
+* https://github.com/babashka/tools-deps-native[tools-deps-native] 0.1.2 - Run tools.deps as a native binary
+* https://github.com/babashka/tools.bbuild[tools.bbuild]  - Babashka maintained fork of tools.build
+* https://github.com/kbosompem/bb-excel[bb-excel] 0.0.6 - Read Excel Files in babashka scripts
+* https://github.com/squint-cljs/squint[squint] 0.2.28 - ClojureScript syntax to JavaScript compiler
+* https://github.com/fulcrologic/fulcro-i18n[fulcro-i18n] 1.1.0 - Internationalization Support For Fulcro
+* https://github.com/fulcrologic/fulcro[fulcro] 3.6.10 - A library for development of single-page full-stack web applications in clj/cljs
+* https://github.com/chr15m/sitefox[sitefox] 0.0.18 - Node + cljs backend web framework
+* https://github.com/scicloj/scicloj.ml[scicloj.ml] 0.3 - A Clojure machine learning library
+* https://github.com/babashka/bbin[bbin] 0.2.0-beta2 - Install any Babashka script or project with one command
+* https://github.com/hlship/cli-tools[cli-tools] 0.10 - CLIs and subcommands for Clojure or Babashka
+* https://github.com/scarletcomply/license-finder[license-finder] 0.3.0 - Finds licenses of your Clojure(Script) dependencies
+* https://github.com/phronmophobic/clj-media[clj-media] 2.1 - Read, write, and transform audio and video with Clojure
+* https://github.com/DogLooksGood/borsh-clj[borsh-clj] 0.1.16 - A pure Clojure/Script implementation for Borsh

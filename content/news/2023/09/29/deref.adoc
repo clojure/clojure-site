@@ -1,0 +1,47 @@
+= Clojure Deref (Sept 29, 2023)
+Alex Miller
+2023-09-29
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts and videos
+
+* https://clojuredesign.club/episode/091-combo-boost/[Ep 091: Combo Boost] - Functional Design in Clojure
+* https://www.youtube.com/watch?v=pG0ofjVL3Ro[Configuring a Clojure Application Using Component, Aero, and Malli] - Andrey Fadeev
+* https://www.youtube.com/watch?v=oqE_aI26VrY[Building conditional data dependency graphs with Nodely (by Sophia Velten)] - London Clojurians
+* https://www.youtube.com/watch?v=nX-crYoeaRw[Converting CURL header to Clojure map] - Clojure Diary
+
+== Blogs, articles, and projects
+
+* https://www.clojuriststogether.org/news/announcing-2023-board-nominations/[Announcing 2023 Board Nominations] - Kathy Davis (Clojurists Together)
+* https://jbullers.github.io/posts/2023-09-22-aoc-2022-day7[Experimenting with Clojure: Advent of Code 2022 - Day 7] - Jason Bullers
+* https://faster-than-light-memes.xyz/generative-art.html[generative-art] - Benjamin Schwerdtner
+* https://phronmophobic.github.io/llama.clj/notebooks/intro.html[Intro to Running LLMs Locally] - Adrian Smith
+* https://www.juxt.pro/blog/clojure-in-exoscale/[Clojure in Cloud Hosting: Exoscale] - JUXT
+* https://biffweb.com/p/understanding-htmx/[Understanding htmx] - Jacob O'Bryant
+* https://scicloj.github.io/blog/jointprob-community-updates-probability-basics-talk-hierarchical-models-followup/[Jointprob community updates - Probability Basics talk, Hierarchical Models followup] - Daniel Slutsky
+* https://robjohnson.dev/posts/aero-and-integrant/[Rethinking Config with Aero & Integrant] - Robert Johnson
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/wkok/openai-clojure[openai-clojure] https://github.com/wkok/openai-clojure/releases/tag/0.11.0[0.11.0] - Clojure functions to drive the OpenAI API
+* https://github.com/metosin/malli[malli] https://github.com/metosin/malli/blob/master/CHANGELOG.md#0130-2023-09-24[0.13.0] - High-performance Data-Driven Data Specification Library for Clojure/Script
+* https://github.com/fabiodomingues/clj-depend[clj-depend] 0.9.0 - A Clojure namespace dependency analyzer
+* https://github.com/babashka/neil[neil] https://github.com/babashka/neil/releases/tag/v0.2.61[0.2.61] - A CLI to add common aliases and features to deps.edn-based projects
+* https://github.com/amperity/vault-clj[vault-clj] 2.1.583 - Clojure client for Hashicorp's Vault secret management system
+* https://github.com/clj-commons/aleph[aleph] https://github.com/clj-commons/aleph/blob/master/CHANGES.md[0.7.0-alpha2] - Asynchronous communication for Clojure
+* https://github.com/babashka/bbin[bbin] 0.2.1 - Install any Babashka script or project with one command
+* https://github.com/babashka/babashka[babashka] https://github.com/babashka/babashka/blob/master/CHANGELOG.md#13185-2023-09-28[1.3.185] - Native, fast starting Clojure interpreter for scripting
+* https://github.com/seancorfield/next-jdbc[next-jdbc] https://github.com/seancorfield/next-jdbc/releases/tag/v1.3.894[1.3.894] - A modern low-level Clojure wrapper for JDBC-based access to databases
+* https://github.com/clojure-emacs/clojure-ts-mode[clojure-ts-mode] https://github.com/clojure-emacs/clojure-ts-mode/blob/main/CHANGELOG.md#020[0.2.0] - The next generation Clojure major mode for Emacs, powered by TreeSitter
+* https://github.com/abogoyavlensky/automigrate[automigrate] https://github.com/abogoyavlensky/automigrate/releases/tag/0.1.1[0.1.1] - Database auto-migration tool for Clojure
+* https://github.com/quoll/tiara[tiara] 0.3.1 - A small data structure library
+* https://github.com/quoll/spike[spike] 0.0.2 - Simple SPARQL client for Clojure
+* https://github.com/quoll/asami[asami] https://github.com/quoll/asami/blob/main/CHANGELOG.md[2.3.4] - A flexible graph store, written in Clojure
+* https://github.com/borkdude/deps.clj[deps.clj] 1.11.1.1413 - A faithful port of the clojure CLI bash script to Clojure
+* https://github.com/babashka/cli[cli] https://github.com/babashka/cli/releases/tag/v0.7.53[0.7.53] - Turn Clojure functions into CLIs

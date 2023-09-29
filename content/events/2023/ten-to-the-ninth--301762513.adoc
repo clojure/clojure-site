@@ -1,0 +1,45 @@
+= Ten to the Ninth
+2023-10-17
+:jbake-type: event
+:jbake-edition: 
+:jbake-link: https://www.meetup.com/London-Clojurians/events/296225883/
+:jbake-location: online
+:jbake-start: 2023-10-17
+:jbake-end: 2023-10-17
+
+== Ten to the Ninth: Performance Techniques in Je...
+
+Ten to the Ninth: Performance Techniques in Jepsen (by Kyle Kingsbury) +
+ +
+THIS IS AN ONLINE EVENT +
+[Connection details will be shared 1h before the start time] +
+The London Clojurians are happy to present: +
+Title: Ten to the Ninth: Performance Techniques in Jepsen +
+Speaker: Kyle Kingsbury +
+Time: 2023-10-17 @ 18:30 (London time) +
+Local time: click here for local time +
+Kyle Kingsbury (https://jepsen.io) will be presenting: +
+&quot;Ten to the Ninth: Performance Techniques in Jepsen&quot; +
+Jepsen is a Clojure library for testing distributed systems correctness. We'll talk about how Jepsen records and analyzes histories of up to a billion operations with the help of a new file format, faster lazy and persistent data structures, memory-adaptive caching, associative folds, and thread-safe transactional executors. Come learn about some of the lesser-known corners of the JVM and how to write faster, more efficient programs. +
+Kyle Kingsbury, a.k.a &quot;Aphyr&quot;, is a computer safety researcher working as an independent consultant. He's the author of the Riemann monitoring system, the Clojure from the Ground Up introduction to programming, and the Jepsen series on distributed systems correctness. He grills databases in the American Midwest. +
+If you missed this event, you can watch the recording on our YouTube channel: +
+https://www.youtube.com/@LondonClojurians +
+(The recording will be uploaded a couple of days after the event.) +
+Please, consider supporting the London Clojurians with a small donation: +
+https://opencollective.com/london-clojurians/ +
+Your contributions will enable the sustainability of the London Clojurians community and support our varied set of online and in-person events: +
+ +
+ClojureBridge London: supports under-represented groups discover Clojure +
+re:Clojure: our free to attend annual community conference +
+monthly meetup events with speakers from all over the world +
+subscription and admin costs such as domain name &amp; Zoom plan for larger online meetups +
+ +
+Thank you to our sponsors: +
+ +
+https://juxt.pro/ +
+https://flexiana.com/ +
+https://gaiwan.co/ +
+And many individual sponsors +
+ +
+Zulip: https://clojurians.zulipchat.com/#narrow/stream/262224-events/near/392095002 +
+

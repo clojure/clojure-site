@@ -1,0 +1,67 @@
+= Clojure Deref (Oct 6, 2023)
+Alex Miller
+2023-10-06
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== From the core
+
+Recently Java 21 was released (congrats!) and this has driven a lot of interest and experimentation with the new virtual threads feature. Virtual threads have the ability to park and resume a virtual thread (particularly one blocked on I/O) and this cooperates transparently with many blocking constructs in Java - I/O, sockets, java.util.concurrent.lock, etc. However, one thing it does not (yet) cooperate with is object monitors (synchronized) and thus doing a blocking call while holding a synchronized monitor prevents a virtual thread from parking (ie, "pins" the virtual thread). Note that synchronization itself is not inherently bad - normal use of synchronized to serialize reads and writes to fields is fine (as there is no blocking I/O that can pin a thread).
+
+Several people doing new things with virtual threads have detected cases where user code is doing I/O blocking while Clojure is in a synchronization block, thus pinning threads. The two most important cases are lazy seqs and `delay` - both hold some suspended computation in a thunk and invoke the thunk under synchronization, thus allowing for the possibility of user I/O under a lock in the language level. As people have raised this as an issue, we have spent the last week taking a hard look at this area.
+
+At a meta level, there are a bunch of options here and we have still not decided on our approach or timeframe. From a user level, it is possible to simply not do (or tolerate) I/O under delay or lazy seqs. Delay is a one-time thing, so it may not generally be an issue to pin a thread that is reading a config file as that is a one-time thing. Pulling I/O over a lazy seq is not uncommon and can definitely present this kind of issue, but there are a lot of other options - controlling via loop/recur, using transducers and `sequence`, etc. If you are experiencing this problem now, these are probably worth exploring.
+
+We've spent a ton of time over the last week looking at the internals of LazySeq and options for avoiding synchronization. The general guidance from Java is to replace synchronized with ReentrantLock (which has virtual thread coordination), but this advice leaves out the inherent tradeoffs in that change. synchronized relies on object monitors which are built into every Java object at the JVM level, whereas ReentrantLocks are additional Java objects (which hold a reference to an internal Sync object). Clojure makes a lot of lazy seqs and allocating two objects (plus adding an additional field to LazySeq) for every lazy seq is a real cost in allocation, heap size, and GC. Additionally, while ReentrantLock seems to be a bit faster than synchronized in Java 21, LazySeq makes one reentrant call, and reentrant calls seems to be noticeably slower than synchronized. There are lots of options though. We think it's relatively easy to make lazy seq walking faster, but a lot harder to keep realization costs under control (as making locks takes non-zero time). One interesting branch we have explored is making one lock per seq and passing it through the seq as we go - lots of tradeoffs in that.
+
+Additionally, we continue to work on functional interface adapters and method thunks. With FI adapters, we continue to refine when implicit coercion and conversion occur and I think that continues to draw asymptotically closer to completion. With method thunks, we have taken a bit of a detour to examine array class representation.
+
+Generally, classes are represented by symbols that name the class, but this does not work for array classes as they cannot be represented as a valid symbol. The fallback right now is using a String that holds the internal class name, like ^"[Ljava.lang.String;" which I think we can all agree is no fun. Our plan going forward is to support a new array class syntax which is a symbol of the class with a `*` suffix. Imported classes can use their short name, so `String*` will represent a Java String[]. Multiple `**` will represent multidimensional arrays. This will work both classes and with primitives, so `long*` will be a synonym for the existing `longs`. Rich also wishes you to notice the C pointer punnery. :)
+
+That was a bit of a diversion, but I think it is a big win to fix a long-time representational gap. It also helps create some new "columns" in the varargs decision matrix, which is not going to be addressed in 1.12, but I think we have teed up to work on immediately after.
+
+== Podcasts and videos
+
+* https://soundcloud.com/defn-771544745/91-josh-glover[#91 Josh Glover] - defn
+* https://clojuredesign.club/episode/092-freeing-limits/[Ep 092: Freeing Limits] - Functional Design in Clojure
+* https://clojuredesign.club/episode/093-waffle-cakes/[Ep 093: Waffle Cakes] - Functional Design in Clojure
+* https://www.youtube.com/watch?v=uEiobu_CP5I[Matrix Exposed! (or, You Don't Know Reactive) (by Kenny Tilton)] - London Clojurians
+* https://www.youtube.com/watch?v=_m-Rcz_jTGo[Scicloj LLM Meetup 4: transformer-based generative LLMs] - Sci Cloj
+* https://www.youtube.com/watch?v=CDLao9KDduU[Scicloj LLM Meetup 5: Library overviews] - Sci Cloj
+* https://www.youtube.com/watch?v=c4T5b_pgPUE[Parens of the Dead - Episode 24: Merry Happy!] - emacsrocks
+* https://www.youtube.com/watch?v=51FDOCrvbVg[Complete Clojure Development Environment Setup: IntelliJ IDEA, Cursive, ASDF/RTX, Toolbox] - Andrey Fadeev
+* https://www.youtube.com/watch?v=7YB_S8j6IYI[Private Methods in Clojure] - Clojure Diary
+* https://www.youtube.com/watch?v=PJBxAeQ4mAw[Pedestal 7 – Cookies] - Clojure Diary
+* https://www.youtube.com/watch?v=RVA11IAXlwc[Conhecendo Datomic - João Palharini] - clojure-br
+
+== Blogs, articles, and projects
+
+* https://scicloj.github.io/blog/following-our-first-five-llm-meetups/[Following our first five LLM meetups] - Daniel Slutsky
+* https://blog.jakubholy.net/2023/interactive-code-snippets-fulcro/[Include interactive Clojure/script code snippets in a web page with SCI & friends] - Jakub Holý
+* https://blog.michielborkent.nl/oss-updates-sep-2023.html[OSS updates September 2023] - Michiel Borkent
+* https://redefine.io/blog/buffered-sequences/[Lazy, Chunked, and Buffered: Understanding Clojure's Lazy Sequences] - Bruno Bonacci
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/holyjak/fulcro-troubleshooting[fulcro-troubleshooting] v7 - A development-time library for Fulcro that helps to detect problems earlier and find and fix their root cause faster
+* https://github.com/holyjak/minimalist-fulcro-template-backendless[minimalist-fulcro-template-backendless]  - A minimal template for browser-only Fulcro apps for learning
+* https://github.com/clojure-expectations/clojure-test[clojure-test] https://github.com/clojure-expectations/clojure-test/releases/tag/v2.1.182[2.1.182] - A clojure.test-compatible version of the classic Expectations testing library
+* https://github.com/nextjournal/clerk[clerk] https://github.com/nextjournal/clerk/blob/9c38ff3ef240c9bd21e596792adb2ebdbb5a738d/CHANGELOG.md#015957-2023-09-28[0.15.957] - Moldable Live Programming for Clojure
+* https://github.com/namenu/deps-diff[deps-diff] 1.1 - A tool for comparing transitive dependencies in two deps.edn files
+* https://github.com/juji-io/datalevin[datalevin] https://github.com/juji-io/datalevin/blob/master/CHANGELOG.md[0.8.20] - A simple, fast and versatile Datalog database
+* https://github.com/liquidz/antq[antq] https://github.com/liquidz/antq/releases/tag/2.7.1133[2.7.1133] - Point out your outdated dependencies
+* https://github.com/eerohele/tab[tab] https://github.com/eerohele/tab/blob/main/CHANGELOG.md#2023-10-03[2023-10-03.333] - A tool for tabulating Clojure collections
+* https://github.com/eerohele/pp[pp] 2023-10-05.5 - Pretty-print Clojure data structures, fast
+* https://github.com/quoll/raphael[raphael] 0.3.0 - A Clojure library for parsing strings containing the Terse Triples Language: Turtle
+* https://github.com/steffan-westcott/clj-otel[clj-otel] https://github.com/steffan-westcott/clj-otel/blob/master/CHANGELOG.adoc[0.2.4.1] - An idiomatic Clojure API for adding telemetry to your libraries and applications using OpenTelemetry
+* https://github.com/babashka/neil[neil] https://github.com/babashka/neil/blob/main/CHANGELOG.md#0262[0.2.61] - A CLI to add common aliases and features to deps.edn-based projects
+* https://github.com/squint-cljs/squint[squint] https://github.com/squint-cljs/squint/blob/main/CHANGELOG.md[0.2.30] - ClojureScript syntax to JavaScript compiler
+* https://github.com/eerohele/Tutkain[Tutkain] https://github.com/eerohele/Tutkain/blob/master/CHANGELOG.md#0190-alpha---2023-10-03[0.19.0 (alpha)] - A Sublime Text package for interactive Clojure development
+* https://github.com/squint-cljs/cherry[cherry] https://github.com/squint-cljs/cherry/blob/main/CHANGELOG.md[0.1.9] - Experimental ClojureScript to ES6 module compiler
+* https://github.com/PEZ/taplet[taplet] https://github.com/PEZ/taplet/blob/master/CHANGELOG.md[1.0.58] - A Clojure/ClojureScript macro, let> that works like a let, and also tap>s the binding vector
+* https://github.com/babashka/nbb[nbb] https://github.com/babashka/nbb/blob/main/CHANGELOG.md[1.2.179] - Scripting in Clojure on Node.js using SCI

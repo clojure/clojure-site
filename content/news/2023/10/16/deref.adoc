@@ -1,0 +1,65 @@
+= Clojure Deref (Oct 16, 2023)
+Alex Miller
+2023-10-16
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=WA5O7jNoNGE[TMD 7.0 - Higher Performance Functional Data Science (by Chris Nuernberger)] - London Clojurians
+* https://www.youtube.com/watch?v=DHtRfO3Bp90["Babashka: a meta-circular Clojure interpreter for the command line" by Michiel Borkent] - Strange Loop Conference
+* https://www.youtube.com/watch?v=ZeV7C_M3RCc[Parens of the Dead - Episode 25: Musings on the nature of Christmas mornings] - emacsrocks
+* https://www.youtube.com/watch?v=a_jQBWpxfQU[Memoization and Caching Patterns in Clojure: memoize, clojure.core.cache & clojure.core.memoize] - Andrey Fadeev
+* https://www.youtube.com/watch?v=bw9qQpw5WjU[Fulcro RAD Multimethod Rendering] - Tony Kay
+* https://www.youtube.com/watch?v=Fet7b3Eo5C8[Runtime Class Reloading on Mixed Java/Clojure Projects] - Tony Kay
+* https://www.youtube.com/watch?v=uFhC0Y-QqTQ[How to format and lint Clojure code: cljfmt, clj-kondo and Babashka task runner!] - Andrey Fadeev
+* https://www.youtube.com/watch?v=fa5ig2cIWnU[Interactive Shell Scripting with Babashka] - CalvaTV
+* https://www.youtube.com/watch?v=APNV_0I7nbs["A JVM threading model for the containerized times" by Luiz Hespanha and Flavio Brasil] - Strange Loop Conference
+* https://www.youtube.com/watch?v=Jv2JgzAl5yU["Computational Physics, Beyond the Glass" by Sam Ritchie (Strange Loop 2023)] - Strange Loop Conference
+* https://clojuredesign.club/episode/094-concrete-composition/[Ep 094: Concrete Composition] - Functional Design in Clojure
+* https://www.youtube.com/watch?v=OCYU0LtqRH0["Birdsong as code" by Chris Ford (Strange Loop 2023)] - Strange Loop Conference
+* https://www.youtube.com/watch?v=Nmu_IAw2YJs[Flutter/MX In Action: A Text-to-Speech Dashboard RFE] - Ken Tilton
+* https://www.youtube.com/watch?v=rnc-0qa7DLI[Great Clojure Software Programs — 2023] - Clojure Diary
+
+== Blogs, articles, and projects
+
+* https://blog.redplanetlabs.com/2023/10/11/introducing-ramas-clojure-api/[Introducing Rama’s Clojure API: build end-to-end scalable backends in 100x less code] - Red Planet Labs
+* https://notes.beakstar.com/posts/babashka-is-a-great-clojure-entry-point/[Babashka is a great Clojure entry point] - Matthew Twomey
+* link:++https://blog.agical.se/en/posts/imagemagick--x--pango--x--babashka--x---x--x-/++[ImageMagick + Pango + Babashka = ♥️] - Peter Strömberg
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/pitch-io/uix[uix] https://github.com/pitch-io/uix/blob/master/CHANGELOG.md#100[1.0.1] - Idiomatic ClojureScript interface to modern React.js
+* https://github.com/clojure/tools.build[tools.build] https://github.com/clojure/tools.build/blob/master/CHANGELOG.md[0.9.6] - Clojure builds as Clojure programs
+* https://github.com/seancorfield/deps-new[deps-new] https://github.com/seancorfield/deps-new/releases/tag/v0.5.3[0.5.3] - A new, simpler alternative to clj-new
+* https://github.com/mpenet/mina[mina] 0.1.23 - Helidon/Nima ring adapter - using loom/java21+
+* https://github.com/exoscale/lingo[lingo] 1.0.2 - spec explain improved
+* https://github.com/mpenet/spandex[spandex] 0.8.2 - Elasticsearch client for Clojure (built on new ES 8.x java client)
+* https://github.com/seancorfield/honeysql[honeysql] https://github.com/seancorfield/honeysql/releases/tag/v2.4.1078[2.4.1078] - Turn Clojure data structures into SQL
+* https://github.com/techascent/tech.ml.dataset[tech.ml.dataset] 7.012 - A Clojure high performance data processing system
+* https://github.com/http-kit/http-kit[http-kit] https://github.com/http-kit/http-kit/releases/tag/v2.8.0-beta3[2.8.0-beta3] - Simple, high-performance event-driven HTTP client+server for Clojure
+* https://github.com/taoensso/nippy[nippy] https://github.com/taoensso/nippy/releases/tag/v3.4.0-beta1[3.4.0-beta1] - The fastest serialization library for Clojure
+* https://github.com/taoensso/carmine[carmine] https://github.com/taoensso/carmine/releases/tag/v3.3.0[3.3.0] - Redis client + message queue for Clojure
+* https://github.com/wardle/hermes[hermes] https://github.com/wardle/hermes/releases/tag/v1.4.1320[1.4.1320] - Hermes provides a set of terminology tools built around SNOMED CT
+* https://github.com/escherize/huff[huff] 0.1.8 - Juicy hiccup in pure Clojure
+* https://github.com/clojure-emacs/cider[cider] https://github.com/clojure-emacs/cider/releases/tag/v1.8.0[1.8] - The Clojure Interactive Development Environment that Rocks for Emacs
+* https://github.com/fulcrologic/fulcro[fulcro] 3.7.0-RC1 - A library for development of single-page full-stack web applications in clj/cljs
+* https://github.com/fulcrologic/fulcro-rad[fulcro-rad] 1.6.0-RC2 - Fulcro Rapid Application Development
+* https://github.com/fulcrologic/fulcro-rad-semantic-ui[fulcro-rad-semantic-ui] 1.4.0-RC1 - Semantic UI Rendering Plugin for RAD
+* https://github.com/PEZ/taplet[taplet] 1.0.62 - Clojure/ClojureScript utilities for tapping things. let> macro, and #t reader tag
+* https://github.com/quoll/tiara[tiara] 0.3.3 - A small data structure library
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.389[2.0.389] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/quoll/donatello[donatello] 1.3.4 - TTL Writing Library
+* https://github.com/quoll/rudolf[rudolf] 0.1.8 - Basic RDF Datatypes
+* https://github.com/phronmophobic/llama.clj[llama.clj] 0.8 - Run LLMs locally. A clojure wrapper for llama.cpp
+* https://github.com/scicloj/tablecloth[tablecloth] 7.012 - Dataset manipulation library built on the top of tech.ml.dataset
+* https://github.com/eerohele/Tutkain[Tutkain] https://github.com/eerohele/Tutkain/blob/master/CHANGELOG.md#0191-alpha---2023-10-10[0.19.1 (alpha)] - A Sublime Text package for interactive Clojure development
+* https://github.com/quoll/michelangelo[michelangelo] 0.1.8 - Turtle transforming library
+* https://github.com/fulcrologic/statecharts[statecharts] 1.1.1 - A Statechart library for CLJ(S)
+* https://github.com/squint-cljs/squint[squint] 0.2.31 - ClojureScript syntax to JavaScript compiler--
+

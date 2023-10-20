@@ -19,6 +19,10 @@ Note: All dev releases are subject to breaking changes for new work since the pr
 
 == Release 1.12.0
 
+=== 1.12.0-alpha5 (Oct 20, 2023) [[v1.12.0-alpha5]]
+
+* https://clojure.atlassian.net/browse/CLJ-2804[CLJ-2804] lazy-seq, delay - To avoid running user code under synchronized blocks, replace synchronized with ReentrantLock
+
 === 1.12.0-alpha4 (Jun 28, 2023) [[v1.12.0-alpha4]]
 
 Bug fixes:

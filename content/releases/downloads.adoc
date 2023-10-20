@@ -48,22 +48,22 @@ Including Clojure with a tool like `clj` or `Leiningen` will automatically inclu
 Clojure depends on Java and all Clojure code is compiled to Java 8 compatible bytecode (newer versions of Java can load this as well).
 
 * Minimum runtime dependency: Java 8
-* Supported: LTS (long term support) releases, currently Java 8, Java 11, Java 17
+* Supported: LTS (long term support) releases, currently Java 8, Java 11, Java 17, Java 21
 * Others: likely work, but not officially supported
 
 === Changelog
 
 Read the https://github.com/clojure/clojure/blob/master/changes.md[Changelog] for detailed release information.
 
-== Development Release: 1.12.0-alpha4 (Jun 28, 2023)
+== Development Release: 1.12.0-alpha5 (Oct 20, 2023)
 
-* Clojure 1.12.0-alpha4
+* Clojure 1.12.0-alpha5
 * https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.clojure%22%20AND%20a%3A%22clojure%22%20AND%20v%3A1.12.0*[Clojure 1.12.0 pre-release builds]
 * <<devchangelog#,Dev changelog>>
 * Dependencies:
 ** `org.clojure/spec.alpha {:mvn/version "0.3.218"}`
 ** `org.clojure/core.specs.alpha {:mvn/version "0.2.62"}`
-* Requirements: Java 8 or higher (recommended: Java 8, Java 11, Java 17)
+* Requirements: Java 8 or higher (recommended: Java 8, Java 11, Java 17, Java 21)
 
 == Older Releases
 

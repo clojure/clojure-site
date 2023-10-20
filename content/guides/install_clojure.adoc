@@ -110,9 +110,9 @@ Please provide feedback on https://ask.clojure.org[Ask Clojure] or Clojurians sl
 [[java]]
 === Java
 
-Clojure requires Java. Clojure officially supports Java LTS releases (currently Java 8, 11, and 17), but also tries to ensure interim versions work as well. You can use any Java distribution, whether it’s a commercial release from Oracle or an open source version based on OpenJDK (like Temurin). The Clojure tools require only that the `java` command is on the `PATH` or that the `JAVA_HOME` environment variable is set.
+Clojure requires Java. Clojure officially supports Java LTS releases (currently Java 8, 11, 17 and 21), but also tries to ensure interim versions work as well. You can use any Java distribution, whether it’s a commercial release from Oracle or an open source version based on OpenJDK (like Temurin). The Clojure tools require only that the `java` command is on the `PATH` or that the `JAVA_HOME` environment variable is set.
 
-If you don't already hava Java installed, we recommend installing Adoptium Temurin 17.
+If you don't already hava Java installed, we recommend installing Adoptium Temurin 21.
 
 To use the Adoptium Temurin installers:
 
@@ -123,13 +123,13 @@ To use the Adoptium Temurin installers:
 On Mac, you can also install Temurin using brew:
 
 * `brew tap homebrew/cask-versions` - add the cask-versions tap to Homebrew
-* `brew install --cask temurin17` - install Temurin 17 (formerly AdoptOpenJDK)
+* `brew install --cask temurin21` - install Temurin 21 (formerly AdoptOpenJDK)
 
-Check your Java version by running `java --version`. If that's not Temurin 17, then you may then need to add `java` to your `PATH`:
+Check your Java version by running `java --version`. If that's not Temurin 21, then you may then need to add `java` to your `PATH`:
 
 [source,shell]
 ----
-echo 'export PATH="/Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home/bin:$PATH"' >> ~/.zshrc
+echo 'export PATH="/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home/bin:$PATH"' >> ~/.zshrc
 ----
 
 == More information

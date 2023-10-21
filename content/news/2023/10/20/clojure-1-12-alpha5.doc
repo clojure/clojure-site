@@ -1,0 +1,13 @@
+= Clojure 1.12.0-alpha5
+Alex Miller
+2023-10-20
+:jbake-type: post
+
+Clojure 1.12.0-alpha5 is now available and we encourage you to try it and give us your feedback!
+
+== Avoid user code with I/O under synchronized blocks
+
+Java 21 LTS introduced virtual threads (aka Project Loom). Virtual threads may be paused and resumed and cooperate with many blocking operations in the JDK - I/O, ReentrantLock, etc. However, Java 21 does not allow pausing of synchronization on object monitors (synchronized) and will thus "pin" the virtual thread to a carrier thread if blocking while synchronized.
+
+This release modifies `lazy-seq` and `delay` to use ReentrantLock instead of synchronized to avoid this issue.
+

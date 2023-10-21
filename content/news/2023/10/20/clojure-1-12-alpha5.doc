@@ -5,6 +5,6 @@ Alex Miller
 
 Clojure 1.12.0-alpha5 is now available and we encourage you to try it and give us your feedback!
 
-== Use locks instead of synchronized blocks around user code in lazy-seq and delay 
+== Use locks instead of synchronized blocks around user code in lazy-seq and delay
 
 Clojure users want to use virtual threads on JDK 21. Prior to 1.12, Clojure lazy-seqs and delays, in order to enforce run-once behavior, ran user code under synchronized blocks, which don't participate in cooperative blocking. Thus if that code did e.g. blocking I/O it would pin a real thread. JDK 21 may emit warnings for this when using `-Djdk.tracePinnedThreads=full`. To avoid this pinning, in 1.12 we've changed lazy-seqs and delay to use locks instead of synchronized blocks.

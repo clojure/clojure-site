@@ -1,0 +1,49 @@
+= Clojure Deref (Oct 23, 2023)
+Alex Miller
+2023-10-23
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== From the core
+
+https://clojure.org/news/2023/10/20/clojure-1-12-alpha5[Clojure 1.12.0-alpha5] is now available! We've limited this to just a single change and would be interested in any feedback on performance or GC/allocation differences. We have a lot more queued up for upcoming releases.
+
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=EUdhyAdYfpA[Ten to the Ninth: Performance Techniques in Jepsen (by Kyle Kingsbury)] - London Clojurians
+* https://www.youtube.com/watch?v=GOnQzzi8WIc[How to write tests for HTTP requests: with-redefs vs Wiremock?] - Andrey Fadeev
+* https://www.youtube.com/watch?v=MoUNcCPJ6RU[Polling with core.async] - Daniel Szmulewicz
+* https://www.youtube.com/watch?v=vcUq8bmbpVk[SDFx - Making an Art Tool with Clojure, WebGL, and HTMX] - Adam James
+* https://www.youtube.com/watch?v=ImBji-1bKkc[Interactive Programming with Clojure & Membrane] - CalvaTV
+* https://www.youtube.com/watch?v=Me_5c0B4Ric[Parens of the Undead - Episode 27: The ObjectMother pattern] - emacsrocks
+* https://clojuredesign.club/episode/095-composing-core/[Ep 095: Composing Core] - Functional Design in Clojure
+* https://soundcloud.com/clojurestream/e94-uix-with-roman-liutikov[E94 UIx With Roman Liutikov] - ClojureStream Podcast
+* https://www.youtube.com/watch?v=O2jtzfIMtOI[Pedestal 8 — POST] - Clojure Diary
+
+== Blogs, articles, and projects
+
+* https://jank-lang.org/blog/2023-10-14-module-loading/[jank development update - Module loading] - Jeaye Wilkerson
+* https://flexiana.com/2023/10/clojure-in-2024[The Growth of Clojure: 2023 Review and 2024 Projections] - Marek Rinko (Flexiana)
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/clojure-emacs/cider[cider] https://github.com/clojure-emacs/cider/releases/tag/v1.8.0[1.8.0] - The Clojure Interactive Development Environment that Rocks for Emacs
+* https://github.com/escherize/huff[huff] 0.1.8 - Juicy hiccup in pure Clojure
+* https://github.com/gnl/build.simple[build.simple] 0.7.4 - tools.build's missing piece – install, sign and deploy libraries easily and securely like with Leiningen
+* https://github.com/gnl/playback[playback] 0.5.0 - Easier-than-print dataflow tracing to tap> and Portal with automatic last-input function replay on eval, instant re-render and effortless extraction of traced data
+* https://github.com/ring-clojure/ring[ring] https://github.com/ring-clojure/ring/blob/master/CHANGELOG.md[1.11.0-beta2] - Clojure HTTP server abstraction
+* https://github.com/clojure-goes-fast/clj-async-profiler[clj-async-profiler] https://github.com/clojure-goes-fast/clj-async-profiler/blob/master/CHANGELOG.md[1.1.0] - Embedded high-precision Clojure profiler
+* https://github.com/squint-cljs/squint[squint] https://github.com/squint-cljs/squint/blob/main/CHANGELOG.md[0.3.32] - ClojureScript syntax to JavaScript compiler
+* https://github.com/danielmiladinov/burpless[burpless] 0.0.1 - An idiomatic Clojure wrapper for the latest version of cucumber-jvm, inspired by auxoncorp/clj-cucumber
+* https://github.com/clj-kondo/clj-kondo[clj-kondo] https://github.com/clj-kondo/clj-kondo/blob/master/CHANGELOG.md[2023.10.20] - Static analyzer and linter for Clojure code that sparks joy
+* https://github.com/nilenso/goose[goose] https://github.com/nilenso/goose/releases/tag/0.4.0[0.4.0] - The Next-Level background job processing library for Clojure
+* https://github.com/mpenet/hirundo[hirundo] 0.1.24 - Helidon/Nima ring adapter - using loom/java21+
+* https://github.com/holyjak/fulcro-troubleshooting[fulcro-troubleshooting] 9 - A development-time library for Fulcro that helps to detect problems earlier and find and fix their root cause faster
+* https://github.com/ring-clojure/ring-websocket-transit[ring-websocket-transit] 0.1.0-beta2 - A Clojure library for using the Transit data format over Ring's WebSocket API
+* https://github.com/ring-clojure/ring-websocket-async[ring-websocket-async] 0.1.0-beta2 - Library for using core.async with Ring's websocket API
+* https://github.com/phronmophobic/clogif[clogif] 1.3 - Create gifs in clojure!

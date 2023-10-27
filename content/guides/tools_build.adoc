@@ -159,13 +159,15 @@ An example build for a compiled uberjar will look like this:
   (b/copy-dir {:src-dirs ["src" "resources"]
                :target-dir class-dir})
   (b/compile-clj {:basis basis
-                  :src-dirs ["src"]
+                  :ns-compile '[my.lib.main]
                   :class-dir class-dir})
   (b/uber {:class-dir class-dir
            :uber-file uber-file
            :basis basis
            :main 'my.lib.main}))
 ----
+
+This example directs `compile-clj` to compile the main namespace (by default source will be loaded from the basis :paths). Compilation is transitive and all namespaces loaded by the compiled namespace will also be compiled. You may need to add additional namespaces if code is dynamically or optionally loaded.
 
 The deps.edn and build execution will look the same as the prior example.
 

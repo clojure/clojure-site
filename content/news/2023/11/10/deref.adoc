@@ -1,0 +1,40 @@
+= Clojure Deref (Nov 10, 2023)
+Alex Miller
+2023-11-10
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=Z7lCSawYeX8[Parens of the Dead - Episode 29: We’re friends ‘til the end!] - emacsrocks
+* https://www.youtube.com/watch?v=18AbXfQdq68[8 Tickets in 30 minutes: Flutter/MX Live Coding, with Clojure] - Ken Tilton
+* https://clojuredesign.club/episode/098-composed-learnings/[Ep 098: Composed Learnings] - Functional Design in Clojure
+
+== Blogs, articles, and projects
+
+* https://www.clojuriststogether.org/news/call-for-proposals.-november-2023-member-survey/[Call for Proposals. November 2023 Member Survey] - Kathy Davis (Clojurists Together)
+* https://blog.tvaisanen.com/deploying-clojure-like-a-seasoned-hobbyist[Deploying Clojure Like a Seasoned Hobbyist] - Toni Väisänen
+* https://techascent.com/blog/distinctly-sorted.html[Distinctly Sorted - A Clojure Performance Koan] - TechAscent
+* https://widdindustries.com/blog/clojurescript-importmap.html[Clojurescript using JS libraries via importmap] - Henry Widd
+* https://biffweb.com/p/philosophy-of-biff/[Philosophy of Biff] - Jacob O'Bryant
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/oliyh/carmine-streams[carmine-streams] 0.2.2 - Utility functions for working with Redis streams in carmine
+* https://github.com/overtone/overtone[overtone] https://github.com/overtone/overtone/blob/master/CHANGELOG.md#0110-2023-11-02--2907605ba[0.11.0] - Collaborative Programmable Music
+* https://github.com/cnuernber/ham-fisted[ham-fisted] https://github.com/cnuernber/ham-fisted/blob/master/CHANGELOG.md#2011[2.010] - High performance HAMT
+* https://github.com/alexander-yakushev/compliment[compliment] https://github.com/alexander-yakushev/compliment/blob/master/CHANGELOG.md#050-2023-11-08[0.5.0] - Clojure completion library that you deserve
+* https://github.com/zmedelis/hfds-clj[hfds-clj] 2023.11.05 - Access to HuggingFace datasets via Clojure
+* https://github.com/monkey-projects/oci-sign[oci-sign] 0.1.2 - Generates signature headers to send requests to Oracle Cloud Infrastructure (OCI)
+* https://github.com/ring-clojure/ring[ring] https://github.com/ring-clojure/ring/blob/master/CHANGELOG.md#1110-rc1-2023-11-06[1.11.0-RC1] - Clojure HTTP server abstraction
+* https://github.com/eval/bbangsearch[bbangsearch] https://github.com/eval/bbangsearch/releases/tag/v0.6.0[0.6.0] - DuckDuckGo's bang searches from the terminal
+* https://github.com/wkok/openai-clojure[openai-clojure] https://github.com/wkok/openai-clojure/blob/main/CHANGELOG.md#0122---2023-11-09[0.12.2] - Clojure functions to drive the OpenAI API
+* https://github.com/bowbahdoe/jresolve-cli[jresolve-cli] 0.0.2 - CLI for resolving dependencies on the JVM
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/blob/published/CHANGELOG.md#20394---2023-11-06[2.0.394] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/squint-cljs/squint[squint] https://github.com/squint-cljs/squint/blob/main/CHANGELOG.md#0338-2023-11-07[0.3.38] - ClojureScript syntax to JavaScript compiler
+* https://github.com/clojure-emacs/cider[cider] https://github.com/clojure-emacs/cider/releases/tag/v1.11.0[1.11.0] - The Clojure Interactive Development Environment that Rocks for Emacs

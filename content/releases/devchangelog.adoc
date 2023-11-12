@@ -21,6 +21,8 @@ Note: All dev releases are subject to breaking changes for new work since the pr
 
 === 1.12.0-alpha5 (Oct 20, 2023) [[v1.12.0-alpha5]]
 
+https://clojure.org/news/2023/10/20/clojure-1-12-alpha5[Release notes]
+
 * https://clojure.atlassian.net/browse/CLJ-2804[CLJ-2804] lazy-seq, delay - To avoid running user code under synchronized blocks, replace synchronized with ReentrantLock
 
 === 1.12.0-alpha4 (Jun 28, 2023) [[v1.12.0-alpha4]]
@@ -48,6 +50,8 @@ Fixes from work in prior 1.12.0 alpha releases:
 
 === 1.12.0-alpha2 (Apr 12, 2023) [[v1.12.0-alpha2]]
 
+https://clojure.org/news/2023/04/14/clojure-1-12-alpha2[Release Notes]
+
 New:
 
 * https://clojure.atlassian.net/browse/CLJ-2757[CLJ-2757] Basis api
@@ -73,6 +77,8 @@ Bug fixes and enhancements:
 * https://clojure.atlassian.net/browse/CLJ-2724[CLJ-2724] clojure.java.io/do-copy - Fix incorrect type hint
 
 === 1.12.0-alpha1 (Jun 30, 2022) [[v1.12.0-alpha1]]
+
+https://clojure.org/news/2022/06/30/clojure1-12-alpha1[Release Notes]
 
 New:
 

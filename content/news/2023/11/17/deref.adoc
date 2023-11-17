@@ -1,0 +1,42 @@
+= Clojure Deref (Nov 17, 2023)
+Alex Miller
+2023-11-17
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=4vgrLHsD0-I[UIx, a story behind yet another React wrapper (by Roman Liutikov)] - London Clojurians
+* https://vimeo.com/884772901[Apropos 2023-11-14 (with Alex Miller)] - Apropos Clojure
+* https://www.youtube.com/watch?v=xLZ78mjswSs[Parens of the Dead - Episode 30: Payback] - emacsrocks
+* https://www.youtube.com/watch?v=vAFaB5QA7BA[JSON in Clojure: cheshire or jsonista?] - Andrey Fadeev
+* https://www.youtube.com/watch?v=TQT59TGvFkQ[ClojureDart For the Win!: Massive Flutter Isolate Refactoring Debugged In Seconds] - Ken Tilton
+* https://clojure.stream/podcast[E96 Datomic at Shortcut with Francis Avila] - ClojureStream Podcast
+* https://clojuredesign.club/episode/099-repl-your-world/[Ep 099: REPL Your World] - Functional Design in Clojure
+
+== Blogs, articles, and projects
+
+* https://jmglov.net/blog/2023-11-11-awno-api.html[Awno! Mutilating awyeah-api] - Josh Glover
+* https://blog.tvaisanen.com/take-your-linting-game-to-the-next-level[Take Your Linting Game to the Next Level!] - Toni Väisänen
+* https://www.juxt.pro/blog/clojure-in-motiva-ai/[Automation and AI: Motiva AI] - JUXT
+* https://chpill.github.io/en/posts/getting-a-feel-for-closeables.html[Getting a feel for closeables] - Etienne Spillemaeker
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/squint-cljs/squint[squint] https://github.com/squint-cljs/squint/blob/main/CHANGELOG.md#0448-2023-11-17[0.4.48] - ClojureScript syntax to JavaScript compiler
+* https://github.com/behrica/msal-helper[msal-helper]  - Just a bit of re-usable code to obtain and cache identity tokens comming from Azure Identtity
+* https://github.com/grzm/awyeah-api[awyeah-api] https://github.com/grzm/awyeah-api/blob/main/CHANGES.markdown#0882--5ecad02--2023-11-14[0.8.82] - Cognitect's aws-api for babashka
+* https://github.com/taoensso/tempel[tempel] https://github.com/taoensso/tempel/releases/tag/v1.0.0-alpha1[1.0.0-alpha1] - Data security framework for Clojure
+* https://github.com/fractl-io/fractl[fractl] 0.4.7 - Generative AI-powered Programming Language
+* https://github.com/quil/quil[quil] https://github.com/quil/quil/blob/master/RELEASE-NOTES.md#431323[4.3.1323] - Quil
+* https://github.com/Flexiana/framework[framework] https://github.com/Flexiana/framework/blob/main/CHANGELOG.md#050-rc5[0.5.0-rc5] - Xiana is a lightweight web-application framework written in Clojure, for Clojure
+* https://github.com/flow-storm/clofidence[clofidence] 0.1.0 - Bolster your Clojure test suite confidence
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/blob/published/CHANGELOG.md#20396---2023-11-13[2.0.396] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/babashka/neil[neil] https://github.com/babashka/neil/blob/main/CHANGELOG.md#0263[0.2.63] - A CLI to add common aliases and features to deps.edn-based projects
+* https://github.com/clj-commons/pretty[pretty] https://github.com/clj-commons/pretty/blob/main/CHANGES.md#221---14-nov-2023[2.2.1] - Library for helping print things prettily, in Clojure
+* https://github.com/clj-commons/aleph[aleph] 0.6.4 - Asynchronous communication for Clojure

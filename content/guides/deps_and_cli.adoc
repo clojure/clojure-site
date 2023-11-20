@@ -512,9 +512,9 @@ Use Ctrl-D to exit the repl and Ctrl-C to exit the server.
 [[list_deps]]
 === List all dependencies
 
-There are several helpful tools in the built-in `:deps` alias to explore the full set of transitive deps.
+There are several helpful tools in the built-in `:deps` alias to explore the full set of transitive deps used by your project (and their licenses).
 
-To https://clojure.github.io/tools.deps.cli/clojure.tools.deps.cli.api-api.html#clojure.tools.deps.cli.api/list[list the full set of all the deps] included on your classapth, use `clj -X:deps list`. For example in the `hello-world` application at the top of this guide, you would see something like this:
+To https://clojure.github.io/tools.deps.cli/clojure.tools.deps.cli.api-api.html#clojure.tools.deps.cli.api/list[list] the full set of all the deps included on your classpath, use `clj -X:deps list`. For example in the `hello-world` application at the top of this guide, you would see something like this:
 
 [source,shell]
 ----
@@ -528,7 +528,7 @@ time-lib/time-lib ../cli-getting-started/time-lib
 
 The full set of transitive dependencies used by your application is listed in alphabetical order with version and license. See the api docs for additional printing options.
 
-If you want to understand the https://clojure.github.io/tools.deps.cli/clojure.tools.deps.cli.api-api.html#clojure.tools.deps.cli.api/tree[tree structure of your dependencies] and how version selection choices were made, use `clj -X:deps tree`:
+If you want to understand the https://clojure.github.io/tools.deps.cli/clojure.tools.deps.cli.api-api.html#clojure.tools.deps.cli.api/tree[tree] structure of your dependencies and how version selection choices were made, use `clj -X:deps tree`:
 
 [source,shell]
 ----
@@ -540,6 +540,6 @@ time-lib/time-lib /Users/alex.miller/tmp/cli-getting-started/time-lib
   . clojure.java-time/clojure.java-time 1.1.0
 ----
 
-There were no version selections made here, but see https://clojure.org/reference/dep_expansion#_tree_printing[the docs] for more on how the choices are explained in the tree.
+There were no version selections made here, but see https://clojure.org/reference/dep_expansion#_tree_printing[the docs] for more on how choices are explained in the tree if needed.
 
 Both of these helper functions take an optional `:aliases` argument if you wish to examine the dependency list or tree with one or more aliases applied, such as `clj -X:deps list '[:alias1 :alias2]'`.

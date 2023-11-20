@@ -507,13 +507,26 @@ There are some options that can be provided to `clj` that short circuit normal e
 * `-Sdescribe` - print environment and command parsing info as data
 * `-Spath` - compute classpath and echo to stdout only
 
-The `:deps` alias is built into the root deps.edn and provides a default namespace with several additional programs:
+The `:deps` alias is built into the root deps.edn and provides a default namespace with several additional programs described in the next sections.
 
-* `-X:deps tree` - print dependency tree (also see <<dep_expansion#_tree_printing,tree printing>>)
+=== Dependency tree or list
+
+These programs are provided to see the dependencies used by your program:
+
 * `-X:deps list` - print dependency list and license information
+* `-X:deps tree` - print dependency tree (also see <<dep_expansion#_tree_printing,tree printing>>)
+
+The `list` view shows a sorted list of all dependencies and selected versions and their licenses (if it can be found programatically). See https://clojure.github.io/tools.deps.cli/clojure.tools.deps.cli.api-api.html#clojure.tools.deps.cli.api/list[API docs] for more.
+
+The `tree` view shows all dependencies in the <<dep_expansion#,dependency expansion>> tree and explains why a version was selected or not. See https://clojure.github.io/tools.deps.cli/clojure.tools.deps.cli.api-api.html#clojure.tools.deps.cli.api/tree[API docs] for more.
+
+=== Alias list
+
+This program is used to print all aliases available in the current deps environment:
+
 * `-X:deps aliases` - print all aliases available in the current deps environment
-* `-X:deps mvn-pom` - generate (or update an existing) pom.xml with deps and paths
-* `-X:deps git-resolve-tags` - resolve git coordinate tags to shas and update deps.edn
+
+See https://clojure.github.io/tools.deps.cli/clojure.tools.deps.cli.api-api.html#clojure.tools.deps.cli.api/aliases[API docs] for more.
 
 === Help functions
 
@@ -637,6 +650,14 @@ clj -X:deps mvn-install :jar '"/path/to.jar"'
 As mentioned above, edn strings must be in double quotes, and then single-quoted for the shell.
 
 A pom file must be either provided explicitly, generated from :lib/:version, or found inside the .jar file (the default).
+
+=== Generate Maven pom
+
+Use the following program to generate or update an existing pom.xml with the deps and paths from your project:
+
+* `-X:deps mvn-pom` - generate (or update an existing) pom.xml with deps and paths
+
+See https://clojure.github.io/tools.deps.cli/clojure.tools.deps.cli.api-api.html#clojure.tools.deps.cli.api/mvn-pom[API docs] for more.
 
 = Procurers
 

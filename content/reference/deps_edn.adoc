@@ -44,7 +44,7 @@ If you are building a tool that would like to leverage deps.edn, create well-kno
                   <<deps_edn#deps_deps_exclusions,:exclusions>> [lib1 lib2]}}
    
  ;; Aliases give a name to any set of edn data
- <<deps_new#aliases,:aliases>> {
+ <<deps_edn#aliases,:aliases>> {
    :alias-name {
      <<deps_edn#aliases_extradeps,:extra-deps>> {lib coord}
      <<deps_edn#aliases_overridedeps,:override-deps>> {lib coord}

@@ -44,7 +44,7 @@ If you are building a tool that would like to leverage deps.edn, create well-kno
                   <<deps_edn#deps_deps_exclusions,:exclusions>> [lib1 lib2]}}
    
  ;; Aliases give a name to any set of edn data
- <<aliases#,:aliases>> {
+ <<deps_new#aliases,:aliases>> {
    :alias-name {
      <<deps_edn#aliases_extradeps,:extra-deps>> {lib coord}
      <<deps_edn#aliases_overridedeps,:override-deps>> {lib coord}
@@ -55,7 +55,7 @@ If you are building a tool that would like to leverage deps.edn, create well-kno
      <<deps_edn#aliases_extrapaths,:extra-paths>> ["p1" "p2"]
      <<deps_edn#aliases_paths,:paths>> ["p1" "p2"]
      <<deps_edn#aliases_paths,:replace-paths>> ["p1" "p2"]
-     <<deps_edn#classpathoverrides,:classpath-overrides>> {lib "path"}
+     <<deps_edn#aliases_classpathoverrides,:classpath-overrides>> {lib "path"}
           
      <<deps_edn#aliases_nsdefault,:ns-default>> namespace
      <<deps_edn#aliases_nsaliases,:ns-aliases>> {alias namespace}
@@ -75,8 +75,8 @@ If you are building a tool that would like to leverage deps.edn, create well-kno
                      <<deps_edn#procurer_mvn_repos_snapshots,:snapshots>> {#_same_as_releases}}}
 
  ;; Tool publishing
- <<deps_edn#tools_usage,:tools/usage>> {<<deps_edn#aliases_nsdefault,:exec-fn>> namespace
-               <<deps_edn#aliases_nsaliases,:exec-args>> {alias namespace}}
+ <<deps_edn#tools_usage,:tools/usage>> {<<deps_edn#aliases_nsdefault,:ns-default> namespace
+               <<deps_edn#aliases_nsaliases,:ns-aliases>> {alias namespace}}
  
  ;; Lib that requires preparation (compilation) before use
  <<deps_edn#prep_lib,:deps/prep-lib>> {<<deps_edn#prep_lib_ensure,:ensure>> "target/classes"
@@ -243,7 +243,7 @@ The `:exclusions` attribute takes a vector of lib symbols to exclude as transiti
 The `:deps/root` attribute indicates a relative directory path within a file-based dep to search for the manifest file. It is commonly used with monorepo style projects to specify a dep root in a directory below the repo root.
 
 [[deps_deps_manifest]]
-=== `:deps/manifest
+=== `:deps/manifest`
 
 The `:deps/manifest` attribute specifies the project manifest type and overrides auto detection, useful values are `:deps`, `:pom`. (Other values are `:mvn`, and `:jar` but these don't need to be specified.)
 
@@ -415,17 +415,17 @@ The `:releases` attribute is optional, but can be used to override the default r
 Same as the `:releases` attribute, but used to apply repository policy for snapshot artifacts.
 
 [[procurer_mvn_repos_enabled]]
-====== `:enabled`
+===== `:enabled`
 
 `:enabled` is a boolean, default=true. Sometimes this is used to target a repository only for releases or snapshots.
 
 [[procurer_mvn_repos_update]]
-====== `:update`
+===== `:update`
 
 `:update` is a flag for how often to check the repo for updates, valid values are `:daily` (default), `:always`, `:never`, or an interval in minutes (integer).
 
 [[procurer_mvn_repos_checksum]]
-====== `:checksum`
+===== `:checksum`
 
 `:checksum` is a flag for checksum validation, one of `:warn` (default), `:fail`, `:ignore`.
 

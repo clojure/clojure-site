@@ -1234,6 +1234,7 @@ PS D:> clj -X clojure.core/prn :val '{:s1 """nospaces""" :s2 ""has spaces""}'
 {:val {:s1 "nospaces", :s2 "has spaces"}}
 ----
 
+[[env_vars]]
 == Environment variables
 
 The following environment variables can influence CLI execution (many are described in more detail elsewhere on this page):
@@ -1250,6 +1251,7 @@ The following environment variables can influence CLI execution (many are descri
 * `GITLIBS` - the path to the gitlibs storage directory (default = `~/.gitlibs`)
 * `GITLIBS_COMMAND` - the git command to run (default = `git`)
 * `GITLIBS_DEBUG` - set to true to print all git commands being run
+* `CLOJURE_CLI_ALLOW_HTTP_REPO` - set to true to allow http:// repository urls (this may make your dependency downloads subject to man-in-the-middle attacks)
 
 == Glossary
 

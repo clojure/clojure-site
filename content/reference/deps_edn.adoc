@@ -1,0 +1,475 @@
+= deps.edn Reference
+Alex Miller
+2023-11-22
+:type: reference
+:toc: macro
+:icons: font
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+== Overview
+
+The deps.edn file is a data file specifying all information needed to form a project classpath, including deps, paths, and external dependency repository information. The deps.edn file format is used by the https://github.com/clojure/tools.deps[tools.deps library] and the <<deps_and_cli#, Clojure CLI>>.
+
+If you are building a tool that would like to leverage deps.edn, create well-known namespaced <<aliases#,:aliases>> as a means to convey tool configuration, rather than adding new arbitrary tags elsewhere in the deps.edn data - these may not be preserved or conveyed during processing. Tools can access alias data via the basis at runtime, or programatically via tools.deps.
+
+.Index of all attributes
+[[index]]
+[subs=+macros]
+----
+{;; Project paths
+ <<deps_edn#paths,:paths>> ["relative/path1" :path-alias]
+
+ ;; Project dependencies
+ <<deps_edn#deps,:deps>> {
+   ;; Maven lib
+   <<deps_edn#deps_mvn,groupId/artifactId$classifier>> {<<deps_edn#deps_mvn_version,:mvn/version>> "1.2.3"
+                                  <<deps_edn#deps_deps_exclusions,:exclusions>> [lib1 lib2]}
+
+   ;; Git lib
+   <<deps_edn#deps_git,gitlib/name>> {<<deps_edn#deps_git_url,:git/url>> "https://example.com/repo"
+                <<deps_edn#deps_git_tag,:git/tag>> "dev"
+                <<deps_edn#deps_git_sha,:git/sha>> "123abcd"
+                <<deps_edn#deps_deps_root,:deps/root>> "sub/dir"
+                <<deps_edn#deps_deps_manifest,:deps/manifest>> :pom
+                <<deps_edn#deps_deps_exclusions,:exclusions>> [lib1 lib2]}
+
+   ;; Local directory
+   <<deps_edn#deps_local,localdir/name>> {<<deps_edn#deps_local_root,:local/root>> "path/to/dir"
+                  <<deps_edn#deps_deps_manifest,:deps/manifest>> :pom
+                  <<deps_edn#deps_deps_exclusions,:exclusions>> [lib1 lib2]}
+
+   ;; Local jar
+   <<deps_edn#deps_local,localjar/name>> {<<deps_edn#deps_local_root,:local/root>> "path/to.jar"
+                  <<deps_edn#deps_deps_exclusions,:exclusions>> [lib1 lib2]}}
+   
+ ;; Aliases give a name to any set of edn data
+ <<aliases#,:aliases>> {
+   :alias-name {
+     <<deps_edn#aliases_extradeps,:extra-deps>> {lib coord}
+     <<deps_edn#aliases_overridedeps,:override-deps>> {lib coord}
+     <<deps_edn#aliases_defaultdeps,:default-deps>> {lib coord}
+     <<deps_edn#aliases_deps,:deps>> {lib coord}
+     <<deps_edn#aliases_deps,:replace-deps>> {lib coord}
+
+     <<deps_edn#aliases_extrapaths,:extra-paths>> ["p1" "p2"]
+     <<deps_edn#aliases_paths,:paths>> ["p1" "p2"]
+     <<deps_edn#aliases_paths,:replace-paths>> ["p1" "p2"]
+     <<deps_edn#classpathoverrides,:classpath-overrides>> {lib "path"}
+          
+     <<deps_edn#aliases_nsdefault,:ns-default>> namespace
+     <<deps_edn#aliases_nsaliases,:ns-aliases>> {alias namespace}
+       
+     <<deps_edn#aliases_execfn,:exec-fn>> afn/symbol
+     <<deps_edn#aliases_execargs,:exec-args>> {key val}
+       
+     <<deps_edn#aliases_jvmopts,:jvm-opts>> ["opt1" "opt2"]
+     <<deps_edn#aliases_mainopts,:main-opts>> ["opt1" "opt2"]}}
+
+ ;; Procurer config
+ <<deps_edn#procurer_mvn_localrepo,:mvn/local-repo>> "path/to/local-repo"
+ <<deps_edn#procurer_mvn_repos,:mvn/repos>> {"repo" {<<deps_edn#procurer_mvn_repos_url,:url>> "https://..."
+                     <<deps_edn#procurer_mvn_repos_releases,:releases>> {<<deps_edn#procurer_mvn_repos_enabled,:enabled>> true
+                                <<deps_edn#procurer_mvn_repos_update,:update>> :daily
+                                <<deps_edn#procurer_mvn_repos_checksum,:checksum>> true}
+                     <<deps_edn#procurer_mvn_repos_snapshots,:snapshots>> {#_same_as_releases}}}
+
+ ;; Tool publishing
+ <<deps_edn#tools_usage,:tools/usage>> {<<deps_edn#aliases_nsdefault,:exec-fn>> namespace
+               <<deps_edn#aliases_nsaliases,:exec-args>> {alias namespace}}
+ 
+ ;; Lib that requires preparation (compilation) before use
+ <<deps_edn#prep_lib,:deps/prep-lib>> {<<deps_edn#prep_lib_ensure,:ensure>> "target/classes"
+                 <<deps_edn#prep_lib_alias,:alias>> :build
+                 <<deps_edn#prep_lib_fn,:fn>> compile}}
+----
+
+[[paths]]
+== `:paths`
+
+Paths specify the directories in the project that should be put on the project classpath, including both source and resources.
+
+Paths are declared in a top level key `:paths` and are a collection of string paths or alias names. Alias names refer to a collection of paths defined in an alias (this can be done for reuse).
+
+Paths should be subdirectories relative to the project root, such as `"src"` or `"resources"`. Absolute paths are supported but should be used only in exceptional cases. Paths outside the project root will trigger a warning message - these are deprecated and may be removed in the future.
+
+If used, alias names should refer to a path vector in the alias data:
+
+[source,clojure]
+----
+{:paths [:clj-paths :resource-paths]
+ :aliases
+ {:clj-paths ["src/clj" "src/cljc"]
+  :resource-paths ["resources"]}}
+----
+
+Paths are always included in the beginning of the classpath, in the order provided in the expanded `:paths` collection.
+
+[[deps]]
+== `:deps`
+
+Dependencies are declared in deps.edn with a top level key `:deps` - a map from library to coordinate.
+
+The library name is a qualified symbol. Unqualified symbols are treated as `name/name` but this usage is deprecated. Coordinates (and library names to some extent) are specific to the coordinate types below.
+
+Dependencies are <<dep_expansion#,expanded>> from this top-level set of deps to include all transitive deps. Generally, the newest version is selected (barring other constraints - see the docs). Dependencies will be put on the classpath after any paths, sorted by a) depth from root and b) alphabetical sort of deps at a certain depth. This order should be stable.
+
+Examples:
+
+[source,clojure]
+----
+{:deps
+ {;; example maven dep
+  org.clojure/tools.reader {:mvn/version "1.1.1"}
+  
+  ;; example git dep
+  io.github.sally/awesome {:tag "v1.2.3" :sha "123abcd"}
+  
+  ;; example local project
+  my.dev/project {:local/root "../project"}
+  
+  ;; example local jar
+  my.driver/jar {:local/root "../libs/driver.jar"}
+ }}
+----
+
+[[deps_mvn]]
+== Maven deps
+
+The Maven procurer uses the qualifier `mvn` and is used to retrieve library artifacts from https://maven.apache.org/[Maven repositories], the standard repository manager in the Java ecosystem. Libraries are downloaded as .jar files and stored in the Maven local repository cache (located in ~/.m2/repository by default or override with <<deps_edn#mvn_localrepo,:mvn/local-repo>>). Other JVM-based tools may also use this cache.
+
+Maven libraries are located in Maven repositories using "Maven coordinates", typically the groupId, artifactId, and version (sometimes also abbreivated as GAV). In deps.edn, the library name is parsed as `groupId/artifactId` and the version is taken from `:mvn/version`. Some Maven artifacts also have a "classifier", which is a variant of a particular artifact. In the Maven procurer, classifiers are included at the end of the lib name, separated by a `$` in this format: `groupId/artifactId$classifier`.
+
+Currently, only `jar` artifacts are supported. Support for other artifact types (particularly Bill of Materials poms) may be added in the future.
+
+[[deps_mvn_version]]
+=== `:mvn/version`
+
+Required for all Maven dependencies, specifies the version as a string.
+
+Examples:
+
+* `"1.2.3"`
+* `"1.2.3-SNAPSHOT"`
+
+[[deps_git]]
+== Git deps
+
+The `git` procurer supports direct use of source-based libs hosted in Git repositories. Git libs are downloaded by default to the `~/.gitlibs` directory. The working tree is checked out and cached for each sha included as a dependency.
+
+To specify a git lib as a dependency, two pieces of information must be known - the Git repo url and a specific sha. Using movable references like branch names is not supported.
+
+Git coordinates have the following attributes:
+
+* `:git/url` - optional, Git url (may be inferred from lib name, see below)
+* `:git/sha` - required, either a full 40-char sha or a sha prefix can be provided in combination with a tag (`:sha` is also accepted for backwards compatibility)
+* `:git/tag` - optional, git tag name (may be used only in combination with a `:git/sha`, `:tag` accepted for backwards compatibility)
+
+The git url must either be provided or inferred from the lib name. If provided, the `:git/url` takes precedence. Lib to url convention is as follows:
+
+[cols="<*", options="header", role="table"]
+|===
+|Lib format | Inferred `:git/url`
+|io.github.ORG/PROJECT | `"https://github.com/ORG/PROJECT.git"`
+|com.github.ORG/PROJECT | `"https://github.com/ORG/PROJECT.git"`
+|io.gitlab.ORG/PROJECT | `"https://gitlab.com/ORG/PROJECT.git"`
+|com.gitlab.ORG/PROJECT | `"https://gitlab.com/ORG/PROJECT.git"`
+|io.bitbucket.ORG/PROJECT | `"https://bitbucket.org/ORG/PROJECT.git"`
+|org.bitbucket.ORG/PROJECT | `"https://bitbucket.org/ORG/PROJECT.git"`
+|io.beanstalkapp.ORG/PROJECT | `"https://ORG.git.beanstalkapp.com/PROJECT.git"`
+|com.beanstalkapp.ORG/PROJECT | `"https://ORG.git.beanstalkapp.com/PROJECT.git"`
+|ht.sr.ORG/PROJECT | `"https://git.sr.ht/~ORG/PROJECT"`
+|===
+
+This is an example deps.edn including two valid git deps, the first with inferred git url, git tag, and sha prefix, and the second with explicit git url and full sha:
+
+[source,clojure]
+----
+{:deps
+ {;; implied git url, tag + sha prefix
+  io.github.clojure/tools.deps.graph {:git/tag "v1.1.68" :git/sha "6971bb4"}
+ 
+  ;; explicit git url, full sha
+  org.clojure/tools.build {:git/url "https://github.com/clojure/tools.build.git"
+                           :git/sha "ba1a2bf421838802e7bdefc541b41f57582e53b6"}}}
+----
+
+[[deps_git_url]]
+=== `:git/url`
+
+The `:git/url` is inferred from the lib name if using the format described above, else it must be provided. 
+
+The most common git url protocols are https and ssh. https repos will be accessed anonymously and require no additional authentication information. This approach is recommended for public repos you don't control. ssh repos may be either public or private and use your ssh identity.
+
+For more information on creating keys and using the ssh-agent to manage your ssh identities, GitHub provides excellent info:
+
+* https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/
+* https://help.github.com/articles/working-with-ssh-key-passphrases/
+
+Other protocols (including local and file) should work but are not commonly used.
+
+[[deps_git_tag]]
+=== `:git/tag`
+
+`:git/tag` is an optional coord key that indicates the semantics of the sha by specifying the tag. If the `:git/tag` is provided, the `:git/sha` can be a short sha instead of a full 40-character sha.
+
+[[deps_git_sha]]
+=== `:git/sha`
+
+`:git/sha` is a required coord key. If the `:git/tag` is provided it can be the prefix sha (they must unpeel to the same commit), otherwise it should be a full 40-char sha.
+
+[[deps_local]]
+== Local deps
+
+Local deps refer to either a directory or a jar file on disk. The `:local/root` attribute is required and may be either absolute or relative.
+
+[[deps_local_root]]
+=== `:local/root`
+
+For a local project directory, the `:local/root` should be a directory path, either absolute or relative to the location of the project directory.
+
+For a jar file, the `:local/root` should be either absolute or relative path to a jar file. If the jar includes a pom.xml file, it will be used to find transitive deps
+
+== Shared dep attributes
+
+[[deps_deps_exclusions]]
+=== `:exclusions`
+
+The `:exclusions` attribute takes a vector of lib symbols to exclude as transitive deps from this dependency. This attribute can be used on any dependency.
+
+[[deps_deps_root]]
+=== `:deps/root`
+
+The `:deps/root` attribute indicates a relative directory path within a file-based dep to search for the manifest file. It is commonly used with monorepo style projects to specify a dep root in a directory below the repo root.
+
+[[deps_deps_manifest]]
+=== `:deps/manifest
+
+The `:deps/manifest` attribute specifies the project manifest type and overrides auto detection, useful values are `:deps`, `:pom`. (Other values are `:mvn`, and `:jar` but these don't need to be specified.)
+
+[[aliases]]
+== `:aliases`
+
+Aliases give a name to a data structure that can be used either by the Clojure CLI itself or other consumers of deps.edn. They are defined in the `:aliases` section of the config file.
+
+[[aliases_extradeps]]
+=== `:extra-deps`
+
+`:extra-deps` is the most common modification - it allows you to add extra dependencies to the base dependency set. The value is a map of library to coordinate:
+
+[source,clojure]
+----
+{:extra-deps {criterium/criterium {:mvn/version "0.4.4"}}}
+----
+
+[[aliases_overridedeps]]
+=== `:override-deps`
+
+`:override-deps` overrides the coordinate version chosen by the version resolution to force a particular version instead. The value is a map of library to coordinate:
+
+[source,clojure]
+----
+{:override-deps {org.clojure/clojure {:mvn/version "1.9.0"}}}
+----
+
+[[aliases_defaultdeps]]
+=== `:default-deps`
+
+`:default-deps` provides a set of default coordinate versions to use if no coordinate is specified. The default deps can be used across a set of shared projects to act as a dependency management system:
+
+[source,clojure]
+----
+{:default-deps {org.clojure/core.cache {:mvn/version "0.6.4"}}}
+----
+
+[[aliases_deps]]
+=== `:deps` or `:replace-deps`
+
+`:deps` and `:replace-deps` are synonyms and define a deps map that REPLACES the project :deps. The value is a map of lib to coordinate.
+
+[[aliases_extrapaths]]
+=== `:extra-paths`
+
+`:extra-paths` is used to include source paths in addition to your standard source paths, for example to include directories of test source:
+
+[source,clojure]
+----
+{:extra-paths ["test" "resources"]}
+----
+
+Note that external paths should be at or under the root directory of the project (location of the `deps.edn` file).
+
+[[aliases_paths]]
+=== `:paths` or `:replace-paths`
+
+`:paths` and `:replace-paths` are synonyms and define a collection of string paths to REPLACE the project `:paths`.
+
+[[aliases_classpathoverrides]]
+=== `:classpath-overrides`
+
+`:classpath-overrides` specifies a location to pull a dependency that overrides the path found during dependency resolution, for example to replace a dependency with a local debug version. Many of these use cases are ones where you would be tempted to prepend the classpath to "override" something else:
+
+[source,clojure]
+----
+{:classpath-overrides 
+ {org.clojure/clojure "/my/clojure/target"}}
+----
+
+[[aliases_nsdefault]]
+=== `:ns-default`
+
+The `:ns-default` attribute is a namespace symbol that will be used as the default namespcae for attributes that provide an unqualified symbol, most importantly `:exec-fn`.
+
+[[aliases_nsaliases]]
+=== `:ns-aliases`
+
+The `:ns-aliases` attribute is a map of alias symbol to namespace symbol that will be used to resolve qualified symbols, most importantly `:exec-fn`.
+
+[[aliases_execfn]]
+=== `:exec-fn`
+
+The `:exec-fn` symbol defines the default function to be invoked when using `-X` function execution in the Clojure CLI:
+
+[source,clojure]
+----
+;; deps.edn
+{:aliases
+ {:my-fn
+  {:exec-fn my.qualified/fn
+   :exec-args {:my {:data 123}
+               :config 456}}}}
+----
+
+The `:exec-fn` symbol is resolved with the following rules:
+
+* If function is unqualified, use the namespace in the `:ns-default` key in the arg map (if none, this is an error)
+* If function is qualified, and the qualifier is an alias in the arg map under `:ns-aliases`, use that namespace
+* Else use the fully qualified function symbol
+
+[[aliases_execargs]]
+=== `:exec-args`
+
+The `:exec-args` map specifies key-value pairs that are provided when executing an `:exec-fn` function with -X or -T in the Clojure CLI. These kv pairs are effectively provided first, so can be overridden by subsequent kv pairs on the command line.
+
+[[aliases_jvmopts]]
+=== `:jvm-opts`
+
+The `:jvm-opts` are a collection of string JVM options to be provided when executing the Clojure CLI with -M, -X, -T, or a repl.
+
+[[aliases_mainopts]]
+=== `:main-opts`
+
+The `:main-opts` are a collection of string options provided to a program started with -M on the Clojure CLI. If multiple aliases are merged that provide main args, only the args from the last one are used (they do not accumulate or combine). Additional main opts may be provided on the command line after -M.
+
+[[procurers]]
+== Procurers
+
+[[procurers_mvn]]
+=== Maven
+
+The Maven procurer uses the Maven resolver and Maven repository system to download artifacts. This is described further in the <<deps_edn#deps_mvn,Maven deps>> section. Some options can be configured in the deps.edn.
+
+[[procurer_mvn_localrepo]]
+==== `:mvn/local-repo`
+
+By default, Maven uses the `~/.m2/repository` directory as a local cache of downloaded poms and jars. The `:mvn/local-repo` is a string path to an alternate directory to use as the local Maven cache.
+
+[[procurer_mvn_repos]]
+==== `:mvn/repos`
+
+The Maven procurer always uses two built-in repositories that are always checked first in this order:
+
+[source,clojure]
+----
+{"central" {:url "https://repo1.maven.org/maven2/"}
+ "clojars" {:url "https://repo.clojars.org/"}}
+----
+
+You can supply additional repositories in the `:mvn/repos` key as a map of repository name to a map of additional repository attributes described below. Repository names are arbitrary. The `:url` attribute is required, all others are optional. Repositories declared in dependency poms or deps.edn are not used - all necessary repositories must be defined in the top deps.edn file being used.
+
+[[procurer_mvn_repos_url]]
+==== `:url`
+
+The `:url` is a string url to the repository root.
+
+`http://` urls are not supported by default, but see <<deps_and_cli#env_vars>> for information on the `CLOJURE_CLI_ALLOW_HTTP_REPO` if you need this.
+
+[[procurer_mvn_repos_releases]]
+===== `:releases`
+
+The `:releases` attribute is optional, but can be used to override the default repository configuration for release (non-snapshot artifacts):
+
+[source,clojure]
+----
+{:mvn/repos
+ {"my-releases" {:url "https://example.com/releases"
+                 :snapshots {:enabled false}
+                 :releases {:enabled true
+                            :update :daily
+                            :checksum :fail}}}}
+----
+
+[[procurer_mvn_repos_snapshots]]
+===== `:snapshots`
+
+Same as the `:releases` attribute, but used to apply repository policy for snapshot artifacts.
+
+[[procurer_mvn_repos_enabled]]
+====== `:enabled`
+
+`:enabled` is a boolean, default=true. Sometimes this is used to target a repository only for releases or snapshots.
+
+[[procurer_mvn_repos_update]]
+====== `:update`
+
+`:update` is a flag for how often to check the repo for updates, valid values are `:daily` (default), `:always`, `:never`, or an interval in minutes (integer).
+
+[[procurer_mvn_repos_checksum]]
+====== `:checksum`
+
+`:checksum` is a flag for checksum validation, one of `:warn` (default), `:fail`, `:ignore`.
+
+[[tools]]
+== Tool definition
+
+Clojure CLI tools loaded from Github or a local dir can provide default tool configuration in their deps.edn using the `:tools/usage` key. All users of the tool will get this configuration as part of their tool installation.
+
+[[tools_usage]]
+=== `:tools/usage`
+
+An exec argmap for a deps.edn-based tool.
+
+[[prep]]
+== Prep lib
+
+[[prep_lib]]
+=== `:deps/prep-lib`
+
+Source libs with Clojure source can immediately be added to the classpath of a project using it. However, some source libs require some preparation before they can be added, for example due to needing Java compilation, or copying / replacing resource files, etc. The Clojure CLI will now detect projects that need preparation and prevent the program from being run from source unless the prep step has been completed.
+
+If your library needs preparation, add the `:deps/prep-lib` key to your `deps.edn`:
+
+[source,clojure]
+----
+{:paths ["src" "target/classes"]
+ :deps/prep-lib
+ {:ensure "target/classes"
+  :alias :build
+  :fn compile-java}}
+----
+
+
+[[prep_lib_ensure]]
+==== `:ensure`
+
+`:ensure` is a directory path relative to the project, whose existence determines whether prep is needed (if it exists, prep has been done).
+
+[[prep_lib_alias]]
+==== `:alias`
+
+`:alias` is the keyword alias to invoke with `-T` during prep
+
+[[prep_lib_fn]]
+==== `:fn`
+
+`:fn` is the function to invoke with `-T` during prep

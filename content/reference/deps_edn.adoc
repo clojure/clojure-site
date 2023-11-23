@@ -75,7 +75,7 @@ If you are building a tool that would like to leverage deps.edn, create well-kno
                      <<deps_edn#procurer_mvn_repos_snapshots,:snapshots>> {#_same_as_releases}}}
 
  ;; Tool publishing
- <<deps_edn#tools_usage,:tools/usage>> {<<deps_edn#aliases_nsdefault,:ns-default> namespace
+ <<deps_edn#tools_usage,:tools/usage>> {<<deps_edn#aliases_nsdefault,:ns-default>> namespace
                <<deps_edn#aliases_nsaliases,:ns-aliases>> {alias namespace}}
  
  ;; Lib that requires preparation (compilation) before use

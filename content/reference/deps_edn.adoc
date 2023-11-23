@@ -318,7 +318,7 @@ Note that external paths should be at or under the root directory of the project
 [[aliases_nsdefault]]
 === `:ns-default`
 
-The `:ns-default` attribute is a namespace symbol that will be used as the default namespcae for attributes that provide an unqualified symbol, most importantly `:exec-fn`.
+The `:ns-default` attribute is a namespace symbol that will be used as the default namespace for attributes that provide an unqualified symbol, most importantly `:exec-fn`.
 
 [[aliases_nsaliases]]
 === `:ns-aliases`

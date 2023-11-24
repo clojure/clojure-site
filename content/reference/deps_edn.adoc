@@ -11,7 +11,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 The deps.edn file is a data file specifying all information needed to form a project classpath, including deps, paths, and external dependency repository information. The deps.edn file format is used by the https://github.com/clojure/tools.deps[tools.deps library] and the <<deps_and_cli#, Clojure CLI>>.
 
-If you are building a tool that would like to leverage deps.edn, create well-known namespaced <<aliases#,:aliases>> as a means to convey tool configuration, rather than adding new arbitrary tags elsewhere in the deps.edn data - these may not be preserved or conveyed during processing. Tools can access alias data via the basis at runtime, or programatically via tools.deps.
+If you are building a tool that would like to leverage deps.edn, create well-known namespaced <<deps_edn#aliases,:aliases>> as a means to convey tool configuration, rather than adding new arbitrary tags elsewhere in the deps.edn data - these may not be preserved or conveyed during processing. Tools can access alias data via the basis at runtime, or programatically via tools.deps.
 
 .Index of all attributes
 [[index]]

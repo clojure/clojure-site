@@ -1,0 +1,47 @@
+= Clojure Deref (Nov 24, 2023)
+Alex Miller
+2023-11-24
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=2JGQt9iW6dk[Scicloj LLM Meetup 6: Implementing research papers with Bosquet] - Sci Cloj
+* https://www.youtube.com/watch?v=JpteKlvOFVM[Flutter/MX: Isolates, prime numbers, and...uh-oh!] - Ken Tilton
+* https://www.youtube.com/watch?v=bWhPp3tU2Ls[This Simple Flutter Isolate Example Was Working and Published, But Evil Lurked] - Ken Tilton
+* https://www.youtube.com/watch?v=3rYbbGvk3Hw[ClojureScript Google Authentication using Firebase (with Re-Frame)] - on the code again
+* https://www.youtube.com/watch?v=-95rS7ax7bA[On Clojure, feat. Michiel Borkent (aka @borkdude) | Traces, Appendix 12] - Cristian Cibils Bernardes
+* https://www.youtube.com/watch?v=ogZHQF_cucQ[Building Kafka Stream applications in Clojure: Jackdaw and TestContainers] - Andrey Fadeev
+* https://www.youtube.com/watch?v=ILK75AAf9VE[JUXTCast Season 5 Episode 6: Rama and its Clojure API — with special guest Nathan Marz] - JUXT
+* https://clojuredesign.club/episode/100-thanks-overflow/[Ep 100: Thanks Overflow] - Functional Design in Clojure
+
+== Blogs, articles, and projects
+
+* https://www.clojuriststogether.org/news/september-october-2023-long-term-project-updates/[September & October 2023 Long-Term Project Updates] - Kathy Davis (Clojurists Together)
+* https://blog.michielborkent.nl/squint-cloudflare-bun.html[Writing a Cloudflare worker with squint and bun] - Michiel Borkent
+* https://thomascothran.tech/2023/11/readability/[The Wrong Kind of Readability] - Thomas Cothran
+* https://clojure.org/reference/deps_edn[deps.edn Reference] - Clojure team
+* https://blog.tvaisanen.com/clojure-for-node-developers-file-system[Clojure for Node Developers: File System] - Toni Väisänen
+* https://grishaev.me/en/ddd-lie[Data-Driven Development is a Lie] - Ivan Grishaev
+* https://fpsd.codes/blog/clojure-bites-mazeboard-0/[Clojure Bites - Mazeboard 0] - Francesco Pischedda
+* https://chpill.github.io/en/posts/rapid-feedback-webdev-with-reitit.html[Rapid feedback webdev (with Reitit)] - Etienne Spillemaeker
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/wkok/openai-clojure[openai-clojure] https://github.com/wkok/openai-clojure/blob/main/CHANGELOG.md#0130---2023-11-19[0.13.0] - Clojure functions to drive the OpenAI API
+* https://github.com/htihospitality/re-dash[re-dash] https://github.com/htihospitality/re-dash/blob/main/CHANGELOG.md#081---2023-11-21[0.8.1] - A ClojureDart (re)framework for building user interfaces, leveraging Flutter
+* https://github.com/roboli/pdf-2-images[pdf-2-images] https://github.com/roboli/pdf-2-images/blob/master/CHANGELOG.md#100---2023-11-22[1.0.0] - Clojure wrapper for the PDFBox that converts a page range of a PDF document to images
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/blob/published/CHANGELOG.md#20400---2023-11-23[2.0.400] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/BetterThanTomorrow/joyride[joyride] https://github.com/BetterThanTomorrow/joyride/blob/master/CHANGELOG.md#0038---2023-11-20[0.0.38] - Making VS Code Hackable like Emacs since 2022
+* https://github.com/hlship/cli-tools[cli-tools] https://github.com/hlship/cli-tools/blob/main/CHANGES.md#011----17-nov-2023[0.11] - CLIs and subcommands for Clojure or Babashka
+* https://github.com/pedestal/pedestal[pedestal] 0.6.2 - The Pedestal Server-side Libraries
+* https://github.com/squint-cljs/squint[squint] https://github.com/squint-cljs/squint/blob/main/CHANGELOG.md#0459-2023-11-23[0.4.59] - ClojureScript syntax to JavaScript compiler
+* https://github.com/behrica/clj-polyglot-app[clj-polyglot-app] 0.2alpha - A deps-new template to create a polyglot app in Clojure
+* https://github.com/eval/bbangsearch[bbangsearch] https://github.com/eval/bbangsearch/blob/main/CHANGELOG.md#v070-2023-11-21[0.7.0] - DuckDuckGo's bang searches from the commandline
+* https://github.com/lspector/propeller[propeller]  - Yet another Push-based genetic programming system in Clojure
+* https://github.com/flow-storm/clofidence[clofidence] https://github.com/flow-storm/clofidence/blob/master/CHANGELOG.md#020-17-11-2023[0.2.0] - Bolster your Clojure test suite confidence

@@ -9,15 +9,30 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 toc::[]
 
+== Intro
+
+Clojure (the language) is provided as a Java ARchive (JAR) file, available in the https://maven.apache.org/repository/[Maven Central Repository], a public repository for JVM-based artifacts. If needed, you can find more detailed version information on the <<xref/../../../releases/downloads#,Releases>> page.
+
+This page concerns the command-line tool (the Clojure CLI). This tool (used by the commands `clojure` and `clj`) can download Clojure itself and other Clojure or JVM-based libraries. **Any version of the Clojure CLI can download or use any version of the Clojure language itself (they are independent).**
+
+The version numbers of the language and the CLI are separate but related. The Clojure language has a 3 part-version (like `1.11.1`) and the Clojure CLI has a 4-part version (like `1.11.1.1413`). The leading 3 parts of the CLI version indicate which version of the Clojure language will be used by default in a REPL, unless you specify otherwise in the <<xref/../../../reference/deps_edn#,deps.edn>> configuration file.
+
 == Mac OS instructions
 
-Prerequisites: <<install_clojure#brew,brew>>, <<install_clojure#java,Java>>
+Prerequisites: <<install_clojure#java,Java>>, <<install_clojure#brew,brew>>
 
 This adds the commands `clojure` and `clj` to your system from the https://github.com/clojure/homebrew-tools[clojure/tools tap]:
 
 [source,shell]
 ----
 brew install clojure/tools/clojure
+----
+
+If you already have the CLI installed, you can use this command to upgrade to the latest version:
+
+[source,shell]
+----
+brew upgrade clojure/tools/clojure
 ----
 
 == Linux instructions
@@ -132,6 +147,6 @@ Check your Java version by running `java --version`. If that's not Temurin 21, t
 echo 'export PATH="/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home/bin:$PATH"' >> ~/.zshrc
 ----
 
-== More information
+== Installing archive or prerelease versions of the CLI
 
-For other versions of the Clojure command-line tools, see the <<xref/../../releases/tools#,changelog>> for version history and the https://github.com/clojure/homebrew-tools[Clojure tap] for info on installing older versions or newer prereleases instead.
+For other versions of the Clojure CLI, see the <<xref/../../releases/tools#,changelog>> for version history and the https://github.com/clojure/homebrew-tools[Clojure tap] for info on installing older versions or newer prereleases instead.

@@ -1,0 +1,49 @@
+= Clojure Deref (Dec 1, 2023)
+Alex Miller
+2023-12-01
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts and videos
+
+* https://clojuredesign.club/episode/101-sportify/[Ep 101: Sportify!] - Functional Design in Clojure
+* https://www.youtube.com/watch?v=y2zvQDpgMak[Writing Maintainable Clojure Applications (by Dmitri Sotnikov)] - London Clojurians
+* https://www.youtube.com/watch?v=fU0nIJ1dNsw[Building web apps with Clojure] - OrgPad
+* https://www.youtube.com/watch?v=-P_ujmp5EcE[ow to use loop/recur in Clojure: with a practical example!] - Andrey Fadeev
+* https://www.youtube.com/watch?v=bqA250jqMTg[Firebase storage with ClojureScript (+ Re-Frame)] - on the code again
+* https://www.youtube.com/watch?v=_2PBcVv210g[Project kickoff :: Advent of Clojure] - Roman Liutikov
+* https://www.youtube.com/watch?v=WstfIpMiMwM[lead. A blogging system in Clojure, and other Clojure adventures] - Clojure Diary
+* https://www.youtube.com/watch?v=iwShvtMi0pk[Only true is true in Clojure] - Clojure Diary
+
+== Blogs, articles, and projects
+
+* https://blog.michielborkent.nl/squint-advent-of-code.html[Playing Advent of Code with Squint] - Michiel Borkent
+* https://www.eknert.com/blog/quickblog[Quickblog] - Anders Eknert
+* https://dev.to/bop/adding-dependencies-on-clojure-project-the-node-way-a-small-intro-to-neil-55n[Adding Dependencies on Clojure Projects the Node Way: A Small Intro to neil CLI] - Bruno Oliveira de Paula
+* https://biffweb.com/p/how-to-use-postgres-with-biff/[How to use Postgres with Biff] - Jacob O'Bryant
+* https://flexiana.com/2023/11/the-beauty-of-using-graph-databases-with-terminusdb-and-clojure-part-i[The beauty of using Graph Databases with TerminusDB and Clojure, Part I] - Enyert Vinas (Flexiana)
+* https://blog.tvaisanen.com/how-to-get-started-with-tdd-in-clojure[How to Get Started with TDD in Clojure] - Toni Väisänen
+* https://fpsd.codes/blog/clojure-bites-mazeboard-1-dumdom-event-handler/[Clojure Bites - Mazeboard 1 - Dumdom event handler] - Francesco Pischedda
+* https://blog.michielborkent.nl/oss-updates-nov-2023.html[OSS updates November 2023] - Michiel Borkent
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/abogoyavlensky/automigrate[automigrate] https://github.com/abogoyavlensky/automigrate/releases/tag/0.2.0[0.2.0] - 🤖 Database schema auto-migration tool for Clojure
+* https://github.com/babashka/sci[sci] https://github.com/babashka/sci/blob/master/CHANGELOG.md#0841-2023-11-24[0.8.41] - Configurable Clojure/Script interpreter suitable for scripting and Clojure DSLs
+* https://github.com/clojure-emacs/cider[cider] https://github.com/clojure-emacs/cider/releases/tag/v1.12.0[1.12.0] - The Clojure Interactive Development Environment that Rocks for Emacs
+* https://github.com/eerohele/pp[pp] https://github.com/eerohele/pp/blob/main/CHANGELOG.md#2023-11-2547[2023-11-25.47] - Pretty-print Clojure data structures, fast
+* https://github.com/tatut/bearsql[bearsql]  - Bare words SQL macro for Clojure
+* https://github.com/mpenet/hirundo[hirundo] 0.1.27 - Helidon 4.x RING adapter - using loom/java21+
+* https://github.com/exoscale/lingo[lingo] 1.0.3 - spec explain improved
+* https://github.com/day8/re-frame-10x[re-frame-10x] https://github.com/day8/re-frame-10x/blob/master/CHANGELOG.md#191-2023-12-1[1.9.1] - A debugging dashboard for re-frame. X-ray vision as tooling
+* https://github.com/epiccastle/bbssh[bbssh] https://github.com/epiccastle/bbssh/releases/tag/v0.6.0[0.6.0] - Babashka pod for SSH support
+* https://github.com/babashka/http-server[http-server] https://github.com/babashka/http-server/blob/main/CHANGELOG.md#0112[0.1.12] - Serve static assets
+* https://github.com/squint-cljs/squint[squint] https://github.com/squint-cljs/squint/blob/main/CHANGELOG.md#0467-2023-11-28[0.4.67] - ClojureScript syntax to JavaScript compiler
+* https://github.com/quoll/tiara[tiara] 0.3.4 - A small data structure library
+* https://github.com/squint-cljs/cherry[cherry] https://github.com/squint-cljs/cherry/blob/main/CHANGELOG.md#0112-2023-11-30[0.1.12] - Experimental ClojureScript to ES6 module compiler
+* https://github.com/pedestal/pedestal[pedestal] 0.6.3 - The Pedestal Server-side Libraries

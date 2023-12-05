@@ -22,6 +22,10 @@ For more information see the following docs:
 
 Recent official releases are described here. Prereleases and older versions can be found in the https://github.com/clojure/brew-install/blob/1.11.1/CHANGELOG.md[repo changelog].
 
+=== 1.11.1.1429 (Dec 4, 2023) [[v1.11.1.1429]]
+
+* Roll back Maven resolver dep updates from 1.11.1.1420
+
 === 1.11.1.1420 (Dec 4, 2023) [[v1.11.1.1420]]
 
 * https://clojure.atlassian.net/browse/TDEPS-119[TDEPS-119] Unable to start CLI in write-protected project directory

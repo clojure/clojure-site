@@ -1,0 +1,57 @@
+= Clojure Deref (Dec 8, 2023)
+Alex Miller
+2023-12-08
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts and videos
+
+* https://soundcloud.com/defn-771544745/93-malcolm-sparks-returns[#93 Malcolm Sparks Returns!] - defn
+* https://vimeo.com/891897424[Apropos Dec 5 2023] - Apropos
+* https://clojuredesign.club/episode/102-replify/[Ep 102: REPLify!] - Functional Design in Clojure
+* https://www.youtube.com/watch?v=DAQnvAgBma8[Clojure visual-tools meeting 20: MetaREPL, Timespace Oracle, Meyvn templates, Kindly, Clay, Claykind] - Sci Cloj
+* https://www.youtube.com/watch?v=w5CCZQBNFSc[UI layout and Webcam stream :: Advent of Clojure] - Roman Liutikov
+* https://www.youtube.com/watch?v=Ae1cuxkmZiY[Recording and replaying CodeMirror keystrokes :: Advent of Clojure] - Roman Liutikov
+* https://www.youtube.com/watch?v=uHklys7X95E[Bootstrapping ClojureScript compiler :: Advent of Clojure] - Roman Liutikov
+* https://www.youtube.com/watch?v=4igO7Qbyj9o[Clojure Superpower: Interactive programming with REPL] - OrgPad
+* https://www.youtube.com/watch?v=9_b8IWfNp58[Testing Debezium Connector with TestContainers and outbox pattern: Kafka, Clojure, PostgreSQL] - Andrey Fadeev
+* https://www.youtube.com/watch?v=vdSANcJUuyo[Flutter/MX Live coding: Event-modeling conventional wisdom demolished] - Ken Tilton
+* https://www.youtube.com/watch?v=oua8RwtKbEI&list=PLKJ_YtZXuW_Azc3o9rm86n5D1bSavwpvE[Learn Clojure - Clojure Book] - Clojure Diary
+
+== Blogs, articles, and projects
+
+* https://inclojure.org[India's annual Clojure and ClojureScript conference, and Asia's first] - IN/Clojure
+* https://sessionize.com/lambda-days-2024[Call for speakers] - Lambda Days
+* https://qiita.com/minebreaker/items/de78a425db81313eeccc[Babashkaことはじめ - Clojureでシェルスクリプティングを代替する] - minebreaker
+* https://aphyr.com/posts/367-why-is-jepsen-written-in-clojure[Why is Jepsen Written in Clojure?] - Kyle Kingsbury
+* https://biffweb.com/p/how-to-use-reframe-with-biff/[How to use re-frame with Biff] - Jacob O'Bryant
+* https://fpsd.codes/blog/clojure-bites-mazeboard-2-core-async-to-separate-game-ui-logic/[Clojure Bites - Mazeboard 2 - Using core.async to decouple game and UI logic] - Francesco Pischedda
+* https://tonitalksdev.com/smaller-and-safer-clojure-containers-minimizing-the-software-bill-of-materials[Smaller and Safer Clojure Containers: Minimizing the Software Bill of Materials] - Toni Väisänen
+* https://oss.toyokumo.co.jp[Thanks OSS Award] - Toyokumo
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/grzm/awyeah-api[awyeah-api] https://github.com/grzm/awyeah-api/blob/main/CHANGES.markdown#0884--e551334--2023-12-02[0.8.84] - Cognitect's aws-api for babashka
+* https://github.com/eval/deps-try[deps-try] https://github.com/eval/deps-try/blob/master/CHANGELOG.md#v0100-2023-12-04[0.10.0] - Try out Clojure libraries via rebel-readline
+* https://github.com/raystubbs/zero[zero]  - Build web components in CLJS
+* https://github.com/SURFnet/apie[apie] 0.1.0 - Apie 🙈 OpenAPI Service Validator
+* https://github.com/behrica/add-devcontainer[add-devcontainer]  - Babashka script which adds a devcontainer configuration to a clojure project in current folder
+* https://github.com/skuttleman/defacto[defacto]  - A light-weight, highly customizable state store for clojure(script)
+* https://github.com/joshuamiller/react-native-template-cljs-krell-storybook[react-native-template-cljs-krell-storybook] 0.3.0 - A React Native Template for installing a working ClojureScript, Krell, and Storybook environment
+* https://github.com/abogoyavlensky/automigrate[automigrate] https://github.com/abogoyavlensky/automigrate/blob/master/CHANGELOG.md#021---2023-12-01[0.2.1] - 🤖 Database schema auto-migration tool for Clojure
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.401[2.0.401] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/seancorfield/honeysql[honeysql] https://github.com/seancorfield/honeysql/releases/tag/v2.5.1103[2.5.1103] - Turn Clojure data structures into SQL
+* https://github.com/BetterThanTomorrow/joyride[joyride] https://github.com/BetterThanTomorrow/joyride/releases/tag/v0.0.39[0.0.39] - Making VS Code Hackable like Emacs since 2022
+* https://github.com/replikativ/datahike[datahike] https://github.com/replikativ/datahike/releases/tag/0.6.1555[0.6.1555] - A durable Datalog implementation adaptable for distribution
+* https://github.com/juji-io/datalevin[datalevin] https://github.com/juji-io/datalevin/blob/master/CHANGELOG.md#0823-2023-12-06[0.8.23] - A simple, fast and versatile Datalog database
+* https://github.com/squint-cljs/squint[squint] https://github.com/squint-cljs/squint/blob/main/CHANGELOG.md#0476-2023-12-07[0.4.76] - Light-weight ClojureScript dialect
+* https://github.com/squint-cljs/cherry[cherry] https://github.com/squint-cljs/cherry/blob/main/CHANGELOG.md#0116-2023-12-07[0.1.16] - Experimental ClojureScript to ES6 module compiler
+* https://gitlab.com/mauricioszabo/babble[babble] - Babbel, but for ClojureScript
+* https://git.sr.ht/~jomco/klist[klist] 1.0.0 - Clojure functions to treat klists as maps
+* https://cursive-ide.com/[Cursive] https://groups.google.com/g/cursive/c/G3wjbAhqAcA/m/MVaXnc0vAgAJ[1.13.1] - The Clojure(Script) IDE that understands your code
+* https://clojure.org/releases/tools#v1.11.1.1420[Clojure CLI] 1.11.1429 - Clojure command line tool

@@ -46,29 +46,45 @@ Use this option to start a Clojure REPL.
 clj [clj-opts] [-Aaliases]
 ----
 
-To run a REPL, invoke `clj` without arguments:
+To run a REPL, invoke `clj` without arguments.
+
+This works in any directory, either with a deps.edn or not. If you are not in a <<clojure_cli#project_dir,project directory>>, the version of Clojure used will depend on the Clojure language version from the org.clojure dependency in the root deps.edn (will match the version number in CLI version number) or the user deps.edn in the <<clojure_cli#config_dir,config directory>> (usually not specified).
+
+To supply <<clojure_cli#aliases,aliases>> that modify the <<clojure_cli#classpath,classpath>> or <<clojure_cli#jvm_props#,JVM properties>>, use `-A` with one or more concatenated alias keywords:
 
 [source]
 ----
-$ clj
-Clojure 1.11.1
-user=>
+clj -A:test
+
+clj -A:test:dev
 ----
-
-If you wish to include <<clojure_cli#aliases,aliases>> that affect the 
-
 
 [[use_fn]]
 === Execute a function (-X)
 
-Use the following exec-opt to invoke a function that takes a map:
+The Clojure CLI can execute any function on the classpath that takes keyword args in a map as input.
 
 [source]
 ----
 clojure [clj-opt*] -X[aliases] [a/fn] [kpath v]* kv-map?
 ----
 
-`-X` is configured with an arg map with `:exec-fn` and `:exec-args` keys, and stored under an alias in `deps.edn`:
+Function execution ultimately needs the following pieces of information:
+
+* Classpath
+* Qualified function to execute
+* Map of key to value
+
+
+
+`-X` <<clojure_cli#aliases,aliases>> can contain the following arg map keys:
+
+* `:exec-fn` - a function symbol to use when none is supplied on the command line
+* `:exec-args` - a map of key to value to include when `exec-fn` is executed, may be superseded by keyword args on the command line (so these act as defaults)
+* `:ns-default` - default namespace symbol to use when interpreting the exec-fn
+* `:ns-aliases` - map of alias symbol to namespace symbol to use when interpreting the exec-fn
+
+
 
 [source,clojure]
 ----

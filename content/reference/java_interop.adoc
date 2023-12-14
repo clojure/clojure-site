@@ -16,9 +16,9 @@ toc::[]
 == Class access
 
 [%hardbreaks]
-**Classname[$InnerClass]([*])?**
+**Classname[$InnerClass](*+)?**
 
-Symbols representing class names are resolved to the Class instance. Inner or nested classes are separated from their outer class with a `$`. Fully-qualified class names are always valid. If a class is `import`ed in the namespace, it may be used without qualification. Array classes end in 1 or more `\*`s, one per dimension. Array classes only may also have a primitive component, e.g. `long\*`.
+Symbols representing class names are resolved to the Class instance. Inner or nested classes are separated from their outer class with a `$`. Fully-qualified class names are always valid. If a class is import`ed in the namespace, it may be used without qualification. Array classes end in 1 or more `\*`s, one per dimension. Array classes only may also have a primitive component, e.g. `long\*`.
 
 All classes in java.lang are automatically imported to every namespace.
 
@@ -30,6 +30,8 @@ String
 -> #'user/date?
 (.getEnclosingClass java.util.Map$Entry)
 -> java.util.Map
+(.getComponentType String*)
+java.lang.String
 ----
 
 == Member access

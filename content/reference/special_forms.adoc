@@ -91,10 +91,7 @@ Evaluates the expressions __expr__s in order and returns the value of the last. 
 
 _binding_ => _binding-form_ _init-expr_
 
-Evaluates the expressions __expr__s in a lexical context in which the symbols in the __binding-form__s are bound to their respective __init-expr__s or parts therein. The bindings are sequential, so each _binding_ can see the prior bindings. The __expr__s are contained in an implicit `do`. If a _binding_ symbol is annotated with a metadata tag, the compiler will try to resolve the tag to a class name and presume that type in subsequent references to the _binding_. 
-
-
-The simplest _binding-form_ is a symbol, which is bound to the entire _init-expr_:
+Evaluates the expressions __expr__s in a lexical context in which the symbols in the __binding-form__s are bound to their respective __init-expr__s or parts therein. The bindings are sequential, so each _binding_ can see the prior bindings. The __expr__s are contained in an implicit `do`. If a _binding_ symbol is annotated with a metadata tag, the compiler will try to resolve the tag to a class name and presume that type in subsequent references to the _binding_. The simplest _binding-form_ is a symbol, which is bound to the entire _init-expr_:
 
 [source,clojure]
 ----

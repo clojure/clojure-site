@@ -109,7 +109,7 @@ https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/keyword[key
 [[Symbols]]
 
 == Symbols
-Symbols are identifiers that are normally used to refer to something else. They can be used in program forms to refer to function parameters, let bindings, class names and global vars. They have names and optional <<namespaces#,namespaces>>, both of which are strings. Symbols can have metadata (see https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/with-meta[with-meta]).
+Symbols are identifiers that are normally used to refer to something else. They can be used in program forms to refer to function parameters, let bindings, class names, class members, and global vars. They have names and optional <<namespaces#,namespaces>>, both of which are strings. Symbols can have metadata (see https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/with-meta[with-meta]).
 
 Symbols, just like Keywords, implement IFn for invoke() of one argument (a map) with an optional second argument (a default value). For example `('mysym my-hash-map :none)` means the same as `(get my-hash-map 'mysym :none)`. See https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/get[get].
 

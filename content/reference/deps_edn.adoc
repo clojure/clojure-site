@@ -395,7 +395,8 @@ The `:url` is a string url to the repository root.
 `http://` urls are not supported by default, but see <<deps_and_cli#env_vars>> for information on the `CLOJURE_CLI_ALLOW_HTTP_REPO` if you need this.
 
 [[procurer_mvn_repos_releases]]
-===== `:releases`
+[[procurer_mvn_repos_snapshots]]
+==== `:releases` and `:snapshots`
 
 The `:releases` attribute is optional, but can be used to override the default repository configuration for release (non-snapshot artifacts):
 
@@ -409,25 +410,16 @@ The `:releases` attribute is optional, but can be used to override the default r
                             :checksum :fail}}}}
 ----
 
-[[procurer_mvn_repos_snapshots]]
-===== `:snapshots`
+The `:snapshots` attribute is the same as the `:releases` attribute, but applies repository policy for snapshot artifacts.
 
-Same as the `:releases` attribute, but used to apply repository policy for snapshot artifacts.
+Repository attributes:
 
 [[procurer_mvn_repos_enabled]]
-===== `:enabled`
-
-`:enabled` is a boolean, default=true. Sometimes this is used to target a repository only for releases or snapshots.
-
 [[procurer_mvn_repos_update]]
-===== `:update`
-
-`:update` is a flag for how often to check the repo for updates, valid values are `:daily` (default), `:always`, `:never`, or an interval in minutes (integer).
-
 [[procurer_mvn_repos_checksum]]
-===== `:checksum`
-
-`:checksum` is a flag for checksum validation, one of `:warn` (default), `:fail`, `:ignore`.
+* `:enabled` is a boolean, default=true. Sometimes this is used to target a repository only for releases or snapshots.
+* `:update` is a flag for how often to check the repo for updates, valid values are `:daily` (default), `:always`, `:never`, or an interval in minutes (integer).
+* `:checksum` is a flag for checksum validation, one of `:warn` (default), `:fail`, `:ignore`.
 
 [[tools]]
 == Tool definition

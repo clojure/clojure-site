@@ -1,0 +1,46 @@
+= Clojure Deref (Dec 15, 2023)
+Alex Miller
+2023-12-15
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=skMMvxWjmNM[Cooking up a workflow for data (by Slutsky, Prately & McLean)] - London Clojurians
+* https://www.youtube.com/watch?v=xgewqM39KNo[Learning Clojure, First Steps—Printing Things] - Clojure Diary
+* https://www.youtube.com/watch?v=TjzEIHgsgEM[Learn Clojure, First Steps — Arithmetic] - Clojure Diary
+* https://www.youtube.com/watch?v=Y4J8PJuBB6U[Flutter/MX: Compute Cycle Detected?! It Happens. We fix it] - Ken Tilton
+* https://www.youtube.com/watch?v=77WFLQiroXg[Flutter/MX: Yes, Virginia, the dataflow paradigm can procedural] - Ken Tilton
+* https://www.youtube.com/watch?v=YCW-du_y4s4[Beginner's guide to clojure.test and test runners: eftest, kaocha, cognitect test runner] - Andrey Fadeev
+* https://www.youtube.com/watch?v=ME-XEC1yEjs[Improving UI :: Advent of Clojure] - Roman Liutikov
+* https://www.youtube.com/watch?v=7PiocGVzEDs[Hacking the compiler! :: Advent of Clojure] - Roman Liutikov
+* https://clojuredesign.club/episode/103-explorify/[Ep 103: Explorify!] - Functional Design in Clojure
+
+== Blogs, articles, and projects
+
+* https://fpsd.codes/blog/clojure-bites-mazeboard-3-more-async-to-fully-decouple-layers/[Clojure Bites - Mazeboard 3 - core.async to update the UI layer] - Francesco Pischedda
+* https://blog.janetacarr.com/building-a-clojure-ci-cd-pipeline/[Building a Clojure CI/CD pipeline of CERTAIN DOOM] - Janet A. Carr
+* https://tonitalksdev.com/digitalocean-app-platform-database-migrations[DigitalOcean App Platform and Database Migrations] - Toni Talks Dev
+* https://blog.nundrum.net/posts-output/2023-12-07-clojure-to-clojurescript/[From Clojure to ClojureScript] - Nundrum
+* https://yamlscript.org/posts/advent-2023/dec-15/[Naughty is Nice!] - Ingy döt Net
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/balloneij/familiar-codox-theme[familiar-codox-theme] 0.1.0 - A Javadoc inspired Codox theme
+* https://github.com/roman01la/cljs-react-devtools[cljs-react-devtools]  - React DevTools for ClojureScript wrappers
+* https://github.com/noahtheduke/splint[splint] https://github.com/NoahTheDuke/splint/releases/tag/v1.11[1.11] - A Clojure linter focused on style and code shape
+* https://github.com/studistcorporation/sleepydog[sleepydog] 0.1.3 - Clojure library for tracing (possibly async) applications with Datadog
+* https://github.com/damn/gdl[gdl]  - Make 2D desktop games in clojure
+* https://github.com/clyfe/clara-eav[clara-eav] https://github.com/clyfe/clara-eav/blob/master/CHANGELOG.md#019---2023-12-15[0.1.9] - EAV triplets for Clara Rules
+* https://github.com/clj-kondo/clj-kondo[clj-kondo] https://github.com/clj-kondo/clj-kondo/blob/master/CHANGELOG.md#20231215[2023.12.15] - Static analyzer and linter for Clojure code that sparks joy
+* https://github.com/BetterThanTomorrow/joyride[joyride] https://github.com/BetterThanTomorrow/joyride/blob/master/CHANGELOG.md#0041---2023-12-13[0.0.41] - Making VS Code Hackable like Emacs since 2022
+* https://github.com/behrica/add-devcontainer[add-devcontainer] https://github.com/behrica/add-devcontainer/blob/main/CHANGELOG.md#03[0.3] - Babashka script which adds a devcontainer configuration to a clojure project in current folder
+* https://github.com/clj-commons/aleph[aleph] https://github.com/clj-commons/aleph/blob/master/CHANGES.md#070-rc1[0.7.0-rc1] - Asynchronous streaming communication for Clojure - web server, web client, and raw TCP/UDP
+* https://github.com/nextjournal/clojure-mode[clojure-mode] https://github.com/nextjournal/clojure-mode/blob/main/CHANGELOG.md#031[0.3.1] - Clojure/Script mode for CodeMirror 6
+* https://github.com/juji-io/datalevin[datalevin] https://github.com/juji-io/datalevin/blob/master/CHANGELOG.md#0825-2023-12-14[0.8.25] - A simple, fast and versatile Datalog database
+* https://github.com/squint-cljs/squint[squint] https://github.com/squint-cljs/squint/blob/main/CHANGELOG.md#v0482-2-23-12-14[0.4.82] - Light-weight ClojureScript dialect

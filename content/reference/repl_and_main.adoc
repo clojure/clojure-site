@@ -172,7 +172,7 @@ The <<xref/../../../guides/install_clojure#,Clojure CLI>> can be used to <<deps_
 * https://clojure.github.io/clojure/clojure.repl-api.html#clojure.repl.deps/add-libs[`add-libs`] is like `add-lib`, but resolves a set of new libraries and versions together.
 * https://clojure.github.io/clojure/clojure.repl-api.html#clojure.repl.deps/sync-deps[`sync-deps`] calls `add-libs` with any libs present in <<deps_edn#,deps.edn>>, but not yet present on the classpath.
 
-These new functions are intended only for interactive use at the repl - using a deps.edn etc is still the proper way to build and maintain your code. To this end, these functions all check that `pass:[*repl*]` is bound to `true`. In a clojure.main REPL, these new functions are automatically referred in the user namespace. In other repls, you may need to `(require '[clojure.repl.deps :refer :all])` before use.
+These new functions are intended only for interactive use at the repl - using a deps.edn is still the proper way to build and maintain your code. To this end, these functions all check that `pass:[*repl*]` is bound to `true`. In a clojure.main REPL, these new functions are automatically referred in the user namespace. In other repls, you may need to `(require '[clojure.repl.deps :refer :all])` before use.
 
 == tap
 

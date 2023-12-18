@@ -82,12 +82,14 @@ Modify or reset the metadata respectively for a namespace/var/ref/agent/atom.
 In addition to with-meta, there are a number of reader macros (<<reader#macrochars,The Reader: Macro Characters>>) for applying metadata to the expression following it at read-time:
 
 * `^{:doc "How it works!"}` - adds the metadata map to the metadata of the next value read
-* `^:keyword` - adds the metdata `^{:dynamic true}`
+* `^:dynamic` - adds the metdata `^{:dynamic true}`
 * `^String` - like `^{:tag java.lang.String}`
 * `^"java.lang.String"` - like `^{:tag java.lang.String}`
 * `^[String long _]` - like  `^{:arg-tags [String long _]}`
 
 The `:tag` key is used to hint an objects type to the Clojure compiler. See <<java_interop#typehints,Java Interop: Type Hints>> for more information and a complete list of special type hints.
+
+Since Clojure 1.12, the `:arg-tags` key is used on method and constructor symbols to specify the arity and signature of the desired method. The `:arg-tags` vector takes any valid `:tag` value or `_` as a placeholder for non-overloaded parameters.
 
 It is possible to add multiple pieces of metadata by chaining the metadata reader macros together.
 For example: `^:dynamic ^ints obj` would apply both the :dynamic flag and ints type-hint to obj. Metadata chains from right to left (left takes precedence).

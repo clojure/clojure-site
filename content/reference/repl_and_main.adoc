@@ -163,7 +163,7 @@ If you switch to a different namespace (with `in-ns` or `ns`), these functions w
 
 Also, the Clojure runtime will look for and load the `user` namespace on startup if it is found. Generally, this should only be used to provide development-time faciliities, and not in a production scenario.
 
-[[add-lib]]
+[[add_lib]]
 == Adding libraries for interactive use
 
 The <<xref/../../../guides/install_clojure#,Clojure CLI>> can be used to <<deps_edn#,declare dependencies>> loaded at REPL startup time. Since Clojure 1.12, you can also dynamically load libraries at the REPL for interactive use. These functions are available in the `tools.deps.repl` namespace:

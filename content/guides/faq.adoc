@@ -390,7 +390,7 @@ tools.deps aims to provide programmatic building blocks for dependency resolutio
 [[clj_dynamic]]
 **<<faq#clj_dynamic,Do these tools allow you to dynamically add dependencies to a running repl?>>**
 
-No. Other tools exist to do this now or could be added on top of the existing functionality but this was not part of the initial goal.
+Yes (since Clojure 1.12) - see <<xref/../../../reference/repl_and_main#add_lib,add-lib>>.
 
 [[clj_standalone]]
 **<<faq#clj_standalone,How can I create a single-file Clojure script, ideally self-invokable via a https://en.wikipedia.org/wiki/Shebang_(Unix)[shebang line]?>>**

@@ -14,7 +14,7 @@ These libraries use the same contribution model (<<contributor_agreement#,Contri
 * Source control - Git libraries on GitHub
 * Issues - https://clojure.atlassian.net/projects/CLJ[JIRA]
 * Development model - patches in JIRA, no PRs
-* Continuous integration - GitHub actions in each project
+* Continuous integration - https://build.clojure.org[Jenkins]
 * Doc generation and hosting - https://tomfaulhaber.github.io/autodoc/[Autodoc] and GitHub https://clojure.github.io/[pages]
 * Builds - Maven with deployment to Maven Central under the groupId `org.clojure`
 

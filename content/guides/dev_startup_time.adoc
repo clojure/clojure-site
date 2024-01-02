@@ -24,11 +24,12 @@ The `compile` function takes a namespace symbol and compiles that namespace and 
 
 Subsequently, when any of those compiled namespaces are required, the class file will be loaded, rather than the original `.clj` file. If a source file is updated (and thus newer), it will be loaded instead. Periodically, you will need to re-compile to account for new dependencies or changing code.
 
-One special case is the `user.clj` file loaded automatically by the Clojure runtime, before any other code is loaded. If you are using a `user.clj` in dev, you need to force a reload because it has already been loaded automatically:
+Note that compilation is a side effect of loading, so has no effect on already loaded namespaces. In particular, one special case is the `user.clj` file, which is loaded automatically by the Clojure runtime. If you are using a `user.clj` in dev (or need to compile namespaces that are already compiled), you can do so by forcing a reload while compiling:
 
 [source,clojure]
 ----
-(binding [*compile-files* true] (require 'user :reload-all))
+(binding [*compile-files* true] ;; compile during load
+  (require 'user :reload-all))  ;; reload this and all transitively loaded namespaces
 ----
 
 That's it! This technique can substantially reduce your startup time during development, particularly as the number of dependencies you load increases.

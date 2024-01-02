@@ -26,7 +26,7 @@ A Symbol is _resolved_:
 
 * If it is namespace-qualified:
 . If the symbol names a global public var, the value is the value of the binding of that var.
-. Since Clojure 1.12, if the namespace resolves to a class in the current namespace, and the symbol name is a static method, the value is a Clojure function that invokes the static member.
+. Since Clojure 1.12, if the namespace resolves to a class in the current namespace, and the symbol name is a static method, the value is a Clojure function that invokes the static method.
 . Since Clojure 1.12, if the namespace starts with `.` and after resolves to a class in the current namespace, and the symbol name is an instance method, the value is a Clojure function that invokes the instance method.
 . Else it is an error.
 * If it is package-qualified, the value is the Java class named by the symbol. It is an error if there is no Class named by the symbol. Since Clojure 1.12, a class name or primitive name ending with one or more `pass:[*]`s resolves to an array class.

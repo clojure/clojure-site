@@ -16,7 +16,10 @@ toc::[]
 == Class access
 
 [%hardbreaks]
-**Classname[$InnerClass][pass:[*]]**
+**Classname**
+**Classname$InnerClass**
+**pass:[Classname*]**
+**pass:[primitive*]**
 
 Symbols representing class names are resolved to the Class instance. Inner or nested classes are separated from their outer class with a `$`. Fully-qualified class names are always valid. If a class is `import`ed in the namespace, it may be used without qualification. All classes in java.lang are automatically imported to every namespace.
 
@@ -37,7 +40,7 @@ String
 == Member access
 
 [%hardbreaks]
-**(.instanceMember instance args*)**
+**(.[Classname/]instanceMember instance args*)**
 **(.instanceMember Classname args*)**
 **(.-instanceField instance)**
 **(Classname/staticMethod args*)**
@@ -61,7 +64,7 @@ The preferred idiomatic forms for accessing field or method members are given ab
 
 [source,clojure]
 ----
-(.instanceMember instance args*) ==> (. instance instanceMember args*)
+(.[Classname/]instanceMember instance args*) ==> (. instance [Classname/]instanceMember args*)
 (.instanceMember Classname args*) ==>
     (. (identity Classname) instanceMember args*)
 (.-instanceField instance) ==> (. instance -instanceField)
@@ -73,10 +76,10 @@ Classname/staticField ==> (. Classname staticField)
 
 [[dot]]
 [%hardbreaks]
-*(_._ instance-expr member-symbol)*
+*(_._ [Classname/]instance-expr member-symbol)*
 *(_._ Classname-symbol member-symbol)*
 *(_._ instance-expr -field-symbol)*
-**(_._ instance-expr (method-symbol args*))** or **(_._ instance-expr method-symbol args*)**
+**(_._ instance-expr ([Classname/]method-symbol args*))** or **(_._ instance-expr [Classname/]method-symbol args*)**
 **(_._ Classname-symbol (method-symbol args*))** or **(_._ Classname-symbol method-symbol args*)**
 
 Special form.
@@ -89,7 +92,7 @@ For the special case of invoking an instance member on a Class instance, the fir
 
 If the second operand is a symbol and no args are supplied it is taken to be a field access - the name of the field is the name of the symbol, and the value of the expression is the value of the field, _unless_ there is a no argument public method of the same name, in which case it resolves to a call to the method. If the second operand is a symbol starting with _-_, the member-symbol will resolve only as field access (never as a 0-arity method) and should be preferred when that is the intent.
 
-If the second operand is a list, or args are supplied, it is taken to be a method call. The first element of the list must be a simple symbol, and the name of the method is the name of the symbol. The args, if any, are evaluated from left to right, and passed to the matching method, which is called, and its value returned. If the method has a void return type, the value of the expression will be _**nil**_. Note that placing the method name in a list with any args is optional in the canonic form, but can be useful to gather args in macros built upon the form.
+If the second operand is a list, or args are supplied, it is taken to be a method call. The first element of the list must be a simple symbol, and the name of the method is the name of the symbol. The args, if any, are evaluated from left to right, and passed to the matching method, which is called, and its value returned. If the method has a void return type, the value of the expression will be _**nil**_. Note that placing the method name in a list with any args is optional in the canonic form, but can be useful to gather args in macros built upon the form. Since Clojure 1.12, instance method symbols may be qualified with a class name.
 
 Note that boolean return values will be turned into Booleans, chars will become Characters, and numeric primitives will become Numbers unless they are immediately consumed by a method taking a primitive.
 

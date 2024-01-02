@@ -57,7 +57,7 @@ There are analogous operations for use on ordinary threads - http://clojure.gith
 
 === Mixing modes
 
-You can put on a channel from either flavor of `>!`/`>!!` and similarly take with either of `<!`/`<<!` in any combination, i.e. the channel is oblivious to the nature of the threads which use it.
+You can put on a channel from either flavor of `>!`/`>!!` and similarly take with either of `<!`/`<!!` in any combination, i.e. the channel is oblivious to the nature of the threads which use it.
 
 === alt
 

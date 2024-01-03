@@ -28,7 +28,7 @@ Recent official releases are described here. Prereleases and older versions can 
 * https://clojure.atlassian.net/browse/TDEPS-239[TDEPS-239] - treat empty deps.edn file as {}
 * Updated several dependencies
 
-=== 1.11.1.1429 (Dec 4, 2023) [[v1.11.1.1429]]
+=== 1.11.1.1429 (Dec 4, 2024) [[v1.11.1.1429]]
 
 * Roll back Maven resolver dep updates from 1.11.1.1420
 

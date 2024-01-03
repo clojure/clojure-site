@@ -54,4 +54,4 @@ Creating lazy things (see also <<sequences#,Sequences>>): https://clojure.github
 Documenting code: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/assert[assert] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/comment[comment] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/doc[doc]
 Transactions: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/dosync[dosync] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/io![io!]
 
-A few <<special_forms#,special forms>> are actually implemented as macros, primarily to provide destructuring: fn let loop
+A few <<special_forms#,special forms>> are actually implemented as macros, primarily to provide destructuring: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/fn[fn] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/let[let] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/loop[loop]

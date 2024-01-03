@@ -383,7 +383,7 @@ All Clojure vars are globally available so again there is not much in the way of
 [[clj_replace]]
 **<<faq#clj_replace,Is clj a replacement for lein and boot?>>**
 
-No. The clojure tools are focused on a) building classpaths and b) launching clojure programs. They do not (and will not) create artifacts, deploy artifacts, etc.
+No. The Clojure CLI is focused on a) building classpaths and b) launching clojure programs. It does not (and will not) create artifacts, deploy artifacts, etc, although they may facilitate these actions through tools and libraries.
 
 tools.deps aims to provide programmatic building blocks for dependency resolution and classpath construction. clj/clojure wraps these into a command-line form that can be used to run Clojure programs. You can compose these pieces to do many other things.
 
@@ -438,7 +438,7 @@ https://groups.google.com/forum/#!msg/clojure/jWMaop_eVaQ/3M4gddaXDZoJ[Link] to 
 [[native]]
 **<<faq#native,Will there be a native version of Clojure in the future?>>**
 
-Frequently people ask for a "native" version of Clojure, ie one that does not rely on the JVM. ClojureScript self-hosting is one current path but probably only useful for a subset of use cases. The https://www.graalvm.org/[GraalVM] project includes standalone execution using the SubstrateVM. Native images produced with Graal start extremely fast but may have fewer opportunities to optimize performance than the full JVM.
+Frequently people ask for a "native" version of Clojure, ie one that does not rely on the JVM. ClojureScript self-hosting is one current path but probably only useful for a subset of use cases. The https://www.graalvm.org/[GraalVM] project can be used to create a standalone binary executable. Native images produced with Graal start extremely fast but may have fewer opportunities to optimize performance than the full JVM.
 
 However, neither of these is likely what people are envisioning when they ask for a "native version of Clojure", which is a version of the language that is not JVM-hosted and compiles directly to a native executable, probably via something like LLVM. Clojure leverages an enormous amount of performance, portability, and functionality from the JVM and relies heavily on things like a world-class garbage collector. Building a "Clojure native" would require a large amount of work to make a version of Clojure that was slower (probably much slower), less portable, and with significantly less functionality (as the Clojure library relies heavily on the JDK). The Clojure core team has no plans to work on this but it would be an amazing learning project for anyone and we encourage you to go for it!
 

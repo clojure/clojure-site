@@ -472,7 +472,7 @@ The resolve-deps args should be provided as an alias in one of deps sources and 
 
 == Prepare JVM environment
 
-The JVM has many options and some programs also take configuration via Java system properties. JVM options can be passed on the command line for any execution specfier by prefixing with `-J`. If multiple options are specified, each must be prefixed.
+The JVM has many options and some programs also take configuration via Java system properties. JVM options can be passed on the command line for any execution specifier by prefixing with `-J`. If multiple options are specified, each must be prefixed.
 
 Additionally, main execution can take a map with key `:jvm-opts`:
 

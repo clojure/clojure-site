@@ -42,3 +42,16 @@ user=> "Elapsed time: 941.445 msecs"
 
 user=> "Elapsed time: 0.044 msecs"
 ----
+
+== Related functions
+
+Create an Atom: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/atom[atom]
+
+Examine an Atom: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/deref[deref] _(see also the +@+ <<reader#,reader>> macro)_
+
+Change Atom state: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/swap![swap!] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/reset![reset!] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/swap-vals![swap-vals!] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/reset-vals![reset-vals!]
+
+Validators: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/set-validator![set-validator!] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/get-validator[get-validator]
+
+Watchers: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/add-watch[add-watch] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/remove-watch[remove-watch]
+

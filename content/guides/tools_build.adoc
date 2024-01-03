@@ -57,7 +57,7 @@ The remainder of this guide demonstrates individual common use cases and how to 
 
 The most common Clojure build creates a jar file containing Clojure source code. To do this with tools.build we'll use the following tasks:
 
-* `create-basis` - to create a project basis
+* `create-basis` - to create a project basis (note: this will download deps as a side effect)
 * `copy-dir` - to copy Clojure source and resources into a working dir
 * `write-pom` - to write a pom file in the working dir
 * `jar` - to jar up the working dir into a jar file
@@ -72,8 +72,10 @@ The build.clj will look like this:
 (def lib 'my/lib1)
 (def version (format "1.2.%s" (b/git-count-revs nil)))
 (def class-dir "target/classes")
-(def basis (b/create-basis {:project "deps.edn"}))
 (def jar-file (format "target/%s-%s.jar" (name lib) version))
+
+;; delay to defer side effects (artifact downloads)
+(def basis (delay (b/create-basis {:project "deps.edn"})))
 
 (defn clean [_]
   (b/delete {:path "target"}))
@@ -82,7 +84,7 @@ The build.clj will look like this:
   (b/write-pom {:class-dir class-dir
                 :lib lib
                 :version version
-                :basis basis
+                :basis @basis
                 :src-dirs ["src"]})
   (b/copy-dir {:src-dirs ["src" "resources"]
                :target-dir class-dir})
@@ -148,8 +150,10 @@ An example build for a compiled uberjar will look like this:
 (def lib 'my/lib1)
 (def version (format "1.2.%s" (b/git-count-revs nil)))
 (def class-dir "target/classes")
-(def basis (b/create-basis {:project "deps.edn"}))
 (def uber-file (format "target/%s-%s-standalone.jar" (name lib) version))
+
+;; delay to defer side effects (artifact downloads)
+(def basis (delay (b/create-basis {:project "deps.edn"})))
 
 (defn clean [_]
   (b/delete {:path "target"}))
@@ -158,13 +162,13 @@ An example build for a compiled uberjar will look like this:
   (clean nil)
   (b/copy-dir {:src-dirs ["src" "resources"]
                :target-dir class-dir})
-  (b/compile-clj {:basis basis
+  (b/compile-clj {:basis @basis
                   :ns-compile '[my.lib.main]
                   :class-dir class-dir})
   (b/uber {:class-dir class-dir
            :uber-file uber-file
-           :basis basis
-           :main 'my.lib.main}))
+           :basis @basis
+           :main 'my.lib.main})))
 ----
 
 This example directs `compile-clj` to compile the main namespace (by default source will be loaded from the basis :paths). Compilation is transitive and all namespaces loaded by the compiled namespace will also be compiled. You may need to add additional namespaces if code is dynamically or optionally loaded.
@@ -199,9 +203,11 @@ For example, consider a parameterization that includes an extra set of dev resou
 (def lib 'my/lib1)
 (def version (format "1.2.%s" (b/git-count-revs nil)))
 (def class-dir "target/classes")
-(def basis (b/create-basis {:project "deps.edn"}))
 (def jar-file (format "target/%s-%s.jar" (name lib) version))
 (def copy-srcs ["src" "resources"])
+
+;; delay to defer side effects (artifact downloads)
+(def basis (delay (b/create-basis {:project "deps.edn"})))
 
 (defn clean [params]
   (b/delete {:path "target"})
@@ -212,7 +218,7 @@ For example, consider a parameterization that includes an extra set of dev resou
     (b/write-pom {:class-dir class-dir
                   :lib lib
                   :version version
-                  :basis basis
+                  :basis @basis
                   :src-dirs ["src"]})
     (b/copy-dir {:src-dirs srcs
                  :target-dir class-dir})
@@ -246,8 +252,10 @@ This build creates a jar with classes compiled from Java sources and your Clojur
 (def lib 'my/lib1)
 (def version (format "1.2.%s" (b/git-count-revs nil)))
 (def class-dir "target/classes")
-(def basis (b/create-basis {:project "deps.edn"}))
 (def jar-file (format "target/%s-%s.jar" (name lib) version))
+
+;; delay to defer side effects (artifact downloads)
+(def basis (delay (b/create-basis {:project "deps.edn"})))
 
 (defn clean [_]
   (b/delete {:path "target"}))
@@ -255,7 +263,7 @@ This build creates a jar with classes compiled from Java sources and your Clojur
 (defn compile [_]
   (b/javac {:src-dirs ["java"]
             :class-dir class-dir
-            :basis basis
+            :basis @basis
             :javac-opts ["--release" "11"]}))
 
 (defn jar [_]
@@ -263,7 +271,7 @@ This build creates a jar with classes compiled from Java sources and your Clojur
   (b/write-pom {:class-dir class-dir
                 :lib lib
                 :version version
-                :basis basis
+                :basis @basis
                 :src-dirs ["src"]})
   (b/copy-dir {:src-dirs ["src" "resources"]
                :target-dir class-dir})

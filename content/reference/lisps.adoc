@@ -16,33 +16,33 @@ This information is provided for programmers familiar with Common Lisp or Scheme
 
 * Clojure is case sensitive
 * Clojure is a Lisp-1
-* () is not the same as nil
+* `()` is not the same as nil
 * The reader is side-effect free
 * Keywords are not Symbols
 * Symbols are not storage locations (see Var)
-* _**nil**_ is not a Symbol
-* t is not syntax, use _**true**_
-* The read table is currently not accessible to user programs
-* _**let**_ binds sequentially
-* _**do**_ is not a looping construct
-* There is no tail-call optimization, use _**recur**_.
-* syntax-quote does symbol resolution, so `x is not the same as 'x.
-* ` has auto-gensyms.
-* ~ is unquote ',' is whitespace
+* `nil` is not a Symbol
+* `t` is not syntax, use `true`
+* The read table is not accessible to user programs
+* `let` binds sequentially
+* `do` is not a looping construct
+* There is no tail-call optimization, use `recur`.
+* syntax-quote does symbol resolution, so `pass:[`x]` is not the same as `'x`.
+* `pass:[`]` has auto-gensyms.
+* `~` is unquote `,` is whitespace
 * There is reader syntax for maps, vectors, and sets
-* _**cons**_, _**first**_ and _**rest**_ manipulate sequence abstractions, not concrete cons cells
+* `cons`, `first` and `rest` manipulate sequence abstractions, not concrete cons cells
 * Most data structures are immutable
-* lambda is _**fn**_, and supports overloading by arity
-* _**pass:[=]**_ is the equality predicate
+* lambda is `fn`, and supports overloading by arity
+* `pass:[=]` is the equality predicate
 * Global Vars can be dynamically rebound (if declared dynamic) without interfering with lexical local bindings. No special declarations are necessary to distinguish between dynamic and lexical bindings. Since Clojure is a Lisp-1, (global) functions can be dynamically rebound (if they are marked as dynamic).
-* No letrec, labels or flet - use (fn name [args]...) for self-reference, https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/letfn[letfn] for mutual reference.
-* In Clojure _**nil**_ means 'nothing'. It signifies the absence of a value, of any type, and is not specific to lists or sequences.
-* Empty collections are distinct from _**nil**_. Clojure does not equate _**nil**_ and '().
-* _**false**_ means one of the two possible boolean values, the other being _**true**_
-* There is more to collections than lists. You can have instances of empty collections, some of which have literal support ([], {}, and ()). Thus there can be no sentinel empty collection value.
-* Coming from Scheme, _**nil**_ may map most closely to your notion of #f.
-* A big difference in Clojure, is sequences. Sequences are not specific collections, esp. they are not necessarily concrete lists. When you ask an empty collection for a sequence of its elements (by calling *seq*) it returns _**nil**_, saying "I can't produce one". When you ask a sequence on its last element for the _**rest**_ it returns _**another logical sequence.**_ You can only tell if that sequence is empty by calling *seq* on it in turn. This enables sequences and the sequence protocol to be _lazy_.
-* Some of the sequence functions correspond to functions from Scheme and CL that there manipulated only pairs/conses ('lists') and returned sentinel values ('() and nil) that represented 'empty' lists. The Clojure return values differ in not returning specific empty collections, but rather another logical sequence. Some of the sequence functions have no counterpart in Scheme/CL, and map to Haskell/ML-like functions. Some of those functions return infinite or calculated sequences, where the analogy to concrete data-structures like Scheme/CL lists is tenuous at best.
+* No `letrec`, `labels` or `flet` - use `(fn name [args]...)` for self-reference, https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/letfn[letfn] for mutual reference.
+* In Clojure `nil` means 'nothing'. It signifies the absence of a value, of any type, and is not specific to lists or sequences.
+* Empty collections are distinct from `nil`. Clojure does not equate `nil` and `'()`.
+* `false` means one of the two possible boolean values, the other being `true`
+* There is more to collections than lists. You can have instances of empty collections, some of which have literal support (`[]`, `{}`, and `()`). Thus there can be no sentinel empty collection value.
+* Coming from Scheme, `nil` may map most closely to your notion of `#f`.
+* A big difference in Clojure, is sequences. Sequences are not specific collections, esp. they are not necessarily concrete lists. When you ask an empty collection for a sequence of its elements (by calling `seq`) it returns `nil`, saying "I can't produce one". When you ask a sequence on its last element for the `rest` it returns _**another logical sequence**_. You can only tell if that sequence is empty by calling `seq` on it in turn. This enables sequences and the sequence protocol to be _lazy_.
+* Some of the sequence functions correspond to functions from Scheme and CL that there manipulated only pairs/conses ('lists') and returned sentinel values (`'()` and `nil`) that represented 'empty' lists. The Clojure return values differ in not returning specific empty collections, but rather another logical sequence. Some of the sequence functions have no counterpart in Scheme/CL, and map to Haskell/ML-like functions. Some of those functions return infinite or calculated sequences, where the analogy to concrete data-structures like Scheme/CL lists is tenuous at best.
 * It helps to distinguish collections/data-structures and seqs/iteration. In both CL and Scheme they are conflated, in Clojure they are separate.
 
 [cols="<*", options="header", role="table"]

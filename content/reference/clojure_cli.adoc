@@ -15,26 +15,69 @@ The Clojure CLI is a command-line tool to run Clojure programs on the Java Virtu
 
 == Installation
 
-The Clojure CLI can be installed via Homebrew, bash/posix script, or Powershell depending on the platform. See the <<xref/../../../guides/install_clojure#,installation guide>> for details and the <<xref/../../../releases/tools#,release page>> for version information. You can also read the <<xref/../../../guides/deps_and_cli#,guide>> for a longer tutorial.
+The Clojure CLI can be installed via Homebrew, bash/posix script, or Powershell depending on the platform. See the <<xref/../../../guides/install_clojure#,installation guide>> for details and the <<xref/../../../releases/tools#,release page>> for version information. You can also read the <<xref/../../../guides/deps_and_cli#,guide>> for a longer tutorial. For artifact building, check out the <<xref/../../../guides/tools_build#,tools.build guide>>.
 
 Any version of the Clojure CLI can use any version of the Clojure language. Generally it is best to use the latest <<xref/../../../releases/tools#,version of the CLI>> to have the latest features and fixes. Given a CLI version A.B.C[.D], the default <<xref/../../../releases/downloads#,version of Clojure>> used at the REPL will be A.B.C, however you can specify an older (or newer!) version of the language in your dependencies.
 
 [[usage]]
 == Usage
 
-The CLI is invoked via either `clojure` or `clj`. In general, you can treat these interchangeably, but `clj` includes `rlwrap` for extended keyboard editing, of particular use for the REPL. Because `clj` is fewer characters to type, it is most commonly used but this reference will use `clj` for REPL examples and `clojure` for non-REPL examples.
+The CLI is invoked via either `clojure` or `clj`. In general, you can treat these interchangeably but `clj` includes `rlwrap` for extended keyboard editing, particularly useful with the REPL. This reference uses `clj` for REPL examples and `clojure` for non-REPL examples.
+
+Each execution of the Clojure CLI runs a Clojure program by determining all paths, dependencies, and main entry point, then invoking the program on the JVM. The primary kind of execution is determined by `-X`, `-T`, and `-M` (or their absence). Configuration is defined by one or more <<deps_edn,deps.edn>> files in combination with the <<clojure_cli#opt_index,command-line options>>.
+
+[[commands]]
+=== Primary commands
+
+<<clojure_cli#use_repl,Start a REPL:>> +
+`clj [clj-opts] [-Aaliases]`
+
+<<clojure_clj#use_fn,Execute a function:>> +
+`clojure [clj-opts] -X[aliases] my/fn? [kpath v ...] kv-map?`
+
+<<clojure_clj#use_tool,Run a tool:>> +
+`clojure [clj-opts] -T[name|aliases] my/fn [kpath v ...] kv-map?`
+
+<<clojure_clj#use_main,Run a main namespace or script:>> +
+`clojure [clj-opts] -M[aliases] [init-opts] [main-opts] [args]`
+
+[[options]]
+=== Option index:
 
 [subs=+macros]
 ----
-<<clojure_cli#use_repl,clj [clj-opts] [-Aaliases]>>
-<<clojure_clj#use_fn,clojure [clj-opts] -X[aliases] my/fn? [kpath v ...] kv-map?>>
-<<clojure_clj#use_tool,clojure [clj-opts] -T[name|aliases] my/fn [kpath v ...] kv-map?>>
-<<clojure_clj#use_main,clojure [clj-opts] -M[aliases] [init-opts] [main-opts] [args]>>
+exec-opts:
+ <<clojure_cli#opt_a,-Aaliases>>    Use aliases, particularly for repl execution
+ <<clojure_cli#opt_x,-X[aliases]>>  Invoke function, using aliases
+ <<clojure_cli#opt_t,-Ttoolname>>   Invoke tool by local name
+ <<clojure_cli#opt_t,-T[aliases]>>  Invoke tool by concatenated aliases (ala -X)
+ <<clojure_cli#opt_m,-M[aliases]>>  Invoke clojure.main, using aliases
+ <<clojure_cli#opt_p,-P>>           Prepare deps but don't exec
 
-See the <<clojure_cli#opt_index,option index>> for a complete list of CLI options.
+clj-opts:
+ <<clojure_cli#opt_j,-Jopt>>        Pass opt through in java_opts, ex: -J-Xmx512m
+ <<clojure_cli#opt_sdeps,-Sdeps EDN>>   Extra deps.edn data
+ <<clojure_cli#opt_srepro,-Srepro>>      Ignore user deps.edn file
+ <<clojure_cli#opt_spath,-Spath>>       Compute classpath, echo to stdout
+ <<clojure_cli#opt_stree,-Stree>>       Print dependency tree
+ <<clojure_cli#opt_scp,-Scp CP>>      Use this classpath instead of computing
+ <<clojure_cli#opt_sforce,-Sforce>>      Force recomputation of the classpath
+ <<clojure_cli#opt_sverbose,-Sverbose>>    Print important path info to console
+ <<clojure_cli#opt_sdescribe,-Sdescribe>>   Print environment and command parsing info as data
+ <<clojure_cli#opt_sthreads,-Sthreads>>    Set specific number of download threads
+ <<clojure_cli#opt_strace,-Strace>>      Write a trace.edn file that traces deps expansion
+ <<clojure_cli#opt_sversion,--version>>    Print the version to stdout and exit
+ <<clojure_cli#opt_sversion,-version>>     Print the version to stderr and exit
+ <<clojure_cli#opt_help,--help -h -?>> Print this help message and exit
+
+Programs provided by :deps alias:
+ <<clojure_cli#deps_list,-X:deps list>>          List transitive deps + licenses
+ <<clojure_cli#deps_tree,-X:deps tree>>          Print deps tree
+ <<clojure_cli#deps_find_versions,-X:deps find-versions>> Find available versions of library
+ <<clojure_cli#deps_prep,-X:deps prep>>          Prepare all unprepped libs in dep tree
+ <<clojure_cli#deps_mvn_pom,-X:deps mvn-pom>>       Generate pom.xml for deps.edn
+ <<clojure_cli#deps_mvn_install,-X:deps mvn-install>>   Install maven jar to local repo
 ----
-
-Each execution of the Clojure CLI runs a Clojure program by determining all paths, dependencies, and main entry point, then invoking the program on the JVM. The primary kind of execution is determined by `-X`, `-T`, and `-M` (or their absence), described further below. Configuration is defined by one or more <<deps_edn,deps.edn>> files in combination with the command-line options.
 
 [[use_repl]]
 === Start a REPL
@@ -157,6 +200,20 @@ clojure [clj-opt*] -M[aliases] [main-opts]
 
 The -M aliases are pulled from `deps.edn` and combined to form an arg map. The arg map can modify the classpath or supply main options.
 
+[subs=+macros]
+----
+__init-opts: (use with -M only)__ 
+ -i, --init path     Load a file or resource
+ -e, --eval string   Eval exprs in string; print non-nil values
+ --report target     Report uncaught exception to "file" (default), "stderr", or "none"
+
+__main-opts:__
+ -m, --main ns-name  Call the -main function from namespace w/args
+ -r, --repl          Run a repl
+ path                Run a script from a file or resource
+ -                   Run a script from standard input
+----
+
 See the <<repl_and_main#,clojure.main>> documentation for more details on main options.
 
 [[aliases]]
@@ -251,30 +308,6 @@ For string values nested inside other collections, use double quotes if there ar
 PS D:> clj -X clojure.core/prn :val '{:s1 """nospaces""" :s2 ""has spaces""}'
 {:val {:s1 "nospaces", :s2 "has spaces"}}
 ----
-
-[[opt_index]]
-== Option index
-
-  opt_A
-  opt_X
-  opt_T
-  opt_M
-  opt_fn
-  opt_kvs
-  opt_main_init
-  opt_main_opt
-  opt_help
-  opt_version
-  opt_J
-  opt_sdeps
-  opt_spath
-  opt_stree
-  opt_scp
-  opt_srepro
-  opt_sforce
-  opt_strace
-  opt_sthreads
-  opt_sverbose
 
 [[procurers]]
 = Procurers

@@ -105,7 +105,7 @@ clj -A:test:dev
 [[use_fn]]
 === Execute a function (-X)
 
-The Clojure CLI can execute any function on the classpath that takes keyword args in a map as input.
+The Clojure CLI can execute any function on the project classpath that takes keyword args in a map as input.
 
 [source]
 ----
@@ -114,75 +114,42 @@ clojure [clj-opt*] -X[aliases] [a/fn] [kpath v]* kv-map?
 
 Function execution ultimately needs the following pieces of information:
 
-* Classpath
-* Qualified function to execute
-* Map of key to value
+* Classpath - based on the <<clojure_cli#deps_sources,deps sources>> and <<clojure_cli#aliases,aliases>>
+* Function to execute
+* Map of function arguments
 
-`-X` <<clojure_cli#aliases,aliases>> can contain the following arg map keys:
+The function and its arguments may be supplied either via data in aliases and/or at the command line.
 
-* `:exec-fn` - a function symbol to use when none is supplied on the command line
-* `:exec-args` - a map of key to value to include when `exec-fn` is executed, may be superseded by keyword args on the command line (so these act as defaults)
-* `:ns-default` - default namespace symbol to use when interpreting the exec-fn
-* `:ns-aliases` - map of alias symbol to namespace symbol to use when interpreting the exec-fn
+The <<clojure_cli#aliases,aliases>> can contain the following arg map keys:
 
-[source,clojure]
-----
-;; deps.edn
-{:aliases
- {:my-fn
-  {:exec-fn my.qualified/fn
-   :exec-args {:my {:data 123}
-               :config 456}}}}
-----
+* `:exec-fn` - a function symbol to use if none is supplied on the command line
+* `:exec-args` - a map of key to value to include when `exec-fn` is executed
+* `:ns-default` - default namespace symbol to use when resolving the exec-fn
+* `:ns-aliases` - map of alias symbol to namespace symbol to use when resolving the exec-fn
 
-To invoke, pass the name of the alias to `-X`:
+If the function to invoke is defined in a specified alias, the function is optional on the command line. If the function symbol is specified on the command line, it overrides the `:exec-fn` in aliases, and is <<clojure_cli#namespaces,resolved>> in terms of `:ns-default` and `:ns-aliases` in aliases.
 
-[source]
-----
-clj -X:my-fn
-----
+The `:exec-args` form a base map that is merged with keys and values and trailing kv-map on the command line, merged in that order.
 
-You can supply additional keys, or override values stored in the deps.edn file by passing pairs of key-path and value. The key-path should either be a single key or a vector of keys to refer to a nested key (as with `assoc-in`). Each key-path will be used to `assoc-in` to the original `:exec-args` map, overriding the value there.
-
-[source]
-----
-# Top key override
-clj -X:my-fn :config 789
-
-# Nested key override
-clj -X:my-fn '[:my :data]' 789
-----
-
-[NOTE]
-====
-See the later section on <<#quoting,"Quoting keys and values">> for more details on how to properly quote edn values on the command line.
-====
-
-If you want to execute an arbitrary function, you can pass it on the command instead, along with pairs of key-path and value:
-
-[source]
-----
-clj -X my.qualified/fn :config 789
-----
-
-[NOTE]
-====
-Alias arg maps can also include a default namespace or namespace aliases for resolving the function (see <<#namespaces,"Namespace resolution">> for more details).
-====
+Keys on the command line may be either keywords or vector key paths (as used with `assoc-in`) to specify a nested key. See the later section on <<#quoting,"Quoting keys and values">> for more details on how to properly quote edn values on the command line.
 
 [[use_tool]]
 === Run a tool (-T)
 
-Use the `-T` exec-opt to invoke a tool that does not use the project classpath:
+Tools are functions external to the project classpath. Running tool functions with `-T` is the same as running project functions with `-X`, except the project classpath is not included.
 
 [source]
 ----
 clojure [clj-opt*] -T[name|aliases] a/fn [kpath v]* kv-map?
 ----
 
-When running a tool, the project's `:deps` and `:paths` are not used. The function is invoked with a map in the same way as -X execution, built from :exec-args if found in aliases and key/vals provided on the command line.
+When constructing the classpath for the tool, the project `:deps` and `:paths` are not included.
 
-Tools are installed and referenced by a simpler local name, instead of via an alias. See <<clojure_cli#tool_install,tool installation>> for more details.
+The tool deps are included either via the tool aliases or a tool name. Tools may be installed locally with a short name for use. Installed tools can be used on any project with the same user configuration. See <<clojure_cli#tool_install,tool installation>> for more details.
+
+To run a tool by name, use `-Ttoolname`, like `-Tlinter`. To run a tool by alias[es], use `-T:linter` (aliases are always keywords).
+
+Unlike `-X`, a tool function MUST be specified on the command line and cannot be specified in the tool alias or installed tool configuration. Otherwise, tool functions and arguments are specified the same as `-X` in both aliases and command line.
 
 [[use_main]]
 === Run a main namespace or script (-M)
@@ -194,23 +161,23 @@ You can use the `-M` exec-opt to invoke clojure.main, which supports calling a n
 clojure [clj-opt*] -M[aliases] [main-opts]
 ----
 
-The -M aliases are pulled from `deps.edn` and combined to form an arg map. The arg map can modify the classpath or supply main options.
+The -M aliases are pulled from `deps.edn` and combined to form an arg map. The arg map can modify the classpath or supply `:main-opts`, a vector of string main options. See the <<repl_and_main#,clojure.main>> page for more information on the available arguments.
 
-[subs=+macros]
+Common uses:
+
+[source]
 ----
-__init-opts: (use with -M only)__ 
- -i, --init path     Load a file or resource
- -e, --eval string   Eval exprs in string; print non-nil values
- --report target     Report uncaught exception to "file" (default), "stderr", or "none"
+# run single expression:
+clojure -M -e '(+ 1 1)'
 
-__main-opts:__
- -m, --main ns-name  Call the -main function from namespace w/args
- -r, --repl          Run a repl
- path                Run a script from a file or resource
- -                   Run a script from standard input
+# run Clojure namespace with main entry point:
+clojure -M -m my.app
+
+# run standalone Clojure script
+clojure -M script.clj
 ----
 
-See the <<repl_and_main#,clojure.main>> documentation for more details on main options.
+Main opts can be provided in <<clojure_cli#aliases,Alias>> with the arg map key `:main-opts` - when aliases are merged, any `:main-opts` provided replaces those from previous aliases. Additional options on the command line after `-M` are appended to those found in the merged alias arg map.
 
 [[options]]
 == Options
@@ -218,16 +185,30 @@ See the <<repl_and_main#,clojure.main>> documentation for more details on main o
 [[opt_a]]
 **-Aaliases**
 
-`-A` 
+`-A` takes one or more concatenated <<clojure_cli#aliases,aliases>>, which are always simple or qualified keywords, e.g. `-A:test` or `-A:test:perf/benchmark`.
+
+While `-A` can be used with all execution commands, it is the only exec opt that can be used for <<clojure_cli#use_repl,REPL execution>>, and that is the most common reason to use it.
 
 [[opt_x]]
 **-X[aliases]**
 
+`-X` takes one or more concatenated <<clojure_cli#aliases,aliases>>, which are always simple or qualified keywords, e.g. `-X:test` or `-A:test:perf/benchmark`.
+
+The `-X` exec-opt indicates <<clojure_cli#use_fn,function execution>>, and all arguments after `-X` are defined by that execution context. All clj-opts (`-S`, `-P`, etc) should be placed before the `-X`.
+
 [[opt_t]]
 **-Ttoolname, -T[aliases]**
 
+`-T` takes either a tool name or one or more concatenated <<clojure_cli#aliases,aliases>>, which are always simple or qualified keywords, e.g. `-X:test` or `-A:test:perf/benchmark`. Tool names are always symbols, not keywords.
+
+The `-T` exec-opt indicates <<clojure_cli#use_fn,tool execution>>, and all arguments after `-T` are defined by that execution context. All clj-opts (`-S`, `-P`, etc) should be placed before the `-T`.
+
 [[opt_m]]
 **-M[aliases]**
+
+`-M` takes one or more concatenated <<clojure_cli#aliases,aliases>>, which are always simple or qualified keywords, e.g. `-X:test` or `-A:test:perf/benchmark`.
+
+The `-M` exec-opt indicates <<clojure_cli#use_fn,clojure.main execution>>, and all arguments after `-M` are defined by that execution context. All clj-opts (`-S`, `-P`, etc) should be placed before the `-M`.
 
 [[opt_p]]
 **-P**
@@ -237,7 +218,7 @@ Use `-P` before any of the other exec-opts (`-A`, `-X`, `-M`, `-T`) to do a full
 [[opt_j]]
 **-Jopt**
 
-Use `-J` to prefix any JVM option that should be provided to your program (the `-J` will be stripped). For example, `-J-Xmx1g` or `-J-XX:+HeapDumpOnOutOfMemoryError`.
+Use `-J` to prefix any JVM option that should be provided to your program (the `-J` will be stripped). For example, `-J-Xmx1g` or `-J-XX:+HeapDumpOnOutOfMemoryError`. `-J` can be used with all execution modes that run a program (repl, `-X`, `-T`, `-M`).
 
 [[opt_sdeps]]
 **-Sdeps deps**
@@ -308,39 +289,159 @@ Print help to console. Also see `man clojure`.
 [[aliases]]
 == Aliases
 
+When invoking commands in the context of a project, it is common to need to specify complex data that is hard to quote on the command line. As Clojure programmers, we strongly prefer to specify that data in Clojure syntax (http://edn-format.org/[edn]). The <<deps_edn#,deps.edn>> file format allows us to define arbitrary Clojure data and give that data a name using <<deps_edn#aliases,aliases>>. Aliases are simply keywords that name edn data.
 
+Each execution mode of the Clojure CLI has many configuration options (the "arg map"). These can be defined in edn maps via aliases and selected on the command line using the aliases in `-A`, `-X`, `-T`, or `-M`. Below is a list of all arg map keys - unless otherwise noted, these are valid in all execution modes.
 
-The internal steps of the Clojure CLI, as well as the Clojure functions you intend to run, are parameterized by data structures, often maps. Shell command lines are not optimized for passing nested data, so instead you will put the data structures in your deps edn file and refer to them on the command line via _aliases_ - keywords that name data structures.
+[[arg_map_keys]]
+* Project dependency modifiers
+** `:extra-deps` - map of lib to coords that should be added to the root deps
+** `:override-deps` - map of lib to coords that should *replace* deps in the root deps
+** `:default-deps` - map of lib to coords that should be used if the coord is nil in root or transitive deps
+* Classpath modifiers
+** `:extra-paths` - vector of string paths (or keyword aliases to same) to prepend to base paths
+** `:classpath-overrides` - map of lib to string path to replace lib on classpath
+* Tool deps and paths (primarily used by -T)
+** `:replace-deps` (synonym: `:deps`) - map of lib to coords that should *replace* the project deps
+** `:replace-paths` (synonym: `:paths`) - vector of path strings that should *replace* the project paths
+* JVM options
+** `:jvm-opts` - vector of strings to pass as jvm options
+* Namespace resolution (primarily used by -X and -T)
+** `:ns-aliases` - map of alias symbol to namespace symbol, used to resolve symbols (such as :exec-fn)
+** `:ns-default` - default namespace for unqualified symbols (such as :exec-fn)
+* Function execution (-X and -T only)
+** `:exec-fn` - function to execute with -X
+** `:exec-args` - function args to pass to -X (can be overridden at command line)
+* main (-M only)
+** `:main-opts` - vector of string args to pass to clojure.main
+
+When multiple aliases are supplied, the keys in the aliases arg maps are merged with the following semantics (in the order specified in the concatenated aliases):
+
+* `:extra-deps` - merge
+* `:override-deps` - merge
+* `:default-deps` - merge
+* `:extra-paths` - concatenate and distinct
+* `:classpath-overrides` - merge
+* `:replace-deps` / `:deps` - merge
+* `:replace-paths` / `:paths` - concatenate and distinct
+* `:jvm-opts` - concatenate
+* `:ns-aliases` - merge
+* `:ns-default` - replace (last wins)
+* `:exec-fn` - replace (last wins)
+* `:exec-args` - deep merge
+* `:main-opts` - replace (last wins)
+
+=== Using aliases for custom purposes
+
+The alias keys above are meaningful for Clojure CLI execution, but you may define aliases for any purpose. If you are creating a custom tool that needs configuration, it is a good practice to define well-known, namespaced aliases or alias-keys for use by your tool. Please refrain from adding top-level keys to the <<deps_edn#,deps.edn>> files - they may not always available via programmatic tools.
+
+Programs run by the Clojure CLI are given the "runtime basis" for the execution, including all alias data. The clojure.java.basis API being added in Clojure 1.12 can be used to retrieve alias data at runtime in the program.
 
 [[deps]]
 == Dependencies
 
+Each dependency is defined in the <<deps_edn#,deps.edn>> format with a lib and coordinate, multiple deps combined into a map (the alias arg map keys use the same format).
+
 [[deps_sources]]
 === deps.edn sources
+
+The Clojure CLI will construct the map of paths, dependencies, and aliases to use by combining up to four <<deps_edn#,dependency sources>>:
+
+* Root deps - defined as a resource embedded in the tools.deps library, defines Clojure itself as the only dependency (version will match the Clojure CLI version), and two built-in aliases: `:deps` and `:test`. Two built-in Maven repositories are included - Maven central and Clojars.
+* User deps (optional) - a deps.edn file in the <<clojure_cli#config_dir,user configuration directory>>. The file starts empty but may have additional configuration and tools defined that cross projects.
+* Project deps (optional) - the deps.edn in the current directory (aka the <<clojure_cli#project_dir,project directory>>)
+* Extra deps (optional) - provided on the command-line with <<clojure_cli#opt_sdeps,-Sdeps>>
+
+The deps sources are merged into a single master deps edn in the order listed above except:
+
+* <<clojure_cli#opt_t,-T tool execution>>) - project :deps is removed, and project :paths are replaced with `["."]`
+* <<clojure_cli#opt_srepro,-Srepro) - user :deps is ignored
+
+The merge is essentially `merge-with merge`, except for `:paths` where only the last deps source `:paths` is used.
 
 [[jvm_props]]
 == JVM properties
 
-[[main_props]]
-== Main properties
+JVM properties can be provided in several ways:
+
+* Hard-coded option: `-XX:-OmitStackTraceInFastThrow`
+* $JAVA_OPTS <<clojure_cli#env_vars,environment variable>>
+* <<clojure_cli#aliases,Alias>> arg map key `:jvm-opts` (merged across aliases in the master deps)
+* Command line <<clojure_cli#opt_j,`-J`>> options
+
+All JVM command-line options are concatenated in the order above. In most cases, JVM options later on the command-line will override any previous setting, but in all cases the semantics of the concatenated options are those of the JVM. There is no de-duplication or replacement of options.
 
 [[command]]
 == CLI command
 
+The `clj` and `clojure` commands are host-specific scripts that:
+
+1. Parse CLI arguments
+2. (If not cached), launch a JVM to compute and cache classpath and other setup
+3. Launch a JVM to run the user program as specified by the exec opts `-X`, `-T`, `-M`
+
+Step 2 is done with an uberjar that is part of the Clojure CLI installation - generally you do not control the classpath or configuration of that JVM (but see <<clojure_cli#env_vars,environment variables for some exceptions).
+
 [[java]]
 === Java
+
+You are expected to install Java and have it available by one of several means when using the Clojure CLI. Java 8 or higher is required. Any Java distribution will work.
+
+Java is found by checking the following in this order:
+
+* $JAVA_CMD <<clojure_cli#env_vars,environment variable>>
+* java on the $PATH
+* $JAVA_HOME/bin/java
+
+If not found, the CLI will stop with an error message. If `clj -h` completes successfully, then a Java executable was found.
 
 [[dirs]]
 === Directories and caching
 
+There are several important directories used by the Clojure CLI, this section details how they are computed.
+
 [[project_dir]]
 ==== Project directory
+
+The project directory is the current directory. If the project directory contains a <<deps_edn#,deps.edn>> file, that will be used as the <<clojure_cli#deps_sources,project deps source>>.
+
+There is no option for executing in the context of a remote project directory.
 
 [[config_dir]]
 ==== Config directory
 
+The config directory contains:
+
+* User <<clojure_cli#deps_sources,user deps.edn>>
+* Non-project <<clojure_cli#cache_dir,cache directory>>
+* <<clojure_cli#tool_install,Tool installations>>
+
+The config directory is computed as follows:
+
+* If $CLJ_CONFIG is set, use that path
+* If $XDG_CONFIG_HOME is set, use $XDG_CONFIG_HOME/clojure
+* Else use $HOME/.clojure
+
+If the config directory does not exist, it will be created and the following files will be copied to it:
+
+* deps.edn - the default user deps.edn (essentially empty)
+* tools/tools.edn - the built-in tool "tools" for managing tools
+
 [[cache_dir]]
 ==== Cache directory
+
+Every execution of the CLI uses a cache directory to store computed classpath and other files.
+
+The cache directory is computed as follows:
+
+* If the current directory has a project deps.edn and the current directory is writeable, use ./.cpcache
+* Else use the .cpcache directory in the <<clojure_cli#config_dir,config directory>>
+
+The files in the cache directory are a cache to improve startup time when using a classpath that has already been computed. In general, this cache should never be stale, however you can use <<clojure_cli#opt_sforce,`-Sforce`>> to force a recomputation on a specific command, or simply `rm` the cache directory if unsure.
+
+When you install a new version of the CLI, this sometimes invalidates the cache (if the cache key format has changed), causing commands you have run before to recompute the classpath.
+
+The Clojure CLI never deletes files in the cache directories, so it is up to you if you wish to clean these directories periodically. It is a good practice to include `.cpcache/` in your project `.gitignore` file - nothing there is useful to share with other project users.
 
 [[env_vars]]
 === Environment vars
@@ -397,6 +498,250 @@ For string values nested inside other collections, use double quotes if there ar
 PS D:> clj -X clojure.core/prn :val '{:s1 """nospaces""" :s2 ""has spaces""}'
 {:val {:s1 "nospaces", :s2 "has spaces"}}
 ----
+
+[[tools]]
+== Tools
+
+A tool is a collection of functions delivered in a lib. Tool functions are run in a separate process with their own classpath, independent of the project classpath. Tool functions take a single map argument and are invoked with -T (same key value arg syntax as -X style execution).
+
+Tools are described either via an alias (which can be shared by others using the project), or by a local tool name installed on your machine (which can be shared across projects).
+
+== Using tool aliases
+
+Tools declared with an alias are executed with -T, in the same manner as -X. However, -T will remove the project deps and paths and add `"."` as a path.
+
+Declare an alias in a deps.edn (could be project or user):
+
+[source,clojure]
+----
+{;; ...
+ :aliases {
+   :linter {:deps {cool/lint-tool {:git/tag "..." :git/sha "..."}}
+            :ns-default cool.lint.tool}
+ }}
+----
+
+This example invocation invokes the linter in a classpath that includes only the linter dependency (and its  transitive dependencies). The function invoked will be `cool.lint.tool/linter` formed by combining the `:ns-default` in the alias and the function name `lint` on the command line:
+
+[source,shell]
+----
+clj -T:linter lint
+----
+
+Additional key / value argument may be passed on the command line after that, with same syntax as -X args.
+
+== Using named tools
+
+The Clojure CLI comes with programs to search for available versions of a tool (either maven or git), and to install a tool under a local name for subsequent execution. Tools additionally may provide their usage configuration (like `:ns-default`) as part of the tool, rather than every user needing to define that in an alias.
+
+=== Find versions
+
+See <<clojure_cli#find-versions,find-versions>> for more on finding versions of a lib or tool (Maven or git).
+
+[[tool_install]]
+=== Tool installation
+
+A tool for managing tools is automatically installed by the Clojure CLI under the name "tools". There are several useful functions provided:
+
+* https://clojure.github.io/tools.tools/clojure.tools.tools.api.html#var-install[`install`] - Installs or reinstalls a tool
+* https://clojure.github.io/tools.tools/clojure.tools.tools.api.html#var-install-latest[`install-latest`] - Installs or reinstalls the latest version of a tool
+* https://clojure.github.io/tools.tools/clojure.tools.tools.api.html#var-list[`list`] - Lists all installed tools
+* https://clojure.github.io/tools.tools/clojure.tools.tools.api.html#var-remove[`remove`] - Removes an installed tool
+* https://clojure.github.io/tools.tools/clojure.tools.tools.api.html#var-show[`show`] - Prints info and usage for a tool
+
+==== Install
+
+When you've determined which version of a tool to install, use the `install` function to install the tool by name.
+
+[source,shell]
+----
+clj -Ttools install ...
+----
+
+The args to `install-tool` are:
+
+* lib - val is coord map, as per deps.edn
+* `:as` - tool name, will be used for later invocations
+
+For example:
+
+[source,shell]
+----
+clj -Ttools install io.github.clojure/tools.deps.graph '{:git/tag "v1.0.63"}' :as deps-graph
+----
+
+On Windows, additional <<clojure_cli#quoting,escape quoting>> is required in Powershell:
+
+[source,shell]
+----
+clj -Ttools install io.github.clojure/tools.deps.graph '{:git/tag """v1.0.63"""}' :as deps-graph
+----
+
+Note that git deps can be fully described at tool installation time with only a git lib name (used to form a git url by convention), and a git tag. Alternately, the coord may contain an explicit `:git/url` or `:git/sha` instead.
+
+==== Install latest
+
+To find and install the latest version of a tool in one step:
+
+[source,shell]
+----
+clj -Ttools install-latest :lib io.github.clojure/tools.deps.graph :as deps-graph
+----
+
+To update an existing tool to the latest version you can also just specify the tool by name:
+
+[source,shell]
+----
+clj -Ttools install-latest :tool deps-graph
+----
+
+==== List
+
+To list all installed tools:
+
+[source,shell]
+----
+clj -Ttools list
+----
+
+To remove an installed tool:
+
+[source,shell]
+----
+clj -Ttools remove :tool name
+----
+
+Other functions will likely be added in the future.
+
+=== Tool usage
+
+Tools may include a top-level key `:tools/usage` in their deps.edn file to publish how the tool can be used with respect to namespace context. The value is a map which may have the following keys that are the same as their usage in deps.edn aliases:
+
+* `:ns-default` - a lib symbol indicating the default namespace when resolving functions
+* `:ns-aliases` - a map of alias to lib symbol
+
+For example, the tools.deps.graph tool can publish the following usage in deps.edn:
+
+[source,clojure]
+----
+{:tools/usage
+ {:ns-default clojure.tools.deps.graph}}
+----
+
+[NOTE]
+====
+Currently, only tools that are deps.edn-based and available as either a git or local repository can provide a `:tools/usage` configuration.
+====
+
+=== Invoke a tool by name
+
+Once you've installed a named tool, you can invoke it with `-T` using just the tool name.
+
+[source,shell]
+----
+clj -Ttool f args...
+----
+
+The function will be resolved using the `:ns-default` and `:ns-aliases` found in the tool's deps.edn.
+
+For example, for the tools.deps.graph tool declared above, it can be invoked as follows:
+
+[source,shell]
+----
+clj -Tdeps-graph graph :output '"graph.png"'
+----
+
+== Best practices for tool authors
+
+Best practices:
+
+* Provide your tool as a public git library
+* Define your tool api in one or more Clojure namespaces as functions that take a map
+* Create a `:tools/usage` key in the root of your deps.edn with either an `:ns-default` and/or an `:ns-aliases` key for your api namespaces
+* Tag your git repo to create a release, using a scheme that makes sequencing obvious to users. A common convention is to use versions strings like "v1.2.3".
+
+Tools can provide these instructions for users:
+
+* Find tool versions: `clj -X:deps find-versions :lib io.github.USER/TOOL`
+* Install tool with `clj -Ttools install io.github.USER/TOOL '{:git/tag "VERSION"}' :as NAME`
+* Invoke tool with `clj -TNAME f args...`
+
+[[function_protocol]]
+== Function execution protocol
+
+Some tools provide functions designed to be used for programmatic execution from another process, with the following constraints and expectations:
+
+* The function should take a single map argument
+* Results are returned from the function (as usual)
+* Exceptions thrown by the function will cause a failure and the exception data (ala `Throwable->map` will be conveyed to the external process, which will re-throw it in an `ex-info`)
+* Printing output will (by default) not be captured
+* Any result or exception data should be safe to print and read back to data in another process
+
+There are several argument map keys that have special significance to the Clojure CLI during -X or -T. All of these keys will be removed from the argument map before the function is invoked:
+
+* `:clojure.exec/invoke` - `true` to use this protocol
+* `:clojure.exec/out` - `true` to capture and return stdout during function execution
+* `:clojure.exec/err` - `true` to capture and return stderr during function execution
+
+The result is wrapped into a printed envelope map with the following keys and returned via the CLI stdout:
+
+* `:tag` - either `:ret` or `:err` based on whether the function returned a result or threw an exception
+* `:val` - either return value or exception data, prn to a string
+* `:out` - if requested, the captured stdout return
+* `:err` - if requested, the captured stderr return
+* `:ms` - function execution time in ms
+
+A consumer API for this protocol will be provided as of Clojure 1.12.0-alpha2.
+
+
+[[programs]]
+== Programs
+
+The Clojure CLI is designed to provide access to programs (functions) in other libraries with their own independent classpath. This capability is leveraged to provide expanded functionality via the built-in `:deps` alias in the root deps.edn, which provides the https://github.com/clojure/tools.deps.cli[tools.deps.cli] (see https://clojure.github.io/tools.deps.cli[API]).
+
+[[deps_list]]
+== Dependency list
+
+[source]
+---
+clj -X:deps list
+---
+
+Prints sorted list of all transitive dependencies selected for the classpath, and license information (if found). Additional options can be used to select aliases or other classpath modifications, or to modify printing information.
+
+See https://clojure.github.io/tools.deps.cli/clojure.tools.deps.cli.api-api.html#clojure.tools.deps.cli.api/tree[API docs].
+
+[[deps_tree]]
+=== Dependency tree
+
+[source]
+---
+clj -X:deps tree
+---
+
+Prints dependency tree with inclusion/exclusion information as determined during <<dep_expansion#_tree_printing,dependency expansion>>). Additional options can be used to select aliases or other classpath modifications, or to modify printing information.
+
+See https://clojure.github.io/tools.deps.cli/clojure.tools.deps.cli.api-api.html#clojure.tools.deps.cli.api/list[API docs].
+
+[[deps_aliases]]
+=== Alias list
+
+[source]
+---
+clj -X:deps aliases
+---
+
+This program prints all aliases available at the command line based on the current deps environment. Additional options can be used to select aliases or other classpath modifications.
+
+See https://clojure.github.io/tools.deps.cli/clojure.tools.deps.cli.api-api.html#clojure.tools.deps.cli.api/aliases[API docs].
+
+
+[[fn_help]]
+[[deps_find_versions]]
+[[deps_prep]]
+[[deps_install]]
+[[deps_pom]]
+
 
 [[procurers]]
 = Procurers
@@ -677,67 +1022,6 @@ The following environment variables can be set to control git usage:
 * `GITLIBS_COMMAND` - the command to run for git access (default = `git`)
 * `GITLIBS_DEBUG` - set `true` to see a log of the actual git commands being run and their output (default = `false`)
 
-
-[[tools]]
-== Tools
-
-[[tools_install]]
-===
-
-[[programs]]
-== Programs
-
-The Clojure CLI is designed to provide access to programs (functions) in other libraries with their own independent classpath. This capability is leveraged to provide expanded functionality via the built-in `:deps` alias in the root deps.edn, which provides the https://github.com/clojure/tools.deps.cli[tools.deps.cli] (see https://clojure.github.io/tools.deps.cli[API]).
-
-[[deps_list]]
-== Dependency list
-
-[source]
----
-clj -X:deps list
----
-
-Prints sorted list of all transitive dependencies selected for the classpath, and license information (if found). Additional options can be used to select aliases or other classpath modifications, or to modify printing information.
-
-See https://clojure.github.io/tools.deps.cli/clojure.tools.deps.cli.api-api.html#clojure.tools.deps.cli.api/tree[API docs].
-
-[[deps_tree]]
-=== Dependency tree
-
-[source]
----
-clj -X:deps tree
----
-
-Prints dependency tree with inclusion/exclusion information as determined during <<dep_expansion#_tree_printing,dependency expansion>>). Additional options can be used to select aliases or other classpath modifications, or to modify printing information.
-
-See https://clojure.github.io/tools.deps.cli/clojure.tools.deps.cli.api-api.html#clojure.tools.deps.cli.api/list[API docs].
-
-[[deps_aliases]]
-=== Alias list
-
-[source]
----
-clj -X:deps aliases
----
-
-This program prints all aliases available at the command line based on the current deps environment. Additional options can be used to select aliases or other classpath modifications.
-
-See https://clojure.github.io/tools.deps.cli/clojure.tools.deps.cli.api-api.html#clojure.tools.deps.cli.api/aliases[API docs].
-
-
-[[fn_help]]
-[[deps_find_versions]]
-[[deps_prep]]
-[[deps_install]]
-[[deps_pom]]
-
-[[tools]]
-== Tools
-
-[[tool_install]]
-=== Tool install
-
 [[glossary]]
 == Glossary
 
@@ -801,9 +1085,10 @@ A version conflict occurs when the dependency expansion contains the same librar
 A repository of library artifacts - e.g. Maven central or Clojars
 
 
--------------------------------------------------------------------------
--------------------------------------------------------------------------
--------------------------------------------------------------------------
+
+
+= OLD CONTENT
+
 
 
 = Operation
@@ -1311,195 +1596,7 @@ See https://clojure.github.io/tools.deps.cli/clojure.tools.deps.cli.api-api.html
 [[tool_install]]
 = Tool installation and invocation
 
-A tool is a collection of functions delivered in a lib. Tool functions are run in a separate process with their own classpath, independent of the project classpath. Tool functions take a single map argument and are invoked with -T (same key value arg syntax as -X style execution).
 
-Tools are described either via an alias (which can be shared by others using the project), or by a local tool name installed on your machine (which can be shared across projects).
-
-== Using tool aliases
-
-Tools declared with an alias are executed with -T, in the same manner as -X. However, -T will remove the project deps and paths and add `"."` as a path.
-
-Declare an alias in a deps.edn (could be project or user):
-
-[source,clojure]
-----
-{;; ...
- :aliases {
-   :linter {:deps {cool/lint-tool {:git/tag "..." :git/sha "..."}}
-            :ns-default cool.lint.tool}
- }}
-----
-
-This example invocation invokes the linter in a classpath that includes only the linter dependency (and its  transitive dependencies). The function invoked will be `cool.lint.tool/linter` formed by combining the `:ns-default` in the alias and the function name `lint` on the command line:
-
-[source,shell]
-----
-clj -T:linter lint
-----
-
-Additional key / value argument may be passed on the command line after that, with same syntax as -X args.
-
-== Using named tools
-
-The Clojure CLI comes with programs to search for available versions of a tool (either maven or git), and to install a tool under a local name for subsequent execution. Tools additionally may provide their usage configuration (like `:ns-default`) as part of the tool, rather than every user needing to define that in an alias.
-
-=== Find versions
-
-See <<clojure_cli#find-versions,find-versions>> for more on finding versions of a lib or tool (Maven or git).
-
-=== Tool installation
-
-A tool for managing tools is automatically installed by the Clojure CLI under the name "tools". There are several useful functions provided:
-
-* https://clojure.github.io/tools.tools/clojure.tools.tools.api.html#var-install[`install`] - Installs or reinstalls a tool
-* https://clojure.github.io/tools.tools/clojure.tools.tools.api.html#var-install-latest[`install-latest`] - Installs or reinstalls the latest version of a tool
-* https://clojure.github.io/tools.tools/clojure.tools.tools.api.html#var-list[`list`] - Lists all installed tools
-* https://clojure.github.io/tools.tools/clojure.tools.tools.api.html#var-remove[`remove`] - Removes an installed tool
-* https://clojure.github.io/tools.tools/clojure.tools.tools.api.html#var-show[`show`] - Prints info and usage for a tool
-
-==== Install
-
-When you've determined which version of a tool to install, use the `install` function to install the tool by name.
-
-[source,shell]
-----
-clj -Ttools install ...
-----
-
-The args to `install-tool` are:
-
-* lib - val is coord map, as per deps.edn
-* `:as` - tool name, will be used for later invocations
-
-For example:
-
-[source,shell]
-----
-clj -Ttools install io.github.clojure/tools.deps.graph '{:git/tag "v1.0.63"}' :as deps-graph
-----
-
-On Windows, additional <<clojure_cli#quoting,escape quoting>> is required in Powershell:
-
-[source,shell]
-----
-clj -Ttools install io.github.clojure/tools.deps.graph '{:git/tag """v1.0.63"""}' :as deps-graph
-----
-
-Note that git deps can be fully described at tool installation time with only a git lib name (used to form a git url by convention), and a git tag. Alternately, the coord may contain an explicit `:git/url` or `:git/sha` instead.
-
-==== Install latest
-
-To find and install the latest version of a tool in one step:
-
-[source,shell]
-----
-clj -Ttools install-latest :lib io.github.clojure/tools.deps.graph :as deps-graph
-----
-
-To update an existing tool to the latest version you can also just specify the tool by name:
-
-[source,shell]
-----
-clj -Ttools install-latest :tool deps-graph
-----
-
-==== List
-
-To list all installed tools:
-
-[source,shell]
-----
-clj -Ttools list
-----
-
-To remove an installed tool:
-
-[source,shell]
-----
-clj -Ttools remove :tool name
-----
-
-Other functions will likely be added in the future.
-
-=== Tool usage
-
-Tools may include a top-level key `:tools/usage` in their deps.edn file to publish how the tool can be used with respect to namespace context. The value is a map which may have the following keys that are the same as their usage in deps.edn aliases:
-
-* `:ns-default` - a lib symbol indicating the default namespace when resolving functions
-* `:ns-aliases` - a map of alias to lib symbol
-
-For example, the tools.deps.graph tool can publish the following usage in deps.edn:
-
-[source,clojure]
-----
-{:tools/usage
- {:ns-default clojure.tools.deps.graph}}
-----
-
-[NOTE]
-====
-Currently, only tools that are deps.edn-based and available as either a git or local repository can provide a `:tools/usage` configuration.
-====
-
-=== Invoke a tool by name
-
-Once you've installed a named tool, you can invoke it with `-T` using just the tool name.
-
-[source,shell]
-----
-clj -Ttool f args...
-----
-
-The function will be resolved using the `:ns-default` and `:ns-aliases` found in the tool's deps.edn.
-
-For example, for the tools.deps.graph tool declared above, it can be invoked as follows:
-
-[source,shell]
-----
-clj -Tdeps-graph graph :output '"graph.png"'
-----
-
-== Best practices for tool authors
-
-Best practices:
-
-* Provide your tool as a public git library
-* Define your tool api in one or more Clojure namespaces as functions that take a map
-* Create a `:tools/usage` key in the root of your deps.edn with either an `:ns-default` and/or an `:ns-aliases` key for your api namespaces
-* Tag your git repo to create a release, using a scheme that makes sequencing obvious to users. A common convention is to use versions strings like "v1.2.3".
-
-Tools can provide these instructions for users:
-
-* Find tool versions: `clj -X:deps find-versions :lib io.github.USER/TOOL`
-* Install tool with `clj -Ttools install io.github.USER/TOOL '{:git/tag "VERSION"}' :as NAME`
-* Invoke tool with `clj -TNAME f args...`
-
-[[function_protocol]]
-== Function execution protocol
-
-Some tools provide functions designed to be used for programmatic execution from another process, with the following constraints and expectations:
-
-* The function should take a single map argument
-* Results are returned from the function (as usual)
-* Exceptions thrown by the function will cause a failure and the exception data (ala `Throwable->map` will be conveyed to the external process, which will re-throw it in an `ex-info`)
-* Printing output will (by default) not be captured
-* Any result or exception data should be safe to print and read back to data in another process
-
-There are several argument map keys that have special significance to the Clojure CLI during -X or -T. All of these keys will be removed from the argument map before the function is invoked:
-
-* `:clojure.exec/invoke` - `true` to use this protocol
-* `:clojure.exec/out` - `true` to capture and return stdout during function execution
-* `:clojure.exec/err` - `true` to capture and return stderr during function execution
-
-The result is wrapped into a printed envelope map with the following keys and returned via the CLI stdout:
-
-* `:tag` - either `:ret` or `:err` based on whether the function returned a result or threw an exception
-* `:val` - either return value or exception data, prn to a string
-* `:out` - if requested, the captured stdout return
-* `:err` - if requested, the captured stderr return
-* `:ms` - function execution time in ms
-
-A consumer API for this protocol will be provided as of Clojure 1.12.0-alpha2.
 
 = Command line reference
 

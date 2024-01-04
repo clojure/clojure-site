@@ -42,39 +42,39 @@ Each execution of the Clojure CLI runs a Clojure program by determining all path
 `clojure [clj-opts] -M[aliases] [init-opts] [main-opts] [args]`
 
 [[options]]
-=== Option index:
+=== Option index
 
 [subs=+macros]
 ----
 exec-opts:
- <<clojure_cli#opt_a,-Aaliases>>    Use aliases, particularly for repl execution
+ <<clojure_cli#opt_a,-Aaliases>>    Apply aliases
  <<clojure_cli#opt_x,-X[aliases]>>  Invoke function, using aliases
  <<clojure_cli#opt_t,-Ttoolname>>   Invoke tool by local name
- <<clojure_cli#opt_t,-T[aliases]>>  Invoke tool by concatenated aliases (ala -X)
+ <<clojure_cli#opt_t,-T[aliases]>>  Invoke tool using aliases
  <<clojure_cli#opt_m,-M[aliases]>>  Invoke clojure.main, using aliases
  <<clojure_cli#opt_p,-P>>           Prepare deps but don't exec
 
 clj-opts:
- <<clojure_cli#opt_j,-Jopt>>        Pass opt through in java_opts, ex: -J-Xmx512m
+ <<clojure_cli#opt_j,-Jopt>>        Pass JVM option
  <<clojure_cli#opt_sdeps,-Sdeps EDN>>   Extra deps.edn data
  <<clojure_cli#opt_srepro,-Srepro>>      Ignore user deps.edn file
- <<clojure_cli#opt_spath,-Spath>>       Compute classpath, echo to stdout
+ <<clojure_cli#opt_spath,-Spath>>       Compute and echo classpath
  <<clojure_cli#opt_stree,-Stree>>       Print dependency tree
- <<clojure_cli#opt_scp,-Scp CP>>      Use this classpath instead of computing
- <<clojure_cli#opt_sforce,-Sforce>>      Force recomputation of the classpath
- <<clojure_cli#opt_sverbose,-Sverbose>>    Print important path info to console
- <<clojure_cli#opt_sdescribe,-Sdescribe>>   Print environment and command parsing info as data
+ <<clojure_cli#opt_scp,-Scp CP>>      Use this classpath, ignore deps.edn
+ <<clojure_cli#opt_sforce,-Sforce>>      Force classpath computation
+ <<clojure_cli#opt_sverbose,-Sverbose>>    Print path info
+ <<clojure_cli#opt_sdescribe,-Sdescribe>>   Print env and command parsing info
  <<clojure_cli#opt_sthreads,-Sthreads>>    Set specific number of download threads
- <<clojure_cli#opt_strace,-Strace>>      Write a trace.edn file that traces deps expansion
- <<clojure_cli#opt_sversion,--version>>    Print the version to stdout and exit
- <<clojure_cli#opt_sversion,-version>>     Print the version to stderr and exit
- <<clojure_cli#opt_help,--help -h -?>> Print this help message and exit
+ <<clojure_cli#opt_strace,-Strace>>      Write dep expansion trace.edn
+ <<clojure_cli#opt_version,--version>>    Print version to stdout and exit
+ <<clojure_cli#opt_version,-version>>     Print version to stderr and exit
+ <<clojure_cli#opt_help,--help -h -?>> Print this help message
 
 Programs provided by :deps alias:
- <<clojure_cli#deps_list,-X:deps list>>          List transitive deps + licenses
+ <<clojure_cli#deps_list,-X:deps list>>          Print deps list+licenses
  <<clojure_cli#deps_tree,-X:deps tree>>          Print deps tree
- <<clojure_cli#deps_find_versions,-X:deps find-versions>> Find available versions of library
- <<clojure_cli#deps_prep,-X:deps prep>>          Prepare all unprepped libs in dep tree
+ <<clojure_cli#deps_find_versions,-X:deps find-versions>> Find available lib versions
+ <<clojure_cli#deps_prep,-X:deps prep>>          Prepare all unprepped libs in deps
  <<clojure_cli#deps_mvn_pom,-X:deps mvn-pom>>       Generate pom.xml for deps.edn
  <<clojure_cli#deps_mvn_install,-X:deps mvn-install>>   Install maven jar to local repo
 ----
@@ -118,16 +118,12 @@ Function execution ultimately needs the following pieces of information:
 * Qualified function to execute
 * Map of key to value
 
-
-
 `-X` <<clojure_cli#aliases,aliases>> can contain the following arg map keys:
 
 * `:exec-fn` - a function symbol to use when none is supplied on the command line
 * `:exec-args` - a map of key to value to include when `exec-fn` is executed, may be superseded by keyword args on the command line (so these act as defaults)
 * `:ns-default` - default namespace symbol to use when interpreting the exec-fn
 * `:ns-aliases` - map of alias symbol to namespace symbol to use when interpreting the exec-fn
-
-
 
 [source,clojure]
 ----
@@ -215,6 +211,99 @@ __main-opts:__
 ----
 
 See the <<repl_and_main#,clojure.main>> documentation for more details on main options.
+
+[[options]]
+== Options
+
+[[opt_a]]
+**-Aaliases**
+
+`-A` 
+
+[[opt_x]]
+**-X[aliases]**
+
+[[opt_t]]
+**-Ttoolname, -T[aliases]**
+
+[[opt_m]]
+**-M[aliases]**
+
+[[opt_p]]
+**-P**
+
+Use `-P` before any of the other exec-opts (`-A`, `-X`, `-M`, `-T`) to do a full deps expansion, download deps, and cache the classpath, but not actually execute the function, tool, main, etc.
+
+[[opt_j]]
+**-Jopt**
+
+Use `-J` to prefix any JVM option that should be provided to your program (the `-J` will be stripped). For example, `-J-Xmx1g` or `-J-XX:+HeapDumpOnOutOfMemoryError`.
+
+[[opt_sdeps]]
+**-Sdeps deps**
+
+Use `-Sdeps` to supply an additional deps.edn source on the command line. This is used as the last <<clojure_cli#deps_sources,deps source>> in the merge. The deps data will need to be appropriately <<clojure_cli#quoting,quoted>> for the command line.
+
+[[opt_srepro]]
+**-Srepro**
+
+Use `-Srepro` to omit the user deps.edn from the deps sources. This omits any user-specific configuration to ensure the command is repeatable for others.
+
+Clojure <<clojure_cli#deps_sources,deps sources
+
+[[opt_spath]]
+**-Spath**
+
+Use `-Spath` to compute and print the classpath.
+
+[[opt_stree]]
+**-Stree**
+
+Use `-Stree` to compute and print the dependency tree. See the <<dep_expansion#_tree_printing,dependency expansion>> page for more information on the tree printing output.
+
+[[opt_scp]]
+**-Scp CP**
+
+When this option is used, the classpath is not computed and the provided classpath is used instead. This is mostly useful in testing or debugging. In general, you should let the Clojure CLI compute (and cache) your classpath based on the deps.edn settings.
+
+[[opt_sforce]]
+**-Sforce**
+
+This flag marks the existing cached classpath (if any) to be marked as stale. The classpath will be recomputed and cache.
+
+[[opt_sverbose]]
+**-Sverbose**
+
+Print environment and path information found and used by the Clojure CLI, mostly useful for debugging the location of various config and cache directories.
+
+This flag does not alter any other execution that may be specified on the command line, so it can be used to debug the location of the cache files for a particular command.
+
+[[opt_sdescribe]]
+**-Sdescribe**
+
+Print configuration settings as edn data and exit. This overlaps in functionality with `-Sverbose` but may be useful for programmatic use.
+
+[[opt_sthreads]]
+**-Sthreads N**
+
+By default, dep expansion will happen using a thread pool sized based on the processor count. Use this setting to change the number of threads used during expansion. Setting to 1 will do expansion serially with a single thread.
+
+[[opt_strace]]
+**-Strace**
+
+The dependency tree printed by <<clojure_cli#opt_stree#`-Stree`>> or <<clojure_cli#deps_tree,`-X:deps tree`>> often contains sufficient information to debug why a particular lib or lib version was selected. However, if you need more information, this flag prints significantly larger information to a trace.edn file that can be used when filing an issue on tools.deps at https://ask.clojure.org[Ask Clojure].
+
+[[opt_version]]
+**--version, -version**
+
+Prints the Clojure CLI version to either stdout (`--version`) or stderr (`-version`). Note that while the Clojure CLI version determines the default Clojure version used in execution, any version of the CLI can use any version of Clojure, and the Clojure version can be set in <<deps_edn#,deps.edn>> files to change that version.
+
+See the <<xref/../../../releases/tools#,tools release>> page for more version and changelog information.
+
+[[opt_help]]
+**--help, -h, -?**
+
+Print help to console. Also see `man clojure`.
 
 [[aliases]]
 == Aliases

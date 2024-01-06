@@ -371,7 +371,7 @@ The `:jvm-opts` are a collection of string JVM options to be provided when execu
 The `:main-opts` are a collection of string options provided to a program started with -M on the Clojure CLI. If multiple aliases are merged that provide main args, only the args from the last one are used (they do not accumulate or combine). Additional main opts may be provided on the command line after -M.
 
 [[procurers]]
-== Procurers
+== Procurer config
 
 [[procurers_mvn]]
 === Maven

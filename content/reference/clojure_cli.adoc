@@ -506,7 +506,7 @@ A tool is a collection of functions delivered in a lib. Tool functions are run i
 
 Tools are described either via an alias (which can be shared by others using the project), or by a local tool name installed on your machine (which can be shared across projects).
 
-== Using tool aliases
+=== Using tool aliases
 
 Tools declared with an alias are executed with -T, in the same manner as -X. However, -T will remove the project deps and paths and add `"."` as a path.
 

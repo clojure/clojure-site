@@ -38,13 +38,13 @@ Each execution of the Clojure CLI runs a Clojure program by determining all path
 <<clojure_cli#use_repl,Start a REPL:>> +
 `clj [clj-opts] [-Aaliases]`
 
-<<clojure_clj#use_fn,Execute a function:>> +
+<<clojure_cli#use_fn,Execute a function:>> +
 `clojure [clj-opts] -X[aliases] my/fn? [kpath v ...] kv-map?`
 
-<<clojure_clj#use_tool,Run a tool:>> +
+<<clojure_cli#use_tool,Run a tool:>> +
 `clojure [clj-opts] -T[name|aliases] my/fn [kpath v ...] kv-map?`
 
-<<clojure_clj#use_main,Run a main namespace or script:>> +
+<<clojure_cli#use_main,Run a main namespace or script:>> +
 `clojure [clj-opts] -M[aliases] [init-opts] [main-opts] [args]`
 
 [[options]]

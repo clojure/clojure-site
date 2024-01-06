@@ -238,7 +238,7 @@ Use `-Sdeps` to supply an additional deps.edn source on the command line. This i
 
 Use `-Srepro` to omit the user deps.edn from the deps sources. This omits any user-specific configuration to ensure the command is repeatable for others.
 
-Clojure <<clojure_cli#deps_sources,deps sources
+Clojure <<clojure_cli#deps_sources,deps sources>>
 
 [[opt_spath]]
 **-Spath**
@@ -448,7 +448,7 @@ The `clj` and `clojure` commands are host-specific scripts that:
 2. (If not cached), launch a JVM to compute and cache classpath and other setup
 3. Launch a JVM to run the user program as specified by the exec opts `-X`, `-T`, `-M`
 
-Step 2 is done with an uberjar that is part of the Clojure CLI installation - generally you do not control the classpath or configuration of that JVM (but see <<clojure_cli#env_vars,environment variables for some exceptions).
+Step 2 is done with an uberjar that is part of the Clojure CLI installation - generally you do not control the classpath or configuration of that JVM (but see <<clojure_cli#env_vars,environment variables>> for some exceptions).
 
 [[java]]
 === Java

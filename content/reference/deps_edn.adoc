@@ -430,6 +430,19 @@ Repository attributes:
 * `:update` is a flag for how often to check the repo for updates, valid values are `:daily` (default), `:always`, `:never`, or an interval in minutes (integer).
 * `:checksum` is a flag for checksum validation, one of `:warn` (default), `:fail`, `:ignore`.
 
+Also see <<clojure_cli#procurer_maven,Maven procurer config>> for additional configuration in the Clojure CLI.
+
+[[procurers_git]]
+=== Git
+
+Also see <<clojure_cli#procurer_git,Git procurer config>> for additional configuration in the Clojure CLI.
+
+[[procurers_local]]
+=== Local
+
+There are no configuration options for the local procurer.
+
+
 [[tools]]
 == Tool definition
 

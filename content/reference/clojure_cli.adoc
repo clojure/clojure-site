@@ -350,7 +350,7 @@ Programs run by the Clojure CLI are given the "runtime basis" for the execution,
 [[namespaces]]
 === Namespace resolution
 
-Symbols in the exec-opts or argmaps (like `:exec-fn`) are resolved with the following rules:
+Symbols in the exec-opts or arg maps (like `:exec-fn`) are resolved with the following rules:
 
 * If function is unqualified, use the namespace in the `:ns-default` key in the arg map (if none, this is an error)
 * If function is qualified, and the qualifier is an alias in the arg map under `:ns-aliases`, use that namespace

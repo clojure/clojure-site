@@ -438,7 +438,11 @@ Clojure CLI tools loaded from Github or a local dir can provide default tool con
 [[tools_usage]]
 === :tools/usage
 
-An exec argmap for a deps.edn-based tool.
+An exec arg map for a deps.edn-based tool which may contain the following attributes:
+
+* <<deps_edn#aliases_execargs,:exec-args>>
+* <<deps_edn#aliases_nsdefault,:ns-default>>
+* <<deps_edn#aliases_nsaliases,:ns-aliases>>
 
 [[prep]]
 == Prep lib

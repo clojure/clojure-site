@@ -251,7 +251,10 @@ The `:deps/root` attribute indicates a relative directory path within a file-bas
 [[deps_deps_manifest]]
 === :deps/manifest
 
+When a git or local project is included, the project type is auto-detected based on manifest files deps.edn and pom.xml. If both exist, deps.edn is preferred.
+
 The `:deps/manifest` attribute specifies the project manifest type and overrides auto detection, useful values are `:deps`, `:pom`. (Other values are `:mvn`, and `:jar` but these don't need to be specified.)
+
 
 [[aliases]]
 == :aliases

@@ -1,0 +1,39 @@
+= datafy and nav
+Alex Miller
+2022-08-26
+:type: reference
+:toc: macro
+:toclevels: 1
+:icons: font
+:prevpagehref: transients
+:prevpagetitle: Transients
+:nextpagehref: transducers
+:nextpagetitle: Transducers
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+toc::[]
+
+[[datafy]]
+== Using datafy and nav
+
+`datafy` provides a generic facility to transform objects to data, including objects that are stateful, lazy, or graph-like. Additionally, `nav` supports (lazy) navigation through a graph of objects.
+
+
+
+
+[[nav]]
+== Implementing Datafiable and Navigable
+
+
+
+
+[source,clojure]
+----
+----
+
+
+
+https://ask.clojure.org/index.php/11032/are-there-plans-for-official-docs-rationale-and-guide-datafy
+https://www.reddit.com/r/Clojure/comments/c1w33x/examples_of_datafy/
+https://corfield.org/blog/2018/12/03/datafy-nav/

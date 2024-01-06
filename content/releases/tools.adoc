@@ -15,7 +15,7 @@ For more information see the following docs:
 
 * <<xref/../../guides/install_clojure#,Installation guide>>
 * <<xref/../../guides/deps_and_cli#,Deps and CLI guide>>
-* <<xref/../../reference/deps_and_cli#,Deps and CLI reference>>
+* <<xref/../../reference/clojure_cli#,CLI reference>>
 * https://github.com/clojure/homebrew-tools[Clojure Homebrew tap]
 
 == Releases
@@ -285,17 +285,17 @@ Recent official releases are described here. Prereleases and older versions can 
 === 1.10.3.933 (July 28, 2021) [[v1.10.3.933]]
 
 * deps.edn
-** <<xref/../../reference/deps_and_cli#_git,git deps>>
+** <<xref/../../reference/deps_edn#deps_git,git deps>>
 *** If a git library name follows the repo convention names, the `:git/url` can now be inferred (`:git/url` can also be specified explicitly and takes precedence)
 *** `:git/tag` and prefix `:git/sha` can now be specified instead of the full sha. Both must point to the same commit.
 *** `:sha` has been renamed to `:git/sha` but the original is still supported for backwards compatibility
-** `:deps/prep-lib` - a new top-level key can be used to say how a source lib should be prepared before being added to the classpath. This key's value is a map with `:alias`, `:fn`, and `:ensures`. See <<xref/../../reference/deps_and_cli#prep,prep docs>> for more info.
+** `:deps/prep-lib` - a new top-level key can be used to say how a source lib should be prepared before being added to the classpath. This key's value is a map with `:alias`, `:fn`, and `:ensures`. See <<xref/../../reference/clojure_cli#deps_prep,prep docs>> for more info.
 ** `:tools/usage` - a new top-level key can be used to provide the `:ns-default` and `:ns-aliases` context for a tool
-* <<xref/../../reference/deps_and_cli#tool_install,Tools>> - git-based programs that can be installed with a local name. Tools can provide their own usage context in deps.edn.
-** Added new auto-installed tool named `tools` with https://clojure.github.io/tools.tools[functions] `install`, `list`, `remove`. See <<xref/../../reference/deps_and_cli#tool_install#,reference>>.
+* <<xref/../../reference/clojure_cli#tool_install,Tools>> - git-based programs that can be installed with a local name. Tools can provide their own usage context in deps.edn.
+** Added new auto-installed tool named `tools` with https://clojure.github.io/tools.tools[functions] `install`, `list`, `remove`. See <<xref/../../reference/clojure_cli#tool_install,reference>>.
 ** Install a tool with `clojure -Ttools install <lib> <coord> :as <toolname>`
 ** Run a tool with `clojure -T<toolname> fn` (also takes -X style args)
-* <<xref/../../reference/deps_and_cli#,Clojure CLI>>
+* <<xref/../../reference/clojure_cli#,Clojure CLI>>
 ** New `-T` option is like `-X` (executes a function) but does not use the project classpath, instead uses tool classpath (and adds `:paths ["."]` by default). `-T:aliases` is otherwise same as `-X`. `-Ttoolname` resolves named tool by name and uses that tool lib.
 ** https://clojure.atlassian.net/browse/TDEPS-198[TDEPS-198] - -X and -T will not wait to exit if futures/agents have been used
 ** https://clojure.atlassian.net/browse/TDEPS-182[TDEPS-182] - Improve deprecation messages to be more accurate
@@ -305,7 +305,7 @@ Recent official releases are described here. Prereleases and older versions can 
 ** Use https://github.com/clojure/tools.deps.alpha/blob/master/CHANGELOG.md[tools.deps.alpha] 0.12.1003
 * New -X:deps programs:
 ** https://clojure.github.io/tools.deps.alpha/clojure.tools.cli.api-api.html#clojure.tools.cli.api/find-versions[`find-versions`] - to find versions of Maven or git libs or tools
-** https://clojure.github.io/tools.deps.alpha/clojure.tools.cli.api-api.html#clojure.tools.cli.api/prep[`prep`] - use to <<xref/../../reference/deps_and_cli#prep,prep>> source libs
+** https://clojure.github.io/tools.deps.alpha/clojure.tools.cli.api-api.html#clojure.tools.cli.api/prep[`prep`] - use to <<xref/../../reference/clojure_cli#deps_prep,prep>> source libs
 ** https://clojure.github.io/tools.deps.alpha/clojure.tools.cli.help-api.html#clojure.tools.cli.help/dir[`help/dir`] - to list available functions in a tool namespace
 ** https://clojure.github.io/tools.deps.alpha/clojure.tools.cli.help-api.html#clojure.tools.cli.help/doc[`help/doc`] - to list docs for a tool namespace or function
 
@@ -317,7 +317,7 @@ Read more at <<xref/../../news/2021/07/09/source-libs-builds#,Source Libs and Bu
 
 === 1.10.3.849 (May 21, 2021) [[v1.10.3.849]]
 
-* Adds support for a <<xref/../../reference//deps_and_cli#_trailing_map_argument,trailing map of kvs>> in -X calls (similar to Clojure 1.11 trailing map to vararg calls)
+* Adds support for a <<xref/../../reference//clojure_cli#cli_keys,trailing map of kvs>> in -X calls (similar to Clojure 1.11 trailing map to vararg calls)
 * Updates all Maven deps to latest (maven-resolver 1.7.0, maven core 1.8.3) to address these https://maven.apache.org/docs/3.8.1/release-notes.html[security concerns]
 ** CVE-2020-13956 - bumps deps on Apache HttpClient used by Maven
 ** CVE-2021-26291 - potential security problems regarding Maven repositories:
@@ -413,10 +413,10 @@ Read more at <<xref/../../news/2021/07/09/source-libs-builds#,Source Libs and Bu
 
 === 1.10.1.697 (Sept 25, 2020) [[v1.10.1.697]]
 
-* Added https://clojure.org/reference/deps_and_cli#_executing_a_function[execution mode] (-X)
-* Added https://clojure.org/reference/deps_and_cli#_prepare_for_execution[prepare mode] (-P)
-* Expanded https://clojure.org/reference/deps_and_cli#_running_a_main_or_script[main execution] (-M) to support all argmap arguments
-* Added new argmap attributes for https://clojure.org/reference/deps_and_cli#namespaces[namespace resolution]:
+* Added https://clojure.org/reference/clojure_cli#use_fn[execution mode] (-X)
+* Added https://clojure.org/reference/clojure_cli#opt_p[prepare mode] (-P)
+* Expanded https://clojure.org/reference/clojure_cli#use_main[main execution] (-M) to support all argmap arguments
+* Added new argmap attributes for https://clojure.org/reference/clojure_cli#namespaces[namespace resolution]:
 ** :ns-aliases and :ns-default
 * Added new https://clojure.github.io/tools.deps.alpha/clojure.tools.cli.api-api.html[clojure.tools.cli.api] available via -X:deps alias:
 ** clj -X:deps git-resolve-tags

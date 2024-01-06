@@ -4,12 +4,16 @@ Alex Miller
 :type: reference
 :toc: macro
 :icons: font
+:prevpagehref: deps_edn
+:prevpagetitle: deps.edn
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
+toc::[]
+
 == Overview
 
-The deps.edn file is a data file specifying all information needed to form a project classpath, including deps, paths, and external dependency repository information. The deps.edn file format is used by the https://github.com/clojure/tools.deps[tools.deps library] and the <<deps_and_cli#, Clojure CLI>>.
+The deps.edn file is a data file specifying all information needed to form a project classpath, including deps, paths, and external dependency repository information. The deps.edn file format is used by the https://github.com/clojure/tools.deps[tools.deps library] and the <<clojure_cli#,Clojure CLI>>.
 
 If you are building a tool that would like to leverage deps.edn, create well-known namespaced <<deps_edn#aliases,:aliases>> as a means to convey tool configuration, rather than adding new arbitrary tags elsewhere in the deps.edn data - these may not be preserved or conveyed during processing. Tools can access alias data via the basis at runtime, or programatically via tools.deps.
 
@@ -218,6 +222,8 @@ Other protocols (including local and file) should work but are not commonly used
 
 `:git/sha` is a required coord key. If the `:git/tag` is provided it can be the prefix sha (they must unpeel to the same commit), otherwise it should be a full 40-char sha.
 
+When selecting a version from between sha A and sha B where B has A as an ancestor, then B will be preferred (the "most descendant" one). If A and B do not have an ancestor/descendant relationship (commits in parallel branches for example), this is an error and classpath construction will fail.
+
 [[deps_local]]
 == Local deps
 
@@ -392,7 +398,7 @@ You can supply additional repositories in the `:mvn/repos` key as a map of repos
 
 The `:url` is a string url to the repository root.
 
-`http://` urls are not supported by default, but see <<deps_and_cli#env_vars>> for information on the `CLOJURE_CLI_ALLOW_HTTP_REPO` if you need this.
+`http://` urls are not supported by default, but see <<clojure_cli#env_vars>> for information on the `CLOJURE_CLI_ALLOW_HTTP_REPO` if you need this.
 
 [[procurer_mvn_repos_releases]]
 [[procurer_mvn_repos_snapshots]]

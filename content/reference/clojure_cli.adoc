@@ -532,6 +532,34 @@ The following environment variables can influence CLI execution (many are descri
 * `GITLIBS_DEBUG` - set to true to print all git commands being run
 * `CLOJURE_CLI_ALLOW_HTTP_REPO` - set to true to allow http:// repository urls (this may make your dependency downloads subject to man-in-the-middle attacks)
 
+[[cli_keys]]
+=== Keys and key paths
+
+With the <<clojure_cli#use_fn,-X>> or <<clojure_cli#use_tool,-T>> exec-opts you can supply key-path/value pairs on the command line. The key-path is either a single key or a vector of keys to refer to a nested key (as with `assoc-in`). Each key-path will be used to `assoc-in` to the original `:exec-args` map, overriding the value there.
+
+[source]
+----
+# Top key override
+clj -X:my-fn :val 789
+
+# Nested key override
+clj -X:my-fn '[:my :data]' 789
+----
+
+In addition to passing key-path/value pairs and key paths in the command line, an optional map providing value mappings may be passed as the final argument. This map will merge with and perhaps override the previously provided key-path/value mappings:
+
+[source]
+----
+# Augment the arguments to my-fn
+clj -X:a-tool my-fn :val 789 '{:val2 123}'
+
+# Override the arguments to my-fn
+clj -X:a-tool my-fn :val 789 '{:val 123}'
+
+# Single map (no kvs) provides arguments to my-fn
+clj -X:a-tool my-fn '{:val 789}'
+----
+
 [[quoting]]
 === Quoting keys and values
 
@@ -567,34 +595,6 @@ For string values nested inside other collections, use double quotes if there ar
 ----
 PS D:> clj -X clojure.core/prn :val '{:s1 """nospaces""" :s2 ""has spaces""}'
 {:val {:s1 "nospaces", :s2 "has spaces"}}
-----
-
-[[cli_keys]]
-=== Keys and key paths
-
-With the <<clojure_cli#use_fn,-X>> or <<clojure_cli#use_tool,-T>> exec-opts you can supply key-path/value pairs on the command line. The key-path is either a single key or a vector of keys to refer to a nested key (as with `assoc-in`). Each key-path will be used to `assoc-in` to the original `:exec-args` map, overriding the value there.
-
-[source]
-----
-# Top key override
-clj -X:my-fn :val 789
-
-# Nested key override
-clj -X:my-fn '[:my :data]' 789
-----
-
-In addition to passing key-path/value pairs and key paths in the command line, an optional map providing value mappings may be passed as the final argument. This map will merge with and perhaps override the previously provided key-path/value mappings:
-
-[source]
-----
-# Augment the arguments to my-fn
-clj -X:a-tool my-fn :val 789 '{:val2 123}'
-
-# Override the arguments to my-fn
-clj -X:a-tool my-fn :val 789 '{:val 123}'
-
-# Single map (no kvs) provides arguments to my-fn
-clj -X:a-tool my-fn '{:val 789}'
 ----
 
 

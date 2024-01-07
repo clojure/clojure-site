@@ -137,7 +137,7 @@ If the function to invoke is defined in a specified alias, the function is optio
 
 The `:exec-args` form a base map that is merged with keys and values and trailing kv-map on the command line, merged in that order.
 
-Keys on the command line may be either keywords or vector key paths (as used with `assoc-in`) to specify a nested key. The final arg on the command line is an optional trailing map of keys and values. See the later sections on <<clojure_cli#cli_keys,keys and key paths>> and <<clojure_cli#quoting,quoting>> for more details on how to properly speciy edn keys and values.
+Keys on the command line may be either keywords or vector key paths (as used with `assoc-in`) to specify a nested key. The final arg on the command line is an optional trailing map of keys and values. See the later sections on <<clojure_cli#cli_keys,keys and key paths>> and <<clojure_cli#quoting,quoting>> for more details on how to properly specify edn keys and values.
 
 [[use_tool]]
 === Run a tool (-T)

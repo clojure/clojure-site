@@ -572,7 +572,7 @@ PS D:> clj -X clojure.core/prn :val '{:s1 """nospaces""" :s2 ""has spaces""}'
 [[cli_keys]]
 === Keys and key paths
 
-With the -X exec-opt you can supply key-path/value pairs on the command line. The key-path is either a single key or a vector of keys to refer to a nested key (as with `assoc-in`). Each key-path will be used to `assoc-in` to the original `:exec-args` map, overriding the value there.
+With the <<clojure_cli#use_fn,-X>> or <<clojure_cli#use_tool,-T>> exec-opts you can supply key-path/value pairs on the command line. The key-path is either a single key or a vector of keys to refer to a nested key (as with `assoc-in`). Each key-path will be used to `assoc-in` to the original `:exec-args` map, overriding the value there.
 
 [source]
 ----

@@ -129,7 +129,7 @@ Examples:
   ;; example git dep
   io.github.sally/awesome {:git/tag "v1.2.3" :git/sha "123abcd"}
   
-  ;; example local project
+  ;; example local dep
   my.dev/project {:local/root "../project"}
   
   ;; example local jar

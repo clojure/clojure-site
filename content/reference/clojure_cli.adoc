@@ -13,8 +13,6 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 toc::[]
 
-= Clojure CLI
-
 The Clojure CLI is a command-line tool to run Clojure programs on the Java Virtual Machine. The Clojure CLI uses <<deps_edn#,deps.edn>> files to configure and download program dependencies to include on the JVM classpath.
 
 == Installation

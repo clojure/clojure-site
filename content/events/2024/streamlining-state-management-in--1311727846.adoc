@@ -1,0 +1,45 @@
+= Streamlining state management in
+2024-02-06
+:jbake-type: event
+:jbake-edition: 
+:jbake-link: https://www.meetup.com/london-clojurians/events/297537672/
+:jbake-location: online
+:jbake-start: 2024-02-06
+:jbake-end: 2024-02-06
+
+== Streamlining state management in ClojureDart w...
+
+Streamlining state management in ClojureDart with re-dash (by Werner Kok) +
+ +
+THIS IS AN ONLINE EVENT +
+[Connection details will be shared 1h before the start time] +
+The London Clojurians are happy to present: +
+Title: 🎶 Dashing through the flow.. 🎶 - Streamlining state management in ClojureDart with re-dash +
+Speaker: Werner Kok +
+Time: 2024-02-06 @ 18:30 (London time) +
+Local time: click here for local time +
+Werner Kok (https://github.com/wkok) will be presenting: +
+&quot;🎶 Dashing through the flow.. 🎶 - Streamlining state management in ClojureDart with re-dash&quot; +
+Dealing with mutable frontend state in a non-trivial app is tricky, but fortunately, as Clojurists, we have battle-tested solutions. One of the more popular options in ClojureScript is re-frame - a well thought through &amp; documented data loop, helping us manage state in a controlled way - derived data, flowing. re-dash is to ClojureDart what re-frame is to ClojureScript - a reactive state manager for Flutter's UI that uses events to update and subscriptions to react to changes. We'll look at the 6 dominoes of this data loop falling, each triggering the next, from when an event gets triggered until the Flutter widget gets rebuilt. We might even throw in some side effects for fun. +
+Werner has worked for Hospitality Technology International (HTI) since 2001, dedicating the majority of his professional career to developing hotel booking systems with Java. In the last five years, he shifted his focus to Clojure, during which he spent a two-year stint at JUXT between his tenures at HTI +
+If you missed this event, you can watch the recording on our YouTube channel: +
+https://www.youtube.com/@LondonClojurians +
+(The recording will be uploaded a couple of days after the event.) +
+Please, consider supporting the London Clojurians with a small donation: +
+https://opencollective.com/london-clojurians/ +
+Your contributions will enable the sustainability of the London Clojurians community and support our varied set of online and in-person events: +
+ +
+ClojureBridge London: supports under-represented groups discover Clojure +
+re:Clojure: our free to attend annual community conference +
+monthly meetup events with speakers from all over the world +
+subscription and admin costs such as domain name &amp; StreamYard subscription +
+ +
+Thank you to our sponsors: +
+ +
+https://juxt.pro/ +
+https://flexiana.com/ +
+https://gaiwan.co/ +
+And many individual sponsors +
+ +
+Zulip: https://clojurians.zulipchat.com/#narrow/stream/262224-events/near/407938705 +
+

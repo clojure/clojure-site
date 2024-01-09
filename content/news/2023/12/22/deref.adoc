@@ -1,0 +1,55 @@
+= Clojure Deref (Dec 22, 2023)
+Alex Miller
+2023-12-22
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=X_SsjhmG5Ok[Scicloj status report: Clay v2 pre-release with Calva, 2023-12-16] - Sci Cloj
+* https://www.youtube.com/watch?v=fd4kjlws6Ts[Scicloj status report: Clay v2 pre-release with CIDER, 2023-12-17] - Sci Cloj
+* https://www.youtube.com/watch?v=GsML75MtNXw[How to code a blog with Clay v2] - Timothy Pratley
+* https://www.youtube.com/watch?v=8WQKzW9N57w[Console UI & Resizable panels :: Advent of Clojure] - Roman Liutikov
+* https://www.youtube.com/watch?v=xB-hIpQxweI[A First Look at XTDB v2 - live show & tell] - XTDB
+* https://www.youtube.com/watch?v=dEQghhXwlDw[A Very Short Introduction to Clojure] - Jakob Durstberger
+* https://www.youtube.com/watch?v=E1tfsHzZnzM[Learn Clojure – Types of Numbers] - Clojure Diary
+* https://clojure.stream/podcast[E97 2023 In Review with Alex Miller] - ClojureStream Podcast
+* https://clojuredesign.club/episode/104-assembleify/[Ep 104: Assembleify!] - Functional Design in Clojure
+* https://smartlogic.io/podcast/elixir-wizards/s11-e10-actor-model-concurrency-elixir-ruby-clojure/[Actor Model and Concurrent Processing in Elixir vs. Clojure and Ruby with Xiang Ji & Nathan Hessler] - Elixir wizards
+
+== Blogs, articles, and projects
+
+* https://xtdb.com/v2[XTDB v2 Hub] - JUXT
+* https://yamlscript.org/posts/advent-2023/dec-17/[Rosetta Code] - Ingy döt Net
+* https://jank-lang.org/blog/2023-12-17-module-loading/[jank development update - Load all the modules!] - Jeaye Wilkerson
+* https://blog.labol.co.jp/entry/writing-shell-scripts-with-clojure-using-babashka[Babashkaを使えばClojureでShell Script作れるよ] - Labol Tech
+* https://xtdb.com/blog/dev-diary-dec-23[Development Diary #8] - Jeremy Taylor
+* https://blog.jakewindle.com/converting-a-python-backend-to-clojure/[Converting a Python Backend to Clojure] - Jacob Windle
+* https://emil0r.com/posts/2023-12-19-nrepl-in-action-n-is-for-network/[nREPL in action - n is for Network] - Emil Bengtsson
+* https://flexiana.com/2023/12/clojure-corner-with-yehonathan-sharvit[Clojure Corner with Yehonathan Sharvit] - Flexiana
+* https://andreyfadeev.substack.com/p/production-ready-clojure-show-me[Production-Ready Clojure: show me the libraries!] - Andrey Fadeev
+* https://blog.jakubholy.net/2023/exploring-rama/[Exploring Rama, the platform for writing backends 100x more efficiently] - Jakub Holý
+* https://blog.jakubholy.net/2023/hands-on-rama-day1/[Hands on Rama, day 1: Setup, idempotent create & update] - Jakub Holý
+* https://tonsky.me/blog/humble-vdom/[Humble Chronicles: Managing State with VDOM] - Nikita Prokopov
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/clyfe/clara-eav[clara-eav] 0.1.9 - EAV triplets for Clara Rules, solving the update problem
+* https://github.com/clojure/java.data[java.data] https://github.com/clojure/java.data/blob/master/CHANGELOG.md[1.1.103] - Functions for recursively converting Java beans to Clojure and vice versa
+* https://github.com/seancorfield/next-jdbc[next-jdbc] https://github.com/seancorfield/next-jdbc/blob/develop/CHANGELOG.md[1.3.909] - A modern low-level Clojure wrapper for JDBC-based access to databases
+* https://github.com/skuttleman/defacto[defacto]  - A light-weight, highly customizable state store for clojure(script)
+* https://github.com/flow-storm/flow-storm-debugger[flow-storm-debugger] https://github.com/flow-storm/flow-storm-debugger/blob/master/CHANGELOG.md#390-19-12-2023[3.9.0] - A debugger for Clojure and ClojureScript with some unique features
+* https://github.com/KingMob/TrueGrit[TrueGrit] https://github.com/KingMob/TrueGrit/blob/main/CHANGELOG.adoc#2232---2023-12-20[2.2.32] - A data-driven, functionally-oriented, idiomatic Clojure library for circuit breakers, bulkheads, retries, rate limiters, timeouts, etc.
+* https://github.com/polyfy/polylith[polylith] https://github.com/polyfy/polylith/releases/tag/v0.2.18[0.2.18] - A tool used to develop Polylith based architectures in Clojure
+* https://github.com/roboli/balloon[balloon] 0.1.0 - Deflate a nested map into one level deep or inflate a one level into a nested map using delimited keys
+* https://github.com/cjohansen/powerpack[powerpack] 2023.12.21 - A batteries-included static web site toolkit for Clojure
+* https://github.com/babashka/fs[fs] https://github.com/babashka/fs/blob/master/CHANGELOG.md#v0520-2023-12-21[0.5.20] - File system utility library for Clojure
+* https://github.com/clojure/data.json[data.json] 2.5.0 - JSON in Clojure
+* https://github.com/mpenet/hirundo[hirundo] 4.0.2 - Helidon 4.x RING adapter - using loom/java21+
+* https://github.com/borkdude/deps.clj[deps.clj] https://github.com/borkdude/deps.clj/blob/master/CHANGELOG.md#11111429[1.11.1.1429] - A faithful port of the clojure CLI bash script to Clojure
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/blob/published/CHANGELOG.md#20405---2023-12-21[2.0.405] - Clojure & ClojureScript Interactive Programming for VS Code

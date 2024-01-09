@@ -1,0 +1,65 @@
+= Clojure Deref (Jan 7, 2024)
+Alex Miller
+2024-01-07
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=Y9EnLi1ocuE[Kanipaan 01 - Simple calculator in Clojure] - Clojure Diary
+* https://www.youtube.com/watch?v=4mDX4pqAVm0[50 clojure.core functions in 50 minutes] - Andrey Fadeev
+* https://clojuredesign.club/episode/105-codify/[Ep 105: Codify! · Functional Design in Clojure] - Functional Design in Clojure
+* https://www.youtube.com/watch?v=pe5M2bDk114[Clojure Destructuring Guide: Tips and Tricks] - Andrey Fadeev
+* https://www.youtube.com/watch?v=BR0EqKqDmuA[Event sourcing with PostgreSQL and Clojure: theory and live coding!] - Andrey Fadeev
+* https://open.spotify.com/episode/4OVLXgUspSmpI6ZjYAET9z[Making JITed Code Faster with Chris Nuernberger] - Software Unscripted
+* https://soundcloud.com/clojurestream/e97-2023-in-review-with-alex-miller[E97 2023 In Review with Alex Miller] - ClojureStream podcast
+
+== Blogs, articles, and projects
+
+* https://clojure.org/reference/clojure_cli[Clojure CLI Reference] - clojure.org
+* https://tonitalksdev.com/the-simplest-way-to-deploy-clojurescript-with-your-api[The Simplest Way to Deploy ClojureScript with Your API] - Toni Väisänen
+* https://www.patreon.com/posts/transparency-all-95449794[Transparency report: December 2023/all of 2023] - Nikita Prokopov
+* https://metaredux.com/posts/2023/12/23/cider-clojure-lsp-sitting-on-a-tree.html[CIDER & clojure-lsp Sitting on a Tree] - Bozhidar Batsov
+* https://blog.nundrum.net/posts-output/2023-12-30-cljs-svg-toolbox/[Building A ClojureScript SVG Toolbox] - Nundrum
+* https://blog.michielborkent.nl/oss-updates-dec-2023.html[OSS updates December 2023] - Michiel Borkent
+* https://fpsd.codes/blog/clojure-bites-mazeboard-5-more-on-actions-cljs-tests-schema-and-future-plans/[Clojure Bites - Mazeboard 5 - More on actions, tests, schema and future plans] - Francesco Pischedda
+* https://endot.org/2023/12/30/writing-babashka-scripts/[Developing Babashka Scripts] - Nate Jones
+* https://jank-lang.org/blog/2023-12-30-fast-string/[jank's new persistent string is fast] - Jeaye Wilkerson
+* https://www.linkedin.com/feed/update/urn:li:activity:7145749161152352256/[Let's create nice things!] - Leif Eric Fredheim
+* https://blog.agical.se/en/posts/why-you-should-try-clojure-interactive-programming/[Why you should try Clojure Interactive Programming] - Peter Strömberg
+* https://www.taoensso.com/news/2023-12-open-source[Open source update] - Peter Taoussanis
+* https://www.clojuriststogether.org/news/clojurists-together-2024-long-term-funding-announcement/[Clojurists Together 2024 Long-Term Funding Announcement] - Clojurists Together
+* https://robjohnson.dev/posts/test-check-guide/[A Practical Guide to test.check] - Robert Johnson
+* https://github.com/rjray/notebook/blob/main/writing/clojure-tsp.md[Clojure, Advent of Code, and the Traveling Salesman] - Randy J. Ray
+* https://www.wedesoft.de/software/2023/12/25/clojure-function-schemas-with-malli/[Specifying Clojure function schemas with Malli] - Jan Wedekind
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/stefcoetzee/re-frame-todomvc-reitit-malli[re-frame-todomvc-reitit-malli]  - re-frame TodoMVC implementation using Reitit and Malli
+* https://github.com/cljfx/cljfx[cljfx] https://github.com/cljfx/cljfx/blob/master/CHANGELOG.md#180---2024-01-07[1.8.0] - Declarative, functional and extensible wrapper of JavaFX
+* https://github.com/rm-hull/nvd-clojure[nvd-clojure] https://github.com/rm-hull/nvd-clojure/blob/dabe2b/CHANGELOG.md#changes-from-360-to-400[4.0.0] - National Vulnerability Database dependency checker for Clojure projects
+* https://github.com/overtone/overtone[overtone] 0.13.3177 - Collaborative Programmable Music
+* https://github.com/babashka/cli[cli] 0.8.54 - Turn Clojure functions into CLIs!
+* https://github.com/jordanrobinson/awaitility-clj[awaitility-clj] 0.0.5 - Clojure port of Awaitility
+* https://clojure.org/reference/clojure_cli[Clojure CLI] https://clojure.org/releases/tools#v1.11.1.1435[1.11.1.1435]
+* https://github.com/tamizhvendan/honeyeql[honeyeql] 1.0.2 - HoneyEQL is a Clojure library enables you to query database using the EDN Query Language
+* https://github.com/steffan-westcott/clj-otel[clj-otel] 0.2.5 - An idiomatic Clojure API for adding telemetry to your libraries and applications using OpenTelemetry
+* https://clojure-lsp.io/[clojure-lsp] 2023.12.29-12.09.27 - A Language Server for Clojure(script). Taking a Cursive-like approach of statically analyzing code
+* https://github.com/migalmoreno/tubo[tubo]  - A libre streaming front-end for the web
+* https://github.com/damn/gdl[gdl]  - Functional 2D game engine
+* https://github.com/borkdude/quickblog[quickblog] 0.3.6 - Light-weight static blog engine for Clojure and babashka
+* https://github.com/exoscale/coax[coax]  - Clojure.spec coercion library for clj(s)
+* https://github.com/seancorfield/deps-new[deps-new] 0.6.0 - A new, simpler alternative to clj-new
+* https://github.com/ring-clojure/ring[ring] 1.11.0 - Clojure HTTP server abstraction
+* https://github.com/squint-cljs/squint[squint] 0.6.87 - Light-weight ClojureScript dialect
+* https://github.com/practicalli/project-templates[project-templates] https://github.com/practicalli/project-templates/releases/tag/2024-01-05[2024-01-05] - Clojure CLI Production level templates for seancorfield/deps-new
+* https://github.com/eerohele/pp[pp]  - Pretty-print Clojure data structures, fast
+* https://github.com/practicalli/clojure-cli-config[clojure-cli-config] https://github.com/practicalli/clojure-cli-config/releases/tag/2024-01-03[2024-01-03] - User aliases and Clojure CLI configuration for deps.edn based projects
+* https://github.com/clj-commons/aleph[aleph] 0.7.0-rc2 - Asynchronous streaming communication for Clojure - web server, web client, and raw TCP/UDP
+* https://github.com/fulcrologic/statecharts[statecharts] 1.1.4 - A Statechart library for CLJ(S)
+* https://github.com/zmedelis/bosquet[bosquet] 2023.11.21 - Tooling to build LLM applications

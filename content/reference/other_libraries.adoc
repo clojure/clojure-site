@@ -42,7 +42,7 @@ Provides a https://clojure.github.io/clojure/clojure.java.shell-api.html#clojure
 
 The parallel library (namespace _**parallel**_, in parallel.clj) wraps the http://gee.cs.oswego.edu/dl/concurrency-interest/index.html[ForkJoin library]. This lib is now deprecated.
 
-The basic idea is that Clojure collections, and most efficiently vectors, can be turned into parallel arrays for use by this library with the function par, although most of the functions take collections and will call _**par**_ if needed, so normally you will only need to call par explicitly in order to attach bound/filter/map ops.
+You'll need `jsr166y.jar` in your classpath in order to use this library. The basic idea is that Clojure collections, and most efficiently vectors, can be turned into parallel arrays for use by this library with the function par, although most of the functions take collections and will call _**par**_ if needed, so normally you will only need to call par explicitly in order to attach bound/filter/map ops.
 
 Parallel arrays support the attachment of bounds, filters and mapping functions prior to realization/calculation, which happens as the result of any of several operations on the array (pvec/psort/pfilter-nils/pfilter-dupes). Rather than perform composite operations in steps, as would normally be done with sequences, maps and filters are instead attached and thus composed by providing ops to _**par**_. Note that there is an order sensitivity to the attachments - bounds precede filters precede mappings. All operations then happen in parallel, using multiple threads and a sophisticated work-stealing system supported by fork-join, either when the array is realized, or to perform aggregate operations like preduce/pmin/pmax etc.
 

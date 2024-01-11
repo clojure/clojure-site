@@ -40,11 +40,11 @@ String
 == Member access
 
 [%hardbreaks]
-**(.[Classname/]instanceMember instance args*)**
+**(.Classname/instanceMember instance args*)**
 **(.instanceMember Classname args*)**
 **(.-instanceField instance)**
-**(Classname/staticMethod args*)**
 **Classname/staticField**
+**(Classname/member [instance] args*)**
 
 [source,clojure-repl]
 ----
@@ -58,28 +58,29 @@ String
 -> "1.6.0_07-b06-57"
 Math/PI
 -> 3.141592653589793
+
 ----
 
-The preferred idiomatic forms for accessing field or method members are given above. The instance member form works for both fields and methods. The instanceField form is preferred for fields and required if both a field and a 0-argument method of the same name exist. Since Clojure 1.12, instance method symbols may be qualified with the Class name. They all expand into calls to the dot operator (described below) at macroexpansion time. The expansions are as follows:
+The preferred idiomatic forms for accessing field or method members are given above. The instance member form works for both fields and methods. The instanceField form is preferred for fields and required if both a field and a 0-argument method of the same name exist. Since Clojure 1.12, `Classname/member` may refer to both static and instance members method symbols may be qualified with the Class name.
+
+The "." forms expand into calls to the dot operator (described below) at macroexpansion time. The expansions are as follows:
 
 [source,clojure]
 ----
-(.[Classname/]instanceMember instance args*) ==> (. instance [Classname/]instanceMember args*)
+(.instanceMember instance args*) ==> (. instance [Classname/]instanceMember args*)
 (.instanceMember Classname args*) ==>
     (. (identity Classname) instanceMember args*)
 (.-instanceField instance) ==> (. instance -instanceField)
-(Classname/staticMethod args*) ==> (. Classname staticMethod args*)
-Classname/staticField ==> (. Classname staticField)
 ----
 
 == The Dot special form
 
 [[dot]]
 [%hardbreaks]
-*(_._ [Classname/]instance-expr member-symbol)*
+*(_._ instance-expr member-symbol)*
 *(_._ Classname-symbol member-symbol)*
 *(_._ instance-expr -field-symbol)*
-**(_._ instance-expr ([Classname/]method-symbol args*))** or **(_._ instance-expr [Classname/]method-symbol args*)**
+**(_._ instance-expr (method-symbol args*))** or **(_._ instance-expr method-symbol args*)**
 **(_._ Classname-symbol (method-symbol args*))** or **(_._ Classname-symbol method-symbol args*)**
 
 Special form.
@@ -135,13 +136,12 @@ Macro. Evaluates instance-expr then calls all of the methods/functions with the 
 
 [%hardbreaks]
 **(Classname. args*)**
+**(Classname/_new_ args*)**
 **(_new_ Classname args*)**
 
 Special form.
 
 The args, if any, are evaluated from left to right, and passed to the constructor of the class named by Classname. The constructed object is returned.
-
-=== Alternative Macro Syntax
 
 As shown, in addition to the canonic special form new, Clojure supports special macroexpansion of symbols containing '.':
 
@@ -149,9 +149,10 @@ As shown, in addition to the canonic special form new, Clojure supports special 
 
 can be written
 
-`(Classname. args*) ;note trailing dot`
+`(Classname. args*) ;note trailing dot, OR` +
+`(Classname/new args*)`
 
-the latter expanding into the former at macro expansion time.
+These both expand into the former at macro expansion time.
 
 ''''
 

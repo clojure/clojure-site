@@ -61,7 +61,9 @@ Math/PI
 
 ----
 
-The preferred idiomatic forms for accessing field or method members are given above. The instance member form works for both fields and methods. The instanceField form is preferred for fields and required if both a field and a 0-argument method of the same name exist. Since Clojure 1.12, `Classname/member` may refer to both static and instance members method symbols may be qualified with the Class name.
+The preferred idiomatic forms for accessing field or method members are given above. The instance member form works for both fields and methods. The instanceField form is preferred for fields and required if both a field and a 0-argument method of the same name exist.
+
+Since Clojure 1.12, `Classname/member` may refer to both static and instance members. When an instance method is specified, the instance should be provided after the member and before the args.
 
 The "." forms expand into calls to the dot operator (described below) at macroexpansion time. The expansions are as follows:
 
@@ -93,7 +95,7 @@ For the special case of invoking an instance member on a Class instance, the fir
 
 If the second operand is a symbol and no args are supplied it is taken to be a field access - the name of the field is the name of the symbol, and the value of the expression is the value of the field, _unless_ there is a no argument public method of the same name, in which case it resolves to a call to the method. If the second operand is a symbol starting with _-_, the member-symbol will resolve only as field access (never as a 0-arity method) and should be preferred when that is the intent.
 
-If the second operand is a list, or args are supplied, it is taken to be a method call. The first element of the list must be a simple symbol, and the name of the method is the name of the symbol. The args, if any, are evaluated from left to right, and passed to the matching method, which is called, and its value returned. If the method has a void return type, the value of the expression will be _**nil**_. Note that placing the method name in a list with any args is optional in the canonic form, but can be useful to gather args in macros built upon the form. Since Clojure 1.12, instance method symbols may be qualified with a class name.
+If the second operand is a list, or args are supplied, it is taken to be a method call. The first element of the list must be a simple symbol, and the name of the method is the name of the symbol. The args, if any, are evaluated from left to right, and passed to the matching method, which is called, and its value returned. If the method has a void return type, the value of the expression will be _**nil**_. Note that placing the method name in a list with any args is optional in the canonic form, but can be useful to gather args in macros built upon the form.
 
 Note that boolean return values will be turned into Booleans, chars will become Characters, and numeric primitives will become Numbers unless they are immediately consumed by a method taking a primitive.
 
@@ -149,10 +151,13 @@ As shown, in addition to the canonic special form new, Clojure supports special 
 
 can be written
 
-`(Classname. args*) ;note trailing dot, OR` +
-`(Classname/new args*)`
+`(Classname. args*) ;note trailing dot`
 
-These both expand into the former at macro expansion time.
+the latter expanding into `(new Classname args)` syntax at macro expansion time.
+
+Since Clojure 1.12, this alternate form may also be used (it is not rewritten at macro expansion time):
+
+`(Classname/new args*)`
 
 ''''
 

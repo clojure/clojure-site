@@ -89,7 +89,7 @@ In addition to with-meta, there are a number of reader macros (<<reader#macrocha
 
 The `:tag` key is used to hint an objects type to the Clojure compiler. See <<java_interop#typehints,Java Interop: Type Hints>> for more information and a complete list of special type hints.
 
-Since Clojure 1.12, the `:param-tags` key is used on method and constructor symbols to specify the arity and parameter types of the desired method. The `:param-tags` vector takes any valid `:tag` value or `_` as a placeholder for non-overloaded parameters.
+Since Clojure 1.12, the `:param-tags` key is used on `Classname/member` and `Classname/new` symbols to specify the arity and parameter types of the desired method. The `:param-tags` vector takes any valid `:tag` value or `_` as a placeholder for non-overloaded parameters.
 
 It is possible to add multiple pieces of metadata by chaining the metadata reader macros together.
 For example: `^:dynamic ^ints obj` would apply both the :dynamic flag and ints type-hint to obj. Metadata chains from right to left (left takes precedence).

@@ -70,8 +70,7 @@ The "." forms expand into calls to the dot operator (described below) at macroex
 [source,clojure]
 ----
 (.instanceMember instance args*) ==> (. instance instanceMember args*)
-(.instanceMember Classname args*) ==>
-    (. (identity Classname) instanceMember args*)
+(.instanceMember Classname args*) ==> (. (identity Classname) instanceMember args*)
 (.-instanceField instance) ==> (. instance -instanceField)
 ----
 

@@ -40,11 +40,11 @@ String
 == Member access
 
 [%hardbreaks]
-**(.Classname/instanceMember instance args*)**
+**(.instanceMember instance args*)**
 **(.instanceMember Classname args*)**
 **(.-instanceField instance)**
-**Classname/staticField**
 **(Classname/member [instance] args*)**
+**Classname/staticField**
 
 [source,clojure-repl]
 ----
@@ -67,7 +67,7 @@ The "." forms expand into calls to the dot operator (described below) at macroex
 
 [source,clojure]
 ----
-(.instanceMember instance args*) ==> (. instance [Classname/]instanceMember args*)
+(.instanceMember instance args*) ==> (. instance instanceMember args*)
 (.instanceMember Classname args*) ==>
     (. (identity Classname) instanceMember args*)
 (.-instanceField instance) ==> (. instance -instanceField)

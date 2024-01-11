@@ -292,7 +292,7 @@ There is a pass:[*warn-on-reflection*] flag (defaults to false) which will cause
 -> #user/foo
 ----
 
-For function return values, the type hint can be placed before the arguments vector:
+For function return values, the type hint can be placed before the parameter vector:
 
 [source,clojure]
 ----

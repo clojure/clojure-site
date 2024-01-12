@@ -11,7 +11,7 @@ Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure
 
 We have been diligently working through screening feedback on several 1.12 features, and that has led us into a few modifications in plans and scope:
 
-* Class array literals - after some further contemplation, we've switched back from pass:[`String-*`] to pass:[`String*`] syntax for class array literals (namespaced vars that happen to have overlapping names will continue to take precedence). We've also added support for class resolution of class array literals from mappings in syntax quote
+* Class array literals - after some further contemplation, we've switched back from pass:[`String-*`] to pass:[`String*`] syntax for class array literals (namespaced vars that happen to have overlapping names will continue to take precedence). We've also added resolution of class array literals from import mappings in syntax quote.
 * `:arg-tags` - renaming to `:param-tags` as it's really about the signature types, not the argument types
 * Qualified instance methods - overhauled and simplified to "uniform Classname/member syntax" - this has always been supported for static fields (in value position) and static methods (in invocation position), but we are going to expand the semantics of what's allowed here to also support instance methods and constructors (with Classname/new). There is then one syntax for all uses of qualified members, and :param-tags will only be used on this syntax. There are some interesting little implementation puzzles in the compiler, still working through those.
 

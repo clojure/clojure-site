@@ -1,0 +1,46 @@
+= Clojure Deref (Jan 12, 2024)
+Alex Miller
+2024-01-12
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== From the core
+
+We have been diligently working through screening feedback on several 1.12 features, and that has led us into a few modifications in plans and scope:
+
+* Class array literals - after some further contemplation, we've switched back from `String-*` to `String*` syntax for class array literals (namespaced vars that happen to have overlapping names will continue to take precedence). We've also added support for class resolution of class array literals from mappings in syntax quote
+* `:arg-tags` - renaming to `:param-tags` as it's really about the signature types, not the argument types
+* Qualified instance methods - overhauled and simplified to "uniform Classname/member syntax" - this has always been supported for static fields (in value position) and static methods (in invocation position), but we are going to expand the semantics of what's allowed here to also support instance methods and constructors (with Classname/new). There is then one syntax for all uses of qualified members, and :param-tags will only be used on this syntax. There are some interesting little implementation puzzles in the compiler, still working through those.
+
+Hoping to get these changes locked down soon for an alpha.
+
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=BuSpMvVU7j4[Reifying execution, the interactive programming missing piece by Juan Monetta] - London Clojurians
+* https://www.youtube.com/watch?v=uZ0gbQ9xztw[Brimm demo: block types] - Filip Juruković
+
+== Blogs, articles, and projects
+
+* https://liamduffy.hashnode.dev/how-to-deploy-your-clojure-api-with-docker-and-flyio[How to Deploy Your Clojure API with Docker and Fly.io] - Liam Duffy
+* https://www.juxt.pro/blog/clojure-in-george-town/[Clojure in Spreadsheets: Georgetown] - JUXT
+* https://www.clojuriststogether.org/news/q1-2024-funding-announcement/[Q1 2024 Funding Announcement] - Clojurists Together
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/rm-hull/nvd-clojure[nvd-clojure] https://github.com/rm-hull/nvd-clojure/blob/dabe2b/CHANGELOG.md#changes-from-360-to-400[4.0.0] - National Vulnerability Database dependency checker for Clojure projects
+* https://github.com/cljfx/cljfx[cljfx] https://github.com/cljfx/cljfx/blob/master/CHANGELOG.md#180---2024-01-07[1.8.0] - Declarative, functional and extensible wrapper of JavaFX inspired by better parts of react and re-frame
+* https://github.com/babashka/babashka[babashka] https://github.com/babashka/babashka/blob/master/CHANGELOG.md#13187-2023-01-09[1.3.187] - Native, fast starting Clojure interpreter for scripting
+* https://github.com/clj-holmes/clj-watson[clj-watson] https://github.com/clj-holmes/clj-watson/blob/main/CHANGELOG.md[5.0.1] - clojure deps SCA
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.408[2.0.408] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/afucher/clojure-repl-intellij[clojure-repl-intellij] https://github.com/afucher/clojure-repl-intellij/blob/master/CHANGELOG.md#013[0.1.3] - Free OpenSource IntelliJ plugin for Clojure REPL development
+* https://github.com/borkdude/deps.clj[deps.clj] https://github.com/borkdude/deps.clj/blob/master/CHANGELOG.md#11111435[1.11.1.1435] - A faithful port of the clojure CLI bash script to Clojure
+* https://github.com/fulcrologic/fulcro[fulcro] 3.7.0 - A library for development of single-page full-stack web applications in clj/cljs
+* https://github.com/fulcrologic/fulcro-rad[fulcro-rad] 1.6.0 - Fulcro Rapid Application Development
+* https://github.com/fulcrologic/statecharts[statecharts] https://github.com/fulcrologic/statecharts/blob/main/CHANGELOG[1.1.6] - A Statechart library for CLJ(S)
+* https://github.com/vlaaad/reveal[reveal] 1.3.282 - Reveal: Read Eval Visualize Loop for Clojure
+* https://github.com/sunng87/ring-jetty9-adapter[ring-jetty9-adapter] https://github.com/sunng87/ring-jetty9-adapter/releases/tag/0.31.0[0.31.0] - An enhanced version of jetty adapter for ring, with additional features like websockets, http/2 and http/3

@@ -166,7 +166,7 @@ Also, the Clojure runtime will look for and load the `user` namespace on startup
 [[add_lib]]
 == Adding libraries for interactive use
 
-The <<xref/../../../guides/install_clojure#,Clojure CLI>> can be used to <<deps_edn#,declare dependencies>> loaded at REPL startup time. Since Clojure 1.12, you can also dynamically load libraries at the REPL for interactive use. These functions are available in the `tools.deps.repl` namespace:
+The <<xref/../../../guides/install_clojure#,Clojure CLI>> can be used to <<deps_edn#,declare dependencies>> loaded at REPL startup time. Since Clojure 1.12, you can also dynamically load libraries at the REPL for interactive use. These functions are available in the `clojure.repl.deps` namespace:
 
 * https://clojure.github.io/clojure/clojure.repl-api.html#clojure.repl.deps/add-lib[`add-lib`] takes a lib that is not available on the classpath, and makes it available by downloading (if necessary) and adding to the classloader. Libs already on the classpath are not updated. If the coordinate is not provided, the newest Maven or git (if the library has an inferred git repo name) version or tag are used.
 * https://clojure.github.io/clojure/clojure.repl-api.html#clojure.repl.deps/add-libs[`add-libs`] is like `add-lib`, but resolves a set of new libraries and versions together.

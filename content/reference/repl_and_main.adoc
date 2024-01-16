@@ -164,7 +164,7 @@ If you switch to a different namespace (with `in-ns` or `ns`), these functions w
 
 The Clojure runtime will look for and load `user.clj` on runtime startup, if it is found on the classpath. This is a facility designed to provide development-time facilities, and generally not recommended in production use.
 
-Because The `user.clj` file is loaded by the Clojure runtime on initialization, this typically happens before the main namespace in an application executes. Any namespaces or resources loaded by `user.clj` thus impact startup time for your application.
+Because the `user.clj` file is loaded by the Clojure runtime on initialization, this typically happens before the main namespace in an application executes. Any namespaces or resources loaded by `user.clj` thus impacts startup time for your application.
 
 == tap
 

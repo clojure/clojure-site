@@ -160,7 +160,11 @@ The Clojure REPL automatically loads the following namespaces and refers the fol
 
 If you switch to a different namespace (with `in-ns` or `ns`), these functions will not be available unless referred there explicitly.
 
-Also, the Clojure runtime will look for and load the `user` namespace on startup if it is found. Generally, this should only be used to provide development-time faciliities, and not in a production scenario.
+== Loading of `user.clj`
+
+The Clojure runtime will look for and load `user.clj` on runtime startup, if it is found on the classpath. This is a facility designed to provide development-time facilities, and generally not recommended in production use.
+
+Because The `user.clj` file is loaded by the Clojure runtime on initialization, this typically happens before the main namespace in an application executes. Any namespaces or resources loaded by `user.clj` thus impact startup time for your application.
 
 == tap
 

@@ -1,0 +1,46 @@
+= Clojure Deref (Jan 19, 2024)
+Alex Miller
+2024-01-19
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=HZTrfz-2yW4[Desktop GUI Made Easy (by Nikita Prokopov)] - London Clojurians
+* https://www.youtube.com/watch?v=v5VSjQqWyc0[How to define functions in Clojure: everything about defn] - Andrey Fadeev
+* https://www.youtube.com/watch?v=hYSxlN_d2-g[Functional Design: Applying past software architecture and design by Janet Carr] - Func Prog Sweden
+* https://clojuredesign.club/episode/106-robustify/[Ep 106: Robustify!] - Functional Design in Clojure
+* https://clojuredesign.club/episode/107-idempotify/[Ep 107: Idempotify!] - Functional Design in Clojure
+
+== Blogs, articles, and projects
+
+* https://www.metosin.fi/blog/2024-01-16-malli-data-modelling-for-clojure-developers[Malli, data modelling for Clojure developers] - metosin
+* https://tilton.medium.com/flutter-mx-the-red-pill-begins-fd59d499cd2a[Flutter/MX: The Red Pill Begins] - Kenny Tilton
+* https://flexiana.com/2024/01/dont-give-me-no-saas-how-we-solved-our-saas-product-development-headaches[Don’t give me no SaaS! – how we solved our SaaS product development headaches] - Flexiana
+* https://blog.hughpowell.net/modern-software-engineering-for-a-small-team.html[Modern software engineering for a small team] - Hugh Powell
+* https://medium.com/qantas-engineering-blog/leveraging-polylith-to-improve-consistency-reduce-complexity-and-increase-changeability-2031dd3d5f3d[Leveraging Polylith to improve consistency, reduce complexity and increase changeability] - Felix Barbalet
+* https://jmglov.net/blog/2024-01-17-clickr.html[clickr, or a young man's Flickr clonejure] - Josh Glover
+* https://blog.nundrum.net/posts-output/2024-01-05-more-svg-tools/[More for the ClojureScript SVG Toolbox] - Nundrum
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/clojure-emacs/cider[cider] https://github.com/clojure-emacs/cider/releases/tag/v1.13.0[1.13.0] - The Clojure Interactive Development Environment that Rocks for Emacs
+* https://github.com/clojure-emacs/cider-nrepl[cider-nrepl] https://github.com/clojure-emacs/cider-nrepl/blob/v0.45.0/CHANGELOG.md#0450-2024-01-14[0.45.0] - A collection of nREPL middleware to enhance Clojure editors with common functionality like definition lookup, code completion, etc.
+* https://github.com/clj-commons/aleph[aleph] https://github.com/clj-commons/aleph/blob/master/CHANGES.md#070[0.7.0] - Asynchronous streaming communication for Clojure - web server, web client, and raw TCP/UDP
+* https://github.com/metosin/malli[malli] https://github.com/metosin/malli/blob/master/CHANGELOG.md#0140-2024-01-16[0.14.0] - High-performance data-driven data specification library for Clojure/Script
+* https://github.com/dundalek/dinodoc[dinodoc] 0.1.0 - Docusaurus-powered documentation system for Clojure
+* https://github.com/robbieh/cljs-polys-etc[cljs-polys-etc] 0.0.1 - A utility for working with polybooljs in ClojureScript, and some extras
+* https://github.com/generateme/fastmath[fastmath] https://github.com/generateme/fastmath/blob/master/CHANGELOG.md#230[2.3.0] - Fast primitive based math library
+* https://github.com/clojure/tools.namespace[tools.namespace] https://github.com/clojure/tools.namespace/blob/master/CHANGES.md#version-145[1.4.5] - Tools for managing namespaces in Clojure
+* https://github.com/afucher/clojure-repl-intellij[clojure-repl-intellij] https://github.com/afucher/clojure-repl-intellij/blob/master/CHANGELOG.md#015[0.1.5] - Free OpenSource IntelliJ plugin for Clojure REPL development
+* https://github.com/babashka/babashka[babashka] https://github.com/babashka/babashka/blob/master/CHANGELOG.md#13188-2023-01-12[1.3.188] - Native, fast starting Clojure interpreter for scripting
+* https://github.com/abogoyavlensky/automigrate[automigrate] https://github.com/abogoyavlensky/automigrate/blob/master/CHANGELOG.md#030---2024-01-12[0.3.0] - Auto-generated database migrations for Clojure
+* https://github.com/clj-holmes/clj-watson[clj-watson] https://github.com/clj-holmes/clj-watson/releases/tag/v5.1.1[5.1.1] - clojure deps SCA
+* https://github.com/holyjak/fulcro-troubleshooting[fulcro-troubleshooting] https://github.com/holyjak/fulcro-troubleshooting/blob/master/CHANGELOG.md#v10---2024-01-14[10] - A development-time library for Fulcro that helps to detect problems earlier and find and fix their root cause faster
+* https://github.com/steffan-westcott/clj-otel[clj-otel] https://github.com/steffan-westcott/clj-otel/blob/master/CHANGELOG.adoc#026-2024-01-15[0.2.6] - An idiomatic Clojure API for adding telemetry to your libraries and applications using OpenTelemetry
+* https://github.com/eerohele/sigel[sigel] https://github.com/eerohele/sigel/blob/master/CHANGELOG.md#110-2024-01-17[1.1.0] - XSLT and XPath in your Clojure

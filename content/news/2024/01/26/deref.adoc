@@ -1,0 +1,46 @@
+= Clojure Deref (Jan 26, 2024)
+Alex Miller
+2024-01-26
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=-ltDhwdfxGE[Best library to work with HTML in Clojure] - Andrey Fadeev
+* https://www.youtube.com/watch?v=qbI5MKWKCJM[clojure.string overview - everything about working with Strings in Clojure] - Andrey Fadeev
+* https://www.youtube.com/watch?v=f27HQ0DTErk[I've created a CLI habit tracker with Babashka tasks, SQLite and Clojure] - Andrey Fadeev
+* https://www.youtube.com/watch?v=nGuat8DGjFo[Number comparison gotchas in Clojure] - Clojure Diary
+* https://www.youtube.com/watch?v=rVl2EJFX6ls[Releasing Kanipaan the command line calculator, and lessons learnt] - Clojure Diary
+* https://www.youtube.com/watch?v=sJgtH7e0nn4[Learn Clojure – Reading Clojure Documentation] - Clojure Diary
+* https://www.youtube.com/watch?v=a0kO8bMBVt4[Flutter/MX: Live Coding with Red Pill ubiquity] - Ken Tilton
+* https://clojuredesign.club/episode/108-testify/[Ep 108: Testify!] - Functional Design in Clojure
+
+== Blogs, articles, and projects
+
+* https://www.clojuriststogether.org/news/november-and-december-2023-project-updates/[November and December 2023 Project Updates] - Clojurists Together
+* https://codewithkira.com/clojure-tidy-tuesdays/year_2024.week_2.analysis.html[Week 2 - Canadian NHL Hockey Player Birth Months] - Kira McLean
+* https://jmglov.net/blog/2024-01-22-clickr-goes-fe.html[clickr goes frontend] - Josh Glover
+* https://thomascothran.tech/2023/11/clojure-uis-hypermedia-and-rpc-1/[Have Clojure UIs Taken the Wrong Path? Part 1] - Thomas Cothran
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/clojure/clojurescript[ClojureScript] https://github.com/clojure/clojurescript/blob/master/changes.md#1.11.132[1.11.132] - Clojure to JS compiler
+* https://github.com/clj-commons/manifold[manifold] https://github.com/clj-commons/manifold/blob/master/CHANGES.md#042[0.4.2] - A compatibility layer for event-driven abstractions
+* https://github.com/BetterThanTomorrow/joyride[joyride] https://github.com/BetterThanTomorrow/joyride/releases/tag/v0.0.42[0.0.42] - Making VS Code Hackable like Emacs since 2022
+* https://github.com/mpenet/pact[pact] 1.0.3 - clojure.spec to json-schema generation library
+* https://github.com/PEZ/seatbelt[seatbelt]  - A test runner for your VS Code extensions and/or Joyride scripts
+* https://github.com/igrishaev/pg2[pg2] https://github.com/igrishaev/pg2/blob/master/CHANGELOG.md#011[0.1.1] - A fast PostgreSQL driver for Clojure
+* https://github.com/abogoyavlensky/automigrate[automigrate] https://github.com/abogoyavlensky/automigrate/blob/master/CHANGELOG.md#031---2024-01-22[0.3.1] - Auto-generated database migrations for Clojure
+* https://github.com/oliyh/martian[martian] https://github.com/oliyh/martian/releases/tag/0.1.26[0.1.26] - The HTTP abstraction library for Clojure/script, supporting OpenAPI, Swagger, Schema, re-frame and more
+* https://github.com/exoscale/coax[coax] 2.0.0 - Clojure.spec coercion library for clj(s)
+* https://github.com/jordanrobinson/clj-wiremock-extras[clj-wiremock-extras] 0.0.7 - Extras, helpers and convenience methods for clj-wiremock
+* https://github.com/zelark/nano-id[nano-id] https://github.com/zelark/nano-id/blob/master/CHANGELOG.md#110---2024-01-25[1.1.0] - A unique string ID generator for Clojure and ClojureScript
+* https://github.com/cgrand/xforms[xforms] https://github.com/cgrand/xforms/releases/tag/v0.19.6[0.19.6] - Extra transducers and reducing fns for Clojure(script)
+* https://github.com/fulcrologic/fulcro[fulcro] https://github.com/fulcrologic/fulcro/blob/main/CHANGELOG.md#371[3.7.1] - A library for development of single-page full-stack web applications in clj/cljs
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/blob/published/CHANGELOG.md#20409---2024-01-22[2.0.409] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/clj-commons/aleph[aleph] https://github.com/clj-commons/aleph/blob/master/CHANGES.md#071[0.7.1] - Asynchronous streaming communication for Clojure - web server, web client, and raw TCP/UDP

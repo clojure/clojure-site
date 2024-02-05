@@ -1,0 +1,52 @@
+= Clojure Deref (Feb 2, 2024)
+Alex Miller
+2024-02-02
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts and videos
+
+* https://clojuredesign.club/episode/109-extractify/[Ep 109: Extractify!] - Functional Design in Clojure
+* https://www.youtube.com/watch?v=Td9WcltYzrk[Find first n non-repeating objects in a sequence using Clojure] - Clojure Diary
+
+== Blogs, articles, and projects
+
+* https://codewithkira.com/clojure-tidy-tuesdays/year_2024.week_3.analysis.html[Week 3 - US Polling Places 2012-2020] - Kira McLean
+* https://www.fosskers.ca/en/blog/rounds-of-lisp[A Tour of the Lisps] - Colin Woodbury
+* https://thomascothran.tech/2024/01/the-false-dichotomy-mpas-spas/[MPAs vs SPAs: The False Dichotomy] - Thomas Cothran
+* https://conjurernix.github.io/convex-overview.html[High Level Overview of the Convex Decentralised Network from a Clojure Developer's perspective] - Nikolas Pafitis
+* https://github.com/anthonygalea/notes-on-clojure[A series of clerk notebooks for learning Clojure] - Anthony Galea
+* https://clojure-goes-fast.com/blog/system-wide-user-clj/[System-wide user.clj with tools.deps] - Oleksandr Yakushev
+* https://polar.sh/eval/posts/lets-write-a-templating-library-part-1-lexing[Let's write a templating library 🔎 Part 1: lexing] - Gert Goet
+* https://phronmophobic.github.io/clip.clj/semantic-image-search-with-clojure/[Semantic Image Search with Clojure] - Adrian Smith
+* https://www.kbaba1001.com/posts/2024012902_babashka-at-coder/[いつの間にか AtCoder で Babashka が動くようになっていた] - 馬場 一樹
+* https://dev.solita.fi/2024/02/02/the-things-i-like-about-cljs-and-re-frame.html[The things I like about ClojureScript and Re-Frame] - Mikko Rönkkömäki
+* https://andreyor.st/posts/2024-01-31-using-transducers/[Using transducers] - Andrey Listopadov
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/janetacarr/quadtree-cljc[quadtree-cljc] 0.1.5 - A quadtree implementation for clojure(script)
+* https://github.com/raystubbs/zero[zero] 0.0.1 - Build web components in ClojureScript
+* https://github.com/kidpollo/fullstack-kitchen-sink-2024[fullstack-kitchen-sink-2024]  - Reference full-stack React Native + Serverless + Terraform architecture
+* https://github.com/beoliver/wiretap[wiretap] 0.0.17 - A Clojure library for adding generic trace support without having to modify code
+* https://github.com/flow-storm/flow-storm-debugger[flow-storm-debugger] https://github.com/flow-storm/flow-storm-debugger/blob/master/CHANGELOG.md#3110-01-02-2024[3.11.0] - A debugger for Clojure and ClojureScript with some unique features
+* https://github.com/borkdude/edamame[edamame] https://github.com/borkdude/edamame/blob/master/CHANGELOG.md#1424[1.4.24] - Configurable EDN/Clojure parser with location metadata
+* https://github.com/mpenet/hirundo[hirundo] 0.1.31 - Helidon 4.x RING adapter - using loom/java21+
+* https://github.com/SURFnet/apie[apie] https://github.com/SURFnet/apie/blob/main/changelog.md#v020[0.2.0] - OpenAPI Service Validator
+* https://github.com/cognitect-labs/aws-api[aws-api] https://github.com/cognitect-labs/aws-api/blob/main/CHANGES.md#08692--2024-01-31[0.8.692] - AWS, data driven
+* https://github.com/clj-commons/marginalia[marginalia] https://github.com/clj-commons/marginalia/releases/tag/v0.9.2[0.9.2] - Ultra-lightweight literate programming for clojure inspired by docco
+* https://github.com/clj-commons/lein-marginalia[lein-marginalia] 0.9.2 - A Marginalia plugin to Leiningen
+* https://github.com/clojure-lsp/clojure-lsp[clojure-lsp] https://github.com/clojure-lsp/clojure-lsp/releases/tag/2024.02.01-11.01.59[2024.02.01-11.01.59] - Clojure & ClojureScript Language Server (LSP) implementation
+* https://github.com/mynomoto/sci-koans[sci-koans]  - A port of Clojurescript koans to SCI translated to Portuguese
+* https://github.com/scicloj/clay[clay] https://github.com/scicloj/clay/blob/main/CHANGELOG.md#2-alpha77---2024-02-02[2-alpha77] - A tiny Clojure tool for dynamic workflow of data visualization and literate programming
+* https://github.com/babashka/nbb[nbb] https://github.com/babashka/nbb/blob/main/CHANGELOG.md#12180-2024-01-29[1.2.180] - Scripting in Clojure on Node.js using SCI
+* https://github.com/kbosompem/bb-excel[bb-excel] https://github.com/kbosompem/bb-excel/blob/main/CHANGELOG.md#011--2024-02-01[0.1.1] - Read Excel Files in babashka scripts
+* https://github.com/imrekoszo/polylith-kaocha[polylith-kaocha] https://github.com/imrekoszo/polylith-kaocha/releases/tag/v0.8.4[0.8.4] - Kaocha-based test runner for Polylith
+* https://github.com/babashka/json[json] https://github.com/babashka/json/blob/main/CHANGELOG.md#016[0.1.6] - JSON abstraction library
+* https://github.com/soulspace-org/overarch[overarch] https://github.com/soulspace-org/overarch/blob/main/Changelog.md#version-080[0.8.0] - A data driven description of software architecture based on UML and the C4 model
+* https://github.com/squint-cljs/squint[squint] https://github.com/squint-cljs/squint/blob/main/CHANGELOG.md#v0689-2024-02-01[0.6.89] - Light-weight ClojureScript dialect

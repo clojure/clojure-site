@@ -19,6 +19,37 @@ Note: All dev releases are subject to breaking changes for new work since the pr
 
 == Release 1.12.0
 
+=== 1.12.0-alpha6 (Feb 8, 2024) [[v1.12.0-alpha6]]
+
+https://clojure.org/news/2024/02/08/1-12-alpha6[Release notes]
+
+Features:
+
+* https://clojure.atlassian.net/browse/CLJ-2793[CLJ-2793] - Method values
+* https://clojure.atlassian.net/browse/CLJ-2806[CLJ-2806] - Uniform qualified method syntax
+* https://clojure.atlassian.net/browse/CLJ-2805[CLJ-2805] - :param-tags metadata
+* https://clojure.atlassian.net/browse/CLJ-2807[CLJ-2807] - Array class symbols
+* https://clojure.atlassian.net/browse/CLJ-2792[CLJ-2792] - Java Supplier interop
+* https://clojure.atlassian.net/browse/CLJ-2775[CLJ-2775] - seq, into, reduce, transduce for Java streams
+* https://clojure.atlassian.net/browse/CLJ-2791[CLJ-2791] - PersistentVector implements Spliterable
+
+Enhancements:
+
+* https://clojure.atlassian.net/browse/CLJ-2777[CLJ-2777] - `clojure.java.process/start` - add `:clear-env` option to clear env vars from parent environment
+* https://clojure.atlassian.net/browse/CLJ-2828[CLJ-2828] - `clojure.java.process/capture` - removed, use `slurp` instead
+* https://clojure.atlassian.net/browse/CLJ-1162[CLJ-1162] - `deref` - improve error message when called on non IDRef
+* https://clojure.atlassian.net/browse/CLJ-2225[CLJ-2225] - `assert` and `*assert*` - improve docstrings to add context
+* https://clojure.atlassian.net/browse/CLJ-2290[CLJ-2290] - `into` - add 0- and 1-arity to docstring
+* https://clojure.atlassian.net/browse/CLJ-2552[CLJ-2552] - `reify` - improve docstring and fix example
+* https://clojure.atlassian.net/browse/CLJ-2640[CLJ-2640] - `ex-info` - now handles nil data map
+* https://clojure.atlassian.net/browse/CLJ-2783[CLJ-2783] - replace calls to deprecated URL constructor
+
+Bug fixes:
+
+* https://clojure.atlassian.net/browse/CLJ-2788[CLJ-2788] - `clojure.repl.deps/add-lib` - no longer affected by `pass:[*print-length*]` settings
+* https://clojure.atlassian.net/browse/CLJ-2813[CLJ-2813] - anonymous function arg reader - no longer accepts invalid arg symbols
+* https://clojure.atlassian.net/browse/CLJ-2803[CLJ-2803] - #inst printer - no longer uses a ThreadLocal formatter
+
 === 1.12.0-alpha5 (Oct 20, 2023) [[v1.12.0-alpha5]]
 
 https://clojure.org/news/2023/10/20/clojure-1-12-alpha5[Release notes]

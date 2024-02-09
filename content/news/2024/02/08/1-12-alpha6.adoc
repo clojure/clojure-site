@@ -51,7 +51,7 @@ See: https://clojure.atlassian.net/browse/CLJ-2805[CLJ-2805]
 
 === Array class symbols
 
-Clojure supporst class symbols both as a value (for class object) and as a type hint, but has not provided syntax for array classes other than strings.
+Clojure supports class symbols both as a value (for class object) and as a type hint, but has not provided syntax for array classes other than strings.
 
 Clojure now provides array class symbols, comprising the name of the array component type: primitive, fully-qualified class, or import class, followed by an asterisk for each dimension of the array (1 or more). Array class symbols can be used as type hints, or as values that resolves to the corresponding array class object.
 

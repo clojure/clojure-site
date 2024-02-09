@@ -105,7 +105,7 @@ See: https://clojure.atlassian.net/browse/CLJ-2791[CLJ-2791]
 * https://clojure.atlassian.net/browse/CLJ-2777[CLJ-2777] - `clojure.java.process/start` - add `:clear-env` option to clear env vars from parent environment
 * https://clojure.atlassian.net/browse/CLJ-2828[CLJ-2828] - `clojure.java.process/capture` - removed, use `slurp` instead
 * https://clojure.atlassian.net/browse/CLJ-1162[CLJ-1162] - `deref` - improve error message when called on non IDRef
-* https://clojure.atlassian.net/browse/CLJ-2225[CLJ-2225] - `assert` and pass:[`*assert*`] - improve docstrings to add context
+* https://clojure.atlassian.net/browse/CLJ-2225[CLJ-2225] - `assert` and `pass:[*assert*]` - improve docstrings to add context
 * https://clojure.atlassian.net/browse/CLJ-2290[CLJ-2290] - `into` - add 0- and 1-arity to docstring
 * https://clojure.atlassian.net/browse/CLJ-2552[CLJ-2552] - `reify` - improve docstring and fix example
 * https://clojure.atlassian.net/browse/CLJ-2640[CLJ-2640] - `ex-info` - now handles nil data map

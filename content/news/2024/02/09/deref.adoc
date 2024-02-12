@@ -1,0 +1,46 @@
+= Clojure Deref (Feb 9, 2024)
+Alex Miller
+2024-02-09
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Events
+
+https://2024.clojure-conj.org[Clojure/conj 2024] will be held Oct 23-25 in Alexandria, VA at the George Washington Masonic Memorial (where we last held the Conj in 2013!). We look forward to seeing you both in-person and online!
+
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=4A7oK0UJe9w[Dashing through the flow - Streamlining state management in ClojureDart with re-dash (by Werner Kok)] - London Clojurians
+* https://www.youtube.com/watch?v=jvd6vEl_BKI[Integrant tutorial - component alternative for managing systems in Clojure applications] - Andrey Fadeev
+* https://www.youtube.com/watch?v=sULZVFhR848[Introducing the Tempel data security framework for Clojure] - Peter Taoussanis
+* https://www.youtube.com/watch?v=rRUnalYaomE[Learn Clojure - Conditions, cond] - Clojure Diary
+* https://clojuredesign.club/episode/110-contextify/[Ep 110: Contextify!] - Functional Design in Clojure
+
+== Blogs, articles, and projects
+
+* https://zenn.dev/shinseitaro/books/9270abff642f59/viewer/4dbdbd[Babashka とは] - しんせいたろう
+* https://codewithkira.com/clojure-tidy-tuesdays/year_2024.week_4.analysis.html[Week 4 - Educational attainment of young people in English towns] - Kira McLean
+* https://www.patreon.com/posts/transparency-97905386[Transparency report: January 2024] - Nikita Prokopov
+* https://www.mikkokoski.com/blog/derived-vars/index.html[How to catch derived Vars with a clj-kondo hook] - Mikko Koski
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/clojure/clojure[Clojure] https://clojure.org/news/2024/02/08/1-12-alpha7[1.12.0-alpha7] and https://clojure.org/news/2024/02/08/1-12-alpha6[1.12.0-alpha6]
+* https://github.com/NoahTheDuke/coc-clojure[coc-clojure] https://github.com/NoahTheDuke/coc-clojure/releases/tag/v0.0.16[0.0.16] - coc.nvim plugin for clojure-lsp
+* https://github.com/fulcrologic/guardrails[guardrails] https://github.com/fulcrologic/guardrails/blob/main/CHANGELOG.md#120-2-malli-support-and-output-improvements[1.2.0-2] - Efficient, hassle-free function call validation with a concise inline syntax for clojure.spec and Malli
+* https://github.com/mpenet/pact[pact] 1.0.4 - clojure.spec to json-schema generation library
+* https://github.com/uncomplicate/clojurecuda[clojurecuda] 0.17.0 - Clojure library for CUDA development
+* https://github.com/uncomplicate/clojure-cpp[clojure-cpp] 0.2.0 - Clojure native interop through JavaCPP
+* https://github.com/rynkowsg/morse-nrepl[morse-nrepl]  - The start of an nREPL middleware that will spy on an nREPL connection and capture the results of evaluation for browsing in morse
+* https://github.com/scicloj/clay[clay] https://github.com/scicloj/clay/blob/main/CHANGELOG.md#2-alpha79---2024-02-08[2-alpha79] - A tiny Clojure tool for dynamic workflow of data visualization and literate programming
+* https://github.com/clojure-goes-fast/clj-async-profiler[clj-async-profiler] https://github.com/clojure-goes-fast/clj-async-profiler/blob/master/CHANGELOG.md#120-2024-02-06[1.2.0] - Embedded high-precision Clojure profiler
+* https://github.com/babashka/tools-deps-native[tools-deps-native] https://github.com/babashka/tools-deps-native/blob/master/CHANGELOG.md#v015[0.1.5] - Run tools.deps as a native binary
+* https://github.com/squint-cljs/squint[squint] https://github.com/squint-cljs/squint/blob/main/CHANGELOG.md#v0690-2024-02-06[0.6.90] - Light-weight ClojureScript dialect
+* https://github.com/fulcrologic/statecharts[statecharts] 1.2.2 - A Statechart library for CLJ(S)
+* https://github.com/walmartlabs/lacinia[lacinia] https://github.com/walmartlabs/lacinia/blob/master/CHANGES.md#122---8-feb-2024[1.2.2] - GraphQL implementation in pure Clojure
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/blob/published/CHANGELOG.md#20410---2024-02-08[2.0.410] - Clojure & ClojureScript Interactive Programming for VS Code

@@ -1,0 +1,42 @@
+= Clojure Deref (Feb 15, 2024)
+Alex Miller
+2024-02-15
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=ZajJQGGB-ng[Ways of working with AWS API from Clojure (aws-sdk-v2, cognitect/aws-api, amazonica)] - Andrey Fadeev
+
+== Blogs, articles, and projects
+
+* https://www.clojuriststogether.org/news/call-for-proposals.-february-2024-member-survey/[Call for Proposals. February 2024 Member Survey] - Clojurists Together
+* https://jmglov.net/blog/2024-02-09-counting-blog-posts.html[Counting blog posts in 50 simple steps] - Josh Glover
+* https://codewithkira.com/clojure-tidy-tuesdays/year_2024.week_5.analysis.html[Week 5 - Groundhog Predictions] - Kira McLean
+* https://insideclojure.org/2024/02/12/method-values/[Method Values] - Alex Miller
+* https://jmglov.net/blog/2024-02-13-bb-playground.html[Playing on the Babashka playground] - Josh Glover
+* https://www.juxt.pro/blog/uri-templates/[URI Templates] - Malcolm Sparks (JUXT)
+* https://metaredux.com/posts/2024/02/15/cider-community-impact.html[CIDER: Community Impact] - Bozhidar Batsov
+* https://camdez.com/blog/2024/02/09/java-allergies-and-revisiting-java.time/[Java Allergies and Revisiting java.time] - Cameron Desautels
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/abogoyavlensky/asdf-cljstyle[asdf-cljstyle]  - cljstyle plugin for the asdf version manager
+* https://github.com/clj-kondo/clj-kondo[clj-kondo] https://github.com/clj-kondo/clj-kondo/releases/tag/v2024.02.12[2024.02.12] - Static analyzer and linter for Clojure code that sparks joy
+* https://github.com/jacobobryant/biff[biff] https://github.com/jacobobryant/biff/discussions/186[1.8.0] - A Clojure web framework for solo developers
+* https://github.com/borkdude/edamame[edamame] https://github.com/borkdude/edamame/blob/master/CHANGELOG.md#1425[1.4.25] - Configurable EDN/Clojure parser with location metadata
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.411[2.0.411] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/juji-io/datalevin[datalevin] https://github.com/juji-io/datalevin/blob/master/CHANGELOG.md#0826-2024-02-09[0.8.26] - A simple, fast and versatile Datalog database
+* https://github.com/NoahTheDuke/splint[splint] https://github.com/NoahTheDuke/splint/blob/main/CHANGELOG.md#v113---2024-02-14[1.13] - A Clojure linter focused on style and code shape
+* https://github.com/babashka/http-client[http-client] https://github.com/babashka/http-client/blob/main/CHANGELOG.md#0416-2024-02-10[0.4.16] - HTTP client for Clojure and Babashka built on java.net.http
+* https://github.com/babashka/nbb[nbb] https://github.com/babashka/nbb/blob/main/CHANGELOG.md#12182-2024-02-12[1.2.182] - Scripting in Clojure on Node.js using SCI
+* https://github.com/BetterThanTomorrow/joyride[joyride] https://github.com/BetterThanTomorrow/joyride/releases/tag/v0.0.43[0.0.43] - Making VS Code Hackable like Emacs since 2022
+* https://github.com/fulcrologic/guardrails[guardrails] 1.2.1 - Efficient, hassle-free function call validation with a concise inline syntax for clojure.spec and Malli
+* https://github.com/babashka/cli[cli] https://github.com/babashka/cli/blob/main/CHANGELOG.md#v0856-2024-02-13[0.8.56] - Turn Clojure functions into CLIs!
+* https://github.com/soulspace-org/overarch[overarch] https://github.com/soulspace-org/overarch/releases/tag/v0.9.0[0.9.0] - A data driven description of software architecture based on UML and the C4 model
+* https://github.com/squint-cljs/squint[squint] https://github.com/squint-cljs/squint/releases/tag/v0.6.92[0.6.92] - Light-weight ClojureScript dialect

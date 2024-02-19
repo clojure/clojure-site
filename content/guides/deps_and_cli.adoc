@@ -542,4 +542,4 @@ time-lib/time-lib /Users/alex.miller/tmp/cli-getting-started/time-lib
 
 There were no version selections made here, but see https://clojure.org/reference/dep_expansion#_tree_printing[the docs] for more on how choices are explained in the tree if needed.
 
-Both of these helper functions take an optional `:aliases` argument if you wish to examine the dependency list or tree with one or more aliases applied, such as `clj -X:deps list '[:alias1 :alias2]'`.
+Both of these helper functions take an optional `:aliases` argument if you wish to examine the dependency list or tree with one or more aliases applied, such as `clj -X:deps list :aliases '[:alias1 :alias2]'`.

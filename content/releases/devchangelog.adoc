@@ -19,6 +19,17 @@ Note: All dev releases are subject to breaking changes for new work since the pr
 
 == Release 1.12.0
 
+=== 1.12.0-alpha8 (Feb 21, 2024) [[v1.12.0-alpha8]]
+
+Enhancements:
+
+* https://clojure.atlassian.net/browse/CLJ-2568[CLJ-2568] - `clojure.walk/walk` - preserve metadata on lists and seqs
+* https://clojure.atlassian.net/browse/CLJ-2783[CLJ-2783] - replace calls to deprecated URL constructor
+
+Reverted:
+
+* https://clojure.atlassian.net/browse/CLJ-1162[CLJ-1162] - `deref` - improve error message when called on non IDRef
+
 === 1.12.0-alpha7 (Feb 8, 2024) [[v1.12.0-alpha7]]
 
 Reverted:

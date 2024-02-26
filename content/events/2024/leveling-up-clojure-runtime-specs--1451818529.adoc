@@ -1,0 +1,39 @@
+= Leveling Up Clojure Runtime Specs
+2024-03-07
+:jbake-type: event
+:jbake-edition: 
+:jbake-link: https://www.meetup.com/madison-clojure-meetup/events/299428825
+:jbake-location: online
+:jbake-start: 2024-03-07
+:jbake-end: 2024-03-07
+
+== Leveling Up Clojure Runtime Specs @ambrosebs
+
+Madison Clojure Meetup presents 'Leveling Up Clojure Runtime Specs' by Ambrose Bonnaire-Sergeant. +
+ +
+Talk description: +
+Clojure has a powerful selection of dynamic verification tools, including Schema, Spec, and Malli. In this talk, we will motivate the need for even more expressive runtime specifications. Repurposing familiar ideas from static types and interpreters, we will explore higher-level abstractions over runtime specs that bump up their expressivity without compromising their dynamism. +
+ +
+About the speaker: +
+Ambrose has been an active member of the Clojure community since 2011. He has participated in the development of many dynamic verification tools for Clojure, including trammel, core.contracts, dynalint, Schema, Spec, test.chuck, typed.clj.spec and Malli. He is the creator of Typed Clojure, the subject of his PhD thesis, and a maintainer of Plumatic Schema. +
+ +
+Speaker Website: https://ambrosebs.com +
+ +
+This event will be streamed live here: https://www.youtube.com/watch?v=2vAyJPwogSI +
+ +
+A VOD will be available at some point after the stream. +
+ +
+Please join #clojure-madison on Clojurians Slack to participate. +
+ +
+Agenda (Central Time): +
+- 6:30pm local meetup starts +
+- 7:00pm talk (and stream) starts +
+- 7:45pm questions +
+  - please leave a comment on the stream or post on #clojure-madison in Clojurians slack. +
+- 8:00pm stream ends +
+- 8:30pm local meetup ends +
+ +
+To attend in person, please sign up here: https://www.meetup.com/madison-clojure-meetup/events/299428825/ +
+ +
+Zulip: https://clojurians.zulipchat.com/#narrow/stream/262224-events/near/423308711 +
+

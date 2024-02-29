@@ -93,7 +93,7 @@ Community led hyper-hackable text editor, a project created after the sunset of 
 
 == Dependency management
 
-* <<xref/../../guides/deps_edn#,deps.edn>> - clj is a tool for managing dependencies, running a REPL, and executing Clojure programs, built by the Clojure core team
+* <<xref/../../reference/clojure_cli#,clj>> is a tool for managing dependencies, running a REPL, and executing Clojure programs, built by the Clojure core team, with deps in <<xref/../../reference/deps_edn#,deps.edn>>
 * https://leiningen.org/[Leiningen] - an extensible build tool that provides dependency management, REPL support, testing, packaging, deployment, and many other capabilities
 * https://boot-clj.github.io/[Boot] - build tooling for Clojure: instead of a special-purpose DSL, Boot supplies abstractions and libraries you can use to automate nearly any build scenario with the full power of the Clojure language
 

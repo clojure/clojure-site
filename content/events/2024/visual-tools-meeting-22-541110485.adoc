@@ -1,0 +1,40 @@
+= Visual-tools meeting 22
+2024-03-17
+:jbake-type: event
+:jbake-edition: 
+:jbake-link: https://clojureverse.org/t/visual-tools-meeting-22-ggplot-study-session-2/10606
+:jbake-location: online
+:jbake-start: 2024-03-17
+:jbake-end: 2024-03-17
+
+== Visual-tools meeting 22 - ggplot study session 2
+
+The visual tools group will have its 22nd meeting on Mar 17th. +
+Agenda +
+In this meeting, we will continue our learning of ggplot2, a grammar-of-graphics data visualization package of the R language. We will +
+ +
+explore parts of the ggplot2 book +
+practice using ggplot2 from Clojure through ClojisR +
+discuss the prototyping of a similar library in Clojure +
+ +
+Suggested background +
+To prepare for the meeting, it is recommended to +
+ +
+have R installed in your environment +
+try some code examples from Section 1 of R for Data Science (2e) +
+familiarize with R using Sections 2 &amp; 3 of R for Data Science +
+watch the recording of the previous session - Session 1 +
+ +
+Joining +
+Please write to @daslu if you wish to participate. We need to know a bit about your background and expectations to prepare the session well. +
+You can also use the Add to Calendar to add the event to your calendar. +
+Length +
+The official part will be 90 minutes long. +
+Sometimes, some of us like to stay longer and chat. +
+Video Call +
+Zoom link: Launch Meeting - Zoom +
+Recording +
+Possibly, we will share a recording of parts of the meeting. This has not been decided yet. +
+ +
+Zulip: https://clojurians.zulipchat.com/#narrow/stream/262224-events/near/424319248 +
+

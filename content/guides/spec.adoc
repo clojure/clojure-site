@@ -17,7 +17,7 @@ To use spec, declare a dependency on Clojure 1.9.0 or higher:
 
 [source, clojure]
 ----
-[org.clojure/clojure "1.11.1"]
+[org.clojure/clojure "1.11.2"]
 ----
 
 To start working with spec, require the `clojure.spec.alpha` namespace at the REPL:

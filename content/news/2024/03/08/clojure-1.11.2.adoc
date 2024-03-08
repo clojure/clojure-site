@@ -1,0 +1,10 @@
+= Clojure 1.11.2
+Alex Miller
+2024-03-08
+:jbake-type: post
+
+Clojure 1.11.2 and 1.12.0-alpha9 are now available.
+
+These releases include a fis for CVE https://nvd.nist.gov/vuln/detail/CVE-2024-22871[CVE-2024-22871] detailed in https://github.com/advisories/GHSA-vr64-r9qj-h27f[GHSA-vr64-r9qj-h27f]:
+
+* https://clojure.atlassian.net/browse/CLJ-2839[CLJ-2839] - `iterate`, `cycle`, `repeat` - infinite seqs have infinite hashCode()

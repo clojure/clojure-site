@@ -19,6 +19,12 @@ Note: All dev releases are subject to breaking changes for new work since the pr
 
 == Release 1.12.0
 
+=== 1.12.0-alpha9 (Mar 8, 2024) [[v1.12.0-alpha9]]
+
+Fix for CVE https://nvd.nist.gov/vuln/detail/CVE-2024-22871[CVE-2024-22871] detailed in https://github.com/advisories/GHSA-vr64-r9qj-h27f[GHSA-vr64-r9qj-h27f]:
+
+* https://clojure.atlassian.net/browse/CLJ-2839[CLJ-2839] - `iterate`, `cycle`, `repeat` - infinite seqs have infinite hashCode()
+
 === 1.12.0-alpha8 (Feb 21, 2024) [[v1.12.0-alpha8]]
 
 Enhancements:
@@ -138,6 +144,14 @@ New:
 Enhancements:
 
 * https://clojure.atlassian.net/browse/CLJ-1872[CLJ-1872] Extend `empty?` to `counted?` colls that aren't seqable, such as transients
+
+== Release 1.11.2
+
+=== 1.11.2 (Mar 8, 2024) [[v1.11.2]]
+
+Fix for CVE https://nvd.nist.gov/vuln/detail/CVE-2024-22871[CVE-2024-22871] detailed in https://github.com/advisories/GHSA-vr64-r9qj-h27f[GHSA-vr64-r9qj-h27f]:
+
+* https://clojure.atlassian.net/browse/CLJ-2839[CLJ-2839] - `iterate`, `cycle`, `repeat` - infinite seqs have infinite hashCode()
 
 == Release 1.11.1
 

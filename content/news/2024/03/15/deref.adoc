@@ -1,0 +1,50 @@
+= Clojure Deref (Mar 15, 2024)
+Alex Miller
+2024-03-15
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=QfLe13Ws5KM[Brimm: graph backend with a Notion-inspired UI (by Filip Juruković)] - London Clojurians
+* https://www.youtube.com/watch?v=el1_bXaAyxk[Better Sieve - Finding first n unique characters in Clojure] - Clojure Diary
+* https://www.youtube.com/watch?v=Wfzg2EYU6NA[Let's talk about Clojure editors and IDEs: Emacs, IntelliJ IDEA Cursive, VSCode Calva, Vim] - Andrey Fadeev
+* https://www.youtube.com/watch?v=WIuE1uMuX3g[REPL-driving the browser by Josh Glover] - Func Prog Sweden
+* https://www.therepl.net/episodes/51/[51: Building a text editor with Nate Hunzaker] - The REPL
+
+== Blogs, articles, and projects
+
+* https://2024.heartofclojure.eu[Heart of Clojure] - Heart of Clojure conference announcement
+* https://thenewstack.io/with-yamlscript-yaml-becomes-a-proper-programming-language/[With YAMLScript, YAML Becomes a Proper Programming Language] - Joab Jackson
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/clj-commons/pretty[pretty] https://github.com/clj-commons/pretty/blob/main/CHANGES.md#23---9-mar-2023[2.3] - Library for helping print things prettily, in Clojure - ANSI fonts, formatted exceptions
+* https://github.com/ring-clojure/ring[ring] https://github.com/ring-clojure/ring/blob/master/CHANGELOG.md#1120-2024-03-11[1.12.0] - Clojure HTTP server abstraction
+* https://github.com/mpenet/hirundo[hirundo] 0.1.33 - Helidon 4.x RING adapter - using loom/java21+
+* https://github.com/clojure-lsp/clojure-lsp-intellij[clojure-lsp-intellij] https://github.com/clojure-lsp/clojure-lsp-intellij/blob/master/CHANGELOG.md#210[2.1.0] - Intellij Plugin for Clojure & ClojureScript development via Language Server (LSP) made in Clojure
+* https://github.com/juji-io/datalevin[datalevin] 0.9.3 - A simple, fast and versatile Datalog database
+* https://github.com/squint-cljs/squint[squint] https://github.com/squint-cljs/squint/blob/main/CHANGELOG.md#v0796-2024-03-14[0.7.96] - Light-weight ClojureScript dialect
+* https://github.com/tonsky/Clojure-Sublimed[Clojure-Sublimed] https://github.com/tonsky/Clojure-Sublimed/releases/tag/3.7.0[3.7.0] - Clojure support for Sublime Text 4
+* https://github.com/igrishaev/pg2[pg2] https://github.com/igrishaev/pg2/blob/master/CHANGELOG.md#015[0.1.5] - A fast PostgreSQL driver for Clojure
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.422[2.0.422] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/viesti/timbre-json-appender[timbre-json-appender] 0.2.12 - JSON appender for Timbre
+* https://github.com/hlship/trace[trace] 1.1 - Better REPL based debugging output
+* https://github.com/behrica/vl-gallery-edn[vl-gallery-edn]  - vega-lite gallery in EDN format
+* https://github.com/borkdude/deps.clj[deps.clj] https://github.com/borkdude/deps.clj/blob/master/CHANGELOG.md#11121446[1.11.2.1446] - A faithful port of the clojure CLI bash script to Clojure
+* https://github.com/fulcrologic/guardrails[guardrails] 1.2.4 - Efficient, hassle-free function call validation with a concise inline syntax for clojure.spec and Malli
+* https://github.com/scicloj/metamorph[metamorph] 0.2.4 - A Clojure library designed to providing pipelining operations
+* https://github.com/babashka/cli[cli] https://github.com/babashka/cli/blob/main/CHANGELOG.md#v0858-2024-03-12[0.8.58] - Turn Clojure functions into CLIs!
+* https://github.com/scicloj/metamorph.ml[metamorph.ml] https://github.com/scicloj/metamorph.ml/blob/main/CHANGELOG.md[0.7.3] - Machine learning functions for metamorph based on machine learning pipelines. Part of scicloj.ml
+* https://github.com/clj-kondo/clj-kondo[clj-kondo] https://github.com/clj-kondo/clj-kondo/blob/master/CHANGELOG.md#20240313[2024.03.13] - Static analyzer and linter for Clojure code that sparks joy
+* https://github.com/clojure-lsp/clojure-lsp[clojure-lsp] https://github.com/clojure-lsp/clojure-lsp/blob/master/CHANGELOG.md#20240313-131100[2024.03.13-13.11.00] - Clojure & ClojureScript Language Server (LSP) implementation
+* https://github.com/scicloj/clay[clay] https://github.com/scicloj/clay/blob/main/CHANGELOG.md#2-alpha82---2024-03-14[2-alpha82] - A tiny Clojure tool for dynamic workflow of data visualization and literate programming
+* https://github.com/eval/bubble-config[bubble-config]  - An aero powered config with environments aimed at Babashka tasks
+* https://github.com/yaml/yamlscript[yamlscript] https://github.com/yaml/yamlscript/blob/main/Changes[0.1.42] - Programming in YAML
+* https://github.com/thheller/shadow-cljs-ext[shadow-cljs-ext]  - Loading the shadow-cljs UI in browser devtools
+* https://github.com/sstraust/easyreagent[easyreagent]  - Easy React Components for Reagent

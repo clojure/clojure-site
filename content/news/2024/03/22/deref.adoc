@@ -1,0 +1,39 @@
+= Clojure Deref (Mar 22, 2024)
+Alex Miller
+2024-03-22
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=3_SDwubLonc[Bringing Real-Time AI to Phone Calls using core.async (by Ovi Stoica)] - London Clojurians
+* https://www.youtube.com/watch?v=wo85WQaD3FI[Learn Clojure – Recursion] - Clojure Diary
+* https://www.youtube.com/watch?v=GajOBwBcFyA[Seajure March 2024 - YAMLScript] - Amperity
+* https://www.youtube.com/watch?v=MxjzaOtcdcY[Clojure visual-tools meeting 22: ggplot study session 2] - Sci Cloj
+
+== Blogs, articles, and projects
+
+* https://www.clojuriststogether.org/news/january-february-2024-long-term-project-updates/[January & February 2024 Long-Term Project Updates] - Kathy Davis (Clojurists Together)
+* https://github.com/raystubbs/zero/blob/main/doc/UsersGuide.md[Zero User’s Guide] - Ray Stubbs
+* https://blog.jakubholy.net/2024/rama-transactions/[Rama: How to achieve a transactional update across partitions] - Jakub Holý
+* https://blog.jakubholy.net/2024/hands-on-rama-day3/[Hands on Rama, day 3: Foreign keys and data integrity, macros, queries] - Jakub Holý
+* https://github.com/PEZ/js2clj2js[A demo about being cautious with clj->js and js->clj] - Peter Strömberg
+* https://polar.sh/eval/posts/named-capturing-groups-in-clojure[Named capturing groups in Clojure] - Gert Goet
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/metosin/muuntaja[muuntaja] https://github.com/metosin/muuntaja/blob/master/CHANGELOG.md#0610-2024-03-15[0.6.10] - Clojure library for fast http api format negotiation, encoding and decoding
+* https://github.com/seancorfield/next-jdbc[next-jdbc] https://github.com/seancorfield/next-jdbc/releases/tag/v1.3.925[1.3.925] - A modern low-level Clojure wrapper for JDBC-based access to databases
+* https://github.com/flow-storm/flow-storm-debugger[flow-storm-debugger] https://github.com/flow-storm/flow-storm-debugger/blob/master/CHANGELOG.md#3131-21-03-2024[3.13.1] - A debugger for Clojure and ClojureScript with some unique features
+* https://github.com/lispyclouds/contajners[contajners] https://github.com/lispyclouds/contajners/releases/tag/1.0.4[1.0.4] - An idiomatic, data-driven, REPL friendly clojure client for OCI container engines
+* https://github.com/typedclojure/typedclojure[typedclojure] https://github.com/typedclojure/typedclojure/blob/main/CHANGELOG.md#121-20240320[1.2.1] - An optional type system for Clojure
+* https://github.com/scicloj/clay[clay] https://github.com/scicloj/clay/blob/main/CHANGELOG.md#2-alpha87---2024-03-19[2-alpha87] - A tiny Clojure tool for dynamic workflow of data visualization and literate programming
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.425[2.0.425] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/scicloj/metamorph.ml[metamorph.ml] https://github.com/scicloj/metamorph.ml/blob/main/CHANGELOG.md[0.7.8] - Machine learning functions for metamorph based on machine learning pipelines. Part of scicloj.ml
+* https://github.com/hlship/trace[trace] https://github.com/hlship/trace/blob/main/CHANGES.md#12---18-mar-2024[1.2] - Better REPL based debugging output
+* https://github.com/soulspace-org/overarch[overarch] https://github.com/soulspace-org/overarch/blob/main/Changelog.md#version-0130[0.13.0] - A data driven description of software architecture based on UML and the C4 model

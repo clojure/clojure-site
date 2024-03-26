@@ -336,7 +336,7 @@ When multiple aliases are supplied, the keys in the aliases arg maps are merged 
 * `:ns-aliases` - merge
 * `:ns-default` - replace (last wins)
 * `:exec-fn` - replace (last wins)
-* `:exec-args` - deep merge
+* `:exec-args` - merge if map, or replace
 * `:main-opts` - replace (last wins)
 
 === Using aliases for custom purposes

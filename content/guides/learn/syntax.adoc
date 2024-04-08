@@ -29,7 +29,7 @@ The `;` creates a comment to the end of the line. Sometimes multiple semicolons 
 22/7      ; ratio
 ----
 
-Integers are read as fixed precision 64-bit integers when they are in range and arbitrary precision otherwise. A trailing `N` can be used to force arbitrary precision. Clojure also supports the Java syntax for octal (prefix `0`), hexadecimal (prefix `0x`) and arbitrary radix (prefix with base then `r`) integers. Ratios are provided as their own type combining a numerator and denominator.
+Integers are read as fixed precision 64-bit integers when they are in range and arbitrary precision otherwise. A trailing `N` can be used to force arbitrary precision. Clojure also supports the Java syntax for octal (prefix `0`), hexadecimal (prefix `0x`) and arbitrary radix (prefix with base ten `r`) integers. Ratios are provided as their own type combining a numerator and denominator.
 
 Floating point values are read as double-precision 64-bit floats, or arbitrary precision with an `M` suffix. Exponential notation is also supported. The special symbolic values `pass:[##Inf]`, `pass:[##-Inf]`, and `pass:[##NaN]` represent positive infinity, negative infinity, and "not a number" values respectively.
 

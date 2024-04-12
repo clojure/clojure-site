@@ -1,0 +1,45 @@
+= Clojure Deref (Apr 12, 2024)
+Alex Miller
+2024-04-12
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=zx4HGVx9NR8[Immutable Databases To Set Your Distributed System Free, by Daniel Petranek (Madison Clojure Meetup)] - Ambrose Bonnaire-Sergeant
+* https://www.youtube.com/watch?v=qfrEWIGwcPY[Is there a place for LLM orchestration tools? (by Žygimantas Medelis)] - London Clojurians
+* https://www.youtube.com/watch?v=d3iRGmbJmes[Clojure visual-tools meeting 23: ggplot study session 3] - Sci Cloj
+* https://www.youtube.com/watch?v=D37GCp_YYdY[Learn Clojure – Anonymous functions, and Functions returning functions] - Clojure Diary
+* https://www.youtube.com/watch?v=8RpvJeSbgcI[What's That Macro? clojure.core/comment] - What's That Function
+* https://www.youtube.com/watch?v=POAtnxjAWKY[Parens of the Dead - Episode 32: You die at the end] - emacsrocks
+
+== Blogs, articles, and projects
+
+* https://www.clojuriststogether.org/news/q2-2024-funding-announcement/[Q2 2024 Funding Announcement] - Kathy Davis (Clojurists Together)
+* https://gaiwan.co/blog/heart-of-clojure-tickets-launch/[Heart of Clojure Tickets For Sale] - Gaiwan / Heart of Clojure
+* https://andersmurphy.com/2024/04/06/clojure-ci-with-github-actions-and-postgres.html[Clojure: CI with Github Actions and Postgres] - Anders Murphy
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/frenchy64/criterium-from-java[criterium-from-java] 1.1.0 - Use Clojure's criterium benchmarking library from other JVM languages
+* https://github.com/spacegangster/page-renderer[page-renderer] https://github.com/spacegangster/page-renderer/blob/master/CHANGELOG.md[0.4.7] - Create offline-ready web apps with service workers, social meta, async assets and cache-busting
+* https://github.com/fabiodomingues/clj-depend[clj-depend] https://github.com/fabiodomingues/clj-depend/blob/main/CHANGELOG.md[0.10.0] - A Clojure namespace dependency analyzer
+* https://github.com/danielsz/ring-websockets-meyvn[ring-websockets-meyvn]  - Websockets implemented via Ring’s websocket protocol
+* https://github.com/Quantisan/docker-clojure[docker-clojure]  - Official Clojure docker images are now available with JDK 22
+* https://github.com/RokLenarcic/memento[memento] https://github.com/RokLenarcic/memento/blob/master/CHANGELOG.md[1.1.54] - Clojure Memoization project
+* https://github.com/RokLenarcic/memento-redis[memento-redis] https://github.com/RokLenarcic/memento-redis/blob/main/CHANGELOG[0.2.20] - Memento cache backed by Redis
+* https://github.com/pedestal/pedestal[pedestal] https://github.com/pedestal/pedestal/blob/master/CHANGELOG.md[0.7.0-beta-1] - The Pedestal Server-side Libraries
+* https://github.com/scicloj/clay[clay] https://github.com/scicloj/clay/blob/main/CHANGELOG.md[2-beta7] - A tiny Clojure tool for dynamic workflow of data visualization and literate programming
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/blob/published/CHANGELOG.md[2.0.439] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/practicalli/project-templates[project-templates] https://github.com/practicalli/project-templates/releases/tag/2024-04-08[2024-04-08] - Clojure CLI Production level templates for seancorfield/deps-new
+* https://github.com/scicloj/clay.el[clay.el] https://github.com/scicloj/clay.el/blob/main/CHANGELOG.md[1.5] - Emacs bindings for the Clojure Clay tool
+* https://github.com/clojure-goes-fast/virgil[virgil] 0.2.1 - Recompile Java code in Clojure without restarting the REPL
+* https://github.com/afucher/clojure-repl-intellij[clojure-repl-intellij] https://github.com/afucher/clojure-repl-intellij/blob/master/CHANGELOG.md[1.0.3] - Free OpenSource IntelliJ plugin for Clojure REPL development
+* https://github.com/babashka/http-client[http-client] https://github.com/babashka/http-client/blob/main/CHANGELOG.md[0.4.17] - HTTP client for Clojure and Babashka built on java.net.http
+* https://github.com/clj-commons/pretty[pretty] https://github.com/clj-commons/pretty/blob/main/CHANGES.md[2.5.1] - Library for helping print things prettily, in Clojure - ANSI fonts, formatted exceptions
+* https://github.com/jpmonettas/nrepl-flowstorm-debug[nrepl-flowstorm-debug]  - A minimal repo to debug nrepl and cider middleware using FlowStorm

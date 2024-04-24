@@ -145,6 +145,14 @@ Enhancements:
 
 * https://clojure.atlassian.net/browse/CLJ-1872[CLJ-1872] Extend `empty?` to `counted?` colls that aren't seqable, such as transients
 
+== Release 1.11.3
+
+=== 1.11.3 (Apr 24, 2024) [[v1.11.3]]
+
+https://clojure.org/news/2024/04/24/clojure-1-11-3[Release Notes]
+
+* https://clojure.atlassian.net/browse/CLJ-2843[CLJ-2843] - Reflective calls to Java methods that take primitive long or double now work when passed a narrower boxed number at runtime (Integer, Short, Byte, Float). Previously, these methods were not matched during reflection and an error was thrown.
+
 == Release 1.11.2
 
 === 1.11.2 (Mar 8, 2024) [[v1.11.2]]

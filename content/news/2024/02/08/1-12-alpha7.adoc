@@ -1,0 +1,11 @@
+= Clojure 1.12.0-alpha7
+Alex Miller
+2024-02-08
+:jbake-type: post
+
+Clojure 1.12.0-alpha7 is now available!
+
+This release reverts the following patch from alpha6 which had a change in exception type:
+
+* https://clojure.atlassian.net/browse/CLJ-2783[CLJ-2783] - replace calls to deprecated URL constructor
+

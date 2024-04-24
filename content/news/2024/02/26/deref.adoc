@@ -1,0 +1,66 @@
+= Clojure Deref (Feb 26, 2024)
+Alex Miller
+2024-02-26
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== From the core
+
+This week we released https://clojure.org/news/2024/02/21/1-12-alpha8[Clojure 1.12.0-alpha8] which is a minor update, mainly to revert https://clojure.atlassian.net/browse/CLJ-1162[CLJ-1162] which caused problems for some cases where a type implemented both IDeref and Future. This release also contains an updated fix for https://clojure.atlassian.net/browse/CLJ-2783[CLJ-2783] which we reverted in alpha7 and caused problems with (at least) instaparse. The change for https://clojure.atlassian.net/browse/CLJ-2568[CLJ-2568] is one of the highest questions in https://ask.clojure.org[Ask Clojure] - we thought it was ready for alpha6 but it caused a test failure in our test suite when direct linking was turned off and we wanted to understand that better before we released. In light of several regression failures seen in alpha6, we've created a new regression test suite that checks a lot of community projects and will be using this more proactively in the future to reduce this kind of churn.
+
+In new work, we've been reconsidering the design work on array class symbols, qualified methods, and method values based on some of the things we saw from the community. With array class symbols, we in particular saw both questions and concerns that indicated we had at least one invalid assumption baked into the design. The array class symbol design was based on an assumption that Foo* names were invalid class names, which is true in Java, but not on the JVM (or in Clojure via deftype)! This drove us way back to the beginning of the design process and I think we will end up changing this syntax, more on that to come.
+
+There was a lot of feedback on qualified methods and method values with respect to the relationship of these features to reflection. Using reflection is valuable, especially in the context of exploratory programming at the REPL. This has caused us to re-think some of our approach here, design work still ongoing, but I expect there will be some changes in this area.
+
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=ywlNGiD9gCg[Bosquet LLM command line interface and observability tools] - Žygimantas Medelis
+* https://vimeo.com/914533314[Apropos 2024-02-13] - Apropos Clojure
+* https://www.youtube.com/watch?v=Jz9NcnQbH5I[Some controversial truths (by Peter Taoussanis)] - London Clojurians
+* https://clojuredesign.club/episode/111-loopify/[Ep 111: Loopify!] - Functional Design in Clojure
+* https://clojuredesign.club/episode/112-purify/[Ep 112: Purify!] - Functional Design in Clojure
+* https://www.youtube.com/watch?v=kwE0U2sPJr8[Learn Clojure – Conditions, case] - Clojure Diary
+* https://www.youtube.com/watch?v=kMB1laAOev0[Learn Clojure – Loops] - Clojure Diary
+* https://clojure.stream/workshops/kit[Kit Workshop] - ClojureStream
+* https://clojure.stream/workshops/graph-db-in-clojure[Build a Graph Database in Clojure Workshop] - ClojureStream
+
+== Blogs, articles, and projects
+
+* https://tonsky.me/blog/clj-reload/[New Library: clj-reload] - Nikita Prokopov
+* https://grishaev.me/en/pg-jdbc[PG2 release 0.1.3: Next.JDBC-compatible API] - Ivan Grishaev
+* https://tilton.medium.com/matrix-vs-async-hell-vs-flutter-4fec72899cbf[Matrix vs. Async Hell vs. Flutter] - Kenneth Tilton
+* https://blog.flowthing.me/repl/[The anatomy of a REPL] - Eero Helenius
+* https://jmglov.net/blog/2024-02-22-cljcastr.html[cljcastr, or a young man's Zencastr clonejure] - Josh Glover
+* https://metaredux.com/posts/2024/02/19/cider-preliminary-support-for-clojure-ts-mode.html[CIDER: Preliminary Support for clojure-ts-mode] - Bozhidar Batsov
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/clojure/clojure[clojure] https://clojure.org/news/2024/02/21/1-12-alpha8[1.12.0-alpha8] - The Clojure programming language
+* https://github.com/polyfy/polylith[polylith] https://github.com/polyfy/polylith/releases/tag/v0.2.19[0.2.19] - A tool used to develop Polylith based architectures in Clojure
+* https://github.com/fulcrologic/guardrails[guardrails] 1.2.3 - Efficient, hassle-free function call validation with a concise inline syntax for clojure.spec and Malli
+* https://github.com/replikativ/mesalog[mesalog] 0.2.253 - CSV data loader for Datalog databases
+* https://github.com/lambdaisland/cli[cli] https://github.com/lambdaisland/cli/blob/main/CHANGELOG.md#0424-2024-02-17--5a1e316[0.4.24] - Opinionated command line argument handling, with excellent support for subcommands
+* https://github.com/lambdaisland/deep-diff2[deep-diff2] https://github.com/lambdaisland/deep-diff2/releases/tag/v2.11.216[2.11.216] - Deep diff Clojure data structures and pretty print the result
+* https://github.com/tonsky/clj-reload[clj-reload] https://github.com/tonsky/clj-reload/blob/main/CHANGELOG.md#013---feb-21-2024[0.1.3] - Smarter way to reload Clojure code
+* https://github.com/igrishaev/pg2[pg2] https://github.com/igrishaev/pg2/blob/master/CHANGELOG.md#013[0.1.3] - A fast PostgreSQL driver for Clojure
+* https://github.com/yetanalytics/flint[flint] https://github.com/yetanalytics/flint/blob/main/CHANGELOG.md#v030[0.3.0] - SPARQL DSL library for Clojure(Script)
+* https://github.com/yetanalytics/flint-jena[flint-jena] https://github.com/yetanalytics/flint-jena/blob/main/CHANGELOG.md#013[0.1.3] - Library to compile Flint queries and updates into Apache Jena objects
+* https://repo.prod.meissa.de/meissa/c4k-forgejo[c4k-forgejo] 3.2.1 - Provision forgejo on k8s with c4k
+* https://github.com/zmedelis/bosquet[bosquet] https://github.com/zmedelis/bosquet/releases/tag/v2024.02.22[2024.02.22] - Tooling to build LLM applications
+* https://github.com/uncomplicate/neanderthal[neanderthal] 0.48.0 - Fast Clojure Matrix Library
+* https://github.com/babashka/babashka[babashka] https://github.com/babashka/babashka/blob/master/CHANGELOG.md#13189-2024-02-22[1.3.189] - Native, fast starting Clojure interpreter for scripting
+* https://github.com/squint-cljs/squint[squint] https://github.com/squint-cljs/squint/blob/main/CHANGELOG.md#v0694-2024-02-20[0.6.94] - Light-weight ClojureScript dialect
+* https://github.com/practicalli/clojure-cli-config[clojure-cli-config] https://github.com/practicalli/clojure-cli-config/releases/tag/2024-02-16[2024-02-16] - User aliases and Clojure CLI configuration for deps.edn based projects
+* https://github.com/scicloj/clay[clay] https://github.com/scicloj/clay/blob/main/CHANGELOG.md#2-alpha80---2024-02-17[2-alpha80] - A tiny Clojure tool for dynamic workflow of data visualization and literate programming
+* https://github.com/babashka/tools-deps-native[tools-deps-native] https://github.com/babashka/tools-deps-native/blob/master/CHANGELOG.md#v016[0.1.6] - Run tools.deps as a native binary
+* https://github.com/sikt-no/clj-jwt[clj-jwt] https://github.com/sikt-no/clj-jwt/blob/main/CHANGELOG.md#0598---2024-02-09[0.5.98] - A Clojure library to handle validation of JWTs and signing claims using JSON Web Keys
+* https://github.com/NoahTheDuke/splint[splint] https://github.com/NoahTheDuke/splint/blob/main/CHANGELOG.md#v1140---2024-02-19[1.14.0] - A Clojure linter focused on style and code shape
+* https://github.com/nrepl/nrepl[nrepl] https://github.com/nrepl/nrepl/releases/tag/v1.1.1[1.1.1] - A Clojure network REPL that provides a server and client, along with some common APIs of use to IDEs and other tools that may need to evaluate Clojure code in remote environments
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.413[2.0.413] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/fulcrologic/guardrails[guardrails] 1.2.3 - Efficient, hassle-free function call validation with a concise inline syntax for clojure.spec and Malli
+* https://github.com/babashka/cli[cli] https://github.com/babashka/cli/blob/main/CHANGELOG.md#v0857-2024-02-22[0.8.57] - Turn Clojure functions into CLIs

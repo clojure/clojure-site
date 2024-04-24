@@ -1,0 +1,17 @@
+= Clojure 1.12.0-alpha8
+Alex Miller
+2024-02-21
+:jbake-type: post
+
+Clojure 1.12.0-alpha8 is now available!
+
+**New:**
+
+* https://clojure.atlassian.net/browse/CLJ-2568[CLJ-2568] - `clojure.walk/walk` - preserve metadata on lists and seqs
+* https://clojure.atlassian.net/browse/CLJ-2783[CLJ-2783] - replace calls to deprecated URL constructor
+
+
+**Reverted:**
+
+* https://clojure.atlassian.net/browse/CLJ-1162[CLJ-1162] - `deref` - improve error message when called on non IDRef
+

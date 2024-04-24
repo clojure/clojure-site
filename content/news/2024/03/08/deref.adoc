@@ -1,0 +1,56 @@
+= Clojure Deref (Mar 8, 2024)
+Alex Miller
+2024-03-08
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== From the core
+
+Last week https://nvd.nist.gov/vuln/detail/CVE-2024-22871[CVE-2024-22871] detailed in https://github.com/advisories/GHSA-vr64-r9qj-h27f[GHSA-vr64-r9qj-h27f] was filed. I've added the relevant info to the latter link so read there for the details. The important takeaway here is that you should never read serialized objects from an untrusted source (usually this is via ObjectInputStream.readObject() if you're grepping your source code). There are an open-ended number of ways an attacker can craft malicious objects using a variety of languages and libraries.
+
+Today we released Clojure 1.11.2 and 1.12.0-alpha9 with a fix for the specific problem identified in that service advisory - the change is small (converting some infinite loop cases to throw instead). Along with this, there is a new version of the Clojure CLI that defaults to Clojure 1.11.2, and new versions of some contrib libraries.
+
+We have been working hard on the last remaining feature pieces for Clojure 1.12. Due to some useful feedback on prior alphas, we found an issue with the new class array syntax (e.g. `String*`) - while this is an invalid class name in Java, it (and literally any name) are valid class names in the JVM, and in particular, Clojure `deftype` is an example way that you can create such a class. We considered a wide range of options but we have settled on an alternate syntax, with array classes ending in `::N` (where N is the dimension). `::` is not valid in Java class names, and not (until now) valid in Clojure symbol names, so there is no chance of conflict with this syntax.
+
+With method values, we heard all of your feedback regarding reflective support for uniform method symbols. I think we've found some interesting new angles on this that will allow us to support reflection in many cases, which I will save for another post. For those interested specifically in avoiding reflection, we will address that more directly in a future release. And finally, we are zero-ing in final work for implicit function conversion. All of this work is past the planning and deep into implementation, and it should start to land soon.
+
+Finally, this is not really Clojure core work but a result of some LLM explorations at Nubank, but I've submitted a https://github.com/nuprl/MultiPL-E/pull/136[patch] to the MultiPL-E LLM coding benchmark to add support for Clojure. We're starting to use this ourselves in evaluating Clojure capabilities of different models, and hopefully others can get use out of it as well.
+
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=2vAyJPwogSI[Leveling Up Clojure Runtime Specs, by Ambrose Bonnaire-Sergeant (Madison Clojure Meetup)] - Ambrose Bonnaire-Sergeant
+* https://www.youtube.com/watch?v=PlPFgMctQPQ[The Design of Biff (by Jacob O'Bryant)] - London Clojurians
+* https://www.youtube.com/watch?v=n6OeKHm4BSQ[Malli getting started - best library to work with schemas in Clojure] - Andrey Fadeev
+* https://www.youtube.com/watch?v=qYT9vTG_5xk[Use only necessary variables in let, and using Tabby A.I suggest with Clojure] - Clojure Diary
+* https://www.youtube.com/watch?v=UjhKYmYl8mI[Learn Clojure – Starting with Functions] - Clojure Diary
+* https://www.youtube.com/watch?v=1zYfDgpuhAw[Learn Clojure – Functions with multiple arguments] - Clojure Diary
+* https://www.youtube.com/watch?v=iewoQ1JO3rg[Learn Clojure – Functions returning stuff] - Clojure Diary
+
+== Blogs, articles, and projects
+
+* https://www.clojuriststogether.org/news/feb.-2024-short-term-project-updates/[Feb. 2024 Short-Term Project Updates] - Kathy Davis (Clojurists Together)
+* https://www.patreon.com/posts/99549283[Transparency report: February 2024] - Nikita Prokopov
+* https://bogoyavlensky.com/blog/db-schema-for-budget-tracker-with-automigrate/[Designing a database schema for a budget tracker with Automigrate] - Andrey Bogoyavlenskiy
+* https://www.wedesoft.de/software/2024/03/01/nrepl/[Getting started with nREPL server and REPL-y client] - Jan Wedekind
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/paintparty/fireworks[fireworks] 0.1.1 - Fireworks is a color printer for Clojure, ClojureScript, and Babashka
+* https://github.com/k13labs/futurama[futurama] 1.0.2 - Futurama is a Clojure library for more deeply integrating async abstractions with core.async
+* https://github.com/k13labs/clara-rules[clara-rules] https://github.com/k13labs/clara-rules/blob/main/CHANGELOG.md#140-snapshot[1.4.0-SNAPSHOT] - Performance focused forward-chaining rules in Clojure
+* https://github.com/clojure-lsp/clojure-lsp[clojure-lsp] https://github.com/clojure-lsp/clojure-lsp/releases/tag/2024.03.01-11.37.51[2024.03.01-11.37.51] - Clojure & ClojureScript Language Server (LSP) implementation
+* https://github.com/phronmophobic/llama.clj[llama.clj] 0.8.2 - Run LLMs locally. A clojure wrapper for llama.cpp
+* https://github.com/practicalli/clojure[clojure] https://github.com/practicalli/clojure/releases/tag/2024-03-03[2024-03-03] - Practicalli Clojure REPL Driven Development
+* https://github.com/eval/deps-try[deps-try] 0.11.1 - Try out Clojure libraries via rebel-readline
+* https://github.com/seancorfield/honeysql[honeysql] https://github.com/seancorfield/honeysql/releases/tag/v2.6.1126[2.6.1126] - Turn Clojure data structures into SQL
+* https://github.com/bowbahdoe/template-processor[template-processor]  - Clojure library which provides StringTemplate-like functionality
+* https://github.com/dundalek/dinodoc[dinodoc] https://github.com/dundalek/dinodoc/blob/main/CHANGELOG.md#020-2024-03-05[0.2.0] - Docusaurus-powered documentation system for Clojure and other languages
+* https://github.com/tonsky/Clojure-Sublimed[Clojure-Sublimed] https://github.com/tonsky/Clojure-Sublimed/releases/tag/3.6.0[3.6.0] - Clojure support for Sublime Text 4
+* https://github.com/babashka/nbb[nbb] https://github.com/babashka/nbb/blob/main/CHANGELOG.md#12187-2024-03-04[1.2.187] - Scripting in Clojure on Node.js using SCI
+* https://github.com/soulspace-org/overarch[overarch] https://github.com/soulspace-org/overarch/blob/main/Changelog.md#version-0120[0.12.0] - A data driven description of software architecture based on UML and the C4 model
+* https://github.com/clj-kondo/clj-kondo[clj-kondo] https://github.com/clj-kondo/clj-kondo/blob/master/CHANGELOG.md#20240305[2024.03.05] - Static analyzer and linter for Clojure code that sparks joy

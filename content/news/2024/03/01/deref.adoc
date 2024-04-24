@@ -1,0 +1,44 @@
+= Clojure Deref (Mar 1, 2024)
+Alex Miller
+2024-03-01
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=mtwHbxS2PmU[Sitefox framework: ClojureScript on the backend (by Chris McCormick)] - London Clojurians
+* https://www.youtube.com/watch?v=6BYObNV2pxk[Clojure visual-tools meeting 21: ggplot study session 1] - Sci Cloj
+* https://www.youtube.com/watch?v=kn9nvHEgzJY[Introducing Launchpad for Clojure] - Lambda Island
+* https://clojuredesign.club/episode/113-highlightify/[Ep 113: Highlightify!] - Functional Design in Clojure
+* https://www.therepl.net/episodes/50/[50: Peter Taoussanis] - The REPL
+
+== Blogs, articles, and projects
+
+* https://scicloj.github.io/docs/community/groups/real-world-data/[real-world-data: a space to discuss your data and science projects in Clojure] - Scicloj
+* https://jank-lang.org/blog/2024-02-23-bindings/[jank development update - Dynamic bindings and more!] - Jeaye Wilkerson
+* https://www.taoensso.com/news/2024-02-open-source[Open source update] - Peter Taoussanis
+* https://blog.jakubholy.net/2024/hands-on-rama-day2/[Hands on Rama, day 2: Rewrite CAS, finish basic C(R)UD] - Jakub Holý
+* https://www.juxt.pro/blog/clojure-in-treasury-prime/[Clojure in Banking: Treasury Prime] - Joe Littlejohn (JUXT)
+* https://blog.michielborkent.nl/oss-updates-jan-feb-2024.html[OSS updates January and February 2024] - Michiel Borkent
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/onionpancakes/chassis[chassis] https://github.com/onionpancakes/chassis/releases/tag/v1.0.353[1.0.353] - Fast HTML5 serialization for Clojure
+* https://github.com/http-kit/http-kit[http-kit] https://github.com/http-kit/http-kit/releases/tag/v2.8.0-RC1[2.8.0-RC1] - Simple, high-performance event-driven HTTP client+server for Clojure
+* https://github.com/clj-commons/fs[fs] https://github.com/clj-commons/fs/releases/tag/Release-1.6.311[1.6.311] - File system utilities for Clojure
+* https://github.com/pitch-io/uix[uix] https://github.com/pitch-io/uix/blob/master/CHANGELOG.md#110[1.1.0] - Idiomatic ClojureScript interface to modern React.js
+* https://github.com/babashka/process[process] https://github.com/babashka/process/blob/master/CHANGELOG.md#0522-2024-02-29[0.5.22] - Clojure library for shelling out / spawning sub-processes
+* https://github.com/multiplyco/tailwind-clj[tailwind-clj] 1.0.3 - Scan Clojure files for matches to Tailwind CSS class names
+* https://repo.prod.meissa.de/meissa/c4k-website[c4k-website] https://repo.prod.meissa.de/meissa/c4k-website/releases/tag/2.0.0[2.0.0] - GitOps for static generated Websites
+* https://github.com/phronmophobic/cloogle[cloogle]  - Semantic search across half a million clojure functions
+* https://github.com/juji-io/datalevin[datalevin] https://github.com/juji-io/datalevin/blob/master/CHANGELOG.md#0829-2024-02-23[0.8.29] - A simple, fast and versatile Datalog database
+* https://github.com/scicloj/clay[clay] https://github.com/scicloj/clay/blob/main/CHANGELOG.md#2-alpha81---2024-02-24[2-alpha81] - A tiny Clojure tool for dynamic workflow of data visualization and literate programming
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.414[2.0.414] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/squint-cljs/squint[squint] https://github.com/squint-cljs/squint/blob/main/CHANGELOG.md#v0695-2024-02-26[0.6.95] - Light-weight ClojureScript dialect
+* https://github.com/practicalli/astronvim-config[astronvim-config] https://github.com/practicalli/astronvim-config/releases/tag/2024-02-27[2024-02-27] - Practicalli AstroNvim user configuration with AstroNvim Community Packages, written in Lua
+* https://github.com/abogoyavlensky/automigrate[automigrate] https://github.com/abogoyavlensky/automigrate/releases/tag/0.3.2[0.3.2] - 🤖 Auto-generated database migrations for Clojure

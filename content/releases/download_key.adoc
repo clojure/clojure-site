@@ -14,21 +14,21 @@ A typical url in Maven Central will look something like:
 
 [source]
 ----
-https://repo1.maven.org/maven2/org/clojure/clojure/1.11.1/clojure-1.11.1.jar
+https://repo1.maven.org/maven2/org/clojure/clojure/1.11.2/clojure-1.11.2.jar
 ----
 
 Your dependency manager / build tool will download that file to your local Maven cache, usually:
 
 [source]
 ----
-~/.m2/repository/org/clojure/clojure/1.11.1/clojure-1.11.1.jar
+~/.m2/repository/org/clojure/clojure/1.11.2/clojure-1.11.2.jar
 ----
 
 You can append .asc to any jar or pom url in Maven to obtain the signature for that file:
 
 [source]
 ----
-curl -O https://repo1.maven.org/maven2/org/clojure/clojure/1.11.1/clojure-1.11.1.jar.asc
+curl -O https://repo1.maven.org/maven2/org/clojure/clojure/1.11.2/clojure-1.11.2.jar.asc
 ----
 
 == Verification
@@ -42,7 +42,7 @@ The Clojure key used to sign all jars is registered in the MIT key server (pgp.m
 You can check this by verifying the jar with the signature:
 
 ----
-$ gpg --verify clojure-1.11.1.jar.asc ~/.m2/repository/org/clojure/clojure/1.11.1/clojure-1.11.1.jar
+$ gpg --verify clojure-1.11.2.jar.asc ~/.m2/repository/org/clojure/clojure/1.11.2/clojure-1.11.2.jar
 gpg: Signature made Thu Jun  6 08:43:47 2019 CDT
 gpg:                using RSA key 8D06684A958AE602
 gpg: Good signature from "Clojure/core (build.clojure.org Release Key version 2) <core@clojure.com>" [unknown]

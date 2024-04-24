@@ -146,6 +146,8 @@ Maven libraries are located in Maven repositories using "Maven coordinates", typ
 
 Currently, only `jar` artifacts are supported. Support for other artifact types (particularly Bill of Materials poms) may be added in the future.
 
+Note that Maven `<repositories>` declared in dependencies or transitive dependencies are ignored. All repositories needed by the full set of dependencies must be declared in the project deps.edn using <<deps_edn#procurer_mvn_repos,:mvn-repos>>.
+
 [[deps_mvn_version]]
 === :mvn/version
 

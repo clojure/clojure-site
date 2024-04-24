@@ -34,7 +34,7 @@ After you download and install the tools, you can start a REPL by running the `c
 [source,shell]
 ----
 $ clj
-Clojure 1.11.1
+Clojure 1.11.2
 user=>
 ----
 
@@ -75,7 +75,7 @@ Restart the REPL with the `clj` tool:
 $ clj
 Downloading: clojure/java-time/clojure.java-time/1.1.0/clojure.java-time-1.1.0.pom from clojars
 Downloading: clojure/java-time/clojure.java-time/1.1.0/clojure.java-time-1.1.0.jar from clojars
-Clojure 1.11.1
+Clojure 1.11.2
 user=> (require '[java-time.api :as t])
 nil
 user=> (str (t/instant))
@@ -271,7 +271,7 @@ Apply that classpath modification and examine the modified classpath by invoking
 $ clj -A:test -Spath
 test:
 src:
-/Users/me/.m2/repository/org/clojure/clojure/1.11.1/clojure-1.11.1.jar:
+/Users/me/.m2/repository/org/clojure/clojure/1.11.2/clojure-1.11.2.jar:
 ... same as before (split here for readability)
 ----
 
@@ -326,7 +326,7 @@ It can be helpful to experiment with a library without adding it to an existing 
 [source,bash]
 ----
 $ clojure -Sdeps '{:deps {org.clojure/core.async {:mvn/version "1.5.648"}}}'
-Clojure 1.11.1
+Clojure 1.11.2
 user=> (require '[clojure.core.async :as a])
 nil
 ----
@@ -370,7 +370,7 @@ You can then tell the CLI to prep using this command (this is a 1-time action fo
 $ clj -X:deps prep
 Prepping io.github.puredanger/cool-lib in /Users/me/demo/needs-prep
 $ clj
-Clojure 1.11.1
+Clojure 1.11.2
 user=>
 ----
 
@@ -520,7 +520,7 @@ To https://clojure.github.io/tools.deps.cli/clojure.tools.deps.cli.api-api.html#
 ----
 % clj -X:deps list
 clojure.java-time/clojure.java-time 1.1.0  (MIT)
-org.clojure/clojure 1.11.1  (EPL-1.0)
+org.clojure/clojure 1.11.2  (EPL-1.0)
 org.clojure/core.specs.alpha 0.2.62  (EPL-1.0)
 org.clojure/spec.alpha 0.3.218  (EPL-1.0)
 time-lib/time-lib ../cli-getting-started/time-lib
@@ -533,7 +533,7 @@ If you want to understand the https://clojure.github.io/tools.deps.cli/clojure.t
 [source,shell]
 ----
 % clj -X:deps tree
-org.clojure/clojure 1.11.1
+org.clojure/clojure 1.11.2
   . org.clojure/spec.alpha 0.3.218
   . org.clojure/core.specs.alpha 0.2.62
 time-lib/time-lib /Users/alex.miller/tmp/cli-getting-started/time-lib
@@ -542,4 +542,4 @@ time-lib/time-lib /Users/alex.miller/tmp/cli-getting-started/time-lib
 
 There were no version selections made here, but see https://clojure.org/reference/dep_expansion#_tree_printing[the docs] for more on how choices are explained in the tree if needed.
 
-Both of these helper functions take an optional `:aliases` argument if you wish to examine the dependency list or tree with one or more aliases applied, such as `clj -X:deps list '[:alias1 :alias2]'`.
+Both of these helper functions take an optional `:aliases` argument if you wish to examine the dependency list or tree with one or more aliases applied, such as `clj -X:deps list :aliases '[:alias1 :alias2]'`.

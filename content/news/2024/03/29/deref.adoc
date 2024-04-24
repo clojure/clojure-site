@@ -1,0 +1,37 @@
+= Clojure Deref (Mar 29, 2024)
+Alex Miller
+2024-03-29
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=S9heg5vS7Uo[Tricky Clojure Functions: partial, comp, juxt and more] - Andrey Fadeev
+* https://www.youtube.com/watch?v=oeY2_M22nEM[Clojure real-world-data meeting 1 snippet 1: Kyle Passarelli] - Sci Cloj
+* https://www.youtube.com/watch?v=iG2OF9C2FSI[Clojure real-world-data meeting 1 snippet 2: Adham Omran] - Sci Cloj
+* https://www.youtube.com/watch?v=QQZBUnNQf3M[Learn Clojure – Multi Methods] - Clojure Diary
+* https://www.youtube.com/watch?v=cPHlbPSB3LU[Learn Clojure – More on multimethods] - Clojure Diary
+* https://soundcloud.com/defn-771544745/94-clojure-go-cloud-storage-tech-and-more-with-albin-aurelien-and-wouter[#94 Clojure, Go, Cloud Storage Tech and more with Albin, Aurelien, and Wouter] - defn
+
+== Blogs, articles, and projects
+
+* https://redgreenrefactor.dev/posts/optimizing-my-f1-fantasy-team-with-clojure/[Optimizing My F1 Fantasy Team with Clojure] - John Oerter
+* https://scicloj.github.io/clojure-data-scrapbook/projects/geography/chicago-bikes/[Analysing Chicago bike trips] - Daniel Slutsky
+* https://www.xtdb.com/blog/dev-diary-mar-24[Development Diary #11] - James Henderson (XTDB)
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/hulunote/hulunote[hulunote]  - hulunote, a tool for networked thought, think different
+* https://github.com/roboli/balloon[balloon] https://github.com/roboli/balloon/blob/master/CHANGELOG.md#023---2024-03-23[0.2.3] - Deflate/Inflate (Flat/Unflat) your Clojure/Script maps
+* https://github.com/StudistCorporation/sleepydog[sleepydog] https://github.com/StudistCorporation/sleepydog/releases/tag/v0.2.0[0.2.0] - Clojure library for tracing (possibly async) applications with Datadog
+* https://github.com/soulspace-org/overarch[overarch] https://github.com/soulspace-org/overarch/blob/main/Changelog.md#version-0140[0.14.0] - A data driven description of software architecture based on UML and the C4 model
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.432[2.0.432] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/squint-cljs/squint[squint] https://github.com/squint-cljs/squint/blob/main/CHANGELOG.md#v0799-2024-03-29[0.7.99] - Light-weight ClojureScript dialect
+* https://github.com/viesti/timbre-json-appender[timbre-json-appender] 0.2.13 - JSON appender for Timbre
+* https://github.com/clj-commons/pretty[pretty] https://github.com/clj-commons/pretty/blob/main/CHANGES.md#250---27-mar-2024[2.5.0] - Library for helping print things prettily, in Clojure - ANSI fonts, formatted exceptions
+* https://github.com/borkdude/rewrite-edn[rewrite-edn] https://github.com/borkdude/rewrite-edn/blob/master/CHANGELOG.md#048[0.4.8] - Utility lib on top of rewrite-clj with common operations to update EDN while preserving whitespace and comments

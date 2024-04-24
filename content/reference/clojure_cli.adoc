@@ -336,7 +336,7 @@ When multiple aliases are supplied, the keys in the aliases arg maps are merged 
 * `:ns-aliases` - merge
 * `:ns-default` - replace (last wins)
 * `:exec-fn` - replace (last wins)
-* `:exec-args` - deep merge
+* `:exec-args` - merge if map, or replace
 * `:main-opts` - replace (last wins)
 
 === Using aliases for custom purposes
@@ -622,6 +622,13 @@ clj -X:deps tree
 ---
 
 Prints dependency tree with inclusion/exclusion information as determined during <<dep_expansion#_tree_printing,dependency expansion>>). Additional options can be used to select aliases or other classpath modifications, or to modify printing information.
+
+For example, the following can be used to print the deps tree for a `:test` alias:
+
+[source]
+---
+clj -X:deps tree :aliases '[:test]`
+---
 
 See https://clojure.github.io/tools.deps.cli/clojure.tools.deps.cli.api-api.html#clojure.tools.deps.cli.api/list[API docs].
 

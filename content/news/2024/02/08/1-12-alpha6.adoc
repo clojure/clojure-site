@@ -1,0 +1,118 @@
+= Clojure 1.12.0-alpha6
+Alex Miller
+2024-02-08
+:jbake-type: post
+
+Clojure 1.12.0-alpha6 is now available! Please read the release notes below.
+
+Clojure is a hosted language and fully embraces that host including the Java Virtual Machine, the JDK (Java Development Kit), and interop with Java APIs. Over the last decade, all of these have seen significant evolution and Java APIs are increasingly using recent Java features like streams, functional interfaces, and lambdas.
+
+Clojure 1.12 delivers significant enhancements to Java interop focusing on three main areas:
+
+* <<1-12-alpha6#method_values,Method values>>
+* <<1-12-alpha6#fns,Functional interfaces>>
+* <<1-12-alpha6#streams,Streams>>
+
+[[method_values]]
+== Method values
+
+Clojure programmers often want to use Java methods in higher-order functions (e.g. passing a Java method to `map`). Until now, this has required programmers to manually wrap methods in functions. This is verbose, and might require manual hinting for overload disambiguation, or incur incidental reflection or boxing.
+
+With this release, programmers can now use Java qualified method symbols as ordinary functions in value contexts - the compiler will automatically generate the wrapping function. Method symbols signifying values must resolve to a single method at compile time, using the new <<1-12-alpha6#qualified_methods,qualified method symbols>> and/or <<1-12-alpha6#param-tags,:param-tags metadata>> as necessary. 
+
+Qualified method symbols have value semantics when used in non-invocation positions:
+
+* `Classname/method` - value is a Clojure function that invokes a static or instance method
+* `Classname/new` - value is a Clojure function that invokes a constructor
+
+See: https://clojure.atlassian.net/browse/CLJ-2793[CLJ-2793]
+
+[[qualified_methods]]
+=== Uniform qualified method syntax - `Class/method` and `Class/new`
+
+Java members inherently exist in a class.  For methods as values we need a way to explicitly specify the class of an instance method because there is no possibility for inference.
+
+The `Classname/method` syntax can now be used for static methods and instance methods, and `Classname/new` for constructors, in both invocation and value position. Class qualifiers may be either full class names or imported "short" class names. In all cases other than static method invocation, the combination of Class, method name and :param-tags must unambiguously resolve to exactly one method. Given a fully resolved qualified method symbol, the compiler does no inference from target type, arg types or arity and reflection will not occur.
+
+Note: Static fields are values and should be referenced without parens unless they are intended as function calls, e.g `(System/out)` should be `System/out`. Future Clojure releases will treat the field's value as something invokable and invoke it.
+
+See: https://clojure.atlassian.net/browse/CLJ-2806[CLJ-2806]
+
+[[param-tags]]
+=== :param-tags metadata
+
+When using methods as values, only the class and method names are provided in the symbol, if the method is overloaded the parameter types must be provided to resolve to one specific method.
+
+`:param-tags` metadata can now be supplied on qualified method symbols to specify the signature of a single desired method ('resolving' it). The `:param-tags` metadata is a vector of zero or more tags: `[... tag ...]`. A tag is any existing valid `:tag` metadata value. Each tag corresponds to a parameter in the desired signature (arity should match the number of tags). Parameters with non-overloaded types can use the placeholder `_` in lieu of the tag.
+
+A new metadata reader syntax `^[ ... ]` attaches `:param-tags` metadata to member symbols, just as `^tag` attaches `:tag` metadata to a symbol.
+
+See: https://clojure.atlassian.net/browse/CLJ-2805[CLJ-2805]
+
+=== Array class symbols
+
+Clojure supports class symbols both as a value (for class object) and as a type hint, but has not provided syntax for array classes other than strings.
+
+Clojure now provides array class symbols, comprising the name of the array component type: primitive, fully-qualified class, or import class, followed by an asterisk for each dimension of the array (1 or more). Array class symbols can be used as type hints, or as values that resolves to the corresponding array class object.
+
+Examples: `String*`, `java.lang.String*`, `long**`. 
+
+See: https://clojure.atlassian.net/browse/CLJ-2807[CLJ-2807]
+
+[[fns]]
+== Functional interfaces
+
+Note: this will be available in a future alpha.
+
+Many JDK and Java library APIs now take "functional interfaces" - Java interfaces with a single method that can act as functions (these are marked with the https://docs.oracle.com/javase/8/docs/api/java/lang/FunctionalInterface.html[@FunctionalInterface] annotation). Prior to 1.12, Clojure programmers, when invoking Java methods or constructors that take functional interfaces, had to wrap IFns in an adapter (via reify).
+
+Now the compiler will implicitly convert Clojure IFns to the required interface. To avoid repeated conversion in an inner loop, you can explicitly coerce an IFn to a functional interface in a let binding by hinting the binding name. As an optimization, method values are directly adapted without conversion to IFn.
+
+See: https://clojure.atlassian.net/browse/CLJ-2799[CLJ-2799]
+
+=== Java Supplier interop
+
+Calling methods that take a https://docs.oracle.com/javase/8/docs/api/java/util/function/Supplier.html[Supplier] (a method that supplies a value) required writing an adapter with reify. Clojure has a "value supplier" interface with syntactic support already - `IDeref`. All `IDeref` impls (`delay`, `future`, `atom`, etc) now implement the `Supplier` interface directly.
+
+See: https://clojure.atlassian.net/browse/CLJ-2792[CLJ-2792]
+
+[[streams]]
+== Streams
+
+Java APIs increasingly return https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html[Stream]s, which are hard to consume because they do not implement interfaces that Clojure already supports, and hard to interop with because Clojure doesn't directly implement Java functional interfaces.
+
+=== seq, into, reduce, and transduce for Java streams
+
+Clojure now provides these functions to interoperate with streams in an idiomatic manner, all functions behave analogously to their Clojure counterparts:
+
+* `(stream-seq! stream) => seq`
+* `(stream-reduce! f [init-val] stream) => val`
+* `(stream-transduce! xf f [init-val] stream) => val`
+* `(stream-into! to-coll [xf] stream) => to-coll`
+
+All of these operations are terminal stream operations (they consume the stream).
+
+See: https://clojure.atlassian.net/browse/CLJ-2775[CLJ-2775]
+
+=== PersistentVector implements Spliterable
+
+Java collections provide streams via https://docs.oracle.com/javase/8/docs/api/java/util/Spliterator.html["spliterators"], iterators that can be split for faster parallel traversal. `PersistentVector` now provides a custom spliterator that supports parallelism, with greatly improved performance.
+
+See: https://clojure.atlassian.net/browse/CLJ-2791[CLJ-2791]
+
+== Other enhancements
+
+* https://clojure.atlassian.net/browse/CLJ-2777[CLJ-2777] - `clojure.java.process/start` - add `:clear-env` option to clear env vars from parent environment
+* https://clojure.atlassian.net/browse/CLJ-2828[CLJ-2828] - `clojure.java.process/capture` - removed, use `slurp` instead
+* https://clojure.atlassian.net/browse/CLJ-1162[CLJ-1162] - `deref` - improve error message when called on non IDRef
+* https://clojure.atlassian.net/browse/CLJ-2225[CLJ-2225] - `assert` and `pass:[*assert*]` - improve docstrings to add context
+* https://clojure.atlassian.net/browse/CLJ-2290[CLJ-2290] - `into` - add 0- and 1-arity to docstring
+* https://clojure.atlassian.net/browse/CLJ-2552[CLJ-2552] - `reify` - improve docstring and fix example
+* https://clojure.atlassian.net/browse/CLJ-2640[CLJ-2640] - `ex-info` - now handles nil data map
+* https://clojure.atlassian.net/browse/CLJ-2783[CLJ-2783] - replace calls to deprecated URL constructor
+
+== Bug fixes
+
+* https://clojure.atlassian.net/browse/CLJ-2788[CLJ-2788] - `clojure.repl.deps/add-lib` - no longer affected by `pass:[*print-length*]` settings
+* https://clojure.atlassian.net/browse/CLJ-2813[CLJ-2813] - anonymous function arg reader - no longer accepts invalid arg symbols
+* https://clojure.atlassian.net/browse/CLJ-2803[CLJ-2803] - #inst printer - no longer uses a ThreadLocal formatter

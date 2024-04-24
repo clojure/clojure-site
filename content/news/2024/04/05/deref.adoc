@@ -1,0 +1,52 @@
+= Clojure Deref (Apr 5, 2024)
+Alex Miller
+2024-04-05
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts and videos
+
+* https://soundcloud.com/defn-771544745/94-clojure-go-cloud-storage-tech-and-more-with-albin-aurelien-and-wouter[#94 Clojure, Go, Cloud Storage Tech and more with Albin, Aurelien, and Wouter] - defn
+* https://www.parens-of-the-dead.com/s2e31.html[Parens of the Dead - Episode 31: On hit points] - emacsrocks
+* https://www.youtube.com/watch?v=5GluhUmMlpM[Noj - getting started - from raw data to a blog post] - Sci Cloj
+* https://www.youtube.com/watch?v=YxbS1PEZsX0[Learn Clojure - Pre and Post Condition Checking] - Clojure Diary
+* https://www.youtube.com/watch?v=ibjc9felB0c[Learn Clojure - Docstring] - Clojure Diary
+* https://www.youtube.com/watch?v=64bBcDoKW-A[Immutability and persistent data structures, overview of Clojure list, map, vector and set] - Andrey Fadeev
+* https://www.youtube.com/watch?v=uY-grDIsRTs&list=PLnmJKMAp4Vo52QpcmENnBywwZXD7DKEZA[What's That Function - clojure.core] - What's That Function
+
+
+== Blogs, articles, and projects
+
+* https://jank-lang.org/blog/2024-03-29-syntax-quoting/[jank development update - Syntax quoting!] - Jeaye Wilkerson
+* https://fredrikmeyer.net/2024/04/02/2d-tree.html[Implementing a 2d-tree in Clojure] - Fredrik Meyer
+* https://codewithkira.com/2024-04-04-state-of-clojure-ml.html[The Current State of ML in Clojure] - Kira McLean
+* https://andersmurphy.com/2024/04/01/clojure-pruning-html-with-clojure-walk.html[Clojure: pruning HTML with clojure.walk] - Anders Murphy
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/scicloj/clay[clay] https://github.com/scicloj/clay/blob/main/CHANGELOG.md#2-beta4---2024-04-05[2-beta4] - A tiny Clojure tool for dynamic workflow of data visualization and literate programming
+* https://github.com/djblue/portal[portal] https://github.com/djblue/portal/releases/tag/0.54.2[0.54.2] - A clojure tool to navigate through your data
+* https://github.com/tonsky/sane-math[sane-math] 0.1.0 - Clojure/Script library for infix (normal) math expressions
+* https://github.com/mpenet/pact[pact] 1.0.6 - clojure.spec to json-schema generation library
+* https://github.com/eerohele/Tutkain[Tutkain] https://github.com/eerohele/Tutkain/blob/master/CHANGELOG.md#0201-alpha---2024-04-03[0.20.1 (alpha)] - A Sublime Text package for interactive Clojure development
+* https://github.com/pesterhazy/beep-boop[beep-boop]  - Audible and visual feedback for test runs
+* https://github.com/babashka/neil[neil] https://github.com/babashka/neil/blob/main/CHANGELOG.md[0.3.65] - A CLI to add common aliases and features to deps.edn-based projects
+* https://github.com/filipesilva/fdb[fdb] https://github.com/filipesilva/fdb/blob/master/CHANGELOG.md[1.0.0] - Reactive database environment for your files
+* https://github.com/afucher/clojure-repl-intellij[clojure-repl-intellij] https://github.com/afucher/clojure-repl-intellij/blob/master/CHANGELOG.md[1.0.0] - Free OpenSource IntelliJ plugin for Clojure REPL development
+* https://github.com/jeff303/kc-repl[kc-repl] https://github.com/jeff303/kc-repl/releases/tag/v2.0[2.0] - An interactive, command line tool for exploring Kafka clusters
+* https://github.com/Akeboshiwind/tg-clj[tg-clj] https://github.com/Akeboshiwind/tg-clj/blob/main/CHANGELOG.md[0.2.2] - A telegram bot api wrapper inspired by aws-api
+* https://github.com/Akeboshiwind/tg-clj-server[tg-clj-server] https://github.com/Akeboshiwind/tg-clj-server/blob/master/CHANGELOG.md[0.3.0] - A more framework-y library for use with tg-clj inspired by ring web-servers
+* https://github.com/grammarly/omniconf[omniconf] https://github.com/grammarly/omniconf/blob/master/CHANGELOG.md[0.5.2] - Configuration library for Clojure that favors explicitness
+* https://github.com/scicloj/clay.el[clay.el] https://github.com/scicloj/clay.el/blob/main/CHANGELOG.md[1.3] - Emacs bindings for the Clojure Clay tool
+* https://github.com/flow-storm/flow-storm-debugger[flow-storm-debugger] https://github.com/flow-storm/flow-storm-debugger/blob/master/CHANGELOG.md[3.14.0] - A debugger for Clojure and ClojureScript with some unique features
+* https://github.com/clojure-lsp/clojure-lsp[clojure-lsp] https://github.com/clojure-lsp/clojure-lsp/releases/tag/2024.03.31-19.10.13[2024.03.31-19.10.13] - Clojure & ClojureScript Language Server (LSP) implementation
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/blob/published/CHANGELOG.md[2.0.435] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/chr15m/sitefox[sitefox] 0.0.19 - Node + cljs backend web framework
+* https://github.com/squint-cljs/squint[squint] https://github.com/squint-cljs/squint/blob/main/CHANGELOG.md[0.7.104] - Light-weight ClojureScript dialect
+* https://github.com/juji-io/datalevin[datalevin] https://github.com/juji-io/datalevin/blob/master/CHANGELOG.md[0.9.4] - A simple, fast and versatile Datalog database
+* https://github.com/megh-khaire/semantic-router-clj[semantic-router-clj] 0.1.0-alpha.1 - Decision making layer for LLMs in Clojure

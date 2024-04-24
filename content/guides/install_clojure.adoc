@@ -15,7 +15,7 @@ Clojure (the language) is provided as a Java ARchive (JAR) file, available in th
 
 This page concerns the command-line tool (the Clojure CLI). This tool (used by the commands `clojure` and `clj`) can download Clojure itself and other Clojure or JVM-based libraries. **Any version of the Clojure CLI can download or use any version of the Clojure language itself (they are independent).**
 
-The version numbers of the language and the CLI are separate but related. The Clojure language has a 3 part-version (like `1.11.2`) and the Clojure CLI has a 4-part version (like `1.11.2.1441`). The leading 3 parts of the CLI version indicate which version of the Clojure language will be used by default in a REPL, unless you specify otherwise in the <<xref/../../../reference/deps_edn#,deps.edn>> configuration file.
+The version numbers of the language and the CLI are separate but related. The Clojure language has a 3 part-version (like `1.11.3`) and the Clojure CLI has a 4-part version (like `1.11.3.1456`). The leading 3 parts of the CLI version indicate which version of the Clojure language will be used by default in a REPL, unless you specify otherwise in the <<xref/../../../reference/deps_edn#,deps.edn>> configuration file.
 
 == Mac OS instructions
 

@@ -22,6 +22,11 @@ For more information see the following docs:
 
 Recent official releases are described here. Prereleases and older versions can be found in the https://github.com/clojure/brew-install/blob/1.11.1/CHANGELOG.md[repo changelog].
 
+=== 1.11.3.1456 (Apr 24, 2024) [[v1.11.3.1456]]
+
+* Update default Clojure version to 1.11.3
+* Updated tools.deps, tools.deps.cli to latest
+
 === 1.11.2.1446 (Mar 8, 2024) [[v1.11.2.1446]]
 
 * Update default Clojure version to 1.11.2

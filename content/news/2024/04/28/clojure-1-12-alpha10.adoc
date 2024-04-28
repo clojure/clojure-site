@@ -1,0 +1,68 @@
+= Clojure 1.12.0-alpha10
+Alex Miller
+2024-04-28
+:jbake-type: post
+
+= Clojure 1.12.0-alpha10
+Fogus
+2024-04-??
+:jbake-type: post
+
+Clojure 1.12.0-alpha10 is now available! Please read the release notes below.
+
+[[method_values]]
+== Method values
+
+Clojure programmers often want to use Java methods in higher-order functions (e.g. passing a Java method to `map`). Until now, programmers have had to manually wrap methods in functions. This is verbose, and might require manual hinting for overload disambiguation, or incur incidental reflection or boxing.
+
+Programmers can now use Java <clojure-1-12-alpha10#qualified_methods,qualified methods>> as ordinary functions in value contexts - the compiler will automatically generate the wrapping function. When you supply <<clojure-1-12-alpha10#param-tags,:param-tags metadata>> on a qualified method symbol, the metadata must allow the compiler to resolve the symbol to a single method at compile time.
+
+New in this release: the compiler will generate a reflective call when param tags are not supplied on a qualified method that does not resolve due to overloading.
+
+See: https://clojure.atlassian.net/browse/CLJ-2793[CLJ-2793], https://clojure.atlassian.net/browse/CLJ-2844[CLJ-2844], https://clojure.atlassian.net/browse/CLJ-2835[CLJ-2835]
+
+[[qualified_methods]]
+=== Uniform qualified method syntax - `Class/method`, `Class/.method`, and `Class/new`
+
+Java members inherently exist in a class.  For methods as values we need a way to explicitly specify the class of an instance method because there is no possibility for inference.
+
+Qualified methods have value semantics when used in non-invocation positions:
+
+* `Classname/method` - value is a Clojure function that invokes a static method
+* `Classname/.method` - value is a Clojure function that invokes an instance method
+* `Classname/new` - value is a Clojure function that invokes a constructor
+
+New in this release: developers may use `Classname/method` and `Classname/.method` syntax to differentiate between static and instance methods.
+
+Qualified method invocations with param-tags use only the tags to resolve the method. Without param-tags they behave like the equivalent dot syntax, except the qualifying class takes precedence over hints of the target object, and over its runtime type when invoked via reflection.
+
+Note: Static fields are values and should be referenced without parens unless they are intended as function calls, e.g `(System/out)` should be `System/out`. Future Clojure releases will treat the field's value as something invokable and invoke it.
+
+See: https://clojure.atlassian.net/browse/CLJ-2844[CLJ-2844]
+
+[[param-tags]]
+=== :param-tags metadata
+
+When used as values, qualified methods supply only the class and method name, and thus cannot resolve overloaded methods.
+
+Developers can supply `:param-tags` metadata on qualified methods to specify the signature of a single desired method, 'resolving' it. The `:param-tags` metadata is a vector of zero or more tags: `[... tag ...]`. A tag is any existing valid `:tag` metadata value. Each tag corresponds to a parameter in the desired signature (arity should match the number of tags). Parameters with non-overloaded types can use the placeholder `_` in lieu of the tag.
+
+A new metadata reader syntax `^[ ... ]` attaches `:param-tags` metadata to member symbols, just as `^tag` attaches `:tag` metadata to a symbol.
+
+See: https://clojure.atlassian.net/browse/CLJ-2805[CLJ-2805]
+
+[[array-class-syntax]]
+== Array class syntax
+
+Clojure supports symbols naming classes both as a value (for class object) and as a type hint, but has not provided syntax for array classes other than strings.
+
+Developers can now refer to an array class using a symbol of the form `ComponentClass/#dimensions`, eg `String/2` refers to the class of a 2 dimensional array of Strings. Component classes can be fully-qualified classes, imported classes, or primitives. Array class syntax can be used as both type hints and values.
+
+Examples: `String/1`, `java.lang.String/1`, `long/2`. 
+
+See: https://clojure.atlassian.net/browse/CLJ-2807[CLJ-2807]
+
+== Bug fixes
+
+* https://clojure.atlassian.net/browse/CLJ-2843[CLJ-2843] - Reflective calls to Java methods that take primitive long or double now work when passed a narrower boxed number at runtime (Integer, Short, Byte, Float). Previously, these methods were not matched during reflection and an error was thrown.
+* https://clojure.atlassian.net/browse/CLJ-2841[CLJ-2841] - IDeref should also implement DoubleSupplier

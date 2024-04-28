@@ -19,6 +19,21 @@ Note: All dev releases are subject to breaking changes for new work since the pr
 
 == Release 1.12.0
 
+=== 1.12.0-alpha10 (Apr 28, 2024) [[v1.12.0-alpha10]]
+
+https://clojure.org/news/2024/04/28/clojure-1-12-alpha10[Release notes]
+
+Features:
+
+* https://clojure.atlassian.net/browse/CLJ-2807[CLJ-2807] - Array class syntax
+* https://clojure.atlassian.net/browse/CLJ-2844[CLJ-2844] - Qualified methods w/o param-tags may use reflection and inference
+* https://clojure.atlassian.net/browse/CLJ-2835[CLJ-2835] - Error message for constructor method value arity mismatch says "method" instead of "constructor"
+
+Fixes:
+
+* https://clojure.atlassian.net/browse/CLJ-2843[CLJ-2843] - Reflective calls to Java methods that take primitive long or double now work when passed a narrower boxed number at runtime (Integer, Short, Byte, Float). Previously, these methods were not matched during reflection and an error was thrown.
+* https://clojure.atlassian.net/browse/CLJ-2841[CLJ-2841] - IDeref should also implement DoubleSupplier
+
 === 1.12.0-alpha9 (Mar 8, 2024) [[v1.12.0-alpha9]]
 
 Fix for CVE https://nvd.nist.gov/vuln/detail/CVE-2024-22871[CVE-2024-22871] detailed in https://github.com/advisories/GHSA-vr64-r9qj-h27f[GHSA-vr64-r9qj-h27f]:

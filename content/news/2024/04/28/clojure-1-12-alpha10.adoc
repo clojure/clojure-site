@@ -22,7 +22,7 @@ New in this release: the compiler will generate a reflective call when param tag
 See: https://clojure.atlassian.net/browse/CLJ-2793[CLJ-2793], https://clojure.atlassian.net/browse/CLJ-2844[CLJ-2844], https://clojure.atlassian.net/browse/CLJ-2835[CLJ-2835]
 
 [[qualified_methods]]
-=== Uniform qualified method syntax - `Class/method`, `Class/.method`, and `Class/new`
+=== Qualified methods - `Class/method`, `Class/.method`, and `Class/new`
 
 Java members inherently exist in a class.  For methods as values we need a way to explicitly specify the class of an instance method because there is no possibility for inference.
 

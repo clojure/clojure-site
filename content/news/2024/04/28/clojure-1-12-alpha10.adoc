@@ -47,7 +47,7 @@ A new metadata reader syntax `^[ ... ]` attaches `:param-tags` metadata to membe
 See: https://clojure.atlassian.net/browse/CLJ-2805[CLJ-2805]
 
 [[array-class-syntax]]
-== Array class syntax
+=== Array class syntax
 
 Clojure supports symbols naming classes both as a value (for class object) and as a type hint, but has not provided syntax for array classes other than strings.
 

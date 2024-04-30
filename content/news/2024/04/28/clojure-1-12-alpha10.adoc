@@ -3,7 +3,7 @@ Alex Miller
 2024-04-28
 :jbake-type: post
 
-Clojure 1.12.0-alpha10 is now available! Please read the release notes below.
+Clojure 1.12.0-alpha10 is now available! Find download and usage information on the <<xref/../../releases/downloads#,Downloads>> page.
 
 [[method_values]]
 == Method values
@@ -27,7 +27,7 @@ Qualified methods have value semantics when used in non-invocation positions:
 * `Classname/.method` - value is a Clojure function that invokes an instance method
 * `Classname/new` - value is a Clojure function that invokes a constructor
 
-New in this release: developers may use `Classname/method` and `Classname/.method` syntax to differentiate between static and instance methods.
+New in this release: developers must use `Classname/method` and `Classname/.method` syntax to differentiate between static and instance methods.
 
 Qualified method invocations with param-tags use only the tags to resolve the method. Without param-tags they behave like the equivalent dot syntax, except the qualifying class takes precedence over hints of the target object, and over its runtime type when invoked via reflection.
 

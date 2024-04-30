@@ -55,7 +55,22 @@ Read the https://github.com/clojure/clojure/blob/master/changes.md[Changelog] fo
 
 == Development Release: 1.12.0-alpha10 (Apr 28, 2024)
 
-* Clojure 1.12.0-alpha10
+Include the release in your project using the following coordinates:
+
+deps.edn coordinate:
+
+[source,clojure]
+----
+org.clojure/clojure {:mvn/version "1.12.0-alpha10"}
+----
+
+Leiningen dependency:
+
+[source,clojure]
+----
+[org.clojure/clojure "1.12.0-alpha10"]
+----
+
 * https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.clojure%22%20AND%20a%3A%22clojure%22%20AND%20v%3A1.12.0*[Clojure 1.12.0 pre-release builds]
 * <<devchangelog#,Dev changelog>>
 * Dependencies:

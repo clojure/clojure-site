@@ -19,6 +19,11 @@ Note: All dev releases are subject to breaking changes for new work since the pr
 
 == Release 1.12.0
 
+=== 1.12.0-alpha11 (Apr 30, 2024) [[v1.12.0-alpha11]]
+
+* https://clojure.atlassian.net/browse/CLJ-2848[CLJ-2848] - Qualified instance methods without param-tags should use the qualified method class, not the target object type
+* https://clojure.atlassian.net/browse/CLJ-2847[CLJ-2847] - Improve error message when a qualified method in value position matches no methods
+
 === 1.12.0-alpha10 (Apr 28, 2024) [[v1.12.0-alpha10]]
 
 https://clojure.org/news/2024/04/28/clojure-1-12-alpha10[Release notes]

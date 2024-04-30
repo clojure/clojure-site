@@ -1,0 +1,9 @@
+= Clojure 1.12.0-alpha11
+Alex Miller
+2024-04-30
+:jbake-type: post
+
+Clojure 1.12.0-alpha11 is now available! Find download and usage information on the <<xref/../../../../../releases/downloads#,Downloads>> page.
+
+* https://clojure.atlassian.net/browse/CLJ-2848[CLJ-2848] - Qualified instance methods without param-tags should use the qualified method class, not the target object type
+* https://clojure.atlassian.net/browse/CLJ-2847[CLJ-2847] - Improve error message when a qualified method in value position matches no methods

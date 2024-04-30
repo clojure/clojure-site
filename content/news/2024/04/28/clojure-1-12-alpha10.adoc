@@ -10,7 +10,7 @@ Clojure 1.12.0-alpha10 is now available! Find download and usage information on 
 
 Clojure programmers often want to use Java methods in higher-order functions (e.g. passing a Java method to `map`). Until now, programmers have had to manually wrap methods in functions. This is verbose, and might require manual hinting for overload disambiguation, or incur incidental reflection or boxing.
 
-Programmers can now use Java <<clojure-1-12-alpha10#qualified_methods,qualified methods>> as ordinary functions in value contexts - the compiler will automatically generate the wrapping function. When you supply <<clojure-1-12-alpha10#param-tags,:param-tags metadata>> on a qualified method symbol, the metadata must allow the compiler to resolve the symbol to a single method at compile time.
+Programmers can now use Java <<clojure-1-12-alpha10#qualified_methods,qualified methods>> as ordinary functions in value contexts - the compiler will automatically generate the wrapping function. New in this release: the compiler will generate a reflective call when a qualified method does not resolve due to overloading. Developers can supply <<clojure-1-12-alpha10#param-tags,:param-tags metadata>> on qualified methods to specify the signature of a single desired method, 'resolving' it.
 
 New in this release: the compiler will generate a reflective call when param tags are not supplied on a qualified method that does not resolve due to overloading.
 
@@ -40,7 +40,7 @@ See: https://clojure.atlassian.net/browse/CLJ-2844[CLJ-2844]
 
 When used as values, qualified methods supply only the class and method name, and thus cannot resolve overloaded methods.
 
-Developers can supply `:param-tags` metadata on qualified methods to specify the signature of a single desired method, 'resolving' it. The `:param-tags` metadata is a vector of zero or more tags: `[... tag ...]`. A tag is any existing valid `:tag` metadata value. Each tag corresponds to a parameter in the desired signature (arity should match the number of tags). Parameters with non-overloaded types can use the placeholder `_` in lieu of the tag.
+Developers can supply `:param-tags` metadata on qualified methods to specify the signature of a single desired method, 'resolving' it. The `:param-tags` metadata is a vector of zero or more tags: `[... tag ...]`. A tag is any existing valid `:tag` metadata value. Each tag corresponds to a parameter in the desired signature (arity should match the number of tags). Parameters with non-overloaded types can use the placeholder `_` in lieu of the tag. When you supply :param-tags metadata on a qualified method, the metadata must allow the compiler to resolve it to a single method at compile time.
 
 A new metadata reader syntax `^[ ... ]` attaches `:param-tags` metadata to member symbols, just as `^tag` attaches `:tag` metadata to a symbol.
 

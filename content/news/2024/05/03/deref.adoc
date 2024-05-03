@@ -1,0 +1,65 @@
+= Clojure Deref (May 3, 2024)
+Alex Miller
+2024-05-03
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=oBEpxFtfwjE[Clojure visual-tools meeting 24 - badspreadsheet & HTMX] - Sci Cloj
+* https://www.youtube.com/watch?v=1Y89-UlG1FA[Clojure real-world-data meeting 3 snippet 1: Bayesian Statistics with Stan by Daniel Slutsky] - Sci Cloj
+* https://www.youtube.com/watch?v=eUFf3-og_-Y[From data to insights: Clojure for data deep dive (by Kira McLean)] - London Clojurians
+* https://www.youtube.com/watch?v=8kHgF3XO5sA[Parens of the Dead - Episode 34: "The horror of the mailman"] - emacsrocks
+* https://clojuredesign.club/episode/114-brand-new-again/[Ep 114: Brand New, Again] - Functional Design in Clojure
+* https://www.youtube.com/watch?v=saCmFLdOayc[Learn Clojure – Explaining Spec] - Clojure Diary
+* https://www.youtube.com/watch?v=X0cUsah8UhA[Learn Clojure – Spec Conform, and using Spec in Functions] - Clojure Diary
+
+== Blogs, articles, and projects
+
+* https://jank-lang.org/blog/2024-04-27-lazy-sequences/[jank development update - Lazy sequences!] - Jeaye Wilkerson
+* https://danielsz.github.io/2024-04-17T22_50.html[The Anatomy of a HTTP Server] - Daniel Szmulewicz
+* https://www.taoensso.com/news/2024-04-open-source[Open source update] - Peter Taoussanis
+* https://blog.michielborkent.nl/oss-updates-mar-apr-2024.html[OSS updates March and April 2024] - Michiel Borkent
+* https://blog.redplanetlabs.com/2024/04/30/rama-is-a-testament-to-the-power-of-clojure/[Rama is a testament to the power of Clojure] - Nathan Marz (Red Planet Labs)
+* https://tonsky.me/blog/humble-objects/[Humble Chronicles: The Inescapable Objects] - Nikita Prokopov
+* https://tonsky.me/blog/humble-defcomp/[Humble Chronicles: Shape of the Component] - Nikita Prokopov
+* https://www.patreon.com/posts/transparency-103373960[Transparency report: April 2024] - Nikita Prokopov
+* https://codewithkira.com/2024-04-30-clojurists-together-update-mar-apr-2024.html[OSS Updates March and April 2024] - Kira McLean
+* https://scicloj.github.io/blog/clojurists-together-project-scicloj-community-building-april-2024-update/[Clojurists Together project - Scicloj community building - April 2024 update] - Daniel Slutsky
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/clojure/clojure[clojure] https://clojure.org/news/2024/04/30/clojure-1-12-alpha11[1.12.0-alpha11] - The Clojure programming language
+* https://github.com/clojure/brew-install[brew-install] https://clojure.org/releases/tools#v1.11.3.1463[1.11.3.1463] - Clojure CLI
+* https://github.com/scicloj/scicloj.ml.tribuo[scicloj.ml.tribuo] https://github.com/scicloj/scicloj.ml.tribuo/blob/master/CHANGELOG.md[0.1.1] - Use Tribuo ML model in metamorph.ml
+* https://github.com/metosin/reitit[reitit] https://github.com/metosin/reitit/blob/master/CHANGELOG.md[0.7.0] - A fast data-driven routing library for Clojure/Script
+* https://github.com/metosin/malli[malli] https://github.com/metosin/malli/blob/master/CHANGELOG.md[0.16.1] - High-performance data-driven data specification library for Clojure/Script
+* https://github.com/taoensso/nippy[nippy] https://github.com/taoensso/nippy/blob/master/CHANGELOG.md[3.4.1] - The fastest serialization library for Clojure
+* https://github.com/http-kit/http-kit[http-kit] https://github.com/http-kit/http-kit/blob/master/CHANGELOG.md[2.8.0] - Simple, high-performance event-driven HTTP client+server for Clojure
+* https://github.com/metosin/ring-swagger[ring-swagger] https://github.com/metosin/ring-swagger/blob/master/CHANGELOG.md[1.0.0] - Swagger Spec for Clojure Web Apps
+* https://github.com/metosin/compojure-api[compojure-api] https://github.com/metosin/compojure-api/blob/1.1.x/CHANGELOG.md#1114-2024-04-30[1.1.14] - Sweet web apis with Compojure & Swagger
+* https://github.com/metosin/compojure-api[compojure-api] https://github.com/metosin/compojure-api/blob/master/CHANGELOG.md#200-alpha33-2024-04-30[2.0.0-alpha33] - Sweet web apis with Compojure & Swagger
+* https://github.com/noahtheduke/splint[splint] https://github.com/NoahTheDuke/splint/blob/main/CHANGELOG.md[1.15.0] - A Clojure linter focused on style and code shape
+* https://github.com/eval/deps-try[deps-try] https://github.com/eval/deps-try/blob/master/CHANGELOG.md[0.12.0] - Try out Clojure (libraries) via rebel-readline
+* https://github.com/lread/test-doc-blocks[test-doc-blocks] https://github.com/lread/test-doc-blocks/blob/main/CHANGELOG.adoc[1.1.19] - Test AsciiDoc and CommonMark code blocks found in articles and docstrings
+* https://github.com/igrishaev/pg2[pg2] https://github.com/igrishaev/pg2/blob/master/CHANGELOG.md[0.1.12] - A fast PostgreSQL driver for Clojure
+* https://github.com/hlship/test-pipeline[test-pipeline] https://github.com/hlship/test-pipeline/blob/main/CHANGES.md[0.7] - Break tests into reusable, composable steps
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/blob/published/CHANGELOG.md[2.0.452] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/scicloj/metamorph.ml[metamorph.ml] https://github.com/scicloj/metamorph.ml/blob/main/CHANGELOG.md[0.8.2] - Machine learning functions for metamorph based on machine learning pipelines
+* https://github.com/behrica/add-devcontainer[add-devcontainer] https://github.com/behrica/add-devcontainer/blob/main/CHANGELOG.md[0.4.2] - Babashka script which adds a devcontainer configuration to a clojure project in current folder
+* https://github.com/scicloj/scicloj.ml.smile[scicloj.ml.smile] https://github.com/scicloj/scicloj.ml.smile/blob/main/CHANGELOG.md[7.4.1] - A Smile plugin for scicloj.ml
+* https://github.com/viesti/timbre-json-appender[timbre-json-appender] https://github.com/viesti/timbre-json-appender?tab=readme-ov-file#changelog[0.2.14] - JSON appender for Timbre
+* https://github.com/practicalli/project-templates[project-templates] https://github.com/practicalli/project-templates/releases/tag/2024-04-20[2024-04-20] - Clojure CLI Production level templates for seancorfield/deps-new
+* https://github.com/practicalli/clojure-cli-config[clojure-cli-config] https://github.com/practicalli/clojure-cli-config/releases/tag/2024-04-20[2024-04-20] - User aliases and Clojure CLI configuration for deps.edn based projects
+* https://github.com/soulspace-org/overarch[overarch] https://github.com/soulspace-org/overarch/blob/main/Changelog.md[0.16.0] - A data driven description of software architecture based on UML and the C4 model
+* https://github.com/babashka/scittle[scittle] https://github.com/babashka/scittle/blob/main/CHANGELOG.md[0.6.17] - Execute Clojure(Script) directly from browser script tags via SCI
+* https://github.com/babashka/cli[cli] https://github.com/babashka/cli/blob/main/CHANGELOG.md[0.8.59] - Turn Clojure functions into CLIs!
+* https://github.com/flow-storm/flow-storm-debugger[flow-storm-debugger] https://github.com/flow-storm/flow-storm-debugger/blob/master/CHANGELOG.md[3.15.3] - A debugger for Clojure and ClojureScript with some unique features
+* https://github.com/flow-storm/clojure[ClojureStorm] https://github.com/flow-storm/clojure/blob/clojure-storm-master/CHANGELOG.md[1.12.0-alpha11] - ClojureStorm is a fork of the official Clojure compiler, with some extra code added to make it a dev compiler
+* https://github.com/squint-cljs/squint[squint] https://github.com/squint-cljs/squint/blob/main/CHANGELOG.md[0.7.107] - Light-weight ClojureScript dialect

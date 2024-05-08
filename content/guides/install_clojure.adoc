@@ -39,13 +39,6 @@ brew upgrade clojure/tools/clojure
 
 Prerequisites: <<install_clojure#java,Java>>, `bash`, `curl`, `rlwrap`
 
-To install with Linuxbrew (requires <<install_clojure#brew,brew>>):
-
-[source,shell]
-----
-brew install clojure/tools/clojure
-----
-
 To install with the Linux script installer:
 
 1. Ensure that the following dependencies are installed: `bash`, `curl`, `rlwrap`, and `Java`.
@@ -73,6 +66,15 @@ MANPATH_MAP /opt/infrastructure/clojure/bin /opt/infrastructure/clojure/man
 ----
 
 The `linux-install` script can be removed after installation.
+
+=== Linuxbrew
+
+To install with Linuxbrew (requires <<install_clojure#brew,brew>>):
+
+[source,shell]
+----
+brew install clojure/tools/clojure
+----
 
 == Posix instructions
 

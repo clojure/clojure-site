@@ -67,15 +67,6 @@ MANPATH_MAP /opt/infrastructure/clojure/bin /opt/infrastructure/clojure/man
 
 The `linux-install` script can be removed after installation.
 
-=== Linuxbrew
-
-To install with Linuxbrew (requires <<install_clojure#brew,brew>>):
-
-[source,shell]
-----
-brew install clojure/tools/clojure
-----
-
 == Posix instructions
 
 A POSIX version of the linux installer is now available as well. This installer should work on Linux, BSD, and even Mac (but will conflict with brew!)

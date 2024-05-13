@@ -18,12 +18,12 @@ toc::[]
 [%hardbreaks]
 **Classname**
 **Classname$InnerClass**
-**pass:[Classname*]**
-**pass:[primitive*]**
+**Classname/N**
+**primitive/N**
 
 Symbols representing class names are resolved to the Class instance. Inner or nested classes are separated from their outer class with a `$`. Fully-qualified class names are always valid. If a class is `import`ed in the namespace, it may be used without qualification. All classes in java.lang are automatically imported to every namespace.
 
-Since 1.12, class symbols may end in one or more pass:[*]s to refer to an array of the class. The number of pass:[*]s indicates the array dimension. Array classes may also use a primitive component, e.g. `pass:[long*]`.
+Since 1.12, class qualified symbols may have a name part of a single digit between 1 and 9, inclusive to refer to an array of the class. The digit indicates the array dimension. Array classes may also use a primitive component, e.g. `long/1`.
 
 [source,clojure-repl]
 ----
@@ -33,7 +33,7 @@ String
 -> #'user/date?
 (.getEnclosingClass java.util.Map$Entry)
 -> java.util.Map
-(.getComponentType String*)
+(.getComponentType String/1)
 -> java.lang.String
 ----
 
@@ -43,7 +43,8 @@ String
 **(.instanceMember instance args*)**
 **(.instanceMember Classname args*)**
 **(.-instanceField instance)**
-**(Classname/member [instance] args*)**
+**(Classname/staticMethod args*)**
+**(Classname/.instanceMethod instance args*)**
 **Classname/staticField**
 
 [source,clojure-repl]
@@ -61,9 +62,9 @@ Math/PI
 
 ----
 
-The preferred idiomatic forms for accessing field or method members are given above. The instance member form works for both fields and methods. The instanceField form is preferred for fields and required if both a field and a 0-argument method of the same name exist.
+The preferred idiomatic forms for accessing field or method members are given above. The instanceMember form works for both fields and methods. The instanceField form is preferred for fields and required if both a field and a 0-argument method of the same name exist.
 
-Since Clojure 1.12, `Classname/member` may refer to both static and instance members. When an instance method is specified, the instance should be provided after the member and before the args.
+Since Clojure 1.12, `Classname/.instanceMethod` refers to instance method. When an instance method is specified, the instance should be provided after the member and before the args. When a qualified instance method is present then the qualifying class takes precedence over any additional type information on the instance for the purpose of resolving the instance method.
 
 The "." forms expand into calls to the dot operator (described below) at macroexpansion time. The expansions are as follows:
 

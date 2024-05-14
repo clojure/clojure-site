@@ -1,0 +1,44 @@
+= Clojure Deref (May 10, 2024)
+Alex Miller
+2024-05-10
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+
+== Podcasts and videos
+
+* https://clojuredesign.club/episode/115-the-main-event/[Ep 115: The Main Event] - Functional Design in Clojure
+* https://www.youtube.com/watch?v=PaEJo5Jerns[Learn Clojure — What's Clojure Code?] - Clojure Diary
+
+== Blogs, articles, and projects
+
+* https://andersmurphy.com/2024/05/06/clojure-managing-throughput-with-virtual-threads.html[Clojure: managing throughput with virtual threads] - Anders Murphy
+* https://international.nubank.com.br/100m/nubank-surpasses-100-million-customers/[Nubank surpasses 100 million customers] - Nubank
+* https://flexiana.com/2024/05/lisp-game-jam-2024-a-starter-guide-for-clojure-devs[Lisp Game Jam 2024: A Starter Guide for Clojure Devs] - Jakub Zika (Flexiana)
+* https://www.clojuriststogether.org/news/march-april-2024-long-term-project-updates/[March & April 2024 Long-Term Project Updates] - Kathy Davis (Clojurists Together)
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/xadecimal/mutable-var[mutable-var] 0.1.0 - Adds a mutable variable construct to the Clojure programming language
+* https://github.com/tonsky/clj-reload[clj-reload] https://github.com/tonsky/clj-reload/blob/main/CHANGELOG.md[0.7.0] - Smarter way to reload Clojure code
+* https://github.com/ikappaki/basilisp-kernel[basilisp-kernel] https://github.com/ikappaki/basilisp-kernel/blob/main/CHANGELOG.md[1.0.0] - A Jupyter kernel for Basilisp, a Clojure compatible dialect implemented in Python
+* https://github.com/favila/enhanced-entity-map[enhanced-entity-map] 1.0.6 - A datomic peer entity map with assoc-ability, index control, and computed attributes
+* https://github.com/weavejester/integrant[integrant] https://github.com/weavejester/integrant/blob/master/CHANGELOG.md[0.9.0] - Micro-framework for data-driven architecture
+* https://github.com/ring-clojure/ring-examples[ring-examples]  - A collection of example projects for Ring
+* https://github.com/clj-commons/pomegranate[pomegranate] https://github.com/clj-commons/pomegranate/blob/master/CHANGELOG.adoc[1.2.24] - A sane Clojure API for Maven Artifact Resolver + dynamic runtime modification of the classpath
+* https://github.com/clojure-expectations/clojure-test[clojure-test] https://github.com/clojure-expectations/clojure-test/blob/develop/CHANGELOG.md[2.1.201] - A clojure.test-compatible version of the classic Expectations testing library
+* https://github.com/clj-commons/virgil[virgil] https://github.com/clj-commons/virgil/blob/master/CHANGELOG.md[0.3.0] - Recompile Java code without restarting the REPL
+* https://github.com/tatut/clj-prolog[clj-prolog]  - Clojure interface to Prolog
+* https://github.com/clj-commons/kibit[kibit] https://github.com/clj-commons/kibit/blob/master/CHANGELOG.md[0.1.10] - A static code analyzer for Clojure, ClojureScript, cljx and other Clojure variants
+* https://github.com/borkdude/deps.clj[deps.clj] https://github.com/borkdude/deps.clj/blob/master/CHANGELOG.md[1.11.3.1463] - A faithful port of the clojure CLI bash script to Clojure
+* https://github.com/lread/test-doc-blocks[test-doc-blocks] https://github.com/lread/test-doc-blocks/blob/main/CHANGELOG.adoc[1.1.20] - Test AsciiDoc and CommonMark code blocks found in articles and docstrings
+* https://github.com/noahtheduke/splint[splint] https://github.com/NoahTheDuke/splint/blob/main/CHANGELOG.md[1.15.2] - A Clojure linter focused on style and code shape
+* https://github.com/seancorfield/deps-new[deps-new] https://github.com/seancorfield/deps-new/blob/develop/CHANGELOG.md[0.7.1] - Create new projects for the Clojure CLI / deps.edn
+* https://github.com/fulcrologic/statecharts[statecharts] 1.2.4 - A Statechart library for CLJ(S)
+* https://github.com/practicalli/clojure-cli-config[clojure-cli-config] https://github.com/practicalli/clojure-cli-config/releases/tag/2024-05-07[2024-05-07] - User aliases and Clojure CLI configuration for deps.edn based projects
+* https://github.com/squint-cljs/squint[squint] https://github.com/squint-cljs/squint/blob/main/CHANGELOG.md[0.7.108] - Light-weight ClojureScript dialect

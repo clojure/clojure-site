@@ -336,6 +336,15 @@ For example, byte arrays (byte-array []) have a type of "[B".
 * chars - A character array
 * objects - An object array
 
+[[paramtags]]
+== param-tags
+
+When used as values, qualified methods supply only the class and method name, and thus cannot resolve overloaded methods.
+
+Since Clojure 1.12, developers can supply `:param-tags` metadata on qualified methods to specify the signature of a single desired method, 'resolving' it. The `:param-tags` metadata is a vector of zero or more tags: `[... tag ...]`. A tag is any existing valid `:tag` metadata value as described above. Each tag corresponds to a parameter in the desired signature (arity should match the number of tags). Parameters with non-overloaded types can use the placeholder `_` in lieu of the tag. When you supply :param-tags metadata on a qualified method, the metadata must allow the compiler to resolve it to a single method at compile time.
+
+A new metadata reader syntax `^[ ... ]` attaches `:param-tags` metadata to member symbols, just as `^tag` attaches `:tag` metadata to a symbol.
+
 [[primitives]]
 == Support for Java Primitives
 

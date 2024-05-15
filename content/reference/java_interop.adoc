@@ -75,6 +75,10 @@ The "." forms expand into calls to the dot operator (described below) at macroex
 (.-instanceField instance) ==> (. instance -instanceField)
 ----
 
+=== Method values
+
+Since Clojure 1.12, programmers can use Java qualified methods as ordinary functions in value contexts - the compiler will automatically generate the wrapping function. When used as values, qualified methods supply only the class and method name, and thus cannot resolve overloaded methods. Therefore, the compiler will generate a reflective call when a qualified method does not resolve due to overloading. Developers can supply <<link#param-tags,:param-tags metadata>> on qualified methods to specify the signature of a single desired method, 'resolving' it.
+
 == The Dot special form
 
 [[dot]]
@@ -336,10 +340,8 @@ For example, byte arrays (byte-array []) have a type of "[B".
 * chars - A character array
 * objects - An object array
 
-[[paramtags]]
+[[param-tags]]
 == param-tags
-
-When used as values, qualified methods supply only the class and method name, and thus cannot resolve overloaded methods.
 
 Since Clojure 1.12, developers can supply `:param-tags` metadata on qualified methods to specify the signature of a single desired method, 'resolving' it. The `:param-tags` metadata is a vector of zero or more tags: `[... tag ...]`. A tag is any existing valid `:tag` metadata value as described above. Each tag corresponds to a parameter in the desired signature (arity should match the number of tags). Parameters with non-overloaded types can use the placeholder `_` in lieu of the tag. When you supply :param-tags metadata on a qualified method, the metadata must allow the compiler to resolve it to a single method at compile time.
 

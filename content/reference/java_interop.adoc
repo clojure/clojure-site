@@ -64,7 +64,7 @@ Math/PI
 
 The preferred idiomatic forms for accessing field or method members are given above. The instanceMember form works for both fields and methods. The instanceField form is preferred for fields and required if both a field and a 0-argument method of the same name exist.
 
-Since Clojure 1.12, `Classname/.instanceMethod` refers to instance method. When an instance method is specified, the instance should be provided after the member and before the args. When a qualified instance method is present then the qualifying class takes precedence over any additional type information on the instance for the purpose of resolving the instance method.
+Since Clojure 1.12, `Classname/.instanceMethod` refers to a qualified instance method. When an instance method is specified, the instance should be provided after the member and before the args. When a qualified instance method is present then the qualifying class takes precedence over any additional type information on the instance for the purpose of resolving the instance method.
 
 The "." forms expand into calls to the dot operator (described below) at macroexpansion time. The expansions are as follows:
 
@@ -75,9 +75,10 @@ The "." forms expand into calls to the dot operator (described below) at macroex
 (.-instanceField instance) ==> (. instance -instanceField)
 ----
 
+[[methodvalues]]
 === Method values
 
-Since Clojure 1.12, programmers can use Java qualified methods as ordinary functions in value contexts - the compiler will automatically generate the wrapping function. When used as values, qualified methods supply only the class and method name, and thus cannot resolve overloaded methods. Therefore, the compiler will generate a reflective call when a qualified method does not resolve due to overloading. Developers can supply <<link#param-tags,:param-tags metadata>> on qualified methods to specify the signature of a single desired method, 'resolving' it.
+Since Clojure 1.12, programmers can use Java qualified methods as ordinary functions in value contexts - the compiler will automatically generate the wrapping function. When used as values, qualified methods supply only the class and method name, and thus cannot resolve overloaded methods. Therefore, the compiler will generate a reflective call when a qualified method does not resolve due to overloading. Developers can supply <<param-tags#,:param-tags metadata>> on qualified methods to specify the signature of a single desired method, 'resolving' it.
 
 == The Dot special form
 
@@ -159,9 +160,11 @@ can be written
 
 the latter expanding into `(new Classname args)` syntax at macro expansion time.
 
-Since Clojure 1.12, this alternate form may also be used (it is not rewritten at macro expansion time):
+Since Clojure 1.12, a qualified form may also be used (it is not rewritten at macro expansion time):
 
 `(Classname/new args*)`
+
+Like methods, qualified constructors `Classname/new` can be used in <<methodvalues#,values contexts>>.
 
 ''''
 

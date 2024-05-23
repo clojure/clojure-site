@@ -53,7 +53,7 @@ Clojure depends on Java and all Clojure code is compiled to Java 8 compatible by
 
 Read the https://github.com/clojure/clojure/blob/master/changes.md[Changelog] for detailed release information.
 
-== Development Release: 1.12.0-alpha11 (Apr 30, 2024)
+== Development Release: 1.12.0-alpha12 (May 23, 2024)
 
 Include the release in your project using the following coordinates:
 
@@ -61,21 +61,21 @@ deps.edn coordinate:
 
 [source,clojure]
 ----
-org.clojure/clojure {:mvn/version "1.12.0-alpha11"}
+org.clojure/clojure {:mvn/version "1.12.0-alpha12"}
 ----
 
 Leiningen dependency:
 
 [source,clojure]
 ----
-[org.clojure/clojure "1.12.0-alpha11"]
+[org.clojure/clojure "1.12.0-alpha12"]
 ----
 
 * https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.clojure%22%20AND%20a%3A%22clojure%22%20AND%20v%3A1.12.0*[Clojure 1.12.0 pre-release builds]
 * <<devchangelog#,Dev changelog>>
 * Dependencies:
-** `org.clojure/spec.alpha {:mvn/version "0.3.218"}`
-** `org.clojure/core.specs.alpha {:mvn/version "0.2.62"}`
+** `org.clojure/spec.alpha {:mvn/version "0.5.238"}`
+** `org.clojure/core.specs.alpha {:mvn/version "0.4.74"}`
 * Requirements: Java 8 or higher (recommended: Java 8, Java 11, Java 17, Java 21)
 
 == Older Releases

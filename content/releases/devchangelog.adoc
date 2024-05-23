@@ -19,6 +19,26 @@ Note: All dev releases are subject to breaking changes for new work since the pr
 
 == Release 1.12.0
 
+=== 1.12.0-alpha12 (May 23, 2024) [[v1.12.0-alpha12]]
+
+https://clojure.org/news/2024/05/17/clojure-1-12-alpha12[Release notes]
+
+Features:
+
+* https://clojure.atlassian.net/browse/CLJ-2799[CLJ-2799] - Conversion of IFn to Java functional interfaces
+
+Fixes:
+
+* https://clojure.atlassian.net/browse/CLJ-2717[CLJ-2717] - `nthrest` now returns rest output on n=0 or past end of seq
+
+Enhancements:
+
+* https://clojure.atlassian.net/browse/CLJ-2852[CLJ-2852] - Updated all deps, test deps, and plugin versions to latest
+
+Reverted:
+
+* https://clojure.atlassian.net/browse/CLJ-2803[CLJ-2803] - #inst printer - no longer uses a ThreadLocal formatter
+
 === 1.12.0-alpha11 (Apr 30, 2024) [[v1.12.0-alpha11]]
 
 * https://clojure.atlassian.net/browse/CLJ-2848[CLJ-2848] - Qualified instance methods without param-tags should use the qualified method class, not the target object type

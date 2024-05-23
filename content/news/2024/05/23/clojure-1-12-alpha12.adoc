@@ -1,0 +1,26 @@
+= Clojure 1.12.0-alpha12
+Alex Miller
+2024-05-23
+:jbake-type: post
+
+Clojure 1.12.0-alpha12 is now available! Find download and usage information on the <<xref/../../../../../releases/downloads#,Downloads>> page.
+
+[[method_values]]
+== Functional interfaces
+
+Java programs define "functions" with Java functional interfaces (marked with the  https://docs.oracle.com/javase/8/docs/api/java/lang/FunctionalInterface.html[@FunctionalInterface] annotation), which have a single method.
+
+Clojure developers can now invoke Java methods taking functional interfaces by passing functions with matching arity. The Clojure compiler implicitly converts Clojure functions to the required functional interface by constructing a lambda adapter. You can explicitly coerce a Clojure function to a functional interface by hinting the binding name in a `let` binding, e.g. to avoid repeated adapter construction in a loop.
+
+See: https://clojure.atlassian.net/browse/CLJ-2799[CLJ-2799]
+
+== Other changes
+
+Added:
+
+* https://clojure.atlassian.net/browse/CLJ-2717[CLJ-2717] - `nthrest` now returns rest output on n=0 or past end of seq
+* https://clojure.atlassian.net/browse/CLJ-2852[CLJ-2852] - Updated all deps, test deps, and plugin versions to latest
+
+Reverted:
+
+* https://clojure.atlassian.net/browse/CLJ-2803[CLJ-2803] - #inst printer - no longer uses a ThreadLocal formatter

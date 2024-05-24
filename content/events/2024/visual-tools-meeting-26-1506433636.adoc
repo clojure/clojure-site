@@ -1,0 +1,70 @@
+= Visual-tools meeting 26
+2024-06-16
+:jbake-type: event
+:jbake-edition: 
+:jbake-link: https://clojureverse.org/t/visual-tools-meeting-26-gemini-space-age-protocols-from-the-repl/10736
+:jbake-location: online
+:jbake-start: 2024-06-16
+:jbake-end: 2024-06-16
+
+== Visual-tools meeting 26 - Gemini, Space-Age, p...
+
+Visual-tools meeting 26 - Gemini, Space-Age, protocols from the REPL +
+ +
+The visual tools group will have its 26th meeting on June 16th. +
+In this meeting, Gary Johnson and @Daniel_Szmulewicz will give two talks regarding the use of internet protocols from Clojure. +
+For the background that has motivated the meetings, see the recent discussion at the Clojure mailing group. +
+Agenda +
+(see the detailed abstracts below) +
+ +
+Gary Johnson - Space-Age and the Gemini Protocol (Clojure on the Small Web) +
+Daniel Szmulewicz - How not to be protocolary with protocols +
+Discussion +
+ +
+Joining +
+Please write to @daslu or comment below if you wish to participate. You can also use the Add to Calendar to add the event to your calendar. +
+Length +
+The official part will be 90 minutes long. +
+Sometimes, some of us like to stay longer and chat. +
+Video Call +
+Zoom link: Launch Meeting - Zoom +
+Recording +
+Possibly, we will share a recording of parts of the meeting. This has not been decided yet. +
+Talk abstracts +
+Space-Age and the Gemini Protocol (Clojure on the Small Web) - Gary Johnson +
+Gemini is a text-centric, persistent communication protocol based +
+around a hyperlinked web of documents that is now almost 5 years old. +
+In many ways, it feels like the early web, but at the same time, it +
+provides privacy and authentication through the use of TLS encryption +
+and client-side X.509 certificates. +
+The protocol itself is an exercise in elegant minimalism and can be +
+easily understood and implemented by a single developer with a few +
+days of effort. All requests are encrypted. Request and response +
+headers are extremely minimal, and there are no cookies. Every request +
+serves a single document with no cascaded downloads, and there is no +
+client-side programming language like Javascript. Taken together, +
+these features ensure a private, safe, and user-driven browsing +
+experience without the need for ad blockers, browser extensions, or +
+similar defensive measures. +
+While the feature set may seem minimal, Gemini&rsquo;s community has been +
+extremely creative in the content that they have produced over the +
+years. In particular, server-side CGI scripting is well supported. +
+Because Clojure programmers also deserve a great experience in writing +
+Gemini pages and applications, I developed the Space-Age Gemini server +
+in Clojure in the summer and fall of 2020. While having zero +
+dependencies beyond Clojure itself, Space-Age supports a unique +
+Ring-like programming model that enables easy server-side scripting in +
+our favorite programming language. +
+In this talk, I will demonstrate Space-Age&rsquo;s features and show off +
+some of my favorite Gemini applications. +
+Useful Links: +
+ +
+https://geminiprotocol.net/ +
+Project Gemini FAQ +
+Gary Johnson / space-age &middot; GitLab +
+ +
+How not to be protocolary with protocols - Daniel Szmulewicz +
+I would like to talk about how Internet protocols can be fun to play with, especially at the REPL. Simple protocols like Intetd or SOCKS present a good learning experience for socket programming. Even HTTP, the opposite of a simple protocol, can be tamed given enough irreverence. I will talk about the blog post &ldquo;The Anatomy Of a HTTP Server&rdquo; and how the exercise led to an actual insight regarding web frameworks. +
+ +
+Zulip: https://clojurians.zulipchat.com/#narrow/stream/262224-events/near/438968418 +
+

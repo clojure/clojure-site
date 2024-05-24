@@ -1,0 +1,48 @@
+= Clojure Deref (May 24, 2024)
+Alex Miller
+2024-05-24
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts and videos
+
+* https://podcasters.spotify.com/pod/show/lostinlambduhhs/episodes/david-nolen---clojurescript-creative-e2jou09/a-ab9iqng[:david-nolen ( + clojurescript creative)] - Lost In Lambduhhs
+* https://clojuredesign.club/episode/117-pure-understanding/[Ep 117: Pure Understanding] - Functional Design in Clojure
+* https://vimeo.com/948934051[Apropos 2024-05-21] - Apropos Clojure
+* https://www.youtube.com/watch?v=XteeXXkOocM[Learn Clojure – Lazy Sequence, cycle] - Clojure Diary
+* https://www.youtube.com/watch?v=TcCHzmtcpjs[Learn Clojure – Lazy Sequence, iterate] - Clojure Diary
+* https://www.youtube.com/watch?v=lhM_OiM56CA[Proper way to compare numbers in Clojure] - Clojure Diary
+
+== Blogs, articles, and projects
+
+* https://ivarref.github.io/posts/network-failures/[Datomic's handling of network failures] - Ivar Refsdal
+* https://mbezjak.github.io/posts/what-to-do-with-evaluated-repl-expressions/[What to Do With Evaluated REPL Expressions?] - Miro Bezjak
+* https://tryclojure.org[Try Clojure] - Elia Scotto
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/clojure/clojure[clojure] https://clojure.org/news/2024/05/23/clojure-1-12-alpha12[1.12.0-alpha12] - The Clojure programming language
+* https://github.com/seancorfield/next-jdbc[next-jdbc] https://github.com/seancorfield/next-jdbc/blob/develop/CHANGELOG.md[1.3.939] - A modern low-level Clojure wrapper for JDBC-based access to databases
+* https://github.com/overtone/overtone[overtone] https://github.com/overtone/overtone/blob/master/CHANGELOG.md[0.14.3199] - Collaborative Programmable Music
+* https://github.com/constacts/ragtacts[ragtacts] https://github.com/constacts/ragtacts/releases/tag/v0.3.1[0.3.1] - RAG(Retrieval-Augmented Generation) for Evolving Data
+* https://github.com/scicloj/devcontainer-templates[devcontainer-templates]  - Devcontainer templates for Clojure
+* https://github.com/wardle/hermes[hermes] https://github.com/wardle/hermes/blob/main/CHANGELOG.md[1.4.1400] - Hermes provides a set of terminology tools built around SNOMED CT
+* https://github.com/eerohele/rad[rad] 2024-05-22.8-alpha - A small, zero-dependency Redis client for Clojure
+* https://github.com/clj-kondo/clj-kondo[clj-kondo] https://github.com/clj-kondo/clj-kondo/blob/master/CHANGELOG.md[2024.05.24] - Static analyzer and linter for Clojure code that sparks joy
+* https://github.com/ferdinand-beyer/dots[dots]  - Dots is a tool that generates ClojureScript wrappers for JavaScript libraries using their TypeScript definitions
+* https://github.com/babashka/fs[fs] https://github.com/babashka/fs/blob/master/CHANGELOG.md[0.5.21] - File system utility library for Clojure
+* https://github.com/hlship/cli-tools[cli-tools] https://github.com/hlship/cli-tools/blob/main/CHANGES.md[0.12] - CLIs and subcommands for Clojure or Babashka
+* https://github.com/pedestal/pedestal[pedestal] https://github.com/pedestal/pedestal/blob/master/CHANGELOG.md[0.7.0-beta-2] - The Pedestal Server-side Libraries
+* https://github.com/scicloj/clay[clay] https://github.com/scicloj/clay/blob/main/CHANGELOG.md[2-beta9] - A tiny Clojure tool for dynamic workflow of data visualization and literate programming
+* https://github.com/fulcrologic/guardrails[guardrails] 1.2.9 - Efficient, hassle-free function call validation with a concise inline syntax for clojure.spec and Malli
+* https://github.com/yaml/yamlscript[yamlscript] https://github.com/yaml/yamlscript/releases/tag/0.1.59[0.1.59] - Programming in YAML
+* https://github.com/nrepl/nrepl[nrepl] https://github.com/nrepl/nrepl/blob/master/CHANGELOG.md[1.1.2] - A Clojure network REPL
+* https://github.com/soulspace-org/overarch[overarch] https://github.com/soulspace-org/overarch/blob/main/Changelog.md[0.18.0] - A data driven description of software architecture based on UML and the C4 model
+* https://github.com/eerohele/pipehat[pipehat] https://github.com/eerohele/pipehat/blob/main/CHANGELOG.md#102-2024-05-23[1.0.2] - Read and write vertical bar encoded HL7 v2.x messages
+* https://github.com/fulcrologic/fulcro-rad[fulcro-rad] 1.6.1 - Fulcro Rapid Application Development
+* https://github.com/fulcrologic/fulcro[fulcro] 3.7.5 - A library for development of single-page full-stack web applications in clj/cljs

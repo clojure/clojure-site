@@ -130,8 +130,7 @@ To use the Adoptium Temurin installers:
 
 On Mac, you can also install Temurin using brew:
 
-* `brew tap homebrew/cask-versions` - add the cask-versions tap to Homebrew
-* `brew install --cask temurin21` - install Temurin 21 (formerly AdoptOpenJDK)
+* `brew install --cask temurin@21` - install Temurin 21 (formerly AdoptOpenJDK)
 
 Check your Java version by running `java --version`. If that's not Temurin 21, then you may then need to add `java` to your `PATH`:
 

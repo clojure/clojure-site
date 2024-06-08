@@ -1,0 +1,34 @@
+= Clojure Deref (June 8, 2024)
+Alex Miller
+2024-06-08
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=noN-0Pkw6SQ[Learn Clojure – filter] - Clojure Diary
+
+== Blogs, articles, and projects
+
+* https://sessionize.com/clojureconj-2024[Call For Speakers] - Clojure/conj
+* https://www.clojuriststogether.org/news/april-and-may-2024-short-term-project-updates/[April and May 2024 Short-Term Project Updates] - Kathy Davis (Clojurists Together)
+* https://blog.agical.se/en/posts/there-can-be-only-one/[There can be only one!] - Peter Strömberg
+* https://www.xtdb.com/blog/dev-diary-jun-24[Development Diary #12] - James Henderson (XTDB)
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/raystubbs/subzero[subzero] 0.0.1 - Build web components with ClojureScript
+* https://github.com/clj-commons/aleph[aleph] https://github.com/clj-commons/aleph/blob/0.8.0/CHANGES.md#080[0.8.0] - Asynchronous streaming communication for Clojure - web server, web client, and raw TCP/UDP
+* https://github.com/generateme/fastmath[fastmath] https://github.com/generateme/fastmath/blob/3.x/CHANGELOG.md[3.0.0-SNAPSHOT] - Fast primitive based math library
+* https://github.com/nextjournal/clerk[clerk] https://github.com/nextjournal/clerk/blob/db38910b884ed8c3911632a2a6d208b3c24474e6/CHANGELOG.md#0161016-2024-06-05[0.16.1016] - Moldable Live Programming for Clojure
+* https://github.com/squint-cljs/cherry[cherry] https://github.com/squint-cljs/cherry/blob/main/CHANGELOG.md[0.2.18] - Experimental ClojureScript to ES6 module compiler
+* https://github.com/borkdude/html[html] https://github.com/borkdude/html/blob/main/CHANGELOG.md[0.1.1] - Html generation library inspired by squint's html tag
+* https://github.com/pedestal/pedestal[pedestal] https://github.com/pedestal/pedestal/blob/master/CHANGELOG.md[0.7.0-rc-2] - The Pedestal Server-side Libraries
+* https://github.com/yaml/yamlscript[yamlscript] https://github.com/yaml/yamlscript/releases/tag/0.1.60[0.1.60] - Programming in YAML
+* https://github.com/clj-commons/pretty[pretty] https://github.com/clj-commons/pretty/blob/main/CHANGES.md[3.0.0] - Library for helping print things prettily, in Clojure - ANSI fonts, formatted exceptions
+* https://github.com/soulspace-org/overarch[overarch] https://github.com/soulspace-org/overarch/blob/main/Changelog.md[0.20.0] - A data driven description of software architecture based on UML and the C4 model

@@ -1,0 +1,36 @@
+= Clojure Deref (June 13, 2024)
+Alex Miller
+2024-06-13
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=G-KOJyoLWrg[Introducing EntityGraph: Ergonomic Data Store for SPA State (by Geo Grigoryan)] - London Clojurians
+
+== Blogs, articles, and projects
+
+* https://clojureverse.org/t/cljs-and-the-react-compiler/10774[CLJS and the React Compiler] - Thomas Heller
+* https://agspathis.gitlab.io/blog/walking-with-regexps.html[Walking with regular expressions] - Aris Spathis
+* https://www.juxt.pro/blog/plain-clojure-lambda/[A Recipe for Plain Clojure Lambdas] - Olivier Marshall (JUXT)
+* https://anthonybruno.dev/2024/06/10/How-Im-learning-Clojure-in-2024/[How I'm learning Clojure in 2024] - Anthony Bruno
+* https://www.youtube.com/watch?v=noN-0Pkw6SQ[Learn Clojure – filter] - Clojure Diary
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/clojure/tools.build[tools.build] https://github.com/clojure/tools.build/blob/master/CHANGELOG.md[0.10.4] - Clojure builds as Clojure programs
+* https://github.com/wardle/iort[iort] 0.1.54 - Interoperable Outcomes Research Tools
+* https://github.com/phronmophobic/llama.clj[llama.clj] 0.8.4 - Run LLMs locally. A clojure wrapper for llama.cpp
+* https://github.com/cljfx/cljfx[cljfx] https://github.com/cljfx/cljfx/blob/master/CHANGELOG.md#190---2024-06-11[1.9.0] - Declarative, functional and extensible wrapper of JavaFX inspired by better parts of react and re-frame
+* https://github.com/seancorfield/honeysql[honeysql] https://github.com/seancorfield/honeysql/releases/tag/v2.6.1147[2.6.1147] - Turn Clojure data structures into SQL
+* https://github.com/nrepl/nrepl[nrepl] https://github.com/nrepl/nrepl/releases/tag/v1.2.0[1.2] - A Clojure network REPL that provides a server and client, along with some common APIs of use to IDEs and other tools that may need to evaluate Clojure code in remote environments
+* https://github.com/clojure-emacs/cider[cider] https://github.com/clojure-emacs/cider/releases/tag/v1.15.0[1.15] - The Clojure Interactive Development Environment that Rocks for Emacs
+* https://github.com/squint-cljs/squint[squint] https://github.com/squint-cljs/squint/blob/main/CHANGELOG.md[0.7.111] - Light-weight ClojureScript dialect
+* https://github.com/yaml/yamlscript[yamlscript] https://github.com/yaml/yamlscript/releases/tag/0.1.61[0.1.61] - Programming in YAML
+* https://github.com/SURFnet/apie[apie] https://github.com/SURFnet/apie/blob/main/changelog.md[0.2.1] - OpenAPI Service Validator
+* https://github.com/soulspace-org/overarch[overarch] https://github.com/soulspace-org/overarch/blob/main/Changelog.md[0.21.0] - A data driven description of software architecture based on UML and the C4 model

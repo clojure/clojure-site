@@ -19,6 +19,21 @@ Note: All dev releases are subject to breaking changes for new work since the pr
 
 == Release 1.12.0
 
+=== 1.12.0-beta1 (Jun 15, 2024) [[v1.12.0-beta1]]
+
+* https://clojure.atlassian.net/browse/CLJ-2853[CLJ-2853] Reflection error incorrectly reported target object type, not qualifying class
+* https://clojure.atlassian.net/browse/CLJ-2859[CLJ-2859] Expand scope of FI adapting to include Supplier (and other 0 arg FI)
+* https://clojure.atlassian.net/browse/CLJ-2858[CLJ-2858] Fix encoding of FnInvoker method for prim-returning FIs with arity > 2
+* https://clojure.atlassian.net/browse/CLJ-2864[CLJ-2864] Stop using truthy return logic in FI adapters
+* https://clojure.atlassian.net/browse/CLJ-2863[CLJ-2863] Reflective FI dynamic proxy should use runtime classloader
+* https://clojure.atlassian.net/browse/CLJ-2770[CLJ-2770] `invoke-tool` - remove external process name parameter (this is a runtime property)
+
+Enhancements:
+
+* https://clojure.atlassian.net/browse/CLJ-2645[CLJ-2645] `PrintWriter-on` now supports auto-flush, and prepl uses it for the err stream
+* https://clojure.atlassian.net/browse/CLJ-2698[CLJ-2698] `defprotocol` - ignore unused primitive return type hints
+* https://clojure.atlassian.net/browse/CLJ-1385[CLJ-1385] `transient` - include usage model from reference docs
+
 === 1.12.0-alpha12 (May 23, 2024) [[v1.12.0-alpha12]]
 
 https://clojure.org/news/2024/05/23/clojure-1-12-alpha12[Release notes]

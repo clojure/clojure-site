@@ -66,7 +66,7 @@ The preferred idiomatic forms for accessing field or method members are given ab
 
 Since Clojure 1.12, `Classname/.instanceMethod` refers to a qualified instance method. When an instance method is specified, the instance should be provided after the member and before the args. When a qualified instance method is present then the qualifying class takes precedence over any additional type information on the instance for the purpose of resolving the instance method.
 
-The "." forms expand into calls to the dot operator (described below) at macroexpansion time. The expansions are as follows:
+The unqualified "." forms expand into calls to the dot operator (described below) at macroexpansion time. The expansions are as follows:
 
 [source,clojure]
 ----
@@ -164,7 +164,7 @@ Since Clojure 1.12, a qualified form may also be used (it is not rewritten at ma
 
 `(Classname/new args*)`
 
-Like methods, qualified constructors `Classname/new` can be used in <<methodvalues#,values contexts>>.
+Like methods, qualified constructors `Classname/new` can be used in <<methodvalues#,value contexts>>.
 
 ''''
 

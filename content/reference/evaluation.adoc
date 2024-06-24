@@ -25,7 +25,7 @@ Strings, numbers, characters, `true`, `false`, `nil` and keywords evaluate to th
 A Symbol is _resolved_:
 
 * If it is namespace-qualified, the value is the value of the binding of the global var named by the symbol. It is an error if the reference is to a non-public var in a different namespace.
-* If the qualifier names a class or a mapping from symbol to class in the current namespace, and the symbol name is a static field, the value is the value of the static field. Since Clojure 1.12, if the symbol name is a method of the class, the value is a Clojure function that invokes the method. Since Clojure 1.12, a if the qualifier names a class or primitive name and the name is a single digit between 1 and 9, inclusive then the symbol resolves to an array class.
+* If the qualifier names a class or a mapping from symbol to class in the current namespace, and the symbol name is a static field, the value is the value of the static field. Since Clojure 1.12, if the symbol name is a method of the class, the value is a Clojure function that invokes the method. Additionally, if the qualifier names a class or primitive name and the symbol name is a single digit between 1 and 9, inclusive then the symbol resolves to an array class with a dimesionality equal to the digit supplied.
 * If it is package-qualified, the value is the Java class named by the symbol. It is an error if there is no Class named by the symbol.
 * Else, it is not qualified and the first of the following applies:
 . If it names a special form it is considered a special form, and must be utilized accordingly.

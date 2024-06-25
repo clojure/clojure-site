@@ -428,9 +428,18 @@ Thus a function defined as
 
 both takes and returns values of primitive type `long` (invocations with a boxed argument and indeed any object result in a cast and delegation to the primitive-typed overload).
 
+[[coercions]]
 == Coercions
 
+=== Primitive coercions
+
 At times it is necessary to have a value of a particular primitive type. These coercion functions yield a value of the indicated type as long as such a coercion is possible: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/bigdec[bigdec] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/bigint[bigint] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/boolean[boolean] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/byte[byte] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/char[char] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/double[double] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/float[float] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/int[int] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/long[long] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/num[num] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/short[short]
+
+=== Functional interfaces
+
+Java programs define "functions" with Java functional interfaces (marked with the  https://docs.oracle.com/javase/8/docs/api/java/lang/FunctionalInterface.html[@FunctionalInterface] annotation), which have a single method.
+
+Since, Clojure 1.12, developers can invoke Java methods taking functional interfaces by passing functions with matching arity. The Clojure compiler implicitly converts Clojure functions to the required functional interface by constructing a lambda adapter. You can explicitly coerce a Clojure function to a functional interface by <<special_forms#let,hinting the binding name>> in a `let` binding, e.g. to avoid repeated adapter construction in a loop.
 
 [[optimization]]
 == Some optimization tips

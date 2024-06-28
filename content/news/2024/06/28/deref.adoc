@@ -1,0 +1,49 @@
+= Clojure Deref (June 28, 2024)
+Alex Miller
+2024-06-28
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=FeRjXbPkzjk[Parens of the Dead - Episode 36: Thirty six!] - emacsrocks
+* https://www.youtube.com/watch?v=srvFRG5tdg8[Clj-reload overview] - Nikita Prokopov
+* https://www.youtube.com/watch?v=SqWxDklYS9s[Clojure and Clojurescript Setup and Installation Tutorial (+ emacs/cider/shadow-cljs!)] - Sammy Engineering
+* https://www.youtube.com/watch?v=nEt06LLQaBY[SpreadSheesh! talk by Dennis Heihoff] - Dennis Heihoff
+* https://www.youtube.com/watch?v=annjnmc3IN0[Learn Clojure — Apply] - Clojure Diary
+* https://www.youtube.com/watch?v=7nIJPhr9zYQ[Learn Clojure — Destructuring] - Clojure Diary
+* https://www.youtube.com/watch?v=29fRxO7dVbw[Learn Clojure — Threading] - Clojure Diary
+* https://www.youtube.com/watch?v=kNTwwaP8Xi0[Learn Clojure — Regular Expressions] - Clojure Diary
+
+== Blogs, articles, and projects
+
+* https://favila.github.io/2024-06-20/datomic-data-sorcery/[Making Custom Datomic Datalog Datasources] - Francis Avila
+* https://robjohnson.dev/posts/malli-and-aero/[Bulletproof App Settings with Malli & Aero] - Robert Johnson
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/clojure/clojure[clojure] https://clojure.org/news/2024/06/15/clojure-1-12-beta1[1.12.0-beta1] - The Clojure programming language
+* https://github.com/flow-storm/flow-storm-debugger[flow-storm-debugger] https://github.com/flow-storm/flow-storm-debugger/blob/master/CHANGELOG.md[3.15.7] - A debugger for Clojure and ClojureScript with some unique features
+* https://github.com/noahtheduke/lazytest[lazytest] https://github.com/NoahTheDuke/lazytest/blob/master/CHANGELOG.md[0.2.0] - A new test framework for Clojure
+* https://github.com/danielmiladinov/burpless[burpless] 0.1.0 - An idiomatic Clojure wrapper around cucumber-jvm, for writing Cucumber feature tests
+* https://github.com/babashka/babashka[babashka] https://github.com/babashka/babashka/blob/master/CHANGELOG.md[1.3.191] - Native, fast starting Clojure interpreter for scripting
+* https://github.com/tonsky/datascript[datascript] https://github.com/tonsky/datascript/blob/master/CHANGELOG.md[1.7.1] - Immutable database and Datalog query engine for Clojure, ClojureScript and JS
+* https://github.com/juji-io/datalevin[datalevin] https://github.com/juji-io/datalevin/blob/master/CHANGELOG.md[0.9.6] - A simple, fast and versatile Datalog database
+* https://github.com/scicloj/devcontainer-templates[devcontainer-templates]  - Devcontainer templates for Clojure
+* https://github.com/scicloj/clay[clay] https://github.com/scicloj/clay/blob/main/CHANGELOG.md[2-beta11] - A tiny Clojure tool for dynamic workflow of data visualization and literate programming
+* https://github.com/nextjournal/clojure-mode[clojure-mode] https://github.com/nextjournal/clojure-mode/blob/main/CHANGELOG.md[0.3.3] - Clojure/Script mode for CodeMirror 6
+* https://github.com/yaml/yamlscript[yamlscript] https://github.com/yaml/yamlscript/releases/tag/0.1.63[0.1.63] - Programming in YAML
+* https://github.com/clj-commons/aleph[aleph] https://github.com/clj-commons/aleph/blob/master/CHANGES.md[0.8.1] - Asynchronous streaming communication for Clojure - web server, web client, and raw TCP/UDP
+* https://github.com/PEZ/get-started-with-clojure[get-started-with-clojure]  - Learn Clojure and Interactive Programming – Zero install
+* https://github.com/scicloj/hanamicloth[hanamicloth] https://github.com/scicloj/hanamicloth/blob/main/CHANGELOG.md[1-alpha3-SNAPSHOT] - Hanami data visualizations with Tablecloth datasets
+* https://github.com/pfeodrippe/vybe[vybe] https://github.com/pfeodrippe/vybe/blob/main/CHANGELOG.md[0.1.67] - A Clojure framework for game dev
+* https://codeberg.org/mitch-kyle/mkyle.ulid[mkyle.ulid] https://codeberg.org/mitch-kyle/mkyle.ulid/src/branch/main/CHANGELOG.md[0.1.0] - Clojure/Script library for generating ULIDs to spec
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.459[2.0.459] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/soulspace-org/overarch[overarch] https://github.com/soulspace-org/overarch/blob/main/Changelog.md[0.24.0] - A data driven description of software architecture based on UML and the C4 model
+* https://github.com/rynkowsg/asdf-jet[asdf-jet]  - asdf plugin for jet tool
+* https://github.com/babashka/nbb[nbb] https://github.com/babashka/nbb/blob/main/CHANGELOG.md[1.2.189] - Scripting in Clojure on Node.js using SCI

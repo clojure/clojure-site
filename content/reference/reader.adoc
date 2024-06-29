@@ -101,7 +101,7 @@ is read as:
 
 Sets are zero or more forms enclosed in braces preceded by `pass:[#]`: `#{:a :b :c}`
 
-=== deftype, defrecord, constructor calls:
+=== deftype, defrecord, constructor calls
 
 _Added in Clojure 1.3_
 

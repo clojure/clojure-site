@@ -297,6 +297,14 @@ For function return values, the type hint can be placed before the parameter vec
 -> #user/hinted
 ----
 
+For type hints on arrays, see <<TypeAliases>> below for primitive arrays. For non-primitive arrays you can use
+the Java array class name (`"[L" + class name + ";"`):
+
+[source,clojure]
+----
+(defn foo [^"[Ljava.lang.String;" strs])
+----
+
 [[TypeAliases]]
 == Aliases
 

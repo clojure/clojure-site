@@ -101,7 +101,9 @@ is read as:
 
 Sets are zero or more forms enclosed in braces preceded by `pass:[#]`: `#{:a :b :c}`
 
-=== deftype, defrecord, and constructor calls (version 1.3 and later):
+=== deftype, defrecord, constructor calls:
+
+_Added in Clojure 1.3_
 
 * Calls to Java class, deftype, and defrecord constructors can be called using their fully qualified class name preceded by # and followed by a vector: `#my.klass_or_type_or_record[:a :b :c]` +
 * The elements in the vector part are passed *unevaluated* to the relevant constructor. defrecord instances can also be created with a similar form that takes a map instead: `#my.record{:a 1, :b 2}` +

@@ -37,7 +37,6 @@ jobs:
 
       - name: Commit and push event page
         run: |
-          cd content
           git config --global user.name clojure-build
           git config --global user.email "clojure-build@users.noreply.github.com"
           git add content/events

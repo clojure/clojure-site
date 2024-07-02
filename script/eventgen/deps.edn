@@ -1,0 +1,4 @@
+{:paths ["src"]
+ :deps
+ {org.mnode.ical4j/ical4j {:mvn/version "4.0.0-beta5"}
+  org.slf4j/slf4j-nop {:mvn/version "1.7.36"}}}

@@ -1,0 +1,45 @@
+name: Daily Event Publishing
+
+on:
+  workflow_dispatch:
+#  schedule:
+#    - cron: '0 0 * * *'  # Daily at midnight UTC
+
+jobs:
+  daily-backup:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '8'
+
+      - name: Set up Clojure
+        uses: DeLaGuardo/setup-clojure@11.0
+        with:
+          cli: 'latest'
+
+      - name: Install CLI
+        run: |
+          curl -L -O https://github.com/clojure/brew-install/releases/latest/download/posix-install.sh
+          chmod +x posix-install.sh
+          sudo ./posix-install.sh
+          clojure
+
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Run Event Script
+        run: |
+          cd script/eventgen
+          clojure -X parse/parse-feed :dir '"../../content/events"'
+
+      - name: Commit and push event page
+        run: |
+          cd content
+          git config --global user.name clojure-build
+          git config --global user.email "clojure-build@users.noreply.github.com"
+          git add content/events
+          git commit -m 'update events'
+          git push

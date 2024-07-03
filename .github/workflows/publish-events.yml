@@ -1,9 +1,8 @@
 name: Daily Event Publishing
 
 on:
-  workflow_dispatch:
-#  schedule:
-#    - cron: '0 0 * * *'  # Daily at midnight UTC
+  schedule:
+    - cron: '0 0 * * *'
 
 jobs:
   published-daily-events:

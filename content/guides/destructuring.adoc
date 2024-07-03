@@ -383,6 +383,7 @@ To support this style of invocation, associative destructuring also works with l
 ;;val = 5  debug = true  verbose = false  opts = {:debug true}
 
 ;; Note that any order is ok for the kwargs
+(configure 12 :verbose true :debug true)
 ;;val = 12  debug = true  verbose = true  opts = {:verbose true, :debug true}
 ----
 

@@ -1,8 +1,9 @@
 name: Daily Event Publishing
 
 on:
-  schedule:
-    - cron: '0 0 * * *'  # Daily at midnight UTC
+  workflow_dispatch:
+#  schedule:
+#    - cron: '0 0 * * *'  # Daily at midnight UTC
 
 jobs:
   published-daily-events:
@@ -39,5 +40,8 @@ jobs:
           git config --global user.name clojure-build
           git config --global user.email "clojure-build@users.noreply.github.com"
           git add content/events
-          git commit -m 'update events'
-          git push
+          if git status | grep -q modified
+          then
+              git commit -m 'update events'
+              git push
+          fi

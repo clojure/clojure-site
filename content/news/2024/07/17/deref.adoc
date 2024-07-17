@@ -1,0 +1,48 @@
+= Clojure Deref (July 17, 2024)
+Alex Miller
+2024-07-17
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=XKHFDncWFTI[Clojure visual-tools meeting 25 - keg-party & HTMX] - Sci Cloj
+* https://www.youtube.com/watch?v=eBf7qb-97Bs[Pedestal 9 – API that does nothing] - Clojure Diary
+* https://www.youtube.com/watch?v=S8N5je3nN0c[Coding Injee – First steps] - Clojure Diary
+* https://podcasters.spotify.com/pod/show/lostinlambduhhs/episodes/sophia-velten-category-theory--monads--kung-fu-e2lvg8b[:sophia-velten (category theory, monads, kung-fu) by Lost in Lambduhhs] - LiLpodcast
+* https://www.youtube.com/watch?v=u7dtFGL4Sgg[Meetup: Collaborative Learning – Sente] - Los Angeles Clojure Users Group
+
+== Blogs, articles, and projects
+
+* https://www.clojuriststogether.org/news/call-for-proposals.-june-2024-member-survey/[Call for Proposals. June 2024 Member Survey] - Kathy Davis (Clojurists Together)
+* https://gaiwan.co/blog/heart-of-clojure-the-complete-lineup/[The Complete Lineup + Late Bird Cliff] - Arne Brasseur (Gaiwan)
+* https://devgiu.000.pe/posts/the-first-challenge/[The First Challenge: Logseq as Cryogen bloging editor] - Giu
+* https://jmglov.net/blog/2024-07-09-soundcljoud.html[Soundcljoud, or a young man's Soundcloud clonejure] - Josh Glover
+* https://blog.ambrosebs.com/2024/07/09/infinite-rest.html[Infinite rest] - Ambrose Bonnaire-Sergeant
+* https://clojure-goes-fast.com/blog/system-wide-user-clj/[System-wide user.clj with tools.deps] - Oleksandr Yakushev
+* https://www.evalapply.org/posts/poor-mans-job-runner-clojure-agents/[Poor man's job runner with Clojure Agents] - Aditya Athalye
+* https://polar.sh/eval/posts/frequent-flyers-of-the-util-namespace[Frequent Flyers of the util-namespace] - Gert Goet
+* https://tonsky.me/blog/clojure-macros/[Clojure macros continue to surprise me] - Nikita Prokopov
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/igrishaev/pg2[pg2] https://github.com/igrishaev/pg2/blob/master/CHANGELOG.md[0.1.15] - A fast PostgreSQL driver for Clojure
+* https://github.com/yaml/yamlscript[yamlscript] https://github.com/yaml/yamlscript/releases/tag/0.1.66[0.1.66] - Programming in YAML
+* https://github.com/xadecimal/expose-api[expose-api] https://github.com/xadecimal/expose-api/blob/main/CHANGELOG.md[0.3.0] - A Clojure library designed to simplify the process of creating public-facing API namespaces
+* https://github.com/Mattilsynet/datomic-gcp-tf[datomic-gcp-tf]  - Terraform module to run Datomic on GCP
+* https://github.com/phronmophobic/clong[clong] 1.4 - A wrapper for libclang and a generator that can turn c header files into clojure apis
+* https://github.com/clojure/tools.build[tools.build] https://github.com/clojure/tools.build/blob/master/CHANGELOG.md[0.10.5] - Clojure builds as Clojure programs
+* https://github.com/uncomplicate/deep-diamond[deep-diamond] 0.29.4 - A fast Clojure Tensor & Deep Learning library
+* https://github.com/fabricate-site/adorn[adorn] 0.1.131-alpha - Extensible conversion of Clojure code to Hiccup forms
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.467[2.0.467] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/babashka/http-server[http-server] https://github.com/babashka/http-server/blob/main/CHANGELOG.md[0.1.13] - Serve static assets
+* https://github.com/squint-cljs/squint[squint] https://github.com/squint-cljs/squint/blob/main/CHANGELOG.md[0.8.113] - Light-weight ClojureScript dialect
+* https://github.com/soulspace-org/overarch[overarch] https://github.com/soulspace-org/overarch/blob/main/Changelog.md[0.27.0] - A data driven description of software architecture based on UML and the C4 model
+* https://github.com/scicloj/hanamicloth[hanamicloth] https://github.com/scicloj/hanamicloth/blob/main/CHANGELOG.md[1-alpha4-SNAPSHOT] - Easy layered graphics with Hanami & Tablecloth
+* https://github.com/scicloj/clay[clay] https://github.com/scicloj/clay/blob/main/CHANGELOG.md[2-beta12] - A tiny Clojure tool for dynamic workflow of data visualization and literate programming
+* https://github.com/polyfy/polylith[polylith] https://github.com/polyfy/polylith/releases/tag/v0.2.20[0.2.20] - A tool used to develop Polylith based architectures in Clojure

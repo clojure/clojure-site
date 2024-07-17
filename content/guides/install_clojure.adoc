@@ -103,7 +103,16 @@ The `posix-install` script can be removed after installation.
 
 Prerequisites: <<install_clojure#java,Java>>
 
-An early release version of clj on Windows is available at https://github.com/clojure/tools.deps.alpha/wiki/clj-on-Windows[clj on Windows].
+=== Windows Subsystem for Linux (WSL)
+
+The recommended approach is to install https://learn.microsoft.com/en-us/windows/wsl/install[wsl] and then follow the <<install_clojure#_linux_instructions,linux installation instructions>>.
+
+=== Native Windows Installer
+
+Natively https://github.com/casselc/clj-msi[clj-msi] is an MSI package for installing Clojure.
+
+=== Help and Feedback
+
 Please provide feedback on https://ask.clojure.org[Ask Clojure] or Clojurians slack in #clj-on-windows.
 
 == Prerequisite installation details

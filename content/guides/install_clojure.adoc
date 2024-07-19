@@ -105,15 +105,13 @@ Prerequisites: <<install_clojure#java,Java>>
 
 === Windows Subsystem for Linux (WSL)
 
-The recommended approach is to install https://learn.microsoft.com/en-us/windows/wsl/install[wsl] and then follow the <<install_clojure#_linux_instructions,linux installation instructions>>.
+If your are not yet using https://learn.microsoft.com/en-us/windows/wsl/install[WSL] (Windows Subsystem for Linux), this is recommended as it will provide the closest match for most existing Clojure tutorials and documentation.
+
+Once you have installed WSL, follow the <<install_clojure#_linux_instructions,Linux installation instructions>> and proceed from there.
 
 === Native Windows Installer
 
-Natively https://github.com/casselc/clj-msi[clj-msi] is an MSI package for installing Clojure.
-
-=== Help and Feedback
-
-Please provide feedback on https://ask.clojure.org[Ask Clojure] or Clojurians slack in #clj-on-windows.
+Alternately, you can use https://github.com/casselc/clj-msi[clj-msi] to install clojure.exe on your system, which can be used in similar ways to the `clojure` script installed in the other approaches above.
 
 == Prerequisite installation details
 

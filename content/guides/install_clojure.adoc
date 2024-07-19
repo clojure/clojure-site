@@ -105,7 +105,7 @@ Prerequisites: <<install_clojure#java,Java>>
 
 === Windows Subsystem for Linux (WSL)
 
-If your are not yet using https://learn.microsoft.com/en-us/windows/wsl/install[WSL] (Windows Subsystem for Linux), this is recommended as it will provide the closest match for most existing Clojure tutorials and documentation.
+If you are not yet using https://learn.microsoft.com/en-us/windows/wsl/install[WSL] (Windows Subsystem for Linux), this is recommended as it will provide the closest match for most existing Clojure tutorials and documentation.
 
 Once you have installed WSL, follow the <<install_clojure#_linux_instructions,Linux installation instructions>> and proceed from there.
 

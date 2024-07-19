@@ -109,7 +109,7 @@ If you are not yet using https://learn.microsoft.com/en-us/windows/wsl/install[W
 
 Once you have installed WSL, follow the <<install_clojure#_linux_instructions,Linux installation instructions>> and proceed from there.
 
-=== Native Windows Installer
+=== Windows Installer
 
 Alternately, you can use https://github.com/casselc/clj-msi[clj-msi] to install clojure.exe on your system, which can be used in similar ways to the `clojure` script installed in the other approaches above.
 

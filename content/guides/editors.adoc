@@ -75,6 +75,21 @@ In addition to the Clojure plugins, it is also worth extending Vim to improve th
 
 There are also numerous plugins that provide color-matching of parentheses.
 
+== Helix
+https://docs.helix-editor.com/title-page.html[Helix] is a popular and flexible editor written in Rust that supports LSPs for a lot of https://docs.helix-editor.com/lang-support.html[programming languages] and many other features out-of-the-box. For Clojure it just needs to have 'clojure-lsp' on PATH and it will work by default.
+Example of Clojure config:
+```toml
+[[language]]
+name = "clojure"
+scope = "source.clojure"
+injection-regex = "(clojure|clj|edn|boot)"
+file-types = ["clj", "cljs", "cljc", "clje", "cljr", "cljx", "edn", "boot"]
+roots = ["project.clj", "build.boot", "deps.edn", "shadow-cljs.edn"]
+comment-token = ";"
+language-servers = [ "clojure-lsp" ]
+indent = { tab-width = 2, unit = "  " }
+```
+
 == Others
 
 Other environments exist but are less active and/or less used. See the <<xref/../../../community/tools#,Tools>> page for other ideas.

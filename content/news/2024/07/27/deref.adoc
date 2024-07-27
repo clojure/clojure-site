@@ -1,0 +1,48 @@
+= Clojure Deref (July 27, 2024)
+Alex Miller
+2024-07-27
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts and videos
+
+* https://www.youtube.com/playlist?list=PLlAML-kjpXY7WwW7-sDeNrmZMCXFhYKFu[IN/Clojure 2024] - IN/Clojure
+* https://www.youtube.com/watch?v=TpG6EMZH6JA[Why Clojure? Martin Varela, from principal scientist to a Clojure consultant] - Toni Talks Dev
+* https://www.youtube.com/watch?v=uyApiNg6h7Y[Meetup: Collaborative Learning - Telemere] - Los Angeles Clojure Users Group
+* https://www.youtube.com/watch?v=mS0N772Kw9c[Data Driven Component Libraries from commercial experiences (by Johnny Stevenson)] - London Clojurians
+* https://www.youtube.com/watch?v=aAf2gz5WBqA[visual-tools meeting 26 - Gemini, Space-Age, protocols from the REPL] - Sci Cloj
+* https://www.youtube.com/watch?v=Jy9khaNKh4o[Clojure data-recur meeting 5: Datajure - a DSL extension to existing data processing libraries] - Sci Cloj
+* https://www.youtube.com/watch?v=h8AFpZkAwPo[Clojure web apps with FlowStorm 3.17] - Juan Monetta
+
+== Blogs, articles, and projects
+
+* https://yamlscript.org/posts/jul-17-2024/[Go Julia!] - Ingy döt Net
+* https://github.clerk.garden/drewverlee/seven-troubleshooting-tips-for-squashing-software-bugs/commit/4c521e9e0b9b91bba9fa19effe92cfaa10d8fd26/[Seven Troubleshooting Tips for Squashing Software Bugs] - Drew Verlee
+* https://codewithkira.com/2024-07-18-tablecloth-dplyr-pandas-polars.html[Data Manipulation in Clojure Compared to R and Python] - Kira McLean
+* https://www.clojuriststogether.org/news/june-july-2024-short-term-project-updates/[June & July 2024 Short-Term Project Updates] - Kathy Davis (Clojurists Together)
+* https://jmglov.net/blog/2024-07-20-soundcljoud-cloudy.html[Soundcljoud gets more cloudy] - Josh Glover
+* https://orgpad.info/blog/spanking-browser-for-performance[Spanking browser for performance: 100× speed improvement] - OrgPad
+* https://www.lzeitlin.xyz/cljs-openlayers.html[Making a geo PWA with CLJS and Openlayers] - Luke Zeitlin
+* https://thomascothran.tech/2024/07/top-down-imperative-clojure-architectures/[Top-Down Imperative Clojure Architectures] - Thomas Cothran
+* https://www.xtdb.com/blog/taking-out-the-o-n-squared[Taking the ² out of O(n²)] - James Henderson (XTDB)
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/soulspace-org/overarch[overarch] https://github.com/soulspace-org/overarch/blob/main/Changelog.md[0.29.0] - A data driven description of software architecture based on UML and the C4 model
+* https://github.com/jaketothepast/tweet-repl[tweet-repl]  - Compose tweets in a REPL-like client
+* https://github.com/donut-party/system[system] 1.0.254 - A dependency injection library for Clojure and ClojureScript
+* https://github.com/practicalli/clojure-cli-config[clojure-cli-config] https://github.com/practicalli/clojure-cli-config/releases/tag/2024-07-17[2024-07-17] - User aliases and Clojure CLI configuration for deps.edn based projects
+* https://github.com/practicalli/project-templates[project-templates] https://github.com/practicalli/project-templates/releases/tag/2024-07-07[2024-07-07] - Clojure CLI Production level templates for seancorfield/deps-new
+* https://github.com/practicalli/astro[astro] https://github.com/practicalli/astro/blob/main/CHANGELOG.md[2024-07-26] - Rich development workflow with Clojure support, using AstroNvim 4 and selected plugins
+* https://github.com/flow-storm/flow-storm-debugger[flow-storm-debugger] https://github.com/flow-storm/flow-storm-debugger/blob/master/CHANGELOG.md[3.17.1] - A debugger for Clojure and ClojureScript with some unique features
+* https://github.com/babashka/sci[sci] https://github.com/babashka/sci/blob/master/CHANGELOG.md[0.8.42] - Configurable Clojure/Script interpreter suitable for scripting and Clojure DSLs
+* https://github.com/pfeodrippe/vybe[vybe] https://github.com/pfeodrippe/vybe/blob/main/CHANGELOG.md[0.4.141] - A Clojure framework for game dev
+* https://github.com/xadecimal/testa[testa] https://github.com/xadecimal/testa/blob/main/CHANGELOG.md[0.1.0] - A small testing utility library that helps you write clojure.test tests for async behavior
+* https://github.com/scicloj/clay[clay] https://github.com/scicloj/clay/blob/main/CHANGELOG.md[2-beta14] - A tiny Clojure tool for dynamic workflow of data visualization and literate programming
+* https://github.com/babashka/cli[cli] https://github.com/babashka/cli/blob/main/CHANGELOG.md[0.8.60] - Turn Clojure functions into CLIs!
+* https://github.com/babashka/nbb[nbb] https://github.com/babashka/nbb/blob/main/CHANGELOG.md[1.2.191] - Scripting in Clojure on Node.js using SCI

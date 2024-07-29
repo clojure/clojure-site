@@ -19,6 +19,12 @@ Note: All dev releases are subject to breaking changes for new work since the pr
 
 == Release 1.12.0
 
+=== 1.12.0-beta2 (Jul 29, 2024) [[v1.12.0-beta2]]
+
+* https://clojure.atlassian.net/browse/CLJ-2867[CLJ-2867] Convey type hints on metadata values
+* https://clojure.atlassian.net/browse/CLJ-2865[CLJ-2865] `c.java.process/start` - return `Process`, improve process api
+* https://clojure.atlassian.net/browse/CLJ-2819[CLJ-2819] `c.tools.deps.interop/invoke-tool` - improved error handling
+
 === 1.12.0-beta1 (Jun 15, 2024) [[v1.12.0-beta1]]
 
 * https://clojure.atlassian.net/browse/CLJ-2853[CLJ-2853] Reflection error incorrectly reported target object type, not qualifying class

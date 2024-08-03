@@ -21,8 +21,10 @@ Note: All dev releases are subject to breaking changes for new work since the pr
 
 === 1.12.0-rc1 (Aug 3, 2024) [[v1.12.0-rc1]]
 
-* https://clojure.atlassian.net/browse/CLJ-2145[CLJ-2145] Fix clearing of closed overs in ^:once fns
-* https://clojure.atlassian.net/browse/CLJ-2865[CLJ-2317] `recur` to head of :once fn cancels once
+https://clojure.org/news/2024/08/03/clojure-1-12-0-rc1[Release Notes]
+
+* https://clojure.atlassian.net/browse/CLJ-2145[CLJ-2145] Fix clearing of closed overs in `^:once` fns
+* https://clojure.atlassian.net/browse/CLJ-2865[CLJ-2317] `recur` to head of `:once` fn cancels once
 
 === 1.12.0-beta2 (Jul 29, 2024) [[v1.12.0-beta2]]
 
@@ -210,6 +212,15 @@ New:
 Enhancements:
 
 * https://clojure.atlassian.net/browse/CLJ-1872[CLJ-1872] Extend `empty?` to `counted?` colls that aren't seqable, such as transients
+
+== Release 1.11.4
+
+=== 1.11.4 (Aug 3, 2024) [[v1.11.4]]
+
+https://clojure.org/news/2024/08/03/clojure-1-11-4[Release Notes]
+
+* https://clojure.atlassian.net/browse/CLJ-2145[CLJ-2145] Fix clearing of closed overs in `^:once` fns
+* https://clojure.atlassian.net/browse/CLJ-2865[CLJ-2317] `recur` to head of `:once` fn cancels once
 
 == Release 1.11.3
 

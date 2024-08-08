@@ -1,0 +1,41 @@
+= Locals Clearing
+Fogus
+2024-08-05
+:type: reference
+:toc: macro
+:icons: font
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+== Local Clearing
+
+Local bindings can be created by function arguments, ~let~, ~loop~, ~letfn~, or ~try/catch~ (caught exception). Locals clearing finds the last use of a local in a body and clears the local at that point. This is supported in the compiler with three stateful dynamic vars:
+
+* ~CLEAR_ROOT~  - PathNode head marking method context
+* ~CLEAR_PATH~  - List of ~Compiler.PathNode~ objects to root
+* ~METHOD~      - The ~Compiler.ObjMethod~ instance representing the implementation boundary of a function body. Holds information about its closed-over bindings
+
+The compiler tracks Local binding usage and clear-ability using:
+
+* ~Compiler.LocalBinding~ - Holds local information (name, init, etc.) and initialized with the value of the ~CLEAR_ROOT~ on construction 
+* ~Compiler.LocalBindingExpr~ - Holds information about local usage and root and path information at point of use
+* ~CLEAR_SITES~ - Map of ~LocalBinding~ -> ~LocalBindingExpr~ to clear
+
+Bindings in functions are implemented either as method arguments, method variables, or as instance fields when the binding represents a closed-over.
+
+During OME emit, clearing an LBE means that the binding in the enclosing OM is set to ~null~ on last use.
+
+=== Later use and Last use
+
+Later use is defined in the LBE constructor by first checking if there exist clearing sites for a LB with the same path as in the LBE. If so, then they are set to not clear as there is later use of that LB.
+
+Last use is also defined in the LBE constructor for two cases, locals and closed-overs:
+
+* When the LBE has the same root as the LB (the local was created in the current function), then the LBE should be cleared
+* When a closed-over has the same root as the OM boundary, then the closed-over should be cleared
+
+=== :once functions
+
+Functions marked with a ~:once~ metadata set to ~true~ are a special case. By marking a function this way, the user is indicating that the function will only run once. Therefore, the compiler can more aggressively clear its locals and closed-overs. However, Clojure has long supported ~recur~ to the head of once functions which causes a contradiction in the run-once semantics. Therefore, when a ~Compiler.RecurExpr~ is parsed the compiler checks for this conflict by detecting if the enclosing OM method context is set as ~onceOnly~ and that the recur target is to its head. If both conditions are true then the enclosing OM instance's ~onceOnly~ flag is set to ~false~, thus ensuring that the normal later-use and last-use checks are in play.
+
+

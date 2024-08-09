@@ -1,0 +1,45 @@
+= Clojure Deref (Aug 9, 2024)
+Alex Miller
+2024-08-09
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts and videos
+
+* https://www.youtube.com/live/IMcrtIUM0vk[Eric Normand Office Hours 2024-08-08] - Eric Normand
+* https://www.youtube.com/watch?v=AdFrT3mlDSc[Learn Clojure – Records] - Clojure Diary
+* https://www.youtube.com/watch?v=4o4reASjtOQ[Learn Clojure – Using Records with functions] - Clojure Diary
+* https://www.youtube.com/watch?v=iRGHsVHNlx0[Learn Clojure – Protocol] - Clojure Diary
+
+== Blogs, articles, and projects
+
+* https://medium.com/@SpacePirate9/connecting-to-mongodb-with-tls-using-monger-in-clojure-80d71329c5c8[Connecting to MongoDB with TLS using Monger in Clojure] - Kappagantula Ram Narayan
+* https://hyperfiddle-docs.notion.site/Electric-Clojure-v3-teaser-improved-transfer-semantics-2024-735b10c3a0dc424e93e060a0a3e80226[Electric Clojure v3 teaser: improved transfer semantics (2024)] - Dustin Getz
+* https://www.patreon.com/posts/transparency-109711855[Transparency report: July 2024] - Nikita Prokopov
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/ikappaki/basilisp-blender[basilisp-blender] https://github.com/ikappaki/basilisp-blender/blob/main/CHANGELOG.md[0.1.0] - A library designed to facilitate the execution of Basilisp Clojure code within Blender
+* https://github.com/metosin/oksa[oksa] https://github.com/metosin/oksa/blob/main/CHANGELOG.md[1.1.0] - Generate GraphQL queries using Clojure data structures
+* https://github.com/metosin/malli[malli] https://github.com/metosin/malli/blob/master/CHANGELOG.md[0.16.3] - High-performance data-driven data specification library for Clojure/Script
+* https://github.com/vouch-opensource/fugato[fugato]  - Data-first stateful generator for Clojure
+* https://github.com/clojure/brew-install[brew-install] https://github.com/clojure/brew-install/blob/1.11.4/CHANGELOG.md[1.11.4.1474] - Clojure CLI installer
+* https://github.com/cursive-ide/cursive[cursive] https://github.com/cursive-ide/cursive/blob/master/CHANGELOG.md[1.13.4] - Cursive: The IDE for beautiful Clojure code
+* https://github.com/scicloj/hanamicloth[hanamicloth] https://github.com/scicloj/hanamicloth/blob/main/CHANGELOG.md[1-alpha5-SNAPSHOT] - Easy layered graphics with Hanami & Tablecloth
+* https://github.com/monkey-projects/aero-ext[aero-ext] https://github.com/monkey-projects/aero-ext/releases/tag/0.2.0[0.2.0] - Extensions to use with the Aero config lib
+* https://github.com/noahtheduke/splint[splint] https://github.com/NoahTheDuke/splint/releases/tag/v1.16.0[1.16.0] - A Clojure linter focused on style and code shape
+* https://github.com/NoahTheDuke/lazytest[lazytest] https://github.com/NoahTheDuke/lazytest/blob/master/CHANGELOG.md[0.3.0] - BDD test framework for Clojure
+* https://github.com/flow-storm/clojure[ClojureStorm] https://github.com/flow-storm/clojure/blob/clojure-storm-master/CHANGELOG.md[1.12.0-rc1] - A fork of the official Clojure compiler that adds automatic instrumentation
+* https://github.com/practicalli/clojure-cli-config[clojure-cli-config] https://github.com/practicalli/clojure-cli-config/releases/tag/2024-08-04[2024-08-04] - User aliases and Clojure CLI configuration for deps.edn based projects
+* https://github.com/babashka/fs[fs] https://github.com/babashka/fs/blob/master/CHANGELOG.md[0.5.22] - File system utility library for Clojure
+* https://github.com/clojure-lsp/clojure-lsp[clojure-lsp] https://github.com/clojure-lsp/clojure-lsp/releases/tag/2024.08.05-18.16.00[2024.08.05-18.16.00] - Clojure & ClojureScript Language Server (LSP) implementation
+* https://github.com/babashka/sci[sci] https://github.com/babashka/sci/blob/master/CHANGELOG.md[0.8.43] - Configurable Clojure/Script interpreter suitable for scripting and Clojure DSLs
+* https://github.com/flow-storm/flow-storm-debugger[flow-storm-debugger] https://github.com/flow-storm/flow-storm-debugger/blob/master/CHANGELOG.md[3.17.2] - A debugger for Clojure and ClojureScript with some unique features
+* https://github.com/BetterThanTomorrow/joyride[joyride] https://github.com/BetterThanTomorrow/joyride/releases/tag/v0.0.44[0.0.44] - Making VS Code Hackable like Emacs since 2022
+* https://github.com/borkdude/edamame[edamame] https://github.com/borkdude/edamame/blob/master/CHANGELOG.md[1.4.26] - Configurable EDN/Clojure parser with location metadata
+* https://github.com/taoensso/telemere[telemere] https://github.com/taoensso/telemere/blob/master/CHANGELOG.md[v1.0.0-beta16] - Structured telemetry library for Clojure/Script

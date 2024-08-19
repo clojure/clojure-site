@@ -1,0 +1,37 @@
+= Clojure Deref (Aug 16, 2024)
+Alex Miller
+2024-08-16
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=cUfd8-AB9pk[Journeys in code on ‘The Hammock’ podcast: a conversation with Alex Miller] - Building Nubank
+* https://www.youtube.com/watch?v=UMFpLWjpC-I[Learn Clojure – Extend Protocol] - Clojure Diary
+
+== Blogs, articles, and projects
+
+* https://blog.hughpowell.net/guardrails.html[Guardrails] - Hugh Powell
+* https://scicloj.github.io/docs/community/groups/open-source-mentoring/[Scicloj open-source mentoring] - scicloj
+* https://jmglov.net/blog/2024-08-13-soundcljoud-rangey.html[Soundcljoud gets more rangey] - Josh Glover
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/metosin/jsonista[jsonista] https://github.com/metosin/jsonista/blob/master/CHANGELOG.md[0.3.10] - Clojure library for fast JSON encoding and decoding
+* https://github.com/scicloj/tcutils[tcutils] 0.1.0-alpha2 - Utility functions for working with tablecloth datasets
+* https://github.com/juji-io/datalevin[datalevin] https://github.com/juji-io/datalevin/blob/master/CHANGELOG.md[0.9.10] - A simple, fast and versatile Datalog database
+* https://github.com/seancorfield/ring-data-json[ring-data-json] https://github.com/seancorfield/ring-data-json/blob/master/CHANGELOG.md[0.5.2] - Ring middleware for handling JSON, using clojure.data.json
+* https://github.com/nnichols/clojure-dependency-update-action[clojure-dependency-update-action] https://github.com/nnichols/clojure-dependency-update-action/releases/tag/v6[6] - A simple GitHub Actions job to create Pull Requests for outdated dependencies in clojure projects
+* https://github.com/nrepl/nrepl[nrepl] 1.3.0 - A Clojure network REPL that provides a server and client, along with some common APIs of use to IDEs and other tools that may need to evaluate Clojure code in remote environments
+* https://github.com/mentat-collective/emmy[emmy] https://github.com/mentat-collective/emmy/blob/main/CHANGELOG.md[0.32.0] - The Emmy Computer Algebra System
+* https://github.com/clj-commons/etaoin[etaoin] https://github.com/clj-commons/etaoin/blob/master/CHANGELOG.adoc#v1.1.41[1.1.41] - Pure Clojure Webdriver protocol implementation
+* https://github.com/scicloj/hanamicloth[hanamicloth] https://github.com/scicloj/hanamicloth/blob/main/CHANGELOG.md[1-alpha6-SNAPSHOT] - Easy layered graphics with Hanami & Tablecloth
+* https://github.com/lilactown/pyramid[pyramid] https://github.com/lilactown/pyramid/blob/main/CHANGELOG.md[4.0.0] - A library for storing and querying graph data in Clojure
+* https://github.com/polyfy/polylith[polylith] https://github.com/polyfy/polylith/releases/tag/v0.2.21[0.2.21] - A tool used to develop Polylith based architectures in Clojure
+* https://github.com/babashka/http-client[http-client] https://github.com/babashka/http-client/blob/main/CHANGELOG.md[0.4.20] - HTTP client for Clojure and Babashka built on java.net.http
+* https://github.com/alexander-yakushev/compliment[compliment] https://github.com/alexander-yakushev/compliment/blob/master/CHANGELOG.md[0.6.0] - Clojure completion library that you deserve

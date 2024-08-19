@@ -284,3 +284,11 @@ The `compile` task here can also be used as the <<deps_and_cli#prep_libs,prep ta
 == Task documentation
 
 See the https://clojure.github.io/tools.build[API docs] for detailed task documentation.
+
+== Other resources
+
+These resources cover other aspects of projects and building:
+
+* https://clojure-doc.org/articles/cookbooks/cli_build_projects/[Building Projects: tools.build and the Clojure CLI]
+* https://clojure-doc.org/articles/ecosystem/libraries_authoring/[Ecosystem: Library Development and Distribution]
+* https://practical.li/clojure/clojure-cli/projects/[Practicalli - Clojure Projects]

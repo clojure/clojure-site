@@ -77,19 +77,19 @@ Returns an object of the same type and value as obj, with `(apply f (meta obj) a
 
 Modify or reset the metadata respectively for a namespace/var/ref/agent/atom.
 
-== Metadata Reader Macros
+== Metadata Reader Syntax
 
-In addition to with-meta, there are a number of reader macros (<<reader#macrochars,The Reader: Macro Characters>>) for applying metadata to the expression following it at read-time:
+In addition to with-meta, there is reader support (<<reader#metadata,Metadata Reader>>) for applying metadata to the expression following it at read-time:
 
-* `^{:doc "How it works!"}` - adds the metadata map to the metadata of the next value read
-* `^:dynamic` -> `^{:dynamic true}`
-* `^String` -> `^{:tag java.lang.String}`
-* `^"java.lang.String"` -> `^{:tag java.lang.String}`
-* `^[String long _]` -> `^{:param-tags [String long _]}`
+* Map: `^{:key value ...}`
+* Keyword: `^:key -> `^{:key true}`
+* Symbol: `^AClass` or `^package.AClass` -> `{:tag package.AClass}` (also see special <<java_interop#TypeAliases,type aliases>>)
+* String: `^"package.AClass"` -> `{:tag package.AClass}`
+* Vector: `^[AClass prim _ ...]` -> `{:param-tags [package.AClass prim _ ...]}`
 
 The `:tag` key is used to hint an objects type to the Clojure compiler. See <<java_interop#typehints,Java Interop: Type Hints>> for more information and a complete list of special type hints.
 
-Since Clojure 1.12, the `:param-tags` key is used on `Classname/member` and `Classname/new` symbols to specify the arity and parameter types of the desired method. The `:param-tags` vector takes any valid `:tag` value or `_` as a placeholder for non-overloaded parameters.
+Since Clojure 1.12, the `:param-tags` key is used on qualified static, instance, and constructor method symbols to specify the arity and parameter types of the desired method overload. The `:param-tags` vector takes any valid `:tag` value or `_` as a placeholder for non-overloaded parameters.
 
 It is possible to add multiple pieces of metadata by chaining the metadata reader macros together.
 For example: `^:dynamic ^ints obj` would apply both the :dynamic flag and ints type-hint to obj. Metadata chains from right to left (left takes precedence).

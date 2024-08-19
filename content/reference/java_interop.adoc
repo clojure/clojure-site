@@ -78,7 +78,7 @@ The unqualified "." forms expand into calls to the dot operator (described below
 [[methodvalues]]
 === Method values
 
-Since Clojure 1.12, programmers can use Java qualified methods as ordinary functions in value contexts - the compiler will automatically generate the wrapping function. When used as values, qualified methods supply only the class and method name, and thus cannot resolve overloaded methods. Therefore, the compiler will generate a reflective call when a qualified method does not resolve due to overloading. Developers can supply <<param-tags#,:param-tags metadata>> on qualified methods to specify the signature of a single desired method, 'resolving' it.
+Since Clojure 1.12, programmers can use Java qualified methods as ordinary functions in value contexts - the compiler will automatically generate the wrapping function. When used as values, qualified methods supply only the class and method name, and thus cannot resolve overloaded methods. Therefore, the compiler will generate a reflective call when a qualified method does not resolve due to overloading. Developers can supply <<java_interop#paramtags,:param-tags metadata>> on qualified methods to specify the signature of a single desired method, 'resolving' it. `:param-tags` are ignored on unqualified methods like `.instanceMember`.
 
 == The Dot special form
 
@@ -164,7 +164,7 @@ Since Clojure 1.12, a qualified form may also be used (it is not rewritten at ma
 
 `(Classname/new args*)`
 
-Like methods, qualified constructors `Classname/new` can be used in <<methodvalues#,value contexts>>.
+Like methods, qualified constructors `Classname/new` can be used in <<methodvalues#,value contexts>> and take <<java_interop#paramtags,:param-tags>> metadata.
 
 ''''
 
@@ -343,7 +343,7 @@ For example, byte arrays (byte-array []) have a type of "[B".
 * chars - A character array
 * objects - An object array
 
-[[param-tags]]
+[[paramtags]]
 == param-tags
 
 Since Clojure 1.12, developers can supply `:param-tags` metadata on qualified methods to specify the signature of a single desired method, 'resolving' it. The `:param-tags` metadata is a vector of zero or more tags: `[... tag ...]`. A tag is any existing valid `:tag` metadata value as described above. Each tag corresponds to a parameter in the desired signature (arity should match the number of tags). Parameters with non-overloaded types can use the placeholder `_` in lieu of the tag. When you supply :param-tags metadata on a qualified method, the metadata must allow the compiler to resolve it to a single method at compile time.
@@ -437,7 +437,7 @@ At times it is necessary to have a value of a particular primitive type. These c
 
 === Functional interfaces
 
-Java programs define "functions" with Java functional interfaces (marked with the  https://docs.oracle.com/javase/8/docs/api/java/lang/FunctionalInterface.html[@FunctionalInterface] annotation), which have a single method.
+Java defines "functions" with Java functional interfaces (marked with the  https://docs.oracle.com/javase/8/docs/api/java/lang/FunctionalInterface.html[@FunctionalInterface] annotation), which have a single method.
 
 Since, Clojure 1.12, developers can invoke Java methods taking functional interfaces by passing functions with matching arity. The Clojure compiler implicitly converts Clojure functions to the required functional interface by constructing a lambda adapter. You can explicitly coerce a Clojure function to a functional interface by <<special_forms#let,hinting the binding name>> in a `let` binding, e.g. to avoid repeated adapter construction in a loop.
 

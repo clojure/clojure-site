@@ -134,13 +134,16 @@ Single-line comment, causes the reader to ignore everything from the semicolon t
 
 `@form => (deref form)`
 
+[[metadata]]
 === Metadata (^)
 
 Metadata is a map associated with some kinds of objects: Symbols, Lists, Vector, Sets, Maps, tagged literals returning an IMeta, and record, type, and constructor calls. The metadata reader macro first reads the metadata and attaches it to the next form read (see https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/with-meta[with-meta] to attach meta to an object): +
 `^{:a 1 :b 2} [1 2 3]` yields the vector `[1 2 3]` with a metadata map of `{:a 1 :b 2}`. +
 
-A shorthand version allows the metadata to be a simple symbol or string, in which case it is treated as a single entry map with a key of :tag and a value of the (resolved) symbol or string, e.g.: +
+A shorthand version allows the metadata to be a simple symbol or string, in which case it is treated as a single entry map with a key of `:tag` and a value of the (resolved) symbol or string, e.g.: +
 `^String x` is the same as `^{:tag java.lang.String} x` +
+
+A shorthand version for type signatures allows the metadata to be a vector, in which case it is treated as a single entry map with a key of `:param-tags` and a value of the (resolved) type hints, a vector of `:tag` values or `_`, e.g.: `^[String long _]` is the same as `^{:param-tags [java.lang.String long _]}`.
 
 Such tags can be used to convey type information to the compiler. +
 

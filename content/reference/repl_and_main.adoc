@@ -54,7 +54,7 @@ The simplest way to launch a Clojure _repl_ is to use the <<xref/../../guides/ge
 [source,shell]
 ----
 $ clj
-Clojure 1.11.2
+Clojure 1.11.4
 user=>
 ----
 

@@ -41,7 +41,6 @@ Since we have to start somewhere, this reference starts where evaluation starts,
 * Symbolic values - `pass:[##Inf]`, `pass:[##-Inf]`, and `pass:[##NaN]`
 * Keywords - Keywords are like symbols, except:
 ** They can and must begin with a colon, e.g. :fred.
-** They cannot contain '.' in the name part, or name classes.
 ** Like symbols, they can contain a namespace, `:person/name`, which may contain '.'s.
 ** A keyword that begins with two colons is auto-resolved in the current namespace to a qualified keyword:
 *** If the keyword is unqualified, the namespace will be the current namespace. In `user`, `::rect` is read as `:user/rect`.
@@ -102,7 +101,9 @@ is read as:
 
 Sets are zero or more forms enclosed in braces preceded by `pass:[#]`: `#{:a :b :c}`
 
-=== deftype, defrecord, and constructor calls (version 1.3 and later):
+=== deftype, defrecord, constructor calls
+
+_Added in Clojure 1.3_
 
 * Calls to Java class, deftype, and defrecord constructors can be called using their fully qualified class name preceded by # and followed by a vector: `#my.klass_or_type_or_record[:a :b :c]` +
 * The elements in the vector part are passed *unevaluated* to the relevant constructor. defrecord instances can also be created with a similar form that takes a map instead: `#my.record{:a 1, :b 2}` +

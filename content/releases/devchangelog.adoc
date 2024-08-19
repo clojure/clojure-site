@@ -19,6 +19,74 @@ Note: All dev releases are subject to breaking changes for new work since the pr
 
 == Release 1.12.0
 
+=== 1.12.0-rc1 (Aug 3, 2024) [[v1.12.0-rc1]]
+
+https://clojure.org/news/2024/08/03/clojure-1-12-0-rc1[Release Notes]
+
+* https://clojure.atlassian.net/browse/CLJ-2145[CLJ-2145] Fix clearing of closed overs in `^:once` fns
+* https://clojure.atlassian.net/browse/CLJ-2865[CLJ-2317] `recur` to head of `:once` fn cancels once
+
+=== 1.12.0-beta2 (Jul 29, 2024) [[v1.12.0-beta2]]
+
+* https://clojure.atlassian.net/browse/CLJ-2867[CLJ-2867] Convey type hints on metadata values
+* https://clojure.atlassian.net/browse/CLJ-2865[CLJ-2865] `c.java.process/start` - return `Process`, improve process api
+* https://clojure.atlassian.net/browse/CLJ-2819[CLJ-2819] `c.tools.deps.interop/invoke-tool` - improved error handling
+
+=== 1.12.0-beta1 (Jun 15, 2024) [[v1.12.0-beta1]]
+
+* https://clojure.atlassian.net/browse/CLJ-2853[CLJ-2853] Reflection error incorrectly reported target object type, not qualifying class
+* https://clojure.atlassian.net/browse/CLJ-2859[CLJ-2859] Expand scope of FI adapting to include Supplier (and other 0 arg FI)
+* https://clojure.atlassian.net/browse/CLJ-2858[CLJ-2858] Fix encoding of FnInvoker method for prim-returning FIs with arity > 2
+* https://clojure.atlassian.net/browse/CLJ-2864[CLJ-2864] Stop using truthy return logic in FI adapters
+* https://clojure.atlassian.net/browse/CLJ-2863[CLJ-2863] Reflective FI dynamic proxy should use runtime classloader
+* https://clojure.atlassian.net/browse/CLJ-2770[CLJ-2770] `invoke-tool` - remove external process name parameter (this is a runtime property)
+
+Enhancements:
+
+* https://clojure.atlassian.net/browse/CLJ-2645[CLJ-2645] `PrintWriter-on` now supports auto-flush, and prepl uses it for the err stream
+* https://clojure.atlassian.net/browse/CLJ-2698[CLJ-2698] `defprotocol` - ignore unused primitive return type hints
+* https://clojure.atlassian.net/browse/CLJ-1385[CLJ-1385] `transient` - include usage model from reference docs
+
+=== 1.12.0-alpha12 (May 23, 2024) [[v1.12.0-alpha12]]
+
+https://clojure.org/news/2024/05/23/clojure-1-12-alpha12[Release notes]
+
+Features:
+
+* https://clojure.atlassian.net/browse/CLJ-2799[CLJ-2799] - Conversion of IFn to Java functional interfaces
+
+Fixes:
+
+* https://clojure.atlassian.net/browse/CLJ-2717[CLJ-2717] - `nthrest` now returns rest output on n=0 or past end of seq
+
+Enhancements:
+
+* https://clojure.atlassian.net/browse/CLJ-2852[CLJ-2852] - Updated all deps, test deps, and plugin versions to latest
+
+Reverted:
+
+* https://clojure.atlassian.net/browse/CLJ-2803[CLJ-2803] - #inst printer - no longer uses a ThreadLocal formatter
+
+=== 1.12.0-alpha11 (Apr 30, 2024) [[v1.12.0-alpha11]]
+
+* https://clojure.atlassian.net/browse/CLJ-2848[CLJ-2848] - Qualified instance methods without param-tags should use the qualified method class, not the target object type
+* https://clojure.atlassian.net/browse/CLJ-2847[CLJ-2847] - Improve error message when a qualified method in value position matches no methods
+
+=== 1.12.0-alpha10 (Apr 28, 2024) [[v1.12.0-alpha10]]
+
+https://clojure.org/news/2024/04/28/clojure-1-12-alpha10[Release notes]
+
+Features:
+
+* https://clojure.atlassian.net/browse/CLJ-2807[CLJ-2807] - Array class syntax
+* https://clojure.atlassian.net/browse/CLJ-2844[CLJ-2844] - Qualified methods w/o param-tags may use reflection and inference
+* https://clojure.atlassian.net/browse/CLJ-2835[CLJ-2835] - Error message for constructor method value arity mismatch says "method" instead of "constructor"
+
+Fixes:
+
+* https://clojure.atlassian.net/browse/CLJ-2843[CLJ-2843] - Reflective calls to Java methods that take primitive long or double now work when passed a narrower boxed number at runtime (Integer, Short, Byte, Float). Previously, these methods were not matched during reflection and an error was thrown.
+* https://clojure.atlassian.net/browse/CLJ-2841[CLJ-2841] - IDeref should also implement DoubleSupplier
+
 === 1.12.0-alpha9 (Mar 8, 2024) [[v1.12.0-alpha9]]
 
 Fix for CVE https://nvd.nist.gov/vuln/detail/CVE-2024-22871[CVE-2024-22871] detailed in https://github.com/advisories/GHSA-vr64-r9qj-h27f[GHSA-vr64-r9qj-h27f]:
@@ -144,6 +212,23 @@ New:
 Enhancements:
 
 * https://clojure.atlassian.net/browse/CLJ-1872[CLJ-1872] Extend `empty?` to `counted?` colls that aren't seqable, such as transients
+
+== Release 1.11.4
+
+=== 1.11.4 (Aug 3, 2024) [[v1.11.4]]
+
+https://clojure.org/news/2024/08/03/clojure-1-11-4[Release Notes]
+
+* https://clojure.atlassian.net/browse/CLJ-2145[CLJ-2145] Fix clearing of closed overs in `^:once` fns
+* https://clojure.atlassian.net/browse/CLJ-2865[CLJ-2317] `recur` to head of `:once` fn cancels once
+
+== Release 1.11.3
+
+=== 1.11.3 (Apr 24, 2024) [[v1.11.3]]
+
+https://clojure.org/news/2024/04/24/clojure-1-11-3[Release Notes]
+
+* https://clojure.atlassian.net/browse/CLJ-2843[CLJ-2843] - Reflective calls to Java methods that take primitive long or double now work when passed a narrower boxed number at runtime (Integer, Short, Byte, Float). Previously, these methods were not matched during reflection and an error was thrown.
 
 == Release 1.11.2
 

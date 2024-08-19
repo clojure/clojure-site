@@ -1,0 +1,10 @@
+= Clojure 1.12.0-rc1
+Alex Miller
+2024-08-03
+:jbake-type: post
+
+Clojure 1.12.0-rc1 is now available! At this point we consider Clojure 1.12.0 to be complete. Please test this release and provide any feedback prior to release.
+
+The changes in this release since 1.12.0-beta2 are the same fixes also released in <<clojure-1-11-4#,Clojure 1.11.4>>, see there for details.
+
+For a complete list of 1.12.0 features and fixes, see the https://github.com/clojure/clojure/blob/master/changes.md#changes-to-clojure-in-version-1120[official changelog].

@@ -1,0 +1,47 @@
+= Clojure Deref (Apr 26, 2024)
+Alex Miller
+2024-04-26
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=z4hHxUaadhM[Parens of the Dead - Episode 33: Bill Paxton] - emacsrocks
+* https://www.therepl.net/episodes/53/[53: Clojure LSP with Eric Dallo] - The REPL
+* https://www.youtube.com/watch?v=e196Zis2CBw[Learn Clojure – Specing Collections] - Clojure Diary
+* https://www.youtube.com/watch?v=RCdA265Rt8k[Learn Clojure – Inspecting Collections] - Clojure Diary
+* https://www.youtube.com/watch?v=E2onsJkqiGQ[Learning Clojure – Checking Maps using Spec] - Clojure Diary
+* https://www.youtube.com/watch?v=xTugbF4A1ds[What's That Function? clojure.core/into] - What's That Function
+
+== Blogs, articles, and projects
+
+* https://www.clojuriststogether.org/news/march-2024-short-term-project-updates/[March 2024 Short-Term Project Updates] - Kathy Davis (Clojurists Together)
+* link:++https://blog.agical.se/en/posts/keeping-the--arglists-of-clojure-functions-dry/++[Keeping the :arglists of Clojure functions DRY] - Peter Strömberg
+* https://blog.redplanetlabs.com/2024/04/25/better-performance-rama-vs-mongodb-and-cassandra/[2.5x better performance: Rama vs. MongoDB and Cassandra] - Nathan Marz (Red Planet Labs)
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/clojure/clojure[clojure] https://clojure.org/news/2024/04/24/clojure-1-11-3[1.11.3] - The Clojure programming language
+* https://github.com/clojure/brew-install[brew-install] https://github.com/clojure/brew-install/blob/1.11.3/CHANGELOG.md[1.11.3.1456] - Clojure CLI
+* https://github.com/fabiodomingues/clj-depend[clj-depend] https://github.com/fabiodomingues/clj-depend/blob/main/CHANGELOG.md[0.11.0] - A Clojure namespace dependency analyzer
+* https://github.com/s-expresso/rubberbuf[rubberbuf] 0.2.1 - transpile protobuf definitions into ast for easy manipulation/interpretation
+* https://github.com/s-expresso/clojobuf[clojobuf] 0.1.12 - encode/decode plain map to/from protobuf binary
+* https://github.com/s-expresso/clojobuf-codec[clojobuf-codec] 0.1.6 - serialize/deserialize protobuf binary format
+* https://github.com/bowbahdoe/guava[guava] https://github.com/bowbahdoe/guava/releases/tag/v33.1.0[33.1.0] - Most of com.google.common repackaged and modularized
+* https://github.com/darkleaf/polyglot.groovy[polyglot.groovy]  - Spice you code with Groovy!
+* https://github.com/clojure-lsp/clojure-lsp[clojure-lsp] https://github.com/clojure-lsp/clojure-lsp/releases/tag/2024.04.22-11.50.26[2024.04.22-11.50.26] - Clojure & ClojureScript Language Server (LSP) implementation
+* https://github.com/afucher/clojure-repl-intellij[clojure-repl-intellij] https://github.com/afucher/clojure-repl-intellij/blob/master/CHANGELOG.md[1.3.1] - Free OpenSource IntelliJ plugin for Clojure REPL development
+* https://github.com/scicloj/clojisr[clojisr] https://github.com/scicloj/clojisr/blob/master/CHANGELOG.md[1.0.0] - Clojure speaks statistics - a bridge between Clojure to R
+* https://github.com/lispyclouds/navi[navi] https://github.com/lispyclouds/navi/releases/tag/0.0.5[0.0.5] - A tiny library converting OpenAPI spec to Reitit routes
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.448[2.0.448] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/scicloj/metamorph.ml[metamorph.ml] https://github.com/scicloj/metamorph.ml/blob/main/CHANGELOG.md[0.7.10] - Machine learning functions for metamorph based on machine learning pipelines
+* https://github.com/scicloj/scicloj.ml.smile[scicloj.ml.smile] https://github.com/scicloj/scicloj.ml.smile/blob/main/CHANGELOG.md[7.3] - A Smile plugin for scicloj.ml
+* https://github.com/babashka/scittle[scittle] https://github.com/babashka/scittle/releases/tag/v0.6.16[0.6.16] - Execute Clojure(Script) directly from browser script tags via SCI
+* https://github.com/scicloj/clay[clay] https://github.com/scicloj/clay/blob/main/CHANGELOG.md[2-beta8] - A tiny Clojure tool for dynamic workflow of data visualization and literate programming
+* https://github.com/babashka/bbin[bbin] https://github.com/babashka/bbin/blob/main/CHANGELOG.md[0.2.3] - Install any Babashka script or project with one command

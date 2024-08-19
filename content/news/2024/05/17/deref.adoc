@@ -1,0 +1,47 @@
+= Clojure Deref (May 17, 2024)
+Alex Miller
+2024-05-17
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=3k7o7tfufRU[Programming with Linear Algebra: Hello World (by Dragan Djuric)] - London Clojurians
+* https://www.youtube.com/watch?v=yXK9tc0XqLk[Parens of the Dead - Episode 35: The Star Wars joke] - emacsrocks
+* https://clojuredesign.club/episode/116-the-main-focus/[Ep 116: The Main Focus] - Functional Design in Clojure
+* https://www.youtube.com/watch?v=ALjHXa9FL2Q[Learn Clojure - Lazy Sequence] - Clojure Diary
+
+== Blogs, articles, and projects
+
+* https://blog.datomic.com/2024/05/Jepsen-tests-Datomic.html[Jepsen tests Datomic] - Datomic
+* https://jepsen.io/analyses/datomic-pro-1.0.7075[Datomic Pro 1.0.7075] - Kyle Kingsbury (Jepsen)
+* https://favila.github.io/2024-05-16/datomic-entity-id-structure/[Datomic Entity ID and Datom Internals] - Francis Avila
+* https://tonsky.me/blog/allekinos/[Going to the cinema is a data visualization problem] - Nikita Prokopov
+* https://clojure-goes-fast.com/blog/performance-tidbit-instanceof/[Performance tidbit: runtime type checks] - Oleksandr Yakushev
+* https://andersmurphy.com/2024/05/14/clojure-structured-concurrency-and-scoped-values.html[Clojure: structured concurrency and scoped values] - Anders Murphy
+* https://biffweb.com/p/trying-out-xtdb2[Trying out XTDB v2] - Jacob O'Bryant
+* https://www.wedesoft.de/software/2024/05/11/clojure-nuklear/[Implementing GUIs using Clojure and LWJGL Nuklear bindings] - Jan Wedekind
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/jaketothepast/sniff-events[sniff-events]  - CLJS Event Stream Library for User Behavior Analysis
+* https://github.com/mpenet/hirundo[hirundo] 0.1.36 - Helidon 4.x RING adapter - using loom/java21+
+* https://github.com/xadecimal/procedural[procedural] 0.2.1 - A library that adds procedural programming features to Clojure
+* https://github.com/pfeodrippe/vybe[vybe] 0.1.7 - A Clojure framework for game dev
+* https://github.com/dundalek/dinodoc[dinodoc] https://github.com/dundalek/dinodoc/blob/main/CHANGELOG.md[0.3.0] - Polyglot documentation system for building unified documentation sites
+* https://github.com/felixdo/axoloauth2[axoloauth2]  - Clojure helper to fetch and refresh oauth2 tokens for desktop/cli apps via authorization code + pkce exchange
+* https://github.com/fulcrologic/guardrails[guardrails] 1.2.7 - Efficient, hassle-free function call validation with a concise inline syntax for clojure.spec and Malli
+* https://github.com/clj-commons/ordered[ordered] https://github.com/clj-commons/ordered/blob/master/CHANGELOG.md[1.15.12] - Ordered sets and maps, implemented in pure clojure
+* https://github.com/clj-commons/manifold[manifold] https://github.com/clj-commons/manifold/blob/master/CHANGES.md[0.4.3] - A compatibility layer for event-driven abstractions
+* https://github.com/pedestal/pedestal[pedestal] 0.6.4 - The Pedestal Server-side Libraries
+* https://github.com/xledger/pod_sql_server[pod_sql_server] 1.0.0 - Babashka pod for SQL Server
+* https://github.com/clj-commons/kibit[kibit] https://github.com/clj-commons/kibit/blob/master/CHANGELOG.md[0.1.11] - A static code analyzer for Clojure, ClojureScript, cljx and other Clojure variants
+* https://github.com/soulspace-org/overarch[overarch] https://github.com/soulspace-org/overarch/blob/main/Changelog.md[0.17.0] - A data driven description of software architecture based on UML and the C4 model
+* https://github.com/uncomplicate/neanderthal[neanderthal] https://github.com/uncomplicate/neanderthal/blob/master/CHANGELOG.md[0.49.0] - Fast Clojure Matrix Library
+* https://github.com/uncomplicate/deep-diamond[deep-diamond] 0.28.0 - A fast Clojure Tensor & Deep Learning library

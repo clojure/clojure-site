@@ -17,7 +17,7 @@ The Clojure CLI is a command-line tool to run Clojure programs on the Java Virtu
 
 == Installation
 
-The Clojure CLI can be installed via Homebrew, bash/posix script, or Powershell depending on the platform. See the <<xref/../../../guides/install_clojure#,installation guide>> for details and the <<xref/../../../releases/tools#,release page>> for version information. You can also read the <<xref/../../../guides/deps_and_cli#,guide>> for a longer tutorial. For artifact building, check out the <<xref/../../../guides/tools_build#,tools.build guide>>.
+The Clojure CLI can be installed in a variety of ways, see the <<xref/../../../guides/install_clojure#,installation guide>> for details and the <<xref/../../../releases/tools#,release page>> for version information. You can also read the <<xref/../../../guides/deps_and_cli#,guide>> for a longer tutorial. For artifact building, check out the <<xref/../../../guides/tools_build#,tools.build guide>>.
 
 Any version of the Clojure CLI can use any version of the Clojure language. Generally it is best to use the latest <<xref/../../../releases/tools#,version of the CLI>> to have the latest features and fixes. Given a CLI version A.B.C[.D], the default <<xref/../../../releases/downloads#,version of Clojure>> used at the REPL will be A.B.C, however you can specify an older (or newer!) version of the language in your dependencies.
 
@@ -297,7 +297,7 @@ Print help to console. Also see `man clojure`.
 [[aliases]]
 == Aliases
 
-When invoking commands in the context of a project, it is common to need to specify complex data that is hard to quote on the command line. As Clojure programmers, we strongly prefer to specify that data in Clojure syntax (http://edn-format.org/[edn]). The <<deps_edn#,deps.edn>> file format allows us to define arbitrary Clojure data and give that data a name using <<deps_edn#aliases,aliases>>. Aliases are simply keywords that name edn data.
+When invoking commands in the context of a project, it is common to need to specify complex data that is hard to quote on the command line. As Clojure programmers, we strongly prefer to specify that data in Clojure syntax (https://github.com/edn-format/edn[edn]). The <<deps_edn#,deps.edn>> file format allows us to define arbitrary Clojure data and give that data a name using <<deps_edn#aliases,aliases>>. Aliases are simply keywords that name edn data.
 
 Each execution mode of the Clojure CLI has many configuration options (the "arg map"). These can be defined in edn maps via aliases and selected on the command line using the aliases in `-A`, `-X`, `-T`, or `-M`. Below is a list of all arg map keys - unless otherwise noted, these are valid in all execution modes.
 
@@ -577,7 +577,7 @@ These data types need to be surrounded by single quotes:
 * Sets - `'#{:a :b}'`
 * Lists - `'(1 2 3)'`
 
-On Windows, WSL2 shells can follow the advice above, but on cmd.exe or Powershell, additional escape quoting is required for string values. Unfortunately the combination of quoting rules for converting command line Windows program arguments and Powershell quoting and word splitting are https://stackoverflow.com/a/59681993/7671[very complicated]. 
+On Windows, WSL2 shells can follow the advice above, but using clojure.exe, additional escape quoting is required for string values. Unfortunately the combination of quoting rules for converting command line Windows program arguments, quoting, and word splitting are https://stackoverflow.com/a/59681993/7671[very complicated]. 
 
 To pass a string value at the top level, if the string value does not have spaces, you can use `'\"str\"'`. If the string value does have spaces (or not) you should use `'"""str value"""'`.
 
@@ -821,7 +821,7 @@ For example:
 clj -Ttools install io.github.clojure/tools.deps.graph '{:git/tag "v1.0.63"}' :as deps-graph
 ----
 
-On Windows, additional <<clojure_cli#quoting,escape quoting>> is required in Powershell:
+On Windows, additional <<clojure_cli#quoting,escape quoting>> is required:
 
 [source,shell]
 ----

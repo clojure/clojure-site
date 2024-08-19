@@ -539,6 +539,30 @@ is read the same as:
                      :rebel.ship/model "YT-1300f light freighter"}}
 ----
 
+Finally, if a keyword is qualified, then the given namespace is used. And if the keyword has the namespace `_`, then it is treated as having no namespace:
+
+[source,clojure]
+----
+#:shape{:_/type "Square"
+        :location/x 10
+        :location/y 12
+        :sides 4
+        :width 2
+        :height 2}
+----
+
+is read the same as:
+
+[source,clojure]
+----
+{:type "Square"
+ :location/x 10
+ :location/y 12
+ :shape/sides 4
+ :shape/width 2
+ :shape/height 2}
+----
+
 * <<xref/../../reference/reader#map_namespace_syntax,Reader>>
 
 == `/` - Namespace separator

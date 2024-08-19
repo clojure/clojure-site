@@ -1,0 +1,14 @@
+= Clojure 1.11.4
+Alex Miller
+2024-08-03
+:jbake-type: post
+
+Clojure 1.11.4 is now available with the following fixes:
+
+* https://clojure.atlassian.net/browse/CLJ-2145[CLJ-2145] Fix clearing of closed overs in `^:once` fns
+
+In some cases (see the ticket for details), functions that closed-over bindings in the outer scope were not clearing the use of those bindings in the inner function scope, which could potentially cause head-holding. These closed-overs are now clearable for garbage collection.
+
+* https://clojure.atlassian.net/browse/CLJ-2317[CLJ-2317] `recur` to head of `:once` fn cancels once
+
+The `:once` function metadata is a hint to the compiler that a function will only be run once, and thus closed-over fields may be cleared. It is nonsensical to `recur` to the head of a `:once` fn (as that implies running it more than once), but this situation can arise through the use of macros that apply wrap arbitrary bodies in `:once` fns. In this case closed-over fields would sometimes be cleared prior to the recur. Now, use of `recur` to the head of a `:once` fn will ignore the `:once` flag and closed-over fields will not be cleared in the fn. Clearing of other local fields (not closed-over) is unchanged.

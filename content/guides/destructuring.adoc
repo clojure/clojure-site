@@ -41,9 +41,19 @@ This is perfectly valid, but the code extracting and naming the values in the ve
 ;= "Line from ( 5 , 10 ) to ( 10 , 20 )"
 ----
 
-Rather than explicitly binding each variable, we describe the bindings based on their sequential order. That's a pretty weird statement, "describe the bindings," so let's look at it again.
+Rather than explicitly binding each variable, we describe where the values for the bindings can be found, based on their sequential order.
 
-We have a data structure `my-line` that looks like this, `[[5 10] [10 20]]`. In our destructuring form we will create a vector containing two elements, `p1` and `p2`, each of which are vectors themselves. This will bind the vector `[5 10]` to the symbol `p1` and the vector `[10 20]` to the symbol `p2`. Since we want to work with the elements of `p1` and `p2` rather than the structures themselves, we destructure `p1` and `p2` within the same let statement. The vector `p1` looks like this, `[5 10]`, so to destructure it, we create a vector containing two elements, `x1` and `y1`. This binds `5` to the symbol `x1` and `10` to the symbol `y1`. The same is repeated for `p2` binding `10` to `x2` and `20` to `y2`. At this point, we now have everything we need to work with our data.
+We start with a data structure `my-line` that looks like `[[5 10] [10 20]]`. In the destructuring form we describe the structure of the data as a vector containing two elements, `p1` and `p2`, each of which are vectors themselves. This form binds the vector `[5 10]` to the symbol `p1` and the vector `[10 20]` to the symbol `p2`. Since we want to work with the elements of `p1` and `p2` rather than the structures themselves, we destructure `p1` and `p2` within the same let statement. The vector `p1` looks like this, `[5 10]`, so to destructure it, we describe its form as a vector containing two elements, `x1` and `y1`. This binds `5` to the symbol `x1` and `10` to the symbol `y1`. The same is repeated for `p2` binding `10` to `x2` and `20` to `y2`. At this point, we now have everything we need to work with our data.
+
+An even more concise version of this would recursively destructure without needing to assign bindings for `p1` or `p2` at all:
+
+[source,clojure]
+----
+;= Using the same vector as above
+(let [[[x1 y1] [x2 y2]] my-line]
+ (println "Line from (" x1 "," y1 ") to (" x2 ", " y2 ")"))
+;= "Line from ( 5 , 10 ) to ( 10 , 20 )"
+----
 
 == Sequential Destructuring
 
@@ -77,7 +87,7 @@ This type of destructuring can be used on any kind of data structure that can be
 
 The key to sequential destructuring is that you bind the values one-by-one to the symbols in the vector. For instance the vector `[x y z]` will match each element one-by-one with the list `'(1 2 3)`.
 
-In some cases, the collection you are destructuring isn't the exact same size as the destructuring bindings. If the vector is too small, the extra symbols will be bound to nil.
+In some cases, the collection you are destructuring isn't the exact same size as the destructuring bindings. If the vector is too small, the extra symbols will be bound to nil. In general, if the binding form does not match a value, the binding will be nil.
 
 [source,clojure]
 ----
@@ -362,18 +372,19 @@ To support this style of invocation, associative destructuring also works with l
 [source,clojure]
 ----
 (defn configure [val & {:keys [debug verbose]
-                        :or {debug false, verbose false}}]
-  (println "val =" val " debug =" debug " verbose =" verbose))
+                        :or {debug false, verbose false}
+                        :as opts}]
+  (println "val =" val " debug =" debug " verbose =" verbose " opts =" opts))
 
 (configure 10)
-;;val = 10  debug = false  verbose = false
+;;val = 10  debug = false  verbose = false  opts = nil
 
 (configure 5 :debug true)
-;;val = 5  debug = true  verbose = false
+;;val = 5  debug = true  verbose = false  opts = {:debug true}
 
 ;; Note that any order is ok for the kwargs
- (configure 12 :verbose true :debug true)
-;;val = 12  debug = true  verbose = true
+(configure 12 :verbose true :debug true)
+;;val = 12  debug = true  verbose = true  opts = {:verbose true, :debug true}
 ----
 
 The use of keyword arguments had fallen in and out of fashion in the Clojure community over the years. They are now mostly used when presenting interfaces that people are expected to type at the REPL or the outermost layers of an API. In general, inner layers of the code found it easier to pass options as an explicit map. However, in Clojure 1.11 the capability was added to allow passing of alternating key->values, or a map of those same mappings, or even a map with key->values before it to functions expecting keyword arguments. Therefore, the call to `configure` above can take any of the following forms in addition to those shown above:

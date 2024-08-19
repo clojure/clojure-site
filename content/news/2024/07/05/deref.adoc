@@ -1,0 +1,50 @@
+= Clojure Deref (July 5, 2024)
+Alex Miller
+2024-07-05
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts and videos
+
+* https://clojuredesign.club/episode/118-pure-parts/[Ep 118: Pure Parts] - Functional Design in Clojure
+* https://www.youtube.com/watch?v=y1M3p4zxzM8[Learn Clojure — Splitting Large Programs] - Clojure Diary
+* https://www.youtube.com/watch?v=5dXRhCh-i34[Stats With Clojure Book, Injee, and Clojure Diary updates] - Clojure Diary
+* https://www.youtube.com/watch?v=6rZY8mHbWt0[Clojure for when] - Clojure Diary
+
+== Blogs, articles, and projects
+
+* https://gaiwan.co/blog/announcing-first-speakers/[Announcing First Speakers] - Arne Brasseur (Gaiwan)
+* https://gaiwan.co/blog/more-speaker-announcements-ai-xtdb-and-the-foundations-of-lisp/[More Speaker Announcements: AI, XTDB, and the Foundations of LISP] - Arne Brasseur (Gaiwan)
+* https://gaiwan.co/blog/next-batch-of-heart-of-clojure-speakers/[Next Batch of Heart of Clojure Speakers] - Arne Brasseur (Gaiwan)
+* https://oss.toyokumo.co.jp[Thanks OSS Award (in Japanese)] - Toyokumo
+* https://tonitalksdev.com/how-to-use-test-mocks-and-fixtures-in-clojure[How to Use Test Mocks and Fixtures In Clojure] - Toni Väisänen
+* https://jank-lang.org/blog/2024-06-29-multimethods/[jank development update - Multimethods!] - Jeaye Wilkerson
+* https://blog.michielborkent.nl/oss-updates-may-jun-2024.html[OSS updates May and June 2024] - Michiel Borkent
+* https://www.taoensso.com/news/2024-06-open-source[Open source update] - Peter Taoussanis
+* https://codewithkira.com/2024-06-30-clojurists-together-update-may-jun-2024.html[OSS Updates May and June 2024] - Kira McLean
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/anteoas/broch[broch] https://github.com/anteoas/broch/releases/tag/v2024.06.26[2024.06.26] - A library for handling numbers with units
+* https://github.com/metosin/malli[malli] https://github.com/metosin/malli/blob/master/CHANGELOG.md[0.16.2] - High-performance data-driven data specification library for Clojure/Script
+* https://github.com/metosin/reitit[reitit] https://github.com/metosin/reitit/blob/master/CHANGELOG.md[0.7.1] - A fast data-driven routing library for Clojure/Script
+* https://github.com/metosin/ring-http-response[ring-http-response] https://github.com/metosin/ring-http-response/blob/master/CHANGELOG.md[0.9.4] - Handling HTTP Statuses with Clojure(Script)
+* https://github.com/metosin/jsonista[jsonista] https://github.com/metosin/jsonista/blob/master/CHANGELOG.md[0.3.9] - Clojure library for fast JSON encoding and decoding
+* https://github.com/metosin/spec-tools[spec-tools] https://github.com/metosin/spec-tools/blob/master/CHANGELOG.md[0.10.7] - Clojure(Script) tools for clojure.spec
+* https://github.com/steffan-westcott/clj-otel[clj-otel] https://github.com/steffan-westcott/clj-otel/blob/master/CHANGELOG.adoc[0.2.7] - An idiomatic Clojure API for adding telemetry to your libraries and applications using OpenTelemetry
+* https://github.com/pedestal/pedestal[pedestal] https://github.com/pedestal/pedestal/blob/master/CHANGELOG.md[0.7.0] - The Pedestal Server-side Libraries
+* https://github.com/monkey-projects/aero-ext[aero-ext] 0.1.3 - Extensions to use with the Aero config lib
+* https://github.com/griffinbank/test.contract[test.contract]  - quickcheck of stateful protocols
+* https://github.com/squint-cljs/squint[squint] https://github.com/squint-cljs/squint/blob/main/CHANGELOG.md[0.8.112] - Light-weight ClojureScript dialect
+* https://github.com/babashka/nbb[nbb] https://github.com/babashka/nbb/blob/main/CHANGELOG.md[1.2.190] - Scripting in Clojure on Node.js using SCI
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.462[2.0.462] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/babashka/neil[neil] https://github.com/babashka/neil/blob/main/CHANGELOG.md[0.3.66] - A CLI to add common aliases and features to deps.edn-based projects
+* https://github.com/juji-io/datalevin[datalevin] https://github.com/juji-io/datalevin/blob/master/CHANGELOG.md[0.9.8] - A simple, fast and versatile Datalog database
+* https://github.com/clojure-emacs/cider[cider] https://github.com/clojure-emacs/cider/releases/tag/v1.15.1[1.15.1] - The Clojure Interactive Development Environment that Rocks for Emacs
+* https://github.com/soulspace-org/overarch[overarch] https://github.com/soulspace-org/overarch/blob/main/Changelog.md[0.25.0] - A data driven description of software architecture based on UML and the C4 model
+* https://github.com/flow-storm/flow-storm-debugger[flow-storm-debugger] https://github.com/flow-storm/flow-storm-debugger/blob/master/CHANGELOG.md[3.16.0] - A debugger for Clojure and ClojureScript with some unique features

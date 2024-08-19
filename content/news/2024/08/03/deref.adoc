@@ -1,0 +1,59 @@
+= Clojure Deref (Aug 3, 2024)
+Alex Miller
+2024-08-03
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== From the core
+
+This week we've released three things:
+
+* https://2024.clojure-conj.org/#/speakers[Clojure/conj 2024 Program]
+* https://clojure.org/news/2024/08/03/clojure-1-11-4[Clojure 1.11.4]
+* https://clojure.org/news/2024/08/03/clojure-1-12-0-rc1[Clojure 1.12.0-rc1]
+
+The final program for the Conj is still a work in progress and we hope to have a full schedule available in the next week or two. https://ti.to/nubank/clojureconj-2024[Register now] to be there in Alexandria, Virginia Oct 23-25th to talk about all things Clojure!
+
+This week we've been focused on some issues with locals clearing of closed-over fields and that work has been released in 1.12.0-rc1 and backported to 1.11.4. See the 1.11.4 release notes for the details.
+
+At this point we consider 1.12.0 to be complete pending feedback from the community. This is your last chance to try the new version before the official release - we welcome your feedback!
+
+== Podcasts and videos
+
+* https://podcasters.spotify.com/pod/show/lostinlambduhhs/episodes/first-conj-clojure-camp-raf-dittwald-recia-roopnarine-e2mjtmd/a-abf646a[pass:[((first (conj [:clojure-camp] :raf-dittwald :recia-roopnarine))]] - Jordan Miller
+* https://www.youtube.com/watch?v=N0pxjHgNUxs[Packaging Clojure app for Mac] - Clojure Diary
+* https://www.youtube.com/watch?v=N_E-P2Giq1k[Meetup: Collaborative Learning - XTDB 2.0] - Los Angeles Clojure Users Group
+* https://www.youtube.com/watch?v=bJCDJnt4lEA[Meetup: Collaborative Learning - XTDB 2.0 (part 2)] - Los Angeles Clojure Users Group
+
+== Blogs, articles, and projects
+
+* https://aiprobook.com/deep-learning-for-programmers/[Deep Learning for Programmers] - Dragan Djuric
+* https://gaiwan.co/blog/when-a-plan-comes-together/[When a Plan Comes Together] - Arne Brasseur (Gaiwan)
+* https://2024.clojure-conj.org/#/speakers[Speakers] - CLOJURE/CONJ
+* https://blog.hughpowell.net/6-months-1-line-of-code.html[6 months, 1 line of code] - Hugh Powell
+* https://play.teod.eu/clojure-easy-parallellism-with-pipeline-blocking/[Easy, explicit parallellism with pipeline-blocking] - Ruben S. Sevaldson, Teodor Heggelund
+* link:++https://danielsz.github.io/20240718T060528--lisps-grandfather-paradox__clojure_lisp_scheme.html++[LISP'S GRANDFATHER PARADOX] - Daniel Szmulewicz
+* https://hyperfiddle-docs.notion.site/Electric-progress-update-July-2024-9429836036e4489fb9ce3dc9ddf7faee[Electric Clojure progress update - July 2024] - Dustin Getz
+* https://tonitalksdev.com/typed-configuration-files-with-malli-aero[Typed Configuration Files with Malli & Aero] - Toni Väisänen
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/clojure/clojure[clojure] https://clojure.org/releases/devchangelog#v1.12.0-rc1[1.12.0-rc1] and https://clojure.org/releases/devchangelog#v1.11.4[1.11.4] - The Clojure programming language
+* https://github.com/scicloj/kind-pyplot[kind-pyplot] https://github.com/scicloj/kind-pyplot/blob/main/CHANGELOG.md[1-beta1] - Visualizing python plots with the Clojure Kindly convention
+* https://github.com/cljfx/cljfx[cljfx] https://github.com/cljfx/cljfx/blob/master/CHANGELOG.md[1.9.1] - Declarative, functional and extensible wrapper of JavaFX inspired by better parts of react and re-frame
+* https://github.com/cljfx/dev[dev] 1.0.39 - Dev tools for cljfx
+* https://github.com/dundalek/stratify[stratify] 0.1.0 - Visualize structure and dependencies of Clojure codebases
+* https://codeberg.org/mitch-kyle/integrant.monkey[integrant.monkey] https://codeberg.org/mitch-kyle/integrant.monkey/src/branch/main/CHANGELOG.md[0.2.0] - Monkey around with your integrant system
+* https://github.com/jf/pipeline-notifier[pipeline-notifier]  - ready-made notifiers with excellent DX (Developer Experience) for your devops pipelines
+* https://github.com/clj-kondo/clj-kondo[clj-kondo] https://github.com/clj-kondo/clj-kondo/blob/master/CHANGELOG.md[2024.08.01] - Static analyzer and linter for Clojure code that sparks joy
+* https://github.com/ikappaki/basilisp-kernel[basilisp-kernel] https://github.com/ikappaki/basilisp-kernel/blob/main/CHANGELOG.md[1.1.0] - A Jupyter kernel for Basilisp, a Clojure compatible dialect implemented in Python
+* https://github.com/flow-storm/clofidence[clofidence] https://github.com/flow-storm/clofidence/blob/master/CHANGELOG.md[0.3.1] - Bolster your Clojure test suite confidence
+* https://github.com/scicloj/clay[clay] https://github.com/scicloj/clay/blob/main/CHANGELOG.md[2-beta15] - A tiny Clojure tool for dynamic workflow of data visualization and literate programming
+* https://github.com/scicloj/cmdstan-clj[cmdstan-clj] https://github.com/scicloj/cmdstan-clj/blob/main/CHANGELOG.md[1-alpha2] - Using the Stan statistical modelling language from Clojure using the CmdStan CLI
+* https://github.com/clojure-goes-fast/clj-java-decompiler[clj-java-decompiler] https://github.com/clojure-goes-fast/clj-java-decompiler/blob/master/CHANGELOG.md[0.3.6] - REPL-integrated Clojure-to-Java decompiler
+* https://github.com/soulspace-org/overarch[overarch] https://github.com/soulspace-org/overarch/blob/main/Changelog.md[0.29.1] - A data driven description of software architecture based on UML and the C4 model

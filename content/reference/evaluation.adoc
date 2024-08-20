@@ -35,7 +35,7 @@ A Symbol is _resolved_:
 . If it names a special form it is considered a special form, and must be utilized accordingly.
 . If in a local scope (e.g. in a function definition or a let form), a lookup is done to see if it names a local binding (e.g. a function argument or let-bound name). If so, the value is the value of the local binding.
 . A lookup is done in the current namespace to see if there is a mapping from the symbol to a var. If so, the value is the value of the binding of the var referred-to by the symbol.
-. If it names a class or a mapping from symbol to class, the value is the Java class named by the symbol.
+. If it names a class or a mapping from symbol to class in the current namespace, the value is the Java class named by the symbol.
 . It is an error.
 
 If a Symbol has metadata, it may be used by the compiler, but will not be part of the resulting value.

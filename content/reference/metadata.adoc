@@ -77,15 +77,17 @@ Returns an object of the same type and value as obj, with `(apply f (meta obj) a
 
 Modify or reset the metadata respectively for a namespace/var/ref/agent/atom.
 
-== Metadata Reader Syntax
+== Metadata Reader
 
-In addition to with-meta, there is reader support (<<reader#metadata,Metadata Reader>>) for applying metadata to the expression following it at read-time:
+In addition to `with-meta`, there is reader support (<<reader#metadata,Metadata Reader>>) for applying metadata to the expression following it at read-time.
 
-* Map: `^{:key value ...}`
-* Keyword: `^:key -> `^{:key true}`
-* Symbol: `^AClass` or `^package.AClass` -> `{:tag package.AClass}` (also see special <<java_interop#TypeAliases,type aliases>>)
-* String: `^"package.AClass"` -> `{:tag package.AClass}`
-* Vector: `^[AClass prim _ ...]` -> `{:param-tags [package.AClass prim _ ...]}`
+For a metadata value of type:
+
+* Map: `^{:key value ...}` yields itself
+* Keyword: `^:key` yields `^{:key true}`
+* Symbol: `^AClass` or `^package.AClass` yields `{:tag package.AClass}` (also see special <<java_interop#TypeAliases,type aliases>>)
+* String: `^"package.AClass"` yields `{:tag package.AClass}`
+* Vector: `^[AClass prim _ ...]` yields `{:param-tags [package.AClass prim _ ...]}`
 
 The `:tag` key is used to hint an objects type to the Clojure compiler. See <<java_interop#typehints,Java Interop: Type Hints>> for more information and a complete list of special type hints.
 

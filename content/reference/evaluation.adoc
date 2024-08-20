@@ -24,15 +24,17 @@ Strings, numbers, characters, `true`, `false`, `nil` and keywords evaluate to th
 
 A Symbol is _resolved_:
 
-* If it is namespace-qualified, the value is the value of the binding of the global var named by the symbol. It is an error if the reference is to a non-public var in a different namespace.
-* If the qualifier names a class or a mapping from symbol to class in the current namespace, and the symbol name is a static field, the value is the value of the static field. Since Clojure 1.12, if the symbol name is a method of the class, the value is a Clojure function that invokes the method. Additionally, if the qualifier names a class or primitive name and the symbol name is a single digit between 1 and 9, inclusive then the symbol resolves to an array class with a dimesionality equal to the digit supplied.
-* If it is package-qualified, the value is the Java class named by the symbol. It is an error if there is no Class named by the symbol.
-* Else, it is not qualified and the first of the following applies:
-. If it names a special form it is considered a special form, and must be utilized accordingly.
-. If in a local scope (e.g. in a function definition or a let form), a lookup is done to see if it names a local binding (e.g. a function argument or let-bound name). If so, the value is the value of the local binding.
-. A lookup is done in the current namespace to see if there is a mapping from the symbol to a class. If so, the symbol is considered to name a Java class object. Since Clojure 1.12, if the qualifier names a class or primitive name and the name is a single digit between 1 and 9, inclusive then the symbol resolves to an array class. Note that class names normally denote class objects, but are treated specially in certain special forms, e.g. `.` and `new`.
-. A lookup is done in the current namespace to see if there is a mapping from the symbol to a var. If so, the value is the value of the binding of the var referred-to by the symbol.
-. It is an error.
+* When namespace-qualified:
+** The value is the value of the binding of the global var named by the symbol. It is an error if the reference is to a non-public var in a different namespace.
+** If the qualifier names a class or a mapping from symbol to class in the current namespace, and the symbol name is a static field, the value is the value of the static field. Since Clojure 1.12, if the symbol name is a method of the class, the value is a Clojure function that invokes the method. Additionally, if the qualifier names a class or primitive name and the symbol name is a single digit between 1 and 9, inclusive then the symbol resolves to an array class with a dimesionality equal to the digit supplied.
+* When not namespace-qualified:
+** If it is package-qualified, the value is the Java class named by the symbol. It is an error if there is no Class named by the symbol.
+** Else, it is not qualified and the first of the following applies:
+*** If it names a special form it is considered a special form, and must be utilized accordingly.
+*** If in a local scope (e.g. in a function definition or a let form), a lookup is done to see if it names a local binding (e.g. a function argument or let-bound name). If so, the value is the value of the local binding.
+*** A lookup is done in the current namespace to see if there is a mapping from the symbol to a class. If so, the symbol is considered to name a Java class object. Note that class names normally denote class objects, but are treated specially in certain special forms, e.g. `.` and `new`.
+*** A lookup is done in the current namespace to see if there is a mapping from the symbol to a var. If so, the value is the value of the binding of the var referred-to by the symbol.
+*** It is an error.
 
 If a Symbol has metadata, it may be used by the compiler, but will not be part of the resulting value.
 

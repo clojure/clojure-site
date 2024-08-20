@@ -435,11 +435,13 @@ both takes and returns values of primitive type `long` (invocations with a boxed
 
 At times it is necessary to have a value of a particular primitive type. These coercion functions yield a value of the indicated type as long as such a coercion is possible: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/bigdec[bigdec] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/bigint[bigint] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/boolean[boolean] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/byte[byte] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/char[char] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/double[double] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/float[float] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/int[int] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/long[long] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/num[num] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/short[short]
 
-=== Functional interfaces
+== Functional Interface Conversion
 
-Java defines "functions" with Java functional interfaces (marked with the  https://docs.oracle.com/javase/8/docs/api/java/lang/FunctionalInterface.html[@FunctionalInterface] annotation), which have a single method.
+Java programs define "functions" with Java functional interfaces (marked with the https://docs.oracle.com/javase/8/docs/api/java/lang/FunctionalInterface.html[@FunctionalInterface] annotation), which have a single method.
 
-Since, Clojure 1.12, developers can invoke Java methods taking functional interfaces by passing functions with matching arity. The Clojure compiler implicitly converts Clojure functions to the required functional interface by constructing a lambda adapter. You can explicitly coerce a Clojure function to a functional interface by <<special_forms#let,hinting the binding name>> in a `let` binding, e.g. to avoid repeated adapter construction in a loop.
+When invoking Java methods or constructors, the Clojure compiler implicitly converts Clojure functions to the required functional interface by constructing a lambda adapter. You can explicitly coerce a Clojure function to a functional interface by hinting the binding name in a let binding, e.g. to avoid repeated adapter construction in a loop, e.g. (let [^java.util.function.Predicate p even?] ...).
+
+Since Clojure 1.12, all `IDeref` impls (`delay`, `future`, `atom`, etc) implement the https://docs.oracle.com/javase/8/docs/api/java/util/function/Supplier.html[Supplier] interface directly.
 
 [[optimization]]
 == Some optimization tips
@@ -451,6 +453,19 @@ Since, Clojure 1.12, developers can invoke Java methods taking functional interf
 * Almost every time someone presents something they are trying to optimize with hints, the faster version has far fewer hints than the original. If a hint doesn't improve things in the end - take it out.
 * Many people seem to presume only the unchecked- ops do primitive arithmetic - not so. When the args are primitive locals, regular + and * etc do primitive math with an overflow check - fast _and_ safe.
 * So, the simplest route to fast math is to leave the operators alone and just make sure the source literals and locals are primitive. Arithmetic on primitives yields primitives. If you've got a loop (which you probably do if you need to optimize) make sure the loop locals are primitives first - then if you accidentally are producing a boxed intermediate result you'll get an error on recur. Don't solve that error by coercing your intermediate result, instead, figure out what argument or local is not primitive.
+
+== Java Stream Support
+
+Clojure collections implement the Java collection interfaces, which provide https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html[Stream] and https://docs.oracle.com/javase/8/docs/api/java/util/Spliterator.html[Spliterator] access. Clojure persistent vectors implement a custom Spliterator that supports parallel streams.
+
+Clojure provides functions (since 1.12) to interoperate with streams in an idiomatic manner, all functions behave analogously to their Clojure counterparts:
+
+* `(https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/stream-seq![stream-seq!] stream)` => `seq`
+* `(https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/stream-reduce![stream-reduce!] f [init-val] stream)` => `val`
+* `(https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/stream-transduce![stream-transduce!] xf f [init-val] stream)` => `val`
+* `(https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/stream-into![stream-into!] to-coll [xf] stream)` => `to-coll`
+
+All of these operations are terminal stream operations (they consume the stream).
 
 == Simple XML Support
 Included with the distribution is simple XML support, found in the src/clj/clojure/xml.clj file. All names from this file are in the clojure.xml namespace.

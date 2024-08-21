@@ -24,7 +24,7 @@ Strings, numbers, characters, `true`, `false`, `nil` and keywords evaluate to th
 
 A Symbol is _resolved_:
 
-* If it is namespace-qualified, the value is the value of the binding of the global var named by the symbol. It is an error there is no global var named by the symbol, or if the reference is to a non-public var in a different namespace.
+* If it is namespace-qualified, the value is the value of the binding of the global var named by the symbol. It is an error if there is no global var named by the symbol, or if the reference is to a non-public var in a different namespace.
 * If the qualifier names a class or a mapping from symbol to class in the current namespace or a primitive name, and the symbol name is:
 ** a static field in the class, then the value is the value of the static field.
 ** a static method of the class, then the value is a Clojure function that invokes the static method.

@@ -1,0 +1,47 @@
+= Clojure Deref (Aug 23, 2024)
+Alex Miller
+2024-08-23
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts and videos
+
+* https://www.youtube.com/watch?v=Y2Stj6oYc5Q[Clojure data-recur meeting 6: Clojure Meets Metal: Working with native libraries and the GPU] - Sci Cloj
+* https://www.youtube.com/watch?v=mP9e_FDjHLU[Electric Clojure v3: Differential Dataflow for UI (by Dustin Getz)] - London Clojurians
+* https://www.youtube.com/watch?v=hxmAe7-z60Q[Career Change From Tattooing to Software and Back With Cat Rivers] - Toni Talks Dev
+* https://www.youtube.com/watch?v=xgmqwbeDT44[Greatest of three numbers in Clojure] - Clojure Diary
+* https://www.youtube.com/watch?v=8nxagnx0RVg[Shipping Jar with Shell] - Clojure Diary
+
+== Blogs, articles, and projects
+
+* https://www.jarrodctaylor.com/posts/Clojure-1.12-Field-Guide/[Clojure 1.12 Field Guide] - Jarrod C Taylor
+* https://blog.fogus.me/2024/08/19/on-method-values-part-1/[On method values, part 1] - Michael Fogus
+* https://2024.clojure-conj.org/#/schedule[Schedule] - Clojure/conj
+* https://www.loicblanchard.me/blog/testing-in-clojure[Testing in Clojure] - Loïc Blanchard
+* https://nextjournal.com/Javierweiss/tipos-de-datos-y-estructuras-de-datos-clj?token=WeNHtrfwRQYmNaSXv1RNvz[Tipos de datos y estructuras de datos (Clojure)] - José Javier Blanco Rivero
+* https://buttondown.com/tensegritics-curiosities/archive/clojuredart-and-firebase-auth/[ClojureDart and Firebase Auth] - Arnaud Bos
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/clj-commons/rewrite-clj[rewrite-clj] https://github.com/clj-commons/rewrite-clj/blob/main/CHANGELOG.adoc#v1.1.48[1.1.48] - Rewrite Clojure code and edn
+* https://github.com/fulcrologic/statecharts[statecharts] 1.2.5 - A Statechart library for CLJ(S)
+* https://github.com/fulcrologic/fulcro[fulcro] 3.7.8 - A library for development of single-page full-stack web applications in clj/cljs
+* https://github.com/potetm/fusebox[fusebox] 1.0.5 - An extremely lightweight fault tolerance library for Clojure
+* https://github.com/clj-holmes/clj-watson[clj-watson] https://github.com/clj-holmes/clj-watson/releases/tag/v6.0.0[6.0.0] - clojure deps SCA
+* https://github.com/jjttjj/tinywl-clj[tinywl-clj]  - A proof of concept Clojure port of the Tinywl wayland compositor
+* https://github.com/scicloj/noj[noj] https://github.com/scicloj/noj/blob/main/CHANGELOG.md[2-alpha3-SNAPSHOT] - A clojure framework for data science
+* https://github.com/lispyclouds/navi[navi] https://github.com/lispyclouds/navi/releases/tag/0.0.6[0.0.6] - A tiny, data-driven library converting OpenAPI spec to Reitit routes
+* https://github.com/lambdaisland/xml-select[xml-select] https://github.com/lambdaisland/xml-select/blob/main/CHANGELOG.md[0.1.1] - XPath-style selectors for Clojure
+* https://github.com/anteoas/replicant-mini-app[replicant-mini-app]  - A tiny example of a Replicant app
+* https://github.com/clojure/tools.reader[tools.reader] https://github.com/clojure/tools.reader/blob/master/CHANGELOG.md[1.5.0] - Clojure reader in Clojure
+* https://github.com/taoensso/telemere[telemere] https://github.com/taoensso/telemere/releases/tag/v1.0.0-beta20[v1.0.0-beta20] - Structured telemetry library for Clojure/Script
+* https://github.com/noahtheduke/lazytest[lazytest] https://github.com/NoahTheDuke/lazytest/blob/master/CHANGELOG.md[0.4.0] - BDD test framework for Clojure
+* https://github.com/soulspace-org/overarch[overarch] https://github.com/soulspace-org/overarch/blob/main/Changelog.md[0.30.0] - A data driven description of software architecture based on UML and the C4 model
+* https://github.com/borkdude/edamame[edamame] https://github.com/borkdude/edamame/releases/tag/v1.4.27[1.4.27] - Configurable EDN/Clojure parser with location metadata
+* https://github.com/clj-commons/pretty[pretty] https://github.com/clj-commons/pretty/blob/main/CHANGES.md[3.1.1] - Library for helping print things prettily, in Clojure - ANSI fonts, formatted exceptions
+* https://github.com/fulcrologic/fulcro-rad[fulcro-rad] 1.6.5 - Fulcro Rapid Application Development

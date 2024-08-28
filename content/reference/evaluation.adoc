@@ -31,7 +31,7 @@ A Symbol is _resolved_:
 ** a static method of the class, then the value is a Clojure function that invokes the static method. (since 1.12)
 ** a `.` prefixing an instance method of the class, then the value is a Clojure function that invokes the instance method. (since 1.12)
 ** `new`, then the value is a Clojure function that invokes the constructor. (since 1.12)
-* If the qualifier names a class, and the symbol name is:
+* If the qualifier names a class or primitive type, and the symbol name is:
 ** `1`-`9`, then the value is the array class whose component type is the qualifier and dimension per the digit. (since 1.12)
 * Else, it is not qualified and the first of the following applies to the symbol name:
 . If it names a special form it is considered a special form, and must be utilized accordingly.

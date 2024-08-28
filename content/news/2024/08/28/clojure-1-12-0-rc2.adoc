@@ -3,7 +3,9 @@ Alex Miller
 2024-08-28
 :jbake-type: post
 
-Clojure 1.12.0-rc2 is now available! At this point we consider Clojure 1.12.0 to be complete. Please test this release and provide any feedback prior to release.
+Clojure 1.12.0-rc2 is now available!  Find download and usage information on the <<xref/../../../../../releases/downloads#dev,Downloads>> page.
+
+At this point we consider Clojure 1.12.0 to be complete. Please test this release and provide any feedback prior to release.
 
 Changes since 1.12.0-rc1:
 
@@ -12,8 +14,3 @@ Changes since 1.12.0-rc1:
 
 For a complete list of 1.12.0 features and fixes, see the https://github.com/clojure/clojure/blob/master/changes.md#changes-to-clojure-in-version-1120[official changelog].
 
-You can try this release in a REPL using the Clojure CLI:
-
-```
-clj -Sdeps '{:deps {org.clojure/clojure {:mvn/version "1.12.0-rc2"}}}'
-```

@@ -14,6 +14,7 @@ New to Clojure? Head to the <<xref/../../guides/getting_started#,Getting Started
 These tools allow you to start a REPL for interactive use, download Clojure libraries (including Clojure itself), and run Clojure programs.
 ====
 
+[[stable]]
 == Stable Release: 1.11.4 (Aug 3, 2024)
 
 Include the release in your project using the following coordinates:
@@ -53,6 +54,7 @@ Clojure depends on Java and all Clojure code is compiled to Java 8 compatible by
 
 Read the https://github.com/clojure/clojure/blob/master/changes.md[Changelog] for detailed release information.
 
+[[dev]]
 == Development Release: 1.12.0-rc2 (Aug 28, 2024)
 
 Include the release in your project using the following coordinates:

@@ -19,6 +19,13 @@ Note: All dev releases are subject to breaking changes for new work since the pr
 
 == Release 1.12.0
 
+=== 1.12.0-rc2 (Aug 3, 2024) [[v1.12.0-rc2]]
+
+https://clojure.org/news/2024/08/28/clojure-1-12-0-rc2[Release Notes]
+
+* https://clojure.atlassian.net/browse/CLJ-2873[CLJ-2873] `add-libs` - reloads data readers after extending runtime classpath
+* https://clojure.atlassian.net/browse/CLJ-2881[CLJ-2881] `definterface` - add support for array class type hints
+
 === 1.12.0-rc1 (Aug 3, 2024) [[v1.12.0-rc1]]
 
 https://clojure.org/news/2024/08/03/clojure-1-12-0-rc1[Release Notes]

@@ -86,8 +86,8 @@ For a metadata value of type:
 * Map: `^{:key value ...}` yields itself
 * Keyword: `^:key` yields `^{:key true}`
 * Symbol: `^AClass` or `^package.AClass` yields `{:tag package.AClass}` (also see special <<java_interop#TypeAliases,type aliases>>)
-* String: `^"package.AClass"` yields `{:tag package.AClass}`
 * Vector: `^[AClass prim _ ...]` yields `{:param-tags [package.AClass prim _ ...]}`
+* *deprecated* String: `^"[Lpackage.AClass;"` yields `{:tag "[Lpackage.AClass;"}` - since 1.12, use array class symbols instead, e.g. `^package.AClass/1`
 
 The `:tag` key is used to hint an objects type to the Clojure compiler. See <<java_interop#typehints,Java Interop: Type Hints>> for more information and a complete list of special type hints.
 

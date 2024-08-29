@@ -81,19 +81,6 @@ Modify or reset the metadata respectively for a namespace/var/ref/agent/atom.
 
 In addition to `with-meta`, there is reader support (<<reader#metadata,Metadata Reader>>) for applying metadata to the expression following it at read-time.
 
-For a metadata value of type:
+See <<java_interop#typehints,Type Hints>> and <<java_interop#paramtags,param-tags>> for more information on how metadata is used by the compiler for method overload selection.
 
-* Map: `^{:key value ...}` yields itself
-* Keyword: `^:key` yields `^{:key true}`
-* Symbol: `^AClass` or `^package.AClass` yields `{:tag package.AClass}` (also see special <<java_interop#TypeAliases,type aliases>>)
-* Vector: `^[AClass prim _ ...]` yields `{:param-tags [package.AClass prim _ ...]}`
-* *deprecated* String: `^"[Lpackage.AClass;"` yields `{:tag "[Lpackage.AClass;"}` - since 1.12, use array class symbols instead, e.g. `^package.AClass/1`
 
-The `:tag` key is used to hint an objects type to the Clojure compiler. See <<java_interop#typehints,Java Interop: Type Hints>> for more information and a complete list of special type hints.
-
-Since Clojure 1.12, the `:param-tags` key is used on qualified static, instance, and constructor method symbols to specify the arity and parameter types of the desired method overload. The `:param-tags` vector takes any valid `:tag` value or `_` as a placeholder for non-overloaded parameters.
-
-It is possible to add multiple pieces of metadata by chaining the metadata reader macros together.
-For example: `^:dynamic ^ints obj` would apply both the :dynamic flag and ints type-hint to obj. Metadata chains from right to left (left takes precedence).
-
-Note that metadata reader macros are applied at read-time, not at evaluation-time, and can only be used with values that support metadata, like symbols, vars, collections, sequences, namespaces, refs, atoms, agents, etc. Some important exceptions that *don't* support metadata are strings, numbers, booleans, Java objects, keywords (these are cached and can be shared within the runtime), and deftypes (unless they explicitly implement clojure.lang.IMeta).

@@ -101,7 +101,7 @@ Evaluates the expressions __expr__s in a lexical context in which the symbols in
 -> 1
 ----
 
-If the _binding_ symbol metadata tag is a Java interface annotated as a https://docs.oracle.com/javase/8/docs/api/java/lang/FunctionalInterface.html[FunctionalInterface], the __init-expr__ will be coerced (if necessary) to the specified interface:
+If the _binding_ symbol `:tag` metadata is a Java interface annotated as a https://docs.oracle.com/javase/8/docs/api/java/lang/FunctionalInterface.html[FunctionalInterface], the __init-expr__ will be <<java_interop#functional_interfaces,coerced>> (if necessary) to the specified interface:
 
 [source,clojure]
 ----

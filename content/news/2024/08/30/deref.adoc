@@ -1,0 +1,45 @@
+= Clojure Deref (Aug 30, 2024)
+Alex Miller
+2024-08-30
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts and videos
+
+* https://www.youtube.com/live/28S96Ms8WOc[Constraining Malli Schemas, by Ambrose Bonnaire-Sergeant (Madison Clojure)] - Ambrose Bonnaire-Sergeant
+* https://www.youtube.com/watch?v=SuM03K0w9_I[Generating ClojureScript + Reagent apps with Claude AI + Scittle] - mccormix
+* https://www.youtube.com/watch?v=kkgD2KGLVUI[Daniel Slutsky on math, community, and SciCloj] - Timothy Pratley
+* https://www.youtube.com/watch?v=CCo7T3m6LLM[[Dev Dive: Backend Day] Monorepo Hopeful Edition (Feat. Polylith)] - 그린랩스
+* https://www.youtube.com/watch?v=b7DlbC1CwRM[Clojure real-world-data meeting 12 snippet 1: Blender & Basilisp, Wordpress & Phel - Jarkko Saltiola] - Sci Cloj
+* https://www.youtube.com/watch?v=PLkcwF4y7VM[Clojure real-world-data meeting 12 snippet 2: Noj, open-source-mentoring - Daniel Slutsky] - Sci Cloj
+* https://www.youtube.com/watch?v=R9SPJJFT_4U[Learn Clojure - namespaces] - Clojure Diary
+* https://www.youtube.com/watch?v=VPcKkb9c31M[Learn Clojure – Testing] - Clojure Diary
+
+== Blogs, articles, and projects
+
+* https://mccormick.cx/news/entries/generating-clojurescript-reagent-apps-with-claude-ai-scittle[Generating ClojureScript Reagent Apps With Claude AI & Scittle] - Chris McCormick
+* https://www.evalapply.org/posts/clojure-web-app-from-scratch/[Clojuring the web application stack: Meditation One] - Aditya Athalye
+* https://dvliman.com/post/my-handy-clojure-debugging-tools/[My handy Clojure debugging tools] - David Liman
+* https://www.taoensso.com/news/2024-08-open-source[Open source update] - Peter Taoussanis
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/clojure/clojure[clojure] https://clojure.org/news/2024/08/28/clojure-1-12-0-rc2[1.12.0-rc2] - The Clojure programming language
+* https://github.com/fulcrologic/fulcro[fulcro] 3.7.9 - A library for development of single-page full-stack web applications in clj/cljs
+* https://github.com/tonsky/Clojure-Sublimed[Clojure-Sublimed] https://github.com/tonsky/Clojure-Sublimed/releases/tag/4.0.0[4.0.0] - Clojure support for Sublime Text 4
+* https://github.com/spacegangster/page-renderer[page-renderer] 0.4.8 - Write HTML-pages as Clojure maps, with all that meta
+* https://github.com/potetm/fusebox[fusebox] 1.0.7 - An extremely lightweight fault tolerance library for Clojure(Script)
+* https://github.com/JanSuran03/task-scheduler[task-scheduler] 1.0.1 - A Clojure library designed for asynchronous scheduling of tasks
+* https://github.com/clj-kondo/clj-kondo[clj-kondo] https://github.com/clj-kondo/clj-kondo/blob/master/CHANGELOG.md[2024.08.29] - Static analyzer and linter for Clojure code that sparks joy
+* https://github.com/ryrobes/rvbbit[rvbbit] 0.1.0 alpha 1 - Reactive Data Board & Visual Flow Platform
+* https://github.com/taoensso/timbre[timbre] https://github.com/taoensso/timbre/blob/master/CHANGELOG.md[v6.6.0-RC1] - Pure Clojure/Script logging library
+* https://github.com/practicalli/astro[astro] https://github.com/practicalli/astro/releases/tag/2024-08-24[2024-08-24] - Rich development workflow with Clojure support, using AstroNvim 4 and selected plugins
+* https://github.com/scicloj/noj[noj] https://github.com/scicloj/noj/blob/main/CHANGELOG.md[2-alpha5-SNAPSHOT] - A clojure framework for data science
+* https://github.com/taoensso/telemere[telemere] https://github.com/taoensso/telemere/blob/master/CHANGELOG.md[1.0.0-beta22] - Structured telemetry library for Clojure/Script
+* https://github.com/seancorfield/honeysql[honeysql] https://github.com/seancorfield/honeysql/releases/tag/v2.6.1161[2.6.1161] - Turn Clojure data structures into SQL
+* https://github.com/julienvincent/clojure-test.nvim[clojure-test.nvim]  - Run clojure tests directly from neovim

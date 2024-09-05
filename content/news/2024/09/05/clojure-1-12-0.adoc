@@ -43,7 +43,7 @@ Updated dependencies:
 
 There are many development-time cases where it would be useful to add a library interactively without restarting the JVM - speculative evaluation, adding a known dependency to your project, or adding a library to accomplish a specific task.
 
-Clojure now provides <<xref/../../../repl_and_main#add_lib,new functions to add libraries interactively>>, without restarting the JVM or losing the state of your work:
+Clojure now provides <<xref/../../../../../reference/repl_and_main#add_lib,new functions to add libraries interactively>>, without restarting the JVM or losing the state of your work:
 
 * https://clojure.github.io/clojure/branch-master/clojure.repl-api.html#clojure.repl.deps/add-lib[add-lib] takes a lib that is not available on the classpath, and makes it available by downloading (if necessary) and adding to the classloader. Libs already on the classpath are not updated. If the coordinate is not provided, the newest Maven or git (if the library has an inferred git repo name) version or tag are used.
 * https://clojure.github.io/clojure/branch-master/clojure.repl-api.html#clojure.repl.deps/add-libs[add-libs] is like `add-lib`, but resolves a set of new libraries and versions together.
@@ -74,7 +74,7 @@ For a long time, we've had the `clojure.java.shell` namespace, but over time Jav
 
 Clojure programmers often want to use Java methods in higher-order functions (e.g. passing a Java method to `map`). Until now, programmers have had to manually wrap methods in functions. This is verbose, and might require manual hinting for overload disambiguation, or incur incidental reflection or boxing.
 
-Programmers can now use <<clojure-1-12-0#qualified_methods,qualified methods>> as ordinary functions in value contexts - the compiler will <<xref/../../../reference/java_interop#methodvalues,automatically generate the wrapping function>>. The compiler will generate a reflective call when a qualified method does not resolve due to overloading. Developers can supply <<clojure-1-12-0#param_tags,`:param-tags`>> metadata on qualified methods to specify the signature of a single desired method, 'resolving' it.
+Programmers can now use <<clojure-1-12-0#qualified_methods,qualified methods>> as ordinary functions in value contexts - the compiler will <<xref/../../../../../reference/java_interop#methodvalues,automatically generate the wrapping function>>. The compiler will generate a reflective call when a qualified method does not resolve due to overloading. Developers can supply <<clojure-1-12-0#param_tags,`:param-tags`>> metadata on qualified methods to specify the signature of a single desired method, 'resolving' it.
 
 [[qualified_methods]]
 ### 2.5 Qualified methods - `Class/method`, `Class/.method`, and `Class/new`
@@ -98,7 +98,7 @@ Note: Static fields are values and should be referenced without parens unless th
 
 When used as values, qualified methods supply only the class and method name, and thus cannot resolve overloaded methods.
 
-Developers can supply <<xref/../../../reference/java_interop#paramtags,`:param-tags`>> metadata on qualified methods to specify the signature of a single desired method, 'resolving' it. The `:param-tags` metadata is a vector of zero or more tags: `[tag ...]`. A tag is any existing valid `:tag` metadata value. Each tag corresponds to a parameter in the desired signature (arity should match the number of tags). Parameters with non-overloaded types can use the placeholder `_` in lieu of the tag. When you supply :param-tags metadata on a qualified method, the metadata must allow the compiler to resolve it to a single method at compile time.
+Developers can supply <<xref/../../../../../reference/java_interop#paramtags,`:param-tags`>> metadata on qualified methods to specify the signature of a single desired method, 'resolving' it. The `:param-tags` metadata is a vector of zero or more tags: `[tag ...]`. A tag is any existing valid `:tag` metadata value. Each tag corresponds to a parameter in the desired signature (arity should match the number of tags). Parameters with non-overloaded types can use the placeholder `_` in lieu of the tag. When you supply :param-tags metadata on a qualified method, the metadata must allow the compiler to resolve it to a single method at compile time.
 
 A new metadata reader syntax `^[tag ...]` attaches `:param-tags` metadata to member symbols, just as `^tag` attaches `:tag` metadata to a symbol.
 
@@ -106,7 +106,7 @@ A new metadata reader syntax `^[tag ...]` attaches `:param-tags` metadata to mem
 
 Clojure supports symbols naming classes both as a value (for class object) and as a type hint, but has not provided syntax for array classes other than strings.
 
-Developers can now refer to an <<xref/../../../reference/java_interop#_class_access,array class>> using a symbol of the form `ComponentClass/#dimensions`, eg `String/2` refers to the class of a 2 dimensional array of Strings. Component classes can be fully-qualified classes, imported classes, or primitives. Array class syntax can be used as both type hints and values.
+Developers can now refer to an <<xref/../../../../../reference/java_interop#_class_access,array class>> using a symbol of the form `ComponentClass/#dimensions`, eg `String/2` refers to the class of a 2 dimensional array of Strings. Component classes can be fully-qualified classes, imported classes, or primitives. Array class syntax can be used as both type hints and values.
 
 Examples: `String/1`, `java.lang.String/1`, `long/2`. 
 
@@ -114,7 +114,7 @@ Examples: `String/1`, `java.lang.String/1`, `long/2`.
 
 Java programs emulate functions with Java functional interfaces (marked with the https://docs.oracle.com/javase/8/docs/api/java/lang/FunctionalInterface.html[@FunctionalInterface] annotation), which have a single method.
 
-Clojure developers can now invoke Java methods taking <<xref/../../../reference/java_interop#functional_interfaces,functional interfaces>> by passing functions with matching arity. The Clojure compiler implicitly converts Clojure functions to the required functional interface by constructing a lambda adapter. You can explicitly coerce a Clojure function to a functional interface by hinting the binding name in a `let` binding, e.g. to avoid repeated adapter construction in a loop, e.g. `(let [^java.util.function.Predicate p even?] ...)`.
+Clojure developers can now invoke Java methods taking <<xref/../../../../../reference/java_interop#functional_interfaces,functional interfaces>> by passing functions with matching arity. The Clojure compiler implicitly converts Clojure functions to the required functional interface by constructing a lambda adapter. You can explicitly coerce a Clojure function to a functional interface by hinting the binding name in a `let` binding, e.g. to avoid repeated adapter construction in a loop, e.g. `(let [^java.util.function.Predicate p even?] ...)`.
 
 ### 2.9 Java Supplier interop
 
@@ -124,7 +124,7 @@ Calling methods that take a https://docs.oracle.com/javase/8/docs/api/java/util/
 
 Java APIs increasingly return https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html[Stream]s and are hard to consume because they do not implement interfaces that Clojure already supports, and hard to interop with because Clojure doesn't directly implement Java functional interfaces.
 
-In addition to functional interface support, Clojure <<xref/../../../reference/java_interop#streams,now provides these functions>> to interoperate with streams in an idiomatic manner, all functions behave analogously to their Clojure counterparts:
+In addition to functional interface support, Clojure <<xref/../../../../../reference/java_interop#streams,now provides these functions>> to interoperate with streams in an idiomatic manner, all functions behave analogously to their Clojure counterparts:
 
 * `(stream-seq! stream) => seq`
 * `(stream-reduce! f [init-val] stream) => val`

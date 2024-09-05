@@ -455,6 +455,7 @@ Since Clojure 1.12, all `IDeref` impls (`delay`, `future`, `atom`, etc) implemen
 * Many people seem to presume only the unchecked- ops do primitive arithmetic - not so. When the args are primitive locals, regular + and * etc do primitive math with an overflow check - fast _and_ safe.
 * So, the simplest route to fast math is to leave the operators alone and just make sure the source literals and locals are primitive. Arithmetic on primitives yields primitives. If you've got a loop (which you probably do if you need to optimize) make sure the loop locals are primitives first - then if you accidentally are producing a boxed intermediate result you'll get an error on recur. Don't solve that error by coercing your intermediate result, instead, figure out what argument or local is not primitive.
 
+[[streams]]
 == Java Stream Support
 
 Clojure collections implement the Java collection interfaces, which provide https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html[Stream] and https://docs.oracle.com/javase/8/docs/api/java/util/Spliterator.html[Spliterator] access. Clojure persistent vectors implement a custom Spliterator that supports parallel streams.

@@ -164,7 +164,7 @@ Since Clojure 1.12, a qualified form may also be used (it is not rewritten at ma
 
 `(Classname/new args*)`
 
-Like methods, qualified constructors `Classname/new` can be used in <<methodvalues#,value contexts>> and take <<java_interop#paramtags,:param-tags>> metadata.
+Like methods, qualified constructors `Classname/new` can be used in <<java_interop#methodvalues,value contexts>> and take <<java_interop#paramtags,:param-tags>> metadata.
 
 ''''
 

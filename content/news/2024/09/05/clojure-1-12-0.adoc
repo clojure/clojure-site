@@ -89,7 +89,7 @@ Qualified methods have value semantics when used in non-invocation positions:
 
 Note: developers must use `Classname/method` and `Classname/.method` syntax to differentiate between static and instance methods.
 
-Qualified method invocations with #26-param-tags-metadata[param-tags] use only the tags to resolve the method. Without param-tags they behave like the equivalent https://clojure.org/reference/java_interop#_the_dot_special_form[dot syntax], except the qualifying class takes precedence over hints of the target object, and over its runtime type when invoked via reflection.
+Qualified method invocations with <<clojure-1-12-0#param_tags,`:param-tags`>> use only the tags to resolve the method. Without param-tags they behave like the equivalent https://clojure.org/reference/java_interop#_the_dot_special_form[dot syntax], except the qualifying class takes precedence over hints of the target object, and over its runtime type when invoked via reflection.
 
 Note: Static fields are values and should be referenced without parens unless they are intended as function calls, e.g `(System/out)` should be `System/out`. Future Clojure releases will treat the field's value as something invokable and invoke it.
 

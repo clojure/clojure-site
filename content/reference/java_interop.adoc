@@ -436,7 +436,7 @@ both takes and returns values of primitive type `long` (invocations with a boxed
 At times it is necessary to have a value of a particular primitive type. These coercion functions yield a value of the indicated type as long as such a coercion is possible: https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/bigdec[bigdec] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/bigint[bigint] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/boolean[boolean] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/byte[byte] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/char[char] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/double[double] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/float[float] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/int[int] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/long[long] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/num[num] https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/short[short]
 
 [[functional_interfaces]]
-== Functional Interface Conversion
+=== Functional Interface Conversion
 
 Java programs emulate functions with https://docs.oracle.com/javase/8/docs/api/java/lang/FunctionalInterface.html[Functional Interfaces], which have a single method.
 

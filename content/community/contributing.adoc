@@ -41,6 +41,6 @@ The development teams for these languages and libs will use the question votes t
 
 == Development
 
-Clojure was created by Rich Hickey and is developed by a core team of developers at https://cognitect.com[Cognitect], which supports this work. The Clojure development team values a measured and thoughtful approach to language evolution with a strong emphasis on maintaining backward compatibility. See <<xref/../../dev/dev#,Development>> for more information on Clojure development.
+Clojure was created by Rich Hickey and is developed by a core team of developers at https://international.nubank.com.br/[Nubank], which supports this work. The Clojure development team values a measured and thoughtful approach to language evolution with a strong emphasis on maintaining backward compatibility. See <<xref/../../dev/dev#,Development>> for more information on Clojure development.
 
 If you would like to provide a patch on a specific ticket in the jira tracker, please follow the <<xref/../../dev/dev#,process>> to become a contributor.

@@ -1,0 +1,38 @@
+= Clojure Deref (Sept 6, 2024)
+Alex Miller
+2024-09-06
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== From the core
+
+BIG NEWS: https://clojure.org/news/2024/09/05/clojure-1-12-0[Clojure 1.12] is now available! Please do take a look at the release notes - we are excited to bring you all of these improvements and looking forward to what's next! Two things we have already started on are integrating Java virtual threads into core.async and updating the baseline JVM version for the next version of Clojure. More to come in the future I'm sure.
+
+If you want to get the latest updates on Clojure and Datomic, you should definitely check out two upcoming events - https://2024.heartofclojure.eu/[Heart of Clojure] Sept 18-19 in Leuven, Belgium and https://2024.clojure-conj.org[Clojure/conj] Oct 23-25 in Alexandria, Virginia. These will both be great events and a special opportunity to connect and learn from other Clojurists in Europe and the US.
+
+== Blogs, articles, and projects
+
+* https://www.clojuriststogether.org/news/q3-2024-funding-announcement/[Q3 2024 Funding Announcement] - Kathy Davis (Clojurists Together)
+* https://myke.blog/posts/clojure-interactive-development-101[Clojure interactive development 101] - Mykhaylo Beliansky
+* https://codewithkira.com/2024-08-31-clojurists-together-update-jul-aug-2024.html[OSS Updates July and August 2024] - Kira McLean
+* https://blog.michielborkent.nl/oss-updates-jul-aug-2024.html[OSS updates July and August 2024] - Michiel Borkent
+* https://www.patreon.com/posts/111272364[OSS status update: August 2024] - Nikita Prokopov
+* https://scicloj.github.io/clojure-data-tutorials/projects/ml/onnx/index.html[Using ONNX models from clojure] - Carsten Behring
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/jf/bb-ops[bb-ops]  - A collection of babashka recipes for your TechOps needs
+* https://github.com/clojure/tools.macro[tools.macro] 0.2.1 - Utilities for macro writers
+* https://github.com/metosin/malli[malli] https://github.com/metosin/malli/releases/tag/0.16.3[0.16.3] - High-performance data-driven data specification library for Clojure/Script
+* https://github.com/k13labs/hierarchy[hierarchy] https://github.com/k13labs/hierarchy/blob/main/CHANGELOG.md[0.0.2] - An opinionated Clojure library primarily designed to enhance the built-in hierarchy functions
+* https://github.com/cursive-ide/cursive[cursive] https://cursive-ide.com/blog/inline-repl-results.html[1.14.0-dev13] - The IDE for beautiful Clojure code
+* https://github.com/flow-storm/clofidence[clofidence] https://github.com/flow-storm/clofidence/blob/master/CHANGELOG.md[0.4.0] - Bolster your Clojure test suite confidence
+* https://github.com/babashka/nbb[nbb] https://github.com/babashka/nbb/blob/main/CHANGELOG.md[1.2.192] - Scripting in Clojure on Node.js using SCI
+* https://github.com/flow-storm/clojure[ClojureStorm] https://github.com/flow-storm/clojure/blob/clojure-storm-master/CHANGELOG.md[1.12.0-rc2] - A fork of the official Clojure compiler, with some extra code added to make it a dev compiler
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.468[2.0.468] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/adityaathalye/usermanager-first-principles[usermanager-first-principles]  - A "from first principles" variant of "usermanager-example", the tutorial Clojure web application by Sean Corfield

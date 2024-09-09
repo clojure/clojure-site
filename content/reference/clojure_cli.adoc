@@ -891,7 +891,7 @@ Some tools provide functions designed to be used for programmatic execution from
 
 There are several argument map keys that have special significance to the Clojure CLI during -X or -T. All of these keys will be removed from the argument map before the function is invoked:
 
-* `:clojure.exec/invoke` - `true` to use this protocol
+* `:clojure.exec/invoke` - `:fn` to use this protocol
 * `:clojure.exec/out` - `:capture` to capture and return stdout during function execution
 * `:clojure.exec/err` - `:capture` to capture and return stderr during function execution
 

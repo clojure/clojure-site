@@ -1,0 +1,50 @@
+= Clojure Deref (Sept 13, 2024)
+Alex Miller
+2024-09-13
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts, videos, and media
+
+* https://www.youtube.com/watch?v=WO6mVURUky4[Clojurists Together Q3 2024 project: Scicloj - initial work plan] - Sci Cloj
+
+== Blogs, articles, and projects
+
+* https://www.clojuriststogether.org/news/2024-board-nominations-and-our-annual-meeting/[2024 Board Nominations and Our Annual Meeting] - Kathy Davis (Clojurists Together)
+* https://clojure-goes-fast.com/blog/clj-async-profiler-130/[clj-async-profiler 1.3.0: new sidebar and snappier rendering] - Oleksandr Yakushev
+* https://scicloj.github.io/clojure-data-tutorials/projects/ml/sklearn-clj/index.html[A tutorial on using models from Python sklearn from Clojure] - Carsten Behring
+* https://medium.com/@deshpande.mihir7/deepwalking-in-clojure-0b2c4eacd4e0[Deepwalking in Clojure] - Mihir Deshpande
+* https://yyhh.org/blog/2024/09/competing-for-the-job-with-a-triplestore/[Competing for the JOB with a Triplestore] - Huahai Yang
+* https://increasinglyfunctional.com/2024/09/04/passkeys-react-native-clojure-part-iv.html[Passkeys for React Native with Clojure, Part IV] - Joshua Miller
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/clojure/brew-install[brew-install] https://github.com/clojure/brew-install/blob/1.12.0/CHANGELOG.md[1.12.0.1479] - Clojure CLI installer
+* https://github.com/seancorfield/deps-new[deps-new] https://github.com/seancorfield/deps-new/blob/develop/CHANGELOG.md[0.8.0] - Create new projects for the Clojure CLI / deps.edn
+* https://github.com/raystubbs/zero[zero] 0.1.21 - Build Web UIs in ClojureScript
+* https://github.com/damn/core[core]  - Endless Vampire Roguelike
+* https://github.com/noahtheduke/splint[splint] https://github.com/NoahTheDuke/splint/blob/main/CHANGELOG.md[1.17.0] - A Clojure linter focused on style and code shape
+* https://github.com/clojure-goes-fast/clj-async-profiler[clj-async-profiler] 1.3.0 - Embedded high-precision Clojure profiler
+* https://github.com/clj-commons/clj-yaml[clj-yaml] https://github.com/clj-commons/clj-yaml/blob/master/CHANGELOG.adoc#v1.0.28[1.0.28] - YAML encoding and decoding for Clojure
+* https://github.com/exoscale/lingo[lingo] 1.0.5 - spec explain improved
+* https://github.com/withjak/inspector[inspector] 1.1.3 - See what your functions are doing
+* https://github.com/babashka/babashka[babashka] https://github.com/babashka/babashka/blob/master/CHANGELOG.md[1.4.192] - Native, fast starting Clojure interpreter for scripting
+* https://github.com/xtdb/xtdb[xtdb] https://github.com/xtdb/xtdb/releases/tag/v2.0.0-b1[2.0.0-beta1] - An immutable SQL database for application development, time-travel reporting and data compliance
+* https://github.com/cursive-ide/cursive[cursive] https://cursive-ide.com/blog/cursive-1.14.0-eap1.html[1.14.0-eap1] - The IDE for beautiful Clojure code
+* https://github.com/scicloj/kindly[kindly] https://github.com/scicloj/kindly/blob/main/CHANGELOG.md[4-beta12] - A small library for defining how different kinds of things should be rendered
+* https://github.com/flow-storm/clojure[ClojureStorm] https://github.com/flow-storm/clojure/blob/clojure-storm-master/CHANGELOG.md[1.12.0-rc2] - A fork of the official Clojure compiler, with some extra code added to make it a dev compiler
+* https://github.com/babashka/bbin[bbin] https://github.com/babashka/bbin/blob/main/CHANGELOG.md[0.2.4] - Install any Babashka script or project with one command
+* https://github.com/scicloj/kindly-advice[kindly-advice] https://github.com/scicloj/kindly-advice/blob/main/CHANGELOG.md[1-beta8] - A small library to advise Clojure data visualization and notebook tools how to display forms and values, following the kindly convention
+* https://github.com/practicalli/project-templates[project-templates] https://github.com/practicalli/project-templates/releases/tag/2024-09-09[2024-09-09] - Clojure CLI Production level templates for seancorfield/deps-new
+* https://github.com/practicalli/clojure-cli-config[clojure-cli-config] https://github.com/practicalli/clojure-cli-config/releases/tag/2024-09-09[2024-09-09] - User aliases and Clojure CLI configuration for deps.edn based projects
+* https://github.com/eerohele/pp[pp] https://github.com/eerohele/pp/blob/main/CHANGELOG.md#2024-09-0969[2024-09-09.69] - Pretty-print Clojure data structures, fast
+* https://github.com/babashka/http-client[http-client] https://github.com/babashka/http-client/blob/main/CHANGELOG.md[0.4.21] - HTTP client for Clojure and Babashka built on java.net.http
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.471[2.0.471] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/borkdude/deps.clj[deps.clj] https://github.com/borkdude/deps.clj/blob/master/CHANGELOG.md[1.12.0.1479] - A faithful port of the clojure CLI bash script to Clojure
+* https://github.com/scicloj/cmdstan-clj[cmdstan-clj] https://github.com/scicloj/cmdstan-clj/blob/main/CHANGELOG.md[1-alpha3] - Using the Stan statistical modelling language from Clojure using the CmdStan CLI
+* https://github.com/squint-cljs/cherry[cherry] https://github.com/squint-cljs/cherry/blob/main/CHANGELOG.md[0.3.22] - Experimental ClojureScript to ES6 module compiler

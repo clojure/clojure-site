@@ -1,0 +1,44 @@
+= Clojure Deref (Sept 19, 2024)
+Alex Miller
+2024-09-19
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== From the core
+
+Hey, it's that time again - PLEASE fill out the https://www.surveymonkey.com/r/clojure2024[2024 State of Clojure survey]. Most questions are optional, feel free to skip the ones that don't apply.
+
+Watching from afar, it looks like https://2024.heartofclojure.eu/[Heart of Clojure] was a rousing success as expected! I was sorry to miss it. If you missed it, the https://2024.clojure-conj.org[Clojure/conj] is coming up soon though Oct 23-25. Get your tickets now and let's have a great time!
+
+== Podcasts, videos, and media
+
+* https://soundcloud.com/clojurestream/e98-clojure-1-12-with-alex-miller[E98 Clojure 1.12 with Alex Miller] - ClojureStream Podcast
+* https://www.youtube.com/watch?v=PDWkEnZ_X-0[Grinding parenthesis to form Rubies (by Maurício Szabo)] - London Clojurians
+* https://www.youtube.com/watch?v=9vkYDyZcGFI[Meetup: Collaborative Learning - HoneySQL] - Los Angeles Clojure Users Group
+* https://www.youtube.com/watch?v=mWe39dHt80w[Building a simple concurrent task queue on PostgreSQL only with Clojure code sample] - Andrey Fadeev
+* https://www.youtube.com/watch?v=BNv3n6GGCoc[Learn Clojure – Macros] - Clojure Diary
+
+== Blogs, articles, and projects
+
+* https://www.surveymonkey.com/r/clojure2024[2024 State of Clojure Survey] - Clojure Team
+* https://pragprog.com/titles/mmclobrain/clojure-brain-teasers/[Clojure Brain Teasers] - Alex Miller and Lorilyn Jordan Miller
+* https://gaiwan.co/blog/heart-of-clojure-2024-is-around-the-corner/[Heart of Clojure 2024 is Around the Corner] - Gaiwan
+* https://www.latacora.com/blog/2024/09/13/datomic-and-content-addressable-techniques/[Datomic and Content Addressable Techniques: An Ultimate Data Wonderland] - Latacora
+* https://buttondown.com/tensegritics-curiosities/archive/always-animating/[Always Animating] - Buttondown
+* https://jmglov.net/blog/2024-09-18-podcast-soundcljoud.html[Building a podcast with Clojure] - Josh Glover
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/dundalek/stratify[stratify] https://github.com/dundalek/stratify/blob/master/CHANGELOG.md[0.2.0] - Explore and improve architecture of software, visualize structure and dependencies of codebases, calculate code metrics
+* https://github.com/metosin/jsonista[jsonista] https://github.com/metosin/jsonista/blob/master/CHANGELOG.md[0.3.11] - Clojure library for fast JSON encoding and decoding
+* https://github.com/scicloj/hanamicloth[hanamicloth] https://github.com/scicloj/hanamicloth/blob/main/CHANGELOG.md[1-alpha7-SNAPSHOT] - Easy layered graphics with Hanami & Tablecloth
+* https://github.com/scicloj/clay[clay] https://github.com/scicloj/clay/blob/main/CHANGELOG.md[2-beta16] - A tiny Clojure tool for dynamic workflow of data visualization and literate programming
+* https://github.com/fulcrologic/fulcro-rad-semantic-ui[fulcro-rad-semantic-ui] 1.4.3 - Semantic UI Rendering Plugin for RAD
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/blob/published/CHANGELOG.md[2.0.472] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/chr15m/sitefox[sitefox] 0.0.24 - Node + cljs backend web framework
+* https://github.com/scicloj/noj[noj] https://github.com/scicloj/noj/blob/main/CHANGELOG.md[2-alpha6] - A clojure framework for data science

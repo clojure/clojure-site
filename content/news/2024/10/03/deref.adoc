@@ -1,0 +1,49 @@
+= Clojure Deref (Oct 3, 2024)
+Alex Miller
+2024-10-03
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts, videos, and media
+
+* https://www.youtube.com/watch?v=olTNZeKpc2M[Maintainable Clojure code: Visualizing structure and quality metrics (by Jakub Dundalek)] - London Clojurians
+* https://www.youtube.com/watch?v=KUVxFGz1jCE[Generating multiplication tables with Clojure] - Clojure Diary
+
+== Blogs, articles, and projects
+
+* https://andersmurphy.com/2024/09/26/how-to-max-throughput-when-pulling-data-from-a-third-party-service.html[How to max throughput when pulling data from a third party service] - Anders Murphy
+* https://blog.agical.se/en/posts/the-programming-language-doesn-x-t-matter--until-it-does/[The programming language doesn't matter, until it does] - Peter Strömberg
+* https://www.ooloi.org/home/from-clos-to-closure-in-clojure[From CLOS to closure in Clojure] - Peter Bengtson
+* https://github.com/m3tti/m3tti.github.io/blob/master/borkweb-babashkas-first-webframework.md[Babashka's First Web Framework] - Mathäus Sander
+* https://github.com/m3tti/m3tti.github.io/blob/master/on-building-a-blog-in-borkweb.md[Building a Blog in Borkweb] - Mathäus Sander
+* https://neuroning.com/boardgames-exercise/[Coding Exercise: Modeling Chess] - Fernando Dobladez
+* https://blog.redplanetlabs.com/2024/09/30/migrating-terabytes-of-data-instantly-can-your-alter-table-do-this/[Migrating terabytes of data instantly (can your ALTER TABLE do this?)] - rplsam (Red Planet Labs)
+* https://buttondown.com/tensegritics-curiosities/archive/game-tutorial-in-clojuredart/[Breakout Game in ClojureDart] - Tensegritics Curiosities
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/danlentz/clj-uuid[clj-uuid] https://github.com/danlentz/clj-uuid/releases/tag/0.2.0[0.2.0] - RFC9562 Unique Identifiers (v1,v3,v4,v5,v6,v7,v8,squuid) for Clojure
+* https://github.com/clj-kondo/clj-kondo[clj-kondo] https://github.com/clj-kondo/clj-kondo/blob/master/CHANGELOG.md[2024.09.27] - Static analyzer and linter for Clojure code that sparks joy
+* https://github.com/tonsky/Clojure-Sublimed[Clojure-Sublimed] https://github.com/tonsky/Clojure-Sublimed/blob/master/CHANGELOG.md[4.2.2] - Clojure support for Sublime Text 4
+* https://github.com/eerohele/tab[tab] https://github.com/eerohele/tab/blob/main/CHANGELOG.md[2024-09-27] - A tool for tabulating Clojure collections
+* https://github.com/nextjournal/markdown[markdown] https://github.com/nextjournal/markdown/blob/main/CHANGELOG.md[0.6.157] - A cross-platform clojure/script parser for Markdown
+* https://github.com/clj-commons/etaoin[etaoin] https://github.com/clj-commons/etaoin/blob/master/CHANGELOG.adoc#v1.1.42[1.1.42] - Pure Clojure Webdriver protocol implementation
+* https://github.com/m3tti/borkweb[borkweb]  - 🥇 babashka`s first fullstack clojure framework. That works with jvm clojure. ❗Batteries included❗
+* https://github.com/lispyclouds/navi[navi] https://github.com/lispyclouds/navi/releases/tag/0.0.9[0.0.9] - A tiny, data-driven library converting OpenAPI spec to Reitit routes
+* https://github.com/nubank/lein-add-libs[lein-add-libs]  - Enable using add-lib from within a lein project
+* https://github.com/weavejester/cljfmt[cljfmt] https://github.com/weavejester/cljfmt/blob/master/CHANGELOG.md[0.13.0] - A tool for formatting Clojure code
+* https://github.com/cjohansen/lookup[lookup] 2024.10.01 - Find content of interest in hiccup data
+* https://github.com/IGJoshua/coffi[coffi] https://github.com/IGJoshua/coffi/blob/master/CHANGELOG.md[1.0.450] - A Foreign Function Interface in Clojure for JDK 22+
+* https://github.com/scicloj/metamorph.ml[metamorph.ml] 0.9.0 - Machine learning functions for metamorph based on machine learning pipelines
+* https://github.com/scicloj/scicloj.ml.tribuo[scicloj.ml.tribuo] https://github.com/scicloj/scicloj.ml.tribuo/blob/master/CHANGELOG.md[0.1.3] - Use Tribuo ML model in metamorph.ml
+* https://github.com/scicloj/noj[noj] https://github.com/scicloj/noj/blob/main/CHANGELOG.md[2-alpha9.1] - A clojure framework for data science
+* https://github.com/pedestal/pedestal[pedestal] https://github.com/pedestal/pedestal/blob/master/CHANGELOG.md[0.7.1] - The Pedestal Server-side Libraries
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/blob/published/CHANGELOG.md[2.0.479] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/scicloj/clay[clay] https://github.com/scicloj/clay/blob/main/CHANGELOG.md[2-beta17] - A tiny Clojure tool for dynamic workflow of data visualization and literate programming
+* https://github.com/chr15m/sitefox[sitefox] 0.0.25 - Node + cljs backend web framework
+* https://github.com/clojure-goes-fast/clj-async-profiler[clj-async-profiler] https://github.com/clojure-goes-fast/clj-async-profiler/blob/master/CHANGELOG.md[1.3.2] - Embedded high-precision Clojure profiler

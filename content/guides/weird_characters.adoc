@@ -4,6 +4,7 @@ James Hughes
 :type: guides
 :toc: macro
 :description: A guide to weird characters you might encounter reading Clojure code and what they mean.
+:keywords: read, reader, weird, character, syntax
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 

@@ -1,0 +1,43 @@
+= Clojure Deref (Oct 11, 2024)
+Alex Miller
+2024-10-11
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts, videos, and media
+
+* https://vimeo.com/1012840548[Apropos 2024-09-24] - Apropos Clojure
+* https://www.youtube.com/watch?v=1NkrY9FWsKc[Building Reddit's r/place in Clojure and Clojurescript - Part 1] - Unravel Tech
+* https://www.youtube.com/watch?v=ehR-KIgw7T8[Run, Build and Grow Small Systems Without Leaving Your Text Editor | LIVE 2024] - Albert Zak
+
+== Blogs, articles, and projects
+
+* https://www.kpassa.me/posts/happyapi-temporal/[What color is your auth? OAuth2 with Clojure and Temporal] - Kyle S Passarelli
+* https://www.patreon.com/posts/transparency-113308530[Transparency report, September 2024] - Nikita Prokopov
+* https://scicloj.github.io/blog/clojurists-together-project-scicloj-community-building-september-2024-update/[Clojurists Together project - Scicloj community building - September 2024 update] - Daniel Slutsky
+* https://biffweb.com/p/rocksdb-indexes-yakread/[RocksDB indexes are done, open-sourcing Yakread next] - Jacob O'Bryant
+* https://andersmurphy.com/2024/10/07/clojure-synchronous-server-sent-events-with-virtual-threads-and-channels.html[Clojure: Synchronous server sent events with virtual threads and channels] - Anders Murphy
+* https://www.ovistoica.com/blog/20241009T084633--the-best-way-to-handle-svg-icons-in-fullstack-clojure-project__blog_clojure_clojurescript_web[The Best Way To Handle SVG Icons in FullStack Clojure Project] - Ovi Stoica
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/noahtheduke/lazytest[lazytest] https://github.com/NoahTheDuke/lazytest/blob/main/CHANGELOG.md[1.1.1] - A standalone BDD test framework for Clojure
+* https://github.com/noahtheduke/splint[splint] https://github.com/NoahTheDuke/splint/blob/main/CHANGELOG.md[1.18.0] - A Clojure linter focused on style and code shape
+* https://github.com/yaml/yamlscript[yamlscript] https://github.com/yaml/yamlscript/blob/main/Changes[0.1.79] - Programming in YAML
+* https://github.com/dundalek/theodora[theodora] 0.1.0 - Parse Graphviz graphs as data
+* https://github.com/juji-io/datalevin[datalevin] https://github.com/juji-io/datalevin/blob/master/CHANGELOG.md[0.9.12] - A simple, fast and versatile Datalog database
+* https://github.com/igrishaev/deed[deed] https://github.com/igrishaev/deed/blob/master/CHANGELOG.md[0.1.0] - Fast, flexible, 0-deps (de)serialization library for Clojure
+* https://github.com/scicloj/scicloj.ml.xgboost[scicloj.ml.xgboost] https://github.com/scicloj/scicloj.ml.xgboost/blob/main/CHANGELOG.md[6.1.0] - A xgboost plugin for scicloj.ml
+* https://github.com/IGJoshua/coffi[coffi] https://github.com/IGJoshua/coffi/blob/master/CHANGELOG.md[1.0.486] - A Foreign Function Interface in Clojure for JDK 22+
+* https://github.com/clojure-goes-fast/clj-async-profiler[clj-async-profiler] https://github.com/clojure-goes-fast/clj-async-profiler/blob/master/CHANGELOG.md[1.3.3] - Embedded high-precision Clojure profiler
+* https://github.com/scicloj/hanamicloth[hanamicloth] https://github.com/scicloj/hanamicloth/blob/main/CHANGELOG.md[1-alpha9] - Easy layered graphics with Hanami & Tablecloth
+* https://github.com/quoll/tiara[tiara] 0.3.7 - A small data structure library
+* https://github.com/squint-cljs/squint[squint] https://github.com/squint-cljs/squint/blob/main/CHANGELOG.md[0.8.116] - Light-weight ClojureScript dialect
+* https://github.com/seancorfield/honeysql[honeysql] https://github.com/seancorfield/honeysql/releases/tag/v2.6.1196[2.6.1196] - Turn Clojure data structures into SQL
+* https://github.com/babashka/scittle[scittle] https://github.com/babashka/scittle/blob/main/CHANGELOG.md[0.6.19] - Execute Clojure(Script) directly from browser script tags via SCI
+* https://github.com/uncomplicate/neanderthal[neanderthal] 0.49.2 - Fast Clojure Matrix Library

@@ -93,7 +93,7 @@ Qualified method invocations with <<clojure-1-12-0#param_tags,`:param-tags`>> us
 
 Note: Static fields are values and should be referenced without parens unless they are intended as function calls, e.g `(System/out)` should be `System/out`. Future Clojure releases will treat the field's value as something invokable and invoke it.
 
-[[param-tags]]
+[[param_tags]]
 ### 2.6 :param-tags metadata
 
 When used as values, qualified methods supply only the class and method name, and thus cannot resolve overloaded methods.

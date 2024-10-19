@@ -1,0 +1,55 @@
+= Clojure Deref (Oct 18, 2024)
+Alex Miller
+2024-10-18
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts, videos, and media
+
+* https://www.youtube.com/watch?v=mmOh5fYkX7Q[Clojure real-world-data #15 - Snippet 1 - Kyle Passarelli: OAuth2 with Clojure and Temporal] - Sci Cloj
+* https://www.youtube.com/watch?v=G1vpz_43YpI[Clojure real-world-data #15 - Snippet 2 - Adham Omram: Experience Conducting a Clojure Training] - Sci Cloj
+* https://www.youtube.com/@LambdaIsland/videos[Heart of Clojure 2024 Videos] - Lambda Island
+* https://zencastr.com/z/35HpiUF7[Heart of Clojure] - @defn podcast
+* https://www.youtube.com/watch?v=z8zEaxAdaDM[Clojure Corner: Interview with James Trunk] - Flexiana
+* https://www.youtube.com/watch?v=Jdj5FGpRnyo[How Could Clojure Web Development Suck Less With Ben Sless] - ToniTalksDev
+* https://www.youtube.com/watch?v=aI5rvKzGz3w[Meetup: Collaborative Learning - HoneyEQL] - Los Angeles Clojure Users Group
+* https://www.youtube.com/watch?v=uu-emKMzGfE[The Highlights of a Thousands Number, a Joyride tale] - CalvaTV
+* https://www.youtube.com/watch?v=Fz_kpVxVO3k[Pagination in Clojure is so easy] - Clojure Diary
+* https://www.youtube.com/watch?v=FLqJNdAMVY8[Learn Clojure - Projects with Leiningen] - Clojure Diary
+* https://www.youtube.com/watch?v=vK6KudZCzHg[Learn Clojure - Using External Library in Leiningen Project] - Clojure Diary
+* https://www.youtube.com/watch?v=GfBVeckkMR8[3 coin flip Monte Carlo simulation in Clojure] - Clojure Diary
+
+== Blogs, articles, and projects
+
+* https://borkweb.org/blog/2024-10-10-creating-installable-web-apps.md[Creating Installable Web Apps] - Mathäus Sander
+* https://blog.redplanetlabs.com/2024/10/10/rama-on-clojures-terms-and-the-magic-of-continuation-passing-style/[Rama on Clojure’s terms, and the magic of continuation-passing style] - Nathan Marz (Red Planet Labs)
+* https://www.metosin.fi/blog/2024-10-10-announcing-open-source-commercial-support[Announcing Open Source Commercial Support] - Metosin
+* https://buttondown.com/tensegritics-curiosities/archive/writing-the-worst-datalog-ever-in-26loc/[Writing the Worst Datalog Ever in 26loc] - Tensegritics Curiosities
+* https://buttondown.com/tensegritics-curiosities/archive/half-dumb-datalog-in-30-loc/[Half Dumb Datalog in 30 loc] - Tensegritics Curiosities
+* https://jank-lang.org/blog/2024-10-14-llvm-ir/[jank development update - Moving to LLVM IR] - Jeaye Wilkerson
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/jpmonettas/fs-data-window-demo[fs-data-window-demo]  - Demo FlowStorm data-windows features
+* https://github.com/babashka/babashka[babashka] https://github.com/babashka/babashka/blob/master/CHANGELOG.md[1.12.194] - Native, fast starting Clojure interpreter for scripting
+* https://github.com/darkleaf/di[di] https://github.com/darkleaf/di/blob/master/CHANGELOG.md#310[3.1.0] - DI is a dependency injection framework that allows you to define dependencies as cheaply as defining function arguments
+* https://github.com/repath-project/repath-studio[repath-studio] https://github.com/repath-project/repath-studio/blob/main/CHANGELOG.md[0.4.4] - A cross-platform vector graphics editor
+* https://github.com/borkdude/qualify-methods[qualify-methods]  - Rewrite your instance calls to use fully qualified methods
+* https://github.com/favila/qslice[qslice] 1.0.10 - Represent partial Datomic datalog queries with their bindings and combine them safely
+* https://github.com/potetm/fusebox[fusebox] https://github.com/potetm/fusebox/blob/master/CHANGELOG.md[1.0.8] - An extremely lightweight fault tolerance library for Clojure(Script)
+* https://github.com/cognitect-labs/aws-api[aws-api] https://github.com/cognitect-labs/aws-api/blob/main/CHANGES.md[0.8.710-beta01] - AWS, data driven
+* https://github.com/babashka/sci[sci] https://github.com/babashka/sci/blob/master/CHANGELOG.md[0.9.44] - Configurable Clojure/Script interpreter suitable for scripting and Clojure DSLs
+* https://github.com/babashka/neil[neil] https://github.com/babashka/neil/blob/main/CHANGELOG.md[0.3.68] - A CLI to add common aliases and features to deps.edn-based projects
+* https://github.com/nextjournal/clerk[clerk] https://github.com/nextjournal/clerk/blob/8a5aadf9cc332741bf26a5201c4519e00146e389/CHANGELOG.md#0171102-2024-10-17[0.17.1102] - ⚡️ Moldable Live Programming for Clojure
+* https://github.com/yaml/yamlscript[yamlscript] https://github.com/yaml/yamlscript/releases/tag/0.1.80[0.1.80] - Programming in YAML
+* https://github.com/squint-cljs/squint[squint] https://github.com/squint-cljs/squint/blob/main/CHANGELOG.md[0.8.118] - Light-weight ClojureScript dialect
+* https://github.com/phronmophobic/clong[clong] 1.4.3 - A wrapper for libclang and a generator that can turn c header files into clojure apis
+* https://github.com/scicloj/kindly-advice[kindly-advice] 1-beta9 - a small library to advise Clojure data visualization and notebook tools how to display forms and values, following the kindly convention
+* https://github.com/noahtheduke/lazytest[lazytest] https://github.com/NoahTheDuke/lazytest/blob/main/CHANGELOG.md[1.2.0] - A standalone BDD test framework for Clojure
+* https://github.com/scicloj/noj[noj] https://github.com/scicloj/noj/blob/main/CHANGELOG.md[2-alpha9.2] - A clojure framework for data science
+* https://github.com/walmartlabs/lacinia-pedestal[lacinia-pedestal] https://github.com/walmartlabs/lacinia-pedestal/blob/master/CHANGELOG.md[1.3] - Expose Lacinia GraphQL as Pedestal endpoints

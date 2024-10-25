@@ -1,0 +1,47 @@
+= Clojure Deref (Oct 25, 2024)
+Alex Miller
+2024-10-25
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts, videos, and media
+
+* https://www.youtube.com/watch?v=4GOeYylCMJI&t=23182s[Live Programming a Live Programming Environment (with Clerk)] - Martin Kavalar
+* https://www.youtube.com/watch?v=Fio6Dp-6CTk[Learn Clojure - Creating jar files in Leiningen project] - Clojure Diary
+* https://www.youtube.com/watch?v=j9VVw65d96U[Refactoring handler in ring] - Clojure Diary
+* https://www.youtube.com/watch?v=DLjAyxOHu40[Learn Clojure - REPL in Leiningen] - Clojure Diary
+
+== Blogs, articles, and projects
+
+* https://caveman.mccue.dev[Caveman. A Clojure Web Framework] - Ethan McCue
+* https://code.thheller.com/blog/shadow-cljs/2024/10/18/fullstack-cljs-workflow-with-shadow-cljs.html[Fullstack Workflow with shadow-cljs] - Thomas Heller
+* https://blog.fogus.me/2024/08/19/on-method-values-part-1/[On method values, part 1] - Fogus
+* https://ryanmartin.me/articles/clojure-fly/[Fast Clojure Deployments with Fly.io] - Ryan Martin
+* https://www.ovistoica.com/blog/20241022T064828--uix-shadowcljs-revolutionizing-clojure-ssr-for-interactive-landing-pages__clojure_clojurescript_react_shadowcljs_uix[UIx + ShadowCLJS: Revolutionizing Clojure SSR for Interactive Landing Pages] - Ovi Stoica
+* https://blog.phronemophobic.com/dewey-sql.html[Dewey SQL] - Adrian Smith
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/ring-clojure/ring[ring] https://github.com/ring-clojure/ring/blob/master/CHANGELOG.md[1.13.0] - Clojure HTTP server abstraction
+* https://github.com/scicloj/clay[clay] https://github.com/scicloj/clay/blob/main/CHANGELOG.md[2-beta20] - A tiny Clojure tool for dynamic workflow of data visualization and literate programming
+* https://github.com/noahtheduke/lazytest[lazytest] https://github.com/NoahTheDuke/lazytest/blob/main/CHANGELOG.md[1.3.0] - A standalone BDD test framework for Clojure
+* https://github.com/yetanalytics/re-route[re-route] 0.1.0 - Routing wrapper library for SPAs based on re-frame
+* https://github.com/clojure-goes-fast/clj-async-profiler[clj-async-profiler] https://github.com/clojure-goes-fast/clj-async-profiler/blob/master/CHANGELOG.md[1.4.0] - Embedded high-precision Clojure profiler
+* https://github.com/dundalek/daba[daba] https://github.com/dundalek/daba/blob/master/CHANGELOG.md[0.2.0] - Daba is a graphical database client for REPL-enabled queries and visualization
+* https://github.com/msolli/proletarian[proletarian] https://github.com/msolli/proletarian/blob/main/CHANGELOG.md#1086-alpha---2024-10-23[1.0.86-alpha] - A durable job queuing and worker system for Clojure backed by PostgreSQL
+* https://github.com/babashka/nbb[nbb] https://github.com/babashka/nbb/blob/main/CHANGELOG.md[1.3.194] - Scripting in Clojure on Node.js using SCI
+* https://github.com/kongeor/chickn[chickn]  - Evolutionary algorithms library for Clojure(script)
+* https://github.com/overtone/overtone[overtone] https://github.com/overtone/overtone/releases/tag/v0.15.3295[0.15.3295] - Collaborative Programmable Music
+* https://github.com/fulcrologic/fulcro-rad-semantic-ui[fulcro-rad-semantic-ui] 1.4.5 - Semantic UI Rendering Plugin for RAD
+* https://github.com/lispyclouds/navi[navi] https://github.com/lispyclouds/navi/releases/tag/0.0.10[0.0.10] - A tiny, data-driven library converting OpenAPI spec to Reitit routes
+* https://github.com/scicloj/noj[noj] https://github.com/scicloj/noj/blob/main/CHANGELOG.md[2-alpha9.3] - A clojure framework for data science
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.480[2.0.480] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/flow-storm/flow-storm-debugger[flow-storm-debugger] 4.0.0-alpha2 - A debugger for Clojure and ClojureScript with some unique features
+* https://github.com/seancorfield/honeysql[honeysql] https://github.com/seancorfield/honeysql/releases/tag/v2.6.1203[2.6.1203] - Turn Clojure data structures into SQL
+* https://github.com/scicloj/kindly[kindly] https://github.com/scicloj/kindly/blob/main/CHANGELOG.md[4-beta13] - A small library for defining how different kinds of things should be rendered
+* https://github.com/scicloj/kindly-advice[kindly-advice] https://github.com/scicloj/kindly-advice/blob/main/CHANGELOG.md[1-beta10] - A small library to advise Clojure data visualization and notebook tools how to display forms and values, following the kindly convention

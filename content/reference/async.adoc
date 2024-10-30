@@ -24,7 +24,7 @@ Channels are queues that carry values and support multiple writers and readers. 
 
 Channels are first-class values that can be passed around like any other value.
 
-Channels may optionally be supplied with a <<transducers#,transducer>> and an exception handler. The transducer will be applied to values that pass through the channel. If a transducer is supplied, the channel *must* be buffered (transducers can create intermediate values that must be stored somewhere).
+Channels may optionally be supplied with a <<transducers#,transducer>> and an exception handler. The transducer will be applied to values that pass through the channel. If a transducer is supplied, the channel *must* be buffered (transducers can create intermediate values that must be stored somewhere). Channel transducers must not block, whether by issuing i/o operations or by externally synchronizing, else risk impeding or deadlocking go blocks.
 
 The `ex-handler` is a function of one argument (a Throwable). If an exception occurs while applying the transducer, the `ex-handler` will be invoked, and any non-nil return value will be placed in the channel. If no `ex-handler` is supplied, exceptions will flow and be handled where they occur (note that this may in either the writer or reader thread depending on the operation and the state of the buffer).
 

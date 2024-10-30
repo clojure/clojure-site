@@ -42,7 +42,7 @@ Clojure also supports the Java boxed number types derived from java.lang.Number,
 
 === Longs
 
-By default Clojure operates with natural numbers as instances of Java's long primitive type. When a primitive integer operation results in a value that too large to be contained in a primitive value, a java.lang.ArithmeticException is thrown. Clojure provides a set of alternative math operators suffixed with an apostrophe: +', -', *', inc', and dec'. These operators auto-promote to BigInt upon overflow, but are less efficient than the regular math operators.
+By default Clojure operates with natural numbers as instances of Java's long primitive type. When a primitive integer operation results in a value that is too large to be contained in a primitive value, a java.lang.ArithmeticException is thrown. Clojure provides a set of alternative math operators suffixed with an apostrophe: +', -', *', inc', and dec'. These operators auto-promote to BigInt upon overflow, but are less efficient than the regular math operators.
 
 === Ratio
 

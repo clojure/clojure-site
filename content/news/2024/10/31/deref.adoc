@@ -1,0 +1,43 @@
+= Clojure Deref (Oct 31, 2024)
+Alex Miller
+2024-10-31
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts, videos, and media
+
+* https://www.youtube.com/watch?v=lOaZ0SgPVu4[Telemere lightning intro] - Peter Taoussanis
+* https://www.youtube.com/watch?v=ruGRHYpq448[Basilisp: Clojure on the Python VM (by Chris Rink)] - London Clojurians
+* https://www.youtube.com/watch?v=STnFMpIZlkk[Scicloj status report: nurturing the Clojure open-source community, 2024-10-25] - Sci Cloj
+* https://www.youtube.com/watch?v=HnybBpp4soM[Building Reddit's r/place in Clojure and Clojurescript - Part 2] - Unravel Tech
+* https://www.youtube.com/watch?v=YtEEU9sjjks[Learn Clojure - Tests in Leiningen Project] - Clojure Diary
+
+== Blogs, articles, and projects
+
+* https://clyfe.infinityfreeapp.com/book.html?i=1[Hammock Web Development] - clyfe
+* https://jake-windle.gitlab.io/post/llm-social-bot/[Dystopia Today: Let AI Manage Your Dev Twitter Account] - Jacob Windle
+* https://timothypratley.blogspot.com/2024/10/the-hallway-track-clojureconj-2024-in.html[The Hallway Track: Clojure/Conj 2024 in Alexandria] - Timothy Pratley
+* https://www.tamizhvendan.in/blog/announcing-a-book-series-how-i-solve-it-using-clojure/[Announcing a book series - How I Solve It Using Clojure] - Tamizhvendan
+* https://code.thheller.com/blog/shadow-cljs/2024/10/30/supercharging-the-repl-workflow.html[Supercharging the REPL Workflow] - Thomas Heller
+* https://www.patreon.com/posts/115100973[Transparency report, October 2024] - Nikita Prokopov
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/pitch-io/uix[uix] https://github.com/pitch-io/uix/blob/master/CHANGELOG.md[1.2.0-rc3] - Idiomatic ClojureScript interface to modern React.js
+* https://github.com/oliyh/martian[martian] https://github.com/oliyh/martian/releases/tag/0.1.28[0.1.28] - The HTTP abstraction library for Clojure/script, supporting OpenAPI, Swagger, Schema, re-frame and more
+* https://github.com/darkleaf/di[di] https://github.com/darkleaf/di/blob/master/CHANGELOG.md#320[3.2.0] - DI is a dependency injection framework that allows you to define dependencies as cheaply as defining function arguments
+* https://github.com/brettatoms/zodiac[zodiac] https://github.com/brettatoms/zodiac/blob/master/CHANGELOG.md[0.2.31] - A simple web framework for Clojure
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.481[2.0.481] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://git.sr.ht/~srasu/bootstring-clj[bootstring-clj] https://cljdoc.org/d/org.suskalo/bootstring-clj/1.0.13/doc/changelog[1.0.13] - Use the bootstring algorithm for encoding and decoding unicode strings to a smaller subset of the unicode space
+* https://github.com/taoensso/telemere[telemere] https://github.com/taoensso/telemere/releases/tag/v1.0.0-RC1[1.0.0-RC1] - Structured telemetry library for Clojure/Script
+* https://github.com/taoensso/nippy[nippy] https://github.com/taoensso/nippy/releases/tag/v3.5.0-RC1[3.5.0-RC1] - The fastest serialization library for Clojure
+* https://github.com/taoensso/sente[sente] https://github.com/taoensso/sente/releases/tag/v1.20.0-RC1[1.20.0-RC1] - Realtime web comms library for Clojure/Script
+* https://github.com/taoensso/timbre[timbre] https://github.com/taoensso/timbre/releases/tag/v6.6.1[6.6.1] - Pure Clojure/Script logging library
+* https://github.com/scicloj/kindly-advice[kindly-advice] https://github.com/scicloj/kindly-advice/blob/main/CHANGELOG.md[1-beta11] - A small library to advise Clojure data visualization and notebook tools how to display forms and values, following the kindly convention
+* https://github.com/scicloj/clay[clay] https://github.com/scicloj/clay/blob/main/CHANGELOG.md[2-beta21] - A tiny Clojure tool for dynamic workflow of data visualization and literate programming
+* https://github.com/scicloj/noj[noj] https://github.com/scicloj/noj/blob/main/CHANGELOG.md[2-alpha10] - A clojure framework for data science

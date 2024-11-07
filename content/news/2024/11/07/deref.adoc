@@ -1,0 +1,76 @@
+= Clojure Deref (Nov 7, 2024)
+Alex Miller
+2024-11-04
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts, videos, and media
+
+* https://www.youtube.com/watch?v=Earx_BjvgO0[Welcome to Conj 2024] - Rich Hickey
+* https://www.youtube.com/watch?v=eq1g6nBzKGU[Immutable Values in the Big Wide World] - Tim Ewald and Paul deGrandis
+* https://www.youtube.com/watch?v=oXlb1mITJHA[Real World AI Integration: An Experience Report on Enhancing Engineering Workflows] - Carin Meier and Marlon Silva
+* https://www.youtube.com/watch?v=_D5d6Ls6pBw[Scientific Clojure, a bird's eye view] - Thomas Clark
+* https://www.youtube.com/watch?v=SIzIR-cHty4[Architecting Threat Intelligence with Clojure in Cybersecurity Detection & Response] - Michael Simons
+* https://www.youtube.com/watch?v=vUe3slLHk20[Getting 50,000 Companies on Board with Clojure] - Cam Saul
+* https://www.youtube.com/watch?v=xOPoYHxZjdc[Teaching Clojure Together] - Jordan Miller and Rafal Dittwald
+* https://www.youtube.com/watch?v=oNhqqiKuUmw[Enhancing LLM Powered Development with Clojure's REPL] - Colin Fleming
+* https://www.youtube.com/watch?v=VBnGhQOyTM4[Design in Practice in Practice] - Alex Miller
+* https://www.youtube.com/watch?v=k7i4AEiWLW0[Transactor Performance Theory & Practice] - Joe Lane
+* https://www.youtube.com/watch?v=Ia9Tixzlc_M[Deploying ML models in a Clojure environment] - Caique Lima
+* https://www.youtube.com/watch?v=dvHASrrQSzg[Breaking the bank with test contract] - Allen Rohner
+* https://www.youtube.com/watch?v=VhjxvEabOX0[Introducing Standard Clojure Style: no fuss code formatting] - Chris Oakman
+* https://www.youtube.com/watch?v=FSTIFgn0QVU[The Next Ten Years of Overtone] - Arne Brasseur
+* https://www.youtube.com/watch?v=OOtgJm-RL_I[Exploratory Design Tools for Makers] - Adam Vermeer
+* https://www.youtube.com/watch?v=KeTBvSnnnaE[Game Development in Clojure] - Diana Belle
+* https://www.youtube.com/watch?v=MuLbsvzZKRM[Portal - Exploring new Workflows with Visual Tools] - Chris Badahdah
+* https://www.youtube.com/watch?v=wllhUfFmI2A[Transducing Healthcare: Transducers as Clinical Features] - Derek Schatzlein and Jack Mocherman
+* https://www.youtube.com/watch?v=kIhY4VDa820[Clojure in live sports television] - Christoph Neumann
+* https://www.youtube.com/watch?v=rZaouaZq7t8[Tools that Enable Data Driven and Containerized Testing of Multi Service Networked Systems] - Joel Martin
+* https://www.youtube.com/watch?v=AVvPfnKLaSY[Introducing a lightweight, data first Clojure interpreter for tracing code] - Steven Lombardi
+* https://www.youtube.com/watch?v=6FikTQf8qho[Building a Sync Engine in Clojure] - Stepan Parunashvili
+* https://www.youtube.com/watch?v=nc6fTSh_1-c[Clojure for Criminal Defense] - Andrew Foltz-Morrison
+* https://www.youtube.com/watch?v=cFF9E3pASyI[ClojureScript Has It All! Except Maybe for Types] - Kamil Waheed
+* https://www.youtube.com/watch?v=rLJattwAceU[When Your Disney Playlist Saves Your Tech Career] - Wendy Randolph
+* https://www.youtube.com/watch?v=nC86hEglyLQ[Clojure real-world-data #16 - Snippet 1 - Jarkko Saltiola: tools for pipelines, bb-glitchtip] - Sci Cloj
+* https://www.youtube.com/watch?v=8TwLHQrqG4w[shadow-css for personal use - Emacs, Browser, Clojure, REPL Screencast] - faster-than-light-memes
+* https://www.youtube.com/watch?v=r9YeMIqzkQ4[Clojure Corner: Interview with Daniel Slutsky] - Flexiana
+
+== Blogs, articles, and projects
+
+* https://www.clojuriststogether.org/news/applications-open-for-2025-long-term-funding/[Applications Open for 2025 Long-Term Funding] - Kathy Davis (Clojurists Together)
+* https://blog.michielborkent.nl/oss-updates-sep-oct-2024.html[OSS updates September and October 2024] - Michiel Borkent
+* https://codewithkira.com/2024-10-31-clojurists-together-update-sept-oct-2024.html[OSS Updates September and October 2024] - Kira Howe (McLean)
+* https://www.taoensso.com/news/2024-10-open-source[Open source update] - Peter Taoussanis
+* https://www.ovistoica.com/blog/2024-11-2-shipclojure-the-clojure-boilerplate-to-ship-startups-fast-complete-stack-presentation[ShipClojure: The Clojure Boilerplate to ship startups FAST - complete stack presentation] - Ovi Stoica
+* https://scicloj.github.io/blog/clojurists-together-project-scicloj-community-building-october-2024-update/[Clojurists Together project - Scicloj community building - October 2024 update] - Daniel Slutsky
+* https://www.daveliepmann.com/articles/idiomatic-clojure-errors.html[Idiomatic errors in Clojure] - Dave Liepmann
+* https://thomascothran.tech/2024/10/a-new-paradigm/[Bthreads: A Simple and Easy Paradigm for Clojure] - Thomas Cothran
+* https://buttondown.com/tensegritics-curiosities/archive/maps-implementation-secrets/[Maps Implementation Secrets] - Christophe Grand
+* https://scicloj.github.io/clojure-data-tutorials/projects/ml/text-classification/index.html[Text classification with metamorph.ml and xgboost] - Carsten Behring
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/ikappaki/basilisp-blender[basilisp-blender] https://github.com/ikappaki/basilisp-blender/blob/main/CHANGELOG.md#020[0.2.0] - A library designed to facilitate the execution of Basilisp Clojure code within Blender
+* https://github.com/uncomplicate/neanderthal[neanderthal] https://github.com/uncomplicate/neanderthal/blob/master/CHANGELOG.md#0500[0.50.0] - Fast Clojure Matrix Library
+* https://github.com/igrishaev/pg2[pg2] https://github.com/igrishaev/pg2/blob/master/CHANGELOG.md#0120[0.1.20] - A fast PostgreSQL driver for Clojure
+* https://github.com/basilisp-lang/basilisp[basilisp] https://github.com/basilisp-lang/basilisp/releases/tag/v0.3.0[0.3.0] - A Clojure-compatible(-ish) Lisp dialect targeting Python 3.9+
+* https://github.com/liquidz/elin[elin]  - A Clojure development environment for Vim/Neovim and more!, primarily written in Babashka
+* https://github.com/BrunoBonacci/safely[safely] https://github.com/BrunoBonacci/safely/blob/master/CHANGELOG.md#version-100-2024-11-05[1.0.0] - Safely is a Clojure's circuit-breaker library for handling retries in an elegant declarative way
+* https://github.com/metosin/jsonista[jsonista] https://github.com/metosin/jsonista/blob/master/CHANGELOG.md#0312-2024-11-01[0.3.12] - Clojure library for fast JSON encoding and decoding
+* https://github.com/scicloj/kindly-advice[kindly-advice] https://github.com/scicloj/kindly-advice/blob/main/CHANGELOG.md[1-beta12] - A small library to advise Clojure data visualization and notebook tools how to display forms and values, following the kindly convention
+* https://github.com/pedestal/pedestal[pedestal] https://github.com/pedestal/pedestal/blob/master/CHANGELOG.md#072---1-nov-2024[0.7.2] - The Pedestal Server-side Libraries
+* https://github.com/scicloj/kind-pyplot[kind-pyplot] https://github.com/scicloj/kind-pyplot/blob/main/CHANGELOG.md#1-beta21---2024-07-27[1-beta2.1] - Visualizing python plots with the Clojure Kindly convention
+* https://github.com/soulspace-org/overarch[overarch] https://github.com/soulspace-org/overarch/blob/main/Changelog.md#version-0320[0.32.0] - A data driven model of software systems based on UML and the C4 model
+* https://github.com/scicloj/tableplot[tableplot] https://github.com/scicloj/tableplot/blob/main/CHANGELOG.md#1-alpha12---2024-01-03[1-alpha12] - Easy layered graphics with Hanami & Tablecloth
+* https://github.com/practicalli/clojure-cli-config[clojure-cli-config] https://github.com/practicalli/clojure-cli-config/releases/tag/2024-11-03[2024-11-03] - User aliases and Clojure CLI configuration for deps.edn based projects
+* https://github.com/msolli/proletarian[proletarian] https://github.com/msolli/proletarian/blob/main/CHANGELOG.md#1089-alpha---2024-11-04[1.0.89-alpha] - A durable job queuing and worker system for Clojure backed by PostgreSQL or MySQL
+* https://github.com/replikativ/mercurius[mercurius]  - Payment provider for open source licenses with payment requirements
+* https://github.com/squint-cljs/squint[squint] https://github.com/squint-cljs/squint/blob/main/CHANGELOG.md#v08123-2024-11-05[0.8.123] - Light-weight ClojureScript dialect
+* https://github.com/scicloj/noj[noj] https://github.com/scicloj/noj/blob/main/CHANGELOG.md[2-alpha11] - A clojure framework for data science
+* https://github.com/clojure/core.unify[core.unify] 0.7.0 - Unification library
+* https://github.com/scicloj/metamorph.ml[metamorph.ml] https://github.com/scicloj/metamorph.ml/blob/main/CHANGELOG.md[0.10.1] - Machine learning functions for metamorph based on machine learning pipelines

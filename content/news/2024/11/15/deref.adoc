@@ -1,0 +1,62 @@
+= Clojure Deref (Nov 7, 2024)
+Alex Miller
+2024-11-04
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts, videos, and media
+
+* https://www.youtube.com/watch?v=i8BDOGg7SZ8[Developers aren't paid to code] - Wesley Matson
+* https://www.youtube.com/watch?v=OxzUjpihIH4[RDF and the future of LLMs] - Luke VanderHart
+* https://www.youtube.com/watch?v=3t9FSfM1fIQ[Crafting Artisanal Vector Graphics] - Timothy Pratley and Chris Houser
+* https://www.youtube.com/watch?v=CVmno8nLM6Y[From JVM to JS: Implementing Math Functions in ClojureScript] - Paula Gearon
+* https://www.youtube.com/watch?v=W2Y6G9tSg5E[Unsession: Clojure 1.12 Overview] - Clojure team
+* https://www.youtube.com/watch?v=1piLCCu1OwE[Unsession: AI coding tools] - Wesley Matson
+* https://www.youtube.com/watch?v=0_JYCAOKKcM[Encoding internet-scale decentralised data structures on Convex (by Mike Anderson)] - London Clojurians
+* https://www.youtube.com/watch?v=oyl_etajtGk[Clojure Corner: Interview with Peter Strömberg] - Flexiana
+* https://www.youtube.com/watch?v=HFQWNhtPbOo[Mind-bending technologies, lightning talk] - Jakub Holý
+* https://zencastr.com/z/mLHDH_Gi[15e670d6e60c Kathryn Lawrence] - defn
+* https://vimeo.com/1029016402[Apropos November 12, 2024] - Apropos Clojure
+* https://www.youtube.com/watch?v=Ll8_4MbErLc[Solving Project Euler problem 8 with Clojure] - Clojure Diary
+* https://www.youtube.com/watch?v=dGvNIchcaSo[Solving Project Euler problem 9 with Clojure] - Clojure Diary
+
+== Blogs, articles, and projects
+
+* https://ericnormand.substack.com/p/a-love-letter-to-heart-of-clojure[A love letter to Heart of Clojure] - Eric Normand
+* https://corfield.org/blog/2024/11/09/conj-2024/[Clojure/conj 2024] - Sean Corfield
+* https://scicloj.github.io/blog/scicloj-scientific-papers-initial-planning-meeting/[Scicloj scientific papers - initial planning meeting] - Thomas Clark and Daniel Slutsky
+* https://blog.saketpatel.me/clj-automation-1[Clojure Automation #1] - Saket Patel
+* https://github.com/pitch-io/uix/blob/master/DEVLOG.md#october-2024[UIx Devlog] - Roman Liutikov
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/overtone/overtone[overtone] https://github.com/overtone/overtone/releases/tag/v0.16.3331[0.16.3331] - Collaborative Programmable Music
+* https://github.com/weavejester/ragtime[ragtime] https://github.com/weavejester/ragtime/blob/master/CHANGELOG.md[0.10.1] - Database-independent migration library
+* https://github.com/cursive-ide/cursive[cursive] https://cursive-ide.com/blog/cursive-1.14.0.html[1.14.0] - Cursive: The IDE for beautiful Clojure code
+* https://github.com/juji-io/datalevin[datalevin] https://github.com/juji-io/datalevin/blob/master/CHANGELOG.md[0.9.13] - A simple, fast and versatile Datalog database
+* https://github.com/clojure-lsp/clojure-lsp[clojure-lsp] https://github.com/clojure-lsp/clojure-lsp/releases/tag/2024.11.08-17.49.29[2024.11.08-17.49.29] - Clojure & ClojureScript Language Server (LSP) implementation
+* https://github.com/flow-storm/flow-storm-debugger[flow-storm-debugger] https://github.com/flow-storm/flow-storm-debugger/blob/master/CHANGELOG.md[4.0.0] - A debugger for Clojure and ClojureScript with some unique features
+* https://github.com/babashka/babashka[babashka] https://github.com/babashka/babashka/blob/master/CHANGELOG.md[1.12.195] - Native, fast starting Clojure interpreter for scripting
+* https://github.com/phronmophobic/usearch.clj[usearch.clj]  - A clojure wrapper for usearch, a fast open-source search & clustering engine for vectors
+* https://github.com/phronmophobic/whisper.clj[whisper.clj]  - Audio Transcription using whisper.cpp
+* https://github.com/pitch-io/uix[uix] https://github.com/pitch-io/uix/blob/master/CHANGELOG.md[1.2.0] - Idiomatic ClojureScript interface to modern React.js
+* https://github.com/clj-kondo/clj-kondo[clj-kondo] https://github.com/clj-kondo/clj-kondo/blob/master/CHANGELOG.md[2024.11.14] - Static analyzer and linter for Clojure code that sparks joy
+* https://github.com/paintparty/fireworks[fireworks] https://github.com/paintparty/fireworks/blob/main/CHANGELOG.md[0.10.3] - Fireworks is a themeable tapping library for Clojure, ClojureScript, and Babashka
+* https://github.com/babashka/nbb[nbb] https://github.com/babashka/nbb/blob/main/CHANGELOG.md[1.3.195] - Scripting in Clojure on Node.js using SCI
+* https://github.com/scicloj/clay[clay] https://github.com/scicloj/clay/blob/main/CHANGELOG.md[2-beta23] - A tiny Clojure tool for dynamic workflow of data visualization and literate programming
+* https://github.com/scicloj/noj[noj] https://github.com/scicloj/noj/blob/main/CHANGELOG.md[2-alpha12] - A clojure framework for data science
+* https://github.com/phronmophobic/clj-libffi[clj-libffi]  - A wrapper for libffi
+* https://github.com/phronmophobic/objcjure[objcjure]  - A clojure DSL for calling objective c code
+* https://github.com/replikativ/konserve-dynamodb[konserve-dynamodb]  - DynamoDB backend for konserve
+* https://github.com/replikativ/datahike-dynamodb[datahike-dynamodb]  - DynamoDB backend for datahike
+* https://github.com/ikappaki/basilisp-blender[basilisp-blender] https://github.com/ikappaki/basilisp-blender/blob/main/CHANGELOG.md[0.3.0] - A library designed to facilitate the execution of Basilisp Clojure code within Blender
+* https://github.com/xtdb/xtdb[xtdb]  - An immutable SQL database for application development, time-travel reporting and data compliance. Developed by @juxt
+* https://github.com/clj-commons/virgil[virgil] https://github.com/clj-commons/virgil/blob/master/CHANGELOG.md[0.3.1] - Recompile Java code without restarting the REPL
+* https://github.com/clj-commons/humanize[humanize] https://github.com/clj-commons/humanize/blob/master/CHANGES.md[1.1] - Produce human readable strings in clojure
+* https://github.com/eerohele/pp[pp] https://github.com/eerohele/pp/blob/main/CHANGELOG.md#2024-11-1377[2024-11-13.77] - Peppy pretty-printer for Clojure data
+* https://github.com/scicloj/kindly[kindly] https://github.com/scicloj/kindly/blob/main/CHANGELOG.md[4-beta14] - A small library for defining how different kinds of things should be rendered

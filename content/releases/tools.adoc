@@ -24,8 +24,8 @@ Recent official releases are described here. Prereleases and older versions can 
 
 === 1.12.0.1488 (Nov 21, 2024) [[v1.12.0.1488]]
 
-* https://clojure.atlassian.net/browse/TDEPS-265[TDEPS-265] - `-Ttools install-latest` when :coord with git url provided
-* https://clojure.atlassian.net/browse/TDEPS-268[TDEPS-268] - `-X:deps find-versions` returns all procurer types
+* https://clojure.atlassian.net/browse/TDEPS-265[TDEPS-265] - `-Ttools install-latest` fixed bug when :coord with git url provided
+* https://clojure.atlassian.net/browse/TDEPS-268[TDEPS-268] - `-X:deps find-versions` returns all procurer types, not just first found
 * Updated tools.deps, tools.deps.cli, tools.tools to latest
 
 === 1.12.0.1479 (Sep 5, 2024) [[v1.12.0.1479]]

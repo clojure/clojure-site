@@ -1,0 +1,43 @@
+= Clojure Deref (Nov 22, 2024)
+Alex Miller
+2024-11-22
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts, videos, and media
+
+* https://www.youtube.com/watch?v=CtzP1EKqgIY[r/place in Clojure and Clojurescript - Part 3] - Unravel Tech
+* https://www.youtube.com/watch?v=4164fzsIPWQ[Clojure service template for a web application (HTML and Rest) with database backend] - Andrey Fadeev
+
+== Blogs, articles, and projects
+
+* https://dragan.rocks/articles/24/Apple-Silicon-Support-for-Clojure-Neanderthal-Fast-Matrix-Library[Apple silicon support in Clojure's Neanderthal Fast Matrix Library] - Dragan Djuric
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/clojure/brew-install[Clojure CLI] https://clojure.org/releases/tools[1.12.0.1488] - Clojure CLI
+* https://github.com/igrishaev/ring-jdk-adapter[ring-jdk-adapter] https://github.com/igrishaev/ring-jdk-adapter/blob/master/CHANGELOG.md[0.1.1] - Zero-deps Ring server on top of jdk.httpserver
+* https://github.com/filipesilva/datomic-pro-sqlite[datomic-pro-sqlite]  - Get started with Datomic Pro quickly on a single machine setup that will take you pretty far
+* https://github.com/ikappaki/basilisp-nrepl-async[basilisp-nrepl-async] https://github.com/ikappaki/basilisp-nrepl-async/blob/main/CHANGELOG.md[0.1.0] - A Basilisp Clojure async nREPL server for cooperative multitasking
+* https://github.com/clj-commons/rewrite-clj[rewrite-clj] https://github.com/clj-commons/rewrite-clj/blob/main/CHANGELOG.adoc#v1.1.49[1.1.49] - Rewrite Clojure code and edn
+* https://github.com/chr15m/cljs-josh[cljs-josh]  - Scittle cljs live-reloading server
+* https://git.sr.ht/~jomco/openapi-v3-validator[openapi-v3-validator] 1.5.0 - A pure-clojure library for validating ring requests & responses against OpenAPI v3 specifications
+* https://github.com/clojure-goes-fast/clj-async-profiler[clj-async-profiler] https://github.com/clojure-goes-fast/clj-async-profiler/blob/master/CHANGELOG.md[1.5.0] - Embedded high-precision Clojure profiler
+* https://github.com/paintparty/bling[bling] https://github.com/paintparty/bling/blob/main/CHANGELOG.md[0.4.2] - Rich text console printing for Clojure, ClojureScript, and Babashka
+* https://github.com/HendrikLevering/cljs-eval[cljs-eval] https://github.com/HendrikLevering/cljs-eval/blob/main/CHANGELOG.md[0.1.1] - Eval CLJS code directly from CLJ
+* https://github.com/roman01la/cljs-react-devtools[cljs-react-devtools] 0.1.0 - React DevTools for ClojureScript wrappers
+* https://github.com/scicloj/tableplot[tableplot] https://github.com/scicloj/tableplot/blob/main/CHANGELOG.md[1-alpha14.1] - Easy layered graphics with Hanami & Tablecloth
+* https://github.com/babashka/cli[cli] https://github.com/babashka/cli/blob/main/CHANGELOG.md[0.8.61] - Turn Clojure functions into CLIs!
+* https://github.com/scicloj/noj[noj] https://github.com/scicloj/noj/blob/main/CHANGELOG.md[2-alpha12.1] - A clojure framework for data science
+* https://github.com/scicloj/kind-portal[kind-portal] https://github.com/scicloj/kind-portal/blob/main/CHANGELOG.md[1-beta2] - An adapter for the Portal tool to support the Kindly conventions
+* https://github.com/walmartlabs/lacinia-pedestal[lacinia-pedestal] https://github.com/walmartlabs/lacinia-pedestal/blob/master/CHANGELOG.md[1.3.1] - Expose Lacinia GraphQL as Pedestal endpoints
+* https://github.com/noahtheduke/lazytest[lazytest] https://github.com/NoahTheDuke/lazytest/blob/main/CHANGELOG.md[1.4.1] - A standalone BDD test framework for Clojure
+* https://github.com/seancorfield/polylith-external-test-runner[polylith-external-test-runner] https://github.com/seancorfield/polylith-external-test-runner/blob/main/CHANGELOG.md[0.6.0] - An external (subprocess) test runner for Polylith
+* https://github.com/seancorfield/test-runner[test-runner] https://github.com/seancorfield/test-runner/blob/master/changes.md[0.6.0] - A test runner for the Clojure CLI, that supports clojure.test, Expectations, and LazyTest
+* https://github.com/squint-cljs/squint[squint] https://github.com/squint-cljs/squint/blob/main/CHANGELOG.md[0.8.124] - Light-weight ClojureScript dialect
+* https://github.com/borkdude/deps.clj[deps.clj] https://github.com/borkdude/deps.clj/blob/master/CHANGELOG.md[1.12.0.1488] - A faithful port of the clojure CLI bash script to Clojure

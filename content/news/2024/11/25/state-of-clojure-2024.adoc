@@ -1,0 +1,120 @@
+= State of Clojure 2024 Results
+Alex Miller
+2024-11-21
+:jbake-type: post
+
+Recently we completed the 2024 State of Clojure survey. You can find the full survey results in https://www.surveymonkey.com/results/SM-hht04mGydwZ6Nqr7N8vjCA_3D_3D/[this report].
+
+See these sections for more detail:
+
+* <<state-of-clojure-2024#highlights,2024 Highlights>>
+* <<state-of-clojure-2024#trends,Trends Over Time>>
+* <<state-of-clojure-2024#newusers,2024 New Users>>
+* <<state-of-clojure-2024#previous,Previous Results>>
+
+[[highlights]]
+== 2024 Highlights
+
+In 2024, we continued to see strong use of Clojure in a wide variety of organizations, with 73% of users using Clojure for work, especially in web development (76%), open source (46%), commercial services (34%), and enterprise apps (30%). Most were deploying those apps in either public (58%) or private (26%) cloud.
+
+Most (54%) were developing for users outside their organization, in organizations of every size: 1-10 (30%), 11-100 (29%), 101-1000 (19%), or 1000+ (23%). In the majority of cases (68%), the Clojure teams were small, but teams of 100+ (9%) were also represented, likely led by Nubank, which has well over 1000 Clojure developers.
+
+Industry-wise, the sectors were, as usual, finance (25%), enterprise software (14%), consumer software (8%), healthcare (8%), and retail/ecommerce (7%), with a broad range of additional responses reported - Clojure reaches everywhere there is a host platform (JVM, JavaScript, CLR).
+
+Clojure developers mostly use either MacOS (57%) or Linux (35%), with one of four popular development environments: Emacs (40%), IntelliJ (23%), VS Code (23%), or Vim (12%).
+
+Clojure https://clojure.org/news/2024/09/05/clojure-1-12-0[1.12.0 was released in September] and the survey showed rapid uptake, with 58% already using it, and 65% developing or deploying with the prior versions 1.11, and a steep drop-off after that. Clojure's focus on stability and avoiding breaking changes makes upgrades safe and easy.
+
+With JVM usage, we saw a significant shift from last year with the Java 21 LTS release, which 54% are now using, or even newer versions like Java 22 or 23 (26%). Usage of Java 8 LTS, the oldest supported release has dropped to just 9%. We expect to move the Clojure JVM baseline version in the next release, version TBD.
+
+One new question this year focused on alternative Clojure dialects - these are created by enterprising community members spreading the ideas of Clojure into new hosts and niches. https://babashka.org/[Babashka], a fast native-compiled scripting runtime with batteries included is being used by an eye-popping 93% of users! We also saw usage of ClojureDart (10%), Squint (7%), Jank (4%), and Cherry (3%). Some additional options mentioned in the comments were Electric, Rama, nbb, sci, scittle, clojerl, and Basilisp - we'll review those as options for next year.
+
+Two additional questions were open response questions about web development and non-web UI frameworks. We'll be using those responses to form concrete options for next year. Feel free to peruse the answers in the full data.
+
+As always, we closed the survey asking who you appreciate in the Clojure community. There are way too many people and companies to mention without leaving someone out - I encourage you to read the responses! It's been a great year with Clojure and we look forward to an amazing 2025.
+
+[[trends]]
+== Trends Over Time
+
+Because this survey has been running since 2010 (thanks to Chas Emerick originally!), we have lots of great longitudinal data and it's interesting to compare some of the answers over time.
+
+Looking at the question of how Clojure developers use Clojure, we can see this has generally trended more towards using it at work. However, this year we saw an uptick of people using it for hobbies or in their studies:
+
+image::/images/content/news/2024-11-26/trend-use.png[Clojure use trend]
+
+One question that's always interesting to examine is what primary language developers were using prior to Clojure. These answers have been relatively static over time - most Clojure developers come from Java, JavaScript, or Python. We can see that Ruby and C++ have fallen the last few years but C# has gotten a bit stronger. See the later section too which focuses just on new users.
+
+image::/images/content/news/2024-11-26/trend-lang.png[Prior language trend]
+
+We can also see how developer environments have changed over time, from OS:
+
+image::/images/content/news/2024-11-26/trend-os.png[OS trend]
+
+To dev environment:
+
+image::/images/content/news/2024-11-26/trend-dev-env.png[Dev environment trend]
+
+This is a graph of the primary JVM use over time (intermediate versions between LTS are omitted for clarity):
+
+image::/images/content/news/2024-11-26/trend-java.png[Java trend]
+
+Java 8 has finally relented and we are seeing strong uptake to newer versions like Java 21. For many releases we have been using Java 8 as our baseline, but we expect to move that in the next Clojure release.
+
+Speaking of Clojure versions, Clojure's strong record of stability and additive development makes it easy for users to upgrade when a new version is available. Clojure 1.12 was released in September, but is already being heavily used in development and production:
+
+image::/images/content/news/2024-11-26/trend-clojure.png[Clojure trend]
+
+Another interesting thing we can track is the primary way people manage their dependencies:
+
+image::/images/content/news/2024-11-26/trend-deps.png[Deps trend]
+
+[[newusers]]
+== 2024 New Users
+
+It's also useful to narrow our focus just to new users (those who reported using the language for less than or up to 1 year). Applying this filter can give us a view of why and how new users are finding Clojure. For many of the questions, we see data similar to the overall user base, but in some areas new insight can be gleaned.
+
+For example, we can look at the prior language just for new users which gives a clearer picture of where people are coming from when they start to learn Clojure:
+
+image::/images/content/news/2024-11-26/new-prior-lang.png[New user prior lang]
+
+While Java is the dominant prior language for Clojure users as a whole, new users now are primarily coming from JavaScript, Python, or Java and those trends have changed somewhat over time. One especially interesting signal is the rise of C#, which was not easy to see in the data for all users.
+
+New users found the following challenges in learning:
+
+image::/images/content/news/2024-11-26/new-challenges.png[New user challenges]
+
+It is intriguing to imagine whether the changes over time come more from what's happening in the community or in the background of new users. For example, the difficulties of understanding functional programming vs object-oriented programming has decreased significantly over the last 3 years - is this due to a greater influx from non-OO communities, or better learning materials?
+
+Similarly, we can look just at priorities for new users:
+
+image::/images/content/news/2024-11-26/new-priorities.png[New user priorities for improvement]
+
+These don't vary too much from the community as a whole, but spec is ranked quite a bit lower level.
+
+It can also be useful to see which forums new users are finding useful:
+
+image::/images/content/news/2024-11-26/new-community.png[New user communities]
+
+In general, these are similar to the community at a whole but they are over-represented in YouTube, StackOverflow (not surprising), and Discord (probably due to Clojure Camp).
+
+[[previous]]
+== Full Results
+
+You can find the full results for this and prior years at the links below if you would like to explore more. It is well worth looking through the 2024 data and the open responses, especially the responses in the final question expressing gratitude for the community and its members, which are heartwarming and certainly in the spirit of this Thanksgiving week in the US.
+
+* https://www.surveymonkey.com/results/SM-hht04mGydwZ6Nqr7N8vjCA_3D_3D/[2024]
+* https://www.surveymonkey.com/results/SM-5QgPUw4aBbMUY3FJVRra2w_3D_3D/[2023]
+* https://www.surveymonkey.com/results/SM-QRiy0fSu3bmDK_2FSNMplVJw_3D_3D/[2022]
+* https://www.surveymonkey.com/results/SM-S2L8NR6K9[2021]
+* https://www.surveymonkey.com/results/SM-CDBF7CYT7/[2020]
+* https://www.surveymonkey.com/results/SM-S9JVNXNQV/[2019]
+* https://www.surveymonkey.com/results/SM-9BC5FNJ68/[2018]
+* https://www.surveymonkey.com/results/SM-7K6NXJY3/[2016]
+* http://blog.cognitect.com/blog/2016/1/28/state-of-clojure-2015-survey-results[2015]
+* http://blog.cognitect.com/blog/2014/10/20/results-of-2014-state-of-clojure-and-clojurescript-survey[2014]
+* https://cemerick.com/blog/2013/11/18/results-of-the-2013-state-of-clojure-clojurescript-survey.html[2013]
+* https://cemerick.com/blog/2012/08/06/results-of-the-2012-state-of-clojure-survey.html[2012]
+* https://cemerick.com/blog/2011/07/11/results-of-the-2011-state-of-clojure-survey.html[2011]
+* https://cemerick.com/blog/2010/06/07/results-from-the-state-of-clojure-summer-2010-survey.html[2010]
+
+Thanks again for using Clojure and ClojureScript and participating in the survey!

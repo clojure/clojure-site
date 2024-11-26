@@ -1,6 +1,6 @@
 = State of Clojure 2024 Results
 Alex Miller
-2024-11-21
+2024-11-26
 :jbake-type: post
 
 Recently we completed the 2024 State of Clojure survey. You can find the full survey results in https://www.surveymonkey.com/results/SM-hht04mGydwZ6Nqr7N8vjCA_3D_3D/[this report].
@@ -40,33 +40,33 @@ Because this survey has been running since 2010 (thanks to Chas Emerick original
 
 Looking at the question of how Clojure developers use Clojure, we can see this has generally trended more towards using it at work. However, this year we saw an uptick of people using it for hobbies or in their studies:
 
-image::/images/content/news/2024-11-26/trend-use.png[Clojure use trend]
+image::/images/content/news/2024-11-26/trend-use.png[Clojure use trend,align="center"]
 
 One question that's always interesting to examine is what primary language developers were using prior to Clojure. These answers have been relatively static over time - most Clojure developers come from Java, JavaScript, or Python. We can see that Ruby and C++ have fallen the last few years but C# has gotten a bit stronger. See the later section too which focuses just on new users.
 
-image::/images/content/news/2024-11-26/trend-lang.png[Prior language trend]
+image::/images/content/news/2024-11-26/trend-lang.png[Prior language trend,align="center"]
 
 We can also see how developer environments have changed over time, from OS:
 
-image::/images/content/news/2024-11-26/trend-os.png[OS trend]
+image::/images/content/news/2024-11-26/trend-os.png[OS trend,align="center"]
 
 To dev environment:
 
-image::/images/content/news/2024-11-26/trend-dev-env.png[Dev environment trend]
+image::/images/content/news/2024-11-26/trend-dev-env.png[Dev environment trend,align="center"]
 
 This is a graph of the primary JVM use over time (intermediate versions between LTS are omitted for clarity):
 
-image::/images/content/news/2024-11-26/trend-java.png[Java trend]
+image::/images/content/news/2024-11-26/trend-java.png[Java trend,align="center"]
 
 Java 8 has finally relented and we are seeing strong uptake to newer versions like Java 21. For many releases we have been using Java 8 as our baseline, but we expect to move that in the next Clojure release.
 
 Speaking of Clojure versions, Clojure's strong record of stability and additive development makes it easy for users to upgrade when a new version is available. Clojure 1.12 was released in September, but is already being heavily used in development and production:
 
-image::/images/content/news/2024-11-26/trend-clojure.png[Clojure trend]
+image::/images/content/news/2024-11-26/trend-clojure.png[Clojure trend,align="center"]
 
 Another interesting thing we can track is the primary way people manage their dependencies:
 
-image::/images/content/news/2024-11-26/trend-deps.png[Deps trend]
+image::/images/content/news/2024-11-26/trend-deps.png[Deps trend,align="center"]
 
 [[newusers]]
 == 2024 New Users
@@ -75,25 +75,25 @@ It's also useful to narrow our focus just to new users (those who reported using
 
 For example, we can look at the prior language just for new users which gives a clearer picture of where people are coming from when they start to learn Clojure:
 
-image::/images/content/news/2024-11-26/new-prior-lang.png[New user prior lang]
+image::/images/content/news/2024-11-26/new-prior-lang.png[New user prior lang,align="center"]
 
 While Java is the dominant prior language for Clojure users as a whole, new users now are primarily coming from JavaScript, Python, or Java and those trends have changed somewhat over time. One especially interesting signal is the rise of C#, which was not easy to see in the data for all users.
 
 New users found the following challenges in learning:
 
-image::/images/content/news/2024-11-26/new-challenges.png[New user challenges]
+image::/images/content/news/2024-11-26/new-challenges.png[New user challenges,align="center"]
 
 It is intriguing to imagine whether the changes over time come more from what's happening in the community or in the background of new users. For example, the difficulties of understanding functional programming vs object-oriented programming has decreased significantly over the last 3 years - is this due to a greater influx from non-OO communities, or better learning materials?
 
 Similarly, we can look just at priorities for new users:
 
-image::/images/content/news/2024-11-26/new-priorities.png[New user priorities for improvement]
+image::/images/content/news/2024-11-26/new-priorities.png[New user priorities for improvement,align="center"]
 
 These don't vary too much from the community as a whole, but spec is ranked quite a bit lower level.
 
 It can also be useful to see which forums new users are finding useful:
 
-image::/images/content/news/2024-11-26/new-community.png[New user communities]
+image::/images/content/news/2024-11-26/new-community.png[New user communities,align="center"]
 
 In general, these are similar to the community at a whole but they are over-represented in YouTube, StackOverflow (not surprising), and Discord (probably due to Clojure Camp).
 

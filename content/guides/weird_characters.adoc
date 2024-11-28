@@ -21,7 +21,7 @@ original https://yobriefca.se/blog/2014/05/19/the-weird-and-wonderful-characters
 [[lists]]
 == `( ... )` - List
 
-Lists are sequential heterogeneous collections implemented as a linked list.
+Parentheses are used for lists. Lists are sequential heterogeneous collections implemented as a linked list.
 
 * <<xref/../../reference/data_structures#Lists,Clojure Documentation: Lists>>
 
@@ -35,7 +35,7 @@ A list of three values:
 [[vectors]]
 == `[ ... ]` - Vector
 
-Vectors are sequential, indexed, heterogeneous collections. Indexing is 0-based.
+Square brackets indicate a vector. Vectors are sequential, indexed, heterogeneous collections. Indexing is 0-based.
 
 An example of retrieving the value at index 1 in a vector of three values:
 
@@ -50,7 +50,7 @@ user=> (get ["a" 13.7 :foo] 1)
 [[maps]]
 == `{ ... }` - Map
 
-Maps are heterogeneous collections specified with alternating keys and values:
+Curly braces form a map. Maps are heterogeneous collections specified with alternating keys and values:
 
 [source,clojure]
 ----
@@ -63,7 +63,7 @@ user=> (keys {:a 1 :b 2})
 [[dispatch]]
 == `#` - Dispatch character
 
-You'll see this character beside another e.g. `\#(` or `#"`.
+The number sign (aka "octothorpe" or "hash") is used in several ways. You'll see this character beside another e.g. `\#(` or `#"`.
 
 `#` is a special character that tells the Clojure reader (the component that takes Clojure
 source and "reads" it as Clojure data) how to interpret the next character using a _read table_. Although some Lisps allow the read table to be extended by users, Clojure <<faq#reader_macros,does not>>.
@@ -74,7 +74,7 @@ The `#` is also used at the _end_ of a symbol when creating  <<xref/../weird_cha
 
 See <<xref/../weird_characters#dispatch,`#`>> for additional details.
 
-`#{...}` defines a set (a collection of unique values), specifically a `hash-set`. The
+A pair of curly braces prefixed with a number sign `#{...}` defines a set (a collection of unique values), specifically a `hash-set`. The
 following are equivalent:
 
 [source,clojure]
@@ -100,7 +100,7 @@ Duplicate key: 1
 
 See <<xref/../weird_characters#dispatch,`#`>> for additional details.
 
-`#_` tells the reader to ignore the next form completely.
+A number sign before an underscore `#_` tells the reader to ignore the next form completely.
 
 [source,clojure]
 ----
@@ -133,7 +133,7 @@ This can prove useful for debugging situations or for multiline comments.
 
 See <<xref/../weird_characters#dispatch,`#`>> for additional details.
 
-`#"` indicates the start of a regular expression
+A number sign before a double quotation mark `#"` indicates the start of a regular expression:
 
 [source,clojure]
 ----
@@ -152,8 +152,8 @@ Java string escaping is not required
 
 See <<xref/../weird_characters#dispatch,`#`>> for additional details.
 
-`#(` begins the short hand syntax for an inline function definition. The
-following two snippets of code are similar:
+A number sign before an open-parenthesis `#(` begins the short hand syntax for
+an inline function definition. The following two snippets of code are similar:
 
 [source,clojure]
 ----
@@ -176,7 +176,8 @@ user=> (macroexpand `#(println %))
 
 == `#'` - Var quote
 
-`#'` is the var quote which expands into a call to the `var` function:
+A number sign before a single quotation mark `#'` is the var quote, which
+expands into a call to the `var` function:
 
 [source,clojure]
 ----
@@ -243,7 +244,7 @@ Note that while `#inst` and `#uuid` are available in edn, `#js` is not.
 
 == `%`, `%n`, `%&` - Anonymous function arguments
 
-`%` is an argument in an anonymous function `pass:[#(...)]` as in `#(* % %)`.
+The percent sign `%` is an argument in an anonymous function `pass:[#(...)]` as in `#(* % %)`.
 
 When an anonymous function is expanded, it becomes an `fn` form and `%` args are replaced with gensym'ed names
 (here we use arg1, etc for readability):
@@ -295,7 +296,7 @@ Anonymous functions and `%` are not part of edn.
 
 == `@` - Deref
 
-`@` expands into a call to the `deref` function, so these two forms
+The at sign `@` expands into a call to the `deref` function, so these two forms
 are the same:
 [source,clojure]
 ----
@@ -316,10 +317,10 @@ Note that `@` is not available in edn.
 
 == `^` (and `#^`) - Metadata
 
-`^` is the metadata marker. Metadata is a map of values (with shorthand option)
-that can be attached to various forms in Clojure. This provides extra information
-for these forms and can be used for documentation, compilation warnings,
-typehints, and other features.
+The caret `^` is the metadata marker. Metadata is a map of values (with
+shorthand option) that can be attached to various forms in Clojure. This
+provides extra information for these forms and can be used for documentation,
+compilation warnings, typehints, and other features.
 [source,clojure]
 ----
 user=> (def ^{:debug true} five 5) ; meta map with single boolean value
@@ -374,7 +375,7 @@ Note that metadata is available in edn, but type hints are not.
 
 == `'` - Quote
 
-Quoting is used to indicate that the next form should be read but not evaluated.
+The single quotation mark is used to indicate that the next form should be read but not evaluated.
 The reader expands `'` into a call to the `quote` special form.
 
 [source,clojure]
@@ -396,7 +397,7 @@ user=>
 
 == `;` - Comment
 
-`;` starts a line comment and ignores all input from its starting point to the end of the
+A semicolon `;` starts a line comment and ignores all input from its starting point to the end of the
 line.
 [source,clojure]
 ----
@@ -418,7 +419,7 @@ but these are all the same to Clojure
 
 == `:` - Keyword
 
-`:` is the indicator for a keyword. Keywords are often used as keys in maps and
+A leading colon `:` is the indicator for a keyword. Keywords are often used as keys in maps and
 they provide faster comparisons and lower memory overhead than strings (because instances are cached and reused).
 
 [source,clojure]
@@ -452,7 +453,7 @@ user => (get my-map :three 3) ; same as above, but using get
 [[autoresolved_keys]]
 == `::` - Auto-resolved keyword
 
-`::` is used to auto-resolve a keyword in the current namespace. If no qualifier
+Double colon `::` is used to auto-resolve a keyword in the current namespace. If no qualifier
 is specified, it will auto-resolve to the current namespace. If a qualifier is
 specified, it may use aliases in the current namespace:
 [source,clojure]
@@ -569,7 +570,7 @@ is read the same as:
 
 == `/` - Namespace separator
 
-`/` can be the division function `clojure.core//`, but can also act as a
+A slash `/` can be the division function `clojure.core//`, but can also act as a
 separator in a symbol name to separate a symbol's name and namespace qualifier, e.g. `my-namespace/utils`. Namespace qualifiers can thus prevent naming collisions
 for simple names.
 
@@ -577,7 +578,7 @@ for simple names.
 
 == `\` - Character literal
 
-`\` indicates a literal character as in:
+Backslash `\` indicates a literal character as in:
 
 [source,clojure]
 ----
@@ -594,7 +595,7 @@ The `\` can also be followed by a Unicode literal of the form `\uNNNN`. For exam
 
 == `$` - Inner class reference
 
-Used to reference inner classes and interfaces in Java. Separates the
+The dollar sign is used to reference inner classes and interfaces in Java. It separates the
 container class name and the inner class name.
 [source,clojure]
 ----
@@ -621,7 +622,7 @@ These are threading macros. Please refer to <<xref/../threading_macros#,Official
 [[syntax_quote]]
 == ````` - Syntax quote
 
-````` is the syntax quote. Syntax quote is similar to quoting (to delay 
+Backtick ````` is the syntax quote. Syntax quote is similar to quoting (to delay 
 evaluation) but has some additional effects.
 
 Basic syntax quote may look similar to normal quoting:
@@ -677,7 +678,7 @@ See <<xref/../weird_characters#unquote_splicing,`~@`>> and <<xref/../weird_chara
 
 See <<xref/../weird_characters#syntax_quote,```>> for additional information.
 
-`~` is unquote. Syntax quote, like quote, means that evaluation is not occurring within the syntax quoted form.
+Tilde `~` is unquote. Syntax quote, like quote, means that evaluation is not occurring within the syntax quoted form.
 Unquoting turns off quoting and evaluates an expression inside the syntax quoted expression.
 
 [source,clojure]
@@ -705,7 +706,7 @@ Syntax quoting and unquote are essential tools for writing macros, which are fun
 
 See <<xref/../weird_characters#syntax_quote,```>> and <<xref/../weird_characters#unquote,`~`>> for additional information.
 
-`~@` is unquote-splicing. Where unquote <<xref/../weird_characters#unquote,(`~`)>>
+Tilde followed by at sign `~@` is unquote-splicing. Where unquote <<xref/../weird_characters#unquote,(`~`)>>
 evaluates a form and places the result into the quoted result, `~@` expects the
 evaluated value to be a collection and splices the _contents_ of that 
 collection into the quoted result.
@@ -728,7 +729,7 @@ Again, this is a powerful tool for writing macros.
 [[gensym]]
 == `<symbol>#` - Gensym
 
-A `#` _at the end_ of a symbol is used to automatically generate a new symbol.
+A number sign `#` _at the end_ of a symbol is used to automatically generate a new symbol.
 This is useful inside macros to keep macro specifics from leaking into the
 userspace. A regular `let` will fail in a macro definition:
 
@@ -779,7 +780,7 @@ user=> (macroexpand '(m))
 
 Reader conditionals are designed to allow different dialects of Clojure
 to share common code. The reader conditional behaves similarly to a traditional
-`cond`. The syntax for usage is `#?` and looks like this:
+`cond`. The syntax for usage is a number sign followed by question mark `#?` and looks like this:
 
 [source,clojure]
 ----
@@ -793,7 +794,7 @@ to share common code. The reader conditional behaves similarly to a traditional
 
 == `#?@` - Splicing Reader conditional
 
-The syntax for a splicing reader conditional is `#?@`. It is used to splice
+The syntax for a splicing reader conditional is number sign, question mark, at sign `#?@`. It is used to splice
 lists into the containing form. So the Clojure reader would read this:
 [source,clojure]
 ----
@@ -811,7 +812,7 @@ as this:
 
 == `\*var-name*` - "Earmuffs"
 
-Earmuffs (a pair of asterisk bookending var names) is a naming convention in
+Earmuffs (a pair of asterisks bookending var names) is a naming convention in
 many LISPs used to denote _special vars_. Most commonly in Clojure this is
 used to denote _dynamic_ vars, i.e. ones that can change depending on
 dynamic scope. The earmuffs act as a warning that "here be dragons"
@@ -826,7 +827,7 @@ and out streams for Clojure.
 
 == `>!!`, `<!!`, `>!`, and `<!` - core.async channel macros
 
-These symbols are channel operations in https://github.com/clojure/core.async[`core.async`]
+These symbols combining greater-than & less-than signs (sometimes called angle brackets) and exclamation marks are channel operations in https://github.com/clojure/core.async[`core.async`]
 - a Clojure/ClojureScript library for channel based asynchronous programming
 (specifically http://en.wikipedia.org/wiki/Communicating_sequential_processes[CSP - Communicating Sequential Processes]).
 
@@ -868,7 +869,7 @@ asynchronous code from the code base.
 
 == `<symbol>?` - Predicate Suffix
 
-Putting `?` at the end of a symbol is a naming convention common across
+Putting question mark `?` at the end of a symbol is a naming convention common across
 many languages that support special characters in their symbol names. It is
 used to indicate that the thing is a predicate, i.e. that it _poses a question_.
 For example, imagine using an API that dealt with buffer manipulation:
@@ -948,7 +949,7 @@ last argument - the new value of the atom so we use `_` for the others.
 
 == `,` - Whitespace character
 
-In Clojure, `,` is treated as whitespace, exactly the same as spaces, tabs, or newlines.
+In Clojure, comma `,` is treated as whitespace, exactly the same as spaces, tabs, or newlines.
 Commas are thus never required in literal collections, but are often used to enhance
 readability:
 

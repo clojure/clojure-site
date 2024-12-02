@@ -1,6 +1,6 @@
 = State of Clojure 2024 Results
 Alex Miller
-2024-11-26
+2024-12-02
 :jbake-type: post
 
 Recently we completed the 2024 State of Clojure survey. You can find the full survey results in https://www.surveymonkey.com/results/SM-hht04mGydwZ6Nqr7N8vjCA_3D_3D/[this report].
@@ -15,19 +15,39 @@ See these sections for more detail:
 [[highlights]]
 == 2024 Highlights
 
-In 2024, we continued to see strong use of Clojure in a wide variety of organizations, with 73% of users using Clojure for work, especially in web development (76%), open source (46%), commercial services (34%), and enterprise apps (30%). Most were deploying those apps in either public (58%) or private (26%) cloud.
+image::/images/content/news/2024-11-26/2024-domains.png[Clojure domains,align="center"]
 
-Most (54%) were developing for users outside their organization, in organizations of every size: 1-10 (30%), 11-100 (29%), 101-1000 (19%), or 1000+ (23%). In the majority of cases (68%), the Clojure teams were small, but teams of 100+ (9%) were also represented, likely led by Nubank, which has well over 1000 Clojure developers.
+In 2024, we continued to see strong use of Clojure in a wide variety of organizations, with 73% of users using Clojure for work, especially in web development, open source, commercial services, and enterprise apps. Most were deploying those apps in either public (58%) or private (26%) cloud.
 
-Industry-wise, the sectors were, as usual, finance (25%), enterprise software (14%), consumer software (8%), healthcare (8%), and retail/ecommerce (7%), with a broad range of additional responses reported - Clojure reaches everywhere there is a host platform (JVM, JavaScript, CLR).
+image::/images/content/news/2024-11-26/2024-org-size.png[Clojure organization size,align="center"]
 
-Clojure developers mostly use either MacOS (57%) or Linux (35%), with one of four popular development environments: Emacs (40%), IntelliJ (23%), VS Code (23%), or Vim (12%).
+Most developers (54%) were developing for users outside their organization, in organizations of every size.
 
-Clojure https://clojure.org/news/2024/09/05/clojure-1-12-0[1.12.0 was released in September] and the survey showed rapid uptake, with 58% already using it, and 65% developing or deploying with the prior versions 1.11, and a steep drop-off after that. Clojure's focus on stability and avoiding breaking changes makes upgrades safe and easy.
+image::/images/content/news/2024-11-26/2024-org-users.png[Clojure users in organization,align="center"]
+
+In the majority of cases, the Clojure teams were small, but teams of 100+ were also represented, likely led by Nubank, which has well over 1000 Clojure developers.
+
+image::/images/content/news/2024-11-26/2024-industry.png[Clojure industries,align="center"]
+
+Industry-wise, the top sectors were, as usual, finance, enterprise software, consumer software, healthcare, and retail/ecommerce, with a broad range of additional responses reported - Clojure reaches everywhere there is a host platform (JVM, JavaScript, CLR).
+
+image::/images/content/news/2024-11-26/2024-os.png[Clojure developer OS,align="center"]
+
+image::/images/content/news/2024-11-26/2024-dev-env.png[Clojure developer environments,align="center"]
+
+Clojure developers mostly use either MacOS or Linux, with one of four popular development environments: Emacs, IntelliJ, VS Code, or Vim.
+
+image::/images/content/news/2024-11-26/2024-clojure.png[Clojure versions,align="center"]
+
+Clojure https://clojure.org/news/2024/09/05/clojure-1-12-0[1.12.0 was released in September 2024] and the survey showed rapid uptake, with 58% already using it, and 65% developing or deploying with the prior versions 1.11, and a steep drop-off after that. Clojure's focus on stability and avoiding breaking changes makes upgrades safe and easy.
+
+image::/images/content/news/2024-11-26/2024-java.png[Java versions,align="center"]
 
 With JVM usage, we saw a significant shift from last year with the Java 21 LTS release, which 54% are now using, or even newer versions like Java 22 or 23 (26%). Usage of Java 8 LTS, the oldest supported release has dropped to just 9%. We expect to move the Clojure JVM baseline version in the next release, version TBD.
 
-One new question this year focused on alternative Clojure dialects - these are created by enterprising community members spreading the ideas of Clojure into new hosts and niches. https://babashka.org/[Babashka], a fast native-compiled scripting runtime with batteries included is being used by an eye-popping 93% of users! We also saw usage of ClojureDart (10%), Squint (7%), Jank (4%), and Cherry (3%). Some additional options mentioned in the comments were Electric, Rama, nbb, sci, scittle, clojerl, and Basilisp - we'll review those as options for next year.
+image::/images/content/news/2024-11-26/2024-dialects.png[Clojure alternative dialects,align="center"]
+
+One new question this year focused on alternative Clojure dialects - these are created by enterprising community members spreading the ideas of Clojure into new hosts and niches. https://babashka.org/[Babashka], a fast native-compiled scripting runtime with batteries included is being used by an eye-popping 93% of survey respondents that answered this question (about 2/3). We also saw usage of ClojureDart, Squint, Jank, and Cherry. Some additional options mentioned in the comments were Electric, Rama, nbb, sci, scittle, clojerl, and Basilisp - we'll review those as options for next year.
 
 Two additional questions were open response questions about web development and non-web UI frameworks. We'll be using those responses to form concrete options for next year. Feel free to peruse the answers in the full data.
 
@@ -54,13 +74,13 @@ To dev environment:
 
 image::/images/content/news/2024-11-26/trend-dev-env.png[Dev environment trend,align="center"]
 
-This is a graph of the primary JVM use over time (intermediate versions between LTS are omitted for clarity):
+This is a graph of the primary JVM use over time (intermediate versions between LTS releases omitted for clarity):
 
 image::/images/content/news/2024-11-26/trend-java.png[Java trend,align="center"]
 
-Java 8 has finally relented and we are seeing strong uptake to newer versions like Java 21. For many releases we have been using Java 8 as our baseline, but we expect to move that in the next Clojure release.
+Java 8 has finally relented and we are seeing strong uptake to newer versions like Java 21. For many Clojure releases we have been using Java 8 as our baseline, but we expect to move that in the next Clojure release.
 
-Speaking of Clojure versions, Clojure's strong record of stability and additive development makes it easy for users to upgrade when a new version is available. Clojure 1.12 was released in September, but is already being heavily used in development and production:
+Speaking of Clojure versions, Clojure's strong record of stability and additive development makes it easy for users to upgrade when a new version is available, as with Clojure 1.12 this year:
 
 image::/images/content/news/2024-11-26/trend-clojure.png[Clojure trend,align="center"]
 
@@ -71,7 +91,7 @@ image::/images/content/news/2024-11-26/trend-deps.png[Deps trend,align="center"]
 [[newusers]]
 == 2024 New Users
 
-It's also useful to narrow our focus just to new users (those who reported using the language for less than or up to 1 year). Applying this filter can give us a view of why and how new users are finding Clojure. For many of the questions, we see data similar to the overall user base, but in some areas new insight can be gleaned.
+It's always interesting to narrow the focus just to new users (those who reported using the language for less than or up to 1 year). Applying this filter can give us a view of why and how new users are finding Clojure. For many of the questions, we see data similar to the overall user base, but in some areas new insight can be gleaned.
 
 For example, we can look at the prior language just for new users which gives a clearer picture of where people are coming from when they start to learn Clojure:
 

@@ -15,37 +15,37 @@ See these sections for more detail:
 [[highlights]]
 == 2024 Highlights
 
-image::/images/content/news/2024-11-26/2024-domains.png[Clojure domains,align="center"]
+image::/images/content/news/2024-12-02/2024-domains.png[Clojure domains,align="center"]
 
 In 2024, we continued to see strong use of Clojure in a wide variety of organizations, with 73% of users using Clojure for work, especially in web development, open source, commercial services, and enterprise apps. Most were deploying those apps in either public (58%) or private (26%) cloud.
 
-image::/images/content/news/2024-11-26/2024-org-size.png[Clojure organization size,align="center"]
+image::/images/content/news/2024-12-02/2024-org-size.png[Clojure organization size,align="center"]
 
 Most developers (54%) were developing for users outside their organization, in organizations of every size.
 
-image::/images/content/news/2024-11-26/2024-org-users.png[Clojure users in organization,align="center"]
+image::/images/content/news/2024-12-02/2024-org-users.png[Clojure users in organization,align="center"]
 
 In the majority of cases, the Clojure teams were small, but teams of 100+ were also represented, likely led by Nubank, which has well over 1000 Clojure developers.
 
-image::/images/content/news/2024-11-26/2024-industry.png[Clojure industries,align="center"]
+image::/images/content/news/2024-12-02/2024-industry.png[Clojure industries,align="center"]
 
 Industry-wise, the top sectors were, as usual, finance, enterprise software, consumer software, healthcare, and retail/ecommerce, with a broad range of additional responses reported - Clojure reaches everywhere there is a host platform (JVM, JavaScript, CLR).
 
-image::/images/content/news/2024-11-26/2024-os.png[Clojure developer OS,align="center"]
+image::/images/content/news/2024-12-02/2024-os.png[Clojure developer OS,align="center"]
 
-image::/images/content/news/2024-11-26/2024-dev-env.png[Clojure developer environments,align="center"]
+image::/images/content/news/2024-12-02/2024-dev-env.png[Clojure developer environments,align="center"]
 
 Clojure developers mostly use either MacOS or Linux, with one of four popular development environments: Emacs, IntelliJ, VS Code, or Vim.
 
-image::/images/content/news/2024-11-26/2024-clojure.png[Clojure versions,align="center"]
+image::/images/content/news/2024-12-02/2024-clojure.png[Clojure versions,align="center"]
 
 Clojure https://clojure.org/news/2024/09/05/clojure-1-12-0[1.12.0 was released in September 2024] and the survey showed rapid uptake, with 58% already using it, and 65% developing or deploying with the prior versions 1.11, and a steep drop-off after that. Clojure's focus on stability and avoiding breaking changes makes upgrades safe and easy.
 
-image::/images/content/news/2024-11-26/2024-java.png[Java versions,align="center"]
+image::/images/content/news/2024-12-02/2024-java.png[Java versions,align="center"]
 
 With JVM usage, we saw a significant shift from last year with the Java 21 LTS release, which 54% are now using, or even newer versions like Java 22 or 23 (26%). Usage of Java 8 LTS, the oldest supported release has dropped to just 9%. We expect to move the Clojure JVM baseline version in the next release, version TBD.
 
-image::/images/content/news/2024-11-26/2024-dialects.png[Clojure alternative dialects,align="center"]
+image::/images/content/news/2024-12-02/2024-dialects.png[Clojure alternative dialects,align="center"]
 
 One new question this year focused on alternative Clojure dialects - these are created by enterprising community members spreading the ideas of Clojure into new hosts and niches. https://babashka.org/[Babashka], a fast native-compiled scripting runtime with batteries included is being used by an eye-popping 93% of survey respondents that answered this question (about 2/3). We also saw usage of ClojureDart, Squint, Jank, and Cherry. Some additional options mentioned in the comments were Electric, Rama, nbb, sci, scittle, clojerl, and Basilisp - we'll review those as options for next year.
 
@@ -60,33 +60,33 @@ Because this survey has been running since 2010 (thanks to Chas Emerick original
 
 Looking at the question of how Clojure developers use Clojure, we can see this has generally trended more towards using it at work. However, this year we saw an uptick of people using it for hobbies or in their studies:
 
-image::/images/content/news/2024-11-26/trend-use.png[Clojure use trend,align="center"]
+image::/images/content/news/2024-12-02/trend-use.png[Clojure use trend,align="center"]
 
 One question that's always interesting to examine is what primary language developers were using prior to Clojure. These answers have been relatively static over time - most Clojure developers come from Java, JavaScript, or Python. We can see that Ruby and C++ have fallen the last few years but C# has gotten a bit stronger. See the later section too which focuses just on new users.
 
-image::/images/content/news/2024-11-26/trend-lang.png[Prior language trend,align="center"]
+image::/images/content/news/2024-12-02/trend-lang.png[Prior language trend,align="center"]
 
 We can also see how developer environments have changed over time, from OS:
 
-image::/images/content/news/2024-11-26/trend-os.png[OS trend,align="center"]
+image::/images/content/news/2024-12-02/trend-os.png[OS trend,align="center"]
 
 To dev environment:
 
-image::/images/content/news/2024-11-26/trend-dev-env.png[Dev environment trend,align="center"]
+image::/images/content/news/2024-12-02/trend-dev-env.png[Dev environment trend,align="center"]
 
 This is a graph of the primary JVM use over time (intermediate versions between LTS releases omitted for clarity):
 
-image::/images/content/news/2024-11-26/trend-java.png[Java trend,align="center"]
+image::/images/content/news/2024-12-02/trend-java.png[Java trend,align="center"]
 
 Java 8 has finally relented and we are seeing strong uptake to newer versions like Java 21. For many Clojure releases we have been using Java 8 as our baseline, but we expect to move that in the next Clojure release.
 
 Speaking of Clojure versions, Clojure's strong record of stability and additive development makes it easy for users to upgrade when a new version is available, as with Clojure 1.12 this year:
 
-image::/images/content/news/2024-11-26/trend-clojure.png[Clojure trend,align="center"]
+image::/images/content/news/2024-12-02/trend-clojure.png[Clojure trend,align="center"]
 
 Another interesting thing we can track is the primary way people manage their dependencies:
 
-image::/images/content/news/2024-11-26/trend-deps.png[Deps trend,align="center"]
+image::/images/content/news/2024-12-02/trend-deps.png[Deps trend,align="center"]
 
 [[newusers]]
 == 2024 New Users
@@ -95,25 +95,25 @@ It's always interesting to narrow the focus just to new users (those who reporte
 
 For example, we can look at the prior language just for new users which gives a clearer picture of where people are coming from when they start to learn Clojure:
 
-image::/images/content/news/2024-11-26/new-prior-lang.png[New user prior lang,align="center"]
+image::/images/content/news/2024-12-02/new-prior-lang.png[New user prior lang,align="center"]
 
 While Java is the dominant prior language for Clojure users as a whole, new users now are primarily coming from JavaScript, Python, or Java and those trends have changed somewhat over time. One especially interesting signal is the rise of C#, which was not easy to see in the data for all users.
 
 New users found the following challenges in learning:
 
-image::/images/content/news/2024-11-26/new-challenges.png[New user challenges,align="center"]
+image::/images/content/news/2024-12-02/new-challenges.png[New user challenges,align="center"]
 
 It is intriguing to imagine whether the changes over time come more from what's happening in the community or in the background of new users. For example, the difficulties of understanding functional programming vs object-oriented programming has decreased significantly over the last 3 years - is this due to a greater influx from non-OO communities, or better learning materials?
 
 Similarly, we can look just at priorities for new users:
 
-image::/images/content/news/2024-11-26/new-priorities.png[New user priorities for improvement,align="center"]
+image::/images/content/news/2024-12-02/new-priorities.png[New user priorities for improvement,align="center"]
 
 These don't vary too much from the community as a whole, but spec is ranked quite a bit lower level.
 
 It can also be useful to see which forums new users are finding useful:
 
-image::/images/content/news/2024-11-26/new-community.png[New user communities,align="center"]
+image::/images/content/news/2024-12-02/new-community.png[New user communities,align="center"]
 
 In general, these are similar to the community at a whole but they are over-represented in YouTube, StackOverflow (not surprising), and Discord (probably due to Clojure Camp).
 

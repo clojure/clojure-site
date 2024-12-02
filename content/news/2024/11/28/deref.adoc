@@ -1,0 +1,47 @@
+= Clojure Deref (Nov 28, 2024)
+Alex Miller
+2024-11-28
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts, videos, and media
+
+* https://www.youtube.com/watch?v=2iESpEnju1o[Scripting Minecraft With ClojureScript] - Chris McCormick
+* https://www.youtube.com/watch?v=vdbE6MucIYA[Learn Clojure - atoms] - Clojure Diary
+
+== Blogs, articles, and projects
+
+* https://gist.github.com/daveliepmann/8289f0ee5b00a5f05b50379e07fceb76[When to use assert?] - Dave Liepmann
+* https://dingels.io/review-of-clojure.html[Review of Clojure] - Zach Dingels
+* https://curiousprogrammer.dev/blog/my-wonderland-from-net-to-clojure/[My wonderland from .NET to Clojure] - Clarice Bouwer
+* https://buttondown.com/tensegritics-curiosities/archive/restrained-datalog-in-39loc/[Restrained Datalog in 39loc] - Christophe Grand
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/clojure/tools.build[tools.build] https://github.com/clojure/tools.build/blob/master/CHANGELOG.md[0.10.6] - Clojure builds as Clojure programs
+* https://github.com/clojure/data.json[data.json] 2.5.1 - JSON in Clojure
+* https://github.com/anteoas/replicant-todomvc[replicant-todomvc]  - TodoMVC implemented with Replicant
+* https://github.com/bowbahdoe/mjml[mjml] https://github.com/bowbahdoe/mjml/releases/tag/v2024.11.23.1[2024.11.23.1] - JVM library for MJML (Mailjet Markup Language)
+* https://github.com/clj-commons/clj-yaml[clj-yaml] https://github.com/clj-commons/clj-yaml/blob/master/CHANGELOG.adoc#v1.0.29[1.0.29] - YAML encoding and decoding for Clojure
+* https://github.com/wilkerlucio/pathom3[pathom3] https://github.com/wilkerlucio/pathom3/blob/main/CHANGELOG.md[2024.11.23-alpha] - Interface with complex data via graph mapping
+* https://github.com/jlesquembre/clj-nix[clj-nix] https://github.com/jlesquembre/clj-nix/releases/tag/0.4.0[0.4.0] - Nix helpers for Clojure projects
+* https://github.com/PEZ/baldr[baldr]  - Positive reporting for clojure.test, works for Clojure, ClojureScript, Babashka, and nbb
+* https://github.com/potetm/fusebox[fusebox] https://github.com/potetm/fusebox/blob/master/CHANGELOG.md[1.0.9] - An extremely lightweight fault tolerance library for Clojure(Script)
+* https://github.com/seancorfield/honeysql[honeysql] https://github.com/seancorfield/honeysql/releases/tag/v2.6.1230[2.6.1230] - Turn Clojure data structures into SQL
+* https://github.com/babashka/scittle[scittle] https://github.com/babashka/scittle/blob/main/CHANGELOG.md[0.6.20] - Execute Clojure(Script) directly from browser script tags via SCI
+* https://github.com/soulspace-org/overarch[overarch] https://github.com/soulspace-org/overarch/blob/main/Changelog.md[0.33.0] - Overarch provides an ontology and a data driven model of software systems and organizations based on e.g. UML and the C4 model
+* https://github.com/babashka/nbb[nbb] https://github.com/babashka/nbb/blob/main/CHANGELOG.md[1.3.196] - Scripting in Clojure on Node.js using SCI
+* https://github.com/juji-io/datalevin[datalevin] https://github.com/juji-io/datalevin/blob/master/CHANGELOG.md[0.9.14] - A simple, fast and versatile Datalog database
+* https://github.com/scicloj/metamorph.ml[metamorph.ml] https://github.com/scicloj/metamorph.ml/blob/main/CHANGELOG.md[0.10.4] - Machine learning functions for metamorph based on machine learning pipelines
+* https://github.com/scicloj/scicloj.ml.smile[scicloj.ml.smile] https://github.com/scicloj/scicloj.ml.smile/blob/main/CHANGELOG.md[7.4.3] - A Smile models plugin for metamorh.ml
+* https://github.com/scicloj/scicloj.ml.tribuo[scicloj.ml.tribuo] https://github.com/scicloj/scicloj.ml.tribuo/blob/master/CHANGELOG.md[0.1.4] - Use Tribuo ML model in metamorph.ml
+* https://github.com/basilisp-lang/basilisp[basilisp] https://github.com/basilisp-lang/basilisp/releases/tag/v0.3.3[0.3.3] - A Clojure-compatible(-ish) Lisp dialect targeting Python 3.9+
+* https://github.com/NoahTheDuke/splint[splint] https://github.com/NoahTheDuke/splint/blob/main/CHANGELOG.md[1.19.0] - A Clojure linter focused on style and code shape
+* https://github.com/NoahTheDuke/lazytest[lazytest] https://github.com/NoahTheDuke/lazytest/blob/main/CHANGELOG.md[1.5.0] - A standalone BDD test framework for Clojure
+* https://github.com/clojure-goes-fast/clj-async-profiler[clj-async-profiler] https://github.com/clojure-goes-fast/clj-async-profiler/blob/master/CHANGELOG.md[1.5.1] - Embedded high-precision Clojure profiler
+* https://github.com/hlship/cli-tools[cli-tools] https://github.com/hlship/cli-tools/blob/main/CHANGES.md[0.14] - CLIs and subcommands for Clojure or Babashka

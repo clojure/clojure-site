@@ -51,6 +51,7 @@ A protocol is a named set of named methods and their signatures, defined using h
 ** all are namespace-qualified by the namespace enclosing the definition
 * The resulting functions dispatch on the type of their first argument, and thus must have at least one argument
 * defprotocol is dynamic, and does not require AOT compilation
+* Note: primitive type hints are not supported on protocol functions
 
 https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defprotocol[defprotocol] will automatically generate a corresponding interface, with the same name as the protocol, e.g. given a protocol my.ns/Protocol, an interface my.ns.Protocol. The interface will have methods corresponding to the protocol functions, and the protocol will automatically work with instances of the interface.
 

@@ -1,0 +1,43 @@
+= Clojure Deref (Nov 28, 2024)
+Alex Miller
+2024-11-28
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts, videos, and media
+
+* https://www.freshcodeit.com/podcast/we-are-writing-in-clojure[Episode 1: Now We are Writing in Clojure] - Clojure in Product
+* https://www.youtube.com/watch?v=CsfRxg5EOuY[Clojure Corner: Interview with Chris Nuernberger] - Flexiana
+* https://vimeo.com/1035819201[Apropos 2024-12-03] - Apropos Clojure
+* https://www.youtube.com/watch?v=O2qgApg-Fxo[Livecode ASMR | Clojure | Emacs | Advent of Code | day 3 (first time)] - faster-than-light-memes
+* https://www.youtube.com/watch?v=fLUZJfIiWHE[Learn Clojure - dotimes] - Clojure Diary
+* https://www.youtube.com/watch?v=Ya62VpbZIso[Testing ring handlers while using non default port] - Clojure Diary
+
+== Blogs, articles, and projects
+
+* https://clojure.org/news/2024/12/02/state-of-clojure-2024[State of Clojure 2024 Results] - Alex Miller
+* https://narimiran.github.io/aoc2024/[AoC 2024 in Clojure (Clerk notebooks)] - narimiran
+* https://emil0r.com/posts/2024-11-29-replicant/[Testing out replicant] - Emil Bengtsson
+* https://jank-lang.org/blog/2024-11-29-llvm-ir/[jank is now running on LLVM IR] - Jeaye Wilkerson
+* https://clojure-diary.gitlab.io/2024/12/01/clojure-is-really-nice-to-write.html[Clojure is really nice to write] - Karthikeyan A K
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/noahtheduke/clein[clein] https://github.com/NoahTheDuke/clein/blob/main/CHANGELOG.md[0.3.1] - Build and deploy your deps.edn projects with ease!
+* https://git.sr.ht/~hiredman/machinate[machinate] 0.0.79 - a new new concurrent ml in clojure
+* https://github.com/nnichols/clojure-lint-action[clojure-lint-action] https://github.com/nnichols/clojure-lint-action/releases/tag/v3[3] - A GitHub Action that lints clojure files with clj-kondo and generates comments with reviewdog on pull requests
+* https://github.com/cognitect-labs/aws-api[aws-api] https://github.com/cognitect-labs/aws-api/blob/main/CHANGES.md[0.8.711] - AWS, data driven
+* https://github.com/ikappaki/basilisp-kernel[basilisp-kernel] https://github.com/ikappaki/basilisp-kernel/blob/main/CHANGELOG.md[1.2.0] - A Jupyter kernel for Basilisp, a Clojure compatible dialect implemented in Python
+* https://github.com/squint-cljs/squint[squint] https://github.com/squint-cljs/squint/blob/main/CHANGELOG.md[0.8.129] - Light-weight ClojureScript dialect
+* https://github.com/soulspace-org/overarch[overarch] https://github.com/soulspace-org/overarch/blob/main/Changelog.md[0.34.0] - Overarch provides an ontology and a data driven model of software systems and organizations based on e.g. UML and the C4 model
+* https://flamebin.dev[Flamebin]  - Pastebin for your flamegraphs 🔥📈
+* https://github.com/scicloj/clay[clay] https://github.com/scicloj/clay/blob/main/CHANGELOG.md[2-beta25] - A tiny Clojure tool for dynamic workflow of data visualization and literate programming
+* https://github.com/scicloj/tableplot[tableplot] https://github.com/scicloj/tableplot/blob/main/CHANGELOG.md[1-beta1.1] - Easy layered graphics with Hanami & Tablecloth
+* https://github.com/seancorfield/next-jdbc[next-jdbc] https://github.com/seancorfield/next-jdbc/blob/develop/CHANGELOG.md[1.3.967] - A modern low-level Clojure wrapper for JDBC-based access to databases
+* https://github.com/clojure-emacs/cider[cider] https://github.com/clojure-emacs/cider/releases/tag/v1.16.1[1.16.1] - The Clojure Interactive Development Environment that Rocks for Emacs
+* https://github.com/babashka/fs[fs] https://github.com/babashka/fs/blob/master/CHANGELOG.md[0.5.23] - File system utility library for Clojure

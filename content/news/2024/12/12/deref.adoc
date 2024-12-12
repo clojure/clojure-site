@@ -1,0 +1,39 @@
+= Clojure Deref (Dec 12, 2024)
+Alex Miller
+2024-12-12
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts, videos, and media
+
+* https://open.spotify.com/episode/7L0UnySfPmf3kao3K1IFtF[Episode 2: We choose the best tool for the job, with Adam Tornhill, CodeScene] - Clojure in Product
+* https://www.youtube.com/watch?v=WUU46HcrP3Q[State Management 101 with ClojureDart and Flutter 🚀] - ClojureDart
+
+== Blogs, articles, and projects
+
+* https://www.clojuriststogether.org/news/clojurists-together-2025-long-term-funding-announcement/[Clojurists Together 2025 Long-Term Funding Announcement] - Kathy Davis (Clojurists Together)
+* https://state-of-clojurescript.com[State of ClojureScript 2024 Survey] - Roman Liutikov
+* https://www.patreon.com/posts/117438975[Transparency report: November 2024] - Nikita Prokopov
+* https://buttondown.com/tensegritics-curiosities/archive/beyond-swap-encapsulation-sans-abstraction-the/[Beyond `swap!`: Encapsulation sans Abstraction, the Transactor Pattern] - Christophe Grand
+* https://github.com/pitch-io/uix/blob/master/DEVLOG.md#november-2024[UIx Devlog: November, 2024] - Roman Liutikov
+* https://www.daveliepmann.com/articles/cljd-talk.html[ClojureDart: an experience report] - Dave Liepmann
+* https://xtdb.com/blog/the-missing-sql-subqueries[The missing SQL sub-queries] - James Henderson (JUXT)
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/scicloj/noj[noj] https://github.com/scicloj/noj/blob/main/CHANGELOG.md[2-beta2] - A clojure framework for data science
+* https://github.com/chr15m/sitefox[sitefox] 0.0.26 - Node + cljs backend web framework
+* https://github.com/monkey-projects/oci-vault[oci-vault] 0.2.0 - Access the OCI vault api using Clojure
+* https://github.com/pitch-io/uix[uix] https://github.com/pitch-io/uix/blob/master/CHANGELOG.md[1.3.0] - Idiomatic ClojureScript interface to modern React.js
+* https://github.com/greglook/cljstyle[cljstyle] https://github.com/greglook/cljstyle/releases/tag/0.17.642[0.17.642] - A tool for formatting Clojure code
+* https://github.com/igrishaev/pg2[pg2] https://github.com/igrishaev/pg2/blob/master/CHANGELOG.md[0.1.23] - A fast PostgreSQL driver for Clojure
+* https://github.com/willcohen/clj-proj[clj-proj] https://github.com/willcohen/clj-proj/blob/main/CHANGELOG.md[0.1.1] - A native (or transpiled) version of PROJ for both the JVM and JS ecosystems
+* https://github.com/damn/clojure.gdx.backends.lwjgl3[clojure.gdx.backends.lwjgl3] 1.13.0-0.1 - Clojure API for the libgdx lwjgl3 (desktop) backend
+* https://github.com/scicloj/tableplot[tableplot] https://github.com/scicloj/tableplot/blob/main/CHANGELOG.md[1-beta1.2] - Easy layered graphics with Hanami & Tablecloth
+* https://github.com/clj-commons/pretty[pretty] https://github.com/clj-commons/pretty/blob/main/CHANGES.md[3.3.0] - Library for helping print things prettily, in Clojure - ANSI fonts, formatted exceptions
+* https://github.com/basilisp-lang/basilisp[basilisp] https://github.com/basilisp-lang/basilisp/releases/tag/v0.3.4[0.3.4] - A Clojure-compatible(-ish) Lisp dialect targeting Python 3.9+

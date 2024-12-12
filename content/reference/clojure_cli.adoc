@@ -165,7 +165,7 @@ You can use the `-M` exec-opt to invoke clojure.main, which supports calling a n
 clojure [clj-opt*] -M[aliases] [main-opts]
 ----
 
-The -M aliases are pulled from `deps.edn` and combined to form an arg map. The arg map can modify the classpath or supply `:main-opts`, a vector of string main options. See the <<repl_and_main#,clojure.main>> page for more information on the available arguments.
+The -M aliases (if provided) are pulled from `deps.edn` and combined to form an arg map. The arg map can modify the classpath or supply `:main-opts`, a vector of string main options. See the <<repl_and_main#,clojure.main>> page for more information on the available main-opts.
 
 Common uses:
 
@@ -196,23 +196,23 @@ While `-A` can be used with all execution commands, it is the only exec opt that
 [[opt_x]]
 **-X[aliases]**
 
-`-X` takes one or more concatenated <<clojure_cli#aliases,aliases>>, which are always simple or qualified keywords, e.g. `-X:test` or `-X:test:perf/benchmark`.
+`-X` optionally takes one or more concatenated <<clojure_cli#aliases,aliases>>, which are always simple or qualified keywords, e.g. `-X:test` or `-X:test:perf/benchmark`.
 
-The `-X` exec-opt indicates <<clojure_cli#use_fn,function execution>>, and all arguments after `-X` are defined by that execution context. All clj-opts (`-S`, `-P`, etc) should be placed before the `-X`.
+The `-X` exec-opt indicates <<clojure_cli#use_fn,function execution>>, and all arguments after `-X` are arguments to the function being executed, not the CLI. All clj-opts (`-S`, `-P`, etc) must be placed prior to the `-X` in the command line.
 
 [[opt_t]]
 **-Ttoolname, -T[aliases]**
 
 `-T` takes either a tool name (always symbols, not keywords) or one or more concatenated <<clojure_cli#aliases,aliases>>, which are always simple or qualified keywords, e.g. `-T:test` or `-T:test:perf/benchmark`.
 
-The `-T` exec-opt indicates <<clojure_cli#use_tool,tool execution>>, and all arguments after `-T` are defined by that execution context. All clj-opts (`-S`, `-P`, etc) should be placed before the `-T`.
+The `-T` exec-opt indicates <<clojure_cli#use_tool,tool execution>>, and all arguments after `-T` are arguments to the tool function, not the CLI. All clj-opts (`-S`, `-P`, etc) must be placed prior to the `-T` in the command line.
 
 [[opt_m]]
 **-M[aliases]**
 
-`-M` takes one or more concatenated <<clojure_cli#aliases,aliases>>, which are always simple or qualified keywords, e.g. `-M:test` or `-M:test:perf/benchmark`.
+`-M` optionally takes one or more concatenated <<clojure_cli#aliases,aliases>>, which are always simple or qualified keywords, e.g. `-M:test` or `-M:test:perf/benchmark`.
 
-The `-M` exec-opt indicates <<clojure_cli#use_fn,clojure.main execution>>, and all arguments after `-M` are defined by that execution context. All clj-opts (`-S`, `-P`, etc) should be placed before the `-M`.
+The `-M` exec-opt indicates <<clojure_cli#use_fn,clojure.main execution>>, and all arguments after `-M` are interpreted by clojure.main. All clj-opts (`-S`, `-P`, etc) must be placed prior to `-M` in the command line.
 
 [[opt_p]]
 **-P**

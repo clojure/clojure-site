@@ -97,7 +97,7 @@ Similar to `:refer`, the `ns` macro has an `:import` clause (that is supported b
 (ns com.some-example.my-app2
   (:import
     [java.util Date UUID]
-	[java.io File]))
+    [java.io File]))
 ----
 
 This example imports the `Date` and `UUID` class from the `java.util` package and the `File` class from the `java.io` package.

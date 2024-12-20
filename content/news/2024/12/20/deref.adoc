@@ -1,0 +1,50 @@
+= Clojure Deref (Dec 20, 2024)
+Alex Miller
+2024-12-20
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts, videos, and media
+
+* https://www.youtube.com/watch?v=ma1Ie5vgCHQ[Clojure Corner: Interview with Christian Johansen] - Flexiana
+* https://www.freshcodeit.com/podcast/once-you-try-clojure-there-is-no-way-back[Episode 3: Once you try Clojure, there is no way back] - Clojure in Product
+* https://zencastr.com/z/t7QDS4kE[8f5d5379091d Eric Normand] - defn podcast
+* https://www.youtube.com/watch?v=Bf5RzGEpA90[Trying JDK21 Structured Concurrency from Clojure] - Andrey Fadeev
+* https://www.youtube.com/watch?v=evmRpr_DEBQ[Get Started with Clojure Programming with Cider | Emacs Tutorial] - Ken Huang
+* https://www.youtube.com/watch?v=hpjJJqnkqCw[Easel: A Pure Clojure IDE in the Spirit of Emacs] - phronmophobic
+* https://www.youtube.com/watch?v=mUsu6YJAXvk[Why Clojure? No operator precedence!!] - Clojure Diary
+
+
+== Blogs, articles, and projects
+
+* https://scicloj.github.io/clojure-data-tutorials/projects/ml/llm/index.html[Using LLMs from Clojure] - SciCloj community
+* https://emil0r.com/posts/2024-12-16-config-files-generation/[porter - config files generation] - Emil Bengtsson
+* https://scicloj.github.io/blog/clojurists-together-project-scicloj-community-building-november-2024-update/[Clojurists Together project - Scicloj community building - November 2024 update] - Daniel Slutsky
+* https://fpilluminated.com/deck/252[Fibonacci Function Gallery - Part 1] - Philip Schwarz
+
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/clojure/core.async[core.async] 1.7.701 - Facilities for async programming and communication in Clojure
+* https://github.com/velio-io/collet[collet] https://github.com/velio-io/collet/releases/tag/v0.1.0[0.1.0] - Collet is a powerful Clojure library designed to simplify the development and execution of data processing pipelines (ETL or ELT)
+* https://github.com/roman01la/uix.css[uix.css] https://github.com/roman01la/uix.css/blob/master/CHANGELOG.md[0.2.1] - CSS-in-CLJS library
+* https://github.com/roman01la/cljs-react-devtools[cljs-react-devtools] 0.2.0 - React DevTools for ClojureScript wrappers
+* https://github.com/and-z/komb[komb] https://github.com/and-z/komb/blob/main/CHANGELOG.md[0.0.1] - A tiny Babashka utility for sorting JSON
+* https://github.com/seancorfield/honeysql[honeysql] https://github.com/seancorfield/honeysql/releases/tag/v2.6.1243[2.6.1243] - Turn Clojure data structures into SQL
+* https://github.com/seancorfield/next-jdbc[next-jdbc] https://github.com/seancorfield/next-jdbc/blob/develop/CHANGELOG.md[1.3.981] - A modern low-level Clojure wrapper for JDBC-based access to databases
+* https://github.com/scicloj/tablemath[tablemath] https://github.com/scicloj/tablemath/blob/main/CHANGELOG.md[1-alpha2] - Math and statistics modelling with table ergonomics
+* https://github.com/scicloj/tableplot[tableplot] https://github.com/scicloj/tableplot/blob/main/CHANGELOG.md[1-beta5] - Easy layered graphics with Hanami & Tablecloth
+* https://github.com/emil0r/porter[porter]  - babashka library for creating config files
+* https://github.com/Tensegritics/ClojureDart[ClojureDart]  - Clojure dialect for Flutter and Dart
+* https://github.com/tonsky/fast-edn[fast-edn] https://github.com/tonsky/fast-edn/blob/main/CHANGELOG.md[1.1.0] - Drop-in replacement for clojure.edn that is 6 times faster
+* https://github.com/dpassen/malapropism[malapropism] https://github.com/dpassen/malapropism/releases/tag/0.5.234[0.5.234] - Malli-backed configuration library
+* https://github.com/clj-commons/aleph[aleph] https://github.com/clj-commons/aleph/blob/master/CHANGES.md[0.8.2] - Asynchronous streaming communication for Clojure - web server, web client, and raw TCP/UDP
+* https://github.com/practicalli/astro[astro] https://github.com/practicalli/astro/releases/tag/2024-12-17[2024-12-17] - Rich development workflow with Clojure support, using AstroNvim 4 and selected plugins
+* https://github.com/metosin/jsonista[jsonista] https://github.com/metosin/jsonista/blob/master/CHANGELOG.md#0312-2024-11-01[0.3.13] - Clojure library for fast JSON encoding and decoding
+* https://github.com/practicalli/clojure-cli-config[clojure-cli-config] https://github.com/practicalli/clojure-cli-config/releases/tag/2024-12-19[2024-12-19] - User aliases and Clojure CLI configuration for deps.edn based projects
+* https://github.com/babashka/scittle[scittle] https://github.com/babashka/scittle/blob/main/CHANGELOG.md[0.6.22] - Execute Clojure(Script) directly from browser script tags via SCI

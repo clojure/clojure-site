@@ -22,6 +22,13 @@ For more information see the following docs:
 
 Recent official releases are described here. Prereleases and older versions can be found in the https://github.com/clojure/brew-install/blob/1.11.1/CHANGELOG.md[repo changelog].
 
+
+=== 1.12.0.1495 (Dec 31, 2024) [[v1.12.0.1495]]
+
+* Echo args in -M deprecation warning for clarity
+* Refactored tool classpath calculation and align on create-basis
+* Update deps to latest
+
 === 1.12.0.1488 (Nov 21, 2024) [[v1.12.0.1488]]
 
 * https://clojure.atlassian.net/browse/TDEPS-265[TDEPS-265] - `-Ttools install-latest` fixed bug when :coord with git url provided

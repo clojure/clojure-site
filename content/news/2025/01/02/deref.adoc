@@ -1,0 +1,63 @@
+= Clojure Deref (Jan 2, 2025)
+Alex Miller
+2025-01-02
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts, videos, and media
+
+* https://www.youtube.com/watch?v=0O5kS0Rq50E[Building Tailwind CSS for Clojure Hiccup Backend (Updated Clojure Service Template)] - Andrey Fadeev
+* https://www.youtube.com/watch?v=Z0Re2rySl6E[Specifying port in ring app] - Clojure Diary
+
+== Blogs, articles, and projects
+
+* https://compiler-research.org/blogs/jank_intro/[The jank programming language] - Jeaye Wilkerson
+* https://slipset.github.io/posts/small-fns-at-the-repl?1[Small Fns At The Repl] - Erik Assum
+* https://metaredux.com/posts/2024/12/23/state-of-cider-2024.html[State of CIDER Survey (2024)] - Bozhidar Batsov
+* https://kaepr.github.io/posts/writing-a-c-compiler-in-clojure/[Writing a C Compiler in Clojure] - Shagun Agrawal
+* https://oss.toyokumo.co.jp[活動について] - Toyokumo, Inc
+* https://blog.michielborkent.nl/oss-updates-nov-dec-2024.html[OSS updates November and December 2024] - Michiel Borkent
+* https://www.patreon.com/posts/transparency-118956984[Transparency report, December 2024] - Nikita Prokopov
+* https://www.taoensso.com/news/2024-12-open-source[Open source update] - Peter Taoussanis
+* https://codewithkira.com/2024-12-31-clojurists-together-update-nov-dec-2024.html[OSS Updates November and December 2024] - Kira Howe (McLean)
+* https://fnguy.com/RAD_lazy_images.html[Lazy Images in Fulcro RAD] - Alex Sheluchin
+* https://www.wedesoft.de/software/2024/12/26/clojure-ruby-python-performance/[Performance comparison of Clojure, Ruby, and Python] - Jan Wedekind
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/clojure/brew-install[brew-install] https://clojure.org/releases/tools[1.12.0.1495] - Clojure CLI
+* https://github.com/scicloj/clay[clay] https://github.com/scicloj/clay/blob/main/CHANGELOG.md[2-beta27] - A tiny Clojure tool for dynamic workflow of data visualization and literate programming
+* https://github.com/squint-cljs/squint[squint] https://github.com/squint-cljs/squint/blob/main/CHANGELOG.md[0.8.132] - Light-weight ClojureScript dialect
+* https://github.com/fulcrologic/fulcro-inspect[fulcro-inspect] https://github.com/fulcrologic/fulcro-inspect/releases[1.0.3] - A tool for inspecting and debugging Fulcro applications during development
+* https://github.com/fulcrologic/fulcro-devtools-remote[fulcro-devtools-remote] 0.2.6 - An adapter for writing development tooling that runs as a Chrome extension or an electron app
+* https://github.com/fulcrologic/fulcro[fulcro] 3.8.0 - A library for development of single-page full-stack web applications in clj/cljs
+* https://github.com/babashka/cli[cli] https://github.com/babashka/cli/blob/main/CHANGELOG.md[0.8.62] - Turn Clojure functions into CLIs!
+* https://github.com/cognitect-labs/aws-api[aws-api] https://github.com/cognitect-labs/aws-api/blob/main/CHANGES.md[0.8.723] - AWS, data driven
+* https://github.com/scicloj/scicloj.ml.tribuo[scicloj.ml.tribuo] https://github.com/scicloj/scicloj.ml.tribuo/blob/master/CHANGELOG.md[0.1.6] - Use Tribuo ML model in metamorph.ml
+* https://github.com/scicloj/scicloj.ml.smile[scicloj.ml.smile] https://github.com/scicloj/scicloj.ml.smile/blob/main/CHANGELOG.md[7.4.4] - A Smile models plugin for metamorh.ml
+* https://github.com/scicloj/noj[noj] https://github.com/scicloj/noj/blob/main/CHANGELOG.md[2-beta4] - A clojure framework for data science
+* https://github.com/fulcrologic/statecharts[statecharts] 1.2.8 - A Statechart library for CLJ(S)
+* https://github.com/scicloj/metamorph.ml[metamorph.ml] https://github.com/scicloj/metamorph.ml/blob/main/CHANGELOG.md[0.11.1] - Machine learning functions for metamorph based on machine learning pipelines
+* https://github.com/nnichols/clojure-lint-action[clojure-lint-action] https://github.com/nnichols/clojure-lint-action/releases/tag/v4[4] - A GitHub Action that lints clojure files with clj-kondo and generates comments with reviewdog on pull requests
+* https://github.com/babashka/tools-deps-native[tools-deps-native] https://github.com/babashka/tools-deps-native/blob/master/CHANGELOG.md#v016[0.1.7] - Run tools.deps as a native binary
+* https://github.com/liquidz/elin[elin] 2025.1.0-alpha - A Clojure development environment for Vim/Neovim and more!, primarily written in Babashka
+* https://github.com/babashka/pod-babashka-go-sqlite3[pod-babashka-go-sqlite3] https://github.com/babashka/pod-babashka-go-sqlite3/blob/main/CHANGELOG.md[0.2.7] - A babashka pod for interacting with sqlite3
+* https://github.com/scicloj/tableplot[tableplot] https://github.com/scicloj/tableplot/blob/main/CHANGELOG.md[1-beta6] - Easy layered graphics with Hanami & Tablecloth
+* https://github.com/fulcrologic/fulcro-rad[fulcro-rad] 1.6.9 - Fulcro Rapid Application Development
+* https://github.com/fulcrologic/fulcro-rad-datomic[fulcro-rad-datomic] 1.5.5 - Datomic database support plugin for Fulcro RAD
+* https://github.com/fulcrologic/fulcro-websockets[fulcro-websockets] 3.4.0 - A Pluggable Remote for Fulcro 3 that uses Websockets
+* https://github.com/nrepl/piggieback[piggieback] https://github.com/nrepl/piggieback/blob/master/CHANGES.md[0.6.0] - nREPL support for ClojureScript REPLs
+* https://github.com/HendrikLevering/cljs-eval[cljs-eval] https://github.com/HendrikLevering/cljs-eval/blob/main/CHANGELOG.md[0.1.2] - Eval CLJS code directly from CLJ
+* https://github.com/lambdaisland/config[config] https://github.com/lambdaisland/config/blob/main/CHANGELOG.md[0.4.17] - Clojure configuration library
+* https://github.com/damn/clojure.gdx[clojure.gdx]  - Desktop/Android/iOS Clojure game development framework
+* https://github.com/babashka/babashka[babashka] https://github.com/babashka/babashka/blob/master/CHANGELOG.md[1.12.196] - Native, fast starting Clojure interpreter for scripting
+* https://github.com/taoensso/telemere[telemere] https://github.com/taoensso/telemere/blob/master/CHANGELOG.md[1.0.0-RC2] - Structured telemetry library for Clojure/Script
+* https://github.com/vlaaad/reveal[reveal] 1.3.284 - Reveal: Read Eval Visualize Loop for Clojure
+* https://github.com/Wall-Brew-Co/clj-xml[clj-xml] https://github.com/Wall-Brew-Co/clj-xml/blob/master/CHANGELOG.md[1.12.0] - The missing link between clj and xml
+* https://github.com/taoensso/sente[sente] https://github.com/taoensso/sente/blob/master/CHANGELOG.md[1.20.0] - Realtime web comms library for Clojure/Script
+* https://github.com/flow-storm/flow-storm-debugger[flow-storm-debugger] https://github.com/flow-storm/flow-storm-debugger/blob/master/CHANGELOG.md[4.1.0] - A debugger for Clojure and ClojureScript with some unique features

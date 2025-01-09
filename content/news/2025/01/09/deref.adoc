@@ -1,0 +1,44 @@
+= Clojure Deref (Jan 9, 2025)
+Alex Miller
+2025-01-09
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts, videos, and media
+
+* https://www.freshcodeit.com/podcast/is-it-easy-to-manage-a-team[Episode 04: Is it easy to manage a team?] - Clojure in Product
+* https://www.youtube.com/watch?v=gBt_tBoy1kE[ClojureScript Tiny Slides] - mccormix
+* https://www.youtube.com/watch?v=u_UchyyRzOE[Clojure visual-tools meeting 27 - Workflow Demos 1: Emacs, CIDER, VSCode Calva, Zulip] - Sci Cloj
+* https://www.youtube.com/watch?v=2VOXxG_7VGk[Clj visual-tools 28- Workflow Demos 2: CIDER, Portal, Snitch, clj-reload, Cursive, Conjure, Parinfer] - Sci Cloj
+* https://www.youtube.com/watch?v=FxUVaytRlxk[Printing Color in Terminal with Clojure] - Clojure Diary
+
+== Blogs, articles, and projects
+
+* https://clojureverse.org/t/scicloj-is-looking-for-community-organizers/11123[Scicloj is looking for community organizers] - Daniel Slutsky
+* https://blog.404.taipei/making-html-reactive-using-signaali[Making HTML reactive using Signaali] - Vincent Cantin
+* https://bytes.vadelabs.com/doing-hard-things-while-living-life-why-we-built-vade-studio-in-clojure/[Doing Hard Things While Living Life: Why We Built Vade Studio in Clojure] - Pragyan Tripathi
+* https://electric.hyperfiddle.net/blog/y20250106_threaddump_part1[Internal tools and Electric Clojure, Part 1] - Dustin Getz
+* https://confengine.com/conferences/functional-conf-2025/speaker/interview/alex-miller-1[Speaker Interview with Alex Miller] - Functional Conf 2025
+* https://confengine.com/conferences/functional-conf-2025/speaker/interview/amogh-talpallikar[Speaker Interview with Amogh Talpallikar] - Functional Conf 2025
+* https://confengine.com/conferences/functional-conf-2025/speaker/interview/aditya-athalye-1[Speaker Interview with Aditya Athalye] - Functional Conf 2025
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/pfeodrippe/vybe[vybe] https://github.com/pfeodrippe/vybe/releases/tag/v0.7.469[0.7.469] - A Clojure framework for game dev (alpha)
+* https://github.com/metosin/signaali[signaali] https://github.com/metosin/signaali/blob/main/CHANGELOG.md[0.1.0] - A small, portable & flexible implementation of signals
+* https://github.com/s-expresso/clojobuf[clojobuf] 0.2.0 - clojure(script) library that dynamically interprets protobuf files
+* https://github.com/chr15m/clojurescript-tiny-slides[clojurescript-tiny-slides]  - Minimal presentation slides for ClojureScript
+* https://github.com/tonsky/fast-edn[fast-edn] https://github.com/tonsky/fast-edn/blob/main/CHANGELOG.md[1.1.2] - Drop-in replacement for clojure.edn that is 6 times faster
+* https://github.com/adityaathalye/clojure-multiproject-example[clojure-multiproject-example]  - A grug-brained stab at layout and tooling to conveniently develop many Clojure projects in a single source repo
+* https://github.com/clojure-goes-fast/clj-async-profiler[clj-async-profiler] https://github.com/clojure-goes-fast/clj-async-profiler/blob/master/CHANGELOG.md[1.6.0] - Embedded high-precision Clojure profiler
+* https://github.com/KingMob/TrueGrit[TrueGrit] https://github.com/KingMob/TrueGrit/blob/main/CHANGELOG.adoc[2.3.35] - A data-driven, functionally-oriented, idiomatic Clojure library for circuit breakers, bulkheads, retries, rate limiters, timeouts, etc.
+* https://github.com/soulspace-org/overarch[overarch] https://github.com/soulspace-org/overarch/blob/main/Changelog.md[0.35.0] - Overarch provides an ontology and a data driven model of software systems and organizations based on e.g. UML and the C4 model
+* https://github.com/scicloj/tableplot[tableplot] https://github.com/scicloj/tableplot/blob/main/CHANGELOG.md[1-beta7] - Easy layered graphics with Hanami & Tablecloth
+* https://github.com/fulcrologic/fulcro[fulcro] 3.8.1 - A library for development of single-page full-stack web applications in clj/cljs
+* https://github.com/babashka/fs[fs] https://github.com/babashka/fs/blob/master/CHANGELOG.md[0.5.24] - File system utility library for Clojure
+* https://github.com/PEZ/languages-visualizations[languages-visualizations]  - A Languages visualization experiment

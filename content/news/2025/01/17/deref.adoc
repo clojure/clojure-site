@@ -1,0 +1,49 @@
+= Clojure Deref (Jan 17, 2025)
+Alex Miller
+2025-01-17
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts, videos, and media
+
+* https://www.youtube.com/watch?v=FC2PBTFUAZA[Apropos 2025-01-14] - apropos clojure
+* https://www.youtube.com/watch?v=9nY25hwzWRc[Clojure visual-tools 29 - Workflow Demos 3: FlowStorm] - Sci Cloj
+* https://www.youtube.com/watch?v=lAmomIESusQ[Content Made Simple Live Stream] - Content Made Simple
+* https://www.youtube.com/watch?v=hEF0KzHDN_w[Episode 2: hiccup and some more stuff] - Content Made Simple
+* https://www.youtube.com/watch?v=x9dN8CkEy6c[Episode 3 ... upload] - Content Made Simple
+* https://www.youtube.com/watch?v=zjLaLXfgY34[Sitefox: Full Stack ClojureScript Tutorial] - mccormix
+* https://www.youtube.com/watch?v=tsU74zsNQMc[Where to store your (image) files in Leiningen project, and how to fetch them?] - Clojure Diary
+
+== Blogs, articles, and projects
+
+* https://blog.404.taipei/whats-in-a-component[What's in a component] - Vincent Cantin
+* https://jank-lang.org/blog/2025-01-10-i-quit-my-job/[I quit my job to work on my programming language] - Jeaye Wilkerson
+* https://www.dot.studio/en/notes/case-study-under-whose-command/[Tracing Command Chains Through Time & Location] - DOT • STUDIO
+* https://electric.hyperfiddle.net/blog/y20250109_datafy/[Internal tools and Electric Clojure, Part 2] - Dustin Getz
+* https://shagunagrawal.me/posts/multiplayer-board-game-in-clojure/[Multiplayer Board Game with Clojure and HTMX] - Shagun Agrawal
+* https://lambdaisland.com/blog/2025-01-14-ornament[Ornament] - Laurence Chen
+* https://www.mihirdeshpande.com/posts/deepwalk_clojure[Deepwalking in Clojure] - Mihir Deshpande
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/jacobemcken/aws-simple-sign[aws-simple-sign] 2.0.0 - A Clojure library for pre-signing S3 URLs and signing HTTP requests for AWS
+* https://git.sr.ht/~hiredman/machinate[machinate] 0.0.119 - a new new concurrent ml in clojure
+* https://github.com/filipesilva/gen[gen] 1.0.0 - A CLI tool to generate files and run commands from templates
+* https://github.com/bhauman/figwheel-main[figwheel-main] https://github.com/bhauman/figwheel-main/blob/master/CHANGES.md[0.2.20] - Figwheel Main provides tooling for developing ClojureScript applications
+* https://github.com/clj-kondo/clj-kondo[clj-kondo] https://github.com/clj-kondo/clj-kondo/blob/master/CHANGELOG.md[2025.01.16] - Static analyzer and linter for Clojure code that sparks joy
+* https://github.com/wilkerlucio/pathom3[pathom3] https://github.com/wilkerlucio/pathom3/blob/main/CHANGELOG.md[2025.01.16-alpha] - Interface with complex data via graph mapping
+* https://github.com/scicloj/metamorph.ml[metamorph.ml] https://github.com/scicloj/metamorph.ml/blob/main/CHANGELOG.md[0.2] - Machine learning functions for metamorph based on machine learning pipelines
+* https://github.com/scicloj/kind-clerk[kind-clerk] https://github.com/scicloj/kind-clerk/blob/main/CHANGELOG.md[1-alpha9] - An adapter for the Clerk tool to support the Kindly conventions
+* https://github.com/scicloj/tableplot[tableplot] https://github.com/scicloj/tableplot/blob/main/CHANGELOG.md[1-beta8] - Easy layered graphics with Hanami & Tablecloth
+* https://github.com/fulcrologic/statecharts[statecharts] 1.2.12 - A Statechart library for CLJ(S)
+* https://github.com/borkdude/deps.clj[deps.clj] https://github.com/borkdude/deps.clj/blob/master/CHANGELOG.md[1.12.0.1495] - A faithful port of the clojure CLI bash script to Clojure
+* https://github.com/fulcrologic/fulcro-inspect[fulcro-inspect] https://github.com/fulcrologic/fulcro-inspect/releases[4.0.6] - A tool for inspecting and debugging Fulcro applications during development
+* https://github.com/scicloj/tableplot[tableplot] https://github.com/scicloj/tableplot/blob/main/CHANGELOG.md[1-beta9] - Easy layered graphics with Hanami & Tablecloth
+* https://github.com/scicloj/noj[noj] https://github.com/scicloj/noj/blob/main/CHANGELOG.md[2-beta5] - A clojure framework for data science
+* https://github.com/imrekoszo/polylith-kaocha[polylith-kaocha] https://github.com/imrekoszo/polylith-kaocha/releases/tag/v0.8.6[0.8.6] - Kaocha-based test runner for Polylith
+* https://github.com/seancorfield/honeysql[honeysql] https://github.com/seancorfield/honeysql/releases/tag/v2.6.1267[2.6.1267] - Turn Clojure data structures into SQL

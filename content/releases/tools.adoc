@@ -22,6 +22,9 @@ For more information see the following docs:
 
 Recent official releases are described here. Prereleases and older versions can be found in the https://github.com/clojure/brew-install/blob/1.11.1/CHANGELOG.md[repo changelog].
 
+=== 1.12.0.1501 (Jan 27, 2025) [[v1.12.0.1501]]
+
+* Fix bug with -Srepro -Spom
 
 === 1.12.0.1495 (Dec 31, 2024) [[v1.12.0.1495]]
 

@@ -1,0 +1,48 @@
+= Clojure Deref (Jan 23, 2025)
+Alex Miller
+2025-01-23
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts, videos, and media
+
+* https://www.youtube.com/watch?v=C5lsAE2G41c[Clein Bringing a bit of leiningen to deps edn by Noah Bogart] - London Clojurians
+* https://www.youtube.com/watch?v=4tbjE0_W-58[Live-reloading Scittle ClojureScript with cljs-josh] - mccormix
+* https://www.freshcodeit.com/podcast/the-capacity-to-learn-new-languages[Episode 05: The capacity to learn new languages] - Clojure in Product
+* https://www.freshcodeit.com/podcast/discovered-not-the-light-but-the-enlightenment[Episode 06: Discovering Clojure – True enlightenment begins] - Clojure in Product
+* https://zencastr.com/z/D1Rt977V[2afd69a4979a Kira Howe] - @defn podcast
+* https://www.youtube.com/watch?v=_BvBPN86rQc[The SOLID Principles illustrated using Clojure code examples] - Jan Wedekind
+
+== Blogs, articles, and projects
+
+* https://metaredux.com/posts/2025/01/17/a-simpler-way-to-deal-with-java-sources-in-cider.html[A Simpler Way to Deal with Java Sources in CIDER] - Bozhidar Batsov
+* https://bytes.vadelabs.com/how-vade-studio-achieves-lightning-fast-static-pages/[Stop Making JavaScript Do Everything - Vade Studio's Secret to Fast Web Pages] - Pragyan Tripathi
+* https://ertu.dev/posts/i-made-an-online-shooter-game-in-lisp/[I made a multiplayer shooter game in Lisp] - Ertuğrul Çetin
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/scicloj/wolframite[wolframite] 1.0.0 - An interface between Clojure and Wolfram Language (the language of Mathematica)
+* https://github.com/lispyclouds/navi[navi] https://github.com/lispyclouds/navi/releases/tag/0.1.2[0.1.2] - A tiny, data-driven library converting OpenAPI spec to Reitit routes
+* https://github.com/filipesilva/gen[gen] 1.0.3 - A CLI tool to generate files and run commands from templates
+* https://github.com/juji-io/datalevin[datalevin] https://github.com/juji-io/datalevin/blob/master/CHANGELOG.md[0.9.17] - A simple, fast and versatile Datalog database
+* https://github.com/slagyr/speclj[speclj] https://github.com/slagyr/speclj/blob/master/CHANGES.md[3.6.0] - pronounced "speckle": a TDD/BDD framework for Clojure
+* https://github.com/uncomplicate/clojure-cpp[clojure-cpp] 0.4.0 - Clojure native interop through JavaCPP
+* https://github.com/xadecimal/fpipes[fpipes] 1.0.0 - Functional pipe operators inspired by the F# and OCaml |> pipe operator for Clojure
+* https://github.com/igrishaev/pg2[pg2] https://github.com/igrishaev/pg2/blob/master/CHANGELOG.md[0.1.31] - A fast PostgreSQL driver for Clojure
+* https://github.com/darkleaf/di[di] https://github.com/darkleaf/di/blob/master/CHANGELOG.md[3.3.0] - DI is a dependency injection framework that allows you to define dependencies as cheaply as defining function arguments
+* https://github.com/clojure/java.data[java.data] https://github.com/clojure/java.data/blob/master/CHANGELOG.md[1.3.113] - Functions for recursively converting Java beans to Clojure and vice versa
+* https://github.com/noahtheduke/clein[clein] https://github.com/NoahTheDuke/clein/blob/main/CHANGELOG.md[0.4.1] - Build and deploy your deps.edn projects with ease!
+* https://github.com/babashka/babashka-sql-pods[babashka-sql-pods] https://github.com/babashka/babashka-sql-pods/blob/master/CHANGELOG.md[0.1.3] - Babashka pods for SQL databases
+* https://github.com/seancorfield/honeysql[honeysql] https://github.com/seancorfield/honeysql/blob/develop/CHANGELOG.md[2.6.1270] - Turn Clojure data structures into SQL
+* https://github.com/scicloj/clay[clay] https://github.com/scicloj/clay/blob/main/CHANGELOG.md[2-beta28] - A tiny Clojure tool for dynamic workflow of data visualization and literate programming
+* https://github.com/borkdude/deps.clj[deps.clj] https://github.com/borkdude/deps.clj/blob/master/CHANGELOG.md[1.12.0.1495-2] - A faithful port of the clojure CLI bash script to Clojure
+* https://github.com/chr15m/cljs-josh[cljs-josh] 0.0.5 - Scittle cljs live-reloading server
+* https://github.com/lispyclouds/navi[navi] https://github.com/lispyclouds/navi/releases/tag/0.1.2[0.1.2] - A tiny, data-driven library converting OpenAPI spec to Reitit routes
+* https://github.com/scicloj/tableplot[tableplot] https://github.com/scicloj/tableplot/blob/main/CHANGELOG.md[1-beta9.1] - Easy layered graphics with Hanami & Tablecloth
+* https://github.com/scicloj/noj[noj] https://github.com/scicloj/noj/blob/main/CHANGELOG.md[2-beta5.1] - A clojure framework for data science
+* https://github.com/clojure-lsp/clojure-lsp[clojure-lsp] https://github.com/clojure-lsp/clojure-lsp/releases/tag/2025.01.22-23.28.23[2025.01.22-23.28.23] - Clojure & ClojureScript Language Server (LSP) implementation

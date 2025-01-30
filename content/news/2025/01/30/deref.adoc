@@ -1,0 +1,56 @@
+= Clojure Deref (Jan 30, 2025)
+Alex Miller
+2025-01-30
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts, videos, and media
+
+* https://www.youtube.com/watch?v=A7CcTaVC1d4[Clojure core.async Evolution by Alex Miller] - FunctionalConf 2025 
+* https://www.youtube.com/watch?v=uj2wGDeOimU[Clojure visual-tools 30 - Workflow Demos 4: LLMs in Emacs for Clojure] - Sci Cloj
+* https://www.youtube.com/watch?v=9wN-uBnrxgs[Apropos Clojure 2025-01-28] - apropos clojure
+* https://www.youtube.com/watch?v=EoPOAtiqOC4[Episode 4 ... identity] - Content Made Simple
+* https://www.youtube.com/watch?v=sVLXi617hEE[Episode 5 ... users] - Content Made Simple
+* https://www.freshcodeit.com/podcast/you-should-be-living-in-pain-right[Episode 07: You should be living in pain, right?] - Clojure in Product
+* https://www.youtube.com/watch?v=CspQX_R0NbM[Don't fear the storm (by Juan Monetta)] - London Clojurians
+* https://www.youtube.com/watch?v=vnvcKtHHMVQ[Noj v2 - getting started - from raw data to a blog post] - Sci Cloj
+
+== Blogs, articles, and projects
+
+* https://electric.hyperfiddle.net/blog/y20250123_waveform[On the state space of CRUD apps vs visual tools — Electric Clojure] - Dustin Getz
+* https://bogoyavlensky.com/blog/e2e-tests-in-clojure-with-testcontainers/[End-to-end tests in Clojure with Etaoin and Testcontainers] - Andrey Bogoyavlenskiy
+* https://fnguy.com/fulcro_statecharts.html[SCXML-Inspired State Charts In Clojure(script)] - Alex Sheluchin
+* https://biffweb.com/p/structuring-large-codebases/[Structuring large Clojure codebases with Biff] - Jacob O'Bryant
+* https://mauricio.szabo.link/blog/2025/01/29/quick-post-multiple-shadow-cljs-builds-at-the-same-runtime/[Multiple Shadow-CLJS builds at the same runtime] - Maurício Szabo
+* https://thenewstack.io/from-c-to-clojure-new-language-promises-best-of-both/[From C++ to Clojure: New Language Promises Best of Both] - Darryl K. Taft
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/clojure/brew-install[brew-install] https://clojure.org/releases/tools[1.12.0.1501] - Clojure CLI
+* https://github.com/juji-io/editscript[editscript] https://github.com/juji-io/editscript/blob/master/CHANGELOG.md[0.6.6] - A library to diff and patch Clojure/ClojureScript data structures
+* https://github.com/uncomplicate/neanderthal[neanderthal] https://github.com/uncomplicate/neanderthal/blob/master/CHANGELOG.md#0500[0.52.0] - Fast Clojure Matrix Library
+* https://github.com/roman01la/cljs-worklet[cljs-worklet] 0.2.0 - Run ClojureScript functions on a worklet thread in React Native
+* https://github.com/darkleaf/hazel[hazel]  - POC exploring adaptation of Datomic principles for the frontend
+* https://github.com/tonsky/clojure-plus[clojure-plus] https://github.com/tonsky/clojure-plus/blob/main/CHANGELOG.md[1.0.0] - A collection of utilities that improve Clojure experience
+* https://github.com/seancorfield/next-jdbc[next-jdbc] https://github.com/seancorfield/next-jdbc/blob/develop/CHANGELOG.md[1.3.967] - A modern low-level Clojure wrapper for JDBC-based access to databases
+* https://github.com/cjohansen/replicant[replicant] 2025.01.29 - A data-driven rendering library for Clojure(Script) that renders hiccup to DOM or to strings
+* https://github.com/ikappaki/basilisp-blender[basilisp-blender] https://github.com/ikappaki/basilisp-blender/blob/main/CHANGELOG.md[0.4.0] - A library designed to facilitate the execution of Basilisp Clojure code within Blender
+* https://github.com/dundalek/stratify[stratify] https://github.com/dundalek/stratify/blob/master/CHANGELOG.md[0.3.0] - Explore and improve architecture of software, visualize structure and dependencies of codebases, calculate code metrics
+* https://github.com/clj-commons/pretty[pretty] https://github.com/clj-commons/pretty/blob/main/CHANGES.md[3.3.1] - Library for helping print things prettily, in Clojure - ANSI fonts, formatted exceptions
+* https://github.com/hlship/cli-tools[cli-tools] https://github.com/hlship/cli-tools/blob/main/CHANGES.md[0.15] - CLIs and subcommands for Clojure or Babashka
+* https://github.com/fulcrologic/statecharts[statecharts] 1.2.13 - A Statechart library for CLJ(S)
+* https://github.com/fulcrologic/fulcro[fulcro] 3.8.2 - A library for development of single-page full-stack web applications in clj/cljs
+* https://github.com/fulcrologic/fulcro-rad-semantic-ui[fulcro-rad-semantic-ui] 1.4.6 - Semantic UI Rendering Plugin for RAD
+* https://github.com/clojure-goes-fast/clj-java-decompiler[clj-java-decompiler] https://github.com/clojure-goes-fast/clj-java-decompiler/blob/master/CHANGELOG.md[0.3.7] - REPL-integrated Clojure-to-Java decompiler
+* https://github.com/hlship/cli-tools[cli-tools] https://github.com/hlship/cli-tools/blob/main/CHANGES.md[0.15.1] - CLIs and subcommands for Clojure or Babashka
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.485[2.0.485] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/borkdude/deps.clj[deps.clj] https://github.com/borkdude/deps.clj/blob/master/CHANGELOG.md[1.12.0.1501] - A faithful port of the clojure CLI bash script to Clojure
+* https://github.com/clj-commons/virgil[virgil] https://github.com/clj-commons/virgil/blob/master/CHANGELOG.md[0.3.2] - Recompile Java code without restarting the REPL
+* https://github.com/fogus/lexical-chocolate[lexical-chocolate] https://github.com/fogus/lexical-chocolate/blob/master/CHANGELOG.md[0.0.3] - Provides utilities for building lexical contours
+* https://github.com/scicloj/devcontainer-templates[devcontainer-templates] 1.1.2 - Devcontainer templates for Clojure
+* https://repo.prod.meissa.de/meissa/dda-backup[dda-backup] 5.3.0 - Backup library

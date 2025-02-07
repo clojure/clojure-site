@@ -1,0 +1,42 @@
+= Clojure Deref (Feb 6, 2025)
+Alex Miller
+2025-02-06
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts, videos, and media
+
+* https://www.youtube.com/watch?v=A7CcTaVC1d4[Clojure core.async Evolution by Alex Miller #FnConf 2025] - ConfEngine
+* https://www.youtube.com/watch?v=YEHVEId-utY[Composing (Clojure) Web Stacks using Functional First Principles by Aditya Athalye #FnConf 2025] - ConfEngine
+* https://www.youtube.com/watch?v=X__jCh_Yj9w&t=5s[Rama: the 100x programming platform with functional programming at its core - Nathan Marz #FnConf 25] - ConfEngine
+* https://www.youtube.com/watch?v=fgRt0ecWfEE[Clojure Corner: Interview with David Nolen] - Flexiana
+* https://www.freshcodeit.com/podcast/clojurescript-is-a-clojure-killer-app[Episode 08: ClojureScript is a Clojure killer app] - Clojure in Product
+* https://github.com/fogus/evalive/blob/master/CHANGELOG.md[Clojure Data-recur meeting 7 - R4Clj 1: Introducing R and the Tidyverse] - Sci Cloj
+* https://www.youtube.com/watch?v=HstQMB3GU4I[Clojure Atom Internals, AtomicReference and Implementation Details] - Andrey Fadeev
+* https://www.youtube.com/watch?v=0b_PPWMp_Ls[Static Site Search written in Clojure] - Clojure Diary
+
+== Blogs, articles, and projects
+
+* https://www.patreon.com/posts/transparency-121265695[Transparency report, January 2025] - Nikita Prokopov
+* https://electric.hyperfiddle.net/blog/y20250112_data_browser[Object Browser demo — Internal Tools with Electric Clojure, Part 3] - Dustin Getz
+* https://mccormick.cx/news/entries/advantages-of-generating-clojure-with-llms[Advantages of Generating Clojure with LLMs] - Chris McCormick
+* https://medium.com/@_jba/classifying-data-for-developers-in-a-hurry-using-llms-569c895ccfb2[Classifying data for developers in a hurry using LLMs] - Julien Bille
+* https://martinklepsch.org/posts/one-shot-babashka-cli-scripts[One-Shot Babashka CLI Scripts] - Martin Klepsch
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/cognitect-labs/aws-api[aws-api] https://github.com/cognitect-labs/aws-api/blob/main/CHANGES.md[0.8.730-beta01] - AWS, data driven
+* https://github.com/starfederation/datastar[datastar] 1.0.0-beta.3 - The hypermedia framework
+* https://github.com/scicloj/metamorph.ml[metamorph.ml] https://github.com/scicloj/metamorph.ml/blob/main/CHANGELOG.md[1.0] - Machine learning functions for metamorph based on machine learning pipelines
+* https://github.com/scicloj/tableplot[tableplot] https://github.com/scicloj/tableplot/blob/main/CHANGELOG.md[1-beta10.1] - Easy layered graphics with Hanami & Tablecloth
+* https://github.com/scicloj/noj[noj] https://github.com/scicloj/noj/blob/main/CHANGELOG.md[2-beta6] - A clojure framework for data science
+* https://github.com/bhauman/rebel-readline/tree/master/rebel-readline-nrepl[rebel-readline-nrepl] 0.1.5 - A Clojure library that brings the flexibility of Rebel Readline to your terminal as an nREPL client
+* https://github.com/bhauman/rebel-readline[rebel-readline] https://github.com/bhauman/rebel-readline/blob/master/rebel-readline/CHANGELOG.md[0.1.5] - Terminal readline library for Clojure dialects
+* https://github.com/chr15m/cljs-josh[cljs-josh] 0.0.6 - Scittle cljs live-reloading server
+* https://github.com/fogus/evalive[evalive] https://github.com/fogus/evalive/blob/master/CHANGELOG.md[1.1.1] - Eval functions and macros
+* https://github.com/shipclojure/voice-fn[voice-fn] https://github.com/shipclojure/voice-fn/blob/main/CHANGELOG.md[0.1.2] - A Clojure library for building real-time voice-enabled AI pipelines

@@ -1,0 +1,34 @@
+= Running a Clojure Program
+Kevin Downey
+2016-09-21
+:type: guides
+:toc: macro
+:icons: font
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+toc::[]
+
+
+== How to Start
+
+// [[launch]]
+// **<<faq#launch,How do you launch a Clojure program?>>**
+ 
+There are two important pieces of information that need to be conveyed to the JVM when launching a Clojure program: 
+
+  1. Where to find the code.
+  2. Where is the main entry point in the code.
+ 
+#1 usually comes down to setting what is called the "classpath". The classpath is the default way that the JVM finds code. You can setup the classpath using the `-jar` or `-cp` flags on the `java` command. The `-cp` flag takes a list of jars (or directories) separated by ':' on Unix or ';' on Windows. The `-jar` flag takes a single jarfile, and makes some assumptions about where the entry point for the code is. The `-cp` and the `-jar` flags are mutually exclusive. Which flag you use is often driven by the type of artifacts your build system produces. A common type of artifact to build is an uberjar. An uberjar is a jar that contains all of your code and its dependencies. Because an uberjar is a single jar file, they are often used with the `-jar` flag.
+ 
+As for #2, telling the JVM where the main entry point for your code is, that can be tricky becuase the JVM is expecting a main entry point in some classfile, but we are working in terms of Clojure code. You need a classfile to bootstrap from JVM land in to Clojure. Clojure has its own class it uses for bootstrapping, which you can use too. The name of this class is 'clojure.main'. If you run `java -jar clojure.jar clojure.main` a Clojure repl will be launched, and clojure.main is the class that does that. `java -jar clojure.jar clojure.main --help` will list all the command line flags that clojure.main takes. 
+ The most useful for launching a Clojure program is `-m`. The `-m` flag takes a namespace like `foo.bar`, and causes clojure.main to load that namespace and apply the function named `-main` to the rest of the command line arguments.
+ 
+But, when using the `-jar` flag, you don't always need to specify which class is your main class. Jar files can contain a manifest and that manifest can specify what the main class is. How this is setup is dependant largely on your build tooling. The jar file containing clojure specifies clojure.main as its main class so `java -jar clojure.jar` will run clojure.main which starts a repl, without you having to specify clojure.main should be run at the command line. Some build tools (like Leiningen) will default to making clojure.main the main class if you don't specify one.
+
+If you have clojure.main specified as your main class in your uberjar, you can launch your Clojure program like `java -jar my-project.jar -m my.project`.
+
+You can also create your own main class, either by writing a stub in Java or AOT compiling some or all of your Clojure program, and use that as the main class for your Clojure program. 
+
+If you don't have an uberjar `java -cp $CP clojure.main -m foo.bar`, where $CP is a ';' or ':' seperated list of jars will launch your program. If you don't have a jar at all, and your clojure source code lives in a directory named `src` then `java -cp clojure.jar:src clojure.main -m foo.bar` will run your program.

@@ -22,6 +22,12 @@ For more information see the following docs:
 
 Recent official releases are described here. Prereleases and older versions can be found in the https://github.com/clojure/brew-install/blob/1.11.1/CHANGELOG.md[repo changelog].
 
+=== 1.12.0.1517 (Feb 10, 2025) [[v1.12.0.1517]]
+
+* During dep expansion, only consider lib to be omitted if all parent paths to root are omitted
+* Memoize dep lookups during dep expansion to avoid unnecessary calls
+* Update tools.deps, tools.deps.cli to latest
+
 === 1.12.0.1501 (Jan 27, 2025) [[v1.12.0.1501]]
 
 * Fix bug with -Srepro -Spom

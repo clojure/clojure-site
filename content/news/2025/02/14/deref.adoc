@@ -1,0 +1,56 @@
+= Clojure Deref (Feb 14, 2025)
+Alex Miller
+2025-02-14
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts, videos, and media
+
+* https://www.youtube.com/watch?v=zkEZykTOlQA[Alex Miller guests on Apropos Clojure 2025-02-11] - apropos clojure
+* https://www.youtube.com/watch?v=CZqsg3MzbyU[Piloto Podcast deref-in] - clojure-br
+* https://www.youtube.com/watch?v=PlHzTEkjAK4[EP01 - Podcast deref-in] - clojure-br
+* https://www.freshcodeit.com/podcast/boundaries-to-do-a-meaningful-work[Episode 09: You need boundaries to do a meaningful work] - Clojure in Product
+* https://www.youtube.com/watch?v=mzNBRmZHmD4[Clojure Crash Course 2025: Beginner Friendly] - Andrey Fadeev
+* https://www.youtube.com/watch?v=TN11X9z9LjU[My aider AI dev setup] - mccormix
+* https://www.youtube.com/watch?v=VCu42vxBkV8[Learn Clojure — Exception Handling] - Clojure Diary
+* https://www.youtube.com/watch?v=PCY5PYHv-Uc[Learn Clojure — Dealing with Text files] - Clojure Diary
+
+== Blogs, articles, and projects
+
+* https://emil0r.com/posts/2025-02-08-modelling-permissions-in-datomic/[Modelling permissions in Datomic] - Emil Bengtsson
+* https://flexiana.com/news/2025/02/side-by-side-datomic-and-postgresql-part-2[Datomic vs PostgreSQL: Time Travel and Historical Data (Part 2)] - Giga Chokheli (Flexiana)
+* https://bytes.vadelabs.com/taming-llm-responses-with-instaparse/[Taming LLM Responses with Instaparse] - Pragyan Tripathi
+* https://widdindustries.com/blog/revisiting-clojure-donts-concat.html[Revisiting 'Clojure Don'ts : concat] - Henry Widd
+* https://yyhh.org/blog/2025/02/achieving-high-throughput-and-low-latency-through-adaptive-asynchronous-transaction/[Achieving High Throughput and Low Latency through Adaptive Asynchronous Transaction] - Huahai Yang
+* https://fnguy.com/pathom3_instrumentation.html[Pathom3 Instrumentation] - Alex Sheluchin
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/clojure/brew-install[brew-install] https://clojure.org/releases/tools[1.12.0.1517] - Clojure CLI
+* https://github.com/clojure/tools.build[tools.build] https://github.com/clojure/tools.build/blob/master/CHANGELOG.md[0.10.7] - Clojure builds as Clojure programs
+* https://github.com/abogoyavlensky/slim[slim] https://github.com/abogoyavlensky/slim/blob/master/CHANGELOG.md[0.2.2] - The slim way to build Clojure
+* https://github.com/phronmophobic/llama.clj[llama.clj] https://github.com/phronmophobic/llama.clj/blob/main/CHANGELOG.md[0.8.6] - Run LLMs locally. A clojure wrapper for llama.cpp
+* https://github.com/igrishaev/taggie[taggie] https://github.com/igrishaev/taggie/blob/master/CHANGELOG.md[0.1.0] - Can we gain anything from Clojure tags?
+* https://github.com/monkey-projects/aero-ext[aero-ext] 0.3.0 - Extensions to use with the Aero config lib
+* https://github.com/scicloj/scicloj.ml.fasttext[scicloj.ml.fasttext] https://github.com/scicloj/scicloj.ml.fasttext/blob/master/CHANGELOG.md[0.2] - clj-djl models for metamorph.ml and scicloj.ml
+* https://github.com/brettatoms/zodiac[zodiac] https://github.com/brettatoms/zodiac/blob/master/CHANGELOG.md[0.4.58] - A simple web framework for Clojure
+* https://github.com/brettatoms/zodiac-assets[zodiac-assets] https://github.com/brettatoms/zodiac-assets/blob/master/CHANGELOG.md[0.2.22] - A Zodiac extension to help manage static assets
+* https://github.com/brettatoms/zodiac-sql[zodiac-sql] https://github.com/brettatoms/zodiac-sql/blob/master/CHANGELOG.md[0.1.8] - A Zodiac extension for connecting to a SQL database
+* https://github.com/jacobemcken/aws-simple-sign[aws-simple-sign] https://github.com/jacobemcken/aws-simple-sign/releases/tag/v2.1.0[2.1.0] - A Clojure library for pre-signing S3 URLs and signing HTTP requests for AWS
+* https://github.com/clojure-lsp/clojure-lsp-intellij[clojure-lsp-intellij] https://github.com/clojure-lsp/clojure-lsp-intellij/blob/master/CHANGELOG.md#210[3.0.0] - Intellij Plugin for Clojure & ClojureScript development via Language Server (LSP) made in Clojure
+* https://github.com/afucher/clojure-repl-intellij[clojure-repl-intellij] https://github.com/afucher/clojure-repl-intellij/blob/master/CHANGELOG.md[2.0.0] - Free OpenSource IntelliJ plugin for Clojure REPL development
+* https://github.com/emil0r/porter[porter]  - babashka library for creating config files
+* https://git.sr.ht/~hiredman/machinate[machinate] https://git.sr.ht/~hiredman/machinate/tree/master/item/CHANGELOG.md[0.0.126] - a new new concurrent ml in clojure
+* https://github.com/clojure-lsp/clojure-lsp[clojure-lsp] https://github.com/clojure-lsp/clojure-lsp/releases/tag/2025.02.07-16.11.24[2025.02.07-16.11.24] - Clojure & ClojureScript Language Server (LSP) implementation
+* https://github.com/scicloj/metamorph.ml[metamorph.ml] https://github.com/scicloj/metamorph.ml/blob/main/CHANGELOG.md[1.1.1] - Machine learning functions for metamorph based on machine learning pipelines
+* https://github.com/clojure-goes-fast/clj-async-profiler[clj-async-profiler] https://github.com/clojure-goes-fast/clj-async-profiler/blob/master/CHANGELOG.md[1.6.1] - Embedded high-precision Clojure profiler
+* https://github.com/borkdude/deps.clj[deps.clj] https://github.com/borkdude/deps.clj/blob/master/CHANGELOG.md[1.12.0.1517] - A faithful port of the clojure CLI bash script to Clojure
+* https://github.com/squint-cljs/squint[squint] https://github.com/squint-cljs/squint/blob/main/CHANGELOG.md[0.8.134] - Light-weight ClojureScript dialect
+* https://github.com/fogus/reinen-vernunft[reinen-vernunft] 0.0.2 - A Clojure library exploring the application of pure reasoning algorithms
+* https://github.com/scicloj/tableplot[tableplot] https://github.com/scicloj/tableplot/blob/main/CHANGELOG.md[1-beta10.2] - Easy layered graphics with Hanami & Tablecloth
+* https://github.com/borkdude/rewrite-edn[rewrite-edn] https://github.com/borkdude/rewrite-edn/blob/master/CHANGELOG.md[0.4.9] - Utility lib on top of rewrite-clj with common operations to update EDN while preserving whitespace and comments

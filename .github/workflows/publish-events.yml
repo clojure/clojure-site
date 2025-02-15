@@ -39,7 +39,7 @@ jobs:
           git config --global user.name clojure-build
           git config --global user.email "clojure-build@users.noreply.github.com"
           git add content/events
-          if git status | grep -q modified
+          if ! git diff --quiet --cached
           then
               git commit -m 'update events'
               git push

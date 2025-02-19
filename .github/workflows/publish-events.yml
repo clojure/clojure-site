@@ -3,6 +3,7 @@ name: Daily Event Publishing
 on:
   schedule:
     - cron: '0 0 * * *'
+  workflow_dispatch:
 
 jobs:
   published-daily-events:
@@ -33,6 +34,7 @@ jobs:
         run: |
           cd script/eventgen
           clojure -X parse/parse-feed :dir '"../../content/events"'
+          cd ../..
 
       - name: Commit and push event page
         run: |

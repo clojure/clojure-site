@@ -1,0 +1,46 @@
+= Clojure Deref (Feb 21, 2025)
+Alex Miller
+2025-02-21
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts, videos, and media
+
+* https://www.youtube.com/watch?v=xg0VjqgSxCw[Clojure Corner: Interview with Magnar Sveen] - Flexiana
+* https://www.freshcodeit.com/podcast/open-source-like-eyes-looking-at-it[Episode 10: Open-source is like all eyes looking at it] - Clojure in Product
+* https://www.youtube.com/live/_zOMH26d24c[[EP02] deref-in] - clojure-br
+* https://www.youtube.com/watch?v=Qyf15Rrzr_o[Intro to Collet. A low-code ETL management tool (by Sergei Tkachenko)] - London Clojurians
+* https://www.youtube.com/watch?v=vSaOweJg4BA[Learn Clojure — edn files] - Clojure Diary
+* https://www.youtube.com/watch?v=sqpkZd5FlEE[Learn Clojure — CSV Files] - Clojure Diary
+
+== Blogs, articles, and projects
+
+* https://elementsofclojure.com[Elements of Clojure] - Zachary Tellman
+* https://shagunagrawal.me/posts/making-a-simple-datalog-engine-in-clojure/[Making a simple Datalog Engine in Clojure] - Shagun Agrawal
+* https://gaiwan.co/blog/why-clojure/[Why Clojure?] - Arne Brasseur (Gaiwan)
+* https://www.jvm-weekly.com/p/the-state-of-scala-and-clojure-surveys[The State of Scala & Clojure Surveys: How is functional programming on JVM doing - JVM Weekly vol. 119] - Artur Skowronski
+* https://lambdaisland.com/blog/2025-02-18-on-extensibility[On Extensibility] - Laurence Chen
+* https://clojure-goes-fast.com/blog/tracking-memory-usage/[Tracking memory usage with clj-memory-meter.trace] - Oleksandr Yakushev
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/clojure/core.async[core.async] 1.8.711-beta1 - Facilities for async programming and communication in Clojure
+* https://github.com/yonureker/stripe-clojure[stripe-clojure] https://github.com/yonureker/stripe-clojure/blob/master/CHANGELOG.md[0.1.3] - Clojure SDK for the Stripe API
+* https://github.com/clojure-emacs/cider[cider] https://github.com/clojure-emacs/cider/releases/tag/v1.17.0[1.17] - The Clojure Interactive Development Environment that Rocks for Emacs
+* https://github.com/gersak/toddler[toddler] 0.9.1 - UI library based on lilactown/helix and shadow-css libraries
+* https://github.com/clojure-goes-fast/clj-memory-meter[clj-memory-meter] https://github.com/clojure-goes-fast/clj-memory-meter/blob/master/CHANGELOG.md[0.4.0] - Measure object memory consumption in Clojure
+* https://github.com/juji-io/datalevin[datalevin] https://github.com/juji-io/datalevin/blob/master/CHANGELOG.md[0.9.20] - A simple, fast and versatile Datalog database
+* https://github.com/clj-kondo/clj-kondo[clj-kondo] https://github.com/clj-kondo/clj-kondo/blob/master/CHANGELOG.md[2025.02.20] - Static analyzer and linter for Clojure code that sparks joy
+* https://repo.prod.meissa.de/meissa/c4k-jitsi[c4k-jitsi] 3.0.1 - convention 4 kubernetes
+* https://github.com/scicloj/clay[clay] https://github.com/scicloj/clay/blob/main/CHANGELOG.md[2-beta29] - A tiny Clojure tool for dynamic workflow of data visualization and literate programming
+* https://github.com/scicloj/kindly[kindly] https://github.com/scicloj/kindly/blob/main/CHANGELOG.md[4-beta15] - A small library for defining how different kinds of things should be rendered
+* https://github.com/fogus/reinen-vernunft[reinen-vernunft] https://github.com/fogus/reinen-vernunft/blob/main/CHANGELOG.md[0.0.3] - A Clojure library exploring the application of pure reasoning algorithms
+* https://github.com/scicloj/tableplot[tableplot] https://github.com/scicloj/tableplot/blob/main/CHANGELOG.md[1-beta11] - Easy layered graphics with Hanami & Tablecloth
+* https://github.com/scicloj/noj[noj] https://github.com/scicloj/noj/blob/main/CHANGELOG.md[2-beta7] - A clojure framework for data science
+* https://github.com/afucher/clojure-repl-intellij[clojure-repl-intellij] https://github.com/afucher/clojure-repl-intellij/blob/master/CHANGELOG.md[2.1.0] - Free OpenSource IntelliJ plugin for Clojure REPL development
+* https://github.com/roman01la/uix-cloudflare-template[uix-cloudflare-template]  - Template project with UIx web app hosted on Cloudflare workers with REST API served from Cloudflare D1 (SQLite)

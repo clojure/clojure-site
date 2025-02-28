@@ -1,0 +1,45 @@
+= Clojure Deref (Feb 27, 2025)
+Alex Miller
+2025-02-27
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts, videos, and media
+
+* https://www.youtube.com/watch?v=HwoGMhIx5w0[Clojure AI Meetup 1: voice-fn - real-time voice-enabled AI pipelines] - Sci Cloj
+* https://www.youtube.com/watch?v=lcRqEYC-IXo[clj-depend: Validando a arquitetura da sua aplicação | Fabio Domingues] - clojure-br
+* https://www.youtube.com/watch?v=MF-A46cTYUY[Alex Engelberg guests on Apropos Clojure 2025-02-25] - apropos clojure
+* https://www.youtube.com/live/ut3Q4Rns5IQ[[EP.03] deref-in] - clojure-br
+* https://www.youtube.com/watch?v=gDNxF_kK1z8[Ancestry of Polymorphism in Clojure by Amogh Talpallikar #FnConf 2025] - ConfEngine
+* https://www.youtube.com/watch?v=twIelJGKuVA[Learn Clojure — Dealing with JSON files] - Clojure Diary
+* https://www.youtube.com/watch?v=YOZM_6_DImM[Learn Clojure — YAML] - Clojure Diary
+* https://www.youtube.com/watch?v=J9NUEJ_dCdA[Extending Java Class in Clojure] - Clojure Diary
+
+== Blogs, articles, and projects
+
+* https://fnguy.com/phuzql_poc.html[PhuzQL: A Fuzzy GraphQL Explorer with Babashka, Pathom, and FZF (PoC)] - Alex Sheluchin
+* https://blog.danieljanus.pl/2025/02/21/double-double-toil-and-trouble/[Double, double toil and trouble] - Daniel Janus
+* https://www.taoensso.com/news/2025-02-open-source[Open source update] - Peter Taoussanis
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/liquidz/elin[elin] https://github.com/liquidz/elin/blob/main/CHANGELOG.adoc[2025.2.1-alpha] - A Clojure development environment for Vim/Neovim and more!, primarily written in Babashka
+* https://github.com/yonureker/stripe-clojure[stripe-clojure] https://github.com/yonureker/stripe-clojure/blob/master/CHANGELOG.md[0.1.4] - Clojure SDK for the Stripe API
+* https://github.com/jpmonettas/flow-storm-debugger[flow-storm-debugger] https://github.com/flow-storm/flow-storm-debugger/blob/master/CHANGELOG.md[4.2.0] - A debugger for Clojure and ClojureScript with some unique features
+* https://github.com/flow-storm/flow-storm-async-flow-plugin[flow-storm-async-flow-plugin] https://github.com/flow-storm/flow-storm-async-flow-plugin/blob/master/CHANGELOG.md[1.0.0-alpha] - A FlowStorm plugin to debug core.async.flow graphs
+* https://github.com/flow-storm/flow-storm-web-plugin[flow-storm-web-plugin] https://github.com/flow-storm/flow-storm-web-plugin/blob/master/CHANGELOG.md[1.0.0-alpha] - FlowStorm web plugin
+* https://github.com/cognitect-labs/aws-api[aws-api] https://github.com/cognitect-labs/aws-api/blob/main/CHANGES.md[0.8.735] - AWS, data driven
+* https://github.com/imrekoszo/unlazy[unlazy] https://github.com/imrekoszo/unlazy/releases/tag/v1.0.1[1.0.1] - Configuration for clj-kondo, discouraging lazy processing
+* https://github.com/scicloj/metamorph.ml[metamorph.ml] https://github.com/scicloj/metamorph.ml/blob/main/CHANGELOG.md[1.2] - Machine learning functions for metamorph based on machine learning pipelines
+* https://github.com/squint-cljs/squint[squint] https://github.com/squint-cljs/squint/blob/main/CHANGELOG.md[0.8.136] - Light-weight ClojureScript dialect
+* https://github.com/scicloj/clay[clay] https://github.com/scicloj/clay/blob/main/CHANGELOG.md[2-beta30] - A tiny Clojure tool for dynamic workflow of data visualization and literate programming
+* https://github.com/fulcrologic/statecharts[statecharts] 1.2.15 - A Statechart library for CLJ(S)
+* https://github.com/clj-commons/aleph[aleph] https://github.com/clj-commons/aleph/blob/master/CHANGES.md[0.8.3] - Asynchronous streaming communication for Clojure - web server, web client, and raw TCP/UDP
+* https://github.com/fogus/reinen-vernunft[reinen-vernunft] https://github.com/fogus/reinen-vernunft/blob/main/CHANGELOG.md[0.0.4] - A Clojure library exploring the application of pure reasoning algorithms
+* https://github.com/scicloj/noj[noj] https://github.com/scicloj/noj/blob/main/CHANGELOG.md[2-beta8] - A clojure framework for data science
+* https://github.com/clojure-emacs/cider[cider] https://github.com/clojure-emacs/cider/blob/master/CHANGELOG.md[1.17.1] - The Clojure Interactive Development Environment that Rocks for Emacs

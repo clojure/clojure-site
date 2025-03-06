@@ -1,0 +1,48 @@
+= Clojure Deref (Mar 6, 2025)
+Alex Miller
+2025-03-06
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts, videos, and media
+
+* https://www.youtube.com/watch?v=mk6Gffzinyw[Lazytest: Standalone BDD testing (by Noah Bogart)] - London Clojurians
+* https://soundcloud.com/clojurestream/e99-replicant-with-christian-johansen[E99 - Replicant with Christian Johansen] - ClojureStream Podcast
+* https://www.youtube.com/watch?v=BWowab_aLzo[Cloverage — Clojure Test Coverage] - Clojure Diary
+* https://www.youtube.com/watch?v=l3zUcT4oSt0[Filtering maps based on key value pairs in Clojure] - Clojure Diary
+
+== Blogs, articles, and projects
+
+* https://www.clojuriststogether.org/news/call-for-proposals.-feb.-2025-member-survey/[Call for Proposals. Feb. 2025 Member Survey] - Kathy Davis (Clojurists Together)
+* https://pragprog.com/titles/mmclobrain/clojure-brain-teasers/[Clojure Brain Teasers] - Alex Miller and Lorilyn Jordan Miller
+* https://www.karimarttila.fi/clojurescript/2025/02/28/clojurescript-with-replicant.html[Frontend Development with Clojurescript and Replicant] - Kari Marttila
+* https://buttondown.com/tensegritics-curiosities/archive/extensible-macros/[Extensible Macros] - Christophe Grand
+* https://blog.michielborkent.nl/oss-updates-jan-feb-2025.html[OSS updates January and February 2025] - Michiel Borkent
+* https://alza-bitz.github.io/programmers-how-do-you-partition[Programmers: How Do You Partition A Collection?] - Alex Coyle
+* https://blog.redplanetlabs.com/2025/03/04/how-multiply-went-from-datomic-to-xtdb-to-rama/[How Multiply went from Datomic to XTDB to Rama] - Nathan Marz
+* https://flexiana.com/news/clojure/2025/03/clojure-vs-other-functional-programming-languages-a-quick-comparison[Clojure vs. Other Functional Programming Languages: A Quick Comparison] - Ramon Rios (Flexiana)
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/clojure/brew-install[brew-install] https://clojure.org/releases/tools[1.12.0.1530] - Clojure CLI
+* https://github.com/eploko/docker-nrepl.el[docker-nrepl.el]  - Easily connect CIDER to nREPL servers running in Docker containers
+* https://github.com/clj-arsenal/action[action] 0.0.9 - Controlled, data oriented state manipulation - Clojure/Script/Dart
+* https://github.com/PEZ/baldr[baldr] 1.0.9 - Positive reporting for clojure.test, works for Clojure, ClojureScript, Babashka, and nbb
+* https://github.com/flow-storm/flow-storm-cljs-compiler-plugin[flow-storm-cljs-compiler-plugin] 1.0.0-beta2 - A FlowStorm plugin to debug the ClojureScript compiler
+* https://github.com/rpub-clj/rpub[rpub] https://github.com/rpub-clj/rpub/blob/main/CHANGELOG.md[0.1.0] - A free open-source CMS written in Clojure
+* https://github.com/babashka/babashka[babashka] https://github.com/babashka/babashka/blob/master/CHANGELOG.md[1.12.197] - Native, fast starting Clojure interpreter for scripting
+* https://github.com/squint-cljs/squint[squint] https://github.com/squint-cljs/squint/blob/main/CHANGELOG.md[0.8.138] - Light-weight ClojureScript dialect
+* https://github.com/practicalli/clojure-cli-config[clojure-cli-config] https://github.com/practicalli/clojure-cli-config/releases/tag/2025-03-01[2025-03-01] - User aliases and Clojure CLI configuration for deps.edn based projects
+* https://github.com/liquidz/elin[elin] https://github.com/liquidz/elin/blob/main/CHANGELOG.adoc[2025.3.1-alpha] - A Clojure development environment for Vim/Neovim and more!, primarily written in Babashka
+* https://github.com/fogus/rv[rv] https://github.com/fogus/rv/blob/main/CHANGELOG.md[0.0.5] - A Clojure library exploring the application of pure reasoning algorithms
+* https://github.com/cjohansen/replicant[replicant] 2025.03.02 - A data-driven rendering library for Clojure(Script) that renders hiccup to DOM or to strings
+* https://github.com/clojure-emacs/clojure-ts-mode[clojure-ts-mode] https://github.com/clojure-emacs/clojure-ts-mode/blob/main/CHANGELOG.md#020[0.2.3] - The next generation Clojure major mode for Emacs, powered by TreeSitter
+* https://github.com/flow-storm/flow-storm-async-flow-plugin[flow-storm-async-flow-plugin] https://github.com/flow-storm/flow-storm-async-flow-plugin/blob/master/CHANGELOG.md[1.0.0-beta3] - A FlowStorm plugin to debug core.async.flow graphs
+* https://github.com/scicloj/clay[clay] https://github.com/scicloj/clay/blob/main/CHANGELOG.md[2-beta31.1] - A tiny Clojure tool for dynamic workflow of data visualization and literate programming
+* https://github.com/scicloj/noj[noj] https://github.com/scicloj/noj/blob/main/CHANGELOG.md[2-beta9.1] - A clojure framework for data science
+* https://github.com/borkdude/deps.clj[deps.clj] https://github.com/borkdude/deps.clj/blob/master/CHANGELOG.md[1.12.0.1530] - A faithful port of the clojure CLI bash script to Clojure

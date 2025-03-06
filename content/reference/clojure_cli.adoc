@@ -60,7 +60,7 @@ exec-opts:
 
 clj-opts:
  <<clojure_cli#opt_j,-Jopt>>        Pass JVM option
- <<clojure_cli#opt_sdeps,-Sdeps EDN>>   Extra deps.edn data
+ <<clojure_cli#opt_sdeps,-Sdeps EDN>>   Extra deps.edn data or file
  <<clojure_cli#opt_srepro,-Srepro>>      Ignore user deps.edn file
  <<clojure_cli#opt_spath,-Spath>>       Compute and echo classpath
  <<clojure_cli#opt_stree,-Stree>>       Print dependency tree
@@ -229,7 +229,7 @@ Also see <<clojure_cli#jvm_props,JVM opts>> for more information on other ways t
 [[opt_sdeps]]
 **-Sdeps deps**
 
-Use `-Sdeps` to supply an additional deps.edn source on the command line. This is used as the last <<clojure_cli#deps_sources,deps source>> in the merge. The deps data will need to be appropriately <<clojure_cli#quoting,quoted>> for the command line.
+Use `-Sdeps` to supply additional deps.edn data or a path to a deps.edn file on the command line. This is used as the last <<clojure_cli#deps_sources,deps source>> in the merge. The deps data will need to be appropriately <<clojure_cli#quoting,quoted>> for the command line.
 
 [[opt_srepro]]
 **-Srepro**

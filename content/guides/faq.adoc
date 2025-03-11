@@ -294,6 +294,21 @@ Use a $ to separate outer from inner class name. For example: `java.util.Map$Ent
 
 Primitive types can be found as the static TYPE field on the boxed class, for example: `Integer/TYPE`. 
 
+[[return_type_hint]]
+**<<faq#return_type_hint,How do you type hint a method return type?>>**
+
+Return <<xref/../../../reference/java_interop#typehints,type hints>> can sometimes be useful to flow Java type information out of functions. To provide a return type hint, placed it on the function parameter vector:
+
+[source,clojure]
+----
+(defn new-file ^java.io.File [path] (java.io.File. path))
+----
+
+Note that type hints can also be placed on the var itself, but placing it on the parmaeter vector is preferred for two reasons:
+
+1. Var type hints are evaluated and for special primitive or array type hints like `^long` or `^longs`, these happen to also name functions. When the var type hints are evaluated they become function objects, which are invalid type hints and ignored.
+2. A multi-arity function may specify different return type hints for different arities (although this is not common).
+
 [[varargs]]
 **<<faq#varargs,How do you invoke a Java method with a vararg signature?>>**
 

@@ -295,7 +295,7 @@ Use a $ to separate outer from inner class name. For example: `java.util.Map$Ent
 Primitive types can be found as the static TYPE field on the boxed class, for example: `Integer/TYPE`. 
 
 [[return_type_hint]]
-**<<faq#return_type_hint,How do you type hint a method return type?>>**
+**<<faq#return_type_hint,How do you type hint a function return type?>>**
 
 Return <<xref/../../../reference/java_interop#typehints,type hints>> can sometimes be useful to flow Java type information out of functions. To provide a return type hint, placed it on the function parameter vector:
 

@@ -1,0 +1,68 @@
+= Visual-tools meeting 32
+2025-03-26
+:jbake-type: event
+:jbake-edition: 
+:jbake-link: https://clojureverse.org/t/visual-tools-meeting-32-workflow-demos-6/11251
+:jbake-location: online
+:jbake-start: 2025-03-26
+:jbake-end: 2025-03-26
+
+== Visual-tools meeting 32: Workflow Demos 6
+
+The visual tools group will have its 32nd meeting on Mar 26th, 2025. This meeting is part of the Workflow Demos series. +
+Agenda +
+(gradually updating) +
+(see detailed abstracts below) +
+ +
+@adi - Keeping it Old-Tool: REPL habits of a grug-brained Clojurist +
+@kapil - Vibe coding with Clojurescript and Clojure +
+TBD +
+ +
+Joining +
+Please RVSP at the top of this page (requires Clojureverse login). You can also use the Add to Calendar to add the event to your calendar. +
+Length +
+The official part will be 90 minutes long. +
+Sometimes, some of us like to stay longer and chat. +
+Video Call +
+Zoom link: Launch Meeting - Zoom +
+Recording +
+Possibly, we will share a recording of parts of the meeting +
+Abstracts +
+Keeping it Old-Tool: REPL habits of a grug-brained Clojurist +
+by @adi +
+Let me just be up-front and say, I don&rsquo;t like dependencies. I like to do as much as possible with out-of-the-box (OOTB) features, of the runtime, standard library, and my code editor. Somehow LLM use has not grown on me. In fact, I often don&rsquo;t even fire up a REPL for run-of-the-mill edits, because LSP and clj-kondo are so great, and my brain has been exposed to Clojure long enough that it has a sense about what &ldquo;looks funny&rdquo;. Then, I fire up the REPL. +
+So I&rsquo;d like to show a few tricks I use that are not rocket science, but collectively help me stay In The Zone, by using OOTB language machinery, by not needing to switch visual context, and by keeping muscle memory consistent across IDEs and terminals. +
+I do appreciate and enjoy external visual tools, but having just enough visual cueing right inside my IDE is a net-win, even if the external tool is remarkably better. And I use all the usual built-in suspects, sync-deps, pretty-print-in-other-buffer, tap&gt;, clojure.reflect, and other tricks available in the standard library and Java runtime itself. Most of these are not tied to Emacs, which is my daily-driver IDE. +
+Another method that I like, is to find some abstraction and/or some organising principle that helps me avoid writing code in the first place. I&rsquo;m tinkering with an idea here, governed by the same principle of using Clojure(Script)'s OOTB features only&hellip; +
+   +
+ +
+      github.com +
+   +
+ +
+   +
+     +
+   +
+ +
+  GitHub - adityaathalye/usermanager-first-principles: A &quot;from first principles&quot; variant of... +
+ +
+    A &quot;from first principles&quot; variant of &quot;usermanager-example&quot;, the tutorial Clojure web application by Sean Corfield. +
+ +
+ +
+   +
+ +
+   +
+     +
+     +
+   +
+ +
+   +
+ +
+ +
+Vibe coding with Clojurescript and Clojure +
+by @kapil +
+I&rsquo;ll be sharing my AI coding workflows that I have used to build two games. The workflows have evolved over the last 2 years. +
+These patterns are pretty useful in a REPL driven frontend development with complex state management. +
+The talk may include some experimental stuff at the end. It involves giving REPL access to an AI. +
+ +
+Zulip: https://clojurians.zulipchat.com/#narrow/stream/262224-events/near/505525304 +
+

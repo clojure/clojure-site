@@ -1,0 +1,68 @@
+= Clojure Deref (Mar 14, 2025)
+Alex Miller
+2025-03-14
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts, videos, and media
+
+* https://www.youtube.com/watch?v=vfYB-5Z7gts[Sean Corfield guests on Apropos Clojure 2025-03-11] - apropos clojure
+* https://www.youtube.com/live/WIJh2HdNkAU[[EP.04] deref-in] - clojure-br
+* https://www.youtube.com/watch?v=YYHRx3EnPmg[ClojureScript compiler fun with FlowStorm] - Juan Monetta
+* https://www.youtube.com/watch?v=VzQxh8W1CVI[Ways to debug Clojure code: println, pprint, hashp & debugger] - Andrey Fadeev
+* https://www.youtube.com/watch?v=txcD-drmaFs[What's the point of LISP?] - mccormix
+* https://www.youtube.com/watch?v=tDz1x2d65C0[Noj Reload Executable] - Timothy Pratley
+* https://www.youtube.com/watch?v=gHwFCOkBb_o[Noj in a JAR - setup-free Clojure for beginners] - Sci Cloj
+* https://www.youtube.com/watch?v=mrgs6DUViOk[JWT — Authentication and Authorization with JSON web token in Clojure ring] - Clojure Diary
+
+== Blogs, articles, and projects
+
+* https://2025.clojure-conj.org[CONJ Nov 12-14 Charlotte, NC] - Clojure/Conj
+* https://exercises.clojure.camp/[Exercícios da Clojure Camp agora tem tradução para pt-br] - clojure camp exercises
+* https://www.patreon.com/posts/123849792[Transparency report, February 2025] - Nikita Prokopov
+* https://pensamientos.hashnode.dev/a-beginners-journey-through-the-clojure-web-development-landscape[A Beginner's Journey Through the Clojure Web Development Landscape] - Jose Javier Blanco Rivero
+* https://www.ooloi.org/home/claude-37-meta-reflects-on-clojure-vs-python[Claude 3.7 meta-reflects on Clojure vs Python] - Peter Bengtson
+* https://whatacold.io/blog/2025-02-22-flask-clojure-rewrite/[Rewrite of a Flask Web App in Clojure] - Ken Huang
+* https://www.karimarttila.fi/clojurescript/2025/03/10/ui-design-with-clojurescript-replicant-and-portfolio.html[Designing UI components with Clojurescript, Replicant and Portfolio] - Kari Marttila
+* https://blog.redplanetlabs.com/2025/03/11/how-afterhour-built-an-ultra-scalable-chat-service-in-one-month-with-rama/[How AfterHour built an ultra-scalable chat service in one month with Rama] - Nathan Marz
+* https://rigsomelight.com/2025/03/12/inline-eval-adventure.html[Inline Evaluation Adventure] - Bruce Hauman
+* http://ernestscribbler.xyz/ernest-reverse-engineers-css-with-clojure.html[In which Ernest reverse engineers CSS with Clojure] - Stephen Nelson-Smith
+* https://corfield.org/blog/2025/03/12/lazytest/[Migrating to LazyTest] - Sean Corfield
+* https://kirancodes.me/posts/log-data-oriented-programming.html[Functional vs Data-Driven development: a Case-Study in Clojure & OCaml] - Kiran Gopinathan
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/clojure/core.async[core.async] 1.8.718-beta2 - Facilities for async programming and communication in Clojure
+* https://github.com/seancorfield/honeysql[honeysql] https://github.com/seancorfield/honeysql/blob/develop/CHANGELOG.md[2.7.1295] - Turn Clojure data structures into SQL
+* https://github.com/tonsky/clojure-plus[clojure-plus] https://github.com/tonsky/clojure-plus/blob/main/CHANGELOG.md[1.2.0] - A collection of utilities that improve Clojure experience
+* https://github.com/chr15m/awesome-clojure-likes[awesome-clojure-likes]  - Curated list of Clojure-like programming languages
+* https://github.com/lispyclouds/contajners[contajners] https://github.com/lispyclouds/contajners/releases/tag/1.0.7[1.0.7] - An idiomatic, data-driven, REPL friendly clojure client for OCI container engines
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.487[2.0.487] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/abogoyavlensky/slim[slim] https://github.com/abogoyavlensky/slim/blob/master/CHANGELOG.md[0.3.0] - The slim way to build Clojure
+* https://github.com/squint-cljs/squint[squint] https://github.com/squint-cljs/squint/blob/main/CHANGELOG.md[0.8.141] - Light-weight ClojureScript dialect
+* https://github.com/paintparty/bling[bling] https://github.com/paintparty/bling/blob/main/CHANGELOG.md[0.5.2] - Rich text console printing for Clojure, ClojureScript, and Babashka
+* https://github.com/yonureker/stripe-clojure[stripe-clojure] https://github.com/yonureker/stripe-clojure/blob/master/CHANGELOG.md[0.2.1] - Clojure SDK for the Stripe API
+* https://github.com/practicalli/astro[astro] https://github.com/practicalli/astro/releases/tag/2025-03-12[2025-03-12] - Rich development workflow with Clojure support, using AstroNvim 4 and selected plugins
+* https://github.com/abogoyavlensky/manifest-edn[manifest-edn] https://github.com/abogoyavlensky/manifest-edn/blob/master/CHANGELOG.md[0.1.1] - A small Clojure/Babashka library for hashing static assets
+* https://github.com/jacobemcken/wet[wet] https://github.com/jacobemcken/wet/blob/main/CHANGELOG.md[0.3.0] - Liquid in Clojure(Script)
+* https://github.com/lukaszkorecki/omega-red[omega-red] 2.2.0 - Idiomatic Redis client for Clojure
+* https://github.com/nextdoc/sketch[sketch] 0.1.29 - Domain network modelling
+* https://repo.prod.meissa.de/meissa/c4k-keycloak[c4k-keycloak] 1.5.0 - k8s deployment for keycloak
+* https://github.com/seancorfield/next-jdbc[next-jdbc] https://github.com/seancorfield/next-jdbc/blob/develop/CHANGELOG.md[1.3.1002] - A modern low-level Clojure wrapper for JDBC-based access to databases
+* https://github.com/afucher/clojure-repl-intellij[clojure-repl-intellij] https://github.com/afucher/clojure-repl-intellij/blob/master/CHANGELOG.md[2.4.0] - Free OpenSource IntelliJ plugin for Clojure REPL development
+* https://github.com/clojure-lsp/clojure-lsp[clojure-lsp] https://github.com/clojure-lsp/clojure-lsp/blob/master/CHANGELOG.md[2025.03.07-17.42.36] - Clojure & ClojureScript Language Server (LSP) implementation
+* https://github.com/borkdude/html[html] https://github.com/borkdude/html/blob/main/CHANGELOG.md[0.2.2] - Html generation library inspired by squint's html tag
+* https://github.com/NoahTheDuke/lazytest[lazytest] https://github.com/NoahTheDuke/lazytest/blob/main/CHANGELOG.md[1.6.1] - A standalone BDD test framework for Clojure
+* https://github.com/jpmonettas/flow-storm-debugger[flow-storm-debugger] https://github.com/flow-storm/flow-storm-debugger/blob/master/CHANGELOG.md[4.2.1] - A debugger for Clojure and ClojureScript with some unique features
+* https://github.com/borkdude/edamame[edamame] https://github.com/borkdude/edamame/blob/master/CHANGELOG.md[1.4.28] - Configurable EDN/Clojure parser with location metadata
+* https://github.com/babashka/sci[sci] https://github.com/babashka/sci/blob/master/CHANGELOG.md[0.9.45] - Configurable Clojure/Script interpreter suitable for scripting and Clojure DSLs
+* https://github.com/scicloj/clay[clay] https://github.com/scicloj/clay/blob/main/CHANGELOG.md[2-beta32] - A tiny Clojure tool for dynamic workflow of data visualization and literate programming
+* https://github.com/scicloj/noj[noj] https://github.com/scicloj/noj/blob/main/CHANGELOG.md[2-beta10.1] - A clojure framework for data science
+* https://github.com/fogus/rv[rv] https://github.com/fogus/rv/blob/main/CHANGELOG.md[0.0.6] - A Clojure library exploring the application of pure reasoning algorithms
+* https://github.com/babashka/babashka-sql-pods[babashka-sql-pods] https://github.com/babashka/babashka-sql-pods/blob/master/CHANGELOG.md[0.1.4] - Babashka pods for SQL databases
+* https://github.com/squint-cljs/cherry[cherry] https://github.com/squint-cljs/cherry/blob/main/CHANGELOG.md[0.4.24] - Experimental ClojureScript to ES6 module compiler

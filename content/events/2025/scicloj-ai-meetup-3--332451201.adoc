@@ -1,0 +1,59 @@
+= Scicloj AI Meetup 3
+2025-04-05
+:jbake-type: event
+:jbake-edition: 
+:jbake-link: https://clojureverse.org/t/scicloj-ai-meetup-3-llms-clojure-who-needs-frameworks/11270
+:jbake-location: online
+:jbake-start: 2025-04-05
+:jbake-end: 2025-04-05
+
+== Scicloj AI Meetup 3: LLMs + Clojure = Who need...
+
+Scicloj AI Meetup 3: LLMs + Clojure = Who needs frameworks? +
+ +
+This will be third meeting of the new scicloj-ai-meetups group. +
+It will be a mix of a talk and a practice session. +
+Agenda +
+ +
+@kapil&rsquo;s talk: LLMs + Clojure = Who needs frameworks? +
+ +
+see the abstract below +
+ +
+ +
+a practice session following the talk +
+discussion +
+ +
+Joining  +
+ +
+Please mark your participation using the Your rsvp button at the top of this page (requires Clojureverse login). +
+Please join the Clojurians Zulip chat beforehand. +
+You can also use the Add to Calendar button to add the event to your calendar. +
+ +
+Chat +
+We will use the #scicloj-ai-meetups channel of the Clojurians Zulip Chat (requires login). Please join the Zulip chat before attending our meetings. +
+Length +
+The official session will run for 90 minutes. +
+Informal discussions may continue afterwards for those interested. +
+Platform +
+ +
+Video meeting: Launch Meeting - Zoom +
+Text chat: We will use the #ai-meetups Zulip stream (requires Zulip login) +
+ +
+Abstract +
+(by @kapil) +
+Large Language Models have transformed coding workflows, excelling particularly at project scaffolding and boilerplate generation. +
+While Clojure&rsquo;s philosophy of composable libraries over frameworks grants exceptional power and flexibility. It also a steeper learning curve for new developers starting a project from scratch. Many of whom lament the absence of a Rails-like framework to ease their journey. +
+This talk introduces a novel approach that preserves Clojure&rsquo;s library-centric philosophy while improving developer experience with LLMs. +
+Key points: +
+llms.edn: A structured, Clojure-native approach to describing libraries and their common usage patterns, building on concepts from llms.txt but tailored specifically for Clojure&rsquo;s ecosystem. +
+LLM-powered composition workflow: A practical demonstration of how LLMs can intelligently combine libraries based on these declarations, generating cohesive starter projects that reflect Clojure&rsquo;s best practices. +
+Beyond frameworks: An exploration of whether LLMs fundamentally change the library-vs-framework debate by offering &ldquo;framework-like&rdquo; convenience without sacrificing composability. +
+Let&rsquo;s discuss the future of the llms.edn project and help shape a tool that could significantly enhance Clojure&rsquo;s accessibility while honouring its core design philosophy. +
+Recording +
+Parts of the meeting will be recorded and may be shared publicly. +
+Some parts will remain unrecorded. +
+ +
+joy21212&times;568 98.3 KB +
+ +
+Zulip: https://clojurians.zulipchat.com/#narrow/stream/262224-events/near/506763990 +
+

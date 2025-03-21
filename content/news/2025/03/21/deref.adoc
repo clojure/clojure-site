@@ -1,0 +1,41 @@
+= Clojure Deref (Mar 21, 2025)
+Alex Miller
+2025-03-21
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts, videos, and media
+
+* https://www.youtube.com/watch?v=1bUwfgcjoOs[[EP.05] deref-in] - clojure-br
+
+== Blogs, articles, and projects
+
+* https://blog.redplanetlabs.com/2025/03/18/rama-the-100x-developer-platform-is-now-free-for-production-use/[Rama, the 100x developer platform, is now free for production use] - Nathan Marz (Red Planet Labs)
+* https://replicant.fun/tutorials/forms/[Replicant: Data-driven form processing] - Christian Johansen
+* https://replicant.fun/tutorials/first-class-forms/[Replicant: Data-driven first class forms] - Christian Johansen
+* https://replicant.fun/tutorials/declarative-forms/[Replicant: Declarative forms] - Christian Johansen
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/Tensegritics/ClojureDart[ClojureDart]  - Clojure dialect for Flutter and Dart
+* https://github.com/bhauman/rebel-readline/tree/master/rebel-readline-nrepl[rebel-readline-nrepl] 0.1.6 - A Clojure library that brings the flexibility of Rebel Readline to your terminal as an nREPL (Network REPL) client
+* https://github.com/filipesilva/gen[gen] 1.1.0 - A CLI tool to generate files and run commands from templates
+* https://github.com/thoughtfull-clojure/transductio[transductio] https://github.com/thoughtfull-clojure/transductio/blob/main/CHANGELOG.md[1.1.0] - A bridge from I/O to transducers and back
+* https://github.com/slagyr/speclj[speclj] https://github.com/slagyr/speclj/blob/master/CHANGES.md[3.8.0] - pronounced "speckle": a TDD/BDD framework for Clojure
+* https://github.com/metosin/vrac[vrac] 0.1.0 - A frontend rendering library in Clojure, for Clojurists
+* https://github.com/juji-io/datalevin[datalevin] https://github.com/juji-io/datalevin/blob/master/CHANGELOG.md[0.9.22] - A simple, fast and versatile Datalog database
+* https://github.com/igrishaev/pg2[pg2] https://github.com/igrishaev/pg2/blob/master/CHANGELOG.md[0.1.34] - A fast PostgreSQL driver for Clojure
+* https://github.com/scicloj/clay[clay] https://github.com/scicloj/clay/blob/main/CHANGELOG.md[2-beta35] - A tiny Clojure tool for dynamic workflow of data visualization and literate programming
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/blob/published/CHANGELOG.md[2.0.492] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/scicloj/noj[noj] https://github.com/scicloj/noj/blob/main/CHANGELOG.md[2-beta12] - A clojure framework for data science
+* https://github.com/fulcrologic/fulcro[fulcro] 3.8.3 - A library for development of single-page full-stack web applications in clj/cljs
+* https://github.com/squint-cljs/cherry[cherry] https://github.com/squint-cljs/cherry/blob/main/CHANGELOG.md[0.4.25] - Experimental ClojureScript to ES6 module compiler
+* https://github.com/jpmonettas/flow-storm-debugger[flow-storm-debugger] https://github.com/flow-storm/flow-storm-debugger/blob/master/CHANGELOG.md[4.2.2] - A debugger for Clojure and ClojureScript with some unique features
+* https://github.com/exoscale/coax[coax] 2.0.2 - Clojure.spec coercion library for clj(s)
+* https://github.com/squint-cljs/squint[squint] https://github.com/squint-cljs/squint/blob/main/CHANGELOG.md[0.8.142] - Light-weight ClojureScript dialect
+* https://github.com/lukaszkorecki/omega-red[omega-red] 2.3.0 - Idiomatic Redis client for Clojure

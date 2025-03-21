@@ -1,0 +1,54 @@
+= Third Func Prog Sweden 2025 Online
+2025-04-16
+:jbake-type: event
+:jbake-edition: 
+:jbake-link: https://www.meetup.com/func-prog-sweden/events/305841716/?eventOrigin=group_upcoming_events
+:jbake-location: online
+:jbake-start: 2025-04-16
+:jbake-end: 2025-04-16
+
+== Third Func Prog Sweden 2025 Online
+
+Third Func Prog Sweden 2025 &ndash; Online +
+ +
+Welcome to the third Func Prog Sweden MeetUp 2025 &ndash; Online +
+This MeetUp will be streamed live online on the Func Prog Sweden YouTube channel: https://www.youtube.com/c/FuncProgSweden +
+The program starts at 18:00 / 6 PM: +
+ +
+Intro by Magnus Sedlacek +
+Boost your command-line applications with potions! by Eric Torreborre +
+Creating questionnaires with dependent types by Elisabeth Stenholm +
+Post-show chat +
+ +
+Boost your command-line applications with potions! +
+How hard can it be to parse command-line arguments for an application? +
+My initial, and foolish, answer was &ldquo;not too hard&rdquo;. Thanks to this misplaced over-confidence this talk presents potions, +
+a command-line arguments parsing library written in Unison (https://unison-lang.org). +
+We will start with a tour of the library features: various type of options, support for environment variables, styled help, and more. +
+We will then dive into the implementation of the library, where the main workhorse is (drum roll) Unison's effect system called &quot;abilities&quot;. +
+We&rsquo;ll see what can be checked at compile-time, what can&rsquo;t, how abilities are layered to provide different DSLs (domain-specific languages), +
+how they can be used to enclose state for mutually recursive functions, etc&hellip; +
+Finally, I will talk about some of the issues that slowed me down during the development, and why I feel that a full-fledge +
+Unison IDE will be indispensable for any medium to large scale project. +
+Eric Torreborre +
+I am a Rust/Elixir developer working at Ockam where we enable private systems to communicate without exposing their network to the Internet (ask me more if you're interested!). I am also a functional programmer at heart, having professional experience with both Scala and Haskell which I enjoyed very much! +
+Blog: https://etorreborre.blog +
+X.com: https://x.com/etorreborre +
+Bluesky: https://bsky.app/profile/etorreborre.blog +
+Creating questionnaires with dependent types - Let the compiler do the work for you +
+Questionnaires appear in many different contexts. But for those who have tried to implement them, they can be surprisingly tricky to write. In this talk I will explain how questionnaires are intrinsically dependently typed, which is why it can be challenging to express them correctly in programming languages without dependent types. I will also show an example implementation in the dependently typed functional programming language Lean, and explain how using dependent types gives us more validation compile time, minimizing the need for runtime validation. +
+Elisabeth Stenholm +
+Elisabeth is 32 years old, born in Uppsala and raised in Stockholm. She has a PhD in dependent type theory from the University of Bergen, and is currently working as a fullstack developer at Frende Forsikring &mdash; a Norwegian insurance company based in Bergen. In her workday, Elisabeth writes primarily in the functional languages F# and Elm. She is passionate about type theory and functional programming, and enjoys sharing her knowledge on these topics with others. +
+LinkedIn: https://www.linkedin.com/in/elisabethstenholm/ +
+Post-show chat +
+Once the live stream is over we will do a post show chat on the FPS Discord Server, where you can join and ask questions and meet more community members (this will no be recorded). +
+Invite for the FPS Discord Server: https://discord.gg/rMT6xRPwgZ +
+Video sponsor &ndash; Ada Beat +
+https://adabeat.com +
+Merch +
+If you want to spread functional programming and support the channel, buy something from the shop: +
+https://funcprogsweden.myspreadshop.net/ +
+#funcprogsweden +
+ +
+Zulip: https://clojurians.zulipchat.com/#narrow/stream/262224-events/near/507078629 +
+

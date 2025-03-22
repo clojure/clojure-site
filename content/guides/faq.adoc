@@ -304,7 +304,7 @@ Return <<xref/../../../reference/java_interop#typehints,type hints>> can sometim
 (defn new-file ^java.io.File [path] (java.io.File. path))
 ----
 
-Note that type hints can also be placed on the var itself, but placing it on the parmaeter vector is preferred for two reasons:
+Note that type hints can also be placed on the var itself, but placing it on the parameter vector is preferred for two reasons:
 
 1. Var type hints are evaluated and for special primitive or array type hints like `^long` or `^longs`, these happen to also name functions. When the var type hints are evaluated they become function objects, which are invalid type hints and ignored.
 2. A multi-arity function may specify different return type hints for different arities (although this is not common).

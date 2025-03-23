@@ -1,0 +1,51 @@
+= Scicloj AI Meetup 4 # Weaving LLM tools
+2025-04-19
+:jbake-type: event
+:jbake-edition: 
+:jbake-link: https://clojureverse.org/t/scicloj-ai-meetup-4-weaving-llm-tools-into-the-feedback-loop-why-mcp-sucks-how-to-use-it-anyway-modex/11279
+:jbake-location: online
+:jbake-start: 2025-04-19
+:jbake-end: 2025-04-19
+
+== Scicloj AI Meetup 4 # Weaving LLM tools into t...
+
+Scicloj AI Meetup 4 # Weaving LLM tools into the feedback loop # Why MCP Sucks & How To Use It Anyway (Modex) +
+ +
+This will be the fourth meeting of the new scicloj-ai-meetups group co-organized by @stoica94 and @daslu. +
+Agenda +
+ +
+Baruch Berger - Weaving LLM tools into the feedback loop +
+@theronic - Why MCP Sucks &amp; How To Use It Anyway (Modex) +
+discussion +
+ +
+Joining  +
+ +
+Please mark your participation using the Your rsvp button at the top of this page (requires Clojureverse login). +
+Please join the Clojurians Zulip chat beforehand. +
+You can also use the Add to Calendar button to add the event to your calendar. +
+ +
+Chat +
+We will use the #scicloj-ai-meetups channel of the Clojurians Zulip Chat (requires login). Please join the Zulip chat before attending our meetings. +
+Length +
+The official session will run for 90 minutes. +
+Informal discussions may continue afterwards for those interested. +
+Platform +
+ +
+Video meeting: Launch Meeting - Zoom +
+Text chat: We will use the #ai-meetups Zulip stream (requires Zulip login) +
+ +
+Abstracts +
+Weaving LLM tools into the feedback loop +
+(by Baruch Berger) +
+After being too quick to dismiss the first GPT-3 demo as &ldquo;just funny autocomplete&rdquo; Baruch Berger is 2 years into a deep dive into finding out how to increase developer&lt;-&gt;LLM interfacing throughput with these massively powerful tools. He will be showing how he expanded his toolkit with an interactive, tool-filled Clojure(Script) LLM canvas. Learning how to recognize the fast moving target of what kind of tasks are (still) too ambitious, Baruch takes the side of &ldquo;underrated&rdquo; in the debate on impact that these models will, and already have, on our world. Fellow hype-men are invited to marvel at the amount of agency these models already have. Skeptics are invited to challenge their views and have interesting discussion on how to best use or not use LLMs in their workflows. +
+Why MCP Sucks &amp; How To Use It Anyway (Modex) +
+(by @theronic) +
+We will discuss how to augment your AI with new MCP Tools, Resources &amp; Prompts using Modex, a Model Context Protocol Library in Clojure. +
+Recording +
+Parts of the meeting will be recorded and may be shared publicly. +
+Some parts will remain unrecorded. +
+ +
+joy21212&times;568 98.3 KB +
+ +
+Zulip: https://clojurians.zulipchat.com/#narrow/stream/262224-events/near/507441345 +
+

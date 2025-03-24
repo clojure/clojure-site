@@ -501,7 +501,7 @@ The runtime basis is a representation of the dependency environment when the Clo
 
 The runtime basis can be accessed from within Clojure, using the https://clojure.github.io/clojure/#clojure.java.basis[clojure.java.basis] API. It includes access to both the initial basis and the current basis, which may be modified by the https://clojure.github.io/clojure/clojure.repl-api.html#clojure.repl.deps/add-libs[add-libs] and related functions.
 
-.Index of deps.edn attributes
+.Index of runtime basis attributes
 [[index]]
 [subs=+macros]
 ----

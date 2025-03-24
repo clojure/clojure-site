@@ -517,9 +517,9 @@ The runtime basis can be accessed from within Clojure, using the https://clojure
                 :extra   path|map
 
                 :aliases [:alias1 ...]
-                :args    {arg val ...}}
- <<deps_edn#basis_argmap,:argmap>> {arg val ...}
- <<deps_edn#basis_libs,:libs>> {lib lib-source ...}
+                :args    {arg val}}
+ <<deps_edn#basis_argmap,:argmap>> {arg val}
+ <<deps_edn#basis_libs,:libs>> {lib coord}
  <<deps_edn#basis_classpath,:classpath>> {classpath-path classpath-info}
  <<deps_edn#basis_classpath_roots,:classpath-roots>> [classpath-path ...]}
 ----

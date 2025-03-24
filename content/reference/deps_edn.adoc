@@ -17,7 +17,7 @@ The deps.edn file is a data file specifying all information needed to form a pro
 
 If you are building a tool that would like to leverage deps.edn, create well-known namespaced <<deps_edn#aliases,:aliases>> as a means to convey tool configuration, rather than adding new arbitrary tags elsewhere in the deps.edn data - these may not be preserved or conveyed during processing. Tools can access alias data via the basis at runtime, or programatically via tools.deps.
 
-.Index of all attributes
+.Index of deps.edn attributes
 [[index]]
 [subs=+macros]
 ----
@@ -493,3 +493,68 @@ If your library needs preparation, add the `:deps/prep-lib` key to your `deps.ed
 ==== :fn
 
 `:fn` is the function to invoke with `-T` during prep
+
+[[basis]]
+== Runtime basis
+
+The runtime basis is a representation of the dependency environment when the Clojure runtime starts. It includes information about the dependencies, classpath, and how the basis was created.
+
+The runtime basis can be accessed from within Clojure, using the https://clojure.github.io/clojure/#clojure.java.basis[clojure.java.basis] API. It includes access to both the initial basis and the current basis, which may be modified by the https://clojure.github.io/clojure/clojure.repl-api.html#clojure.repl.deps/add-libs[add-libs] and related functions.
+
+.Index of deps.edn attributes
+[[index]]
+[subs=+macros]
+----
+{;; The basis is a superset of the merged <<deps_edn#index,deps.edn>>
+ ;; so may contain all of those attributes plus these:
+
+ ;; Project paths
+ <<deps_edn#basis_config,:basis-config>> {:dir "project/dir"
+                :root    :standard|path|map
+                :user    :standard|path|map
+                :project :standard|path|map
+                :extra   :standard|path|map
+                :aliases [:alias1 ...]
+                :args    {arg val ...}}
+  <<deps_edn#basis_argmap,:argmap>> {arg val ...}
+  <<deps_edn#basis_libs,:libs>> {lib lib-source ...}
+  <<deps_edn#basis_classpath,:classpath>> {classpath-path classpath-info}
+  <<deps_edn#basis_classpath_roots,:classpath-roots>> [classpath-path ...]}
+----
+
+[[basis_config]]
+=== :basis-config
+
+The `:basis-config` attribute contains the parameters used when the basis was created and should be sufficient to recreate the basis later. That property is in particular used by https://clojure.github.io/clojure/clojure.repl-api.html#clojure.repl.deps/sync-deps[sync-deps].
+
+The `:basis-config` may have the following attributes:
+
+* `:dir` - absolute or relative path to the project directory (containing project deps.edn), defaults to current directory
+* `:root` - root deps.edn source, one of `:standard` (read from classpath), a path, or a literal map
+* `:user` - user deps.edn source, one of `:standard` (read from user config dir), a path, or a literal map
+* `:project` - project deps.edn source, one of `:standard` (read from `:dir`), a path, or a literal map
+* `:extra` - extra deps.edn source, either a path or a literal map
+* `:aliases` - a vector of supplied alias keywords providing argmap keys
+* `:args` - a map of extra argmap args, applied after alias argmaps are merged
+
+[[basis_argmap]]
+=== :argmap
+
+The basis `:argmap` contains the merged argmap that was used when resolving dependencies and computing the classpath. The argmaps can be supplied either indirectly by the `:aliases` or directly via the `:args` key when creating the basis.
+
+See the <<clojure_cli#aliases,Clojure CLI reference page>> for a complete list of argmap args and what they do.
+
+[[basis_libs]]
+=== :libs
+
+The basis `:libs` key is a map of every dependency, both direct and transitive, included in the basis classpath. The `:libs` value is a map from lib name (qualified symbol) to lib coordinate with some additional keys. While most of the keys are non-normative, one important added key is the `:paths` vector of file paths to add to the classpath for this lib.
+
+[[basis_classpath]]
+=== :classpath
+
+The `:classpath` key is a map where the keys are classpath paths (strings) and the values describe why that path is included. Most commonly this will be either a map with `:lib-name` key (for libs) or a map with `:path-key` key for source paths.
+
+[[basis_classpath_roots]]
+=== :classpath-roots
+
+The `:classpath-roots` key is a vector that orders the classpath (the path strings should match the keys of the `:classpath` key). See the <<clojure_cli#_classpath_construction,Clojure CLI section on classpath construction>> for ordering rules.

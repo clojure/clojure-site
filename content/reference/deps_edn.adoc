@@ -510,10 +510,12 @@ The runtime basis can be accessed from within Clojure, using the https://clojure
 
  ;; Project paths
  <<deps_edn#basis_config,:basis-config>> {:dir "project/dir"
+
                 :root    :standard|path|map
                 :user    :standard|path|map
                 :project :standard|path|map
                 :extra   :standard|path|map
+
                 :aliases [:alias1 ...]
                 :args    {arg val ...}}
  <<deps_edn#basis_argmap,:argmap>> {arg val ...}

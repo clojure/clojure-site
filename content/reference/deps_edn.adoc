@@ -514,7 +514,7 @@ The runtime basis can be accessed from within Clojure, using the https://clojure
                 :root    :standard|path|map
                 :user    :standard|path|map
                 :project :standard|path|map
-                :extra   :standard|path|map
+                :extra   path|map
 
                 :aliases [:alias1 ...]
                 :args    {arg val ...}}

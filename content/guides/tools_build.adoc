@@ -57,7 +57,7 @@ The remainder of this guide demonstrates individual common use cases and how to 
 
 The most common Clojure build creates a jar file containing Clojure source code. To do this with tools.build we'll use the following tasks:
 
-* `create-basis` - to create a project basis (note: this will download deps as a side effect)
+* `create-basis` - to create a <<xref/../../../reference/deps_edn#basis,project basis>> (note: this will download deps as a side effect)
 * `copy-dir` - to copy Clojure source and resources into a working dir
 * `write-pom` - to write a pom file in the working dir
 * `jar` - to jar up the working dir into a jar file

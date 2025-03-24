@@ -343,7 +343,7 @@ When multiple aliases are supplied, the keys in the aliases arg maps are merged 
 
 The alias keys above are meaningful for Clojure CLI execution, but you may define aliases for any purpose. If you are creating a custom tool that needs configuration, it is a good practice to define well-known, namespaced aliases or alias-keys for use by your tool. Please refrain from adding top-level keys to the <<deps_edn#,deps.edn>> files - they may not always be available via programmatic tools.
 
-Programs run by the Clojure CLI are given the "runtime basis" for the execution, including all alias data. The clojure.java.basis API being added in Clojure 1.12 can be used to retrieve alias data at runtime in the program.
+Programs run by the Clojure CLI are given the <<deps_edn#basis,runtime basis>> for the execution, including all alias data. The https://clojure.github.io/clojure/#clojure.java.basis[clojure.java.basis] API added in Clojure 1.12 can be used to retrieve alias data at runtime in the program.
 
 [[namespaces]]
 === Namespace resolution

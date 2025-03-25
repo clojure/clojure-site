@@ -140,7 +140,7 @@ Examples:
 [[deps_mvn]]
 == Maven deps
 
-The Maven procurer uses the qualifier `mvn` and is used to retrieve library artifacts from https://maven.apache.org/[Maven repositories], the standard repository manager in the Java ecosystem. Libraries are downloaded as .jar files and stored in the Maven local repository cache (located in ~/.m2/repository by default or override with <<deps_edn#mvn_localrepo,:mvn/local-repo>>). Other JVM-based tools may also use this cache.
+The Maven procurer uses the qualifier `mvn` and is used to retrieve library artifacts from https://maven.apache.org/[Maven repositories], the standard repository manager in the Java ecosystem. Libraries are downloaded as .jar files and stored in the Maven local repository cache (located in ~/.m2/repository by default or override with <<deps_edn#procurer_mvn_localrepo,:mvn/local-repo>>). Other JVM-based tools may also use this cache.
 
 Maven libraries are located in Maven repositories using "Maven coordinates", typically the groupId, artifactId, and version (sometimes also abbreivated as GAV). In deps.edn, the library name is parsed as `groupId/artifactId` and the version is taken from `:mvn/version`. Some Maven artifacts also have a "classifier", which is a variant of a particular artifact. In the Maven procurer, classifiers are included at the end of the lib name, separated by a `$` in this format: `groupId/artifactId$classifier`.
 
@@ -209,8 +209,8 @@ The most common git url protocols are https and ssh. https repos will be accesse
 
 For more information on creating keys and using the ssh-agent to manage your ssh identities, GitHub provides excellent info:
 
-* https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/
-* https://help.github.com/articles/working-with-ssh-key-passphrases/
+* https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
+* https://docs.github.com/en/authentication/connecting-to-github-with-ssh/working-with-ssh-key-passphrases
 
 Other protocols (including local and file) should work but are not commonly used.
 
@@ -375,7 +375,7 @@ The `:main-opts` are a collection of string options provided to a program starte
 [[procurers]]
 == Procurer config
 
-[[procurers_mvn]]
+[[procurer_mvn]]
 === Maven
 
 The Maven procurer uses the Maven resolver and Maven repository system to download artifacts. This is described further in the <<deps_edn#deps_mvn,Maven deps>> section. Some options can be configured in the deps.edn.
@@ -405,11 +405,9 @@ The `:url` is a string url to the repository root.
 
 `http://` urls are not supported by default, but see <<clojure_cli#env_vars>> for information on the `CLOJURE_CLI_ALLOW_HTTP_REPO` if you need this.
 
-[[procurer_mvn_repos_releases]]
-[[procurer_mvn_repos_snapshots]]
 ==== :releases and :snapshots
 
-The `:releases` attribute is optional, but can be used to override the default repository configuration for release (non-snapshot artifacts):
+[[procurer_mvn_repos_releases]]The `:releases` attribute is optional, but can be used to override the default repository configuration for release (non-snapshot artifacts):
 
 [source,clojure]
 ----
@@ -421,16 +419,13 @@ The `:releases` attribute is optional, but can be used to override the default r
                             :checksum :fail}}}}
 ----
 
-The `:snapshots` attribute is the same as the `:releases` attribute, but applies repository policy for snapshot artifacts.
+[[procurer_mvn_repos_snapshots]]The `:snapshots` attribute is the same as the `:releases` attribute, but applies repository policy for snapshot artifacts.
 
 Repository attributes:
 
-[[procurer_mvn_repos_enabled]]
-[[procurer_mvn_repos_update]]
-[[procurer_mvn_repos_checksum]]
-* `:enabled` is a boolean, default=true. Sometimes this is used to target a repository only for releases or snapshots.
-* `:update` is a flag for how often to check the repo for updates, valid values are `:daily` (default), `:always`, `:never`, or an interval in minutes (integer).
-* `:checksum` is a flag for checksum validation, one of `:warn` (default), `:fail`, `:ignore`.
+* [[procurer_mvn_repos_enabled]]`:enabled` is a boolean, default=true. Sometimes this is used to target a repository only for releases or snapshots.
+* [[procurer_mvn_repos_update]]`:update` is a flag for how often to check the repo for updates, valid values are `:daily` (default), `:always`, `:never`, or an interval in minutes (integer).
+* [[procurer_mvn_repos_checksum]]`:checksum` is a flag for checksum validation, one of `:warn` (default), `:fail`, `:ignore`.
 
 Also see <<clojure_cli#procurer_maven,Maven procurer config>> for additional configuration in the Clojure CLI.
 

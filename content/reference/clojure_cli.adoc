@@ -26,7 +26,7 @@ Any version of the Clojure CLI can use any version of the Clojure language. Gene
 
 The CLI is invoked via either `clojure` or `clj`. In general, you can treat these interchangeably but `clj` includes `rlwrap` for extended keyboard editing, particularly useful with the REPL. This reference uses `clj` for REPL examples and `clojure` for non-REPL examples.
 
-Each execution of the Clojure CLI runs a Clojure program by determining all paths, dependencies, and main entry point, then invoking the program on the JVM. The primary kind of execution is determined by `-X`, `-T`, and `-M` (or their absence). Configuration is defined by one or more <<deps_edn,deps.edn>> files in combination with the <<clojure_cli#options,command-line options>>.
+Each execution of the Clojure CLI runs a Clojure program by determining all paths, dependencies, and main entry point, then invoking the program on the JVM. The primary kind of execution is determined by `-X`, `-T`, and `-M` (or their absence). Configuration is defined by one or more <<deps_edn#,deps.edn>> files in combination with the <<clojure_cli#options,command-line options>>.
 
 
 
@@ -599,7 +599,7 @@ PS D:> clj -X clojure.core/prn :val '{:s1 """nospaces""" :s2 ""has spaces""}'
 [[programs]]
 == Programs
 
-The Clojure CLI is designed to provide access to programs (functions) in other libraries with their own independent classpath. This capability is leveraged to provide expanded functionality via the built-in `:deps` alias in the root deps.edn, which provides the https://github.com/clojure/tools.deps.cli[tools.deps.cli] (see https://clojure.github.io/tools.deps.cli[API]).
+The Clojure CLI is designed to provide access to programs (functions) in other libraries with their own independent classpath. This capability is leveraged to provide expanded functionality via the built-in `:deps` alias in the root deps.edn, which provides the https://github.com/clojure/tools.deps.cli[tools.deps.cli] (see https://clojure.github.io/tools.deps.cli/[API]).
 
 [[deps_list]]
 === Dependency list
@@ -734,7 +734,7 @@ The params that can be provided are:
 
 `find-versions` will print the git or Maven coordinates, one per line, to the console.
 
-[[deps_install]]
+[[deps_mvn_install]]
 === Local Maven install
 
 The `-X:deps mvn-install` program is provided with the Clojure CLI for convenience and can be executed with `-X` to install a jar into your local Maven cache.
@@ -769,7 +769,7 @@ As mentioned above, edn strings must be in double quotes, and then single-quoted
 
 A pom file must be either provided explicitly, generated from :lib/:version, or found inside the .jar file (the default).
 
-[[deps_pom]]
+[[deps_mvn_pom]]
 === Generate Maven pom
 
 Use the following program to generate or update an existing pom.xml with the deps and paths from your project:
@@ -916,7 +916,7 @@ The coordinate attributes determine which procurer is used. In general, most pro
 
 Some procurers may also look for configuration attributes at the root of the deps.edn configuration map using the the same qualifier.
 
-[[procurer_maven]]
+[[procurer_mvn]]
 === Maven
 
 The Maven procurer uses the qualifier `mvn` and is used to retrieve library artifacts from https://maven.apache.org/[Maven repositories], the standard repository manager in the Java ecosystem. Libraries are downloaded as .jar files and stored in the Maven local repository cache (located in ~/.m2/repository by default). Other JVM-based tools may also use this cache.

@@ -1,0 +1,51 @@
+= Clojure Deref (Mar 21, 2025)
+Alex Miller
+2025-03-28
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts, videos, and media
+
+* https://www.youtube.com/watch?v=QhMv8KLQMho[Como eu me preparei para chegar bem no Nubank com Alberto Souza] - clojure-br
+* https://www.youtube.com/watch?v=cDfmpe_w_3I[Bobbi guests on Apropos Clojure 2025-03-25] - apropos clojure
+* https://www.youtube.com/watch?v=WiOUiHsq_dc[Clojure visual-tools 31 - Workflow Demos 5: Clay] - Sci Cloj
+* https://www.youtube.com/watch?v=oV9F9bmPr58[Clojure visual-tools 32- Workflow Demos 6: old-school tools, REPL, Emacs, Org-mode, AI, MCP, & more] - Sci Cloj
+* https://www.youtube.com/watch?v=pd_lwg2eQ8g[Clojure Corner: Interview with Oleksandr Yakushev] - Flexiana
+* https://www.youtube.com/watch?v=tMx-iW-X4Qs[Episode 9 ... the refactoring will continue until morale improves] - Content Made Simple
+* https://www.youtube.com/watch?v=_EzB6z_F-Ak[The Y Combinator: developing intuition around abstract recursion - Dave Kimber | Lambda Days 2024] - Code Sync
+* https://www.youtube.com/watch?v=lFy9bHxYxIg[Logging in Ring - Not as good as I expected] - Clojure Diary
+* https://www.linkedin.com/feed/update/urn:li:ugcPost:7309822102444924931/[The Spring Equinox of Code?] - Peter Strömberg
+
+== Blogs, articles, and projects
+
+* https://www.thoughtfull.systems/notes/2025-02-14-run-flags-for-polling-threads/[Run flags for polling threads] - technosophist
+* https://clojure.org/reference/deps_edn#basis[Runtime basis] - Alex Miller (Clojure team)
+* https://blog.redplanetlabs.com/2025/03/26/next-level-backends-with-rama-graphs/[Next-level backends with Rama: storing and traversing graphs in 60 LOC] - Nathan Marz (Red Planet Labs)
+* https://martinklepsch.org/posts/embracing-js-files-in-clojurescript/[Using JS in ClojureScript Projects] - Martin Klepsch
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/clojure/tools.build[tools.build] https://github.com/clojure/tools.build/blob/master/CHANGELOG.md[0.10.8] - Clojure builds as Clojure programs
+* https://github.com/tonsky/clojure-plus[clojure-plus] https://github.com/tonsky/clojure-plus/blob/main/CHANGELOG.md[1.3.1] - A collection of utilities that improve Clojure experience
+* https://github.com/Tensegritics/ClojureDart[ClojureDart]  - Clojure dialect for Flutter and Dart
+* https://github.com/thoughtfull-clojure/desiderata[desiderata] https://github.com/thoughtfull-clojure/desiderata/blob/main/CHANGELOG.md[1.0.1] - Things wanted or needed but missing from clojure.core
+* https://github.com/whatacold/google-analytics[google-analytics] 0.1.0-SNAPSHOT - A ClojureScript library for collecting custom events to Google Analytics
+* https://github.com/NoahTheDuke/fluent-clj[fluent-clj] https://github.com/NoahTheDuke/fluent-clj/blob/main/CHANGELOG.md[0.0.2] - Project Fluent for Clojure/script
+* https://github.com/ring-clojure/ring[ring] https://github.com/ring-clojure/ring/blob/master/CHANGELOG.md[1.14.0] - Clojure HTTP server abstraction
+* https://github.com/rm-hull/nvd-clojure[nvd-clojure] https://github.com/rm-hull/nvd-clojure/blob/main/CHANGELOG.md[5.0.0] - National Vulnerability Database dependency checker for Clojure projects
+* https://github.com/gersak/toddler[toddler] 0.9.7 - UI library based on lilactown/helix and shadow-css libraries
+* https://github.com/alexander-yakushev/compliment[compliment] https://github.com/alexander-yakushev/compliment/blob/master/CHANGELOG.md[0.7.0] - Clojure completion library that you deserve
+* https://github.com/pitch-io/uix[uix] https://github.com/pitch-io/uix/blob/master/CHANGELOG.md[1.4.0] - Idiomatic ClojureScript interface to modern React.js
+* https://github.com/zidicat/Inview[Inview]  - Enlive inspired lib for transformation of Hiccup data for use in Clojure and ClojureScript
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/blob/published/CHANGELOG.md[2.0.495] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/chr15m/cljs-josh[cljs-josh] 0.0.7 - Scittle cljs live-reloading server
+* https://github.com/scicloj/clay[clay] https://github.com/scicloj/clay/blob/main/CHANGELOG.md[2-beta37] - A tiny Clojure tool for dynamic workflow of data visualization and literate programming
+* https://github.com/scicloj/noj[noj] https://github.com/scicloj/noj/blob/main/CHANGELOG.md[2-beta13] - A clojure framework for data science
+* https://github.com/scicloj/tableplot[tableplot] https://github.com/scicloj/tableplot/blob/main/CHANGELOG.md[1-beta12] - Easy layered graphics with Hanami & Tablecloth
+* https://github.com/fogus/rv[rv] https://github.com/fogus/rv/blob/main/CHANGELOG.md[0.0.7] - A Clojure library exploring the application of pure reasoning algorithms
+* https://github.com/clj-commons/virgil[virgil] https://github.com/clj-commons/virgil/blob/master/CHANGELOG.md[0.4.0] - Recompile Java code without restarting the REPL

@@ -1,0 +1,53 @@
+= Clojure Deref (Apr 5, 2025)
+Alex Miller
+2025-04-05
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts, videos, and media
+
+* https://www.youtube.com/watch?v=bOQyCdUByHA[[EP.06] deref-in] - clojure-br
+* https://soundcloud.com/clojurestream/e101-fcis-with-magnars?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing[E101 FC/IS with magnars] - ClojureStream Podcast
+* https://www.youtube.com/watch?v=ZUUstGuTRPM[Toddler - UI or not to UI (by Robert Geršak)] - London Clojurians
+* https://www.youtube.com/watch?v=c0Rl9DKOTOY[Clojure visual-tools 33- Workflow Demos 7: Clojure Sublimed, Executor, clj-reload, clojure+, Clay] - Sci Cloj
+* https://www.youtube.com/watch?v=fvcnCxFHyos[Scicloj AI Meetup 2: practice session - build a RAG] - Sci Cloj
+* https://www.youtube.com/watch?v=IRqXVvocsps[7 UIs with Replicant, Ep 0: Setup] - Replicant TV
+* https://www.youtube.com/watch?v=kUvd1o6w0Hc[7 UIs with Replicant, Ep 1: Counter] - Replicant TV
+* https://www.youtube.com/watch?v=qYokrc09mQw[Refactoring Ring. Keep your handlers clean] - Clojure Diary
+* https://www.youtube.com/watch?v=9-HTMlx5aNg[Clojure stuff one needs to know, and sites where one can be updated] - Clojure Diary
+
+== Blogs, articles, and projects
+
+* https://jank-lang.org/blog/2025-03-28-error-reporting/[Can jank beat Clojure's error reporting?] - Jeaye Wilkerson
+* https://moea.github.io/playground/clojure/gadt/static/typing/2025/03/29/gadt.html[Playing Fast and Loose With GADTs] - Moe Aboulkheir
+* https://flexiana.com/news/2025/03/experience-with-claude-code[Experience with Claude Code] - Jiri Knesl (Flexiana)
+* https://flexiana.com/news/2025/04/why-clojure-developers-love-the-repl-so-much[Why Clojure Developers Love the REPL So Much] - Jakub Zika (Flexiana)
+* https://www.patreon.com/posts/transparency-125684280[Transparency report: March 2025] - Nikita Prokopov
+* https://blog.redplanetlabs.com/2025/04/01/massively-scalable-collaborative-text-editor-backend-with-rama-in-120-loc/[Massively scalable collaborative text editor backend with Rama in 120 LOC] - Nathan Marz (Red Planet Labs)
+* https://saunved.com/tech/learning-clojure-as-a-js-dev[Learning Clojure as a Javascript developer] - Saunved Mutalik
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/clojure/core.async[core.async] https://github.com/clojure/core.async?tab=readme-ov-file#changelog[1.8.735] - Facilities for async programming and communication in Clojure
+* https://github.com/NoahTheDuke/splint[splint] https://github.com/NoahTheDuke/splint/blob/main/CHANGELOG.md[1.20.0] - A Clojure linter focused on style and code shape
+* https://github.com/amiorin/big-config[big-config]  - An alternative to traditional configuration languages
+* https://github.com/jaidetree/valhalla[valhalla] https://github.com/jaidetree/valhalla/releases/tag/2025.3.29[2025.3.29] - A ClojureScript focused validation library
+* https://github.com/k13labs/futurama[futurama] https://github.com/k13labs/futurama/blob/main/CHANGELOG.md[1.3.1] - Futurama is a Clojure library for more deeply integrating async abstractions with core.async
+* https://github.com/atproto-clj/atproto-clj[atproto-clj]  - ATProto Clojure SDK
+* https://github.com/AbhinavOmprakash/snitch[snitch] https://github.com/AbhinavOmprakash/snitch/blob/main/CHANGELOG.md[0.1.16] - Snitch is inline-defs on steroids
+* https://github.com/cjohansen/replicant[replicant] 2025.03.27 - A data-driven rendering library for Clojure(Script) that renders hiccup to DOM or to strings
+* https://github.com/flow-storm/flow-storm-debugger[flow-storm-debugger] https://github.com/flow-storm/flow-storm-debugger/blob/master/CHANGELOG.md[4.3.0] - A debugger for Clojure and ClojureScript with some unique features
+* https://github.com/thoughtfull-clojure/desiderata[desiderata] https://github.com/thoughtfull-clojure/desiderata/blob/main/CHANGELOG.md[1.1.0] - Things wanted or needed but missing from clojure.core
+* https://github.com/babashka/process[process] https://github.com/babashka/process/blob/master/CHANGELOG.md#0522-2024-02-29[0.6.23] - Clojure library for shelling out / spawning sub-processes
+* https://github.com/borkdude/edamame[edamame] https://github.com/borkdude/edamame/blob/master/CHANGELOG.md[1.4.29] - Configurable EDN/Clojure parser with location metadata
+* https://github.com/mpenet/pact[pact] 1.0.8 - clojure.spec to json-schema generation library
+* https://github.com/scicloj/clay[clay] https://github.com/scicloj/clay/blob/main/CHANGELOG.md[2-beta39] - A tiny Clojure tool for dynamic workflow of data visualization and literate programming
+* https://github.com/scicloj/noj[noj] https://github.com/scicloj/noj/blob/main/CHANGELOG.md[2-beta14] - A clojure framework for data science
+* https://github.com/practicalli/clojure-cli-config[clojure-cli-config] https://github.com/practicalli/clojure-cli-config/releases/tag/2025-04-02[2025-04-02] - User aliases and Clojure CLI configuration for deps.edn based projects
+* https://github.com/babashka/pod-babashka-instaparse[pod-babashka-instaparse] https://github.com/babashka/pod-babashka-instaparse/blob/main/CHANGELOG.md[0.0.5] - A pod exposing Instaparse to babashka
+* https://github.com/kaepr/game-of-life-cljs[game-of-life-cljs]  - Conway's Game of Life implemented in ClojureScript

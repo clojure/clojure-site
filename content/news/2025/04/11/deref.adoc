@@ -1,0 +1,38 @@
+= Clojure Deref (Apr 11, 2025)
+Alex Miller
+2025-04-11
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts, videos, and media
+
+* https://www.youtube.com/watch?v=52lGEPWA2WU[David Nolen guests on Apropos Clojure 2025-04-08] - apropos clojure
+* https://www.youtube.com/watch?v=H7ZlwEDxzRs[Clojure Corner: Interview with Michiel Borkent] - Flexiana
+* https://zencastr.com/z/cK98nMcr[defn episode 6ae6acf85d52 Chris Pellets McCormick] - defn
+* https://www.youtube.com/watch?v=N85uFVL7YF0[7 UIs with Replicant, Ep 2: Navigation and state management] - Replicant TV
+* https://www.youtube.com/watch?v=jb1BcYpyOAs[Supercharge your debugging with Snitch] - CalvaTV
+* https://www.youtube.com/watch?v=JfF8ukaxG00[Elegant way of filtering maps based on key value pairs] - Clojure Diary
+* https://www.youtube.com/watch?v=TpkiwqVf8Bo[Build Order - Using Clojure to determine build order] - Clojure Diary
+
+== Blogs, articles, and projects
+
+* https://andersmurphy.com/2025/04/07/clojure-realtime-collaborative-web-apps-without-clojurescript.html[Clojure: Realtime collaborative web apps without ClojureScript] - Anders Murphy
+* https://thomascothran.tech/2025/04/avoid-with-redefs/[Avoid with-redefs in tests] - Thomas Cothran
+* https://blog.redplanetlabs.com/2025/04/08/next-level-backends-with-rama-recommendation-engine-in-80-loc/[Next-level backends with Rama: recommendation engine in 80 LOC] - Nathan Marz (Red Planet Labs)
+* https://www.evalapply.org/posts/demo-clojure-workflow-scicloj/index.html#main[Keeping it Old-Tool: REPL habits of a grug-brained Clojure programmer] - Aditya Athalye
+* https://mehmetgoekce.substack.com/p/object-oriented-programming-in-java[Object-Oriented Programming in Java 21 vs Functional Programming in Clojure: A Technical Comparison] - Mehmet Gökçe
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/clojure/core.async[core.async] https://github.com/clojure/core.async?tab=readme-ov-file#changelog[1.8.741] - Facilities for async programming and communication in Clojure
+* https://github.com/clj-kondo/clj-kondo[clj-kondo] https://github.com/clj-kondo/clj-kondo/blob/master/CHANGELOG.md[2025.04.07] - Static analyzer and linter for Clojure code that sparks joy
+* https://repo.prod.meissa.de/meissa/c4k-forgejo[c4k-forgejo] 6.0.0 - Provision forgejo on k8s with c4k
+* https://github.com/abogoyavlensky/clojure-stack-lite[clojure-stack-lite] 0.1.0 - A quick way to start a full-stack Clojure app with server-side rendering
+* https://github.com/squint-cljs/squint[squint] https://github.com/squint-cljs/squint/blob/main/CHANGELOG.md[0.8.144] - Light-weight ClojureScript dialect
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/blob/published/CHANGELOG.md[2.0.498] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/scicloj/noj[noj] https://github.com/scicloj/noj/blob/main/CHANGELOG.md[2-beta15] - A clojure framework for data science

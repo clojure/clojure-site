@@ -1,0 +1,46 @@
+= Clojure Deref (Apr 17, 2025)
+Alex Miller
+2025-04-17
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts, videos, and media
+
+* https://www.youtube.com/watch?v=_H-5SWm3Lvk[Episode 10 ... the refactoring continues until the code improves] - Content Made Simple
+* https://www.youtube.com/watch?v=EpUfIrQBJ9E[Single-binary ClojureScript] - mccormix
+* https://www.youtube.com/watch?v=punj0oHSrPQ[numbers, radix, arbitrary precision in Clojure] - Clojure Diary
+
+== Blogs, articles, and projects
+
+* https://obryant.dev/p/yakread-algorithm/[Yakread's ranking algorithm] - Jacob O'Bryant
+* https://bogoyavlensky.com/blog/build-and-publish-clojure-lib-with-slim/[Building and publishing a Clojure library from scratch with Slim] - Andrey Bogoyavlenskiy
+* https://scicloj.github.io/blog/clojure-in-new-fields-opening-up/[Clojure in new fields - opening up] - Daniel Slutsky
+* https://ilmo.bearblog.dev/conjtest-a-new-policy-as-code-tool-built-with-clojure-go/[Conjtest: a new Policy-as-Code tool built with Clojure/Babashka & Go] - Ilmo Raunio
+* https://andersmurphy.com/2025/04/15/why-you-should-use-brotli-sse.html[Why you should consider using brotli compression with SSE] - Anders Murphy
+* https://blog.redplanetlabs.com/2025/04/16/next-level-backends-with-rama-fault-tolerant-timed-notifications-in-25-loc/[Next-level backends with Rama: fault-tolerant timed notifications in 25 LOC] - Nathan Marz (Red Planet Labs)
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/cursive-ide/cursive[cursive] https://github.com/cursive-ide/cursive/blob/master/CHANGELOG.md[2025.1] - Cursive: The IDE for beautiful Clojure code
+* https://github.com/ilmoraunio/conjtest[conjtest] https://github.com/ilmoraunio/conjtest/blob/main/CHANGELOG.md[0.0.1] - A command-line utility heavily inspired by and partially based on Conftest
+* https://github.com/dakrone/cheshire[cheshire] https://github.com/dakrone/cheshire/blob/master/ChangeLog.md[6.0.0] - Clojure JSON and JSON SMILE (binary json format) encoding/decoding
+* https://github.com/amiorin/big-container[big-container]  - doom emacs development inside a container
+* https://github.com/filipesilva/datomic-pro-manager[datomic-pro-manager] 1.0.0 - Download, setup, and run Datomic Pro backed by SQLite in a single command
+* https://github.com/thoughtfull-clojure/amalgam[amalgam] https://github.com/thoughtfull-clojure/amalgam/blob/main/CHANGELOG.md[2.0.0] - Useful utilities and mixtures for com.stuartsierra/component
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/blob/published/CHANGELOG.md[2.0.501] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/squint-cljs/squint[squint] https://github.com/squint-cljs/squint/blob/main/CHANGELOG.md[0.8.146] - Light-weight ClojureScript dialect
+* https://github.com/babashka/cli[cli] https://github.com/babashka/cli/blob/main/CHANGELOG.md[0.8.65] - Turn Clojure functions into CLIs!
+* https://github.com/abogoyavlensky/slim[slim] https://github.com/abogoyavlensky/slim/blob/master/CHANGELOG.md[0.3.2] - The slim way to build Clojure
+* https://github.com/basilisp-lang/basilisp[basilisp] https://github.com/basilisp-lang/basilisp/blob/main/CHANGELOG.md[0.3.8] - A Clojure-compatible(-ish) Lisp dialect targeting Python 3.9+
+* https://github.com/clojure-emacs/clojure-ts-mode[clojure-ts-mode] https://github.com/clojure-emacs/clojure-ts-mode/blob/main/CHANGELOG.md#020[0.2.3] - The next generation Clojure major mode for Emacs, powered by TreeSitter
+* https://github.com/taoensso/nippy[nippy] https://github.com/taoensso/nippy/blob/master/CHANGELOG.md[3.5.0] - Fast serialization library for Clojure
+* https://github.com/taoensso/timbre[timbre] https://github.com/taoensso/timbre/blob/master/CHANGELOG.md[6.7.0] - Pure Clojure/Script logging library
+* https://github.com/taoensso/tufte[tufte] https://github.com/taoensso/tufte/blob/master/CHANGELOG.md[2.7.0] - Simple performance monitoring library for Clojure/Script
+* https://github.com/http-kit/http-kit[http-kit] https://github.com/http-kit/http-kit/blob/master/CHANGELOG.md[2.9.0-beta1] - Simple, high-performance event-driven HTTP client+server for Clojure
+* https://github.com/scarletcomply/license-finder[license-finder] https://github.com/scarletcomply/license-finder/blob/main/CHANGELOG.md[0.4.0] - Finds licenses of your Clojure(Script) dependencies
+* https://github.com/babashka/babashka[babashka] https://github.com/babashka/babashka/blob/master/CHANGELOG.md[1.12.198] - Native, fast starting Clojure interpreter for scripting

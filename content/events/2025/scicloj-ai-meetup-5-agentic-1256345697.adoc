@@ -1,0 +1,70 @@
+= Scicloj AI Meetup 5 # Agentic
+2025-05-03
+:jbake-type: event
+:jbake-edition: 
+:jbake-link: https://clojureverse.org/t/scicloj-ai-meetup-5-agentic-data-science-structured-data-from-llms-mcp-sdk/11334
+:jbake-location: online
+:jbake-start: 2025-05-03
+:jbake-end: 2025-05-03
+
+== Scicloj AI Meetup 5 # Agentic Data-science # S...
+
+Scicloj AI Meetup 5 # Agentic Data-science # Structured Data from LLMs # MCP SDK +
+ +
+This will be the fifth meeting of the new scicloj-ai-meetups group co-organized by @stoica94 and @daslu. +
+Note, this is a slight rescheduling of an event post that was previously announced. +
+Agenda +
+ +
+ +
+@pragyansden - Reliable Extraction of Structured Data from LLM Responses +
+JSON formatting in LLM APIs increases response time and prevents streaming. +
+I&rsquo;ll demonstrate how Instaparse helped us extract structured data elements from LLM responses as they arrive. It enabled us to stream UI operations that empowers agentic workflow for our  No-Code platform. +
+We will walk through some practical techniques to parse streaming LLM outputs efficiently while maintaining structured data integrity. +
+(See also Pragyan&rsquo;s recent blog post, Taming LLM Responses with Instaparse.) +
+ +
+ +
+@siavash_mohammady - Agentic-Driven Data-science +
+Data-science tasks like data preparation takes time, In this lecture we are reviewing how could we increase productivity of Clojure data-scientist through using of LLM Agent. +
+ +
+ +
+@vedang - Writing MCP servers in Clojure, for fun and profit +
+ +
+What is MCP, if you&rsquo;ve been living under a rock +
+Tools +
+Prompts +
+Resources +
+Roots +
+Sampling +
+Interesting future directions in the Protocol, what I like / don&rsquo;t like +
+Future direction, ideas, contributing, Q&amp;A +
+(see GitHub - unravel-team/mcp-clojure-sdk: A Clojure SDK to create MCP servers (and eventually clients)) +
+ +
+ +
+ +
+Discussion +
+ +
+ +
+Joining  +
+ +
+Please mark your participation using the Your rsvp button at the top of this page (requires Clojureverse login). +
+Please join the Clojurians Zulip chat beforehand. +
+You can also use the Add to Calendar button to add the event to your calendar. +
+ +
+Chat +
+We will use the #scicloj-ai-meetups channel of the Clojurians Zulip Chat (requires login). Please join the Zulip chat before attending our meetings. +
+Length +
+The official session will run for 120 minutes. +
+Informal discussions may continue afterwards for those interested. +
+Platform +
+ +
+Video meeting: Launch Meeting - Zoom +
+Text chat: We will use the #ai-meetups Zulip stream (requires Zulip login) +
+ +
+Recording +
+Parts of the meeting will be recorded and may be shared publicly. +
+Some parts will remain unrecorded. +
+ +
+an LLM pretending to find Clojure joyful1212&times;568 98.3 KB +
+ +
+Zulip: https://clojurians.zulipchat.com/#narrow/stream/262224-events/near/513108718 +
+

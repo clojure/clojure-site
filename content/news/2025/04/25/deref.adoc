@@ -1,0 +1,59 @@
+= Clojure Deref (Apr 25, 2025)
+Alex Miller
+2025-04-25
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts, videos, and media
+
+* https://www.youtube.com/watch?v=_g69GKN6lAM[Fogus guests on Apropos Clojure 2025-04-22] - apropos clojure
+* https://www.youtube.com/watch?v=DN0l78bFsDY[Scicloj AI Meetup 4 # LLM tools feedback loop # MCPs, Modex, and Datomic MCP] - Sci Cloj
+* https://www.youtube.com/watch?v=-3VOuwUihSY[Episode 11 ... the refactoring continues cos we can] - Content Made Simple
+* https://www.youtube.com/watch?v=I-XSgHeuol0[7 UIs with Replicant, Ep 4: Flight booking, part 1] - Replicant TV
+* https://www.youtube.com/watch?v=xzC3g0qIRro[Anders and the Game of Life] - Datastar
+* https://www.youtube.com/watch?v=_bmuH5XONww[Use Shadcn Style React Components in ClojureScript] - Kelvin Mai
+* https://www.youtube.com/watch?v=ACwJNGxo3o4[The Duality of Transducers — Clojure's Transducers from Scratch] - Cameron Desautels
+
+== Blogs, articles, and projects
+
+* https://www.clojuriststogether.org/news/q2-2025-funding-announcement/[Q2 2025 Funding Announcement] - Kathy Davis (Clojurists Together)
+* https://blog.ambrosebs.com/2025/04/20/optimizing-syntax-quote.html[Optimizing syntax-quote] - Ambrose Bonnaire-Sergeant
+* https://www.karimarttila.fi/clojure/2025/04/20/clojure-power-tools-part-3.html[Clojure Power Tools Part 3] - Kari Marttila
+* https://mauricio.szabo.link/blog/2025/04/14/exposing-clojure-to-ruby-and-other-languages/[Exposing Clojure to Ruby and other languages] - Maurício Szabo
+* https://mauricio.szabo.link/blog/2025/04/21/exposing-clojure-to-ruby-and-other-languages-callbacks/[Exposing Clojure to Ruby and other languages – Callbacks] - Maurício Szabo
+* https://mauricio.szabo.link/blog/2025/04/22/exposing-clojure-to-ruby-and-other-languages-java-objects-in-c/[Exposing Clojure to Ruby and other languages – Java objects in C] - Maurício Szabo
+* https://blog.danieljanus.pl/2025/04/22/datomic-forking-the-past/[No, really, you can’t branch Datomic from the past] - Daniel Janus
+* https://blog.redplanetlabs.com/2025/04/22/how-gd-netcetera-used-rama-to-100x-the-performance-of-a-product-used-by-millions-of-people/[How G+D Netcetera used Rama to 100x the performance of a product used by millions of people] - Nathan Marz (Red Planet Labs)
+* https://emil0r.com/posts/2025-04-23-look-at-how-little-i-need/[Look at how little I need] - Emil Bengtsson
+* https://www.emcken.dk/programming/2025/04/21/local-s3-storage-with-minio-for-clojure-dev-env/[Local S3 storage with MinIO for your Clojure dev environment] - Jacob Emcken
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/flow-storm/flow-storm-flowbook-plugin[flow-storm-flowbook-plugin] 1.0.0-alpha - A FlowStorm plugin for timelines serialization/replaying
+* https://github.com/cognitect-labs/aws-api[aws-api] https://github.com/cognitect-labs/aws-api/blob/main/CHANGES.md[0.8.741] - AWS, data driven
+* https://github.com/k13labs/walkr[walkr] https://github.com/k13labs/walkr/blob/main/CHANGELOG.md[0.0.1] - Walkr (walk-reduce) is a Clojure library built to help you easily walk-reduce clojure data structures
+* https://github.com/igrishaev/pg2[pg2] https://github.com/igrishaev/pg2/blob/master/CHANGELOG.md[0.1.38] - A fast PostgreSQL driver for Clojure
+* https://github.com/clj-commons/etaoin[etaoin] https://github.com/clj-commons/etaoin/blob/master/CHANGELOG.adoc#v1.1.42[1.1.43] - Pure Clojure Webdriver protocol implementation
+* https://github.com/johnmn3/wrap-map[wrap-map] https://github.com/johnmn3/wrap-map/blob/main/CHANGELOG.md[0.1.11] - map type maps
+* https://github.com/igrishaev/jsam[jsam] https://github.com/igrishaev/jsam/blob/master/CHANGELOG.md[0.1.0] - A lightweight, zero-deps JSON parser and writer
+* https://github.com/potetm/fusebox[fusebox] https://github.com/potetm/fusebox/blob/master/CHANGELOG.md[1.0.10] - An extremely lightweight fault tolerance library for Clojure(Script)
+* https://github.com/ericdallo/metrepl[metrepl] https://github.com/ericdallo/metrepl/blob/master/CHANGELOG.md[0.3.0] - Metrics of your Clojure nREPL
+* https://github.com/emil0r/ez-form[ez-form] 2025.04.23 - A data-driven library for forms using hiccup
+* https://github.com/xadecimal/async-style[async-style] https://github.com/xadecimal/async-style/blob/main/CHANGELOG.md[0.1.0] - Higher level utilities over Clojure core.async that let you use an async style of programming with ease
+* https://github.com/babashka/babashka[babashka] https://github.com/babashka/babashka/blob/master/CHANGELOG.md[1.12.199] - Native, fast starting Clojure interpreter for scripting
+* https://github.com/amiorin/big-config[big-config] https://github.com/amiorin/big-config/blob/main/CHANGELOG.md[0.1.169] - An alternative to traditional configuration languages
+* https://github.com/scicloj/clay[clay] https://github.com/scicloj/clay/blob/main/CHANGELOG.md[2-beta40] - A tiny Clojure tool for dynamic workflow of data visualization and literate programming
+* https://github.com/scicloj/noj[noj] https://github.com/scicloj/noj/blob/main/CHANGELOG.md[2-beta16] - A clojure framework for data science
+* https://github.com/amiorin/big-container[big-container] https://github.com/amiorin/big-container/blob/main/CHANGELOG.md[0.1.25] - doom emacs development inside a container
+* https://github.com/soulspace-org/overarch[overarch] https://github.com/soulspace-org/overarch/blob/main/Changelog.md[0.36.0] - Overarch provides an ontology and a data driven model of software systems and organizations based on e.g. UML and the C4 model
+* https://github.com/taoensso/tufte[tufte] https://github.com/taoensso/tufte/blob/master/CHANGELOG.md[3.0.0-beta1] - Simple performance monitoring library for Clojure/Script
+* https://github.com/scicloj/kindly[kindly] https://github.com/scicloj/kindly/blob/main/CHANGELOG.md[4-beta16] - A small library for defining how different kinds of things should be rendered
+* https://github.com/scicloj/kindly-advice[kindly-advice] https://github.com/scicloj/kindly-advice/blob/main/CHANGELOG.md[1-beta13] - A small library to advise Clojure data visualization and notebook tools how to display forms and values, following the kindly convention
+* https://github.com/replikativ/datahike[datahike] https://github.com/replikativ/datahike/releases/tag/0.6.1596[0.6.1595] - A durable Datalog implementation adaptable for distribution
+* https://github.com/clojure-lsp/clojure-lsp[clojure-lsp] https://github.com/clojure-lsp/clojure-lsp/blob/master/CHANGELOG.md[2025.04.23-18.16.46] - Clojure & ClojureScript Language Server (LSP) implementation
+* https://github.com/datopia/invariant[invariant]  - This repository provides invariant verification in Datalog for immutable databases like Datahike

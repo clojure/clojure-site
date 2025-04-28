@@ -1,0 +1,18 @@
+= Introducing core.async.flow
+Alex Miller
+2025-04-28
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+https://github.com/clojure/core.async[core.async] 1.9.808-alpha1 is now available, featuring the first release of **core.async.flow**. You can read more about core.async.flow in https://clojure.github.io/core.async/flow.html[the rationale] and https://clojure.github.io/core.async/clojure.core.async.flow.html[the docs].
+
+core.async.flow is in alpha state - all APIs are still subject to change but we welcome your feedback as we move towards a non-alpha release.
+
+This release also adds datafy support for channels and buffers.
+
+== core.async.flow-monitor
+
+In addition, we are today releasing https://github.com/clojure/core.async.flow-monitor/[core.async.flow-monitor] v0.1.0, which is a tool for visualizing a flow's processes as SVG (viewable inline in Calva or Cursive!), and dynamically monitoring and interacting with flows as they are running.
+
+

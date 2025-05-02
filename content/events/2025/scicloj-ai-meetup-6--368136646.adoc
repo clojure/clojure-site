@@ -1,0 +1,62 @@
+= Scicloj AI Meetup 6
+2025-05-11
+:jbake-type: event
+:jbake-edition: 
+:jbake-link: https://clojureverse.org/t/scicloj-ai-meetup-6-llms-clojure-who-needs-frameworks-part-2/11366
+:jbake-location: online
+:jbake-start: 2025-05-11
+:jbake-end: 2025-05-11
+
+== Scicloj AI Meetup 6: LLMs + Clojure = Who need...
+
+Scicloj AI Meetup 6: LLMs + Clojure = Who needs frameworks? - Part 2 +
+ +
+Please rsvp  +
+This will be the sixth meeting of the new scicloj-ai-meetups group. +
+It will be a mix of a talk and a discussion. +
+We&rsquo;ll continue the discussion of Meeting #3. Please check the recording video, that was shared internally in the Zulip chat: #scicloj-ai-meetups &gt; meeting 3 @   +
+Agenda +
+ +
+@kapil&rsquo;s talk: LLMs + Clojure = Who needs frameworks? - Part 2 +
+ +
+see the abstract below +
+ +
+ +
+TBD +
+discussion +
+ +
+Joining  +
+ +
+Please mark your participation using the Your rsvp button at the top of this page (requires Clojureverse login). +
+Please join the Clojurians Zulip chat beforehand. +
+You can also use the Add to Calendar button to add the event to your calendar. +
+ +
+Chat +
+We will use the #scicloj-ai-meetups channel of the Clojurians Zulip Chat (requires login). Please join the Zulip chat before attending our meetings. +
+Length +
+The official session will run for 90 minutes. +
+Informal discussions may continue afterwards for those interested. +
+Platform +
+ +
+Video meeting: Launch Meeting - Zoom - please do not share this link anywhere  +
+Text chat: We will use the #ai-meetups Zulip stream (requires Zulip login) +
+ +
+Abstract +
+(by @kapil) +
+We&rsquo;ll continue the discussion of Meeting #3. Please check the recording video, that was shared internally in the Zulip chat: #scicloj-ai-meetups &gt; meeting 3 @  +
+tl;dw of the video, I had proposed an idea of a common format for Clojure libraries.  This will help LLMs understand Clojure ecosystem. It will solve a common friction of newcomers newcomers not able to start a new project. We also discussed the implications and challenges of this approach. +
+In this session I am going to present some demos. Which will help us understand the possibilities of this approach and get more ideas. +
+Key points: +
+ +
+We will look at current draft of LLMs.edn format. +
+A demo of how LLMs.edn with LLMs will be used to create new Clojure projects for specific use cases. ex. A web app +
+Architecture and approach discussion on how to create a database of metadata from LLMs.edn and other sources. This will help make tool used in #2 more reliable and useful. +
+ +
+Recording +
+Parts of the meeting will be recorded and may or may not be shared publicly. +
+Some parts will remain unrecorded. +
+ +
+joy21212&times;568 98.3 KB +
+ +
+Zulip: https://clojurians.zulipchat.com/#narrow/stream/262224-events/near/515508555 +
+

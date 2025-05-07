@@ -1,0 +1,68 @@
+= Clojure Deref (May 3, 2025)
+Alex Miller
+2025-05-03
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts, videos, and media
+
+* https://www.youtube.com/watch?v=lXFwf3O4BVY[A quick demo of core.async.flow] - ClojureTV
+* https://www.youtube.com/watch?v=vY6q_4XcdRk[Building a 3D Multiplayer Shooter in Clojure: The Making of Wizard Masters (by Ertugrul Cetin)] - London Clojurians
+* https://www.youtube.com/watch?v=WfpuEhtas0Q[Clojure Corner: Interview with Eric Dallo] - Flexiana
+* https://www.youtube.com/watch?v=PWHidCezwFM[Clojure in new fields - opening up] - Sci Cloj
+* https://www.youtube.com/watch?v=s2UPaRjs0kg[SciNoj Light #1 pre-conference interview: Cvetomir Dimov] - Sci Cloj
+* https://www.youtube.com/watch?v=B1yPkpyiEEs[Clojure for data analysis - getting started with Noj v2, VSCode, Calva, and Clay] - Sci Cloj
+* https://share.descript.com/view/nJkFVXo15lM[Electric Clojure in 5 minutes — Systems Distributed 2024] - Dustin Getz
+* https://www.youtube.com/watch?v=ABM7wSlb3mM[7 UIs with Replicant, Ep 5: Flight booking, part 2] - Replicant TV
+* https://www.youtube.com/watch?v=qn34p5JWmOU[Automatic Type Conversion in Clojure] - Clojure Diary
+
+== Blogs, articles, and projects
+
+* https://www.taoensso.com/news/2025-04-open-source[Open source update] - Peter Taoussanis
+* https://blog.michielborkent.nl/oss-updates-mar-apr-2025.html[OSS updates March and April 2025] - Michiel Borkent
+* https://www.linkedin.com/pulse/secure-adaptable-systems-how-wrap-map-extends-edge-john-newman-5bkxe/?trackingId=RTatQDN8T92TTHF8hdo7WA%3D%3D[Secure, Adaptable Systems: How Wrap Map Extends Functional Programming's Edge] - John Newman
+* https://shagunagrawal.me/posts/compiling-clojure-to-wasm-image/[Compiling Clojure to WebAssembly] - Shagun Agrawal
+* https://www.karimarttila.fi/python/2025/04/26/converting-clojure-to-python-using-copilot.html[Converting Clojure Backend to Python Using Copilot] - Kari Marttila
+* https://blog.michielborkent.nl/babashka-java-reflection-type-hints.html[Babashka Java interop, reflection and type hints] - Michiel Borkent
+* https://romanliutikov.com/blog/running-clojure-in-wasm[Running Clojure in Wasm] - Roman Liutikov
+* https://romanliutikov.com/blog/closure-compiler-lands-class-fields-support[Closure Compiler lands class fields support] - Roman Liutikov
+* https://romanliutikov.com/blog/bringing-react-native-worklets-to-clojurescript[Bringing React Native Worklets to ClojureScript] - Roman Liutikov
+* https://xtdb.com/blog/building-a-bitemp-index-1-taxonomy[Building a Bitemporal Index (part 1): A Taxonomy of Bitemporal Data] - James Henderson (XTDB)
+* https://blog.redplanetlabs.com/2025/04/29/next-level-backends-with-rama-personalized-content-moderation-in-60-loc/[Next-level backends with Rama: personalized content moderation in 60 LOC] - Nathan Marz (Red Planet Labs)
+* https://jank-lang.org/blog/2025-05-02-starting-seamless-interop/[Starting on seamless C++ interop in jank] - Jeaye Wilkerson
+* https://tonsky.me/blog/hashp/[When You Get to Be Smart Writing a Macro] - Nikita Prokopov
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/clojure/core.async[core.async] https://github.com/clojure/core.async?tab=readme-ov-file#changelog[1.9.808-alpha1] - Facilities for async programming and communication in Clojure
+* https://github.com/clojure/core.async.flow-monitor[core.async.flow-monitor] 0.1.0 - A real-time monitoring and interaction tool for clojure.core.async.flow
+* https://github.com/babashka/babashka[babashka] https://github.com/babashka/babashka/blob/master/CHANGELOG.md[1.12.200] - Native, fast starting Clojure interpreter for scripting
+* https://github.com/igrishaev/virtuoso[virtuoso] https://github.com/igrishaev/virtuoso/blob/master/CHANGELOG.md[0.1.1] - A number of trivial wrappers on top of virtual threads
+* https://github.com/pfeodrippe/vybe[vybe] https://github.com/pfeodrippe/vybe/releases/tag/v0.7.598[0.7.598] - A Clojure framework for game dev
+* https://github.com/nakkaya/weave[weave]  - An easy-to-use, Clojure-based web application framework
+* https://github.com/flow-storm/flow-storm-async-flow-plugin[flow-storm-async-flow-plugin] https://github.com/flow-storm/flow-storm-async-flow-plugin/blob/master/CHANGELOG.md[1.0.0-beta5] - A FlowStorm plugin to debug core.async.flow graphs
+* https://github.com/clojure-emacs/cider[cider] https://github.com/clojure-emacs/cider/blob/master/CHANGELOG.md[1.18] - The Clojure Interactive Development Environment that Rocks for Emacs
+* https://github.com/babashka/fs[fs] https://github.com/babashka/fs/blob/master/CHANGELOG.md[0.5.25] - File system utility library for Clojure
+* https://github.com/taoensso/telemere[telemere] https://github.com/taoensso/telemere/blob/master/CHANGELOG.md[1.0.0] - Structured telemetry library for Clojure/Script
+* https://github.com/taoensso/tufte[tufte] https://github.com/taoensso/tufte/blob/master/CHANGELOG.md[3.0.0-RC1] - Simple performance monitoring library for Clojure/Script
+* https://github.com/practicalli/nvim-astro5[nvim-astro5] https://github.com/practicalli/nvim-astro5/blob/main/CHANGELOG.md[2025-04-24] - Neovim 0.11 config for Clojure development, based on AstroNvim v5
+* https://github.com/tonsky/clojure-plus[clojure-plus] https://github.com/tonsky/clojure-plus/blob/main/CHANGELOG.md[1.4.0] - A collection of utilities that improve Clojure experience
+* https://github.com/borkdude/quickdoc[quickdoc] https://github.com/borkdude/quickdoc/blob/main/CHANGELOG.md[0.2.5] - Quick and minimal API doc generation for Clojure
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/blob/published/CHANGELOG.md[2.0.507] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/paintparty/bling[bling] https://github.com/paintparty/bling/blob/main/CHANGELOG.md[0.6.0] - Rich text console printing for Clojure, ClojureScript, and Babashka
+* https://github.com/abogoyavlensky/clojure-stack-lite[clojure-stack-lite] https://github.com/abogoyavlensky/clojure-stack-lite/releases/tag/0.1.2[0.1.2] - A quick way to start a full-stack Clojure app with server-side rendering
+* https://github.com/fogus/rv[rv] https://github.com/fogus/rv/blob/main/CHANGELOG.md[0.0.8] - A Clojure library exploring the application of pure reasoning algorithms
+* https://github.com/garrett-hopper/tailwindcss-clojure-class-sorter[tailwindcss-clojure-class-sorter]  - A VSCode extension that provides a source action to sort Tailwind CSS classes within your Clojure code, including Hiccup templates
+* https://github.com/scicloj/clay[clay] https://github.com/scicloj/clay/blob/main/CHANGELOG.md[2-beta42] - A tiny Clojure tool for dynamic workflow of data visualization and literate programming
+* https://github.com/scicloj/kindly-advice[kindly-advice] https://github.com/scicloj/kindly-advice/blob/main/CHANGELOG.md[1-beta14] - A small library to advise Clojure data visualization and notebook tools how to display forms and values, following the kindly convention
+* https://github.com/soulspace-org/overarch[overarch] https://github.com/soulspace-org/overarch/blob/main/Changelog.md[0.37.0] - Overarch provides an ontology and a data driven model of software systems and organizations based on e.g. UML and the C4 model
+* https://github.com/scicloj/noj[noj] https://github.com/scicloj/noj/blob/main/CHANGELOG.md[2-beta17] - A clojure framework for data science
+* https://github.com/emil0r/ez-form[ez-form] https://github.com/emil0r/ez-form/blob/master/CHANGELOG.adoc[2025-05-01] - A data-driven library for forms using hiccup
+* https://github.com/seancorfield/deps-new[deps-new] https://github.com/seancorfield/deps-new/blob/develop/CHANGELOG.md[0.8.1] - Create new projects for the Clojure CLI / deps.edn
+* https://github.com/scicloj/wolframite[wolframite] https://github.com/scicloj/wolframite/blob/main/CHANGELOG.md[1.1.0] - An interface between Clojure and Wolfram Language (the language of Mathematica)
+* https://github.com/practicalli/clojure-cli-config[clojure-cli-config] https://github.com/practicalli/clojure-cli-config/blob/main/CHANGELOG.org[2025-05-02] - User aliases and Clojure CLI configuration for deps.edn based projects

@@ -1,0 +1,62 @@
+= Clojure Deref (May 10, 2025)
+Alex Miller
+2025-05-10
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]). Thanks to Anton Fonarev for link aggregation.
+
+== Podcasts, videos, and media
+
+* https://soundcloud.com/clojurestream/e102-pedestal-with-hlship[E102 - Pedestal with hlship] - ClojureStream Podcast
+* https://www.youtube.com/watch?v=dxJgD0CoxVU[Introducing Calva AI Tools a k a Backseat Driver] - CalvaTV
+* https://www.youtube.com/watch?v=IkxKVcv_63o[Scicloj AI Meetup 5 # Structured Data from LLMs #Agentic Data-science] - Sci Cloj
+* https://www.youtube.com/watch?v=a-PrBjlBdw8[JP Monetta guests on Apropos Clojure 2025-05-06] - apropos clojure
+* https://www.youtube.com/watch?v=r8bBNt9Y9fs[ClojureScript + SVG motion graphics] - mccormix
+* https://www.youtube.com/watch?v=Zcd6kXmL5mI[Clojure editor flares for Cursive and Calva] - Timothy Pratley
+* https://www.youtube.com/watch?v=sJQJWcPXsWc[Private Functions in Clojure] - Clojure Diary
+* https://www.youtube.com/watch?v=VgONX4aItEE[Java Files in Clojure Project] - Clojure Diary
+* https://www.youtube.com/watch?v=nwXBqFMPLKg[jar files in Clojure project] - Clojure Diary
+* https://www.youtube.com/watch?v=bfFpO3SLQIc[Ref type in Clojure in practice] - faster-than-light-memes
+
+== Blogs, articles, and projects
+
+* https://clojure.github.io/core.async/flow-guide.html[core.async.flow Guide] - Clojure Team
+* https://romanliutikov.com/blog/towards-react-server-components-in-clojure-part-1[Towards React Server Components in Clojure, Part 1] - Roman Liutikov
+* https://code.thheller.com/blog/shadow-cljs/2025/05/07/dealing-with-zombies.html[CLJS: Dealing with Zombies] - Thomas Heller
+* https://tutorials.datomic.com/todo-list-part-1.html[Building a TODO List App with Datomic Pro - [Part 1]] - Datomic Documentation
+* https://potetm.com/devtalk/stability-by-design.html[Stability by Design] - Timothy Pote
+* https://vlaaad.github.io/lsp-client-in-200-lines-of-code[LSP client in Clojure in 200 lines of code] - Vlad Protsenko
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/clojure/core.async.flow-monitor[core.async.flow-monitor] 0.1.1 - A real-time monitoring and interaction tool for clojure.core.async.flow
+* https://github.com/RokLenarcic/proto-relay[proto-relay] 0.1.0 - Utilities for creating functions that delegate to some underlying protocol
+* https://github.com/2food/datomic-graph-viz[datomic-graph-viz] 1.0.0 - Visualize a datomic database as a graph
+* https://github.com/yonureker/stripe-clojure[stripe-clojure] https://github.com/yonureker/stripe-clojure/blob/master/CHANGELOG.md[0.3.0] - Clojure SDK for the Stripe API
+* https://github.com/BetterThanTomorrow/calva-backseat-driver[calva-backseat-driver] https://github.com/BetterThanTomorrow/calva-backseat-driver/blob/master/CHANGELOG.md[0.0.10] - VS Code AI Agent Interactive Programming. Tools for CoPIlot and other assistants. Can also be used asan MCP server
+* https://github.com/lukaszkorecki/mokujin[mokujin] 1.0.0.82 - Structured logging for Clojure. Thin layer on top of clojure.tools.logging with MDC support
+* https://github.com/cjohansen/dataspex[dataspex] 2025.05.7 - See the shape of your data: point-and-click Clojure(Script) data browser
+* https://github.com/babashka/nbb[nbb] https://github.com/babashka/nbb/blob/main/CHANGELOG.md[1.3.201] - Scripting in Clojure on Node.js using SCI
+* https://github.com/jonasseglare/clj-freqt[clj-freqt]  - Frequent subtree mining with FREQT in Clojure
+* https://github.com/lispyclouds/navi[navi] https://github.com/lispyclouds/navi/releases/tag/0.1.4[0.1.4] - A tiny, data-driven library converting OpenAPI spec to Reitit routes
+* https://github.com/tonsky/clojure-plus[clojure-plus] https://github.com/tonsky/clojure-plus/blob/main/CHANGELOG.md[1.5.0] - A collection of utilities that improve Clojure experience
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/blob/published/CHANGELOG.md[2.0.509] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/julienvincent/msgpack-clj[msgpack-clj] 1.1.0 - High performance Clojure bindings for msgpack-java
+* https://github.com/borkdude/edamame[edamame] https://github.com/borkdude/edamame/blob/master/CHANGELOG.md[1.4.30] - Configurable EDN/Clojure parser with location metadata
+* https://github.com/ilmoraunio/conjtest[conjtest] https://github.com/ilmoraunio/conjtest/blob/main/CHANGELOG.md[0.0.2] - A command-line utility heavily inspired by and partially based on Conftest
+* https://github.com/fogus/rv[rv] https://github.com/fogus/rv/blob/main/CHANGELOG.md[0.0.9] - A Clojure library exploring the application of pure reasoning algorithms
+* https://github.com/scicloj/clay[clay] https://github.com/scicloj/clay/blob/main/CHANGELOG.md[2-beta44] - A tiny Clojure tool for dynamic workflow of data visualization and literate programming
+* https://github.com/scicloj/tableplot[tableplot] https://github.com/scicloj/tableplot/blob/main/CHANGELOG.md[1-beta13] - Easy layered graphics with Hanami & Tablecloth
+* https://github.com/scicloj/noj[noj] https://github.com/scicloj/noj/blob/main/CHANGELOG.md[2-beta18] - A clojure framework for data science
+* https://github.com/thoughtfull-clojure/desiderata[desiderata] https://github.com/thoughtfull-clojure/desiderata/blob/main/CHANGELOG.md[2.1.2] - Things wanted or needed but missing from clojure.core
+* https://github.com/thoughtfull-clojure/amalgam[amalgam] https://github.com/thoughtfull-clojure/amalgam/blob/main/CHANGELOG.md[2.8.3] - Useful utilities and mixtures for com.stuartsierra/component
+* https://github.com/thoughtfull-clojure/amalgam-dirigiste[amalgam-dirigiste] https://github.com/thoughtfull-clojure/amalgam-dirigiste/blob/main/CHANGELOG.md[0.3.0] - Self-adjusting thread pool component with metrics reporting
+* https://github.com/tatut/ripley[ripley] https://github.com/tatut/ripley#changes[2025-05-08] - Server rendered UIs over WebSockets
+* https://github.com/squint-cljs/squint[squint] https://github.com/squint-cljs/squint/blob/main/CHANGELOG.md[0.8.147] - Light-weight ClojureScript dialect
+* https://github.com/squint-cljs/cherry[cherry] https://github.com/squint-cljs/cherry/blob/main/CHANGELOG.md[0.4.27] - Experimental ClojureScript to ES6 module compiler
+* https://github.com/babashka/pod-babashka-fswatcher[pod-babashka-fswatcher] https://github.com/babashka/pod-babashka-fswatcher/blob/main/CHANGELOG.md[0.0.6] - Babashka filewatcher pod
+* https://github.com/abogoyavlensky/clojure-stack-lite[clojure-stack-lite] https://github.com/abogoyavlensky/clojure-stack-lite/releases/tag/0.1.2[0.1.3] - A quick way to start a full-stack Clojure app with server-side rendering

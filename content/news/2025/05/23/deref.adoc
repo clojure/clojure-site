@@ -1,0 +1,69 @@
+= Clojure Deref (May 23, 2025)
+Christoph Neumann
+2025-05-23
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]).
+
+A huge thanks to Anton Fonarev who has put in a ton of work aggregating these links for the past 4
+years! It's a lot to keep up with week after week. As you move on to other things, we want you to
+know that your work hasn't gone unnoticed, and we really appreciate your help.
+
+== Podcasts, videos, and media
+
+* https://youtu.be/bHlLeZCKaLE[REPL Driven Test After Development in Clojure] - Clojure Diary
+* https://zencastr.com/z/tS_FyddQ[defn episode 1a156fe163a1 Nathan Marz] - @defn podcast
+* https://youtu.be/B_D1VAAd3NU[Func Prog Podcast Episode 3 - Peter PEZ Strömberg] - Func Prog Sweden
+* https://youtu.be/PnHybllAxmM[Clojure Corner: Interview with Ovi Stoica] - Flexiana
+* https://youtu.be/kbKNUd6k760[factorial in Clojure. Using memonize. Numeric Data Types] - Clojure Diary
+* https://youtu.be/ptN53mef_IY[Autology: Writing a self-rewriting Lisp (by Dave Kimber)] - London Clojurians
+* https://youtu.be/h8cdxBnW8Ic[Nathan Marz guests on Apropos Clojure 2025-05-20] - apropos clojure
+* https://youtu.be/0BYnGnAPUUY[2o Encontro Presencial Clojure BR] - clojure-br
+
+== Blogs, articles, and projects
+
+* https://www.clojuriststogether.org/news/annually-funded-developers-update-mar./april-2025/[Annually-Funded Developers' Update: Mar./April 2025] - Kathy Davis
+* https://xtdb.com/blog/building-a-bitemp-index-2-resolution[Building a Bitemporal Index (part 2): "Bitemporal Resolution" · XTDB] - James Henderson
+* https://romanliutikov.com/blog/towards-react-server-components-in-clojure-part-2[Towards React Server Components in Clojure, Part 2] - Roman Liutikov
+* https://clojure-diary.gitlab.io/2025/05/14/wrote-about-java-integration-and-private-functions-in-clojure-book.html[Wrote about Java integration, and private functions in Clojure Book] - Karthikeyan A K
+* https://flexiana.com/news/2025/05/flowstorm-debugging-and-understanding-clojure-code-on-a-new-level[FlowStorm: Debugging and Understanding Clojure Code on a New Level - Flexiana] - Khatia Tchitchinadze
+* https://blog.fogus.me/clojure/arities-as-proto.html[Arities as pseudo-protocol] - Fogus
+* https://andersmurphy.com/2025/05/20/clojure-sqlite-c-api-with-project-panama-and-coffi.html[Clojure: SQLite C API with project Panama and Coffi] - Anders Murphy
+* https://www.emcken.dk/programming/2025/05/11/clojure-function-definitions/[Consistent code style for Clojure function definitions] - Jacob Emcken
+* https://lambdaisland.com/blog/2025-05-13-on-interactive[On Interactive Development] - Laurence Chen
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/clojure/tools.build[tools.build] https://github.com/clojure/tools.build/blob/master/CHANGELOG.md[0.10.9] - Clojure builds as Clojure programs
+* https://github.com/metosin/malli[malli] https://github.com/metosin/malli/releases/tag/0.18.0[0.18.0] - High-performance data-driven data specification library for Clojure/Script.
+* https://github.com/igrishaev/whew[whew]  - Try to tame CompletableFuture
+* https://github.com/shipclojure/simulflow[simulflow] https://github.com/shipclojure/simulflow/releases/tag/0.1.4-alpha[0.1.4-alpha] - A Clojure library for building real-time voice-enabled AI pipelines. Simulflow handles the orchestration of speech recognition, audio processing, and AI service integration with the elegance of functional programming.
+* https://github.com/behrica/scicloj.ml.smile2[scicloj.ml.smile2]  - Plugin of Java Smile (> v.2.6) into metamorph.ml
+* https://github.com/clojure-emacs/clojure-ts-mode[clojure-ts-mode] https://github.com/clojure-emacs/clojure-ts-mode/releases/tag/v0.4.0[0.4.0] - The next generation Clojure major mode for Emacs, powered by TreeSitter
+* https://github.com/Ramblurr/datomic-pro-flake[datomic-pro-flake] https://github.com/Ramblurr/datomic-pro-flake/releases/tag/v0.6.0[0.6.0] - A Nix flake providing a Datomic Pro package and NixOS module
+* https://github.com/IGJoshua/coffi[coffi] https://github.com/IGJoshua/coffi/blob/develop/CHANGELOG.md[1.0.615] - A Foreign Function Interface in Clojure for JDK 22+.
+* https://github.com/fulcrologic/java-probe[java-probe]  - Clojure functions that can extract javadoc and source in a REPL. Primarily intended as a tool for AI nREPL MCP tools.
+* https://github.com/seancorfield/logging4j2[logging4j2] https://github.com/seancorfield/logging4j2/releases/tag/v1.0.2[1.0.2] - A Clojure wrapper for log4j2
+* https://github.com/clj-commons/rewrite-clj[rewrite-clj] https://github.com/clj-commons/rewrite-clj/releases/tag/v1.2.50[1.2.50] - Rewrite Clojure code and edn
+* https://github.com/igrishaev/lambda[lambda] https://github.com/igrishaev/lambda/blob/master/CHANGELOG.md[0.1.6] - An AWS Lambda in a single binary file
+* https://github.com/filipesilva/datomic-pro-manager[datomic-pro-manager] https://github.com/filipesilva/datomic-pro-manager/tree/v1.0.1[1.0.1] - Download, setup, and run Datomic Pro backed by SQLite in a single command.
+* https://github.com/seancorfield/honeysql[honeysql] https://github.com/seancorfield/honeysql/releases/tag/v2.7.1310[2.7.1310] - Turn Clojure data structures into SQL
+* https://github.com/lread/test-doc-blocks[test-doc-blocks] https://github.com/lread/test-doc-blocks/releases/tag/v1.2.21[1.2.21] - Test AsciiDoc and CommonMark code blocks found in articles and docstrings.
+* https://github.com/cursive-ide/cursive[cursive] https://cursive-ide.com/blog/cursive-2025.1.1.html[2025.1.1] - Cursive: The IDE for beautiful Clojure code
+* https://github.com/cursive-ide/cursive[cursive] https://cursive-ide.com/blog/cursive-2025.2-eap1.html[2025.2-eap1] - Cursive: The IDE for beautiful Clojure code
+* https://github.com/steffan-westcott/clj-otel[clj-otel] https://github.com/steffan-westcott/clj-otel/blob/master/CHANGELOG.adoc[0.2.8] - An idiomatic Clojure API for adding telemetry to your libraries and applications using OpenTelemetry.
+* https://github.com/metosin/oksa[oksa] https://github.com/metosin/oksa/releases/tag/1.2.0[1.2.0] - Generate GraphQL queries using Clojure data structures.
+* https://repo.prod.meissa.de/meissa/c4k-forgejo[c4k-forgejo] https://repo.prod.meissa.de/meissa/c4k-forgejo/src/tag/7.0.0[7.0.0] - Provision forgejo on k8s with c4k
+* https://github.com/squint-cljs/cherry[cherry] https://github.com/squint-cljs/cherry/blob/main/CHANGELOG.md[0.4.28] - Experimental ClojureScript to ES6 module compiler
+* https://github.com/practicalli/astro[astro] https://github.com/practicalli/astro/releases/tag/2025-05-13[2025-05-13] - Rich development workflow with Clojure support, using AstroNvim 4 and selected plugins
+* https://github.com/BetterThanTomorrow/calva-power-tools[calva-power-tools] https://github.com/BetterThanTomorrow/calva-power-tools/releases/tag/v0.0.8[0.0.8] - A VS Code Extension providing commands for extra powerful things in the Clojure ecosystem
+* https://github.com/babashka/nbb[nbb] https://github.com/babashka/nbb/blob/main/CHANGELOG.md[1.3.204] - Scripting in Clojure on Node.js using SCI
+* https://github.com/practicalli/clojure[clojure] https://github.com/practicalli/clojure/releases/tag/2025-05-16[2025-05-16] - Practicalli Clojure REPL Driven Development
+* https://github.com/soulspace-org/overarch[overarch] https://github.com/soulspace-org/overarch/blob/main/Changelog.md[0.38.0 ; good release example] - Overarch provides a data model for the holistic description of a software system, opening multiple use cases on the model data. Supports C4 and UML diagram generation with PlantUML.
+* https://github.com/scicloj/clay[clay] https://clojars.org/org.scicloj/clay/versions/2-beta45[2-beta45] - A REPL-friendly Clojure tool for notebooks and datavis
+* https://github.com/BetterThanTomorrow/calva-backseat-driver[calva-backseat-driver] https://github.com/BetterThanTomorrow/calva-backseat-driver/releases/tag/v0.0.12[0.0.12] - VS Code AI Agent Interactive Programming. Tools for CoPIlot and other assistants. Can also be used asan MCP server.
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.514[2.0.514] - Clojure & ClojureScript Interactive Programming for VS Code

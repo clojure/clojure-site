@@ -1,0 +1,55 @@
+= Clojure Deref (May 30, 2025)
+Christoph Neumann
+2025-05-30
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]).
+
+== Podcasts, videos, and media
+
+* https://youtu.be/W7CR-r8XRgE[Let CoPilot extend VS Code with Backseat Driver and Joyride] - CalvaTV
+* https://youtu.be/F61YWNapxJg[Clojure MCP Demo] - Metosin
+* https://youtu.be/kmW804dNqgA[Scicloj AI Meetup 7 - Can we turn CoPilot into an Interactive Programmer?] - Sci Cloj
+* https://youtu.be/OINVSndi9MI[SciNoj Light #1 - 1.2: An intro to the Noj toolkit - Daniel Slutsky] - Sci Cloj
+* https://youtu.be/O79Zoaw-rHg[SciNoj Light #1 - 1.3: Probability and statistics - Daniel Slutsky] - Sci Cloj
+* https://youtu.be/ERvoEvNZTII[SciNoj Light #1 - 1.4: Customer churn analysis, LLMs & logic programming  - siavash mohammady] - Sci Cloj
+* https://youtu.be/M6ojW4LyxGU[SciNoj Light #1 - 1.5: Linear Foundations & Nonlinear Frontiers - Jelena Losic] - Sci Cloj
+* https://youtu.be/NXwunJXqfZU[SciNoj Light #1 - 1.6: RAGgedy Ann's Big Adventure - Paula Gearon] - Sci Cloj
+* https://youtu.be/9AUxV1e0sNk[SciNoj Light #1 - 1.7: Parliamentary Questions - RAG Evaluation - Eoin Carney] - Sci Cloj
+* https://youtu.be/_9QjVjBNxjY[SciNoj Light #1 - 1.8 - Discussion: RAGs and Structured Knowledge] - Sci Cloj
+* https://youtu.be/7Uc5GnYT03A[SciNoj Light #1 - 1.9: Noj Deep Dive - Harold & Daniel Slutsky] - Sci Cloj
+* https://youtu.be/MfA8Tyt7Rgk[SciNoj Light #1 - 1.10: Brain data in Clojure - Lorelai Lyons] - Sci Cloj
+* https://youtu.be/RXr9i-aw0lM[SciNoj Light #1 - 2.1: 1D Viscous Fluid Flow Data Analysis, Burgers’ Equation - Siyoung Byun] - Sci Cloj
+* https://youtu.be/wdjtHjvtGUQ[SciNoj Light #1 - 2.2: UK Electricity Demand Time Series Forecasting - Anton Lobach] - Sci Cloj
+* https://youtu.be/RrgxbCyECVw[SciNoj Light #1 - 2.3: Tropical cyclone trajectory modelling - K Ram Narayan, Naimish Mani B] - Sci Cloj
+* https://youtu.be/GbqerAZmjco[SciNoj Light #1 - 2.4: Studying planning with a novel video game - Cvetomir Dimov] - Sci Cloj
+* https://youtu.be/d6wWL1I2POE[SciNoj Light #1 - 2.5: Building a Data Science Ecosystem in Clojure - Kira Howe] - Sci Cloj
+* https://youtu.be/3HZ5rngHzWM[SciNoj Light #1 - 2.7: The Impact of Lane Reductions - Heather Moore-Farley] - Sci Cloj
+
+== Blogs, articles, and projects
+
+* https://blog.agical.se/en/posts/a-rich-poor-man-x-s-css-hot-reload/[A rich poor man's CSS hot reload] - Peter Strömberg
+* https://scicloj.github.io/scinoj-light-1/schedule.html[SciNoj Light #1] - Daniel Slutsky
+* https://www.metosin.fi/blog/2025-05-27-bruce-hauman-has-done-it-again[Bruce Hauman Has Done It Again – Metosin] - Valtteri Harmainen
+* https://clojurecivitas.github.io/conferences/scinoj_light_1/notes/hallway_track.html[The Hallway Track: SciNoj Light #1 Data Analysis Stories – Clojure Civitas] - Timothy Pratley
+* https://www.thoughtfull.systems/notes/2025-05-30-how-to-reuse-a-macro-like-a-function/[How to reuse a macro like a function] - technosophist
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/bhauman/clojure-mcp[clojure-mcp]  - Clojure MCP - REPL-Driven Development with AI Assistance
+* https://github.com/clojure-emacs/inf-clojure[inf-clojure] https://github.com/clojure-emacs/inf-clojure/releases/tag/v3.3.0[3.3.0] - Basic interaction with a Clojure subprocess
+* https://github.com/behrica/scicloj.ml.smiledf[scicloj.ml.smiledf]  - A library to convert between Smile dataframes and tech.ml datasets
+* https://github.com/clojure-lsp/clojure-lsp[clojure-lsp] https://github.com/clojure-lsp/clojure-lsp/releases/tag/2025.05.27-13.56.57[2025.05.27-13.56.57] - Clojure & ClojureScript Language Server (LSP) implementation
+* https://github.com/borkdude/unused-deps[unused-deps]  - Find unused deps in a clojure project
+* https://github.com/BetterThanTomorrow/calva-backseat-driver[calva-backseat-driver] https://github.com/BetterThanTomorrow/calva-backseat-driver/releases/tag/v0.0.13[0.0.13] - VS Code AI Agent Interactive Programming. Tools for CoPIlot and other assistants. Can also be used as an MCP server.
+* https://github.com/TheFakeLorLyons/brainflow-java[brainflow-java] https://github.com/TheFakeLorLyons/brainflow-java/tree/v1.0.006[1.0.006] - Containing only the java brainflow implementation so that it is not necessary to push the brainflow code directly inside the brainfloj clojure wrapper.
+* https://github.com/athos/sweet-array[sweet-array] https://github.com/athos/sweet-array/releases/tag/0.3.0[0.3.0] - Array manipulation library for Clojure with "sweet" array type notation and more safety by static types
+* https://github.com/igrishaev/remus[remus] https://github.com/igrishaev/remus/blob/master/CHANGELOG.md[0.2.5] - Attentive RSS/Atom feed parser for Clojure
+* https://github.com/squint-cljs/squint[squint] https://github.com/squint-cljs/squint/releases/tag/v0.8.148[0.8.148] - Light-weight ClojureScript dialect
+* https://github.com/seancorfield/build-uber-log4j2-handler[build-uber-log4j2-handler] https://github.com/seancorfield/build-uber-log4j2-handler/releases/tag/v2.24.3[2.24.3] - A conflict handler for log4j2 plugins cache files for the tools.build uber task.
+* https://github.com/scicloj/metamorph.ml[metamorph.ml] https://github.com/scicloj/metamorph.ml/blob/main/CHANGELOG.md[1.2.1] - Machine learning functions for tech.ml.dataset and metamorph
+* https://github.com/clojure-emacs/clojure-mode[clojure-mode] https://github.com/clojure-emacs/clojure-mode/releases/tag/v5.20.0[5.20.0] - Emacs support for the Clojure(Script) programming language

@@ -1,0 +1,12 @@
+= Clojure 1.12.1
+Alex Miller
+2024-06-02
+:jbake-type: post
+
+Clojure 1.12.1 is now available!  Find download and usage information on the <<xref/../../../../../releases/downloads#stable,Downloads>> page.
+
+* https://clojure.atlassian.net/browse/CLJ-2899[CLJ-2899] - Revert change in semantics of qualified symbol in invocation position if field and method of same name
+* https://clojure.atlassian.net/browse/CLJ-2898[CLJ-2898] - Objects that are both IFn and FunctionalInterface unnecessarily get converted to FI
+* https://clojure.atlassian.net/browse/CLJ-2888[CLJ-2888] - gen-class - did not support new array class symbol syntax
+* https://clojure.atlassian.net/browse/CLJ-2886[CLJ-2886] - add-libs - send only procurer keys to tool invocation
+* https://clojure.atlassian.net/browse/CLJ-2906[CLJ-2906] - Add missing :added metadata to 1.12 functions

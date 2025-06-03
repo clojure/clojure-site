@@ -20,7 +20,20 @@ For more information see the following docs:
 
 == Releases
 
-Recent official releases are described here. Prereleases and older versions can be found in the https://github.com/clojure/brew-install/blob/1.11.1/CHANGELOG.md[repo changelog].
+Recent official releases are described here. Prereleases and older versions can be found in the https://github.com/clojure/brew-install/blob/1.12.1/CHANGELOG.md[repo changelog].
+
+=== 1.12.1.1550 (Jun 3, 2025) [[v1.12.1.1550]]
+
+* `-Sdescribe` - undocumented (prefer using tools.deps APIs instead)
+* `-Sverbose` - add explicit deps.edn references
+
+=== 1.12.1.1543 (Jun 3, 2025) [[v1.12.1.1543]]
+
+* Update to Clojure 1.12.1
+
+=== 1.12.1.1538 (Jun 2, 2025) [[v1.12.1.1538]]
+
+* Update to Clojure 1.12.1
 
 === 1.12.0.1530 (Mar 5, 2025) [[v1.12.0.1530]]
 

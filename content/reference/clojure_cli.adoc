@@ -67,7 +67,6 @@ clj-opts:
  <<clojure_cli#opt_scp,-Scp CP>>      Use this classpath, ignore deps.edn
  <<clojure_cli#opt_sforce,-Sforce>>      Force classpath computation
  <<clojure_cli#opt_sverbose,-Sverbose>>    Print path info
- <<clojure_cli#opt_sdescribe,-Sdescribe>>   Print env and command parsing info
  <<clojure_cli#opt_sthreads,-Sthreads>>    Set specific number of download threads
  <<clojure_cli#opt_strace,-Strace>>      Write dep expansion trace.edn
  <<clojure_cli#opt_version,--version>>    Print version to stdout and exit
@@ -264,11 +263,6 @@ This flag marks the existing cached classpath (if any) to be marked as stale. Th
 Print environment and path information found and used by the Clojure CLI, mostly useful for debugging the location of various config and cache directories.
 
 This flag does not alter any other execution that may be specified on the command line, so it can be used to debug the location of the cache files for a particular command.
-
-[[opt_sdescribe]]
-**-Sdescribe**
-
-Print configuration settings as edn data and exit. This overlaps in functionality with `-Sverbose` but may be useful for programmatic use.
 
 [[opt_sthreads]]
 **-Sthreads N**

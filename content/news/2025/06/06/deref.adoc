@@ -1,0 +1,45 @@
+= Clojure Deref (June 6, 2025)
+Christoph Neumann
+2025-06-06
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]).
+
+== Podcasts, videos, and media
+
+* https://youtu.be/plMpFV5s8nY[Vibe Coding With Clojure-MCP: Bruce Hauman/Luke Burton/Gene Kim] - IT Revolution
+* https://youtu.be/iQ22MhGSS-g[7 UIs with Replicant, Ep 6: Timer] - Replicant TV
+
+== Blogs, articles, and projects
+
+* https://building.nubank.com/clojure-developer-advocate-nubank/[Building the Future of Clojure: Welcoming Christoph Neumann as Nubank’s First Clojure Developer Advocate - Building Nubank] - Nubank Editorial
+* https://cjohansen.no/keys/[On keys and their usage] - Christian Johansen
+* https://magnars.com/three-tidbits/[Three Tiny Tidbits That Made Adding Municipalities Effortless] - Magnar Sveen
+* https://clojurecivitas.github.io/clojure/transducers/what_if.html[What if… we were taught transducers first? – Clojure Civitas] - Sean Corfield
+* https://lambdaisland.com/blog/2025-06-03-beyond-the-if-pattern[Beyond the If Pattern] - Laurence Chen
+* https://romanliutikov.com/blog/towards-react-server-components-in-clojure-part-3[Towards React Server Components in Clojure, Part 3 | Roman Liutikov, Software Engineer] - Roman Liutikov
+* https://factorhouse.io/blog/articles/beyond-reagent-with-hsx-and-rfx/[Factor House | Blog | Beyond Reagent: Migrating to React 19 with HSX and RFX] - Thomas Crowley
+* https://xtdb.com/blog/building-a-bitemp-index-3-storage[Building a Bitemporal Index (part 3): Storage · XTDB] - James Henderson
+* https://www.ooloi.org/home/the-musical-journey-to-understanding-transducers-building-oolois-piece-walker[The Musical Journey to Understanding Transducers: Building Ooloi's Piece-Walker] - Peter Bengtson
+* https://jank-lang.org/blog/2025-06-06-next-phase-of-interop/[The next phase of jank's C++ interop] - Jeaye Wilkerson
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/clojure/clojure[clojure] https://clojure.org/news/2025/06/02/clojure-1-12-1[1.12.1] - Clojure
+* https://clojure.org/reference/clojure_cli[clojure_cli] https://clojure.org/releases/tools#v1.12.1.1550[1.12.1.1550] - Clojure CLI
+* https://redplanetlabs.com/download[rama] https://github.com/redplanetlabs/rama-release-notes/#110[1.1.0] - The 100x Developer Platform
+* https://github.com/gersak/timing[timing]  - Time computation library with CRON scheduling capability
+* https://github.com/StudistCorporation/annotation-reporter[annotation-reporter]  - GitHub annotation test reporter for Kaocha
+* https://github.com/ilmoraunio/conjtest[conjtest] https://github.com/ilmoraunio/conjtest/releases/tag/v0.2.0[0.2.0] - A policy-as-code tool with which you can write security policies using Clojure.
+* https://github.com/clojure-emacs/clojure-ts-mode[clojure-ts-mode] https://github.com/clojure-emacs/clojure-ts-mode/releases/tag/v0.5.0[0.5.0] - The next generation Clojure major mode for Emacs, powered by TreeSitter
+* https://github.com/slagyr/speclj[speclj] https://github.com/slagyr/speclj/blob/master/CHANGES.md[3.10.0] - pronounced "speckle": a TDD/BDD framework for Clojure.
+* https://github.com/clj-kondo/clj-kondo[clj-kondo] https://github.com/clj-kondo/clj-kondo/releases/tag/v2025.06.05[2025.06.05] - Static analyzer and linter for Clojure code that sparks joy
+* https://github.com/babashka/http-client[http-client] https://github.com/babashka/http-client/releases/tag/v0.4.23[0.4.23] - HTTP client for Clojure and Babashka built on java.net.http
+* https://github.com/amiorin/big-container[big-container] https://github.com/amiorin/big-container/blob/main/CHANGELOG.md[0.1.45] - doom emacs done right.
+* https://github.com/practicalli/clojure-cli-config[clojure-cli-config] https://github.com/practicalli/clojure-cli-config/releases/tag/2025-06-03[2025-06-03] - User aliases and Clojure CLI configuration for deps.edn based projects
+* https://github.com/scicloj/tableplot[tableplot] https://github.com/scicloj/tableplot/blob/main/CHANGELOG.md[1-beta14] - Easy layered graphics with Hanami & Tablecloth
+* https://github.com/ilmoraunio/conjtest[conjtest] https://github.com/ilmoraunio/conjtest/releases/tag/v0.2.0[0.2.0] - A policy-as-code tool with which you can write security policies using Clojure.

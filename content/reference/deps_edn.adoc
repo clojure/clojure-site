@@ -75,7 +75,7 @@ If you are building a tool that would like to leverage deps.edn, create well-kno
  <<deps_edn#procurer_mvn_repos,:mvn/repos>> {"repo" {<<deps_edn#procurer_mvn_repos_url,:url>> "https://..."
                      <<deps_edn#procurer_mvn_repos_releases,:releases>> {<<deps_edn#procurer_mvn_repos_enabled,:enabled>> true
                                 <<deps_edn#procurer_mvn_repos_update,:update>> :daily
-                                <<deps_edn#procurer_mvn_repos_checksum,:checksum>> true}
+                                <<deps_edn#procurer_mvn_repos_checksum,:checksum>> :warn}
                      <<deps_edn#procurer_mvn_repos_snapshots,:snapshots>> {#_same_as_releases}}}
 
  ;; Tool publishing

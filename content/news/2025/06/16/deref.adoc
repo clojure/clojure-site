@@ -1,0 +1,62 @@
+= Clojure Deref (June 16, 2025)
+Christoph Neumann
+2025-06-16
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]).
+
+https://2025.clojure-conj.org/[Clojure/Conj 2025] will be held Nov 12-14 in Charlotte, NC. Early Bird Registration is now open. We look forward to seeing you in-person and online!
+
+== Podcasts, videos, and media
+
+* https://youtu.be/QIam96cpIoI[Dustin Getz - Electric Clojure Differential Dataflow for UI (KEYNOTE)] - LambdaConf
+* https://youtu.be/2TY6cJ8YiwU[SciNoj Light #1 - 2.6: macroexpand-1 community session] - Sci Cloj
+* https://youtu.be/i3x0z9mzWm0[Clojure visual-tools 34 - partial recording: nrepl-ws-server, nrepl-ws-client, Clay] - Sci Cloj
+* https://youtu.be/JgksTXhSumw[Clojure Corner: Interview with Martin Kavalar] - Flexiana
+* https://youtu.be/25lJNRibYv8[Simple ideas with huge impact from Clojure and Rama (by Nathan Marz)] - London Clojurians
+* https://youtu.be/AGTDfXKGvNI[UI, Pure and Simple (by Christian Johansen)] - London Clojurians
+* https://youtu.be/36hOSp83ozM[Scicloj AI Meetup 8: Clojure-MCP] - Sci Cloj
+* https://youtu.be/kRd4JYIiWb0[Designing Clobber: A Deep Dive into a Clojure-Powered Editor for Text and Code] - phronmophobic
+* https://zencastr.com/z/jXOA-uA9[defn episode 3d32130bbe3d Drew Raines] - @defn podcast
+* https://youtu.be/n6ICeRyXHsI[Turning the Conference Inside Out - reflecting backward & forward on Clojure conferences and growth] - Sci Cloj
+* https://youtu.be/MiIsqKfTW58[Functional Creative Coding with Patterning (by Phil Jones)] - London Clojurians
+* https://www.therepl.net/episodes/56/[XTDB: A Bitemporal database in Clojure] - The REPL
+* https://youtu.be/-yYJV7WEFjI[CoPilot hacked my editor] - CalvaTV
+
+== Blogs, articles, and projects
+
+* https://bytes.vadeai.com/how-one-clojure-function-destroyed-agent-framework-completely/[How One Clojure Function Destroyed Agent Framework Completely] - Pragyan Tripathi
+* https://forum.defold.com/t/defold-editor-development-tips-and-tricks/80710[Defold Editor Development. Tips and Tricks] - Alexey Gulev
+* https://www.wedesoft.de/software/2025/06/14/akima-splines/[Akima splines] - Jan Wedekind
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/coconutpalm/clojure-desktop-toolkit[clojure-desktop-toolkit] https://github.com/coconutpalm/clojure-desktop-toolkit/releases/tag/v0.3.1[0.3.1] - Create native state-of-the-art desktop applications in Clojure using Eclipse's SWT graphics toolkit.
+* https://github.com/basilisp-lang/basilisp[basilisp] https://github.com/basilisp-lang/basilisp/releases/tag/v0.4.0[0.4.0] - A Clojure-compatible(-ish) Lisp dialect targeting Python 3.9+
+* https://github.com/nextdoc/ai-tools[ai-tools] https://github.com/nextdoc/ai-tools/tree/1.0[1.0] - tools that help AI development assistants do Clojure
+* https://github.com/metosin/malli[malli] https://github.com/metosin/malli/releases/tag/0.19.1[0.19.1] - High-performance data-driven data specification library for Clojure/Script.
+* https://github.com/NoahTheDuke/lazytest[lazytest] https://github.com/NoahTheDuke/lazytest/releases/tag/v1.7.0[1.7.0] - A standalone BDD test framework for Clojure
+* https://github.com/nextjournal/markdown[markdown] https://github.com/nextjournal/markdown/blob/main/CHANGELOG.md[0.7.186] - A cross-platform clojure/script parser for Markdown
+* https://github.com/seancorfield/deps-new[deps-new] https://github.com/seancorfield/deps-new/releases/tag/v0.9.0[0.9.0] - Create new projects for the Clojure CLI / deps.edn
+* https://github.com/xtdb/xtdb[xtdb] https://github.com/xtdb/xtdb/releases/tag/v2.0.0[2.0.0] - An immutable SQL database for application development, time-travel reporting and data compliance. Developed by @juxt
+* https://github.com/seancorfield/next-jdbc[next-jdbc] https://github.com/seancorfield/next-jdbc/releases/tag/v1.3.1048[1.3.1048] - A modern low-level Clojure wrapper for JDBC-based access to databases.
+* https://github.com/babashka/babashka[babashka] https://github.com/babashka/babashka/releases/tag/v1.12.202[1.12.202] - Native, fast starting Clojure interpreter for scripting
+* https://github.com/borkdude/quickblog[quickblog] https://github.com/borkdude/quickblog/releases/tag/v0.4.7[0.4.7] - Light-weight static blog engine for Clojure and babashka
+* https://github.com/NoahTheDuke/fluent-clj[fluent-clj] https://github.com/NoahTheDuke/fluent-clj/releases/tag/v0.1.0[0.1.0] - Project Fluent for Clojure/script
+* https://github.com/gersak/patcho[patcho]  - Patching micro lib for Clojure
+* https://github.com/lsolbach/qclojure[qclojure]  - A functional quantum computer programming library for Clojure with simulation backend and visualizations.
+* https://github.com/tonsky/clojure-plus[clojure-plus] https://github.com/tonsky/clojure-plus/releases/tag/1.6.0[1.6.0] - A project to improve experience of using Clojure stdlib
+* https://github.com/potetm/fusebox[fusebox] https://github.com/potetm/fusebox/blob/master/CHANGELOG.md[1.0.11] - An extremely lightweight fault tolerance library for Clojure(Script) and Babashka
+* https://github.com/babashka/fs[fs] https://github.com/babashka/fs/releases/tag/v0.5.26[0.5.26] - File system utility library for Clojure
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.519[2.0.519] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/pedestal/pedestal[pedestal] https://github.com/pedestal/pedestal/blob/master/CHANGELOG.md[0.8.0-beta-1] - The Pedestal Server-side Libraries
+* https://github.com/cjohansen/dataspex[dataspex] https://github.com/cjohansen/dataspex/tree/v2025.06.7[2025.06.7] - See the shape of your data: point-and-click Clojure(Script) data browser
+* https://github.com/BetterThanTomorrow/joyride[joyride] https://github.com/BetterThanTomorrow/joyride/releases/tag/v0.0.47[0.0.47] - Making VS Code Hackable like Emacs since 2022
+* https://github.com/clj-commons/pretty[pretty] https://github.com/clj-commons/pretty/blob/main/CHANGES.md[3.4.0] - Library for helping print things prettily, in Clojure - ANSI fonts, formatted exceptions
+* https://github.com/exoscale/coax[coax] https://github.com/exoscale/coax/tree/2.0.4[2.0.4] - Clojure.spec coercion library for clj(s)
+* https://github.com/seancorfield/build-uber-log4j2-handler[build-uber-log4j2-handler] https://github.com/seancorfield/build-uber-log4j2-handler/releases/tag/v2.25.0[2.25.0] - A conflict handler for log4j2 plugins cache files for the tools.build uber task.
+* https://github.com/seancorfield/logging4j2[logging4j2] https://github.com/seancorfield/logging4j2/releases/tag/v1.0.3[1.0.3] - A Clojure wrapper for log4j2

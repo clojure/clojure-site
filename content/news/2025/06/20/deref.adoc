@@ -1,0 +1,36 @@
+= Clojure Deref (June 20, 2025)
+Christoph Neumann
+2025-06-20
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]).
+
+The https://2025.clojure-conj.org/[Clojure/conj] 2025 https://2025.clojure-conj.org/speakers[Call for Presentations] is open now until July 27! We are seeking proposals for both 30 minute sessions and 10 minute lightning talks.
+
+== Podcasts, videos, and media
+
+* https://youtu.be/kGOB9IPKHfo[Christoph Neumann guests on Apropos Clojure 2025-06-17] - apropos clojure
+* https://youtu.be/v43Kfc7fYT0[Writing Model Content Protocol (MCP) Servers in Clojure (by Vedang Manerikar)] - London Clojurians
+* https://youtu.be/v9d_1k5V8RU[Three personal software products I created with Clojure] - Clojure Diary
+
+== Blogs, articles, and projects
+
+* https://www.juxt.pro/blog/value-and-cost-of-a-test/[JUXT Blog: The Value and Cost of a Test] - James Henderson
+* https://biffweb.com/p/edn-html-forms/[EDN-infused plain html forms] - Jacob O'Bryant
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/taoensso/nippy[nippy] https://github.com/taoensso/nippy/releases/tag/v3.6.0[3.6.0] - Fast serialization library for Clojure
+* https://github.com/ivarref/yoltq[yoltq] https://github.com/ivarref/yoltq/releases/tag/v0.2.82[0.2.82] - An opinionated Datomic queue for building (more) reliable systems. Supports retries, backoff, ordering and more.
+* https://github.com/babashka/sci[sci] https://github.com/babashka/sci/releases/tag/v0.10.46[0.10.46] - Configurable Clojure/Script interpreter suitable for scripting and Clojure DSLs
+* https://github.com/babashka/scittle[scittle] https://github.com/babashka/scittle/releases/tag/v0.7.23[0.7.23] - Execute Clojure(Script) directly from browser script tags via SCI
+* https://github.com/ivarref/finddep[finddep]  - Find the root (top) of a given dependency in Clojure
+* https://github.com/taoensso/trove[trove]  - Modern logging facade for Clojure/Script
+* https://github.com/fogus/rv[rv] https://github.com/fogus/rv/blob/main/CHANGELOG.md[0.0.10] - A Clojure library exploring the application of pure reasoning algorithms.
+* https://github.com/babashka/babashka[babashka] https://github.com/babashka/babashka/blob/master/CHANGELOG.md[1.12.203] - Native, fast starting Clojure interpreter for scripting
+* https://github.com/squint-cljs/squint[squint] https://github.com/squint-cljs/squint/releases/tag/v0.8.149[0.8.149] - Light-weight ClojureScript dialect
+* https://github.com/BetterThanTomorrow/joyride[joyride] https://github.com/BetterThanTomorrow/joyride/releases/tag/v0.0.50[0.0.50] - Making VS Code Hackable like Emacs since 2022

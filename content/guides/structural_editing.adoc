@@ -19,18 +19,18 @@ Structural editing has a long history with editing Lisp languages, and is most a
 
 Similar to character-based editing, structural editing has ways to create new forms, navigate, select, copy/paste, delete, etc but all in terms of nested expressions rather than characters or lines. This page intends to introduce you to some high-level terms and concepts in structural editing, and not to cover any specific editors or keys as the details vary significantly depending on the editor (and are usually customizable as well).
 
-When you get started, focus on memorizing a small set of commands (which are all covered below): kill, slurp forward, barf forward, splice, and raise. As you encounter other scenarios find the appropriate structural editing command and add it to your toolkit.
+When you get started, focus on memorizing a small set of commands (which are all covered below): kill, slurp forward, barf forward, splice, and raise. As you encounter other scenarios, find the appropriate structural editing command and add it to your toolkit.
 
 == Balanced forms
 
 A general principle of structural editing is to ensure that all forms are balanced at all times. This is immediately apparent when creating new forms in your code. If you type the beginning delimiter for a collection, your editor will also insert the ending delimiter. If you type `(`, your editor will insert `()` with your cursor in the middle so you can keep typing inside the form.  Most editors also provide some visual feedback that match beginning and ending delimiters as you move across them, or may even support code folding and unfolding based on this structure.
 
-One common issue you may encounter (especially while learning) is the accidental use of a line editing command that unbalances your code structure. For example, if you have a multi-line nested expression, deleting one line from the middle is highly likely to delete a left paren but not it's matching right paren on a subsequent line. Don't panic! 
+One common issue you may encounter (especially while learning) is the accidental use of a line editing command that unbalances your code structure. For example, if you have a multi-line nested expression, deleting one line from the middle is highly likely to delete a left paren but not its matching right paren on a subsequent line. Don't panic! 
 
 Some common ways to fix this situation:
 
 * Undo - often you can simply undo that line command and then use a structural editing command instead
-* Turn off structural editing, fix the problem, and re-enable structural editing - in some editors there is a button in the footer or elsewhere to toggle structural editing and this is relatively easy, in others it will harder.
+* Turn off structural editing, fix the problem, and re-enable structural editing - in some editors there is a button in the footer or elsewhere to toggle structural editing and this is relatively easy, in others it will be harder.
 * Use character editing commands to fix - in some cases, such as a dangling opening paren to delete, you can select the opening paren and use character deletion to delete it (outside structural editing)
 * Use comments and character editing - if you have a dangling open paren to close, you can insert a Clojure comment `;`, allowing you to type the `)`, then select the `;` and delete it with character editing
 

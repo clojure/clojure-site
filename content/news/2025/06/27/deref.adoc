@@ -1,0 +1,60 @@
+= Clojure Deref (June 27, 2025)
+Christoph Neumann
+2025-06-27
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]).
+
+The https://2025.clojure-conj.org/[Clojure/conj] 2025 https://2025.clojure-conj.org/speakers[Call for Presentations] is open now until July 27! We are seeking proposals for both 30 minute sessions and 10 minute lightning talks.
+
+== Podcasts, videos, and media
+
+* https://youtu.be/WUvu3IE3pj0[Parsing GraphQL with Clojure] - Clojure Diary
+* https://youtu.be/9kiuwsfCDFI[Datomic at Nubank, Simplicity Scaled (by Jordan Miller)] - London Clojurians
+* https://youtu.be/XOTddSn2da0[Bring your live app state inspects inside VS Code with Dataspex in Calva Power Tools] - CalvaTV
+* https://youtu.be/Yb0JySPrPwc[Recognizing regular patterns in mixed type sequences using Symbolic Finite Automata (by Jim Newton)] - London Clojurians
+
+== Blogs, articles, and projects
+
+* https://x.com/dustingetz/status/1936403466722701757[Reaction to a FP evangelism talk last week by Michael Pilquist] - Dustin Getz
+* https://medium.com/@_jba/notes-from-starting-a-mobile-application-from-0-in-2025-2c0f775148ac[Notes from starting a mobile application from 0 in 2025.] - Julien Bille
+* https://code.thheller.com/blog/shadow-cljs/2025/06/24/what-the-heck-just-happened.html[What The Heck Just Happened?] - Thomas Heller
+* https://yamlscript.org/blog/2025-06-24/how-does-ys-work/[How Does YS Work? - YS — YAML Done Wisely] - Ingy döt Net
+* https://code.thheller.com/blog/shadow-cljs/2025/06/25/what-the-heck-are-you-talking-about.html[What The Heck Are You Talking About?] - Thomas Heller
+* https://yamlscript.org/blog/2025-06-25/ai--clojure-functions-in-yaml/[AI + Clojure Functions in YAML - YS — YAML Done Wisely] - Ingy döt Net
+* https://buttondown.com/tensegritics-curiosities/archive/accelerating-maps-with-join-with/[Accelerating maps with join-with] - Christophe Grand
+* https://code.thheller.com/blog/shadow-cljs/2025/06/27/case-study-reagent-with-macro-help.html[Case Study: Reagent With Macro Help] - Thomas Heller
+* https://yamlscript.org/blog/2025-06-27/fun-fridays--rosetta-code/[Fun FridaYS — Rosetta Code - YS — YAML Done Wisely] - Ingy döt Net
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/editor-code-assistant/eca[eca]  - Editor Code Assistant (ECA) - AI pair programming capabilities in any editor
+* https://github.com/TheFakeLorLyons/brainfloj[brainfloj]  - A BrainFlow wrapper for Clojure
+* https://github.com/ikappaki/scittlets[scittlets]  - A repository of Scittle libraries
+* https://github.com/bhauman/clojure-mcp[clojure-mcp] https://github.com/bhauman/clojure-mcp/blob/main/CHANGELOG.md[0.1.5-alpha] - Clojure MCP
+* https://github.com/mtmr0x/bud[bud]  - A minimalist ClojureScript DOM library with precise, signal-driven reactivity for single-page applications
+* https://github.com/taoensso/tufte[tufte] https://github.com/taoensso/tufte/releases/tag/v3.0.0[3.0.0] - Simple performance monitoring library for Clojure/Script
+* https://github.com/danielsz/beeld[beeld]  - Get the metadata associated with an image. Also contains image utilities: filesize, scale, etc.
+* https://github.com/NoahTheDuke/splint[splint] https://github.com/NoahTheDuke/splint/releases/tag/v1.20.0[1.20.0] - A Clojure linter focused on style and code shape.
+* https://github.com/borkdude/edamame[edamame] https://github.com/borkdude/edamame/releases/tag/v1.4.31[1.4.31] - Configurable EDN/Clojure parser with location metadata
+* https://github.com/s-expresso/clojobuf[clojobuf] https://github.com/s-expresso/clojobuf/blob/main/RELEASES.md[0.2.1] - A clojure(script) library that dynamically interprets protobuf files (.proto) and use the resultant schemas to encode/decode plain clojure(script) map into/from protobuf binaries.
+* https://github.com/s-expresso/rubberbuf[rubberbuf] https://github.com/s-expresso/rubberbuf/blob/main/RELEASES.md[0.3.2] - A clojure(script) library to parse protobuf definition (.proto) into abstract syntax tree (AST).
+* https://github.com/BetterThanTomorrow/calva-power-tools[calva-power-tools] https://github.com/BetterThanTomorrow/calva-power-tools/releases/tag/v0.0.10[0.0.10] - A VS Code Extension providing commands for extra powerful things in the Clojure ecosystem
+* https://github.com/askonomm/ruuter[ruuter] 1.3.5 - A system-agnostic, zero-dependency router
+* https://github.com/tamizhvendan/honeyeql[honeyeql] https://github.com/tamizhvendan/honeyeql/blob/master/CHANGELOG.md[1.0.6] - HoneyEQL is a Clojure library enables you to query database using the EDN Query Language.
+* https://github.com/cjohansen/replicant[replicant] https://github.com/cjohansen/replicant/tree/v2025.06.21[2025.06.21] - A data-driven rendering library for Clojure(Script) that renders hiccup to DOM or to strings.
+* https://github.com/scicloj/scicloj.ml.xgboost[scicloj.ml.xgboost] https://github.com/scicloj/scicloj.ml.xgboost/blob/main/CHANGELOG.md[6.4.0] - A xgboost plugin for scicloj.ml
+* https://github.com/lsolbach/qclojure[qclojure] https://github.com/lsolbach/qclojure/blob/main/Changelog.md[0.3.0] - A functional quantum computer programming library for Clojure with backend protocols, simulation backends and visualizations.
+* https://github.com/soulspace-org/overarch[overarch] https://github.com/soulspace-org/overarch/releases/tag/v0.39.0[0.39.0] - Overarch provides a data model for the holistic description of a software system, opening multiple use cases on the model data. Supports C4 and UML diagram generation with PlantUML.
+* https://github.com/BetterThanTomorrow/calva-backseat-driver[calva-backseat-driver] https://github.com/BetterThanTomorrow/calva-backseat-driver/releases/tag/v0.0.14[0.0.14] - VS Code AI Agent Interactive Programming. Tools for CoPIlot and other assistants. Can also be used as an MCP server.
+* https://github.com/polyfy/polylith[polylith] https://github.com/polyfy/polylith/releases/tag/v0.2.22[0.2.22] - A tool used to develop Polylith based architectures in Clojure.
+* https://github.com/clj-commons/pretty[pretty] https://github.com/clj-commons/pretty/blob/main/CHANGES.md[3.4.1] - Library for helping print things prettily, in Clojure - ANSI fonts, formatted exceptions
+* https://github.com/clj-commons/aleph[aleph] https://github.com/clj-commons/aleph/blob/master/CHANGES.md[0.9.0] - Asynchronous streaming communication for Clojure - web server, web client, and raw TCP/UDP
+* https://github.com/babashka/babashka[babashka] https://github.com/babashka/babashka/releases/tag/v1.12.204[1.12.204] - Native, fast starting Clojure interpreter for scripting
+* https://github.com/ilmoraunio/conjtest[conjtest] https://github.com/ilmoraunio/conjtest/releases/tag/v0.3.0[0.3.0] - Run tests against common configuration file formats using Clojure!
+* https://github.com/rm-hull/nvd-clojure[nvd-clojure] https://github.com/rm-hull/nvd-clojure/blob/main/CHANGELOG.md[5.1.0] - National Vulnerability Database dependency checker for Clojure projects
+* https://github.com/babashka/sci[sci] https://github.com/babashka/sci/releases/tag/v0.10.47[0.10.47] - Configurable Clojure/Script interpreter suitable for scripting and Clojure DSLs

@@ -26,7 +26,7 @@ Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure
 New releases and tools this week:
 
 * https://github.com/oliyh/carmine-streams[carmine-streams] 0.2.2 - Utility functions for working with Redis streams in carmine
-* https://github.com/overtone/overtone[overtone] https://github.com/overtone/overtone/blob/master/CHANGELOG.md#0110-2023-11-02--2907605ba[0.11.0] - Collaborative Programmable Music
+* https://github.com/overtone/overtone[overtone] link:++https://github.com/overtone/overtone/blob/master/CHANGELOG.md#0110-2023-11-02--2907605ba++[0.11.0] - Collaborative Programmable Music
 * https://github.com/cnuernber/ham-fisted[ham-fisted] https://github.com/cnuernber/ham-fisted/blob/master/CHANGELOG.md#2011[2.010] - High performance HAMT
 * https://github.com/alexander-yakushev/compliment[compliment] https://github.com/alexander-yakushev/compliment/blob/master/CHANGELOG.md#050-2023-11-08[0.5.0] - Clojure completion library that you deserve
 * https://github.com/zmedelis/hfds-clj[hfds-clj] 2023.11.05 - Access to HuggingFace datasets via Clojure

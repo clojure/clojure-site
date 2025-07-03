@@ -44,7 +44,7 @@ New releases and tools this week:
 * https://github.com/polyfy/polylith[polylith] https://github.com/polyfy/polylith/releases/tag/v0.2.19[0.2.19] - A tool used to develop Polylith based architectures in Clojure
 * https://github.com/fulcrologic/guardrails[guardrails] 1.2.3 - Efficient, hassle-free function call validation with a concise inline syntax for clojure.spec and Malli
 * https://github.com/replikativ/mesalog[mesalog] 0.2.253 - CSV data loader for Datalog databases
-* https://github.com/lambdaisland/cli[cli] https://github.com/lambdaisland/cli/blob/main/CHANGELOG.md#0424-2024-02-17--5a1e316[0.4.24] - Opinionated command line argument handling, with excellent support for subcommands
+* https://github.com/lambdaisland/cli[cli] link:++https://github.com/lambdaisland/cli/blob/main/CHANGELOG.md#0424-2024-02-17--5a1e316++[0.4.24] - Opinionated command line argument handling, with excellent support for subcommands
 * https://github.com/lambdaisland/deep-diff2[deep-diff2] https://github.com/lambdaisland/deep-diff2/releases/tag/v2.11.216[2.11.216] - Deep diff Clojure data structures and pretty print the result
 * https://github.com/tonsky/clj-reload[clj-reload] https://github.com/tonsky/clj-reload/blob/main/CHANGELOG.md#013---feb-21-2024[0.1.3] - Smarter way to reload Clojure code
 * https://github.com/igrishaev/pg2[pg2] https://github.com/igrishaev/pg2/blob/master/CHANGELOG.md#013[0.1.3] - A fast PostgreSQL driver for Clojure

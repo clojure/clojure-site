@@ -1,0 +1,52 @@
+= Clojure Deref (July 14, 2025)
+Christoph Neumann
+2025-07-14
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]).
+
+The https://2025.clojure-conj.org/[Clojure/conj] 2025 https://2025.clojure-conj.org/speakers[Call for Presentations] is open now until July 27! We are seeking proposals for both 30 minute sessions and 10 minute lightning talks.
+
+== Podcasts, videos, and media
+
+* https://youtu.be/NNwPAGlJFgo[Clojure Corner: Interview with Jakub Holý] - Flexiana
+* https://youtu.be/ML8cFrWkWeg[Electric Clojure: Differential Dataflow for UI (by Dustin Getz)] - London Clojurians
+* https://zencastr.com/z/JUIsWirq[defn episode 876b4c306172 Cora Sutton] - @defn podcast
+* https://youtu.be/iWrPgbWYsSU[Brain Data in Clojure (by Lorelai Lyons).] - London Clojurians
+* https://youtu.be/Ng9-OPrvjeM[Beginning GraphQL with curl and Clojure ring] - Clojure Diary
+* https://youtu.be/Zoyzy6ztfZM[When to use useEffectEvent hook | UIx, ClojureScript] - Functional Cave
+* https://youtu.be/MAsQznQsCgs[How I refactor my tests in Clojure] - Clojure Diary
+* https://youtu.be/bbu_-tgWwVg[keep-indexed and map-indexed in Clojure] - Clojure Diary
+
+== Blogs, articles, and projects
+
+* https://www.clojuriststogether.org/news/call-for-proposals.-june-2025-member-survey/[Call for Proposals. June 2025 Member Survey] - Kathleen Davis
+* https://spool-five.com/posts/2025-07-07-flow_first_impressions/[Clojure Flow - First Impressions] - Eoin Carney
+* https://romanliutikov.com/blog/bringing-granular-updates-to-react-the-clojure-way[Bringing granular updates to React, the Clojure way | Roman Liutikov, Software Engineer] - Roman Liutikov
+* https://jank-lang.org/blog/2025-07-11-jank-is-cpp/[jank is C++] - Jeaye Wilkerson
+* https://github.com/nufuturo-ufcg/clj-smells-catalog[GitHub - nufuturo-ufcg/clj-smells-catalog: This repository catalogs code smells in Clojure, providing descriptions, examples and causes.] - Walber Araújo
+* https://clojurecivitas.github.io/games/beginning_to_build_a_browser_game.html[Beginning to build a browser game – Clojure Civitas] - Matt Kleinsmith
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/mpenet/legba[legba]  - Clojure library for building OpenAPI services
+* https://github.com/babashka/babashka[babashka] https://github.com/babashka/babashka/releases/tag/v1.12.205[1.12.205] - Native, fast starting Clojure interpreter for scripting
+* https://github.com/clojure-emacs/cider[cider] https://github.com/clojure-emacs/cider/releases/tag/v1.19.0[1.19.0] - The Clojure Interactive Development Environment that Rocks for Emacs
+* https://github.com/hyperfiddle/datomic-browser[datomic-browser]  - web-based support/diagnostics UI for any production Datomic service
+* https://github.com/simm-is/repl-mcp[repl-mcp]  - Model Context Protocol Clojure support including REPL integration with development tools.
+* https://github.com/weavejester/teensyp[teensyp]  - GitHub - weavejester/teensyp
+* https://github.com/escherize/huff[huff] https://github.com/escherize/huff/blob/master/CHANGELOG.md[0.2.21] - Juicy hiccup in pure Clojure
+* https://github.com/RokLenarcic/mcp-server[mcp-server]  - MCP Server library
+* https://github.com/ovistoica/ring-nexus-middleware[ring-nexus-middleware]  - Ring FCIS (Functional Core Imperative Shell) support through nexus
+* https://github.com/scicloj/clay[clay] https://github.com/scicloj/clay/blob/main/CHANGELOG.md[2-beta48] - A REPL-friendly Clojure tool for notebooks and datavis
+* https://github.com/lsolbach/qclojure[qclojure] https://github.com/lsolbach/qclojure/blob/main/Changelog.md[0.8.0] - A functional quantum computer programming library for Clojure with backend protocols, simulation backends and visualizations.
+* https://github.com/NoahTheDuke/lazytest[lazytest] https://github.com/NoahTheDuke/lazytest/releases/tag/v1.8.0[1.8.0] - A standalone BDD test framework for Clojure
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.521[2.0.521] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/clj-commons/pretty[pretty] https://github.com/clj-commons/pretty/blob/main/CHANGES.md[2.3.0] - Library for helping print things prettily, in Clojure - ANSI fonts, formatted exceptions
+* https://github.com/squint-cljs/squint[squint] https://github.com/squint-cljs/squint/releases/tag/v0.8.150[0.8.150] - Light-weight ClojureScript dialect
+* https://github.com/squint-cljs/cherry[cherry] https://github.com/squint-cljs/cherry/releases/tag/v0.4.29[0.4.29] - Experimental ClojureScript to ES6 module compiler
+* https://github.com/babashka/cli[cli] https://github.com/babashka/cli/releases/tag/v0.8.66[0.8.66] - Turn Clojure functions into CLIs!

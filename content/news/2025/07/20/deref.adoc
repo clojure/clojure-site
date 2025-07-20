@@ -1,0 +1,40 @@
+= Clojure Deref (July 20, 2025)
+Christoph Neumann
+2025-07-20
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]).
+
+The https://2025.clojure-conj.org/[Clojure/conj] 2025 https://2025.clojure-conj.org/speakers[Call for Presentations] is open now until July 27! We are seeking proposals for both 30 minute sessions and 10 minute lightning talks.
+
+== Upcoming Events
+
+* https://2025.clojure-conj.org/[Clojure/Conj 2025]: Early Bird Tickets Available Now!
+* https://clojureverse.org/t/macroexpand-2-connecting-clojure-data-practitioners/11485[Macroexpand-2]: Connecting Clojure Data Practitioners
+
+== Blogs, articles, and projects
+
+* https://seqfind.com/[seqfind: the Clojure(script) code explorer] - Alex Sheluchin
+* https://www.evalapply.org/posts/poor-mans-time-oriented-data-system/index.html[Poor man's bitemporal data system in SQLite and Clojure] - Aditya Athalye
+* https://mccue.dev/pages/7-14-25-clojure-as-a-first-language[Clojure as a First Language] - Ethan McCue
+* https://blog.nundrum.net/posts-output/2025-07-09-clojure-cgi/[Clojure, Babashka, and Web CGI] - Robbie Huffman
+* https://arnebrasseur.net/2025-07-18-come-try-out-piglet.html[Come try out Piglet | Arne Brasseur . net] - Arne Brasseur
+* https://biffweb.com/p/edn-tests/[Writing your tests in EDN files] - Jacob O'Bryant
+* https://peterbengtson.medium.com/you-fucking-moron-how-to-collaborate-with-ai-without-losing-the-plot-707db0f8db8f[You F*ing Moron: How to Collaborate with AI Without Losing the Plot] - Peter Bengtson
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/simm-is/repl-mcp[repl-mcp]  - Model Context Protocol Clojure support including REPL integration with development tools.
+* https://github.com/nextjournal/clerk[clerk] https://github.com/nextjournal/clerk/blob/main/CHANGELOG.md[0.18.1142] - ⚡️ Moldable Live Programming for Clojure
+* https://github.com/uncomplicate/neanderthal[neanderthal] https://github.com/uncomplicate/neanderthal/blob/master/CHANGELOG.md[0.55.0] - Fast Clojure Matrix Library
+* https://github.com/uncomplicate/deep-diamond[deep-diamond] https://github.com/uncomplicate/deep-diamond/tree/0.29.4[0.29.4] - A fast Clojure Tensor & Deep Learning library
+* https://github.com/seancorfield/logging4j2[logging4j2] https://github.com/seancorfield/logging4j2/releases/tag/v1.0.4[1.0.4] - A Clojure wrapper for log4j2
+* https://github.com/seancorfield/build-uber-log4j2-handler[build-uber-log4j2-handler] https://github.com/seancorfield/build-uber-log4j2-handler/releases/tag/v2.25.1[2.25.1] - A conflict handler for log4j2 plugins cache files for the tools.build uber task.
+* https://github.com/squint-cljs/cherry[cherry] https://github.com/squint-cljs/cherry/releases/tag/v0.4.30[0.4.30] - Experimental ClojureScript to ES6 module compiler
+* https://github.com/babashka/babashka[babashka] https://github.com/babashka/babashka/releases/tag/v1.12.206[1.12.206] - Native, fast starting Clojure interpreter for scripting
+* https://github.com/pedestal/pedestal[pedestal] https://github.com/pedestal/pedestal/blob/master/CHANGELOG.md[0.8.0-beta-2] - The Pedestal Server-side Libraries
+* https://github.com/squint-cljs/squint[squint] https://github.com/squint-cljs/squint/releases/tag/v0.8.152[0.8.152] - Light-weight ClojureScript dialect

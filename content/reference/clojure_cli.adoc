@@ -624,7 +624,7 @@ For example, the following can be used to print the deps tree for a `:test` alia
 clj -X:deps tree :aliases '[:test]`
 ---
 
-See https://clojure.github.io/tools.deps.cli/clojure.tools.deps.cli.api-api.html#clojure.tools.deps.cli.api/list[API docs].
+See https://clojure.github.io/tools.deps.cli/clojure.tools.deps.cli.api-api.html#clojure.tools.deps.cli.api/tree[API docs].
 
 [[deps_aliases]]
 === Alias list

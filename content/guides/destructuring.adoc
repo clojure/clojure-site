@@ -11,7 +11,7 @@ toc::[]
 
 == What is Destructuring?
 
-Destructuring is a way to concisely bind names to the values inside a data structure. Destructuring allows us to write more concise and readable code.
+<<xref/../../reference/special_forms#binding-forms,Destructuring>> is a way to concisely bind names to the values inside a data structure. Destructuring allows us to write more concise and readable code.
 
 Consider the following example of extracting and naming values in a vector.
 
@@ -57,7 +57,7 @@ An even more concise version of this would recursively destructure without needi
 
 == Sequential Destructuring
 
-Clojure destructuring is broken up into two categories, sequential destructuring and associative destructuring. Sequential destructuring represents a sequential data structure as a Clojure vector within a let binding.
+Clojure destructuring is broken up into two categories, sequential destructuring and associative destructuring. <<xref/../../reference/special_forms#sequential-destructuring,Sequential destructuring>> represents a sequential data structure as a Clojure vector within a let binding.
 
 This type of destructuring can be used on any kind of data structure that can be traversed in linear time, including lists, vectors, seqs, strings, arrays, and anything that supports `nth`.
 
@@ -223,7 +223,7 @@ When you have nested vectors, you can use `:as` or `&` at any level as well.
 
 == Associative Destructuring
 
-Associative destructuring is similar to sequential destructuring, but applied instead to associative (key-value) structures (including maps, records, vectors, etc). The associative bindings are concerned with concisely extracting values of the map by key.
+<<xref/../../reference/special_forms#associative-destructuring,Associative destructuring>> is similar to sequential destructuring, but applied instead to associative (key-value) structures (including maps, records, vectors, etc). The associative bindings are concerned with concisely extracting values of the map by key.
 
 Let's first consider an example that extracts values from a map without destructuring:
 
@@ -387,7 +387,7 @@ To support this style of invocation, associative destructuring also works with l
 ;;val = 12  debug = true  verbose = true  opts = {:verbose true, :debug true}
 ----
 
-The use of keyword arguments had fallen in and out of fashion in the Clojure community over the years. They are now mostly used when presenting interfaces that people are expected to type at the REPL or the outermost layers of an API. In general, inner layers of the code found it easier to pass options as an explicit map. However, in Clojure 1.11 the capability was added to allow passing of alternating key->values, or a map of those same mappings, or even a map with key->values before it to functions expecting keyword arguments. Therefore, the call to `configure` above can take any of the following forms in addition to those shown above:
+<<xref/../../reference/special_forms#keyword-arguments,Keyword arguments>> are mostly used when presenting interfaces that people are expected to type at the REPL or the outermost layers of an API. In general, inner layers of the code found it easier to pass options as an explicit map. However, in Clojure 1.11 the capability was added to allow passing of alternating key->values, or a map of those same mappings, or even a map with key->values before it to functions expecting keyword arguments. Therefore, the call to `configure` above can take any of the following forms in addition to those shown above:
 
 [source,clojure]
 ----
@@ -447,7 +447,7 @@ You can even destructure using auto-resolved keywords, which will again be bound
 
 Creating and destructuring maps with auto-resolved keywords allow us to write code using a namespace alias (here `p`) that is defined by a `require` in the current namespace, giving us a means of namespace indirection that can be changed at a single place in the code.
 
-All symbols bound in the context of destructuring can be further destructured - this allows destructuring to be used in a nested fashion for both sequential and associative destructuring. It is less obvious, but this also extends to the symbol defined after `&`.
+All symbols bound in the context of destructuring can be further destructured - this allows destructuring to be used in a <<xref/../../reference/special_forms#nested-destructuring,nested>> fashion for both sequential and associative destructuring. It is less obvious, but this also extends to the symbol defined after `&`.
 
 This example destructures the `&` seq in place to decode the rest of the arguments as options (note that we are thus destructuring the two arguments sequentially and the rest associatively):
 

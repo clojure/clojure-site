@@ -1,0 +1,58 @@
+= Clojure Deref (July 28, 2025)
+Christoph Neumann
+2025-07-28
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]).
+
+== Upcoming Events
+
+* https://buffconf.gomomento.com/sessions/datomic-workshop[Datomic Workshop]: July 31
+* https://2025.clojure-conj.org/[Clojure/Conj 2025]: Early Bird Tickets Available Now!
+* https://scicloj.github.io/macroexpand-2025/[Macroexpand 2025]: Currently inviting speakers and contributors
+
+== Podcasts, videos, and media
+
+* https://youtu.be/HZ0hFLXbByw[REPL-driven development (RDD) with Clojure] - Andrey Fadeev
+* https://youtu.be/7cVoa5E8DwI[Building procedural Minecraft roguelike Dungeons with ClojureScript] - mccormix
+* https://youtu.be/bT4cQsY4Wb8[Building the Piglet Playground] - Lambda Island
+* https://youtu.be/VA-wVuPcaw0[Macro Templates in Clojure] - Clojure Diary
+* https://youtu.be/PfzolwQ_6wU[Clojure Corner: Interview with Nathan Marz] - Flexiana
+* https://youtu.be/n6ICeRyXHsI[Turning the Conference Inside Out - reflecting backward & forward on Clojure conferences and growth] - Sci Cloj
+
+== Blogs, articles, and projects
+
+* https://ryanellingson.dev/blogs/Build-Your-Own-Damn-Static-Site-Generator[Build Your Own Static Site Generator] - Ryan Ellingson
+* https://fnguy.com/seqfind.html[Introducing seqfind.com] - Alex Sheluchin
+* https://lambdaisland.com/blog/2025-07-24-re-frame-app[The Hidden Lessons in a re-frame App] - Laurence Chen
+* https://clojure.land/[Clojure Land] - Brett Adams
+* https://x.com/escherize/status/1948930729477644695[Keeping it fun: goto in Clojure] - Bryan Maass
+* https://github.com/eighttrigrams/clojure-claude-and-mcp-knowledge[Beginner-friendly intro to MCP development with Clojure and Claude] - Daniel de Oliveira
+* https://yamlscript.org/blog/2025-07-25/ys-on-the-go/[YS on the Go - YS — YAML Done Wisely] - Ingy döt Net
+* https://yamlscript.org/blog/2025-07-28/ys-on-jank-bb-and-ys/[YS on jank, bb and ys - YS — YAML Done Wisely] - Ingy döt Net
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/saberstack/clj-hackernews-api[clj-hackernews-api]  - Clojure client library for the HackerNews API
+* https://github.com/afucher/clojure-repl-intellij[clojure-repl-intellij] https://github.com/afucher/clojure-repl-intellij/blob/master/CHANGELOG.md[2.6.0] - Free OpenSource IntelliJ plugin for Clojure REPL development.
+* https://github.com/bhauman/clojure-mcp[clojure-mcp] https://github.com/bhauman/clojure-mcp/blob/main/CHANGELOG.md[0.1.7-alpha] - Clojure MCP
+* https://github.com/abogoyavlensky/clojure-stack-lite[clojure-stack-lite] https://github.com/abogoyavlensky/clojure-stack-lite/releases/tag/0.2.0[0.2.0] - 🪶A quick way to start a full-stack Clojure app with Server-side Rendering. Built on SQLite/PostgreSQL, HTMX, AlpineJS and TailwindCSS v4
+* https://github.com/seancorfield/honeysql[honeysql] https://github.com/seancorfield/honeysql/releases/tag/v2.7.1325[2.7.1325] - Turn Clojure data structures into SQL
+* https://github.com/shipclojure/simulflow[simulflow] https://github.com/shipclojure/simulflow/blob/main/CHANGELOG.md[0.1.6-alpha] - A Clojure library for building real-time voice-enabled AI pipelines. Simulflow handles the orchestration of speech recognition, audio processing, and AI service integration with the elegance of functional programming.
+* https://github.com/wardle/nhspd[nhspd] https://github.com/wardle/nhspd/blob/main/CHANGELOG.md[2.0.74] - Support for the UK NHS Postcode directory, linking all UK postcodes to administrative and political areas, including LSOA for small region population (1000-1500 people) analytics.
+* https://github.com/wardle/clods[clods] https://github.com/wardle/clods/blob/main/CHANGELOG.md[2.0.224] - A microservice and toolchain for providing UK organisational data services (ODS).
+* https://github.com/willcohen/clj-proj[clj-proj] https://github.com/willcohen/clj-proj/blob/main/CHANGELOG.md[0.1.0-alpha2] - A native (or transpiled) version of PROJ for both the JVM and JS ecosystems.
+* https://github.com/monkey-projects/mailman[mailman] https://github.com/monkey-projects/mailman/releases/tag/0.3.0[0.3.0] - Simple event routing library
+* https://github.com/seancorfield/deps-new[deps-new] https://github.com/seancorfield/deps-new/releases/tag/v0.10.0[0.10.0] - Create new projects for the Clojure CLI / deps.edn
+* https://github.com/RokLenarcic/mcp-server[mcp-server] https://github.com/RokLenarcic/mcp-server/releases/tag/0.2.11[0.2.11] - MCP Server library
+* https://github.com/clj-kondo/clj-kondo[clj-kondo] https://github.com/clj-kondo/clj-kondo/releases/tag/v2025.07.28[2025.07.28] - Static analyzer and linter for Clojure code that sparks joy
+* https://github.com/editor-code-assistant/eca[eca] https://github.com/editor-code-assistant/eca/releases/tag/0.10.3[0.10.3] - Editor Code Assistant (ECA) - AI pair programming capabilities agnostic of editor
+* https://github.com/lsolbach/qclojure[qclojure] https://github.com/lsolbach/qclojure/blob/main/Changelog.md[0.9.0] - A functional quantum computer programming library for Clojure with backend protocols, simulation backends and visualizations.
+* https://github.com/katox/neanderthal-stick[neanderthal-stick] https://github.com/katox/neanderthal-stick/releases/tag/0.5.0[0.5.0] - Save/Load Extensions for Neanderthal, Fast Clojure Matrix Library
+* https://github.com/ovistoica/ring-nexus-middleware[ring-nexus-middleware] https://github.com/ovistoica/ring-nexus-middleware/blob/master/CHANGELOG.org[2025.07.28] - Ring FCIS (Functional Core Imperative Shell) support through nexus
+* https://github.com/thoughtfull-clojure/desiderata[desiderata] https://github.com/thoughtfull-clojure/desiderata/blob/main/CHANGELOG.md[2.2.0] - Things wanted or needed but missing from clojure.core
+* https://github.com/cursive-ide/cursive[cursive] https://cursive-ide.com/blog/cursive-2025.2-eap5.html[2025.2-eap5] - Cursive: The IDE for beautiful Clojure code

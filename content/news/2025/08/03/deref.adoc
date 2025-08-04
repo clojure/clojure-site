@@ -1,0 +1,47 @@
+= Clojure Deref (Aug 3, 2025)
+Christoph Neumann
+2025-08-03
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]).
+
+== Upcoming Events
+
+* https://clojureverse.org/t/macroexpand-2-connecting-clojure-data-practitioners/11485[Macroexpand 2]: Aug 9
+* https://2025.clojure-conj.org/[Clojure/Conj 2025]: Early Bird Tickets Available Now!
+* http://clojure-south.com/[Clojure South 2025]: Pre-sale tickets and Call for Proposals open
+* https://scicloj.github.io/macroexpand-2025/[Macroexpand 2025]: Currently inviting speakers and contributors
+
+== Podcasts, videos, and media
+
+* https://youtu.be/0Onznyaufc0[Looking Ahead to Macroexpand -- a snippet of Clojure real-world-data meeting 33] - Sci Cloj
+* https://zencastr.com/z/d_wGkrPd[defn episode 7df1b8716726 Anna Colom] - @defn podcast
+
+== Blogs, articles, and projects
+
+* https://vlaaad.github.io/kalaha[Programming is magic, or how I wrote a Kalaha solver] - Vlad Protsenko
+* https://trevdev.ca/blog/i-snuck-clojure-into-work.html[I Snuck Clojure Into Work] - Trevor Richards
+* https://www.ooloi.org/home/from-the-ooloi-front-towards-hello-world[From the Ooloi Front: Towards Hello World] - Peter Bengtson
+* https://gre.gorio.ch/projects/multiplayer-tic-tac-toe/multiplayer-tic-tac-toe[Multiplayer game with nbb and datastar] - Gregory Bleiker
+* https://github.com/ilevd/clojure-like[List of Clojure-like projects] - Igor Levdansky
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/paintparty/bling[bling] https://github.com/paintparty/bling/releases/tag/v0.8.8[0.8.8] - Rich text console printing for Clojure, ClojureScript, and Babashka.
+* https://github.com/amiorin/big-config[big-config] https://github.com/amiorin/big-config/blob/main/CHANGELOG.md[0.2.187] - Operations done right.
+* https://github.com/amiorin/rama-jdbc[rama-jdbc]  - GitHub - amiorin/rama-jdbc
+* https://github.com/paintparty/lasertag[lasertag] https://github.com/paintparty/lasertag/releases/tag/v0.11.5[0.11.5] - Lasertag is a utility library for categorizing values in Clojure, ClojureScript, and Babashka
+* https://github.com/xlisp/datascript-mcp-server[datascript-mcp-server]  - 🚀 Datascript MCP Server
+* https://github.com/vlaaad/reveal[reveal] https://github.com/vlaaad/reveal/tree/v1.3.287[1.3.287] - Read Eval Visualize Loop for Clojure
+* https://github.com/chr15m/nreplproxy[nreplproxy]  - Nrepl debugging proxy that logs all traffic
+* https://github.com/RokLenarcic/mcp-server[mcp-server] https://github.com/RokLenarcic/mcp-server/releases/tag/0.2.14[0.2.14] - MCP Server library
+* https://github.com/scicloj/clay[clay] https://github.com/scicloj/clay/blob/main/CHANGELOG.md[2-beta49] - A REPL-friendly Clojure tool for notebooks and datavis
+* https://github.com/lukaszkorecki/omega-red[omega-red] https://github.com/lukaszkorecki/omega-red/tree/v2.5.0[2.5.0] - Idiomatic Redis client for Clojure
+* https://github.com/fulcrologic/statecharts[statecharts] https://github.com/fulcrologic/statecharts/blob/main/CHANGELOG[statecharts-1.2.22] - A Statechart library for CLJ(S)
+* https://github.com/seancorfield/honeysql[honeysql] https://github.com/seancorfield/honeysql/releases/tag/v2.7.1340[2.7.1340] - Turn Clojure data structures into SQL
+* https://github.com/babashka/babashka[babashka] https://github.com/babashka/babashka/releases/tag/v1.12.207[1.12.207] - Native, fast starting Clojure interpreter for scripting
+* https://github.com/saberstack/zsxf[zsxf]  - Query engine: incremental view maintenance for Datomic/Datascript databases

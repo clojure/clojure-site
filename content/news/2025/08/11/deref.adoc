@@ -1,0 +1,52 @@
+= Clojure Deref (Aug 11, 2025)
+Christoph Neumann
+2025-08-11
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]).
+
+== Upcoming Events
+
+* https://2025.clojure-conj.org/[Clojure/Conj 2025]: Early Bird Tickets Available Now!
+* https://clojure-south.com/[Clojure South 2025]: Tickets On Sale and Call for Proposals open
+* https://scicloj.github.io/macroexpand-2025/[Macroexpand 2025]: Currently inviting speakers and contributors
+* https://clojureverse.org/t/scicloj-ai-meetup-9-editor-code-assistant-eca/14596[Scicloj AI Meetup 9: Editor Code Assistant (ECA)]: Aug 13
+* https://clojureverse.org/t/scicloj-ai-meetup-10-datascript-mcp-server/14598[Scicloj AI Meetup 10: datascript-mcp-server]: Aug 16
+* https://www.meetup.com/london-clojurians/events/310293304/[London Clojurians: ECA - Editor Code Assistant]: Aug 19
+* https://www.meetup.com/london-clojurians/events/310237555/[London Clojurians: Mailman: event driven made easy]: Sep 2
+
+== Podcasts, videos, and media
+
+* https://youtu.be/Y5jC-it5tlA[Coding limit and offset in Clojure. Just look how terse the code is!!!!] - Clojure Diary
+* https://youtu.be/bV-amgLb-2Q[SDR with Clojure is fun] - Juan Monetta
+* https://youtu.be/fvqWR-QORe8[Harnessing the power of Java in Clojure] - Clojure Diary
+
+== Blogs, articles, and projects
+
+* https://www.ooloi.org/home/stm-meets-grpc-an-unexpected-marriage[STM Meets gRPC: An Unexpected Marriage] - Peter Bengtson
+* https://clojurecivitas.github.io/scicloj/macroexpand/macroexpand_2025[Macroexpand 2025 by Scicloj – Clojure Civitas] - Daniel Slutsky
+* https://blog.nundrum.net/posts-output/2025-08-04-clojure-dbus/[Clojure and D-Bus] - Robbie Huffman
+* https://www.evalapply.org/posts/lessons-from-reimplementing-clojure-comp-function/[Understanding not just Clojure's comp function by re-implementing it] - Aditya Athalye
+* https://corfield.org/blog/2025/08/08/deps/[The power of the :deps alias] - Sean Corfield
+* https://cuddly-octo-palm-tree.com/posts/2025-08-10-tool-dependencies/[Managing a Project's Tool Dependencies with Nix (and direnv)] - Gary Verhaegen
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/xlisp/visualization-mcp-server[visualization-mcp-server]  - Visualization MCP Server
+* https://github.com/cursive-ide/cursive[cursive] https://cursive-ide.com/blog/cursive-2025.2.html[2025.2] - Cursive: The IDE for beautiful Clojure code
+* https://github.com/kepler16/kmono[kmono]  - The missing workspace tool for clojure tools.deps projects
+* https://github.com/cognitect-labs/aws-api[aws-api] https://github.com/cognitect-labs/aws-api/blob/main/CHANGES.md[0.8.762] - AWS, data driven
+* https://github.com/jonasseglare/kubb[kubb]  - Compact Kubernetes configuration with Babashka
+* https://github.com/clj-commons/pomegranate[pomegranate] https://github.com/clj-commons/pomegranate/releases/tag/v1.2.25[1.2.25] - A sane Clojure API for Maven Artifact Resolver + dynamic runtime modification of the classpath
+* https://github.com/clj-commons/pretty[pretty] https://github.com/clj-commons/pretty/blob/main/CHANGES.md[3.6.2] - Library for helping print things prettily, in Clojure - ANSI fonts, formatted exceptions
+* https://github.com/monkey-projects/monkeyci[monkeyci]  - Next-generation CI/CD tool that uses the full power of Clojure!
+* https://github.com/editor-code-assistant/eca[eca] https://github.com/editor-code-assistant/eca/releases/tag/0.24.2[0.24.2] - Editor Code Assistant (ECA) - AI pair programming capabilities agnostic of editor
+* https://github.com/lsolbach/qclojure[qclojure] https://github.com/lsolbach/qclojure/blob/main/Changelog.md[0.10.0] - A functional quantum computer programming library for Clojure with backend protocols, simulation backends and visualizations.
+* https://github.com/seancorfield/deps-new[deps-new] https://github.com/seancorfield/deps-new/releases/tag/v0.10.1[0.10.1] - Create new projects for the Clojure CLI / deps.edn
+* https://github.com/pedestal/pedestal[pedestal] https://github.com/pedestal/pedestal/blob/master/CHANGELOG.md[0.8.0-rc-1] - The Pedestal Server-side Libraries
+* https://github.com/fulcrologic/fulcro[fulcro] https://github.com/fulcrologic/fulcro/blob/main/CHANGELOG.md[fulcro-3.9.0-rc5] - A library for development of single-page full-stack web applications in clj/cljs
+* https://github.com/cursive-ide/cursive[cursive] https://cursive-ide.com/blog/cursive-2025.2.1-eap1.html[2025.2.1-eap1] - Cursive: The IDE for beautiful Clojure code

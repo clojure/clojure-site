@@ -1,0 +1,52 @@
+= Clojure Deref (Aug 19, 2025)
+Christoph Neumann
+2025-08-19
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]).
+
+== Upcoming Events
+
+* https://2025.clojure-conj.org/[Clojure/Conj 2025]: Early Bird Tickets go away on Aug 20
+* https://clojure-south.com/[Clojure South 2025]: Tickets On Sale, Call for Proposals closes Aug 22
+* https://scicloj.github.io/macroexpand-2025/[Macroexpand 2025]: Currently inviting speakers and contributors
+* https://clojureverse.org/t/scicloj-ai-meetup-11-agentic-workflows-with-grain/14617[Scicloj AI Meetup 11: Agentic workflows with Grain]: Aug 23
+* https://www.meetup.com/london-clojurians/events/310237555/[London Clojurians: Mailman: event driven made easy]: Sep 2
+
+== Podcasts, videos, and media
+
+* https://youtu.be/LHb8ebdv5BE[rswan - range Swiss army knife in Clojure] - Clojure Diary
+* https://youtu.be/JUd11PQCkIU[Scittle ClojureScript Game Menu Template] - mccormix
+* https://youtu.be/FzCHclYf6Ns[Clojure for biomedical research - Mike Travers - a snippet of Clojure real-world-data meeting 34] - Sci Cloj
+* https://youtu.be/uAgWcoDDOGs[Scicloj AI Meetup 9: Editor Code Assistant (ECA)] - Sci Cloj
+* https://youtu.be/h5tsVv8MVPQ[Expressive Clojure testing with the matcher-combinators library] - Andrey Fadeev
+
+== Blogs, articles, and projects
+
+* https://vlaaad.github.io/ad-hoc-analytics[How I made ad-hoc analytics with Reveal] - Vlad Protsenko
+* https://www.clojuriststogether.org/news/july-2025-short-term-q2-project-updates/[July 2025 Short-Term Q2 Project Updates] - Kathleen Davis
+* https://casey.link/blog/client-ip-ring-middleware/[ol.client-ip: A Clojure Library to Prevent IP Spoofing] - Casey Link
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/hectorqlucero/lst[lst]  - LST - Lucero Systems Leiningen Template
+* https://github.com/shipclojure/simulflow[simulflow] https://github.com/shipclojure/simulflow/releases/tag/0.1.7-alpha[0.1.7-alpha] - A Clojure library for building real-time voice-enabled AI pipelines. Simulflow handles the orchestration of speech recognition, audio processing, and AI service integration with the elegance of functional programming.
+* https://github.com/damesek/hnsw-clj[hnsw-clj]  - Native implementation of HNSW algorithms (pure-hnsw, pcaf, ivf-hnsw, p-hnsw)
+* https://github.com/weavejester/integrant[integrant] https://github.com/weavejester/integrant/blob/master/CHANGELOG.md[1.0.0-RC2] - Micro-framework for data-driven architecture
+* https://github.com/bhauman/clojure-mcp[clojure-mcp] https://github.com/bhauman/clojure-mcp/blob/main/CHANGELOG.md[0.1.8-alpha] - Clojure MCP
+* https://clojure.org/reference/clojure_cli[clojure_cli] https://clojure.org/releases/tools#v1.12.1.1561[1.12.1.1561] - Clojure CLI
+* https://github.com/clojure-lsp/clojure-lsp[clojure-lsp] https://github.com/clojure-lsp/clojure-lsp/releases/tag/2025.08.15-15.37.37[2025.08.15-15.37.37] - Clojure & ClojureScript Language Server (LSP) implementation
+* https://github.com/http-kit/http-kit[http-kit] https://github.com/http-kit/http-kit/releases/tag/v2.8.1[2.8.1] - Simple, high-performance event-driven HTTP client+server for Clojure
+* https://github.com/nextjournal/markdown[markdown] https://github.com/nextjournal/markdown/blob/main/CHANGELOG.md[0.7.189] - A cross-platform clojure/script parser for Markdown
+* https://github.com/BetterThanTomorrow/calva-backseat-driver[calva-backseat-driver] https://github.com/BetterThanTomorrow/calva-backseat-driver/releases/tag/v0.0.17[0.0.17] - VS Code AI Agent Interactive Programming. Tools for CoPIlot and other assistants. Can also be used as an MCP server.
+* https://github.com/nnichols/clojure-lint-action[clojure-lint-action] https://github.com/nnichols/clojure-lint-action/releases/tag/v5[5] - A GitHub Action that lints clojure files with clj-kondo and generates comments with reviewdog on pull requests to improve the code review experience.
+* https://github.com/cursive-ide/cursive[cursive] https://cursive-ide.com/blog/cursive-2025.2.1-eap2.html[2025.2.1-eap2] - Cursive: The IDE for beautiful Clojure code
+* https://github.com/borkdude/deps.clj[deps.clj] https://github.com/borkdude/deps.clj/releases/tag/v1.12.1.1561[1.12.1.1561] - A faithful port of the clojure CLI bash script to Clojure
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.524[2.0.524] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/editor-code-assistant/eca[eca] https://github.com/editor-code-assistant/eca/releases/tag/0.29.2[0.29.2] - Editor Code Assistant (ECA) - AI pair programming capabilities agnostic of editor
+* https://github.com/scicloj/clay[clay] https://github.com/scicloj/clay/blob/main/CHANGELOG.md[2-beta52] - A REPL-friendly Clojure tool for notebooks and datavis
+* https://github.com/BetterThanTomorrow/joyride[joyride] https://github.com/BetterThanTomorrow/joyride/releases/tag/v0.0.58[0.0.58] - Making VS Code Hackable like Emacs since 2022

@@ -514,7 +514,7 @@ The following environment variables can influence CLI execution (many are descri
 * `XDG_CONFIG_HOME` - if this standard var is set, will use `$XDG_CONFIG_HOME/clojure` as the user config directory
 * `CLJ_CACHE` - user cache directory, (defaults = `<config-dir>/.cpcache`)
 * `XDG_CACHE_HOME` - if this standard var is set, will use `$XDG_CACHE_HOME/clojure` as the user cache directory
-* `CLJ_JVM_OPTS` - JVM options to be included in internal calls to the classpath building process, which can be useful to provide things like a truststore with a self-signed certifate using to download internal artifacts
+* `CLJ_JVM_OPTS` - JVM options to be included in internal calls to the classpath building process, which can be useful to provide things like a truststore with a self-signed certificate using to download internal artifacts
 * `JAVA_CMD` - path to Java executable to use
 * `JAVA_HOME` - if no `$JAVA_CMD` and no `java` on path, will try to use `$JAVA_HOME/bin/java`
 * `JAVA_OPTS` - JVM options to be included in the user command being executed - not cached. Included before any `-J` command line parameters and any `:jvm-opts`

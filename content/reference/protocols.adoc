@@ -41,8 +41,8 @@ A protocol is a named set of named methods and their signatures, defined using h
 ----
 (defprotocol AProtocol
   "A doc string for AProtocol abstraction"
-  (bar [a b] "bar docs")
-  (baz [a] [a b] [a b c] "baz docs"))
+  (bar [this a] "bar docs")
+  (baz [this] [this a] [this a b] "baz docs"))
 ----
 
 * No implementations are provided
@@ -60,14 +60,14 @@ Note that you do not need to use this interface with https://clojure.github.io/c
 [source,clojure]
 ----
 (defprotocol P
-  (foo [x])
-  (bar-me [x] [x y]))
+  (foo [this x])
+  (bar-me [this x] [this x y]))
 
-(deftype Foo [a b c]
+(deftype Foo [this a b c]
   P
-  (foo [x] a)
-  (bar-me [x] b)
-  (bar-me [x y] (+ c y)))
+  (foo [this x] a)
+  (bar-me [this x] b)
+  (bar-me [this x y] (+ c y)))
 
 (bar-me (Foo. 1 2 3) 42)
 = > 45
@@ -108,7 +108,7 @@ extend takes a type/class (or interface, see below), a one or more protocol + fu
 ** but opens the door to incidental multiple inheritance of implementation
 *** since a class can inherit from more than one interface, both of which implement the protocol
 *** if one interface is derived from the other, the more derived is used, else which one is used is unspecified.
-* The implementing fn can presume first argument is instanceof AType
+* The implementing fn can presume first argument is instanceof AType. First argument is _**this**_ .
 * You can implement a protocol on _**nil**_
 * To define a default implementation of protocol (for other than nil) just use Object
 
@@ -121,19 +121,19 @@ Protocols are fully reified and support reflective capabilities via https://cloj
 ----
 (extend-type MyType
   Countable
-    (cnt [c] ...)
+    (cnt [this c] ...)
   Foo
-    (bar [x y] ...)
-    (baz ([x] ...) ([x y zs] ...)))
+    (bar [this x] ...)
+    (baz ([this x] ...) ([this x y] ...)))
 
   ;expands into:
 
 (extend MyType
   Countable
-   {:cnt (fn [c] ...)}
+   {:cnt (fn [this c] ...)}
   Foo
-   {:baz (fn ([x] ...) ([x y zs] ...))
-    :bar (fn [x y] ...)})
+   {:baz (fn ([this x] ...) ([this x y] ...))
+    :bar (fn [this x] ...)})
 ----
 
 === Guidelines for extension

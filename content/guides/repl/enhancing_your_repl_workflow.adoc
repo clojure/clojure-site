@@ -304,8 +304,6 @@ the manual task of saving and re-creating the context of an expression.
 === Community resources about REPL debugging
 
 * https://www.clojure-toolbox.com/[The Clojure Toolbox] provides a list a Clojure libraries for debugging.
-* https://cambium.consulting/articles/2018/2/8/the-power-of-clojure-debugging[The Power of Clojure: debugging]
-is an article by Cambium Consulting which provides a list of techniques for debugging at the REPL.
 * _Clojure From the Ground Up_ by Aphyr contains a https://aphyr.com/posts/319-clojure-from-the-ground-up-debugging[chapter about debugging],
 presenting techniques for debugging Clojure in particular and a principled approach to debugging in general.
 * In his article http://blog.cognitect.com/blog/2017/6/5/repl-debugging-no-stacktrace-required[REPL Debugging: No Stacktrace Required],

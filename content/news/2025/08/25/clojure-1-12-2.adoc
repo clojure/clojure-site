@@ -1,0 +1,11 @@
+= Clojure 1.12.2
+Alex Miller
+2025-08-25
+:jbake-type: post
+
+Clojure 1.12.2 is now available!  Find download and usage information on the <<xref/../../../../../releases/downloads#stable,Downloads>> page.
+
+* https://clojure.atlassian.net/browse/CLJ-2914[CLJ-2914] - Compiler - syntax error if qualified instance method expression is missing instance
+* https://clojure.atlassian.net/browse/CLJ-1798[CLJ-1798] - Refs - avoid creating RetryEx in LockingTransaction on every transaction
+* https://clojure.atlassian.net/browse/CLJ-2916[CLJ-2916] - LazySeq - realize before serializing and do not serialize IFn
+* https://clojure.atlassian.net/browse/CLJ-2917[CLJ-2917] - Iterate - de/serialization no longer supported, throw

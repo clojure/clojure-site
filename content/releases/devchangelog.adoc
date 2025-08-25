@@ -17,7 +17,28 @@ The official https://github.com/clojure/clojure/blob/master/changes.md[changelog
 
 Note: All dev releases are subject to breaking changes for new work since the prior release.
 
+== Release 1.12.x
+
+=== 1.12.2 (Aug 25, 2025) [[v1.12.2]]
+
+https://clojure.org/news/2025/08/25/clojure-1-12-2[Release Notes]
+
+* https://clojure.atlassian.net/browse/CLJ-2914[CLJ-2914] - Compiler - syntax error if qualified instance method expression is missing instance
+* https://clojure.atlassian.net/browse/CLJ-1798[CLJ-1798] - Refs - avoid creating RetryEx in LockingTransaction on every transaction
+* https://clojure.atlassian.net/browse/CLJ-2916[CLJ-2916] - LazySeq - realize before serializing and do not serialize IFn
+* https://clojure.atlassian.net/browse/CLJ-2917[CLJ-2917] - Iterate - de/serialization no longer supported, throw
+
+=== 1.12,1 (Jun 2, 2025) [[v1.12.1]]
+
+https://clojure.org/news/2025/06/02/clojure-1-12-1[Release Notes]
+
+* https://clojure.atlassian.net/browse/CLJ-2701[CLJ-2701] Pin serialVersionUID for Keyword and ArraySeq back to 1.10.3 values to retain binary serialization
+
 == Release 1.12.0
+
+=== 1.12.0 (Sep 5, 2024) [[v1.12.0]]
+
+https://clojure.org/news/2024/09/05/clojure-1-12-0[Release Notes]
 
 === 1.12.0-rc2 (Aug 3, 2024) [[v1.12.0-rc2]]
 
@@ -231,13 +252,15 @@ https://clojure.org/news/2024/08/03/clojure-1-11-4[Release Notes]
 
 == Release 1.11.3
 
-=== 1.11.3 (Apr 24, 2024) [[v1.11.3]]
-
 https://clojure.org/news/2024/04/24/clojure-1-11-3[Release Notes]
+
+=== 1.11.3 (Apr 24, 2024) [[v1.11.3]]
 
 * https://clojure.atlassian.net/browse/CLJ-2843[CLJ-2843] - Reflective calls to Java methods that take primitive long or double now work when passed a narrower boxed number at runtime (Integer, Short, Byte, Float). Previously, these methods were not matched during reflection and an error was thrown.
 
 == Release 1.11.2
+
+https://clojure.org/news/2024/03/08/clojure-1-11-2[Release Notes]
 
 === 1.11.2 (Mar 8, 2024) [[v1.11.2]]
 
@@ -247,11 +270,15 @@ Fix for CVE https://nvd.nist.gov/vuln/detail/CVE-2024-22871[CVE-2024-22871] deta
 
 == Release 1.11.1
 
+https://clojure.org/news/2022/04/05/clojure-1-11-1[Release Notes]
+
 === 1.11.1-rc1 (Apr 1, 2022) [[v1.11.1-rc1]]
 
 * https://clojure.atlassian.net/browse/CLJ-2701[CLJ-2701] Pin serialVersionUID for Keyword and ArraySeq back to 1.10.3 values to retain binary serialization
 
 == Release 1.11.0
+
+https://clojure.org/news/2022/03/22/clojure-1-11-0[Release Notes]
 
 === 1.11.0-rc1 (Feb 16, 2022) [[v1.11.0-rc1]]
 

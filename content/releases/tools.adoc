@@ -22,6 +22,10 @@ For more information see the following docs:
 
 Recent official releases are described here. Prereleases and older versions can be found in the https://github.com/clojure/brew-install/blob/1.12.1/CHANGELOG.md[repo changelog].
 
+=== 1.12.2.1565 (Aug 26, 2025) [[v1.12.2.1565]]
+
+* Update to Clojure 1.12.2
+
 === 1.12.1.1561 (Aug 14, 2025) [[v1.12.1.1561]]
 
 * TDEPS-264 Add `-X:deps basis` - to print the basis for a deps config

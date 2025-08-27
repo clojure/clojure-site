@@ -1,0 +1,57 @@
+= Clojure Deref (Aug 26, 2025)
+Christoph Neumann
+2025-08-26
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]).
+
+== Upcoming Events
+
+* https://2025.clojure-conj.org/[Clojure/Conj 2025]: Schedule is now live
+* https://clojure-south.com/[Clojure South 2025]: Tickets On Sale, Call for Proposals closes Aug 31
+* https://scicloj.github.io/macroexpand-2025/[Macroexpand 2025]: Currently inviting speakers and contributors
+* https://www.youtube.com/watch?v=Nt1p6yreAUU[VS Code Live - Vibe-hack VS Code with Joyride and Copilot]: Aug 28
+* https://www.meetup.com/london-clojurians/events/310237555/[London Clojurians: Mailman: event driven made easy]: Sep 2
+
+== Podcasts, videos, and media
+
+* https://youtu.be/YoYgihX4C7I[ECA - Editor Code Assistant (by Eric Dallo)] - London Clojurians
+* https://youtu.be/b1C3rD-ZUaA[No build step ClojureScript + nREPL with Scittle and cljs-josh] - mccormix
+* https://youtu.be/vGewwWuzk9o[Truss v2 intro] - Peter Taoussanis
+* https://youtu.be/rzwQkCRCxIQ[Getting Started with Leiningen: A Beginner’s Guide] - Andrey Fadeev
+* https://youtu.be/lYqjm43ow9Q[Clojure BR - 3o Meetup Presencial] - clojure-br
+
+== Blogs, articles, and projects
+
+* https://lambdaisland.com/blog/2025-08-20-conjure-piglet-client[A Conjure Piglet Client] - Laurence Chen
+* https://djblue.github.io/blog/porting-portal-to-basilisp.html[Blog | Porting Portal to Basilisp] - Chris Badahdah
+* https://clojure-book.gitlab.io/book.html#_java_power[Clojure: Java Power] - Karthikeyan.A.K
+* https://www.clojuriststogether.org/news/q3-2025-funding-announcement/[Q3 2025 Funding Announcement] - Kathleen Davis
+* https://indiepubstack.andreyfadeev.com/posts/5/getting-started-with-leiningen-a-beginners-guide[Getting Started with Leiningen: A Beginner’s Guide | IndiePubStack] - Andrey Fadeev
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/clojure/clojure[clojure] https://clojure.org/news/2025/08/25/clojure-1-12-2[1.12.2] - The Clojure programming language
+* https://clojure.org/reference/clojure_cli[clojure_cli] https://clojure.org/releases/tools#v1.12.2.1565[1.12.2.1565] - Clojure CLI
+* https://github.com/clj-commons/aleph[aleph] https://github.com/clj-commons/aleph/blob/master/CHANGES.md[0.9.1] - Asynchronous streaming communication for Clojure - web server, web client, and raw TCP/UDP
+* https://github.com/taoensso/truss[truss] https://github.com/taoensso/truss/releases/tag/v2.2.0[2.2.0] - Micro toolkit for Clojure/Script errors
+* https://github.com/babashka/scittle[scittle] https://github.com/babashka/scittle/releases/tag/v0.7.27[0.7.27] - Execute Clojure(Script) directly from browser script tags via SCI
+* https://github.com/taoensso/timbre[timbre] https://github.com/taoensso/timbre/releases/tag/v6.8.0[6.8.0] - Pure Clojure/Script logging library
+* https://github.com/taoensso/trove[trove] https://github.com/taoensso/trove/releases/tag/v1.0.0[1.0.0] - Modern logging facade for Clojure/Script
+* https://github.com/brianium/datastar.wow[datastar.wow]  - A data-oriented approach to Datastar using the official SDK and Nexus. Wow!
+* https://github.com/babashka/sci[sci] https://github.com/babashka/sci/releases/tag/v0.10.49[0.10.49] - Configurable Clojure/Script interpreter suitable for scripting and Clojure DSLs
+* https://github.com/taoensso/telemere[telemere] https://github.com/taoensso/telemere/releases/tag/v1.1.0[1.1.0] - Structured logs and telemetry for Clojure/Script
+* https://github.com/alza-bitz/snowpark-clj[snowpark-clj]  - A Clojure API for Snowpark and Snowflake.
+* https://github.com/monkey-projects/monkeyci[monkeyci] https://github.com/monkey-projects/monkeyci/tree/0.19.7.2[0.19.7.2] - Next-generation CI/CD tool that uses the full power of Clojure!
+* https://github.com/sn0wF1eld/sn0wt3ch[sn0wt3ch]  - A repo that contains all the information regarding technology at Sn0wf1eld, Lda and how to use it
+* https://github.com/lsolbach/qclojure[qclojure] https://github.com/lsolbach/qclojure/blob/main/Changelog.md[0.12.0] - A functional quantum computer programming library for Clojure with backend protocols, simulation backends and visualizations.
+* https://github.com/flow-storm/flow-storm-debugger[flow-storm-debugger] https://github.com/flow-storm/flow-storm-debugger/blob/master/CHANGELOG.md[4.5.1] - A debugger for Clojure and ClojureScript with some unique features.
+* https://github.com/BetterThanTomorrow/calva-backseat-driver[calva-backseat-driver] https://github.com/BetterThanTomorrow/calva-backseat-driver/releases/tag/v0.0.18[0.0.18] - VS Code AI Agent Interactive Programming. Tools for CoPIlot and other assistants. Can also be used as an MCP server.
+* https://github.com/BetterThanTomorrow/joyride[joyride] https://github.com/BetterThanTomorrow/joyride/releases/tag/v0.0.61[0.0.61] - Making VS Code Hackable like Emacs since 2022
+* https://github.com/and-z/komb[komb] https://github.com/and-z/komb/blob/main/CHANGELOG.md[0.0.2] - Sort and tidy up some JSON
+* https://github.com/babashka/http-server[http-server] https://github.com/babashka/http-server/blob/main/CHANGELOG.md[0.1.14] - Serve static assets
+* https://github.com/borkdude/deps.clj[deps.clj] https://github.com/borkdude/deps.clj/releases/tag/v1.12.2.1565[1.12.2.1565] - A faithful port of the clojure CLI bash script to Clojure

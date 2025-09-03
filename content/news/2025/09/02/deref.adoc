@@ -1,0 +1,53 @@
+= Clojure Deref (Sep 2, 2025)
+Christoph Neumann
+2025-09-02
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]).
+
+== Upcoming Events
+
+* https://2025.clojure-conj.org/[Clojure/Conj 2025]: Schedule is now live
+* https://clojure-south.com/[Clojure South 2025]: Tickets On Sale
+* https://scicloj.github.io/macroexpand-2025/[Macroexpand 2025]: Submissions due by Sep 8
+
+== Podcasts, videos, and media
+
+* https://youtu.be/MpAhCvpM79Q[My Vim & ClojureScript dev setup] - mccormix
+* https://youtu.be/ac_ydoqPPWQ[Easel Instarepl Demo] - phronmophobic
+* https://youtu.be/Nt1p6yreAUU[VS Code Live - Vibe-hack VS Code with Joyride and Copilot] - Visual Studio Code
+
+== Blogs, articles, and projects
+
+* https://flarework.com/posts-output/2025-08-29-headless-kaocha-shadow-cljs[Running Kaocha ClojureScript Tests Headless with JSDOM] - Dan Peddle
+* https://clojurecivitas.github.io/scicloj/cfd/data_viz/interactive_visualization.html[Exploring Time Series Data Visualization] - Siyoung Byun
+* https://vlaaad.github.io/tripping-around-repl[Tripping around REPL] - Vlad Protsenko
+* https://clojurecivitas.github.io/clojure/tree_seq/depth_first_search.html[Depth-first search in Clojure (tree-seq)] - Harold Hausman
+* https://www.taoensso.com/news/2025-08-open-source[Open source news: 2025 Jul-Aug] - Peter Taoussanis
+* https://schmud.de/programs/2025-09-02-wikidata-mundaneum.html[Wikidata and Mundaneum - The Triumph of the Commons] - David Schmudde
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/clojure/clojure-clr[clojure-clr] https://github.com/clojure/clojure-clr/blob/master/changes.md[clojure-1.12.2] - A port of Clojure to the CLR, part of the Clojure project
+* https://github.com/editor-code-assistant/eca-intellij[eca-intellij]  - Intellij plugin for ECA
+* https://github.com/roman01la/uix.css[uix.css] https://github.com/roman01la/uix.css/blob/master/CHANGELOG.md[0.3.0] - CSS-in-CLJS
+* https://github.com/fulcrologic/fulcro-rad[fulcro-rad] https://github.com/fulcrologic/fulcro-rad/blob/main/CHANGELOG.md[fulcro-rad-1.6.15] - Fulcro Rapid Application Development
+* https://github.com/awkay/workspaces[workspaces] https://github.com/awkay/workspaces/blob/main/CHANGELOG.md[workspaces-1.1.3] - Live development environment for Clojurescript
+* https://github.com/lsolbach/qclojure[qclojure] https://github.com/lsolbach/qclojure/blob/main/Changelog.md[0.13.0] - A functional quantum computer programming library for Clojure with backend protocols, simulation backends and visualizations.
+* https://github.com/babashka/pod-babashka-go-sqlite3[pod-babashka-go-sqlite3] https://github.com/babashka/pod-babashka-go-sqlite3/releases/tag/v0.2.8[0.2.8] - A babashka pod for interacting with sqlite3.
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.525[2.0.525] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/vlaaad/reveal[reveal] https://github.com/vlaaad/reveal/tree/v1.3.296[1.3.296] - Read Eval Visualize Loop for Clojure
+* https://codeberg.org/mindaslab/rswan[rswan]  - range swiss army knife
+* https://github.com/squint-cljs/squint[squint] https://github.com/squint-cljs/squint/releases/tag/v0.8.153[0.8.153] - Light-weight ClojureScript dialect
+* https://github.com/babashka/fs[fs] https://github.com/babashka/fs/releases/tag/v0.5.27[0.5.27] - File system utility library for Clojure
+* https://github.com/nrepl/nrepl[nrepl] https://github.com/nrepl/nrepl/releases/tag/v1.4.0[1.4.0] - A Clojure network REPL that provides a server and client, along with some common APIs of use to IDEs and other tools that may need to evaluate Clojure code in remote environments.
+* https://github.com/editor-code-assistant/eca[eca] https://github.com/editor-code-assistant/eca/releases/tag/0.44.1[0.44.1] - Editor Code Assistant (ECA) - AI pair programming capabilities agnostic of editor
+* https://github.com/cognitect-labs/aws-api[aws-api] https://github.com/cognitect-labs/aws-api/blob/main/CHANGES.md[0.8.774] - AWS, data driven
+* https://github.com/clj-commons/durable-queue[durable-queue] https://github.com/clj-commons/durable-queue/releases/tag/v0.1.7[0.1.7] - a disk-backed queue for clojure
+* https://github.com/babashka/http-server[http-server] https://github.com/babashka/http-server/releases/tag/v0.1.15[0.1.15] - Serve static assets
+* https://github.com/taoensso/sente[sente] https://github.com/taoensso/sente/releases/tag/v1.21.0-RC1[1.21.0-RC1] - Realtime web comms library for Clojure/Script
+* https://github.com/fulcrologic/fulcro[fulcro] https://github.com/fulcrologic/fulcro/blob/main/CHANGELOG.md[fulcro-3.9.0-rc7] - A library for development of single-page full-stack web applications in clj/cljs

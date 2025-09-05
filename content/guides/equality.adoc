@@ -690,8 +690,7 @@ the most relevant for how `=` and `hash` behave.
 
 == References
 
-The paper
-http://citeseerx.ist.psu.edu/viewdoc/download;jsessionid=1?doi=10.1.1.23.9999&rep=rep1&type=pdf["Equal Rights for Functional Objects, or, the More Things Change, The More They Are the Same"] by Henry
+The paper https://dl.acm.org/doi/pdf/10.1145/165593.165596["Equal Rights for Functional Objects, or, the More Things Change, The More They Are the Same"] by Henry
 Baker includes code written in Common Lisp for a function `EGAL` that
 was an inspiration for Clojure's `=`.  The idea of "deep equality"
 making sense for immutable values, but not as much sense for mutable

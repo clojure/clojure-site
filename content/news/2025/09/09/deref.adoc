@@ -1,0 +1,59 @@
+= Clojure Deref (Sep 9, 2025)
+Christoph Neumann
+2025-09-09
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]).
+
+== Upcoming Events
+
+* https://2025.clojure-conj.org/[Clojure/Conj 2025]: Schedule is now live
+* https://clojure-south.com/[Clojure South 2025]: Tickets On Sale
+* https://scicloj.github.io/macroexpand-2025/[Macroexpand 2025]: Oct 17-18, 24-25
+
+== Podcasts, videos, and media
+
+* https://youtu.be/9Cr-k6rfhzc[Mailman: event driven made easy (by Wout Neirynck)] - London Clojurians
+* https://youtu.be/FvLMWJzKswo[Calling a function before it's defined, in Clojure] - Clojure Diary
+
+== Blogs, articles, and projects
+
+* https://metaredux.com/posts/2025/09/03/nrepl-1-4.html[nREPL 1.4] - Bozhidar Batsov
+* https://romanliutikov.com/blog/zero-runtime-cost-styles-in-clojurescript[Zero runtime cost styles in ClojureScript | Roman Liutikov, Software Engineer] - Roman Liutikov
+* https://dmiller.github.io/clojure-clr-next/general/2025/08/31/classic-clojure-compiler-contemplation.html[C4 - Classic Clojure Compiler Contemplation] - David Miller
+* https://dmiller.github.io/clojure-clr-next/general/2025/09/01/AST-me-anything.html[C4 - AST me anything] - David Miller
+* https://dmiller.github.io/clojure-clr-next/general/2025/09/02/symbolic-of-what.html[C4 - Symbolic of what?] - David Miller
+* https://dmiller.github.io/clojure-clr-next/general/2025/09/03/iseq-clarity.html[C4 - ISeq clarity] - David Miller
+* https://dmiller.github.io/clojure-clr-next/general/2025/09/04/functional-anatomy.html[C4 - Functional anatomy] - David Miller
+* https://www.clojuriststogether.org/news/2025-board-nominations-and-our-annual-meeting/[2025 Board Nominations and Our Annual Meeting] - Kathleen Davis
+* https://blog.michielborkent.nl/oss-updates-jul-aug-2025.html[OSS updates July and August 2025] - Michiel Borkent
+* https://www.wedesoft.de/software/2025/09/05/clojure-game/[Developing a Space Flight Simulator in Clojure] - Jan Wedekind
+* https://biffweb.com/p/yakread-relaunch/[Relaunching Yakread: an algorithmic reading app] - Jacob O'Bryant
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/fulcrologic/fulcro-rad[fulcro-rad] https://github.com/fulcrologic/fulcro-rad/blob/main/CHANGELOG.md[1.6.16] - Fulcro Rapid Application Development
+* https://github.com/fulcrologic/fulcro-rad-semantic-ui[fulcro-rad-semantic-ui] 1.4.7 - Semantic UI Rendering Plugin for RAD
+* https://github.com/scicloj/devcontainer-templates[devcontainer-templates] 2.0.0 - Devcontainer templates for Clojure
+* https://github.com/babashka/babashka[babashka] https://github.com/babashka/babashka/releases/tag/v1.12.208[1.12.208] - Native, fast starting Clojure interpreter for scripting
+* https://github.com/seancorfield/dot-clojure[dot-clojure] https://github.com/seancorfield/dot-clojure/releases/tag/v1.4.0[1.4.0] - My .clojure/deps.edn file
+* https://github.com/clj-commons/aleph[aleph] https://github.com/clj-commons/aleph/blob/master/CHANGES.md[0.9.2] - Asynchronous streaming communication for Clojure - web server, web client, and raw TCP/UDP
+* https://github.com/practicalli/clojure-cli-config[clojure-cli-config] https://github.com/practicalli/clojure-cli-config/releases/tag/2025-09-04[2025-09-04] - User aliases and Clojure CLI configuration for deps.edn based projects
+* https://github.com/practicalli/project-templates[project-templates] https://github.com/practicalli/project-templates/releases/tag/2025-09-04[2025-09-04] - Clojure CLI Production level templates for seancorfield/deps-new
+* https://github.com/xlisp/datomic-mcp-server[datomic-mcp-server]  - 🚀 Datomic MCP Server
+* https://github.com/monkey-projects/monkeyci[monkeyci] https://github.com/monkey-projects/monkeyci/tree/0.19.8[0.19.8] - Next-generation CI/CD tool that uses the full power of Clojure!
+* https://github.com/lsolbach/qclojure[qclojure] https://github.com/lsolbach/qclojure/releases/tag/v0.15.0[0.15.0] - A functional quantum computer programming library for Clojure with backend protocols, simulation backends and visualizations.
+* https://github.com/seancorfield/next-jdbc[next-jdbc] https://github.com/seancorfield/next-jdbc/releases/tag/v1.3.1070[1.3.1070] - A modern low-level Clojure wrapper for JDBC-based access to databases.
+* https://github.com/yonureker/stripe-clojure[stripe-clojure]  - Clojure SDK for the Stripe API.
+* https://github.com/seancorfield/honeysql[honeysql] https://github.com/seancorfield/honeysql/releases/tag/v2.7.1350[2.7.1350] - Turn Clojure data structures into SQL
+* https://github.com/borkdude/unused-deps[unused-deps]  - Find unused deps in a clojure project
+* https://github.com/outskirtslabs/sfv[sfv]  - A 0-dependency Clojure library for parsing and generating Structured Field Values for HTTP (RFC 9651/8941)
+* https://github.com/editor-code-assistant/eca[eca] https://github.com/editor-code-assistant/eca/releases/tag/0.50.2[0.50.2] - Editor Code Assistant (ECA) - AI pair programming capabilities agnostic of editor
+* https://github.com/uncomplicate/deep-diamond[deep-diamond] https://github.com/uncomplicate/deep-diamond/tree/0.36.1[0.36.1] - A fast Clojure Tensor & Deep Learning library
+* https://github.com/scicloj/kindly[kindly] https://github.com/scicloj/kindly/blob/main/CHANGELOG.md[4-beta19] - A small library for defining how different kinds of things should be rendered
+* https://github.com/fulcrologic/fulcro[fulcro] https://github.com/fulcrologic/fulcro/blob/main/CHANGELOG.md[3.9.0-rc10] - A library for development of single-page full-stack web applications in clj/cljs
+* https://github.com/scicloj/clay[clay] https://github.com/scicloj/clay/blob/main/CHANGELOG.md[2-beta54] - A REPL-friendly Clojure tool for notebooks and datavis

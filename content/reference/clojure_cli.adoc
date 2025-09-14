@@ -599,9 +599,9 @@ The Clojure CLI is designed to provide access to programs (functions) in other l
 === Dependency list
 
 [source]
----
+----
 clj -X:deps list
----
+----
 
 Prints sorted list of all transitive dependencies selected for the classpath, and license information (if found). Additional options can be used to select aliases or other classpath modifications, or to modify printing information.
 
@@ -611,18 +611,18 @@ See https://clojure.github.io/tools.deps.cli/clojure.tools.deps.cli.api-api.html
 === Dependency tree
 
 [source]
----
+----
 clj -X:deps tree
----
+----
 
 Prints dependency tree with inclusion/exclusion information as determined during <<dep_expansion#_tree_printing,dependency expansion>>). Additional options can be used to select aliases or other classpath modifications, or to modify printing information.
 
 For example, the following can be used to print the deps tree for a `:test` alias:
 
 [source]
----
+----
 clj -X:deps tree :aliases '[:test]`
----
+----
 
 See https://clojure.github.io/tools.deps.cli/clojure.tools.deps.cli.api-api.html#clojure.tools.deps.cli.api/tree[API docs].
 
@@ -630,9 +630,9 @@ See https://clojure.github.io/tools.deps.cli/clojure.tools.deps.cli.api-api.html
 === Alias list
 
 [source]
----
+----
 clj -X:deps aliases
----
+----
 
 This program prints all aliases available at the command line based on the current deps environment. Additional options can be used to select aliases or other classpath modifications.
 

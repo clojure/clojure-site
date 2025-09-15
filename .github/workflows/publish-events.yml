@@ -5,6 +5,10 @@ on:
     - cron: '0 0 * * *'
   workflow_dispatch:
 
+permissions:
+  contents: write
+  repository_dispatch: write
+
 jobs:
   published-daily-events:
     runs-on: ubuntu-latest

@@ -7,7 +7,6 @@ on:
 
 permissions:
   contents: write
-  repository_dispatch: write
 
 jobs:
   published-daily-events:

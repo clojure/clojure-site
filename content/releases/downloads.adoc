@@ -46,9 +46,8 @@ Using Clojure with a tool like the Clojure CLI or Leiningen will automatically i
 
 Clojure depends on Java and all Clojure code is compiled to Java 8 compatible bytecode (newer versions of Java can load this as well).
 
-* Minimum runtime dependency: Java 8
-* Supported: LTS (long term support) releases, currently Java 8, Java 11, Java 17, Java 21
-* Others: likely work, but not officially supported
+* Recommended: Java 25 (LTS releases are supported)
+* Minimum: Java 8
 
 === Changelog
 
@@ -79,7 +78,7 @@ Leiningen dependency:
 * Dependencies:
 ** `org.clojure/spec.alpha {:mvn/version "0.5.238"}`
 ** `org.clojure/core.specs.alpha {:mvn/version "0.4.74"}`
-* Requirements: Java 8 or higher (recommended: Java 8, Java 11, Java 17, Java 21)
+* Requirements: Java 8 or higher (recommended: Java 25)
 ////
 
 == Older Releases

@@ -667,7 +667,7 @@ Print the docstrings for the help namespace itself (note that `help` is defined 
 clojure -X:deps help/doc :ns help
 ----
 
-* Also see: https://clojure.github.io/tools.deps.cli/clojure.tools.deps.cli.help-api.html[API docs]
+See: https://clojure.github.io/tools.deps.cli/clojure.tools.deps.cli.help-api.html[API docs]
 
 [[deps_prep]]
 === Prep libs
@@ -702,7 +702,7 @@ To find and "prepare" libs in the dependency tree you can use the `prep` tool pr
 clj -X:deps prep
 ----
 
-The prep task will find all libs in the dependency expansion and look for libs that are source libs, need prep (based on their `:deps/prep-lib` key), and are not yet prepped (based on the `:ensure` dir in their `:deps/prep-lib` map). Those libs will run the command specified there by alias and function, as if:  `clj -T:<alias> <fn>`.
+The https://clojure.github.io/tools.deps.cli/clojure.tools.deps.cli.api-api.html#clojure.tools.deps.cli.api/prep[prep] task will find all libs in the dependency expansion and look for libs that are source libs, need prep (based on their `:deps/prep-lib` key), and are not yet prepped (based on the `:ensure` dir in their `:deps/prep-lib` map). Those libs will run the command specified there by alias and function, as if:  `clj -T:<alias> <fn>`.
 
 Once a library has been prepped, it does not need to be prepped again by other users of this git library version.
 
@@ -710,6 +710,8 @@ Once a library has been prepped, it does not need to be prepped again by other u
 ====
 Should you use a prep step that compiles your Clojure code? Generally, no. All users of this git library on a machine will share the prepared classpath created by the prep step. The choice of Clojure compiler and dependent libraries is better left to each application making using of this lib. For more on using dev-time compilation, see the <<xref/../../guides/dev_startup_time#,Dev Startup Time>> guide.
 ====
+
+See: https://clojure.github.io/tools.deps.cli/clojure.tools.deps.cli.api-api.html#clojure.tools.deps.cli.api/prep[API doc]
 
 [[deps_find_versions]]
 === Find versions
@@ -727,6 +729,8 @@ The params that can be provided are:
 * `:tool` - a tool name if the tool has already been installed
 
 `find-versions` will print the git or Maven coordinates, one per line, to the console.
+
+See: https://clojure.github.io/tools.deps.cli/clojure.tools.deps.cli.api-api.html#clojure.tools.deps.cli.api/find-versions[API doc]
 
 [[deps_mvn_install]]
 === Local Maven install
@@ -763,6 +767,8 @@ As mentioned above, edn strings must be in double quotes, and then single-quoted
 
 A pom file must be either provided explicitly, generated from :lib/:version, or found inside the .jar file (the default).
 
+See: https://clojure.github.io/tools.deps.cli/clojure.tools.deps.cli.api-api.html#clojure.tools.deps.cli.api/mvn-install[API doc]
+
 [[deps_mvn_pom]]
 === Generate Maven pom
 
@@ -770,10 +776,7 @@ Use the following program to generate or update an existing pom.xml with the dep
 
 * `-X:deps mvn-pom` - generate (or update an existing) pom.xml with deps and paths
 
-See https://clojure.github.io/tools.deps.cli/clojure.tools.deps.cli.api-api.html#clojure.tools.deps.cli.api/mvn-pom[API docs] for more.
-
-
-
+See: https://clojure.github.io/tools.deps.cli/clojure.tools.deps.cli.api-api.html#clojure.tools.deps.cli.api/mvn-pom[API doc]
 
 [[tools]]
 == Tools

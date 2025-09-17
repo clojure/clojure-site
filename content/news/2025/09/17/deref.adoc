@@ -1,0 +1,51 @@
+= Clojure Deref (Sep 17, 2025)
+Christoph Neumann
+2025-09-17
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]).
+
+== Upcoming Events
+
+* https://clojureverse.org/t/clojure-real-world-data-35/14735[Clojure real-world-data 35]: Sep 19
+* https://clojure-south.com/[Clojure South 2025]: Oct 6-7
+* https://scicloj.github.io/macroexpand-2025/[Macroexpand 2025]: Oct 17-18, 24-25
+* https://2025.clojure-conj.org/[Clojure/Conj 2025]: Nov 12-14
+
+== Podcasts, videos, and media
+
+* https://youtu.be/7GSLY9Dvlps[Complex multimethod processing, in Clojure] - Clojure Diary
+* https://youtu.be/yikQwRxBNVc[Middleware vs interceptors in Clojure web applications] - Andrey Fadeev
+* https://youtu.be/sHGnb70xosk[Debugging a debugger] - Juan Monetta
+* https://youtu.be/ErUel-6wSx0[Clojure Java interop practical guide] - Andrey Fadeev
+
+== Blogs, articles, and projects
+
+* https://medium.com/@_jba/my-experience-with-cursor-and-clojure-mcp-6e323b90a6f3[My experience with Cursor and Clojure-MCP] - Julien Bille
+* https://flexiana.com/news/ai/2025/09/bayesian-optimization[Bayesian Optimization in Machine Learning | Flexiana] - Jiri Knesl
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://github.com/BetterThanTomorrow/joyride[joyride] https://github.com/BetterThanTomorrow/joyride/releases/tag/v0.0.63[0.0.63] - Making VS Code Hackable like Emacs since 2022
+* https://github.com/weavejester/integrant[integrant] https://github.com/weavejester/integrant/blob/master/CHANGELOG.md[1.0.0] - Micro-framework for data-driven architecture
+* https://github.com/BetterThanTomorrow/calva-backseat-driver[calva-backseat-driver] https://github.com/BetterThanTomorrow/calva-backseat-driver/releases/tag/v0.0.20[0.0.20] - VS Code AI Agent Interactive Programming. Tools for CoPIlot and other assistants. Can also be used as an MCP server.
+* https://github.com/simm-is/partial-cps[partial-cps]  - A lean and efficient continuation passing style transform, includes async-await support.
+* https://github.com/scicloj/kindly[kindly] https://github.com/scicloj/kindly/blob/main/CHANGELOG.md[4-beta20] - A small library for defining how different kinds of things should be rendered
+* https://github.com/babashka/scittle[scittle] https://github.com/babashka/scittle/releases/tag/v0.7.28[0.7.28] - Execute Clojure(Script) directly from browser script tags via SCI
+* https://github.com/babashka/pod-babashka-go-sqlite3[pod-babashka-go-sqlite3] https://github.com/babashka/pod-babashka-go-sqlite3/releases/tag/v0.3.9[0.3.9] - A babashka pod for interacting with sqlite3.
+* https://github.com/jacobobryant/biff[biff] https://github.com/jacobobryant/biff/releases/tag/v1.9.0[1.9.0] - A Clojure web framework for solo developers.
+* https://github.com/scicloj/clay[clay] https://github.com/scicloj/clay/blob/main/CHANGELOG.md[2-beta56] - A REPL-friendly Clojure tool for notebooks and datavis
+* https://github.com/ring-clojure/ring[ring] https://github.com/ring-clojure/ring/blob/master/CHANGELOG.md[1.15.2] - Clojure HTTP server abstraction
+* https://github.com/ring-clojure/ring-defaults[ring-defaults] https://github.com/ring-clojure/ring-defaults/blob/master/CHANGELOG.md[0.7.0] - A library to provide sensible Ring middleware defaults
+* https://github.com/igrishaev/pg-bin[pg-bin]  - Parse binary Postgres COPY output
+* https://github.com/steffan-westcott/clj-otel[clj-otel] https://github.com/steffan-westcott/clj-otel/blob/master/CHANGELOG.adoc[0.2.9] - An idiomatic Clojure API for adding telemetry to your libraries and applications using OpenTelemetry.
+* https://github.com/clj-commons/aleph[aleph] https://github.com/clj-commons/aleph/blob/master/CHANGES.md[0.9.3] - Asynchronous streaming communication for Clojure - web server, web client, and raw TCP/UDP
+* https://github.com/jramosg/color-tools[color-tools]  - A complete toolkit for working with colors in Clojure and Clojurescript applications
+* https://github.com/bhauman/clojure-mcp[clojure-mcp] https://github.com/bhauman/clojure-mcp/blob/main/CHANGELOG.md[0.1.9-alpha] - Clojure MCP
+* https://github.com/lsolbach/qclojure[qclojure] https://github.com/lsolbach/qclojure/releases/tag/v0.18.0[0.18.0] - A functional quantum computer programming library for Clojure with backend protocols, simulation backends and visualizations.
+* https://github.com/NoahTheDuke/lazytest[lazytest] https://github.com/NoahTheDuke/lazytest/releases/tag/v1.9.1[1.9.1] - A standalone BDD test framework for Clojure
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.527[2.0.527] - Clojure & ClojureScript Interactive Programming for VS Code

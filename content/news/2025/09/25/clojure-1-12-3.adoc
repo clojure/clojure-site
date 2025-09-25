@@ -1,0 +1,8 @@
+= Clojure 1.12.3
+Alex Miller
+2025-09-25
+:jbake-type: post
+
+Clojure 1.12.3 is now available!  Find download and usage information on the <<xref/../../../../../releases/downloads#stable,Downloads>> page.
+
+* https://clojure.atlassian.net/browse/CLJ-2919[CLJ-2919] - Compiler - fix nested compilation emitting for keyword and protocol call sites

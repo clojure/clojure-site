@@ -19,6 +19,12 @@ Note: All dev releases are subject to breaking changes for new work since the pr
 
 == Release 1.12.x
 
+=== 1.12.3 (Sep 25, 2025) [[v1.12.3]]
+
+https://clojure.org/news/2025/09/25/clojure-1-12-3[Release Notes]
+
+* https://clojure.atlassian.net/browse/CLJ-2919[CLJ-2919] - Compiler - fix nested compilation emitting for keyword and protocol call sites
+
 === 1.12.2 (Aug 25, 2025) [[v1.12.2]]
 
 https://clojure.org/news/2025/08/25/clojure-1-12-2[Release Notes]

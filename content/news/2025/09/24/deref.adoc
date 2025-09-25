@@ -1,0 +1,50 @@
+= Clojure Deref (Sep 24, 2025)
+Christoph Neumann
+2025-09-24
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]).
+
+== Upcoming Events
+
+* https://clojure-south.com/[Clojure South 2025]: Oct 6-7
+* https://scicloj.github.io/macroexpand-2025/[Macroexpand 2025]: Oct 17-18, 24-25
+* https://2025.clojure-conj.org/[Clojure/Conj 2025]: Nov 12-14
+
+== Podcasts, videos, and media
+
+* https://youtube.com/playlist?list=PLZdCLR02grLoRVh4Beepxe4DyCYt6eGnR[EuroClojure 2012] - ClojureTV
+* https://youtu.be/kpM1EEmIOp4[Scicloj AI Meetup 10: datascript-mcp-server  |  assisted datavis with clay &  gptel] - Sci Cloj
+* https://youtu.be/hvchFTa5z0I[Scicloj AI Meetup 11: Agentic workflows with Grain] - Sci Cloj
+
+== Blogs, articles, and projects
+
+* https://clojurecivitas.github.io/finance/portfolio_analysis/alpha_beta_regression.html[Rolling Regressions in Clojure for Real-Time Alpha and Beta Monitoring – Clojure Civitas] - Edward Widjaja
+* https://clojurebr.substack.com/p/first-muitos[(first muitos)] - Arthur Fücher
+* https://clojurecivitas.github.io/finance/portfolio_analysis/llm_financial_advisor.html[A Clojure-based Portfolio Analysis Tool based on LLM Integration – Clojure Civitas] - Edward Widjaja
+* https://andreyor.st/posts/2025-09-21-replacing-clojure-lsp-with-clj-kondo-and-refactor-nrepl/[Replacing clojure-lsp with clj-kondo and Refactor-nREPL] - Andrey Listopadov
+* https://github.com/thomascothran/pavlov/blob/master/doc/designing-business-programs-with-behavioral-threads.md[Designing Business Programs with Bthreads] - Thomas Cothran
+* https://clojurecivitas.github.io/opengl_visualization/main.html[OpenGL Visualization with LWJGL – Clojure Civitas] - Jan Wedekind
+
+== Libraries and Tools
+
+New releases and tools this week:
+
+* https://clojure.org/reference/clojure_cli[clojure_cli] https://clojure.org/releases/tools#v1.12.2.1571[1.12.2.1571] - Clojure CLI
+* https://github.com/clj-commons/slingshot[slingshot] https://github.com/clj-commons/slingshot/releases/tag/v0.13.0[0.13.0] - Enhanced try and throw for Clojure leveraging Clojure's capabilities
+* https://github.com/pedestal/pedestal[pedestal] https://github.com/pedestal/pedestal/blob/master/CHANGELOG.md[0.8.0] - The Pedestal Server-side Libraries
+* https://github.com/anjensan/knitty[knitty]  - Knitty is a library for declarative definitions of how data should be computed.
+* https://github.com/afucher/clojure-repl-intellij[clojure-repl-intellij] https://github.com/afucher/clojure-repl-intellij/blob/master/CHANGELOG.md[2.6.3] - Free OpenSource IntelliJ plugin for Clojure REPL development.
+* https://github.com/babashka/pod-babashka-go-sqlite3[pod-babashka-go-sqlite3] https://github.com/babashka/pod-babashka-go-sqlite3/releases/tag/v0.3.10[0.3.10] - A babashka pod for interacting with sqlite3.
+* https://github.com/squint-cljs/squint[squint] https://github.com/squint-cljs/squint/releases/tag/v0.8.154[0.8.154] - Light-weight ClojureScript dialect
+* https://github.com/clj-kondo/clj-kondo[clj-kondo] https://github.com/clj-kondo/clj-kondo/releases/tag/v2025.09.22[2025.09.22] - Static analyzer and linter for Clojure code that sparks joy
+* https://github.com/fulcrologic/fulcro-rad[fulcro-rad] https://github.com/fulcrologic/fulcro-rad/blob/main/CHANGELOG.md[1.6.17] - Fulcro Rapid Application Development
+* https://github.com/seancorfield/logging4j2[logging4j2] https://github.com/seancorfield/logging4j2/releases/tag/v1.0.5[1.0.5] - A Clojure wrapper for log4j2
+* https://github.com/chr15m/eucalypt[eucalypt]  - Tiny Reagent-compatible-ish Squint-cljs UIs with no React
+* https://github.com/editor-code-assistant/eca[eca] https://github.com/editor-code-assistant/eca/releases/tag/0.58.0[0.58.0] - Editor Code Assistant (ECA) - AI pair programming capabilities agnostic of editor
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.534[2.0.534] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/hlship/cli-tools[cli-tools] https://github.com/hlship/cli-tools/blob/main/CHANGES.md[0.16.0-beta-1] - CLIs and subcommands for Clojure or Babashka
+* https://github.com/brianium/datastar.wow[datastar.wow] https://github.com/brianium/datastar.wow/blob/main/CHANGELOG.md[1.0.0-RC3-wow1] - A data-oriented approach to Datastar using the official SDK and Nexus. Wow!
+* https://github.com/cursive-ide/cursive[cursive] https://cursive-ide.com/blog/cursive-2025.2.1-eap3.html[2025.2.1-eap3] - Cursive: The IDE for beautiful Clojure code

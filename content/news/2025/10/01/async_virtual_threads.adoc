@@ -1,0 +1,36 @@
+= Introducing core.async.flow
+Alex Miller
+2025-10-01
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+https://github.com/clojure/core.async[core.async] 1.9.829-alpha2 is now available, which adds support for Java virtual threads (https://clojure.atlassian.net/browse/ASYNC-262(ASYNC-262)).
+
+Threads must block while waiting on I/O operations to complete. "Parking" allows the platform to unmount and free the underlying thread resource while waiting. This allows users to write "normal" straight line code (without callbacks) while consuming fewer platform resources. Clojure core.async go blocks until now used an analyzer to rewrite code with inversion of control specifically for channel parking operations (the ! async ops like `>!`). Other blocking operations (`!!` channel ops or arbitrary I/O ops) are not allowed.
+
+Since Java 21, virtual threads implement I/O parking in the Java platform itself - that capability is a superset of what go blocks provide by supporting all blocking I/O operations. Because virtual threads are a superset of go block capabilities, go blocks can now be reimplemented using virtual threads without changing their semantics. 
+
+== Using virtual threads
+
+This release reimplements go blocks using virtual threads when available (Java 21+). go blocks retain their existing semantics (! channel ops park, blocking I/O not allowed) but do not require loading or running the analyzer. core.async is faster to load (when using Clojure >= 1.12.3) and faster to compile go blocks (no IOC). No code or configuration changes are required.
+
+== io-thread
+
+`io-thread` was added in a previous core.async release and is a new execution context for running both channel operations (parking or blocking) and blocking I/O operations (which are not supported in go). Since alpha2, io-thread blocks also run in virtual threads.
+
+== Virtual thread control
+
+A new system property `clojure.core.async.vthreads` has been added with these values:
+
+* (unset, default) - core.async will opportunistically use virtual threads when available (≥ Java 21) and will otherwise use the old analyzer impl. `io-thread` and `:io` thread pool will run on platform threads if virtual threads are not available. If AOT compiling, go blocks will always use IOC (no change).
+* `target` means that you are targeting virtual threads. At runtime from source, go blocks will throw if vthreads are not available. When AOT compiling, go blocks are always compiled to be run on vthreads and will throw at runtime if vthreads are not available (Java <21).
+* `avoid` means that vthreads will not be used by core.async - you can use this to minimize impacts if you are not yet ready to utilize vthreads in your app. If AOT compiling, go blocks will use IOC. At runtime, `io-thread` and the `:io` thread pool use platform threads.
+
+Note: existing IOC compiled go blocks from older core.async versions continue to work (we retain and load the IOC state machine runtime - this does not require the analyzer), and you can interact with the same channels from both IOC and virtual thread code.
+
+== Feedback wanted!
+
+We are very interested in feedback on performance of existing core.async programs, whether that is observable latency or throughput of the code, or differences in heap consumption and cleaning. Please give us feedback in #core-async on Clojurians Slack!
+
+

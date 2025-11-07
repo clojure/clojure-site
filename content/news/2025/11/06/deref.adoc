@@ -1,0 +1,109 @@
+= Clojure Deref (Nov 6, 2025)
+Christoph Neumann
+2025-11-06
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]).
+
+*The State of ClojureScript 2025 Survey is live!*
+
+If you ever wondered what's happening in cljs world, this is your chance to contribute and learn back from the community. Take a few minutes to https://state-of-clojurescript.com/[fill out the survey] and share it in your circles.
+
+== Upcoming Events
+
+* https://2025.clojure-conj.org/[Clojure/Conj 2025]: Nov 12-14
+* https://scicloj.github.io/docs/community/groups/dsp-study/[Clojure DSP Study Group]: Nov 8
+* https://clojureverse.org/t/london-clojurians-talk-the-gaiwan-stack-by-arne-brasseur/14746[The Gaiwan Stack (by Arne Brasseur)]: Nov 11
+* https://www.meetup.com/london-clojurians/events/311402779/[A Json-Schema/OpenAPI Renaissance (by Max Penet)]: Nov 25
+* https://clojuredays.org/[Dutch Clojure Days 2026]: May 9th. Free registration! The https://clojuredays.org/#cfp[CFP is open] until Jan 15th.
+
+== Podcasts, videos, and media
+
+* https://youtu.be/KU4HnjTV9m8[Streamed data transformation in JavaScript and Clojure via Iterators and Transducers] - Functional Cave
+* https://youtu.be/m91rehSyVhM[Creating code on the fly using Clojure eval] - Clojure Diary
+* https://youtu.be/aehbRJg00Uc[Si-frame presentation] - Vincent Cantin
+* https://youtu.be/IlV8R6k8XvY[Effective Open Source Maintenance Maintenance (2025)] - Peter Taoussanis
+* https://youtu.be/yYVv573ZNVM[Reagent API's most used functions] - mccormix
+* https://youtu.be/mwYitlQrOiM[Clojure Corner: Interview with Christophe Grand] - Flexiana
+* https://youtu.be/w8xxuhUHqCY[Apropos with Jordan Miller - November 6, 2025] - apropos clojure
+
+== Blogs, articles, and news
+
+* https://www.clojuriststogether.org/news/2025-board-election-results.-annual-meeting-october-29./[2025 Board Election Results. Annual Meeting October 29.] - Kathy Davis
+* https://blog.michielborkent.nl/reagami.html[Reagami: a Reagent-like library in less than 100 lines of Squint CLJS] - Michiel Borkent
+* https://dragan.rocks/articles/25/Clojure-Runs-ONNX-AI-Models-Now[Clojure Runs ONNX AI Models Now - Join the AI fun!] - Dragan Djuric
+* https://clojurecivitas.github.io/bioscoop/quickstart.html[Bioscoop, a DSL for FFmpeg – Clojure Civitas] - Daniel Szmulewicz
+* https://clojurecivitas.github.io/generative_art/surfaces/surfaces_3d[Rendering surfaces – Clojure Civitas] - Tomasz Sulej
+* https://www.big-config.it/blog/control-plane-in-big-config/[Control planes in BigConfig] - Alberto Miorin
+* https://mccormick.cx/news/entries/which-reagent-api-calls-are-most-used-[Which Reagent API Calls are Most Used?] - Chris McCormick
+* https://dragan.rocks/articles/25/Get-Ready-Clojure-GPU-AI-2026-CUDA-13[Get Ready for Clojure, GPU, and AI in 2026 with CUDA 13.0] - Dragan Djuric
+* https://gaiwan.co/blog/mcp-sdk-an-introduction-to-creating-an-mcp-service-with-clojure/[mcp-sdk: an Introduction to creating an MCP service with Clojure] - Joanne Cheng
+* https://romanliutikov.com/blog/enabling-javascript-autocompletion-in-cursive-for-clojurescript[Enabling JavaScript autocompletion for ClojureScript in Cursive editor] - Roman Liutikov
+* https://clojurecivitas.github.io/civitas/why/growing_explanations_together.html[Growing explanations together – Clojure Civitas] - Teodor Heggelund
+* https://blog.michielborkent.nl/oss-updates-sep-oct-2025.html[OSS updates September and October 2025] - Michiel Borkent
+* https://gaiwan.co/blog/gaiwan-october-recap/[Gaiwan: October Recap] - Joanne Cheng
+* https://building.nubank.com/functional-programming-demystified-what-we-learned-at-nu-engineering-meetup/[Functional programming, demystified: What we learned at Nu Engineering Meetup] - Nubank Editorial
+* https://clojurecivitas.github.io/scittle/presentations/browser_native_slides.html[Building Browser-Native Presentations with Scittle – Clojure Civitas] - Burin Choomnuan
+* https://funktionale-programmierung.de/en/2018/03/22/transducer.html[Funktionale Programmierung - Transducer: Composition, Abstraction, Performance] - Marco Schneider
+* https://orgpad.info/blog/squircles[Goodbye Circles, Hello Squircles: Perfect Corners in CSS & Canvas] - Pavel Klavík
+* https://clojurecivitas.github.io/generative_art/horizontals/horizontals.html[Horizontals – Clojure Civitas] - Tomasz Sulej
+* https://clojurecivitas.github.io/scittle/pyodide/pyodide_integration.html[Python + ClojureScript: Pyodide Integration with Scittle – Clojure Civitas] - Burin Choomnuan
+* https://bigconfig.it/blog/demystifying-the-control-plane-the-easy-upgrade-path-from-gitops-with-bigconfig/[Demystifying the control plane: the easy upgrade path from GitOps with BigConfig] - Alberto Miorin
+* https://romanliutikov.com/blog/advanced-beginners-guide-to-clojurescript[Advanced Beginner’s guide to ClojureScript | Roman Liutikov, Software Engineer] - Roman Liutikov
+* https://mauricio.szabo.link/blog/2025/11/07/calling-jank-from-c/[Calling Jank from C] - Maurício Szabo
+* https://clojurecivitas.github.io/scittle/weather/weather_nws_integration.html[Free Weather Data with National Weather Service API – Clojure Civitas] - Burin Choomnuan
+
+== Libraries and Tools
+
+Debut release
+
+* https://github.com/damn/moon[moon] - RPG Maker & Engine
+* https://github.com/borkdude/reagami[reagami] - A minimal zero-deps Reagent-like for Squint and CLJS
+* https://github.com/lukaszkorecki/aero-1p[aero-1p] - Bridge between Aero and 1Password
+* https://github.com/unravel-team/litellm-clj[litellm-clj] - A universal translator for LLM models
+* https://github.com/eerohele/muutos[muutos] - Muutos is a zero-dependency Clojure library for reacting to changes in a PostgreSQL database.
+* https://github.com/okilimnik/webserial-starter[webserial-starter] - WebSerial API starter with Clojurescript and Replicant
+* https://repo.prod.meissa.de/meissa/clj-threats[clj-threats] - Clojure implementation of Threagile
+* https://github.com/lsolbach/qclojure-ml[qclojure-ml] - Quantum Machine Learning based on QClojure
+* https://github.com/unravel-team/DSCloj[DSCloj] - Structured LLM prompts in Clojure
+* https://github.com/bhauman/clojure-mcp-light[clojure-mcp-light] - Experimental Clojure tooling for Claude Code - automatic delimiter fixing via hooks and parinfer
+
+Updates
+
+* https://github.com/clojure/tools.build[tools.build] https://github.com/clojure/tools.build/blob/master/CHANGELOG.md[0.10.11] - Clojure builds as Clojure programs
+* https://github.com/fulcrologic/statecharts[statecharts] https://github.com/fulcrologic/statecharts/blob/main/CHANGELOG[1.2.24] - A Statechart library for CLJ(S)
+* https://github.com/fulcrologic/fulcro-inspect[fulcro-inspect] https://github.com/fulcrologic/fulcro-inspect/releases/tag/4.1.0[4.1.0] - A tool for inspecting and debugging Fulcro applications during development.
+* https://github.com/fulcrologic/fulcro-devtools-remote[fulcro-devtools-remote] 0.2.8 - An adapter for writing development tooling that runs as a Chrome extension or an electron app.
+* https://github.com/fulcrologic/test-filter[test-filter] 1.0.6 - A tool for reducing CI times by finding minimal test set based on code analysis.
+* https://github.com/cjohansen/nexus[nexus] https://github.com/cjohansen/nexus/tree/v2025.10.1[2025.10.1] - Data-driven action dispatch for Clojure(Script): Build systems that are easier to test, observe, and extend
+* https://github.com/cjohansen/powerpack[powerpack] https://github.com/cjohansen/powerpack/tree/v2025.10.22[2025.10.22] - A batteries-included static web site toolkit for Clojure
+* https://github.com/clj-kondo/clj-kondo[clj-kondo] https://github.com/clj-kondo/clj-kondo/releases/tag/v2025.10.23[2025.10.23] - Static analyzer and linter for Clojure code that sparks joy
+* https://github.com/stuartsierra/component[component] https://github.com/stuartsierra/component/blob/master/CHANGES.md[1.2.0] - Managed lifecycle of stateful objects in Clojure
+* https://github.com/practicalli/spacemacs-config[spacemacs-config] https://github.com/practicalli/spacemacs-config/releases/tag/2025-10-25[2025-10-25] - rich Clojure & LSP config for Spacemacs
+* https://github.com/askonomm/dompa[dompa] https://github.com/askonomm/dompa/releases/tag/v1.1.0[1.1.0] - A zero-dependency, runtime-agnostic HTML parser and builder.
+* https://github.com/nextjournal/markdown[markdown] https://github.com/nextjournal/markdown/blob/main/CHANGELOG.md[0.7.196] - A cross-platform clojure/script parser for Markdown
+* https://github.com/pedestal/pedestal[pedestal] https://github.com/pedestal/pedestal/blob/master/CHANGELOG.md[0.8.1] - The Pedestal Server-side Libraries
+* https://github.com/lambdaisland/cli[cli] https://github.com/lambdaisland/cli/releases/tag/v1.27.121[1.27.121] - Opinionated command line argument handling, with excellent support for subcommands
+* https://github.com/borkdude/edamame[edamame] https://github.com/borkdude/edamame/releases/tag/v1.5.33[1.5.33] - Configurable EDN/Clojure parser with location metadata
+* https://github.com/fogus/thneed[thneed] https://github.com/fogus/thneed/blob/master/CHANGELOG.md[1.1.4] - An eclectic set of Clojure utilities that I've found useful enough to keep around.
+* https://github.com/BetterThanTomorrow/calva-backseat-driver[calva-backseat-driver] https://github.com/BetterThanTomorrow/calva-backseat-driver/releases/tag/v0.0.24[0.0.24] - VS Code AI Agent Interactive Programming. Tools for CoPIlot and other assistants. Can also be used as an MCP server.
+* https://github.com/lsolbach/qclojure[qclojure] https://github.com/lsolbach/qclojure/releases/tag/v0.23.0[0.23.0] - A functional quantum computer programming library for Clojure with backend protocols, simulation backends and visualizations.
+* https://github.com/metosin/malli[malli] https://github.com/metosin/malli/releases/tag/0.20.0-alpha3[0.20.0-alpha3] - High-performance data-driven data specification library for Clojure/Script.
+* https://github.com/scicloj/clay[clay] https://github.com/scicloj/clay/blob/main/CHANGELOG.md[2.0.2] - A REPL-friendly Clojure tool for notebooks and datavis
+* https://github.com/scicloj/kindly[kindly] https://github.com/scicloj/kindly/blob/main/CHANGELOG.md[4-beta21] - A small library for defining how different kinds of things should be rendered
+* https://github.com/clj-commons/durable-queue[durable-queue] https://github.com/clj-commons/durable-queue/releases/tag/v0.2.0[0.2.0] - a disk-backed queue for clojure
+* https://github.com/BetterThanTomorrow/joyride[joyride] https://github.com/BetterThanTomorrow/joyride/releases/tag/v0.0.71[0.0.71] - Making VS Code Hackable like Emacs since 2022
+* https://github.com/reagent-project/reagent[reagent] https://github.com/reagent-project/reagent/blob/master/CHANGELOG.md[2.0.1] - A minimalistic ClojureScript interface to React.js
+* https://github.com/taoensso/sente[sente] https://github.com/taoensso/sente/releases/tag/v1.21.0[1.21.0] - Realtime web comms library for Clojure/Script
+* https://github.com/http-kit/http-kit[http-kit] https://github.com/http-kit/http-kit/releases/tag/v2.9.0-beta3[2.9.0-beta3] - Simple, high-performance event-driven HTTP client+server for Clojure
+* https://github.com/clojure-emacs/cider[cider] https://github.com/clojure-emacs/cider/releases/tag/v1.20.0[1.20.0] - The Clojure Interactive Development Environment that Rocks for Emacs
+* https://github.com/taoensso/tempel[tempel] https://github.com/taoensso/tempel/releases/tag/v1.0.0[1.0.0] - Data security framework for Clojure
+* https://github.com/editor-code-assistant/eca[eca] https://github.com/editor-code-assistant/eca/releases/tag/0.77.1[0.77.1] - Editor Code Assistant (ECA) - AI pair programming capabilities agnostic of editor
+* https://github.com/taoensso/carmine[carmine] https://github.com/taoensso/carmine/releases/tag/v3.5.0[3.5.0] - Redis client + message queue for Clojure
+* https://github.com/bhauman/clojure-mcp[clojure-mcp] https://github.com/bhauman/clojure-mcp/blob/main/CHANGELOG.md[0.1.12] - Clojure MCP
+* https://github.com/clj-commons/manifold[manifold] https://github.com/clj-commons/manifold/blob/master/CHANGES.md[0.4.4] - A compatibility layer for event-driven abstractions
+* https://github.com/squint-cljs/squint[squint] https://github.com/squint-cljs/squint/releases/tag/v0.9.178[0.9.178] - Light-weight ClojureScript dialect
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.540[2.0.540] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/cursive-ide/cursive[cursive] https://cursive-ide.com/blog/cursive-2025.2.1-eap4.html[2025.2.1-eap4] - Cursive: The IDE for beautiful Clojure code

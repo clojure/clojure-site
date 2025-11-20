@@ -488,14 +488,14 @@ And then start the server by invoking with the alias:
 
 [source,shell]
 ----
-clojure -X:repl-server
+clj -X:repl-server
 ----
 
 If you like, you can also override the default parameters (or add additional options) on the command line:
 
 [source,shell]
 ----
-clojure -X:repl-server :port 51234
+clj -X:repl-server :port 51234
 ----
 
 You can use netcat to connect from another terminal:

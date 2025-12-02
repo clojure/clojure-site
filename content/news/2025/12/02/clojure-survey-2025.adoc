@@ -1,0 +1,16 @@
+= State of Clojure 2025 Survey
+Christoph Neumann
+2025-12-02
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+It's time for the annual State of Clojure Survey!
+
+If you use Clojure, ClojureScript, Babashka, or any other Clojure dialect, we would love to get your responses to the following survey:
+
+* https://www.surveymonkey.com/r/clojure2025[State of Clojure 2025]
+
+Most questions are not required, so please skip any questions that are not applicable.
+
+The survey will close at the end of the year (December 31st), after which we will release the data with some analysis. We greatly appreciate your input!

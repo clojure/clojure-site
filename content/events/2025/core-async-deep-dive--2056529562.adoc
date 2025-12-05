@@ -1,0 +1,31 @@
+= core.async: Deep Dive
+2025-12-10
+:jbake-type: event
+:jbake-edition: 
+:jbake-link: https://team.health-samurai.io/core-async#rec1634368391
+:jbake-location: online
+:jbake-start: 2025-12-10
+:jbake-end: 2025-12-10
+
+== core.async: Deep Dive
+
+Core.Async: Deep Dive +
+ +
+An exploration of Clojure's asynchronous programming engine internals, examining what transpires beneath the public API when developers initialize asynchronous processes and transmit messages +
+through channels. +
+ +
+  Topics covered: +
+- Internal architecture of channels, queues, timers, and event loops +
+  - Compilation and scheduling of virtual threads +
+  - Macro system implementation for core.async semantics and code transformation into state machines +
+ +
+  The presentation serves language designers exploring async support, Clojure practitioners using or evaluating core.async, and systems programmers curious about CSP-style concurrency patterns. +
+ +
+  Speaker: Andrey Listopadov, Clojure Engineer at Health Samurai. A professional Clojure developer with 5+ years of experience, Listopadov has ported core.async to Fennel, providing deep familiarity with the +
+  library's underlying mechanisms. +
+ +
+  Registration: Please complete the registration form at the event URL with genuine contact information, as organizers may reach out for networking or speaking opportunities. +
+ +
+ +
+Zulip: https://clojurians.zulipchat.com/#narrow/stream/262224-events/near/561906611 +
+

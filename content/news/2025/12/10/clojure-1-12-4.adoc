@@ -1,0 +1,8 @@
+= Clojure 1.12.4
+Alex Miller
+2025-12-10
+:jbake-type: post
+
+Clojure 1.12.4 is now available!  Find download and usage information on the <<xref/../../../../../releases/downloads#stable,Downloads>> page.
+
+* https://clojure.atlassian.net/browse/CLJ-2924[CLJ-2924] - LazySeq - fix visibility issues with non-volatile reads

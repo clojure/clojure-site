@@ -1,0 +1,81 @@
+= Clojure Deref (Dec 10, 2025)
+Christoph Neumann
+2025-12-10
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]).
+
+
+== The annual Clojure surveys are live
+
+Help shape the future of Clojure!
+
+Whether you use Clojure, ClojureScript, Babashka, or any other Clojure dialect,
+please fill out the https://www.surveymonkey.com/r/clojure2025[2025 State of
+Clojure Survey] and spread the word on social media.
+
+This survey gives us the best snapshot of the Clojure community, so help us get as many participants as possible.
+
+If you use ClojureScript or dialects like Squint, Cherry, nbb, and such, please
+fill out the https://state-of-clojurescript.com/[2025 State of ClojureScript
+Survey] and share it with others.
+
+Thank you for your help!
+
+
+== Upcoming Events
+
+* https://clojureverse.org/t/clojure-real-world-data-36/14794[Clojure real-world-data 36]: Dec 12
+* https://clojureverse.org/t/scicloj-ai-meetup-agent-o-rama/14782[Scicloj AI Meetup: Agent-o-rama]: Jan 17
+* https://scicloj.github.io/clojure-jam-2026/[Clojure Jam 2026]: Apr 18-19 & 25-26. Online & free! https://scicloj.github.io/clojure-jam-2026/speakers.html[CFP is open] until Jan 31st.
+* https://babashka.org/conf/[Babashka Conf]: May 8. Amsterdam, NL. Free registration, but tickets are limited!
+* https://clojuredays.org/[Dutch Clojure Days 2026]: May 9th. Amsterdam, NL. Join the waitlist, or the https://clojuredays.org/#cfp[CFP is open] until Jan 15th.
+
+
+== Podcasts, videos, and media
+
+* https://youtu.be/wK5Euj3qZiY[Clojure Jobs - Fixing it] - Clojure Diary
+* https://youtu.be/wjvr6RG1Ans[Understanding Probabilistic Computing with Clojure] - Clojure Diary
+
+== Blogs, articles, and news
+
+* https://lbjgruppen.com/en/posts/functional-quadtree-clojure[Functional Quadtrees] - Lau B. Jensen
+* https://clojurecivitas.github.io/mentat_collective/emmy/appendix_scittlerepl.html[The Scittle Repl – Clojure Civitas] - Markus Agwin Kloimwieder
+* https://clojurecivitas.github.io/physics/numerical_methods.html[Linear 1D Advection – Clojure Civitas] - Luke Zeitlin
+* https://clojurecivitas.github.io/gis/geotiff.html[Working with Cloud Optimized GeoTIFFs – Clojure Civitas] - luke-zeitlin
+* https://blog.phronemophobic.com/quineize.html[Simplifying Quines] - Adrian Smith
+* https://dragan.rocks/articles/25/Gemma-3-AI-model-in-Clojure[Gemma 3 AI model in Clojure] - Dragan Djuric
+* https://clojurecivitas.github.io/dtype_next/image_processing_with_tensors.html[Image Processing with dtype-next Tensors – Clojure Civitas] - Daniel Slutsky
+* https://romanliutikov.com/blog/driving-3d-scenes-in-blender-with-react[Driving 3D scenes in Blender with React] - Roman Liutikov
+
+== Libraries and Tools
+
+Debut release
+
+* https://github.com/phronmophobic/quineize[quineize] - Turn any namespace into a quine
+* https://github.com/donut-party/compose[compose] - little lib for data composition, like a combination of deep-merge and update-in
+
+Updates
+
+* https://github.com/clojure/clojurescript[clojurescript] https://clojurescript.org/news/2025-12-08-release[1.12.134] - Clojure to JS compiler
+* https://github.com/clojure/clojure[clojure] https://clojure.org/news/2025/12/10/clojure-1-12-4[1.12.4] - The Clojure programming language
+* https://clojure.org/reference/clojure_cli[clojure_cli] https://clojure.org/releases/tools#v1.12.4.1582[1.12.4.1582] - Clojure CLI
+* https://github.com/cursive-ide/cursive[cursive] https://cursive-ide.com/blog/cursive-2025.2.1.html[2025.2.1] - Cursive: The IDE for beautiful Clojure code
+* https://github.com/uncomplicate/diamond-onnxrt[diamond-onnxrt] 0.21.0 - Fast Clojure Machine Learning Model Integration
+* https://github.com/borkdude/edamame[edamame] https://github.com/borkdude/edamame/releases/tag/v.1.5.37[1.5.37] - Configurable EDN/Clojure parser with location metadata
+* https://github.com/willcohen/clj-proj[clj-proj] https://github.com/willcohen/clj-proj/blob/main/CHANGELOG.md[0.1.0-alpha4] - A native (or transpiled) version of PROJ for both the JVM and JS ecosystems.
+* https://github.com/babashka/babashka[babashka] https://github.com/babashka/babashka/releases/tag/v1.12.213[1.12.213] - Native, fast starting Clojure interpreter for scripting
+* https://github.com/cjohansen/lookup[lookup] https://github.com/cjohansen/lookup/tree/v2025.12.1[2025.12.1] - Find content of interest in hiccup data
+* https://github.com/askonomm/dompa[dompa] https://github.com/askonomm/dompa/releases/tag/v1.2.0[1.2.0] - A zero-dependency, runtime-agnostic HTML parser and builder.
+* https://github.com/msolli/proletarian[proletarian] https://github.com/msolli/proletarian/blob/main/CHANGELOG.md[1.0.109-alpha] - A durable job queuing and worker system for Clojure backed by PostgreSQL or MySQL.
+* https://github.com/hugoduncan/criterium[criterium] https://github.com/hugoduncan/criterium/releases/tag/v0.5.153-ALPHA[0.5.153-ALPHA] - Benchmarking library for clojure
+* https://github.com/jacobemcken/aws-simple-sign[aws-simple-sign] https://github.com/jacobemcken/aws-simple-sign/releases/tag/v2.2.0[2.2.0] - A Clojure library for pre-signing S3 URLs and signing HTTP requests for AWS.
+* https://github.com/paintparty/fireworks[fireworks] https://github.com/paintparty/fireworks/releases/tag/v0.17.0[0.17.0] - Fireworks is a themeable tapping library for Clojure, ClojureScript, and Babashka.
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.541[2.0.541] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/paintparty/bling[bling] https://github.com/paintparty/bling/blob/main/CHANGELOG.md[0.9.0] - Rich text console printing for Clojure, ClojureScript, and Babashka.
+* https://github.com/phronmophobic/llama.clj[llama.clj] https://github.com/phronmophobic/llama.clj/blob/main/CHANGELOG.md[0.9.0] - Run LLMs locally. A clojure wrapper for llama.cpp.
+* https://github.com/taoensso/truss[truss] https://github.com/taoensso/truss/releases/tag/v2.3.0[2.3.0] - Micro toolkit for Clojure/Script errors
+* https://github.com/taoensso/telemere[telemere] https://github.com/taoensso/telemere/releases/tag/v1.2.0[1.2.0] - Structured logs and telemetry for Clojure/Script
+* https://github.com/taoensso/tempel[tempel] https://github.com/taoensso/tempel/releases/tag/v1.1.0[1.1.0] - Data security framework for Clojure

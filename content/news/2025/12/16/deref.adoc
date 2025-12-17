@@ -1,0 +1,72 @@
+= Clojure Deref (Dec 16, 2025)
+Christoph Neumann
+2025-12-16
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]).
+
+
+== The annual Clojure surveys are live
+
+Help shape the future of Clojure!
+
+Whether you use Clojure, ClojureScript, Babashka, or any other Clojure dialect,
+please fill out the https://www.surveymonkey.com/r/clojure2025[2025 State of
+Clojure Survey] and spread the word on social media.
+
+This survey gives us the best snapshot of the Clojure community, so help us get as many participants as possible.
+
+If you use ClojureScript or dialects like Squint, Cherry, nbb, and such, please
+fill out the https://state-of-clojurescript.com/[2025 State of ClojureScript
+Survey] and share it with others.
+
+Thank you for your help!
+
+
+== Upcoming Events
+
+* https://clojureverse.org/t/clojure-real-world-data-37/14798[Clojure real-world-data 37]: Dec 19
+* https://clojureverse.org/t/scicloj-ai-meetup-agent-o-rama/14782[Scicloj AI Meetup: Agent-o-rama]: Jan 17
+* https://scicloj.github.io/clojure-jam-2026/[Clojure Jam 2026]: Apr 18-19 & 25-26. Online & free! https://scicloj.github.io/clojure-jam-2026/speakers.html[CFP is open] until Jan 31st.
+* https://babashka.org/conf/[Babashka Conf]: May 8. Amsterdam, NL. Free registration, but tickets are limited!
+* https://clojuredays.org/[Dutch Clojure Days 2026]: May 9th. Amsterdam, NL. Join the waitlist, or the https://clojuredays.org/#cfp[CFP is open] until Jan 15th.
+
+
+== Podcasts, videos, and media
+
+* https://youtu.be/nlBYvmtM4vI[map operations - like adding, multiplying two maps and so on] - Clojure Diary
+* https://youtu.be/fGUXEstYPYM[Calva Backseat Driver fixes Easter Day] - CalvaTV
+
+== Blogs, articles, and news
+
+* https://blog.ambrosebs.com/copilot-agents-clojure[GitHub Copilot coding agent with Clojure] - Ambrose Bonnaire-Sergeant
+* https://clojurecivitas.github.io/data_visualization/simplest_ploty_streaming_chart.html[Simplest Plotly Streaming Chart – Clojure Civitas] - Harold Hausman
+* https://furkan3ayraktar.github.io/blog/the-wrong-question-about-type-systems.html[The Wrong Question About Type Systems] - Furkan Bayraktar
+* https://tonsky.me/blog/clj-simple-stats/[Statistics made simple] - Nikita Prokopov
+* https://clojurecivitas.github.io/dsp/fft_comparison.html[Comparing FFT Implementations in Clojure – Clojure Civitas] - Daniel Slutsky
+
+== Libraries and Tools
+
+Debut release
+
+* https://github.com/tonsky/clj-simple-stats[clj-simple-stats] - Simple statistics for Clojure/Ring webapps
+* https://github.com/robinlahtinen/clj-artnet[clj-artnet] - A fully spec-compliant, idiomatic Clojure implementation of Art-Net 4, providing correct DMX512 over IP with deterministic behavior, predictable timing, and clean, composable APIs for real-time lighting control.
+
+Updates
+
+* https://github.com/BrunoBonacci/mulog[mulog] https://github.com/BrunoBonacci/mulog/releases/tag/0.10.0[0.10.0] - μ/log is a micro-logging library that logs events and data, not words!
+* https://github.com/borkdude/deps.clj[deps.clj] https://github.com/borkdude/deps.clj/releases/tag/v1.12.4.1582[1.12.4.1582] - A faithful port of the clojure CLI bash script to Clojure
+* https://github.com/seancorfield/deps-new[deps-new] https://github.com/seancorfield/deps-new/releases/tag/v0.10.3[0.10.3] - Create new projects for the Clojure CLI / deps.edn
+* https://github.com/paintparty/fireworks[fireworks] https://github.com/paintparty/fireworks/releases/tag/v0.18.0[0.18.0] - Fireworks is a themeable tapping library for Clojure, ClojureScript, and Babashka.
+* https://github.com/paintparty/bling[bling] https://github.com/paintparty/bling/releases/tag/v0.9.1[0.9.1] - Rich text console printing for Clojure, ClojureScript, and Babashka.
+* https://github.com/brettatoms/zodiac[zodiac] https://github.com/brettatoms/zodiac/releases/tag/v0.8.89[0.8.89] - A simple web framework for Clojure
+* https://github.com/roman01la/uix.css[uix.css] https://github.com/roman01la/uix.css/blob/master/CHANGELOG.md[0.4.0] - CSS-in-CLJS
+* https://repo.prod.meissa.de/meissa/clj-threats[clj-threats] https://repo.prod.meissa.de/meissa/clj-threats/src/tag/0.1.0[0.1.0] - Clojure implementation of Threagile
+* https://github.com/replikativ/konserve[konserve] https://github.com/replikativ/konserve/tree/0.8.327[0.8.327] - A clojuresque key-value/document store protocol with core.async.
+* https://github.com/BetterThanTomorrow/calva-backseat-driver[calva-backseat-driver] https://github.com/BetterThanTomorrow/calva-backseat-driver/releases/tag/v0.0.25[0.0.25] - VS Code AI Agent Interactive Programming. Tools for CoPIlot and other assistants. Can also be used as an MCP server.
+* https://github.com/babashka/neil[neil] https://github.com/babashka/neil/releases/tag/v0.3.69[0.3.69] - A CLI to add common aliases and features to deps.edn-based projects
+* https://github.com/seancorfield/next-jdbc[next-jdbc] https://github.com/seancorfield/next-jdbc/releases/tag/v1.3.1086[1.3.1086] - A modern low-level Clojure wrapper for JDBC-based access to databases.
+* https://github.com/seancorfield/logging4j2[logging4j2] https://github.com/seancorfield/logging4j2/releases/tag/v1.0.6[1.0.6] - A Clojure wrapper for log4j2
+* https://github.com/seancorfield/build-uber-log4j2-handler[build-uber-log4j2-handler] https://github.com/seancorfield/build-uber-log4j2-handler/releases/tag/v2.25.3[2.25.3] - A conflict handler for log4j2 plugins cache files for the tools.build uber task.

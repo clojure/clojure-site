@@ -38,11 +38,15 @@ https://clojure.org/news/2025/08/25/clojure-1-12-2[Release Notes]
 * https://clojure.atlassian.net/browse/CLJ-2916[CLJ-2916] - LazySeq - realize before serializing and do not serialize IFn
 * https://clojure.atlassian.net/browse/CLJ-2917[CLJ-2917] - Iterate - de/serialization no longer supported, throw
 
-=== 1.12,1 (Jun 2, 2025) [[v1.12.1]]
+=== 1.12.1 (Jun 2, 2025) [[v1.12.1]]
 
 https://clojure.org/news/2025/06/02/clojure-1-12-1[Release Notes]
 
-* https://clojure.atlassian.net/browse/CLJ-2701[CLJ-2701] Pin serialVersionUID for Keyword and ArraySeq back to 1.10.3 values to retain binary serialization
+* https://clojure.atlassian.net/browse/CLJ-2899[CLJ-2899] - Revert change in semantics of qualified symbol in invocation position if field and method of same name
+* https://clojure.atlassian.net/browse/CLJ-2898[CLJ-2898] - Objects that are both IFn and FunctionalInterface unnecessarily get converted to FI
+* https://clojure.atlassian.net/browse/CLJ-2888[CLJ-2888] - gen-class - did not support new array class symbol syntax
+* https://clojure.atlassian.net/browse/CLJ-2886[CLJ-2886] - add-libs - send only procurer keys to tool invocation
+* https://clojure.atlassian.net/browse/CLJ-2906[CLJ-2906] - Add missing :added metadata to 1.12 functions
 
 == Release 1.12.0
 

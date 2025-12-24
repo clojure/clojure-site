@@ -1,0 +1,112 @@
+= Clojure Deref (Dec 23, 2025)
+Christoph Neumann
+2025-12-23
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]).
+
+
+== The annual Clojure surveys are live
+
+Help shape the future of Clojure!
+
+Whether you use Clojure, ClojureScript, Babashka, or any other Clojure dialect,
+please fill out the https://www.surveymonkey.com/r/clojure2025[2025 State of
+Clojure Survey] and spread the word on social media.
+
+This survey gives us the best snapshot of the Clojure community, so help us get as many participants as possible.
+
+If you use ClojureScript or dialects like Squint, Cherry, nbb, and such, please
+fill out the https://state-of-clojurescript.com/[2025 State of ClojureScript
+Survey] and share it with others.
+
+Thank you for your help!
+
+
+== Upcoming Events
+
+* https://clojureverse.org/t/clojure-real-world-data-38/14804[Clojure real-world-data 38]: Dec 26
+* https://clojureverse.org/t/scicloj-ai-meetup-agent-o-rama/14782[Scicloj AI Meetup: Agent-o-rama]: Jan 17
+* https://scicloj.github.io/clojure-jam-2026/[Clojure Jam 2026]: Apr 18-19 & 25-26. Online & free! https://scicloj.github.io/clojure-jam-2026/speakers.html[CFP is open] until Jan 31st.
+* https://babashka.org/conf/[Babashka Conf]: May 8. Amsterdam, NL. Free registration, but tickets are limited!
+* https://clojuredays.org/[Dutch Clojure Days 2026]: May 9th. Amsterdam, NL. Join the waitlist, or the https://clojuredays.org/#cfp[CFP is open] until Jan 15th.
+
+
+== Podcasts, videos, and media
+
+* https://youtu.be/sceGtaNHxcM[One year of building my own IDE in clojure] - phronmophobic
+* https://youtu.be/q6eq732HSSc[Event-sourcing with projections in Clojure and PostgreSQL] - Andrey Fadeev
+* https://youtu.be/36dTtyfa_OY[Announcing Multi REPL Sessions in Calva] - CalvaTV
+
+Clojure/Conj 2025
+
+* https://photos.clojure-conj.org/gallery/t02RY-uvwS57Cj0gAh3Dhm2C[Photos]
+* https://youtu.be/gJ9UZlr6C6M[A Decade on Datomic - Davis Shepherd & Jonathan Indig (Netflix)] - ClojureTV
+* https://youtu.be/HU-uwSUZETw[UnifyBio: Power Tools for Translational Data Science - Benjamin Kamphaus] - ClojureTV
+* https://youtu.be/VZpl819m6_8[Cats, Dogs, and Python - Paula Gearon] - ClojureTV
+* https://youtu.be/mNLWtM3Iya4[Agent-o-rama: Scalable, Traceable, Stateful AI agents in Pure Clojure or Java - Nathan Marz] - ClojureTV
+
+Clojure South 2025
+
+* https://youtu.be/KUGStGc4E-E[Construindo aplicações web elegantes com ClojureScript, React e UIx! | Clojure South 2025] - Building Nubank
+* https://youtu.be/NZJEOa1kkHE[Fail fast, fix faster: Injecting failures on integration tests | Clojure South 2025] - Building Nubank
+* https://youtu.be/dBP5Nvdn600[Clojure to Elixir: Functional Programming for Scalable & Sustainable Apps | Clojure South 2025] - Building Nubank
+* https://youtu.be/PogKRQ1lJ0A[Clojure e IA: Construindo Agentes Inteligentes sem Reinventar a Roda | Clojure South 2025] - Building Nubank
+* https://youtu.be/5fk0KXoQBeE[Introduzindo programação funcional na Carteira Digital de Trânsito | Clojure South 2025] - Building Nubank
+* https://youtu.be/RtIgHpcKyqA[NuFileBox Reverse: Gestão segura de arquivos com Clojure | Clojure South 2025] - Building Nubank
+* https://youtu.be/bODFSD-GRNk[Uma estratégia incremental com apoio IA para testes unitários em Clojure | Clojure South 2025] - Building Nubank
+* https://youtu.be/0lez3i2sxLE[Betting on open source: Adventures with Datahike | Clojure South 2025] - Building Nubank
+* https://youtu.be/5-r4X9WUg58[12 years of Component | Clojure South 2025] - Building Nubank
+
+== Blogs, articles, and news
+
+* https://www.metosin.fi/blog/2025-12-16-a-christmas-present-in-clojure[A Christmas Present in Clojure – Metosin] - Joel Kaasinen
+* https://narimiran.github.io/aoc2025/[Clerk notebooks with solutions for Advent of Code 2025] - Miran
+* https://www.clojuriststogether.org/news/clojurists-together-2026-annual-funding-announcement/[Clojurists Together 2026 Annual Funding Announcement] - Kathy Davis
+* https://gaiwan.co/blog/announcing-oak-1-0/[Announcing Oak 1.0] - Arne Brasseur
+* https://blog.phronemophobic.com/easel-one-year.html[Easel Turns One!] - Adrian Smith
+* https://emil0r.com/posts/2025-12-22-nullable-pattern-experience-report/[(recur thoughts "Nullable pattern: Experience report")] - Emil Bengtsson
+* https://flexiana.com/news/software-development/2025/12/machine-learning-in-clojure-with-libpython-clj-bridging-functional-elegance-and-pythons-ml-power-series-1[Machine Learning in Clojure with libpython-clj: Bridging Functional Elegance and Python’s ML Power [Series 1\] - Flexiana] - Jiri Knesl
+* https://blog.fogus.me/2025/12/23/the-best-things-and-stuff-of-2025.html[The Best Things and Stuff of 2025] - Michael Fogus
+* https://building.nubank.com/an-incremental-strategy-with-ai-support-for-unit-testing-in-clojure/[An incremental strategy with AI support for unit testing in Clojure - Building Nubank] - Nubank Editorial
+* https://building.nubank.com/nufilebox-reverse/[How NuFilebox Reverse strengthens file security at Nubank - Building Nubank] - Nubank Editorial
+* https://building.nubank.com/12-years-of-component-a-decade-of-interactive-development/[12 years of Component: A decade of interactive development - Building Nubank] - Nubank Editorial
+* https://building.nubank.com/building-elegant-interfaces-with-clojurescript-react-and-uix/[Building elegant interfaces with ClojureScript, React, and UIx - Building Nubank] - Nubank Editorial
+
+== Libraries and Tools
+
+Debut release
+
+* https://github.com/Sleepful/cljs-uix-electron[cljs-uix-electron] - Uix + Electron starter
+* https://github.com/Sleepful/cljs-uix-wails[cljs-uix-wails] - Wails + ClojureScript starter
+* https://git.gaiwan.co/gaiwan/Oak[Oak] - Oak is a Free and Open Source Identity Provider that you can host yourself
+* https://github.com/ertugrulcetin/immersa[immersa] - Open Source Web-based 3D Presentation Tool
+* https://github.com/teodorlu/bb-timemachine[bb-timemachine] - Run code back in Git-time.
+* https://github.com/roman01la/solid-cljs[solid-cljs] - ClojureScript bindings to Solid
+* https://github.com/PEZ/clojars-download-stats[clojars-download-stats] - An always up-to-date, complete SQL export of artifacts daily downloads since November 2012
+* https://github.com/julienvincent/malt[malt] - Malli-Typed interfaces for Clojure
+* https://github.com/simm-is/distributed-scope[distributed-scope] - Run one lexical scope across distributed peers.
+
+Updates
+
+* https://github.com/repath-studio/repath-studio[repath-studio] https://github.com/repath-studio/repath-studio/releases/tag/v0.4.11[0.4.11] - A local web-based vector graphics editor that combines procedural tooling with traditional design workflows.
+* https://github.com/cnuernber/dtype-next[dtype-next] https://github.com/cnuernber/dtype-next/blob/master/CHANGELOG.md[10.000-beta-11] - A Clojure library designed to aid in the implementation of high performance algorithms and systems.
+* https://github.com/simm-is/repl-mcp[repl-mcp] https://github.com/simm-is/repl-mcp/commit/d00f661ae6174bf6281d98676f9be21b1e8969c7[d00f661] - Model Context Protocol Clojure support including REPL integration with development tools.
+* https://github.com/igrishaev/virtuoso[virtuoso] https://github.com/igrishaev/virtuoso/blob/master/CHANGELOG.md[0.1.2] - A number of trivial wrappers on top of virtual threads
+* https://github.com/babashka/bbin[bbin] https://github.com/babashka/bbin/blob/main/CHANGELOG.md[0.2.5] - Install any Babashka script or project with one command
+* https://github.com/yonureker/stripe-clojure[stripe-clojure] https://github.com/yonureker/stripe-clojure/releases/tag/v2.1.0[2.1.0] - Clojure SDK for the Stripe API.
+* https://github.com/eerohele/muutos[muutos] https://github.com/eerohele/muutos/blob/main/CHANGELOG.md[2025-12-18] - Muutos is a zero-dependency Clojure library for reacting to changes in a PostgreSQL database.
+* https://github.com/squint-cljs/cherry[cherry] https://github.com/squint-cljs/cherry/releases/tag/v0.5.34[0.5.34] - Experimental ClojureScript to ES6 module compiler
+* https://github.com/babashka/nbb[nbb] https://github.com/babashka/nbb/blob/main/CHANGELOG.md[1.3.205] - Scripting in Clojure on Node.js using SCI
+* https://github.com/cjohansen/replicant[replicant] https://github.com/cjohansen/replicant/tree/v2025.12.1[2025.12.1] - A data-driven rendering library for Clojure(Script) that renders hiccup to DOM or to strings.
+* https://github.com/BetterThanTomorrow/joyride[joyride] https://github.com/BetterThanTomorrow/joyride/releases/tag/v0.0.72[0.0.72] - Making VS Code Hackable like Emacs since 2022
+* https://github.com/babashka/process[process] https://github.com/babashka/process/releases/tag/v0.6.25[0.6.25] - Clojure library for shelling out / spawning sub-processes
+* https://github.com/paintparty/fireworks[fireworks] https://github.com/paintparty/fireworks/releases/tag/v0.19.0[0.19.0] - Fireworks is a themeable tapping library for Clojure, ClojureScript, and Babashka.
+* https://github.com/paintparty/bling[bling] https://github.com/paintparty/bling/releases/tag/v0.9.2[0.9.2] - Rich text console printing for Clojure, ClojureScript, and Babashka.
+* https://github.com/clj-kondo/clj-kondo[clj-kondo] https://github.com/clj-kondo/clj-kondo/releases/tag/v2025.12.23[2025.12.23] - Static analyzer and linter for Clojure code that sparks joy
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.543[2.0.543] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/babashka/sci[sci] https://github.com/babashka/sci/releases/tag/v0.11.50[0.11.50] - Configurable Clojure/Script interpreter suitable for scripting and Clojure DSLs
+* https://github.com/babashka/scittle[scittle] https://github.com/babashka/scittle/releases/tag/v0.7.30[0.7.30] - Execute Clojure(Script) directly from browser script tags via SCI
+* https://github.com/simm-is/partial-cps[partial-cps] 0.1.42 - A lean and efficient continuation passing style transform, includes async-await support.

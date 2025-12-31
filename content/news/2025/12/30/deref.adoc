@@ -1,0 +1,73 @@
+= Clojure Deref (Dec 30, 2025)
+Christoph Neumann
+2025-12-30
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]).
+
+
+== Last chance for the annual Clojure surveys!
+
+Time is running out to take the Clojure surveys! Please help spread the
+word, and take a moment to fill them out if you haven't already.
+
+Fill out the https://www.surveymonkey.com/r/clojure2025[2025 State of Clojure
+Survey] if you use any version or dialect of Clojure in any capacity.
+
+Fill out the https://state-of-clojurescript.com/[2025 State of ClojureScript
+Survey] and if you use ClojureScript or dialects like Squint, Cherry, nbb, and
+such.
+
+Thank you for your help!
+
+
+== Upcoming Events
+
+* https://clojureverse.org/t/clojure-real-world-data-39/14811[Clojure real-world-data 39]: Jan 2
+* https://clojureverse.org/t/scicloj-ai-meetup-agent-o-rama/14782[Scicloj AI Meetup: Agent-o-rama]: Jan 17
+* https://scicloj.github.io/clojure-jam-2026/[Clojure Jam 2026]: Apr 18-19 & 25-26. Online & free! https://scicloj.github.io/clojure-jam-2026/speakers.html[CFP is open] until Jan 31st.
+* https://babashka.org/conf/[Babashka Conf]: May 8. Amsterdam, NL. Free registration, but tickets are limited!
+* https://clojuredays.org/[Dutch Clojure Days 2026]: May 9th. Amsterdam, NL. Join the waitlist, or the https://clojuredays.org/#cfp[CFP is open] until Jan 15th.
+
+
+== Podcasts, videos, and media
+
+* https://youtu.be/aJ06tdIjdy0[Browser Jack-in – Connect your Clojure editor to any web page] - CalvaTV
+
+Clojure/Conj 2025
+
+* https://youtu.be/MLDwbhuNvZo[Rich Hickey's opening remarks from Clojure/Conj 2025] - ClojureTV
+* https://youtu.be/NtyGShlZH1Q[12 Years of Component - Alessandra Sierra] - ClojureTV
+
+== Blogs, articles, and news
+
+* https://rodschmidt.com/posts/scittle/[Mixing Swift and Clojure in Your iOS App - Scittle] - Rod Schmidt
+* https://tengstrand.github.io/blog/2025-12-28-tetris-playing-ai-the-polylith-way-1.html[Tetris-playing AI the Polylith way - Part 1] - Joakim Tengstrand
+* https://clojurecivitas.github.io/data_visualization/aog_in_clojure_part1.html[Implementing the Algebra of Graphics in Clojure - Part 1 – Clojure Civitas] - Daniel Slutsky
+* https://flexiana.com/news/2025/12/machine-learning-in-clojure-with-libpython-clj-using-bayesian-networks-for-smarter-interpretable-ai-series-2[Machine Learning in Clojure with libpython‑clj: Using Bayesian Networks for Smarter, Interpretable AI [Series 2\] - Flexiana] - Jiri Knesl
+* https://flexiana.com/news/2025/12/machine-learning-in-clojure-with-libpython-clj-unlocking-causal-insights-using-microsofts-econml-series-3[Machine Learning in Clojure with libpython‑clj: Unlocking Causal Insights Using Microsoft’s EconML [Series 3\] - Flexiana] - Jiri Knesl
+* https://www.birkey.co/2025-12-28-once-csv-parser-to-rule-them-all.html[One csv parser to rule them all] - Kasim Tuman
+* https://blog.parenstech.com/2025-12-28-heretic-mutation-testing.html[Heretic: Mutation Testing in Clojure] - Eric Dvorsak
+* https://blog.parenstech.com/2025-12-30-building-heretic.html[Building Heretic: From ClojureStorm to Mutant Schemata] - Eric Dvorsak
+* https://gist.github.com/richhickey/ea94e3741ff0a4e3af55b9fe6287887f[Thanks AI!] - Rich Hickey
+
+== Libraries and Tools
+
+Debut release
+
+* https://github.com/ribelo/crabjure[crabjure] - A fast static analyzer for Clojure and ClojureScript, written in Rust.
+* https://github.com/PEZ/browser-jack-in[browser-jack-in] - A web browser extension that let's you inject a Scittle REPL server into any browser page.
+* https://github.com/damesek/clamav-clj[clamav-clj] - An idiomatic, modern Clojure wrapper for ClamAV.
+* https://github.com/parenstech/heretic[heretic] - Mutation testing for Clojure - fast, practical, and integrated
+
+Updates
+
+* Many Clojure contrib libs were updated to move the Clojure dependency to 1.11.4, which is past the CVE fixed in 1.11.2.
+* https://github.com/simm-is/partial-cps[partial-cps] 0.1.50 - A lean and efficient continuation passing style transform, includes async-await support.
+* https://github.com/oneness/csvx[csvx] https://github.com/oneness/csvx/commits/68fd22c10cf9f044a8098ea873103f529cb5e551[68fd22c] - A zero dependencies tool that enables you to control how to tokenize, transform and handle files with char(s) separated values in Clojure and ClojureScript.
+* https://github.com/pfeodrippe/recife[recife] https://github.com/pfeodrippe/recife/commits/4b285a39dd31dd9d000c67d47c31a396c32af20c[0.22.0] - A Clojure model checker (using the TLA+/TLC engine)
+* https://github.com/polyfy/polylith[polylith] https://github.com/polyfy/polylith/releases/tag/v0.3.32[0.3.32] - A tool used to develop Polylith based architectures in Clojure.
+* https://github.com/nrepl/nrepl[nrepl] https://github.com/nrepl/nrepl/releases/tag/v1.5.2[1.5.2] - A Clojure network REPL that provides a server and client, along with some common APIs of use to IDEs and other tools that may need to evaluate Clojure code in remote environments.
+* https://github.com/clj-commons/manifold[manifold] https://github.com/clj-commons/manifold/blob/master/CHANGES.md[0.5.0] - A compatibility layer for event-driven abstractions

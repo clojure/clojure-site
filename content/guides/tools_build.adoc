@@ -70,7 +70,7 @@ The build.clj will look like this:
   (:require [clojure.tools.build.api :as b]))
 
 (def lib 'my/lib1)
-(def version (format "1.2.%s" (b/git-count-revs nil)))
+(def version "0.1.0") ;; or read from file, etc
 (def class-dir "target/classes")
 (def jar-file (format "target/%s-%s.jar" (name lib) version))
 
@@ -148,7 +148,7 @@ An example build for a compiled uberjar will look like this:
   (:require [clojure.tools.build.api :as b]))
 
 (def lib 'my/lib1)
-(def version (format "1.2.%s" (b/git-count-revs nil)))
+(def version "0.1.0") ;; or source from file, etc
 (def class-dir "target/classes")
 (def uber-file (format "target/%s-%s-standalone.jar" (name lib) version))
 
@@ -182,11 +182,11 @@ You can create the uber jar build with:
 clj -T:build uber
 ----
 
-The output of this build will be an uberjar at `target/lib1-1.2.100-standalone.jar`. That jar contains both a compiled version of this project and all of its dependencies. The uberjar will have a manifest referring to the `my.lib.main` namespace (which should have a `-main` method) and can be invoked like this:
+The output of this build will be an uberjar at `target/lib1-0.1.0-standalone.jar`. That jar contains both a compiled version of this project and all of its dependencies. The uberjar will have a manifest referring to the `my.lib.main` namespace (which should have a `-main` method) and can be invoked like this:
 
 [source]
 ----
-java -jar target/lib1-1.2.100-standalone.jar
+java -jar target/lib1-0.1.0-standalone.jar
 ----
 
 == Parameterized builds
@@ -201,7 +201,7 @@ For example, consider a parameterization that includes an extra set of dev resou
   (:require [clojure.tools.build.api :as b]))
 
 (def lib 'my/lib1)
-(def version (format "1.2.%s" (b/git-count-revs nil)))
+(def version "0.1.0") ;; or source from file, etc
 (def class-dir "target/classes")
 (def jar-file (format "target/%s-%s.jar" (name lib) version))
 (def copy-srcs ["src" "resources"])
@@ -250,7 +250,7 @@ This build creates a jar with classes compiled from Java sources and your Clojur
   (:require [clojure.tools.build.api :as b]))
 
 (def lib 'my/lib1)
-(def version (format "1.2.%s" (b/git-count-revs nil)))
+(def version "0.1.0") ;; or source from file, etc
 (def class-dir "target/classes")
 (def jar-file (format "target/%s-%s.jar" (name lib) version))
 
@@ -280,6 +280,18 @@ This build creates a jar with classes compiled from Java sources and your Clojur
 ----
 
 The `compile` task here can also be used as the <<deps_and_cli#prep_libs,prep task>> for this lib.
+
+== Computing project version from git commit count
+
+One common technique used in Clojure projects is to use an ever-increasing git commit count as the third
+part of the version string. `tools.build` includes the `b/git-count-revs` API function to assist with this:
+
+Here the fixed part of the build is hard-coded (could also be read from a template file etc) and the git commit count is computed as the third version component:
+
+[source,clojure]
+----
+(def version (format "1.2.%s" (b/git-count-revs nil)))
+----
 
 == Task documentation
 

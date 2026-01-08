@@ -1,0 +1,67 @@
+= Clojure Deref (Jan 7, 2026)
+Christoph Neumann
+2026-01-07
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]).
+
+
+== Upcoming Events
+
+* https://clojureverse.org/t/clojure-real-world-data-40/14819[Clojure real-world-data 40]: Jan 9
+* https://clojureverse.org/t/scicloj-ai-meetup-agent-o-rama/14782[Scicloj AI Meetup: Agent-o-rama]: Jan 17
+* https://scicloj.github.io/clojure-jam-2026/[Clojure Jam 2026]: Apr 18-19 & 25-26. Online & free! https://scicloj.github.io/clojure-jam-2026/speakers.html[CFP is open] until Jan 31st.
+* https://babashka.org/conf/[Babashka Conf]: May 8. Amsterdam, NL. Free registration, but tickets are limited!
+* https://clojuredays.org/[Dutch Clojure Days 2026]: May 9th. Amsterdam, NL. Join the waitlist, or the https://clojuredays.org/#cfp[CFP is open] until Jan 15th.
+
+
+== Podcasts, videos, and media
+
+* https://zencastr.com/z/8KSg0x67[defn episode 2aba8aeedf7d Polylith] - @defn podcast
+* https://youtu.be/GVSL2WS1O7M[rswan 1.1.0, and other Clojure updates] - Clojure Diary
+* https://youtu.be/2CXWXIlfb7E[map operation functions in Clojure] - Clojure Diary
+* https://youtu.be/F8CV-NpT51w[A simple decorator in Clojure] - Clojure Diary
+
+Clojure/Conj 2025
+
+* https://youtu.be/h7A0x3ukVBw[Clojurists Together] - ClojureTV
+* https://youtu.be/ZLYnOTCRBbg[ClojureDart: Still Alive, Kicking Harder - Grand & Dupuch] - ClojureTV
+* https://youtu.be/jEa3lGDGo8U[A journey distributing millions of residential energy consumption simulations with Clojure - Mendoza] - ClojureTV
+* https://youtu.be/-FJCnrqqMWo[Brain Data in Clojure 2: BrainFloj in Premise and Practice - Lyons] - ClojureTV
+
+== Blogs, articles, and news
+
+* https://book.jank-lang.org/[Welcome to the jank alpha! - The jank Programming Language] - Jeaye Wilkerson
+* https://www.clojuriststogether.org/news/december-q3-2025-project-updates/[December Q3 2025 Project Updates] - Kathy Davis
+* https://blog.michielborkent.nl/oss-updates-nov-dec-2025.html[OSS updates November and December 2025] - Michiel Borkent
+* https://www.karimarttila.fi/clojurescript/2025/12/31/clojurescript-with-replicant-nexus-datascript.html[Frontend Development with Clojurescript, Replicant, Nexus and Datascript] - Kari Marttila
+* https://day8.github.io/re-frame/FAQs/alpha/[How can I use the re-frame alpha?] - Kimo Knowles
+* link:++https://coruscation.net/blogs/something-like-mdx-but-with-clojure-and-org-mode-for-my-personal-blog--part-i.html++[Something Like MDX but with Clojure and Org-Mode for My Personal Blog: Part I] - Akira
+* https://www.karimarttila.fi/calva/2026/01/04/calva-multi-repl.html[Calva Multi-REPL] - Kari Marttila
+* https://x.com/ertuctn/status/2008561463846465940[Live coding a full game level using only the REPL] - Ertuğrul Çetin
+
+== Libraries and Tools
+
+Debut release
+
+* https://github.com/multiplyco/quiescent[quiescent] - A Clojure library for composable async tasks with automatic parallelization, structured concurrency, and parent-child and chain cancellation
+* https://github.com/multiplyco/machine-latch[machine-latch] - Low-level synchronization primitive with state machine semantics
+* https://github.com/multiplyco/scoped[scoped] - ScopedValue in Clojure, with fallback to ThreadLocal
+* https://github.com/multiplyco/pathling[pathling] - Utilities for scanning and updating data structures
+* https://github.com/helsingin/clj-physics[clj-physics] - Multi-domain physics modeling in Clojure: frames, environments, dynamics, EM, and reduced-order CFD helpers.
+
+Updates
+
+* Many Clojure contrib libs were updated to move the Clojure dependency to 1.11.4, which is past the CVE fixed in 1.11.2.
+* https://github.com/clj-commons/rewrite-clj[rewrite-clj] https://github.com/clj-commons/rewrite-clj/releases/tag/v1.2.51[1.2.51] - Rewrite Clojure code and edn
+* https://github.com/flow-storm/clojurescript[ClojureScriptStorm] https://github.com/flow-storm/clojurescript/blob/cljs-storm/CHANGELOG.md[1.12.134-3] - A fork of the official ClojureScript compiler with extra code to make it a dev compiler
+* https://github.com/PEZ/browser-jack-in[browser-jack-in] https://github.com/PEZ/browser-jack-in/releases/tag/v0.0.6[0.0.6] - A web browser extension that let's you inject a Scittle REPL server into any browser page.
+* https://github.com/cjohansen/m1p[m1p] https://github.com/cjohansen/m1p/tree/v2026.01.1[2026.01.1] - Map interpolation and DIY i18n/theming toolkit
+* https://github.com/day8/re-frame[re-frame] https://github.com/day8/re-frame/releases/tag/v1.4.4[1.4.4] - A ClojureScript framework for building user interfaces, leveraging React
+* https://github.com/day8/re-frame-10x[re-frame-10x] https://github.com/day8/re-frame-10x/releases/tag/1.11.0[1.11.0] - A debugging dashboard for re-frame.  X-ray vision as tooling.
+* https://github.com/tomekw/hikari-cp[hikari-cp] https://github.com/tomekw/hikari-cp/blob/master/CHANGELOG.md[4.0.0] - A Clojure wrapper to HikariCP JDBC connection pool
+* https://github.com/cjohansen/powerpack[powerpack] https://github.com/cjohansen/powerpack/tree/v2026.01.1[2026.01.1] - A batteries-included static web site toolkit for Clojure
+* https://github.com/bhauman/clojure-mcp[clojure-mcp] https://github.com/bhauman/clojure-mcp/blob/main/CHANGELOG.md[0.2.2] - Clojure MCP
+* https://github.com/borkdude/rewrite-edn[rewrite-edn] https://github.com/borkdude/rewrite-edn/releases/tag/v0.5.0[0.5.0] - Utility lib on top of rewrite-clj with common operations to update EDN while preserving whitespace and comments.

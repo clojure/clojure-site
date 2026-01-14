@@ -1,0 +1,72 @@
+= Clojure Deref (Jan 13, 2026)
+Christoph Neumann
+2026-01-13
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]).
+
+
+== Upcoming Events
+
+* https://clojureverse.org/t/scicloj-ai-meetup-agent-o-rama/14782[Scicloj AI Meetup: Agent-o-rama]: Jan 17
+* https://www.meetup.com/london-clojurians/events/312829331/[Lexical Complexity in Software Engineering (by Samantha Cohen)]: Feb 10
+* https://scicloj.github.io/clojure-jam-2026/[Clojure Jam 2026]: Apr 18-19 & 25-26. Online & free! https://scicloj.github.io/clojure-jam-2026/speakers.html[CFP is open] until Jan 31st.
+* https://babashka.org/conf/[Babashka Conf]: May 8. Amsterdam, NL. Free registration, but tickets are limited!
+* https://clojuredays.org/[Dutch Clojure Days 2026]: May 9th. Amsterdam, NL. Join the waitlist, or the https://clojuredays.org/#cfp[CFP is open] until Jan 15th.
+
+
+== Podcasts, videos, and media
+
+* https://youtu.be/Fy9IdlAK6OQ[macro based decorator in Clojure] - Clojure Diary
+* https://youtu.be/vTaWWa4jwhk[Statistics - Calculating Rate of Change in Clojure] - Clojure Diary
+* https://youtu.be/dlW6YzwUZ-M[I created my own CLASS and Object system for Clojure and Clojurescript] - Sammy Engineering
+
+Clojure/Conj 2025
+
+* https://youtu.be/119qVkHxPkM[Making Tools Developers Actually Use - Michiel Borkent] - ClojureTV
+* https://youtu.be/Alfq8RG80Ns[How to stick with your projects, even when they're janky - Wilkerson] - ClojureTV
+* https://youtu.be/NV02r1Y1B-8[Forklifts, Facts, and Functions: Building a Warehouse Management System with Clojure+Datomic - Pote] - ClojureTV
+
+== Blogs, articles, and news
+
+* https://martinalderson.com/posts/which-programming-languages-are-most-token-efficient/[Which programming languages are most token-efficient?] - Martin Alderson
+* https://clojurecivitas.github.io/data_visualization/aog/datomframes.html[Plotting Datoms: Queries as Visual Mappings – Clojure Civitas] - Timothy Pratley
+* https://www.taoensso.com/news/2025-12-open-source[Open source news: 2025 Nov-Dec] - Peter Taoussanis
+* https://flarework.com/posts-output/2026-01-09-aero-pedestal-integrant[Wiring Clojure Web Apps with Aero, Pedestal, and Integrant] - Dan Peddle
+* https://www.reddit.com/r/raylib/comments/1q8ap74/raylib_clojure_live_coding_a_high_performance_game/[Raylib + Clojure = Live coding a high performance game] - Ertuğrul Çetin
+* https://clojurecivitas.github.io/scicloj/clay/webserver/datastar.html[Serving webapps from your REPL – Clojure Civitas] - Timothy Pratley
+* https://tengstrand.github.io/blog/2026-01-11-tetris-playing-ai-the-polylith-way-2.html[Tetris-playing AI the Polylith way - Part 2] - Joakim Tengstrand
+* https://www.freshcodeit.com/blog/llm-agents-in-clojure[LLM Agents on the JVM: Clojure vs Python Comparison] - Oleksandr Druk, Sofiia Yurkevska
+* https://clojurecivitas.github.io/math/hashing/hashfusing.html[Hash Fusing – Clojure Civitas] - Jonathan Claggett
+* https://clojurecivitas.github.io/data_visualization/splom_tutorial.html[Building a SPLOM using geom.viz – Clojure Civitas] - Daniel Slutsky
+* https://gist.github.com/radarroark/663116fcd204f3f89a7e43f52fa676ef[Datascript + xitdb: your humble, single-file, mini Datomic] - Radar Roark
+* https://www.reddit.com/r/Clojure/comments/1qbsdim/updating_100000_cubes_instantly_using_clojure/[Updating 100,000 cubes instantly using Clojure + LWJGL] - Ertuğrul Çetin
+* https://github.com/Hakky54/java-tutorials/tree/main/jvm-rainbow[🌈 JVM Rainbow - Mixing Java Kotlin Scala Clojure and Groovy] - Hakan Altındağ
+
+== Libraries and Tools
+
+Debut release
+
+* https://github.com/maxweber/todo-dbval-event-sourcing[todo-dbval-event-sourcing] - Todo example that uses dbval and event sourcing
+* https://github.com/sstraust/deft[deft] - A collection of macros designed to address issues with objects in Clojure.
+* https://github.com/ertugrulcetin/raylib-clojure-playground[raylib-clojure-playground] - A collection of game development experiments using Raylib in Clojure.
+* https://github.com/ertugrulcetin/clojure-100k-cubes-lwjgl[clojure-100k-cubes-lwjgl] - A GPU stress test written in Clojure using LWJGL 3. Renders 100,000 animated cubes with instanced rendering.
+* https://github.com/bolasblack/shadow-cljs-vite-plugin[shadow-cljs-vite-plugin] - A robust Vite plugin for seamless integration with shadow-cljs
+
+Updates
+
+* https://github.com/clojure-goes-fast/clj-async-profiler[clj-async-profiler] https://github.com/clojure-goes-fast/clj-async-profiler/blob/master/CHANGELOG.md[2.0.0-beta1] - Embedded high-precision Clojure profiler
+* https://github.com/metosin/reitit[reitit] https://github.com/metosin/reitit/releases/tag/0.10.0[0.10.0] - A fast data-driven routing library for Clojure/Script
+* https://github.com/lsolbach/qclojure[qclojure] https://github.com/lsolbach/qclojure/releases/tag/v0.24.0[0.24.0] - A functional quantum computer programming library for Clojure with backend protocols, simulation backends and visualizations.
+* https://repo.prod.meissa.de/meissa/clj-threats[clj-threats] https://repo.prod.meissa.de/meissa/clj-threats/src/tag/1.0.0[1.0.0] - Clojure implementation of Threagile
+* https://github.com/oneness/csvx[csvx] https://github.com/oneness/csvx/commits/973ab7f4fdc554105024995e24db6275feabedd5[973ab7f] - A zero dependencies tool that enables you to control how to tokenize, transform and handle files with char(s) separated values in Clojure, ClojureScript and Babashka.
+* https://github.com/askonomm/dompa[dompa] https://github.com/askonomm/dompa/releases/tag/v1.2.2[1.2.2] - A zero-dependency, runtime-agnostic HTML parser and builder.
+* https://github.com/scicloj/clay[clay] https://github.com/scicloj/clay/blob/main/CHANGELOG.md[2.0.5] - A REPL-friendly Clojure tool for notebooks and datavis
+* https://github.com/cjohansen/dataspex[dataspex] https://github.com/cjohansen/dataspex/tree/v2026.01.1[2026.01.1] - See the shape of your data: point-and-click Clojure(Script) data browser
+* https://github.com/clj-kondo/clj-kondo[clj-kondo] https://github.com/clj-kondo/clj-kondo/releases/tag/v2026.01.12[2026.01.12] - Static analyzer and linter for Clojure code that sparks joy
+* https://github.com/multiplyco/quiescent[quiescent] https://github.com/multiplyco/quiescent/blob/main/CHANGELOG.md[0.1.10] - A Clojure library for composable async tasks with automatic parallelization, structured concurrency, and parent-child and chain cancellation
+* https://github.com/editor-code-assistant/eca[eca] https://github.com/editor-code-assistant/eca/releases/tag/0.91.1[0.91.1] - Editor Code Assistant (ECA) - AI pair programming capabilities agnostic of editor
+* https://github.com/babashka/babashka[babashka] https://github.com/babashka/babashka/releases/tag/v1.12.214[1.12.214] - Native, fast starting Clojure interpreter for scripting
+* https://github.com/juji-io/editscript[editscript] https://github.com/juji-io/editscript/blob/master/CHANGELOG.md[0.7.0] - A library to diff and patch Clojure/ClojureScript data structures

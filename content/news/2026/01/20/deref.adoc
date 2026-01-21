@@ -1,0 +1,66 @@
+= Clojure Deref (Jan 20, 2026)
+Christoph Neumann
+2026-01-20
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]).
+
+
+== Upcoming Events
+
+* https://www.meetup.com/london-clojurians/events/312829331/[Lexical Complexity in Software Engineering (by Samantha Cohen)]: Feb 10
+* https://scicloj.github.io/clojure-jam-2026/[Clojure Jam 2026]: Apr 18-19 & 25-26. Online & free! https://scicloj.github.io/clojure-jam-2026/speakers.html[CFP is open] until Jan 31st.
+* https://babashka.org/conf/[Babashka Conf]: May 8. Amsterdam, NL. Free, but limited space! CFP is open until Feb 28.
+* https://clojuredays.org/[Dutch Clojure Days 2026]: May 9th. Amsterdam, NL.
+
+
+== Podcasts, videos, and media
+
+* https://youtu.be/kV4SZQM03Go[Clojure Corner: Interview with Jacob O'Bryant] - Flexiana
+* https://youtu.be/IWnYT_T0c88[garden CSS library for Clojure, and Liberation, my Clojure pet project] - Clojure Diary
+* https://youtu.be/HG-3xUGp5Ao[My understanding of XTDB (Immutable Databases)] - Clojure Diary
+
+Clojure/Conj 2025
+
+* https://youtu.be/BeE00vGC36E[A ClojureScript Survival Kit - Nolen] - ClojureTV
+* https://youtu.be/Qx4t6C8D4XA[The Shape of Clojure Code - Brooks] - ClojureTV
+* https://youtu.be/dmucZkE5gd0[A Datomic entity browser for prod - Getz] - ClojureTV
+* https://youtu.be/1vBm9XvS5QI[Immutable Knowledge Databases - Soares & Nascimento] - ClojureTV
+* https://youtu.be/EinYbwV-gxE[Defeating Bowser with A* Search - Smith] - ClojureTV
+
+== Blogs, articles, and news
+
+* https://state-of-clojurescript.com/2025[State of ClojureScript 2025 Survey results] - ClojureScript Team
+* https://orestis.gr/clojure-and-ai-agents-an-experience-report/[Clojure and AI agents - an experience report] - Orestis Markou
+* https://building.nubank.com/designing-real-systems-with-immutable-data-in-clojure/[Designing real systems with immutable data in Clojure - Building Nubank] - Nubank Editorial
+* https://yyhh.org/blog/2026/01/triple-store-triple-progress-datalevin-posited-for-the-future/[Triple Store, Triple Progress: Datalevin Posited for the Future] - Huahai Yang
+* https://www.buddhilw.com/posts-output/2026-01-20-hive-mcp/[8-10x Faster Development with LLM Memory That Persists] - Pedro Gomes
+
+== Libraries and Tools
+
+Debut release
+
+* https://github.com/lukaszkorecki/fusion-http[fusion-http] - Ring adapter for FusionAuth's HTTP server
+* https://github.com/semantic-namespace/atlas[atlas] - Atlas rethinks how we describe software architecture. Query, validate, and visualize your system semantics as a single queryable graph.
+* https://github.com/michaelwhitford/nucleus[nucleus] - An AI prompting framework
+* https://github.com/gchape/opusdb[opusdb] - A lightweight, in-memory database written in Clojure for functional data.
+* https://github.com/henryw374/chronos[chronos] - dependency-free clojure(script) time library
+* https://github.com/LeveringIT/missionary-testkit[missionary-testkit] - deterministic scheduler to test concurrency in missionary tasks and flows
+* https://github.com/rururu/ClojureMiniIDE[ClojureMiniIDE] - A minimalistic integrated development environment for the Clojure programming language.
+* https://github.com/plexus/supersonic-cljs-demo[supersonic-cljs-demo] - Demo of how to use supersonic with clojurescript
+* https://github.com/replikativ/proximum[proximum] - A fast vector search on immutable storage
+* https://github.com/hive-agi/hive-mcp[hive-mcp] - MCP server for hive-framework development, highly integrated to emacs
+
+Updates
+
+* https://github.com/lukaszkorecki/omega-red[omega-red] https://github.com/lukaszkorecki/omega-red/commits/v2.6.0[2.6.0] - Idiomatic Redis client for Clojure
+* https://github.com/abogoyavlensky/manifest-edn[manifest-edn] https://github.com/abogoyavlensky/manifest-edn/releases/tag/0.1.2[0.1.2] - A small Clojure/Babashka library for hashing static assets
+* https://github.com/clj-commons/pretty[pretty] https://github.com/clj-commons/pretty/blob/main/CHANGES.md[3.6.8] - Library for helping print things prettily, in Clojure - ANSI fonts, formatted exceptions
+* https://github.com/monkey-projects/monkeyci[monkeyci] https://github.com/monkey-projects/monkeyci/commits/0.23.0[0.23.0] - Next-generation CI/CD tool that uses the full power of Clojure!
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.545[2.0.545] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/clj-kondo/clj-kondo[clj-kondo] https://github.com/clj-kondo/clj-kondo/blob/master/CHANGELOG.md[2026.01.19] - Static analyzer and linter for Clojure code that sparks joy
+* https://github.com/fulcrologic/fulcro-spec[fulcro-spec] https://github.com/fulcrologic/fulcro-spec/blob/main/CHANGELOG.md[fulcro-spec-3.2.4] - A library that wraps clojure.test for a better BDD testing experience.
+* https://github.com/clj-commons/aleph[aleph] https://github.com/clj-commons/aleph/blob/master/CHANGES.md[0.9.5] - Asynchronous streaming communication for Clojure - web server, web client, and raw TCP/UDP
+* https://github.com/rm-hull/nvd-clojure[nvd-clojure] https://github.com/rm-hull/nvd-clojure/blob/main/CHANGELOG.md[5.3.0] - National Vulnerability Database dependency checker for Clojure projects

@@ -22,6 +22,13 @@ For more information see the following docs:
 
 Recent official releases are described here. Prereleases and older versions can be found in the https://github.com/clojure/brew-install/blob/1.12.1/CHANGELOG.md[repo changelog].
 
+=== 1.12.4.1597 (Jan 26, 2026) [[v1.12.4.1597]]
+
+* TDEPS-273 Add codeberg.org to git deps auto url support
+* TDEPS-269 Embed and check checksums in Linux and Posix installers
+* TDEPS-274 Add additional options to curl in linux and posix installer for retry and timeout
+* Update to latest deps
+
 === 1.12.4.1582 (Dec 10, 2025) [[v1.12.4.1582]]
 
 * Update to Clojure 1.12.4

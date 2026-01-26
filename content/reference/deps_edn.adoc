@@ -185,6 +185,8 @@ The git url must either be provided or inferred from the lib name. If provided, 
 |io.beanstalkapp.ORG/PROJECT | `"https://ORG.git.beanstalkapp.com/PROJECT.git"`
 |com.beanstalkapp.ORG/PROJECT | `"https://ORG.git.beanstalkapp.com/PROJECT.git"`
 |ht.sr.ORG/PROJECT | `"https://git.sr.ht/~ORG/PROJECT"`
+|org.codeberg.ORG/PROJECT | `"https://codeberg.org/ORG/PROJECT.git"`
+|page.codeberg.ORG/PROJECT | `"https://codeberg.org/ORG/PROJECT.git"`
 |===
 
 This is an example deps.edn including two valid git deps, the first with inferred git url, git tag, and sha prefix, and the second with explicit git url and full sha:

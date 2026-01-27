@@ -22,6 +22,10 @@ For more information see the following docs:
 
 Recent official releases are described here. Prereleases and older versions can be found in the https://github.com/clojure/brew-install/blob/1.12.1/CHANGELOG.md[repo changelog].
 
+=== 1.12.4.1602 (Jan 27, 2026) [[v1.12.4.1602]]
+
+* TDEPS-275 Use sha256sum in linux-installer instead of shasum
+
 === 1.12.4.1597 (Jan 26, 2026) [[v1.12.4.1597]]
 
 * TDEPS-273 Add codeberg.org to git deps auto url support

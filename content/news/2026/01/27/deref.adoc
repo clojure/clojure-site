@@ -1,0 +1,75 @@
+= Clojure Deref (Jan 27, 2026)
+Christoph Neumann
+2026-01-27
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]).
+
+
+== Clojure Dev Call
+
+Join the Clojure core team for an update on what we’ve been working on and
+what’s on our horizon. We’ll save time for a Q&A, so bring your questions.
+Feb 10 @ 18:00 UTC.
+https://events.zoom.us/ev/An2SYj2YlmVfqwudJVSeJepJYd2bYimFc50HxyDFof7VFjZJwj_Y~Atd2TgMWAVvyYVJqZqXMzDxYhjsL55lQZZK67laEKQ4SxKk-2m-CrHw1xg[Register here].
+
+== Upcoming Events
+
+* https://clojureverse.org/t/clojure-real-world-data-44/14829[Clojure real-world-data 44]: Jan 30
+* https://www.meetup.com/london-clojurians/events/312829331/[Lexical Complexity in Software Engineering (by Samantha Cohen)]: Feb 10
+* https://scicloj.github.io/clojure-jam-2026/[Clojure Jam 2026]: Apr 18-19 & 25-26. Online & free! https://scicloj.github.io/clojure-jam-2026/speakers.html[CFP is open] until Jan 31st.
+* https://babashka.org/conf/[Babashka Conf]: May 8. Amsterdam, NL. Free, but limited space! CFP is open until Feb 28.
+* https://clojuredays.org/[Dutch Clojure Days 2026]: May 9th. Amsterdam, NL.
+
+
+== Podcasts, videos, and media
+
+* https://youtu.be/M807DeA1hyA[Glance plotting library testdrive] - Timothy Pratley
+* https://youtu.be/6aZonZjeXYU[Converting map keys to nested namespace keys] - Clojure Diary
+
+Clojure/Conj 2025
+
+* https://youtu.be/jWkEKdp0gqk[From Scripts to Buy-In: How Small Clojure Wins Create Big Opportunities - Choomnuan] - ClojureTV
+* https://youtu.be/8W6Lr1hRgXo[From Tomorrow Back to Yesterday: A Tale of Two Web Architectures - Yang] - ClojureTV
+* https://youtu.be/RihMqK6c7qU[Writing less code (by understanding your priorities) - Wildflower] - ClojureTV
+* https://youtu.be/zw06At6aVgU[Real-world Clojure: Lessons from Growing a Team and a Codebase - Assum] - ClojureTV
+* https://youtu.be/4NszXTVpwmU[ECA: AI pair programming in your editor - Dallo] - ClojureTV
+
+== Blogs, articles, and news
+
+* https://avelino.run/jbundle-distributing-clojure-without-the-graalvm-pain/[jbundle: Distributing Clojure Without the GraalVM Pain] - Thiago Avelino
+* https://clojurecivitas.github.io/volumetric_clouds/main.html[Volumetric Clouds with Clojure and LWJGL – Clojure Civitas] - Jan Wedekind
+
+== Libraries and Tools
+
+Debut release
+
+* https://github.com/pb-/gmail-mbox-codec/[gmail-mbox-codec] - A tiny script to enable efficient incremental file-based backups from Gmail takeouts.
+* https://github.com/jeremykross/spacegolfbang[spacegolfbang] - Game engine source for Spacegolf
+* https://github.com/filipesilva/invoker[invoker] - Zero config CLI, HTTP, and REPL interface for Clojure.
+* https://codeberg.org/technomancy/lein-unused-deps[lein-unused-deps] - A Leiningen plugin to detect unused dependencies
+* https://github.com/santiagocabrera96/game-of-life-joy-of-data[game-of-life-joy-of-data] - Adding visualization to Alex Miller joy of data talk with the game of life
+* https://github.com/scicloj/glance[glance] - A Clojure library for getting a plot on the screen with minimal ceremony
+* https://github.com/xlfe/radiale[radiale] - What if home automation was homoiconic? Just transformations of data? No more YAML!
+* https://codeberg.org/timokramer/charm.clj[charm.clj] - A Clojure TUI (Terminal User Interface) library inspired by Bubble Tea
+* https://github.com/avelino/jbundle[jbundle] - Package JVM applications (Clojure, Java) into self-contained binaries. No JVM installation required to run the output.
+* https://github.com/tobias/datastar-pedestal-adapter[datastar-pedestal-adapter] - This provides a SSE Datastar adapter that uses Pedestal's SSE abstractions.
+
+Updates
+
+* https://clojure.org/reference/clojure_cli[clojure_cli] https://clojure.org/releases/tools#v1.12.4.1602[1.12.4.1602] - Clojure CLI
+* https://github.com/fogus/thneed[thneed] https://github.com/fogus/thneed/blob/master/CHANGELOG.md[1.1.6] - An eclectic set of Clojure utilities that I've found useful enough to keep around.
+* https://github.com/fogus/rv[rv] https://github.com/fogus/rv/blob/main/CHANGELOG.md[0.0.11] - A Clojure library exploring the application of pure reasoning algorithms.
+* https://github.com/seancorfield/honeysql[honeysql] https://github.com/seancorfield/honeysql/releases/tag/v2.7.1368[2.7.1368] - Turn Clojure data structures into SQL
+* https://github.com/bolasblack/shadow-cljs-vite-plugin[shadow-cljs-vite-plugin] https://github.com/bolasblack/shadow-cljs-vite-plugin/commits/v0.0.6[0.0.6] - A robust Vite plugin for seamless integration with shadow-cljs
+* https://github.com/coconutpalm/clojure-desktop-toolkit[clojure-desktop-toolkit] https://github.com/coconutpalm/clojure-desktop-toolkit/releases/tag/v0.4.4[0.4.4] - Create native state-of-the-art desktop applications in Clojure using Eclipse's SWT graphics toolkit.
+* https://github.com/datalevin/datalevin[datalevin] https://github.com/datalevin/datalevin/blob/master/CHANGELOG.md[0.10.2] - A simple, fast and versatile Datalog database
+* https://github.com/basilisp-lang/basilisp[basilisp] https://github.com/basilisp-lang/basilisp/releases/tag/v0.5.0[0.5.0] - A Clojure-compatible(-ish) Lisp dialect hosted on Python 3 with seamless Python interop
+* https://github.com/scicloj/clay[clay] https://github.com/scicloj/clay/blob/main/CHANGELOG.md[2.0.6] - A REPL-friendly Clojure tool for notebooks and datavis
+* https://github.com/squint-cljs/squint[squint] https://github.com/squint-cljs/squint/releases/tag/v0.10.185[0.10.185] - Light-weight ClojureScript dialect
+* https://github.com/fulcrologic/fulcro-rad[fulcro-rad] https://github.com/fulcrologic/fulcro-rad/blob/main/CHANGELOG.md[1.6.20] - Fulcro Rapid Application Development
+* https://github.com/fulcrologic/statecharts[statecharts] https://github.com/fulcrologic/statecharts/blob/main/CHANGELOG[1.2.25] - A Statechart library for CLJ(S)
+* https://github.com/editor-code-assistant/eca[eca] https://github.com/editor-code-assistant/eca/blob/master/CHANGELOG.md[0.97.0] - Editor Code Assistant (ECA) - AI pair programming capabilities agnostic of editor
+* https://github.com/redplanetlabs/agent-o-rama[agent-o-rama] https://github.com/redplanetlabs/agent-o-rama/releases/tag/release/0.8.0[release/0.8.0] - End-to-end LLM agent platform for Java and Clojure for building, tracing, testing, and monitoring agents with integrated storage and one-click deployment. Inspired by LangGraph/LangSmith.

@@ -1,0 +1,85 @@
+= Clojure Deref (Feb 3, 2026)
+Christoph Neumann
+2026-02-03
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]).
+
+
+== Clojure Dev Call
+
+Join the Clojure core team for an update on what we’ve been working on and
+what’s on our horizon. We’ll save time for a Q&A, so bring your questions.
+Feb 10 @ 18:00 UTC.
+https://events.zoom.us/ev/An2SYj2YlmVfqwudJVSeJepJYd2bYimFc50HxyDFof7VFjZJwj_Y~Atd2TgMWAVvyYVJqZqXMzDxYhjsL55lQZZK67laEKQ4SxKk-2m-CrHw1xg[Register here].
+
+== Upcoming Events
+
+* https://www.meetup.com/london-clojurians/events/312829331/[Lexical Complexity in Software Engineering (by Samantha Cohen)]: Feb 10
+* https://scicloj.github.io/clojure-jam-2026/[Clojure Jam 2026]: Apr 18-19 & 25-26. Online & free!
+* https://babashka.org/conf/[Babashka Conf]: May 8. Amsterdam, NL. Free, but limited space! CFP is open until Feb 28.
+* https://clojuredays.org/[Dutch Clojure Days 2026]: May 9th. Amsterdam, NL.
+
+
+== Podcasts, videos, and media
+
+* https://youtu.be/qYXRmab-asU[Invoker: functions are all you need (by Filipe Silva)] - London Clojurians
+* https://youtu.be/eKbsqkL9rbg[Clojure in product. Would you do it again? Episode 12. Marcin Maicki, Dentons] - Freshcode
+* https://youtu.be/-MGQrLrLqGY[Clojure Corner: Interview with Bruce Hauman] - Flexiana
+* https://youtu.be/efnNg4AHKtU[Quick Cljfx Interactive Development Demo | Clojure] - Ken Huang
+
+Clojure/Conj 2025
+
+* https://youtu.be/XS0NyQ-aePk[The Search for Meaning Through Collaboration and Code - Pratley] - ClojureTV
+* https://youtu.be/Wu-OyLxiP88[Databases: Are We There Yet? - Spasov] - ClojureTV
+* https://youtu.be/vOH_OlqHpXA[Clockwork Clojure: A Protocol-Powered Runtime for Composable Evaluation - Ferri] - ClojureTV
+* https://youtu.be/1fL9uOh5k-g[Balanced sampling as a tool for useful PBT random tree generation - Newton] - ClojureTV
+
+== Blogs, articles, and news
+
+* https://www.clojuriststogether.org/news/annually-funded-developers-update-november-and-december-2025/[Annually-Funded Developers' Update: November and December 2025] - Kathy Davis
+* https://clojurebr.substack.com/p/nth-concat-5[(nth (concat) 5)] - Ana Carolina
+* https://clojure.land/[Clojure Land - Search & Discover Open Source Clojure Libraries] - Brett Adams
+* https://flexiana.com/machine-learning-architecture/machine-learning-with-clojure-benefits-perspectives[Machine Learning with Clojure: Benefits & Perspectives - Flexiana] - Jiri Knesl
+* https://clojurecivitas.github.io/internationalization/smile_of_murugan_digitization.html[The Smile of Murugan – Clojure Civitas] - Elango Cheran
+* https://avelino.run/chrondb-polyglot-ffi-clojure-graalvm-native-image/[ChronDB: Transforming a Clojure Database into a Polyglot Library with GraalVM Native Image and FFI] - Thiago Avelino
+* https://tangrammer.codeberg.page/on-the-clojure-move/output/posts/system-information-as-knowledge-graph.html[Atlas expressivity: System architecture as knowledge graph] - Juan Antonio Ruz
+* https://yyhh.org/blog/2026/01/sqlite-in-production-not-so-fast-for-complex-queries/[SQLite in Production? Not So Fast for Complex Queries] - Huahai Yang
+* https://serefayar.substack.com/p/minimal-agent-engine-from-scratch-with-clojure[De-mystifying Agentic AI: Building a Minimal Agent Engine from Scratch with Clojure] - Şeref Ayar
+* https://pruner-formatter.github.io/guides/improved-clojure-formatting.html[Improved Clojure Formatting | Pruner] - Julien Vincent
+* https://avelino.run/ffi-graalvm-native-image-real-work/[FFI with GraalVM Native Image: The Real Work of Maintaining a Library That Crosses Language Boundaries] - Thiago Avelino
+* https://building.nubank.com/building-ai-agentes-in-practice-with-clojure/[Building AI agentes in practice with Clojure - Building Nubank] - Nubank Editorial
+* https://bigconfig.it/blog/beyond-the-shell-reimagining-devops-with-the-clojure-repl/[Beyond the Shell: Reimagining DevOps with the Clojure REPL] - Alberto Miorin
+
+== Libraries and Tools
+
+Debut release
+
+* https://github.com/BuddhiLW/clojure-elisp[clojure-elisp] - A Clojure dialect that compiles to Emacs Lisp
+* https://github.com/yaml/yamlstar[yamlstar] - A YAML framwork for all programming languages
+* https://github.com/replikativ/yggdrasil[yggdrasil] - Git-like, causal space-time lattice abstraction over systems supporting this memory model.
+* https://github.com/avelino/chrondb[chrondb] - Chronological key/value Database built on Git architecture with complete version history
+* https://github.com/pruner-formatter/pruner[pruner] - A TreeSitter-powered formatter orchestrator
+* https://github.com/michaelwhitford/ouroboros[ouroboros] - An AI vibe-coding game using babashka
+* https://github.com/vipenzo/ridley[ridley] - A turtle graphics-based 3D modeling tool for 3D printing. Write Clojure scripts, see real-time 3D preview, export STL. WebXR support for VR/AR visualization.
+* https://github.com/tailrecursion/restructure[restructure] - Rewrite nested Clojure data with a declared shape.
+* https://github.com/NyanCAD/hipflask[hipflask] - Offline-first, real-time collaboration for ClojureScript
+* https://github.com/plumce/plumcp[plumcp] - Clojure/ClojureScript library for making MCP server and client
+
+Updates
+
+* https://github.com/eraserhd/clara-eql[clara-eql] https://github.com/eraserhd/clara-eql/blob/develop/CHANGELOG.adoc[0.2.1] - Generate Clara rules to collect data from EDN Query Language queries
+* https://github.com/monkey-projects/monkeyci[monkeyci] https://github.com/monkey-projects/monkeyci/commits/0.23.1[0.23.1] - Next-generation CI/CD tool that uses the full power of Clojure!
+* https://github.com/imrekoszo/unlazy[unlazy] https://github.com/imrekoszo/unlazy/releases/tag/v1.1.0[1.1.0] - Configuration for clj-kondo, discouraging lazy processing
+* https://github.com/seancorfield/next-jdbc[next-jdbc] https://github.com/seancorfield/next-jdbc/releases/tag/v1.3.1093[1.3.1093] - A modern low-level Clojure wrapper for JDBC-based access to databases.
+* https://github.com/cursive-ide/cursive[cursive] https://cursive-ide.com/blog/cursive-2026.1-eap1.html[2026.1-eap1] - Cursive: The IDE for beautiful Clojure code
+* https://github.com/hive-agi/hive-mcp[hive-mcp] https://github.com/hive-agi/hive-mcp/releases/tag/v0.11.0[0.11.0] - MCP server for hive-framework development, highly integrated to emacs
+* https://github.com/scicloj/clay[clay] https://github.com/scicloj/clay/blob/main/CHANGELOG.md[2.0.9] - A REPL-friendly Clojure tool for notebooks and datavis
+* https://github.com/scicloj/kindly[kindly] https://github.com/scicloj/kindly/blob/main/CHANGELOG.md[4-beta23] - A small library for defining how different kinds of things should be rendered
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.547[2.0.547] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/borkdude/html[html] https://github.com/borkdude/html/releases/tag/v0.2.3[0.2.3] - Html generation library inspired by squint's html tag
+* https://github.com/randomseed-io/bankster[bankster] https://github.com/randomseed-io/bankster/commits/2.1.1[2.1.1] - Money as data, done right.
+* https://github.com/cognitect-labs/aws-api[aws-api] https://github.com/cognitect-labs/aws-api/blob/main/CHANGES.md[0.8.800] - AWS, data driven
+* https://github.com/datalevin/datalevin[datalevin] https://github.com/datalevin/datalevin/blob/master/CHANGELOG.md[0.10.4] - A simple, fast and versatile Datalog database

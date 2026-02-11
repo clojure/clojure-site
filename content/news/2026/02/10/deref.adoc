@@ -1,0 +1,91 @@
+= Clojure Deref (Feb 10, 2026)
+Christoph Neumann
+2026-02-10
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]).
+
+
+== Upcoming Events
+
+* https://clojureverse.org/t/clojure-real-world-data-46/14840[Clojure real-world-data 46]: Feb 13
+* https://scicloj.github.io/clojure-jam-2026/[Clojure Jam 2026]: Apr 18-19 & 25-26. Online & free!
+* https://babashka.org/conf/[Babashka Conf]: May 8. Amsterdam, NL. Free, but limited space! CFP is open until Feb 28.
+* https://clojuredays.org/[Dutch Clojure Days 2026]: May 9th. Amsterdam, NL.
+
+
+== Podcasts, videos, and media
+
+* https://youtu.be/e9uErbiQSro[CLJ Screening] - ClojureTV
+* https://youtu.be/C92APr6Vmx0[future - Clojure] - Clojure Diary
+* https://youtu.be/UF752kshqZY[Why am I learning Clojure Script?] - Clojure Diary
+
+Clojure/Conj 2025
+
+* https://youtu.be/Nu1_f8qjEbs[Clojure on IntelliJ: Using open-source plugins - Fücher] - ClojureTV
+* https://youtu.be/P1U8QyzB0Wg[FIRE Architecture in Practice - Callahan] - ClojureTV
+* https://youtu.be/cmMQbsOTX-o[LegalArgumentException: From Courtrooms to Clojure - Sen] - ClojureTV
+* https://youtu.be/B9VOF1p2G0s[Immutable Selves: A Functional Approach to Digital Identity through Clojure Principles - Dame] - ClojureTV
+
+https://www.youtube.com/playlist?list=PLZdCLR02grLr7zJVWgZfUewWEUUAwMYHe[Full Clojure/Conj 2025 Playlist]
+
+
+== Blogs, articles, and news
+
+* https://clojurecivitas.org/data_visualization/violin.html[Introduction to Violin Plots with Vega-Lite – Clojure Civitas] - Mike Travers
+* https://clojurecivitas.org/data_visualization/violin2.html[Introduction to Violin Plots with Vega-Lite (Part 2) – Clojure Civitas] - Mike Travers
+* https://mccue.dev/pages/2-6-26-python-competitor[Python Only Has One Real Competitor] - Ethan McCue
+* https://dev.to/hlship/datastar-observations-3icg[Datastar Observations] - Howard Lewis Ship
+* https://www.emcken.dk/programming/2026/02/08/middleware-limit-concurrent-connections/[Limit concurrent HTTP connections to avoid crippeling overload] - Jacob Emcken
+* https://gist.github.com/NicolasLambert/c3e51cb0b5314f2110161f85be24b4c7[Elegant Resource-Safe Transducer Pipelines in Clojure] - Nicolas Lambert
+* https://gist.github.com/NicolasLambert/3fd0eed31cf5a256740110652bb68a23[Merging Two Streaming Sources in Clojure Without Blowing Up Memory] - Nicolas Lambert
+* https://bigconfig.it/blog/replacing-integrant-and-docker-compose-with-bigconfig-system/[Replacing Integrant and Docker Compose with BigConfig System] - Alberto Miorin
+
+== Libraries and Tools
+
+Debut release
+
+* https://github.com/replikativ/scriptum[scriptum] - Lucene with git-like semantics and Clojure integration.
+* https://github.com/scicloj/dataset-io[dataset-io] - Enable tech.ml.dataset + tablecloth reading of Arrow, Parquet and Excel files with a single dependency
+* https://github.com/behrica/libpython-clj-uv[libpython-clj-uv] - Deep integration of libpython-clj and the uv python venv manager
+* https://github.com/scicloj/pocket[pocket] - filesystem-based caching of expensive computations
+* https://github.com/Schroedingberg/progressive[progressive] - A simple, local first, workout tracker.
+* https://github.com/hulunote/hulunote[hulunote] - An open-source outliner note-taking application with bidirectional linking.
+* https://github.com/tesujimath/limabean[limabean] - A new implementation of Beancount using Rust and Clojure and the Lima parser
+* https://github.com/lukaszkorecki/mcp2000xl[mcp2000xl] - A clojure/ring adapter for the official modelcontextprotocol Java SDK
+* https://github.com/ianffcs/cljd-video-player[cljd-video-player] - A reusable ClojureDart video player package with optional background audio service
+* https://github.com/cyberdesignfactory/startribes[startribes] - Star Tribes is a space combat game, written in Clojure
+
+Updates
+
+* https://github.com/cognitect/transit-java[transit-java] https://github.com/cognitect/transit-java/blob/master/CHANGES.md[1.1.389] - transit-format implementation for Java
+* https://github.com/cognitect/transit-clj[transit-clj] https://github.com/cognitect/transit-clj/blob/master/CHANGES.md[1.1.347] - transit-format implementation for Clojure
+* https://github.com/babashka/sci[sci] https://github.com/babashka/sci/releases/tag/v0.11.51[0.11.51] - Configurable Clojure/Script interpreter suitable for scripting and Clojure DSLs
+* https://github.com/tonsky/clj-simple-stats[clj-simple-stats] https://github.com/tonsky/clj-simple-stats/blob/main/CHANGELOG.md[1.2.0] - Simple statistics for Clojure/Ring webapps
+* https://github.com/uncomplicate/clojurecuda[clojurecuda] https://github.com/uncomplicate/clojurecuda/commits/0.26.0[0.26.0] - Clojure library for CUDA development
+* https://github.com/seancorfield/ring-data-json[ring-data-json] https://github.com/seancorfield/ring-data-json/releases/tag/v0.5.3[0.5.3] - Ring middleware for handling JSON, using clojure.data.json
+* https://github.com/danlentz/clj-uuid[clj-uuid] https://github.com/danlentz/clj-uuid/blob/master/CHANGES.md[0.2.5] - RFC9562 Unique Identifiers (v1,v3,v4,v5,v6,v7,v8,squuid) for Clojure
+* https://github.com/practicalli/clojure-cli-config[clojure-cli-config] https://github.com/practicalli/clojure-cli-config/releases/tag/2026-02-05[2026-02-05] - User aliases and Clojure CLI configuration for deps.edn based projects
+* https://github.com/practicalli/project-templates[project-templates] https://github.com/practicalli/project-templates/releases/tag/2026-02-05[2026-02-05] - Clojure CLI Production level templates for seancorfield/deps-new
+* https://github.com/babashka/fs[fs] https://github.com/babashka/fs/releases/tag/v0.5.31[0.5.31] - File system utility library for Clojure
+* https://github.com/yogthos/Selmer[Selmer] https://github.com/yogthos/Selmer/blob/master/changes.md[1.13.0] - A fast, Django inspired template system in Clojure.
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.549[2.0.549] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/ilmoraunio/conjtest[conjtest] https://github.com/ilmoraunio/conjtest/releases/tag/v0.3.1[0.3.1] - Run tests against common configuration file formats using Clojure!
+* https://github.com/babashka/nbb[nbb] https://github.com/babashka/nbb/blob/main/CHANGELOG.md[1.4.206] - Scripting in Clojure on Node.js using SCI
+* https://github.com/clojure-emacs/cider[cider] https://github.com/clojure-emacs/cider/releases/tag/v1.21.0[1.21.0] - The Clojure Interactive Development Environment that Rocks for Emacs
+* https://github.com/randomseed-io/bankster[bankster] https://github.com/randomseed-io/bankster/releases/tag/2.2.4[2.2.4] - Money as data, done right.
+* https://github.com/yonureker/stripe-clojure[stripe-clojure] https://github.com/yonureker/stripe-clojure/releases/tag/v2.2.0[2.2.0] - Clojure SDK for the Stripe API.
+* https://github.com/robinlahtinen/clj-artnet[clj-artnet] https://github.com/robinlahtinen/clj-artnet/releases/tag/v0.2.0[0.2.0] - A fully spec-compliant, idiomatic Clojure implementation of Art-Net 4, providing correct DMX512 over IP with deterministic behavior, predictable timing, and clean, composable APIs for real-time lighting control.
+* https://github.com/tatut/ripley[ripley] https://github.com/tatut/ripley?tab=readme-ov-file#changes[2026-02-07] - Server rendered UIs over WebSockets
+* https://shipclojure.com/[Ship Clojure] https://shipclojure.com/changelogs/datom/[1.0.0] - A production-ready Clojure web stack built on pure functions and data-oriented programming
+* https://github.com/datalevin/datalevin[datalevin] https://github.com/datalevin/datalevin/blob/master/CHANGELOG.md[0.10.5] - A simple, fast and versatile Datalog database
+* https://github.com/replikativ/hasch[hasch] https://github.com/replikativ/hasch/commits/0.4.98[0.4.98] - Cross-platform (JVM and JS atm.) edn data structure hashing for Clojure.
+* https://github.com/hive-agi/hive-mcp[hive-mcp] https://github.com/hive-agi/hive-mcp/releases/tag/v0.12.4[0.12.4] - MCP server for hive-framework development. A memory and agentic coordination solution.
+* https://github.com/mpenet/hirundo[hirundo] https://github.com/mpenet/hirundo/commits/1.0.0-alpha199[1.0.0-alpha199] - Helidon 4.x - RING clojure adapter
+* https://github.com/mpenet/ok-http[ok-http] https://github.com/mpenet/ok-http/commits/1.0.0-alpha20[1.0.0-alpha20] - OkHttp clojure wrapper
+* https://github.com/babashka/scittle[scittle] https://github.com/babashka/scittle/releases/tag/v0.8.31[0.8.31] - Execute Clojure(Script) directly from browser script tags via SCI
+* https://github.com/multiplyco/quiescent[quiescent] https://github.com/multiplyco/quiescent/blob/main/CHANGELOG.md[0.2.4] - A Clojure library for composable async tasks with automatic parallelization, structured concurrency, and parent-child and chain cancellation
+* https://github.com/scicloj/tableplot[tableplot] https://github.com/scicloj/tableplot/blob/main/CHANGELOG.md[1-beta15] - Easy layered graphics with Hanami & Tablecloth
+* https://github.com/scicloj/clay[clay] https://github.com/scicloj/clay/blob/main/CHANGELOG.md[2.0.10] - A REPL-friendly Clojure tool for notebooks and datavis

@@ -1,0 +1,440 @@
+= State of Clojure 2025 Results
+Christoph Neumann
+2026-02-18
+:jbake-type: post
+
+Recently, we completed the 2025 State of Clojure survey. You can find the full
+survey results in https://www.surveymonkey.com/results/SM-q_2Bk9jFSywg5RRgxNruucNQ_3D_3D/[this report].
+
+In the report and the highlights below, "Clojure" is often used to refer to the
+whole ecosystem of Clojure and its dialects as a whole. When relevant, specific
+dialects are mentioned by name, such as ClojureScript, Babashka, ClojureCLR, etc.
+
+See the following sections for highlights and selected analysis:
+
+* <<state-of-clojure-2025#demographics,Demographics>>
+* <<state-of-clojure-2025#industries,Industries & Applications>>
+* <<state-of-clojure-2025#satisfaction,Developer Satisfaction>>
+* <<state-of-clojure-2025#new-users,New Users>>
+* <<state-of-clojure-2025#dialects-tools,Clojure Dialects & Tools>>
+* <<state-of-clojure-2025#final,Final Comments>>
+* <<state-of-clojure-2025#previous,Previous Years>>
+
+<<<
+
+[[demographics]]
+== Demographics
+
+// Q1
+=== 80 countries represented
+
+80 different countries were represented by respondents to the State of Clojure Survey!
+
+**Responses by Country**
+
+image::/images/content/news/2026-02-18/country-responses-pct.png[Responses by country]
+
+The Top 10 countries, by count:
+
+[cols="1,1",width=50%,frame=none,grid=none]
+|===
+|
+1. United States +
+2. Brazil +
+3. Germany +
+4. United Kingdom +
+5. Finland
+|
+6. Sweden +
+7. France +
+8. Norway +
+9. Canada +
+10. Poland
+|
+|===
+
+In fact, the top 4 countries constituted 50.1% of the respondents, so by the
+numbers, the United States, Brazil, Germany, and the United Kingdom have the
+same number of Clojure users as the rest of the world.
+
+What if we adjust for population? We can see where Clojure is most concentrated
+per capita.
+
+[cols="1,1",width=50%,frame=none,grid=none]
+|===
+|
+1. Finland +
+2. Norway +
+3. Sweden +
+4. Denmark +
+5. Switzerland
+|
+6. Serbia +
+7. Ireland +
+8. Netherlands +
+9. Czech Republic +
+10. Uruguay
+|===
+
+Northern Europe has an especially high concentration of Clojurists.
+
+**Responses by Per Capita**
+
+image::/images/content/news/2026-02-18/country-europe-per-capita.png[Responses for Europe per capita]
+
+Also, despite the population differences, Austria, Australia, United States,
+Brazil, and Canada all have a similar concentration of Clojurists.
+
+
+<<<
+
+// Q2
+=== 82% of Clojure developers have 6 or more years of professional programming experience
+
+Experienced developers continue to be well represented in the Clojure community.
+
+**Question: How many years have you been programming professionally?**
+
+image::/images/content/news/2026-02-18/professional-experience.png[Professional experience]
+
+
+<<<
+
+// Q3
+=== Clojure attracts developers across a wide range of professional experience
+
+Clojure isn't just appealing to highly experienced professional developers.
+Clojure also attracts developers with little to no professional experience.
+New Clojure developers are from a wide range of professional programming
+experience.
+
+**Professional experience for those with ≤ 1 year of Clojure experience**
+
+image::/images/content/news/2026-02-18/professional-experience-new.png[Professional experience for new Clojurists]
+
+
+<<<
+
+// Q4
+=== Most Clojure developers use Clojure as their primary language
+
+About 2/3 of the respondents use Clojure as their primary language. When
+Clojure isn't primary, popularity seems to influence language choice more than
+a specific language attribute (such as a functional style).
+
+**Question: What was your PRIMARY language in the last year?**
+
+[cols=".>1a,.>1a",frame=none,grid=none,options="autowidth"]
+|===
+|
+image::/images/content/news/2026-02-18/primary-language-top.png[Top primary languages for Clojurists]
+|
+image::/images/content/news/2026-02-18/primary-language-bottom.png[Other primary languages for Clojurists]
+|===
+
+
+<<<
+
+[[satisfaction]]
+== Developer Satisfaction
+
+// Q3
+=== Clojure is used in a mix of popular languages.
+
+10% of Clojure developers indicated that they only used Clojure. All others
+indicated at least one other language they used. This choice, like the primary
+language, appears to be influenced by popularity, although functional languages
+(eg. Elixir, Lisp, Scheme/Racket, etc.) appear to be overrepresented versus
+their general popularity.
+
+**Question: What programming languages have you used in the last year? (select all)**
+
+[cols=".>1a,.>1a",frame=none,grid=none,options="autowidth"]
+|===
+|
+image::/images/content/news/2026-02-18/languages-used-top.png[Top languages used with Clojure]
+|
+image::/images/content/news/2026-02-18/languages-used-bottom.png[Other languages used with Clojurists]
+|===
+
+
+<<<
+
+// Q5
+=== 1 in 10 Clojure developers would quit programming without Clojure
+
+The results below are for developers that selected Clojure and its dialects as
+their primary language.
+
+**Question: If you couldn't use Clojure, what language would you use instead?**
+
+[cols=".>1a,.>1a",frame=none,grid=none,options="autowidth"]
+|===
+|
+image::/images/content/news/2026-02-18/second-choice-top.png[Top alternatives to Clojure]
+|
+image::/images/content/news/2026-02-18/second-choice-bottom.png[Other alternatives to Clojure]
+|===
+
+Unsurprisingly, the most popular languages are well represented in the top
+choices: Java, Python, TypeScript, Go, etc., but notice the functional languages
+languages are overrepresented versus their general popularity: Elixir, Common
+Lisp, Scheme/Racket, Haskell, and Erlang.
+
+The design of the Elixir language was influenced by Clojure, so it makes sense
+that it would stand out as a Clojure alternative versus other functional
+languages.
+
+
+<<<
+
+// Q60
+=== Clojure developers are very likely to recommend Clojure to others.
+
+70% of the respondents said they were very likely to recommend Clojure with
+only 8% saying they would not.
+
+**Question: How likely is it that you would recommend Clojure to a friend or colleague?**
+
+image::/images/content/news/2026-02-18/net-promoter-score.png[Net Promoter Score]
+
+
+<<<
+
+[[industries]]
+== Industries and Applications
+
+// Q6
+=== Work use continues to lead, but hobby programming is popular too.
+
+Survey respondents have nearly as much fun with Clojure (52% for hobbies) as
+more serious uses (71% for work).
+
+**Question: How would you characterize your use of Clojure today? (select all)**
+
+image::/images/content/news/2026-02-18/usage-purpose.png[Use of Clojure today]
+
+
+<<<
+
+// Q12
+=== Fintech, Enterprise Software, and Healthcare are the top industries for Clojure at over 51% combined.
+
+Clojure is used across a range of industries, but Financial Services,
+Enterprise Software and Healthcare stand out as the top ones. Fintech is 2.5x
+more popular for Clojure than Enterprise Software and over 4x more popular than
+Healthcare.
+
+**Question: What primary industry do you develop for?**
+
+[cols=".>1a,.>1a",frame=none,grid=none,options="autowidth"]
+|===
+|
+image::/images/content/news/2026-02-18/primary-industry-top.png[Top industries]
+|
+image::/images/content/news/2026-02-18/primary-industry-bottom.png[Other industries]
+|===
+
+
+<<<
+
+// Q10
+=== Clojure is used at large companies and small companies alike.
+
+16% of Clojurists are solo developers. 55% are in an organization of 100 people
+or less. 26% are in an organization larger than 1000 people--many are likely
+part of Nubank, the world's largest digital-only financial services platform,
+which employs thousands of Clojure developers.
+
+**Question: What is your organization size?**
+
+image::/images/content/news/2026-02-18/organization-size.png[Organization Size]
+
+
+<<<
+
+[[new-users]]
+== New Users
+
+// Q7
+=== Clojure continues to attract and retain developers.
+
+15% of respondents have used Clojure for one year or less. That's roughly
+equivalent to the 16% that have used Clojure 11-15 years. With 16+ years of
+experience, 3% of the Clojure community is made up of Clojure's earliest
+adopters.
+
+***Question: How long have you been using Clojure?***
+
+image::/images/content/news/2026-02-18/clojure-experience.png[Years of Clojure experience]
+
+Using equally sized buckets, it becomes clear that about half the community has 5
+or less years of Clojure experience and the other half has 6 or more years.
+
+**Years of Clojure experience**
+
+image::/images/content/news/2026-02-18/clojure-experience-buckets.png[Clojure experience bucketed]
+
+
+<<<
+
+// Q19
+=== Functional programming, work, Lisp heritage, and Rich Hickey's talks are the top reasons for investigating Clojure.
+
+The survey asked developers with ≤ 1 year of Clojure experience to select all
+the factors that first prompted them to investigate Clojure.
+
+**Question: Why did you first start looking at Clojure? (select all)**
+
+[cols="9,1",frame=none,grid=none]
+|===
+| Seeking a functional programming language | 40.20%
+| Use at work | 39.70%
+| Seeking a modern LISP | 39.20%
+| Inspired by conference talk or video by Rich Hickey or others | 32.16%
+| Seeking a more concise/expressive language on the JVM | 14.57%
+| Seeking a better language for web / full stack programming | 13.07%
+| Inspired by programming writings by prominent authors | 12.56%
+| Enjoyed the community | 9.55%
+| Seeking a language for safe concurrent programming | 8.54%
+| Introduced by a friend or colleague | 8.54%
+| Inspired by using a tool or framework written in Clojure | 7.04%
+| Other (please specify) | 6.53%
+| Business advantages like leverage, hiring, pay | 3.52%
+| Interested in doing music / art programming | 2.51%
+| Use in a university class | 1.01%
+|===
+
+
+<<<
+
+// Q27
+=== Nearly half of new Clojure developers are unfamiliar with structured editing.
+
+Structured editing allows a developer to efficiently edit Clojure code while
+keeping parenthesis and other delimiters balanced. It is especially useful for
+Lisp-style syntax where the distance between those delimiters ("on the
+outside") can span many lines of code.
+
+As you can see below, only 19% of experienced Clojurists don't use it ("manual")
+or are "not sure" about structured editing. For the inexperienced group, a full
+48% don't use it or are not sure.
+
+**Question: Which method do you use to edit Clojure code while balancing parentheses, brackets, etc? (Structured editing)**
+
+**Respondents with 2 or more years of Clojure experience**
+
+image::/images/content/news/2026-02-18/structured-editing-style-experienced.png[Clojure development environment]
+
+
+**Respondents with 1 year or less of Clojure experience**
+
+image::/images/content/news/2026-02-18/structured-editing-style-new.png[Clojure development environment for new Clojurists]
+
+
+<<<
+
+[[dialects-tools]]
+== Clojure Dialects and Tools
+
+// Q23
+=== Clojure remains more popular than any dialect, but Babashka and ClojureScript are quite popular too.
+
+3 out of 5 respondents indicated they use Babashka, which edged out
+ClojureScript for the #2 spot for the second year in a row.
+
+**Question: Which dialects of Clojure have you used in the last year? (select all)**
+
+[cols=".>1a,.>1a",frame=none,grid=none,options="autowidth"]
+|===
+|
+image::/images/content/news/2026-02-18/clojure-dialect-usage-top.png[Top Clojure dialects]
+|
+image::/images/content/news/2026-02-18/clojure-dialect-usage-bottom.png[Other Clojure dialects]
+|===
+
+
+<<<
+
+// Q26
+=== Emacs still holds the top spot overall, but new Clojurists are much more likely to use VS Code with Calva.
+
+Across all respondents, Emacs is the most popular, although there is a near
+perfect 50-50 split between Emacs + Vim and all the others.
+
+**Question: What is your primary Clojure development environment?**
+
+image::/images/content/news/2026-02-18/development-environment.png[Clojure development environment]
+
+For Clojure developers with one year or less of Clojure experience, Emacs and VS Code essentially trade places.
+
+**Respondents with 1 year or less of Clojure experience**
+
+image::/images/content/news/2026-02-18/development-environment-new.png[Clojure development environment for new Clojurists]
+
+
+<<<
+
+// Q28
+=== 70% of Clojure developers have used AI tools for software development, and 12% are considering it.
+
+The industry-wide surge of AI tooling can be seen in the Clojure community.
+Although a huge majority of Clojure developers have used AI tooling, a
+disinterested 18% are quite content without it.
+
+**Question: Have you used AI tools for software development?**
+
+image::/images/content/news/2026-02-18/ai-coding-tool-usage.png[AI coding tool usage]
+
+
+<<<
+
+[[final]]
+== Final Comments
+
+=== 44% of respondents took the time to express appreciation.
+
+After a very long survey, nearly half of the respondents took even more time to
+express appreciation for others in the Clojure community. You can read their
+many, many words of appreciation in the
+https://www.surveymonkey.com/results/SM-q_2Bk9jFSywg5RRgxNruucNQ_3D_3D/[full results of the 2025 survey].
+
+**Question: Who do you appreciate in the Clojure community and why?**
+
+image::/images/content/news/2026-02-18/appreciation-responses.png[Appreciative responses]
+
+In the spirit of thanks, we would like to thank you again for using Clojure and
+participating in the survey!
+
+
+<<<
+
+[[previous]]
+== Previous Years
+
+We're celebrating our 15th State of Clojure Survey! 🎉 🥳
+
+What better way to celebrate than by looking back at the years gone by? You can
+find the full results for this and prior years at the links below:
+
+[cols="1,1,1",width=50%,frame=none,grid=none]
+|===
+a|
+* https://www.surveymonkey.com/results/SM-q_2Bk9jFSywg5RRgxNruucNQ_3D_3D/[2025]
+* https://www.surveymonkey.com/results/SM-hht04mGydwZ6Nqr7N8vjCA_3D_3D/[2024]
+* https://www.surveymonkey.com/results/SM-5QgPUw4aBbMUY3FJVRra2w_3D_3D/[2023]
+* https://www.surveymonkey.com/results/SM-QRiy0fSu3bmDK_2FSNMplVJw_3D_3D/[2022]
+* https://www.surveymonkey.com/results/SM-S2L8NR6K9[2021]
+a|
+* https://www.surveymonkey.com/results/SM-CDBF7CYT7/[2020]
+* https://www.surveymonkey.com/results/SM-S9JVNXNQV/[2019]
+* https://www.surveymonkey.com/results/SM-9BC5FNJ68/[2018]
+* https://www.surveymonkey.com/results/SM-7K6NXJY3/[2016]
+* http://blog.cognitect.com/blog/2016/1/28/state-of-clojure-2015-survey-results[2015]
+a|
+* http://blog.cognitect.com/blog/2014/10/20/results-of-2014-state-of-clojure-and-clojurescript-survey[2014]
+* https://cemerick.com/blog/2013/11/18/results-of-the-2013-state-of-clojure-clojurescript-survey.html[2013]
+* https://cemerick.com/blog/2012/08/06/results-of-the-2012-state-of-clojure-survey.html[2012]
+* https://cemerick.com/blog/2011/07/11/results-of-the-2011-state-of-clojure-survey.html[2011]
+* https://cemerick.com/blog/2010/06/07/results-from-the-state-of-clojure-summer-2010-survey.html[2010]
+|===

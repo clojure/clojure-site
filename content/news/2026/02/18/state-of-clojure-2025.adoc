@@ -178,8 +178,8 @@ image::/images/content/news/2026-02-18/second-choice-bottom.png[Other alternativ
 
 Unsurprisingly, the most popular languages are well represented in the top
 choices: Java, Python, TypeScript, Go, etc., but notice the functional languages
-languages are overrepresented versus their general popularity: Elixir, Common
-Lisp, Scheme/Racket, Haskell, and Erlang.
+are overrepresented versus their general popularity: Elixir, Common Lisp,
+Scheme/Racket, Haskell, and Erlang.
 
 The design of the Elixir language was influenced by Clojure, so it makes sense
 that it would stand out as a Clojure alternative versus other functional

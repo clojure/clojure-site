@@ -22,6 +22,10 @@ For more information see the following docs:
 
 Recent official releases are described here. Prereleases and older versions can be found in the https://github.com/clojure/brew-install/blob/1.12.4/CHANGELOG.md[repo changelog].
 
+=== 1.12.4.1618 (Mar 9, 2026) [[v1.12.4.1618]]
+
+* Fix `clj -Ttools install-latest` when tool has versions in both Mavena and Git
+
 === 1.12.4.1612 (Mar 3, 2026) [[v1.12.4.1612]]
 
 * TDEPS-276 Extract source paths from local pom.xml sources defined with build-helper-maven-plugin

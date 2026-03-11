@@ -13,9 +13,9 @@ Threads must block while waiting on I/O operations to complete. "Parking" allows
 
 `io-thread` was added in a previous core.async release and is a new execution context for running both blocking channel operations and blocking I/O operations (which are not supported in `go`). Parking operations are not allowed in `io-thread` (same as the `thread` context).
 
-`io-thread`s use the `:io` executor pool, which will now use virtual threads, when available. If used in Java without virtual threads (< 21), `io-thread` continues to run in a cached thread pool with platform threads. 
+`io-thread` uses the `:io` executor pool, which will now use virtual threads, when available. If used in Java without virtual threads (< 21), `io-thread` continues to run in a cached thread pool with platform threads. 
 
-With this change, all blocking operations in `io-thread` can park without consuming a platform thread.
+With this change, all blocking operations in `io-thread` park without consuming a platform thread on Java 21+.
 
 == `go` blocks
 

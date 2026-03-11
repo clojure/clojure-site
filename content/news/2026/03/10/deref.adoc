@@ -1,0 +1,224 @@
+= Clojure Deref (Mar 10, 2026)
+Christoph Neumann
+2026-03-10
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]).
+
+
+== Clojure Data Science Survey
+
+Do you use clojure for Data Science? Please
+https://forms.gle/eoXDWgsjZWjGigLD8[take the survey]. Your responses will help
+shape the future of the https://scicloj.github.io/noj/[Noj toolkit] and the
+Data Science ecosystem in Clojure.
+
+
+== State of Clojure Survey Results
+
+The results of the 2025 State of Clojure Survey are
+https://clojure.org/news/2026/02/18/state-of-clojure-2025[now available].
+Thank you to everyone who participated!
+
+Also, a big thanks to the many folks in the community who helped make the
+survey possible by providing feedback, suggesting questions, and recruiting
+others to participate.
+
+Check out the https://youtu.be/LmUJ1k6BGoY[video discussion of the results]. It
+includes many topics, such as: where Clojure is being used around the world,
+what was surprising, the experience level of the community, who Clojure
+attracts, how Clojure fits in with other languages, and just how much
+developers love Clojure.
+
+
+== Clojure Dev Call
+
+On February 10, the Clojure team hosted our first Clojure Dev Call!
+
+https://youtu.be/ngyvDkZA3o0[Watch the recording] to hear what the team has
+been working on and what's on the horizon. Stick around until the end to hear
+the community Q&A.
+
+
+== Clojurists Together: Call for Proposals
+
+Clojurists Together has opened the Q2 2026 funding round for open-source
+Clojure projects. Applications will be accepted through March 19th.
+
+https://www.clojuriststogether.org/news/call-for-proposals.-feb.-2026-survey/[Read the announcement]
+for more details.
+
+
+== Upcoming Events
+
+* https://scicloj.github.io/clojure-jam-2026/[Clojure Jam 2026]: Postponed. https://clojureverse.org/t/postponing-clojure-jam-2026/14853[Read why].
+* https://clojureverse.org/t/clojure-real-world-data-50/14856[Clojure real-world-data 50]: Mar 13
+* https://babashka.org/conf/[Babashka Conf]: May 8. Amsterdam, NL. https://babashka.org/conf/#schedule[See the schedule].
+* https://clojuredays.org/[Dutch Clojure Days 2026]: May 9th. Amsterdam, NL. https://clojuredays.org/#agenda[See the schedule].
+
+
+
+== Podcasts, videos, and media
+
+* https://youtu.be/ngyvDkZA3o0[Clojure Core Team Dev Call, Feb 2026] - ClojureTV
+* https://youtu.be/LmUJ1k6BGoY[2025 Clojure Survey: Insights, Surprises, and What Really Matters] - ClojureTV
+* https://youtu.be/_4n7ph-mH5s[Lexical Complexity in Software Engineering (by Samantha Cohen)] - London Clojurians
+* https://youtu.be/SCt8MBtFDXQ[Scicloj AI Meetup 13: Agent-o-rama] - Sci Cloj
+* https://youtu.be/unwX3hs_QN0[Apropos with Michiel Borkent - Borkdude! Feb 17, 2026] - apropos clojure
+* https://youtu.be/lCUkYcz1huU[Broader Implications of AI - panel discussion - Macroexpand 2025-10-25] - Sci Cloj
+* https://youtu.be/AqLQMZclcqo[Coding in Arabic with Clojure] - Clojure Diary
+* https://youtu.be/Rd3s_2TYeUo[Clojure Notebooks] - Clojure Diary
+* https://youtu.be/CuEWN5yYVa8[Epupp Demo: Copilot Live Scripts my Web Pages] - CalvaTV
+* https://youtu.be/gI9CPBWEiXc[Ridley — 3D Modeling with Turtle Graphics and Code] - Vincenzo Piombo
+* https://youtu.be/TLFatq85sAU[BigConfig: Escape the YAML trap] - Alberto Miorin
+* https://youtu.be/1F7I9SGbafY[Transactional Event Sourcing with Clojure and Sqlite] - Max Weber
+* https://youtu.be/2yn7yQjf_Lw[Wrapper's in Clojure Ring] - Clojure Diary
+* https://youtu.be/R16clxNjgqg[Test Driven Development with Clojure and Midje] - Jan Wedekind
+
+
+== Blogs, articles, and news
+
+* https://www.clojuriststogether.org/news/call-for-proposals.-feb.-2026-survey/[Call for Proposals. Feb. 2026 Survey] - Kathy Davis
+* https://clojurebr.substack.com/p/nth-concat-6[(nth (concat) 6)] - Ana Carolina, Arthur Fücher
+* https://www.monkeyci.com/blog/monkeyci-intro/[Your CI/CD Pipeline Deserves Better Than YAML: Introducing MonkeyCI] - Wout Neirynck
+* https://www.iwillig.me/blog/on-dyslexia-and-lisp/[On Dyslexia, Programming and Lisp. — Relections on Software Engineering] - Ivan Willig
+* https://clojure.stream/changelog/new-clojurestream[New ClojureStream - Changelog - ClojureStream] - ClojureStream
+* https://www.solita.fi/blogs/creating-long-term-value-with-clojure/[Creating long-term value with Clojure​ - Solita] - Matti Uusitalo
+* https://flexiana.com/news/ai/clojurescript-guide-why-modern-devs-need-it-now-2026-edition[ClojureScript Guide: Why Modern Devs Need It Now ( 2026 Edition)] - Jiri Knesl
+* https://tengstrand.github.io/blog/2026-02-17-tetris-playing-ai-the-polylith-way-3.html[Tetris-playing AI the Polylith way - Part 3] - Joakim Tengstrand
+* https://blog.michielborkent.nl/babashka-1.12.215.html[Babashka 1.12.215: Revenge of the TUIs] - Michiel Borkent
+* https://blog.fogus.me/meta/LLMe.html[LLMe] - Michael Fogus
+* https://clojurecivitas.org/clojuremcp/llmapi.html[Connecting Clojure-MCP to Alternative LLM APIs – Clojure Civitas] - Matthias Buehlmaier, Annie Liu
+* https://www.loicb.dev/blog/pull-playground-interactive-pattern-learning[Pull Playground - Interactive Pattern Learning] - Loic Blanchard
+* https://www.loicb.dev/blog/managing-web-app-modes-with-fun-map-in-clojure[Managing Web App Modes with Fun-Map in Clojure] - Loic Blanchard
+* https://github.com/maxrothman/comparing-hiccup-impls[Comparison of hiccup libraries] - Max Rothman
+* https://felixbarbalet.com/simple-made-inevitable-the-economics-of-language-choice-in-the-llm-era/[Simple Made Inevitable: The Economics of Language Choice in the LLM Era] - Felix Barbalet
+* https://serefayar.substack.com/p/reconstructing-biscuit-in-clojure[Reconstructing Biscuit in Clojure] - Şeref Ayar
+* https://www.iwillig.me/blog/one-year-of-llm-usage-with-clojure/[One year of LLM usage with Clojure — Relections on Software Engineering] - Ivan Willig
+* https://gloathub.org/blog/2026/02/22/introducing-gloat-and-glojure/[Introducing Gloat and Glojure - GloatHub] - Ingy dot Net
+* https://bigconfig.it/blog/introducing-bigconfig-package/[Introducing BigConfig Package] - Alberto Miorin
+* https://scicloj.github.io/metamorph.ml/supervised_ml_intro.html[2 Introduction to Supervised Machine Learning with metamorph.ml – metamorph.ml topics] - Carsten Behring
+* https://yogthos.net/posts/2026-02-25-ai-at-scale.html[Managing Complexity with Mycelium] - Dmitri Sotnikov
+* https://bigconfig.it/blog/the-yaml-trap-escaping-greenspun-s-tenth-rule-with-bigconfig/[The YAML Trap: Escaping Greenspun’s Tenth Rule with BigConfig] - Alberto Miorin
+* https://github.com/scicloj/metamorph/blob/master/README.md[metamorph tutorial] - Carsten Behring
+* https://datahike.io/notes/stratum-analytics-engine/[Stratum: SQL that branches] - Christian Weilbach
+* https://flexiana.com/news/ai/clojure-numpy-interop-the-currentyear-guide-to-hybrid-machine-learning-pipelines[Clojure + NumPy Interop: The 2026 Guide to Hybrid Machine Learning Pipelines] - Jiri Knesl
+* https://gaiwan.co/blog/why-gaiwan-loves-the-predictive-power-of-universal-conventions/[Why Gaiwan Loves the Predictive Power of Universal Conventions] - Gaiwan
+* https://clojurecivitas.org/data_visualization/aog/composable_plotting.html[Composable Plotting in Clojure – Clojure Civitas] - Daniel Slutsky
+* https://vlaaad.github.io/codex-in-the-repl[Codex in the REPL] - Vlad Protsenko
+* https://metaredux.com/posts/2026/03/03/whats-next-for-clojure-mode.html[What’s Next for clojure-mode?] - Bozhidar Batsov
+* https://www.clojure.net/[Browse your live Clojure objects in a web UI] - Dustin Getz
+* https://blog.michielborkent.nl/oss-updates-jan-feb-2026.html[OSS updates January and February 2026] - Michiel Borkent
+* https://jank-lang.org/blog/2026-03-06-great-start/[jank is off to a great start in 2026] - Jeaye Wilkerson
+* https://www.monkeyci.com/blog/job-repl/[Run a REPL in a MonkeyCI job] - Wout Neirynck
+* https://clojureverse.org/t/postponing-clojure-jam-2026/14853[Postponing Clojure Jam 2026] - Daniel Slutsky
+* https://dev.to/dimension-ai/just-what-is-clojure-anyway-42np[Just What IS Clojure, Anyway?] - Dimension AI Technologies
+* https://www.bigconfig.it/blog/universal-infrastructure-solving-the-portability-gap-with-bigconfig/[Universal Infrastructure: Solving the Portability Gap with BigConfig] - Alberto Miorin
+* https://www.bigconfig.it/blog/composability-orchestrating-infrastructure-with-babashka-and-bigconfig-package/[Composability: Orchestrating Infrastructure with Babashka and BigConfig Package] - Alberto Miorin
+
+== Libraries and Tools
+
+Debut release
+
+* https://github.com/clojure/tools.deps.edn[tools.deps.edn] - Reader for deps.edn files
+* https://github.com/borkdude/cream[cream] - Fast starting Clojure runtime built with GraalVM native-image + Crema
+* https://github.com/gloathub/gloat[gloat] - Glojure AOT Tool
+* https://github.com/gersak/patcho[patcho] - Patching micro lib for Clojure
+* https://github.com/esuomi/coll-tracker[coll-tracker] - Track which keys and indices of a deep data structures are accessed.
+* https://github.com/filipesilva/inst[inst] - Clojure time library that always returns a #inst.
+* https://github.com/dazld/r11y[r11y] - CLI tool for extracting URLs as Markdown
+* https://github.com/shipclojure/leinpad[leinpad] - launchpad for leiningen
+* https://github.com/hive-agi/bb-depsolve[bb-depsolve] - Generic monorepo dependency sync, upgrade & reporting for babashka/Clojure
+* https://github.com/filipesilva/sqlatom[sqlatom] - Clojure library that stores atoms in a SQLite database
+* https://git.nmm.ee/asko/ruuter[ruuter] - A zero-dependency, runtime-agnostic router.
+* https://github.com/replikativ/briefkasten[briefkasten] - A mail client that can sync and index with Datahike and Scriptum (Lucene).
+* https://github.com/hatappo/zsh-clj-shell[zsh-clj-shell] - Clojure (Babashka) shell integration for Zsh
+* https://github.com/davidplumpton/icehouse[icehouse] - Icehouse tabletop game
+* https://github.com/leafclick/neanderthal-blas-like[neanderthal-blas-like] - BLAS-like Extensions for Neanderthal, Fast Clojure Matrix Library
+* https://github.com/avidrucker/avatar-maker[avatar-maker] - GitHub - avidrucker/avatar-maker
+* https://github.com/quoll/icd11-export[icd11-export] - Turtle export of ICD-11
+* https://github.com/yogthos/mycelium[mycelium] - Mycelium uses Maestro state machines and Malli contracts to define "The Law of the Graph," providing a high-integrity environment where humans architect and AI agents implement.
+* https://github.com/dynamic-alpha/hyper[hyper] - Reactive server-rendered web framework for Clojure
+* https://github.com/iwillig/awesome-clojure-llm[awesome-clojure-llm] - Concise, curated resources for working with the Clojure Programming and LLM base coding agents
+* https://github.com/replikativ/stratum[stratum] - Versioned, fast and scalable columnar database.
+* https://github.com/igrishaev/any[any] - Objects for smart comparison in tests.
+* https://github.com/keychera/sankyuu-template-clj[sankyuu-template-clj] - A clojure project utilizing lwjgl + assimp + opengl + imgui to render glTF models and MMD models.
+* https://github.com/PEZ/epupp[epupp] - A web browser extension that lets you tamper with web pages, live and/or with userscripts.
+* https://github.com/clojure-finance/clj-yfinance[clj-yfinance] - Fetch prices, historical OHLCV, dividends, splits, earnings dates, fundamentals, analyst estimates and options from Yahoo Finance. Pure Clojure + built-in Java 11 HttpClient, no API key, no Python.
+* https://github.com/clojure-finance/ecbjure[ecbjure] - Access ECB financial data from Clojure — FX conversion, EURIBOR, €STR, HICP, and the full SDMX catalogue
+* https://github.com/alekseysotnikov/brepl-opencode-plugin[brepl-opencode-plugin] - brepl integration for OpenCode - automatic Clojure syntax validation, auto-fix brackets, and REPL evaluation.
+* https://github.com/scicloj/lalinea[lalinea] - linear algebra with dtype-next tensors
+* https://github.com/replikativ/superficie[superficie] - Surface syntax for Clojure to help exposition/onboarding.
+* https://github.com/kepler16/kaven[kaven] - A Clojure API for interacting with Maven respositories
+* https://github.com/routaverra/igor[igor] - Constraint Programming for Clojure
+
+Updates
+
+* https://github.com/clojure/tools.deps[tools.deps] https://github.com/clojure/tools.deps/blob/master/CHANGELOG.md[0.29.1598] - Deps as data and classpath generation
+* https://clojure.org/reference/clojure_cli[clojure_cli] https://clojure.org/releases/tools#v1.12.4.1618[1.12.4.1618] - Clojure CLI
+* https://github.com/clojure/core.cache[core.cache] https://github.com/clojure/core.cache/commits/v1.2.263[1.2.263] - A caching library for Clojure implementing various cache strategies
+* https://github.com/clojure/core.memoize[core.memoize] https://github.com/clojure/core.memoize/commits/v1.2.281[1.2.281] - A manipulable, pluggable, memoization framework for Clojure
+* https://github.com/clojure/tools.cli[tools.cli] https://github.com/clojure/tools.cli/blob/master/CHANGELOG.md[1.4.256] - Command-line processing
+* https://github.com/multiplyco/pathling[pathling] https://github.com/multiplyco/pathling/blob/main/CHANGELOG.md[0.2.1] - Utilities for scanning and updating data structures
+* https://github.com/multiplyco/scoped[scoped] https://github.com/multiplyco/scoped/blob/main/CHANGELOG.md[0.1.16] - ScopedValue in Clojure, with fallback to ThreadLocal
+* https://git.nmm.ee/asko/dompa[dompa] 1.2.3 - A zero-dependency, runtime-agnostic HTML parser and builder.
+* https://github.com/weavejester/cljfmt[cljfmt] https://github.com/weavejester/cljfmt/blob/master/CHANGELOG.md[0.16.0] - A tool for formatting Clojure code
+* https://github.com/replikativ/persistent-sorted-set[persistent-sorted-set] https://github.com/replikativ/persistent-sorted-set/blob/main/CHANGES.md[0.4.119] - Fast B-tree based persistent sorted set for Clojure/Script
+* https://github.com/scicloj/pocket[pocket] https://github.com/scicloj/pocket/blob/main/CHANGELOG.md[0.2.4] - filesystem-based caching of expensive computations
+* https://github.com/lispyclouds/contajners[contajners] https://github.com/lispyclouds/contajners/releases/tag/1.0.8[1.0.8] - An idiomatic, data-driven, REPL friendly clojure client for OCI container engines
+* https://github.com/hive-agi/hive-mcp[hive-mcp] https://github.com/hive-agi/hive-mcp/releases/tag/v0.13.0[0.13.0] - MCP server for hive-framework development. A memory and agentic coordination solution.
+* https://github.com/hive-agi/basic-tools-mcp[basic-tools-mcp] https://github.com/hive-agi/basic-tools-mcp/releases/tag/v0.2.1[0.2.1] - Standalone babashka MCP server wrapping clojure-mcp-light — delimiter repair, nREPL eval, cljfmt formatting as IAddon tools
+* https://github.com/hive-agi/bb-mcp[bb-mcp] https://github.com/hive-agi/bb-mcp/releases/tag/v0.4.0[0.4.0] - Lightweight MCP server in Babashka (~50MB vs ~500MB JVM)
+* https://github.com/hive-agi/clj-kondo-mcp[clj-kondo-mcp] https://github.com/hive-agi/clj-kondo-mcp/releases/tag/v0.1.1[0.1.1] - Standalone MCP server for clj-kondo static analysis (Babashka + JVM)
+* https://github.com/hive-agi/lsp-mcp[lsp-mcp] https://github.com/hive-agi/lsp-mcp/releases/tag/v0.2.1[0.2.1] - Clojure LSP analysis MCP server — standalone babashka or JVM addon for hive-mcp
+* https://github.com/hive-agi/scc-mcp[scc-mcp] https://github.com/hive-agi/scc-mcp/releases/tag/v0.1.1[0.1.1] - Standalone MCP server for scc code metrics
+* https://github.com/lsolbach/qclojure-braket[qclojure-braket] https://github.com/lsolbach/qclojure-braket/releases/tag/v0.3.0[0.3.0] - AWS Braket backend for QClojure
+* https://github.com/fulcrologic/statecharts[statecharts] https://github.com/fulcrologic/statecharts/blob/main/CHANGELOG[1.3.0] - A Statechart library for CLJ(S)
+* https://github.com/fulcrologic/fulcro[fulcro] https://github.com/fulcrologic/fulcro/blob/main/CHANGELOG.md[3.9.3] - A library for development of single-page full-stack web applications in clj/cljs
+* https://github.com/scicloj/tableplot[tableplot] https://github.com/scicloj/tableplot/blob/main/CHANGELOG.md[1-beta16] - Easy layered graphics with Hanami & Tablecloth
+* https://github.com/scicloj/noj[noj] https://github.com/scicloj/noj/blob/main/CHANGELOG.md[2-beta21] - A clojure framework for data science
+* https://github.com/ianffcs/cljd-video-player[cljd-video-player] https://github.com/ianffcs/cljd-video-player/commits/1.3[1.3] - A reusable ClojureDart video player package with optional background audio service
+* https://github.com/fulcrologic/fulcro-spec[fulcro-spec] https://github.com/fulcrologic/fulcro-spec/blob/main/CHANGELOG.md[3.2.8] - A library that wraps clojure.test for a better BDD testing experience.
+* https://github.com/nrepl/drawbridge[drawbridge] https://github.com/nrepl/drawbridge/releases/tag/v0.3.0[0.3.0] - An HTTP/HTTPS nREPL transport, implemented as a Ring handler.
+* https://github.com/replikativ/yggdrasil[yggdrasil] https://github.com/replikativ/yggdrasil/commits/0.2.20[0.2.20] - Git-like, causal space-time lattice abstraction over systems supporting this memory model.
+* https://github.com/mpenet/hirundo[hirundo] https://github.com/mpenet/hirundo/commits/1.0.0-alpha211[1.0.0-alpha211] - Helidon 4.x - RING clojure adapter
+* https://github.com/kit-clj/kit[kit] https://github.com/kit-clj/kit/blob/master/CHANGELOG.md[2026-02-18] - Lightweight, modular framework for scalable web development in Clojure
+* https://github.com/gersak/ty[ty] https://github.com/gersak/ty/blob/master/CHANGELOG.md[0.3.3] - Clojurescript WebComponents library
+* https://github.com/clojure-lsp/clojure-lsp[clojure-lsp] https://github.com/clojure-lsp/clojure-lsp/releases/tag/2026.02.20-16.08.58[2026.02.20-16.08.58] - Clojure & ClojureScript Language Server (LSP) implementation
+* https://github.com/uncomplicate/neanderthal[neanderthal] https://github.com/uncomplicate/neanderthal/blob/master/CHANGELOG.md[0.61.0] - Fast Clojure Matrix Library
+* https://github.com/uncomplicate/diamond-onnxrt[diamond-onnxrt] https://github.com/uncomplicate/diamond-onnxrt/commits/0.24.0[0.24.0] - Fast Clojure Machine Learning Model Integration
+* https://github.com/NoahTheDuke/splint[splint] https://github.com/NoahTheDuke/splint/releases/tag/v1.23.1[1.23.1] - A Clojure linter focused on style and code shape.
+* https://github.com/scicloj/metamorph.ml[metamorph.ml] https://github.com/scicloj/metamorph.ml/blob/main/CHANGELOG.md[1.3.0] - Machine learning functions based on metamorph and  machine learning pipelines
+* https://github.com/jacobemcken/aws-simple-sign[aws-simple-sign] https://github.com/jacobemcken/aws-simple-sign/releases/tag/v2.3.1[2.3.1] - A Clojure library for pre-signing S3 URLs and signing HTTP requests for AWS.
+* https://github.com/uncomplicate/clojurecuda[clojurecuda] 0.27.0 - Clojure library for CUDA development
+* https://github.com/nrepl/nrepl[nrepl] https://github.com/nrepl/nrepl/releases/tag/v1.6.0[1.6.0] - A Clojure network REPL that provides a server and client, along with some common APIs of use to IDEs and other tools that may need to evaluate Clojure code in remote environments.
+* https://github.com/clojure-emacs/inf-clojure[inf-clojure] https://github.com/clojure-emacs/inf-clojure/releases/tag/v3.4.0[3.4.0] - Basic interaction with a Clojure subprocess from Emacs
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.563[2.0.563] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/scicloj/clay[clay] https://github.com/scicloj/clay/blob/main/CHANGELOG.md[2.0.12] - A REPL-friendly Clojure tool for notebooks and datavis
+* https://github.com/phronmophobic/clj-media[clj-media] https://github.com/phronmophobic/clj-media/blob/main/CHANGELOG.md[3.0-alpha.3] - Read, write, and transform audio and video with Clojure.
+* https://github.com/eerohele/pp[pp] https://github.com/eerohele/pp/blob/main/CHANGELOG.md[2026-03-01.107] - Peppy pretty-printer for Clojure data.
+* https://github.com/clj-commons/rewrite-clj[rewrite-clj] https://github.com/clj-commons/rewrite-clj/releases/tag/v1.2.52[1.2.52] - Rewrite Clojure code and edn
+* https://github.com/cjohansen/portfolio[portfolio] https://github.com/cjohansen/portfolio/commits/v2026.03.1[2026.03.1] - Component-driven development for Clojure
+* https://github.com/cognitect/transit-java[transit-java] https://github.com/cognitect/transit-java/blob/master/CHANGES.md[1.1.401-alpha] - transit-format implementation for Java
+* https://github.com/cognitect/transit-clj[transit-clj] https://github.com/cognitect/transit-clj/blob/master/CHANGES.md[1.1.354-alpha] - transit-format implementation for Clojure
+* https://github.com/babashka/babashka[babashka] https://github.com/babashka/babashka/blob/master/CHANGELOG.md[1.12.216] - Native, fast starting Clojure interpreter for scripting
+* https://github.com/babashka/babashka-sql-pods[babashka-sql-pods] https://github.com/babashka/babashka-sql-pods/releases/tag/v0.1.5[0.1.5] - Babashka pods for SQL databases
+* https://github.com/clojure-emacs/clojure-mode[clojure-mode] https://github.com/clojure-emacs/clojure-mode/releases/tag/v5.22.0[5.22.0] - Emacs support for the Clojure(Script) programming language
+* https://github.com/datalevin/datalevin[datalevin] https://github.com/datalevin/datalevin/blob/master/CHANGELOG.md[0.10.7] - A simple, fast and versatile Datalog database
+* https://github.com/vipenzo/ridley[ridley] https://github.com/vipenzo/ridley/releases/tag/v1.8.0[1.8.0] - A turtle graphics-based 3D modeling tool for 3D printing. Write Clojure scripts, see real-time 3D preview, export STL. WebXR support for VR/AR visualization.
+* https://github.com/seancorfield/deps-new[deps-new] https://github.com/seancorfield/deps-new/releases/tag/v0.11.1[0.11.1] - Create new projects for the Clojure CLI / deps.edn
+* https://github.com/metosin/malli[malli] https://github.com/metosin/malli/releases/tag/0.20.1[0.20.1] - High-performance data-driven data specification library for Clojure/Script.
+* https://github.com/babashka/instaparse-bb[instaparse-bb] https://github.com/babashka/instaparse-bb/releases/tag/v0.0.7[0.0.7] - Use instaparse from babashka
+* https://github.com/yogthos/clojure.jdbc[clojure.jdbc] https://github.com/yogthos/clojure.jdbc/blob/master/CHANGES.adoc[0.9.2] - JDBC library for Clojure
+* https://github.com/prestancedesign/get-port[get-port] https://github.com/prestancedesign/get-port/blob/main/CHANGELOG.md[0.2.0] - Find available TCP ports for your Clojure apps and tests.
+* https://github.com/plumce/plumcp[plumcp] https://github.com/plumce/plumcp/blob/main/CHANGELOG.md[0.2.0-beta2] - Clojure/ClojureScript library for making MCP server and client
+* https://github.com/kepler16/kmono[kmono] 4.11.1 - The missing workspace tool for clojure tools.deps projects
+* https://github.com/msolli/proletarian[proletarian] https://github.com/msolli/proletarian/blob/main/CHANGELOG.md[1.0.115] - A durable job queuing and worker system for Clojure backed by PostgreSQL or MySQL.
+* https://github.com/monkey-projects/monkeyci[monkeyci] https://github.com/monkey-projects/monkeyci/commits/0.24.2[0.24.2] - Next-generation CI/CD tool that uses the full power of Clojure!
+* https://github.com/hulunote/hulunote[hulunote] https://github.com/hulunote/hulunote/releases/tag/v1.1.0[1.1.0] - An open-source outliner note-taking application with bidirectional linking.
+* https://github.com/replikativ/beichte[beichte] https://github.com/replikativ/beichte/commits/0.2.6[0.2.6] - Static purity and effect analysis for Clojure.
+* https://github.com/metosin/reitit[reitit] https://github.com/metosin/reitit/releases/tag/0.10.1[0.10.1] - A fast data-driven routing library for Clojure/Script
+* https://github.com/fogus/thneed[thneed] https://github.com/fogus/thneed/blob/master/CHANGELOG.md[1.1.8] - An eclectic set of Clojure utilities that I've found useful enough to keep around.
+* https://github.com/editor-code-assistant/eca[eca] https://github.com/editor-code-assistant/eca/blob/master/CHANGELOG.md[0.112.0] - Editor Code Assistant (ECA) - AI pair programming capabilities agnostic of editor

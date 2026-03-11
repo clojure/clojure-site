@@ -1,0 +1,35 @@
+= core.async and Virtual Threads
+Alex Miller
+2026-03-11
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+https://github.com/clojure/core.async[core.async] 1.9.847-alpha3 is now available. This release reverts the core.async virtual thread implementation https://clojure.org/news/2025/10/01/async_virtual_threads[added in alpha2], and provides a new implementation (https://clojure.atlassian.net/browse/ASYNC-272[ASYNC-272]).
+
+Threads must block while waiting on I/O operations to complete. "Parking" allows the platform to unmount and free the underlying thread resource while waiting. This allows users to write "normal" straight line code (without callbacks) while consuming fewer platform resources. 
+
+== `io-thread` execution context
+
+`io-thread` was added in a previous core.async release and is a new execution context for running both blocking channel operations and blocking I/O operations (which are not supported in `go`). Parking operations are not allowed in `io-thread` (same as the `thread` context).
+
+`io-thread`s use the `:io` executor pool, which will now use virtual threads, when available. If used in Java without virtual threads (< 21), `io-thread` continues to run in a cached thread pool with platform threads. 
+
+With this change, all blocking operations in `io-thread` can park without consuming a platform thread.
+
+== `go` blocks
+
+Clojure core.async `go` blocks use an analyzer to rewrite code with inversion of control specifically for channel parking operations (the `!` async ops like `>!`). Other blocking operations (`!!` channel ops or arbitrary I/O ops) are not allowed. Additionally, `go` blocks are automatically collected if the channels they depend on are collected (and parking can never progress).
+
+The Java 21 virtual threads feature implements I/O parking in the Java platform itself - that capability is a superset of what go blocks provide by supporting all blocking I/O operations. Like regular threads, (and unlike go blocks) virtual threads must terminate ordinarily and will keep referenced resources alive until they do.
+
+Due to this difference in semantics, `go` blocks are unchanged and continue to use the go analyzer and run on platform threads. If you wish to get the benefits and constraints of virtual threads, convert `go` to `io-thread` and parking ops to blocking ops.
+
+Note: existing IOC compiled go blocks from older core.async versions are unaffected.
+
+== Executor factories
+
+The `clojure.core.async.executor-factory` System property now need only provide https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/Executor.html[Executor] instances, not https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ExecutorService.html[ExecutorService] instances. This is a reduction in requirements so is backwards-compatible.
+
+Additionally, the `io-thread` virtual thread Executor no longer holds references to virtual threads as it did in 1.9.829-alpha2.
+

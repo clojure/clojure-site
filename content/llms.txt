@@ -1,0 +1,71 @@
+# Clojure
+
+> Clojure is a dynamic, general-purpose programming language that targets the Java Virtual Machine. It is a dialect of Lisp with a focus on functional programming, immutable data structures, and concurrent programming via software transactional memory and asynchronous agents.
+
+## Learn Clojure
+
+- [Getting Started](https://clojure.org/guides/getting_started): Install Clojure and start a REPL
+- [Learn Clojure - Syntax](https://clojure.org/guides/learn/syntax): Literals, evaluation, REPL basics
+- [Learn Clojure - Functions](https://clojure.org/guides/learn/functions): Defining and invoking functions
+- [Learn Clojure - Sequential Collections](https://clojure.org/guides/learn/sequential_colls): Vectors, lists, and sequences
+- [Learn Clojure - Hashed Collections](https://clojure.org/guides/learn/hashed_colls): Maps, sets, and keywords
+- [Learn Clojure - Flow Control](https://clojure.org/guides/learn/flow): Conditionals, iteration, and recursion
+- [Learn Clojure - Namespaces](https://clojure.org/guides/learn/namespaces): Organizing code into namespaces
+
+## Guides
+
+- [Deps and CLI Guide](https://clojure.org/guides/deps_and_cli): Using the Clojure CLI and deps.edn for dependency management
+- [Destructuring](https://clojure.org/guides/destructuring): Binding names to values within collections
+- [Threading Macros](https://clojure.org/guides/threading_macros): Using -> and ->> for readable pipelines
+- [Spec Guide](https://clojure.org/guides/spec): Data and function specification with clojure.spec
+- [FAQ](https://clojure.org/guides/faq): Frequently asked questions about Clojure
+- [Comparators](https://clojure.org/guides/comparators): Writing correct comparators
+- [Reader Conditionals](https://clojure.org/guides/reader_conditionals): Writing portable Clojure/ClojureScript code
+- [Higher Order Functions](https://clojure.org/guides/higher_order_functions): map, filter, reduce, and function composition
+- [Equality](https://clojure.org/guides/equality): How equality and hashing work in Clojure
+- [tools.build Guide](https://clojure.org/guides/tools_build): Building Clojure projects with tools.build
+- [Install Clojure](https://clojure.org/guides/install_clojure): Detailed installation instructions
+
+## Reference
+
+- [Reader](https://clojure.org/reference/reader): How Clojure reads source text into data structures
+- [Evaluation](https://clojure.org/reference/evaluation): How forms are evaluated
+- [Special Forms](https://clojure.org/reference/special_forms): def, if, do, let, fn, and other built-in forms
+- [Data Structures](https://clojure.org/reference/data_structures): Lists, vectors, maps, sets, and their properties
+- [Sequences](https://clojure.org/reference/sequences): The sequence abstraction and lazy sequences
+- [Transducers](https://clojure.org/reference/transducers): Composable algorithmic transformations
+- [Transients](https://clojure.org/reference/transients): Mutable performance optimization for persistent collections
+- [Reducers](https://clojure.org/reference/reducers): Parallel fold-based collection processing
+- [Multimethods and Hierarchies](https://clojure.org/reference/multimethods): Runtime polymorphism via multimethods
+- [Protocols](https://clojure.org/reference/protocols): Fast polymorphic dispatch on type
+- [Datatypes](https://clojure.org/reference/datatypes): deftype, defrecord, and reify
+- [Metadata](https://clojure.org/reference/metadata): Attaching metadata to values
+- [Namespaces](https://clojure.org/reference/namespaces): Namespace organization and management
+- [Vars and Environments](https://clojure.org/reference/vars): Dynamic vars, bindings, and thread-local state
+- [Refs and Transactions](https://clojure.org/reference/refs): Software transactional memory
+- [Agents](https://clojure.org/reference/agents): Asynchronous independent state management
+- [Atoms](https://clojure.org/reference/atoms): Synchronous independent state management
+- [Java Interop](https://clojure.org/reference/java_interop): Calling Java from Clojure
+- [Compilation and Class Generation](https://clojure.org/reference/compilation): AOT compilation and gen-class
+- [REPL and main](https://clojure.org/reference/repl_and_main): REPL usage, main entry points, and add-lib
+- [Deps and CLI Reference](https://clojure.org/reference/clojure_cli): Complete CLI and deps.edn reference
+- [deps.edn](https://clojure.org/reference/deps_edn): deps.edn file format reference
+
+## About Clojure
+
+- [Rationale](https://clojure.org/about/rationale): Why Clojure was created
+- [Features](https://clojure.org/about/features): Overview of Clojure's key features
+- [Functional Programming](https://clojure.org/about/functional_programming): Clojure's approach to FP
+- [State and Identity](https://clojure.org/about/state): Clojure's model of state, identity, and time
+- [Concurrent Programming](https://clojure.org/about/concurrent_programming): Built-in concurrency primitives
+- [JVM Hosted](https://clojure.org/about/jvm_hosted): Benefits of running on the JVM
+- [Lisp](https://clojure.org/about/lisp): Clojure as a Lisp dialect
+- [History](https://clojure.org/about/history): The history of Clojure
+
+## Optional
+
+- [REPL Guide - Introduction](https://clojure.org/guides/repl/introduction): Guide to REPL-driven development
+- [Weird Characters](https://clojure.org/guides/weird_characters): Guide to special characters in Clojure syntax
+- [Structural Editing](https://clojure.org/guides/structural_editing): Paredit and structural editing concepts
+- [Community Resources](https://clojure.org/community/resources): Community links and learning resources
+- [API Documentation](https://clojure.org/api/api): Links to Clojure API docs

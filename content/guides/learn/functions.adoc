@@ -284,7 +284,7 @@ Below is a summary of calling conventions for calling into Java from Clojure:
 === Java Methods vs Functions
 
 * Java methods are not Clojure functions
-* Can't store them or pass them as arguments
+* Can't be stored in vars or passed as arguments directly
 * Can wrap them in functions when necessary
 
 [source,clojure]

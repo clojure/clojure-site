@@ -252,6 +252,8 @@ These are synchronization primitives that should be avoided in user code. Use th
 [[binding-forms]]
 == Binding Forms (Destructuring)
 
+TIP: For a gentler introduction with more examples, see the <<xref/../../guides/destructuring#,Destructuring guide>>. If you are coming from another language, destructuring in Clojure is similar to what is called "pattern matching" elsewhere, though Clojure also has a separate https://github.com/clojure/core.match[core.match] library for full pattern matching.
+
 The simplest __binding-form__ in Clojure is a symbol. However, Clojure also supports abstract structural binding called destructuring in `let` binding lists, `fn` parameter lists, and by extension any macro that expands into a `let` or `fn`. Destructuring is a way to create a set of bindings to values within a collection by using an analogous collection as a binding form. A vector form specifies bindings by position in a sequential collection, a map form by key in an associative collection. Destructuring forms can appear anywhere __binding-form__s can, and thus nest, yielding code that is clearer than using collection accessors.
 
 __Binding-form__s that don’t match their respective part due to an absence of data (i.e. too few elements in a sequential structure, no key in an associative structure, etc) bind to `nil`.

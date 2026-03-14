@@ -17,7 +17,7 @@ Namespaces are mappings from simple (unqualified) symbols to Vars and/or Classes
 
 The best way to set up a new namespace at the top of a Clojure source file is to use the https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ns[ns macro]. By default this will create a new namespace that contains mappings for the classnames in +java.lang+ plus `clojure.lang.Compiler`, and the functions in `clojure.core`.
 
-At the Repl it's best to use https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/in-ns[in-ns], in which case the new namespace will contain mappings only for the classnames in +java.lang+. In order to access the names from the `clojure.core` namespace you must execute +(clojure.core/refer 'clojure.core)+. The `user` namespace at the Repl has already done this.
+At the REPL, you can also use https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/in-ns[in-ns] to switch to or create a namespace. Unlike `ns`, `in-ns` creates a bare namespace containing mappings only for the classnames in +java.lang+. To access the names from the `clojure.core` namespace you must then execute +(clojure.core/refer 'clojure.core)+. The `user` namespace at the REPL has already done this.
 
 The current namespace, _pass:[*ns*]_ can and should be set only with a call to https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/in-ns[in-ns] or the https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/ns[ns macro], both of which create the namespace if it doesn't exist.
 

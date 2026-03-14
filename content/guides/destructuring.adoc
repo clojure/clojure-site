@@ -346,6 +346,28 @@ Associative destructuring can be nested and combined with sequential destructuri
 ;= Joe is a Ranger wielding a Longbow
 ----
 
+=== Singleton map sequences
+
+Since Clojure 1.11, associative destructuring of a sequence containing a single map will bind directly to the map's contents. This means you can pass a map inside a one-element list or vector and destructure it as if it were a map:
+
+[source,clojure]
+----
+(let [{:keys [a b]} (list {:a 1 :b 2})]
+  [a b])
+;;=> [1 2]
+----
+
+When the sequence contains more than one element, the elements are treated as alternating keys and values (the traditional behavior):
+
+[source,clojure]
+----
+(let [{:keys [a b]} (list :a 1 :b 2)]
+  [a b])
+;;=> [1 2]
+----
+
+This behavior is useful when working with APIs that return a single map wrapped in a sequence. Note that an empty sequence destructures as an empty map.
+
 === Keyword arguments
 
 One special case is using associative destructuring for keyword-arg parsing. Consider a function that takes options `:debug` and `:verbose`. These could be specified in an options map:

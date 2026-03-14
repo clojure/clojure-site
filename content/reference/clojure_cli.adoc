@@ -571,21 +571,23 @@ These data types need to be surrounded by single quotes:
 * Sets - `'#{:a :b}'`
 * Lists - `'(1 2 3)'`
 
-On Windows, WSL2 shells can follow the advice above, but using clojure.exe, additional escape quoting is required for string values. Unfortunately the combination of quoting rules for converting command line Windows program arguments, quoting, and word splitting are https://stackoverflow.com/a/59681993/7671[very complicated]. 
+On Windows, WSL2 shells can follow the advice above, but using clojure.exe, additional escape quoting is required for string values. Unfortunately the combination of quoting rules for converting command line Windows program arguments, quoting, and word splitting are https://stackoverflow.com/a/59681993/7671[very complicated].
 
-To pass a string value at the top level, if the string value does not have spaces, you can use `'\"str\"'`. If the string value does have spaces (or not) you should use `'"""str value"""'`.
+NOTE: PowerShell 7.3 changed how arguments with embedded quotes are passed to external programs (via the `$PSNativeCommandArgumentPassing` preference variable, which defaults to `'Windows'` in 7.3+). The examples below work with Windows PowerShell 5.1 and PowerShell 7.3+. If you are using PowerShell 7.0-7.2, you may need to adjust quoting or set `$PSNativeCommandArgumentPassing = 'Legacy'`.
+
+To pass a string value at the top level, use backslash-escaped double quotes inside single quotes:
 
 [source]
 ----
-PS D:> clj -X clojure.core/prn :string1 '\"no-spaces\"' :string2 '"""has spaces"""'
+PS D:> clj -X clojure.core/prn :string1 '\"no-spaces\"' :string2 '\"has spaces\"'
 {:string1 "no-spaces", :string2 "has spaces"}
 ----
 
-For string values nested inside other collections, use double quotes if there are spaces and triple quotes if there are not:
+For string values nested inside other collections, use backslash-escaped double quotes:
 
 [source]
 ----
-PS D:> clj -X clojure.core/prn :val '{:s1 """nospaces""" :s2 ""has spaces""}'
+PS D:> clj -X clojure.core/prn :val '{:s1 \"nospaces\" :s2 \"has spaces\"}'
 {:val {:s1 "nospaces", :s2 "has spaces"}}
 ----
 

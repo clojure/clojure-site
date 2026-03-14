@@ -15,6 +15,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 === Language
 
+* <<java_concepts#,Java Platform Concepts>>
 * <<spec#,spec>>
 * <<weird_characters#,Reading Clojure Characters>>
 * <<destructuring#,Destructuring>>

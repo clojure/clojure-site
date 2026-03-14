@@ -38,13 +38,13 @@ Clojure 1.12.0
 user=>
 ----
 
-Once in the REPL you can type Clojure expressions and press enter to evaluate them.  Type Control-D to exit the REPL:
+Once in the REPL you can type Clojure expressions and press enter to evaluate them. Type Control-D to exit the REPL (Control-C on Windows):
 
 [source,shell]
 ----
 user=> (+ 2 3)   # press the `enter` key after typing the expression to evaluate it
 5                # result of expression
-user=>           # type Ctrl-D here to exit the REPL (does not print)
+user=>           # type Ctrl-D to exit (Ctrl-C on Windows)
 $ 
 ----
 
@@ -507,7 +507,7 @@ user=> (+ 1 1)
 2
 ----
 
-Use Ctrl-D to exit the repl and Ctrl-C to exit the server.
+Use Ctrl-D to exit the REPL (Ctrl-C on Windows) and Ctrl-C to exit the server.
 
 [[list_deps]]
 === List all dependencies

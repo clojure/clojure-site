@@ -1,0 +1,96 @@
+= Clojure Deref (Mar 18, 2026)
+Christoph Neumann
+2026-03-18
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]).
+
+
+== Clojure Data Science Survey
+
+Do you use clojure for Data Science? Please
+https://forms.gle/eoXDWgsjZWjGigLD8[take the survey]. Your responses will help
+shape the future of the https://scicloj.github.io/noj/[Noj toolkit] and the
+Data Science ecosystem in Clojure.
+
+
+== Clojurists Together: Call for Proposals
+
+Clojurists Together has opened the Q2 2026 funding round for open-source
+Clojure projects. Applications will be accepted through March 19th.
+
+https://www.clojuriststogether.org/news/call-for-proposals.-feb.-2026-survey/[Read the announcement]
+for more details.
+
+
+== Upcoming Events
+
+* https://scicloj.github.io/clojure-jam-2026/[Clojure Jam 2026]: Postponed. https://clojureverse.org/t/postponing-clojure-jam-2026/14853[Read why].
+* https://clojureverse.org/t/clojure-real-world-data-51/14860[Clojure real-world-data 51]: Mar 20
+* https://babashka.org/conf/[Babashka Conf]: May 8. Amsterdam, NL. https://babashka.org/conf/#schedule[See the schedule].
+* https://clojuredays.org/[Dutch Clojure Days 2026]: May 9th. Amsterdam, NL. https://clojuredays.org/#agenda[See the schedule].
+
+
+
+== Podcasts, videos, and media
+
+* https://youtu.be/ClTJzBAo8BI[ClojureStream Jobs] - ClojureStream
+* https://youtu.be/aLIMLbAWSfY[Link into your REPL with clojure.net, from Hyperfiddle (by Dustin Getz)] - London Clojurians
+* https://youtu.be/FHW8b4HQ_Og[BigConfig: Simple over easy for operations] - Alberto Miorin
+* https://youtu.be/OqlymhdABbY[Saying Hello you with ClojureScript] - Clojure Diary
+
+
+== Blogs, articles, and news
+
+* https://clojure.stream/jobs[Clojure Jobs - ClojureStream] - ClojureStream
+* https://github.com/clj-easy/clojure-dialects-docs[Brief descriptions of known Clojure dialects] - Lee Read
+* https://github.com/ilevd/clojure-like[Updated list of Clojure-like projects] - Igor Levdansky
+* https://blog.brunobonacci.com//2026/03/11/polylith-from-scratch/[How to start a Polylith project from scratch] - Bruno Bonacci
+* https://dev.to/quoll/clojure-inheritance-sort-of-2i6i[Clojure Inheritance… Sort Of] - Paula Gearon
+* https://bigconfig.it/blog/simple-over-easy-for-operations/[Simple over easy for operations] - Alberto Miorin
+* https://bigconfig.it/blog/the-power-of-framing-why-bigconfig-is-rebranding-as-a-package-manager/[The Power of Framing: Why BigConfig is Rebranding as a Package Manager] - Alberto Miorin
+* https://davidvujic.blogspot.com/2026/03/agile-agentic-engineering.html[Agile & Agentic Engineering] - David Vujic
+* https://blog.redplanetlabs.com/2026/03/17/rama-matches-cockroachdbs-tpc-c-performance-at-40-less-aws-cost/[Rama matches CockroachDB’s TPC-C performance at 40% less AWS cost] - Nathan Marz
+* https://tangrammer.codeberg.page/on-the-clojure-move/output/posts/system-own-shape.html[The System Doesn't Know Its Own Shape] - Juan Antonio Ruz
+
+== Libraries and Tools
+
+Debut release
+
+* https://github.com/Blockether/spel[spel] - Idiomatic Clojure wrapper for Playwright. Browser automation, API testing, Allure reporting, and native CLI - for Chromium, Firefox, and WebKit
+* https://github.com/enragedginger/pants_backend_clojure[pants_backend_clojure] - Pants build tool backend for Clojure
+* https://github.com/clojure-finance/edgarjure[edgarjure] - Clojure library for accessing SEC EDGAR filings — company lookup, filing content, XBRL financials, and NLP item extraction via SEC's public APIs
+* https://github.com/jhancock/aimee[aimee] - Aimee is a Clojure library for streaming and non-streaming OpenAI compatible Chat Completions over core.async channels.
+* https://github.com/borkdude/text-diff[text-diff] - Line-level text diffing for Clojure, ClojureScript and babashka
+* https://github.com/brdloush/livewire[livewire] - Embedded nREPL wire into a running Spring Boot app — giving AI agents and humans a live probe into the JVM. Inspect beans, trace SQL, detect N+1s, and hot-swap `@Query` annotations. Zero restarts.
+* https://github.com/ericdallo/rewrite-json[rewrite-json] - A Clojure library for format-preserving JSON and JSONC editing
+* https://github.com/danlentz/clj-figlet[clj-figlet] - A native Clojure re-implementation of FIGlet — the classic ASCII art text renderer.
+
+Updates
+
+* https://github.com/clojure/core.async[core.async] https://clojure.org/news/2026/03/11/async_virtual_threads[1.9.859-alpha4] - Facilities for async programming and communication in Clojure
+* https://github.com/clojure/tools.build[tools.build] https://github.com/clojure/tools.build/blob/master/CHANGELOG.md[0.10.13] - Clojure builds as Clojure programs
+* https://github.com/cognitect/transit-clj[transit-clj] https://github.com/cognitect/transit-clj/blob/master/CHANGES.md[1.1.357] - transit-format implementation for Clojure
+* https://github.com/cognitect/transit-java[transit-java] https://github.com/cognitect/transit-java/blob/master/CHANGES.md[1.1.403] - transit-format implementation for Java
+* https://github.com/jacobemcken/aws-simple-sign[aws-simple-sign] https://github.com/jacobemcken/aws-simple-sign/releases/tag/v2.3.2[2.3.2] - A Clojure library for pre-signing S3 URLs and signing HTTP requests for AWS.
+* https://github.com/scicloj/scicloj.ml.xgboost[scicloj.ml.xgboost] https://github.com/scicloj/scicloj.ml.xgboost/blob/main/CHANGELOG.md[6.5.0] - A xgboost plugin for scicloj.ml
+* https://github.com/scicloj/sklearn-clj[sklearn-clj] https://github.com/scicloj/sklearn-clj/blob/main/CHANGELOG.md[0.6] - Plugin to use sklearn models in metamorph.ml
+* https://github.com/mpenet/legba[legba] https://github.com/mpenet/legba/commits/1.0.0-alpha147[1.0.0-alpha147] - Clojure library for building OpenAPI services
+* https://github.com/mpenet/appia[appia] https://github.com/mpenet/appia/commits/1.0.0-alpha12[1.0.0-alpha12] - A fast Clojure router for Ring-style HTTP requests.
+* https://github.com/scicloj/scicloj.ml.smile[scicloj.ml.smile] https://github.com/scicloj/scicloj.ml.smile/blob/main/CHANGELOG.md[7.6.0] - A Smile models plugin for metamorph.ml
+* https://github.com/mpenet/hirundo[hirundo] https://github.com/mpenet/hirundo/commits/1.0.0-alpha212[1.0.0-alpha212] - Helidon 4.x - RING clojure adapter
+* https://github.com/babashka/babashka[babashka] https://github.com/babashka/babashka/releases/tag/v1.12.217[1.12.217] - Native, fast starting Clojure interpreter for scripting
+* https://github.com/babashka/fs[fs] https://github.com/babashka/fs/releases/tag/v0.5.32[0.5.32] - File system utility library for Clojure
+* https://github.com/clj-commons/rewrite-clj[rewrite-clj] https://github.com/clj-commons/rewrite-clj/releases/tag/v1.2.54[1.2.54] - Rewrite Clojure code and edn
+* https://github.com/cjohansen/lookup[lookup] https://github.com/cjohansen/lookup/commits/v2026.03.1[2026.03.1] - Find content of interest in hiccup data
+* https://github.com/gersak/timing[timing] https://github.com/gersak/timing/commits/v0.8.2[0.8.2] - Time computation library with CRON scheduling capability
+* https://github.com/scicloj/clay[clay] https://github.com/scicloj/clay/blob/main/CHANGELOG.md[2.0.14] - A REPL-friendly Clojure tool for notebooks and datavis
+* https://github.com/scicloj/noj[noj] https://github.com/scicloj/noj/blob/main/CHANGELOG.md[2-beta24] - A clojure framework for data science
+* https://github.com/plumce/plumcp[plumcp] https://github.com/plumce/plumcp/blob/main/CHANGELOG.md[0.2.0-beta4] - Clojure/ClojureScript library for making MCP server and client
+* https://github.com/fulcrologic/fulcro[fulcro] https://github.com/fulcrologic/fulcro/blob/main/CHANGELOG.md[3.9.4] - A library for development of single-page full-stack web applications in clj/cljs
+* https://github.com/editor-code-assistant/eca[eca] https://github.com/editor-code-assistant/eca/releases/tag/0.115.2[0.115.2] - Editor Code Assistant (ECA) - AI pair programming capabilities agnostic of editor
+* https://github.com/weavejester/cljfmt[cljfmt] https://github.com/weavejester/cljfmt/blob/master/CHANGELOG.md[0.16.3] - A tool for formatting Clojure code
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.566[2.0.566] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/PEZ/epupp[epupp] https://github.com/PEZ/epupp/releases/tag/v0.0.13[0.0.13] - A web browser extension that lets you tamper with web pages, live and/or with userscripts.

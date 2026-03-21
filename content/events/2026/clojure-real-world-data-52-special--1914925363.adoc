@@ -1,0 +1,44 @@
+= Clojure real-world-data 52 - special
+2026-03-25
+:jbake-type: event
+:jbake-edition: 
+:jbake-link: https://clojureverse.org/t/clojure-real-world-data-52-special-eve-with-john-newman/14862
+:jbake-location: online
+:jbake-start: 2026-03-25
+:jbake-end: 2026-03-25
+
+== Clojure real-world-data 52 - special: Eve with...
+
+Clojure real-world-data 52 - special: Eve with John Newman +
+ +
+Please RSVP  +
+At this special meeting of the real-world-data group, @John_Newman will present Eve. +
+ +
+Eve provides persistent maps, vectors, sets, and lists backed by SharedArrayBuffer (in-process) or memory-mapped files (cross-process). JVM Clojure, Node.js ClojureScript, and Babashka processes can share and atomically mutate Clojure data structures via mmap files on disk. +
+ +
+Joining  +
+ +
+Please mark your participation using the Your rsvp button at the top of this page (requires Clojureverse login). +
+Please join the Clojurians Zulip chat beforehand. +
+You can also use the Add to Calendar button to add the event to your calendar. +
+ +
+Agenda +
+ +
+talk +
+discussion +
+ +
+Zoom +
+ +
+Video meeting: Launch Meeting - Zoom - please do not share this link anywhere  +
+ +
+Chat +
+We will use the #real-world-data channel of the Clojurians Zulip Chat (requires login). Please join the Zulip chat before attending our meetings. +
+Length +
+The official session will run for 90 minutes. +
+Informal discussions may continue afterwards for those interested. +
+Recording +
+Parts of the meeting will be recorded and may be shared publicly. +
+Some parts will remain unrecorded. +
+ +
+Zulip: https://clojurians.zulipchat.com/#narrow/stream/262224-events/near/580739859 +
+

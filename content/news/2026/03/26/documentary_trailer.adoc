@@ -1,15 +1,7 @@
-= Documentary
+= Clojure Documentary Trailer (Mar 26, 2026)
 Alex Miller
 2026-03-26
-:type: about
-:toc: macro
-:icons: font
-:navlinktext: Documentary
-:prevpagehref: history
-:prevpagetitle: History
-:nextpagehref: dynamic
-:nextpagetitle: Dynamic Development
-:figure-caption!:
+:jbake-type: post
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
@@ -24,5 +16,3 @@ Documentary made possible with the support of https://building.nubank.com/engine
 [#trailer]
 .Trailer
 video::JJEyffSdBsk[youtube, width=640, height=360, title="Clojure: The Documentary [OFFICIAL TRAILER]"]
-
-

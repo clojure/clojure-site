@@ -5,10 +5,10 @@ Rich Hickey
 :toc: macro
 :icons: font
 :navlinktext: History
-:prevpagehref: rationale
-:prevpagetitle: Rationale
-:nextpagehref: state
-:nextpagetitle: State
+:prevpagehref: spec
+:prevpagetitle: spec
+:nextpagehref: dynamic
+:nextpagetitle: Dynamic Development
 :figure-caption!:
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]

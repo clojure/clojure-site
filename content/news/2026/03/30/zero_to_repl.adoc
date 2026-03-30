@@ -1,0 +1,16 @@
+= Clojure Zero to REPL Video
+Jarrod Taylor
+2026-03-30
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+*Clojure: Zero to REPL*
+
+As part of the Clojure team's efforts to improve the onboarding experience for new users, we have recorded a step-by-step tutorial taking you from zero to a running REPL.
+
+The video begins with installing the JVM and Clojure CLI, then walks through installing Calva, opening an example project, and connecting it to a REPL to evaluate code.
+
+[#tutorial]
+.Tutorial
+video::huGyv5yLIM8[youtube, width=400, height=225, title="Clojure: Zero to REPL"]

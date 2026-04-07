@@ -19,7 +19,16 @@ Note: All dev releases are subject to breaking changes for new work since the pr
 
 == Release 1.12.x
 
+=== 1.12.5-alpha1 (Apr 7, 2026) [[v1.12.5-alpha1]]
+
+https://clojure.org/news/2026/04/07/clojure-1-12-5-alpha1[Release Notes]
+
+* https://clojure.atlassian.net/browse/CLJ-2945[CLJ-2945] - reify - incorrectly transfers reader metadata to runtime object
+* https://clojure.atlassian.net/browse/CLJ-2228[CLJ-2228] - constantly - unroll to remove rest args allocation
+
 === 1.12.4 (Dec 10, 2025) [[v1.12.4]]
+
+https://clojure.org/news/2025/12/10/clojure-1-12-4[Release Notes]
 
 * https://clojure.atlassian.net/browse/CLJ-2924[CLJ-2924] - LazySeq - fix visibility issues with non-volatile reads
 

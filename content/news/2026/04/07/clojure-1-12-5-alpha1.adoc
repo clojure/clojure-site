@@ -1,0 +1,9 @@
+= Clojure 1.12.5-alpha1
+Alex Miller
+2026-04-07
+:jbake-type: post
+
+Clojure 1.12.5-alpha1 is now available!  Find download and usage information on the <<xref/../../../../../releases/downloads#stable,Downloads>> page.
+
+* https://clojure.atlassian.net/browse/CLJ-2945[CLJ-2945] - reify - incorrectly transfers reader metadata to runtime object
+* https://clojure.atlassian.net/browse/CLJ-2228[CLJ-2228] - constantly - unroll to remove rest args allocation

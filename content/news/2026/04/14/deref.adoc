@@ -1,0 +1,136 @@
+= Clojure Deref (Apr 14, 2026)
+Christoph Neumann
+2026-04-14
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]).
+
+
+== Clojure Documentary
+
+=== Worldwide Release on Thursday!
+
+The Clojure Documentary will be released on the https://www.youtube.com/@cultrepo[CultRepo] YouTube channel this Thursday, April 14.
+
+8PM CEST, 6PM UTC, 3PM BRT, 2PM EDT, 11AM PDT
+
+
+=== Watch Parties
+
+* Agical in https://www.meetup.com/sthlm-clj/events/314268468/?slug=sthlm-clj&eventId=314268468[Stockholm, Sweden]
+* Factor House in https://luma.com/4k3iqp4w?tk=5yoVGh[Northcote, Australia]
+* Clojure BR Discord on https://clojurebr.substack.com/i/192888650/bora-assistir-juntos[Friday @ 2:30 PM BRT]
+
+
+=== Q&A Webinar
+
+Join us for a special Clojure Documentary Q&A Webinar with Rich Hickey and other key people in Clojure’s history!
+
+Friday, April 17, 3–4 pm US ET / 9-10 pm CEST
+
+https://events.zoom.us/ev/Apqcp-NO_Trnb6g9nA7QbXl2E7YD3rAIk3Ur45-JNsYrQ7GrNABQ~AvQxs5XTZP6T6qdwZ3vD_NqwstDUQECO8TYZJ7mtDrVmMm8zUfARyv4HSw[Register here]
+
+Duration: 1 hour +
+Language: English with simultaneous translation into Spanish and Portuguese +
+Recording: session will be recorded and uploaded to the https://www.youtube.com/@ClojureTV[Clojure TV] YouTube channel
+
+
+=== Clojure IRC Log
+
+See the early years of Clojure via the https://chouser.us/clojure-log/[Clojure IRC Log]
+
+
+== Clojure/Conj 2026
+
+September 30 – October 2, 2026 +
+Charlotte Convention Center, Charlotte, NC
+
+Join us for the largest gathering of Clojure developers in the world! Meet new
+people and reconnect with old friends. Enjoy two full days of talks, a day of workshops, social events, and more.
+
+Early bird and group tickets are now on sale.
+
+https://2026.clojure-conj.org/[2026.clojure-conj.org]
+
+Is your company interested in sponsoring? Email us at
+clojure_conj@nubank.com.br to discuss opportunities.
+
+
+== Upcoming Events
+
+
+* https://clojureverse.org/t/clojure-real-world-data-56/14878[Clojure real-world-data 56]: Apr 17
+* https://clojureverse.org/t/clojure-community-check-in/[Clojure Community Check-In]: Apr 25. https://forms.gle/kP1i33k2K92gASs47[Register here].
+* https://babashka.org/conf/[Babashka Conf]: May 8. Amsterdam, NL. https://babashka.org/conf/#schedule[See the schedule].
+* https://clojuredays.org/[Dutch Clojure Days 2026]: May 9. Amsterdam, NL. https://clojuredays.org/#agenda[See the schedule].
+* https://itch.io/jam/spring-lisp-game-jam-2026[Spring Lisp Game Jam 2026]: May 14-24. Online.
+
+
+== Podcasts, videos, and media
+
+* https://www.youtube.com/playlist?list=PLgZNfD3JAd4_2JeJQaFaOwuXV3Z5OX-SB[Swish: Using Claude Code to Create a Lisp with Swift] - Rod Schmidt
+
+* https://youtu.be/v3wBdvN_5EM[Learn Ring - 9. Refactoring Pages] - Clojure Diary
+* https://youtu.be/lLwDqSf4X7Y[Try Clojure under 30 secs - aka From Calva to REPL] - CalvaTV
+* https://youtu.be/gHTe0jNUQMg[Apropos with Colin Fleming - April 14, 2026] - apropos clojure
+* https://youtu.be/oynftSeJO9s[A Regular expression to find functions] - Clojure Diary
+
+
+== Blogs, articles, and news
+
+* https://clojureverse.org/t/shadow-cljs-3-4-x-updates[Shadow-cljs 3.4.x Updates] - Thomas Heller
+* https://clojurebr.substack.com/p/nth-concat-8[(nth (concat) 8)] - Ana Carolina, Arthur Fücher
+* https://rodschmidt.com/posts/swish-video-series/[Swish - Clojure-like Lisp for Swift Video Series] - Rod Schmidt
+* https://timd.dev/blog/malli-db-transformer[Mapping Column Names with Malli Schemas] - Timothy Davis
+* https://bigconfig.it/blog/bigconfig-the-react-for-agentic-devops/[BigConfig: The "React" for Agentic DevOps] - Alberto Miorin
+* https://dev.to/ivangavlik/leiningen-complete-tutorial-best-practices-3f8l[Leiningen — Complete Tutorial & Best Practices] - Ivan Gavlik
+* https://www.miniforge.ai/blog/orchestration-is-not-the-hard-part[Orchestration is not the hard part] - Chris Lester
+* https://datahike.io/notes/anomaly-detection-in-your-database/[Anomaly Detection Belongs in Your Database] - Christian Weilbach
+* https://www.bigconfig.it/blog/devops-without-the-code-infrastructure-as-markdown/[DevOps Without the Code: Infrastructure as Markdown] - Alberto Miorin
+* https://www.reddit.com/r/Clojure/comments/1skv0tb/eve_sheets_a_toy_multiuser_spreadsheet_in_250_loc/[Eve sheets - a toy multi-user spreadsheet in < 250 LOC] - Kyle Passarelli
+* https://www.reddit.com/r/Clojure/comments/1slmjbu/typed_multiple_dispatch_as_a_clojure_library_how/[Typed multiple dispatch as a Clojure library — how we built Julia-style polymorphism on the JVM] - Christian Weilbach
+* https://andreyor.st/posts/2026-04-15-clojure-on-fennel-part-two-immutablefnl-optimizations/[Clojure on Fennel part two: immutable.fnl optimizations] - Andrey Listopadov
+
+== Libraries and Tools
+
+Debut release
+
+* https://github.com/yogthos/tree-sitter-clojure[tree-sitter-clojure] - a wasm version of tree-sitter-clojure
+* https://github.com/fgasperino/csp-clj[csp-clj] - Communicating Sequential Processes for Clojure on JDK 24+ Virtual Threads
+* https://github.com/grid-coordination/clj-oa3-vtn[clj-oa3-vtn] - OpenADR 3.1.0 VTN server in Clojure
+* https://github.com/grid-coordination/price-server-user-guide[price-server-user-guide] - User guide for the Grid Coordination price server — California electricity prices via OpenADR 3.1.0
+* https://github.com/replikativ/raster[raster] - Fast, functional numerical computing for Clojure/JVM.
+* https://github.com/danlentz/clj-xref[clj-xref] - LLM-friendly cross-reference database for Clojure code. Query who-calls, calls-who, who-implements, ns-deps to feed        precise dependency neighborhoods to AI assistants instead of entire source trees. Built on clj-kondo.
+* https://github.com/mattlianje/layoutz/tree/master/layoutz-clj[layoutz-clj] - Simple, beautiful CLI output
+* https://github.com/miniforge-ai/miniforge[miniforge] - miniforge is an autonomous software development system designed to behave like a factory, not a chatbot
+
+Updates
+
+* https://github.com/clojure/data.xml[data.xml] https://github.com/clojure/data.xml/blob/master/CHANGES.md[0.2.0-alpha11] - GitHub - clojure/data.xml
+* https://github.com/seancorfield/logging4j2[logging4j2] https://github.com/seancorfield/logging4j2/releases/tag/v1.0.7[1.0.7] - A Clojure wrapper for log4j2
+* https://github.com/PEZ/epupp[epupp] https://github.com/PEZ/epupp/releases/tag/v0.0.16[0.0.16] - A web browser extension that lets you tamper with web pages, live and/or with userscripts.
+* https://github.com/practicalli/nvim-astro[nvim-astro] https://github.com/practicalli/nvim-astro/releases/tag/2026-04-08[2026-04-08] - Neovim 0.11 config for Clojure development, based on AstroNvim v5
+* https://github.com/clj-commons/pomegranate[pomegranate] https://github.com/clj-commons/pomegranate/releases/tag/v1.3.26[1.3.26] - A sane Clojure API for Maven Artifact Resolver + dynamic runtime modification of the classpath
+* https://github.com/dco-dev/ordered-collections[ordered-collections] https://github.com/dco-dev/ordered-collections/blob/master/CHANGES.md[0.2.0] - Fast, modern, ropes and ordered collections that do more than sort.
+* https://github.com/clj-commons/aleph[aleph] https://github.com/clj-commons/aleph/blob/master/CHANGES.md[0.9.7] - Asynchronous streaming communication for Clojure - web server, web client, and raw TCP/UDP
+* https://github.com/babashka/nbb[nbb] https://github.com/babashka/nbb/blob/main/CHANGELOG.md[1.4.207] - Scripting in Clojure on Node.js using SCI
+* https://github.com/wardle/hermes[hermes] https://github.com/wardle/hermes/blob/main/CHANGELOG.md[1.4.1585] - A library and microservice implementing the health and care terminology SNOMED CT with support for cross-maps, inference, fast full-text search, autocompletion, compositional grammar and the expression constraint language.
+* https://github.com/magnars/datomic-type-extensions[datomic-type-extensions] https://github.com/magnars/datomic-type-extensions/commits/2026.04.10[2026.04.10] - A Clojure library that wraps Datomic API functions to add type extensions.
+* https://github.com/lambdaisland/cli[cli] https://github.com/lambdaisland/cli/releases/tag/v1.29.127[1.29.127] - Opinionated command line argument handling, with excellent support for subcommands
+* https://github.com/danielsz/beeld[beeld] 1.1.5 - Get the metadata associated with an image. Also contains image utilities: filesize, scale, etc.
+* https://github.com/scicloj/tableplot[tableplot] https://github.com/scicloj/tableplot/blob/main/CHANGELOG.md[1-beta17] - Easy layered graphics with Hanami & Tablecloth
+* https://github.com/scicloj/clay[clay] https://github.com/scicloj/clay/blob/main/CHANGELOG.md[2.0.15] - A REPL-friendly Clojure tool for notebooks and datavis
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/blob/published/CHANGELOG.md[2.0.573] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/ring-clojure/ring[ring] https://github.com/ring-clojure/ring/blob/master/CHANGELOG.md[1.15.4] - Clojure HTTP server abstraction
+* https://github.com/weavejester/cljfmt[cljfmt] https://github.com/weavejester/cljfmt/blob/master/CHANGELOG.md[0.16.4] - A tool for formatting Clojure code
+* https://github.com/editor-code-assistant/eca[eca] https://github.com/editor-code-assistant/eca/releases/tag/0.126.0[0.126.0] - Editor Code Assistant (ECA) - AI pair programming capabilities agnostic of editor
+* https://github.com/avanelsas/baredom[baredom] https://github.com/avanelsas/baredom/blob/main/CHANGELOG.md[2.1.1] - BareDOM: Lightweight CLJS UI components built on web standards (Custom Elements, Shadow DOM, ES modules). No framework, just the DOM
+* https://github.com/nrepl/nrepl[nrepl] https://github.com/nrepl/nrepl/releases/tag/v1.7.0[1.7.0] - A Clojure network REPL that provides a server and client, along with some common APIs of use to IDEs and other tools that may need to evaluate Clojure code in remote environments.
+* https://github.com/plumce/plumcp[plumcp] https://github.com/plumce/plumcp/blob/main/CHANGELOG.md[0.2.0-rc2] - Clojure/ClojureScript library for making MCP server and client
+* https://github.com/RokLenarcic/memento[memento] https://github.com/RokLenarcic/memento/blob/master/CHANGELOG.md[2.0.71] - Clojure Memoization project
+* https://github.com/cognitect-labs/aws-api[aws-api] https://github.com/cognitect-labs/aws-api/blob/main/CHANGES.md[0.8.824] - AWS, data driven
+* https://github.com/clj-commons/pretty[pretty] https://github.com/clj-commons/pretty/blob/main/CHANGES.md[3.7.0] - Library for helping print things prettily, in Clojure - ANSI fonts, formatted exceptions
+* https://github.com/thheller/shadow-cljs[shadow-cljs] https://github.com/thheller/shadow-cljs/blob/master/CHANGELOG.md[3.4.2] - ClojureScript compilation made easy
+

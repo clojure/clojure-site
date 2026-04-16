@@ -30,7 +30,7 @@ video::Y24vK_QDLFg[youtube, width=400, height=225, title="Clojure: The Documenta
 * https://curtclifton.net/papers/MoseleyMarks06a.pdf[Out of the Tarpit] — Ben Moseley & Peter Marks (2006). Identifies mutable state as the primary source of accidental complexity in software.
 * https://infoscience.epfl.ch/record/64398/files/idealhashtrees.pdf[Ideal Hash Trees] — Phil Bagwell. Research on Hash Array Mapped Tries (HAMTs), the direct inspiration for Clojure's persistent data structures.
 * https://dl.acm.org/doi/10.1145/1065944.1065952[Composable Memory Transactions] — Tim Harris, Simon Marlow, Simon Peyton-Jones & Maurice Herlihy (2005). Software Transactional Memory; a key influence behind Clojure's STM concurrency model.
-* https://docs.google.com/spreadsheets/d/1P3z4Nh02l6zIeGypgQ5wKGUe6Lq0lUCR-R35b0MF7mU/edit?gid=1078381722#gid=1078381722[Paper Bibliography] - a full list of talks used by Rich while developing Clojure, compiled by Michael Fogus
+* https://docs.google.com/spreadsheets/d/1P3z4Nh02l6zIeGypgQ5wKGUe6Lq0lUCR-R35b0MF7mU/edit?gid=1078381722#gid=1078381722[Paper Bibliography] - a full list of papers used by Rich while developing Clojure, compiled by Michael Fogus
 
 === Influential Books
 

@@ -21,8 +21,128 @@ Featuring Rich Hickey, Alex Miller, Stuart Halloway, and many more, this full-le
 
 Documentary made possible with the support of https://building.nubank.com/engineering/[Nubank]!
 
-[#trailer]
-.Trailer
-video::JJEyffSdBsk[youtube, width=400, height=225, title="Clojure: The Documentary [OFFICIAL TRAILER]"]
+[#video]
+.Video
+video:Y24vK_QDLFg[youtube, width=400, height=225, title="Clojure: The Documentary"]
+
+== Show Notes
+
+=== Foundational Research Papers
+
+* https://curtclifton.net/papers/MoseleyMarks06a.pdf[Out of the Tarpit] — Ben Moseley & Peter Marks (2006). Identifies mutable state as the primary source of accidental complexity in software.
+* https://infoscience.epfl.ch/record/64398/files/idealhashtrees.pdf[Ideal Hash Trees] — Phil Bagwell. Research on Hash Array Mapped Tries (HAMTs), the direct inspiration for Clojure's persistent data structures.
+* https://dl.acm.org/doi/10.1145/1065944.1065952[Composable Memory Transactions] — Tim Harris, Simon Marlow, Simon Peyton-Jones & Maurice Herlihy (2005). Software Transactional Memory; a key influence behind Clojure's STM concurrency model.
+* https://docs.google.com/spreadsheets/d/1P3z4Nh02l6zIeGypgQ5wKGUe6Lq0lUCR-R35b0MF7mU/edit?gid=1078381722#gid=1078381722[Paper Bibliography] - a full list of talks used by Rich while developing Clojure, compiled by Michael Fogus
+
+=== Influential Books
+
+* https://paulgraham.com/onlisp.html[On Lisp] — Paul Graham. Widely referenced book on advanced Lisp techniques. Free online.
+* https://pragprog.com/titles/shcloj4/programming-clojure-fourth-edition/[Programming Clojure (4th ed.)] — Alex Miller, Stuart Halloway & Aaron Bedra. The first edition by Stuart Halloway launched alongside Clojure 1.0.
+* https://www.manning.com/books/the-joy-of-clojure-second-edition[The Joy of Clojure] — Michael Fogus & Chris Houser.
+
+=== Talks by Rich Hickey
+
+* https://www.infoq.com/presentations/Simple-Made-Easy/[Simple Made Easy] (https://www.youtube.com/watch?v=LKtk3HCgTa8[YouTube]) — Strange Loop 2011. Defines the distinction between "simple" and "easy."
+* https://www.infoq.com/presentations/Value-Values/[The Value of Values] (https://www.youtube.com/watch?v=-6BsiVyC1kM[YouTube]) — 2012. The case for immutable values over mutable objects.
+* https://www.youtube.com/watch?v=f84n5oFoZBc[Hammock Driven Development] — On thinking deeply about problems before writing code.
+* https://stuartsierra.com/2007/11/15/clojure-a-lisp-worth-talking-about/[Sierra's Blog on LispNYC Presentation] — 2007. An early public introduction to Clojure.
+* https://github.com/matthiasn/talk-transcripts[Talk Transcripts] — Community-maintained transcripts of Clojure talks by Rich Hickey and others.
+* https://www.youtube.com/playlist?list=PLZdCLR02grLrEwKaZv-5QbUzK0zGKOOcr[Rich Hickey Talks] - A playlist of many of Rich's online talks.
+
+=== Paul Graham's Essays
+
+* https://paulgraham.com/avg.html[Beating the Averages]
+* https://paulgraham.com/icad.html[Revenge of the Nerds]
+* https://paulgraham.com/articles.html[other essays]
+
+=== Important Companies and Projects
+
+* https://www.cognitect.com/blog/[Cognitect Blog] — The consultancy that stewarded Clojure for many years.
+* https://nubank.com.br/en/[Nubank] — World's largest independent digital bank, running core infrastructure on Clojure and Datomic. Acquired Cognitect in 2020 and currently stewards Clojure's development. 
+* https://www.datomic.com/[Datomic] — Distributed database built on immutable facts, designed by Rich Hickey and Cognitect.
+
+=== Community & Archival Resources
+
+* https://www.cognitect.com/blog/2008/9/24/java-next-overview[Java.next Blog Series] — Stuart Halloway's 2008 series on emerging JVM languages.
+* https://chouser.us/clojure-log/[Clojure IRC Log Archive] — Preserved archive of the original Clojure IRC channel.
+
+== Clojure Dialects & Runtimes
+
+=== Core
+
+* https://clojure.org/[Clojure] — Runs on the JVM. Follow the https://clojure.org/guides/getting_started[official getting started guide] or pick up https://www.braveclojure.com/[Brave Clojure] for a free, beginner-friendly introduction.
+* https://clojurescript.org/[ClojureScript] — Compiles to JavaScript. Powers frontend development with libraries like https://reagent-project.github.io/[Reagent] and https://day8.github.io/re-frame/[Re-frame].
+* https://github.com/clojure/clojure-clr[ClojureCLR] — Clojure on the .NET CLR.
+
+=== Beyond the Core
+
+* https://babashka.org/[Babashka] — Fast scripting without JVM startup time.
+* https://jank-lang.org/[Jank] — Targets LLVM for native compilation.
+* https://github.com/Tensegritics/ClojureDart[ClojureDart] — Flutter mobile apps.
+* https://github.com/squint-cljs/squint[Squint] / https://github.com/squint-cljs/cherry[Cherry] — Compile to ES modules.
+* https://github.com/ilevd/clojure-like[Other Clojure-like projects]
+
+=== Data Science
+
+* https://github.com/clj-python/libpython-clj[libpython-clj] — Call Python libraries (NumPy, pandas, scikit-learn) directly from Clojure.
+* https://scicloj.github.io/noj/[Noj] — Clojure-native data science toolkit from https://scicloj.github.io/[SciCloj], combining dataframes, visualization, and machine learning.
+* https://github.com/generateme/tablecloth[Tablecloth] — Combine Python interop with Clojure's dataframe library.
+
+=== Clojure & AI
+
+* https://github.com/editor-code-assistant/eca[ECA] - Editor Code Assistant
+* https://github.com/BetterThanTomorrow/calva-backseat-driver[Backseat Driver] - Clojure Tools for Copilot
+* https://github.com/bhauman/clojure-mcp[ClojureMCP] — MCP server connecting AI assistants (Claude, Codex, Gemini) to your Clojure REPL with structure-aware editing.
+* https://github.com/ctford/mcp-nrepl[MCP-nREPL] — Minimal Babashka MCP server giving coding agents direct nREPL access.
+* https://github.com/bhauman/clojure-mcp-light[clojure-mcp-light] — Lightweight CLI tools for delimiter repair and REPL eval with any LLM coding assistant.
+* https://clojurians.slack.com/archives/C068E9L5M2Q[#ai-assisted-coding on Clojurians Slack] — Active community channel for AI + Clojure development.
+
+== Getting Started
+
+. *Full experience* — Follow the https://clojure.org/guides/getting_started[official getting started guide] with step-by-step installation videos for https://www.youtube.com/watch?v=huGyv5yLIM8[macOS], https://www.youtube.com/watch?v=544xOAIg3y0[Linux], https://www.youtube.com/watch?v=TQgzA3QLz-k[Windows WSL], and https://www.youtube.com/watch?v=NFDAChdzThg[Windows]. The videos use https://calva.io/[Calva] in VS Code.
+. *Quickest path* — Install https://babashka.org/[Babashka] and start scripting immediately. No JVM setup needed.
+. *Web / frontend* — Try https://shadow-cljs.github.io/docs/UsersGuide.html[ClojureScript with Shadow CLJS].
+. *Mobile apps* — Try https://github.com/Tensegritics/ClojureDart[ClojureDart] for Flutter.
+. *Already a Python user* — Use https://github.com/clj-python/libpython-clj[libpython-clj] to call your favorite Python libraries directly from Clojure.
+. *Editor* — https://calva.io/[Calva] provides Clojure development in VS Code with interactive REPL, structural editing, and AI integration via https://marketplace.visualstudio.com/items?itemName=betterthantomorrow.calva-backseat-driver[Backseat Driver]. See the https://clojure.org/guides/editors[editors guide] for more options.
+
+== Glossary
+
+Watched the documentary and want to dig in? Here are a few terms you'll encounter.
+
+[cols="1,3", options="header"]
+|===
+| Term | Definition
+
+| Lisp
+| A family of programming languages that represent code as nested lists enclosed in parentheses. Clojure is a Lisp dialect.
+
+| REPL
+| Read-Eval-Print Loop. An interactive session that reads an expression, evaluates it, prints the result, and repeats. Clojure developers use the REPL to build and test programs while they run.
+
+| Functional programming
+| A programming style built around functions that take values and return values, minimizing mutable state and side effects.
+
+| Value
+| A piece of data that does not change after creation: a number, a string, or a persistent collection. Clojure defaults to values; you opt in to mutable state explicitly when you need it.
+
+| Persistent data structure
+| A collection that preserves its previous version when you modify it. Adding an element returns a new collection; the original remains unchanged. "Persistent" here means version-preserving, not stored to disk.
+
+| Accidental complexity
+| Difficulty in software caused by your tools and design choices, not by the problem itself. Contrasted with _essential complexity_, which is inherent to the problem domain.
+
+| STM
+| Software Transactional Memory. A concurrency model that coordinates shared-state changes through transactions instead of locks.
+
+| Hosted language
+| A language designed to run on an existing platform rather than its own runtime. Clojure runs on the JVM, ClojureScript compiles to JavaScript, and ClojureCLR targets the .NET CLR.
+|===
+
+== Follow Clojure
+
+https://www.youtube.com/@ClojureTV[YouTube] · https://www.reddit.com/r/Clojure/[Reddit] · http://clojurians.net/?utm_source=clojure.org&utm_medium=show_notes&utm_campaign=clojure_documentary&utm_content=clojurians_slack[Slack] · https://www.linkedin.com/feed/hashtag/clojure/[LinkedIn]
+
+https://2026.clojure-conj.org/?utm_source=clojure.org&utm_medium=show_notes&utm_campaign=clojure_documentary&utm_content=clojure_conj_2026[Clojure/Conj Conference 2026] — September 30 – October 2, Charlotte, NC ·  https://www.linkedin.com/company/clojure-conj/[LinkedIn]
 
 

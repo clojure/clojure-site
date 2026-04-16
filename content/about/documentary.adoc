@@ -46,12 +46,12 @@ image::/images/content/about/documentary.png["Watch the Premiere", link="https:/
 
 === Talks by Rich Hickey
 
-* https://www.infoq.com/presentations/Simple-Made-Easy/[Simple Made Easy] (https://www.youtube.com/watch?v=LKtk3HCgTa8[YouTube]) — Strange Loop 2011. Defines the distinction between "simple" and "easy."
-* https://www.infoq.com/presentations/Value-Values/[The Value of Values] (https://www.youtube.com/watch?v=-6BsiVyC1kM[YouTube]) — 2012. The case for immutable values over mutable objects.
+* https://www.youtube.com/watch?v=LKtk3HCgTa8[Simple Made Easy] — Rich's famous talk from Strange Loop 2011. Defines the distinction between "simple" and "easy."
+* https://www.youtube.com/watch?v=-6BsiVyC1kM[The Value of Values] — 2012. The case for immutable values over mutable objects.
 * https://www.youtube.com/watch?v=f84n5oFoZBc[Hammock Driven Development] — On thinking deeply about problems before writing code.
 * https://stuartsierra.com/2007/11/15/clojure-a-lisp-worth-talking-about/[Sierra's Blog on LispNYC Presentation] — 2007. An early public introduction to Clojure.
 * https://github.com/matthiasn/talk-transcripts[Talk Transcripts] — Community-maintained transcripts of Clojure talks by Rich Hickey and others.
-* https://www.youtube.com/playlist?list=PLZdCLR02grLrEwKaZv-5QbUzK0zGKOOcr[Rich Hickey Talks] - A playlist of many of Rich's online talks.
+* https://www.youtube.com/playlist?list=PLZdCLR02grLrEwKaZv-5QbUzK0zGKOOcr[Rich Hickey Talks] - A video playlist of many of Rich's talks.
 
 === Paul Graham's Essays
 
@@ -90,7 +90,7 @@ image::/images/content/about/documentary.png["Watch the Premiere", link="https:/
 
 * https://github.com/clj-python/libpython-clj[libpython-clj] — Call Python libraries (NumPy, pandas, scikit-learn) directly from Clojure.
 * https://scicloj.github.io/noj/[Noj] — Clojure-native data science toolkit from https://scicloj.github.io/[SciCloj], combining dataframes, visualization, and machine learning.
-* https://github.com/generateme/tablecloth[Tablecloth] — Combine Python interop with Clojure's dataframe library.
+* https://github.com/scicloj/tablecloth[Tablecloth] — Combine Python interop with Clojure's dataframe library.
 
 === Clojure & AI
 
@@ -118,28 +118,28 @@ Watched the documentary and want to dig in? Here are a few terms you'll encounte
 |===
 | Term | Definition
 
-| Lisp
+| *Lisp*
 | A family of programming languages that represent code as nested lists enclosed in parentheses. Clojure is a Lisp dialect.
 
-| REPL
+| *REPL*
 | Read-Eval-Print Loop. An interactive session that reads an expression, evaluates it, prints the result, and repeats. Clojure developers use the REPL to build and test programs while they run.
 
-| Functional programming
+| *Functional programming*
 | A programming style built around functions that take values and return values, minimizing mutable state and side effects.
 
-| Value
+| *Value*
 | A piece of data that does not change after creation: a number, a string, or a persistent collection. Clojure defaults to values; you opt in to mutable state explicitly when you need it.
 
-| Persistent data structure
+| *Persistent data structure*
 | A collection that preserves its previous version when you modify it. Adding an element returns a new collection; the original remains unchanged. "Persistent" here means version-preserving, not stored to disk.
 
-| Accidental complexity
-| Difficulty in software caused by your tools and design choices, not by the problem itself. Contrasted with _essential complexity_, which is inherent to the problem domain.
+| *Accidental complexity*
+| Difficulty in software caused by your tools and design choices, not by the problem itself. Contrasted with _essential (or incidental) complexity_, which is inherent to the problem domain.
 
-| STM
+| *STM*
 | Software Transactional Memory. A concurrency model that coordinates shared-state changes through transactions instead of locks.
 
-| Hosted language
+| *Hosted language*
 | A language designed to run on an existing platform rather than its own runtime. Clojure runs on the JVM, ClojureScript compiles to JavaScript, and ClojureCLR targets the .NET CLR.
 |===
 
@@ -147,6 +147,6 @@ Watched the documentary and want to dig in? Here are a few terms you'll encounte
 
 https://www.youtube.com/@ClojureTV[YouTube] · https://www.reddit.com/r/Clojure/[Reddit] · http://clojurians.net/?utm_source=clojure.org&utm_medium=show_notes&utm_campaign=clojure_documentary&utm_content=clojurians_slack[Slack] · https://www.linkedin.com/feed/hashtag/clojure/[LinkedIn]
 
-https://2026.clojure-conj.org/?utm_source=clojure.org&utm_medium=show_notes&utm_campaign=clojure_documentary&utm_content=clojure_conj_2026[Clojure/Conj Conference 2026] — September 30 – October 2, Charlotte, NC ·  https://www.linkedin.com/company/clojure-conj/[LinkedIn]
+Join us at the https://2026.clojure-conj.org/?utm_source=clojure.org&utm_medium=show_notes&utm_campaign=clojure_documentary&utm_content=clojure_conj_2026[Clojure/Conj Conference 2026] — September 30 – October 2, Charlotte, NC ·  https://www.linkedin.com/company/clojure-conj/[LinkedIn]
 
 

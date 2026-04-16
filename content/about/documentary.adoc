@@ -15,6 +15,10 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 *Clojure: The Official Documentary* premieres April 16th!
 
+[#video]
+.Video Premiere
+image::/images/content/about/documentary.png["Watch the Premiere", link="https://www.youtube.com/watch?v=Y24vK_QDLFg", width=400]
+
 From a two-year sabbatical and a stubborn idea to powering the engineering stack of one of the world's largest fintech companies — this is the story of Clojure.
 
 Featuring Rich Hickey, Alex Miller, Stuart Halloway, and many more, this full-length documentary traces Clojure's unconventional origins, its values-driven community, and the language's quiet but profound impact on how we think about software.
@@ -24,10 +28,6 @@ Documentary made possible with the support of https://building.nubank.com/engine
 [#trailer]
 .Trailer
 video::JJEyffSdBsk[youtube, width=400, height=225, title="Clojure: The Documentary [OFFICIAL TRAILER]"]
-
-[#video]
-.Video Premiere
-image::/images/content/about/documentary.png["Watch the Premiere", link="https://www.youtube.com/watch?v=Y24vK_QDLFg", width=400]
 
 == Show Notes
 

@@ -19,6 +19,13 @@ Note: All dev releases are subject to breaking changes for new work since the pr
 
 == Release 1.12.x
 
+=== 1.12.5-rc1 (Apr 20, 2026) [[v1.12.5-rc1]]
+
+Same as 1.12.5-alpha1
+
+* https://clojure.atlassian.net/browse/CLJ-2945[CLJ-2945] - reify - incorrectly transfers reader metadata to runtime object
+* https://clojure.atlassian.net/browse/CLJ-2228[CLJ-2228] - constantly - unroll to remove rest args allocation
+
 === 1.12.5-alpha1 (Apr 7, 2026) [[v1.12.5-alpha1]]
 
 https://clojure.org/news/2026/04/07/clojure-1-12-5-alpha1[Release Notes]

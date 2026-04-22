@@ -1,0 +1,133 @@
+= Clojure Deref (Apr 21, 2026)
+Christoph Neumann
+2026-04-21
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]).
+
+
+== Clojure Documentary
+
+The Clojure Documentary is live!
+
+https://youtu.be/Y24vK_QDLFg[Watch it now on YouTube]
+
+Afterward, enjoy the https://youtu.be/hc112UhpHow[Clojure Documentary Q&A] with Rich Hickey and other key people in Clojure’s history!
+
+Don't miss the https://clojure.org/about/documentary[Documentary show notes] with links to:
+
+* The foundational research papers
+* Influential books
+* Rich's talks
+* Historical archives
+* Dialects and runtimes
+* Community resources
+* Getting started videos
+* A glossary
+* and more!
+
+
+== Clojure Community Check-In
+
+The world is going through changes: in programming, technology, work, and in
+specific countries and regions, each with its own form of trouble, hope, or
+confusion.
+
+People in Clojure communities, like elsewhere, are finding their way through
+it, sometimes with questions and sometimes with a sense of being alone in it.
+
+The Clojure Community Check-In is a space to share how we’re doing.
+
+Watch a https://youtu.be/dkxwZ9VGLCo[short video] from the organizers.
+
+Sessions:
+
+* https://clojureverse.org/t/clojure-community-check-in-part-i/14881[Sat, Apr 25 @ 20:00 UTC]
+* https://clojureverse.org/t/clojure-community-check-in-part-ii/14882[Sun, Apr 26 @ 05:00 UTC]
+
+https://forms.gle/kP1i33k2K92gASs47[Register here].
+
+More details at: https://clojureverse.org/t/clojure-community-check-in/
+
+
+== Clojure/Conj 2026
+
+September 30 – October 2, 2026 +
+Charlotte Convention Center, Charlotte, NC
+
+Join us for the largest gathering of Clojure developers in the world! Meet new
+people and reconnect with old friends. Enjoy two full days of talks, a day of workshops, social events, and more.
+
+Early bird and group tickets are now on sale.
+
+https://2026.clojure-conj.org/[2026.clojure-conj.org]
+
+Is your company interested in sponsoring? Email us at
+clojure_conj@nubank.com.br to discuss opportunities.
+
+
+== Upcoming Events
+
+* https://clojureverse.org/t/clojure-real-world-data-57/14880[Clojure real-world-data 57]: Apr 24
+* https://clojureverse.org/t/clojure-community-check-in/[Clojure Community Check-In]: Apr 25-26. https://forms.gle/kP1i33k2K92gASs47[Register here].
+* https://babashka.org/conf/[Babashka Conf]: May 8. Amsterdam, NL. https://babashka.org/conf/#schedule[See the schedule].
+* https://clojuredays.org/[Dutch Clojure Days 2026]: May 9. Amsterdam, NL. https://clojuredays.org/#agenda[See the schedule].
+* https://itch.io/jam/spring-lisp-game-jam-2026[Spring Lisp Game Jam 2026]: May 14-24. Online.
+
+
+== Podcasts, videos, and media
+
+* https://youtu.be/Y24vK_QDLFg[How one programmer's pet project changed how we think about software] - CultRepo
+* https://youtu.be/hc112UhpHow[Clojure Documentary Q&A] - ClojureTV
+* https://youtu.be/pleo1VA9D70[Why one of the world's largest digital banks chose Clojure and Datomic] - CultRepo
+* https://youtu.be/dkxwZ9VGLCo[Join us at the Clojure Community Check-In] - Sci Cloj
+* https://youtu.be/LQnzKZLchDM[Clojure Corner: Interview with Alex Miller] - Flexiana
+* https://youtu.be/mwCsMQqV3Io[Avoiding Cyclic Dependency by Passing Functions as Arguments] - Clojure Diary
+* https://youtu.be/_ZCrb2E-I-U[Learn Ring - 10. More complex pages] - Clojure Diary
+* https://youtu.be/TdEeMKH0_xE[Swish: Using Claude Code to Create a Lisp in Swift -  Vars] - Rod Schmidt
+
+
+== Blogs, articles, and news
+
+* https://dmiller.github.io/clojure-clr-next/general/2026/04/16/runtime-async.html[Runtime async in ClojureCLR] - David Miller
+* https://clojurecivitas.org/mentat_collective/emmy/helloeuroffice.html[Emmy and the EurOffice Spreadsheet – Clojure Civitas] - Markus Agwin Kloimwieder
+* https://regibyte.github.io/cljam/blog/building-cljam[Building a Clojure interpreter from scratch | cljam] - Reginaldo Junior
+* https://biffweb.com/p/biff2/[Biff 2.0 sneak peak] - Jacob O'Bryant
+* https://serefayar.substack.com/p/exploring-coreasyncflow-as-an-agent-executor[Exploring core.async.flow as an Agent Executor] - Şeref Ayar
+* https://github.com/dco-dev/ordered-collections/blob/master/doc/concept/concept.md[One Tree, Many Forests: Representational Polymorphism in a Parallel Split/Join Tree Algebra] - Dan Lentz
+
+== Libraries and Tools
+
+Debut release
+
+* https://github.com/hectorqlucero/webgen[webgen] - Parameter driven web app generator
+* https://github.com/RegiByte/cljam[cljam] - Clojure interpreter with a tokenizer, reader, macro expander, evaluator, incremental compiler, vite plugin, nREPL server compatible with calva on vscode, embedded browser REPL, CLI compatible with node and bun as host
+* https://github.com/hatappo/bisql[bisql] - Keep SQL executable, call it as Clojure functions 🚲️
+* https://github.com/miniforge-ai/miniforge-standards[miniforge-standards] - Shared engineering standards for all miniforge.ai repositories
+* https://github.com/WBSemple/cljs-mjml[cljs-mjml] - Write MJML email templates with Hiccup syntax in ClojureScript (or Node Babashka)
+
+Updates
+
+* https://github.com/clojure/clojure[clojure] https://clojure.org/news/2026/04/07/clojure-1-12-5-alpha1[1.12.5-rc1] - The Clojure programming language
+* https://github.com/clj-kondo/clj-kondo[clj-kondo] https://github.com/clj-kondo/clj-kondo/releases/tag/v2026.04.15[2026.04.15] - Static analyzer and linter for Clojure code that sparks joy
+* https://github.com/avanelsas/baredom[baredom] https://github.com/avanelsas/baredom/blob/main/CHANGELOG.md[2.2.0] - BareDOM: Lightweight CLJS UI components built on web standards (Custom Elements, Shadow DOM, ES modules). No framework, just the DOM
+* https://github.com/danlentz/clj-format[clj-format] https://github.com/danlentz/clj-format/blob/master/CHANGELOG.md[0.1.2] - A Clojure DSL for cl-format inspired by Hiccup. No dependencies. Drop-in compatibility. The power of FORMAT made easy.
+* https://github.com/igrishaev/any[any] https://github.com/igrishaev/any/blob/master/CHANGELOG.md[0.1.1] - Objects for smart comparison in tests.
+* https://github.com/Blockether/spel[spel] https://github.com/Blockether/spel/releases/tag/v0.9.5[0.9.5] - Idiomatic Clojure wrapper for Playwright. Browser automation, API testing, Allure reporting, and native CLI - for Chromium, Firefox, and WebKit
+* https://github.com/dco-dev/ordered-collections[ordered-collections] https://github.com/dco-dev/ordered-collections/blob/master/CHANGES.md[0.2.1] - Fast, modern, ropes and ordered collections that do more than sort.
+* https://github.com/hlship/dexter[dexter] https://github.com/hlship/dexter/blob/main/CHANGES.md[0.1-alpha-6] - Dexter - Graphical Dependency Explorer
+* https://github.com/gloathub/gloat[gloat] https://github.com/gloathub/gloat/blob/main/Changes[0.1.26] - Glojure AOT Tool
+* https://github.com/gloathub/glojure[glojure] 0.6.5-rc17 - Clojure interpreter hosted on Go, with extensible interop support.
+* https://github.com/squint-cljs/squint[squint] https://github.com/squint-cljs/squint/releases/tag/v0.11.188[0.11.188] - Light-weight ClojureScript dialect
+* https://github.com/cjohansen/dataspex[dataspex] https://github.com/cjohansen/dataspex/commits/v2026.04.1[2026.04.1] - See the shape of your data: point-and-click Clojure(Script) data browser
+* https://github.com/xpojure-lang/meme-clj[meme-clj] https://github.com/xpojure-lang/meme-clj/blob/main/CHANGELOG.md[5.0.0] - meme-clj — M-Expressions with Macro Expansion
+* https://github.com/TimoKramer/charm.clj[charm.clj] https://github.com/TimoKramer/charm.clj/commits/v0.2.71[0.2.71] - A Clojure TUI (Terminal User Interface) library inspired by Bubble Tea
+* https://github.com/danlentz/clj-xref[clj-xref] https://github.com/danlentz/clj-xref/releases/tag/0.1.1[0.1.1] - LLM-friendly cross-reference database for Clojure code. Query who-calls, calls-who, who-implements, ns-deps to feed        precise dependency neighborhoods to AI assistants instead of entire source trees. Built on clj-kondo.
+* https://github.com/babashka/babashka[babashka] https://github.com/babashka/babashka/releases/tag/v1.12.218[1.12.218] - Native, fast starting Clojure interpreter for scripting
+* https://github.com/babashka/fs[fs] https://github.com/babashka/fs/releases/tag/v0.5.33[0.5.33] - File system utility library for Clojure
+* https://github.com/phel-lang/phel-lang[phel-lang] https://github.com/phel-lang/phel-lang/releases/tag/v0.34.1[0.34.1] - A functional, Lisp-inspired language that compiles to PHP. Inspired by Clojure, Phel brings macros, persistent data structures, and expressive functional idioms to the PHP ecosystem.
+* https://github.com/taoensso/nippy[nippy] https://github.com/taoensso/nippy/releases/tag/v3.7.0-beta1[3.7.0-beta1] - Fast serialization library for Clojure
+* https://github.com/fulcrologic/statecharts[statecharts] https://github.com/fulcrologic/statecharts/blob/main/CHANGELOG[1.4.0-RC11] - A Statechart library for CLJ(S)
+* https://github.com/clojure/clojure-clr[clojure-clr] https://github.com/clojure/clojure-clr/blob/master/changes.md[clojure-1.12.3-alpha7] - A port of Clojure to the CLR, part of the Clojure project

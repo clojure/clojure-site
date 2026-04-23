@@ -242,6 +242,25 @@ Macro
 
 Expands to code which creates a instance of a proxy class that implements the named class/interface(s) by calling the supplied fns. A single class, if provided, must be first. If not provided it defaults to Object. The interfaces names must be valid interface types. If a method fn is not provided for a class method, the superclass method will be called. If a method fn is not provided for an interface method, an UnsupportedOperationException will be thrown should it be called. Method fns are closures and can capture the environment in which proxy is called. Each method fn takes an additional implicit first arg, which is bound to this. Note that while method fns can be provided to override protected methods, they have no other access to protected members, nor to super, as these capabilities cannot be proxied.
 
+''''
+
+*gen-class*
+
+For cases where you need a named Java class with AOT compilation (e.g., to provide a Java `main` entry point, implement an interface with mutable state, or satisfy frameworks that require concrete class names), use https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/gen-class[gen-class]. Unlike `proxy` and `reify`, `gen-class` produces a statically-named `.class` file during <<compilation#,compilation>> and supports constructors, state, and static methods.
+
+The most common usage is the `:gen-class` directive within the `ns` macro:
+
+[source,clojure]
+----
+(ns myapp.core
+  (:gen-class))
+
+(defn -main [& args]
+  (println "Hello from gen-class"))
+----
+
+`gen-class` is only relevant when AOT-compiling. It is ignored when loading source directly. See the <<compilation#,compilation reference>> for the full list of `gen-class` options and detailed examples.
+
 == Arrays
 
 Clojure supports the creation, reading and modification of Java arrays. It is recommended that you limit use of arrays to interop with Java libraries that require them as arguments or use them as return values.

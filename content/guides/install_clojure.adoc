@@ -62,7 +62,7 @@ You may also want to extend the MANPATH in `/etc/man_db.conf` to include the man
 
 [source]
 ----
-MANPATH_MAP /opt/infrastructure/clojure/bin /opt/infrastructure/clojure/man
+MANPATH_MAP /opt/infrastructure/clojure/bin /opt/infrastructure/clojure/share/man
 ----
 
 The `linux-install` script can be removed after installation.
@@ -94,7 +94,7 @@ You may also want to extend the MANPATH in `/etc/man_db.conf` to include the man
 
 [source]
 ----
-MANPATH_MAP /opt/infrastructure/clojure/bin /opt/infrastructure/clojure/man
+MANPATH_MAP /opt/infrastructure/clojure/bin /opt/infrastructure/clojure/share/man
 ----
 
 The `posix-install` script can be removed after installation.

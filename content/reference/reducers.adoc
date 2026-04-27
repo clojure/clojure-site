@@ -64,10 +64,10 @@ Use https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/into[in
 ----
 (into [] (r/filter even? (r/map inc (range 100000))))
 ----
-Or https://clojure.github.io/clojure/clojure.core-api.html#clojure.core.reducers/foldcat[r/foldcat]:
+Or https://clojure.github.io/clojure/clojure.core-api.html#clojure.core.reducers/foldcat[r/foldcat] to produce a foldable collection. Note the use of `vec` — seqs like those returned by `range` do not support parallel folding, so they must be converted to a vector first:
 [source,clojure]
 ----
-(r/foldcat (r/filter even? (r/map inc (range 100000))))
+(r/foldcat (r/filter even? (r/map inc (vec (range 100000)))))
 ----
 Specify a reduce function and a combine function with fold:
 [source,clojure]

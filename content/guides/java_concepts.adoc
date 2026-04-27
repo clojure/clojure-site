@@ -1,0 +1,104 @@
+= Java Platform Concepts for Clojure Developers
+Kit Dallege
+2026-03-14
+:type: guides
+:toc: macro
+:icons: font
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+toc::[]
+
+Clojure runs on the Java Virtual Machine (JVM) and the documentation often uses Java terminology without introduction. This guide explains the core Java platform concepts you'll encounter when working with Clojure.
+
+== The JVM
+
+The Java Virtual Machine (JVM) is the runtime that executes Clojure programs. When you run `clj` or `clojure`, a JVM process starts, loads the Clojure runtime, and evaluates your code. The JVM provides:
+
+* Memory management and garbage collection
+* A rich standard library (the JDK)
+* Platform independence — the same code runs on Linux, macOS, and Windows
+* A mature performance optimizer (the JIT compiler)
+
+Clojure is not compiled to machine code directly. Instead, Clojure source is compiled to JVM bytecode (`.class` files), which the JVM interprets and optimizes at runtime.
+
+== The Classpath
+
+The **classpath** is an ordered list of locations (directories and JAR files) where the JVM looks for code and resources at runtime. When Clojure encounters `(require '[my.lib])`, it searches the classpath for a file `my/lib.clj` (or `my/lib.cljc`).
+
+When you run `clj`, the Clojure CLI builds a classpath from your project's `deps.edn` file and passes it to the JVM. You can see the computed classpath with:
+
+[source,shell]
+----
+clj -Spath
+----
+
+Key points:
+
+* **Source directories** (like `src/`) go on the classpath so the JVM can find your `.clj` files.
+* **JAR files** containing libraries go on the classpath so their code is available to `require` and `import`.
+* **Resources** (config files, templates, etc.) are also found via the classpath using `clojure.java.io/resource`.
+
+== JAR Files
+
+A **JAR** (Java ARchive) is a ZIP file containing compiled classes, Clojure source files, and other resources. It is the standard packaging format for distributing Java and Clojure code.
+
+There are two common kinds of JARs:
+
+**Library JAR** (thin JAR)::
+Contains only the library's own code and a `pom.xml` file listing its dependencies. This is what gets published to Maven repositories like https://clojars.org[Clojars] or https://search.maven.org[Maven Central]. Dependencies are not included — the build tool resolves and downloads them separately.
+
+**Application JAR** (uberjar)::
+Contains the application's code _and_ all of its dependencies (including Clojure itself) in a single file. An uberjar can be run directly with `java -jar myapp.jar` because everything needed is self-contained. Tools like https://github.com/clojure/tools.build[tools.build] and https://github.com/tonsky/uberdeps[uberdeps] can produce uberjars.
+
+== Maven Coordinates
+
+Java and Clojure libraries are identified by **Maven coordinates**: a group ID, an artifact ID, and a version. In `deps.edn`, these are written as:
+
+[source,clojure]
+----
+{:deps
+ {org.clojure/data.json {:mvn/version "2.4.0"}}}
+----
+
+Here `org.clojure` is the group ID, `data.json` is the artifact ID, and `2.4.0` is the version. Together they uniquely identify this library in a Maven repository.
+
+Libraries published to https://clojars.org[Clojars] (the primary Clojure library repository) often use the same value for group and artifact, written as a single symbol:
+
+[source,clojure]
+----
+{:deps
+ {hiccup/hiccup {:mvn/version "2.0.0-RC3"}}}
+----
+
+== Packages and Imports
+
+In Java, code is organized into **packages** — hierarchical namespaces like `java.util` or `java.io`. Clojure maps its namespaces to directories in the same way: the namespace `my.app.core` corresponds to the file `my/app/core.clj` on the classpath.
+
+To use a Java class from Clojure, you **import** it:
+
+[source,clojure]
+----
+(import '[java.time LocalDate])
+(LocalDate/now)
+----
+
+Classes in `java.lang` (like `String`, `Integer`, `Math`) are imported automatically and don't need an explicit import.
+
+== AOT Compilation
+
+By default, Clojure source files are compiled to bytecode on the fly when they are loaded. **Ahead-of-Time (AOT) compilation** pre-compiles Clojure source into `.class` files before the program runs.
+
+AOT compilation is mainly used for:
+
+* Creating an application entry point (a `main` method) so the JVM can start the program directly
+* Improving startup time for deployed applications
+* Generating named classes for Java interop via `gen-class`
+
+Most library development does not use AOT compilation. Libraries are distributed as source code, which is compiled when loaded. See the <<xref/../../reference/compilation#,Compilation reference>> for details.
+
+== Related Pages
+
+* <<deps_and_cli#,Deps and CLI Guide>> — how to manage dependencies and run Clojure
+* <<xref/../../reference/java_interop#,Java Interop Reference>> — calling Java from Clojure
+* <<xref/../../reference/clojure_cli#glossary,CLI Glossary>> — terms specific to the Clojure CLI

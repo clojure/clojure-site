@@ -1,0 +1,96 @@
+= Clojure Deref (Apr 28, 2026)
+Christoph Neumann
+2026-04-28
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]).
+
+
+== Clojure/Conj 2026 CFP
+
+We’re looking for 40-minute talks that go beyond the basics: hard-won lessons,
+production stories, trade-offs, deep dives into language features, libraries,
+or tools, and ideas that change how people build things. Tracks include:
+Language, Experience Report, Library, Tools, AI, Ideas, and Fun.
+
+https://2026.clojure-conj.org/cfp[Apply by June 14]
+
+Join us for the largest gathering of Clojure developers in the world! Meet new
+people and reconnect with old friends. Enjoy two full days of talks, a day of
+workshops, social events, and more.
+
+September 30 – October 2, 2026 +
+Charlotte Convention Center, Charlotte, NC
+
+Early bird and group tickets are https://2026.clojure-conj.org/[on sale now].
+
+
+== Clojure Documentary
+
+In case you missed it, the https://youtu.be/Y24vK_QDLFg[Clojure Documentary] is live!
+
+Follow it up with the https://youtu.be/hc112UhpHow[Clojure Documentary Q&A].
+
+Don't miss the https://clojure.org/about/documentary[Documentary show notes].
+
+
+== Upcoming Events
+
+* https://clojureverse.org/t/clojure-real-world-data-58/[Clojure real-world-data 58]: May 1
+* https://babashka.org/conf/[Babashka Conf]: May 8. Amsterdam, NL. https://babashka.org/conf/#schedule[See the schedule].
+* https://clojuredays.org/[Dutch Clojure Days 2026]: May 9. Amsterdam, NL. https://clojuredays.org/#agenda[See the schedule].
+* https://itch.io/jam/spring-lisp-game-jam-2026[Spring Lisp Game Jam 2026]: May 14-24. Online.
+* https://www.meetup.com/london-clojurians/events/314510668/[Programming as and for Inference (by Christian Weilbach)]: May 29
+
+
+== Podcasts, videos, and media
+
+* https://youtu.be/LjG-_0Yp1W0[Implementing functions in Kanipaan - The Beginnings] - Clojure Diary
+* https://soundcloud.com/clojurestream/e103-llm-experience-report[E103 - LLM Experience report with Tony Kay] - ClojureStream Podcast
+* https://youtu.be/OLHecL0fWeE[Swish: Using Claude Code to Create a Lisp in Swift -  Namespaces] - Rod Schmidt
+* https://youtu.be/UDEUCjZWxYw[Apropos with Eric Dallo] - apropos clojure
+
+== Blogs, articles, and news
+
+* https://thomascothran.tech/2026/04/pavlov-for-the-web/[Pavlov for the Web] - Thomas Cothran
+* https://rafael.delboni.cc/#/post/how-keep-the-motivation-on-a-very-long-and-useless-project[How keep the motivation on a very long and useless project] - Rafael Delboni
+* https://www.nibzard.com/clojure-phone[Trained Qwen to Write Clojure Better Than GPT-5.4 (Kinda) - Log - nibzard] - Nikola Balić
+* https://clojurecivitas.org/ppo/main.html[Proximal Policy Optimization with Clojure and PyTorch – Clojure Civitas] - Jan Wedekind
+* https://ericnormand.substack.com/p/total-functions-in-untyped-languages[Total functions in untyped languages] - Eric Normand
+* https://felixbarbalet.com/familiarity-is-the-enemy/[Familiarity is the enemy] - Felix Barbalet
+* https://clojurecivitas.org/scicloj/community_checkin/event_self_preview.html[Clojure community check-in self preview – Clojure Civitas] - Siyoung Byun
+* https://clojurecivitas.org/blog/aaronmeinel/2026-04-26-hypertrophy-training-intro.html[Workout tracking - a simple solution – Clojure Civitas] - Aaron Meinel
+* https://eighttrigrams.net/article/37[Guardrails Programming] - Daniel de Oliveira
+* https://www.bigconfig.it/blog/why-agents-need-an-infrastructure-package-manager/[Why Agents Need an Infrastructure Package Manager] - Alberto Miorin
+* https://www.alexvear.com/blog/on-lisp/[On Lisp: A review of Paul Graham's 1993 book.] - Alex Vear
+* https://www.metabase.com/blog/ten-custom-subagents[How we built ten custom subagents to tame a 500K-line Clojure codebase] - Bryan Maass
+* https://andreyor.st/posts/2026-04-27-clojure-on-fennel-part-three-parsing/[Clojure on Fennel part three: parsing] - Andrey Listopadov
+* https://dev.to/ivangavlik/immutability-not-a-universal-law-but-a-trade-off-4lng[Immutability - Not a Universal Law but a Trade-off] - Ivan Gavlik
+* https://clojurecivitas.org/music/musicpad/about.html[The Shape of a Kookaburra Call – Clojure Civitas] - Timothy Pratley
+
+== Libraries and Tools
+
+Debut release
+
+* https://github.com/rafaeldelboni/feles-tales[feles-tales] - A game about a cat sneaking and stealing stuff
+* https://github.com/editor-code-assistant/eca-desktop[eca-desktop] - ECA Desktop - Use ECA from any machine
+* https://github.com/Blockether/svar[svar] - Type‑safe LLM output for Clojure. Works with any text‑only model.
+* https://github.com/replikativ/pg-datahike[pg-datahike] - Postgres compatibility layer for Datahike.
+* https://github.com/samhedin/disorganized-notes[disorganized-notes] - Tables, lists, reminders, real-time sync, multiplatform. Written in ClojureDart.
+* https://github.com/avanelsas/bareforge[bareforge] - Companion visual builder for BareDOM web components. Drag components, declare reactive state, export fully interactive CLJS or JS project
+
+Updates
+
+* https://github.com/yonureker/stripe-clojure[stripe-clojure] https://github.com/yonureker/stripe-clojure/releases/tag/v2.3.0[2.3.0] - Clojure SDK for the Stripe API.
+* https://github.com/BetterThanTomorrow/calva-backseat-driver[calva-backseat-driver] https://github.com/BetterThanTomorrow/calva-backseat-driver/releases/tag/v0.0.30[0.0.30] - VS Code AI Agent Interactive Programming. Tools for CoPIlot and other assistants. Can also be used as an MCP server.
+* https://github.com/shipclojure/re-frame-query[re-frame-query] https://github.com/shipclojure/re-frame-query/blob/main/CHANGELOG.md[0.9.0] - Declarative data fetching and caching for re-frame inspired by tanstack query and redux toolkit query
+* https://github.com/plumce/plumcp[plumcp] https://github.com/plumce/plumcp/releases/tag/v0.2.0[0.2.0] - Clojure/ClojureScript library for making MCP server and client
+* https://github.com/clj-commons/pretty[pretty] https://github.com/clj-commons/pretty/blob/main/CHANGES.md[3.8.0] - Library for helping print things prettily, in Clojure - ANSI fonts, formatted exceptions
+* https://github.com/scicloj/clay[clay] https://github.com/scicloj/clay/blob/main/CHANGELOG.md[2.0.16] - A REPL-friendly Clojure tool for notebooks and datavis
+* https://github.com/filipesilva/sqlatom[sqlatom] 1.2.0 - Clojure library that stores atoms in a SQLite database
+* https://github.com/clojure/clojure-clr[clojure-clr] https://github.com/clojure/clojure-clr/blob/master/changes.md[1.12.3-alpha8] - A port of Clojure to the CLR, part of the Clojure project
+* https://github.com/avanelsas/baredom[baredom] https://github.com/avanelsas/baredom/releases/tag/v2.4.1[2.4.1] - BareDOM: Lightweight CLJS UI components built on web standards (Custom Elements, Shadow DOM, ES modules). No framework, just the DOM
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.579[2.0.579] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://www.datomic.com/[datomic-pro] https://docs.datomic.com/changes/pro.html#1.0.7622[1.0.7622] - The fully transactional, cloud-ready, distributed database.

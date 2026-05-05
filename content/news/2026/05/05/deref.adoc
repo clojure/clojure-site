@@ -1,0 +1,118 @@
+= Clojure Deref (May 5, 2026)
+Christoph Neumann
+2026-05-05
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]).
+
+
+== EuroClojure 2027
+
+After a ten-year hiatus, EuroClojure is coming to Prague!
+
+May 19-21, 2027 +
+https://2027.euroclojure.org/[2027.euroclojure.org]
+
+The theme will be the design, long-term development, and operation of reliable
+systems. Enjoy three days of workshops, talks, and conversation relevant for
+industry veterans, ranging from senior developers, tech leads, VPs of
+Engineering to CTOs.
+
+The conference will showcase engineering approaches within the Clojure
+ecosystem, but with a strong emphasis on broader applicability. It will explore
+the real-world portability of these concepts to other tech stacks, mutual
+inspiration across different communities, and adapting to AI-assisted
+development.
+
+https://2027.euroclojure.org[Join the mailing list] for early bird tickets and announcements.
+Share your ideas and content suggestions when you sign up.
+
+
+== Clojure/Conj 2026 CFP
+
+We’re looking for 40-minute talks that go beyond the basics: hard-won lessons,
+production stories, trade-offs, deep dives into language features, libraries,
+or tools, and ideas that change how people build things. Tracks include:
+Language, Experience Report, Library, Tools, AI, Ideas, and Fun.
+
+https://2026.clojure-conj.org/cfp[Apply by June 14]
+
+Join us for the largest gathering of Clojure developers in the world! Meet new
+people and reconnect with old friends. Enjoy two full days of talks, a day of
+workshops, social events, and more.
+
+September 30 – October 2, 2026 +
+Charlotte Convention Center, Charlotte, NC
+
+Early bird and group tickets are https://2026.clojure-conj.org/[on sale now].
+
+
+== Clojure Documentary
+
+In case you missed it, the https://youtu.be/Y24vK_QDLFg[Clojure Documentary] is live!
+
+Follow it up with the https://youtu.be/hc112UhpHow[Clojure Documentary Q&A].
+
+Don't miss the https://clojure.org/about/documentary[Documentary show notes].
+
+
+== Upcoming Events
+
+* https://babashka.org/conf/[Babashka Conf]: May 8. Amsterdam, NL. https://babashka.org/conf/#schedule[See the schedule].
+* https://clojuredays.org/[Dutch Clojure Days 2026]: May 9. Amsterdam, NL. https://clojuredays.org/#agenda[See the schedule].
+* https://itch.io/jam/spring-lisp-game-jam-2026[Spring Lisp Game Jam 2026]: May 14-24. Online.
+* https://www.meetup.com/london-clojurians/events/314510668/[Programming as and for Inference (by Christian Weilbach)]: May 29
+
+
+== Podcasts, videos, and media
+
+* https://youtu.be/RI283KVd8Ag[Pastedown: Paste rich text as markdown in VS Code with a Joyride Script] - CalvaTV
+* https://youtu.be/9PIPpm3zmWk[Learn Ring - 11. hiccup & hiccup 2] - Clojure Diary
+* https://youtu.be/ql7qK5xDgPI[Learn Ring - 12. Navbar] - Clojure Diary
+* https://youtu.be/6c_rVjeK944[Swish: Using Claude Code to Create a Lisp in Swift -  ns & loading] - Rod Schmidt
+
+== Blogs, articles, and news
+
+* https://www.clojuriststogether.org/news/q2-2026-funding-announcement/[Clojurists Together Q2 2026 Funding Announcement] - Kathy Davis
+* https://latypoff.com/clojure-is-the-future-of-ai-coding-but-you-wont-use-it/[Clojure is the future of AI coding, but you won't use it] - Timur Latypoff
+* https://clojurecivitas.org/jank/hello.html[Hello, Jank – Clojure Civitas] - Daniel Slutsky
+* https://clojurecivitas.org/babashka/hello.html[Hello, Babashka – Clojure Civitas] - Daniel Slutsky
+* https://clojurecivitas.org/babashka/clojure-events-feed.html[Datavis in Babashka: analysing our calendar feed – Clojure Civitas] - Daniel Slutsky
+* https://iterativetangents.com/a-game-loop-in-a-core-async-goroutine/[A game loop in a core.async goroutine] - Eric Shull
+* https://github.com/heartofclojure/heartofclojure-site-2024/wiki/Conference-Tooling[Conference Tooling for Heart of Clojure 2024] - Arne Brasseur
+* https://blog.michielborkent.nl/oss-updates-mar-apr-2026.html[OSS updates March and April 2026] - Michiel Borkent
+* https://gloathub.org/blog/2026/05/04/gloat-funded-for-q2-2026/[Gloat Funded for Q2 2026! - GloatHub] - Ingy dot Net
+* https://epiccastle.io/blog/uniting-c-and-clojure-in-bbssh/[Uniting C and Clojure in Bbssh] - Crispin Wellington
+
+== Libraries and Tools
+
+Debut release
+
+* https://github.com/scicloj/janqua[janqua] - Jank notebooks using Quarto
+* https://github.com/scicloj/babqua[babqua] - Babashka notebooks using Quarto
+* https://github.com/scicloj/plotje[plotje] - simple and easy plotting
+* https://github.com/rcarmo/go-joker[go-joker] - A personal twist on the original Clojure interpreter and linter, slightly mad, Go-ing places
+* https://github.com/day8/re-frame-pair[re-frame-pair] - A Skill for pair-programing with Claude Code on a re-frame app.
+* https://github.com/day8/re-frame-pair-improver[re-frame-pair-improver] - A skill which analyses the use of another skill (re-frame-pair sessions) and proposes improvements
+* https://github.com/igrishaev/alike[alike] - A simple matching library
+
+Updates
+
+* https://github.com/xtdb/xtdb[xtdb] https://github.com/xtdb/xtdb/releases/tag/v2.2.0-beta1[2.2.0-beta1] - An immutable SQL database for application development, time-travel reporting and data compliance. Developed by @juxt
+* https://github.com/day8/re-frame[re-frame] https://day8.github.io/re-frame/releases/2026/#147-2026-04-30[1.4.7] - A ClojureScript framework for building user interfaces, leveraging React
+* https://github.com/BetterThanTomorrow/calva-backseat-driver[calva-backseat-driver] https://github.com/BetterThanTomorrow/calva-backseat-driver/blob/master/CHANGELOG.md[0.0.31] - VS Code AI Agent Interactive Programming. Tools for CoPIlot and other assistants. Can also be used as an MCP server.
+* https://github.com/epiccastle/bbssh[bbssh] https://github.com/epiccastle/bbssh/releases/tag/v0.7.0[0.7.0] - Babashka pod for SSH support.
+* https://github.com/fogus/lexical-chocolate[lexical-chocolate] https://github.com/fogus/lexical-chocolate/blob/master/CHANGELOG.md[0.0.4] - Provides utilities for building lexical contours.
+* https://github.com/practicalli/clojure-cli-config[clojure-cli-config] https://github.com/practicalli/clojure-cli-config/releases/tag/2026-05-01[2026-05-01] - User aliases and Clojure CLI configuration for deps.edn based projects
+* https://github.com/BetterThanTomorrow/joyride[joyride] https://github.com/BetterThanTomorrow/joyride/releases/tag/v0.0.74[0.0.74] - Making VS Code Hackable like Emacs since 2022
+* https://github.com/avanelsas/baredom[baredom] https://github.com/avanelsas/baredom/blob/main/CHANGELOG.md[2.7.0] - BareDOM: Lightweight CLJS UI components built on web standards (Custom Elements, Shadow DOM, ES modules). No framework, just the DOM
+* https://github.com/dazld/r11y[r11y] https://github.com/dazld/r11y/releases/tag/v1.0.6[1.0.6] - CLI tool for extracting URLs as Markdown
+* https://github.com/phel-lang/phel-lang[phel-lang] https://github.com/phel-lang/phel-lang/releases/tag/v0.35.0[0.35.0] - A functional, Lisp-inspired language that compiles to PHP. Inspired by Clojure, Phel brings macros, persistent data structures, and expressive functional idioms to the PHP ecosystem.
+* https://github.com/scicloj/metamorph.ml[metamorph.ml] https://github.com/scicloj/metamorph.ml/blob/main/CHANGELOG.md[1.5.1] - Machine learning functions based on metamorph and  machine learning pipelines
+* https://github.com/PEZ/epupp[epupp] https://github.com/PEZ/epupp/releases/tag/v0.0.19[0.0.19] - A web browser extension that lets you tamper with web pages, live and/or with userscripts.
+* https://github.com/pilosus/kairos[kairos] https://github.com/pilosus/kairos/releases/tag/v0.2.62[0.2.62] - Crontab parser for Clojure with human-readable cron explanations
+* https://github.com/clojure-lsp/clojure-lsp[clojure-lsp] https://github.com/clojure-lsp/clojure-lsp/releases/tag/2026.05.05-12.58.26[2026.05.05-12.58.26] - Clojure & ClojureScript Language Server (LSP) implementation
+* https://github.com/shipclojure/re-frame-query[re-frame-query] https://github.com/shipclojure/re-frame-query/blob/main/CHANGELOG.md[0.10.0] - Declarative data fetching and caching for re-frame inspired by tanstack query and redux toolkit query
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/blob/published/CHANGELOG.md[2.0.583] - Clojure & ClojureScript Interactive Programming for VS Code

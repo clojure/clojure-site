@@ -83,6 +83,8 @@ chmod +x posix-install.sh
 sudo ./posix-install.sh
 ----
 
+Man pages are installed to `$prefix/share/man` (by default `/usr/local/share/man`). On systems where this is not already in the man search path (such as OpenBSD), you may need to add it to your `MANPATH`.
+
 To install to a custom location (like `/opt/infrastructure/clojure`), use the option `--prefix`:
 
 [source,shell]

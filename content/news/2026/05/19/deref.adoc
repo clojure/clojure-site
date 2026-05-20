@@ -1,0 +1,175 @@
+= Clojure Deref (May 19, 2026)
+Christoph Neumann
+2026-05-19
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]).
+
+
+== Clojure Dev Call
+
+The Clojure development team is pleased to announce a Clojure Dev Call on May 26 @ 17:00 UTC!
+
+Join the Clojure dev team for an update on what we’ve been working on and what’s on our horizon. We’ll save time for a Q&A, so bring your questions.
+
+https://events.zoom.us/ev/Ag74cYrxFKu8A_qZwQHMzZzKZ-lnr15g1rmvUjSqdpS2aedAZIBo~AhzYDI3YXGVeo0auBgpDwpPDqiJbBBs2ZQo-ZZTVqNvxl4VqoZCyikRI-A[Register here]
+
+
+== Clojure/Conj 2026
+
+Join us for the largest gathering of Clojure developers in the world! Meet new
+people and reconnect with old friends. Enjoy two full days of talks, a day of
+workshops, social events, and more.
+
+September 30 – October 2, 2026 +
+Charlotte Convention Center, Charlotte, NC
+
+https://2026.clojure-conj.org/cfp[The CFP is open] until June 14
+
+https://2026.clojure-conj.org/[Early Bird tickets] are on sale now.
+
+
+== EuroClojure 2027
+
+After a decade away, EuroClojure returns to mark twenty years of Clojure. Join
+us in Prague for three days of workshops, talks, and thoughtful conversation.
+
+May 19-21, 2027 +
+https://2027.euroclojure.org/[2027.euroclojure.org]
+
+https://2027.euroclojure.org[Join the mailing list] for early bird tickets and announcements.
+Share your ideas and content suggestions when you sign up.
+
+
+== Upcoming Events
+
+* https://clojureverse.org/t/clojure-real-world-data-59/[Clojure real-world-data 59]: May 22
+* https://2026.clojure-conj.org/[Clojure/Conj 2026]: Sep 30-Oct 2. https://2026.clojure-conj.org/cfp[CFP is open] until June 14. https://2026.clojure-conj.org/[Early Bird tickets].
+
+
+== Podcasts, videos, and media
+
+* https://youtu.be/dPQa8j3AOzY[Adam Tornhill - Transforming Software Evolution: Lessons from 10 Years of Clojure in Production] - Øredev Conference
+* https://youtu.be/gAKhUR_wyAk[ClojureScript 1.12.145 has await!] - mccormix
+* https://youtu.be/Wsl9O-VHKOY[Bowling game coding challenge in Clojure] - Andrey Fadeev
+* https://youtu.be/eHI2V0S0E4A[Learn Ring - 13. CSS] - Clojure Diary
+* https://youtu.be/dvYJnbo5tS0[Jigsaw: Music Theory Semantic Graph Demo (Clojure)] - Connor Finley
+* https://youtu.be/1OiojV07jig[DeepSeek V4 Flash is superhuman with BigConfig!] - Alberto Miorin
+* https://youtu.be/9iTo2kZzf-E[Clojure Corner: Interview with Emil Bengtsson] - Flexiana
+* https://youtu.be/E5SxZEp6Q0s[Babashka: Reverting VM Snapshots | Clojure] - Ken Huang
+* https://youtu.be/cwv-PpMgof8[Glint game engine #9 - Let there be light] - (Off By One Error
+* https://youtu.be/sZpV5IIKHvs[Apropos with Bozhidar Batsov] - apropos clojure
+
+Babashka Conf
+
+* https://youtu.be/c5RTAtodh3M[Scripting with SCI on your iPhone - Adrian Smith] - Babashka-tv
+* https://youtu.be/JQiBAYjG9_8[Friendly Command Line Tools and Dev Automation - Arne Brasseur] - Babashka-tv
+* https://youtu.be/dF2T1WS1otQ[Write charming TUIs in Babashka - Timo Kramer] - Babashka-tv
+
+Swish by Rod Schmidt
+
+* https://youtu.be/hyJ8L0vJvss[Swish: Using Claude Code to Create a Lisp in Swift -  ns with require, etc.] - Rod Schmidt
+* https://youtu.be/M40AK4-1cJ8[Swish: Using Claude Code to Create a Lisp in Swift -  maps, meta data & more] - Rod Schmidt
+
+Mike Møller Nielsen
+
+* https://youtu.be/TUFawKoC1QI[Leiningen for windows - build and run Clojure programs] - Mike Møller Nielsen
+* https://youtu.be/UUyOhWldo8E[Clojure up and running in IntelliJ] - Mike Møller Nielsen
+* https://youtu.be/wR6kS5g9vwM[Clojure when and how to use a Vector] - Mike Møller Nielsen
+* https://youtu.be/tlRyX08qPJw[Clojure when and how to use a list] - Mike Møller Nielsen
+* https://youtu.be/1WupOhaaFtc[Clojure when and how to use Maps] - Mike Møller Nielsen
+
+
+== Blogs, articles, and news
+
+* https://www.clojuriststogether.org/news/annually-funded-developers-update-march-april-2026/[Annually-Funded Developers' Update: March & April 2026] - Kathy Davis
+* https://jank-lang.org/blog/2026-05-08-optimization/[jank now has its own custom IR] - Jeaye Wilkerson
+* https://rodschmidt.com/posts/ifgame/[ifgame - An Interactive Fiction game library for Clojure] - Rod Schmidt
+* https://clojurecivitas.org/art/gen_svg/spirals.html[Playing with SVGs with hiccup and clay – Clojure Civitas] - Lorelai Lyons
+* https://github.com/day8/re-frame2/blob/main/docs/the-mayor-method.md[The Mayor Method — how I work with AI] - Mike Thompson
+* https://humorless.github.io/posts-output/agent-ready-stack[Agent-Ready Stack] - Laurence Chen
+* https://batsov.com/articles/2026/05/12/port-a-minimalist-prepl-client-for-emacs/[Port: a minimalist prepl client for Emacs] - Bozhidar Batsov
+* https://lifehacky.net/dotolist-creating-a-one-click-team-065a18dbeccd[Dotolist — creating a one-click team] - Tomáš Baránek
+* https://xtdb.com/blog/40x-query-perf[How we 40x'd the performance of a class of temporal queries · XTDB] - James Henderson
+* https://github.com/overtone/overtone/wiki/Linux-JVM-MIDI-Primer[Linux JVM MIDI Primer] - Arne Brasseur
+* https://github.com/day8/re-frame2/blob/main/docs/quiet-tests.md[Making tests silent on success] - Mike Thompson
+* https://humorless.github.io/posts-output/agent-skill[Expert Clojure Workflows for AI Agents: Four Skills from Production Experience] - Laurence Chen
+* https://scicloj.github.io/metamorph.ml/supervised_ml_intro.html[Introduction to Supervised Machine Learning with metamorph.ml] - Carsten Behring
+* https://scicloj.github.io/metamorph.ml/unsupervised_ml_intro.html[Introduction to Unsupervised Machine Learning with metamorph.ml] - Carsten Behring
+* https://joshkingsley.me/8-years-of-clojure/[8 years of Clojure] - Josh Kingsley
+* https://datahike.io/notes/branches-across-every-binding/[Branches as Values, Merges as Queries] - Christian Weilbach
+* https://clofer.codeberg.page/2026/05/18/clofer.html[Clofer: Clojure, Forged in Iron] - Karthikeyan A K
+* https://clojure-diary.gitlab.io/2026/05/19/alex-bedner-proof-read-my-clojure-book.html[Alex Bedner proof read my Clojure Book] - Karthikeyan A K
+* https://github.com/ilevd/clojure-like[List of Clojure-like projects - now with trending, most active and newest blocks] - Igor Levdansky
+
+== Libraries and Tools
+
+Debut release
+
+* https://github.com/nooga/let-go[let-go] - Almost Clojure written in Go.
+* https://github.com/leifericf/mino[mino] - A tiny, embeddable, REPL-friendly Lisp implemented in pure ANSI C.
+* https://github.com/leifericf/clj-p4[clj-p4] - Read-only Perforce-to-Git bridge in Clojure, with stream and classic-depot support.
+* https://github.com/gloathub/gloat-demo-fiber[gloat-demo-fiber] - A JSON REST API built with Fiber and Gloat, demonstrating Go/Clojure interoperability for web applications.
+* https://github.com/scicloj/zulipdata[zulipdata] - A Clojure library to fetch and analyse data from the Clojurians Zulip chat
+* https://github.com/replikativ/rechentafel[rechentafel] - A spreadsheet evaluator for Clojure/Script.
+* https://github.com/day8/re-frame2[re-frame2] - The AI first-born of re-frame
+* https://github.com/infiniteNIL/ifgame[ifgame] - An interactive fiction game written in Clojure
+* https://github.com/mpenet/drip[drip] - Drip is a transactional job queue for MariaDB, PostgreSQL, and SQLite
+* https://github.com/clojure-emacs/port[port] - A minimalist Clojure interactive programming environment for Emacs, built on prepl
+* https://github.com/donut-party/generate[generate] - code generation for Clojure projects
+* https://codeberg.org/baraba/bara-lang[bara-lang] - Clojure for nim language
+* https://github.com/mlimotte/gsheetplus[gsheetplus] - Low-level and high-level wrapper to work with Google Sheets.  Reading, writing and sheet management.
+* https://github.com/coconutpalm/winze[winze] - An agentic AI memory system (mcp server) with semantic search and GUI search/edit tool for Markdown knowledge bases
+* https://github.com/vlaaad/ghosttyfx[ghosttyfx] - JavaFX terminal that uses libghostty
+* https://github.com/cljfx/ghosttyfx[ghosttyfx] - Cljfx wrapper of GhosttyFX
+* https://github.com/tompassarelli/beagle[beagle] - a typed Lisp authoring surface for agent-written dynamic code.
+* https://github.com/dynamic-alpha/ducktape[ducktape] - Connect tech.v3.dataset to DuckDB
+* https://github.com/phel-lang/phel-log[phel-log] - Data-driven logging library for Phel. Levels, namespace filtering, pluggable appenders, PSR-3 adapter, Monolog handler bridge. Inspired by Timbre + Monolog.
+* https://github.com/Chemaclass/phel-symfony-demo[phel-symfony-demo] - Symfony + Phel demo: Ring-style handlers over plain maps, no ORM
+* https://github.com/zekzekus/stube[stube] - Web framework inspired by Seaside and UnCommonWeb
+* https://github.com/humorless/clj-native-agent[clj-native-agent] - Structural, semantic, and surgical skills for Clojure AI agents. Mimics expert practitioner workflows for code discovery, debugging, and editing using Babashka and rewrite-clj.
+* https://github.com/quadracollision/llmisp[llmisp] - JSON AST > Clojure
+* https://github.com/replikativ/spindel[spindel] - Cross-platform FRP runtime with a git-like memory model.
+* https://github.com/seancorfield/rephrase[rephrase] - Rephrase exceptions to be more beginner-friendly
+
+Updates
+
+* https://github.com/clojure/clojure[clojure] https://clojure.org/news/2026/05/12/clojure-1-12-5[1.12.5] - The Clojure programming language
+* https://clojure.org/reference/clojure_cli[clojure_cli] https://clojure.org/releases/tools#v1.12.5.1645[1.12.5.1645] - Clojure CLI
+* https://github.com/clojure/clojurescript[clojurescript] https://clojurescript.org/news/2026-05-07-release[1.12.145] - Clojure to JS compiler
+* https://github.com/clojure/core.unify[core.unify] https://github.com/clojure/core.unify/commits/v0.7.2[0.7.2] - Unification library
+* https://github.com/clj-holmes/clj-watson[clj-watson] https://github.com/clj-holmes/clj-watson/releases/tag/v6.1.0[6.1.0] - A Clojure tool that checks for vulnerable dependencies
+* https://github.com/clj-commons/aleph[aleph] https://github.com/clj-commons/aleph/blob/master/CHANGES.md[0.9.8] - Asynchronous streaming communication for Clojure - web server, web client, and raw TCP/UDP
+* https://github.com/BetterThanTomorrow/awesome-backseat-driver[awesome-backseat-driver] https://github.com/BetterThanTomorrow/awesome-backseat-driver/releases/tag/v1.0.13[1.0.13] - Plugin marketplace for Clojure AI context in GitHub Copilot: agents, skills, and workflows for REPL-first interactive programming with Calva Backseat Driver
+* https://github.com/seancorfield/logging4j2[logging4j2] https://github.com/seancorfield/logging4j2/releases/tag/v1.0.8[1.0.8] - A Clojure wrapper for log4j2
+* https://github.com/clojure/core.async.flow-monitor[core.async.flow-monitor] https://github.com/clojure/core.async.flow-monitor/blob/main/CHANGES.md[0.1.5] - A real-time monitoring and interaction tool for clojure.core.async.flow
+* https://github.com/monkey-projects/martian-aleph[martian-aleph] https://github.com/monkey-projects/martian-aleph/commits/0.1.4[0.1.4] - Martian plugin to use the Aleph http client
+* https://github.com/fogus/thneed[thneed] https://github.com/fogus/thneed/blob/master/CHANGELOG.md[1.1.9] - An eclectic set of Clojure utilities that I've found useful enough to keep around.
+* https://github.com/fulcrologic/statecharts[statecharts] https://github.com/fulcrologic/statecharts/blob/main/CHANGELOG[1.4.0-RC13] - A Statechart library for CLJ(S)
+* https://github.com/BetterThanTomorrow/joyride[joyride] https://github.com/BetterThanTomorrow/joyride/blob/master/CHANGELOG.md[0.0.75] - Making VS Code Hackable like Emacs since 2022
+* https://github.com/replikativ/stratum[stratum] https://github.com/replikativ/stratum/releases/tag/v0.2.67[0.2.67] - Versioned, fast and scalable columnar database.
+* https://github.com/seancorfield/deps-new[deps-new] https://github.com/seancorfield/deps-new/releases/tag/v0.12.1[0.12.1] - Create new projects for the Clojure CLI / deps.edn
+* https://github.com/avanelsas/bareforge[bareforge] https://github.com/avanelsas/bareforge/blob/main/CHANGELOG.md[0.6.0] - Companion visual builder for BareDOM web components. Drag components, declare reactive state, export fully interactive CLJS or JS project
+* https://github.com/replikativ/pg-datahike[pg-datahike] https://github.com/replikativ/pg-datahike/releases/tag/v0.1.43[0.1.43] - Postgres compatibility layer for Datahike.
+* https://github.com/day8/de-dupe[de-dupe] https://github.com/day8/de-dupe/blob/master/CHANGELOG.md[0.3.0] - A ClojureScript library which "de-duplicates" Persistent Data Structures so they can be more efficiently serialised.
+* https://github.com/flow-storm/clojure[ClojureStorm] https://github.com/flow-storm/clojure/blob/clojure-storm-master/CHANGELOG.md[1.12.5] - A fork of the official Clojure compiler with extra code to make it a dev compiler
+* https://github.com/clj-easy/graal-build-time[graal-build-time] https://github.com/clj-easy/graal-build-time/blob/main/CHANGELOG.md[1.0.6] - Initialize Clojure classes at build time with GraalVM native-image
+* https://github.com/gersak/tyrell[tyrell] https://github.com/gersak/tyrell/blob/master/CHANGELOG.md[1.0.0-RC9] - Clojurescript WebComponents library
+* https://github.com/gloathub/gloat[gloat] https://github.com/gloathub/gloat/releases/tag/v0.1.41[0.1.41] - Glojure AOT Tool
+* https://github.com/scicloj/metamorph.ml[metamorph.ml] https://github.com/scicloj/metamorph.ml/blob/main/CHANGELOG.md[1.6.2] - Machine learning functions based on metamorph and  machine learning pipelines
+* https://github.com/metosin/oksa[oksa] https://github.com/metosin/oksa/releases/tag/1.2.1[1.2.1] - Generate GraphQL queries using Clojure data structures.
+* https://github.com/clj-commons/pomegranate[pomegranate] https://github.com/clj-commons/pomegranate/releases/tag/v1.3.27[1.3.27] - A sane Clojure API for Maven Artifact Resolver + dynamic runtime modification of the classpath
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/blob/published/CHANGELOG.md[2.0.588] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/hlship/cli-tools[cli-tools] https://github.com/hlship/cli-tools/blob/main/CHANGES.md[0.16.0-beta-7] - CLIs and subcommands for Clojure or Babashka
+* https://github.com/fulcrologic/fulcro-spec[fulcro-spec] https://github.com/fulcrologic/fulcro-spec/blob/main/CHANGELOG.md[3.2.9] - A library that wraps clojure.test for a better BDD testing experience.
+* https://github.com/avanelsas/baredom[baredom] https://github.com/avanelsas/baredom/blob/main/CHANGELOG.md[3.1.0] - BareDOM: Lightweight CLJS UI components built on web standards (Custom Elements, Shadow DOM, ES modules). No framework, just the DOM
+* https://github.com/o11ylite/o11ylite[o11ylite] https://github.com/o11ylite/o11ylite/releases/tag/2026.5.16-1112955[2026.5.16-1112955] - Free, open-source OpenTelemetry backend powered by DuckDB 🦆 and SQLite
+* https://github.com/BetterThanTomorrow/calva-backseat-driver[calva-backseat-driver] https://github.com/BetterThanTomorrow/calva-backseat-driver/blob/master/CHANGELOG.md[0.0.34] - VS Code AI Agent Interactive Programming. Tools for CoPIlot and other assistants. Can also be used as an MCP server.
+* https://github.com/plumce/plumcp[plumcp] https://github.com/plumce/plumcp/blob/main/CHANGELOG.md[0.2.1] - Clojure/ClojureScript library for making MCP server and client
+* https://github.com/weavejester/teensyp[teensyp] https://github.com/weavejester/teensyp/commits/0.5.0[0.5.0] - A small, zero-dependency Clojure TCP server that uses Java NIO
+* https://github.com/seancorfield/build-uber-log4j2-handler[build-uber-log4j2-handler] https://github.com/seancorfield/build-uber-log4j2-handler/releases/tag/v2.26.0[2.26.0] - A conflict handler for log4j2 plugins cache files for the tools.build uber task.
+* https://github.com/phel-lang/phel-lang[phel-lang] https://github.com/phel-lang/phel-lang/blob/main/CHANGELOG.md[0.39.0] - A functional, Lisp-inspired language that compiles to PHP. Inspired by Clojure, Phel brings macros, persistent data structures, and expressive functional idioms to the PHP ecosystem.
+* https://github.com/hlship/dexter[dexter] https://github.com/hlship/dexter/blob/main/CHANGES.md[0.1-beta-2] - Dexter - Graphical Dependency Explorer
+* https://github.com/scicloj/plotje[plotje] https://github.com/scicloj/plotje/blob/main/CHANGELOG.md[0.2.2] - simple and easy plotting

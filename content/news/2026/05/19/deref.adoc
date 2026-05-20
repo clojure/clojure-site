@@ -123,7 +123,7 @@ Debut release
 * https://github.com/mlimotte/gsheetplus[gsheetplus] - Low-level and high-level wrapper to work with Google Sheets.  Reading, writing and sheet management.
 * https://github.com/coconutpalm/winze[winze] - An agentic AI memory system (mcp server) with semantic search and GUI search/edit tool for Markdown knowledge bases
 * https://github.com/vlaaad/ghosttyfx[ghosttyfx] - JavaFX terminal that uses libghostty
-* https://github.com/cljfx/ghosttyfx[ghosttyfx] - Cljfx wrapper of GhosttyFX
+* https://github.com/cljfx/ghosttyfx[cljfx/ghosttyfx] - Cljfx wrapper of GhosttyFX
 * https://github.com/tompassarelli/beagle[beagle] - a typed Lisp authoring surface for agent-written dynamic code.
 * https://github.com/dynamic-alpha/ducktape[ducktape] - Connect tech.v3.dataset to DuckDB
 * https://github.com/phel-lang/phel-log[phel-log] - Data-driven logging library for Phel. Levels, namespace filtering, pluggable appenders, PSR-3 adapter, Monolog handler bridge. Inspired by Timbre + Monolog.

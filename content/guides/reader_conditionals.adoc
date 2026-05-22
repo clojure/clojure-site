@@ -20,7 +20,7 @@ There are two types of reader conditionals, standard and splicing. The standard 
 ----
 #?(:clj  (Clojure expression)
    :cljs (ClojureScript expression)
-   :cljr (Clojure CLR expression)
+   :cljr (ClojureCLR expression)
    :default (fallthrough expression))
 ----
 

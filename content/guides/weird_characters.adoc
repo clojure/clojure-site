@@ -785,7 +785,7 @@ to share common code. The reader conditional behaves similarly to a traditional
 ----
 #?(:clj  (Clojure expression)
    :cljs (ClojureScript expression)
-   :cljr (Clojure CLR expression)
+   :cljr (ClojureCLR expression)
    :default (fallthrough expression))
 ----
 

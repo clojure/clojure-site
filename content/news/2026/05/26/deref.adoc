@@ -1,0 +1,105 @@
+= Clojure Deref (May 26, 2026)
+Christoph Neumann
+2026-05-26
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]).
+
+
+== Upcoming Events
+
+* https://events.zoom.us/ej/AgQnbGZ2gHKSfaaK8VbMzuat4S_o4P0hvVaFUNpwK3Ycdz_qYC-M~A6AQtPQ6_waegqWW-ftGKM6GXTk00vbRM-MskoduiYi3-33z1P-aZshnfv4Cw[Clojure Guild: Building Command Line Tools with lambdaisland/CLI/Babashka]: May 28
+* https://www.meetup.com/clojure-br/events/314707651/[Clojure BR: Brazilian Utils com Ana Bastos]: May 28
+* https://clojureverse.org/t/clojure-real-world-data-60/[Clojure real-world-data 60]: May 29
+* https://2026.clojure-conj.org/[Clojure/Conj 2026]: Sep 30-Oct 2. Charlotte, NC, USA. https://2026.clojure-conj.org/cfp[CFP is open] until June 14. https://2026.clojure-conj.org/[Early Bird tickets].
+* https://2027.euroclojure.org/[EuroClojure 2027]: May 19-21, 2027. Prague, Czech Republic. https://forms.gle/JjzsY6n25oSCUMas6[Join the mailing list]
+
+
+== Podcasts, videos, and media
+
+* https://youtu.be/uvTBdDIHTKE[Clojure Dev Team Call, May 2026] - ClojureTV
+* https://youtu.be/f5uXy4MgnZk[Programming as and for Inference (by Christian Weilbach)] - London Clojurians
+* https://youtu.be/0s-sXxpcoIA[DOOM-lite written in Phel Lang running entirely in the terminal | Chemaclass] - Chemaclass
+* https://youtu.be/l69Mz06u0S4[Finding File's MIME Type, Using Apache Tika, in Clojure] - Clojure Diary
+* https://youtu.be/Le1HOyKnxWY[Swish: Using Claude Code to Create a Lisp in Swift - destructuring & more core] - Rod Schmidt
+
+Babashka Conf
+
+* https://www.youtube.com/playlist?list=PLaN-rC-CjQqCClhXmwzE7XhGWbrbB-A7u[Full Playlist for Babashka Conf 2026]
+
+* https://youtu.be/ybQ0Osgfzso[Go for Clojure programmers - Rahul De] - Babashka-tv
+* https://youtu.be/IYY_loaWi7U[Flower, a static site generator with a clojure template language - Jynn Nelson] - Babashka-tv
+* https://youtu.be/JjBJFsnplMg[Easy Made Complex - Josh Glover] - Babashka-tv
+* https://youtu.be/K74rOJtFIeY[More with Less - David Nolen] - Babashka-tv
+
+Mike Møller Nielsen
+
+* https://youtu.be/IuasIg6lIUo[Clojure when and how to use Sets] - Mike Møller Nielsen
+* https://youtu.be/MPGOfJboXys[Clojure Multiarity functions] - Mike Møller Nielsen
+* https://youtu.be/GdAaDmdUQgc[Clojure Variadic function] - Mike Møller Nielsen
+* https://youtu.be/3S3wQ0ldIKs[Clojure Anonymous Functions] - Mike Møller Nielsen
+
+
+== Blogs, articles, and news
+
+* https://spec.nrepl.org/[nREPL Protocol – spec] - Bozhidar Batsov
+* https://batsov.com/articles/2026/05/20/neat-a-language-agnostic-nrepl-client-for-emacs/[neat: a language-agnostic nREPL client for Emacs] - Bozhidar Batsov
+* https://batsov.com/articles/2026/05/20/nrepl-forever/[nREPL Forever] - Bozhidar Batsov
+* https://clojurebr.substack.com/p/nth-concat-9[(nth (concat) 9)] - Ana Carolina, Arthur Fücher
+* https://clofer.codeberg.page/2026/05/23/learing-path-to-create-clofer.html[Learning Path to create Clofer] - Karthikeyan A K
+* https://orgpad.info/blog/implementing-dark-mode[Implementation of Dark Mode in OrgPad] - Pavel Klavík, Kamila Klavíková
+* https://clojurecivitas.org/mlp/main.html[Machine learning using Clojure, libpython-clj2, and Pytorch – Clojure Civitas] - Jan Wedekind
+* https://rockyj-blogs.web.app/2026/05/26/clojure-htmx-pipeline.html[Simple Apps with Clojure, HTMX and Pipelines] - Rocky Jaiswal
+
+== Libraries and Tools
+
+Debut release
+
+* https://github.com/lambdaisland/ring-node-adapter[ring-node-adapter] - Ring adapter for Node.js
+* https://github.com/nrepl/neat[neat] - A small, language-agnostic nREPL client for Emacs
+* https://github.com/ertugrulcetin/code-bubble[code-bubble] - A Clojure dev-time UI inspired by Code Bubbles
+* https://github.com/awkay/clj-code-search[clj-code-search] - Per-function semantic index for Clojure/CLJS, exposed as a code-search CLI for AI coding agents.
+* https://github.com/Chemaclass/phel-doom[phel-doom] - Terminal DOOM-lite raycaster built in Phel (Lisp on PHP). 256-color ANSI, 5 procedural levels — a real-world Phel showcase app.
+* https://github.com/gloathub/gojava[gojava] - A Go reimplementation of selected parts of the Java standard library
+* https://github.com/xlisp/clojure-android[clojure-android] - The Clojure programming language for Android
+* https://github.com/xlisp/clojure-android-demo[clojure-android-demo] - Clojure Android Demo
+* https://github.com/replikativ/muschel[muschel] - Bash interpreter with git-like memory and fine grained access control.
+* https://github.com/fulcrologic/fulcro-tui[fulcro-tui] - A JLine-base TUI wrapper, allowing you to write TUI projects in CLJ or Babashka via Fulcro
+
+Updates
+
+* https://github.com/clojure/core.unify[core.unify] https://github.com/clojure/core.unify/commits/v0.7.3[0.7.3] - Unification library
+* https://github.com/clojure/tools.gitlibs[tools.gitlibs] https://github.com/clojure/tools.gitlibs/blob/master/CHANGELOG.md[2.6.217] - API for retrieving, caching, and programatically accessing git libraries
+* https://github.com/lambdaisland/glogi[glogi] https://github.com/lambdaisland/glogi/releases/tag/v1.4.177[1.4.177] - A ClojureScript logging library based on goog.log
+* https://git.sr.ht/~jomco/openapi-v3-validator[openapi-v3-validator] 0.2.7 - A pure-clojure library for validating ring requests & responses against OpenAPI v3 specifications.
+* https://github.com/monkey-projects/mailman[mailman] https://github.com/monkey-projects/mailman/commits/0.4.0[0.4.0] - Simple event routing library
+* https://github.com/clojure-emacs/refactor-nrepl[refactor-nrepl] https://github.com/clojure-emacs/refactor-nrepl/blob/master/CHANGELOG.md[3.13.0] - nREPL middleware to support refactorings in an editor agnostic way
+* https://github.com/fulcrologic/fulcro-spec[fulcro-spec] https://github.com/fulcrologic/fulcro-spec/blob/main/CHANGELOG.md[3.2.10] - A library that wraps clojure.test for a better BDD testing experience.
+* https://github.com/mpenet/drip[drip] https://github.com/mpenet/drip/commits/1.0.0-alpha41[1.0.0-alpha41] - Drip is a transactional job queue for MariaDB, PostgreSQL, and SQLite
+* https://github.com/cursive-ide/cursive[cursive] https://cursive-ide.com/blog/cursive-2026.2-eap1.html[2026.2-eap1] - Cursive: The IDE for beautiful Clojure code
+* https://github.com/cnuernber/dtype-next[dtype-next] https://github.com/cnuernber/dtype-next/blob/master/CHANGELOG.md[11.022] - A Clojure library designed to aid in the implementation of high performance algorithms and systems.
+* https://github.com/techascent/tech.ml.dataset[tech.ml.dataset] https://github.com/techascent/tech.ml.dataset/blob/master/CHANGELOG.md[8.023] - A Clojure high performance data processing system
+* https://github.com/seancorfield/rephrase[rephrase] https://github.com/seancorfield/rephrase/blob/main/CHANGELOG.md[1.0.2] - Rephrase exceptions to be more beginner-friendly
+* https://github.com/avanelsas/bareforge[bareforge] https://github.com/avanelsas/bareforge/releases/tag/v0.7.0[0.7.0] - Companion visual builder for BareDOM web components. Drag components, declare reactive state, export fully interactive CLJS or JS project
+* https://github.com/fulcrologic/statecharts[statecharts] https://github.com/fulcrologic/statecharts/blob/main/CHANGELOG[1.4.0-RC16] - A Statechart library for CLJ(S)
+* https://github.com/replikativ/stratum[stratum] https://github.com/replikativ/stratum/blob/main/CHANGELOG.md[0.3.72] - Versioned, fast and scalable columnar database.
+* https://github.com/weavejester/teensyp[teensyp] https://github.com/weavejester/teensyp/commits/0.5.4[0.5.4] - A small, zero-dependency Clojure TCP server that uses Java NIO
+* https://github.com/donut-party/generate[generate] https://github.com/donut-party/generate/blob/main/CHANGELOG.md[1.0.57] - code generation for Clojure projects
+* https://github.com/dazld/r11y[r11y] https://github.com/dazld/r11y/releases/tag/v1.0.7[1.0.7] - CLI tool for extracting URLs as Markdown
+* https://github.com/babashka/cli[cli] https://github.com/babashka/cli/releases/tag/v0.9.68[0.9.68] - Turn Clojure functions into CLIs!
+* https://github.com/borkdude/html[html] https://github.com/borkdude/html/releases/tag/v0.2.4[0.2.4] - Html generation library inspired by squint's html tag
+* https://github.com/seancorfield/next-jdbc[next-jdbc] https://github.com/seancorfield/next-jdbc/releases/tag/v1.3.1108[1.3.1108] - A modern low-level Clojure wrapper for JDBC-based access to databases.
+* https://github.com/sunng87/ring-jetty9-adapter[ring-jetty9-adapter] https://github.com/sunng87/ring-jetty9-adapter/commits/0.39.4[0.39.4] - An enhanced version of jetty adapter for ring, with additional features like websockets, http/2 and http/3
+* https://github.com/Blockether/svar[svar] https://github.com/Blockether/svar/blob/main/CHANGELOG.md[0.5.9] - Type‑safe LLM output for Clojure. Works with any text‑only model.
+* https://github.com/babashka/neil[neil] https://github.com/babashka/neil/releases/tag/v0.3.70[0.3.70] - A CLI to add common aliases and features to deps.edn-based projects
+* https://github.com/gloathub/gloat[gloat] https://github.com/gloathub/gloat/releases/tag/v0.1.44[0.1.44] - Glojure AOT Tool
+* https://github.com/taoensso/encore[encore] https://github.com/taoensso/encore/blob/master/CHANGELOG-template.md[3.161.0] - Core utils library for Clojure/Script
+* https://github.com/clj-kondo/clj-kondo[clj-kondo] https://github.com/clj-kondo/clj-kondo/releases/tag/v2026.05.25[2026.05.25] - Static analyzer and linter for Clojure code that sparks joy
+* https://github.com/phel-lang/phel-lang[phel-lang] https://github.com/phel-lang/phel-lang/releases/tag/v0.40.0[0.40.0] - A functional, Lisp-inspired language that compiles to PHP. Inspired by Clojure, Phel brings macros, persistent data structures, and expressive functional idioms to the PHP ecosystem.
+* https://github.com/replikativ/spindel[spindel] 0.1.13 - Cross-platform FRP runtime with a git-like memory model.
+* https://github.com/RokLenarcic/memento[memento] https://github.com/RokLenarcic/memento/blob/master/CHANGELOG.md[2.1.74] - Clojure Memoization project
+* https://github.com/avanelsas/baredom[baredom] https://github.com/avanelsas/baredom/releases/tag/v3.3.0[3.3.0] - BareDOM: Lightweight CLJS UI components built on web standards (Custom Elements, Shadow DOM, ES modules). No framework, just the DOM
+* https://github.com/fulcrologic/fulcro[fulcro] https://github.com/fulcrologic/fulcro/blob/main/CHANGELOG.md[3.10.0-RC1] - A library for development of single-page full-stack web applications in clj/cljs
+

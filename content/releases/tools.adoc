@@ -22,6 +22,13 @@ For more information see the following docs:
 
 Recent official releases are described here. Prereleases and older versions can be found in the https://github.com/clojure/brew-install/blob/1.12.4/CHANGELOG.md[repo changelog].
 
+=== 1.12.5.1654 (May 28, 2026) [[v1.12.5.1654]]
+
+* HTTP downloads should now properly handle Maven Central throttling requests (via 429 responses)
+* CLI download size is \~15% smaller
+* NOTE: S3 repository downloads now require Java 11+, downloads from s3:// repository urls will now fail on Java 8
+* Fix NPE on git tag retrieval if repo has no tags
+
 === 1.12.5.1645 (May 14, 2026) [[v1.12.5.1645]]
 
 * TDEPS-279 Set aether.connector.userAgent to ClojureCLI for the CLI dep expansion

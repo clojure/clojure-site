@@ -26,7 +26,7 @@ Recent official releases are described here. Prereleases and older versions can 
 
 * HTTP downloads should now properly handle Maven Central throttling requests (via 429 responses)
 * CLI download size is \~15% smaller
-* NOTE: S3 repository downloads now require Java 11+, downloads from s3:// repository urls will now fail on Java 8
+* NOTE: S3 repository downloads now require Java 11+, downloads from s3:// repository urls will fail on Java 8
 * Fix NPE on git tag retrieval if repo has no tags
 
 === 1.12.5.1645 (May 14, 2026) [[v1.12.5.1645]]

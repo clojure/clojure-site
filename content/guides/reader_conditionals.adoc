@@ -119,7 +119,7 @@ Here is another example, we want to be able to use the `rethinkdb.query` namespa
 
 == Exception handling
 
-Exception handling is another area that benefits from reader conditionals. ClojureScript supports `(catch :default)` to catch everything, however you will often still want to handle host specific exceptions. Here's an https://github.com/runexec/lemon-disc/blob/c24c6638f1d476a0f5470387e52a2b702117c4a9/src/lemon_disc/core.cljc#L65-L72[example] from https://github.com/runexec/lemon-disc[lemon-disc].
+Exception handling is another area that benefits from reader conditionals. ClojureScript supports `(catch :default)` to catch everything, however you will often still want to handle host specific exceptions. Here's an example:
 
 [source,clojure]
 ----

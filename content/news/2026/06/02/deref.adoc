@@ -1,0 +1,95 @@
+= Clojure Deref (Jun 2, 2026)
+Christoph Neumann
+2026-06-02
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]).
+
+
+== Upcoming Events
+
+* https://clojureverse.org/t/clojure-real-world-data-61/[Clojure real-world-data 61]: Jun 5
+* https://2026.clojure-conj.org/[Clojure/Conj 2026]: Sep 30-Oct 2. Charlotte, NC, USA. https://2026.clojure-conj.org/cfp[CFP is open] until June 14. https://2026.clojure-conj.org/[Early Bird tickets].
+* https://2027.euroclojure.org/[EuroClojure 2027]: May 19-21, 2027. Prague, Czech Republic. https://forms.gle/JjzsY6n25oSCUMas6[Join the mailing list]
+
+
+== Podcasts, videos, and media
+
+* https://youtu.be/SqoFY0bQJDQ[Building Command Line Tools with lambdaisland/CLI/Babashka - Arne Brasseur] - ClojureTV
+* https://youtu.be/lUFSpPWpBsw[Clojure Corner: Interview with Timothy Pratley] - Flexiana
+* https://youtu.be/N1lpP13iLWY[Cross-rendering TUI to Web using charm.clj + Hyperlith] - Kyle S Passarelli
+* https://youtu.be/hkN676LFfvE[Swish: Using Claude Code to Create a Lisp in Swift - sequence utils] - Rod Schmidt
+* https://youtu.be/aVcTWrnw5Wg[HumbleUIMiniIDE.Lesson1] - Руслан Сорокин
+* https://youtu.be/1GceJ_KvfRA[HumbleUMiniIDELesson2] - Руслан Сорокин
+
+== Blogs, articles, and news
+
+* https://clojure.cc/[Clojure & Co: Discover, compare and try out dialects from the Clojure family of languages.] - Ingy döt Net
+* https://clojurecivitas.org/art/gen_svg/kolam.html[Designing Kolam in Clojure Through Visit Order and Tangency – Clojure Civitas] - Timothy Pratley
+* https://www.mikkokoski.com/blog/jj-heart-standard-clj/index.html[jj fix 🩷 standard-clj] - Mikko Koski
+* https://www.acdw.net/clojure/[My thoughts after using Clojure for about a month] - Case Duckworth
+* https://blog.redplanetlabs.com/2026/05/28/teaching-llms-to-one-shot-complex-backends-at-scale-report-1/[Teaching LLMs to one-shot complex backends at scale, report #1] - Nathan Marz
+* https://datahike.io/notes/data-governance-in-versioned-systems/[Data Governance in Versioned Systems] - Christian Weilbach
+* https://github.com/squint-cljs/squint/blob/main/doc/browser-repl.md[Squint Browser REPL] - Michiel Borkent
+* https://colourcoding.net/2026/05/30/cljs-ajax-0-9-0-beta1-is-out/[cljs-ajax 0.9.0-beta1 is out] - Julian Birch
+* https://flarework.com/posts-output/2026-05-30-r11y-html-to-markdown-cli[Fast HTML-to-Markdown extraction from any URL, for LLMs (r11y)] - Dan Peddle
+* https://jank-lang.org/blog/2026-06-01-optimization/[Tracing rays with jank] - Jeaye Wilkerson
+* https://www.bigconfig.ai/blog/agent-written-bigconfig-rewrite/[I Deleted the Hand-Written Version of BigConfig] - Alberto Miorin
+* https://handwritten.danieljanus.pl/2026-06-01-edsger.html[Edsger – a remarkable Clojure REPL] - Daniel Janus
+* https://clofer.codeberg.page/2026/05/28/started-learning-rust.html[Started Learning Rust] - Karthikeyan A K
+
+== Libraries and Tools
+
+Debut release
+
+* https://github.com/lipchanskiy/repl-agent[repl-agent] - An MCP server that gives AI agents direct access to a live Clojure nREPL session
+* https://github.com/danieltanfh95/continuity-auth[continuity-auth] - Respect-weighted rate limits for the open web
+* https://github.com/cloudkj/lambda-sketch[lambda-sketch] - Probabilistic data structures and sketching algorithms in Clojure
+* https://github.com/babashka/pod-babashka-gozxing[pod-babashka-gozxing] - A babashka pod for reading and writing QR codes, backed by the Go library gozxing (a port of ZXing).
+* https://codeberg.org/nathell/edsger[edsger] - A reMarkable handwritten almost-Clojure REPL
+* https://github.com/replikativ/katzen[katzen] - Generalized algebraic theories and categorical programming for Clojure.
+
+Updates
+
+* https://github.com/clojure/tools.build[tools.build] https://github.com/clojure/tools.build/blob/master/CHANGELOG.md[0.10.14] - Clojure builds as Clojure programs
+* https://clojure.org/reference/clojure_cli[clojure_cli] https://clojure.org/releases/tools#v1.12.5.1654[1.12.5.1654] - Clojure CLI
+* https://github.com/clojure/tools.deps[tools.deps] https://github.com/clojure/tools.deps/blob/master/CHANGELOG.md[0.31.1629] - Deps as data and classpath generation
+* https://github.com/borkdude/deps.clj[deps.clj] https://github.com/borkdude/deps.clj/blob/master/CHANGELOG.md[1.12.5.1654] - A faithful port of the clojure CLI bash script to Clojure
+* https://github.com/RokLenarcic/memento-redis[memento-redis] https://github.com/RokLenarcic/memento-redis/blob/main/CHANGELOG[2.0.33] - Memento cache backed by Redis
+* https://github.com/sstraust/deft[deft] 0.1.5 - A collection of macros designed to address issues with objects in Clojure.
+* https://github.com/multiplyco/quiescent[quiescent] https://github.com/multiplyco/quiescent/blob/main/CHANGELOG.md[0.2.6] - A Clojure library for composable async tasks with automatic parallelization, structured concurrency, and parent-child and chain cancellation
+* https://github.com/weavejester/teensyp[teensyp] https://github.com/weavejester/teensyp/commits/0.5.5[0.5.5] - A small, zero-dependency Clojure TCP server that uses Java NIO
+* https://github.com/SURFnet/apie[apie] https://github.com/SURFnet/apie/blob/main/changelog.md[1.0.2] - Apie 🙈 OpenAPI Service Validator
+* https://github.com/fulcrologic/fulcro-rad[fulcro-rad] https://github.com/fulcrologic/fulcro-rad/blob/main/CHANGELOG.md[1.6.24] - Fulcro Rapid Application Development
+* https://github.com/fulcrologic/statecharts[statecharts] https://github.com/fulcrologic/statecharts/blob/main/CHANGELOG[1.4.0-RC18] - A Statechart library for CLJ(S)
+* https://github.com/fulcrologic/guardrails[guardrails] https://github.com/fulcrologic/guardrails/blob/main/CHANGELOG.md[1.3.2] - Efficient, hassle-free function call validation with a concise inline syntax for clojure.spec and Malli
+* https://github.com/coconutpalm/clojure-desktop-toolkit[clojure-desktop-toolkit] https://github.com/coconutpalm/clojure-desktop-toolkit/blob/main/docs/new-and-noteworthy/version-0.7.0.md[0.7.0] - Create native state-of-the-art desktop applications in Clojure using Eclipse's SWT graphics toolkit.
+* https://github.com/datalevin/datalevin[datalevin] https://github.com/datalevin/datalevin/blob/master/CHANGELOG.md[0.10.18] - A simple, fast and versatile Datalog database
+* https://github.com/magnars/optimus[optimus] https://github.com/magnars/optimus/commits/2026.05.27[2026.05.27] - A Ring middleware for frontend performance optimization.
+* https://github.com/lambdaisland/cli[cli] https://github.com/lambdaisland/cli/releases/tag/v1.30.130[1.30.130] - Opinionated command line argument handling, with excellent support for subcommands
+* https://github.com/grid-coordination/clj-oa3[clj-oa3] https://github.com/grid-coordination/clj-oa3/blob/main/CHANGELOG.md[0.4.0] - Clojure client library for OpenADR 3 (Martian HTTP, entity coercion, Malli schemas)
+* https://github.com/Blockether/svar[svar] https://github.com/Blockether/svar/blob/main/CHANGELOG.md[0.7.0] - Type‑safe LLM output for Clojure. Works with any text‑only model.
+* https://github.com/djblue/portal[portal] https://github.com/djblue/portal/releases/tag/0.65.0[0.65.0] - A clojure tool to navigate through your data.
+* https://github.com/simm-is/partial-cps[partial-cps] 0.1.55 - A lean and efficient continuation passing style transform, includes async-await support.
+* https://github.com/replikativ/spindel[spindel] https://github.com/replikativ/spindel/commits/v0.1.15[0.1.15] - Cross-platform FRP runtime with a git-like memory model.
+* https://github.com/JulianBirch/cljs-ajax[cljs-ajax] https://github.com/JulianBirch/cljs-ajax/blob/master/CHANGES.md[0.9.0-beta1] - simple asynchronous Ajax client for ClojureScript and Clojure
+* https://github.com/seancorfield/deps-new[deps-new] https://github.com/seancorfield/deps-new/releases/tag/v0.12.2[0.12.2] - Create new projects for the Clojure CLI / deps.edn
+* https://github.com/cljfx/ghosttyfx[ghosttyfx] 0.1.169.11 - Cljfx wrapper of GhosttyFX
+* https://github.com/igrishaev/pg2[pg2] https://github.com/igrishaev/pg2/blob/master/CHANGELOG.md[0.1.49] - A fast PostgreSQL driver for Clojure
+* https://github.com/nooga/let-go[let-go] https://github.com/nooga/let-go/releases/tag/v1.9.0[1.9.0] - Almost Clojure written in Go.
+* https://github.com/mlimotte/gsheetplus[gsheetplus] 1.1.3 - Low-level and high-level wrapper to work with Google Sheets.  Reading, writing and sheet management.
+* https://github.com/phel-lang/phel-lang[phel-lang] https://github.com/phel-lang/phel-lang/releases/tag/v0.41.0[0.41.0] - A functional, Lisp-inspired language that compiles to PHP. Inspired by Clojure, Phel brings macros, persistent data structures, and expressive functional idioms to the PHP ecosystem.
+* https://github.com/cryogen-project/cryogen[cryogen] https://github.com/cryogen-project/cryogen/blob/master/CHANGELOG.md[0.7.9] - A simple static site generator written in Clojure
+* https://github.com/yogthos/Selmer[Selmer] https://github.com/yogthos/Selmer/blob/master/changes.md[1.13.4] - A fast, Django inspired template system in Clojure.
+* https://github.com/fulcrologic/fulcro-tui[fulcro-tui] https://github.com/fulcrologic/fulcro-tui/blob/main/CHANGELOG.adoc[1.0.2] - A JLine-base TUI wrapper, allowing you to write TUI projects in CLJ or Babashka via Fulcro
+* https://github.com/scicloj/plotje[plotje] https://github.com/scicloj/plotje/blob/main/CHANGELOG.md[0.3.1] - simple and easy plotting
+* https://github.com/squint-cljs/squint[squint] https://github.com/squint-cljs/squint/releases/tag/v0.12.193[0.12.193] - Light-weight ClojureScript dialect
+* https://github.com/lukaszkorecki/mokujin[mokujin] 1.0.0.120 - 🪵 Structured logging for Clojure. Thin layer on top of clojure.tools.logging with MDC support
+* https://github.com/DotFox/edn.c[edn.c] https://github.com/DotFox/edn.c/commits/8c0869c197fb4f452eac58353569198a8860feb8[8c0869c] - A fast, zero-copy EDN (Extensible Data Notation) reader written in C11 with SIMD acceleration.
+* https://github.com/taoensso/nippy[nippy] https://github.com/taoensso/nippy/releases/tag/v3.7.0-RC2[3.7.0-RC2] - Fast serialization library for Clojure
+* https://github.com/gersak/tyrell[tyrell] https://github.com/gersak/tyrell/blob/master/CHANGELOG.md[1.0.0-RC10] - Clojurescript WebComponents library
+* https://github.com/walmartlabs/lacinia[lacinia] https://github.com/walmartlabs/lacinia/blob/master/CHANGES.md[1.3.0] - GraphQL implementation in pure Clojure
+* https://github.com/nnichols/clojure-lint-action[clojure-lint-action] https://github.com/nnichols/clojure-lint-action/releases/tag/v9[9] - A GitHub Action that lints clojure files with clj-kondo and generates comments with reviewdog on pull requests to improve the code review experience.
+* https://github.com/cjohansen/dataspex[dataspex] https://github.com/cjohansen/dataspex/commits/v2026.06.1[2026.06.1] - See the shape of your data: point-and-click Clojure(Script) data browser

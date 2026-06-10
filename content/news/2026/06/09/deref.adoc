@@ -1,0 +1,116 @@
+= Clojure Deref (Jun 9, 2026)
+Christoph Neumann
+2026-06-09
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]).
+
+
+== Clojure/Conj CFP Closing
+
+Less than one week to submit a talk for the 2026 Clojure/Conj. Don't miss your chance!
+
+https://2026.clojure-conj.org/cfp[Apply to the CFP]
+
+https://2026.clojure-conj.org/[Clojure/Conj 2026] is Sep 30 - Oct 2 in Charlotte, NC, USA.
+
+
+== Selected Highlights
+
+Squint added a
+https://github.com/squint-cljs/squint/blob/main/doc/browser-repl.md[browser REPL].
+Go beyond hot-reloading your Squint code. Now you can eval on the live page
+over nREPL. Try it out!
+
+https://github.com/jolt-lang/jolt[Jolt] takes
+https://github.com/borkdude/sci[SCI] to new places: the Janet runtime. If you
+like Janet's lightweight runtime, but you want a full Clojure dialect, you
+might be interested in trying the early version.
+
+Do you want to run Clojure in outer space? Why not fly it there yourself? Check
+out https://wedesoft.github.io/sfsim/[sfsim]. It aims to be a realistic 3D
+space flight similator. See if you can take off, orbit the planet, make it home
+safe, and live to code another day.
+
+Who needs Twitch when you can just
+https://www.youtube.com/watch?v=h-z3W0Yvi2c[stream your terminal to the web]?
+Try https://github.com/kpassapk/atomstream[Atomstream]. To use it, swap
+out https://github.com/timokramer/charm.clj[charm.clj], launch your application
+in the terminal, and watch all your TUI goodness dance before your eyes in the
+browser.
+
+https://github.com/DotFox/edn.c[EDN] and
+https://github.com/DotFox/transit.c[Transit] in C? Was that on your bingo card
+for 2026? Perhaps not, but if you're in the market for a native,
+high-performance, dependency-free implementation, you may want to take a look.
+
+
+
+== Upcoming Events
+
+* https://www.meetup.com/los-angeles-clojure-users-group/events/315120243/[Collaborative Learning - Datalevin]: Jun 10
+* https://2026.clojure-conj.org/[Clojure/Conj 2026]: Sep 30-Oct 2. Charlotte, NC, USA. https://2026.clojure-conj.org/cfp[CFP is open] until June 14. https://2026.clojure-conj.org/[Early Bird tickets].
+* https://2027.euroclojure.org/[EuroClojure 2027]: May 19-21, 2027. Prague, Czech Republic. https://forms.gle/JjzsY6n25oSCUMas6[Join the mailing list]
+
+
+== Podcasts, videos, and media
+
+* https://youtu.be/h-z3W0Yvi2c[Announcing Atomstream] - Kyle S Passarelli
+* https://youtu.be/1AnlNL0gok0[Clojure If Do When] - Mike Møller Nielsen
+* https://github.com/mapidentity/parens-to-production#demo[Demo: See the Hiccup source for any UI element] - Patrick de Kruif
+* https://youtu.be/sxltGIOxBHM[Swish: Using Claude Code to Create a Lisp in Swift - lazy seqs & more] - Rod Schmidt
+* https://youtu.be/fx_AWjHuKRY[Apropos with Adrian Smith June 9, 2026] - apropos clojure
+
+
+== Blogs, articles, and news
+
+* https://www.metabase.com/blog/improving-performance-clojure-development-tools[Improving the performance of the popular Clojure development tool clojure-lsp] - Sashko Yakushev
+* https://andersmurphy.com/2026/06/05/the-perils-of-uuid-primary-keys-in-sqlite.html[The perils of UUID primary keys in SQLite] - Anders Murphy
+* https://mapidentity.github.io/parens-to-production/11-inspector.html[A Bidirectional Source Inspector for Server-Rendered Hiccup] - Patrick de Kruif
+* https://biffweb.com/p/core/[New library: biff.core] - Jacob O'Bryant
+* https://oss.toyokumo.co.jp/#%E6%9C%AC%E5%B9%B4%E5%BA%A6%E3%81%AE%E9%81%B8%E8%80%83%E7%B5%90%E6%9E%9C[Thanks OSS Award given to Clojure MCP and next.jdbc] - Toyokumo
+* https://tangrammer.codeberg.page/on-the-clojure-move/output/posts/difference-trust.html[Imagine a Difference You Could Trust] - Juan Antonio Ruz
+* https://buffer.com/resources/we-built-a-custom-workflow-with-the-buffer-api-and-tripled-our-x-impressions/[We Built a Custom Workflow with the Buffer API — and Tripled Our X Impressions] - Anthony Franco
+
+== Libraries and Tools
+
+Debut release
+
+* https://github.com/jolt-lang/jolt[jolt] - A Clojure interpreter running on Janet
+* https://github.com/wedesoft/sfsim[sfsim] - Space flight simulator (under development)
+* https://github.com/rschmukler/magit-difftastic[magit-difftastic] - Integrate difftastic into magit
+* https://github.com/kpassapk/atomstream[atomstream] - Cross-render TUIs to the Web
+* https://github.com/DotFox/transit.c[transit.c] - A data interchange format and set of libraries for conveying values between applications written in different programming languages.
+* https://github.com/replikativ/kontor[kontor] - A trans-national accounting kernel with modules for all business aspects.
+* https://github.com/mapidentity/parens-to-production[parens-to-production] - How to build your next Clojure application with SSR with Datomic
+* https://github.com/jramosg/jon-nested-menu[jon-nested-menu] - Nested MUI menus for Reagent/ClojureScript and React: a dropdown, a right-click context menu, per-item icons, custom labels and keyboard navigation.
+* https://github.com/jacobobryant/biff/tree/v2.x/libs/core[biff.core] - Defines the interfaces and code that connect all the other Biff libs
+
+Updates
+
+* https://github.com/clojure/core.async[core.async] https://github.com/clojure/core.async/commits/v1.10.874-alpha3[1.10.874-alpha3] - Facilities for async programming and communication in Clojure
+* https://github.com/clojure/tools.deps.edn[tools.deps.edn] https://github.com/clojure/tools.deps.edn/blob/main/CHANGELOG.md[0.9.38] - Reader for deps.edn files
+* https://github.com/Blockether/spel[spel] https://github.com/Blockether/spel/releases/tag/v0.9.8[0.9.8] - Idiomatic Clojure wrapper for Playwright. Browser automation, API testing, Allure reporting, and native CLI - for Chromium, Firefox, and WebKit
+* https://github.com/replikativ/ansatz[ansatz] https://github.com/replikativ/ansatz/commits/0.1.22[0.1.22] - Dependently typed Clojure DSL with a Lean4 compatible kernel.
+* https://github.com/fulcrologic/guardrails[guardrails] https://github.com/fulcrologic/guardrails/blob/main/CHANGELOG.md[1.3.3] - Efficient, hassle-free function call validation with a concise inline syntax for clojure.spec and Malli
+* https://github.com/fulcrologic/fulcro-tui[fulcro-tui] https://github.com/fulcrologic/fulcro-tui/blob/main/CHANGELOG.adoc[1.0.2] - A JLine-base TUI wrapper, allowing you to write TUI projects in CLJ or Babashka via Fulcro
+* https://github.com/fulcrologic/fulcro-rad-tui[fulcro-rad-tui] 1.0.0-RC2 - UI Plugin for Terminal UI support in Fulcro RAD (fulcro-rad-statecharts)
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.590[2.0.590] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/marksto/clj-tg-bot-api[clj-tg-bot-api] 1.2.266 - 🤖 The latest Telegram Bot API spec and client lib for Clojure-based apps
+* https://github.com/clj-commons/aleph[aleph] https://github.com/clj-commons/aleph/blob/master/CHANGES.md[0.9.9] - Asynchronous streaming communication for Clojure - web server, web client, and raw TCP/UDP
+* https://github.com/seancorfield/rephrase[rephrase] https://github.com/seancorfield/rephrase/releases/tag/v1.0.3[1.0.3] - Rephrase exceptions to be more beginner-friendly
+* https://repo.prod.meissa.de/meissa/c4k-keycloak[c4k-keycloak] 2.1.0 - a kubernetes deployment for keycloak
+* https://github.com/phel-lang/phel-lang[phel-lang] https://github.com/phel-lang/phel-lang/releases/tag/v0.42.0[0.42.0] - A functional, Lisp-inspired language that compiles to PHP. Inspired by Clojure, Phel brings macros, persistent data structures, and expressive functional idioms to the PHP ecosystem.
+* https://github.com/BetterThanTomorrow/awesome-backseat-driver[awesome-backseat-driver] https://github.com/BetterThanTomorrow/awesome-backseat-driver/releases/tag/v1.0.15[1.0.15] - Plugin marketplace for Clojure AI context in GitHub Copilot: agents, skills, and workflows for REPL-first interactive programming with Calva Backseat Driver
+* https://github.com/sunng87/diehard[diehard] https://github.com/sunng87/diehard/releases/tag/0.12.1[0.12.1] - Clojure resilience library for flexible retry, circuit breaker and rate limiter
+* https://github.com/BetterThanTomorrow/calva-backseat-driver[calva-backseat-driver] https://github.com/BetterThanTomorrow/calva-backseat-driver/releases/tag/v0.0.35[0.0.35] - VS Code AI Agent Interactive Programming. Tools for CoPIlot and other assistants. Can also be used as an MCP server.
+* https://github.com/weavejester/teensyp[teensyp] https://github.com/weavejester/teensyp/commits/0.6.0[0.6.0] - A small, zero-dependency Clojure TCP server that uses Java NIO
+* https://github.com/replikativ/pg-datahike[pg-datahike] https://github.com/replikativ/pg-datahike/releases/tag/v0.1.44[0.1.44] - Postgres compatibility layer for Datahike.
+* https://github.com/hlship/cli-tools[cli-tools] https://github.com/hlship/cli-tools/blob/main/CHANGES.md[1.0.0] - CLIs and subcommands for Clojure or Babashka
+* https://github.com/Blockether/svar[svar] https://github.com/Blockether/svar/releases/tag/v0.7.11[0.7.11] - Type‑safe LLM output for Clojure. Works with any text‑only model.
+* https://github.com/seancorfield/honeysql[honeysql] https://github.com/seancorfield/honeysql/releases/tag/v2.7.1388[2.7.1388] - Turn Clojure data structures into SQL
+* https://github.com/babashka/cli[cli] https://github.com/babashka/cli/blob/main/CHANGELOG.md[0.11.70] - Turn Clojure functions into CLIs!
+* https://github.com/replikativ/yggdrasil[yggdrasil] https://github.com/replikativ/yggdrasil/commits/0.2.28[0.2.28] - Git-like, causal space-time lattice abstraction over systems supporting this memory model.
+* https://github.com/replikativ/spindel[spindel] https://github.com/replikativ/spindel/commits/v0.1.18[0.1.18] - Cross-platform FRP runtime with a git-like memory model.

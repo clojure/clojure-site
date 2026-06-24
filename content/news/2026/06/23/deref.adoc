@@ -1,0 +1,222 @@
+= Clojure Deref (Jun 23, 2026)
+Christoph Neumann
+2026-06-23
+:jbake-type: post
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+Welcome to the Clojure Deref! This is a weekly link/news roundup for the Clojure ecosystem (feed: https://clojure.org/feed.xml[RSS]).
+
+
+== Selected Highlights
+
+https://github.com/ring-clojure/ring[Ring] released v1.15.5 which contains a
+https://github.com/ring-clojure/ring/blob/master/CHANGELOG.md[security fix] for
+a regular expression denial of service (ReDoS) attack.
+
+https://github.com/babashka/sci[SCI] released v0.13.53 to
+https://github.com/babashka/sci/blob/master/CHANGELOG.md#01353-2026-06-20[fix a sandbox escape].
+SCI is the Small Clojure Interpreter used in
+https://github.com/babashka/babashka[babashka],
+https://github.com/babashka/nbb[nbb],
+https://github.com/nextjournal/clerk[clerk],
+https://github.com/BetterThanTomorrow/joyride/[joyride] and
+https://github.com/babashka/sci#projects-using-sci[other projects].
+
+If you like https://github.com/borkdude/reagami[Reagami], but you want even
+more pure data in your lightweight ClojureScript UIs, look no further. Team
+https://github.com/cjohansen/replicant[Replicant] combined powers with Team
+https://github.com/squint-cljs/squint[Squint] to bring
+https://github.com/squint-cljs/squint/tree/main/examples/replicant[your
+data-driven UIs into focus] by squinting, of course.
+
+And speaking of Squint, as of v0.13.194, lazy seqs got a big performance boost,
+and you can specify dependencies with `:git/sha` and `:local/root`. See
+https://github.com/squint-cljs/squint/blob/main/CHANGELOG.md#013194[all the
+details].
+
+Not to be outdone, thanks to a team assist, Replicant released v2026.06.1 to
+https://github.com/cjohansen/replicant/commit/b63d6ff33dbf2fd56f430802e3675ffb4f39e39c[fix
+a long standing annoyance] with tidying DOM nodes. Another team score for
+https://github.com/cjohansen[Christian Johansen] and
+https://github.com/borkdude[Michiel Borkent].
+
+Perhaps you're not fond of web UIs because your heart's been stolen by the CLI. Now
+you can tell your CLI, "you complete me." Quite literally!
+https://github.com/babashka/cli[Babashka CLI]
+added shell completions and automatic help. It's like Cupid fired a
+https://github.com/Tensegritics/ClojureDart[ClojureDart] right through the
+heart. Oh yes, Babashka CLI added support for that too.
+https://github.com/babashka/cli/blob/main/CHANGELOG.md#v01174-2026-06-23[See all the details.]
+
+Sometimes, you just don't want to talk. (It's not you, it's me!) In the spirit of
+rejection, https://github.com/taoensso/sente/[Sente] v1.22 added a
+https://github.com/taoensso/sente/releases/tag/v1.22.0-RC1[flexible connection
+rejection hook]. Try again later. Maybe.
+
+If you want to talk, NATS style, but you've been flummoxed by all that
+complicated stateful interop. No one saying what they really mean in plain
+data. Oh! Why do we play these games? Agonize no longer.
+https://github.com/lispyclouds/claxon[Claxon] is here to cut the drama and
+simplify your NATS messaging through a minimal, data-driven API with only one
+dependency. If only it could bring such simplicity and clarity to the
+complicated matters of the heart.
+
+Maybe you didn't say what you really meant? Perhaps it could be even better?
+Say it again, even faster with
+https://github.com/clj-commons/rewrite-clj[rewrite-clj] v1.2.55. It's the
+latest in a series of performance improvements. See
+https://github.com/clj-commons/rewrite-clj/blob/main/CHANGELOG.adoc[the changes].
+
+And if you want to go even faster, take a look at
+https://github.com/replikativ/raster[Raster]: fast numerical computing for
+Clojure that compiles down to JVM bytecode or Web Assembly (WASM). For some fun, play
+https://replikativ.github.io/raster/asteroids/[Astroids] or
+https://replikativ.github.io/raster/valley/[Valley].
+For something serious, look at
+https://github.com/replikativ/umap-rstr[Uniform Manifold Approximation and Projection]
+or https://github.com/replikativ/evoc-rstr[Embedding Vector Oriented Clustering].
+
+And speaking of WASM, what if your Clojure host was WASM itself? What if WASM
+was the lingua franca to let you call functions from Rust, Go, Zig, C or any
+other language that can target WASM?
+https://github.com/clojurewasm/ClojureWasm[ClojureWasm] is an experimental
+dialect to explore that future.
+
+Also on the young dialect front, https://github.com/jolt-lang/jolt[Jolt] has
+pivoted, yet again, to target https://cisco.github.io/ChezScheme/[Chez Scheme].
+Goodbye Janet. The heart is fickle. Chez is faster, with true threading, and
+easy access to native code, while still starting a lightweight runtime instantly.
+
+On the tried-and-true dialect front, if you're using https://calva.io/[Calva] for
+https://clojurescript.org/[ClojureScript] via
+https://github.com/thheller/shadow-cljs[shadow-cljs], Calva v2.0.592 has
+https://github.com/BetterThanTomorrow/calva/issues/3244[improved support for
+working with simultaneous runtimes]. It's particularly helpful when working
+with multiple devices at once.
+
+If you like to use Calva for AI-assisted coding,
+https://github.com/BetterThanTomorrow/calva-backseat-driver[Calva Backseat Driver] added
+https://github.com/BetterThanTomorrow/calva-backseat-driver/blob/master/CHANGELOG.md#v0037---2026-06-22[support for Cursor with zero config].
+
+
+Clojure is taking on Electronic Health Records (EHR). Have you suffered through
+EHR integrations? Have you told yourself,
+https://clojureverse.org/t/ehr-adapter-declarative-ehr-integrations-in-clojure/14934["There must be an easier way!"]
+Look no further than the https://github.com/SamuelCarriles/ehr-adapter[ehr-adapter].
+
+Do you use https://github.com/clj-python/libpython-clj[libpython-clj]
+as a bridge to PyTorch? Would you like to cut down on the boilerplate? Take a
+look at https://github.com/rthadani/clj-pytorch[clj-pytorch] to see how it can
+help.
+
+With all that important work getting done, don't forget to have a little fun with Clojure too.
+https://github.com/plexus[Arne Brasseur] started a list for
+https://github.com/plexus/awesome-creative-clojure[Awesome Creative Clojure]
+projects. Take a look. Better yet, go make something delightful and share it
+with the community. Perhaps you'll find yourself in the Deref too.
+
+
+== Clojure/Conj 2026
+
+Wednesday, September 30 is Workshop Day.
+
+This year, as a gift to the community, the full day of workshops are included
+at one low price starting at just $42!
+
+One morning + one afternoon session of your choice: Babashka, Datomic, Calva, AI tooling, and more.
+
+https://2026.clojure-conj.org/workshops[Get your Workshop Day pass] before the price goes up.
+
+Also, the room block at the
+https://www.hilton.com/en/attend-my-event/nubankclojureconj2026/[conference
+hotel is available now]! The group rate expires August 31.
+
+
+== Jank Survey
+
+
+https://github.com/jeaye[Jeaye Wilkerson] would like to get
+https://jank-lang.org/[jank] into your hands as soon as possible. How does that
+involve you? Help Jeaye by taking a short survey.
+
+https://forms.gle/MrooqChbKyowoMDNA[Jank Adoption Survey]
+
+
+== Upcoming Events
+
+* https://www.meetup.com/clojure-br/events/315182987/[Clojure BR: Introduzindo programação funcional na Carteira Digital de Trânsito]: Jun 25
+* https://clojureverse.org/t/clojure-real-world-data-63-special-hour/14935[Clojure real-world-data 63]: Jun 26. Note: different time than usual.
+* https://2026.clojure-conj.org/[Clojure/Conj 2026]: Sep 30-Oct 2. Charlotte, NC, USA. https://2026.clojure-conj.org/[Early Bird tickets].
+* https://2027.euroclojure.org/[EuroClojure 2027]: May 19-21, 2027. Prague, Czech Republic. https://forms.gle/JjzsY6n25oSCUMas6[Join the mailing list]
+* HeartConf 2027: Aug 18-19, 2027, in Mechelen, Belgium. Save the date.
+
+
+== Podcasts, videos, and media
+
+* https://youtu.be/2ECucq-mTGg[Datastar: It’s Pretty Good — with David Nolen] - Datastar
+* https://youtu.be/bQSQua46cdc[Clojure Corner: Interview with Burin Choomnuan] - Flexiana
+* https://youtu.be/PjWZTyf_z-A[Clojure Cond Case Else] - Mike Møller Nielsen
+* https://youtu.be/ha4gSmzaQaE[Clojure Exception Handling] - Mike Møller Nielsen
+
+
+== Blogs, articles, and news
+
+* https://www.clojuriststogether.org/news/june-2026-short-term-project-updates/[June 2026 Short Term Project Updates] - Kathy Davis
+* https://gloathub.org/blog/2026/06/16/gloat-q2-grant-halfway-report/[Gloat Q2 Grant Halfway Report - GloatHub] - Ingy dot Net
+* https://yogthos.net/posts/2026-06-17-perlin-flow.html[The Hidden Elegance of Gradient Noise] - Dmitri Sotnikov
+* https://conjobble.velisco.com/2026/06/17/bowling-kata.html[Bowling Kata] - Steve Miner
+* https://blog.michielborkent.nl/babashka-cli-help-and-completions.html[Automatic help and completions in Babashka CLI] - Michiel Borkent
+* https://blog.taylorwood.io/2026/06/19/social-norms-and-low-doers.html[Cartels of Mediocrity] - Taylor Wood
+* https://clojurecivitas.org/math/stats/quantquestions/what_are_the_odds/cheat_zine.html[A Survival Themed Probability Cheatsheet Zine – Clojure Civitas] - Timothy Pratley
+
+== Libraries and Tools
+
+Debut release
+
+* https://github.com/plexus/awesome-creative-clojure[awesome-creative-clojure] - A list of creative coding resources for Clojure and its dialects
+* https://github.com/replikativ/umap-rstr[umap-rstr] - UMAP (Uniform Manifold Approximation and Projection) for Clojure — a port of umap-learn on the raster typed-dispatch compiler.
+* https://github.com/replikativ/evoc-rstr[evoc-rstr] - EVoC (Embedding Vector Oriented Clustering) for Clojure — a port of the Tutte Institute's evoc on raster + umap-rstr.
+* https://github.com/jaketothepast/codetutor[codetutor] - An AI Pair Programmer, that teaches you to code as you write, for Emacs
+* https://github.com/lispyclouds/claxon[claxon] - Minimal, pure clojure, data-driven NATS client
+* https://github.com/SamuelCarriles/ehr-adapter[ehr-adapter] - Simplify EHR integrations by defining and validating your entire provider connection pipeline using native Clojure data structures.
+* https://github.com/rthadani/clj-pytorch[clj-pytorch] - A Clojure wrapper around PyTorch with libpython-clj
+* https://github.com/netb258/huffman-tree[huffman-tree] - A small Huffman tree implementation in Clojure
+* https://github.com/frankadrian314159/fol[fol] - A Clojure dialect that combines persistent data structures (from Clojure), CLOS-style object orientation with persistent objects, and array programming capabilities (inspired by Q/APL).
+
+Updates
+
+* https://github.com/simm-is/partial-cps[partial-cps] 0.1.58 - A lean and efficient continuation passing style transform, includes async-await support.
+* https://github.com/gojek/ziggurat[ziggurat] https://github.com/gojek/ziggurat/releases/tag/v4.12.1[4.12.1] - A stream processing framework to build stateless applications on Kafka
+* https://github.com/tomekw/hikari-cp[hikari-cp] https://github.com/tomekw/hikari-cp/blob/master/CHANGELOG.md[4.1.0] - A Clojure wrapper to HikariCP JDBC connection pool
+* https://github.com/luposlip/json-schema[json-schema] https://github.com/luposlip/json-schema/releases/tag/v0.4.8[0.4.8] - Clojure library JSON Schema validation and generation - Draft-07 compatible
+* https://github.com/metabase/hawk[hawk] 1.0.15 - It watches your code like a hawk! You like tests, right? Then run them with our state-of-the-art Clojure test runner.
+* https://github.com/epiccastle/clojuressh[clojuressh] https://github.com/epiccastle/clojuressh/releases/tag/v1.0.0[1.0.0] - A Clojure library for using SSH in Clojure that is API compatible with bbssh
+* https://github.com/taoensso/sente[sente] https://github.com/taoensso/sente/releases/tag/v1.22.0-RC1[1.22.0-RC1] - Realtime web comms library for Clojure/Script
+* https://codeberg.org/meissa/dda-tara[dda-tara] 3.0.2 - Threat modeling toolkit based on threagile
+* https://github.com/clj-commons/rewrite-clj[rewrite-clj] https://github.com/clj-commons/rewrite-clj/releases/tag/v1.2.55[1.2.55] - Rewrite Clojure code and edn
+* https://github.com/marksto/clj-tg-bot-api[clj-tg-bot-api] 1.2.271 - 🤖 The latest Telegram Bot API spec and client lib for Clojure-based apps
+* https://github.com/weavejester/teensyp[teensyp] https://github.com/weavejester/teensyp/commits/0.7.2[0.7.2] - A small, zero-dependency Clojure TCP server that uses Java NIO
+* https://github.com/babashka/sci[sci] https://github.com/babashka/sci/releases/tag/v0.13.53[0.13.53] - Configurable Clojure/Script interpreter suitable for scripting and Clojure DSLs
+* https://github.com/phel-lang/phel-lang[phel-lang] https://github.com/phel-lang/phel-lang/releases/tag/v0.45.1[0.45.1] - A functional, Lisp-inspired language that compiles to PHP. Inspired by Clojure, Phel brings macros, persistent data structures, and expressive functional idioms to the PHP ecosystem.
+* https://github.com/seancorfield/next-jdbc[next-jdbc] https://github.com/seancorfield/next-jdbc/releases/tag/v1.3.1118[1.3.1118] - A modern low-level Clojure wrapper for JDBC-based access to databases.
+* https://github.com/manetu/temporal-clojure-sdk[temporal-clojure-sdk] https://github.com/manetu/temporal-clojure-sdk/releases/tag/v2.1.0[2.1.0] - A Temporal SDK for Clojure
+* https://github.com/cjohansen/replicant[replicant] https://github.com/cjohansen/replicant/commits/v2026.06.1[2026.06.1] - A data-driven rendering library for Clojure(Script) that renders hiccup to DOM or to strings.
+* https://github.com/replikativ/raster[raster] https://github.com/replikativ/raster/releases/tag/v0.1.15[0.1.15] - Fast, functional numerical computing for Clojure/JVM.
+* https://github.com/RokLenarcic/mcp-server[mcp-server] https://github.com/RokLenarcic/mcp-server/commits/v0.3.50[0.3.50] - MCP Server library
+* https://github.com/clojurewasm/ClojureWasm[ClojureWasm] https://github.com/clojurewasm/ClojureWasm/commits/v1.0.0-alpha.1[1.0.0-alpha.1] - A lightweight Clojure runtime in Zig — call WebAssembly from Clojure to tap libraries written in any language.
+* https://github.com/BetterThanTomorrow/calva-backseat-driver[calva-backseat-driver] https://github.com/BetterThanTomorrow/calva-backseat-driver/releases/tag/v0.0.37[0.0.37] - VS Code AI Agent Interactive Programming. Tools for CoPIlot and other assistants. Can also be used as an MCP server.
+* https://github.com/cjohansen/nexus[nexus] https://github.com/cjohansen/nexus/commits/v2026.06.2[2026.06.2] - Data-driven action dispatch for Clojure(Script): Build systems that are easier to test, observe, and extend
+* https://github.com/BetterThanTomorrow/calva[calva] https://github.com/BetterThanTomorrow/calva/releases/tag/v2.0.593[2.0.593] - Clojure & ClojureScript Interactive Programming for VS Code
+* https://github.com/replikativ/persistent-sorted-set[persistent-sorted-set] https://github.com/replikativ/persistent-sorted-set/blob/main/CHANGES.md[0.4.124] - Fast B-tree based persistent sorted set for Clojure/Script
+* https://github.com/plumce/plumcp[plumcp] https://github.com/plumce/plumcp/releases/tag/v0.2.2[0.2.2] - Clojure/ClojureScript library for making MCP server and client
+* https://github.com/yaml/yamlstar[yamlstar] https://github.com/yaml/yamlstar/releases/tag/0.1.9[0.1.9] - A YAML framework for all programming languages
+* https://github.com/benedekfazekas/mranderson[mranderson] https://github.com/benedekfazekas/mranderson/blob/master/CHANGELOG.md[0.6.0] - Dependency inlining and shadowing
+* https://github.com/taoensso/encore[encore] https://github.com/taoensso/encore/blob/master/CHANGELOG-template.md[3.167.0] - Core utils library for Clojure/Script
+* https://github.com/Blockether/svar[svar] https://github.com/Blockether/svar/releases/tag/v0.7.33[0.7.33] - Type‑safe LLM output for Clojure. Works with any text‑only model.
+* https://github.com/replikativ/ansatz[ansatz] https://github.com/replikativ/ansatz/commits/0.1.64[0.1.64] - Dependently typed Clojure DSL with a Lean4 compatible kernel.
+* https://github.com/grid-coordination/clj-midas[clj-midas] https://github.com/grid-coordination/clj-midas/blob/main/CHANGELOG.md[1.0.0] - Clojure client library for the California Energy Commission's MIDAS API
+* https://github.com/babashka/cli[cli] https://github.com/babashka/cli/releases/tag/v0.11.74[0.11.74] - Turn Clojure functions into CLIs!
+* https://github.com/squint-cljs/squint[squint] https://github.com/squint-cljs/squint/releases/tag/v0.13.195[0.13.195] - Light-weight ClojureScript dialect
+* https://github.com/ring-clojure/ring[ring] https://github.com/ring-clojure/ring/blob/master/CHANGELOG.md[1.15.5] - Clojure HTTP server abstraction
+* https://github.com/donut-party/generate[generate] https://github.com/donut-party/generate/blob/main/CHANGELOG.md[1.0.69] - code generation for Clojure projects

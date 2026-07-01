@@ -21,7 +21,14 @@ The version numbers of the language and the CLI are separate but related. The Cl
 
 Prerequisites: <<install_clojure#java,Java>>, <<install_clojure#brew,brew>>
 
-This adds the commands `clojure` and `clj` to your system from the https://github.com/clojure/homebrew-tools[clojure/tools tap]:
+First, add the https://github.com/clojure/homebrew-tools[Clojure tap] as a trusted tap (this is a 1-time operation):
+
+[source,shell]
+----
+brew trust clojure/tools
+----
+
+Then install the Clojure recipe from the tap to add the commands `clojure` and `clj` to your system:
 
 [source,shell]
 ----

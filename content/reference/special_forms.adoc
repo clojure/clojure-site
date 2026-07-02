@@ -332,7 +332,14 @@ In the case of using prefixed keys, the bound symbol name is the same as the rig
 -> 42
 ----
 
-There are similar `:strs` and `:syms` directives for matching string and symbol keys, the latter also allowing prefixed symbol keys since Clojure 1.6.
+As of Clojure 1.13, map destructuring directives allow you to specify keys after `&` which will not be bound, but serve as documentation:
+
+[source,clojure]
+----
+(let [{:keys [fred ethel lucy & ricky]} m] ... ;; ricky is not bound
+----
+
+There are similar `:strs` and `:syms` directives for matching string and symbol keys, the latter also allowing prefixed symbol keys since Clojure 1.6, and support for `&` since Clojure 1.13.
 
 Clojure 1.9 adds support for directly destructuring many keys (or symbols) that share the same namespace using the following destructuring key forms:
 
@@ -351,6 +358,8 @@ Clojure 1.9 adds support for directly destructuring many keys (or symbols) that 
 
 -> [1 2]
 ----
+
+As of Clojure 1.13, you can now ensure that required keys are bound during map destructuring by using the new checked variants of the `:keys`/`:syms`/`:strs` directives - `:keys!`/`:syms!`/`:strs!`, which will throw if the key is not present. Once again, the use of `&` in these checked variants will not bind names, but those keys are still checked in the destructured map.
 
 [[keyword-arguments]]
 === Keyword Arguments

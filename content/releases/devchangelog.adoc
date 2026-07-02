@@ -17,6 +17,20 @@ The official https://github.com/clojure/clojure/blob/master/changes.md[changelog
 
 Note: All dev releases are subject to breaking changes for new work since the prior release.
 
+== Release 1.13.x
+
+=== 1.13.0-alpha1 (July 2, 2026) [[v1.13.0-alpha1]]
+
+https://clojure.org/news/2026/07/02/clojure-1-13-alpha1[Release Notes]
+
+* https://clojure.atlassian.net/browse/CLJ-2961[CLJ-2961] Checked keys
+* https://clojure.atlassian.net/browse/CLJ-2960[CLJ-2960] Specs for checked keys
+* https://clojure.atlassian.net/browse/CLJ-2949[CLJ-2949] req! - Variant of get that reports on key not found
+* https://clojure.atlassian.net/browse/CLJ-2954[CLJ-2954] let/loop/let* - disallow & as local binding
+* https://clojure.atlassian.net/browse/CLJ-2891[CLJ-2891] Remove ACC_FINAL designation from static initializer constants.
+* PersistentArrayMaps of only keyword keys now grow up to size 64 (previously was 8) before transitioning to PersistentHashMaps
+* Runtime, test, plugin dependencies updated to latest versions, including org.clojure/core.specs.alpha 0.6.87-alpha1
+
 == Release 1.12.x
 
 === 1.12.5 (May 12, 2026) [[v1.12.5]]

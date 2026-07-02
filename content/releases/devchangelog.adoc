@@ -19,6 +19,10 @@ Note: All dev releases are subject to breaking changes for new work since the pr
 
 == Release 1.13.x
 
+=== 1.13.0-alpha2 (July 2, 2026) [[v1.13.0-alpha2]]
+
+* Fixes a build problem from new Maven plugins
+
 === 1.13.0-alpha1 (July 2, 2026) [[v1.13.0-alpha1]]
 
 https://clojure.org/news/2026/07/02/clojure-1-13-alpha1[Release Notes]

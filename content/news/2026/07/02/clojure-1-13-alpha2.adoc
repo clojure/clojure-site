@@ -1,0 +1,24 @@
+= Clojure 1.13.0-alpha2
+Alex Miller
+2026-07-02
+:jbake-type: post
+
+Clojure 1.13.0-alpha2 is now available! Find download and usage information on the <<xref/../../../../../releases/downloads#,Downloads>> page.
+
+* Fixes a build problem from new Maven plugins by reverting the change
+
+== Try it out
+
+Update your deps.edn :deps with:
+
+[source]
+----
+org.clojure/clojure {:mvn/version "1.13.0-alpha2"}
+----
+
+Start a REPL with the Clojure CLI (any version) with:
+
+[source]
+----
+clj -Sdeps '{:deps {org.clojure/clojure {:mvn/version "1.13.0-alpha2"}}}
+----

@@ -5,14 +5,6 @@ Alex Miller
 
 Clojure 1.13.0-alpha1 is now available! Find download and usage information on the <<xref/../../../../../releases/downloads#,Downloads>> page.
 
-Update your deps.edn :deps with:
-
-```org.clojure/clojure {:mvn/version "1.13.0-alpha1"}```
-
-Start a REPL with the Clojure CLI (any version) with:
-
-```clj -Sdeps '{:deps {org.clojure/clojure {:mvn/version "1.13.0-alpha1"}}}```
-
 == Checked keys
 
 You can now ensure that required keys are bound during map destructuring by using the new checked variants of the  :keys/:syms/:strs directives - :keys!/:syms!/:strs!, which will throw if the key is not present. You can also, in all directives, specify keys after & which will not be bound, for documentation or checking purposes. 
@@ -27,3 +19,19 @@ You can now ensure that required keys are bound during map destructuring by usin
 * PersistentArrayMaps of only keyword keys now grow up to size 64 (previously was 8) before transitioning to PersistentHashMaps. PAM identity scans are more efficient than PHM lookups in this range, also makes more usage sites monomorphic and thus easier to optimize.
 * https://clojure.atlassian.net/browse/CLJ-2891[CLJ-2891] Remove ACC_FINAL designation from static initializer constants. This change was made as a prepatory step towards moving the Java bytecode baseline to address new verifier checks.
 * Runtime and test dependencies updated to latest versions
+
+== Try it out
+
+Update your deps.edn :deps with:
+
+[source]
+----
+org.clojure/clojure {:mvn/version "1.13.0-alpha1"}
+----
+
+Start a REPL with the Clojure CLI (any version) with:
+
+[source]
+----
+clj -Sdeps '{:deps {org.clojure/clojure {:mvn/version "1.13.0-alpha1"}}}
+----

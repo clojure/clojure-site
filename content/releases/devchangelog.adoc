@@ -19,7 +19,27 @@ Note: All dev releases are subject to breaking changes for new work since the pr
 
 == Release 1.13.x
 
+=== 1.13.0-alpha3 (July 7, 2026) [[v1.13.0-alpha3]]
+
+https://clojure.org/news/2026/07/07/clojure-1-13-alpha3[Release Notes]
+
+* https://clojure.atlassian.net/browse/CLJ-2964[CLJ-2964] :select directive in map destructuring
+* https://clojure.atlassian.net/browse/CLJ-2963[CLJ-2963] Update specs for :select in destructuring
+* RT.map, and thus reader, tracks new PAM thresholds
+* https://clojure.atlassian.net/browse/CLJ-1789[CLJ-1789] select-keys - improve performance (transients, etc)
+* https://clojure.atlassian.net/browse/CLJ-2958[CLJ-2958] ILookup on sets
+* https://clojure.atlassian.net/browse/CLJ-2902[CLJ-2902] pprint - prints arbitary objects in unreadable form
+* https://clojure.atlassian.net/browse/CLJ-2801[CLJ-2801] TaggedLiteral - doesn't define print-dup
+* https://clojure.atlassian.net/browse/CLJ-2269[CLJ-2269] definterface - does not resolve parameter type hints
+* https://clojure.atlassian.net/browse/CLJ-2781[CLJ-2781] clojure.test/report - docstring has broken references
+* https://clojure.atlassian.net/browse/CLJ-2929[CLJ-2929] zipper - docstring typo
+* https://clojure.atlassian.net/browse/CLJ-2901[CLJ-2901] bytes, shorts, chars - docstring typos
+* https://clojure.atlassian.net/browse/CLJ-2811[CLJ-2811] scalb - docstring links to the documentation for nextDown
+* https://clojure.atlassian.net/browse/CLJ-2809[CLJ-2809] clojure.math/floor - docstring has line that should be on ceil docstring
+
 === 1.13.0-alpha2 (July 2, 2026) [[v1.13.0-alpha2]]
+
+https://clojure.org/news/2026/07/02/clojure-1-13-alpha2[Release Notes]
 
 * Fixes a build problem from new Maven plugins
 

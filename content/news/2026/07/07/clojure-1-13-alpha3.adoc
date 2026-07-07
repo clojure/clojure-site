@@ -7,7 +7,7 @@ Clojure 1.13.0-alpha3 is now available! Find download and usage information on t
 
 == :select directive in map destructuring
 
-You can now use the :select directive to bind a name to a map containing every key named anywhere in its enclosing map-destructuring form.
+The :select directive binds a name to a subset of the map being destructured containing only the keys mentioned (anywhere) in the binding form.
 
 * https://clojure.atlassian.net/browse/CLJ-2964[CLJ-2964] :select directive in map destructuring
 * https://clojure.atlassian.net/browse/CLJ-2963[CLJ-2963] Update specs for :select in destructuring

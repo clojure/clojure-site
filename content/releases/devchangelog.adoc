@@ -19,6 +19,15 @@ Note: All dev releases are subject to breaking changes for new work since the pr
 
 == Release 1.13.x
 
+=== 1.13.0-alpha4 (July 14, 2026) [[v1.13.0-alpha4]]
+
+https://clojure.org/news/2026/07/14/clojure-1-13-alpha4[Release Notes]
+
+* https://clojure.atlassian.net/browse/CLJ-2964[CLJ-2964] :select directive in map destructuring
+* https://clojure.atlassian.net/browse/CLJ-2966[CLJ-2966] :defaults directive in map destructuring
+* https://clojure.atlassian.net/browse/CLJ-2967[CLJ-2967] tests for nested destructuring
+* https://clojure.atlassian.net/browse/CLJ-2870[CLJ-2870] Exception phase during top-level eval is miscategorized
+
 === 1.13.0-alpha3 (July 7, 2026) [[v1.13.0-alpha3]]
 
 https://clojure.org/news/2026/07/07/clojure-1-13-alpha3[Release Notes]

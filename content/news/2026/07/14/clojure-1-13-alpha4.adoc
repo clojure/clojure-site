@@ -9,9 +9,9 @@ Clojure 1.13.0-alpha4 is now available! Find download and usage information on t
 
 Idents after `&` in :keys!/syms!/strs!/:keys/syms/strs must now be actual keys, not binding symbols. This is a change in syntax since alpha3. Note that symbol keys should be quoted as unadorned symbols are binding symbols.
 
-:or now accepts key->val mappings in addition to binding->val.
+`:or` now accepts key->val mappings in addition to binding->val.
 
-Added a new ':defaults name' directive at top level to bind name to a map of defaults, key->val. Binding symbols in the `:or` map are transformed to the key value in the `:defaults` map. `:defaults` without `:or` is an error.
+Added a new `:defaults name` directive at top level to bind name to a map of defaults, key->val. Binding symbols in the `:or` map are transformed to the key value in the `:defaults` map. `:defaults` without `:or` is an error.
 
 `:select name`, introduced in alpha3, now selects deeply, through nested maps, and fills in values for missing keys from `:or`. The `:select` map contains all keys mentioned anywhere in the binding form.
 

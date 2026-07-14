@@ -21,6 +21,7 @@ Added a new `:defaults name` directive at top level to bind name to a map of def
 
 == Other changes since Clojure 1.13.0-alpha3
 
+* Added `clojure.core/some-vals`, a predicative filter of nil map values
 * https://clojure.atlassian.net/browse/CLJ-2870[CLJ-2870] Exception phase during top-level eval is miscategorized
 
 == Try it out

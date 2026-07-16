@@ -286,7 +286,7 @@ In all of the sequential cases the __binding-form__s in the destructure binding 
 [[associative-destructuring]]
 === Associative destructuring
 
-Map __binding-form__s create bindings by looking up values in collections like maps, sets, vectors, strings, and arrays (the latter three have integer keys). It consists of a map of __binding-form->key__ pairs, each __binding-form__ bound to the value in the _init-expr_ at the key provided. In addition, and optionally, an `:as` key in the binding form followed by a symbol binds that symbol to the entire __init-expr__. Also optionally, an `:or` key in the binding form followed by another map may be used to supply default values for some or all of the keys if they are not found in the __init-expr__:
+Map __binding-form__s create bindings by looking up values in collections like maps, sets, vectors, strings, and arrays (the latter three have integer keys). It consists of a map of __binding-form->key__ pairs, each __binding-form__ bound to the value in the _init-expr_ at the key provided. In addition, and optionally, an `:as` key in the binding form followed by a symbol binds that symbol to the entire __init-expr__. Also optionally, an `:or` key in the binding form followed by another map may be used to supply default values for some or all of the bindings if their keys are not found in the __init-expr__:
 
 [source,clojure]
 ----

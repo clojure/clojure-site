@@ -1,0 +1,43 @@
+= Clojure 1.13.0-alpha3
+Alex Miller
+2026-07-07
+:jbake-type: post
+
+Clojure 1.13.0-alpha3 is now available! Find download and usage information on the <<xref/../../../../../releases/downloads#,Downloads>> page.
+
+== :select directive in map destructuring
+
+The :select directive binds a name to a subset of the map being destructured containing only the keys mentioned (anywhere) in the binding form.
+
+* https://clojure.atlassian.net/browse/CLJ-2964[CLJ-2964] :select directive in map destructuring
+* https://clojure.atlassian.net/browse/CLJ-2963[CLJ-2963] Update specs for :select in destructuring
+
+== Other changes since Clojure 1.13.0-alpha2
+
+* RT.map, and thus reader, tracks new PAM thresholds
+* https://clojure.atlassian.net/browse/CLJ-1789[CLJ-1789] select-keys - improve performance (transients, etc)
+* https://clojure.atlassian.net/browse/CLJ-2958[CLJ-2958] ILookup on sets
+* https://clojure.atlassian.net/browse/CLJ-2902[CLJ-2902] pprint - prints arbitary objects in unreadable form
+* https://clojure.atlassian.net/browse/CLJ-2801[CLJ-2801] TaggedLiteral - doesn't define print-dup
+* https://clojure.atlassian.net/browse/CLJ-2269[CLJ-2269] definterface - does not resolve parameter type hints
+* https://clojure.atlassian.net/browse/CLJ-2781[CLJ-2781] clojure.test/report - docstring has broken references
+* https://clojure.atlassian.net/browse/CLJ-2929[CLJ-2929] zipper - docstring typo
+* https://clojure.atlassian.net/browse/CLJ-2901[CLJ-2901] bytes, shorts, chars - docstring typos
+* https://clojure.atlassian.net/browse/CLJ-2811[CLJ-2811] scalb - docstring links to the documentation for nextDown
+* https://clojure.atlassian.net/browse/CLJ-2809[CLJ-2809] clojure.math/floor - docstring has line that should be on ceil docstring
+
+== Try it out
+
+Update your deps.edn :deps with:
+
+[source]
+----
+org.clojure/clojure {:mvn/version "1.13.0-alpha3"}
+----
+
+Start a REPL with the Clojure CLI (any version) with:
+
+[source]
+----
+clj -Sdeps '{:deps {org.clojure/clojure {:mvn/version "1.13.0-alpha3"}}}
+----

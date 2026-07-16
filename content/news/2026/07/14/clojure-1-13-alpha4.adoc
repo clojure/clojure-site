@@ -1,0 +1,40 @@
+= Clojure 1.13.0-alpha4
+Alex Miller
+2026-07-14
+:jbake-type: post
+
+Clojure 1.13.0-alpha4 is now available! Find download and usage information on the <<xref/../../../../../releases/downloads#,Downloads>> page.
+
+== Destructuring changes and additions
+
+Idents after `&` in :keys!/syms!/strs!/:keys/syms/strs must now be actual keys, not binding symbols. This is a change in syntax since alpha3. Note that symbol keys should be quoted as unadorned symbols are binding symbols.
+
+`:or` now accepts key->val mappings in addition to binding->val.
+
+Added a new `:defaults name` directive at top level to bind name to a map of defaults, key->val. Binding symbols in the `:or` map are transformed to the key value in the `:defaults` map. `:defaults` without `:or` is an error.
+
+`:select name`, introduced in alpha3, now selects deeply, through nested maps, and fills in values for missing keys from `:or`. The `:select` map contains all keys mentioned anywhere in the binding form.
+
+* https://clojure.atlassian.net/browse/CLJ-2964[CLJ-2964] :select directive in map destructuring
+* https://clojure.atlassian.net/browse/CLJ-2966[CLJ-2966] :defaults directive in map destructuring
+* https://clojure.atlassian.net/browse/CLJ-2967[CLJ-2967] tests for nested destructuring
+
+== Other changes since Clojure 1.13.0-alpha3
+
+* https://clojure.atlassian.net/browse/CLJ-2870[CLJ-2870] Exception phase during top-level eval is miscategorized
+
+== Try it out
+
+Update your deps.edn :deps with:
+
+[source]
+----
+org.clojure/clojure {:mvn/version "1.13.0-alpha4"}
+----
+
+Start a REPL with the Clojure CLI (any version) with:
+
+[source]
+----
+clj -Sdeps '{:deps {org.clojure/clojure {:mvn/version "1.13.0-alpha4"}}}
+----

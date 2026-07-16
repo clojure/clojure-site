@@ -303,7 +303,7 @@ Since Clojure 1.13, the `:or` directive also allows the use of explicit keys:
 (let [{a :a, b :b, c :c, :as m :or {a 2 b 3 :c 42}}  {:a 5}]
   [a b c m])
 
-->[5 3 42 {:c 6, :a 5}]
+->[5 3 42 {:a 5}]
 ----
 
 Also since Clojure 1.13, Clojure allows you to bind a name to a map of keys mapped to their default values, based on what you've said in `:or` per above:

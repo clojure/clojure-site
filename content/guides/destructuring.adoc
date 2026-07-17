@@ -399,6 +399,21 @@ Associative destructuring can be nested and combined with sequential destructuri
 ;= Joe is a Ranger wielding a Longbow
 ----
 
+With nested destructuring, the use of `:or`, `:defaults`, and `:select` only apply at the level at which they are applied:
+
+[source,clojure]
+----
+(let [{{:keys [class weapon name], :or {:name "Sir Joe"}, :defaults jdf, :select joe} :joe
+       npc :npc
+       :or {npc {:class "Farmer", :weapon "Shovel"}}} multiplayer-game-state]
+  (println "Joe's :select data is" joe)
+  (println name "had his name set as a default from the :or map" jdf)
+  (println "The default unnamed NPC is" npc))
+;= Joe's :select data is {:weapon "Longbow", :name "Sir Joe", :class "Ranger"}
+;= Sir Joe had his name set as a default from the :or map {:name "Sir Joe"}
+;= The default unnamed NPC is {:class "Farmer", :weapon "Shovel"}
+----
+
 === Keyword arguments
 
 One special case is using associative destructuring for keyword-arg parsing. Consider a function that takes options `:debug` and `:verbose`. These could be specified in an options map:

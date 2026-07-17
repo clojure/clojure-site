@@ -273,7 +273,25 @@ Associative destructuring, however, also allows you to supply a default value if
 ;= Category not found
 ----
 
-The value for `:or` is a map where the bound symbol (here `category`) is bound to the expression `"Category not found"`. When category is not found in `client`, it is instead found in the `:or` map and bound to that value instead.
+The value for `:or` is a map where the bound symbol (here `category`) is bound to the expression `"Category not found"`. When category is not found in `client`, it is instead found in the `:or` map and bound to that value instead. When used this way, the default is for the key associated with that binding name. If you haven't yet used that binding name in a binding elsewhere, it is not associated with any key and the entry is a no-op.
+
+You may also specify values either via explicit keys in the `:or` map, which was added in Clojure 1.13.
+
+[source,clojure]
+----
+(let [{category :category, :or {:category "Category again not found"}} client]
+  (println category))
+;= "Category again not found"
+----
+
+If you wish to capture the default values stated in the `:or` map, the `:defaults` directive, added in Clojure 1.13, binds a name to a map, created during destructuring, of keys to their default values. You would use `:defaults` when you want those same default values for some purpose later in your code, and don't want to restate them.
+
+[source,clojure]
+----
+(let [{category :category, :or {category "Category not found", :comms "email"}, :defaults df} client]
+  (println df))
+;= {:category "Category not found", :comms "email"}
+----
 
 In sequential destructuring, you generally bind unneeded values with an `_`. Since associative destructuring doesn't require traversing the entire structure, you can simply omit any keys you don't plan on using from the destructuring form.
 
@@ -286,16 +304,18 @@ If you need access to the entire map, you can use the `:as` key to bind the enti
 ;= The name from {:name Super Co., :location Philadelphia, :description The world wide leader in plastic table-ware.} is Super Co.
 ----
 
-The `:as` and `:or` keywords can be combined in a single destructuring.
+The `:as`, `:or`, and `:defaults` keywords can be combined in a single destructuring.
 
 [source,clojure]
 ----
 (def my-map {:a "A" :b "B" :c 3 :d 4})
-(let [{a :a, x :x, :or {x "Not found!"}, :as all} my-map]
+(let [{a :a, x :x, :or {x "Not found!"}, :as all, :defaults df} my-map]
   (println "I got" a "from" all)
-  (println "Where is x?" x))
+  (println "Where is x?" x)
+  (println "Defaults are" df))
 ;= I got A from {:a "A" :b "B" :c 3 :d 4}
 ;= Where is x? Not found!
+;= Defaults are {:x Not found!}
 ----
 
 You might have noticed that our original example still contains redundant information (the local binding name and the key name) in the associative destructuring form. The `:keys` key can be used to further remove the duplication:
@@ -325,6 +345,28 @@ The `:keys` key is for associative values with keyword keys, but there are also 
   (println first-name last-name))
 ;= Jane Doe
 ----
+
+Additionally, since Clojure 1.13 there are checked versions of the binding directives named `:keys!`, `:strs!`, and `:syms!` that throw an exception if the keys specified are not present in the destructured map.
+
+[source,clojure]
+----
+(let [{:strs! [first-name last-name dob]} string-keys]
+  (println first-name last-name))
+;= throws Missing required key: "dob"
+----
+
+As of Clojure 1.13, all of the binding directives allow you to specify literal keys after `&` for documentation:
+
+[source,clojure]
+----
+(let [{:keys [fred ethel lucy & :ricky]} m] ...
+
+(let [{:strs [fred ethel lucy & "ricky"]} m] ...
+
+(let [{:syms [fred ethel lucy & 'ricky]} m] ...
+----
+
+The use of `&` in the unchecked versions allow you to specify accepted keys, but its use in the checked variants is more strict as the keys specified are still required and will throw if not present.
 
 Associative destructuring can be nested and combined with sequential destructuring as needed.
 

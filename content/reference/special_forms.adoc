@@ -379,7 +379,7 @@ Clojure 1.9 adds support for directly destructuring many keys (or symbols) that 
 -> [1 2]
 ----
 
-As of Clojure 1.13, you can now ensure that required keys are bound during map destructuring by using the new checked variants of the `:keys`/`:syms`/`:strs` directives - `:keys!`/`:syms!`/`:strs!`, which will throw if the key is not present. These checked directives also support the use of `&` and will check the presence of the specified keys in the destructured map.
+As of Clojure 1.13, you can now ensure that required keys are bound during map destructuring by using the new checked variants of the `:keys`/`:syms`/`:strs` binding directives - `:keys!`/`:syms!`/`:strs!`, which will throw an exception if the keys specified are not present in the destructured map. These checked directives also support the use of `&` and will check the presence of the specified keys in the destructured map.
 
 [source,clojure]
 ----

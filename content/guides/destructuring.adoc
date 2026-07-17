@@ -315,7 +315,7 @@ The `:as`, `:or`, and `:defaults` keywords can be combined in a single destructu
   (println "Defaults are" df))
 ;= I got A from {:a "A" :b "B" :c 3 :d 4}
 ;= Where is x? Not found!
-;= Defaults are {:x Not found!}
+;= Defaults are {:x "Not found!"}
 ----
 
 You might have noticed that our original example still contains redundant information (the local binding name and the key name) in the associative destructuring form. The `:keys` key can be used to further remove the duplication:
@@ -367,6 +367,17 @@ As of Clojure 1.13, all of the binding directives allow you to specify literal k
 ----
 
 The use of `&` in the unchecked versions allow you to specify accepted keys, but its use in the checked variants is more strict as the keys specified are still required and will throw if not present.
+
+Also added in Clojure 1.13 is a new directive `:select` that binds a name to a map, created during destructuring, containing only those keys from the input map, or the defaults if not present in the input, that are used anywhere in the destructuring form (other than in `:or`), including in nested destructuring. Thus it is a (deep) subset of the input augmented by defaults.
+
+[source,clojure]
+----
+(def small-map {:a 5})
+(let [{:keys [a b & :c], :as m, :or {a 42 b 3 :c "unknown"}, :select sel, :defaults df} small-map]
+  (println sel))
+
+;= {:c "unknown", :b 3, :a 5}
+----
 
 Associative destructuring can be nested and combined with sequential destructuring as needed.
 

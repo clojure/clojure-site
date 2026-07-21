@@ -296,7 +296,7 @@ Map __binding-form__s create bindings by looking up values in collections like m
 ->[5 3 6 {:c 6, :a 5}]
 ----
 
-Since Clojure 1.13, the `:or` directive also allows the use of explicit keys:
+The `:or` maps also accept the input key directly in place of the binding name. [since 1.13]
 
 [source,clojure]
 ----
@@ -306,7 +306,7 @@ Since Clojure 1.13, the `:or` directive also allows the use of explicit keys:
 ->[5 3 42 {:a 5}]
 ----
 
-Also since Clojure 1.13, Clojure allows you to bind a name to a map of keys mapped to their default values, based on what you've said in `:or` per above:
+To capture the `:or` defaults as a map bound to a name, use the `:defaults` directive. [since 1.13]
 
 [source,clojure]
 ----
@@ -352,14 +352,7 @@ In the case of using prefixed keys, the bound symbol name is the same as the rig
 -> 42
 ----
 
-As of Clojure 1.13, associative destructuring directives allow you to specify literal keys after `&` that serve as documentation:
-
-[source,clojure]
-----
-(let [{:keys [fred ethel lucy & :ricky]} m] ...
-----
-
-There are similar `:strs` and `:syms` directives for matching string and symbol keys, the latter also allowing prefixed symbol keys since Clojure 1.6. The literal keys after `&` for these directives match the form of the keys handled, e.g. `:strs [a & "b"]` and `:syms [a & 'b]`. For `:syms` the use of quote is required to distinguish between a binding name and a literal symbol.
+There are similar `:strs` and `:syms` directives for matching string and symbol keys, the latter also allowing prefixed symbol keys. 
 
 Clojure 1.9 adds support for directly destructuring many keys (or symbols) that share the same namespace using the following destructuring key forms:
 
@@ -379,14 +372,16 @@ Clojure 1.9 adds support for directly destructuring many keys (or symbols) that 
 -> [1 2]
 ----
 
-As of Clojure 1.13, you can now ensure that required keys are bound during map destructuring by using the new checked variants of the `:keys`/`:syms`/`:strs` binding directives - `:keys!`/`:syms!`/`:strs!`, which will throw an exception if the keys specified are not present in the destructured map. These checked directives also support the use of `&` and will check the presence of the specified keys in the destructured map.
+You can ensure that required keys are present during map destructuring by using the checked variants of the `:keys`/`:syms`/`:strs` binding directives named `:keys!`/`:syms!`/`:strs!`, which throw an exception if any of the specified keys are missing from the destructured map. [since 1.13] These checked directives also accept `&`, after which you may list additional keys that are still required and checked, but not bound to a local name.
 
 [source,clojure]
 ----
 (let [{:keys! [fred ethel lucy & :ricky]} m] ... ;; m must have keys :fred, :ethel, :lucy, and :ricky
 ----
 
-As of Clojure 1.13, supports a directive `:select` that binds a name to a map, created during destructuring, containing only those keys from the input map, or the defaults if not present in the input, that are used anywhere in the destructuring form (other than in `:or`), including in nested destructuring. Thus it is a (deep) subset of the input augmented by defaults.
+The literal keys after `&` for these directives should match the form of the keys handled, e.g. `:strs [a & "b"]` and `:syms [a & 'b]`. For `:syms` the use of quote is required to distinguish between a binding name and a literal symbol. In the unchecked directives `:keys`, `:strs`, and `:syms`, `&` serves only as documentation: the listed keys are neither bound nor checked for presence. [since 1.13]
+
+To bind a name to a deep subset of the input map, augmented by defaults, use the `:select` directive. [since 1.13] It includes every key used anywhere in the destructuring form, including nested forms, but not keys used only in `:or`.
 
 [source,clojure]
 ----

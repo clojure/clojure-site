@@ -18,7 +18,7 @@ As of this release, Clojure requires a minimum Java 17 runtime and compiles to J
 
 * https://clojure.atlassian.net/browse/CLJ-2968[CLJ-2968] Qualified :keys bindings in destructuring can only be unqualified symbols (regression fix)
 * https://clojure.atlassian.net/browse/CLJ-2969[CLJ-2969] Add :select base cases to tests
-* https://clojure.atlassian.net/browse/CLJ-2897[CLJ-2897] prepl is missing DynamicClassLoader and `*repl*` binding from repl
+* https://clojure.atlassian.net/browse/CLJ-2897[CLJ-2897] prepl is missing DynamicClassLoader and `\*repl\*` binding from repl
 
 == Try it out
 

@@ -19,6 +19,18 @@ Note: All dev releases are subject to breaking changes for new work since the pr
 
 == Release 1.13.x
 
+=== 1.13.0-alpha5 (July 21, 2026) [[v1.13.0-alpha5]]
+
+https://clojure.org/news/2026/07/21/clojure-1-13-alpha5[Release Notes]
+
+* https://clojure.atlassian.net/browse/CLJ-2872[CLJ-2872] Move to new ASM and emit Java 17 bytecode
+* https://clojure.atlassian.net/browse/CLJ-2383[CLJ-2383] Add new java.lang classes to automatic imports
+* https://clojure.atlassian.net/browse/CLJ-2892[CLJ-2892] Remove uses of Java's security manager, which is going away
+* https://clojure.atlassian.net/browse/CLJ-2920[CLJ-2920] Javadoc support updated for Java 17+
+* https://clojure.atlassian.net/browse/CLJ-2968[CLJ-2968] Qualified :keys bindings in destructuring can only be unqualified symbols (regression fix)
+* https://clojure.atlassian.net/browse/CLJ-2969[CLJ-2969] Add :select base cases to tests
+* https://clojure.atlassian.net/browse/CLJ-2897[CLJ-2897] prepl is missing DynamicClassLoader and `*repl*` binding from repl
+
 === 1.13.0-alpha4 (July 14, 2026) [[v1.13.0-alpha4]]
 
 https://clojure.org/news/2026/07/14/clojure-1-13-alpha4[Release Notes]

@@ -296,24 +296,20 @@ Map __binding-form__s create bindings by looking up values in collections like m
 ->[5 3 6 {:c 6, :a 5}]
 ----
 
-The `:or` maps also accept the input key directly in place of the binding name. [since 1.13]
+To supply a default for a key that has no local binding name, use the input key itself in the `:or` map instead. [since 1.13]
 
 [source,clojure]
 ----
-(let [{a :a, b :b, c :c, :as m :or {a 2 b 3 :c 42}}  {:a 5}]
-  [a b c m])
-
-->[5 3 42 {:a 5}]
+(let [{a :a, b :b, :or {:c 42}} ...
 ----
 
-To capture the `:or` defaults as a map bound to a name, use the `:defaults` directive. [since 1.13]
+To capture the default values stated in the `:or` map for some purpose later in your code without restating them, you can use the `:defaults` directive [since 1.13], which binds a name to a map, created during destructuring, of keys to their default values.
 
 [source,clojure]
 ----
-(let [{a :a, b :b, c :c, :as m :or {a 2 b 3 :c 42} :defaults df}  {:a 5}]
-  [a b c df])
+(let [{a :a, b :b, :as m :or {a 2 b 3 :c 42} :defaults df} {:a 5}] [a b df])
 
-->[5 3 42 {:a 2, :b 3, :c 42}]
+->[5 3 {:a 2, :b 3, :c 42}]
 ----
 
 It is often the case that you will want to bind symbols with the same name as the corresponding map keys. The `:keys` directive addresses the redundancy often found in the binding __binding-form->key__ pairs:
@@ -379,7 +375,7 @@ You can ensure that required keys are present during map destructuring by using 
 (let [{:keys! [fred ethel lucy & :ricky]} m] ... ;; m must have keys :fred, :ethel, :lucy, and :ricky
 ----
 
-The literal keys after `&` for these directives should match the form of the keys handled, e.g. `:strs [a & "b"]` and `:syms [a & 'b]`. For `:syms` the use of quote is required to distinguish between a binding name and a literal symbol. In the unchecked directives `:keys`, `:strs`, and `:syms`, `&` serves only as documentation: the listed keys are neither bound nor checked for presence. [since 1.13]
+In the unchecked directives `:keys`, `:strs`, and `:syms`, `&` serves only as documentation: the listed keys are neither bound nor checked for presence. [since 1.13] The literal keys after `&` may be heterogeneous, as in `:keys [a & :b "c" 'd]`, but note that symbols must be quoted to distinguish them from binding names.
 
 To bind a name to a deep subset of the input map, augmented by defaults, use the `:select` directive. [since 1.13] It includes every key used anywhere in the destructuring form, including nested forms, but not keys used only in `:or`.
 

@@ -275,16 +275,7 @@ Associative destructuring, however, also allows you to supply a default value if
 
 To supply default values for keys that are not present in the input map, you can use the `:or` directive, whose value is a map of binding names or [since 1.13] keys to default values. Thus here `"Category not found"` will be used as the value for the binding category if the key `:category` is not in the input map (`client`). Note that if an unadorned symbol is used as a key in the `:or` map but not yet in any binding the entry is a no-op.
 
-The next example uses `:category` as an explicit key rather than the binding name `category` in the `:or` map.
-
-[source,clojure]
-----
-(let [{category :category, :or {:category "Category again not found"}} client]
-  (println category))
-;= "Category again not found"
-----
-
-If you wish to capture the default values stated in the `:or` map, the `:defaults` directive binds a name to a map, created during destructuring, of keys to their default values. [since 1.13] You would use `:defaults` when you want those same default values for some purpose later in your code, and don't want to restate them.
+To capture the default values stated in the `:or` map for some purpose later in your code without restating them, you can use the `:defaults` directive [since 1.13], which binds a name to a map, created during destructuring, of keys to their default values.
 
 [source,clojure]
 ----
@@ -368,7 +359,7 @@ If you have keys you want to require but don't need to bind, you can list them a
 
 You can also document additional optional keys that you are not binding in the (:keys, :strs, and :syms) directives using `&`. [since 1.13]
 
-To bind a name to a deep subset of the input map, augmented by defaults, use the `:select` directive. [since 1.13] It includes every key used anywhere in the destructuring form, including nested forms, but not keys used only in `:or`.
+To pass along or inspect the effective values (input or default) bound during destructuring, bind them to a map with `:select`. [since 1.13] It includes every key used anywhere in the form, including nested forms, but not keys used only in `:or`.
 
 [source,clojure]
 ----

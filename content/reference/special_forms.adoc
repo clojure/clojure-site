@@ -361,7 +361,7 @@ Clojure 1.9 adds support for directly destructuring many keys (or symbols) that 
 -> [1 2]
 ----
 
-You can ensure that required keys are present during map destructuring by using the checked variants of the `:keys`/`:syms`/`:strs` binding directives named `:keys!`/`:syms!`/`:strs!`, [since 1.13] which throw an exception if any of the specified keys are missing from the destructured map. These checked directives also accept `&`, [since 1.13] after which you may list additional keys that are still required and checked, but not bound to a local name.
+You can ensure that required keys are present during map destructuring by using the checked variants of the `:keys`/`:syms`/`:strs` binding directives named `:keys!`/`:syms!`/`:strs!`, [since 1.13] which throw an exception if any of the specified keys are missing from the input map. These checked directives also accept `&`, [since 1.13] after which you may list additional keys that are still required and checked, but not bound to a local name.
 
 [source,clojure]
 ----

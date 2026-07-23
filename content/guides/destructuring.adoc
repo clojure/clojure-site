@@ -273,7 +273,7 @@ Associative destructuring, however, also allows you to supply a default value if
 ;= Category not found
 ----
 
-To supply default values for keys that are not present in the input map, you can use the `:or` directive, whose value is a map of binding names or [since 1.13] keys to default values. Thus here `"Category not found"` will be used as the value for the binding category if the key `:category` is not in the input map (`client`). Note that if an unadorned symbol is used as a key in the `:or` map but not yet in any binding the entry is a no-op.
+To supply default values for keys that are not present in the input map, you can use the `:or` directive, whose value is a map of binding names or [since 1.13] keys to default values. Thus here `"Category not found"` will be used as the value for the binding category if the key `:category` is not in the input map (`client`). Note that if an unadorned symbol is used as a key in the `:or` map but not in any binding, then the entry is ignored.
 
 To capture the default values stated in the `:or` map for some purpose later in your code without restating them, you can use the `:defaults` directive [since 1.13], which binds a name to a map, created during destructuring, of keys to their default values.
 

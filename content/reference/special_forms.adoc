@@ -319,7 +319,7 @@ can be written:
 (let [{:keys [fred ethel lucy]} m] ...
 ----
 
-As of Clojure 1.6, you can also use prefixed map keys in the map destructuring form:
+You can also use prefixed map keys in the map destructuring form:
 
 [source,clojure]
 ----

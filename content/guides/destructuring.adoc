@@ -346,7 +346,7 @@ If you want it to be an error to supply a map that is missing certain keys (rath
 ;= throws Missing required key: "dob"
 ----
 
-If you have keys you want to require but don't need to bind, you can list them after `&`, which will check for the presence of the listed keys but not create bindings.
+If you have keys you want to require but don't need to bind, you can list them after `&`, [since 1.13] which will check for the presence of the listed keys but not create bindings.
 
 [source,clojure]
 ----
@@ -357,9 +357,9 @@ If you have keys you want to require but don't need to bind, you can list them a
 (let [{:syms! [fred ethel lucy & 'ricky]} m] ...
 ----
 
-You can also document additional optional keys that you are not binding in the (:keys, :strs, and :syms) directives using `&`. [since 1.13]
+You can also document additional optional keys that you are not binding in the (`:keys`, `:strs`, and `:syms`) directives using `&`.
 
-To pass along or inspect the effective values (input or default) bound during destructuring, bind them to a map with `:select`. [since 1.13] It includes every key used anywhere in the form, including nested forms, but not keys used only in `:or`.
+When you receive an input map, you often don't know exactly what it contains. To manage that uncertainty, Clojure developers often lock down the set of legal keys that their input maps accept, which creates brittle connections across system boundaries. When you need to know the keys you're dealing with or passing data to something that's intolerant of additional keys, while remaining flexible about what a process accepts, you can use `:select` [since 1.13]. The `:select` directive names a map that is a subset of the input map augmented by the defaults, limited to the the keys mentioned in the destructuring form.
 
 [source,clojure]
 ----

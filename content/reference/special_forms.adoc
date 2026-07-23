@@ -286,7 +286,7 @@ In all of the sequential cases the __binding-form__s in the destructure binding 
 [[associative-destructuring]]
 === Associative destructuring
 
-Map __binding-form__s create bindings by looking up values in collections like maps, sets, vectors, strings, and arrays (the latter three have integer keys). It consists of a map of __binding-form->key__ pairs, each __binding-form__ bound to the value in the _init-expr_ at the key provided. In addition, and optionally, an `:as` key in the binding form followed by a symbol binds that symbol to the entire __init-expr__. Also optionally, an `:or` key in the binding form followed by another map may be used to supply default values for some or all of the bindings if their keys are not found in the __init-expr__:
+Map __binding-form__s create bindings by looking up values in collections like maps, sets, vectors, strings, and arrays (the latter three have integer keys). It consists of a map of __binding-form->key__ pairs, each __binding-form__ bound to the value in the _init-expr_ at the key provided. In addition, and optionally, an `:as` key in the binding form followed by a symbol binds that symbol to the entire __init-expr__. To supply default values for keys that are not present in the input map, you can use the `:or` directive, whose value is a map of binding names or [since 1.13] keys to default values.
 
 [source,clojure]
 ----
@@ -294,13 +294,6 @@ Map __binding-form__s create bindings by looking up values in collections like m
   [a b c m])
 
 ->[5 3 6 {:c 6, :a 5}]
-----
-
-To supply a default for a key that has no local binding name, use the input key itself in the `:or` map instead. [since 1.13]
-
-[source,clojure]
-----
-(let [{a :a, b :b, :or {:c 42}} ...
 ----
 
 To capture the default values stated in the `:or` map for some purpose later in your code without restating them, you can use the `:defaults` directive [since 1.13], which binds a name to a map, created during destructuring, of keys to their default values.
@@ -368,16 +361,16 @@ Clojure 1.9 adds support for directly destructuring many keys (or symbols) that 
 -> [1 2]
 ----
 
-You can ensure that required keys are present during map destructuring by using the checked variants of the `:keys`/`:syms`/`:strs` binding directives named `:keys!`/`:syms!`/`:strs!`, which throw an exception if any of the specified keys are missing from the destructured map. [since 1.13] These checked directives also accept `&`, after which you may list additional keys that are still required and checked, but not bound to a local name.
+You can ensure that required keys are present during map destructuring by using the checked variants of the `:keys`/`:syms`/`:strs` binding directives named `:keys!`/`:syms!`/`:strs!`, [since 1.13] which throw an exception if any of the specified keys are missing from the destructured map. These checked directives also accept `&`, [since 1.13] after which you may list additional keys that are still required and checked, but not bound to a local name.
 
 [source,clojure]
 ----
 (let [{:keys! [fred ethel lucy & :ricky]} m] ... ;; m must have keys :fred, :ethel, :lucy, and :ricky
 ----
 
-In the unchecked directives `:keys`, `:strs`, and `:syms`, `&` serves only as documentation: the listed keys are neither bound nor checked for presence. [since 1.13] The literal keys after `&` may be heterogeneous, as in `:keys [a & :b "c" 'd]`, but note that symbols must be quoted to distinguish them from binding names.
+To document keys that you don't bind or to include them in `:select`, you can list them after `&` [since 1.13] in `:keys`, `:strs`, `:syms`. The literal keys after `&` may be heterogeneous, as in `:keys [a & :b "c" 'd]`, but note that symbols must be quoted to distinguish them from binding names.
 
-To bind a name to a deep subset of the input map, augmented by defaults, use the `:select` directive. [since 1.13] It includes every key used anywhere in the destructuring form, including nested forms, but not keys used only in `:or`.
+When you need to know the keys you're dealing with or passing data to something that's intolerant of additional keys, while remaining flexible about what a process accepts, you can use `:select` [since 1.13]. The `:select` directive names a map that is a subset of the input map augmented by the defaults, limited to the the keys mentioned in the destructuring form.
 
 [source,clojure]
 ----

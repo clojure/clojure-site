@@ -1,0 +1,37 @@
+= Clojure 1.13.0-alpha5
+Alex Miller
+2026-07-21
+:jbake-type: post
+
+Clojure 1.13.0-alpha5 is now available! Find download and usage information on the <<xref/../../../../../releases/downloads#,Downloads>> page.
+
+== Java 17 baseline
+
+As of this release, Clojure requires a minimum Java 17 runtime and compiles to Java 17 bytecode.
+
+* https://clojure.atlassian.net/browse/CLJ-2872[CLJ-2872] Move to new ASM and emit Java 17 bytecode
+* https://clojure.atlassian.net/browse/CLJ-2383[CLJ-2383] Add new java.lang classes to automatic imports
+* https://clojure.atlassian.net/browse/CLJ-2892[CLJ-2892] Remove uses of Java's security manager, which is going away
+* https://clojure.atlassian.net/browse/CLJ-2920[CLJ-2920] Javadoc support updated for Java 17+
+
+== Other changes since last alpha
+
+* https://clojure.atlassian.net/browse/CLJ-2968[CLJ-2968] Qualified :keys bindings in destructuring can only be unqualified symbols (regression fix)
+* https://clojure.atlassian.net/browse/CLJ-2969[CLJ-2969] Add :select base cases to tests
+* https://clojure.atlassian.net/browse/CLJ-2897[CLJ-2897] prepl is missing DynamicClassLoader and `\*repl\*` binding from repl
+
+== Try it out
+
+Update your deps.edn :deps with:
+
+[source]
+----
+org.clojure/clojure {:mvn/version "1.13.0-alpha5"}
+----
+
+Start a REPL with the Clojure CLI (any version) with:
+
+[source]
+----
+clj -Sdeps '{:deps {org.clojure/clojure {:mvn/version "1.13.0-alpha5"}}}
+----

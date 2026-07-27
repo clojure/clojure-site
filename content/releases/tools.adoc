@@ -22,6 +22,11 @@ For more information see the following docs:
 
 Recent official releases are described here. Prereleases and older versions can be found in the https://github.com/clojure/brew-install/blob/1.12.4/CHANGELOG.md[repo changelog].
 
+=== 1.12.5.1664 (Jul 27, 2026) [[v1.12.5.1664]]
+
+* Change Maven session concurrency to use a single shared session rather than one per thread
+* Fix regressions in error reporting for deps.edn files
+
 === 1.12.5.1654 (May 28, 2026) [[v1.12.5.1654]]
 
 * HTTP downloads should now properly handle Maven Central throttling requests (via 429 responses)

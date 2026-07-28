@@ -19,6 +19,14 @@ Note: All dev releases are subject to breaking changes for new work since the pr
 
 == Release 1.13.x
 
+=== 1.13.0-alpha6 (July 28, 2026) [[v1.13.0-alpha6]]
+
+https://clojure.org/news/2026/07/28/clojure-1-13-alpha6[Release Notes]
+
+* Add `:all` directive in associative destructuring to get a map of all keys in the input, augmented by the defaults, traversing deeply through nested maps, use the `:all` directive.
+* Report as errors any use of unbound/unreferenced keys in :or when using any of the new constructs (:defaults, :select et al)
+* https://clojure.atlassian.net/browse/CLJ-2972[CLJ-2972] Destructuring test clean up for `:or` entries
+
 === 1.13.0-alpha5 (July 21, 2026) [[v1.13.0-alpha5]]
 
 https://clojure.org/news/2026/07/21/clojure-1-13-alpha5[Release Notes]

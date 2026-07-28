@@ -1,0 +1,28 @@
+= Clojure 1.13.0-alpha6
+Alex Miller
+2026-07-28
+:jbake-type: post
+
+Clojure 1.13.0-alpha6 is now available! Find download and usage information on the <<xref/../../../../../releases/downloads#,Downloads>> page.
+
+== Destructuring additions and changes
+
+* To get a map of all keys in the input, augmented by the defaults, traversing deeply through nested maps, use the `:all` directive.
+* Report as errors any use of unbound/unreferenced keys in :or when using any of the new constructs (:defaults, :select et al)
+* https://clojure.atlassian.net/browse/CLJ-2972[CLJ-2972] Destructuring test clean up for `:or` entries
+
+== Try it out
+
+Update your deps.edn :deps with:
+
+[source]
+----
+org.clojure/clojure {:mvn/version "1.13.0-alpha6"}
+----
+
+Start a REPL with the Clojure CLI (any version) with:
+
+[source]
+----
+clj -Sdeps '{:deps {org.clojure/clojure {:mvn/version "1.13.0-alpha6"}}}
+----

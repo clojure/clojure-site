@@ -380,6 +380,32 @@ When you need to know the keys you're dealing with or passing data to something 
 -> [5 3 {:a 1} {:c 4, :b 3, :a 5} {:a 42, :b 3, :c 4}]
 ----
 
+To get a map of all keys in the input, augmented by the defaults, traversing deeply through nested maps, use the `:all` directive. [since 1.13]
+
+[source,clojure]
+----
+(let [{:keys [a & :b] :as m :or {:a 42 :b 3} :all all-m} {}]
+  [a all-m])
+
+
+-> [42 {:a 42, :b 3}]
+----
+
+Defaults are applied at every nested level that contains an `:or` directive.
+
+[source,clojure]
+----
+(let [nested-map {:a 1, :nested {:aa 10}}
+
+      {:keys [a & :b] :as m :or {:a 42 :b 3} :all all-m
+       {:keys [aa bb] :or {:bb 30}} :nested}
+      nested-map]
+  all-m)
+
+
+-> {:a 1, :b 3, :nested {:bb 30, :aa 10}}
+----
+
 [[keyword-arguments]]
 === Keyword Arguments
 

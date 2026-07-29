@@ -370,6 +370,17 @@ When you receive an input map, you often don't know exactly what it contains. To
 ;= {:c "unknown", :b 3, :a 5}
 ----
 
+To get a map of all keys in the input, augmented by the defaults, traversing deeply through nested maps, use the `:all` directive. [since 1.13]
+
+[source,clojure]
+----
+(let [{:keys [a & :b] :as m :or {:a 42 :b 3} :all all-m} {}]
+  [a all-m])
+
+
+-> [42 {:a 42, :b 3}]
+----
+
 Associative destructuring can be nested and combined with sequential destructuring as needed.
 
 [source,clojure]

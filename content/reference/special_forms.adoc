@@ -391,21 +391,6 @@ To get a map like the input map with defaults substituted for missing keys, use 
 -> [42 {:a 42, :b 3}]
 ----
 
-Defaults are applied at every nested level that contains an `:or` directive.
-
-[source,clojure]
-----
-(let [nested-map {:a 1, :nested {:aa 10}}
-
-      {:keys [a & :b] :as m :or {:a 42 :b 3} :all all-m
-       {:keys [aa bb] :or {:bb 30}} :nested}
-      nested-map]
-  all-m)
-
-
--> {:a 1, :b 3, :nested {:bb 30, :aa 10}}
-----
-
 [[keyword-arguments]]
 === Keyword Arguments
 

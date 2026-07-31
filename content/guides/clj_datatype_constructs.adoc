@@ -1,0 +1,165 @@
+= Understanding Clojure's Datatype Constructs
+Ikuru Kanuma
+2017-07-20
+:type: guides
+:toc: macro
+:icons: font
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+== Goals of this guide
+
+Clojure supports several constructs for speaking to the Java world
+and/or creating types for polymorphic dispatch. +
+Because these constructs have overlapping capabilities,
+it may be confusing to know which construct to use at a given situation. +
+
+This guide clarifies what each construct is good at, while presenting minimal usage examples.
+
+
+== Leaving Java with defrecord
+
+If we do not have to extend from a concrete Java Type, we can define our own types
+that implement interfaces (and protocols, coming up next!) from Clojure via the
+link:https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/defrecord[defrecord] macro:
+
+[source,clojure-repl]
+----
+user=> (defrecord Person [first-name last-name age drunk])
+user.Person
+user=> (def piklrik (Person. "Pickle" "Rick" :unknown true))
+#'user.piklrik
+----
+
+Records are nicer than Java classes for a few reasons:
+
+* TODO: add more nicities.
+* They provide a complete implementation of a persistent map. That means that all values can be accessed like a map.
+
+[source,clojure-repl]
+----
+user=> (:first-name piklrik)
+"Pickle"
+user=> (:last-name piklrik)
+"Rick"
+----
+
+The https://clojure.org/reference/datatypes#_deftype_and_defrecord[reference] describes the features of records in more detail.
+
+https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/deftype[deftype] is
+also available for implementing lower level constructs that require mutatable fields
+or don't have map semantics.
+
+== Protocols; They're Like Java Interfaces
+https://clojure.org/reference/protocols[Protocols] offer similar capabilities as Java interfaces, but are more powerful because:
+
+* They are a cross platform construct
+* They allow third party types to participate in any protocol
+
+Let's make a protocol that handles instances of `Person`:
+
+[source,clojure-repl]
+----
+user=> (defprotocol Introduction
+         (introduce [this] "This is a docstring, not a method."))
+Introduction
+user=> (extend-protocol Introduction
+         Person
+         (introduce [p] (str "I'm " (:first-name p) " " (:last-name p) "!!")))
+nil
+user=> (introduce piklrik)
+"I'm Pickle Rick!!"
+----
+
+The main thing to realize here is that protocols are more powerful than interfaces because we are able to create custom abstraction for types that we do not control (e.g. `java.util.Date`). +
+If we were to apply a custom abstraction for Java `Dates` with an interface `IBaz`,
+we must:
+
+* Go to the original source code of `java.util.Date` and say it implements `IBaz`
+* Also add `IBaz` to the official jdk release
+
+Unlikely to happen, right?
+
+== Reify-ing Java Interfaces or Protocols
+Sometimes we want to create things that implement a protocol/interface but do not want to give them a name for each of them. link:https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/reify[reify] does exactly that:
+
+[source,clojure-repl]
+----
+user=> (defn spawn-meeseeks
+         [p]
+         (reify Introduction
+           (introduce [_]
+             (str "I'm " (:first-name p) " " (:last-name p) ", look at me!"))))
+#'user/make-meeseeks
+user=> (def meeseeks
+         (spawn-meeseeks (Person. "Mr." "Meeseeks" 0 false)))
+#'user/meeseeks
+user=> (introduce meeseeks)
+"I'm Mr. Meeseeks, look at me!"
+----
+
+One might ask "Doesn't proxy achieve the same if you do not need to extend a concrete type?" +
+The answer is reify has better performance.
+
+== Proxy a Java class and/or Interfaces
+
+The proxy macro can be used to create an adhoc object that extends a Java class.
+The example below extends `java.util.ArrayList` such that a Clojure vector
+wrapped in an atom is used internally to manage state.
+
+[source,clojure-repl]
+----
+(import 'java.util.ArrayList)
+
+(def px (let [atm (atom [])]
+          (proxy [ArrayList] []
+            (add [e]
+              (swap! atm #(conj % e))
+              true)
+            (get [idx]
+              (get @atm idx))
+            (size [] (count @atm)))))
+
+(dotimes [n 10]
+  (.add px n))
+;; => nil
+(.get px 0)
+;; => 0
+(.get px 6)
+;; => 6
+(.size px)
+;; => 10
+----
+The ad hoc object can also implement Java interfaces:
+
+[source,clojure-repl]
+----
+(import 'java.io.Closeable)
+(import 'java.util.concurrent.Callable)
+
+(def px (let [atm (atom [])]
+          (proxy [ArrayList Closeable Callable] []
+            (add [e]
+              (swap! atm #(conj % e))
+              true)
+            (get [idx]
+              (get @atm idx))
+            (size [] (count @atm))
+            (call []
+              (prn "Someone called me!"))
+            (close []
+              (prn "closing!")))))
+
+(.close px)
+"closing!"
+nil
+(.call px)
+"Someone called me!"
+----
+== Take away
+To wrap up, here are some rules of thumb:
+
+TODO: Add more rules of thumb. I find them very helpful.
+* Prefer protocols and records over Java types; Stay in Clojure
+* If you want an anonymous implementation of a protocol/interface, use reify
+* If you must extend a Java class, use proxy

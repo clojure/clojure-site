@@ -279,9 +279,9 @@ To capture the default values stated in the `:or` map for some purpose later in 
 
 [source,clojure]
 ----
-(let [{category :category, :or {category "Category not found", :comms "email"}, :defaults df} client]
+(let [{category :category, :or {category "Category not found"}, :defaults df} client]
   (println df))
-;= {:category "Category not found", :comms "email"}
+;= {:category "Category not found"}
 ----
 
 In sequential destructuring, you generally bind unneeded values with an `_`. Since associative destructuring doesn't require traversing the entire structure, you can simply omit any keys you don't plan on using from the destructuring form.

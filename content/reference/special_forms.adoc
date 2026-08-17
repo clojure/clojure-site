@@ -300,7 +300,7 @@ To capture the default values stated in the `:or` map for some purpose later in 
 
 [source,clojure]
 ----
-(let [{a :a, b :b, :as m :or {a 2 b 3 :c 42} :defaults df} {:a 5}] [a b df])
+(let [{a :a, b :b, c :c, :as m :or {a 2 b 3 :c 42} :defaults df} {:a 5}] [a b df])
 
 ->[5 3 {:a 2, :b 3, :c 42}]
 ----

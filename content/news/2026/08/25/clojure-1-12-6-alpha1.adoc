@@ -1,0 +1,8 @@
+= Clojure 1.12.6-alpha1
+Michael Fogus
+2026-08-25
+:jbake-type: post
+
+Clojure 1.12.6-alpha1 is now available!  Find download and usage information on the <<xref/../../../../../releases/downloads#stable,Downloads>> page.
+
+* https://clojure.atlassian.net/browse/CLJ-2794[CLJ-2794] - gen-class - incorrectly treats interface default methods as abstract, throwing when the var delegate is unbound

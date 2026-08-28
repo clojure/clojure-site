@@ -81,8 +81,7 @@ Exceptions, or possible surprises:
 * 'Not a Number' values `pass:[##NaN]`, `Float/NaN`, and `Double/NaN` are not
   `=` or `==` to anything, not even themselves.
   _Recommendation:_ Avoid including `pass:[##NaN]` inside of Clojure data
-  structures where you want to compare them to each other using `=`,
-  and sometimes get `true` as the result.
+  structures where you want to compare them to each other using `=`.
 * 0.0 is `=` to -0.0
 * Clojure regex's, e.g. `#"a.*bc"`, are implemented using Java
   `java.util.regex.Pattern` objects, and Java's `equals` on two
@@ -413,6 +412,31 @@ user> (== ##NaN ##NaN)
 false
 ----
 
+Even more strangely, there are different ways of comparing two
+`pass:[##NaN]` values to each other that can return `true` instead of
+`false`.  These are due to implementation-specific details, including
+whether the two double values are Java primitive or boxed `Double`
+objects, whether two boxed `Double` objects are `identical?` or not,
+and the fact that the Clojure compiler will in some situations inline
+calls to `=`, leading to strange behavior like this:
+
+[source,clojure]
+----
+user=> (= ##NaN ##NaN)
+false
+user=> (#'= ##NaN ##NaN)
+true
+user=> (apply = [##NaN ##NaN])
+false
+user=> (let [f =] (f ##NaN ##NaN))
+true
+----
+
+In general, comparing for equality values that are `pass:[##NaN]` (or
+collections containing `pass:[##NaN]` anywhere within them) will
+return a Boolean value, but do not rely on whether the value is `true`
+or `false`.  It could be either.
+
 This leads to some odd behavior if this "value" appears in your data.
 While no error occurs when adding `pass:[##NaN]` as a set element or a key in a
 map, you cannot then search for it and find it.  You also cannot
@@ -446,7 +470,10 @@ user> (= [1 ##NaN] [1 ##NaN])
 false
 ----
 
-Oddly enough, there are exceptions where collections contain `pass:[##NaN]` that look like they should be `=`, and they are, because `pass:[(identical? ##NaN ##NaN)]` is `true`:
+As mentioned above, while comparing collections containing
+`pass:[##NaN]` often returns `false`, it might also return `true`.
+You can rely on `=` returning a Boolean, but not whether it is `true`
+or `false`.
 
 [source,clojure]
 ----

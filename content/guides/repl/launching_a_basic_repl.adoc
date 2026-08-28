@@ -35,7 +35,7 @@ user=>
 
 See <<xref/../../getting_started#,Getting Started>> to learn how to install the Clojure CLI.
 
-You can exit the REPL by typing `Ctrl+D` (pressing the `Ctrl` and `D` keys at the same time).
+On Linux and macOS you can exit the REPL by typing `Ctrl+D` (pressing the `Ctrl` and `D` keys at the same time). On Windows by typing `Ctrl+Z` and then `Enter`.
 
 == Using a project management tool
 

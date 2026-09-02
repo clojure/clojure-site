@@ -86,6 +86,13 @@ https://clojure.org/news/2026/07/02/clojure-1-13-alpha1[Release Notes]
 
 == Release 1.12.x
 
+=== 1.12.6 (Sep 2, 2026) [[v1.12.6]]
+
+https://clojure.org/news/2026/09/02/clojure-1-12-6[Release Notes]
+
+* https://clojure.atlassian.net/browse/CLJ-2794[CLJ-2794] - gen-class - incorrectly treats interface default methods as abstract, throwing when the var delegate is unbound
+* https://clojure.atlassian.net/browse/CLJ-2974[CLJ-2974] - FnLoaderThunk - de/serialization no longer supported, throw
+
 === 1.12.5 (May 12, 2026) [[v1.12.5]]
 
 https://clojure.org/news/2026/05/12/clojure-1-12-5[Release Notes]

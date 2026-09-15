@@ -1,0 +1,43 @@
+= Clojure 1.13.0-alpha7
+Alex Miller
+2026-09-15
+:jbake-type: post
+
+Clojure 1.13.0-alpha7 is now available! Find download and usage information on the <<xref/../../../../../releases/downloads#,Downloads>> page.
+
+== Destructuring additions
+
+To gracefully handle missing information programmatically at runtime, use the `:missing` directive, which binds a name to a map of keys->nil that were named in checked keys directives but not found in the input map, traversing deeply through nested maps. This toggles the default behavior of :keys!/:syms!/:strs! from throwing to collecting into the named map.
+
+* https://clojure.atlassian.net/browse/CLJ-2976[CLJ-2976] 
+
+If there's more data than you intend to process you may want to convey it, e.g. by reintegrating it with your transformed input for passing downstream. Use the `:excess` directive to bind a name to a map of all keys in the input map that do not correspond to keys listed in the destructuring form, traversing deeply through nested maps.
+
+* https://clojure.atlassian.net/browse/CLJ-2975[CLJ-2975] 
+
+== Bug fixes
+
+* https://clojure.atlassian.net/browse/CLJ-2883[CLJ-2883] Reflector.getMethods() incorrectly returned bridge methods with covariant return type, making calls reflective
+* https://clojure.atlassian.net/browse/CLJ-2930[CLJ-2930] bigdec - coerce from Number may lose decimal
+
+== Improvements and additions
+
+* https://clojure.atlassian.net/browse/CLJ-1899[CLJ-1899] transform-keys - deep-walk a map and transform all keys
+* https://clojure.atlassian.net/browse/CLJ-2538[CLJ-2538] tap-> - add tap> variant that returns the value
+* https://clojure.atlassian.net/browse/CLJ-2970[CLJ-2970] select-keys - implementation change to unify argument requirements across functions used in destructuring: get, req!, and select-keys
+
+== Try it out
+
+Update your deps.edn :deps with:
+
+[source]
+----
+org.clojure/clojure {:mvn/version "1.13.0-alpha7"}
+----
+
+Start a REPL with the Clojure CLI (any version) with:
+
+[source]
+----
+clj -Sdeps '{:deps {org.clojure/clojure {:mvn/version "1.13.0-alpha7"}}}
+----

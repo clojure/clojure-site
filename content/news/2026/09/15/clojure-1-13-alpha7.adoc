@@ -23,7 +23,7 @@ If there's more data than you intend to process you may want to convey it, e.g. 
 == Improvements and additions
 
 * https://clojure.atlassian.net/browse/CLJ-1899[CLJ-1899] transform-keys - deep-walk a map and transform all keys
-* https://clojure.atlassian.net/browse/CLJ-2538[CLJ-2538] tap-> - add tap> variant that returns the value
+* https://clojure.atlassian.net/browse/CLJ-2538[CLJ-2538] tap-\> - add tap> variant that returns the value
 * https://clojure.atlassian.net/browse/CLJ-2970[CLJ-2970] select-keys - implementation change to unify argument requirements across functions used in destructuring: get, req!, and select-keys
 
 == Try it out

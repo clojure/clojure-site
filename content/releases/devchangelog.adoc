@@ -28,7 +28,7 @@ https://clojure.org/news/2026/09/15/clojure-1-13-alpha7[Release Notes]
 * https://clojure.atlassian.net/browse/CLJ-2883[CLJ-2883] Reflector.getMethods() incorrectly returned bridge methods with covariant return type, making calls reflective
 * https://clojure.atlassian.net/browse/CLJ-2930[CLJ-2930] bigdec - coerce from Number may lose decimal
 * https://clojure.atlassian.net/browse/CLJ-1899[CLJ-1899] transform-keys - deep-walk a map and transform all keys
-* https://clojure.atlassian.net/browse/CLJ-2538[CLJ-2538] tap-> - add tap> variant that returns the value
+* https://clojure.atlassian.net/browse/CLJ-2538[CLJ-2538] tap-\> - add tap> variant that returns the value
 * https://clojure.atlassian.net/browse/CLJ-2970[CLJ-2970] select-keys - implementation change to unify argument requirements across functions used in destructuring: get, req!, and select-keys
 
 === 1.13.0-alpha6 (July 28, 2026) [[v1.13.0-alpha6]]

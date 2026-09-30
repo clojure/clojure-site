@@ -1,0 +1,69 @@
+= Clojure 1.13.0-alpha8
+Alex Miller
+2026-09-30
+:jbake-type: post
+
+Clojure 1.13.0-alpha8 is now available! Find download and usage information on the <<xref/../../../../../releases/downloads#,Downloads>> page.
+
+== Selectors
+
+A developer may need to apply the same key-selection logic embedded in a map destructuring form (as directives, :keys!/:syms!/:strs!/etc., nesting, etc.) against multiple maps, or want to hand that selection logic to another part of the program. Currently that logic is oriented around binding in destructuring and not for programmatic use.
+
+This release adds a new `selector` macro that takes a destructuring form and returns a function that can be applied to maps:
+
+```
+(selector [m])
+
+  Builds a selecting-fn from m, a map destructuring form that must
+  include one or more of the :select, :all, :missing, and :excess
+  directives. The return function takes a collection, destructures it
+  per m, and returns a map of the result(s).
+
+  If m has exactly one directive, the result is the value that
+  directive would yield. If m has more than one directive, then it
+  returns a map of directives to values.
+
+  As in destructuring, :missing controls whether missing required keys
+  throw or are collected.
+
+  While a map destructuring form may and sometimes must include
+  bindings, selector doesn't produce bindings, thus ignoring the
+  associated directive names.
+
+  Throws an exception if the argument is not a map.
+```
+
+* https://clojure.atlassian.net/browse/CLJ-2979[CLJ-2979] selector
+
+== Transient map performance
+
+This release contains many performance improvements around the use of maps, particularly transient maps, and functions like `into`, `merge`, and `merge-with`.
+
+Transient array maps now grow larger before transitioning to transient hash maps (similar to recent persistent array map changes), and can be loaded significantly faster. The increased use of persistent and transient array maps will also make many more call sites inside the Clojure runtime monomorphic, encouraging greater JVM inlining. For more info see https://clojure.atlassian.net/browse/CLJ-2980[CLJ-2980].
+
+== Improvements and bug fixes
+
+* https://clojure.atlassian.net/browse/CLJ-2939[CLJ-2939] QualifiedMethodExpr field overload does not propagate field type - fixed
+* https://clojure.atlassian.net/browse/CLJ-1468[CLJ-1468] merge-deep, merge-deep-with - added recursive merge fns
+* https://clojure.atlassian.net/browse/CLJ-2981[CLJ-2981] merge - added tests
+* https://clojure.atlassian.net/browse/CLJ-2623[CLJ-2623] tagged literals and Java constructors - allow full unicode for first char
+* https://clojure.atlassian.net/browse/CLJ-2623[CLJ-2623] tagged-literal equality - check tag before form for performance
+* https://clojure.atlassian.net/browse/CLJ-2842[CLJ-2842] defn - does not needlessly initialize class when defn returns class
+* https://clojure.atlassian.net/browse/CLJ-2896[CLJ-2896] clojure.zip/next - only call zip/up once (not 3x)
+* https://clojure.atlassian.net/browse/CLJ-2915[CLJ-2915] ExceptionInfo - added to default imports, so no import or qualification needed
+
+== Try it out
+
+Update your deps.edn :deps with:
+
+[source]
+----
+org.clojure/clojure {:mvn/version "1.13.0-alpha8"}
+----
+
+Start a REPL with the Clojure CLI (any version) with:
+
+[source]
+----
+clj -Sdeps '{:deps {org.clojure/clojure {:mvn/version "1.13.0-alpha8"}}}
+----

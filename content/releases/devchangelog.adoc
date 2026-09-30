@@ -19,6 +19,21 @@ Note: All dev releases are subject to breaking changes for new work since the pr
 
 == Release 1.13.x
 
+=== 1.13.0-alpha8 (Sept 30, 2026) [[v1.13.0-alpha8]]
+
+https://clojure.org/news/2026/09/30/clojure-1-13-alpha8[Release Notes]
+
+* https://clojure.atlassian.net/browse/CLJ-2979[CLJ-2979] selector
+* https://clojure.atlassian.net/browse/CLJ-2980[CLJ-2980] TransientArrayMap performance improvements
+* https://clojure.atlassian.net/browse/CLJ-2939[CLJ-2939] QualifiedMethodExpr field overload does not propagate field type - fixed
+* https://clojure.atlassian.net/browse/CLJ-1468[CLJ-1468] merge-deep, merge-deep-with - added recursive merge fns
+* https://clojure.atlassian.net/browse/CLJ-2981[CLJ-2981] merge - added tests
+* https://clojure.atlassian.net/browse/CLJ-2623[CLJ-2623] tagged literals and Java constructors - allow full unicode for first char
+* https://clojure.atlassian.net/browse/CLJ-2623[CLJ-2623] tagged-literal equality - check tag before form for performance
+* https://clojure.atlassian.net/browse/CLJ-2842[CLJ-2842] defn - does not needlessly initialize class when defn returns class
+* https://clojure.atlassian.net/browse/CLJ-2896[CLJ-2896] clojure.zip/next - only call zip/up once (not 3x)
+* https://clojure.atlassian.net/browse/CLJ-2915[CLJ-2915] ExceptionInfo - added to default imports, so no import or qualification needed
+
 === 1.13.0-alpha7 (Sept 15, 2026) [[v1.13.0-alpha7]]
 
 https://clojure.org/news/2026/09/15/clojure-1-13-alpha7[Release Notes]

@@ -11,7 +11,7 @@ A developer may need to apply the same key-selection logic embedded in a map des
 
 This release adds a new `selector` macro that takes a destructuring form and returns a function that can be applied to maps:
 
-```
+----
 (selector [m])
 
   Builds a selecting-fn from m, a map destructuring form that must
@@ -31,7 +31,7 @@ This release adds a new `selector` macro that takes a destructuring form and ret
   associated directive names.
 
   Throws an exception if the argument is not a map.
-```
+----
 
 * https://clojure.atlassian.net/browse/CLJ-2979[CLJ-2979] selector
 

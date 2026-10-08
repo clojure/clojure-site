@@ -65,5 +65,5 @@ Start a REPL with the Clojure CLI (any version) with:
 
 [source]
 ----
-clj -Sdeps '{:deps {org.clojure/clojure {:mvn/version "1.13.0-alpha8"}}}
+clj -Sdeps '{:deps {org.clojure/clojure {:mvn/version "1.13.0-alpha8"}}}'
 ----

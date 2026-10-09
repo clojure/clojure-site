@@ -1,0 +1,31 @@
+= Clojure 1.13.0-alpha9
+Alex Miller
+2026-10-09
+:jbake-type: post
+
+Clojure 1.13.0-alpha9 is now available! Find download and usage information on the <<xref/../../../../../releases/downloads#,Downloads>> page.
+
+* Dropped `:defaults` directive - use cases better handled by others now
+* https://clojure.atlassian.net/browse/CLJ-2983[CLJ-2983] Removed :defaults tests
+* Faster transient propagation of metadata in `into` and `update-vals`
+* Revise impl and inline of `meta?` via RT
+* https://clojure.atlassian.net/browse/CLJ-2978[CLJ-2978] Catch protocol extension of non-protocol methods
+* https://clojure.atlassian.net/browse/CLJ-2982[CLJ-2982] TransientArrayMap should expand to same threshold as PersistentArrayMap
+* Favor class files when reproducible build sets class and source timestamps the same
+* https://clojure.atlassian.net/browse/CLJ-2984[CLJ-2984] Set file timestamps to last git commit time
+
+== Try it out
+
+Update your deps.edn :deps with:
+
+[source]
+----
+org.clojure/clojure {:mvn/version "1.13.0-alpha9"}
+----
+
+Start a REPL with the Clojure CLI (any version) with:
+
+[source]
+----
+clj -Sdeps '{:deps {org.clojure/clojure {:mvn/version "1.13.0-alpha9"}}}'
+----

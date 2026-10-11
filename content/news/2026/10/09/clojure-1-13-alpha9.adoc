@@ -8,7 +8,7 @@ Clojure 1.13.0-alpha9 is now available! Find download and usage information on t
 * Dropped `:defaults` directive - use cases better handled by others now
 * https://clojure.atlassian.net/browse/CLJ-2983[CLJ-2983] Removed :defaults tests
 * Faster transient propagation of metadata in `into` and `update-vals`
-* Revise impl and inline of `meta?` via RT
+* Revise impl and inline of `meta` via RT
 * https://clojure.atlassian.net/browse/CLJ-2978[CLJ-2978] Catch protocol extension of non-protocol methods
 * https://clojure.atlassian.net/browse/CLJ-2982[CLJ-2982] TransientArrayMap should expand to same threshold as PersistentArrayMap
 * Favor class files when reproducible build sets class and source timestamps the same

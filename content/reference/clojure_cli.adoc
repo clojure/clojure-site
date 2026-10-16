@@ -358,7 +358,13 @@ Each dependency is defined in the <<deps_edn#,deps.edn>> format with a lib and c
 
 The Clojure CLI will construct the map of paths, dependencies, and aliases to use by combining up to four <<deps_edn#,deps edn sources>>:
 
-* Root deps - defined as a resource embedded in the tools.deps library, defines Clojure itself as the only dependency (version will match the Clojure CLI version), and two built-in aliases: `:deps` and `:test`. Two built-in Maven repositories are included - Maven central and Clojars.
+* Root deps - defined as a resource embedded in the tools.deps library, defines:
+** Clojure itself as the only dependency (version will match the Clojure CLI version)
+** `:paths ["src"]`
+** Two built-in aliases:
+*** `:deps`
+*** `:test`, with `:extra-paths ["test"]`
+** Two built-in Maven repositories: Maven central and Clojars.
 * User deps (optional) - a deps.edn file in the <<clojure_cli#config_dir,user configuration directory>>. The file starts empty but may have additional configuration and tools defined that cross projects.
 * Project deps (optional) - the deps.edn in the current directory (aka the <<clojure_cli#project_dir,project directory>>)
 * Extra deps (optional) - provided on the command-line with <<clojure_cli#opt_sdeps,-Sdeps>>

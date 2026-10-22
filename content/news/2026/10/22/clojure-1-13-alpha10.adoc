@@ -1,0 +1,36 @@
+= Clojure 1.13.0-alpha10
+Alex Miller
+2026-10-22
+:jbake-type: post
+
+Clojure 1.13.0-alpha10 is now available! Find download and usage information on the <<xref/../../../../../releases/downloads#,Downloads>> page.
+
+## Destructuring changes
+
+To make what were (implicitly optional) top-level bindings required, you can now move them into a map under a new `:req!` directive. This includes bindings to different names or nested destructuring, e.g. `{a :long-a}` => `{:req! {a :long-a}}`.
+
+:namespaced/keys[!] directives now qualify any unqualified keywords. Note that this may be a breaking change from the prior alphas for unqualified keys after the `&` where unqualified keys were not interpreted as qualified.
+
+## Inliner updates and macro invocation tag preservation
+
+Previously, `:inline` on function definitions needed to work for all inlines. Inline is now conditional and the inline definition can return `nil` to indicate the function can't be inlined, and the non-inlined function should be used instead.
+
+`get-in` now inlines when passed a literal vector of keys.
+
+Type hint tag metadata is now preserved on the expansion, which may be wrapped in a call to `identity` if needed. A type hint tag on the macro invocation will dominate one on the expansion when they disagree.
+
+== Try it out
+
+Update your deps.edn :deps with:
+
+[source]
+----
+org.clojure/clojure {:mvn/version "1.13.0-alpha10"}
+----
+
+Start a REPL with the Clojure CLI (any version) with:
+
+[source]
+----
+clj -Sdeps '{:deps {org.clojure/clojure {:mvn/version "1.13.0-alpha10"}}}'
+----

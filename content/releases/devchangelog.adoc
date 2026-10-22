@@ -19,6 +19,16 @@ Note: All dev releases are subject to breaking changes for new work since the pr
 
 == Release 1.13.x
 
+=== 1.13.0-alpha10 (Oct 22, 2026) [[v1.13.0-alpha10]]
+
+https://clojure.org/news/2026/10/22/clojure-1-13-alpha10[Release Notes]
+
+* Added `:req!` directive to make optional top-level bindings required
+* :namespaced/keys[!] directives now qualify any unqualified keywords
+* Inline is now conditional, return of `nil` indicates to use non-inline
+* `get-in` - now inlines for literal vectors of keys
+* Type hint tag metadata is now preserved on the expansion
+
 === 1.13.0-alpha9 (Oct 9, 2026) [[v1.13.0-alpha9]]
 
 https://clojure.org/news/2026/10/09/clojure-1-13-alpha9[Release Notes]

@@ -27,7 +27,7 @@ https://clojure.org/news/2026/10/22/clojure-1-13-alpha10[Release Notes]
 * :namespaced/keys[!] directives now qualify any unqualified keywords
 * Inline is now conditional, return of `nil` indicates to use non-inline
 * `get-in` - now inlines for literal vectors of keys
-* Type hint tag metadata is now preserved on the expansion
+* Type hint tag metadata is now preserved on macro expansion
 
 === 1.13.0-alpha9 (Oct 9, 2026) [[v1.13.0-alpha9]]
 

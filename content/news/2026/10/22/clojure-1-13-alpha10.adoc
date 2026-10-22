@@ -17,7 +17,7 @@ Previously, `:inline` on function definitions needed to work for all inlines. In
 
 `get-in` now inlines when passed a literal vector of keys.
 
-Type hint tag metadata is now preserved on the expansion, which may be wrapped in a call to `identity` if needed. A type hint tag on the macro invocation will dominate one on the expansion when they disagree.
+Type hint tag metadata is now preserved on macro expansion, which may be wrapped in a call to `identity` if needed. A type hint tag on the macro invocation will dominate one on the expansion when they disagree.
 
 == Try it out
 

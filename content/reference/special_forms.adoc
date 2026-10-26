@@ -296,15 +296,6 @@ Map __binding-form__s create bindings by looking up values in collections like m
 ->[5 3 6 {:c 6, :a 5}]
 ----
 
-To capture the default values stated in the `:or` map for some purpose later in your code without restating them, you can use the `:defaults` directive [since 1.13], which binds a name to a map, created during destructuring, of keys to their default values.
-
-[source,clojure]
-----
-(let [{a :a, b :b, c :c, :as m :or {a 2 b 3 :c 42} :defaults df} {:a 5}] [a b df])
-
-->[5 3 {:a 2, :b 3, :c 42}]
-----
-
 It is often the case that you will want to bind symbols with the same name as the corresponding map keys. The `:keys` directive addresses the redundancy often found in the binding __binding-form->key__ pairs:
 
 [source,clojure]
@@ -374,10 +365,10 @@ When you need to know the keys you're dealing with or passing data to something 
 
 [source,clojure]
 ----
-(let [{:keys [a b & :c] :as m :or {a 42 b 3 :c 4} :select sm :defaults df}  {:a 5}]
+(let [{:keys [a b & :c] :as m :or {a 42 b 3 :c 4} :select sm}  {:a 5}]
   [a b m sm df])
 
--> [5 3 {:a 1} {:c 4, :b 3, :a 5} {:a 42, :b 3, :c 4}]
+-> [5 3 {:a 1} {:c 4, :b 3, :a 5}]
 ----
 
 To get a map like the input map with defaults substituted for missing keys, use the `:all` directive. [since 1.13] `:all` traverses deeply through nested maps.

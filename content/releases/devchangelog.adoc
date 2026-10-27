@@ -19,6 +19,12 @@ Note: All dev releases are subject to breaking changes for new work since the pr
 
 == Release 1.13.x
 
+=== 1.13.0-alpha11 (Oct 27, 2026) [[v1.13.0-alpha11]]
+
+https://clojure.org/news/2026/10/27/clojure-1-13-alpha11[Release Notes]
+
+* https://clojure.atlassian.net/browse/CLJ-2990[CLJ-2990] :req! on a nested map with :missing binds an internal Object
+
 === 1.13.0-alpha10 (Oct 22, 2026) [[v1.13.0-alpha10]]
 
 https://clojure.org/news/2026/10/22/clojure-1-13-alpha10[Release Notes]

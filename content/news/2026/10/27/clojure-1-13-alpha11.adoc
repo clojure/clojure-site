@@ -1,0 +1,26 @@
+= Clojure 1.13.0-alpha11
+Alex Miller
+2026-10-27
+:jbake-type: post
+
+Clojure 1.13.0-alpha11 is now available! Find download and usage information on the <<xref/../../../../../releases/downloads#,Downloads>> page.
+
+Fix:
+
+* https://clojure.atlassian.net/browse/CLJ-2990[CLJ-2990] :req! on a nested map with :missing binds an internal Object
+
+== Try it out
+
+Update your deps.edn :deps with:
+
+[source]
+----
+org.clojure/clojure {:mvn/version "1.13.0-alpha11"}
+----
+
+Start a REPL with the Clojure CLI (any version) with:
+
+[source]
+----
+clj -Sdeps '{:deps {org.clojure/clojure {:mvn/version "1.13.0-alpha11"}}}'
+----

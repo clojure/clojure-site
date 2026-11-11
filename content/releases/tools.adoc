@@ -22,6 +22,10 @@ For more information see the following docs:
 
 Recent official releases are described here. Prereleases and older versions can be found in the https://github.com/clojure/brew-install/blob/1.12.4/CHANGELOG.md[repo changelog].
 
+=== 1.12.6.1673 (Sep 2, 2026) [[v1.12.6.1673]]
+
+* Update to Clojure 1.12.6
+
 === 1.12.5.1664 (Jul 27, 2026) [[v1.12.5.1664]]
 
 * Change Maven session concurrency to use a single shared session rather than one per thread

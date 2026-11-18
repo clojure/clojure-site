@@ -248,6 +248,20 @@ Also see:
 
 Clojure has several Java system properties that affect behavior:
 
+[width="80", cols="<.^50a,.^30a,.^20", role="table"]
+|===
+
+| `clojure.compiler.disable-locals-clearing=true`
+| Enable locals clearing during compilation
+| <<compilation#compiler_opts,Compiler options>>
+
+| `clojure.compiler.elide-meta=[:doc :file :line :added]`
+| Set metadata keys to elide during compilation.
+| <<compilation#compiler_opts,Compiler options>>
+
+|===
+
+
 * `clojure.compiler.disable-locals-clearing=true` - Enable locals clearing during compilation. See <<compilation#compiler_opts,Compiler options>>.
 * `clojure.compiler.elide-meta=[:doc :file :line :added]` - Set metadata keys to elide during compilation. See <<compilation#compiler_opts,Compiler options>>.
 * `clojure.compiler.direct-linking=true` - Enable direct linking during compilation. See <<compilation#compiler_opts,Compiler options>>.

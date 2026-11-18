@@ -57,6 +57,7 @@ To compile a lib, use the https://clojure.github.io/clojure/clojure.core-api.htm
 * For each gen-class:
 ** A stub classfile will be produced with the specified name
 
+[[compiler_opts]]
 == Compiler options
 
 The Clojure compiler can be controlled via the use of several compiler flags. At runtime these are stored in the dynamic var `pass:[clojure.core/*compiler-options*]`, which is a map with the following optional keyword keys:

@@ -98,6 +98,7 @@ The arguments will be provided to your program as a seq of strings bound to the 
 *command-line-args* => ("arg1" "arg2" "arg3")
 ----
 
+[[error_printing]]
 == Error printing
 
 === At REPL
@@ -186,6 +187,7 @@ tap is a shared, globally accessible system for distributing a series of informa
 
 https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/tap%3E[`pass:[tap>]`] sends a value to the set of taps. Taps can be added with https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/add-tap[`add-tap`] and will be called with any value sent to tap>. The tap function may (briefly) block (e.g. for streams) and will never impede calls to tap>, but blocking indefinitely may cause tap values to be dropped. If no taps are registered, tap> discards. Remove taps with https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/remove-tap[`remove-tap`].
 
+[[socket_server]]
 == Launching a Socket Server
 
 The Clojure runtime now has the ability to start a socket server at initialization based on system properties. One expected use for this is serving a socket-based REPL, but it also has many other potential uses for dynamically adding server capability to existing programs without code changes.
@@ -240,6 +242,21 @@ Also see:
 
 * https://clojure.atlassian.net/browse/CLJ-1671[CLJ-1671]
 * https://archive.clojure.org/design-wiki/display/design/Socket%2BServer%2BREPL.html[Socket Server and REPL design page]
+
+[[system_properties]]
+== Runtime system properties
+
+Clojure has several Java system properties that affect behavior:
+
+* `clojure.compiler.disable-locals-clearing=true` - Enable locals clearing during compilation. See <<compilation#compiler_opts,Compiler options>>.
+* `clojure.compiler.elide-meta=[:doc :file :line :added]"` - Set metadata to elide during compilation. See <<compilation#compiler_opts,Compiler options>>.
+* `-Dclojure.compiler.direct-linking=true` - Enable direct linking during compilation. See <<compilation#compiler_opts,Compiler options>>.
+
+* `clojure.serializable.fns=true` - Set this to `true` to allow function [de]serialization (since Clojure 1.12.7).
+* `clojure.spec.skip-macros=true` - Set to `true` to skip spec checking on macroexpansion.
+* `clojure.spec.check-asserts=true` - Set to `true` to check spec assertions with `s/assert`.
+* `clojure.main.report=file|stderr|none` - Set to change how errors are reported on the command line. See <<#error_printing,Error printing>>.
+* `clojure.server.<name>=<opts>` - Start a socket server. See <<#socket_server,Socket server>>.
 
 == Related functions
 

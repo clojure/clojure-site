@@ -142,6 +142,14 @@ https://clojure.org/news/2026/07/02/clojure-1-13-alpha1[Release Notes]
 
 == Release 1.12.x
 
+=== 1.12.7 (Nov 18, 2026) [[v1.12.7]]
+
+https://clojure.org/news/2026/11/18/clojure-1-12-7[Release Notes]
+
+This release addresses the serialization issue detailed in [GHSA-x4c4-68gp-vrhc](https://github.com/clojure/clojure/security/advisories/GHSA-x4c4-68gp-vrhc).
+
+* https://clojure.atlassian.net/browse/CLJ-2993[CLJ-2993] - AFunction can be used to craft a serialized object that runs arbitrary code on deserialization
+
 === 1.12.6 (Sep 2, 2026) [[v1.12.6]]
 
 https://clojure.org/news/2026/09/02/clojure-1-12-6[Release Notes]

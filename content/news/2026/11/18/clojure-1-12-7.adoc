@@ -5,7 +5,7 @@ Alex Miller
 
 Clojure 1.12.7 is now available!  Find download and usage information on the <<xref/../../../../../releases/downloads#stable,Downloads>> page.
 
-This release addresses the serialization issue detailed in [GHSA-x4c4-68gp-vrhc](https://github.com/clojure/clojure/security/advisories/GHSA-x4c4-68gp-vrhc).
+This release addresses the serialization issue detailed in https://github.com/clojure/clojure/security/advisories/GHSA-x4c4-68gp-vrhc[GHSA-x4c4-68gp-vrhc].
 
 Reading serialized Java data from untrusted streams is inherently unsafe and Clojure function classes could be used in such an attack (in combination with standard JDK classes).
 

@@ -249,9 +249,8 @@ Also see:
 Clojure has several Java system properties that affect behavior:
 
 * `clojure.compiler.disable-locals-clearing=true` - Enable locals clearing during compilation. See <<compilation#compiler_opts,Compiler options>>.
-* `clojure.compiler.elide-meta=[:doc :file :line :added]"` - Set metadata to elide during compilation. See <<compilation#compiler_opts,Compiler options>>.
-* `-Dclojure.compiler.direct-linking=true` - Enable direct linking during compilation. See <<compilation#compiler_opts,Compiler options>>.
-
+* `clojure.compiler.elide-meta=[:doc :file :line :added]` - Set metadata keys to elide during compilation. See <<compilation#compiler_opts,Compiler options>>.
+* `clojure.compiler.direct-linking=true` - Enable direct linking during compilation. See <<compilation#compiler_opts,Compiler options>>.
 * `clojure.serializable.fns=true` - Set this to `true` to allow function [de]serialization (since Clojure 1.12.7).
 * `clojure.spec.skip-macros=true` - Set to `true` to skip spec checking on macroexpansion.
 * `clojure.spec.check-asserts=true` - Set to `true` to check spec assertions with `s/assert`.

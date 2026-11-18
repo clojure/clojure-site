@@ -248,7 +248,7 @@ Also see:
 
 Clojure has several Java system properties that affect behavior:
 
-[width="80", cols="<.^50a,.^30a,.^20", role="table"]
+[width="95", cols="<.^50a,.^30a,.^20", role="table"]
 |===
 
 | `clojure.compiler.disable-locals-clearing=true`
@@ -259,17 +259,31 @@ Clojure has several Java system properties that affect behavior:
 | Set metadata keys to elide during compilation.
 | <<compilation#compiler_opts,Compiler options>>
 
+| `clojure.compiler.direct-linking=true`
+| Enable direct linking during compilation.
+| <<compilation#compiler_opts,Compiler options>>
+
+| `clojure.serializable.fns=true`
+| Set `true` to allow function [de]serialization (since Clojure 1.12.7).
+| 
+
+| `clojure.spec.skip-macros=true`
+| Set to `true` to skip spec checking on macroexpansion.
+| <<xref/../../../guides/faq#skip_macros,FAQ>>
+
+| `clojure.spec.check-asserts=true`
+| Set to `true` to check spec assertions with `s/assert`.
+| <<xref/../../../guides/spec#_using_spec_for_validation,Spec for validation>>
+
+| `clojure.main.report=file|stderr|none`
+| Change where errors are reported on the command line.
+| <<#error_printing,Error printing>>
+
+| `clojure.server.<name>=<opts>`
+| Start a socket server.
+| <<#socket_server,Socket server>>
+
 |===
-
-
-* `clojure.compiler.disable-locals-clearing=true` - Enable locals clearing during compilation. See <<compilation#compiler_opts,Compiler options>>.
-* `clojure.compiler.elide-meta=[:doc :file :line :added]` - Set metadata keys to elide during compilation. See <<compilation#compiler_opts,Compiler options>>.
-* `clojure.compiler.direct-linking=true` - Enable direct linking during compilation. See <<compilation#compiler_opts,Compiler options>>.
-* `clojure.serializable.fns=true` - Set this to `true` to allow function [de]serialization (since Clojure 1.12.7).
-* `clojure.spec.skip-macros=true` - Set to `true` to skip spec checking on macroexpansion.
-* `clojure.spec.check-asserts=true` - Set to `true` to check spec assertions with `s/assert`.
-* `clojure.main.report=file|stderr|none` - Set to change how errors are reported on the command line. See <<#error_printing,Error printing>>.
-* `clojure.server.<name>=<opts>` - Start a socket server. See <<#socket_server,Socket server>>.
 
 == Related functions
 

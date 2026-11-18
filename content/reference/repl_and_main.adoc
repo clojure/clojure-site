@@ -283,7 +283,7 @@ Clojure has several Java system properties that affect behavior:
 | Set `true` to check spec assertions with `s/assert`.
 | <<xref/../../../guides/spec#_using_spec_for_validation,Spec for validation>>
 
-| `pass:[clojure.main.report=file|stderr|none]`
+| `clojure.main.report=file\|stderr\|none`
 | Change where errors are reported on the command line.
 | <<#error_printing,Error printing>>
 

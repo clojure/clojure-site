@@ -251,6 +251,14 @@ Clojure has several Java system properties that affect behavior:
 [width="95", cols="<.^50a,.^30a,.^20", role="table"]
 |===
 
+| `clojure.read.eval=false`
+| If set, allows full power of the reader, including the code execution.
+| https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/*read-eval*[read-eval]
+
+| `clojure.compile.path=<path>`
+| Set the path to write compiled classes, default=classes
+| https://clojure.github.io/clojure/clojure.core-api.html#clojure.core/compile[compile]
+
 | `clojure.compiler.disable-locals-clearing=true`
 | Enable locals clearing during compilation
 | <<compilation#compiler_opts,Compiler options>>
@@ -282,6 +290,10 @@ Clojure has several Java system properties that affect behavior:
 | `clojure.server.<name>=<opts>`
 | Start a socket server.
 | <<#socket_server,Socket server>>
+
+| `clojure.basis=<path>`
+| Set the path to the basis file.
+| <<deps_edn#basis,Runtime basis>>
 
 |===
 

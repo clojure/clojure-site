@@ -20,7 +20,11 @@ For more information see the following docs:
 
 == Releases
 
-Recent official releases are described here. Prereleases and older versions can be found in the https://github.com/clojure/brew-install/blob/1.12.4/CHANGELOG.md[repo changelog].
+Recent official releases are described here. Prereleases and older versions can be found in the https://github.com/clojure/brew-install/blob/1.12.7/CHANGELOG.md[repo changelog].
+
+=== 1.12.7.1681 (Nov 18, 2026) [[v1.12.7.1681]]
+
+* Update to Clojure 1.12.7
 
 === 1.12.6.1673 (Sep 2, 2026) [[v1.12.6.1673]]
 

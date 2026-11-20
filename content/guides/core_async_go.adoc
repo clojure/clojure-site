@@ -105,7 +105,7 @@ We can easily see that this produces a `seq` of strings since the
 output type of `str` is a string. So what is the return type of
 `async/<!`? In the context of a go block it is an object taken from a
 channel. But the go block has to translate that to a parking call to
-`async/put!`. The return type of `async/<!` should really be thought
+`async/take!`. The return type of `async/<!` should really be thought
 of as something akin to `Async<Object>` or `Promise<Object>`. Thus the
 result of `(map async/<! chans)` is something like "a seq of pending
 channel operations" which makes no sense at all.
